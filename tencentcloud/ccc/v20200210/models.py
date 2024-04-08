@@ -157,6 +157,79 @@ class ActiveCarrierPrivilegeNumber(AbstractModel):
         
 
 
+class AudioFileInfo(AbstractModel):
+    """音频文件审核信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileId: 文件ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileId: int
+        :param _CustomFileName: 文件别名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomFileName: str
+        :param _AudioFileName: 文件名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AudioFileName: str
+        :param _Status: 审核状态，0-未审核，1-审核通过，2-审核拒绝
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        """
+        self._FileId = None
+        self._CustomFileName = None
+        self._AudioFileName = None
+        self._Status = None
+
+    @property
+    def FileId(self):
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def CustomFileName(self):
+        return self._CustomFileName
+
+    @CustomFileName.setter
+    def CustomFileName(self, CustomFileName):
+        self._CustomFileName = CustomFileName
+
+    @property
+    def AudioFileName(self):
+        return self._AudioFileName
+
+    @AudioFileName.setter
+    def AudioFileName(self, AudioFileName):
+        self._AudioFileName = AudioFileName
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._FileId = params.get("FileId")
+        self._CustomFileName = params.get("CustomFileName")
+        self._AudioFileName = params.get("AudioFileName")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AutoCalloutTaskCalleeInfo(AbstractModel):
     """外呼任务被叫信息
 
@@ -4640,6 +4713,153 @@ class DescribeIMCdrsResponse(AbstractModel):
                 obj = IMCdrInfo()
                 obj._deserialize(item)
                 self._IMCdrList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeIvrAudioListRequest(AbstractModel):
+    """DescribeIvrAudioList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param _PageSize: 分页尺寸，上限 50
+        :type PageSize: int
+        :param _PageNumber: 分页页码，从 0 开始
+        :type PageNumber: int
+        :param _CustomFileName: 文件别名
+        :type CustomFileName: list of str
+        :param _AudioFileName: 文件名
+        :type AudioFileName: list of str
+        :param _FileId: 文件ID
+        :type FileId: list of int non-negative
+        """
+        self._SdkAppId = None
+        self._PageSize = None
+        self._PageNumber = None
+        self._CustomFileName = None
+        self._AudioFileName = None
+        self._FileId = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def CustomFileName(self):
+        return self._CustomFileName
+
+    @CustomFileName.setter
+    def CustomFileName(self, CustomFileName):
+        self._CustomFileName = CustomFileName
+
+    @property
+    def AudioFileName(self):
+        return self._AudioFileName
+
+    @AudioFileName.setter
+    def AudioFileName(self, AudioFileName):
+        self._AudioFileName = AudioFileName
+
+    @property
+    def FileId(self):
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        self._CustomFileName = params.get("CustomFileName")
+        self._AudioFileName = params.get("AudioFileName")
+        self._FileId = params.get("FileId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIvrAudioListResponse(AbstractModel):
+    """DescribeIvrAudioList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _FileInfo: 文件信息
+        :type FileInfo: list of AudioFileInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._FileInfo = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def FileInfo(self):
+        return self._FileInfo
+
+    @FileInfo.setter
+    def FileInfo(self, FileInfo):
+        self._FileInfo = FileInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("FileInfo") is not None:
+            self._FileInfo = []
+            for item in params.get("FileInfo"):
+                obj = AudioFileInfo()
+                obj._deserialize(item)
+                self._FileInfo.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -10743,6 +10963,191 @@ class UpdatePredictiveDialingCampaignResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UploadAudioInfo(AbstractModel):
+    """上传音频文件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CustomFileName: 文件别名（可重复）
+        :type CustomFileName: str
+        :param _AudioUrl: 音频文件链接。(支持mp3和wav格式，文件不超过5MB)
+        :type AudioUrl: str
+        """
+        self._CustomFileName = None
+        self._AudioUrl = None
+
+    @property
+    def CustomFileName(self):
+        return self._CustomFileName
+
+    @CustomFileName.setter
+    def CustomFileName(self, CustomFileName):
+        self._CustomFileName = CustomFileName
+
+    @property
+    def AudioUrl(self):
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+
+    def _deserialize(self, params):
+        self._CustomFileName = params.get("CustomFileName")
+        self._AudioUrl = params.get("AudioUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UploadIvrAudioFailedInfo(AbstractModel):
+    """上传音频文件失败信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileName: 文件名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileName: str
+        :param _FailedMsg: 失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedMsg: str
+        """
+        self._FileName = None
+        self._FailedMsg = None
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FailedMsg(self):
+        return self._FailedMsg
+
+    @FailedMsg.setter
+    def FailedMsg(self, FailedMsg):
+        self._FailedMsg = FailedMsg
+
+
+    def _deserialize(self, params):
+        self._FileName = params.get("FileName")
+        self._FailedMsg = params.get("FailedMsg")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UploadIvrAudioRequest(AbstractModel):
+    """UploadIvrAudio请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param _AudioList: 音频文件列表
+        :type AudioList: list of UploadAudioInfo
+        """
+        self._SdkAppId = None
+        self._AudioList = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def AudioList(self):
+        return self._AudioList
+
+    @AudioList.setter
+    def AudioList(self, AudioList):
+        self._AudioList = AudioList
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        if params.get("AudioList") is not None:
+            self._AudioList = []
+            for item in params.get("AudioList"):
+                obj = UploadAudioInfo()
+                obj._deserialize(item)
+                self._AudioList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UploadIvrAudioResponse(AbstractModel):
+    """UploadIvrAudio返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FailedFileList: 上传失败的文件列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedFileList: list of UploadIvrAudioFailedInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FailedFileList = None
+        self._RequestId = None
+
+    @property
+    def FailedFileList(self):
+        return self._FailedFileList
+
+    @FailedFileList.setter
+    def FailedFileList(self, FailedFileList):
+        self._FailedFileList = FailedFileList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("FailedFileList") is not None:
+            self._FailedFileList = []
+            for item in params.get("FailedFileList"):
+                obj = UploadIvrAudioFailedInfo()
+                obj._deserialize(item)
+                self._FailedFileList.append(obj)
         self._RequestId = params.get("RequestId")
 
 

@@ -695,6 +695,29 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeIvrAudioList(self, request):
+        """查询IVR音频文件列表信息
+
+        :param request: Request instance for DescribeIvrAudioList.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeIvrAudioListRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeIvrAudioListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIvrAudioList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIvrAudioListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeNumbers(self, request):
         """查询号码列表
 
@@ -1261,6 +1284,29 @@ class CccClient(AbstractClient):
             body = self.call("UpdatePredictiveDialingCampaign", params, headers=headers)
             response = json.loads(body)
             model = models.UpdatePredictiveDialingCampaignResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UploadIvrAudio(self, request):
+        """上传IVR中使用的音频文件，每日上传文件限制50个。（参数中音频文件Url建议使用腾讯云Cos存储的临时链接）
+
+        :param request: Request instance for UploadIvrAudio.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.UploadIvrAudioRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.UploadIvrAudioResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UploadIvrAudio", params, headers=headers)
+            response = json.loads(body)
+            model = models.UploadIvrAudioResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

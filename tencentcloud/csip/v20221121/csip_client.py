@@ -141,6 +141,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAssetViewVulRiskList(self, request):
+        """获取资产视角的漏洞风险列表
+
+        :param request: Request instance for DescribeAssetViewVulRiskList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeAssetViewVulRiskListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeAssetViewVulRiskListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAssetViewVulRiskList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAssetViewVulRiskListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCVMAssetInfo(self, request):
         """cvm详情
 

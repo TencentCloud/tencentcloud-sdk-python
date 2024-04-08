@@ -23455,6 +23455,15 @@ cold：低频存储。
         :param _ClassId: 点播应用分类
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClassId: int
+        :param _CosBucketName: 存储至 cos 的 bucket 桶名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CosBucketName: str
+        :param _CosBucketRegion: 存储至 cos 的 bucket 区域。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CosBucketRegion: str
+        :param _CosBucketPath: 存储至 cos 的 bucket 路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CosBucketPath: str
         """
         self._RecordInterval = None
         self._StorageTime = None
@@ -23464,6 +23473,9 @@ cold：低频存储。
         self._Procedure = None
         self._StorageMode = None
         self._ClassId = None
+        self._CosBucketName = None
+        self._CosBucketRegion = None
+        self._CosBucketPath = None
 
     @property
     def RecordInterval(self):
@@ -23529,6 +23541,30 @@ cold：低频存储。
     def ClassId(self, ClassId):
         self._ClassId = ClassId
 
+    @property
+    def CosBucketName(self):
+        return self._CosBucketName
+
+    @CosBucketName.setter
+    def CosBucketName(self, CosBucketName):
+        self._CosBucketName = CosBucketName
+
+    @property
+    def CosBucketRegion(self):
+        return self._CosBucketRegion
+
+    @CosBucketRegion.setter
+    def CosBucketRegion(self, CosBucketRegion):
+        self._CosBucketRegion = CosBucketRegion
+
+    @property
+    def CosBucketPath(self):
+        return self._CosBucketPath
+
+    @CosBucketPath.setter
+    def CosBucketPath(self, CosBucketPath):
+        self._CosBucketPath = CosBucketPath
+
 
     def _deserialize(self, params):
         self._RecordInterval = params.get("RecordInterval")
@@ -23539,6 +23575,9 @@ cold：低频存储。
         self._Procedure = params.get("Procedure")
         self._StorageMode = params.get("StorageMode")
         self._ClassId = params.get("ClassId")
+        self._CosBucketName = params.get("CosBucketName")
+        self._CosBucketRegion = params.get("CosBucketRegion")
+        self._CosBucketPath = params.get("CosBucketPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

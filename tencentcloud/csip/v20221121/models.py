@@ -1938,6 +1938,498 @@ class AssetViewVULRisk(AbstractModel):
         
 
 
+class AssetViewVULRiskData(AbstractModel):
+    """资产视角的漏洞风险对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AffectAsset: 影响资产
+        :type AffectAsset: str
+        :param _Level: 风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
+        :type Level: str
+        :param _InstanceType: 资产类型
+        :type InstanceType: str
+        :param _Component: 组件
+        :type Component: str
+        :param _RecentTime: 最近识别时间
+        :type RecentTime: str
+        :param _FirstTime: 首次识别时间
+        :type FirstTime: str
+        :param _Status: 状态，0未处理、1标记已处置、2已忽略，3已处置 ，4 处置中 ，5 检测中 ，6部分已处置
+        :type Status: int
+        :param _RiskId: 风险ID
+        :type RiskId: str
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _InstanceName: 实例名
+        :type InstanceName: str
+        :param _AppId: 用户appid
+        :type AppId: str
+        :param _Nick: 用户昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Nick: str
+        :param _Uin: 用户uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param _VULType: 漏洞类型
+        :type VULType: str
+        :param _Port: 端口
+        :type Port: str
+        :param _AppName: 漏洞影响组件
+        :type AppName: str
+        :param _AppVersion: 漏洞影响版本
+        :type AppVersion: str
+        :param _VULURL: 风险点
+        :type VULURL: str
+        :param _VULName: 漏洞名称
+        :type VULName: str
+        :param _CVE: cve
+        :type CVE: str
+        :param _POCId: pocid
+        :type POCId: str
+        :param _From: 扫描来源
+        :type From: str
+        :param _CWPVersion: 主机版本
+        :type CWPVersion: int
+        :param _InstanceUUID: 实例uuid
+        :type InstanceUUID: str
+        :param _Payload: 攻击载荷
+        :type Payload: str
+        :param _EMGCVulType: 应急漏洞类型，1-应急漏洞，0-非应急漏洞
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EMGCVulType: int
+        :param _CVSS: CVSS评分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CVSS: float
+        :param _Index: 前端索引id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Index: str
+        :param _PCMGRId: pcmgrId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PCMGRId: str
+        :param _LogId: 报告id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogId: str
+        :param _TaskId: 任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _VulTag: 漏洞标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VulTag: list of str
+        :param _DisclosureTime: 漏洞披露时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisclosureTime: str
+        :param _AttackHeat: 攻击热度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttackHeat: int
+        :param _IsSuggest: 是否必修漏洞1是，0不是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsSuggest: int
+        :param _HandleTaskId: 处置任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HandleTaskId: str
+        :param _EngineSource: 引擎来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineSource: str
+        :param _VulRiskId: 新的漏洞风险id(同全网漏洞表的riskid)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VulRiskId: str
+        """
+        self._AffectAsset = None
+        self._Level = None
+        self._InstanceType = None
+        self._Component = None
+        self._RecentTime = None
+        self._FirstTime = None
+        self._Status = None
+        self._RiskId = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._AppId = None
+        self._Nick = None
+        self._Uin = None
+        self._VULType = None
+        self._Port = None
+        self._AppName = None
+        self._AppVersion = None
+        self._VULURL = None
+        self._VULName = None
+        self._CVE = None
+        self._POCId = None
+        self._From = None
+        self._CWPVersion = None
+        self._InstanceUUID = None
+        self._Payload = None
+        self._EMGCVulType = None
+        self._CVSS = None
+        self._Index = None
+        self._PCMGRId = None
+        self._LogId = None
+        self._TaskId = None
+        self._VulTag = None
+        self._DisclosureTime = None
+        self._AttackHeat = None
+        self._IsSuggest = None
+        self._HandleTaskId = None
+        self._EngineSource = None
+        self._VulRiskId = None
+
+    @property
+    def AffectAsset(self):
+        return self._AffectAsset
+
+    @AffectAsset.setter
+    def AffectAsset(self, AffectAsset):
+        self._AffectAsset = AffectAsset
+
+    @property
+    def Level(self):
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def Component(self):
+        return self._Component
+
+    @Component.setter
+    def Component(self, Component):
+        self._Component = Component
+
+    @property
+    def RecentTime(self):
+        return self._RecentTime
+
+    @RecentTime.setter
+    def RecentTime(self, RecentTime):
+        self._RecentTime = RecentTime
+
+    @property
+    def FirstTime(self):
+        return self._FirstTime
+
+    @FirstTime.setter
+    def FirstTime(self, FirstTime):
+        self._FirstTime = FirstTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RiskId(self):
+        return self._RiskId
+
+    @RiskId.setter
+    def RiskId(self, RiskId):
+        self._RiskId = RiskId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Nick(self):
+        return self._Nick
+
+    @Nick.setter
+    def Nick(self, Nick):
+        self._Nick = Nick
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def VULType(self):
+        return self._VULType
+
+    @VULType.setter
+    def VULType(self, VULType):
+        self._VULType = VULType
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def AppVersion(self):
+        return self._AppVersion
+
+    @AppVersion.setter
+    def AppVersion(self, AppVersion):
+        self._AppVersion = AppVersion
+
+    @property
+    def VULURL(self):
+        return self._VULURL
+
+    @VULURL.setter
+    def VULURL(self, VULURL):
+        self._VULURL = VULURL
+
+    @property
+    def VULName(self):
+        return self._VULName
+
+    @VULName.setter
+    def VULName(self, VULName):
+        self._VULName = VULName
+
+    @property
+    def CVE(self):
+        return self._CVE
+
+    @CVE.setter
+    def CVE(self, CVE):
+        self._CVE = CVE
+
+    @property
+    def POCId(self):
+        return self._POCId
+
+    @POCId.setter
+    def POCId(self, POCId):
+        self._POCId = POCId
+
+    @property
+    def From(self):
+        return self._From
+
+    @From.setter
+    def From(self, From):
+        self._From = From
+
+    @property
+    def CWPVersion(self):
+        return self._CWPVersion
+
+    @CWPVersion.setter
+    def CWPVersion(self, CWPVersion):
+        self._CWPVersion = CWPVersion
+
+    @property
+    def InstanceUUID(self):
+        return self._InstanceUUID
+
+    @InstanceUUID.setter
+    def InstanceUUID(self, InstanceUUID):
+        self._InstanceUUID = InstanceUUID
+
+    @property
+    def Payload(self):
+        return self._Payload
+
+    @Payload.setter
+    def Payload(self, Payload):
+        self._Payload = Payload
+
+    @property
+    def EMGCVulType(self):
+        return self._EMGCVulType
+
+    @EMGCVulType.setter
+    def EMGCVulType(self, EMGCVulType):
+        self._EMGCVulType = EMGCVulType
+
+    @property
+    def CVSS(self):
+        return self._CVSS
+
+    @CVSS.setter
+    def CVSS(self, CVSS):
+        self._CVSS = CVSS
+
+    @property
+    def Index(self):
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def PCMGRId(self):
+        return self._PCMGRId
+
+    @PCMGRId.setter
+    def PCMGRId(self, PCMGRId):
+        self._PCMGRId = PCMGRId
+
+    @property
+    def LogId(self):
+        return self._LogId
+
+    @LogId.setter
+    def LogId(self, LogId):
+        self._LogId = LogId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def VulTag(self):
+        return self._VulTag
+
+    @VulTag.setter
+    def VulTag(self, VulTag):
+        self._VulTag = VulTag
+
+    @property
+    def DisclosureTime(self):
+        return self._DisclosureTime
+
+    @DisclosureTime.setter
+    def DisclosureTime(self, DisclosureTime):
+        self._DisclosureTime = DisclosureTime
+
+    @property
+    def AttackHeat(self):
+        return self._AttackHeat
+
+    @AttackHeat.setter
+    def AttackHeat(self, AttackHeat):
+        self._AttackHeat = AttackHeat
+
+    @property
+    def IsSuggest(self):
+        return self._IsSuggest
+
+    @IsSuggest.setter
+    def IsSuggest(self, IsSuggest):
+        self._IsSuggest = IsSuggest
+
+    @property
+    def HandleTaskId(self):
+        return self._HandleTaskId
+
+    @HandleTaskId.setter
+    def HandleTaskId(self, HandleTaskId):
+        self._HandleTaskId = HandleTaskId
+
+    @property
+    def EngineSource(self):
+        return self._EngineSource
+
+    @EngineSource.setter
+    def EngineSource(self, EngineSource):
+        self._EngineSource = EngineSource
+
+    @property
+    def VulRiskId(self):
+        return self._VulRiskId
+
+    @VulRiskId.setter
+    def VulRiskId(self, VulRiskId):
+        self._VulRiskId = VulRiskId
+
+
+    def _deserialize(self, params):
+        self._AffectAsset = params.get("AffectAsset")
+        self._Level = params.get("Level")
+        self._InstanceType = params.get("InstanceType")
+        self._Component = params.get("Component")
+        self._RecentTime = params.get("RecentTime")
+        self._FirstTime = params.get("FirstTime")
+        self._Status = params.get("Status")
+        self._RiskId = params.get("RiskId")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._AppId = params.get("AppId")
+        self._Nick = params.get("Nick")
+        self._Uin = params.get("Uin")
+        self._VULType = params.get("VULType")
+        self._Port = params.get("Port")
+        self._AppName = params.get("AppName")
+        self._AppVersion = params.get("AppVersion")
+        self._VULURL = params.get("VULURL")
+        self._VULName = params.get("VULName")
+        self._CVE = params.get("CVE")
+        self._POCId = params.get("POCId")
+        self._From = params.get("From")
+        self._CWPVersion = params.get("CWPVersion")
+        self._InstanceUUID = params.get("InstanceUUID")
+        self._Payload = params.get("Payload")
+        self._EMGCVulType = params.get("EMGCVulType")
+        self._CVSS = params.get("CVSS")
+        self._Index = params.get("Index")
+        self._PCMGRId = params.get("PCMGRId")
+        self._LogId = params.get("LogId")
+        self._TaskId = params.get("TaskId")
+        self._VulTag = params.get("VulTag")
+        self._DisclosureTime = params.get("DisclosureTime")
+        self._AttackHeat = params.get("AttackHeat")
+        self._IsSuggest = params.get("IsSuggest")
+        self._HandleTaskId = params.get("HandleTaskId")
+        self._EngineSource = params.get("EngineSource")
+        self._VulRiskId = params.get("VulRiskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AssetViewWeakPassRisk(AbstractModel):
     """资产视角的弱口令风险
 
@@ -4665,6 +5157,228 @@ class DeleteRiskScanTaskResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAssetViewVulRiskListRequest(AbstractModel):
+    """DescribeAssetViewVulRiskList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: 过滤内容
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        :param _Tags: 资产标签
+        :type Tags: list of AssetTag
+        """
+        self._MemberId = None
+        self._Filter = None
+        self._Tags = None
+
+    @property
+    def MemberId(self):
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = AssetTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssetViewVulRiskListResponse(AbstractModel):
+    """DescribeAssetViewVulRiskList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总条数
+        :type TotalCount: int
+        :param _Data: 资产视角的漏洞风险列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of AssetViewVULRiskData
+        :param _StatusLists: 状态列表
+        :type StatusLists: list of FilterDataObject
+        :param _LevelLists: 危险等级列表
+        :type LevelLists: list of FilterDataObject
+        :param _FromLists: 来源列表
+        :type FromLists: list of FilterDataObject
+        :param _VULTypeLists: 漏洞类型列表
+        :type VULTypeLists: list of FilterDataObject
+        :param _InstanceTypeLists: 资产类型列表
+        :type InstanceTypeLists: list of FilterDataObject
+        :param _Tags: tag枚举
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of FilterDataObject
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._StatusLists = None
+        self._LevelLists = None
+        self._FromLists = None
+        self._VULTypeLists = None
+        self._InstanceTypeLists = None
+        self._Tags = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def StatusLists(self):
+        return self._StatusLists
+
+    @StatusLists.setter
+    def StatusLists(self, StatusLists):
+        self._StatusLists = StatusLists
+
+    @property
+    def LevelLists(self):
+        return self._LevelLists
+
+    @LevelLists.setter
+    def LevelLists(self, LevelLists):
+        self._LevelLists = LevelLists
+
+    @property
+    def FromLists(self):
+        return self._FromLists
+
+    @FromLists.setter
+    def FromLists(self, FromLists):
+        self._FromLists = FromLists
+
+    @property
+    def VULTypeLists(self):
+        return self._VULTypeLists
+
+    @VULTypeLists.setter
+    def VULTypeLists(self, VULTypeLists):
+        self._VULTypeLists = VULTypeLists
+
+    @property
+    def InstanceTypeLists(self):
+        return self._InstanceTypeLists
+
+    @InstanceTypeLists.setter
+    def InstanceTypeLists(self, InstanceTypeLists):
+        self._InstanceTypeLists = InstanceTypeLists
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = AssetViewVULRiskData()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        if params.get("StatusLists") is not None:
+            self._StatusLists = []
+            for item in params.get("StatusLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._StatusLists.append(obj)
+        if params.get("LevelLists") is not None:
+            self._LevelLists = []
+            for item in params.get("LevelLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._LevelLists.append(obj)
+        if params.get("FromLists") is not None:
+            self._FromLists = []
+            for item in params.get("FromLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._FromLists.append(obj)
+        if params.get("VULTypeLists") is not None:
+            self._VULTypeLists = []
+            for item in params.get("VULTypeLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._VULTypeLists.append(obj)
+        if params.get("InstanceTypeLists") is not None:
+            self._InstanceTypeLists = []
+            for item in params.get("InstanceTypeLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._InstanceTypeLists.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         self._RequestId = params.get("RequestId")
 
 

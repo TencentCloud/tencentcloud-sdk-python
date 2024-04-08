@@ -643,6 +643,9 @@ class Address(AbstractModel):
 <li>NOTIFY_AND_MANUAL_RENEW:正常续费</li><li>NOTIFY_AND_AUTO_RENEW:自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW:到期不续费 </li>
 
         :type RenewFlag: str
+        :param _BandwidthPackageId: 当前公网IP所关联的带宽包ID，如果该公网IP未使用带宽包计费，则返回为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BandwidthPackageId: str
         """
         self._AddressId = None
         self._AddressName = None
@@ -668,6 +671,7 @@ class Address(AbstractModel):
         self._Egress = None
         self._AntiDDoSPackageId = None
         self._RenewFlag = None
+        self._BandwidthPackageId = None
 
     @property
     def AddressId(self):
@@ -861,6 +865,14 @@ class Address(AbstractModel):
     def RenewFlag(self, RenewFlag):
         self._RenewFlag = RenewFlag
 
+    @property
+    def BandwidthPackageId(self):
+        return self._BandwidthPackageId
+
+    @BandwidthPackageId.setter
+    def BandwidthPackageId(self, BandwidthPackageId):
+        self._BandwidthPackageId = BandwidthPackageId
+
 
     def _deserialize(self, params):
         self._AddressId = params.get("AddressId")
@@ -894,6 +906,7 @@ class Address(AbstractModel):
         self._Egress = params.get("Egress")
         self._AntiDDoSPackageId = params.get("AntiDDoSPackageId")
         self._RenewFlag = params.get("RenewFlag")
+        self._BandwidthPackageId = params.get("BandwidthPackageId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
