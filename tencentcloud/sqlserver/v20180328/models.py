@@ -9874,6 +9874,8 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
         :type SSLConfig: :class:`tencentcloud.sqlserver.v20180328.models.SSLConfig`
         :param _DrReadableInfo: 备机只读信息
         :type DrReadableInfo: :class:`tencentcloud.sqlserver.v20180328.models.DrReadableInfo`
+        :param _OldVipList: 等待回收的IP列表
+        :type OldVipList: list of OldVip
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -9888,6 +9890,7 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
         self._TDEConfig = None
         self._SSLConfig = None
         self._DrReadableInfo = None
+        self._OldVipList = None
         self._RequestId = None
 
     @property
@@ -9979,6 +9982,14 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
         self._DrReadableInfo = DrReadableInfo
 
     @property
+    def OldVipList(self):
+        return self._OldVipList
+
+    @OldVipList.setter
+    def OldVipList(self, OldVipList):
+        self._OldVipList = OldVipList
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -10005,6 +10016,12 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
         if params.get("DrReadableInfo") is not None:
             self._DrReadableInfo = DrReadableInfo()
             self._DrReadableInfo._deserialize(params.get("DrReadableInfo"))
+        if params.get("OldVipList") is not None:
+            self._OldVipList = []
+            for item in params.get("OldVipList"):
+                obj = OldVip()
+                obj._deserialize(item)
+                self._OldVipList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -21202,6 +21219,64 @@ class ModifyReadOnlyGroupDetailsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class OldVip(AbstractModel):
+    """用于返回实例存在的未回收的ip数量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Vip: 未回收的旧ip
+        :type Vip: str
+        :param _RecycleTime: ip回收时间
+        :type RecycleTime: str
+        :param _OldIpRetainTime: 旧IP保留时间小时数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OldIpRetainTime: int
+        """
+        self._Vip = None
+        self._RecycleTime = None
+        self._OldIpRetainTime = None
+
+    @property
+    def Vip(self):
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def RecycleTime(self):
+        return self._RecycleTime
+
+    @RecycleTime.setter
+    def RecycleTime(self, RecycleTime):
+        self._RecycleTime = RecycleTime
+
+    @property
+    def OldIpRetainTime(self):
+        return self._OldIpRetainTime
+
+    @OldIpRetainTime.setter
+    def OldIpRetainTime(self, OldIpRetainTime):
+        self._OldIpRetainTime = OldIpRetainTime
+
+
+    def _deserialize(self, params):
+        self._Vip = params.get("Vip")
+        self._RecycleTime = params.get("RecycleTime")
+        self._OldIpRetainTime = params.get("OldIpRetainTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class OpenInterCommunicationRequest(AbstractModel):

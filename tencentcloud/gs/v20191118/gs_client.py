@@ -118,6 +118,29 @@ class GsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def StartPublishStreamToCSS(self, request):
+        """开始云端推流
+
+        :param request: Request instance for StartPublishStreamToCSS.
+        :type request: :class:`tencentcloud.gs.v20191118.models.StartPublishStreamToCSSRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.StartPublishStreamToCSSResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartPublishStreamToCSS", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartPublishStreamToCSSResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StopGame(self, request):
         """强制退出游戏
 

@@ -25,13 +25,13 @@ class AddOrganizationMemberEmailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberUin: 成员Uin
+        :param _MemberUin: 成员Uin。
         :type MemberUin: int
-        :param _Email: 邮箱地址
+        :param _Email: 邮箱地址。
         :type Email: str
-        :param _CountryCode: 国际区号
+        :param _CountryCode: 国际区号。
         :type CountryCode: str
-        :param _Phone: 手机号
+        :param _Phone: 手机号。
         :type Phone: str
         """
         self._MemberUin = None
@@ -132,7 +132,7 @@ class AddOrganizationNodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ParentNodeId: 父节点ID。可以调用DescribeOrganizationNodes获取
+        :param _ParentNodeId: 父节点ID。可以通过[DescribeOrganizationNodes](https://cloud.tencent.com/document/product/850/82926)获取
         :type ParentNodeId: int
         :param _Name: 节点名称。最大长度为40个字符，支持英文字母、数字、汉字、符号+@、&._[]-
         :type Name: str
@@ -315,7 +315,7 @@ class AddShareUnitRequest(AbstractModel):
         r"""
         :param _Name: 共享单元名称。仅支持大小写字母、数字、-、以及_的组合，3-128个字符。
         :type Name: str
-        :param _Area: 共享单元地域。可通过接口DescribeShareAreas获取支持共享的地域。
+        :param _Area: 共享单元地域。可通过接口[DescribeShareAreas](https://cloud.tencent.com/document/product/850/103050)获取支持共享的地域。
         :type Area: str
         :param _Description: 共享单元描述。最大128个字符。
         :type Description: str
@@ -570,7 +570,7 @@ class BindOrganizationMemberAuthAccountRequest(AbstractModel):
         r"""
         :param _MemberUin: 成员Uin。
         :type MemberUin: int
-        :param _PolicyId: 策略ID。可以调用DescribeOrganizationMemberPolicies获取
+        :param _PolicyId: 策略ID。可以调用[DescribeOrganizationMemberPolicies](https://cloud.tencent.com/document/product/850/82935)获取
         :type PolicyId: int
         :param _OrgSubAccountUins: 组织管理员子账号Uin列表。最大5个
         :type OrgSubAccountUins: list of int
@@ -652,7 +652,7 @@ class CancelOrganizationMemberAuthAccountRequest(AbstractModel):
         r"""
         :param _MemberUin: 成员Uin。
         :type MemberUin: int
-        :param _PolicyId: 策略ID。
+        :param _PolicyId: 策略ID。可以通过[DescribeOrganizationMemberPolicies](https://cloud.tencent.com/document/product/850/82935)获取
         :type PolicyId: int
         :param _OrgSubAccountUin: 组织子账号Uin。
         :type OrgSubAccountUin: int
@@ -732,7 +732,7 @@ class CheckAccountDeleteRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberUin: 成员uin。
+        :param _MemberUin: 成员Uin。
         :type MemberUin: int
         """
         self._MemberUin = None
@@ -916,9 +916,9 @@ class CreateOrganizationMemberAuthIdentityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberUins: 成员uin列表。最多10个
+        :param _MemberUins: 成员Uin列表。最多10个
         :type MemberUins: list of int non-negative
-        :param _IdentityIds: 身份Id列表。最多5个
+        :param _IdentityIds: 身份Id列表。最多5个，可以通过[ListOrganizationIdentity](https://cloud.tencent.com/document/product/850/82934)获取
         :type IdentityIds: list of int non-negative
         """
         self._MemberUins = None
@@ -990,7 +990,7 @@ class CreateOrganizationMemberPolicyRequest(AbstractModel):
         :type MemberUin: int
         :param _PolicyName: 策略名。最大长度为128个字符，支持英文字母、数字、符号+=,.@_-
         :type PolicyName: str
-        :param _IdentityId: 成员访问身份ID。可以调用DescribeOrganizationMemberAuthIdentities获取
+        :param _IdentityId: 成员访问身份ID。可以调用[DescribeOrganizationMemberAuthIdentities](https://cloud.tencent.com/document/product/850/82936)获取
         :type IdentityId: int
         :param _Description: 描述。
         :type Description: str
@@ -1099,7 +1099,7 @@ class CreateOrganizationMemberRequest(AbstractModel):
         :type PolicyType: str
         :param _PermissionIds: 成员财务权限ID列表。取值：1-查看账单、2-查看余额、3-资金划拨、4-合并出账、5-开票、6-优惠继承、7-代付费，1、2 默认必须
         :type PermissionIds: list of int non-negative
-        :param _NodeId: 成员所属部门的节点ID。可以调用DescribeOrganizationNodes获取
+        :param _NodeId: 成员所属部门的节点ID。可以通过[DescribeOrganizationNodes](https://cloud.tencent.com/document/product/850/82926)获取
         :type NodeId: int
         :param _AccountName: 账号名称。最大长度为25个字符，支持英文字母、数字、汉字、符号+@、&._[]-:,
         :type AccountName: str
@@ -1276,7 +1276,7 @@ class CreateOrganizationMembersPolicyRequest(AbstractModel):
         :type MemberUins: list of int
         :param _PolicyName: 策略名。长度1～128个字符，支持英文字母、数字、符号+=,.@_-
         :type PolicyName: str
-        :param _IdentityId: 成员访问身份ID。
+        :param _IdentityId: 成员访问身份ID。可以通过[ListOrganizationIdentity](https://cloud.tencent.com/document/product/850/82934)获取
         :type IdentityId: int
         :param _Description: 策略描述。最大长度为128个字符
         :type Description: str
@@ -1434,7 +1434,7 @@ class DeleteAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberUin: 成员uin。
+        :param _MemberUin: 成员Uin。
         :type MemberUin: int
         """
         self._MemberUin = None
@@ -1492,7 +1492,7 @@ class DeleteOrganizationIdentityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IdentityId: 身份ID
+        :param _IdentityId: 身份ID。可以通过[ListOrganizationIdentity](https://cloud.tencent.com/document/product/850/82934)获取
         :type IdentityId: int
         """
         self._IdentityId = None
@@ -1550,9 +1550,9 @@ class DeleteOrganizationMemberAuthIdentityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberUin: 成员uin。
+        :param _MemberUin: 成员Uin。
         :type MemberUin: int
-        :param _IdentityId: 身份Id。
+        :param _IdentityId: 身份ID。可以通过[ListOrganizationIdentity](https://cloud.tencent.com/document/product/850/82934)获取
         :type IdentityId: int
         """
         self._MemberUin = None
@@ -1620,7 +1620,7 @@ class DeleteOrganizationMembersPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PolicyId: 访问策略ID。
+        :param _PolicyId: 访问策略ID。可以通过[DescribeOrganizationMemberPolicies](https://cloud.tencent.com/document/product/850/82935)获取
         :type PolicyId: int
         """
         self._PolicyId = None
@@ -1678,7 +1678,7 @@ class DeleteOrganizationMembersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberUin: 被删除成员的UIN列表。
+        :param _MemberUin: 被删除成员的Uin列表。
         :type MemberUin: list of int
         """
         self._MemberUin = None
@@ -1736,7 +1736,7 @@ class DeleteOrganizationNodesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NodeId: 节点ID列表。
+        :param _NodeId: 节点ID列表。可以通过[DescribeOrganizationNodes](https://cloud.tencent.com/document/product/850/82926)获取
         :type NodeId: list of int
         """
         self._NodeId = None
@@ -1949,7 +1949,7 @@ class DeleteShareUnitResourcesRequest(AbstractModel):
         :type UnitId: str
         :param _Area: 共享单元地域。
         :type Area: str
-        :param _Type: 资源类型。支持共享的资源类型。
+        :param _Type: 共享资源类型。支持共享的资源类型,请参见[资源共享概述](https://cloud.tencent.com/document/product/850/59489)
         :type Type: str
         :param _Resources: 共享资源列表。最大10个。
         :type Resources: list of ShareResource
@@ -2069,9 +2069,9 @@ class DescribeOrganizationAuthNodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 偏移量。
+        :param _Offset: 偏移量。取值是limit的整数倍。默认值 : 0。
         :type Offset: int
-        :param _Limit: 限制数目。最大50
+        :param _Limit: 限制数目。取值范围：1~50。默认值：10。
         :type Limit: int
         :param _AuthName: 互信主体名称。
         :type AuthName: str
@@ -2618,13 +2618,13 @@ class DescribeOrganizationMemberAuthAccountsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 偏移量。
+        :param _Offset: 偏移量。取值是limit的整数倍。默认值 : 0。
         :type Offset: int
-        :param _Limit: 限制数目。
+        :param _Limit: 限制数目。取值范围：1~50。默认值：10。
         :type Limit: int
         :param _MemberUin: 成员Uin。
         :type MemberUin: int
-        :param _PolicyId: 策略ID。
+        :param _PolicyId: 策略ID。可以通过[DescribeOrganizationMemberPolicies](https://cloud.tencent.com/document/product/850/82935)
         :type PolicyId: int
         """
         self._Offset = None
@@ -2749,7 +2749,7 @@ class DescribeOrganizationMemberAuthIdentitiesRequest(AbstractModel):
         :type Limit: int
         :param _MemberUin: 组织成员Uin。入参MemberUin与IdentityId至少填写一个
         :type MemberUin: int
-        :param _IdentityId: 身份ID。入参MemberUin与IdentityId至少填写一个
+        :param _IdentityId: 身份ID。入参MemberUin与IdentityId至少填写一个, 可以通过[ListOrganizationIdentity](https://cloud.tencent.com/document/product/850/82934)获取
         :type IdentityId: int
         """
         self._Offset = None
@@ -2868,7 +2868,7 @@ class DescribeOrganizationMemberEmailBindRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberUin: 成员Uin
+        :param _MemberUin: 成员Uin。
         :type MemberUin: int
         """
         self._MemberUin = None
@@ -2901,31 +2901,31 @@ class DescribeOrganizationMemberEmailBindResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BindId: 绑定ID
+        :param _BindId: 绑定ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BindId: int
-        :param _ApplyTime: 申请时间
+        :param _ApplyTime: 申请时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplyTime: str
-        :param _Email: 邮箱地址
+        :param _Email: 邮箱地址。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Email: str
-        :param _Phone: 手机号
+        :param _Phone: 安全手机号。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Phone: str
-        :param _BindStatus: 绑定状态    未绑定：Unbound，待激活：Valid，绑定成功：Success，绑定失败：Failed
+        :param _BindStatus: 绑定状态。    未绑定：Unbound，待激活：Valid，绑定成功：Success，绑定失败：Failed
 注意：此字段可能返回 null，表示取不到有效值。
         :type BindStatus: str
-        :param _BindTime: 绑定时间
+        :param _BindTime: 绑定时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BindTime: str
-        :param _Description: 失败说明
+        :param _Description: 失败说明。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param _PhoneBind: 安全手机绑定状态  未绑定：0，已绑定：1
+        :param _PhoneBind: 安全手机绑定状态 。 未绑定：0，已绑定：1
 注意：此字段可能返回 null，表示取不到有效值。
         :type PhoneBind: int
-        :param _CountryCode: 国际区号
+        :param _CountryCode: 国际区号。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CountryCode: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3043,9 +3043,9 @@ class DescribeOrganizationMemberPoliciesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 偏移量。
+        :param _Offset: 偏移量。取值是limit的整数倍。默认值 : 0。
         :type Offset: int
-        :param _Limit: 限制数目。最大50
+        :param _Limit: 限制数目。取值范围：1~50。默认值：10。
         :type Limit: int
         :param _MemberUin: 成员Uin。
         :type MemberUin: int
@@ -3317,7 +3317,7 @@ class DescribeOrganizationNodesRequest(AbstractModel):
         r"""
         :param _Limit: 限制数目。最大50
         :type Limit: int
-        :param _Offset: 偏移量。
+        :param _Offset: 偏移量。取值是limit的整数倍。默认值 : 0。
         :type Offset: int
         """
         self._Limit = None
@@ -3922,7 +3922,7 @@ class DescribeShareUnitResourcesRequest(AbstractModel):
         :type Limit: int
         :param _SearchKey: 搜索关键字。支持产品资源ID搜索。
         :type SearchKey: str
-        :param _Type: 共享资源类型。
+        :param _Type: 共享资源类型。支持共享的资源类型,请参见[资源共享概述](https://cloud.tencent.com/document/product/850/59489)
         :type Type: str
         """
         self._UnitId = None
@@ -4061,7 +4061,7 @@ class DescribeShareUnitsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Area: 共享单元地域。可通过接口DescribeShareAreas获取支持共享的地域。
+        :param _Area: 共享单元地域。可通过接口[DescribeShareAreas](https://cloud.tencent.com/document/product/850/103050)获取支持共享的地域。
         :type Area: str
         :param _Offset: 偏移量。取值是limit的整数倍。默认值 : 0。
         :type Offset: int
@@ -4263,7 +4263,7 @@ class ListOrganizationIdentityRequest(AbstractModel):
         :type Limit: int
         :param _SearchKey: 名称搜索关键字。
         :type SearchKey: str
-        :param _IdentityId: 身份ID搜索。
+        :param _IdentityId: 身份ID。可以通过身份ID搜索
         :type IdentityId: int
         :param _IdentityType: 身份类型。取值范围 1-预设, 2-自定义
         :type IdentityType: int
@@ -4621,9 +4621,9 @@ class MoveOrganizationNodeMembersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NodeId: 组织节点ID。
+        :param _NodeId: 组织节点ID。可以通过[DescribeOrganizationNodes](https://cloud.tencent.com/document/product/850/82926)获取
         :type NodeId: int
-        :param _MemberUin: 成员UIN列表。
+        :param _MemberUin: 成员Uin列表。
         :type MemberUin: list of int
         """
         self._NodeId = None
@@ -6364,11 +6364,11 @@ class UpdateOrganizationIdentityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IdentityId: 身份ID
+        :param _IdentityId: 身份ID。可以通过[ListOrganizationIdentity](https://cloud.tencent.com/document/product/850/82934)获取
         :type IdentityId: int
-        :param _Description: 身份描述
+        :param _Description: 身份描述。
         :type Description: str
-        :param _IdentityPolicy: 身份策略
+        :param _IdentityPolicy: 身份策略。
         :type IdentityPolicy: list of IdentityPolicy
         """
         self._IdentityId = None
@@ -6451,15 +6451,15 @@ class UpdateOrganizationMemberEmailBindRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberUin: 成员Uin
+        :param _MemberUin: 成员Uin。
         :type MemberUin: int
-        :param _BindId: 绑定ID
+        :param _BindId: 绑定ID。可以通过[DescribeOrganizationMemberEmailBind](https://cloud.tencent.com/document/product/850/93332)获取
         :type BindId: int
-        :param _Email: 邮箱
+        :param _Email: 邮箱地址。
         :type Email: str
-        :param _CountryCode: 国际区号
+        :param _CountryCode: 国际区号。
         :type CountryCode: str
-        :param _Phone: 手机号
+        :param _Phone: 手机号。
         :type Phone: str
         """
         self._MemberUin = None
@@ -6688,7 +6688,7 @@ class UpdateOrganizationNodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NodeId: 节点ID。
+        :param _NodeId: 节点ID。可以通过[DescribeOrganizationNodes](https://cloud.tencent.com/document/product/850/82926)获取
         :type NodeId: int
         :param _Name: 节点名称。最大长度为40个字符，支持英文字母、数字、汉字、符号+@、&._[]-
         :type Name: str

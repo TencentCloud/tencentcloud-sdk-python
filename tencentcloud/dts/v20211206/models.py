@@ -1543,6 +1543,8 @@ class ConfigureSyncJobRequest(AbstractModel):
         :type RunMode: str
         :param _ExpectRunTime: 期待启动时间，当RunMode取值为Timed时，此值必填，形如："2006-01-02 15:04:05"
         :type ExpectRunTime: str
+        :param _SrcConnectType: 源端tdsql连接方式：proxy-通过tdsql proxy主机访问各个set节点，注意只有在自研上云的网络环境下才能通过这种方式连接，SrcInfos中只需要提供proxy主机信息。set-直连set节点，如选择直连set方式，需要正确填写proxy主机信息及所有set节点信息。源端是tdsqlmysql类型必填。
+        :type SrcConnectType: str
         :param _SrcInfo: 源端信息，单节点数据库使用，且SrcNodeType传single
         :type SrcInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
         :param _SrcInfos: 源端信息，多节点数据库使用，且SrcNodeType传cluster
@@ -1568,6 +1570,7 @@ class ConfigureSyncJobRequest(AbstractModel):
         self._JobMode = None
         self._RunMode = None
         self._ExpectRunTime = None
+        self._SrcConnectType = None
         self._SrcInfo = None
         self._SrcInfos = None
         self._SrcNodeType = None
@@ -1640,6 +1643,14 @@ class ConfigureSyncJobRequest(AbstractModel):
     @ExpectRunTime.setter
     def ExpectRunTime(self, ExpectRunTime):
         self._ExpectRunTime = ExpectRunTime
+
+    @property
+    def SrcConnectType(self):
+        return self._SrcConnectType
+
+    @SrcConnectType.setter
+    def SrcConnectType(self, SrcConnectType):
+        self._SrcConnectType = SrcConnectType
 
     @property
     def SrcInfo(self):
@@ -1717,6 +1728,7 @@ class ConfigureSyncJobRequest(AbstractModel):
         self._JobMode = params.get("JobMode")
         self._RunMode = params.get("RunMode")
         self._ExpectRunTime = params.get("ExpectRunTime")
+        self._SrcConnectType = params.get("SrcConnectType")
         if params.get("SrcInfo") is not None:
             self._SrcInfo = Endpoint()
             self._SrcInfo._deserialize(params.get("SrcInfo"))
@@ -2988,6 +3000,9 @@ class DBEndpointInfo(AbstractModel):
         :param _DatabaseNetEnv: 数据库所属网络环境，AccessType为云联网(ccn)时必填， UserIDC表示用户IDC、TencentVPC表示腾讯云VPC；
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseNetEnv: str
+        :param _ConnectType: tdsql连接方式：proxy-通过tdsql proxy主机访问各个set节点，注意只有在自研上云的网络环境下才能通过这种方式连接，Info中只需要提供proxy主机信息。set-直连set节点，如选择直连set方式，Info中需要正确填写proxy主机信息及所有set节点信息。源端是tdsqlmysql类型必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConnectType: str
         """
         self._Region = None
         self._AccessType = None
@@ -2997,6 +3012,7 @@ class DBEndpointInfo(AbstractModel):
         self._Supplier = None
         self._ExtraAttr = None
         self._DatabaseNetEnv = None
+        self._ConnectType = None
 
     @property
     def Region(self):
@@ -3062,6 +3078,14 @@ class DBEndpointInfo(AbstractModel):
     def DatabaseNetEnv(self, DatabaseNetEnv):
         self._DatabaseNetEnv = DatabaseNetEnv
 
+    @property
+    def ConnectType(self):
+        return self._ConnectType
+
+    @ConnectType.setter
+    def ConnectType(self, ConnectType):
+        self._ConnectType = ConnectType
+
 
     def _deserialize(self, params):
         self._Region = params.get("Region")
@@ -3082,6 +3106,7 @@ class DBEndpointInfo(AbstractModel):
                 obj._deserialize(item)
                 self._ExtraAttr.append(obj)
         self._DatabaseNetEnv = params.get("DatabaseNetEnv")
+        self._ConnectType = params.get("ConnectType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3099,7 +3124,7 @@ class DBInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Role: 表示节点角色，针对分布式数据库，如mongodb中的mongos节点。如数据库是tdsql，枚举值为：proxy、set
+        :param _Role: 表示节点角色，针对分布式数据库，如mongodb中的mongos节点。tdsqlmysql的可选项：proxy表示节点类型为主机，set表示节点类型为节点。proxy类型必须填在数组第一项。tdsqlmysql类型的源/目标配置必填。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Role: str
         :param _DbKernel: 内核版本，针对mariadb的不同内核版本等
@@ -3159,7 +3184,7 @@ class DBInfo(AbstractModel):
         :param _TmpToken: 临时Token，可通过 获取联合身份临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48195
 注意：此字段可能返回 null，表示取不到有效值。
         :type TmpToken: str
-        :param _SetId: tdsql分片id。tdsql set节点必填
+        :param _SetId: tdsql的分片id。如节点类型为set必填。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SetId: str
         """

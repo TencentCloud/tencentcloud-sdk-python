@@ -128,6 +128,9 @@ INVALIDPARAMETER_ENCODEPARAMS = 'InvalidParameter.EncodeParams'
 # EndTs参数错误。
 INVALIDPARAMETER_ENDTS = 'InvalidParameter.EndTs'
 
+# invalid sdkAppId
+INVALIDPARAMETER_INVALIDSDKAPPID = 'InvalidParameter.InvalidSdkAppId'
+
 # 大画面居右显示参数错误。
 INVALIDPARAMETER_MAINVIDEORIGHTALIGN = 'InvalidParameter.MainVideoRightAlign'
 

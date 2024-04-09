@@ -8555,6 +8555,8 @@ class StartWebRecordRequest(AbstractModel):
         :param _RecordId: 当对重复任务敏感时，请关注此值： 为了避免任务在短时间内重复发起，导致任务重复
 传入录制RecordId来标识此次任务， 小于32字节，若携带RecordId发起两次以上的开始录制请求，任务只会启动一个，第二个报错FailedOperation.TaskExist。注意StartWebRecord调用失败时而非FailedOperation.TaskExist错误，请更换RecordId重新发起。
         :type RecordId: str
+        :param _PublishCdnParams: 若您想要推流到CDN，可以使用PublishCdnParams.N参数设置，支持最多同时推流到10个CDN地址。若转推地址是腾讯云CDN时，请将IsTencentCdn明确设置为1
+        :type PublishCdnParams: list of McuPublishCdnParam
         """
         self._RecordUrl = None
         self._MaxDurationLimit = None
@@ -8562,6 +8564,7 @@ class StartWebRecordRequest(AbstractModel):
         self._WebRecordVideoParams = None
         self._SdkAppId = None
         self._RecordId = None
+        self._PublishCdnParams = None
 
     @property
     def RecordUrl(self):
@@ -8611,6 +8614,14 @@ class StartWebRecordRequest(AbstractModel):
     def RecordId(self, RecordId):
         self._RecordId = RecordId
 
+    @property
+    def PublishCdnParams(self):
+        return self._PublishCdnParams
+
+    @PublishCdnParams.setter
+    def PublishCdnParams(self, PublishCdnParams):
+        self._PublishCdnParams = PublishCdnParams
+
 
     def _deserialize(self, params):
         self._RecordUrl = params.get("RecordUrl")
@@ -8623,6 +8634,12 @@ class StartWebRecordRequest(AbstractModel):
             self._WebRecordVideoParams._deserialize(params.get("WebRecordVideoParams"))
         self._SdkAppId = params.get("SdkAppId")
         self._RecordId = params.get("RecordId")
+        if params.get("PublishCdnParams") is not None:
+            self._PublishCdnParams = []
+            for item in params.get("PublishCdnParams"):
+                obj = McuPublishCdnParam()
+                obj._deserialize(item)
+                self._PublishCdnParams.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

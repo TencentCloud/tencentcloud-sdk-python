@@ -1940,6 +1940,8 @@ class CreateBatchTaskRequest(AbstractModel):
         :type Remark: str
         :param _CallbackUrl: 任务执行结果回调URL，仅支持http和https。回调格式&内容详见: [TI-ONE 接口回调说明](https://cloud.tencent.com/document/product/851/84292)
         :type CallbackUrl: str
+        :param _StartCmdBase64: 以Base64方式编码的启动命令。假设启动命令是/app/run.sh，则此处输入参数应该为L2FwcC9ydW4uc2g=。
+        :type StartCmdBase64: str
         """
         self._BatchTaskName = None
         self._ChargeType = None
@@ -1960,6 +1962,7 @@ class CreateBatchTaskRequest(AbstractModel):
         self._SubnetId = None
         self._Remark = None
         self._CallbackUrl = None
+        self._StartCmdBase64 = None
 
     @property
     def BatchTaskName(self):
@@ -2067,10 +2070,14 @@ class CreateBatchTaskRequest(AbstractModel):
 
     @property
     def StartCmd(self):
+        warnings.warn("parameter `StartCmd` is deprecated", DeprecationWarning) 
+
         return self._StartCmd
 
     @StartCmd.setter
     def StartCmd(self, StartCmd):
+        warnings.warn("parameter `StartCmd` is deprecated", DeprecationWarning) 
+
         self._StartCmd = StartCmd
 
     @property
@@ -2121,6 +2128,14 @@ class CreateBatchTaskRequest(AbstractModel):
     def CallbackUrl(self, CallbackUrl):
         self._CallbackUrl = CallbackUrl
 
+    @property
+    def StartCmdBase64(self):
+        return self._StartCmdBase64
+
+    @StartCmdBase64.setter
+    def StartCmdBase64(self, StartCmdBase64):
+        self._StartCmdBase64 = StartCmdBase64
+
 
     def _deserialize(self, params):
         self._BatchTaskName = params.get("BatchTaskName")
@@ -2169,6 +2184,7 @@ class CreateBatchTaskRequest(AbstractModel):
         self._SubnetId = params.get("SubnetId")
         self._Remark = params.get("Remark")
         self._CallbackUrl = params.get("CallbackUrl")
+        self._StartCmdBase64 = params.get("StartCmdBase64")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2523,10 +2539,12 @@ HYBRID_PAID:
         :type ModelTurboEnable: bool
         :param _ServiceCategory: 服务分类
         :type ServiceCategory: str
-        :param _Command: 服务的启动命令
+        :param _Command: 服务的启动命令，如遇特殊字符导致配置失败，可使用CommandBase64参数
         :type Command: str
         :param _ServiceEIP: 是否开启TIONE内网访问外部，此功能仅支持后付费机型与从TIONE平台购买的预付费机型；使用从CVM选择资源组时此配置不生效。
         :type ServiceEIP: :class:`tencentcloud.tione.v20211111.models.ServiceEIP`
+        :param _CommandBase64: 服务的启动命令，以base64格式进行输入
+        :type CommandBase64: str
         """
         self._ServiceGroupId = None
         self._ServiceGroupName = None
@@ -2559,6 +2577,7 @@ HYBRID_PAID:
         self._ServiceCategory = None
         self._Command = None
         self._ServiceEIP = None
+        self._CommandBase64 = None
 
     @property
     def ServiceGroupId(self):
@@ -2808,6 +2827,14 @@ HYBRID_PAID:
     def ServiceEIP(self, ServiceEIP):
         self._ServiceEIP = ServiceEIP
 
+    @property
+    def CommandBase64(self):
+        return self._CommandBase64
+
+    @CommandBase64.setter
+    def CommandBase64(self, CommandBase64):
+        self._CommandBase64 = CommandBase64
+
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
@@ -2874,6 +2901,7 @@ HYBRID_PAID:
         if params.get("ServiceEIP") is not None:
             self._ServiceEIP = ServiceEIP()
             self._ServiceEIP._deserialize(params.get("ServiceEIP"))
+        self._CommandBase64 = params.get("CommandBase64")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14658,10 +14686,12 @@ HYBRID_PAID:
         :type VolumeMount: :class:`tencentcloud.tione.v20211111.models.VolumeMount`
         :param _ModelTurboEnable: 是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。默认不开启
         :type ModelTurboEnable: bool
-        :param _Command: 服务的启动命令
+        :param _Command: 服务的启动命令，如遇特殊字符导致配置失败，可使用CommandBase64参数
         :type Command: str
         :param _ServiceEIP: 是否开启TIONE内网访问外部，此功能仅支持后付费机型与从TIONE平台购买的预付费机型；使用从CVM选择资源组时此配置不生效。
         :type ServiceEIP: :class:`tencentcloud.tione.v20211111.models.ServiceEIP`
+        :param _CommandBase64: 服务的启动命令，以base64格式进行输入
+        :type CommandBase64: str
         """
         self._ServiceId = None
         self._ModelInfo = None
@@ -14686,6 +14716,7 @@ HYBRID_PAID:
         self._ModelTurboEnable = None
         self._Command = None
         self._ServiceEIP = None
+        self._CommandBase64 = None
 
     @property
     def ServiceId(self):
@@ -14871,6 +14902,14 @@ HYBRID_PAID:
     def ServiceEIP(self, ServiceEIP):
         self._ServiceEIP = ServiceEIP
 
+    @property
+    def CommandBase64(self):
+        return self._CommandBase64
+
+    @CommandBase64.setter
+    def CommandBase64(self, CommandBase64):
+        self._CommandBase64 = CommandBase64
+
 
     def _deserialize(self, params):
         self._ServiceId = params.get("ServiceId")
@@ -14924,6 +14963,7 @@ HYBRID_PAID:
         if params.get("ServiceEIP") is not None:
             self._ServiceEIP = ServiceEIP()
             self._ServiceEIP._deserialize(params.get("ServiceEIP"))
+        self._CommandBase64 = params.get("CommandBase64")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
