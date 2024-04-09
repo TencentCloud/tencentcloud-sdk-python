@@ -509,6 +509,30 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def FlashBackDBInstance(self, request):
+        """该接口用于发起按 Key 闪回任务，依据数据的闪回 Key（默认为 id）对数据进行极速回档，快速恢复业务。
+        **说明：按 Key 闪回于2023年09月11日正式进行公测，在此期间，该接口仅对公测用户开放。**
+
+        :param request: Request instance for FlashBackDBInstance.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.FlashBackDBInstanceRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.FlashBackDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("FlashBackDBInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.FlashBackDBInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def FlushInstanceRouterConfig(self, request):
         """在所有mongos上执行FlushRouterConfig命令
 

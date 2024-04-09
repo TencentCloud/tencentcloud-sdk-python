@@ -20,6 +20,9 @@ AUTHFAILURE = 'AuthFailure'
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
+# 按key回档未开启
+FAILEDOPERATION_FLASHBACKBYKEYNOTOPEN = 'FailedOperation.FlashbackByKeyNotOpen'
+
 # 内核响应超时。
 FAILEDOPERATION_KERNELRESPONSETIMEOUT = 'FailedOperation.KernelResponseTimeout'
 
@@ -46,6 +49,9 @@ INVALIDPARAMETER_CURRENTINSTANCENOTSUPPORTMODIFYPARAMS = 'InvalidParameter.Curre
 
 # 无效Vip信息。
 INVALIDPARAMETER_INVALIDVIP = 'InvalidParameter.InvalidVip'
+
+# 接口参数为空。
+INVALIDPARAMETER_PARAMETERSNIL = 'InvalidParameter.ParametersNil'
 
 # 当前子账号无权执行该操作。
 INVALIDPARAMETER_PERMISSIONDENIED = 'InvalidParameter.PermissionDenied'
@@ -187,6 +193,9 @@ RESOURCENOTFOUND = 'ResourceNotFound'
 
 # 操作不支持。
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
+
+# 内核版本不支持。
+UNSUPPORTEDOPERATION_KERNELVERSIONNOTSUPPORT = 'UnsupportedOperation.KernelVersionNotSupport'
 
 # 当前版本不支持该操作。
 UNSUPPORTEDOPERATION_VERSIONNOTSUPPORT = 'UnsupportedOperation.VersionNotSupport'

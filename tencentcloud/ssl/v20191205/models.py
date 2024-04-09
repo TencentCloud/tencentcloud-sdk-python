@@ -3298,11 +3298,14 @@ class DeployCertificateInstanceRequest(AbstractModel):
 1： 域名https已开启。
 0： 域名https已关闭。
         :type Status: int
+        :param _IsCache: 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+        :type IsCache: int
         """
         self._CertificateId = None
         self._InstanceIdList = None
         self._ResourceType = None
         self._Status = None
+        self._IsCache = None
 
     @property
     def CertificateId(self):
@@ -3336,12 +3339,21 @@ class DeployCertificateInstanceRequest(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def IsCache(self):
+        return self._IsCache
+
+    @IsCache.setter
+    def IsCache(self, IsCache):
+        self._IsCache = IsCache
+
 
     def _deserialize(self, params):
         self._CertificateId = params.get("CertificateId")
         self._InstanceIdList = params.get("InstanceIdList")
         self._ResourceType = params.get("ResourceType")
         self._Status = params.get("Status")
+        self._IsCache = params.get("IsCache")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

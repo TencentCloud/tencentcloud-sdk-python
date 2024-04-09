@@ -4010,6 +4010,287 @@ class DescribeSpecInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class FBKeyValue(AbstractModel):
+    """按key回档，用于筛选数据的键值对
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 用于按key回档过滤的key
+        :type Key: str
+        :param _Value: 用于按key回档过滤的value
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlashBackDBInstanceRequest(AbstractModel):
+    """FlashBackDBInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 开启按 Key 回档的实例 ID。
+        :type InstanceId: str
+        :param _TargetFlashbackTime: 源数据想恢复到的时间。
+        :type TargetFlashbackTime: str
+        :param _TargetDatabases: 源数据所在的库表信息。
+        :type TargetDatabases: list of FlashbackDatabase
+        :param _TargetInstanceId: 数据最终写入的实例 ID。
+        :type TargetInstanceId: str
+        """
+        self._InstanceId = None
+        self._TargetFlashbackTime = None
+        self._TargetDatabases = None
+        self._TargetInstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def TargetFlashbackTime(self):
+        return self._TargetFlashbackTime
+
+    @TargetFlashbackTime.setter
+    def TargetFlashbackTime(self, TargetFlashbackTime):
+        self._TargetFlashbackTime = TargetFlashbackTime
+
+    @property
+    def TargetDatabases(self):
+        return self._TargetDatabases
+
+    @TargetDatabases.setter
+    def TargetDatabases(self, TargetDatabases):
+        self._TargetDatabases = TargetDatabases
+
+    @property
+    def TargetInstanceId(self):
+        return self._TargetInstanceId
+
+    @TargetInstanceId.setter
+    def TargetInstanceId(self, TargetInstanceId):
+        self._TargetInstanceId = TargetInstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._TargetFlashbackTime = params.get("TargetFlashbackTime")
+        if params.get("TargetDatabases") is not None:
+            self._TargetDatabases = []
+            for item in params.get("TargetDatabases"):
+                obj = FlashbackDatabase()
+                obj._deserialize(item)
+                self._TargetDatabases.append(obj)
+        self._TargetInstanceId = params.get("TargetInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlashBackDBInstanceResponse(AbstractModel):
+    """FlashBackDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 回档数据异步任务 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
+class FlashbackCollection(AbstractModel):
+    """按key回档，源数据所在的表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CollectionName: 按key回档指定的集合名
+        :type CollectionName: str
+        :param _TargetResultCollectionName: 按key回档到的目标集合名
+        :type TargetResultCollectionName: str
+        :param _FilterKey: 上传到cos的文件的value所对应的key值
+        :type FilterKey: str
+        :param _KeyValues: 用于按key回档过滤的键值对
+        :type KeyValues: list of FBKeyValue
+        """
+        self._CollectionName = None
+        self._TargetResultCollectionName = None
+        self._FilterKey = None
+        self._KeyValues = None
+
+    @property
+    def CollectionName(self):
+        return self._CollectionName
+
+    @CollectionName.setter
+    def CollectionName(self, CollectionName):
+        self._CollectionName = CollectionName
+
+    @property
+    def TargetResultCollectionName(self):
+        return self._TargetResultCollectionName
+
+    @TargetResultCollectionName.setter
+    def TargetResultCollectionName(self, TargetResultCollectionName):
+        self._TargetResultCollectionName = TargetResultCollectionName
+
+    @property
+    def FilterKey(self):
+        return self._FilterKey
+
+    @FilterKey.setter
+    def FilterKey(self, FilterKey):
+        self._FilterKey = FilterKey
+
+    @property
+    def KeyValues(self):
+        return self._KeyValues
+
+    @KeyValues.setter
+    def KeyValues(self, KeyValues):
+        self._KeyValues = KeyValues
+
+
+    def _deserialize(self, params):
+        self._CollectionName = params.get("CollectionName")
+        self._TargetResultCollectionName = params.get("TargetResultCollectionName")
+        self._FilterKey = params.get("FilterKey")
+        if params.get("KeyValues") is not None:
+            self._KeyValues = []
+            for item in params.get("KeyValues"):
+                obj = FBKeyValue()
+                obj._deserialize(item)
+                self._KeyValues.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlashbackDatabase(AbstractModel):
+    """按key回档，源数据所在的库表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBName: 按key回档源数据所在库
+        :type DBName: str
+        :param _Collections: 按key回档的集群数组
+        :type Collections: list of FlashbackCollection
+        """
+        self._DBName = None
+        self._Collections = None
+
+    @property
+    def DBName(self):
+        return self._DBName
+
+    @DBName.setter
+    def DBName(self, DBName):
+        self._DBName = DBName
+
+    @property
+    def Collections(self):
+        return self._Collections
+
+    @Collections.setter
+    def Collections(self, Collections):
+        self._Collections = Collections
+
+
+    def _deserialize(self, params):
+        self._DBName = params.get("DBName")
+        if params.get("Collections") is not None:
+            self._Collections = []
+            for item in params.get("Collections"):
+                obj = FlashbackCollection()
+                obj._deserialize(item)
+                self._Collections.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FlushInstanceRouterConfigRequest(AbstractModel):
     """FlushInstanceRouterConfig请求参数结构体
 

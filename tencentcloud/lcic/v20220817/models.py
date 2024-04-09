@@ -1883,6 +1883,7 @@ video 纯视频
         :param _IsGradingRequiredPostClass: 开启课后评分。 0：不开启(默认)  1：开启
         :type IsGradingRequiredPostClass: int
         :param _RoomType: 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (预留参数，暂未开放)
+注：大班课的布局(layout)只有三分屏
         :type RoomType: int
         :param _EndDelayTime: 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
         :type EndDelayTime: int
@@ -4567,6 +4568,7 @@ video 纯视频
         :param _IsGradingRequiredPostClass: 该房间是否开启了课后评分功能。0：未开启  1：开启
         :type IsGradingRequiredPostClass: int
         :param _RoomType: 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (后续扩展)
+注：大班课的布局(layout)只有三分屏
         :type RoomType: int
         :param _VideoDuration: 录制时长
         :type VideoDuration: int
@@ -7986,6 +7988,7 @@ video 纯视频
         :param _IsGradingRequiredPostClass: 开启课后评分。 0：不开启(默认)  1：开启
         :type IsGradingRequiredPostClass: int
         :param _RoomType: 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 （预留参数、暂未开放)
+注：大班课的布局(layout)只有三分屏
         :type RoomType: int
         :param _RecordLayout: 录制模板。仅可修改还未开始的房间。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
         :type RecordLayout: int
@@ -8779,6 +8782,7 @@ class RoomInfo(AbstractModel):
         :param _IsGradingRequiredPostClass: 开启课后评分。 0：不开启(默认)  1：开启
         :type IsGradingRequiredPostClass: int
         :param _RoomType: 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (后续扩展)
+注：大班课的布局(layout)只有三分屏
         :type RoomType: int
         :param _EndDelayTime: 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
         :type EndDelayTime: int
@@ -9150,6 +9154,7 @@ class RoomItem(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsGradingRequiredPostClass: int
         :param _RoomType: 房间类型。0:小班课（默认值）；1:大班课；2:1V1（后续扩展）
+注：大班课的布局(layout)只有三分屏
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoomType: int
         :param _EndDelayTime: 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟

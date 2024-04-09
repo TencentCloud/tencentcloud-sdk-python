@@ -614,6 +614,17 @@ class AutoSignConfig(AbstractModel):
 <ul><li>**0**: (默认) 使用个人自动签账号许可进行开通，个人自动签账号许可有效期1年，注: `不可解绑释放更换他人`</li>
 <li>**1**: 不绑定自动签账号许可开通，后续使用合同份额进行合同发起</li></ul>
         :type LicenseType: int
+        :param _JumpUrl: 开通成功后前端页面跳转的url，此字段的用法场景请联系客户经理确认。
+
+注：`仅支持H5开通场景`, `跳转链接仅支持 https:// , qianapp:// 开头`
+
+跳转场景：
+<ul><li>**贵方H5 -> 腾讯电子签H5 -> 贵方H5** : JumpUrl格式: https://YOUR_CUSTOM_URL/xxxx，只需满足 https:// 开头的正确且合规的网址即可。</li>
+<li>**贵方原生App -> 腾讯电子签H5 -> 贵方原生App** : JumpUrl格式: qianapp://YOUR_CUSTOM_URL，只需满足 qianapp:// 开头的URL即可。`APP实现方，需要拦截Webview地址跳转，发现url是qianapp:// 开头时跳转到原生页面。`APP拦截地址跳转可参考：<a href='https://stackoverflow.com/questions/41693263/android-webview-err-unknown-url-scheme'>Android</a>，<a href='https://razorpay.com/docs/payments/payment-gateway/web-integration/standard/webview/upi-intent-ios/'>IOS</a> </li></ul>
+
+成功结果返回：
+若贵方需要在跳转回时通过链接query参数提示开通成功，JumpUrl中的query应携带如下参数：`appendResult=qian`。这样腾讯电子签H5会在跳转回的url后面会添加query参数提示贵方签署成功，比如 qianapp://YOUR_CUSTOM_URL?action=sign&result=success&from=tencent_ess
+        :type JumpUrl: str
         """
         self._UserInfo = None
         self._CertInfoCallback = None
@@ -622,6 +633,7 @@ class AutoSignConfig(AbstractModel):
         self._CallbackUrl = None
         self._VerifyChannels = None
         self._LicenseType = None
+        self._JumpUrl = None
 
     @property
     def UserInfo(self):
@@ -679,6 +691,14 @@ class AutoSignConfig(AbstractModel):
     def LicenseType(self, LicenseType):
         self._LicenseType = LicenseType
 
+    @property
+    def JumpUrl(self):
+        return self._JumpUrl
+
+    @JumpUrl.setter
+    def JumpUrl(self, JumpUrl):
+        self._JumpUrl = JumpUrl
+
 
     def _deserialize(self, params):
         if params.get("UserInfo") is not None:
@@ -690,6 +710,7 @@ class AutoSignConfig(AbstractModel):
         self._CallbackUrl = params.get("CallbackUrl")
         self._VerifyChannels = params.get("VerifyChannels")
         self._LicenseType = params.get("LicenseType")
+        self._JumpUrl = params.get("JumpUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5479,6 +5500,8 @@ class ChannelCreateUserAutoSignEnableUrlRequest(AbstractModel):
         :type NotifyAddress: str
         :param _ExpiredTime: 链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为当前时间往后30天。`如果不传，默认过期时间为当前时间往后7天。`
         :type ExpiredTime: int
+        :param _UserData: 调用方自定义的个性化字段(可自定义此字段的值)，并以base64方式编码，支持的最大数据大小为 20480长度。 在个人自动签的开通、关闭等回调信息场景中，该字段的信息将原封不动地透传给贵方。 
+        :type UserData: str
         """
         self._Agent = None
         self._SceneKey = None
@@ -5488,6 +5511,7 @@ class ChannelCreateUserAutoSignEnableUrlRequest(AbstractModel):
         self._NotifyType = None
         self._NotifyAddress = None
         self._ExpiredTime = None
+        self._UserData = None
 
     @property
     def Agent(self):
@@ -5553,6 +5577,14 @@ class ChannelCreateUserAutoSignEnableUrlRequest(AbstractModel):
     def ExpiredTime(self, ExpiredTime):
         self._ExpiredTime = ExpiredTime
 
+    @property
+    def UserData(self):
+        return self._UserData
+
+    @UserData.setter
+    def UserData(self, UserData):
+        self._UserData = UserData
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -5569,6 +5601,7 @@ class ChannelCreateUserAutoSignEnableUrlRequest(AbstractModel):
         self._NotifyType = params.get("NotifyType")
         self._NotifyAddress = params.get("NotifyAddress")
         self._ExpiredTime = params.get("ExpiredTime")
+        self._UserData = params.get("UserData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
