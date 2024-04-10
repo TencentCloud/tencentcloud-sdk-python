@@ -5030,6 +5030,12 @@ class DescribeDeviceData(AbstractModel):
         :param _Manufacturer: 设备厂商
 注意：此字段可能返回 null，表示取不到有效值。
         :type Manufacturer: str
+        :param _AudioSwitch: 音频关开（0：关闭；1：开启）关闭时丢弃音频	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AudioSwitch: int
+        :param _SubscribeSwitch: 订阅开关（0：关闭；1：开启）默认开启，开启状态下会订阅设备通道变化，仅国标NVR设备有效	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubscribeSwitch: int
         """
         self._DeviceId = None
         self._Code = None
@@ -5057,6 +5063,8 @@ class DescribeDeviceData(AbstractModel):
         self._Username = None
         self._Region = None
         self._Manufacturer = None
+        self._AudioSwitch = None
+        self._SubscribeSwitch = None
 
     @property
     def DeviceId(self):
@@ -5266,6 +5274,22 @@ class DescribeDeviceData(AbstractModel):
     def Manufacturer(self, Manufacturer):
         self._Manufacturer = Manufacturer
 
+    @property
+    def AudioSwitch(self):
+        return self._AudioSwitch
+
+    @AudioSwitch.setter
+    def AudioSwitch(self, AudioSwitch):
+        self._AudioSwitch = AudioSwitch
+
+    @property
+    def SubscribeSwitch(self):
+        return self._SubscribeSwitch
+
+    @SubscribeSwitch.setter
+    def SubscribeSwitch(self, SubscribeSwitch):
+        self._SubscribeSwitch = SubscribeSwitch
+
 
     def _deserialize(self, params):
         self._DeviceId = params.get("DeviceId")
@@ -5294,6 +5318,8 @@ class DescribeDeviceData(AbstractModel):
         self._Username = params.get("Username")
         self._Region = params.get("Region")
         self._Manufacturer = params.get("Manufacturer")
+        self._AudioSwitch = params.get("AudioSwitch")
+        self._SubscribeSwitch = params.get("SubscribeSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15496,6 +15522,10 @@ class UpdateUserDeviceRequest(AbstractModel):
         :type Username: str
         :param _ProtocolType: 网关设备接入协议（仅网关接入支持）
         :type ProtocolType: int
+        :param _AudioSwitch: 音频关开（0：关闭；1：开启）默认开启，关闭时丢弃音频
+        :type AudioSwitch: int
+        :param _SubscribeSwitch: 订阅开关（0：关闭；1：开启）默认开启，开启状态下会订阅设备通道变化，仅国标NVR设备有效
+        :type SubscribeSwitch: int
         """
         self._DeviceId = None
         self._Name = None
@@ -15506,6 +15536,8 @@ class UpdateUserDeviceRequest(AbstractModel):
         self._Port = None
         self._Username = None
         self._ProtocolType = None
+        self._AudioSwitch = None
+        self._SubscribeSwitch = None
 
     @property
     def DeviceId(self):
@@ -15579,6 +15611,22 @@ class UpdateUserDeviceRequest(AbstractModel):
     def ProtocolType(self, ProtocolType):
         self._ProtocolType = ProtocolType
 
+    @property
+    def AudioSwitch(self):
+        return self._AudioSwitch
+
+    @AudioSwitch.setter
+    def AudioSwitch(self, AudioSwitch):
+        self._AudioSwitch = AudioSwitch
+
+    @property
+    def SubscribeSwitch(self):
+        return self._SubscribeSwitch
+
+    @SubscribeSwitch.setter
+    def SubscribeSwitch(self, SubscribeSwitch):
+        self._SubscribeSwitch = SubscribeSwitch
+
 
     def _deserialize(self, params):
         self._DeviceId = params.get("DeviceId")
@@ -15590,6 +15638,8 @@ class UpdateUserDeviceRequest(AbstractModel):
         self._Port = params.get("Port")
         self._Username = params.get("Username")
         self._ProtocolType = params.get("ProtocolType")
+        self._AudioSwitch = params.get("AudioSwitch")
+        self._SubscribeSwitch = params.get("SubscribeSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

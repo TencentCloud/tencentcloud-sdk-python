@@ -3905,8 +3905,14 @@ class DescribeWebRecordRequest(AbstractModel):
         r"""
         :param _TaskId: 开始页面录制时返回的任务id
         :type TaskId: str
+        :param _SdkAppId: 发起页面录制时传递的SdkAppId
+        :type SdkAppId: int
+        :param _RecordId: 发起录制时传递的RecordId, 传入此值时需要传递SdkAppId
+        :type RecordId: str
         """
         self._TaskId = None
+        self._SdkAppId = None
+        self._RecordId = None
 
     @property
     def TaskId(self):
@@ -3916,9 +3922,27 @@ class DescribeWebRecordRequest(AbstractModel):
     def TaskId(self, TaskId):
         self._TaskId = TaskId
 
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RecordId(self):
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._SdkAppId = params.get("SdkAppId")
+        self._RecordId = params.get("RecordId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8543,7 +8567,7 @@ class StartWebRecordRequest(AbstractModel):
         :param _RecordUrl: 需要录制的网页URL
 
         :type RecordUrl: str
-        :param _MaxDurationLimit: 录制最大时长限制， 单位 s, 合法取值范围[0, 36000], 默认 36000s(10 小时)
+        :param _MaxDurationLimit: 录制最大时长限制， 单位 s, 合法取值范围[1800, 36000], 默认 36000s(10 小时)
 
         :type MaxDurationLimit: int
         :param _StorageParams: 云存储相关的参数，目前支持腾讯云对象存储，不支持第三方云存储以及VOD

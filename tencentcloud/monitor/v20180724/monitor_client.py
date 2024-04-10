@@ -3065,29 +3065,6 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def SendCustomAlarmMsg(self, request):
-        """发送自定义消息告警
-
-        :param request: Request instance for SendCustomAlarmMsg.
-        :type request: :class:`tencentcloud.monitor.v20180724.models.SendCustomAlarmMsgRequest`
-        :rtype: :class:`tencentcloud.monitor.v20180724.models.SendCustomAlarmMsgResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("SendCustomAlarmMsg", params, headers=headers)
-            response = json.loads(body)
-            model = models.SendCustomAlarmMsgResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def SetDefaultAlarmPolicy(self, request):
         """设置一个策略为该告警策略类型、该项目的默认告警策略。
         同一项目下相同的告警策略类型，就会被设置为非默认。
