@@ -164,6 +164,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CheckMigrateCluster(self, request):
+        """高可用实例一键迁移到集群版校验
+
+        :param request: Request instance for CheckMigrateCluster.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.CheckMigrateClusterRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.CheckMigrateClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckMigrateCluster", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckMigrateClusterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CloseAuditService(self, request):
         """实例关闭审计服务
 
@@ -1393,6 +1416,29 @@ class CdbClient(AbstractClient):
             body = self.call("DescribeCloneList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCloneListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeClusterInfo(self, request):
+        """本接口(DescribeClusterInfo)用于查询集群版实例信息。
+
+        :param request: Request instance for DescribeClusterInfo.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeClusterInfoRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeClusterInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

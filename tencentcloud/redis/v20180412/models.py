@@ -10224,7 +10224,7 @@ class InstanceSet(AbstractModel):
         :param _CurrentProxyVersion: 实例当前Proxy版本。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentProxyVersion: str
-        :param _CurrentRedisVersion: 实例当前Cache小版本。
+        :param _CurrentRedisVersion: 实例当前Cache小版本。如果实例加入全球复制组，显示全球复制的内核版本。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentRedisVersion: str
         :param _UpgradeProxyVersion: 实例可升级Proxy版本。

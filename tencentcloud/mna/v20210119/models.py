@@ -40,6 +40,20 @@ class ActivateHardware(AbstractModel):
         :type DataKey: str
         :param _AccessScope: 接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。不填默认公有云网关。 具体含义： 公有云网关：即该设备只能接入公有云网关（就近接入） 自有网关：即该设备只能接入已经注册上线的自有网关（就近接入或固定ip接入） 公有云网关和自有网关：即该设备同时可以接入公有云网关和已经注册上线的自有网关（就近接入或固定ip接入）
         :type AccessScope: int
+        :param _LicensePayMode: 当付费方为租户时，可选择租户license付费方式：
+0，月度授权
+1，永久授权
+若不传则默认为月度授权。
+当付费方为厂商时，此参数无效
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LicensePayMode: int
+        :param _GroupId: 设备分组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param _GroupName: 设备分组名称，预留参数，需要分组时传入GroupId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
         """
         self._Vendor = None
         self._SN = None
@@ -47,6 +61,9 @@ class ActivateHardware(AbstractModel):
         self._Description = None
         self._DataKey = None
         self._AccessScope = None
+        self._LicensePayMode = None
+        self._GroupId = None
+        self._GroupName = None
 
     @property
     def Vendor(self):
@@ -96,6 +113,30 @@ class ActivateHardware(AbstractModel):
     def AccessScope(self, AccessScope):
         self._AccessScope = AccessScope
 
+    @property
+    def LicensePayMode(self):
+        return self._LicensePayMode
+
+    @LicensePayMode.setter
+    def LicensePayMode(self, LicensePayMode):
+        self._LicensePayMode = LicensePayMode
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
 
     def _deserialize(self, params):
         self._Vendor = params.get("Vendor")
@@ -104,6 +145,9 @@ class ActivateHardware(AbstractModel):
         self._Description = params.get("Description")
         self._DataKey = params.get("DataKey")
         self._AccessScope = params.get("AccessScope")
+        self._LicensePayMode = params.get("LicensePayMode")
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -216,12 +260,24 @@ class AddDeviceRequest(AbstractModel):
 自有网关：即该设备只能接入已经注册上线的自有网关（就近接入或固定ip接入）
 公有云网关和自有网关：即该设备同时可以接入公有云网关和已经注册上线的自有网关（就近接入或固定ip接入）
         :type AccessScope: int
+        :param _LicensePayMode: license付费方式： 
+0，月度授权 
+1，永久授权 
+若不传则默认为月度授权
+        :type LicensePayMode: int
+        :param _GroupName: 设备分组名称，非必选，预留参数，需要分组时传入GroupId
+        :type GroupName: str
+        :param _GroupId: 设备分组ID，非必选，如果不填写则默认设备无分组
+        :type GroupId: str
         """
         self._DeviceName = None
         self._Remark = None
         self._DataKey = None
         self._Encrypted = None
         self._AccessScope = None
+        self._LicensePayMode = None
+        self._GroupName = None
+        self._GroupId = None
 
     @property
     def DeviceName(self):
@@ -263,6 +319,30 @@ class AddDeviceRequest(AbstractModel):
     def AccessScope(self, AccessScope):
         self._AccessScope = AccessScope
 
+    @property
+    def LicensePayMode(self):
+        return self._LicensePayMode
+
+    @LicensePayMode.setter
+    def LicensePayMode(self, LicensePayMode):
+        self._LicensePayMode = LicensePayMode
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
 
     def _deserialize(self, params):
         self._DeviceName = params.get("DeviceName")
@@ -270,6 +350,9 @@ class AddDeviceRequest(AbstractModel):
         self._DataKey = params.get("DataKey")
         self._Encrypted = params.get("Encrypted")
         self._AccessScope = params.get("AccessScope")
+        self._LicensePayMode = params.get("LicensePayMode")
+        self._GroupName = params.get("GroupName")
+        self._GroupId = params.get("GroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1100,6 +1183,18 @@ class DeviceBaseInfo(AbstractModel):
         :type Remark: str
         :param _AccessScope: 接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。默认公有云网关。 具体含义： 公有云网关：即该设备只能接入公有云网关（就近接入） 自有网关：即该设备只能接入已经注册上线的自有网关（就近接入或固定ip接入） 公有云网关和自有网关：即该设备同时可以接入公有云网关和已经注册上线的自有网关（就近接入或固定ip接入）
         :type AccessScope: int
+        :param _LicensePayMode: license授权有效期 0：月度授权 1：永久授权
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LicensePayMode: int
+        :param _Payer: 付费方 0：厂商付费 1：客户付费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Payer: int
+        :param _GroupId: 设备分组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param _GroupName: 设备分组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
         """
         self._DeviceId = None
         self._DeviceName = None
@@ -1107,6 +1202,10 @@ class DeviceBaseInfo(AbstractModel):
         self._LastTime = None
         self._Remark = None
         self._AccessScope = None
+        self._LicensePayMode = None
+        self._Payer = None
+        self._GroupId = None
+        self._GroupName = None
 
     @property
     def DeviceId(self):
@@ -1156,6 +1255,38 @@ class DeviceBaseInfo(AbstractModel):
     def AccessScope(self, AccessScope):
         self._AccessScope = AccessScope
 
+    @property
+    def LicensePayMode(self):
+        return self._LicensePayMode
+
+    @LicensePayMode.setter
+    def LicensePayMode(self, LicensePayMode):
+        self._LicensePayMode = LicensePayMode
+
+    @property
+    def Payer(self):
+        return self._Payer
+
+    @Payer.setter
+    def Payer(self, Payer):
+        self._Payer = Payer
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
 
     def _deserialize(self, params):
         self._DeviceId = params.get("DeviceId")
@@ -1164,6 +1295,10 @@ class DeviceBaseInfo(AbstractModel):
         self._LastTime = params.get("LastTime")
         self._Remark = params.get("Remark")
         self._AccessScope = params.get("AccessScope")
+        self._LicensePayMode = params.get("LicensePayMode")
+        self._Payer = params.get("Payer")
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1838,6 +1973,10 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
         :type RenewFlag: bool
         :param _ModifyStatus: 资源包变更状态，0：未发生变配；1：变配中；2：已变配或已续费
         :type ModifyStatus: int
+        :param _TruncFlag: 流量截断标识。true代表开启流量截断，false代表不开启流量截断
+        :type TruncFlag: bool
+        :param _CapacityRemainPrecise: 流量包精确余量，单位：MB
+        :type CapacityRemainPrecise: int
         """
         self._ResourceId = None
         self._AppId = None
@@ -1851,6 +1990,8 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
         self._CapacityRemain = None
         self._RenewFlag = None
         self._ModifyStatus = None
+        self._TruncFlag = None
+        self._CapacityRemainPrecise = None
 
     @property
     def ResourceId(self):
@@ -1948,6 +2089,22 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
     def ModifyStatus(self, ModifyStatus):
         self._ModifyStatus = ModifyStatus
 
+    @property
+    def TruncFlag(self):
+        return self._TruncFlag
+
+    @TruncFlag.setter
+    def TruncFlag(self, TruncFlag):
+        self._TruncFlag = TruncFlag
+
+    @property
+    def CapacityRemainPrecise(self):
+        return self._CapacityRemainPrecise
+
+    @CapacityRemainPrecise.setter
+    def CapacityRemainPrecise(self, CapacityRemainPrecise):
+        self._CapacityRemainPrecise = CapacityRemainPrecise
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
@@ -1962,6 +2119,8 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
         self._CapacityRemain = params.get("CapacityRemain")
         self._RenewFlag = params.get("RenewFlag")
         self._ModifyStatus = params.get("ModifyStatus")
+        self._TruncFlag = params.get("TruncFlag")
+        self._CapacityRemainPrecise = params.get("CapacityRemainPrecise")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2406,7 +2565,7 @@ class GetFlowStatisticRequest(AbstractModel):
         :type BeginTime: int
         :param _EndTime: 截止时间
         :type EndTime: int
-        :param _Type: 流量种类（1：上行流量，2：下行流量）
+        :param _Type: 流量种类（1：上行流量，2：下行流量，3：上下行总和）
         :type Type: int
         :param _TimeGranularity: 时间粒度（1：按小时统计，2：按天统计）
         :type TimeGranularity: int
@@ -2414,6 +2573,8 @@ class GetFlowStatisticRequest(AbstractModel):
         :type AccessRegion: str
         :param _GatewayType: 网关类型。0：公有云网关；1：自有网关。不传默认为0。
         :type GatewayType: int
+        :param _DeviceList: 设备ID列表，用于查询多设备流量，该字段启用时DeviceId可传"-1"
+        :type DeviceList: list of str
         """
         self._DeviceId = None
         self._BeginTime = None
@@ -2422,6 +2583,7 @@ class GetFlowStatisticRequest(AbstractModel):
         self._TimeGranularity = None
         self._AccessRegion = None
         self._GatewayType = None
+        self._DeviceList = None
 
     @property
     def DeviceId(self):
@@ -2479,6 +2641,14 @@ class GetFlowStatisticRequest(AbstractModel):
     def GatewayType(self, GatewayType):
         self._GatewayType = GatewayType
 
+    @property
+    def DeviceList(self):
+        return self._DeviceList
+
+    @DeviceList.setter
+    def DeviceList(self, DeviceList):
+        self._DeviceList = DeviceList
+
 
     def _deserialize(self, params):
         self._DeviceId = params.get("DeviceId")
@@ -2488,6 +2658,7 @@ class GetFlowStatisticRequest(AbstractModel):
         self._TimeGranularity = params.get("TimeGranularity")
         self._AccessRegion = params.get("AccessRegion")
         self._GatewayType = params.get("GatewayType")
+        self._DeviceList = params.get("DeviceList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2712,7 +2883,7 @@ class GetMultiFlowStatisticRequest(AbstractModel):
         :type BeginTime: int
         :param _EndTime: 1659515000
         :type EndTime: int
-        :param _Type: 统计流量类型（1：上行流量，2：下行流量）
+        :param _Type: 统计流量类型（1：上行流量，2：下行流量， 3: 上下行总和）
         :type Type: int
         :param _TimeGranularity: 统计时间粒度（1：按小时统计，2：按天统计）
         :type TimeGranularity: int
@@ -3050,6 +3221,10 @@ class GetStatisticDataRequest(AbstractModel):
         :type AccessRegion: str
         :param _GatewayType: 网关类型。0：公有云网关；1：自有网关。不传默认为0。
         :type GatewayType: int
+        :param _DeviceList: 设备ID列表，最多10个设备，下载多个设备流量和时使用，此时DeviceId可传"-1"
+        :type DeviceList: list of str
+        :param _GroupId: 设备分组ID，若不指定分组则不传，按分组下载数据时使用
+        :type GroupId: str
         """
         self._DeviceId = None
         self._BeginTime = None
@@ -3057,6 +3232,8 @@ class GetStatisticDataRequest(AbstractModel):
         self._TimeGranularity = None
         self._AccessRegion = None
         self._GatewayType = None
+        self._DeviceList = None
+        self._GroupId = None
 
     @property
     def DeviceId(self):
@@ -3106,6 +3283,22 @@ class GetStatisticDataRequest(AbstractModel):
     def GatewayType(self, GatewayType):
         self._GatewayType = GatewayType
 
+    @property
+    def DeviceList(self):
+        return self._DeviceList
+
+    @DeviceList.setter
+    def DeviceList(self, DeviceList):
+        self._DeviceList = DeviceList
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
 
     def _deserialize(self, params):
         self._DeviceId = params.get("DeviceId")
@@ -3114,6 +3307,8 @@ class GetStatisticDataRequest(AbstractModel):
         self._TimeGranularity = params.get("TimeGranularity")
         self._AccessRegion = params.get("AccessRegion")
         self._GatewayType = params.get("GatewayType")
+        self._DeviceList = params.get("DeviceList")
+        self._GroupId = params.get("GroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3310,9 +3505,9 @@ class Hardware(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type SN: str
         :param _LicenseChargingMode: license计费模式：
-1，租户月付费
+1，租户付费
 2，厂商月付费
-3，license永久授权
+3，厂商永久授权
 注意：此字段可能返回 null，表示取不到有效值。
         :type LicenseChargingMode: int
         :param _Description: 设备描述
@@ -3401,6 +3596,7 @@ class HardwareInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type VendorDescription: str
         :param _LicenseChargingMode: license计费模式： 1，租户月付费 2，厂商月付费 3，license永久授权
+注：后续将废弃此参数，新接入请使用LicensePayMode和Payer
 注意：此字段可能返回 null，表示取不到有效值。
         :type LicenseChargingMode: int
         :param _CreateTime: 创建时间
@@ -3409,6 +3605,22 @@ class HardwareInfo(AbstractModel):
         :param _SN: 硬件序列号
 注意：此字段可能返回 null，表示取不到有效值。
         :type SN: str
+        :param _LicensePayMode: license授权有效期 
+0：月度授权 
+1：永久授权
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LicensePayMode: int
+        :param _Payer: 付费方 
+0：客户付费 
+1：厂商付费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Payer: int
+        :param _GroupId: 设备分组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param _GroupName: 设备分组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
         """
         self._DeviceId = None
         self._DeviceName = None
@@ -3419,6 +3631,10 @@ class HardwareInfo(AbstractModel):
         self._LicenseChargingMode = None
         self._CreateTime = None
         self._SN = None
+        self._LicensePayMode = None
+        self._Payer = None
+        self._GroupId = None
+        self._GroupName = None
 
     @property
     def DeviceId(self):
@@ -3492,6 +3708,38 @@ class HardwareInfo(AbstractModel):
     def SN(self, SN):
         self._SN = SN
 
+    @property
+    def LicensePayMode(self):
+        return self._LicensePayMode
+
+    @LicensePayMode.setter
+    def LicensePayMode(self, LicensePayMode):
+        self._LicensePayMode = LicensePayMode
+
+    @property
+    def Payer(self):
+        return self._Payer
+
+    @Payer.setter
+    def Payer(self, Payer):
+        self._Payer = Payer
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
 
     def _deserialize(self, params):
         self._DeviceId = params.get("DeviceId")
@@ -3503,6 +3751,10 @@ class HardwareInfo(AbstractModel):
         self._LicenseChargingMode = params.get("LicenseChargingMode")
         self._CreateTime = params.get("CreateTime")
         self._SN = params.get("SN")
+        self._LicensePayMode = params.get("LicensePayMode")
+        self._Payer = params.get("Payer")
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3784,10 +4036,12 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
 100G：最多绑定3个设备
 500G：最多绑定5个设备
         :type DeviceList: list of str
-        :param _AutoRenewFlag: 是否自动续费
+        :param _AutoRenewFlag: 是否自动续费，该选项和流量截断冲突，只能开启一个
         :type AutoRenewFlag: bool
         :param _PackageRegion: 区域标识，0：国内，1：国外
         :type PackageRegion: int
+        :param _FlowTruncFlag: 是否开启流量截断功能，该选项和自动续费冲突
+        :type FlowTruncFlag: bool
         :param _AutoVoucher: 是否自动选择代金券，默认false。
 有多张券时的选择策略：按照可支付订单全部金额的券，先到期的券，可抵扣金额最大的券，余额最小的券，现金券 这个优先级进行扣券，且最多只抵扣一张券。
         :type AutoVoucher: bool
@@ -3799,6 +4053,7 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
         self._DeviceList = None
         self._AutoRenewFlag = None
         self._PackageRegion = None
+        self._FlowTruncFlag = None
         self._AutoVoucher = None
         self._VoucherIds = None
 
@@ -3835,6 +4090,14 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
         self._PackageRegion = PackageRegion
 
     @property
+    def FlowTruncFlag(self):
+        return self._FlowTruncFlag
+
+    @FlowTruncFlag.setter
+    def FlowTruncFlag(self, FlowTruncFlag):
+        self._FlowTruncFlag = FlowTruncFlag
+
+    @property
     def AutoVoucher(self):
         return self._AutoVoucher
 
@@ -3856,6 +4119,7 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
         self._DeviceList = params.get("DeviceList")
         self._AutoRenewFlag = params.get("AutoRenewFlag")
         self._PackageRegion = params.get("PackageRegion")
+        self._FlowTruncFlag = params.get("FlowTruncFlag")
         self._AutoVoucher = params.get("AutoVoucher")
         self._VoucherIds = params.get("VoucherIds")
         memeber_set = set(params.keys())
@@ -4315,11 +4579,23 @@ class VendorHardware(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceId: str
         :param _LicenseChargingMode: license计费模式： 1，租户月付费 2，厂商月付费 3，license永久授权
+注：设备为租户付费且未激活（未选择月付还是永久付费）时，此参数返回1，仅代表租户付费。后续将废弃此参数，新接入请使用LicensePayMode和Payer
 注意：此字段可能返回 null，表示取不到有效值。
         :type LicenseChargingMode: int
         :param _LastOnlineTime: 最后在线时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastOnlineTime: str
+        :param _LicensePayMode: license授权有效期
+0：月度授权
+1：永久授权
+-1：未知
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LicensePayMode: int
+        :param _Payer: 付费方
+0：客户付费
+1：厂商付费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Payer: int
         """
         self._HardwareId = None
         self._SN = None
@@ -4330,6 +4606,8 @@ class VendorHardware(AbstractModel):
         self._DeviceId = None
         self._LicenseChargingMode = None
         self._LastOnlineTime = None
+        self._LicensePayMode = None
+        self._Payer = None
 
     @property
     def HardwareId(self):
@@ -4403,6 +4681,22 @@ class VendorHardware(AbstractModel):
     def LastOnlineTime(self, LastOnlineTime):
         self._LastOnlineTime = LastOnlineTime
 
+    @property
+    def LicensePayMode(self):
+        return self._LicensePayMode
+
+    @LicensePayMode.setter
+    def LicensePayMode(self, LicensePayMode):
+        self._LicensePayMode = LicensePayMode
+
+    @property
+    def Payer(self):
+        return self._Payer
+
+    @Payer.setter
+    def Payer(self, Payer):
+        self._Payer = Payer
+
 
     def _deserialize(self, params):
         self._HardwareId = params.get("HardwareId")
@@ -4414,6 +4708,8 @@ class VendorHardware(AbstractModel):
         self._DeviceId = params.get("DeviceId")
         self._LicenseChargingMode = params.get("LicenseChargingMode")
         self._LastOnlineTime = params.get("LastOnlineTime")
+        self._LicensePayMode = params.get("LicensePayMode")
+        self._Payer = params.get("Payer")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

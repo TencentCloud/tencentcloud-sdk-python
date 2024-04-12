@@ -928,29 +928,6 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateInLongAgent(self, request):
-        """注册采集器
-
-        :param request: Request instance for CreateInLongAgent.
-        :type request: :class:`tencentcloud.wedata.v20210820.models.CreateInLongAgentRequest`
-        :rtype: :class:`tencentcloud.wedata.v20210820.models.CreateInLongAgentResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateInLongAgent", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateInLongAgentResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreateIntegrationNode(self, request):
         """创建集成节点
 
@@ -1406,29 +1383,6 @@ class WedataClient(AbstractClient):
             body = self.call("DeleteFolder", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteFolderResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DeleteInLongAgent(self, request):
-        """删除采集器
-
-        :param request: Request instance for DeleteInLongAgent.
-        :type request: :class:`tencentcloud.wedata.v20210820.models.DeleteInLongAgentRequest`
-        :rtype: :class:`tencentcloud.wedata.v20210820.models.DeleteInLongAgentResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteInLongAgent", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteInLongAgentResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2097,29 +2051,6 @@ class WedataClient(AbstractClient):
             body = self.call("DescribeBelongTo", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeBelongToResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeClusterNamespaceList(self, request):
-        """获取集群命名空间列表
-
-        :param request: Request instance for DescribeClusterNamespaceList.
-        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeClusterNamespaceListRequest`
-        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeClusterNamespaceListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeClusterNamespaceList", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeClusterNamespaceListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2986,98 +2917,6 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeInLongAgentList(self, request):
-        """获取采集器列表
-
-        :param request: Request instance for DescribeInLongAgentList.
-        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeInLongAgentListRequest`
-        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeInLongAgentListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeInLongAgentList", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeInLongAgentListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeInLongAgentTaskList(self, request):
-        """查询采集器关联的任务列表
-
-        :param request: Request instance for DescribeInLongAgentTaskList.
-        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeInLongAgentTaskListRequest`
-        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeInLongAgentTaskListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeInLongAgentTaskList", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeInLongAgentTaskListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeInLongAgentVpcList(self, request):
-        """获取采集器所在集群的VPC列表
-
-        :param request: Request instance for DescribeInLongAgentVpcList.
-        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeInLongAgentVpcListRequest`
-        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeInLongAgentVpcListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeInLongAgentVpcList", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeInLongAgentVpcListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeInLongTkeClusterList(self, request):
-        """获取TKE集群列表
-
-        :param request: Request instance for DescribeInLongTkeClusterList.
-        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeInLongTkeClusterListRequest`
-        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeInLongTkeClusterListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeInLongTkeClusterList", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeInLongTkeClusterListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeInstanceByCycle(self, request):
         """根据周期类型查询所有实例
 
@@ -3369,29 +3208,6 @@ class WedataClient(AbstractClient):
             body = self.call("DescribeIntegrationStatistics", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeIntegrationStatisticsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeIntegrationStatisticsAgentStatus(self, request):
-        """数据集成大屏采集器状态分布统计
-
-        :param request: Request instance for DescribeIntegrationStatisticsAgentStatus.
-        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeIntegrationStatisticsAgentStatusRequest`
-        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeIntegrationStatisticsAgentStatusResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeIntegrationStatisticsAgentStatus", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeIntegrationStatisticsAgentStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4729,29 +4545,6 @@ class WedataClient(AbstractClient):
             body = self.call("DescribeSonInstances", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSonInstancesResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeStandardRuleDetailInfoList(self, request):
-        """获取数据标准规则详情
-
-        :param request: Request instance for DescribeStandardRuleDetailInfoList.
-        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeStandardRuleDetailInfoListRequest`
-        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeStandardRuleDetailInfoListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeStandardRuleDetailInfoList", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeStandardRuleDetailInfoListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -6783,29 +6576,6 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def RestartInLongAgent(self, request):
-        """重启采集器
-
-        :param request: Request instance for RestartInLongAgent.
-        :type request: :class:`tencentcloud.wedata.v20210820.models.RestartInLongAgentRequest`
-        :rtype: :class:`tencentcloud.wedata.v20210820.models.RestartInLongAgentResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("RestartInLongAgent", params, headers=headers)
-            response = json.loads(body)
-            model = models.RestartInLongAgentResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def ResumeIntegrationTask(self, request):
         """继续集成任务
 
@@ -7308,29 +7078,6 @@ class WedataClient(AbstractClient):
             body = self.call("UnlockIntegrationTask", params, headers=headers)
             response = json.loads(body)
             model = models.UnlockIntegrationTaskResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def UpdateInLongAgent(self, request):
-        """更新采集器
-
-        :param request: Request instance for UpdateInLongAgent.
-        :type request: :class:`tencentcloud.wedata.v20210820.models.UpdateInLongAgentRequest`
-        :rtype: :class:`tencentcloud.wedata.v20210820.models.UpdateInLongAgentResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("UpdateInLongAgent", params, headers=headers)
-            response = json.loads(body)
-            model = models.UpdateInLongAgentResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

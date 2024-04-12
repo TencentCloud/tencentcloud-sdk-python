@@ -579,7 +579,7 @@ class FaceidClient(AbstractClient):
 
 
     def ImageRecognition(self, request):
-        """传入照片和身份信息，判断该照片与权威库的证件照是否属于同一个人。
+        """传入照片和身份信息，判断该照片与权威库的证件照是否属于同一个人（该接口已停止接入，新客户请使用<a href="https://cloud.tencent.com/document/product/1007/102203">照片人脸核身（V2.0）</a>接口）。
 
         :param request: Request instance for ImageRecognition.
         :type request: :class:`tencentcloud.faceid.v20180301.models.ImageRecognitionRequest`

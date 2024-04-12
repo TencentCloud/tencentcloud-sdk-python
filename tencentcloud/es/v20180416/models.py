@@ -1837,14 +1837,14 @@ class CreateServerlessInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _IndexName: 索引名，需以-AppId结尾
+        :type IndexName: str
         :param _Zone: 可用区
         :type Zone: str
         :param _VpcId: 私有网络ID
         :type VpcId: str
         :param _SubnetId: 子网ID
         :type SubnetId: str
-        :param _IndexName: 索引名，需以-AppId结尾
-        :type IndexName: str
         :param _IndexMetaJson: 创建的索引元数据JSON，如mappings、settings
         :type IndexMetaJson: str
         :param _SpaceId: 创建索引的空间ID
@@ -1862,10 +1862,10 @@ class CreateServerlessInstanceRequest(AbstractModel):
         :param _KibanaWhiteIpList: kibana公网白名单
         :type KibanaWhiteIpList: list of str
         """
+        self._IndexName = None
         self._Zone = None
         self._VpcId = None
         self._SubnetId = None
-        self._IndexName = None
         self._IndexMetaJson = None
         self._SpaceId = None
         self._Username = None
@@ -1874,6 +1874,14 @@ class CreateServerlessInstanceRequest(AbstractModel):
         self._AutoGetIp = None
         self._TagList = None
         self._KibanaWhiteIpList = None
+
+    @property
+    def IndexName(self):
+        return self._IndexName
+
+    @IndexName.setter
+    def IndexName(self, IndexName):
+        self._IndexName = IndexName
 
     @property
     def Zone(self):
@@ -1898,14 +1906,6 @@ class CreateServerlessInstanceRequest(AbstractModel):
     @SubnetId.setter
     def SubnetId(self, SubnetId):
         self._SubnetId = SubnetId
-
-    @property
-    def IndexName(self):
-        return self._IndexName
-
-    @IndexName.setter
-    def IndexName(self, IndexName):
-        self._IndexName = IndexName
 
     @property
     def IndexMetaJson(self):
@@ -1973,10 +1973,10 @@ class CreateServerlessInstanceRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._IndexName = params.get("IndexName")
         self._Zone = params.get("Zone")
         self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")
-        self._IndexName = params.get("IndexName")
         self._IndexMetaJson = params.get("IndexMetaJson")
         self._SpaceId = params.get("SpaceId")
         self._Username = params.get("Username")

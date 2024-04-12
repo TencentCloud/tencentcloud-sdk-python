@@ -322,6 +322,111 @@ class AddTimeWindowResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AddressInfo(AbstractModel):
+    """实例地址信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 地址的资源id标识。
+        :type ResourceId: str
+        :param _UniqVpcId: 地址所在的vpc。
+        :type UniqVpcId: str
+        :param _UniqSubnetId: 地址所在的子网。
+        :type UniqSubnetId: str
+        :param _Vip: 地址的vip。
+        :type Vip: str
+        :param _VPort: 地址的端口。
+        :type VPort: int
+        :param _WanDomain: 外网地址域名。
+        :type WanDomain: str
+        :param _WanPort: 外网地址端口。
+        :type WanPort: int
+        """
+        self._ResourceId = None
+        self._UniqVpcId = None
+        self._UniqSubnetId = None
+        self._Vip = None
+        self._VPort = None
+        self._WanDomain = None
+        self._WanPort = None
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def UniqVpcId(self):
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def UniqSubnetId(self):
+        return self._UniqSubnetId
+
+    @UniqSubnetId.setter
+    def UniqSubnetId(self, UniqSubnetId):
+        self._UniqSubnetId = UniqSubnetId
+
+    @property
+    def Vip(self):
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def VPort(self):
+        return self._VPort
+
+    @VPort.setter
+    def VPort(self, VPort):
+        self._VPort = VPort
+
+    @property
+    def WanDomain(self):
+        return self._WanDomain
+
+    @WanDomain.setter
+    def WanDomain(self, WanDomain):
+        self._WanDomain = WanDomain
+
+    @property
+    def WanPort(self):
+        return self._WanPort
+
+    @WanPort.setter
+    def WanPort(self, WanPort):
+        self._WanPort = WanPort
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._UniqSubnetId = params.get("UniqSubnetId")
+        self._Vip = params.get("Vip")
+        self._VPort = params.get("VPort")
+        self._WanDomain = params.get("WanDomain")
+        self._WanPort = params.get("WanPort")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AdjustCdbProxyAddressRequest(AbstractModel):
     """AdjustCdbProxyAddress请求参数结构体
 
@@ -3847,6 +3952,37 @@ class CdbZoneSellConf(AbstractModel):
         
 
 
+class CheckMigrateClusterRequest(AbstractModel):
+    """CheckMigrateCluster请求参数结构体
+
+    """
+
+
+class CheckMigrateClusterResponse(AbstractModel):
+    """CheckMigrateCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CloneItem(AbstractModel):
     """克隆任务记录。
 
@@ -4266,6 +4402,88 @@ class CloseWanServiceResponse(AbstractModel):
     def _deserialize(self, params):
         self._AsyncRequestId = params.get("AsyncRequestId")
         self._RequestId = params.get("RequestId")
+
+
+class ClusterNodeInfo(AbstractModel):
+    """集群版实例节点信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeId: 节点id。
+        :type NodeId: str
+        :param _Role: 节点的角色。
+        :type Role: str
+        :param _Zone: 节点所在可用区。
+        :type Zone: str
+        :param _Weight: 节点的权重
+        :type Weight: int
+        :param _Status: 节点状态。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        """
+        self._NodeId = None
+        self._Role = None
+        self._Zone = None
+        self._Weight = None
+        self._Status = None
+
+    @property
+    def NodeId(self):
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def Role(self):
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def Weight(self):
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._NodeId = params.get("NodeId")
+        self._Role = params.get("Role")
+        self._Zone = params.get("Zone")
+        self._Weight = params.get("Weight")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ColumnPrivilege(AbstractModel):
@@ -11643,6 +11861,148 @@ class DescribeCloneListResponse(AbstractModel):
                 obj = CloneItem()
                 obj._deserialize(item)
                 self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeClusterInfoRequest(AbstractModel):
+    """DescribeClusterInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例id。
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterInfoResponse(AbstractModel):
+    """DescribeClusterInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterName: 实例名称。
+        :type ClusterName: str
+        :param _ReadWriteAddress: 集群读写地址信息。
+        :type ReadWriteAddress: :class:`tencentcloud.cdb.v20170320.models.AddressInfo`
+        :param _ReadOnlyAddress: 集群只读地址信息。
+        :type ReadOnlyAddress: list of AddressInfo
+        :param _NodeList: 集群节点列表信息。
+        :type NodeList: list of ClusterNodeInfo
+        :param _ReadonlyLimit: 只读空间保护阈值,单位GB
+        :type ReadonlyLimit: int
+        :param _NodeCount: 实例节点数。
+        :type NodeCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ClusterName = None
+        self._ReadWriteAddress = None
+        self._ReadOnlyAddress = None
+        self._NodeList = None
+        self._ReadonlyLimit = None
+        self._NodeCount = None
+        self._RequestId = None
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def ReadWriteAddress(self):
+        return self._ReadWriteAddress
+
+    @ReadWriteAddress.setter
+    def ReadWriteAddress(self, ReadWriteAddress):
+        self._ReadWriteAddress = ReadWriteAddress
+
+    @property
+    def ReadOnlyAddress(self):
+        return self._ReadOnlyAddress
+
+    @ReadOnlyAddress.setter
+    def ReadOnlyAddress(self, ReadOnlyAddress):
+        self._ReadOnlyAddress = ReadOnlyAddress
+
+    @property
+    def NodeList(self):
+        return self._NodeList
+
+    @NodeList.setter
+    def NodeList(self, NodeList):
+        self._NodeList = NodeList
+
+    @property
+    def ReadonlyLimit(self):
+        return self._ReadonlyLimit
+
+    @ReadonlyLimit.setter
+    def ReadonlyLimit(self, ReadonlyLimit):
+        self._ReadonlyLimit = ReadonlyLimit
+
+    @property
+    def NodeCount(self):
+        return self._NodeCount
+
+    @NodeCount.setter
+    def NodeCount(self, NodeCount):
+        self._NodeCount = NodeCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ClusterName = params.get("ClusterName")
+        if params.get("ReadWriteAddress") is not None:
+            self._ReadWriteAddress = AddressInfo()
+            self._ReadWriteAddress._deserialize(params.get("ReadWriteAddress"))
+        if params.get("ReadOnlyAddress") is not None:
+            self._ReadOnlyAddress = []
+            for item in params.get("ReadOnlyAddress"):
+                obj = AddressInfo()
+                obj._deserialize(item)
+                self._ReadOnlyAddress.append(obj)
+        if params.get("NodeList") is not None:
+            self._NodeList = []
+            for item in params.get("NodeList"):
+                obj = ClusterNodeInfo()
+                obj._deserialize(item)
+                self._NodeList.append(obj)
+        self._ReadonlyLimit = params.get("ReadonlyLimit")
+        self._NodeCount = params.get("NodeCount")
         self._RequestId = params.get("RequestId")
 
 

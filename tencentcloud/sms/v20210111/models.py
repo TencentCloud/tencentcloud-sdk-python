@@ -1598,6 +1598,7 @@ class ModifySmsTemplateRequest(AbstractModel):
         :param _International: 是否国际/港澳台短信：
 0：表示国内短信。
 1：表示国际/港澳台短信。
+注：需要和待修改模板 International 值保持一致，该参数不能直接修改国内模板到国际模板。
         :type International: int
         :param _Remark: 模板备注，例如申请原因，使用场景等。
         :type Remark: str

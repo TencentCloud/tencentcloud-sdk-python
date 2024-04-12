@@ -1426,6 +1426,9 @@ class BGPInstance(AbstractModel):
         :param _PlanCntFlag: 是否是商业模式优化-普惠版
 注意：此字段可能返回 null，表示取不到有效值。
         :type PlanCntFlag: int
+        :param _SuperPackFlag: 是否为超级高防包
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuperPackFlag: int
         """
         self._InstanceDetail = None
         self._SpecificationLimit = None
@@ -1450,6 +1453,7 @@ class BGPInstance(AbstractModel):
         self._ModifyTime = None
         self._BasicPlusFlag = None
         self._PlanCntFlag = None
+        self._SuperPackFlag = None
 
     @property
     def InstanceDetail(self):
@@ -1635,6 +1639,14 @@ class BGPInstance(AbstractModel):
     def PlanCntFlag(self, PlanCntFlag):
         self._PlanCntFlag = PlanCntFlag
 
+    @property
+    def SuperPackFlag(self):
+        return self._SuperPackFlag
+
+    @SuperPackFlag.setter
+    def SuperPackFlag(self, SuperPackFlag):
+        self._SuperPackFlag = SuperPackFlag
+
 
     def _deserialize(self, params):
         if params.get("InstanceDetail") is not None:
@@ -1680,6 +1692,7 @@ class BGPInstance(AbstractModel):
         self._ModifyTime = params.get("ModifyTime")
         self._BasicPlusFlag = params.get("BasicPlusFlag")
         self._PlanCntFlag = params.get("PlanCntFlag")
+        self._SuperPackFlag = params.get("SuperPackFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

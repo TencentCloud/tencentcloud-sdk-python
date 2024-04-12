@@ -7784,9 +7784,12 @@ class RuleIdConfig(AbstractModel):
 0：问答模式，DetectAuth接口需要传入IntentionQuestions字段；
 1：点头模式，DetectAuth接口需要传入IntentionActions字段；
         :type IntentionType: int
+        :param _MouthOpenRecognition: 用户语音回答过程中是否开启张嘴识别检测，默认不开启，仅在意愿核身问答模式中使用。
+        :type MouthOpenRecognition: bool
         """
         self._IntentionRecognition = None
         self._IntentionType = None
+        self._MouthOpenRecognition = None
 
     @property
     def IntentionRecognition(self):
@@ -7804,10 +7807,19 @@ class RuleIdConfig(AbstractModel):
     def IntentionType(self, IntentionType):
         self._IntentionType = IntentionType
 
+    @property
+    def MouthOpenRecognition(self):
+        return self._MouthOpenRecognition
+
+    @MouthOpenRecognition.setter
+    def MouthOpenRecognition(self, MouthOpenRecognition):
+        self._MouthOpenRecognition = MouthOpenRecognition
+
 
     def _deserialize(self, params):
         self._IntentionRecognition = params.get("IntentionRecognition")
         self._IntentionType = params.get("IntentionType")
+        self._MouthOpenRecognition = params.get("MouthOpenRecognition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

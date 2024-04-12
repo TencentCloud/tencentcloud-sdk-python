@@ -10855,136 +10855,6 @@ class CreateHiveTableResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class CreateInLongAgentRequest(AbstractModel):
-    """CreateInLongAgent请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _AgentType: 采集器类型，1：TKE Agent，2：BOSS SDK，默认：1
-        :type AgentType: int
-        :param _AgentName: 采集器名称
-        :type AgentName: str
-        :param _ExecutorGroupId: 集成资源组id
-        :type ExecutorGroupId: str
-        :param _ProjectId: WeData项目ID
-        :type ProjectId: str
-        :param _TkeRegion: TKE集群的地域
-        :type TkeRegion: str
-        :param _ClusterId: 当AgentType为1时，必填。当AgentType为2时，不用填
-        :type ClusterId: str
-        """
-        self._AgentType = None
-        self._AgentName = None
-        self._ExecutorGroupId = None
-        self._ProjectId = None
-        self._TkeRegion = None
-        self._ClusterId = None
-
-    @property
-    def AgentType(self):
-        return self._AgentType
-
-    @AgentType.setter
-    def AgentType(self, AgentType):
-        self._AgentType = AgentType
-
-    @property
-    def AgentName(self):
-        return self._AgentName
-
-    @AgentName.setter
-    def AgentName(self, AgentName):
-        self._AgentName = AgentName
-
-    @property
-    def ExecutorGroupId(self):
-        return self._ExecutorGroupId
-
-    @ExecutorGroupId.setter
-    def ExecutorGroupId(self, ExecutorGroupId):
-        self._ExecutorGroupId = ExecutorGroupId
-
-    @property
-    def ProjectId(self):
-        return self._ProjectId
-
-    @ProjectId.setter
-    def ProjectId(self, ProjectId):
-        self._ProjectId = ProjectId
-
-    @property
-    def TkeRegion(self):
-        return self._TkeRegion
-
-    @TkeRegion.setter
-    def TkeRegion(self, TkeRegion):
-        self._TkeRegion = TkeRegion
-
-    @property
-    def ClusterId(self):
-        return self._ClusterId
-
-    @ClusterId.setter
-    def ClusterId(self, ClusterId):
-        self._ClusterId = ClusterId
-
-
-    def _deserialize(self, params):
-        self._AgentType = params.get("AgentType")
-        self._AgentName = params.get("AgentName")
-        self._ExecutorGroupId = params.get("ExecutorGroupId")
-        self._ProjectId = params.get("ProjectId")
-        self._TkeRegion = params.get("TkeRegion")
-        self._ClusterId = params.get("ClusterId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateInLongAgentResponse(AbstractModel):
-    """CreateInLongAgent返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _AgentId: 采集器ID
-        :type AgentId: str
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._AgentId = None
-        self._RequestId = None
-
-    @property
-    def AgentId(self):
-        return self._AgentId
-
-    @AgentId.setter
-    def AgentId(self, AgentId):
-        self._AgentId = AgentId
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._AgentId = params.get("AgentId")
-        self._RequestId = params.get("RequestId")
-
-
 class CreateIntegrationNodeRequest(AbstractModel):
     """CreateIntegrationNode请求参数结构体
 
@@ -13028,53 +12898,6 @@ class CreateWorkflowResponse(AbstractModel):
             self._Data = CommonId()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
-
-
-class CvmAgentStatus(AbstractModel):
-    """采集器状态统计
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Status: agent状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Status: str
-        :param _Count: 对应状态的agent总数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Count: int
-        """
-        self._Status = None
-        self._Count = None
-
-    @property
-    def Status(self):
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def Count(self):
-        return self._Count
-
-    @Count.setter
-    def Count(self, Count):
-        self._Count = Count
-
-
-    def _deserialize(self, params):
-        self._Status = params.get("Status")
-        self._Count = params.get("Count")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
 
 
 class DagInstancesRequest(AbstractModel):
@@ -15337,76 +15160,6 @@ class DeleteFolderResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Data = params.get("Data")
-        self._RequestId = params.get("RequestId")
-
-
-class DeleteInLongAgentRequest(AbstractModel):
-    """DeleteInLongAgent请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _AgentId: 采集器ID
-        :type AgentId: str
-        :param _ProjectId: WeData项目ID
-        :type ProjectId: str
-        """
-        self._AgentId = None
-        self._ProjectId = None
-
-    @property
-    def AgentId(self):
-        return self._AgentId
-
-    @AgentId.setter
-    def AgentId(self, AgentId):
-        self._AgentId = AgentId
-
-    @property
-    def ProjectId(self):
-        return self._ProjectId
-
-    @ProjectId.setter
-    def ProjectId(self, ProjectId):
-        self._ProjectId = ProjectId
-
-
-    def _deserialize(self, params):
-        self._AgentId = params.get("AgentId")
-        self._ProjectId = params.get("ProjectId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DeleteInLongAgentResponse(AbstractModel):
-    """DeleteInLongAgent返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -19548,93 +19301,6 @@ class DescribeBelongToResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Data = params.get("Data")
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeClusterNamespaceListRequest(AbstractModel):
-    """DescribeClusterNamespaceList请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ClusterId: 集群ID
-        :type ClusterId: str
-        :param _ProjectId: WeData项目ID
-        :type ProjectId: str
-        """
-        self._ClusterId = None
-        self._ProjectId = None
-
-    @property
-    def ClusterId(self):
-        return self._ClusterId
-
-    @ClusterId.setter
-    def ClusterId(self, ClusterId):
-        self._ClusterId = ClusterId
-
-    @property
-    def ProjectId(self):
-        return self._ProjectId
-
-    @ProjectId.setter
-    def ProjectId(self, ProjectId):
-        self._ProjectId = ProjectId
-
-
-    def _deserialize(self, params):
-        self._ClusterId = params.get("ClusterId")
-        self._ProjectId = params.get("ProjectId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeClusterNamespaceListResponse(AbstractModel):
-    """DescribeClusterNamespaceList返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Namespaces: 命名空间
-        :type Namespaces: list of Namespace
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._Namespaces = None
-        self._RequestId = None
-
-    @property
-    def Namespaces(self):
-        return self._Namespaces
-
-    @Namespaces.setter
-    def Namespaces(self, Namespaces):
-        self._Namespaces = Namespaces
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("Namespaces") is not None:
-            self._Namespaces = []
-            for item in params.get("Namespaces"):
-                obj = Namespace()
-                obj._deserialize(item)
-                self._Namespaces.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -24193,604 +23859,6 @@ class DescribeFunctionTypesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class DescribeInLongAgentListRequest(AbstractModel):
-    """DescribeInLongAgentList请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ProjectId: WeData项目ID
-        :type ProjectId: str
-        :param _AgentId: 采集器ID
-        :type AgentId: str
-        :param _AgentName: Agent Name
-        :type AgentName: str
-        :param _AgentType: 集群类型，1：TKE Agent，2：BOSS SDK，默认：1，3：CVM，4：自建服务器 【传多个用逗号分割】
-        :type AgentType: int
-        :param _Status: Agent状态(running运行中，initializing 操作中，failed心跳异常)
-        :type Status: str
-        :param _VpcId: Vpc Id
-        :type VpcId: str
-        :param _PageIndex: 分页页码，从1开始，默认：1
-        :type PageIndex: int
-        :param _PageSize: 分页每页记录数，默认10
-        :type PageSize: int
-        :param _Like: 名称搜索是否开启模糊匹配，1：开启，0：不开启（精确匹配）
-        :type Like: int
-        :param _AgentTypes: agent类型【多个用逗号分隔】
-        :type AgentTypes: str
-        """
-        self._ProjectId = None
-        self._AgentId = None
-        self._AgentName = None
-        self._AgentType = None
-        self._Status = None
-        self._VpcId = None
-        self._PageIndex = None
-        self._PageSize = None
-        self._Like = None
-        self._AgentTypes = None
-
-    @property
-    def ProjectId(self):
-        return self._ProjectId
-
-    @ProjectId.setter
-    def ProjectId(self, ProjectId):
-        self._ProjectId = ProjectId
-
-    @property
-    def AgentId(self):
-        return self._AgentId
-
-    @AgentId.setter
-    def AgentId(self, AgentId):
-        self._AgentId = AgentId
-
-    @property
-    def AgentName(self):
-        return self._AgentName
-
-    @AgentName.setter
-    def AgentName(self, AgentName):
-        self._AgentName = AgentName
-
-    @property
-    def AgentType(self):
-        return self._AgentType
-
-    @AgentType.setter
-    def AgentType(self, AgentType):
-        self._AgentType = AgentType
-
-    @property
-    def Status(self):
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def VpcId(self):
-        return self._VpcId
-
-    @VpcId.setter
-    def VpcId(self, VpcId):
-        self._VpcId = VpcId
-
-    @property
-    def PageIndex(self):
-        return self._PageIndex
-
-    @PageIndex.setter
-    def PageIndex(self, PageIndex):
-        self._PageIndex = PageIndex
-
-    @property
-    def PageSize(self):
-        return self._PageSize
-
-    @PageSize.setter
-    def PageSize(self, PageSize):
-        self._PageSize = PageSize
-
-    @property
-    def Like(self):
-        return self._Like
-
-    @Like.setter
-    def Like(self, Like):
-        self._Like = Like
-
-    @property
-    def AgentTypes(self):
-        return self._AgentTypes
-
-    @AgentTypes.setter
-    def AgentTypes(self, AgentTypes):
-        self._AgentTypes = AgentTypes
-
-
-    def _deserialize(self, params):
-        self._ProjectId = params.get("ProjectId")
-        self._AgentId = params.get("AgentId")
-        self._AgentName = params.get("AgentName")
-        self._AgentType = params.get("AgentType")
-        self._Status = params.get("Status")
-        self._VpcId = params.get("VpcId")
-        self._PageIndex = params.get("PageIndex")
-        self._PageSize = params.get("PageSize")
-        self._Like = params.get("Like")
-        self._AgentTypes = params.get("AgentTypes")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeInLongAgentListResponse(AbstractModel):
-    """DescribeInLongAgentList返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Items: 采集器信息列表
-        :type Items: list of InLongAgentDetail
-        :param _PageIndex: 页码
-        :type PageIndex: int
-        :param _PageSize: 每页记录数
-        :type PageSize: int
-        :param _TotalCount: 总记录数
-        :type TotalCount: int
-        :param _TotalPage: 总页数
-        :type TotalPage: int
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._Items = None
-        self._PageIndex = None
-        self._PageSize = None
-        self._TotalCount = None
-        self._TotalPage = None
-        self._RequestId = None
-
-    @property
-    def Items(self):
-        return self._Items
-
-    @Items.setter
-    def Items(self, Items):
-        self._Items = Items
-
-    @property
-    def PageIndex(self):
-        return self._PageIndex
-
-    @PageIndex.setter
-    def PageIndex(self, PageIndex):
-        self._PageIndex = PageIndex
-
-    @property
-    def PageSize(self):
-        return self._PageSize
-
-    @PageSize.setter
-    def PageSize(self, PageSize):
-        self._PageSize = PageSize
-
-    @property
-    def TotalCount(self):
-        return self._TotalCount
-
-    @TotalCount.setter
-    def TotalCount(self, TotalCount):
-        self._TotalCount = TotalCount
-
-    @property
-    def TotalPage(self):
-        return self._TotalPage
-
-    @TotalPage.setter
-    def TotalPage(self, TotalPage):
-        self._TotalPage = TotalPage
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("Items") is not None:
-            self._Items = []
-            for item in params.get("Items"):
-                obj = InLongAgentDetail()
-                obj._deserialize(item)
-                self._Items.append(obj)
-        self._PageIndex = params.get("PageIndex")
-        self._PageSize = params.get("PageSize")
-        self._TotalCount = params.get("TotalCount")
-        self._TotalPage = params.get("TotalPage")
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeInLongAgentTaskListRequest(AbstractModel):
-    """DescribeInLongAgentTaskList请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _AgentId: 采集器ID
-        :type AgentId: str
-        :param _ProjectId: WeData项目ID
-        :type ProjectId: str
-        """
-        self._AgentId = None
-        self._ProjectId = None
-
-    @property
-    def AgentId(self):
-        return self._AgentId
-
-    @AgentId.setter
-    def AgentId(self, AgentId):
-        self._AgentId = AgentId
-
-    @property
-    def ProjectId(self):
-        return self._ProjectId
-
-    @ProjectId.setter
-    def ProjectId(self, ProjectId):
-        self._ProjectId = ProjectId
-
-
-    def _deserialize(self, params):
-        self._AgentId = params.get("AgentId")
-        self._ProjectId = params.get("ProjectId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeInLongAgentTaskListResponse(AbstractModel):
-    """DescribeInLongAgentTaskList返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Items: 采集器关联的集成任务列表
-        :type Items: list of InLongAgentTask
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._Items = None
-        self._RequestId = None
-
-    @property
-    def Items(self):
-        return self._Items
-
-    @Items.setter
-    def Items(self, Items):
-        self._Items = Items
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("Items") is not None:
-            self._Items = []
-            for item in params.get("Items"):
-                obj = InLongAgentTask()
-                obj._deserialize(item)
-                self._Items.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeInLongAgentVpcListRequest(AbstractModel):
-    """DescribeInLongAgentVpcList请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ProjectId: WeData项目ID
-        :type ProjectId: str
-        """
-        self._ProjectId = None
-
-    @property
-    def ProjectId(self):
-        return self._ProjectId
-
-    @ProjectId.setter
-    def ProjectId(self, ProjectId):
-        self._ProjectId = ProjectId
-
-
-    def _deserialize(self, params):
-        self._ProjectId = params.get("ProjectId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeInLongAgentVpcListResponse(AbstractModel):
-    """DescribeInLongAgentVpcList返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _VpcList: VPC列表
-        :type VpcList: list of str
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._VpcList = None
-        self._RequestId = None
-
-    @property
-    def VpcList(self):
-        return self._VpcList
-
-    @VpcList.setter
-    def VpcList(self, VpcList):
-        self._VpcList = VpcList
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._VpcList = params.get("VpcList")
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeInLongTkeClusterListRequest(AbstractModel):
-    """DescribeInLongTkeClusterList请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ProjectId: WeData项目ID
-        :type ProjectId: str
-        :param _TkeRegion: TKE集群地域
-        :type TkeRegion: str
-        :param _ClusterName: 集群名称。
-多个名称用逗号连接。
-        :type ClusterName: str
-        :param _Status: TKE集群状态 (Running 运行中 Creating 创建中 Idling 闲置中 Abnormal 异常 Failed 失败 Deleting 删除中 Scaling 规模调整中 Upgrading 升级中 Isolated 欠费隔离中 NodeUpgrading 节点升级中 Recovering 唤醒中 Activating 激活中 MasterScaling Master扩缩容中 Waiting 等待注册 ClusterLevelUpgrading 调整规格中 ResourceIsolate 隔离中 ResourceIsolated 已隔离 ResourceReverse 冲正中 Trading 集群开通中 ResourceReversal 集群冲正 ClusterLevelTrading 集群变配交易中)
-多个状态用逗号连接。
-        :type Status: str
-        :param _HasAgent: 是否安装Agent，true: 是，false: 否
-        :type HasAgent: bool
-        :param _ClusterType: 集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER。
-多个集群用逗号连接。
-        :type ClusterType: str
-        :param _PageIndex: 分页页码，从1开始，默认：1
-        :type PageIndex: int
-        :param _PageSize: 分页每页记录数，默认10
-        :type PageSize: int
-        """
-        self._ProjectId = None
-        self._TkeRegion = None
-        self._ClusterName = None
-        self._Status = None
-        self._HasAgent = None
-        self._ClusterType = None
-        self._PageIndex = None
-        self._PageSize = None
-
-    @property
-    def ProjectId(self):
-        return self._ProjectId
-
-    @ProjectId.setter
-    def ProjectId(self, ProjectId):
-        self._ProjectId = ProjectId
-
-    @property
-    def TkeRegion(self):
-        return self._TkeRegion
-
-    @TkeRegion.setter
-    def TkeRegion(self, TkeRegion):
-        self._TkeRegion = TkeRegion
-
-    @property
-    def ClusterName(self):
-        return self._ClusterName
-
-    @ClusterName.setter
-    def ClusterName(self, ClusterName):
-        self._ClusterName = ClusterName
-
-    @property
-    def Status(self):
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def HasAgent(self):
-        return self._HasAgent
-
-    @HasAgent.setter
-    def HasAgent(self, HasAgent):
-        self._HasAgent = HasAgent
-
-    @property
-    def ClusterType(self):
-        return self._ClusterType
-
-    @ClusterType.setter
-    def ClusterType(self, ClusterType):
-        self._ClusterType = ClusterType
-
-    @property
-    def PageIndex(self):
-        return self._PageIndex
-
-    @PageIndex.setter
-    def PageIndex(self, PageIndex):
-        self._PageIndex = PageIndex
-
-    @property
-    def PageSize(self):
-        return self._PageSize
-
-    @PageSize.setter
-    def PageSize(self, PageSize):
-        self._PageSize = PageSize
-
-
-    def _deserialize(self, params):
-        self._ProjectId = params.get("ProjectId")
-        self._TkeRegion = params.get("TkeRegion")
-        self._ClusterName = params.get("ClusterName")
-        self._Status = params.get("Status")
-        self._HasAgent = params.get("HasAgent")
-        self._ClusterType = params.get("ClusterType")
-        self._PageIndex = params.get("PageIndex")
-        self._PageSize = params.get("PageSize")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeInLongTkeClusterListResponse(AbstractModel):
-    """DescribeInLongTkeClusterList返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Items: TKE集群信息
-        :type Items: list of InLongTkeDetail
-        :param _PageIndex: 页码
-        :type PageIndex: int
-        :param _PageSize: 每页记录数
-        :type PageSize: int
-        :param _TotalCount: 总记录数
-        :type TotalCount: int
-        :param _TotalPage: 总页数
-        :type TotalPage: int
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._Items = None
-        self._PageIndex = None
-        self._PageSize = None
-        self._TotalCount = None
-        self._TotalPage = None
-        self._RequestId = None
-
-    @property
-    def Items(self):
-        return self._Items
-
-    @Items.setter
-    def Items(self, Items):
-        self._Items = Items
-
-    @property
-    def PageIndex(self):
-        return self._PageIndex
-
-    @PageIndex.setter
-    def PageIndex(self, PageIndex):
-        self._PageIndex = PageIndex
-
-    @property
-    def PageSize(self):
-        return self._PageSize
-
-    @PageSize.setter
-    def PageSize(self, PageSize):
-        self._PageSize = PageSize
-
-    @property
-    def TotalCount(self):
-        return self._TotalCount
-
-    @TotalCount.setter
-    def TotalCount(self, TotalCount):
-        self._TotalCount = TotalCount
-
-    @property
-    def TotalPage(self):
-        return self._TotalPage
-
-    @TotalPage.setter
-    def TotalPage(self, TotalPage):
-        self._TotalPage = TotalPage
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("Items") is not None:
-            self._Items = []
-            for item in params.get("Items"):
-                obj = InLongTkeDetail()
-                obj._deserialize(item)
-                self._Items.append(obj)
-        self._PageIndex = params.get("PageIndex")
-        self._PageSize = params.get("PageSize")
-        self._TotalCount = params.get("TotalCount")
-        self._TotalPage = params.get("TotalPage")
-        self._RequestId = params.get("RequestId")
-
-
 class DescribeInstanceByCycleReportRequest(AbstractModel):
     """DescribeInstanceByCycleReport请求参数结构体
 
@@ -26391,113 +25459,6 @@ class DescribeIntegrationNodeResponse(AbstractModel):
             self._NodeInfo = IntegrationNodeInfo()
             self._NodeInfo._deserialize(params.get("NodeInfo"))
         self._SourceCheckFlag = params.get("SourceCheckFlag")
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeIntegrationStatisticsAgentStatusRequest(AbstractModel):
-    """DescribeIntegrationStatisticsAgentStatus请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _TaskType: 任务类型（实时：201，离线：202）
-        :type TaskType: int
-        :param _ProjectId: 项目id
-        :type ProjectId: str
-        :param _QueryDate: 查询日期
-        :type QueryDate: str
-        :param _ExecutorGroupId: 资源组id
-        :type ExecutorGroupId: str
-        """
-        self._TaskType = None
-        self._ProjectId = None
-        self._QueryDate = None
-        self._ExecutorGroupId = None
-
-    @property
-    def TaskType(self):
-        return self._TaskType
-
-    @TaskType.setter
-    def TaskType(self, TaskType):
-        self._TaskType = TaskType
-
-    @property
-    def ProjectId(self):
-        return self._ProjectId
-
-    @ProjectId.setter
-    def ProjectId(self, ProjectId):
-        self._ProjectId = ProjectId
-
-    @property
-    def QueryDate(self):
-        return self._QueryDate
-
-    @QueryDate.setter
-    def QueryDate(self, QueryDate):
-        self._QueryDate = QueryDate
-
-    @property
-    def ExecutorGroupId(self):
-        return self._ExecutorGroupId
-
-    @ExecutorGroupId.setter
-    def ExecutorGroupId(self, ExecutorGroupId):
-        self._ExecutorGroupId = ExecutorGroupId
-
-
-    def _deserialize(self, params):
-        self._TaskType = params.get("TaskType")
-        self._ProjectId = params.get("ProjectId")
-        self._QueryDate = params.get("QueryDate")
-        self._ExecutorGroupId = params.get("ExecutorGroupId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeIntegrationStatisticsAgentStatusResponse(AbstractModel):
-    """DescribeIntegrationStatisticsAgentStatus返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _StatusData: 统计结果
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StatusData: str
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._StatusData = None
-        self._RequestId = None
-
-    @property
-    def StatusData(self):
-        return self._StatusData
-
-    @StatusData.setter
-    def StatusData(self, StatusData):
-        self._StatusData = StatusData
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._StatusData = params.get("StatusData")
         self._RequestId = params.get("RequestId")
 
 
@@ -34313,89 +33274,6 @@ class DescribeSonInstancesResponse(AbstractModel):
         if params.get("Data") is not None:
             self._Data = CollectionInstanceOpsDto()
             self._Data._deserialize(params.get("Data"))
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeStandardRuleDetailInfoListRequest(AbstractModel):
-    """DescribeStandardRuleDetailInfoList请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ProjectId: 空间、项目id
-        :type ProjectId: str
-        :param _Type: 标准分类11编码映射 12数据过滤 13字符串转换 14数据元定义 15正则表达 16术语词典
-        :type Type: int
-        """
-        self._ProjectId = None
-        self._Type = None
-
-    @property
-    def ProjectId(self):
-        return self._ProjectId
-
-    @ProjectId.setter
-    def ProjectId(self, ProjectId):
-        self._ProjectId = ProjectId
-
-    @property
-    def Type(self):
-        return self._Type
-
-    @Type.setter
-    def Type(self, Type):
-        self._Type = Type
-
-
-    def _deserialize(self, params):
-        self._ProjectId = params.get("ProjectId")
-        self._Type = params.get("Type")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeStandardRuleDetailInfoListResponse(AbstractModel):
-    """DescribeStandardRuleDetailInfoList返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _StandardRuleDetailList: 返回值
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StandardRuleDetailList: str
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._StandardRuleDetailList = None
-        self._RequestId = None
-
-    @property
-    def StandardRuleDetailList(self):
-        return self._StandardRuleDetailList
-
-    @StandardRuleDetailList.setter
-    def StandardRuleDetailList(self, StandardRuleDetailList):
-        self._StandardRuleDetailList = StandardRuleDetailList
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._StandardRuleDetailList = params.get("StandardRuleDetailList")
         self._RequestId = params.get("RequestId")
 
 
@@ -44779,406 +43657,6 @@ class GetOfflineInstanceListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class InLongAgentDetail(AbstractModel):
-    """采集器详细信息
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _AgentId: Agent ID
-        :type AgentId: str
-        :param _AgentName: Agent Name
-        :type AgentName: str
-        :param _Status: Agent状态(running运行中，initializing 操作中，failed心跳异常)
-        :type Status: str
-        :param _StatusDesc: Agent状态描述
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StatusDesc: str
-        :param _AgentType: 集群类型，1：TKE Agent，2：BOSS SDK，默认：1
-        :type AgentType: int
-        :param _Source: 采集来源
-        :type Source: str
-        :param _VpcId: VPC
-        :type VpcId: str
-        :param _ExecutorGroupId: 集成资源组Id
-        :type ExecutorGroupId: str
-        :param _ExecutorGroupName: 集成资源组名称
-        :type ExecutorGroupName: str
-        :param _TaskCount: 关联任务数
-        :type TaskCount: int
-        :param _AgentGroupId: 采集器组ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AgentGroupId: str
-        :param _CvmAgentStatusList: agent状态统计
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CvmAgentStatusList: list of CvmAgentStatus
-        :param _AgentTotal: agent数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AgentTotal: int
-        :param _LifeDays: 生命周期
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LifeDays: int
-        :param _ClusterId: 集群ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ClusterId: str
-        :param _AgentRegion: agent地域
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AgentRegion: str
-        """
-        self._AgentId = None
-        self._AgentName = None
-        self._Status = None
-        self._StatusDesc = None
-        self._AgentType = None
-        self._Source = None
-        self._VpcId = None
-        self._ExecutorGroupId = None
-        self._ExecutorGroupName = None
-        self._TaskCount = None
-        self._AgentGroupId = None
-        self._CvmAgentStatusList = None
-        self._AgentTotal = None
-        self._LifeDays = None
-        self._ClusterId = None
-        self._AgentRegion = None
-
-    @property
-    def AgentId(self):
-        return self._AgentId
-
-    @AgentId.setter
-    def AgentId(self, AgentId):
-        self._AgentId = AgentId
-
-    @property
-    def AgentName(self):
-        return self._AgentName
-
-    @AgentName.setter
-    def AgentName(self, AgentName):
-        self._AgentName = AgentName
-
-    @property
-    def Status(self):
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def StatusDesc(self):
-        return self._StatusDesc
-
-    @StatusDesc.setter
-    def StatusDesc(self, StatusDesc):
-        self._StatusDesc = StatusDesc
-
-    @property
-    def AgentType(self):
-        return self._AgentType
-
-    @AgentType.setter
-    def AgentType(self, AgentType):
-        self._AgentType = AgentType
-
-    @property
-    def Source(self):
-        return self._Source
-
-    @Source.setter
-    def Source(self, Source):
-        self._Source = Source
-
-    @property
-    def VpcId(self):
-        return self._VpcId
-
-    @VpcId.setter
-    def VpcId(self, VpcId):
-        self._VpcId = VpcId
-
-    @property
-    def ExecutorGroupId(self):
-        return self._ExecutorGroupId
-
-    @ExecutorGroupId.setter
-    def ExecutorGroupId(self, ExecutorGroupId):
-        self._ExecutorGroupId = ExecutorGroupId
-
-    @property
-    def ExecutorGroupName(self):
-        return self._ExecutorGroupName
-
-    @ExecutorGroupName.setter
-    def ExecutorGroupName(self, ExecutorGroupName):
-        self._ExecutorGroupName = ExecutorGroupName
-
-    @property
-    def TaskCount(self):
-        return self._TaskCount
-
-    @TaskCount.setter
-    def TaskCount(self, TaskCount):
-        self._TaskCount = TaskCount
-
-    @property
-    def AgentGroupId(self):
-        return self._AgentGroupId
-
-    @AgentGroupId.setter
-    def AgentGroupId(self, AgentGroupId):
-        self._AgentGroupId = AgentGroupId
-
-    @property
-    def CvmAgentStatusList(self):
-        return self._CvmAgentStatusList
-
-    @CvmAgentStatusList.setter
-    def CvmAgentStatusList(self, CvmAgentStatusList):
-        self._CvmAgentStatusList = CvmAgentStatusList
-
-    @property
-    def AgentTotal(self):
-        return self._AgentTotal
-
-    @AgentTotal.setter
-    def AgentTotal(self, AgentTotal):
-        self._AgentTotal = AgentTotal
-
-    @property
-    def LifeDays(self):
-        return self._LifeDays
-
-    @LifeDays.setter
-    def LifeDays(self, LifeDays):
-        self._LifeDays = LifeDays
-
-    @property
-    def ClusterId(self):
-        return self._ClusterId
-
-    @ClusterId.setter
-    def ClusterId(self, ClusterId):
-        self._ClusterId = ClusterId
-
-    @property
-    def AgentRegion(self):
-        return self._AgentRegion
-
-    @AgentRegion.setter
-    def AgentRegion(self, AgentRegion):
-        self._AgentRegion = AgentRegion
-
-
-    def _deserialize(self, params):
-        self._AgentId = params.get("AgentId")
-        self._AgentName = params.get("AgentName")
-        self._Status = params.get("Status")
-        self._StatusDesc = params.get("StatusDesc")
-        self._AgentType = params.get("AgentType")
-        self._Source = params.get("Source")
-        self._VpcId = params.get("VpcId")
-        self._ExecutorGroupId = params.get("ExecutorGroupId")
-        self._ExecutorGroupName = params.get("ExecutorGroupName")
-        self._TaskCount = params.get("TaskCount")
-        self._AgentGroupId = params.get("AgentGroupId")
-        if params.get("CvmAgentStatusList") is not None:
-            self._CvmAgentStatusList = []
-            for item in params.get("CvmAgentStatusList"):
-                obj = CvmAgentStatus()
-                obj._deserialize(item)
-                self._CvmAgentStatusList.append(obj)
-        self._AgentTotal = params.get("AgentTotal")
-        self._LifeDays = params.get("LifeDays")
-        self._ClusterId = params.get("ClusterId")
-        self._AgentRegion = params.get("AgentRegion")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class InLongAgentTask(AbstractModel):
-    """采集器关联的集成任务
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _TaskId: 集成任务ID
-        :type TaskId: str
-        :param _TaskName: 集成任务名称
-        :type TaskName: str
-        :param _TaskStatus: 集成任务状态
-        :type TaskStatus: str
-        """
-        self._TaskId = None
-        self._TaskName = None
-        self._TaskStatus = None
-
-    @property
-    def TaskId(self):
-        return self._TaskId
-
-    @TaskId.setter
-    def TaskId(self, TaskId):
-        self._TaskId = TaskId
-
-    @property
-    def TaskName(self):
-        return self._TaskName
-
-    @TaskName.setter
-    def TaskName(self, TaskName):
-        self._TaskName = TaskName
-
-    @property
-    def TaskStatus(self):
-        return self._TaskStatus
-
-    @TaskStatus.setter
-    def TaskStatus(self, TaskStatus):
-        self._TaskStatus = TaskStatus
-
-
-    def _deserialize(self, params):
-        self._TaskId = params.get("TaskId")
-        self._TaskName = params.get("TaskName")
-        self._TaskStatus = params.get("TaskStatus")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class InLongTkeDetail(AbstractModel):
-    """TKE集群信息详情
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ClusterId: 集群Id
-        :type ClusterId: str
-        :param _ClusterName: 集群名称
-        :type ClusterName: str
-        :param _Status: TKE集群状态 (Running 运行中 Creating 创建中 Idling 闲置中 Abnormal 异常)
-        :type Status: str
-        :param _HasAgent: 是否安装Agent，true: 是，false: 否
-        :type HasAgent: bool
-        :param _AgentId: 采集器ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AgentId: str
-        :param _VpcId: VPC ID
-        :type VpcId: str
-        :param _TkeRegion: TKE集群区域ID
-        :type TkeRegion: str
-        :param _ClusterType: 集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER
-        :type ClusterType: str
-        """
-        self._ClusterId = None
-        self._ClusterName = None
-        self._Status = None
-        self._HasAgent = None
-        self._AgentId = None
-        self._VpcId = None
-        self._TkeRegion = None
-        self._ClusterType = None
-
-    @property
-    def ClusterId(self):
-        return self._ClusterId
-
-    @ClusterId.setter
-    def ClusterId(self, ClusterId):
-        self._ClusterId = ClusterId
-
-    @property
-    def ClusterName(self):
-        return self._ClusterName
-
-    @ClusterName.setter
-    def ClusterName(self, ClusterName):
-        self._ClusterName = ClusterName
-
-    @property
-    def Status(self):
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def HasAgent(self):
-        return self._HasAgent
-
-    @HasAgent.setter
-    def HasAgent(self, HasAgent):
-        self._HasAgent = HasAgent
-
-    @property
-    def AgentId(self):
-        return self._AgentId
-
-    @AgentId.setter
-    def AgentId(self, AgentId):
-        self._AgentId = AgentId
-
-    @property
-    def VpcId(self):
-        return self._VpcId
-
-    @VpcId.setter
-    def VpcId(self, VpcId):
-        self._VpcId = VpcId
-
-    @property
-    def TkeRegion(self):
-        return self._TkeRegion
-
-    @TkeRegion.setter
-    def TkeRegion(self, TkeRegion):
-        self._TkeRegion = TkeRegion
-
-    @property
-    def ClusterType(self):
-        return self._ClusterType
-
-    @ClusterType.setter
-    def ClusterType(self, ClusterType):
-        self._ClusterType = ClusterType
-
-
-    def _deserialize(self, params):
-        self._ClusterId = params.get("ClusterId")
-        self._ClusterName = params.get("ClusterName")
-        self._Status = params.get("Status")
-        self._HasAgent = params.get("HasAgent")
-        self._AgentId = params.get("AgentId")
-        self._VpcId = params.get("VpcId")
-        self._TkeRegion = params.get("TkeRegion")
-        self._ClusterType = params.get("ClusterType")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class InstanceApiOpsRequest(AbstractModel):
     """实例查询类型
 
@@ -45991,7 +44469,7 @@ class InstanceList(AbstractModel):
         :param _StartTime: 开始启动时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
-        :param _State: 实例状态
+        :param _State: 实例状态  EVENT_LISTENING|DEPENDENCE|BEFORE_ASPECT|ALLOCATED|LAUNCHED|KILL|SNAP_STATE_SAVING|ISSUED|RUNNING|AFTER_ASPECT|PENDING|KILLING|FINAL_STATE_SAVING|FAILED|KILL_FAILED| COMPLETED|EXPIRED|KILL_EXPIRED|DELETED
 注意：此字段可能返回 null，表示取不到有效值。
         :type State: str
         :param _TaskId: 任务ID
@@ -46591,7 +45069,7 @@ class InstanceLogList(AbstractModel):
         :param _Tries: 重试次数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tries: str
-        :param _LastUpdate: 最后更新事件
+        :param _LastUpdate: 最后更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastUpdate: str
         :param _BrokerIp: 节点ip
@@ -48478,7 +46956,7 @@ class IntegrationNodeDetail(AbstractModel):
 
 
 class IntegrationNodeInfo(AbstractModel):
-    """集成节点
+    """集成任务节点
 
     """
 
@@ -48491,9 +46969,9 @@ class IntegrationNodeInfo(AbstractModel):
         :type TaskId: str
         :param _Name: 集成节点名称
         :type Name: str
-        :param _NodeType: 集成节点类型
+        :param _NodeType: 集成节点类型,INPUT: 输入节点，OUTPUT:输出节点 
         :type NodeType: str
-        :param _DataSourceType: 节点数据源类型
+        :param _DataSourceType: 节点数据源类型：MYSQL|POSTGRE|ORACLE|SQLSERVER|FTP|HIVE|HDFS|ICEBERG|KAFKA|HBASE|SPARK|VIRTUAL|TBASE|DB2|DM|GAUSSDB|GBASE|IMPALA|ES|S3_DATAINSIGHT|GREENPLUM|PHOENIX|SAP_HANA|SFTP|OCEANBASE|CLICKHOUSE|KUDU|VERTICA|REDIS|COS|DLC|DLCV1|DORIS|CKAFKA|DTS_KAFKA|S3|CDW|LOCAL|TDSQLC|TDSQL|TDSQL_MYSQL|MONGODB|INFORMIX|SYBASE|REST_API|SuperSQL|PRESTO|DR_SUM|TiDB|StarRocks|Trino|Kyuubi|GDB|TCHOUSE_X|TCHOUSE_P|TDSQL_POSTGRE
         :type DataSourceType: str
         :param _Description: 节点描述
 注意：此字段可能返回 null，表示取不到有效值。
@@ -48513,17 +46991,17 @@ class IntegrationNodeInfo(AbstractModel):
         :param _NodeMapping: 节点映射
 注意：此字段可能返回 null，表示取不到有效值。
         :type NodeMapping: :class:`tencentcloud.wedata.v20210820.models.IntegrationNodeMapping`
-        :param _AppId: 应用id
+        :param _AppId: 归属用户AppId,展示字段 非传入
         :type AppId: str
         :param _ProjectId: 项目id
         :type ProjectId: str
-        :param _CreatorUin: 创建人uin
+        :param _CreatorUin: 创建人uin,展示字段 非传入
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatorUin: str
-        :param _OperatorUin: 操作人uin
+        :param _OperatorUin: 操作人uin，展示字段 非传入
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperatorUin: str
-        :param _OwnerUin: owner uin
+        :param _OwnerUin: owner uin 展示字段 非传入
         :type OwnerUin: str
         :param _CreateTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
@@ -48848,7 +47326,7 @@ class IntegrationNodeSchema(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: schema id
+        :param _Id: schema id 随机唯一
         :type Id: str
         :param _Name: schema名称
         :type Name: str
@@ -48962,9 +47440,9 @@ class IntegrationNodeSchemaMapping(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SourceSchemaId: 源schema id
+        :param _SourceSchemaId: 任务节点的源schema id
         :type SourceSchemaId: str
-        :param _SinkSchemaId: 目标schema id
+        :param _SinkSchemaId: 任务节点目标schema id
         :type SinkSchemaId: str
         """
         self._SourceSchemaId = None
@@ -49082,10 +47560,10 @@ class IntegrationTaskInfo(AbstractModel):
         :param _TaskId: 任务id
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param _ScheduleTaskId: 任务调度id(oceanus or us等作业id)
+        :param _ScheduleTaskId: 任务调度id(oceanus or us等作业id)，非填项
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleTaskId: str
-        :param _TaskGroupId: 任务组id
+        :param _TaskGroupId: inlong任务id
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskGroupId: str
         :param _ProjectId: 项目id
@@ -49103,7 +47581,7 @@ class IntegrationTaskInfo(AbstractModel):
         :param _AppId: 应用id
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: str
-        :param _Status: 任务状态1.初始化,2.操作中,3.运行中,4.暂停,5.任务停止中,6.停止,7.执行失败,8.已删除,9.已锁定,10.配置过期,11.提交中,12.提交成功,13.提交失败
+        :param _Status: 1:未开始|2:操作中|3:运行中|4:暂停|5:任务停止中|6:停止|7:执行失败|20:异常|21:未知|
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _Nodes: 节点列表
@@ -49124,7 +47602,7 @@ class IntegrationTaskInfo(AbstractModel):
         :param _Mappings: 节点映射
 注意：此字段可能返回 null，表示取不到有效值。
         :type Mappings: list of IntegrationNodeMapping
-        :param _TaskMode: 任务模式：1.画布模式，2.flink jar
+        :param _TaskMode: 任务配置模式，0:画布 1:表单 3:脚本
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskMode: str
         :param _Incharge: 责任人
@@ -49136,7 +47614,7 @@ class IntegrationTaskInfo(AbstractModel):
         :param _ExecutorGroupName: group name
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutorGroupName: str
-        :param _InLongManagerUrl: url
+        :param _InLongManagerUrl: inlong manager url
 注意：此字段可能返回 null，表示取不到有效值。
         :type InLongManagerUrl: str
         :param _InLongStreamId: stream id
@@ -49145,16 +47623,16 @@ class IntegrationTaskInfo(AbstractModel):
         :param _InLongManagerVersion: version
 注意：此字段可能返回 null，表示取不到有效值。
         :type InLongManagerVersion: str
-        :param _DataProxyUrl: dataproxy url
+        :param _DataProxyUrl: inlong dataproxy url
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataProxyUrl: list of str
         :param _Submit: 任务版本是否已提交运维
 注意：此字段可能返回 null，表示取不到有效值。
         :type Submit: bool
-        :param _InputDatasourceType: MYSQL
+        :param _InputDatasourceType: 数据源类型：MYSQL|POSTGRE|ORACLE|SQLSERVER|FTP|HIVE|HDFS|ICEBERG|KAFKA|HBASE|SPARK|VIRTUAL|TBASE|DB2|DM|GAUSSDB|GBASE|IMPALA|ES|S3_DATAINSIGHT|GREENPLUM|PHOENIX|SAP_HANA|SFTP|OCEANBASE|CLICKHOUSE|KUDU|VERTICA|REDIS|COS|DLC|DLCV1|DORIS|CKAFKA|DTS_KAFKA|S3|CDW|LOCAL|TDSQLC|TDSQL|TDSQL_MYSQL|MONGODB|INFORMIX|SYBASE|REST_API|SuperSQL|PRESTO|DR_SUM|TiDB|StarRocks|Trino|Kyuubi|GDB|TCHOUSE_X|TCHOUSE_P|TDSQL_POSTGRE
 注意：此字段可能返回 null，表示取不到有效值。
         :type InputDatasourceType: str
-        :param _OutputDatasourceType: DLC
+        :param _OutputDatasourceType: 数据源类型：MYSQL|POSTGRE|ORACLE|SQLSERVER|FTP|HIVE|HDFS|ICEBERG|KAFKA|HBASE|SPARK|VIRTUAL|TBASE|DB2|DM|GAUSSDB|GBASE|IMPALA|ES|S3_DATAINSIGHT|GREENPLUM|PHOENIX|SAP_HANA|SFTP|OCEANBASE|CLICKHOUSE|KUDU|VERTICA|REDIS|COS|DLC|DLCV1|DORIS|CKAFKA|DTS_KAFKA|S3|CDW|LOCAL|TDSQLC|TDSQL|TDSQL_MYSQL|MONGODB|INFORMIX|SYBASE|REST_API|SuperSQL|PRESTO|DR_SUM|TiDB|StarRocks|Trino|Kyuubi|GDB|TCHOUSE_X|TCHOUSE_P|TDSQL_POSTGRE
 注意：此字段可能返回 null，表示取不到有效值。
         :type OutputDatasourceType: str
         :param _NumRecordsIn: 读取条数
@@ -49196,13 +47674,13 @@ class IntegrationTaskInfo(AbstractModel):
         :param _TaskAlarmRegularList: 该任务关联的告警规则
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskAlarmRegularList: list of str
-        :param _SwitchResource: 资源分层情况： 0：进行中,1：成功 ,2：失败
+        :param _SwitchResource: 实时任务资源分层情况： 0：进行中,1：成功 ,2：失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type SwitchResource: int
-        :param _ReadPhase: 读取阶段：0：全部全量,1：部分全量,2：全部增量
+        :param _ReadPhase: 实时任务读取阶段：0：全部全量,1：部分全量,2：全部增量
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReadPhase: int
-        :param _InstanceVersion: 版本号
+        :param _InstanceVersion: 实时任务版本号
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceVersion: int
         :param _ArrangeSpaceTaskId: 离线任务导入到编排空间的任务id
@@ -55555,63 +54033,6 @@ class ModifyWorkflowScheduleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class Namespace(AbstractModel):
-    """命名空间
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Name: 名称
-        :type Name: str
-        :param _Status: 当前状态
-        :type Status: str
-        :param _CreatedAt: 创建时间
-        :type CreatedAt: str
-        """
-        self._Name = None
-        self._Status = None
-        self._CreatedAt = None
-
-    @property
-    def Name(self):
-        return self._Name
-
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
-
-    @property
-    def Status(self):
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def CreatedAt(self):
-        return self._CreatedAt
-
-    @CreatedAt.setter
-    def CreatedAt(self, CreatedAt):
-        self._CreatedAt = CreatedAt
-
-
-    def _deserialize(self, params):
-        self._Name = params.get("Name")
-        self._Status = params.get("Status")
-        self._CreatedAt = params.get("CreatedAt")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class OfflineInstance(AbstractModel):
     """离线实例
 
@@ -55619,10 +54040,10 @@ class OfflineInstance(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CreateUin: 创建账号
+        :param _CreateUin: 创建账号sub uin
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateUin: str
-        :param _OperatorUin: 操作账号
+        :param _OperatorUin: 操作账号sub uin
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperatorUin: str
         :param _OwnerUin: 主账号
@@ -55640,15 +54061,15 @@ class OfflineInstance(AbstractModel):
         :type CurRunDate: str
         :param _IssueId: 下发时间
         :type IssueId: str
-        :param _InlongTaskId: 资源组id
+        :param _InlongTaskId: 下发资源组id，非传入项
 注意：此字段可能返回 null，表示取不到有效值。
         :type InlongTaskId: str
         :param _ResourceGroup: 资源组
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceGroup: str
-        :param _TaskRunType: 实例类型
+        :param _TaskRunType: 任务类型(1 调试运行,2 调度执行)
         :type TaskRunType: int
-        :param _State: 实例状态
+        :param _State: 实例状态 EVENT_LISTENING|DEPENDENCE|BEFORE_ASPECT|ALLOCATED|LAUNCHED|KILL|SNAP_STATE_SAVING|ISSUED|RUNNING|AFTER_ASPECT|PENDING|KILLING|FINAL_STATE_SAVING|FAILED|KILL_FAILED| COMPLETED|EXPIRED|KILL_EXPIRED|DELETED
         :type State: str
         :param _StartTime: 开始时间
 注意：此字段可能返回 null，表示取不到有效值。
@@ -55857,19 +54278,19 @@ class OfflineTaskAddParam(AbstractModel):
         r"""
         :param _WorkflowName: 名称
         :type WorkflowName: str
-        :param _DependencyWorkflow: 依赖
+        :param _DependencyWorkflow: 依赖：yes、no
         :type DependencyWorkflow: str
-        :param _StartTime: 开始时间
+        :param _StartTime: 任务开始数据时间。非空。默认当前时间
         :type StartTime: str
-        :param _EndTime: 结束时间
+        :param _EndTime: 任务结束数据时间。非空。默认当前时间
         :type EndTime: str
-        :param _CycleType: 周期
+        :param _CycleType: 周期类型。一次性任务:6、分钟任务：1、小时任务：2、天任务：3、周任务：4、月任务：5、crontab任务：0
         :type CycleType: int
-        :param _CycleStep: 周期间隔
+        :param _CycleStep: 间隔，可选，默认1。非空。默认 1
         :type CycleStep: int
-        :param _DelayTime: 延迟时间
+        :param _DelayTime: 延时执行时间，单位分钟
         :type DelayTime: int
-        :param _CrontabExpression: crontab
+        :param _CrontabExpression: 任务cron表达式，仅cron任务使用，其他时候默认为空
 注意：此字段可能返回 null，表示取不到有效值。
         :type CrontabExpression: str
         :param _RetryWait: 重试等待
@@ -55886,7 +54307,7 @@ class OfflineTaskAddParam(AbstractModel):
 2 无序串行 一次一个，不排队 serial  
 3 并行 一次多个 parallel
         :type SelfDepend: int
-        :param _TaskAction: 周任务：1是周天，2是周1，7是周6 。
+        :param _TaskAction: 时间指定，如月任务指定1，3号，则填入 1，3。非空。默认 ""
 月任务：如具体1，3号则写 "1,3"，指定月末不可和具体号数一起输入，仅能为 "L"
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskAction: str
@@ -55899,7 +54320,7 @@ class OfflineTaskAddParam(AbstractModel):
         :param _TaskAutoSubmit: 是否自动提交
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskAutoSubmit: bool
-        :param _InstanceInitStrategy: 实例初始化策略
+        :param _InstanceInitStrategy: 实例生成方式，T_PLUS_0 当天任务当天调度 / T_PLUS_1 当天任务后一天调度
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceInitStrategy: str
         """
@@ -58613,15 +57034,15 @@ class RealTimeTaskSpeed(AbstractModel):
 
 
 class RecordField(AbstractModel):
-    """通用记录字段
+    """通用记录字段，与服务端约定传入合法的键值对
 
     """
 
     def __init__(self):
         r"""
-        :param _Name: 字段名称
+        :param _Name: 字段名称，拓展字段名称
         :type Name: str
-        :param _Value: 字段值
+        :param _Value: 字段值，拓展字段值
         :type Value: str
         """
         self._Name = None
@@ -59900,76 +58321,6 @@ class ResourcePathTree(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
-
-
-class RestartInLongAgentRequest(AbstractModel):
-    """RestartInLongAgent请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _AgentId: 采集器ID
-        :type AgentId: str
-        :param _ProjectId: WeData项目ID
-        :type ProjectId: str
-        """
-        self._AgentId = None
-        self._ProjectId = None
-
-    @property
-    def AgentId(self):
-        return self._AgentId
-
-    @AgentId.setter
-    def AgentId(self, AgentId):
-        self._AgentId = AgentId
-
-    @property
-    def ProjectId(self):
-        return self._ProjectId
-
-    @ProjectId.setter
-    def ProjectId(self, ProjectId):
-        self._ProjectId = ProjectId
-
-
-    def _deserialize(self, params):
-        self._AgentId = params.get("AgentId")
-        self._ProjectId = params.get("ProjectId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class RestartInLongAgentResponse(AbstractModel):
-    """RestartInLongAgent返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
 
 
 class ResumeIntegrationTaskRequest(AbstractModel):
@@ -71921,7 +70272,7 @@ class TaskAlarmInfo(AbstractModel):
         :type AlarmWay: str
         :param _TaskType: 任务类型(201表示实时，202表示离线)
         :type TaskType: int
-        :param _Id: 主键ID
+        :param _Id: ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
         :param _RegularId: 规则ID
@@ -80704,100 +79055,6 @@ class UnlockIntegrationTaskResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Data = params.get("Data")
-        self._RequestId = params.get("RequestId")
-
-
-class UpdateInLongAgentRequest(AbstractModel):
-    """UpdateInLongAgent请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _AgentId: 采集器ID
-        :type AgentId: str
-        :param _ProjectId: WeData项目ID
-        :type ProjectId: str
-        :param _AgentName: 采集器名称
-        :type AgentName: str
-        :param _ExecutorGroupId: 集成资源组ID
-        :type ExecutorGroupId: str
-        """
-        self._AgentId = None
-        self._ProjectId = None
-        self._AgentName = None
-        self._ExecutorGroupId = None
-
-    @property
-    def AgentId(self):
-        return self._AgentId
-
-    @AgentId.setter
-    def AgentId(self, AgentId):
-        self._AgentId = AgentId
-
-    @property
-    def ProjectId(self):
-        return self._ProjectId
-
-    @ProjectId.setter
-    def ProjectId(self, ProjectId):
-        self._ProjectId = ProjectId
-
-    @property
-    def AgentName(self):
-        return self._AgentName
-
-    @AgentName.setter
-    def AgentName(self, AgentName):
-        self._AgentName = AgentName
-
-    @property
-    def ExecutorGroupId(self):
-        return self._ExecutorGroupId
-
-    @ExecutorGroupId.setter
-    def ExecutorGroupId(self, ExecutorGroupId):
-        self._ExecutorGroupId = ExecutorGroupId
-
-
-    def _deserialize(self, params):
-        self._AgentId = params.get("AgentId")
-        self._ProjectId = params.get("ProjectId")
-        self._AgentName = params.get("AgentName")
-        self._ExecutorGroupId = params.get("ExecutorGroupId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class UpdateInLongAgentResponse(AbstractModel):
-    """UpdateInLongAgent返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

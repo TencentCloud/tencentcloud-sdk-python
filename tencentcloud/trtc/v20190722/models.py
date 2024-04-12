@@ -4706,6 +4706,63 @@ class McuAudioParams(AbstractModel):
         
 
 
+class McuBackgroundCustomRender(AbstractModel):
+    """混流自定义渲染参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Width: 自定义渲染画面的宽度，单位为像素值，需大于0，且不能超过子布局的宽。
+        :type Width: int
+        :param _Height: 自定义渲染画面的高度，单位为像素值，需大于0，且不能超过子布局的高。
+        :type Height: int
+        :param _Radius: 自定义渲染画面的圆角半径，单位为像素值，不能超过渲染画面Width和Height最小值的一半，不指定默认为0，表示直角。
+        :type Radius: int
+        """
+        self._Width = None
+        self._Height = None
+        self._Radius = None
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def Radius(self):
+        return self._Radius
+
+    @Radius.setter
+    def Radius(self, Radius):
+        self._Radius = Radius
+
+
+    def _deserialize(self, params):
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._Radius = params.get("Radius")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class McuCustomCrop(AbstractModel):
     """混流自定义裁剪参数
 
@@ -4879,11 +4936,13 @@ class McuLayout(AbstractModel):
         :type BackgroundImageUrl: str
         :param _CustomCrop: 客户自定义裁剪，针对原始输入流裁剪
         :type CustomCrop: :class:`tencentcloud.trtc.v20190722.models.McuCustomCrop`
-        :param _BackgroundRenderMode: 子背景图在输出时的显示模式：0为裁剪，1为缩放并显示背景，2为缩放并显示黑底，3为变比例伸缩。不填默认为3。
+        :param _BackgroundRenderMode: 子背景图在输出时的显示模式：0为裁剪，1为缩放并显示背景，2为缩放并显示黑底，3为变比例伸缩，4为自定义渲染。不填默认为3。
         :type BackgroundRenderMode: int
         :param _TransparentUrl: 子画面的透明模版url，指向一张包含透明通道的模板图片。填写该参数，后台混流时会提取该模板图片的透明通道，将其缩放作为目标画面的透明通道，再和其他画面进行混合。您可以通过透明模版实现目标画面的半透明效果和任意形状裁剪（如圆角、星形、心形等）。 支持png格式。图片大小限制不超过5MB。
 注：1，模板图片宽高比应接近目标画面宽高比，以避免缩放适配目标画面时出现模板效果变形；2，透明模版只有RenderMode为0（裁剪）时才生效；3，您需要确保图片链接的可访问性，后台单次下载超时时间为10秒，最多重试3次，若最终图片下载失败，透明模版将不会生效。
         :type TransparentUrl: str
+        :param _BackgroundCustomRender: 子背景图的自定义渲染参数，当BackgroundRenderMode为4时必须配置。
+        :type BackgroundCustomRender: :class:`tencentcloud.trtc.v20190722.models.McuBackgroundCustomRender`
         """
         self._UserMediaStream = None
         self._ImageWidth = None
@@ -4897,6 +4956,7 @@ class McuLayout(AbstractModel):
         self._CustomCrop = None
         self._BackgroundRenderMode = None
         self._TransparentUrl = None
+        self._BackgroundCustomRender = None
 
     @property
     def UserMediaStream(self):
@@ -4994,6 +5054,14 @@ class McuLayout(AbstractModel):
     def TransparentUrl(self, TransparentUrl):
         self._TransparentUrl = TransparentUrl
 
+    @property
+    def BackgroundCustomRender(self):
+        return self._BackgroundCustomRender
+
+    @BackgroundCustomRender.setter
+    def BackgroundCustomRender(self, BackgroundCustomRender):
+        self._BackgroundCustomRender = BackgroundCustomRender
+
 
     def _deserialize(self, params):
         if params.get("UserMediaStream") is not None:
@@ -5012,6 +5080,9 @@ class McuLayout(AbstractModel):
             self._CustomCrop._deserialize(params.get("CustomCrop"))
         self._BackgroundRenderMode = params.get("BackgroundRenderMode")
         self._TransparentUrl = params.get("TransparentUrl")
+        if params.get("BackgroundCustomRender") is not None:
+            self._BackgroundCustomRender = McuBackgroundCustomRender()
+            self._BackgroundCustomRender._deserialize(params.get("BackgroundCustomRender"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

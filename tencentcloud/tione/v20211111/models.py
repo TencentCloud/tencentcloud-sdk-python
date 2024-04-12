@@ -4009,7 +4009,7 @@ POSTPAID_BY_HOUR 按量计费
         :type ImageInfo: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
         :param _CodePackagePath: COS代码包路径
         :type CodePackagePath: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
-        :param _StartCmdInfo: 启动命令信息，默认为sh start.sh
+        :param _StartCmdInfo: 任务的启动命令，按任务训练模式输入，如遇特殊字符导致配置失败，可使用EncodedStartCmdInfo参数
         :type StartCmdInfo: :class:`tencentcloud.tione.v20211111.models.StartCmdInfo`
         :param _TrainingMode: 训练模式，通过DescribeTrainingFrameworks接口查询，eg：PS_WORKER、DDP、MPI、HOROVOD
         :type TrainingMode: str
@@ -4035,6 +4035,8 @@ POSTPAID_BY_HOUR 按量计费
         :type CallbackUrl: str
         :param _PreTrainModel: 太极预训练模型ID
         :type PreTrainModel: :class:`tencentcloud.tione.v20211111.models.PreTrainModel`
+        :param _EncodedStartCmdInfo: 编码后的任务启动命令，与StartCmdInfo同时配置时，仅当前参数生效
+        :type EncodedStartCmdInfo: :class:`tencentcloud.tione.v20211111.models.EncodedStartCmdInfo`
         """
         self._Name = None
         self._ChargeType = None
@@ -4059,6 +4061,7 @@ POSTPAID_BY_HOUR 按量计费
         self._DataSource = None
         self._CallbackUrl = None
         self._PreTrainModel = None
+        self._EncodedStartCmdInfo = None
 
     @property
     def Name(self):
@@ -4244,6 +4247,14 @@ POSTPAID_BY_HOUR 按量计费
     def PreTrainModel(self, PreTrainModel):
         self._PreTrainModel = PreTrainModel
 
+    @property
+    def EncodedStartCmdInfo(self):
+        return self._EncodedStartCmdInfo
+
+    @EncodedStartCmdInfo.setter
+    def EncodedStartCmdInfo(self, EncodedStartCmdInfo):
+        self._EncodedStartCmdInfo = EncodedStartCmdInfo
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -4296,6 +4307,9 @@ POSTPAID_BY_HOUR 按量计费
         if params.get("PreTrainModel") is not None:
             self._PreTrainModel = PreTrainModel()
             self._PreTrainModel._deserialize(params.get("PreTrainModel"))
+        if params.get("EncodedStartCmdInfo") is not None:
+            self._EncodedStartCmdInfo = EncodedStartCmdInfo()
+            self._EncodedStartCmdInfo._deserialize(params.get("EncodedStartCmdInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11255,6 +11269,39 @@ class DetectionLabelInfo(AbstractModel):
                 self._Points.append(obj)
         self._Labels = params.get("Labels")
         self._FrameType = params.get("FrameType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EncodedStartCmdInfo(AbstractModel):
+    """编码后的启动命令信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartCmdInfo: 任务的启动命令，以base64格式输入，注意转换时需要完整输入{"StartCmd":"","PsStartCmd":"","WorkerStartCmd":""}
+        :type StartCmdInfo: str
+        """
+        self._StartCmdInfo = None
+
+    @property
+    def StartCmdInfo(self):
+        return self._StartCmdInfo
+
+    @StartCmdInfo.setter
+    def StartCmdInfo(self, StartCmdInfo):
+        self._StartCmdInfo = StartCmdInfo
+
+
+    def _deserialize(self, params):
+        self._StartCmdInfo = params.get("StartCmdInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
