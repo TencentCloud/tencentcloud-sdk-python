@@ -249,10 +249,9 @@ class ApproverInfo(AbstractModel):
         :param _NotifyType: 通知签署方经办人的方式,  有以下途径:
 <ul><li>  **sms**  :  (默认)短信</li>
 <li>   **none**   : 不通知</li></ul>
-```
+
 注意：
-如果使用的是通过文件发起合同（CreateFlowByFiles），NotifyType必须 是 sms 才会发送短信
-```
+`如果使用的是通过文件发起合同（CreateFlowByFiles），NotifyType必须 是 sms 才会发送短信`
         :type NotifyType: str
         :param _ApproverRole: 收据场景设置签署人角色类型, 可以设置如下****类型****:
 <ul><li> **1**  :收款人</li>
@@ -1018,7 +1017,7 @@ class AutoSignConfig(AbstractModel):
 <li>**贵方原生App -> 腾讯电子签H5 -> 贵方原生App** : JumpUrl格式: qianapp://YOUR_CUSTOM_URL，只需满足 qianapp:// 开头的URL即可。`APP实现方，需要拦截Webview地址跳转，发现url是qianapp:// 开头时跳转到原生页面。`APP拦截地址跳转可参考：<a href='https://stackoverflow.com/questions/41693263/android-webview-err-unknown-url-scheme'>Android</a>，<a href='https://razorpay.com/docs/payments/payment-gateway/web-integration/standard/webview/upi-intent-ios/'>IOS</a> </li></ul>
 
 成功结果返回：
-若贵方需要在跳转回时通过链接query参数提示开通成功，JumpUrl中的query应携带如下参数：`appendResult=qian`。这样腾讯电子签H5会在跳转回的url后面会添加query参数提示贵方签署成功，比如 qianapp://YOUR_CUSTOM_URL?action=sign&result=success&from=tencent_ess
+若贵方需要在跳转回时通过链接query参数提示开通成功，JumpUrl中的query应携带如下参数：`appendResult=qian`。这样腾讯电子签H5会在跳转回的url后面会添加query参数提示贵方签署成功，例如： qianapp://YOUR_CUSTOM_URL?action=sign&result=success&from=tencent_ess
         :type JumpUrl: str
         """
         self._UserInfo = None
@@ -2689,6 +2688,148 @@ class CreateBatchCancelFlowUrlResponse(AbstractModel):
         self._FailMessages = params.get("FailMessages")
         self._UrlExpireOn = params.get("UrlExpireOn")
         self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateBatchOrganizationRegistrationTasksRequest(AbstractModel):
+    """CreateBatchOrganizationRegistrationTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _RegistrationOrganizations: 组织机构注册信息。
+一次最多支持10条认证流
+        :type RegistrationOrganizations: list of RegistrationOrganizationInfo
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _Endpoint: 要生成链接的类型, 可以选择的值如下: 
+
+<ul>
+<li>(默认)PC: 生成PC端的链接</li>
+<li>SHORT_URL: H5跳转到电子签小程序链接的短链形式, 一般用于发送短信中带的链接, 打开后进入腾讯电子签小程序</li>
+<li>APP：生成小程序跳转链接</li>
+<li>H5：生成H5跳转长链接</li>
+<li>SHORT_H5：生成H5跳转短链</li>
+</ul>
+        :type Endpoint: str
+        """
+        self._Operator = None
+        self._RegistrationOrganizations = None
+        self._Agent = None
+        self._Endpoint = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def RegistrationOrganizations(self):
+        return self._RegistrationOrganizations
+
+    @RegistrationOrganizations.setter
+    def RegistrationOrganizations(self, RegistrationOrganizations):
+        self._RegistrationOrganizations = RegistrationOrganizations
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def Endpoint(self):
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        if params.get("RegistrationOrganizations") is not None:
+            self._RegistrationOrganizations = []
+            for item in params.get("RegistrationOrganizations"):
+                obj = RegistrationOrganizationInfo()
+                obj._deserialize(item)
+                self._RegistrationOrganizations.append(obj)
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._Endpoint = params.get("Endpoint")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBatchOrganizationRegistrationTasksResponse(AbstractModel):
+    """CreateBatchOrganizationRegistrationTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 生成注册链接的任务Id，
+根据这个id， 调用DescribeBatchOrganizationRegistrationUrls 获取生成的链接，进入认证流程
+        :type TaskId: str
+        :param _ErrorMessages: 批量生成企业认证链接的详细错误信息，
+顺序与输入参数保持一致。
+若企业认证均成功生成，则不返回错误信息；
+若存在任何错误，则返回具体的错误描述。
+        :type ErrorMessages: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._ErrorMessages = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def ErrorMessages(self):
+        return self._ErrorMessages
+
+    @ErrorMessages.setter
+    def ErrorMessages(self, ErrorMessages):
+        self._ErrorMessages = ErrorMessages
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._ErrorMessages = params.get("ErrorMessages")
         self._RequestId = params.get("RequestId")
 
 
@@ -6903,6 +7044,37 @@ class CreateMultiFlowSignQRCodeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateOrganizationAuthUrlRequest(AbstractModel):
+    """CreateOrganizationAuthUrl请求参数结构体
+
+    """
+
+
+class CreateOrganizationAuthUrlResponse(AbstractModel):
+    """CreateOrganizationAuthUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateOrganizationBatchSignUrlRequest(AbstractModel):
     """CreateOrganizationBatchSignUrl请求参数结构体
 
@@ -6934,6 +7106,10 @@ UserId必须是传入合同（FlowId）中的签署人。
         :param _Mobile: 员工手机号，必须与姓名一起使用。
  如果UserId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。
         :type Mobile: str
+        :param _RecipientIds: 为签署方经办人在签署合同中的参与方ID，必须与参数FlowIds数组一一对应。
+您可以通过查询合同接口（DescribeFlowInfo）查询此参数。
+若传了此参数，则可以不传 UserId, Name, Mobile等参数
+        :type RecipientIds: list of str
         """
         self._Operator = None
         self._FlowIds = None
@@ -6941,6 +7117,7 @@ UserId必须是传入合同（FlowId）中的签署人。
         self._UserId = None
         self._Name = None
         self._Mobile = None
+        self._RecipientIds = None
 
     @property
     def Operator(self):
@@ -6990,6 +7167,14 @@ UserId必须是传入合同（FlowId）中的签署人。
     def Mobile(self, Mobile):
         self._Mobile = Mobile
 
+    @property
+    def RecipientIds(self):
+        return self._RecipientIds
+
+    @RecipientIds.setter
+    def RecipientIds(self, RecipientIds):
+        self._RecipientIds = RecipientIds
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -7002,6 +7187,7 @@ UserId必须是传入合同（FlowId）中的签署人。
         self._UserId = params.get("UserId")
         self._Name = params.get("Name")
         self._Mobile = params.get("Mobile")
+        self._RecipientIds = params.get("RecipientIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14742,7 +14928,7 @@ class FlowCreateApprover(AbstractModel):
         :type ApproverIdCardNumber: str
         :param _RecipientId: 签署方经办人在模板中配置的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。
 
-<b>模板发起合同时，该参数为必填项，可以通过[查询模版信息接口](https://qian.tencent.com/developers/companyApis/templatesAndFiles/DescribeFlowTemplates)获得。</b>
+<b>模板发起合同时，该参数为必填项，可以通过[查询模板信息接口](https://qian.tencent.com/developers/companyApis/templatesAndFiles/DescribeFlowTemplates)获得。</b>
 <b>文件发起合同时，该参数无需传值。</b>
 
 如果开发者后续用合同模板发起合同，建议保存此值，在用合同模板发起合同中需此值绑定对应的签署经办人 。
@@ -18902,6 +19088,169 @@ class RegisterInfo(AbstractModel):
         self._LegalName = params.get("LegalName")
         self._Uscc = params.get("Uscc")
         self._UnifiedSocialCreditCode = params.get("UnifiedSocialCreditCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RegistrationOrganizationInfo(AbstractModel):
+    """企业认证信息参数， 需要保证这些参数跟营业执照中的信息一致。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrganizationName: 组织机构名称。
+请确认该名称与企业营业执照中注册的名称一致。
+如果名称中包含英文括号()，请使用中文括号（）代替。
+        :type OrganizationName: str
+        :param _UniformSocialCreditCode: 组织机构企业统一社会信用代码。
+请确认该企业统一社会信用代码与企业营业执照中注册的统一社会信用代码一致。
+        :type UniformSocialCreditCode: str
+        :param _LegalName: 组织机构法人的姓名。
+请确认该企业统一社会信用代码与企业营业执照中注册的法人姓名一致。
+        :type LegalName: str
+        :param _Address: 组织机构企业注册地址。
+请确认该企业注册地址与企业营业执照中注册的地址一致。
+        :type Address: str
+        :param _AdminName: 组织机构超管姓名。
+在注册流程中，必须是超管本人进行操作。
+如果法人做为超管管理组织机构,超管姓名就是法人姓名
+        :type AdminName: str
+        :param _AdminMobile: 组织机构超管姓名。
+在注册流程中，这个手机号必须跟操作人在电子签注册的个人手机号一致。
+        :type AdminMobile: str
+        :param _AuthorizationTypes: 可选的此企业允许的授权方式, 可以设置的方式有:
+1：上传授权书
+2：法人授权超管
+5：授权书+对公打款
+
+
+注:
+`1. 当前仅支持一种认证方式`
+`2. 如果当前的企业类型是政府/事业单位, 则只支持上传授权书+对公打款`
+`3. 如果当前操作人是法人,则是法人认证`
+        :type AuthorizationTypes: list of int non-negative
+        :param _AdminIdCardNumber: 认证人身份证号
+        :type AdminIdCardNumber: str
+        :param _AdminIdCardType: 认证人证件类型 
+支持以下类型
+<ul><li>ID_CARD : 居民身份证  (默认值)</li>
+<li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
+<li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
+
+        :type AdminIdCardType: str
+        :param _BusinessLicense: 营业执照正面照(PNG或JPG) base64格式, 大小不超过5M
+        :type BusinessLicense: str
+        """
+        self._OrganizationName = None
+        self._UniformSocialCreditCode = None
+        self._LegalName = None
+        self._Address = None
+        self._AdminName = None
+        self._AdminMobile = None
+        self._AuthorizationTypes = None
+        self._AdminIdCardNumber = None
+        self._AdminIdCardType = None
+        self._BusinessLicense = None
+
+    @property
+    def OrganizationName(self):
+        return self._OrganizationName
+
+    @OrganizationName.setter
+    def OrganizationName(self, OrganizationName):
+        self._OrganizationName = OrganizationName
+
+    @property
+    def UniformSocialCreditCode(self):
+        return self._UniformSocialCreditCode
+
+    @UniformSocialCreditCode.setter
+    def UniformSocialCreditCode(self, UniformSocialCreditCode):
+        self._UniformSocialCreditCode = UniformSocialCreditCode
+
+    @property
+    def LegalName(self):
+        return self._LegalName
+
+    @LegalName.setter
+    def LegalName(self, LegalName):
+        self._LegalName = LegalName
+
+    @property
+    def Address(self):
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def AdminName(self):
+        return self._AdminName
+
+    @AdminName.setter
+    def AdminName(self, AdminName):
+        self._AdminName = AdminName
+
+    @property
+    def AdminMobile(self):
+        return self._AdminMobile
+
+    @AdminMobile.setter
+    def AdminMobile(self, AdminMobile):
+        self._AdminMobile = AdminMobile
+
+    @property
+    def AuthorizationTypes(self):
+        return self._AuthorizationTypes
+
+    @AuthorizationTypes.setter
+    def AuthorizationTypes(self, AuthorizationTypes):
+        self._AuthorizationTypes = AuthorizationTypes
+
+    @property
+    def AdminIdCardNumber(self):
+        return self._AdminIdCardNumber
+
+    @AdminIdCardNumber.setter
+    def AdminIdCardNumber(self, AdminIdCardNumber):
+        self._AdminIdCardNumber = AdminIdCardNumber
+
+    @property
+    def AdminIdCardType(self):
+        return self._AdminIdCardType
+
+    @AdminIdCardType.setter
+    def AdminIdCardType(self, AdminIdCardType):
+        self._AdminIdCardType = AdminIdCardType
+
+    @property
+    def BusinessLicense(self):
+        return self._BusinessLicense
+
+    @BusinessLicense.setter
+    def BusinessLicense(self, BusinessLicense):
+        self._BusinessLicense = BusinessLicense
+
+
+    def _deserialize(self, params):
+        self._OrganizationName = params.get("OrganizationName")
+        self._UniformSocialCreditCode = params.get("UniformSocialCreditCode")
+        self._LegalName = params.get("LegalName")
+        self._Address = params.get("Address")
+        self._AdminName = params.get("AdminName")
+        self._AdminMobile = params.get("AdminMobile")
+        self._AuthorizationTypes = params.get("AuthorizationTypes")
+        self._AdminIdCardNumber = params.get("AdminIdCardNumber")
+        self._AdminIdCardType = params.get("AdminIdCardType")
+        self._BusinessLicense = params.get("BusinessLicense")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -49,6 +49,29 @@ class DomainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BidPreDomains(self, request):
+        """用户合作商预释放出价
+
+        :param request: Request instance for BidPreDomains.
+        :type request: :class:`tencentcloud.domain.v20180808.models.BidPreDomainsRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.BidPreDomainsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BidPreDomains", params, headers=headers)
+            response = json.loads(body)
+            model = models.BidPreDomainsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CheckBatchStatus(self, request):
         """本接口 ( CheckBatchStatus ) 用于查询批量操作日志状态 。
 
@@ -500,6 +523,29 @@ class DomainClient(AbstractClient):
             body = self.call("DescribePreDomainList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribePreDomainListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeReservedBidInfo(self, request):
+        """接口用于获取合作商竞价过程中竞价详情数据
+
+        :param request: Request instance for DescribeReservedBidInfo.
+        :type request: :class:`tencentcloud.domain.v20180808.models.DescribeReservedBidInfoRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.DescribeReservedBidInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeReservedBidInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeReservedBidInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

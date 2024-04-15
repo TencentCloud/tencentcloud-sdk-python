@@ -215,6 +215,9 @@ INVALIDPARAMETERVALUE_SECURITYGROUPIDISILLEGAL = 'InvalidParameterValue.Security
 # 数据库超过限制。
 LIMITEXCEEDED_TOOMANYDB = 'LimitExceeded.TooManyDB'
 
+# 缺少参数错误。
+MISSINGPARAMETER = 'MissingParameter'
+
 # 已经存在一个准备启动的增量导入任务。
 RESOURCEINUSE_INCREMENTALMIGRATIONEXIST = 'ResourceInUse.IncrementalMigrationExist'
 

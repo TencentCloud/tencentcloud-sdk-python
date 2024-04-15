@@ -1912,6 +1912,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRestoreTimeRange(self, request):
+        """本接口(DescribeRestoreTimeRange)用于查询按照时间点可回档的时间范围。
+
+        :param request: Request instance for DescribeRestoreTimeRange.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeRestoreTimeRangeRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeRestoreTimeRangeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRestoreTimeRange", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRestoreTimeRangeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRollbackTime(self, request):
         """本接口（DescribeRollbackTime）用于查询实例可回档时间范围
 

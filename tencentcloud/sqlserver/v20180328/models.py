@@ -14798,6 +14798,100 @@ class DescribeRestoreTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRestoreTimeRangeRequest(AbstractModel):
+    """DescribeRestoreTimeRange请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _TargetInstanceId: 回档的目标实例ID，不填默认回档到原实例
+        :type TargetInstanceId: str
+        """
+        self._InstanceId = None
+        self._TargetInstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def TargetInstanceId(self):
+        return self._TargetInstanceId
+
+    @TargetInstanceId.setter
+    def TargetInstanceId(self, TargetInstanceId):
+        self._TargetInstanceId = TargetInstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._TargetInstanceId = params.get("TargetInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRestoreTimeRangeResponse(AbstractModel):
+    """DescribeRestoreTimeRange返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MinTime: 按照时间点可回档的最小时间
+        :type MinTime: str
+        :param _MaxTime: 按照时间点可回档的最大时间
+        :type MaxTime: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MinTime = None
+        self._MaxTime = None
+        self._RequestId = None
+
+    @property
+    def MinTime(self):
+        return self._MinTime
+
+    @MinTime.setter
+    def MinTime(self, MinTime):
+        self._MinTime = MinTime
+
+    @property
+    def MaxTime(self):
+        return self._MaxTime
+
+    @MaxTime.setter
+    def MaxTime(self, MaxTime):
+        self._MaxTime = MaxTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._MinTime = params.get("MinTime")
+        self._MaxTime = params.get("MaxTime")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRollbackTimeRequest(AbstractModel):
     """DescribeRollbackTime请求参数结构体
 

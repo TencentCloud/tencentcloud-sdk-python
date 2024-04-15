@@ -171,6 +171,76 @@ class BatchStatus(AbstractModel):
         
 
 
+class BidPreDomainsRequest(AbstractModel):
+    """BidPreDomains请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BusinessId: 业务ID
+        :type BusinessId: str
+        :param _Price: 价格
+        :type Price: int
+        """
+        self._BusinessId = None
+        self._Price = None
+
+    @property
+    def BusinessId(self):
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+    @property
+    def Price(self):
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+
+    def _deserialize(self, params):
+        self._BusinessId = params.get("BusinessId")
+        self._Price = params.get("Price")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BidPreDomainsResponse(AbstractModel):
+    """BidPreDomains返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CertificateInfo(AbstractModel):
     """认证资料信息
 
@@ -2620,6 +2690,118 @@ class DescribePreDomainListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeReservedBidInfoRequest(AbstractModel):
+    """DescribeReservedBidInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BusinessId: 业务ID
+        :type BusinessId: str
+        """
+        self._BusinessId = None
+
+    @property
+    def BusinessId(self):
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+
+    def _deserialize(self, params):
+        self._BusinessId = params.get("BusinessId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeReservedBidInfoResponse(AbstractModel):
+    """DescribeReservedBidInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UpPrice: 竞价领先价格
+        :type UpPrice: int
+        :param _Price: 请求用户当前价格
+        :type Price: int
+        :param _UpUser: 领先用户
+        :type UpUser: str
+        :param _BidList: 竞价详细数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BidList: list of ReserveBidInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._UpPrice = None
+        self._Price = None
+        self._UpUser = None
+        self._BidList = None
+        self._RequestId = None
+
+    @property
+    def UpPrice(self):
+        return self._UpPrice
+
+    @UpPrice.setter
+    def UpPrice(self, UpPrice):
+        self._UpPrice = UpPrice
+
+    @property
+    def Price(self):
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def UpUser(self):
+        return self._UpUser
+
+    @UpUser.setter
+    def UpUser(self, UpUser):
+        self._UpUser = UpUser
+
+    @property
+    def BidList(self):
+        return self._BidList
+
+    @BidList.setter
+    def BidList(self, BidList):
+        self._BidList = BidList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._UpPrice = params.get("UpPrice")
+        self._Price = params.get("Price")
+        self._UpUser = params.get("UpUser")
+        if params.get("BidList") is not None:
+            self._BidList = []
+            for item in params.get("BidList"):
+                obj = ReserveBidInfo()
+                obj._deserialize(item)
+                self._BidList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeReservedPreDomainInfoRequest(AbstractModel):
     """DescribeReservedPreDomainInfo请求参数结构体
 
@@ -2629,7 +2811,7 @@ class DescribeReservedPreDomainInfoRequest(AbstractModel):
         r"""
         :param _DomainList: 域名,每次最多支持500条域名查询
         :type DomainList: list of str
-        :param _ReservedStatus: 状态，用于筛选，可不填写(1. 预定成功 2. 预定失败（预定失败Reason字段将会被赋值）3. 域名交割中 4. 域名交割完成)
+        :param _ReservedStatus: 状态，用于筛选，可不填写(1. 成功 2. 失败（失败Reason字段将会被赋值）3. 域名交割中 4. 域名交割完成 5. 预约 6. 竞价)
         :type ReservedStatus: int
         :param _ReservedTimeSort: 根据预约时间排序，仅支持："desc","asc"。
         :type ReservedTimeSort: str
@@ -4636,6 +4818,79 @@ class RenewDomainBatchResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ReserveBidInfo(AbstractModel):
+    """合作商竞价详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _User: 用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :type User: str
+        :param _Price: 出价
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Price: int
+        :param _BidTime: 出价时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BidTime: str
+        :param _BidStatus: 当前状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BidStatus: str
+        """
+        self._User = None
+        self._Price = None
+        self._BidTime = None
+        self._BidStatus = None
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Price(self):
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def BidTime(self):
+        return self._BidTime
+
+    @BidTime.setter
+    def BidTime(self, BidTime):
+        self._BidTime = BidTime
+
+    @property
+    def BidStatus(self):
+        return self._BidStatus
+
+    @BidStatus.setter
+    def BidStatus(self, BidStatus):
+        self._BidStatus = BidStatus
+
+
+    def _deserialize(self, params):
+        self._User = params.get("User")
+        self._Price = params.get("Price")
+        self._BidTime = params.get("BidTime")
+        self._BidStatus = params.get("BidStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ReservedDomainInfo(AbstractModel):
     """查询预释放预约列表域名详情
 
@@ -4755,6 +5010,9 @@ class ReservedPreDomainInfo(AbstractModel):
         :param _ResourceId: 资源ID，用于删除资源信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
+        :param _BusinessId: 业务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessId: str
         """
         self._Domain = None
         self._ReservedStatus = None
@@ -4763,6 +5021,7 @@ class ReservedPreDomainInfo(AbstractModel):
         self._RegTime = None
         self._ExpireTime = None
         self._ResourceId = None
+        self._BusinessId = None
 
     @property
     def Domain(self):
@@ -4820,6 +5079,14 @@ class ReservedPreDomainInfo(AbstractModel):
     def ResourceId(self, ResourceId):
         self._ResourceId = ResourceId
 
+    @property
+    def BusinessId(self):
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -4829,6 +5096,7 @@ class ReservedPreDomainInfo(AbstractModel):
         self._RegTime = params.get("RegTime")
         self._ExpireTime = params.get("ExpireTime")
         self._ResourceId = params.get("ResourceId")
+        self._BusinessId = params.get("BusinessId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

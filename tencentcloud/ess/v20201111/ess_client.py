@@ -178,6 +178,51 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateBatchOrganizationRegistrationTasks(self, request):
+        """本接口（CreateBatchOrganizationRegistrationTasks）用于批量创建企业认证链接
+        该接口为异步提交任务接口,需要跟查询企业批量认证链接(DescribeBatchOrganizationRegistrationUrls) 配合使用.
+
+        批量创建链接有以下限制：
+
+        1. 单次最多创建10个企业。
+        2. 一天同一家企业最多创建8000家企业。
+        3. 同一批创建的企业不能重复 其中包括 企业名称，企业统一信用代码
+        4. 跳转到小程序的实现，参考微信官方文档（分为全屏、半屏两种方式），如何配置也可以请参考: 跳转电子签小程序配置
+
+        注：
+
+        1. **此接口需要购买单独的实名套餐包方可调用，如有需求请联系对接人员评估**
+
+        2. 如果生成的链接是APP链接，跳转到小程序的实现，参考微信官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式），如何配置也可以请参考: <a href="https://qian.tencent.com/developers/company/openwxminiprogram">跳转电子签小程序配置</a>
+
+
+        **腾讯电子签小程序的AppID 和 原始Id如下:**
+
+        | 小程序 | AppID | 原始ID |
+        | --- | --- | --- |
+        | 腾讯电子签（正式版） | wxa023b292fd19d41d | gh_da88f6188665 |
+        | 腾讯电子签Demo | wx371151823f6f3edf | gh_39a5d3de69fa |
+
+        :param request: Request instance for CreateBatchOrganizationRegistrationTasks.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateBatchOrganizationRegistrationTasksRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateBatchOrganizationRegistrationTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBatchOrganizationRegistrationTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateBatchOrganizationRegistrationTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateBatchQuickSignUrl(self, request):
         """该接口用于发起合同后，生成个人用户的批量签署链接, 暂时不支持企业端签署。
         **注意：**
@@ -952,12 +997,39 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateOrganizationAuthUrl(self, request):
+        """本接口（CreateOrganizationAuthUrl）用于生成创建企业认证链接。
+        用于业务方系统自己生成认证链接进行跳转.而不用电子签自带的生成链接
+
+        注： **此接口需要购买单独的实名套餐包方可调用，如有需求请联系对接人员评估**
+
+        :param request: Request instance for CreateOrganizationAuthUrl.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateOrganizationAuthUrlRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateOrganizationAuthUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateOrganizationAuthUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateOrganizationAuthUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateOrganizationBatchSignUrl(self, request):
         """使用此接口，您可以创建企业批量签署链接，员工只需点击链接即可跳转至控制台进行批量签署。<br/>
         附注：
-        - 员工必须在企业下完成实名认证，且需作为批量签署合同的签署方。
-        - 如有UserId，应以UserId为主要标识；如果没有UserId，则必须填写Name和Mobile信息。
-        - 仅支持待签署状态的合同生成签署链接。
+        - 员工必须需作为批量签署合同的签署方，or或签合同的候选人之一。
+        - 对于本方企业：如有UserId，应以UserId为主要标识；如果没有UserId，则必须填写Name和Mobile信息。
+        - 若要生成他发企业签署链接：应传RecipientIds，且制定的合同必须是接口调用方发起的。
+        - 支持待签署、待填写状态的合同生成签署链接。
 
         :param request: Request instance for CreateOrganizationBatchSignUrl.
         :type request: :class:`tencentcloud.ess.v20201111.models.CreateOrganizationBatchSignUrlRequest`

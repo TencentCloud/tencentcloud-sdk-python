@@ -2892,6 +2892,9 @@ class Condition(AbstractModel):
         :param _ProductId: 产品ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: str
+        :param _HierarchicalValue: 告警分级阈值配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HierarchicalValue: :class:`tencentcloud.monitor.v20180724.models.AlarmHierarchicalValue`
         """
         self._AlarmNotifyPeriod = None
         self._AlarmNotifyType = None
@@ -2906,6 +2909,7 @@ class Condition(AbstractModel):
         self._IsAdvanced = None
         self._IsOpen = None
         self._ProductId = None
+        self._HierarchicalValue = None
 
     @property
     def AlarmNotifyPeriod(self):
@@ -3011,6 +3015,14 @@ class Condition(AbstractModel):
     def ProductId(self, ProductId):
         self._ProductId = ProductId
 
+    @property
+    def HierarchicalValue(self):
+        return self._HierarchicalValue
+
+    @HierarchicalValue.setter
+    def HierarchicalValue(self, HierarchicalValue):
+        self._HierarchicalValue = HierarchicalValue
+
 
     def _deserialize(self, params):
         self._AlarmNotifyPeriod = params.get("AlarmNotifyPeriod")
@@ -3026,6 +3038,9 @@ class Condition(AbstractModel):
         self._IsAdvanced = params.get("IsAdvanced")
         self._IsOpen = params.get("IsOpen")
         self._ProductId = params.get("ProductId")
+        if params.get("HierarchicalValue") is not None:
+            self._HierarchicalValue = AlarmHierarchicalValue()
+            self._HierarchicalValue._deserialize(params.get("HierarchicalValue"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19660,12 +19675,16 @@ class EventCondition(AbstractModel):
         :type EventDisplayName: str
         :param _RuleID: 规则ID
         :type RuleID: str
+        :param _MetricName: 指标名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricName: str
         """
         self._AlarmNotifyPeriod = None
         self._AlarmNotifyType = None
         self._EventID = None
         self._EventDisplayName = None
         self._RuleID = None
+        self._MetricName = None
 
     @property
     def AlarmNotifyPeriod(self):
@@ -19707,6 +19726,14 @@ class EventCondition(AbstractModel):
     def RuleID(self, RuleID):
         self._RuleID = RuleID
 
+    @property
+    def MetricName(self):
+        return self._MetricName
+
+    @MetricName.setter
+    def MetricName(self, MetricName):
+        self._MetricName = MetricName
+
 
     def _deserialize(self, params):
         self._AlarmNotifyPeriod = params.get("AlarmNotifyPeriod")
@@ -19714,6 +19741,7 @@ class EventCondition(AbstractModel):
         self._EventID = params.get("EventID")
         self._EventDisplayName = params.get("EventDisplayName")
         self._RuleID = params.get("RuleID")
+        self._MetricName = params.get("MetricName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
