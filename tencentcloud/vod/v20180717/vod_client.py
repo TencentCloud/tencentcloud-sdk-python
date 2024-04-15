@@ -698,7 +698,7 @@ class VodClient(AbstractClient):
 
 
     def CreateSubAppId(self, request):
-        """该接口用于创建点播子应用。
+        """该接口用于创建点播应用。
 
         :param request: Request instance for CreateSubAppId.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateSubAppIdRequest`
@@ -2559,7 +2559,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeSubAppIds(self, request):
-        """该接口用于获取当前账号的子应用列表，包含主应用。
+        """该接口用于获取当前账号的应用列表。
 
         :param request: Request instance for DescribeSubAppIds.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeSubAppIdsRequest`

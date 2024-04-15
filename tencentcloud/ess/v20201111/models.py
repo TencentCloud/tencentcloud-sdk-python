@@ -7049,6 +7049,284 @@ class CreateOrganizationAuthUrlRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _Operator: 操作人信息
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _AuthorizationTypes: 指定授权方式 支持多选:
+1-上传授权书方式
+2- 法人授权方式
+3- 法人身份认证方式
+        :type AuthorizationTypes: list of int non-negative
+        :param _OrganizationName: 企业名称
+EndPointType=“H5”或者"SHORT_H5"时，该参数必填
+
+        :type OrganizationName: str
+        :param _UniformSocialCreditCode: 企业统一社会信用代码
+        :type UniformSocialCreditCode: str
+        :param _LegalName: 法人姓名
+        :type LegalName: str
+        :param _AutoJumpUrl: 认证完成跳转链接
+        :type AutoJumpUrl: str
+        :param _OrganizationAddress: 营业执照企业地址
+示例：xx省xx市xx县/区xx街道
+        :type OrganizationAddress: str
+        :param _AdminName: 认证人姓名
+        :type AdminName: str
+        :param _AdminMobile: 认证人手机号
+        :type AdminMobile: str
+        :param _AdminIdCardNumber: 认证人身份证号
+        :type AdminIdCardNumber: str
+        :param _AdminIdCardType: 认证人证件类型
+支持以下类型
+<ul><li>ID_CARD : 居民身份证  (默认值)</li>
+<li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
+<li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
+
+        :type AdminIdCardType: str
+        :param _UniformSocialCreditCodeSame: 营业执照的社会信用代码保持一致
+false 关闭-默认
+true 开启
+        :type UniformSocialCreditCodeSame: bool
+        :param _LegalNameSame: 法人姓名保持一致
+false 关闭-默认
+true 开启
+        :type LegalNameSame: bool
+        :param _AdminNameSame: 认证人姓名一致
+false 关闭-默认
+true 开启
+注意：
+开启后在认证过程前会校验拦截
+        :type AdminNameSame: bool
+        :param _AdminIdCardNumberSame: 认证人居民身份证件号一致
+false 关闭-默认
+true 开启
+注意：
+开启后在认证过程前会校验拦截
+        :type AdminIdCardNumberSame: bool
+        :param _AdminMobileSame: 认证人手机号一致
+false 关闭-默认
+true 开启
+注意：
+开启后在认证过程前会校验拦截
+        :type AdminMobileSame: bool
+        :param _OrganizationNameSame: 企业名称保持一致
+false 关闭-默认
+true 开启
+        :type OrganizationNameSame: bool
+        :param _BusinessLicense: 营业执照正面照(PNG或JPG) base64格式, 大小不超过5M
+        :type BusinessLicense: str
+        :param _Endpoint: 跳转链接类型：
+"PC"-PC端认证链接 
+"APP"-全屏或半屏跳转小程序链接
+“H5”-H5页面认证链接 "SHORT_H5"- H5认证短链
+"SHORT_URL"- 跳转小程序短链	
+        :type Endpoint: str
+        """
+        self._Operator = None
+        self._AuthorizationTypes = None
+        self._OrganizationName = None
+        self._UniformSocialCreditCode = None
+        self._LegalName = None
+        self._AutoJumpUrl = None
+        self._OrganizationAddress = None
+        self._AdminName = None
+        self._AdminMobile = None
+        self._AdminIdCardNumber = None
+        self._AdminIdCardType = None
+        self._UniformSocialCreditCodeSame = None
+        self._LegalNameSame = None
+        self._AdminNameSame = None
+        self._AdminIdCardNumberSame = None
+        self._AdminMobileSame = None
+        self._OrganizationNameSame = None
+        self._BusinessLicense = None
+        self._Endpoint = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def AuthorizationTypes(self):
+        return self._AuthorizationTypes
+
+    @AuthorizationTypes.setter
+    def AuthorizationTypes(self, AuthorizationTypes):
+        self._AuthorizationTypes = AuthorizationTypes
+
+    @property
+    def OrganizationName(self):
+        return self._OrganizationName
+
+    @OrganizationName.setter
+    def OrganizationName(self, OrganizationName):
+        self._OrganizationName = OrganizationName
+
+    @property
+    def UniformSocialCreditCode(self):
+        return self._UniformSocialCreditCode
+
+    @UniformSocialCreditCode.setter
+    def UniformSocialCreditCode(self, UniformSocialCreditCode):
+        self._UniformSocialCreditCode = UniformSocialCreditCode
+
+    @property
+    def LegalName(self):
+        return self._LegalName
+
+    @LegalName.setter
+    def LegalName(self, LegalName):
+        self._LegalName = LegalName
+
+    @property
+    def AutoJumpUrl(self):
+        return self._AutoJumpUrl
+
+    @AutoJumpUrl.setter
+    def AutoJumpUrl(self, AutoJumpUrl):
+        self._AutoJumpUrl = AutoJumpUrl
+
+    @property
+    def OrganizationAddress(self):
+        return self._OrganizationAddress
+
+    @OrganizationAddress.setter
+    def OrganizationAddress(self, OrganizationAddress):
+        self._OrganizationAddress = OrganizationAddress
+
+    @property
+    def AdminName(self):
+        return self._AdminName
+
+    @AdminName.setter
+    def AdminName(self, AdminName):
+        self._AdminName = AdminName
+
+    @property
+    def AdminMobile(self):
+        return self._AdminMobile
+
+    @AdminMobile.setter
+    def AdminMobile(self, AdminMobile):
+        self._AdminMobile = AdminMobile
+
+    @property
+    def AdminIdCardNumber(self):
+        return self._AdminIdCardNumber
+
+    @AdminIdCardNumber.setter
+    def AdminIdCardNumber(self, AdminIdCardNumber):
+        self._AdminIdCardNumber = AdminIdCardNumber
+
+    @property
+    def AdminIdCardType(self):
+        return self._AdminIdCardType
+
+    @AdminIdCardType.setter
+    def AdminIdCardType(self, AdminIdCardType):
+        self._AdminIdCardType = AdminIdCardType
+
+    @property
+    def UniformSocialCreditCodeSame(self):
+        return self._UniformSocialCreditCodeSame
+
+    @UniformSocialCreditCodeSame.setter
+    def UniformSocialCreditCodeSame(self, UniformSocialCreditCodeSame):
+        self._UniformSocialCreditCodeSame = UniformSocialCreditCodeSame
+
+    @property
+    def LegalNameSame(self):
+        return self._LegalNameSame
+
+    @LegalNameSame.setter
+    def LegalNameSame(self, LegalNameSame):
+        self._LegalNameSame = LegalNameSame
+
+    @property
+    def AdminNameSame(self):
+        return self._AdminNameSame
+
+    @AdminNameSame.setter
+    def AdminNameSame(self, AdminNameSame):
+        self._AdminNameSame = AdminNameSame
+
+    @property
+    def AdminIdCardNumberSame(self):
+        return self._AdminIdCardNumberSame
+
+    @AdminIdCardNumberSame.setter
+    def AdminIdCardNumberSame(self, AdminIdCardNumberSame):
+        self._AdminIdCardNumberSame = AdminIdCardNumberSame
+
+    @property
+    def AdminMobileSame(self):
+        return self._AdminMobileSame
+
+    @AdminMobileSame.setter
+    def AdminMobileSame(self, AdminMobileSame):
+        self._AdminMobileSame = AdminMobileSame
+
+    @property
+    def OrganizationNameSame(self):
+        return self._OrganizationNameSame
+
+    @OrganizationNameSame.setter
+    def OrganizationNameSame(self, OrganizationNameSame):
+        self._OrganizationNameSame = OrganizationNameSame
+
+    @property
+    def BusinessLicense(self):
+        return self._BusinessLicense
+
+    @BusinessLicense.setter
+    def BusinessLicense(self, BusinessLicense):
+        self._BusinessLicense = BusinessLicense
+
+    @property
+    def Endpoint(self):
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._AuthorizationTypes = params.get("AuthorizationTypes")
+        self._OrganizationName = params.get("OrganizationName")
+        self._UniformSocialCreditCode = params.get("UniformSocialCreditCode")
+        self._LegalName = params.get("LegalName")
+        self._AutoJumpUrl = params.get("AutoJumpUrl")
+        self._OrganizationAddress = params.get("OrganizationAddress")
+        self._AdminName = params.get("AdminName")
+        self._AdminMobile = params.get("AdminMobile")
+        self._AdminIdCardNumber = params.get("AdminIdCardNumber")
+        self._AdminIdCardType = params.get("AdminIdCardType")
+        self._UniformSocialCreditCodeSame = params.get("UniformSocialCreditCodeSame")
+        self._LegalNameSame = params.get("LegalNameSame")
+        self._AdminNameSame = params.get("AdminNameSame")
+        self._AdminIdCardNumberSame = params.get("AdminIdCardNumberSame")
+        self._AdminMobileSame = params.get("AdminMobileSame")
+        self._OrganizationNameSame = params.get("OrganizationNameSame")
+        self._BusinessLicense = params.get("BusinessLicense")
+        self._Endpoint = params.get("Endpoint")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class CreateOrganizationAuthUrlResponse(AbstractModel):
     """CreateOrganizationAuthUrl返回参数结构体
@@ -7057,10 +7335,36 @@ class CreateOrganizationAuthUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _AuthUrl: “H5”-H5长连接
+"SHORT_H5"- H5短链
+"APP"-小程序
+"PC"-PC浏览器
+链接有效期统一30天
+        :type AuthUrl: str
+        :param _ExpiredTime: 链接过期时间戳
+        :type ExpiredTime: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._AuthUrl = None
+        self._ExpiredTime = None
         self._RequestId = None
+
+    @property
+    def AuthUrl(self):
+        return self._AuthUrl
+
+    @AuthUrl.setter
+    def AuthUrl(self, AuthUrl):
+        self._AuthUrl = AuthUrl
+
+    @property
+    def ExpiredTime(self):
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
 
     @property
     def RequestId(self):
@@ -7072,6 +7376,8 @@ class CreateOrganizationAuthUrlResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._AuthUrl = params.get("AuthUrl")
+        self._ExpiredTime = params.get("ExpiredTime")
         self._RequestId = params.get("RequestId")
 
 

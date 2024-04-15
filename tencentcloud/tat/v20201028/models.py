@@ -2760,9 +2760,9 @@ class EnableInvokerResponse(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """>描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
-    > * 若存在多个`Filter`时，`Filter`间的关系为逻辑与（`AND`）关系。
-    > * 若同一个`Filter`存在多个`Values`，同一`Filter`下`Values`间的关系为逻辑或（`OR`）关系。
+    """> 描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
+    > - 若存在多个`Filter`时，`Filter`间的关系为逻辑与（`AND`）关系。
+    > - 若同一个`Filter`存在多个`Values`，同一`Filter`下`Values`间的关系为逻辑或（`OR`）关系。
     >
     > 以[DescribeCommands](https://cloud.tencent.com/document/api/1340/52681)接口的`Filters`为例。若我们需要查询命令名称（`command-name`）为 “打印工作目录” ***并且*** 命令类型（`command-type`）为 “POWERSHELL” ***或者*** “BAT” 时，可如下实现：
     ```

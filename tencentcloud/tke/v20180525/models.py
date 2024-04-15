@@ -5473,9 +5473,9 @@ class CreateClusterRouteRequest(AbstractModel):
         r"""
         :param _RouteTableName: 路由表名称。
         :type RouteTableName: str
-        :param _DestinationCidrBlock: 目的端CIDR。
+        :param _DestinationCidrBlock: 目的节点的 PodCIDR
         :type DestinationCidrBlock: str
-        :param _GatewayIp: 下一跳地址。
+        :param _GatewayIp: 下一跳地址，即目的节点的内网 IP 地址
         :type GatewayIp: str
         """
         self._RouteTableName = None
@@ -5553,13 +5553,13 @@ class CreateClusterRouteTableRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RouteTableName: 路由表名称
+        :param _RouteTableName: 路由表名称，一般为集群ID
         :type RouteTableName: str
         :param _RouteTableCidrBlock: 路由表CIDR
         :type RouteTableCidrBlock: str
         :param _VpcId: 路由表绑定的VPC
         :type VpcId: str
-        :param _IgnoreClusterCidrConflict: 是否忽略CIDR冲突
+        :param _IgnoreClusterCidrConflict: 是否忽略CIDR与 vpc 路由表的冲突， 0 表示不忽略，1表示忽略。默认不忽略
         :type IgnoreClusterCidrConflict: int
         """
         self._RouteTableName = None
@@ -20015,6 +20015,82 @@ class DescribeRouteTableConflictsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSupportedRuntimeRequest(AbstractModel):
+    """DescribeSupportedRuntime请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _K8sVersion: K8S版本
+        :type K8sVersion: str
+        """
+        self._K8sVersion = None
+
+    @property
+    def K8sVersion(self):
+        return self._K8sVersion
+
+    @K8sVersion.setter
+    def K8sVersion(self, K8sVersion):
+        self._K8sVersion = K8sVersion
+
+
+    def _deserialize(self, params):
+        self._K8sVersion = params.get("K8sVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSupportedRuntimeResponse(AbstractModel):
+    """DescribeSupportedRuntime返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OptionalRuntimes: 可选运行时列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OptionalRuntimes: list of OptionalRuntimes
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._OptionalRuntimes = None
+        self._RequestId = None
+
+    @property
+    def OptionalRuntimes(self):
+        return self._OptionalRuntimes
+
+    @OptionalRuntimes.setter
+    def OptionalRuntimes(self, OptionalRuntimes):
+        self._OptionalRuntimes = OptionalRuntimes
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("OptionalRuntimes") is not None:
+            self._OptionalRuntimes = []
+            for item in params.get("OptionalRuntimes"):
+                obj = OptionalRuntimes()
+                obj._deserialize(item)
+                self._OptionalRuntimes.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTKEEdgeClusterCredentialRequest(AbstractModel):
     """DescribeTKEEdgeClusterCredential请求参数结构体
 
@@ -28351,6 +28427,107 @@ class ModifyClusterNodePoolResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyClusterRuntimeConfigRequest(AbstractModel):
+    """ModifyClusterRuntimeConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID，必填
+        :type ClusterId: str
+        :param _DstK8SVersion: 当需要修改运行时版本是根据另外的K8S版本获取时，需填写。例如升级校验有冲突后修改场景
+        :type DstK8SVersion: str
+        :param _ClusterRuntimeConfig: 需要修改集群运行时时填写
+        :type ClusterRuntimeConfig: :class:`tencentcloud.tke.v20180525.models.RuntimeConfig`
+        :param _NodePoolRuntimeConfig: 需要修改节点池运行时时，填需要修改的部分
+        :type NodePoolRuntimeConfig: list of NodePoolRuntime
+        """
+        self._ClusterId = None
+        self._DstK8SVersion = None
+        self._ClusterRuntimeConfig = None
+        self._NodePoolRuntimeConfig = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def DstK8SVersion(self):
+        return self._DstK8SVersion
+
+    @DstK8SVersion.setter
+    def DstK8SVersion(self, DstK8SVersion):
+        self._DstK8SVersion = DstK8SVersion
+
+    @property
+    def ClusterRuntimeConfig(self):
+        return self._ClusterRuntimeConfig
+
+    @ClusterRuntimeConfig.setter
+    def ClusterRuntimeConfig(self, ClusterRuntimeConfig):
+        self._ClusterRuntimeConfig = ClusterRuntimeConfig
+
+    @property
+    def NodePoolRuntimeConfig(self):
+        return self._NodePoolRuntimeConfig
+
+    @NodePoolRuntimeConfig.setter
+    def NodePoolRuntimeConfig(self, NodePoolRuntimeConfig):
+        self._NodePoolRuntimeConfig = NodePoolRuntimeConfig
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._DstK8SVersion = params.get("DstK8SVersion")
+        if params.get("ClusterRuntimeConfig") is not None:
+            self._ClusterRuntimeConfig = RuntimeConfig()
+            self._ClusterRuntimeConfig._deserialize(params.get("ClusterRuntimeConfig"))
+        if params.get("NodePoolRuntimeConfig") is not None:
+            self._NodePoolRuntimeConfig = []
+            for item in params.get("NodePoolRuntimeConfig"):
+                obj = NodePoolRuntime()
+                obj._deserialize(item)
+                self._NodePoolRuntimeConfig.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClusterRuntimeConfigResponse(AbstractModel):
+    """ModifyClusterRuntimeConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyClusterVirtualNodePoolRequest(AbstractModel):
     """ModifyClusterVirtualNodePool请求参数结构体
 
@@ -29959,6 +30136,79 @@ class NodePoolOption(AbstractModel):
         
 
 
+class NodePoolRuntime(AbstractModel):
+    """NodePool的运行时配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodePoolId: 节点池ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodePoolId: str
+        :param _RuntimeType: 运行时类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuntimeType: str
+        :param _RuntimeVersion: 运行时版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuntimeVersion: str
+        :param _NodePoolName: 节点池名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodePoolName: str
+        """
+        self._NodePoolId = None
+        self._RuntimeType = None
+        self._RuntimeVersion = None
+        self._NodePoolName = None
+
+    @property
+    def NodePoolId(self):
+        return self._NodePoolId
+
+    @NodePoolId.setter
+    def NodePoolId(self, NodePoolId):
+        self._NodePoolId = NodePoolId
+
+    @property
+    def RuntimeType(self):
+        return self._RuntimeType
+
+    @RuntimeType.setter
+    def RuntimeType(self, RuntimeType):
+        self._RuntimeType = RuntimeType
+
+    @property
+    def RuntimeVersion(self):
+        return self._RuntimeVersion
+
+    @RuntimeVersion.setter
+    def RuntimeVersion(self, RuntimeVersion):
+        self._RuntimeVersion = RuntimeVersion
+
+    @property
+    def NodePoolName(self):
+        return self._NodePoolName
+
+    @NodePoolName.setter
+    def NodePoolName(self, NodePoolName):
+        self._NodePoolName = NodePoolName
+
+
+    def _deserialize(self, params):
+        self._NodePoolId = params.get("NodePoolId")
+        self._RuntimeType = params.get("RuntimeType")
+        self._RuntimeVersion = params.get("RuntimeVersion")
+        self._NodePoolName = params.get("NodePoolName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OIDCConfigAuthenticationOptions(AbstractModel):
     """OIDC认证相关配置
 
@@ -30009,6 +30259,66 @@ class OIDCConfigAuthenticationOptions(AbstractModel):
         self._AutoCreateOIDCConfig = params.get("AutoCreateOIDCConfig")
         self._AutoCreateClientId = params.get("AutoCreateClientId")
         self._AutoInstallPodIdentityWebhookAddon = params.get("AutoInstallPodIdentityWebhookAddon")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OptionalRuntimes(AbstractModel):
+    """可选运行时
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuntimeType: 运行时类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuntimeType: str
+        :param _RuntimeVersions: 运行时版本列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuntimeVersions: list of str
+        :param _DefaultVersion: 该类型的默认运行时版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultVersion: str
+        """
+        self._RuntimeType = None
+        self._RuntimeVersions = None
+        self._DefaultVersion = None
+
+    @property
+    def RuntimeType(self):
+        return self._RuntimeType
+
+    @RuntimeType.setter
+    def RuntimeType(self, RuntimeType):
+        self._RuntimeType = RuntimeType
+
+    @property
+    def RuntimeVersions(self):
+        return self._RuntimeVersions
+
+    @RuntimeVersions.setter
+    def RuntimeVersions(self, RuntimeVersions):
+        self._RuntimeVersions = RuntimeVersions
+
+    @property
+    def DefaultVersion(self):
+        return self._DefaultVersion
+
+    @DefaultVersion.setter
+    def DefaultVersion(self, DefaultVersion):
+        self._DefaultVersion = DefaultVersion
+
+
+    def _deserialize(self, params):
+        self._RuntimeType = params.get("RuntimeType")
+        self._RuntimeVersions = params.get("RuntimeVersions")
+        self._DefaultVersion = params.get("DefaultVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35506,6 +35816,53 @@ class RunSecurityServiceEnabled(AbstractModel):
 
     def _deserialize(self, params):
         self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuntimeConfig(AbstractModel):
+    """运行时配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuntimeType: 运行时类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuntimeType: str
+        :param _RuntimeVersion: 运行时版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuntimeVersion: str
+        """
+        self._RuntimeType = None
+        self._RuntimeVersion = None
+
+    @property
+    def RuntimeType(self):
+        return self._RuntimeType
+
+    @RuntimeType.setter
+    def RuntimeType(self, RuntimeType):
+        self._RuntimeType = RuntimeType
+
+    @property
+    def RuntimeVersion(self):
+        return self._RuntimeVersion
+
+    @RuntimeVersion.setter
+    def RuntimeVersion(self, RuntimeVersion):
+        self._RuntimeVersion = RuntimeVersion
+
+
+    def _deserialize(self, params):
+        self._RuntimeType = params.get("RuntimeType")
+        self._RuntimeVersion = params.get("RuntimeVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

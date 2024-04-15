@@ -4165,12 +4165,14 @@ class DescribeStorageCredentialResponse(AbstractModel):
         :type Bucket: str
         :param _Region: 对象存储可用区
         :type Region: str
-        :param _FilePath: 目录
+        :param _FilePath: 文件存储目录
         :type FilePath: str
         :param _Type: 存储类型
         :type Type: str
         :param _CorpUin: 主号
         :type CorpUin: str
+        :param _ImagePath: 图片存储目录
+        :type ImagePath: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4182,6 +4184,7 @@ class DescribeStorageCredentialResponse(AbstractModel):
         self._FilePath = None
         self._Type = None
         self._CorpUin = None
+        self._ImagePath = None
         self._RequestId = None
 
     @property
@@ -4249,6 +4252,14 @@ class DescribeStorageCredentialResponse(AbstractModel):
         self._CorpUin = CorpUin
 
     @property
+    def ImagePath(self):
+        return self._ImagePath
+
+    @ImagePath.setter
+    def ImagePath(self, ImagePath):
+        self._ImagePath = ImagePath
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -4268,6 +4279,7 @@ class DescribeStorageCredentialResponse(AbstractModel):
         self._FilePath = params.get("FilePath")
         self._Type = params.get("Type")
         self._CorpUin = params.get("CorpUin")
+        self._ImagePath = params.get("ImagePath")
         self._RequestId = params.get("RequestId")
 
 

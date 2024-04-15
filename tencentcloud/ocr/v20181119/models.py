@@ -18522,16 +18522,16 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         :type ThaiName: str
         :param _EnFirstName: 英文姓名
         :type EnFirstName: str
-        :param _Address: 地址
-        :type Address: str
-        :param _Birthday: 出生日期
-        :type Birthday: str
-        :param _IssueDate: 签发日期
-        :type IssueDate: str
-        :param _ExpirationDate: 到期日期
-        :type ExpirationDate: str
         :param _EnLastName: 英文姓名
         :type EnLastName: str
+        :param _IssueDate: 泰文签发日期
+        :type IssueDate: str
+        :param _ExpirationDate: 泰文到期日期
+        :type ExpirationDate: str
+        :param _Birthday: 泰文出生日期
+        :type Birthday: str
+        :param _Address: 地址
+        :type Address: str
         :param _PortraitImage: 证件人像照片抠取
         :type PortraitImage: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -18540,11 +18540,11 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         self._ID = None
         self._ThaiName = None
         self._EnFirstName = None
-        self._Address = None
-        self._Birthday = None
+        self._EnLastName = None
         self._IssueDate = None
         self._ExpirationDate = None
-        self._EnLastName = None
+        self._Birthday = None
+        self._Address = None
         self._PortraitImage = None
         self._RequestId = None
 
@@ -18573,20 +18573,12 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         self._EnFirstName = EnFirstName
 
     @property
-    def Address(self):
-        return self._Address
+    def EnLastName(self):
+        return self._EnLastName
 
-    @Address.setter
-    def Address(self, Address):
-        self._Address = Address
-
-    @property
-    def Birthday(self):
-        return self._Birthday
-
-    @Birthday.setter
-    def Birthday(self, Birthday):
-        self._Birthday = Birthday
+    @EnLastName.setter
+    def EnLastName(self, EnLastName):
+        self._EnLastName = EnLastName
 
     @property
     def IssueDate(self):
@@ -18605,12 +18597,20 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         self._ExpirationDate = ExpirationDate
 
     @property
-    def EnLastName(self):
-        return self._EnLastName
+    def Birthday(self):
+        return self._Birthday
 
-    @EnLastName.setter
-    def EnLastName(self, EnLastName):
-        self._EnLastName = EnLastName
+    @Birthday.setter
+    def Birthday(self, Birthday):
+        self._Birthday = Birthday
+
+    @property
+    def Address(self):
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
 
     @property
     def PortraitImage(self):
@@ -18633,11 +18633,11 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         self._ID = params.get("ID")
         self._ThaiName = params.get("ThaiName")
         self._EnFirstName = params.get("EnFirstName")
-        self._Address = params.get("Address")
-        self._Birthday = params.get("Birthday")
+        self._EnLastName = params.get("EnLastName")
         self._IssueDate = params.get("IssueDate")
         self._ExpirationDate = params.get("ExpirationDate")
-        self._EnLastName = params.get("EnLastName")
+        self._Birthday = params.get("Birthday")
+        self._Address = params.get("Address")
         self._PortraitImage = params.get("PortraitImage")
         self._RequestId = params.get("RequestId")
 

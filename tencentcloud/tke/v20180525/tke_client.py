@@ -3430,6 +3430,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSupportedRuntime(self, request):
+        """根据K8S版本获取可选运行时版本
+
+        :param request: Request instance for DescribeSupportedRuntime.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeSupportedRuntimeRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeSupportedRuntimeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSupportedRuntime", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSupportedRuntimeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTKEEdgeClusterCredential(self, request):
         """获取边缘计算集群的认证信息
 
@@ -4226,6 +4249,29 @@ class TkeClient(AbstractClient):
             body = self.call("ModifyClusterNodePool", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyClusterNodePoolResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyClusterRuntimeConfig(self, request):
+        """修改集群及节点池纬度运行时配置
+
+        :param request: Request instance for ModifyClusterRuntimeConfig.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterRuntimeConfigRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ModifyClusterRuntimeConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyClusterRuntimeConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyClusterRuntimeConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

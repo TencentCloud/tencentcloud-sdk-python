@@ -902,9 +902,11 @@ AccountType是10004时，填入中国大陆标准11位手机号的MD5值
 MD5手机号加密方式，中国大陆11位手机号进行MD5加密，加密后取32位小写值
 设备号加密方式，对IMEI、IDFA明文进行MD5加密，加密后取32位小写值。
         :type AccountId: str
-        :param _MobilePhone: MD5手机号,AccountType是10004时，此处无需重复填写。
+        :param _MobilePhone: 账号绑定的MD5手机号。
+注释：只支持标准中国大陆11位手机号MD5加密后位的32位小写字符串。
         :type MobilePhone: str
-        :param _DeviceId: 用户设备号，AccountType是8时，此处无需重复填写。
+        :param _DeviceId: 用户设备号，支持IMEI、IMEIMD5、IDFA、IDFAMD5。
+注释：IMEIMD5、IDFAMD5加密方式，对IMEI、IDFA明文进行MD5加密，加密后取32位小写值。
         :type DeviceId: str
         """
         self._AccountId = None
@@ -1201,7 +1203,6 @@ class OutputManageMarketingRiskValue(AbstractModel):
 当AccountType为2时，对应微信的OpenId/UnionId。
 当AccountType为8时，对应IMEI、IDFA、IMEIMD5或者IDFAMD5。
 当AccountType为10004时，对应手机号的MD5值。
-请注意：此字段可能返回null，表示无法获取有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserId: str
         :param _PostTime: 操作时间戳，单位秒（对应输入参数）。

@@ -821,8 +821,11 @@ class DescribeKBComponentVulnerabilityRequest(AbstractModel):
         r"""
         :param _PURL: 组件的PURL，其中Name和Version为必填字段
         :type PURL: :class:`tencentcloud.bsca.v20210811.models.PURL`
+        :param _Language: 语言，ZH或EN
+        :type Language: str
         """
         self._PURL = None
+        self._Language = None
 
     @property
     def PURL(self):
@@ -832,11 +835,20 @@ class DescribeKBComponentVulnerabilityRequest(AbstractModel):
     def PURL(self, PURL):
         self._PURL = PURL
 
+    @property
+    def Language(self):
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
 
     def _deserialize(self, params):
         if params.get("PURL") is not None:
             self._PURL = PURL()
             self._PURL._deserialize(params.get("PURL"))
+        self._Language = params.get("Language")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -993,11 +1005,14 @@ class DescribeKBVulnerabilityRequest(AbstractModel):
         :type CNVDID: list of str
         :param _CNNVDID: 根据CNNVD ID查询（不能与其他参数同时存在）
         :type CNNVDID: list of str
+        :param _Language: 语言，ZH或EN
+        :type Language: str
         """
         self._CVEID = None
         self._VulID = None
         self._CNVDID = None
         self._CNNVDID = None
+        self._Language = None
 
     @property
     def CVEID(self):
@@ -1031,12 +1046,21 @@ class DescribeKBVulnerabilityRequest(AbstractModel):
     def CNNVDID(self, CNNVDID):
         self._CNNVDID = CNNVDID
 
+    @property
+    def Language(self):
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
 
     def _deserialize(self, params):
         self._CVEID = params.get("CVEID")
         self._VulID = params.get("VulID")
         self._CNVDID = params.get("CNVDID")
         self._CNNVDID = params.get("CNNVDID")
+        self._Language = params.get("Language")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -409,6 +409,8 @@ class QueryTextToImageProJobResponse(AbstractModel):
         :param _ResultDetails: 结果 detail 数组，Success 代表成功。
 
         :type ResultDetails: list of str
+        :param _RevisedPrompt: 对应 SubmitTextToImageProJob 接口中 Revise 参数。开启扩写时，返回扩写后的 prompt 文本。 如果关闭扩写，将直接返回原始输入的 prompt。
+        :type RevisedPrompt: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -418,6 +420,7 @@ class QueryTextToImageProJobResponse(AbstractModel):
         self._JobErrorMsg = None
         self._ResultImage = None
         self._ResultDetails = None
+        self._RevisedPrompt = None
         self._RequestId = None
 
     @property
@@ -469,6 +472,14 @@ class QueryTextToImageProJobResponse(AbstractModel):
         self._ResultDetails = ResultDetails
 
     @property
+    def RevisedPrompt(self):
+        return self._RevisedPrompt
+
+    @RevisedPrompt.setter
+    def RevisedPrompt(self, RevisedPrompt):
+        self._RevisedPrompt = RevisedPrompt
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -484,6 +495,7 @@ class QueryTextToImageProJobResponse(AbstractModel):
         self._JobErrorMsg = params.get("JobErrorMsg")
         self._ResultImage = params.get("ResultImage")
         self._ResultDetails = params.get("ResultDetails")
+        self._RevisedPrompt = params.get("RevisedPrompt")
         self._RequestId = params.get("RequestId")
 
 
@@ -553,12 +565,18 @@ class SubmitTextToImageProJobRequest(AbstractModel):
 engine1  
 engine2
         :type Engine: str
+        :param _Revise: prompt 扩写开关。1为开启，0为关闭，不传默认开启。
+开启扩写后，将自动扩写原始输入的 prompt 并使用扩写后的 prompt 生成图片，返回生成图片结果时将一并返回扩写后的 prompt 文本。
+如果关闭扩写，将直接使用原始输入的 prompt 生成图片。
+建议开启，在多数场景下可提升生成图片效果、丰富生成图片细节。
+        :type Revise: int
         """
         self._Prompt = None
         self._Style = None
         self._Resolution = None
         self._LogoAdd = None
         self._Engine = None
+        self._Revise = None
 
     @property
     def Prompt(self):
@@ -600,6 +618,14 @@ engine2
     def Engine(self, Engine):
         self._Engine = Engine
 
+    @property
+    def Revise(self):
+        return self._Revise
+
+    @Revise.setter
+    def Revise(self, Revise):
+        self._Revise = Revise
+
 
     def _deserialize(self, params):
         self._Prompt = params.get("Prompt")
@@ -607,6 +633,7 @@ engine2
         self._Resolution = params.get("Resolution")
         self._LogoAdd = params.get("LogoAdd")
         self._Engine = params.get("Engine")
+        self._Revise = params.get("Revise")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

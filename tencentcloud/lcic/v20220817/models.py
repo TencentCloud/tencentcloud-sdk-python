@@ -1462,6 +1462,8 @@ class CreateDocumentRequest(AbstractModel):
 2. 自动翻页：移除PPT上所有自动翻页设置，并设置为单击鼠标翻页
 3. 已损坏音视频：移除PPT上对损坏音视频的引用
         :type AutoHandleUnsupportedElement: bool
+        :param _MinScaleResolution: 转码后文档的最小分辨率，不传、传空字符串或分辨率格式错误则使用文档原分辨率。示例：1280x720，注意分辨率宽高中间为英文字母"xyz"的"x"
+        :type MinScaleResolution: str
         """
         self._SdkAppId = None
         self._DocumentUrl = None
@@ -1472,6 +1474,7 @@ class CreateDocumentRequest(AbstractModel):
         self._DocumentType = None
         self._DocumentSize = None
         self._AutoHandleUnsupportedElement = None
+        self._MinScaleResolution = None
 
     @property
     def SdkAppId(self):
@@ -1545,6 +1548,14 @@ class CreateDocumentRequest(AbstractModel):
     def AutoHandleUnsupportedElement(self, AutoHandleUnsupportedElement):
         self._AutoHandleUnsupportedElement = AutoHandleUnsupportedElement
 
+    @property
+    def MinScaleResolution(self):
+        return self._MinScaleResolution
+
+    @MinScaleResolution.setter
+    def MinScaleResolution(self, MinScaleResolution):
+        self._MinScaleResolution = MinScaleResolution
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -1556,6 +1567,7 @@ class CreateDocumentRequest(AbstractModel):
         self._DocumentType = params.get("DocumentType")
         self._DocumentSize = params.get("DocumentSize")
         self._AutoHandleUnsupportedElement = params.get("AutoHandleUnsupportedElement")
+        self._MinScaleResolution = params.get("MinScaleResolution")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3377,6 +3389,10 @@ class DescribeDocumentResponse(AbstractModel):
         :type Pages: int
         :param _Preview: 课件预览地址
         :type Preview: str
+        :param _Resolution: 文档的分辨率
+        :type Resolution: str
+        :param _MinScaleResolution: 转码后文档的最小分辨率，和创建文档时传入的参数一致。
+        :type MinScaleResolution: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3396,6 +3412,8 @@ class DescribeDocumentResponse(AbstractModel):
         self._UpdateTime = None
         self._Pages = None
         self._Preview = None
+        self._Resolution = None
+        self._MinScaleResolution = None
         self._RequestId = None
 
     @property
@@ -3527,6 +3545,22 @@ class DescribeDocumentResponse(AbstractModel):
         self._Preview = Preview
 
     @property
+    def Resolution(self):
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def MinScaleResolution(self):
+        return self._MinScaleResolution
+
+    @MinScaleResolution.setter
+    def MinScaleResolution(self, MinScaleResolution):
+        self._MinScaleResolution = MinScaleResolution
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -3552,6 +3586,8 @@ class DescribeDocumentResponse(AbstractModel):
         self._UpdateTime = params.get("UpdateTime")
         self._Pages = params.get("Pages")
         self._Preview = params.get("Preview")
+        self._Resolution = params.get("Resolution")
+        self._MinScaleResolution = params.get("MinScaleResolution")
         self._RequestId = params.get("RequestId")
 
 
@@ -5629,6 +5665,12 @@ class DocumentInfo(AbstractModel):
         :param _Preview: 课件预览地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type Preview: str
+        :param _Resolution: 文档的分辨率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resolution: str
+        :param _MinScaleResolution: 转码后文档的最小分辨率，和创建文档时传入的参数一致。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinScaleResolution: str
         """
         self._DocumentId = None
         self._DocumentUrl = None
@@ -5649,6 +5691,8 @@ class DocumentInfo(AbstractModel):
         self._Height = None
         self._Cover = None
         self._Preview = None
+        self._Resolution = None
+        self._MinScaleResolution = None
 
     @property
     def DocumentId(self):
@@ -5802,6 +5846,22 @@ class DocumentInfo(AbstractModel):
     def Preview(self, Preview):
         self._Preview = Preview
 
+    @property
+    def Resolution(self):
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def MinScaleResolution(self):
+        return self._MinScaleResolution
+
+    @MinScaleResolution.setter
+    def MinScaleResolution(self, MinScaleResolution):
+        self._MinScaleResolution = MinScaleResolution
+
 
     def _deserialize(self, params):
         self._DocumentId = params.get("DocumentId")
@@ -5823,6 +5883,8 @@ class DocumentInfo(AbstractModel):
         self._Height = params.get("Height")
         self._Cover = params.get("Cover")
         self._Preview = params.get("Preview")
+        self._Resolution = params.get("Resolution")
+        self._MinScaleResolution = params.get("MinScaleResolution")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
