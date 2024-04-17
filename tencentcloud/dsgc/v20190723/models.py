@@ -2080,6 +2080,56 @@ class CategoryRuleStatistic(AbstractModel):
         
 
 
+class CloudResourceItem(AbstractModel):
+    """云数据库资源项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: 资源所处地域。
+        :type Region: str
+        :param _Items: 	云上资源列表。
+        :type Items: list of DspaCloudResourceMeta
+        """
+        self._Region = None
+        self._Items = None
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = DspaCloudResourceMeta()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ComplianceGroupDetail(AbstractModel):
     """模板详情
 
@@ -2416,6 +2466,51 @@ class CosAsset(AbstractModel):
         self._SensitiveBucketNums = params.get("SensitiveBucketNums")
         self._FileNums = params.get("FileNums")
         self._SensitiveFileNums = params.get("SensitiveFileNums")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosBucketItem(AbstractModel):
+    """cos桶资源项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: 资源所处地域。
+        :type Region: str
+        :param _Buckets: COS桶列表。
+        :type Buckets: list of str
+        """
+        self._Region = None
+        self._Buckets = None
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Buckets(self):
+        return self._Buckets
+
+    @Buckets.setter
+    def Buckets(self, Buckets):
+        self._Buckets = Buckets
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._Buckets = params.get("Buckets")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3882,24 +3977,19 @@ class CreateDSPACosMetaResourcesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceRegion: 资源所处地域。
-        :type ResourceRegion: str
         :param _DspaId: DSPA实例ID。
         :type DspaId: str
+        :param _ResourceRegion: 资源所处地域。
+        :type ResourceRegion: str
         :param _Buckets: COS桶列表
         :type Buckets: list of str
+        :param _CosBucketItems: 必填，COS资源列表
+        :type CosBucketItems: list of CosBucketItem
         """
-        self._ResourceRegion = None
         self._DspaId = None
+        self._ResourceRegion = None
         self._Buckets = None
-
-    @property
-    def ResourceRegion(self):
-        return self._ResourceRegion
-
-    @ResourceRegion.setter
-    def ResourceRegion(self, ResourceRegion):
-        self._ResourceRegion = ResourceRegion
+        self._CosBucketItems = None
 
     @property
     def DspaId(self):
@@ -3910,18 +4000,48 @@ class CreateDSPACosMetaResourcesRequest(AbstractModel):
         self._DspaId = DspaId
 
     @property
+    def ResourceRegion(self):
+        warnings.warn("parameter `ResourceRegion` is deprecated", DeprecationWarning) 
+
+        return self._ResourceRegion
+
+    @ResourceRegion.setter
+    def ResourceRegion(self, ResourceRegion):
+        warnings.warn("parameter `ResourceRegion` is deprecated", DeprecationWarning) 
+
+        self._ResourceRegion = ResourceRegion
+
+    @property
     def Buckets(self):
+        warnings.warn("parameter `Buckets` is deprecated", DeprecationWarning) 
+
         return self._Buckets
 
     @Buckets.setter
     def Buckets(self, Buckets):
+        warnings.warn("parameter `Buckets` is deprecated", DeprecationWarning) 
+
         self._Buckets = Buckets
+
+    @property
+    def CosBucketItems(self):
+        return self._CosBucketItems
+
+    @CosBucketItems.setter
+    def CosBucketItems(self, CosBucketItems):
+        self._CosBucketItems = CosBucketItems
 
 
     def _deserialize(self, params):
-        self._ResourceRegion = params.get("ResourceRegion")
         self._DspaId = params.get("DspaId")
+        self._ResourceRegion = params.get("ResourceRegion")
         self._Buckets = params.get("Buckets")
+        if params.get("CosBucketItems") is not None:
+            self._CosBucketItems = []
+            for item in params.get("CosBucketItems"):
+                obj = CosBucketItem()
+                obj._deserialize(item)
+                self._CosBucketItems.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3976,6 +4096,8 @@ class CreateDSPADbMetaResourcesRequest(AbstractModel):
         :type UpdateId: str
         :param _Items: 云上资源列表。
         :type Items: list of DspaCloudResourceMeta
+        :param _CloudResourceItems: 必填，云数据库资源列表。
+        :type CloudResourceItems: list of CloudResourceItem
         """
         self._DspaId = None
         self._MetaType = None
@@ -3983,6 +4105,7 @@ class CreateDSPADbMetaResourcesRequest(AbstractModel):
         self._UpdateStatus = None
         self._UpdateId = None
         self._Items = None
+        self._CloudResourceItems = None
 
     @property
     def DspaId(self):
@@ -4002,35 +4125,59 @@ class CreateDSPADbMetaResourcesRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
+        warnings.warn("parameter `ResourceRegion` is deprecated", DeprecationWarning) 
+
         return self._ResourceRegion
 
     @ResourceRegion.setter
     def ResourceRegion(self, ResourceRegion):
+        warnings.warn("parameter `ResourceRegion` is deprecated", DeprecationWarning) 
+
         self._ResourceRegion = ResourceRegion
 
     @property
     def UpdateStatus(self):
+        warnings.warn("parameter `UpdateStatus` is deprecated", DeprecationWarning) 
+
         return self._UpdateStatus
 
     @UpdateStatus.setter
     def UpdateStatus(self, UpdateStatus):
+        warnings.warn("parameter `UpdateStatus` is deprecated", DeprecationWarning) 
+
         self._UpdateStatus = UpdateStatus
 
     @property
     def UpdateId(self):
+        warnings.warn("parameter `UpdateId` is deprecated", DeprecationWarning) 
+
         return self._UpdateId
 
     @UpdateId.setter
     def UpdateId(self, UpdateId):
+        warnings.warn("parameter `UpdateId` is deprecated", DeprecationWarning) 
+
         self._UpdateId = UpdateId
 
     @property
     def Items(self):
+        warnings.warn("parameter `Items` is deprecated", DeprecationWarning) 
+
         return self._Items
 
     @Items.setter
     def Items(self, Items):
+        warnings.warn("parameter `Items` is deprecated", DeprecationWarning) 
+
         self._Items = Items
+
+    @property
+    def CloudResourceItems(self):
+        return self._CloudResourceItems
+
+    @CloudResourceItems.setter
+    def CloudResourceItems(self, CloudResourceItems):
+        self._CloudResourceItems = CloudResourceItems
 
 
     def _deserialize(self, params):
@@ -4045,6 +4192,12 @@ class CreateDSPADbMetaResourcesRequest(AbstractModel):
                 obj = DspaCloudResourceMeta()
                 obj._deserialize(item)
                 self._Items.append(obj)
+        if params.get("CloudResourceItems") is not None:
+            self._CloudResourceItems = []
+            for item in params.get("CloudResourceItems"):
+                obj = CloudResourceItem()
+                obj._deserialize(item)
+                self._CloudResourceItems.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4081,10 +4234,14 @@ class CreateDSPADbMetaResourcesResponse(AbstractModel):
 
     @property
     def UpdateId(self):
+        warnings.warn("parameter `UpdateId` is deprecated", DeprecationWarning) 
+
         return self._UpdateId
 
     @UpdateId.setter
     def UpdateId(self, UpdateId):
+        warnings.warn("parameter `UpdateId` is deprecated", DeprecationWarning) 
+
         self._UpdateId = UpdateId
 
     @property
@@ -4105,10 +4262,14 @@ class CreateDSPADbMetaResourcesResponse(AbstractModel):
 
     @property
     def ResourceRegion(self):
+        warnings.warn("parameter `ResourceRegion` is deprecated", DeprecationWarning) 
+
         return self._ResourceRegion
 
     @ResourceRegion.setter
     def ResourceRegion(self, ResourceRegion):
+        warnings.warn("parameter `ResourceRegion` is deprecated", DeprecationWarning) 
+
         self._ResourceRegion = ResourceRegion
 
     @property

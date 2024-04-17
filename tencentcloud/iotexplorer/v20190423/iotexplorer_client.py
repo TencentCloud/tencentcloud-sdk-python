@@ -785,6 +785,75 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCloudStorageAIService(self, request):
+        """查询指定设备的云存 AI 服务开通状态与参数配置
+
+        :param request: Request instance for DescribeCloudStorageAIService.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageAIServiceRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageAIServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudStorageAIService", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudStorageAIServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudStorageAIServiceCallback(self, request):
+        """查询云存AI分析回调配置
+
+        :param request: Request instance for DescribeCloudStorageAIServiceCallback.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageAIServiceCallbackRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageAIServiceCallbackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudStorageAIServiceCallback", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudStorageAIServiceCallbackResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudStorageAIServiceTasks(self, request):
+        """查询指定设备的云存 AI 分析任务列表
+
+        :param request: Request instance for DescribeCloudStorageAIServiceTasks.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageAIServiceTasksRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageAIServiceTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudStorageAIServiceTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudStorageAIServiceTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCloudStorageDate(self, request):
         """获取具有云存的日期
 
@@ -1498,6 +1567,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeProductCloudStorageAIService(self, request):
+        """查询指定产品的云存 AI 服务开通状态
+
+        :param request: Request instance for DescribeProductCloudStorageAIService.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeProductCloudStorageAIServiceRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeProductCloudStorageAIServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeProductCloudStorageAIService", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeProductCloudStorageAIServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeProject(self, request):
         """查询项目详情
 
@@ -2096,6 +2188,52 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyCloudStorageAIService(self, request):
+        """修改指定设备的云存 AI 服务开通状态与参数配置
+
+        :param request: Request instance for ModifyCloudStorageAIService.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyCloudStorageAIServiceRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyCloudStorageAIServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCloudStorageAIService", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCloudStorageAIServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCloudStorageAIServiceCallback(self, request):
+        """修改云存AI分析回调配置
+
+        :param request: Request instance for ModifyCloudStorageAIServiceCallback.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyCloudStorageAIServiceCallbackRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyCloudStorageAIServiceCallbackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCloudStorageAIServiceCallback", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCloudStorageAIServiceCallbackResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyFenceBind(self, request):
         """更新围栏绑定信息
 
@@ -2225,6 +2363,29 @@ class IotexplorerClient(AbstractClient):
             body = self.call("ModifyPositionSpace", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyPositionSpaceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyProductCloudStorageAIService(self, request):
+        """修改指定产品的云存 AI 服务开通状态
+
+        :param request: Request instance for ModifyProductCloudStorageAIService.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyProductCloudStorageAIServiceRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyProductCloudStorageAIServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyProductCloudStorageAIService", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyProductCloudStorageAIServiceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

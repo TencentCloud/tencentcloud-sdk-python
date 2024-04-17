@@ -5692,7 +5692,7 @@ class DescribeYarnApplicationsRequest(AbstractModel):
         :type StartTime: int
         :param _EndTime: 结束时间秒，EndTime-StartTime不得超过1天秒数86400
         :type EndTime: int
-        :param _Offset: 分页起始偏移，从0开始
+        :param _Offset: 分页偏移量，Offset=0表示第一页；如果limit=100，Offset=1，则表示第二页，数据第101条开始查询，返回100条数据；如果limit=100，Offset=2，则表示第三页，数据第201条开始查询，返回100条数据。依次类推
         :type Offset: int
         :param _Limit: 分页大小，合法范围[1,100]
         :type Limit: int

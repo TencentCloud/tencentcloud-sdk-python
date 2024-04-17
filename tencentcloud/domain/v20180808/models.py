@@ -2739,6 +2739,14 @@ class DescribeReservedBidInfoResponse(AbstractModel):
         :param _BidList: 竞价详细数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type BidList: list of ReserveBidInfo
+        :param _BidEndTime: 竞价结束时间
+        :type BidEndTime: str
+        :param _IsUp: 是否领先
+        :type IsUp: bool
+        :param _NextPrice: 下次出价金额
+        :type NextPrice: int
+        :param _Status: 状态：1. 等待竞价 2.竞价中 3.竞价结束
+        :type Status: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2746,6 +2754,10 @@ class DescribeReservedBidInfoResponse(AbstractModel):
         self._Price = None
         self._UpUser = None
         self._BidList = None
+        self._BidEndTime = None
+        self._IsUp = None
+        self._NextPrice = None
+        self._Status = None
         self._RequestId = None
 
     @property
@@ -2781,6 +2793,38 @@ class DescribeReservedBidInfoResponse(AbstractModel):
         self._BidList = BidList
 
     @property
+    def BidEndTime(self):
+        return self._BidEndTime
+
+    @BidEndTime.setter
+    def BidEndTime(self, BidEndTime):
+        self._BidEndTime = BidEndTime
+
+    @property
+    def IsUp(self):
+        return self._IsUp
+
+    @IsUp.setter
+    def IsUp(self, IsUp):
+        self._IsUp = IsUp
+
+    @property
+    def NextPrice(self):
+        return self._NextPrice
+
+    @NextPrice.setter
+    def NextPrice(self, NextPrice):
+        self._NextPrice = NextPrice
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -2799,6 +2843,10 @@ class DescribeReservedBidInfoResponse(AbstractModel):
                 obj = ReserveBidInfo()
                 obj._deserialize(item)
                 self._BidList.append(obj)
+        self._BidEndTime = params.get("BidEndTime")
+        self._IsUp = params.get("IsUp")
+        self._NextPrice = params.get("NextPrice")
+        self._Status = params.get("Status")
         self._RequestId = params.get("RequestId")
 
 

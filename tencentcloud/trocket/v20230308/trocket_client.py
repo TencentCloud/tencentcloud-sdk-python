@@ -858,29 +858,6 @@ class TrocketClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeTopicStatsOp(self, request):
-        """运营端查询topicStata
-
-        :param request: Request instance for DescribeTopicStatsOp.
-        :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeTopicStatsOpRequest`
-        :rtype: :class:`tencentcloud.trocket.v20230308.models.DescribeTopicStatsOpResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeTopicStatsOp", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeTopicStatsOpResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def ImportSourceClusterConsumerGroups(self, request):
         """导入消费者组列表
 

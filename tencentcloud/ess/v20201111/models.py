@@ -10883,6 +10883,135 @@ class DescribeBillUsageDetailResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeBillUsageRequest(AbstractModel):
+    """DescribeBillUsage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 查询开始时间字符串，格式为yyyymmdd,时间跨度不能大于90天
+        :type StartTime: str
+        :param _EndTime: 查询结束时间字符串，格式为yyyymmdd,时间跨度不能大于90天
+        :type EndTime: str
+        :param _QuotaType: 查询的套餐类型 （选填 ）不传则查询所有套餐；目前支持:<ul><li>**CloudEnterprise**: 企业版合同</li><li>**SingleSignature**: 单方签章</li><li>**CloudProve**: 签署报告</li><li>**CloudOnlineSign**: 腾讯会议在线签约</li><li>**ChannelWeCard**: 微工卡</li><li>**SignFlow**: 合同套餐</li><li>**SignFace**: 签署意愿（人脸识别）</li><li>**SignPassword**: 签署意愿（密码）</li><li>**SignSMS**: 签署意愿（短信）</li><li>**PersonalEssAuth**: 签署人实名（腾讯电子签认证）</li><li>**PersonalThirdAuth**: 签署人实名（信任第三方认证）</li><li>**OrgEssAuth**: 签署企业实名</li><li>**FlowNotify**: 短信通知</li><li>**AuthService**: 企业工商信息查询</li></ul>
+        :type QuotaType: str
+        :param _DisplaySubEnterprise: 是否展示集团子企业的明细，默认否
+        :type DisplaySubEnterprise: bool
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._QuotaType = None
+        self._DisplaySubEnterprise = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def QuotaType(self):
+        return self._QuotaType
+
+    @QuotaType.setter
+    def QuotaType(self, QuotaType):
+        self._QuotaType = QuotaType
+
+    @property
+    def DisplaySubEnterprise(self):
+        return self._DisplaySubEnterprise
+
+    @DisplaySubEnterprise.setter
+    def DisplaySubEnterprise(self, DisplaySubEnterprise):
+        self._DisplaySubEnterprise = DisplaySubEnterprise
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._QuotaType = params.get("QuotaType")
+        self._DisplaySubEnterprise = params.get("DisplaySubEnterprise")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBillUsageResponse(AbstractModel):
+    """DescribeBillUsage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Summary: 企业套餐余额及使用情况
+        :type Summary: list of OrgBillSummary
+        :param _SubOrgSummary: 集团子企业套餐使用情况
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubOrgSummary: list of SubOrgBillSummary
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Summary = None
+        self._SubOrgSummary = None
+        self._RequestId = None
+
+    @property
+    def Summary(self):
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
+    @property
+    def SubOrgSummary(self):
+        return self._SubOrgSummary
+
+    @SubOrgSummary.setter
+    def SubOrgSummary(self, SubOrgSummary):
+        self._SubOrgSummary = SubOrgSummary
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Summary") is not None:
+            self._Summary = []
+            for item in params.get("Summary"):
+                obj = OrgBillSummary()
+                obj._deserialize(item)
+                self._Summary.append(obj)
+        if params.get("SubOrgSummary") is not None:
+            self._SubOrgSummary = []
+            for item in params.get("SubOrgSummary"):
+                obj = SubOrgBillSummary()
+                obj._deserialize(item)
+                self._SubOrgSummary.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCancelFlowsTaskRequest(AbstractModel):
     """DescribeCancelFlowsTask请求参数结构体
 
@@ -18509,6 +18638,92 @@ class OccupiedSeal(AbstractModel):
         
 
 
+class OrgBillSummary(AbstractModel):
+    """企业套餐余额情况
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 套餐总数
+        :type Total: int
+        :param _Used: 套餐使用数
+        :type Used: int
+        :param _Available: 套餐剩余数
+        :type Available: int
+        :param _QuotaType: 套餐类型
+对应关系如下:
+<ul>
+<li>**CloudEnterprise**: 企业版合同</li>
+<li>**SingleSignature**: 单方签章</li>
+<li>**CloudProve**: 签署报告</li>
+<li>**CloudOnlineSign**: 腾讯会议在线签约</li>
+<li>**ChannelWeCard**: 微工卡</li>
+<li>**SignFlow**: 合同套餐</li>
+<li>**SignFace**: 签署意愿（人脸识别）</li>
+<li>**SignPassword**: 签署意愿（密码）</li>
+<li>**SignSMS**: 签署意愿（短信）</li>
+<li>**PersonalEssAuth**: 签署人实名（腾讯电子签认证）</li>
+<li>**PersonalThirdAuth**: 签署人实名（信任第三方认证）</li>
+<li>**OrgEssAuth**: 签署企业实名</li>
+<li>**FlowNotify**: 短信通知</li>
+<li>**AuthService**: 企业工商信息查询</li>
+</ul>
+        :type QuotaType: str
+        """
+        self._Total = None
+        self._Used = None
+        self._Available = None
+        self._QuotaType = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Used(self):
+        return self._Used
+
+    @Used.setter
+    def Used(self, Used):
+        self._Used = Used
+
+    @property
+    def Available(self):
+        return self._Available
+
+    @Available.setter
+    def Available(self, Available):
+        self._Available = Available
+
+    @property
+    def QuotaType(self):
+        return self._QuotaType
+
+    @QuotaType.setter
+    def QuotaType(self, QuotaType):
+        self._QuotaType = QuotaType
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._Used = params.get("Used")
+        self._Available = params.get("Available")
+        self._QuotaType = params.get("QuotaType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OrganizationInfo(AbstractModel):
     """机构信息
 
@@ -20548,6 +20763,118 @@ class StartFlowResponse(AbstractModel):
     def _deserialize(self, params):
         self._Status = params.get("Status")
         self._RequestId = params.get("RequestId")
+
+
+class SubOrgBillSummary(AbstractModel):
+    """子企业套餐使用情况
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrganizationName: 子企业名称
+        :type OrganizationName: str
+        :param _Usage:  
+        :type Usage: list of SubOrgBillUsage
+        """
+        self._OrganizationName = None
+        self._Usage = None
+
+    @property
+    def OrganizationName(self):
+        return self._OrganizationName
+
+    @OrganizationName.setter
+    def OrganizationName(self, OrganizationName):
+        self._OrganizationName = OrganizationName
+
+    @property
+    def Usage(self):
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
+
+    def _deserialize(self, params):
+        self._OrganizationName = params.get("OrganizationName")
+        if params.get("Usage") is not None:
+            self._Usage = []
+            for item in params.get("Usage"):
+                obj = SubOrgBillUsage()
+                obj._deserialize(item)
+                self._Usage.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubOrgBillUsage(AbstractModel):
+    """集团子企业使用集团主企业的套餐使用情况
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Used: 套餐使用数
+        :type Used: int
+        :param _QuotaType: 套餐类型
+对应关系如下:
+<ul>
+<li>**CloudEnterprise**: 企业版合同</li>
+<li>**SingleSignature**: 单方签章</li>
+<li>**CloudProve**: 签署报告</li>
+<li>**CloudOnlineSign**: 腾讯会议在线签约</li>
+<li>**ChannelWeCard**: 微工卡</li>
+<li>**SignFlow**: 合同套餐</li>
+<li>**SignFace**: 签署意愿（人脸识别）</li>
+<li>**SignPassword**: 签署意愿（密码）</li>
+<li>**SignSMS**: 签署意愿（短信）</li>
+<li>**PersonalEssAuth**: 签署人实名（腾讯电子签认证）</li>
+<li>**PersonalThirdAuth**: 签署人实名（信任第三方认证）</li>
+<li>**OrgEssAuth**: 签署企业实名</li>
+<li>**FlowNotify**: 短信通知</li>
+<li>**AuthService**: 企业工商信息查询</li>
+</ul>
+        :type QuotaType: str
+        """
+        self._Used = None
+        self._QuotaType = None
+
+    @property
+    def Used(self):
+        return self._Used
+
+    @Used.setter
+    def Used(self, Used):
+        self._Used = Used
+
+    @property
+    def QuotaType(self):
+        return self._QuotaType
+
+    @QuotaType.setter
+    def QuotaType(self, QuotaType):
+        self._QuotaType = QuotaType
+
+
+    def _deserialize(self, params):
+        self._Used = params.get("Used")
+        self._QuotaType = params.get("QuotaType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SuccessCreateStaffData(AbstractModel):

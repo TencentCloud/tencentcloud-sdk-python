@@ -26663,6 +26663,34 @@ class SlowQueriesItem(AbstractModel):
         :type SqlTemplate: str
         :param _SqlMd5: sql语句md5
         :type SqlMd5: str
+        :param _SyncReadCountRemote: 远程读取次数
+数据库内核版本大于3.1.12
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SyncReadCountRemote: int
+        :param _SyncReadBytesRemote: 远程读取的字节数
+数据库内核版本大于3.1.12
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SyncReadBytesRemote: int
+        :param _SyncReadTimeRemote: 远程读取所花费的时间（微秒）
+数据库内核版本大于3.1.12
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SyncReadTimeRemote: int
+        :param _SyncWriteCountRemote: 远程写入次数
+数据库内核版本大于3.1.12
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SyncWriteCountRemote: int
+        :param _SyncWriteBytesRemote: 远程写入的字节数。
+数据库内核版本大于3.1.12
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SyncWriteBytesRemote: int
+        :param _SyncWriteTimeRemote: 远程写入所花费的时间（微秒）。
+数据库内核版本大于3.1.12
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SyncWriteTimeRemote: int
+        :param _TrxCommitDelay: 事务提交延迟（微秒）
+数据库内核版本大于3.1.12
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrxCommitDelay: int
         """
         self._Timestamp = None
         self._QueryTime = None
@@ -26675,6 +26703,13 @@ class SlowQueriesItem(AbstractModel):
         self._RowsSent = None
         self._SqlTemplate = None
         self._SqlMd5 = None
+        self._SyncReadCountRemote = None
+        self._SyncReadBytesRemote = None
+        self._SyncReadTimeRemote = None
+        self._SyncWriteCountRemote = None
+        self._SyncWriteBytesRemote = None
+        self._SyncWriteTimeRemote = None
+        self._TrxCommitDelay = None
 
     @property
     def Timestamp(self):
@@ -26764,6 +26799,62 @@ class SlowQueriesItem(AbstractModel):
     def SqlMd5(self, SqlMd5):
         self._SqlMd5 = SqlMd5
 
+    @property
+    def SyncReadCountRemote(self):
+        return self._SyncReadCountRemote
+
+    @SyncReadCountRemote.setter
+    def SyncReadCountRemote(self, SyncReadCountRemote):
+        self._SyncReadCountRemote = SyncReadCountRemote
+
+    @property
+    def SyncReadBytesRemote(self):
+        return self._SyncReadBytesRemote
+
+    @SyncReadBytesRemote.setter
+    def SyncReadBytesRemote(self, SyncReadBytesRemote):
+        self._SyncReadBytesRemote = SyncReadBytesRemote
+
+    @property
+    def SyncReadTimeRemote(self):
+        return self._SyncReadTimeRemote
+
+    @SyncReadTimeRemote.setter
+    def SyncReadTimeRemote(self, SyncReadTimeRemote):
+        self._SyncReadTimeRemote = SyncReadTimeRemote
+
+    @property
+    def SyncWriteCountRemote(self):
+        return self._SyncWriteCountRemote
+
+    @SyncWriteCountRemote.setter
+    def SyncWriteCountRemote(self, SyncWriteCountRemote):
+        self._SyncWriteCountRemote = SyncWriteCountRemote
+
+    @property
+    def SyncWriteBytesRemote(self):
+        return self._SyncWriteBytesRemote
+
+    @SyncWriteBytesRemote.setter
+    def SyncWriteBytesRemote(self, SyncWriteBytesRemote):
+        self._SyncWriteBytesRemote = SyncWriteBytesRemote
+
+    @property
+    def SyncWriteTimeRemote(self):
+        return self._SyncWriteTimeRemote
+
+    @SyncWriteTimeRemote.setter
+    def SyncWriteTimeRemote(self, SyncWriteTimeRemote):
+        self._SyncWriteTimeRemote = SyncWriteTimeRemote
+
+    @property
+    def TrxCommitDelay(self):
+        return self._TrxCommitDelay
+
+    @TrxCommitDelay.setter
+    def TrxCommitDelay(self, TrxCommitDelay):
+        self._TrxCommitDelay = TrxCommitDelay
+
 
     def _deserialize(self, params):
         self._Timestamp = params.get("Timestamp")
@@ -26777,6 +26868,13 @@ class SlowQueriesItem(AbstractModel):
         self._RowsSent = params.get("RowsSent")
         self._SqlTemplate = params.get("SqlTemplate")
         self._SqlMd5 = params.get("SqlMd5")
+        self._SyncReadCountRemote = params.get("SyncReadCountRemote")
+        self._SyncReadBytesRemote = params.get("SyncReadBytesRemote")
+        self._SyncReadTimeRemote = params.get("SyncReadTimeRemote")
+        self._SyncWriteCountRemote = params.get("SyncWriteCountRemote")
+        self._SyncWriteBytesRemote = params.get("SyncWriteBytesRemote")
+        self._SyncWriteTimeRemote = params.get("SyncWriteTimeRemote")
+        self._TrxCommitDelay = params.get("TrxCommitDelay")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

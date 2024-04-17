@@ -499,6 +499,100 @@ class AddShareUnitResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AttachPolicyRequest(AbstractModel):
+    """AttachPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TargetId: 绑定策略目标ID。成员Uin或部门ID
+        :type TargetId: int
+        :param _TargetType: 目标类型。取值范围：NODE-部门、MEMBER-成员
+        :type TargetType: str
+        :param _PolicyId: 策略ID。
+        :type PolicyId: int
+        :param _Type: 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+        :type Type: str
+        """
+        self._TargetId = None
+        self._TargetType = None
+        self._PolicyId = None
+        self._Type = None
+
+    @property
+    def TargetId(self):
+        return self._TargetId
+
+    @TargetId.setter
+    def TargetId(self, TargetId):
+        self._TargetId = TargetId
+
+    @property
+    def TargetType(self):
+        return self._TargetType
+
+    @TargetType.setter
+    def TargetType(self, TargetType):
+        self._TargetType = TargetType
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._TargetId = params.get("TargetId")
+        self._TargetType = params.get("TargetType")
+        self._PolicyId = params.get("PolicyId")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AttachPolicyResponse(AbstractModel):
+    """AttachPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class AuthNode(AbstractModel):
     """互信主体主要信息
 
@@ -1427,6 +1521,113 @@ class CreateOrganizationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreatePolicyRequest(AbstractModel):
+    """CreatePolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 策略名。
+长度为1~128个字符，可以包含汉字、英文字母、数字和下划线（_）
+        :type Name: str
+        :param _Content: 策略内容。参考CAM策略语法
+        :type Content: str
+        :param _Type: 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+        :type Type: str
+        :param _Description: 策略描述。
+        :type Description: str
+        """
+        self._Name = None
+        self._Content = None
+        self._Type = None
+        self._Description = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Content = params.get("Content")
+        self._Type = params.get("Type")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePolicyResponse(AbstractModel):
+    """CreatePolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyId: 策略ID
+        :type PolicyId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PolicyId = None
+        self._RequestId = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PolicyId = params.get("PolicyId")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteAccountRequest(AbstractModel):
     """DeleteAccount请求参数结构体
 
@@ -1795,6 +1996,77 @@ class DeleteOrganizationRequest(AbstractModel):
 
 class DeleteOrganizationResponse(AbstractModel):
     """DeleteOrganization返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeletePolicyRequest(AbstractModel):
+    """DeletePolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyId: 需要删除的策略ID。可以调用[ListPolicies](https://tcloud4api.woa.com/document/product/1128/79356?!preview&!document=1)获取
+
+        :type PolicyId: int
+        :param _Type: 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+        :type Type: str
+        """
+        self._PolicyId = None
+        self._Type = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._PolicyId = params.get("PolicyId")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeletePolicyResponse(AbstractModel):
+    """DeletePolicy返回参数结构体
 
     """
 
@@ -2624,7 +2896,7 @@ class DescribeOrganizationMemberAuthAccountsRequest(AbstractModel):
         :type Limit: int
         :param _MemberUin: 成员Uin。
         :type MemberUin: int
-        :param _PolicyId: 策略ID。可以通过[DescribeOrganizationMemberPolicies](https://cloud.tencent.com/document/product/850/82935)
+        :param _PolicyId: 策略ID。可以通过[DescribeOrganizationMemberPolicies](https://cloud.tencent.com/document/product/850/82935)获取
         :type PolicyId: int
         """
         self._Offset = None
@@ -3692,6 +3964,259 @@ class DescribeOrganizationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePolicyConfigRequest(AbstractModel):
+    """DescribePolicyConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrganizationId: 企业组织Id。可以调用[DescribeOrganization](https://cloud.tencent.com/document/product/850/67059)获取
+        :type OrganizationId: int
+        :param _Type: 策略类型。默认值0，取值范围：0-服务控制策略、1-标签策略
+        :type Type: int
+        """
+        self._OrganizationId = None
+        self._Type = None
+
+    @property
+    def OrganizationId(self):
+        return self._OrganizationId
+
+    @OrganizationId.setter
+    def OrganizationId(self, OrganizationId):
+        self._OrganizationId = OrganizationId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._OrganizationId = params.get("OrganizationId")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePolicyConfigResponse(AbstractModel):
+    """DescribePolicyConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 开启状态。0-未开启、1-开启
+        :type Status: int
+        :param _Type: 策略类型。SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+        :type Type: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._Type = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._Type = params.get("Type")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePolicyRequest(AbstractModel):
+    """DescribePolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyId: 策略Id。
+        :type PolicyId: int
+        :param _PolicyType: 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+        :type PolicyType: str
+        """
+        self._PolicyId = None
+        self._PolicyType = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def PolicyType(self):
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+
+    def _deserialize(self, params):
+        self._PolicyId = params.get("PolicyId")
+        self._PolicyType = params.get("PolicyType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePolicyResponse(AbstractModel):
+    """DescribePolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyId: 策略Id。
+        :type PolicyId: int
+        :param _PolicyName: 策略名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyName: str
+        :param _Type: 策略类型。1-自定义 2-预设策略
+        :type Type: int
+        :param _Description: 策略描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _PolicyDocument: 策略文档。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyDocument: str
+        :param _UpdateTime: 策略更新时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _AddTime: 策略创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AddTime: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PolicyId = None
+        self._PolicyName = None
+        self._Type = None
+        self._Description = None
+        self._PolicyDocument = None
+        self._UpdateTime = None
+        self._AddTime = None
+        self._RequestId = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def PolicyName(self):
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def PolicyDocument(self):
+        return self._PolicyDocument
+
+    @PolicyDocument.setter
+    def PolicyDocument(self, PolicyDocument):
+        self._PolicyDocument = PolicyDocument
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def AddTime(self):
+        return self._AddTime
+
+    @AddTime.setter
+    def AddTime(self, AddTime):
+        self._AddTime = AddTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PolicyId = params.get("PolicyId")
+        self._PolicyName = params.get("PolicyName")
+        self._Type = params.get("Type")
+        self._Description = params.get("Description")
+        self._PolicyDocument = params.get("PolicyDocument")
+        self._UpdateTime = params.get("UpdateTime")
+        self._AddTime = params.get("AddTime")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeShareAreasRequest(AbstractModel):
     """DescribeShareAreas请求参数结构体
 
@@ -3783,7 +4308,7 @@ class DescribeShareUnitMembersRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 限制数目。取值范围：1~50。
         :type Limit: int
-        :param _SearchKey: 搜索关键字。支持成员uin搜索。
+        :param _SearchKey: 搜索关键字。支持成员Uin搜索。
         :type SearchKey: str
         """
         self._UnitId = None
@@ -4179,6 +4704,240 @@ class DescribeShareUnitsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DetachPolicyRequest(AbstractModel):
+    """DetachPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TargetId: 解绑策略目标ID。成员Uin或部门ID
+        :type TargetId: int
+        :param _TargetType: 目标类型。取值范围：NODE-部门、MEMBER-成员
+        :type TargetType: str
+        :param _PolicyId: 策略ID。
+        :type PolicyId: int
+        :param _Type: 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+        :type Type: str
+        """
+        self._TargetId = None
+        self._TargetType = None
+        self._PolicyId = None
+        self._Type = None
+
+    @property
+    def TargetId(self):
+        return self._TargetId
+
+    @TargetId.setter
+    def TargetId(self, TargetId):
+        self._TargetId = TargetId
+
+    @property
+    def TargetType(self):
+        return self._TargetType
+
+    @TargetType.setter
+    def TargetType(self, TargetType):
+        self._TargetType = TargetType
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._TargetId = params.get("TargetId")
+        self._TargetType = params.get("TargetType")
+        self._PolicyId = params.get("PolicyId")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DetachPolicyResponse(AbstractModel):
+    """DetachPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DisablePolicyTypeRequest(AbstractModel):
+    """DisablePolicyType请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrganizationId: 企业组织Id。可以调用[DescribeOrganization](https://cloud.tencent.com/document/product/850/67059)获取
+        :type OrganizationId: int
+        :param _PolicyType: 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+        :type PolicyType: str
+        """
+        self._OrganizationId = None
+        self._PolicyType = None
+
+    @property
+    def OrganizationId(self):
+        return self._OrganizationId
+
+    @OrganizationId.setter
+    def OrganizationId(self, OrganizationId):
+        self._OrganizationId = OrganizationId
+
+    @property
+    def PolicyType(self):
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+
+    def _deserialize(self, params):
+        self._OrganizationId = params.get("OrganizationId")
+        self._PolicyType = params.get("PolicyType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisablePolicyTypeResponse(AbstractModel):
+    """DisablePolicyType返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class EnablePolicyTypeRequest(AbstractModel):
+    """EnablePolicyType请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrganizationId: 企业组织Id。可以调用[DescribeOrganization](https://cloud.tencent.com/document/product/850/67059)获取
+        :type OrganizationId: int
+        :param _PolicyType: 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+        :type PolicyType: str
+        """
+        self._OrganizationId = None
+        self._PolicyType = None
+
+    @property
+    def OrganizationId(self):
+        return self._OrganizationId
+
+    @OrganizationId.setter
+    def OrganizationId(self, OrganizationId):
+        self._OrganizationId = OrganizationId
+
+    @property
+    def PolicyType(self):
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+
+    def _deserialize(self, params):
+        self._OrganizationId = params.get("OrganizationId")
+        self._PolicyType = params.get("PolicyType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnablePolicyTypeResponse(AbstractModel):
+    """EnablePolicyType返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class IdentityPolicy(AbstractModel):
     """组织身份策略
 
@@ -4384,6 +5143,739 @@ class ListOrganizationIdentityResponse(AbstractModel):
                 obj = OrgIdentity()
                 obj._deserialize(item)
                 self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ListPoliciesForTarget(AbstractModel):
+    """查询目标关联的SCP策略列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StrategyId: 策略Id
+        :type StrategyId: int
+        :param _StrategyName: 策略名称
+        :type StrategyName: str
+        :param _Remark: 备注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param _Uin: 关联的账号或节点
+        :type Uin: int
+        :param _Type: 关联类型 1-节点 2-用户
+        :type Type: int
+        :param _AddTime: 策略创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AddTime: str
+        :param _UpdateTime: 策略更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _Name: 部门名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _AttachTime: 策略绑定时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttachTime: str
+        """
+        self._StrategyId = None
+        self._StrategyName = None
+        self._Remark = None
+        self._Uin = None
+        self._Type = None
+        self._AddTime = None
+        self._UpdateTime = None
+        self._Name = None
+        self._AttachTime = None
+
+    @property
+    def StrategyId(self):
+        return self._StrategyId
+
+    @StrategyId.setter
+    def StrategyId(self, StrategyId):
+        self._StrategyId = StrategyId
+
+    @property
+    def StrategyName(self):
+        return self._StrategyName
+
+    @StrategyName.setter
+    def StrategyName(self, StrategyName):
+        self._StrategyName = StrategyName
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def AddTime(self):
+        return self._AddTime
+
+    @AddTime.setter
+    def AddTime(self, AddTime):
+        self._AddTime = AddTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def AttachTime(self):
+        return self._AttachTime
+
+    @AttachTime.setter
+    def AttachTime(self, AttachTime):
+        self._AttachTime = AttachTime
+
+
+    def _deserialize(self, params):
+        self._StrategyId = params.get("StrategyId")
+        self._StrategyName = params.get("StrategyName")
+        self._Remark = params.get("Remark")
+        self._Uin = params.get("Uin")
+        self._Type = params.get("Type")
+        self._AddTime = params.get("AddTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Name = params.get("Name")
+        self._AttachTime = params.get("AttachTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListPoliciesForTargetRequest(AbstractModel):
+    """ListPoliciesForTarget请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TargetId: 账号uin或者节点id。
+        :type TargetId: int
+        :param _Rp: 每页数量。默认值是 20，必须大于 0 且小于或等于 200
+        :type Rp: int
+        :param _Page: 页码。默认值是 1，从 1开始，不能大于 200
+        :type Page: int
+        :param _PolicyType: 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+        :type PolicyType: str
+        :param _Keyword: 搜索关键字。按照策略名称搜索
+        :type Keyword: str
+        """
+        self._TargetId = None
+        self._Rp = None
+        self._Page = None
+        self._PolicyType = None
+        self._Keyword = None
+
+    @property
+    def TargetId(self):
+        return self._TargetId
+
+    @TargetId.setter
+    def TargetId(self, TargetId):
+        self._TargetId = TargetId
+
+    @property
+    def Rp(self):
+        return self._Rp
+
+    @Rp.setter
+    def Rp(self, Rp):
+        self._Rp = Rp
+
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PolicyType(self):
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+
+    def _deserialize(self, params):
+        self._TargetId = params.get("TargetId")
+        self._Rp = params.get("Rp")
+        self._Page = params.get("Page")
+        self._PolicyType = params.get("PolicyType")
+        self._Keyword = params.get("Keyword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListPoliciesForTargetResponse(AbstractModel):
+    """ListPoliciesForTarget返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalNum: 总数。
+        :type TotalNum: int
+        :param _List: 目标关联的策略列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of ListPoliciesForTarget
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalNum = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalNum = params.get("TotalNum")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = ListPoliciesForTarget()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ListPoliciesRequest(AbstractModel):
+    """ListPolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Rp: 每页数量。默认值是 20，必须大于 0 且小于或等于 200
+        :type Rp: int
+        :param _Page: 页码。默认值是 1，从 1开始，不能大于 200
+        :type Page: int
+        :param _Scope: 查询范围。取值范围： All-获取所有策略、QCS-只获取预设策略、Local-只获取自定义策略，默认值：All
+        :type Scope: str
+        :param _Keyword: 搜索关键字。按照策略名搜索
+        :type Keyword: str
+        :param _PolicyType: 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+        :type PolicyType: str
+        """
+        self._Rp = None
+        self._Page = None
+        self._Scope = None
+        self._Keyword = None
+        self._PolicyType = None
+
+    @property
+    def Rp(self):
+        return self._Rp
+
+    @Rp.setter
+    def Rp(self, Rp):
+        self._Rp = Rp
+
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def Scope(self):
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def PolicyType(self):
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+
+    def _deserialize(self, params):
+        self._Rp = params.get("Rp")
+        self._Page = params.get("Page")
+        self._Scope = params.get("Scope")
+        self._Keyword = params.get("Keyword")
+        self._PolicyType = params.get("PolicyType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListPoliciesResponse(AbstractModel):
+    """ListPolicies返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalNum: 策略总数
+        :type TotalNum: int
+        :param _List: 策略列表数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of ListPolicyNode
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalNum = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalNum = params.get("TotalNum")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = ListPolicyNode()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ListPolicyNode(AbstractModel):
+    """企业组织策略列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AddTime: 策略创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AddTime: str
+        :param _AttachedTimes: 策略绑定次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttachedTimes: int
+        :param _Description: 策略描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _PolicyName: 策略名称
+        :type PolicyName: str
+        :param _PolicyId: 策略Id
+        :type PolicyId: int
+        :param _UpdateTime: 策略更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _Type: 策略类型 1-自定义 2-预设
+        :type Type: int
+        """
+        self._AddTime = None
+        self._AttachedTimes = None
+        self._Description = None
+        self._PolicyName = None
+        self._PolicyId = None
+        self._UpdateTime = None
+        self._Type = None
+
+    @property
+    def AddTime(self):
+        return self._AddTime
+
+    @AddTime.setter
+    def AddTime(self, AddTime):
+        self._AddTime = AddTime
+
+    @property
+    def AttachedTimes(self):
+        return self._AttachedTimes
+
+    @AttachedTimes.setter
+    def AttachedTimes(self, AttachedTimes):
+        self._AttachedTimes = AttachedTimes
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def PolicyName(self):
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._AddTime = params.get("AddTime")
+        self._AttachedTimes = params.get("AttachedTimes")
+        self._Description = params.get("Description")
+        self._PolicyName = params.get("PolicyName")
+        self._PolicyId = params.get("PolicyId")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListTargetsForPolicyNode(AbstractModel):
+    """查询某个指定SCP策略关联的目标列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Uin: scp账号uin或节点Id
+        :type Uin: int
+        :param _RelatedType: 关联类型 1-节点关联 2-用户关联
+        :type RelatedType: int
+        :param _Name: 账号或者节点名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _AddTime: 绑定时间
+        :type AddTime: str
+        """
+        self._Uin = None
+        self._RelatedType = None
+        self._Name = None
+        self._AddTime = None
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def RelatedType(self):
+        return self._RelatedType
+
+    @RelatedType.setter
+    def RelatedType(self, RelatedType):
+        self._RelatedType = RelatedType
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def AddTime(self):
+        return self._AddTime
+
+    @AddTime.setter
+    def AddTime(self, AddTime):
+        self._AddTime = AddTime
+
+
+    def _deserialize(self, params):
+        self._Uin = params.get("Uin")
+        self._RelatedType = params.get("RelatedType")
+        self._Name = params.get("Name")
+        self._AddTime = params.get("AddTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListTargetsForPolicyRequest(AbstractModel):
+    """ListTargetsForPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyId: 策略Id。
+        :type PolicyId: int
+        :param _Rp: 每页数量。默认值是 20，必须大于 0 且小于或等于 200
+        :type Rp: int
+        :param _Page: 页码。默认值是 1，从 1开始，不能大于 200
+        :type Page: int
+        :param _TargetType: 策略类型。取值范围：All-全部、User-用户、Node-节点
+        :type TargetType: str
+        :param _PolicyType: 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+        :type PolicyType: str
+        :param _Keyword: 按照多个策略id搜索，空格隔开。
+        :type Keyword: str
+        """
+        self._PolicyId = None
+        self._Rp = None
+        self._Page = None
+        self._TargetType = None
+        self._PolicyType = None
+        self._Keyword = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def Rp(self):
+        return self._Rp
+
+    @Rp.setter
+    def Rp(self, Rp):
+        self._Rp = Rp
+
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def TargetType(self):
+        return self._TargetType
+
+    @TargetType.setter
+    def TargetType(self, TargetType):
+        self._TargetType = TargetType
+
+    @property
+    def PolicyType(self):
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+
+    def _deserialize(self, params):
+        self._PolicyId = params.get("PolicyId")
+        self._Rp = params.get("Rp")
+        self._Page = params.get("Page")
+        self._TargetType = params.get("TargetType")
+        self._PolicyType = params.get("PolicyType")
+        self._Keyword = params.get("Keyword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListTargetsForPolicyResponse(AbstractModel):
+    """ListTargetsForPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalNum: 总数。
+        :type TotalNum: int
+        :param _List: 指定SCP策略关联目标列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of ListTargetsForPolicyNode
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalNum = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalNum = params.get("TotalNum")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = ListTargetsForPolicyNode()
+                obj._deserialize(item)
+                self._List.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -6740,6 +8232,112 @@ class UpdateOrganizationNodeRequest(AbstractModel):
 
 class UpdateOrganizationNodeResponse(AbstractModel):
     """UpdateOrganizationNode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdatePolicyRequest(AbstractModel):
+    """UpdatePolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyId: 需要编辑的策略ID。可以调用[ListPolicies](https://tcloud4api.woa.com/document/product/1128/79356?!preview&!document=1)获取
+        :type PolicyId: int
+        :param _Description: 策略描述。
+        :type Description: str
+        :param _Content: 策略内容。参考CAM策略语法
+        :type Content: str
+        :param _Name: 策略名。长度为1~128个字符，可以包含汉字、英文字母、数字和下划线（_）
+        :type Name: str
+        :param _Type: 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+        :type Type: str
+        """
+        self._PolicyId = None
+        self._Description = None
+        self._Content = None
+        self._Name = None
+        self._Type = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._PolicyId = params.get("PolicyId")
+        self._Description = params.get("Description")
+        self._Content = params.get("Content")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdatePolicyResponse(AbstractModel):
+    """UpdatePolicy返回参数结构体
 
     """
 

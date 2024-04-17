@@ -29725,6 +29725,9 @@ class NodePool(AbstractModel):
         :param _DesiredNodesNum: 期望的节点数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type DesiredNodesNum: int
+        :param _RuntimeConfig: 运行时描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuntimeConfig: :class:`tencentcloud.tke.v20180525.models.RuntimeConfig`
         :param _NodePoolOs: 节点池osName
 注意：此字段可能返回 null，表示取不到有效值。
         :type NodePoolOs: str
@@ -29779,6 +29782,7 @@ class NodePool(AbstractModel):
         self._MaxNodesNum = None
         self._MinNodesNum = None
         self._DesiredNodesNum = None
+        self._RuntimeConfig = None
         self._NodePoolOs = None
         self._OsCustomizeType = None
         self._ImageId = None
@@ -29904,6 +29908,14 @@ class NodePool(AbstractModel):
     @DesiredNodesNum.setter
     def DesiredNodesNum(self, DesiredNodesNum):
         self._DesiredNodesNum = DesiredNodesNum
+
+    @property
+    def RuntimeConfig(self):
+        return self._RuntimeConfig
+
+    @RuntimeConfig.setter
+    def RuntimeConfig(self, RuntimeConfig):
+        self._RuntimeConfig = RuntimeConfig
 
     @property
     def NodePoolOs(self):
@@ -30042,6 +30054,9 @@ class NodePool(AbstractModel):
         self._MaxNodesNum = params.get("MaxNodesNum")
         self._MinNodesNum = params.get("MinNodesNum")
         self._DesiredNodesNum = params.get("DesiredNodesNum")
+        if params.get("RuntimeConfig") is not None:
+            self._RuntimeConfig = RuntimeConfig()
+            self._RuntimeConfig._deserialize(params.get("RuntimeConfig"))
         self._NodePoolOs = params.get("NodePoolOs")
         self._OsCustomizeType = params.get("OsCustomizeType")
         self._ImageId = params.get("ImageId")

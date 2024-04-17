@@ -4013,7 +4013,7 @@ class FileSystemInfo(AbstractModel):
         :type LifeCycleState: str
         :param _SizeByte: 文件系统已使用容量。单位：Byte
         :type SizeByte: int
-        :param _SizeLimit: 文件系统最大空间限制。单位:GiB
+        :param _SizeLimit: 文件系统空间限制。单位:GiB
         :type SizeLimit: int
         :param _ZoneId: 区域 ID
         :type ZoneId: int
@@ -4039,7 +4039,7 @@ class FileSystemInfo(AbstractModel):
         :type AppId: int
         :param _BandwidthLimit: 文件系统吞吐上限，吞吐上限是根据文件系统当前已使用存储量、绑定的存储资源包以及吞吐资源包一同确定. 单位MiB/s
         :type BandwidthLimit: float
-        :param _Capacity: 文件系统总容量
+        :param _Capacity: 文件系统容量规格上限
 单位:GiB
         :type Capacity: int
         :param _Tags: 文件系统标签列表

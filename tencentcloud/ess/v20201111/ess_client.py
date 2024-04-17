@@ -1526,6 +1526,29 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBillUsage(self, request):
+        """通过此接口（DescribeBillUsage）查询该企业的套餐套餐使用情况。
+
+        :param request: Request instance for DescribeBillUsage.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DescribeBillUsageRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DescribeBillUsageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBillUsage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBillUsageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBillUsageDetail(self, request):
         """通过此接口（DescribeBillUsageDetail）查询该企业的套餐消耗详情。
 

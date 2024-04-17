@@ -1972,12 +1972,24 @@ class Event(AbstractModel):
         :param _Time: 事件发生的毫秒时间戳，
 time.Now().UnixNano()/1e6
         :type Time: int
+        :param _Region: 事件的地域信息，没有则默认是EB所在的地域信息
+        :type Region: str
+        :param _Status: 用于描述事件状态，非必须，默认是""
+        :type Status: str
+        :param _Id: 事件的唯一id，用户侧主动上传则需要保证风格一致
+        :type Id: str
+        :param _TagList: 标签列表
+        :type TagList: list of Tag
         """
         self._Source = None
         self._Data = None
         self._Type = None
         self._Subject = None
         self._Time = None
+        self._Region = None
+        self._Status = None
+        self._Id = None
+        self._TagList = None
 
     @property
     def Source(self):
@@ -2019,6 +2031,38 @@ time.Now().UnixNano()/1e6
     def Time(self, Time):
         self._Time = Time
 
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def TagList(self):
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
 
     def _deserialize(self, params):
         self._Source = params.get("Source")
@@ -2026,6 +2070,15 @@ time.Now().UnixNano()/1e6
         self._Type = params.get("Type")
         self._Subject = params.get("Subject")
         self._Time = params.get("Time")
+        self._Region = params.get("Region")
+        self._Status = params.get("Status")
+        self._Id = params.get("Id")
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TagList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4714,6 +4767,51 @@ class TDMQParams(AbstractModel):
     def _deserialize(self, params):
         self._ClusterType = params.get("ClusterType")
         self._ClusterEndPoint = params.get("ClusterEndPoint")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Tag(AbstractModel):
+    """事件总线资源标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 标签名称
+        :type Key: str
+        :param _Value: 标签值
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

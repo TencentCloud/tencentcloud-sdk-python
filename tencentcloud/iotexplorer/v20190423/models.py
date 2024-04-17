@@ -916,6 +916,162 @@ class CallDeviceActionSyncResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CloudStorageAIServiceTask(AbstractModel):
+    """云存 AI 服务任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 云存 AI 服务任务 ID
+        :type TaskId: str
+        :param _ProductId: 产品 ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _ChannelId: 通道 ID
+        :type ChannelId: int
+        :param _StartTime: 对应云存视频的起始时间
+        :type StartTime: int
+        :param _EndTime: 对应云存视频的结束时间
+        :type EndTime: int
+        :param _Status: 任务状态（1：失败；2：成功但结果为空；3：成功且结果非空）
+        :type Status: int
+        :param _Result: 任务结果
+        :type Result: str
+        :param _ServiceType: 云存 AI 服务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceType: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param _UpdateTime: 最后更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: int
+        """
+        self._TaskId = None
+        self._ProductId = None
+        self._DeviceName = None
+        self._ChannelId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Status = None
+        self._Result = None
+        self._ServiceType = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def ChannelId(self):
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ServiceType(self):
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._ChannelId = params.get("ChannelId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Status = params.get("Status")
+        self._Result = params.get("Result")
+        self._ServiceType = params.get("ServiceType")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CloudStorageEvent(AbstractModel):
     """云存事件
 
@@ -3914,6 +4070,367 @@ class DescribeBindedProductsResponse(AbstractModel):
                 obj = BindProductInfo()
                 obj._deserialize(item)
                 self._Products.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCloudStorageAIServiceCallbackRequest(AbstractModel):
+    """DescribeCloudStorageAIServiceCallback请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        """
+        self._ProductId = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudStorageAIServiceCallbackResponse(AbstractModel):
+    """DescribeCloudStorageAIServiceCallback返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 推送类型。http：HTTP 回调
+        :type Type: str
+        :param _CallbackUrl: HTTP 回调 URL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CallbackUrl: str
+        :param _CallbackToken: HTTP 回调鉴权 Token
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CallbackToken: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Type = None
+        self._CallbackUrl = None
+        self._CallbackToken = None
+        self._RequestId = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def CallbackUrl(self):
+        return self._CallbackUrl
+
+    @CallbackUrl.setter
+    def CallbackUrl(self, CallbackUrl):
+        self._CallbackUrl = CallbackUrl
+
+    @property
+    def CallbackToken(self):
+        return self._CallbackToken
+
+    @CallbackToken.setter
+    def CallbackToken(self, CallbackToken):
+        self._CallbackToken = CallbackToken
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._CallbackUrl = params.get("CallbackUrl")
+        self._CallbackToken = params.get("CallbackToken")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCloudStorageAIServiceRequest(AbstractModel):
+    """DescribeCloudStorageAIService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _ServiceType: 云存 AI 服务类型。可选值：PackageDetect
+        :type ServiceType: str
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._ServiceType = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def ServiceType(self):
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._ServiceType = params.get("ServiceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudStorageAIServiceResponse(AbstractModel):
+    """DescribeCloudStorageAIService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: 启用状态
+        :type Enabled: bool
+        :param _ROI: 视频分析区域
+        :type ROI: str
+        :param _Config: 云存 AI 服务的配置参数
+        :type Config: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Enabled = None
+        self._ROI = None
+        self._Config = None
+        self._RequestId = None
+
+    @property
+    def Enabled(self):
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def ROI(self):
+        return self._ROI
+
+    @ROI.setter
+    def ROI(self, ROI):
+        self._ROI = ROI
+
+    @property
+    def Config(self):
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        self._ROI = params.get("ROI")
+        self._Config = params.get("Config")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCloudStorageAIServiceTasksRequest(AbstractModel):
+    """DescribeCloudStorageAIServiceTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品 ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _ServiceType: 云存 AI 服务类型。可选值：PackageDetect
+        :type ServiceType: str
+        :param _Limit: 分页拉取数量
+        :type Limit: int
+        :param _Offset: 分页拉取偏移
+        :type Offset: int
+        :param _Status: 任务状态（1：失败；2：成功但结果为空；3：成功且结果非空；不传则查询全部状态的任务）
+        :type Status: int
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._ServiceType = None
+        self._Limit = None
+        self._Offset = None
+        self._Status = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def ServiceType(self):
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._ServiceType = params.get("ServiceType")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudStorageAIServiceTasksResponse(AbstractModel):
+    """DescribeCloudStorageAIServiceTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Tasks: 任务列表
+        :type Tasks: list of CloudStorageAIServiceTask
+        :param _Total: 任务数量
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Tasks = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Tasks(self):
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = CloudStorageAIServiceTask()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
         self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
@@ -7803,6 +8320,88 @@ class DescribePositionFenceListResponse(AbstractModel):
                 obj._deserialize(item)
                 self._List.append(obj)
         self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeProductCloudStorageAIServiceRequest(AbstractModel):
+    """DescribeProductCloudStorageAIService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        """
+        self._ProductId = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProductCloudStorageAIServiceResponse(AbstractModel):
+    """DescribeProductCloudStorageAIService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: 开通状态
+        :type Enabled: bool
+        :param _Available: 当前账号是否可开通
+        :type Available: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Enabled = None
+        self._Available = None
+        self._RequestId = None
+
+    @property
+    def Enabled(self):
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Available(self):
+        return self._Available
+
+    @Available.setter
+    def Available(self, Available):
+        self._Available = Available
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        self._Available = params.get("Available")
         self._RequestId = params.get("RequestId")
 
 
@@ -12627,6 +13226,206 @@ class LoRaGatewayLocation(AbstractModel):
         
 
 
+class ModifyCloudStorageAIServiceCallbackRequest(AbstractModel):
+    """ModifyCloudStorageAIServiceCallback请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _Type: 推送类型。http：HTTP 回调
+        :type Type: str
+        :param _CallbackUrl: HTTP 回调 URL
+        :type CallbackUrl: str
+        :param _CallbackToken: HTTP 回调鉴权 Token
+        :type CallbackToken: str
+        """
+        self._ProductId = None
+        self._Type = None
+        self._CallbackUrl = None
+        self._CallbackToken = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def CallbackUrl(self):
+        return self._CallbackUrl
+
+    @CallbackUrl.setter
+    def CallbackUrl(self, CallbackUrl):
+        self._CallbackUrl = CallbackUrl
+
+    @property
+    def CallbackToken(self):
+        return self._CallbackToken
+
+    @CallbackToken.setter
+    def CallbackToken(self, CallbackToken):
+        self._CallbackToken = CallbackToken
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._Type = params.get("Type")
+        self._CallbackUrl = params.get("CallbackUrl")
+        self._CallbackToken = params.get("CallbackToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCloudStorageAIServiceCallbackResponse(AbstractModel):
+    """ModifyCloudStorageAIServiceCallback返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyCloudStorageAIServiceRequest(AbstractModel):
+    """ModifyCloudStorageAIService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _ServiceType: 云存 AI 服务类型。可选值：PackageDetect
+        :type ServiceType: str
+        :param _Enabled: 启用状态
+        :type Enabled: bool
+        :param _ROI: 视频分析区域
+        :type ROI: str
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._ServiceType = None
+        self._Enabled = None
+        self._ROI = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def ServiceType(self):
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def Enabled(self):
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def ROI(self):
+        return self._ROI
+
+    @ROI.setter
+    def ROI(self, ROI):
+        self._ROI = ROI
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._ServiceType = params.get("ServiceType")
+        self._Enabled = params.get("Enabled")
+        self._ROI = params.get("ROI")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCloudStorageAIServiceResponse(AbstractModel):
+    """ModifyCloudStorageAIService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyFenceBindRequest(AbstractModel):
     """ModifyFenceBind请求参数结构体
 
@@ -13224,6 +14023,76 @@ class ModifyPositionSpaceRequest(AbstractModel):
 
 class ModifyPositionSpaceResponse(AbstractModel):
     """ModifyPositionSpace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyProductCloudStorageAIServiceRequest(AbstractModel):
+    """ModifyProductCloudStorageAIService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _Enabled: 开通状态
+        :type Enabled: bool
+        """
+        self._ProductId = None
+        self._Enabled = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def Enabled(self):
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyProductCloudStorageAIServiceResponse(AbstractModel):
+    """ModifyProductCloudStorageAIService返回参数结构体
 
     """
 

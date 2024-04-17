@@ -5595,7 +5595,11 @@ polarismesh - STANDARD版本
 - 1：自动续费
         :type PrepaidRenewFlag: int
         :param _EngineRegionInfos: 跨地域部署的引擎地域配置详情
+zk标准版没有跨地域部署，请不要填写
         :type EngineRegionInfos: list of EngineRegionInfo
+        :param _StorageOption: zk专业版至多有两个盘，且磁盘的容量在50-3200之间
+如果只有一个磁盘，storageCapacity与storageOption里面的capacity应该一致
+        :type StorageOption: list of StorageOption
         """
         self._EngineType = None
         self._EngineVersion = None
@@ -5613,6 +5617,7 @@ polarismesh - STANDARD版本
         self._PrepaidPeriod = None
         self._PrepaidRenewFlag = None
         self._EngineRegionInfos = None
+        self._StorageOption = None
 
     @property
     def EngineType(self):
@@ -5742,6 +5747,14 @@ polarismesh - STANDARD版本
     def EngineRegionInfos(self, EngineRegionInfos):
         self._EngineRegionInfos = EngineRegionInfos
 
+    @property
+    def StorageOption(self):
+        return self._StorageOption
+
+    @StorageOption.setter
+    def StorageOption(self, StorageOption):
+        self._StorageOption = StorageOption
+
 
     def _deserialize(self, params):
         self._EngineType = params.get("EngineType")
@@ -5777,6 +5790,12 @@ polarismesh - STANDARD版本
                 obj = EngineRegionInfo()
                 obj._deserialize(item)
                 self._EngineRegionInfos.append(obj)
+        if params.get("StorageOption") is not None:
+            self._StorageOption = []
+            for item in params.get("StorageOption"):
+                obj = StorageOption()
+                obj._deserialize(item)
+                self._StorageOption.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

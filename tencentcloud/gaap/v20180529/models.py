@@ -2088,6 +2088,8 @@ class CreateDomainRequest(AbstractModel):
 1，表示开启Http3。
 默认不开启Http3。可以通过SetDomainHttp3开启。
         :type Http3Supported: int
+        :param _IsDefaultServer: 是否作为默认域名，默认为“否”
+        :type IsDefaultServer: bool
         """
         self._ListenerId = None
         self._Domain = None
@@ -2095,6 +2097,7 @@ class CreateDomainRequest(AbstractModel):
         self._ClientCertificateId = None
         self._PolyClientCertificateIds = None
         self._Http3Supported = None
+        self._IsDefaultServer = None
 
     @property
     def ListenerId(self):
@@ -2144,6 +2147,14 @@ class CreateDomainRequest(AbstractModel):
     def Http3Supported(self, Http3Supported):
         self._Http3Supported = Http3Supported
 
+    @property
+    def IsDefaultServer(self):
+        return self._IsDefaultServer
+
+    @IsDefaultServer.setter
+    def IsDefaultServer(self, IsDefaultServer):
+        self._IsDefaultServer = IsDefaultServer
+
 
     def _deserialize(self, params):
         self._ListenerId = params.get("ListenerId")
@@ -2152,6 +2163,7 @@ class CreateDomainRequest(AbstractModel):
         self._ClientCertificateId = params.get("ClientCertificateId")
         self._PolyClientCertificateIds = params.get("PolyClientCertificateIds")
         self._Http3Supported = params.get("Http3Supported")
+        self._IsDefaultServer = params.get("IsDefaultServer")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10233,6 +10245,9 @@ class DomainRuleSet(AbstractModel):
 1表示启用。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Http3Supported: int
+        :param _IsDefaultServer: 是否为默认域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsDefaultServer: bool
         """
         self._Domain = None
         self._RuleSet = None
@@ -10255,6 +10270,7 @@ class DomainRuleSet(AbstractModel):
         self._DomainStatus = None
         self._BanStatus = None
         self._Http3Supported = None
+        self._IsDefaultServer = None
 
     @property
     def Domain(self):
@@ -10424,6 +10440,14 @@ class DomainRuleSet(AbstractModel):
     def Http3Supported(self, Http3Supported):
         self._Http3Supported = Http3Supported
 
+    @property
+    def IsDefaultServer(self):
+        return self._IsDefaultServer
+
+    @IsDefaultServer.setter
+    def IsDefaultServer(self, IsDefaultServer):
+        self._IsDefaultServer = IsDefaultServer
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -10462,6 +10486,7 @@ class DomainRuleSet(AbstractModel):
         self._DomainStatus = params.get("DomainStatus")
         self._BanStatus = params.get("BanStatus")
         self._Http3Supported = params.get("Http3Supported")
+        self._IsDefaultServer = params.get("IsDefaultServer")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11815,6 +11840,8 @@ class ModifyDomainRequest(AbstractModel):
 携带该字段时并且ClientCertificateId=default，表示使用监听器证书；
 其他情况，使用该ClientCertificateId或PolyClientCertificateIds指定的证书。
         :type PolyClientCertificateIds: list of str
+        :param _IsDefaultServer: 是否作为默认域名，默认为“否”
+        :type IsDefaultServer: bool
         """
         self._ListenerId = None
         self._OldDomain = None
@@ -11822,6 +11849,7 @@ class ModifyDomainRequest(AbstractModel):
         self._CertificateId = None
         self._ClientCertificateId = None
         self._PolyClientCertificateIds = None
+        self._IsDefaultServer = None
 
     @property
     def ListenerId(self):
@@ -11871,6 +11899,14 @@ class ModifyDomainRequest(AbstractModel):
     def PolyClientCertificateIds(self, PolyClientCertificateIds):
         self._PolyClientCertificateIds = PolyClientCertificateIds
 
+    @property
+    def IsDefaultServer(self):
+        return self._IsDefaultServer
+
+    @IsDefaultServer.setter
+    def IsDefaultServer(self, IsDefaultServer):
+        self._IsDefaultServer = IsDefaultServer
+
 
     def _deserialize(self, params):
         self._ListenerId = params.get("ListenerId")
@@ -11879,6 +11915,7 @@ class ModifyDomainRequest(AbstractModel):
         self._CertificateId = params.get("CertificateId")
         self._ClientCertificateId = params.get("ClientCertificateId")
         self._PolyClientCertificateIds = params.get("PolyClientCertificateIds")
+        self._IsDefaultServer = params.get("IsDefaultServer")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

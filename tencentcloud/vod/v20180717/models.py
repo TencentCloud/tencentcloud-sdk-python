@@ -19626,7 +19626,7 @@ class DescribeCLSPushTargetsRequest(AbstractModel):
         r"""
         :param _Domains: 点播域名。
         :type Domains: list of str
-        :param _SubAppId: 点播应用 ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         """
         self._Domains = None
@@ -20993,7 +20993,7 @@ class DescribeEventConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         """
         self._SubAppId = None
@@ -50399,10 +50399,10 @@ class RestoreMediaRequest(AbstractModel):
         r"""
         :param _FileIds: 媒体文件唯一标识列表，最大长度：100。
         :type FileIds: list of str
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
-        :type SubAppId: int
         :param _RestoreDay: 解冻出的临时媒体文件的可访问持续时长，必须大于0，单位为“天”。
         :type RestoreDay: int
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :type SubAppId: int
         :param _RestoreTier: 解冻模式。当媒体文件当前的存储类型为归档存储时，有以下取值：
 <li>极速模式：Expedited，解冻任务在5分钟后完成。</li>
 <li>标准模式：Standard，解冻任务在5小时后完成 。</li>
@@ -50413,8 +50413,8 @@ class RestoreMediaRequest(AbstractModel):
         :type RestoreTier: str
         """
         self._FileIds = None
-        self._SubAppId = None
         self._RestoreDay = None
+        self._SubAppId = None
         self._RestoreTier = None
 
     @property
@@ -50426,20 +50426,20 @@ class RestoreMediaRequest(AbstractModel):
         self._FileIds = FileIds
 
     @property
-    def SubAppId(self):
-        return self._SubAppId
-
-    @SubAppId.setter
-    def SubAppId(self, SubAppId):
-        self._SubAppId = SubAppId
-
-    @property
     def RestoreDay(self):
         return self._RestoreDay
 
     @RestoreDay.setter
     def RestoreDay(self, RestoreDay):
         self._RestoreDay = RestoreDay
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
 
     @property
     def RestoreTier(self):
@@ -50452,8 +50452,8 @@ class RestoreMediaRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._FileIds = params.get("FileIds")
-        self._SubAppId = params.get("SubAppId")
         self._RestoreDay = params.get("RestoreDay")
+        self._SubAppId = params.get("SubAppId")
         self._RestoreTier = params.get("RestoreTier")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

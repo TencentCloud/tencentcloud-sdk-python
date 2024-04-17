@@ -141,6 +141,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AttachPolicy(self, request):
+        """绑定策略
+
+        :param request: Request instance for AttachPolicy.
+        :type request: :class:`tencentcloud.organization.v20210331.models.AttachPolicyRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.AttachPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AttachPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.AttachPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BindOrganizationMemberAuthAccount(self, request):
         """绑定组织成员和组织管理员子账号的授权关系
 
@@ -348,6 +371,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreatePolicy(self, request):
+        """创建一个特殊类型的策略，你可以关联到企业组织Root节点、企业单元或者企业的成员账号。
+
+        :param request: Request instance for CreatePolicy.
+        :type request: :class:`tencentcloud.organization.v20210331.models.CreatePolicyRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.CreatePolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteAccount(self, request):
         """删除成员账号
 
@@ -500,6 +546,29 @@ class OrganizationClient(AbstractClient):
             body = self.call("DeleteOrganizationNodes", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteOrganizationNodesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeletePolicy(self, request):
+        """删除策略
+
+        :param request: Request instance for DeletePolicy.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DeletePolicyRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DeletePolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeletePolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeletePolicyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -831,6 +900,52 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePolicy(self, request):
+        """本接口（DescribePolicy）可用于查询查看策略详情。
+
+        :param request: Request instance for DescribePolicy.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DescribePolicyRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DescribePolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePolicyConfig(self, request):
+        """本接口（DescribePolicyConfig）可用于查询企业组织策略配置
+
+        :param request: Request instance for DescribePolicyConfig.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DescribePolicyConfigRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DescribePolicyConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePolicyConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePolicyConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeShareAreas(self, request):
         """获取可共享地域列表
 
@@ -923,6 +1038,75 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DetachPolicy(self, request):
+        """解绑策略
+
+        :param request: Request instance for DetachPolicy.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DetachPolicyRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DetachPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DetachPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DetachPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DisablePolicyType(self, request):
+        """禁用策略类型
+
+        :param request: Request instance for DisablePolicyType.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DisablePolicyTypeRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DisablePolicyTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisablePolicyType", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisablePolicyTypeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def EnablePolicyType(self, request):
+        """启用策略类型
+
+        :param request: Request instance for EnablePolicyType.
+        :type request: :class:`tencentcloud.organization.v20210331.models.EnablePolicyTypeRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.EnablePolicyTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnablePolicyType", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnablePolicyTypeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListOrganizationIdentity(self, request):
         """获取组织成员访问身份列表
 
@@ -937,6 +1121,75 @@ class OrganizationClient(AbstractClient):
             body = self.call("ListOrganizationIdentity", params, headers=headers)
             response = json.loads(body)
             model = models.ListOrganizationIdentityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListPolicies(self, request):
+        """本接口（ListPolicies）可用于查询查看策略列表数据
+
+        :param request: Request instance for ListPolicies.
+        :type request: :class:`tencentcloud.organization.v20210331.models.ListPoliciesRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.ListPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListPolicies", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListPoliciesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListPoliciesForTarget(self, request):
+        """本接口（ListPoliciesForTarget）查询目标关联的策略列表
+
+        :param request: Request instance for ListPoliciesForTarget.
+        :type request: :class:`tencentcloud.organization.v20210331.models.ListPoliciesForTargetRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.ListPoliciesForTargetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListPoliciesForTarget", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListPoliciesForTargetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListTargetsForPolicy(self, request):
+        """本接口（ListTargetsForPolicy）查询某个指定策略关联的目标列表
+
+        :param request: Request instance for ListTargetsForPolicy.
+        :type request: :class:`tencentcloud.organization.v20210331.models.ListTargetsForPolicyRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.ListTargetsForPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListTargetsForPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListTargetsForPolicyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1075,6 +1328,29 @@ class OrganizationClient(AbstractClient):
             body = self.call("UpdateOrganizationNode", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateOrganizationNodeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdatePolicy(self, request):
+        """编辑策略
+
+        :param request: Request instance for UpdatePolicy.
+        :type request: :class:`tencentcloud.organization.v20210331.models.UpdatePolicyRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.UpdatePolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdatePolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdatePolicyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
