@@ -11421,10 +11421,19 @@ class ExpandCfwVerticalRequest(AbstractModel):
         :type Width: int
         :param _CfwInstance: 防火墙实例id
         :type CfwInstance: str
+        :param _ElasticSwitch: 弹性开关 1打开 0 关闭
+        :type ElasticSwitch: int
+        :param _ElasticBandwidth: 弹性带宽上限，单位Mbps
+        :type ElasticBandwidth: int
+        :param _Tags: 按量计费标签
+        :type Tags: list of TagInfo
         """
         self._FwType = None
         self._Width = None
         self._CfwInstance = None
+        self._ElasticSwitch = None
+        self._ElasticBandwidth = None
+        self._Tags = None
 
     @property
     def FwType(self):
@@ -11450,11 +11459,43 @@ class ExpandCfwVerticalRequest(AbstractModel):
     def CfwInstance(self, CfwInstance):
         self._CfwInstance = CfwInstance
 
+    @property
+    def ElasticSwitch(self):
+        return self._ElasticSwitch
+
+    @ElasticSwitch.setter
+    def ElasticSwitch(self, ElasticSwitch):
+        self._ElasticSwitch = ElasticSwitch
+
+    @property
+    def ElasticBandwidth(self):
+        return self._ElasticBandwidth
+
+    @ElasticBandwidth.setter
+    def ElasticBandwidth(self, ElasticBandwidth):
+        self._ElasticBandwidth = ElasticBandwidth
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._FwType = params.get("FwType")
         self._Width = params.get("Width")
         self._CfwInstance = params.get("CfwInstance")
+        self._ElasticSwitch = params.get("ElasticSwitch")
+        self._ElasticBandwidth = params.get("ElasticBandwidth")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16180,6 +16221,28 @@ class NatInstanceInfo(AbstractModel):
         :param _ZoneBak: 实例备所在可用区
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneBak: str
+        :param _ReserveTime: 引擎预约升级时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReserveTime: str
+        :param _ReserveVersion: 引擎预约升级版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReserveVersion: str
+        :param _ReserveVersionState: 引擎预约升级版本状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReserveVersionState: str
+        :param _ElasticSwitch: 弹性开关
+1 打开
+0 关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ElasticSwitch: int
+        :param _ElasticBandwidth: 弹性带宽，单位Mbps
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ElasticBandwidth: int
+        :param _IsFirstAfterPay: 是否首次开通按量付费
+1 是
+0 不是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsFirstAfterPay: int
         """
         self._NatinsId = None
         self._NatinsName = None
@@ -16204,6 +16267,12 @@ class NatInstanceInfo(AbstractModel):
         self._TrafficMode = None
         self._Zone = None
         self._ZoneBak = None
+        self._ReserveTime = None
+        self._ReserveVersion = None
+        self._ReserveVersionState = None
+        self._ElasticSwitch = None
+        self._ElasticBandwidth = None
+        self._IsFirstAfterPay = None
 
     @property
     def NatinsId(self):
@@ -16389,6 +16458,54 @@ class NatInstanceInfo(AbstractModel):
     def ZoneBak(self, ZoneBak):
         self._ZoneBak = ZoneBak
 
+    @property
+    def ReserveTime(self):
+        return self._ReserveTime
+
+    @ReserveTime.setter
+    def ReserveTime(self, ReserveTime):
+        self._ReserveTime = ReserveTime
+
+    @property
+    def ReserveVersion(self):
+        return self._ReserveVersion
+
+    @ReserveVersion.setter
+    def ReserveVersion(self, ReserveVersion):
+        self._ReserveVersion = ReserveVersion
+
+    @property
+    def ReserveVersionState(self):
+        return self._ReserveVersionState
+
+    @ReserveVersionState.setter
+    def ReserveVersionState(self, ReserveVersionState):
+        self._ReserveVersionState = ReserveVersionState
+
+    @property
+    def ElasticSwitch(self):
+        return self._ElasticSwitch
+
+    @ElasticSwitch.setter
+    def ElasticSwitch(self, ElasticSwitch):
+        self._ElasticSwitch = ElasticSwitch
+
+    @property
+    def ElasticBandwidth(self):
+        return self._ElasticBandwidth
+
+    @ElasticBandwidth.setter
+    def ElasticBandwidth(self, ElasticBandwidth):
+        self._ElasticBandwidth = ElasticBandwidth
+
+    @property
+    def IsFirstAfterPay(self):
+        return self._IsFirstAfterPay
+
+    @IsFirstAfterPay.setter
+    def IsFirstAfterPay(self, IsFirstAfterPay):
+        self._IsFirstAfterPay = IsFirstAfterPay
+
 
     def _deserialize(self, params):
         self._NatinsId = params.get("NatinsId")
@@ -16414,6 +16531,12 @@ class NatInstanceInfo(AbstractModel):
         self._TrafficMode = params.get("TrafficMode")
         self._Zone = params.get("Zone")
         self._ZoneBak = params.get("ZoneBak")
+        self._ReserveTime = params.get("ReserveTime")
+        self._ReserveVersion = params.get("ReserveVersion")
+        self._ReserveVersionState = params.get("ReserveVersionState")
+        self._ElasticSwitch = params.get("ElasticSwitch")
+        self._ElasticBandwidth = params.get("ElasticBandwidth")
+        self._IsFirstAfterPay = params.get("IsFirstAfterPay")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19506,6 +19629,51 @@ class TLogInfo(AbstractModel):
         
 
 
+class TagInfo(AbstractModel):
+    """标签信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: 目标key
+        :type TagKey: str
+        :param _TagValue: 目标值
+        :type TagValue: str
+        """
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TemplateListInfo(AbstractModel):
     """地址模板列表数据
 
@@ -20416,6 +20584,26 @@ class VpcFwInstanceInfo(AbstractModel):
         :param _TrafficMode: 引擎运行模式，Normal:正常, OnlyRoute:透明模式
 注意：此字段可能返回 null，表示取不到有效值。
         :type TrafficMode: str
+        :param _ReserveTime: 引擎预约升级时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReserveTime: str
+        :param _ReserveVersion: 预约引擎升级版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReserveVersion: str
+        :param _ReserveVersionState: 引擎预约升级版本状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReserveVersionState: str
+        :param _ElasticSwitch: 弹性开关 1打开 0关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ElasticSwitch: int
+        :param _ElasticBandwidth: 弹性带宽，单位Mbps
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ElasticBandwidth: int
+        :param _IsFirstAfterPay: 是否首次开通按量付费
+1 是
+0 不是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsFirstAfterPay: int
         """
         self._FwInsName = None
         self._FwInsId = None
@@ -20441,6 +20629,12 @@ class VpcFwInstanceInfo(AbstractModel):
         self._EngineVersion = None
         self._UpdateEnable = None
         self._TrafficMode = None
+        self._ReserveTime = None
+        self._ReserveVersion = None
+        self._ReserveVersionState = None
+        self._ElasticSwitch = None
+        self._ElasticBandwidth = None
+        self._IsFirstAfterPay = None
 
     @property
     def FwInsName(self):
@@ -20634,6 +20828,54 @@ class VpcFwInstanceInfo(AbstractModel):
     def TrafficMode(self, TrafficMode):
         self._TrafficMode = TrafficMode
 
+    @property
+    def ReserveTime(self):
+        return self._ReserveTime
+
+    @ReserveTime.setter
+    def ReserveTime(self, ReserveTime):
+        self._ReserveTime = ReserveTime
+
+    @property
+    def ReserveVersion(self):
+        return self._ReserveVersion
+
+    @ReserveVersion.setter
+    def ReserveVersion(self, ReserveVersion):
+        self._ReserveVersion = ReserveVersion
+
+    @property
+    def ReserveVersionState(self):
+        return self._ReserveVersionState
+
+    @ReserveVersionState.setter
+    def ReserveVersionState(self, ReserveVersionState):
+        self._ReserveVersionState = ReserveVersionState
+
+    @property
+    def ElasticSwitch(self):
+        return self._ElasticSwitch
+
+    @ElasticSwitch.setter
+    def ElasticSwitch(self, ElasticSwitch):
+        self._ElasticSwitch = ElasticSwitch
+
+    @property
+    def ElasticBandwidth(self):
+        return self._ElasticBandwidth
+
+    @ElasticBandwidth.setter
+    def ElasticBandwidth(self, ElasticBandwidth):
+        self._ElasticBandwidth = ElasticBandwidth
+
+    @property
+    def IsFirstAfterPay(self):
+        return self._IsFirstAfterPay
+
+    @IsFirstAfterPay.setter
+    def IsFirstAfterPay(self, IsFirstAfterPay):
+        self._IsFirstAfterPay = IsFirstAfterPay
+
 
     def _deserialize(self, params):
         self._FwInsName = params.get("FwInsName")
@@ -20675,6 +20917,12 @@ class VpcFwInstanceInfo(AbstractModel):
         self._EngineVersion = params.get("EngineVersion")
         self._UpdateEnable = params.get("UpdateEnable")
         self._TrafficMode = params.get("TrafficMode")
+        self._ReserveTime = params.get("ReserveTime")
+        self._ReserveVersion = params.get("ReserveVersion")
+        self._ReserveVersionState = params.get("ReserveVersionState")
+        self._ElasticSwitch = params.get("ElasticSwitch")
+        self._ElasticBandwidth = params.get("ElasticBandwidth")
+        self._IsFirstAfterPay = params.get("IsFirstAfterPay")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

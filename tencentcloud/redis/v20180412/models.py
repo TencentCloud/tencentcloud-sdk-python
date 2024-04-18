@@ -1824,6 +1824,11 @@ class CreateInstancesRequest(AbstractModel):
         :type ProductVersion: str
         :param _RedisClusterId: 独享集群 ID。当**ProductVersion**设置为**cdc**时，该参数必须设置。
         :type RedisClusterId: str
+        :param _AlarmPolicyList: 告警策略 ID 数组。
+
+- 请登录[腾讯云可观测平台-告警管理-策略管理](https://console.cloud.tencent.com/monitor/alarm/policy)获取告警策略 ID。
+- 若不配置该参数，则绑定默认告警策略。默认告警策略具体信息，请登录[腾讯云可观测平台-告警管理-策略管理](https://console.cloud.tencent.com/monitor/alarm/policy)查看。
+        :type AlarmPolicyList: list of str
         """
         self._TypeId = None
         self._MemSize = None
@@ -1850,6 +1855,7 @@ class CreateInstancesRequest(AbstractModel):
         self._DryRun = None
         self._ProductVersion = None
         self._RedisClusterId = None
+        self._AlarmPolicyList = None
 
     @property
     def TypeId(self):
@@ -2051,6 +2057,14 @@ class CreateInstancesRequest(AbstractModel):
     def RedisClusterId(self, RedisClusterId):
         self._RedisClusterId = RedisClusterId
 
+    @property
+    def AlarmPolicyList(self):
+        return self._AlarmPolicyList
+
+    @AlarmPolicyList.setter
+    def AlarmPolicyList(self, AlarmPolicyList):
+        self._AlarmPolicyList = AlarmPolicyList
+
 
     def _deserialize(self, params):
         self._TypeId = params.get("TypeId")
@@ -2088,6 +2102,7 @@ class CreateInstancesRequest(AbstractModel):
         self._DryRun = params.get("DryRun")
         self._ProductVersion = params.get("ProductVersion")
         self._RedisClusterId = params.get("RedisClusterId")
+        self._AlarmPolicyList = params.get("AlarmPolicyList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

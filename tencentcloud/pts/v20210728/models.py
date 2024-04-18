@@ -4744,6 +4744,33 @@ class DescribeRegionsRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _LoadType: 通过该参数指定不同压测网络环境，在不同网络环境下，PTS可用的地域不一样
+        :type LoadType: int
+        """
+        self._LoadType = None
+
+    @property
+    def LoadType(self):
+        return self._LoadType
+
+    @LoadType.setter
+    def LoadType(self, LoadType):
+        self._LoadType = LoadType
+
+
+    def _deserialize(self, params):
+        self._LoadType = params.get("LoadType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeRegionsResponse(AbstractModel):
     """DescribeRegions返回参数结构体
@@ -7733,7 +7760,7 @@ class Load(AbstractModel):
         :param _VpcLoadDistribution: 压力来源
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcLoadDistribution: :class:`tencentcloud.pts.v20210728.models.VpcLoadDistribution`
-        :param _GeoRegionsLoadDistribution: 压力分布
+        :param _GeoRegionsLoadDistribution: 多地域压力分布
 注意：此字段可能返回 null，表示取不到有效值。
         :type GeoRegionsLoadDistribution: list of GeoRegionsLoadItem
         """

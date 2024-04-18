@@ -18203,15 +18203,19 @@ class DescribePrometheusTargetsTMPRequest(AbstractModel):
         :type ClusterId: str
         :param _ClusterType: 集群类型(可不填)
         :type ClusterType: str
-        :param _Filters: 过滤条件，当前支持
-Name=state
-Value=up, down, unknown
+        :param _Filters: 过滤条件，支持Name=ServiceMonitor/PodMonitor/Probe/RawJob/Job, Value为采集配置名称；Name=Health, Value=up, down, unknown；Name=EndPoint, Value为EndPoint地址
         :type Filters: list of Filter
+        :param _Offset: targets偏移量，默认为0
+        :type Offset: int
+        :param _Limit: targets返回数量，默认为20，最大值200
+        :type Limit: int
         """
         self._InstanceId = None
         self._ClusterId = None
         self._ClusterType = None
         self._Filters = None
+        self._Offset = None
+        self._Limit = None
 
     @property
     def InstanceId(self):
@@ -18245,6 +18249,22 @@ Value=up, down, unknown
     def Filters(self, Filters):
         self._Filters = Filters
 
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -18256,6 +18276,8 @@ Value=up, down, unknown
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

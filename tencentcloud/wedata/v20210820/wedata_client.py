@@ -2004,29 +2004,6 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeInstanceByCycleReport(self, request):
-        """实例状态周期增长趋势
-
-        :param request: Request instance for DescribeInstanceByCycleReport.
-        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeInstanceByCycleReportRequest`
-        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeInstanceByCycleReportResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeInstanceByCycleReport", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeInstanceByCycleReportResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeInstanceLastLog(self, request):
         """日志获取详情页面
 
@@ -3571,30 +3548,6 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeTaskDetail(self, request):
-        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-        查询任务具体详情
-
-        :param request: Request instance for DescribeTaskDetail.
-        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTaskDetailRequest`
-        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeTaskDetailResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeTaskDetail", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeTaskDetailResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeTaskLockStatus(self, request):
         """查看任务锁状态信息
 
@@ -3655,30 +3608,6 @@ class WedataClient(AbstractClient):
             body = self.call("DescribeTaskScript", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTaskScriptResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeTasksByPage(self, request):
-        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
-        根据工作流分页查询任务
-
-        :param request: Request instance for DescribeTasksByPage.
-        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTasksByPageRequest`
-        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeTasksByPageResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeTasksByPage", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeTasksByPageResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -4176,6 +4176,8 @@ class CreateLiveStreamMonitorRequest(AbstractModel):
         :type AllowMonitorReport: int
         :param _AiFormatDiagnose: 是否开启格式诊断。
         :type AiFormatDiagnose: int
+        :param _AiQualityControl: 是否开启内容质检。
+        :type AiQualityControl: int
         """
         self._OutputInfo = None
         self._InputList = None
@@ -4189,6 +4191,7 @@ class CreateLiveStreamMonitorRequest(AbstractModel):
         self._CheckStreamLowFrameRate = None
         self._AllowMonitorReport = None
         self._AiFormatDiagnose = None
+        self._AiQualityControl = None
 
     @property
     def OutputInfo(self):
@@ -4286,6 +4289,14 @@ class CreateLiveStreamMonitorRequest(AbstractModel):
     def AiFormatDiagnose(self, AiFormatDiagnose):
         self._AiFormatDiagnose = AiFormatDiagnose
 
+    @property
+    def AiQualityControl(self):
+        return self._AiQualityControl
+
+    @AiQualityControl.setter
+    def AiQualityControl(self, AiQualityControl):
+        self._AiQualityControl = AiQualityControl
+
 
     def _deserialize(self, params):
         if params.get("OutputInfo") is not None:
@@ -4309,6 +4320,7 @@ class CreateLiveStreamMonitorRequest(AbstractModel):
         self._CheckStreamLowFrameRate = params.get("CheckStreamLowFrameRate")
         self._AllowMonitorReport = params.get("AllowMonitorReport")
         self._AiFormatDiagnose = params.get("AiFormatDiagnose")
+        self._AiQualityControl = params.get("AiQualityControl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18133,6 +18145,9 @@ class LiveStreamMonitorInfo(AbstractModel):
         :param _AiFormatDiagnose: 是否开启格式诊断
 注意：此字段可能返回 null，表示取不到有效值。
         :type AiFormatDiagnose: int
+        :param _AiQualityControl: 是否开启内容质检。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AiQualityControl: int
         """
         self._MonitorId = None
         self._MonitorName = None
@@ -18153,6 +18168,7 @@ class LiveStreamMonitorInfo(AbstractModel):
         self._AiOcrInputIndexList = None
         self._AllowMonitorReport = None
         self._AiFormatDiagnose = None
+        self._AiQualityControl = None
 
     @property
     def MonitorId(self):
@@ -18306,6 +18322,14 @@ class LiveStreamMonitorInfo(AbstractModel):
     def AiFormatDiagnose(self, AiFormatDiagnose):
         self._AiFormatDiagnose = AiFormatDiagnose
 
+    @property
+    def AiQualityControl(self):
+        return self._AiQualityControl
+
+    @AiQualityControl.setter
+    def AiQualityControl(self, AiQualityControl):
+        self._AiQualityControl = AiQualityControl
+
 
     def _deserialize(self, params):
         self._MonitorId = params.get("MonitorId")
@@ -18336,6 +18360,7 @@ class LiveStreamMonitorInfo(AbstractModel):
         self._AiOcrInputIndexList = params.get("AiOcrInputIndexList")
         self._AllowMonitorReport = params.get("AllowMonitorReport")
         self._AiFormatDiagnose = params.get("AiFormatDiagnose")
+        self._AiQualityControl = params.get("AiQualityControl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20366,6 +20391,8 @@ class ModifyLiveStreamMonitorRequest(AbstractModel):
         :type AllowMonitorReport: int
         :param _AiFormatDiagnose: 是否开启格式诊断。
         :type AiFormatDiagnose: int
+        :param _AiQualityControl: 是否开启内容质检。
+        :type AiQualityControl: int
         """
         self._MonitorId = None
         self._MonitorName = None
@@ -20380,6 +20407,7 @@ class ModifyLiveStreamMonitorRequest(AbstractModel):
         self._CheckStreamLowFrameRate = None
         self._AllowMonitorReport = None
         self._AiFormatDiagnose = None
+        self._AiQualityControl = None
 
     @property
     def MonitorId(self):
@@ -20485,6 +20513,14 @@ class ModifyLiveStreamMonitorRequest(AbstractModel):
     def AiFormatDiagnose(self, AiFormatDiagnose):
         self._AiFormatDiagnose = AiFormatDiagnose
 
+    @property
+    def AiQualityControl(self):
+        return self._AiQualityControl
+
+    @AiQualityControl.setter
+    def AiQualityControl(self, AiQualityControl):
+        self._AiQualityControl = AiQualityControl
+
 
     def _deserialize(self, params):
         self._MonitorId = params.get("MonitorId")
@@ -20509,6 +20545,7 @@ class ModifyLiveStreamMonitorRequest(AbstractModel):
         self._CheckStreamLowFrameRate = params.get("CheckStreamLowFrameRate")
         self._AllowMonitorReport = params.get("AllowMonitorReport")
         self._AiFormatDiagnose = params.get("AiFormatDiagnose")
+        self._AiQualityControl = params.get("AiQualityControl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

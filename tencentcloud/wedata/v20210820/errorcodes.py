@@ -44,9 +44,6 @@ INTERNALERROR_INTERNALCALLCLOUDAPIERROR = 'InternalError.InternalCallCloudApiErr
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
 
-# ClientIp未被授权。
-INVALIDPARAMETER_CLIENTIPNOTAUTHORIZED = 'InvalidParameter.ClientIpNotAuthorized'
-
 # 数据引擎实例不存在。
 INVALIDPARAMETER_DATAENGINEINSTANCENOTEXISTS = 'InvalidParameter.DataEngineInstanceNotExists'
 

@@ -578,6 +578,29 @@ class EsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeServerlessInstances(self, request):
+        """Serverless获取索引列表
+
+        :param request: Request instance for DescribeServerlessInstances.
+        :type request: :class:`tencentcloud.es.v20180416.models.DescribeServerlessInstancesRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DescribeServerlessInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeServerlessInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeServerlessInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeServerlessSpaceUser(self, request):
         """查看Serverless空间子用户
 

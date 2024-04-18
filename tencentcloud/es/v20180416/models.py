@@ -4457,6 +4457,208 @@ class DescribeLogstashPipelinesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeServerlessInstancesRequest(AbstractModel):
+    """DescribeServerlessInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceIds: 索引集群ID
+        :type InstanceIds: list of str
+        :param _IndexNames: 索引名
+        :type IndexNames: list of str
+        :param _Offset: 分页起始位置
+        :type Offset: int
+        :param _Limit: 一页展示数量
+        :type Limit: int
+        :param _OrderBy: 排序字段，支持索引名：IndexName、索引存储量：IndexStorage、索引创建时间：IndexCreateTime
+        :type OrderBy: str
+        :param _IndexStatusList: 过滤索引状态
+        :type IndexStatusList: list of str
+        :param _Order: 排序顺序，支持asc、desc，默认为desc
+        :type Order: str
+        :param _SpaceIds: 索引空间ID列表
+        :type SpaceIds: list of str
+        :param _DiSourceTypes: 数据链路数据源类型
+        :type DiSourceTypes: list of str
+        :param _TagList: 标签信息
+        :type TagList: list of TagInfo
+        """
+        self._InstanceIds = None
+        self._IndexNames = None
+        self._Offset = None
+        self._Limit = None
+        self._OrderBy = None
+        self._IndexStatusList = None
+        self._Order = None
+        self._SpaceIds = None
+        self._DiSourceTypes = None
+        self._TagList = None
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def IndexNames(self):
+        return self._IndexNames
+
+    @IndexNames.setter
+    def IndexNames(self, IndexNames):
+        self._IndexNames = IndexNames
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OrderBy(self):
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def IndexStatusList(self):
+        return self._IndexStatusList
+
+    @IndexStatusList.setter
+    def IndexStatusList(self, IndexStatusList):
+        self._IndexStatusList = IndexStatusList
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def SpaceIds(self):
+        return self._SpaceIds
+
+    @SpaceIds.setter
+    def SpaceIds(self, SpaceIds):
+        self._SpaceIds = SpaceIds
+
+    @property
+    def DiSourceTypes(self):
+        return self._DiSourceTypes
+
+    @DiSourceTypes.setter
+    def DiSourceTypes(self, DiSourceTypes):
+        self._DiSourceTypes = DiSourceTypes
+
+    @property
+    def TagList(self):
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
+
+    def _deserialize(self, params):
+        self._InstanceIds = params.get("InstanceIds")
+        self._IndexNames = params.get("IndexNames")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._OrderBy = params.get("OrderBy")
+        self._IndexStatusList = params.get("IndexStatusList")
+        self._Order = params.get("Order")
+        self._SpaceIds = params.get("SpaceIds")
+        self._DiSourceTypes = params.get("DiSourceTypes")
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._TagList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeServerlessInstancesResponse(AbstractModel):
+    """DescribeServerlessInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IndexMetaFields: 索引元数据字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexMetaFields: list of ServerlessIndexMetaField
+        :param _TotalCount: 查询总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._IndexMetaFields = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def IndexMetaFields(self):
+        return self._IndexMetaFields
+
+    @IndexMetaFields.setter
+    def IndexMetaFields(self, IndexMetaFields):
+        self._IndexMetaFields = IndexMetaFields
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("IndexMetaFields") is not None:
+            self._IndexMetaFields = []
+            for item in params.get("IndexMetaFields"):
+                obj = ServerlessIndexMetaField()
+                obj._deserialize(item)
+                self._IndexMetaFields.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeServerlessSpaceUserRequest(AbstractModel):
     """DescribeServerlessSpaceUser请求参数结构体
 
@@ -11608,6 +11810,451 @@ class ServerlessDi(AbstractModel):
         if params.get("DiSourceTke") is not None:
             self._DiSourceTke = DiSourceTke()
             self._DiSourceTke._deserialize(params.get("DiSourceTke"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServerlessIndexMetaField(AbstractModel):
+    """索引元数据字段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: 索引所属集群APP ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: int
+        :param _IndexName: 索引名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexName: str
+        :param _IndexDocs: 索引文档数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexDocs: int
+        :param _IndexStorage: 索引存储大小，单位Byte
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexStorage: int
+        :param _IndexCreateTime: 索引创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexCreateTime: str
+        :param _InstanceId: 索引实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _IndexOptionsField: 索引自治字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexOptionsField: :class:`tencentcloud.es.v20180416.models.ServerlessIndexOptionsField`
+        :param _IndexSettingsField: 索引配置字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexSettingsField: :class:`tencentcloud.es.v20180416.models.ServerlessIndexSettingsField`
+        :param _IndexNetworkField: 索引所属连接相关信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexNetworkField: :class:`tencentcloud.es.v20180416.models.ServerlessIndexNetworkField`
+        :param _KibanaUrl: Kibana公网域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KibanaUrl: str
+        :param _KibanaPrivateUrl: Kibana内网域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KibanaPrivateUrl: str
+        :param _IndexAccessUrl: 索引内网访问地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexAccessUrl: str
+        :param _Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _SpaceId: 索引空间ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpaceId: str
+        :param _SpaceName: 索引空间名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpaceName: str
+        :param _StorageType: 存储类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageType: int
+        :param _TagList: 标签信息
+        :type TagList: list of TagInfo
+        """
+        self._AppId = None
+        self._IndexName = None
+        self._IndexDocs = None
+        self._IndexStorage = None
+        self._IndexCreateTime = None
+        self._InstanceId = None
+        self._IndexOptionsField = None
+        self._IndexSettingsField = None
+        self._IndexNetworkField = None
+        self._KibanaUrl = None
+        self._KibanaPrivateUrl = None
+        self._IndexAccessUrl = None
+        self._Status = None
+        self._SpaceId = None
+        self._SpaceName = None
+        self._StorageType = None
+        self._TagList = None
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def IndexName(self):
+        return self._IndexName
+
+    @IndexName.setter
+    def IndexName(self, IndexName):
+        self._IndexName = IndexName
+
+    @property
+    def IndexDocs(self):
+        return self._IndexDocs
+
+    @IndexDocs.setter
+    def IndexDocs(self, IndexDocs):
+        self._IndexDocs = IndexDocs
+
+    @property
+    def IndexStorage(self):
+        return self._IndexStorage
+
+    @IndexStorage.setter
+    def IndexStorage(self, IndexStorage):
+        self._IndexStorage = IndexStorage
+
+    @property
+    def IndexCreateTime(self):
+        return self._IndexCreateTime
+
+    @IndexCreateTime.setter
+    def IndexCreateTime(self, IndexCreateTime):
+        self._IndexCreateTime = IndexCreateTime
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def IndexOptionsField(self):
+        return self._IndexOptionsField
+
+    @IndexOptionsField.setter
+    def IndexOptionsField(self, IndexOptionsField):
+        self._IndexOptionsField = IndexOptionsField
+
+    @property
+    def IndexSettingsField(self):
+        return self._IndexSettingsField
+
+    @IndexSettingsField.setter
+    def IndexSettingsField(self, IndexSettingsField):
+        self._IndexSettingsField = IndexSettingsField
+
+    @property
+    def IndexNetworkField(self):
+        return self._IndexNetworkField
+
+    @IndexNetworkField.setter
+    def IndexNetworkField(self, IndexNetworkField):
+        self._IndexNetworkField = IndexNetworkField
+
+    @property
+    def KibanaUrl(self):
+        return self._KibanaUrl
+
+    @KibanaUrl.setter
+    def KibanaUrl(self, KibanaUrl):
+        self._KibanaUrl = KibanaUrl
+
+    @property
+    def KibanaPrivateUrl(self):
+        return self._KibanaPrivateUrl
+
+    @KibanaPrivateUrl.setter
+    def KibanaPrivateUrl(self, KibanaPrivateUrl):
+        self._KibanaPrivateUrl = KibanaPrivateUrl
+
+    @property
+    def IndexAccessUrl(self):
+        return self._IndexAccessUrl
+
+    @IndexAccessUrl.setter
+    def IndexAccessUrl(self, IndexAccessUrl):
+        self._IndexAccessUrl = IndexAccessUrl
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SpaceId(self):
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def SpaceName(self):
+        return self._SpaceName
+
+    @SpaceName.setter
+    def SpaceName(self, SpaceName):
+        self._SpaceName = SpaceName
+
+    @property
+    def StorageType(self):
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+    @property
+    def TagList(self):
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._IndexName = params.get("IndexName")
+        self._IndexDocs = params.get("IndexDocs")
+        self._IndexStorage = params.get("IndexStorage")
+        self._IndexCreateTime = params.get("IndexCreateTime")
+        self._InstanceId = params.get("InstanceId")
+        if params.get("IndexOptionsField") is not None:
+            self._IndexOptionsField = ServerlessIndexOptionsField()
+            self._IndexOptionsField._deserialize(params.get("IndexOptionsField"))
+        if params.get("IndexSettingsField") is not None:
+            self._IndexSettingsField = ServerlessIndexSettingsField()
+            self._IndexSettingsField._deserialize(params.get("IndexSettingsField"))
+        if params.get("IndexNetworkField") is not None:
+            self._IndexNetworkField = ServerlessIndexNetworkField()
+            self._IndexNetworkField._deserialize(params.get("IndexNetworkField"))
+        self._KibanaUrl = params.get("KibanaUrl")
+        self._KibanaPrivateUrl = params.get("KibanaPrivateUrl")
+        self._IndexAccessUrl = params.get("IndexAccessUrl")
+        self._Status = params.get("Status")
+        self._SpaceId = params.get("SpaceId")
+        self._SpaceName = params.get("SpaceName")
+        self._StorageType = params.get("StorageType")
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._TagList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServerlessIndexNetworkField(AbstractModel):
+    """Serverless实例，网络、索引、kibana等连接信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param _Zone: 区域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param _VpcUid: vpc唯一ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcUid: str
+        :param _SubnetUid: 子网唯一ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetUid: str
+        :param _Username: 用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Username: str
+        :param _Password: 密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        """
+        self._Region = None
+        self._Zone = None
+        self._VpcUid = None
+        self._SubnetUid = None
+        self._Username = None
+        self._Password = None
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def VpcUid(self):
+        return self._VpcUid
+
+    @VpcUid.setter
+    def VpcUid(self, VpcUid):
+        self._VpcUid = VpcUid
+
+    @property
+    def SubnetUid(self):
+        return self._SubnetUid
+
+    @SubnetUid.setter
+    def SubnetUid(self, SubnetUid):
+        self._SubnetUid = SubnetUid
+
+    @property
+    def Username(self):
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._Zone = params.get("Zone")
+        self._VpcUid = params.get("VpcUid")
+        self._SubnetUid = params.get("SubnetUid")
+        self._Username = params.get("Username")
+        self._Password = params.get("Password")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServerlessIndexOptionsField(AbstractModel):
+    """索引自治字段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExpireMaxAge: 过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireMaxAge: str
+        :param _TimestampField: 时间分区字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimestampField: str
+        """
+        self._ExpireMaxAge = None
+        self._TimestampField = None
+
+    @property
+    def ExpireMaxAge(self):
+        return self._ExpireMaxAge
+
+    @ExpireMaxAge.setter
+    def ExpireMaxAge(self, ExpireMaxAge):
+        self._ExpireMaxAge = ExpireMaxAge
+
+    @property
+    def TimestampField(self):
+        return self._TimestampField
+
+    @TimestampField.setter
+    def TimestampField(self, TimestampField):
+        self._TimestampField = TimestampField
+
+
+    def _deserialize(self, params):
+        self._ExpireMaxAge = params.get("ExpireMaxAge")
+        self._TimestampField = params.get("TimestampField")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServerlessIndexSettingsField(AbstractModel):
+    """索引配置字段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NumberOfShards: 索引主分片数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NumberOfShards: str
+        :param _RefreshInterval: 索引刷新频率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RefreshInterval: str
+        """
+        self._NumberOfShards = None
+        self._RefreshInterval = None
+
+    @property
+    def NumberOfShards(self):
+        return self._NumberOfShards
+
+    @NumberOfShards.setter
+    def NumberOfShards(self, NumberOfShards):
+        self._NumberOfShards = NumberOfShards
+
+    @property
+    def RefreshInterval(self):
+        return self._RefreshInterval
+
+    @RefreshInterval.setter
+    def RefreshInterval(self, RefreshInterval):
+        self._RefreshInterval = RefreshInterval
+
+
+    def _deserialize(self, params):
+        self._NumberOfShards = params.get("NumberOfShards")
+        self._RefreshInterval = params.get("RefreshInterval")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

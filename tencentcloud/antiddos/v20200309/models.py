@@ -1426,6 +1426,9 @@ class BGPInstance(AbstractModel):
         :param _PlanCntFlag: 是否是商业模式优化-普惠版
 注意：此字段可能返回 null，表示取不到有效值。
         :type PlanCntFlag: int
+        :param _TransRegionFlag: 是否跨区域产品 0: 不包含跨区域产品 1: 中国大陆跨区域产品 2: 非中国大陆跨区域产品
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransRegionFlag: int
         :param _SuperPackFlag: 是否为超级高防包
 注意：此字段可能返回 null，表示取不到有效值。
         :type SuperPackFlag: int
@@ -1453,6 +1456,7 @@ class BGPInstance(AbstractModel):
         self._ModifyTime = None
         self._BasicPlusFlag = None
         self._PlanCntFlag = None
+        self._TransRegionFlag = None
         self._SuperPackFlag = None
 
     @property
@@ -1640,6 +1644,14 @@ class BGPInstance(AbstractModel):
         self._PlanCntFlag = PlanCntFlag
 
     @property
+    def TransRegionFlag(self):
+        return self._TransRegionFlag
+
+    @TransRegionFlag.setter
+    def TransRegionFlag(self, TransRegionFlag):
+        self._TransRegionFlag = TransRegionFlag
+
+    @property
     def SuperPackFlag(self):
         return self._SuperPackFlag
 
@@ -1692,6 +1704,7 @@ class BGPInstance(AbstractModel):
         self._ModifyTime = params.get("ModifyTime")
         self._BasicPlusFlag = params.get("BasicPlusFlag")
         self._PlanCntFlag = params.get("PlanCntFlag")
+        self._TransRegionFlag = params.get("TransRegionFlag")
         self._SuperPackFlag = params.get("SuperPackFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -10004,6 +10017,8 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         :param _FilterPlanCntFlag: 是否商业模式优化-普惠版 0: 包含商业模式优化-普惠版 1: 只查询商业模式优化-普惠版 
 
         :type FilterPlanCntFlag: int
+        :param _FilterTransRegionFlag: 是否跨区域产品 0: 不包含跨区域产品 1: 中国大陆跨区域产品 2: 非中国大陆跨区域产品 3: 包含全部
+        :type FilterTransRegionFlag: int
         """
         self._Offset = None
         self._Limit = None
@@ -10025,6 +10040,7 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         self._FilterAssetIpList = None
         self._FilterBasicPlusFlag = None
         self._FilterPlanCntFlag = None
+        self._FilterTransRegionFlag = None
 
     @property
     def Offset(self):
@@ -10186,6 +10202,14 @@ class DescribeListBGPInstancesRequest(AbstractModel):
     def FilterPlanCntFlag(self, FilterPlanCntFlag):
         self._FilterPlanCntFlag = FilterPlanCntFlag
 
+    @property
+    def FilterTransRegionFlag(self):
+        return self._FilterTransRegionFlag
+
+    @FilterTransRegionFlag.setter
+    def FilterTransRegionFlag(self, FilterTransRegionFlag):
+        self._FilterTransRegionFlag = FilterTransRegionFlag
+
 
     def _deserialize(self, params):
         self._Offset = params.get("Offset")
@@ -10210,6 +10234,7 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         self._FilterAssetIpList = params.get("FilterAssetIpList")
         self._FilterBasicPlusFlag = params.get("FilterBasicPlusFlag")
         self._FilterPlanCntFlag = params.get("FilterPlanCntFlag")
+        self._FilterTransRegionFlag = params.get("FilterTransRegionFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
