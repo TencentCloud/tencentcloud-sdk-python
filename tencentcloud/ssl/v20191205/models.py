@@ -3279,6 +3279,102 @@ class DeleteManagerResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteTaskResult(AbstractModel):
+    """批量删除证书异步任务结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        :param _CertId: 证书ID
+        :type CertId: str
+        :param _Status: 异步查询结果： 0表示任务进行中、 1表示任务成功、 2表示任务失败、3表示未授权服务角色导致任务失败、4表示有未解绑的云资源导致任务失败、5表示查询关联云资源超时导致任务失败
+        :type Status: int
+        :param _Error: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Error: str
+        :param _CacheTime: 当前结果缓存时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CacheTime: str
+        :param _Domains: 包含的域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domains: list of str
+        """
+        self._TaskId = None
+        self._CertId = None
+        self._Status = None
+        self._Error = None
+        self._CacheTime = None
+        self._Domains = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def CertId(self):
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Error(self):
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
+    @property
+    def CacheTime(self):
+        return self._CacheTime
+
+    @CacheTime.setter
+    def CacheTime(self, CacheTime):
+        self._CacheTime = CacheTime
+
+    @property
+    def Domains(self):
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._CertId = params.get("CertId")
+        self._Status = params.get("Status")
+        self._Error = params.get("Error")
+        self._CacheTime = params.get("CacheTime")
+        self._Domains = params.get("Domains")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeployCertificateInstanceRequest(AbstractModel):
     """DeployCertificateInstance请求参数结构体
 
@@ -6099,6 +6195,82 @@ class DescribeCompaniesResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Companies.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDeleteCertificatesTaskResultRequest(AbstractModel):
+    """DescribeDeleteCertificatesTaskResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskIds: DeleteCertificates接口返回的任务ID， 最大支持100个
+        :type TaskIds: list of str
+        """
+        self._TaskIds = None
+
+    @property
+    def TaskIds(self):
+        return self._TaskIds
+
+    @TaskIds.setter
+    def TaskIds(self, TaskIds):
+        self._TaskIds = TaskIds
+
+
+    def _deserialize(self, params):
+        self._TaskIds = params.get("TaskIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeleteCertificatesTaskResultResponse(AbstractModel):
+    """DescribeDeleteCertificatesTaskResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeleteTaskResult: 批量删除证书异步任务结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeleteTaskResult: list of DeleteTaskResult
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DeleteTaskResult = None
+        self._RequestId = None
+
+    @property
+    def DeleteTaskResult(self):
+        return self._DeleteTaskResult
+
+    @DeleteTaskResult.setter
+    def DeleteTaskResult(self, DeleteTaskResult):
+        self._DeleteTaskResult = DeleteTaskResult
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DeleteTaskResult") is not None:
+            self._DeleteTaskResult = []
+            for item in params.get("DeleteTaskResult"):
+                obj = DeleteTaskResult()
+                obj._deserialize(item)
+                self._DeleteTaskResult.append(obj)
         self._RequestId = params.get("RequestId")
 
 

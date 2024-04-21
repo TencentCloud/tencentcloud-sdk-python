@@ -333,9 +333,12 @@ class AddClusterSlaveZoneRequest(AbstractModel):
         :type ClusterId: str
         :param _SlaveZone: 从可用区
         :type SlaveZone: str
+        :param _BinlogSyncWay: binlog同步方式。默认值：async。可选值：sync、semisync、async
+        :type BinlogSyncWay: str
         """
         self._ClusterId = None
         self._SlaveZone = None
+        self._BinlogSyncWay = None
 
     @property
     def ClusterId(self):
@@ -353,10 +356,19 @@ class AddClusterSlaveZoneRequest(AbstractModel):
     def SlaveZone(self, SlaveZone):
         self._SlaveZone = SlaveZone
 
+    @property
+    def BinlogSyncWay(self):
+        return self._BinlogSyncWay
+
+    @BinlogSyncWay.setter
+    def BinlogSyncWay(self, BinlogSyncWay):
+        self._BinlogSyncWay = BinlogSyncWay
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._SlaveZone = params.get("SlaveZone")
+        self._BinlogSyncWay = params.get("BinlogSyncWay")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3392,11 +3404,19 @@ class ClusterSlaveData(AbstractModel):
         :param _NewSlaveZone: 新从可用区
 注意：此字段可能返回 null，表示取不到有效值。
         :type NewSlaveZone: list of str
+        :param _NewSlaveZoneAttr: 新从可用区属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NewSlaveZoneAttr: list of SlaveZoneAttrItem
+        :param _OldSlaveZoneAttr: 旧可用区属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OldSlaveZoneAttr: list of SlaveZoneAttrItem
         """
         self._OldMasterZone = None
         self._OldSlaveZone = None
         self._NewMasterZone = None
         self._NewSlaveZone = None
+        self._NewSlaveZoneAttr = None
+        self._OldSlaveZoneAttr = None
 
     @property
     def OldMasterZone(self):
@@ -3430,12 +3450,40 @@ class ClusterSlaveData(AbstractModel):
     def NewSlaveZone(self, NewSlaveZone):
         self._NewSlaveZone = NewSlaveZone
 
+    @property
+    def NewSlaveZoneAttr(self):
+        return self._NewSlaveZoneAttr
+
+    @NewSlaveZoneAttr.setter
+    def NewSlaveZoneAttr(self, NewSlaveZoneAttr):
+        self._NewSlaveZoneAttr = NewSlaveZoneAttr
+
+    @property
+    def OldSlaveZoneAttr(self):
+        return self._OldSlaveZoneAttr
+
+    @OldSlaveZoneAttr.setter
+    def OldSlaveZoneAttr(self, OldSlaveZoneAttr):
+        self._OldSlaveZoneAttr = OldSlaveZoneAttr
+
 
     def _deserialize(self, params):
         self._OldMasterZone = params.get("OldMasterZone")
         self._OldSlaveZone = params.get("OldSlaveZone")
         self._NewMasterZone = params.get("NewMasterZone")
         self._NewSlaveZone = params.get("NewSlaveZone")
+        if params.get("NewSlaveZoneAttr") is not None:
+            self._NewSlaveZoneAttr = []
+            for item in params.get("NewSlaveZoneAttr"):
+                obj = SlaveZoneAttrItem()
+                obj._deserialize(item)
+                self._NewSlaveZoneAttr.append(obj)
+        if params.get("OldSlaveZoneAttr") is not None:
+            self._OldSlaveZoneAttr = []
+            for item in params.get("OldSlaveZoneAttr"):
+                obj = SlaveZoneAttrItem()
+                obj._deserialize(item)
+                self._OldSlaveZoneAttr.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6405,6 +6453,9 @@ pausing
         :param _NetworkType: 节点网络类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type NetworkType: str
+        :param _SlaveZoneAttr: 备可用区属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlaveZoneAttr: list of SlaveZoneAttrItem
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -6455,6 +6506,7 @@ pausing
         self._ResourcePackages = None
         self._RenewFlag = None
         self._NetworkType = None
+        self._SlaveZoneAttr = None
 
     @property
     def ClusterId(self):
@@ -6848,6 +6900,14 @@ pausing
     def NetworkType(self, NetworkType):
         self._NetworkType = NetworkType
 
+    @property
+    def SlaveZoneAttr(self):
+        return self._SlaveZoneAttr
+
+    @SlaveZoneAttr.setter
+    def SlaveZoneAttr(self, SlaveZoneAttr):
+        self._SlaveZoneAttr = SlaveZoneAttr
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -6926,6 +6986,12 @@ pausing
                 self._ResourcePackages.append(obj)
         self._RenewFlag = params.get("RenewFlag")
         self._NetworkType = params.get("NetworkType")
+        if params.get("SlaveZoneAttr") is not None:
+            self._SlaveZoneAttr = []
+            for item in params.get("SlaveZoneAttr"):
+                obj = SlaveZoneAttrItem()
+                obj._deserialize(item)
+                self._SlaveZoneAttr.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19239,10 +19305,13 @@ class ModifyClusterSlaveZoneRequest(AbstractModel):
         :type OldSlaveZone: str
         :param _NewSlaveZone: 新从可用区
         :type NewSlaveZone: str
+        :param _BinlogSyncWay: binlog同步方式。默认值：async。可选值：sync、semisync、async
+        :type BinlogSyncWay: str
         """
         self._ClusterId = None
         self._OldSlaveZone = None
         self._NewSlaveZone = None
+        self._BinlogSyncWay = None
 
     @property
     def ClusterId(self):
@@ -19268,11 +19337,20 @@ class ModifyClusterSlaveZoneRequest(AbstractModel):
     def NewSlaveZone(self, NewSlaveZone):
         self._NewSlaveZone = NewSlaveZone
 
+    @property
+    def BinlogSyncWay(self):
+        return self._BinlogSyncWay
+
+    @BinlogSyncWay.setter
+    def BinlogSyncWay(self, BinlogSyncWay):
+        self._BinlogSyncWay = BinlogSyncWay
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._OldSlaveZone = params.get("OldSlaveZone")
         self._NewSlaveZone = params.get("NewSlaveZone")
+        self._BinlogSyncWay = params.get("BinlogSyncWay")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26572,6 +26650,53 @@ class SetRenewFlagResponse(AbstractModel):
     def _deserialize(self, params):
         self._Count = params.get("Count")
         self._RequestId = params.get("RequestId")
+
+
+class SlaveZoneAttrItem(AbstractModel):
+    """可用区属性项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Zone: 可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param _BinlogSyncWay: binlog同步方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BinlogSyncWay: str
+        """
+        self._Zone = None
+        self._BinlogSyncWay = None
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def BinlogSyncWay(self):
+        return self._BinlogSyncWay
+
+    @BinlogSyncWay.setter
+    def BinlogSyncWay(self, BinlogSyncWay):
+        self._BinlogSyncWay = BinlogSyncWay
+
+
+    def _deserialize(self, params):
+        self._Zone = params.get("Zone")
+        self._BinlogSyncWay = params.get("BinlogSyncWay")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SlaveZoneStockInfo(AbstractModel):

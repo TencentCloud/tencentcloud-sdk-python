@@ -2861,6 +2861,12 @@ class DescribeMQTTClientResponse(AbstractModel):
         :type DisconnectTime: int
         :param _MQTTClientSubscriptions: 客户端的订阅列表
         :type MQTTClientSubscriptions: list of MQTTClientSubscription
+        :param _Inbound: 服务端到客户端的流量统计
+        :type Inbound: :class:`tencentcloud.trocket.v20230308.models.StatisticsReport`
+        :param _OutBound: 客户端到服务端的流量统计
+        :type OutBound: :class:`tencentcloud.trocket.v20230308.models.StatisticsReport`
+        :param _CleanSession: cleansession标志
+        :type CleanSession: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2873,6 +2879,9 @@ class DescribeMQTTClientResponse(AbstractModel):
         self._ConnectTime = None
         self._DisconnectTime = None
         self._MQTTClientSubscriptions = None
+        self._Inbound = None
+        self._OutBound = None
+        self._CleanSession = None
         self._RequestId = None
 
     @property
@@ -2948,6 +2957,30 @@ class DescribeMQTTClientResponse(AbstractModel):
         self._MQTTClientSubscriptions = MQTTClientSubscriptions
 
     @property
+    def Inbound(self):
+        return self._Inbound
+
+    @Inbound.setter
+    def Inbound(self, Inbound):
+        self._Inbound = Inbound
+
+    @property
+    def OutBound(self):
+        return self._OutBound
+
+    @OutBound.setter
+    def OutBound(self, OutBound):
+        self._OutBound = OutBound
+
+    @property
+    def CleanSession(self):
+        return self._CleanSession
+
+    @CleanSession.setter
+    def CleanSession(self, CleanSession):
+        self._CleanSession = CleanSession
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -2971,6 +3004,13 @@ class DescribeMQTTClientResponse(AbstractModel):
                 obj = MQTTClientSubscription()
                 obj._deserialize(item)
                 self._MQTTClientSubscriptions.append(obj)
+        if params.get("Inbound") is not None:
+            self._Inbound = StatisticsReport()
+            self._Inbound._deserialize(params.get("Inbound"))
+        if params.get("OutBound") is not None:
+            self._OutBound = StatisticsReport()
+            self._OutBound._deserialize(params.get("OutBound"))
+        self._CleanSession = params.get("CleanSession")
         self._RequestId = params.get("RequestId")
 
 
@@ -3022,6 +3062,13 @@ class DescribeMQTTInsPublicEndpointsResponse(AbstractModel):
         :type Bandwidth: int
         :param _Rules: 公网访问规则
         :type Rules: list of PublicAccessRule
+        :param _Status: 公网状态：
+    NORMAL-正常
+    CLOSING-关闭中
+    MODIFYING-修改中
+    CREATING-开启中
+    CLOSE-关闭
+        :type Status: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3029,6 +3076,7 @@ class DescribeMQTTInsPublicEndpointsResponse(AbstractModel):
         self._InstanceId = None
         self._Bandwidth = None
         self._Rules = None
+        self._Status = None
         self._RequestId = None
 
     @property
@@ -3064,6 +3112,14 @@ class DescribeMQTTInsPublicEndpointsResponse(AbstractModel):
         self._Rules = Rules
 
     @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -3087,6 +3143,7 @@ class DescribeMQTTInsPublicEndpointsResponse(AbstractModel):
                 obj = PublicAccessRule()
                 obj._deserialize(item)
                 self._Rules.append(obj)
+        self._Status = params.get("Status")
         self._RequestId = params.get("RequestId")
 
 
@@ -5567,6 +5624,9 @@ class MQTTEndpointItem(AbstractModel):
         :param _Port: 端口
 注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
+        :param _Ip: 接入点ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ip: str
         """
         self._Type = None
         self._Url = None
@@ -5574,6 +5634,7 @@ class MQTTEndpointItem(AbstractModel):
         self._SubnetId = None
         self._Host = None
         self._Port = None
+        self._Ip = None
 
     @property
     def Type(self):
@@ -5623,6 +5684,14 @@ class MQTTEndpointItem(AbstractModel):
     def Port(self, Port):
         self._Port = Port
 
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -5631,6 +5700,7 @@ class MQTTEndpointItem(AbstractModel):
         self._SubnetId = params.get("SubnetId")
         self._Host = params.get("Host")
         self._Port = params.get("Port")
+        self._Ip = params.get("Ip")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7201,6 +7271,66 @@ class ModifyTopicResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class PacketStatistics(AbstractModel):
+    """MQTT客户端监控
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MessageType: 类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessageType: str
+        :param _Qos: 服务质量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Qos: int
+        :param _Count: 指标值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        """
+        self._MessageType = None
+        self._Qos = None
+        self._Count = None
+
+    @property
+    def MessageType(self):
+        return self._MessageType
+
+    @MessageType.setter
+    def MessageType(self, MessageType):
+        self._MessageType = MessageType
+
+    @property
+    def Qos(self):
+        return self._Qos
+
+    @Qos.setter
+    def Qos(self, Qos):
+        self._Qos = Qos
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+
+    def _deserialize(self, params):
+        self._MessageType = params.get("MessageType")
+        self._Qos = params.get("Qos")
+        self._Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PublicAccessRule(AbstractModel):
     """公网访问安全规则
 
@@ -7587,6 +7717,58 @@ Failure 失败
         self._Imported = params.get("Imported")
         self._Namespace = params.get("Namespace")
         self._ImportStatus = params.get("ImportStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StatisticsReport(AbstractModel):
+    """MQTT客户端数据流量统计
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Bytes: 字节数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Bytes: int
+        :param _Items: 监控指标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of PacketStatistics
+        """
+        self._Bytes = None
+        self._Items = None
+
+    @property
+    def Bytes(self):
+        return self._Bytes
+
+    @Bytes.setter
+    def Bytes(self, Bytes):
+        self._Bytes = Bytes
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        self._Bytes = params.get("Bytes")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = PacketStatistics()
+                obj._deserialize(item)
+                self._Items.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

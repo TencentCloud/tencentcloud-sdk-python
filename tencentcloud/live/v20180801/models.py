@@ -19612,6 +19612,8 @@ PullVodPushLive -点播。
         :param _BackupToUrl: 新的目标地址。传空值，则取消该地址的推流。
 传入新值，则替换原有地址。
         :type BackupToUrl: str
+        :param _BackupVodUrl: 点播垫片文件地址。注意：用于在主源拉不到时自动兜底到垫片文件，切到垫片文件后，每次播完垫片会尝试拉主源，如果主源恢复则自动切回主源。可根据需要的轮询检查时长来传入对应时长的垫片文件。
+        :type BackupVodUrl: str
         """
         self._TaskId = None
         self._Operator = None
@@ -19633,6 +19635,7 @@ PullVodPushLive -点播。
         self._WatermarkList = None
         self._VodLocalMode = None
         self._BackupToUrl = None
+        self._BackupVodUrl = None
 
     @property
     def TaskId(self):
@@ -19794,6 +19797,14 @@ PullVodPushLive -点播。
     def BackupToUrl(self, BackupToUrl):
         self._BackupToUrl = BackupToUrl
 
+    @property
+    def BackupVodUrl(self):
+        return self._BackupVodUrl
+
+    @BackupVodUrl.setter
+    def BackupVodUrl(self, BackupVodUrl):
+        self._BackupVodUrl = BackupVodUrl
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -19821,6 +19832,7 @@ PullVodPushLive -点播。
                 self._WatermarkList.append(obj)
         self._VodLocalMode = params.get("VodLocalMode")
         self._BackupToUrl = params.get("BackupToUrl")
+        self._BackupVodUrl = params.get("BackupVodUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

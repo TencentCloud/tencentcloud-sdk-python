@@ -7560,6 +7560,10 @@ class PhoneVerificationRequest(AbstractModel):
         :type Name: str
         :param _Phone: 手机号
         :type Phone: str
+        :param _VerifyMode: 验证模式（详版/简版）。简版与详版价格不一致，详见[价格说明](https://cloud.tencent.com/document/product/1007/84321)。
+
+枚举值：0（简版），1（详版）。默认值为0。
+        :type VerifyMode: str
         :param _CiphertextBlob: 有加密需求的用户，传入kms的CiphertextBlob，关于数据加密可查阅 <a href="https://cloud.tencent.com/document/product/1007/47180">数据加密</a> 文档。
         :type CiphertextBlob: str
         :param _EncryptList: 在使用加密服务时，填入要被加密的字段。本接口中可填入加密后的IdCard，Name，Phone中的一个或多个。
@@ -7570,6 +7574,7 @@ class PhoneVerificationRequest(AbstractModel):
         self._IdCard = None
         self._Name = None
         self._Phone = None
+        self._VerifyMode = None
         self._CiphertextBlob = None
         self._EncryptList = None
         self._Iv = None
@@ -7597,6 +7602,14 @@ class PhoneVerificationRequest(AbstractModel):
     @Phone.setter
     def Phone(self, Phone):
         self._Phone = Phone
+
+    @property
+    def VerifyMode(self):
+        return self._VerifyMode
+
+    @VerifyMode.setter
+    def VerifyMode(self, VerifyMode):
+        self._VerifyMode = VerifyMode
 
     @property
     def CiphertextBlob(self):
@@ -7627,6 +7640,7 @@ class PhoneVerificationRequest(AbstractModel):
         self._IdCard = params.get("IdCard")
         self._Name = params.get("Name")
         self._Phone = params.get("Phone")
+        self._VerifyMode = params.get("VerifyMode")
         self._CiphertextBlob = params.get("CiphertextBlob")
         self._EncryptList = params.get("EncryptList")
         self._Iv = params.get("Iv")
@@ -7663,12 +7677,27 @@ class PhoneVerificationResponse(AbstractModel):
         :param _Isp: 运营商名称。
 取值范围为["","移动","电信","联通"]
         :type Isp: str
+        :param _ResultDetail: 业务结果详细信息。（当VerifyMode配置"详版"，且Result为"-4: 三要素信息不一致"时返回）
+
+枚举值：
+
+手机号码与姓名一致，与身份证号不一致；
+
+手机号码身份证号一致，与姓名不一致；
+
+手机号码与姓名和身份证号均不一致；
+
+姓名和身份证号不一致；
+
+其他不一致。
+        :type ResultDetail: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
         self._Description = None
         self._Isp = None
+        self._ResultDetail = None
         self._RequestId = None
 
     @property
@@ -7696,6 +7725,14 @@ class PhoneVerificationResponse(AbstractModel):
         self._Isp = Isp
 
     @property
+    def ResultDetail(self):
+        return self._ResultDetail
+
+    @ResultDetail.setter
+    def ResultDetail(self, ResultDetail):
+        self._ResultDetail = ResultDetail
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -7708,6 +7745,7 @@ class PhoneVerificationResponse(AbstractModel):
         self._Result = params.get("Result")
         self._Description = params.get("Description")
         self._Isp = params.get("Isp")
+        self._ResultDetail = params.get("ResultDetail")
         self._RequestId = params.get("RequestId")
 
 

@@ -280,7 +280,7 @@ class TrocketClient(AbstractClient):
 
 
     def DeleteMQTTInstance(self, request):
-        """删除实例
+        """删除MQTT实例
 
         :param request: Request instance for DeleteMQTTInstance.
         :type request: :class:`tencentcloud.trocket.v20230308.models.DeleteMQTTInstanceRequest`
@@ -303,7 +303,7 @@ class TrocketClient(AbstractClient):
 
 
     def DeleteMQTTTopic(self, request):
-        """删除主题
+        """删除MQTT主题
 
         :param request: Request instance for DeleteMQTTTopic.
         :type request: :class:`tencentcloud.trocket.v20230308.models.DeleteMQTTTopicRequest`
@@ -686,7 +686,7 @@ class TrocketClient(AbstractClient):
 
 
     def DescribeMQTTProductSKUList(self, request):
-        """非对外接口，获取产品售卖规格
+        """获取产品售卖规格
 
         :param request: Request instance for DescribeMQTTProductSKUList.
         :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeMQTTProductSKUListRequest`
@@ -951,7 +951,7 @@ class TrocketClient(AbstractClient):
 
 
     def ModifyMQTTInsPublicEndpoint(self, request):
-        """为MQTT实例创建公网接入点
+        """更新MQTT实例公网接入点
 
         :param request: Request instance for ModifyMQTTInsPublicEndpoint.
         :type request: :class:`tencentcloud.trocket.v20230308.models.ModifyMQTTInsPublicEndpointRequest`

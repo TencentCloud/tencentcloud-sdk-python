@@ -3338,12 +3338,14 @@ class RunApplicationRequest(AbstractModel):
         :type Option: :class:`tencentcloud.omics.v20221128.models.RunOption`
         :param _NFOption: Nextflow运行选项。
         :type NFOption: :class:`tencentcloud.omics.v20221128.models.NFOption`
-        :param _WorkDir: 工作目录，使用缓存卷内的相对路径 (暂时仅支持Nextflow)
+        :param _WorkDir: 工作目录，可填写指定缓存卷内的绝对路径，不填使用默认缓存卷内的默认路径，暂时仅支持Nextflow。
         :type WorkDir: str
         :param _AccessMode: 访问模式，不填默认私有。取值范围
 - PRIVATE：私有应用
 - PUBLIC：公共应用
         :type AccessMode: str
+        :param _VolumeIds: 缓存卷ID，不填使用默认缓存卷，暂时仅支持Nextflow。
+        :type VolumeIds: list of str
         """
         self._ApplicationId = None
         self._Name = None
@@ -3360,6 +3362,7 @@ class RunApplicationRequest(AbstractModel):
         self._NFOption = None
         self._WorkDir = None
         self._AccessMode = None
+        self._VolumeIds = None
 
     @property
     def ApplicationId(self):
@@ -3481,6 +3484,14 @@ class RunApplicationRequest(AbstractModel):
     def AccessMode(self, AccessMode):
         self._AccessMode = AccessMode
 
+    @property
+    def VolumeIds(self):
+        return self._VolumeIds
+
+    @VolumeIds.setter
+    def VolumeIds(self, VolumeIds):
+        self._VolumeIds = VolumeIds
+
 
     def _deserialize(self, params):
         self._ApplicationId = params.get("ApplicationId")
@@ -3502,6 +3513,7 @@ class RunApplicationRequest(AbstractModel):
             self._NFOption._deserialize(params.get("NFOption"))
         self._WorkDir = params.get("WorkDir")
         self._AccessMode = params.get("AccessMode")
+        self._VolumeIds = params.get("VolumeIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4346,8 +4358,10 @@ class RunWorkflowRequest(AbstractModel):
         :type InputCosUri: str
         :param _CacheClearDelay: 任务缓存清理时间（小时）。不填或0表示不清理。
         :type CacheClearDelay: int
-        :param _WorkDir: 工作目录，使用缓存卷内的相对路径 (暂时仅支持Nextflow)
+        :param _WorkDir: 工作目录，可填写指定缓存卷内的绝对路径，不填使用默认缓存卷内的默认路径，暂时仅支持Nextflow。
         :type WorkDir: str
+        :param _VolumeIds: 缓存卷ID，不填使用默认缓存卷，暂时仅支持Nextflow。
+        :type VolumeIds: list of str
         """
         self._Name = None
         self._EnvironmentId = None
@@ -4360,6 +4374,7 @@ class RunWorkflowRequest(AbstractModel):
         self._InputCosUri = None
         self._CacheClearDelay = None
         self._WorkDir = None
+        self._VolumeIds = None
 
     @property
     def Name(self):
@@ -4449,6 +4464,14 @@ class RunWorkflowRequest(AbstractModel):
     def WorkDir(self, WorkDir):
         self._WorkDir = WorkDir
 
+    @property
+    def VolumeIds(self):
+        return self._VolumeIds
+
+    @VolumeIds.setter
+    def VolumeIds(self, VolumeIds):
+        self._VolumeIds = VolumeIds
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -4466,6 +4489,7 @@ class RunWorkflowRequest(AbstractModel):
         self._InputCosUri = params.get("InputCosUri")
         self._CacheClearDelay = params.get("CacheClearDelay")
         self._WorkDir = params.get("WorkDir")
+        self._VolumeIds = params.get("VolumeIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

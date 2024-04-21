@@ -10014,6 +10014,8 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
         :param _AutoJumpUrl: 认证完成跳转链接。
 注意：`目前仅支持 H5 和 PC`。
         :type AutoJumpUrl: str
+        :param _TopNavigationStatus: 是否展示头顶导航栏  <ul><li> **ENABLE** : (默认)进入web控制台展示头顶导航栏</li> <li> **DISABLE** : 进入web控制台不展示头顶导航栏</li></ul> 注：该参数**仅在企业和员工激活完成，登录控制台场景才生效**。
+        :type TopNavigationStatus: str
         """
         self._Agent = None
         self._ProxyOrganizationName = None
@@ -10029,6 +10031,7 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
         self._Operator = None
         self._ProxyOperatorIdCardNumber = None
         self._AutoJumpUrl = None
+        self._TopNavigationStatus = None
 
     @property
     def Agent(self):
@@ -10146,6 +10149,14 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
     def AutoJumpUrl(self, AutoJumpUrl):
         self._AutoJumpUrl = AutoJumpUrl
 
+    @property
+    def TopNavigationStatus(self):
+        return self._TopNavigationStatus
+
+    @TopNavigationStatus.setter
+    def TopNavigationStatus(self, TopNavigationStatus):
+        self._TopNavigationStatus = TopNavigationStatus
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -10166,6 +10177,7 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
             self._Operator._deserialize(params.get("Operator"))
         self._ProxyOperatorIdCardNumber = params.get("ProxyOperatorIdCardNumber")
         self._AutoJumpUrl = params.get("AutoJumpUrl")
+        self._TopNavigationStatus = params.get("TopNavigationStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

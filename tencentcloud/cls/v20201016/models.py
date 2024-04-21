@@ -1653,7 +1653,7 @@ class CheckRechargeKafkaServerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _KafkaType: 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
+        :param _KafkaType: 导入Kafka类型，0: 腾讯云CKafka；1: 用户自建Kafka。
         :type KafkaType: int
         :param _KafkaInstance: 腾讯云CKafka实例ID。
 KafkaType为0时，KafkaInstance必填
@@ -1661,9 +1661,9 @@ KafkaType为0时，KafkaInstance必填
         :param _ServerAddr: 服务地址。
 KafkaType为1时，ServerAddr必填
         :type ServerAddr: str
-        :param _IsEncryptionAddr: ServerAddr是否为加密连接
+        :param _IsEncryptionAddr: ServerAddr是否为加密连接，默认值false。当KafkaType为1用户自建kafka时生效。
         :type IsEncryptionAddr: bool
-        :param _Protocol: 加密访问协议。IsEncryptionAddr参数为true时必填
+        :param _Protocol: 加密访问协议。KafkaType参数为1并且IsEncryptionAddr参数为true时必填。
         :type Protocol: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
         """
         self._KafkaType = None
@@ -5296,14 +5296,14 @@ class CreateKafkaRechargeRequest(AbstractModel):
         :type Offset: int
         :param _LogRechargeRule: 日志导入规则。
         :type LogRechargeRule: :class:`tencentcloud.cls.v20201016.models.LogRechargeRuleInfo`
-        :param _KafkaInstance: 腾讯云CKafka实例ID，KafkaType为0时必填
+        :param _KafkaInstance: 腾讯云CKafka实例ID，KafkaType为0时必填。
         :type KafkaInstance: str
-        :param _ServerAddr: 服务地址，KafkaType为1时必填
+        :param _ServerAddr: 服务地址，KafkaType为1时必填。
         :type ServerAddr: str
-        :param _IsEncryptionAddr: ServerAddr是否为加密连接，KafkaType为1时必填
+        :param _IsEncryptionAddr: ServerAddr是否为加密连接，KafkaType为1时必填。
         :type IsEncryptionAddr: bool
         :param _Protocol: 加密访问协议。
-KafkaType为1并且IsEncryptionAddr为true时Protocol必填
+KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
         :type Protocol: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
         :param _ConsumerGroupName: 用户Kafka消费组名称
         :type ConsumerGroupName: str
@@ -5974,9 +5974,11 @@ class CreateShipperRequest(AbstractModel):
         r"""
         :param _TopicId: 创建的投递规则所属的日志主题ID
         :type TopicId: str
-        :param _Bucket: 创建的投递规则投递的bucket
+        :param _Bucket: COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。
         :type Bucket: str
-        :param _Prefix: 创建的投递规则投递目录的前缀
+        :param _Prefix: 投递规则投递的新的目录前缀。
+- 仅支持0-9A-Za-z-_/
+- 最大支持256个字符
         :type Prefix: str
         :param _ShipperName: 投递规则的名字
         :type ShipperName: str
@@ -5994,11 +5996,21 @@ class CreateShipperRequest(AbstractModel):
         :type Content: :class:`tencentcloud.cls.v20201016.models.ContentInfo`
         :param _FilenameMode: 投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
         :type FilenameMode: int
-        :param _StartTime: 投递数据范围的开始时间点，不能超出日志主题的生命周期起点。如果用户不填写，默认为用户新建投递任务的时间。
+        :param _StartTime: 投递数据范围的开始时间点（秒级时间戳），不能超出日志主题的生命周期起点。
+如果用户不填写，默认为用户新建投递任务的时间。
         :type StartTime: int
-        :param _EndTime: 投递数据范围的结束时间点，不能填写未来时间。如果用户不填写，默认为持续投递，即无限。
+        :param _EndTime: 投递数据范围的结束时间点（秒级时间戳），不能填写未来时间。
+如果用户不填写，默认为持续投递，即无限。
         :type EndTime: int
-        :param _StorageType: cos桶存储类型
+        :param _StorageType: cos桶存储类型。支持：STANDARD_IA、ARCHIVE、DEEP_ARCHIVE、STANDARD、MAZ_STANDARD、MAZ_STANDARD_IA、INTELLIGENT_TIERING。
+
+1. STANDARD_IA：低频存储；
+2. ARCHIVE：归档存储；
+3. DEEP_ARCHIVE：深度归档存储；
+4. STANDARD：标准存储；
+5. MAZ_STANDARD：标准存储（多 AZ）；
+6. MAZ_STANDARD_IA：低频存储（多 AZ）；
+7. INTELLIGENT_TIERING：智能分层存储。
         :type StorageType: str
         """
         self._TopicId = None
@@ -15951,15 +15963,15 @@ class ModifyKafkaRechargeRequest(AbstractModel):
         :type TopicId: str
         :param _Name: Kafka导入配置名称
         :type Name: str
-        :param _KafkaType: 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
+        :param _KafkaType: 导入Kafka类型，0：腾讯云CKafka：1：用户自建Kafka。
         :type KafkaType: int
-        :param _KafkaInstance: 腾讯云CKafka实例ID，KafkaType为0时必填
+        :param _KafkaInstance: 腾讯云CKafka实例ID，KafkaType为0时必填。
         :type KafkaInstance: str
-        :param _ServerAddr: 服务地址
+        :param _ServerAddr: 服务地址，KafkaType为1时必填。
         :type ServerAddr: str
-        :param _IsEncryptionAddr: ServerAddr是否为加密连接
+        :param _IsEncryptionAddr: ServerAddr是否为加密连接，KafkaType为1时必填。
         :type IsEncryptionAddr: bool
-        :param _Protocol: 加密访问协议，IsEncryptionAddr参数为true时必填
+        :param _Protocol: 加密访问协议，KafkaType参数为1并且IsEncryptionAddr参数为true时必填。
         :type Protocol: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
         :param _UserKafkaTopics: 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开
         :type UserKafkaTopics: str
@@ -15967,7 +15979,7 @@ class ModifyKafkaRechargeRequest(AbstractModel):
         :type ConsumerGroupName: str
         :param _LogRechargeRule: 日志导入规则
         :type LogRechargeRule: :class:`tencentcloud.cls.v20201016.models.LogRechargeRuleInfo`
-        :param _StatusControl: 导入控制，1：暂停，2：继续
+        :param _StatusControl: 导入控制，1：暂停；2：继续。
         :type StatusControl: int
         """
         self._Id = None
@@ -16586,11 +16598,13 @@ class ModifyShipperRequest(AbstractModel):
         r"""
         :param _ShipperId: 投递规则ID
         :type ShipperId: str
-        :param _Bucket: 投递规则投递的新的bucket
+        :param _Bucket: COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。
         :type Bucket: str
-        :param _Prefix: 投递规则投递的新的目录前缀
+        :param _Prefix: 投递规则投递的新的目录前缀。
+- 仅支持0-9A-Za-z-_/
+- 最大支持256个字符
         :type Prefix: str
-        :param _Status: 投递规则的开关状态
+        :param _Status: 投递规则的开关状态。true：开启投递任务；false：关闭投递任务。
         :type Status: bool
         :param _ShipperName: 投递规则的名字
         :type ShipperName: str
@@ -16606,9 +16620,17 @@ class ModifyShipperRequest(AbstractModel):
         :type Compress: :class:`tencentcloud.cls.v20201016.models.CompressInfo`
         :param _Content: 投递日志的内容格式配置
         :type Content: :class:`tencentcloud.cls.v20201016.models.ContentInfo`
-        :param _FilenameMode: 投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
+        :param _FilenameMode: 投递文件命名配置，0：随机数命名，1：投递时间命名。
         :type FilenameMode: int
-        :param _StorageType: cos桶类型
+        :param _StorageType: cos桶存储类型。支持：STANDARD_IA、ARCHIVE、DEEP_ARCHIVE、STANDARD、MAZ_STANDARD、MAZ_STANDARD_IA、INTELLIGENT_TIERING。
+
+1. STANDARD_IA：低频存储；
+2. ARCHIVE：归档存储；
+3. DEEP_ARCHIVE：深度归档存储；
+4. STANDARD：标准存储；
+5. MAZ_STANDARD：标准存储（多 AZ）；
+6. MAZ_STANDARD_IA：低频存储（多 AZ）；
+7. INTELLIGENT_TIERING：智能分层存储。
         :type StorageType: str
         """
         self._ShipperId = None
@@ -17565,25 +17587,25 @@ class PreviewKafkaRechargeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PreviewType: 预览类型，1:源数据预览，2:导出结果预览
+        :param _PreviewType: 预览类型，1：源数据预览；2：导出结果预览。
         :type PreviewType: int
-        :param _KafkaType: 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
+        :param _KafkaType: 导入Kafka类型，0：腾讯云CKafka；1：用户自建Kafka。
         :type KafkaType: int
-        :param _UserKafkaTopics: 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开。最多支持100个。
+        :param _UserKafkaTopics: 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开。
+最多支持100个。
         :type UserKafkaTopics: str
-        :param _Offset: 导入数据位置，-2:最早（默认），-1：最晚
+        :param _Offset: 导入数据位置，-2：最早；-1：最晚。
         :type Offset: int
-        :param _KafkaInstance: 腾讯云CKafka实例ID。
-KafkaType为0时KafkaInstance必填
+        :param _KafkaInstance: 腾讯云CKafka实例ID，当KafkaType为0时参数KafkaInstance有效且必填。
         :type KafkaInstance: str
         :param _ServerAddr: 服务地址。
-KafkaType为1时ServerAddr必填
+KafkaType为1时ServerAddr必填。
         :type ServerAddr: str
         :param _IsEncryptionAddr: ServerAddr是否为加密连接。
 KafkaType为1时有效。
         :type IsEncryptionAddr: bool
         :param _Protocol: 加密访问协议。
-KafkaType为1并且IsEncryptionAddr为true时Protocol必填
+KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
         :type Protocol: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
         :param _ConsumerGroupName: 用户Kafka消费组
         :type ConsumerGroupName: str

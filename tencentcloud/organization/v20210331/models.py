@@ -2334,6 +2334,79 @@ class DeleteShareUnitResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeEffectivePolicyRequest(AbstractModel):
+    """DescribeEffectivePolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TargetId: 账号uin或者节点id。
+        :type TargetId: int
+        """
+        self._TargetId = None
+
+    @property
+    def TargetId(self):
+        return self._TargetId
+
+    @TargetId.setter
+    def TargetId(self, TargetId):
+        self._TargetId = TargetId
+
+
+    def _deserialize(self, params):
+        self._TargetId = params.get("TargetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEffectivePolicyResponse(AbstractModel):
+    """DescribeEffectivePolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EffectivePolicy: 有效策略。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EffectivePolicy: :class:`tencentcloud.organization.v20210331.models.EffectivePolicy`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._EffectivePolicy = None
+        self._RequestId = None
+
+    @property
+    def EffectivePolicy(self):
+        return self._EffectivePolicy
+
+    @EffectivePolicy.setter
+    def EffectivePolicy(self, EffectivePolicy):
+        self._EffectivePolicy = EffectivePolicy
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("EffectivePolicy") is not None:
+            self._EffectivePolicy = EffectivePolicy()
+            self._EffectivePolicy._deserialize(params.get("EffectivePolicy"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeOrganizationAuthNodeRequest(AbstractModel):
     """DescribeOrganizationAuthNode请求参数结构体
 
@@ -4868,6 +4941,63 @@ class DisablePolicyTypeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class EffectivePolicy(AbstractModel):
+    """有效策略。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TargetId: 目标ID。
+        :type TargetId: int
+        :param _PolicyContent: 有效策略内容。
+        :type PolicyContent: str
+        :param _LastUpdatedTimestamp: 有效策略更新时间。
+        :type LastUpdatedTimestamp: int
+        """
+        self._TargetId = None
+        self._PolicyContent = None
+        self._LastUpdatedTimestamp = None
+
+    @property
+    def TargetId(self):
+        return self._TargetId
+
+    @TargetId.setter
+    def TargetId(self, TargetId):
+        self._TargetId = TargetId
+
+    @property
+    def PolicyContent(self):
+        return self._PolicyContent
+
+    @PolicyContent.setter
+    def PolicyContent(self, PolicyContent):
+        self._PolicyContent = PolicyContent
+
+    @property
+    def LastUpdatedTimestamp(self):
+        return self._LastUpdatedTimestamp
+
+    @LastUpdatedTimestamp.setter
+    def LastUpdatedTimestamp(self, LastUpdatedTimestamp):
+        self._LastUpdatedTimestamp = LastUpdatedTimestamp
+
+
+    def _deserialize(self, params):
+        self._TargetId = params.get("TargetId")
+        self._PolicyContent = params.get("PolicyContent")
+        self._LastUpdatedTimestamp = params.get("LastUpdatedTimestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EnablePolicyTypeRequest(AbstractModel):
     """EnablePolicyType请求参数结构体
 
@@ -5007,6 +5137,132 @@ class IdentityPolicy(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ListNonCompliantResourceRequest(AbstractModel):
+    """ListNonCompliantResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MaxResults: 限制数目。取值范围：1~50。
+        :type MaxResults: int
+        :param _MemberUin: 成员Uin。
+        :type MemberUin: int
+        :param _PaginationToken: 从上一页的响应中获取的下一页的Token值。
+如果是第一次请求，设置为空。
+        :type PaginationToken: str
+        :param _TagKey: 标签键。
+        :type TagKey: str
+        """
+        self._MaxResults = None
+        self._MemberUin = None
+        self._PaginationToken = None
+        self._TagKey = None
+
+    @property
+    def MaxResults(self):
+        return self._MaxResults
+
+    @MaxResults.setter
+    def MaxResults(self, MaxResults):
+        self._MaxResults = MaxResults
+
+    @property
+    def MemberUin(self):
+        return self._MemberUin
+
+    @MemberUin.setter
+    def MemberUin(self, MemberUin):
+        self._MemberUin = MemberUin
+
+    @property
+    def PaginationToken(self):
+        return self._PaginationToken
+
+    @PaginationToken.setter
+    def PaginationToken(self, PaginationToken):
+        self._PaginationToken = PaginationToken
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+
+    def _deserialize(self, params):
+        self._MaxResults = params.get("MaxResults")
+        self._MemberUin = params.get("MemberUin")
+        self._PaginationToken = params.get("PaginationToken")
+        self._TagKey = params.get("TagKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListNonCompliantResourceResponse(AbstractModel):
+    """ListNonCompliantResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 资源及标签合规信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of ResourceTagMapping
+        :param _PaginationToken: 获取的下一页的Token值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PaginationToken: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Items = None
+        self._PaginationToken = None
+        self._RequestId = None
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def PaginationToken(self):
+        return self._PaginationToken
+
+    @PaginationToken.setter
+    def PaginationToken(self, PaginationToken):
+        self._PaginationToken = PaginationToken
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = ResourceTagMapping()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._PaginationToken = params.get("PaginationToken")
+        self._RequestId = params.get("RequestId")
 
 
 class ListOrganizationIdentityRequest(AbstractModel):
@@ -7554,6 +7810,74 @@ class QuitOrganizationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ResourceTagMapping(AbstractModel):
+    """资源及关联的标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Resource: 资源六段式。腾讯云使用资源六段式描述一个资源。
+例如：qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: str
+        :param _ComplianceDetails: 合规详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComplianceDetails: :class:`tencentcloud.organization.v20210331.models.TagComplianceDetails`
+        :param _Tags: 资源标签。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tags
+        """
+        self._Resource = None
+        self._ComplianceDetails = None
+        self._Tags = None
+
+    @property
+    def Resource(self):
+        return self._Resource
+
+    @Resource.setter
+    def Resource(self, Resource):
+        self._Resource = Resource
+
+    @property
+    def ComplianceDetails(self):
+        return self._ComplianceDetails
+
+    @ComplianceDetails.setter
+    def ComplianceDetails(self, ComplianceDetails):
+        self._ComplianceDetails = ComplianceDetails
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._Resource = params.get("Resource")
+        if params.get("ComplianceDetails") is not None:
+            self._ComplianceDetails = TagComplianceDetails()
+            self._ComplianceDetails._deserialize(params.get("ComplianceDetails"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tags()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ShareArea(AbstractModel):
     """共享地域
 
@@ -7839,6 +8163,113 @@ class ShareUnitResource(AbstractModel):
         self._SharedMemberNum = params.get("SharedMemberNum")
         self._SharedMemberUseNum = params.get("SharedMemberUseNum")
         self._ShareManagerUin = params.get("ShareManagerUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TagComplianceDetails(AbstractModel):
+    """标签合规信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ComplianceStatus: 合规状态。true-合规，false-不合规
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComplianceStatus: bool
+        :param _KeysWithNonCompliantValues: 值不合规的标签键列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeysWithNonCompliantValues: list of str
+        :param _NonCompliantKeys: 键不合规的标签键列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NonCompliantKeys: list of str
+        """
+        self._ComplianceStatus = None
+        self._KeysWithNonCompliantValues = None
+        self._NonCompliantKeys = None
+
+    @property
+    def ComplianceStatus(self):
+        return self._ComplianceStatus
+
+    @ComplianceStatus.setter
+    def ComplianceStatus(self, ComplianceStatus):
+        self._ComplianceStatus = ComplianceStatus
+
+    @property
+    def KeysWithNonCompliantValues(self):
+        return self._KeysWithNonCompliantValues
+
+    @KeysWithNonCompliantValues.setter
+    def KeysWithNonCompliantValues(self, KeysWithNonCompliantValues):
+        self._KeysWithNonCompliantValues = KeysWithNonCompliantValues
+
+    @property
+    def NonCompliantKeys(self):
+        return self._NonCompliantKeys
+
+    @NonCompliantKeys.setter
+    def NonCompliantKeys(self, NonCompliantKeys):
+        self._NonCompliantKeys = NonCompliantKeys
+
+
+    def _deserialize(self, params):
+        self._ComplianceStatus = params.get("ComplianceStatus")
+        self._KeysWithNonCompliantValues = params.get("KeysWithNonCompliantValues")
+        self._NonCompliantKeys = params.get("NonCompliantKeys")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Tags(AbstractModel):
+    """标签键值对
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: 标签键。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagKey: str
+        :param _TagValue: 标签值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagValue: str
+        """
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

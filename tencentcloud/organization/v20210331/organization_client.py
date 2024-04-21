@@ -647,6 +647,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeEffectivePolicy(self, request):
+        """查询目标关联的有效策略
+
+        :param request: Request instance for DescribeEffectivePolicy.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DescribeEffectivePolicyRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DescribeEffectivePolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEffectivePolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEffectivePolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeOrganization(self, request):
         """获取企业组织信息
 
@@ -1098,6 +1121,29 @@ class OrganizationClient(AbstractClient):
             body = self.call("EnablePolicyType", params, headers=headers)
             response = json.loads(body)
             model = models.EnablePolicyTypeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListNonCompliantResource(self, request):
+        """获取成员标签检测不合规资源列表
+
+        :param request: Request instance for ListNonCompliantResource.
+        :type request: :class:`tencentcloud.organization.v20210331.models.ListNonCompliantResourceRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.ListNonCompliantResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListNonCompliantResource", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListNonCompliantResourceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

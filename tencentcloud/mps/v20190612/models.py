@@ -935,6 +935,11 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         :param _DrmInfo: Drm信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DrmInfo: :class:`tencentcloud.mps.v20190612.models.DrmInfo`
+        :param _DefinitionType: 自适应转码模板类型：
+Common：音视频类型
+PureAudio：纯音频类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefinitionType: str
         """
         self._Definition = None
         self._WatermarkSet = None
@@ -944,6 +949,7 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         self._SegmentObjectName = None
         self._AddOnSubtitles = None
         self._DrmInfo = None
+        self._DefinitionType = None
 
     @property
     def Definition(self):
@@ -1009,6 +1015,14 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
     def DrmInfo(self, DrmInfo):
         self._DrmInfo = DrmInfo
 
+    @property
+    def DefinitionType(self):
+        return self._DefinitionType
+
+    @DefinitionType.setter
+    def DefinitionType(self, DefinitionType):
+        self._DefinitionType = DefinitionType
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -1033,6 +1047,7 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         if params.get("DrmInfo") is not None:
             self._DrmInfo = DrmInfo()
             self._DrmInfo._deserialize(params.get("DrmInfo"))
+        self._DefinitionType = params.get("DefinitionType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1078,6 +1093,9 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
         :type CreateTime: str
         :param _UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
         :type UpdateTime: str
+        :param _PureAudio: 是否为纯音频，0表示视频，1表示纯音频
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PureAudio: int
         """
         self._Definition = None
         self._Type = None
@@ -1089,6 +1107,7 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
         self._DisableHigherVideoResolution = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._PureAudio = None
 
     @property
     def Definition(self):
@@ -1170,6 +1189,14 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def PureAudio(self):
+        return self._PureAudio
+
+    @PureAudio.setter
+    def PureAudio(self, PureAudio):
+        self._PureAudio = PureAudio
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -1187,6 +1214,7 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
         self._DisableHigherVideoResolution = params.get("DisableHigherVideoResolution")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._PureAudio = params.get("PureAudio")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1204,10 +1232,10 @@ class AdaptiveStreamTemplate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Video: 视频参数信息。
-        :type Video: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfo`
         :param _Audio: 音频参数信息。
         :type Audio: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfo`
+        :param _Video: 视频参数信息。
+        :type Video: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfo`
         :param _RemoveAudio: 是否移除音频流，取值范围：
 <li>0：否，</li>
 <li>1：是。</li>
@@ -1217,18 +1245,10 @@ class AdaptiveStreamTemplate(AbstractModel):
 <li>1：是。</li>
         :type RemoveVideo: int
         """
-        self._Video = None
         self._Audio = None
+        self._Video = None
         self._RemoveAudio = None
         self._RemoveVideo = None
-
-    @property
-    def Video(self):
-        return self._Video
-
-    @Video.setter
-    def Video(self, Video):
-        self._Video = Video
 
     @property
     def Audio(self):
@@ -1237,6 +1257,14 @@ class AdaptiveStreamTemplate(AbstractModel):
     @Audio.setter
     def Audio(self, Audio):
         self._Audio = Audio
+
+    @property
+    def Video(self):
+        return self._Video
+
+    @Video.setter
+    def Video(self, Video):
+        self._Video = Video
 
     @property
     def RemoveAudio(self):
@@ -1256,12 +1284,12 @@ class AdaptiveStreamTemplate(AbstractModel):
 
 
     def _deserialize(self, params):
-        if params.get("Video") is not None:
-            self._Video = VideoTemplateInfo()
-            self._Video._deserialize(params.get("Video"))
         if params.get("Audio") is not None:
             self._Audio = AudioTemplateInfo()
             self._Audio._deserialize(params.get("Audio"))
+        if params.get("Video") is not None:
+            self._Video = VideoTemplateInfo()
+            self._Video._deserialize(params.get("Video"))
         self._RemoveAudio = params.get("RemoveAudio")
         self._RemoveVideo = params.get("RemoveVideo")
         memeber_set = set(params.keys())
@@ -11872,6 +11900,17 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         :type DisableHigherVideoResolution: int
         :param _Comment: 模板描述信息，长度限制：256 个字符。
         :type Comment: str
+        :param _PureAudio: 是否为纯音频，0表示视频模版，1表示纯音频模版
+当值为1：
+1. StreamInfos.N.RemoveVideo=1
+2. StreamInfos.N.RemoveAudio=0
+3. StreamInfos.N.Video.Codec=copy
+
+当值为0：
+
+1. StreamInfos.N.Video.Codec不能为copy
+2. StreamInfos.N.Video.Fps不能为null
+        :type PureAudio: int
         """
         self._Format = None
         self._StreamInfos = None
@@ -11879,6 +11918,7 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         self._DisableHigherVideoBitrate = None
         self._DisableHigherVideoResolution = None
         self._Comment = None
+        self._PureAudio = None
 
     @property
     def Format(self):
@@ -11928,6 +11968,14 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
     def Comment(self, Comment):
         self._Comment = Comment
 
+    @property
+    def PureAudio(self):
+        return self._PureAudio
+
+    @PureAudio.setter
+    def PureAudio(self, PureAudio):
+        self._PureAudio = PureAudio
+
 
     def _deserialize(self, params):
         self._Format = params.get("Format")
@@ -11941,6 +11989,7 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         self._DisableHigherVideoBitrate = params.get("DisableHigherVideoBitrate")
         self._DisableHigherVideoResolution = params.get("DisableHigherVideoResolution")
         self._Comment = params.get("Comment")
+        self._PureAudio = params.get("PureAudio")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16455,11 +16504,14 @@ class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
 <li>Preset：系统预置模板；</li>
 <li>Custom：用户自定义模板。</li>
         :type Type: str
+        :param _PureAudio: 是否为纯音频，0表示视频，1表示纯音频
+        :type PureAudio: int
         """
         self._Definitions = None
         self._Offset = None
         self._Limit = None
         self._Type = None
+        self._PureAudio = None
 
     @property
     def Definitions(self):
@@ -16493,12 +16545,21 @@ class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def PureAudio(self):
+        return self._PureAudio
+
+    @PureAudio.setter
+    def PureAudio(self, PureAudio):
+        self._PureAudio = PureAudio
+
 
     def _deserialize(self, params):
         self._Definitions = params.get("Definitions")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._Type = params.get("Type")
+        self._PureAudio = params.get("PureAudio")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30842,6 +30903,17 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         :type StreamInfos: list of AdaptiveStreamTemplate
         :param _Comment: 模板描述信息，长度限制：256 个字符。
         :type Comment: str
+        :param _PureAudio: 是否为纯音频，0表示视频模版，1表示纯音频模版
+当值为1：
+1. StreamInfos.N.RemoveVideo=1
+2. StreamInfos.N.RemoveAudio=0
+3. StreamInfos.N.Video.Codec=copy
+
+当值为0：
+
+1. StreamInfos.N.Video.Codec不能为copy
+2. StreamInfos.N.Video.Fps不能为null
+        :type PureAudio: int
         """
         self._Definition = None
         self._Name = None
@@ -30850,6 +30922,7 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         self._DisableHigherVideoResolution = None
         self._StreamInfos = None
         self._Comment = None
+        self._PureAudio = None
 
     @property
     def Definition(self):
@@ -30907,6 +30980,14 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
     def Comment(self, Comment):
         self._Comment = Comment
 
+    @property
+    def PureAudio(self):
+        return self._PureAudio
+
+    @PureAudio.setter
+    def PureAudio(self, PureAudio):
+        self._PureAudio = PureAudio
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -30921,6 +31002,7 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
                 obj._deserialize(item)
                 self._StreamInfos.append(obj)
         self._Comment = params.get("Comment")
+        self._PureAudio = params.get("PureAudio")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -40301,7 +40383,7 @@ class TextWatermarkTemplateInput(AbstractModel):
 <li>simkai.ttf：可以支持中文和英文；</li>
 <li>arial.ttf：仅支持英文。</li>
         :type FontType: str
-        :param _FontSize: 字体大小，格式：Npx，N 为数值。
+        :param _FontSize: 字体大小，格式：Npx，N 为数值。N的取值范围：[0,1] 和 [8, 4096]
         :type FontSize: str
         :param _FontColor: 字体颜色，格式：0xRRGGBB，默认值：0xFFFFFF（白色）。
         :type FontColor: str
@@ -40310,11 +40392,15 @@ class TextWatermarkTemplateInput(AbstractModel):
 <li>1：完全不透明</li>
 默认值：1。
         :type FontAlpha: float
+        :param _TextContent: 文字内容，长度不超过100个字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TextContent: str
         """
         self._FontType = None
         self._FontSize = None
         self._FontColor = None
         self._FontAlpha = None
+        self._TextContent = None
 
     @property
     def FontType(self):
@@ -40348,12 +40434,21 @@ class TextWatermarkTemplateInput(AbstractModel):
     def FontAlpha(self, FontAlpha):
         self._FontAlpha = FontAlpha
 
+    @property
+    def TextContent(self):
+        return self._TextContent
+
+    @TextContent.setter
+    def TextContent(self, TextContent):
+        self._TextContent = TextContent
+
 
     def _deserialize(self, params):
         self._FontType = params.get("FontType")
         self._FontSize = params.get("FontSize")
         self._FontColor = params.get("FontColor")
         self._FontAlpha = params.get("FontAlpha")
+        self._TextContent = params.get("TextContent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -40375,7 +40470,7 @@ class TextWatermarkTemplateInputForUpdate(AbstractModel):
 <li>simkai.ttf：可以支持中文和英文；</li>
 <li>arial.ttf：仅支持英文。</li>
         :type FontType: str
-        :param _FontSize: 字体大小，格式：Npx，N 为数值。
+        :param _FontSize: 字体大小，格式：Npx，N 为数值。N的取值范围：[0,1] 和 [8, 4096]
         :type FontSize: str
         :param _FontColor: 字体颜色，格式：0xRRGGBB，默认值：0xFFFFFF（白色）。
         :type FontColor: str
@@ -40383,11 +40478,14 @@ class TextWatermarkTemplateInputForUpdate(AbstractModel):
 <li>0：完全透明</li>
 <li>1：完全不透明</li>
         :type FontAlpha: float
+        :param _TextContent: 文字内容，长度不超过100个字符。
+        :type TextContent: str
         """
         self._FontType = None
         self._FontSize = None
         self._FontColor = None
         self._FontAlpha = None
+        self._TextContent = None
 
     @property
     def FontType(self):
@@ -40421,12 +40519,21 @@ class TextWatermarkTemplateInputForUpdate(AbstractModel):
     def FontAlpha(self, FontAlpha):
         self._FontAlpha = FontAlpha
 
+    @property
+    def TextContent(self):
+        return self._TextContent
+
+    @TextContent.setter
+    def TextContent(self, TextContent):
+        self._TextContent = TextContent
+
 
     def _deserialize(self, params):
         self._FontType = params.get("FontType")
         self._FontSize = params.get("FontSize")
         self._FontColor = params.get("FontColor")
         self._FontAlpha = params.get("FontAlpha")
+        self._TextContent = params.get("TextContent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41807,6 +41914,7 @@ class VideoTemplateInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Codec: 视频流的编码格式，可选值：
+<li>copy：纯音频模版</li>
 <li>h264：H.264 编码</li>
 <li>h265：H.265 编码</li>
 <li>av1：AOMedia Video 1 编码</li>
@@ -42207,11 +42315,13 @@ SVG 水印不支持截图打水印。
 <li>不填或填0，表示水印从画面开始就出现；</li>
 <li>当数值大于0时（假设为 n），表示水印从画面开始的第 n 秒出现；</li>
 <li>当数值小于0时（假设为 -n），表示水印从离画面结束 n 秒前开始出现。</li>
+注：只用于视频场景，截图不支持。
         :type StartTimeOffset: float
         :param _EndTimeOffset: 水印的结束时间偏移，单位：秒。
 <li>不填或填0，表示水印持续到画面结束；</li>
 <li>当数值大于0时（假设为 n），表示水印持续到第 n 秒时消失；</li>
 <li>当数值小于0时（假设为 -n），表示水印持续到离画面结束 n 秒前消失。</li>
+注：只用于视频场景，截图不支持。
         :type EndTimeOffset: float
         """
         self._Definition = None
