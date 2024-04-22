@@ -400,6 +400,13 @@ class AbstractClient(object):
             elif key == 'retry':
                 e[key] = int(val)
 
+    @staticmethod
+    def _process_response_json(resp, resp_type):
+        resp_obj = json.loads(resp.content)["Response"]
+        model = resp_type()
+        model._deserialize(resp_obj)
+        return model
+
     def _call(self, action, params, options=None, headers=None):
         if headers is None:
             headers = {}
@@ -512,6 +519,20 @@ class AbstractClient(object):
         self._check_status(resp)
         self._check_error(resp)
         return self._process_response_sse(resp)
+
+    def _call_and_deserialize(self, action, params, resp_type, headers=None, options=None):
+        resp = self._call(action, params, options, headers)
+        self._check_status(resp)
+        self._check_error(resp)
+        return self._process_response(resp, resp_type)
+
+    def _process_response(self, resp, resp_type):
+        if resp.headers.get('Content-Type') == "text/event-stream":
+            logger.debug("GetResponse: %s", ResponsePrettyFormatter(resp, format_body=False))
+            return self._process_response_sse(resp)
+
+        logger.debug("GetResponse: %s", ResponsePrettyFormatter(resp))
+        return self._process_response_json(resp, resp_type)
 
     def set_stream_logger(self, stream=None, level=logging.DEBUG, log_format=None):
         """

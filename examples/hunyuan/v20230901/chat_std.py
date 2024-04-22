@@ -24,14 +24,20 @@ try:
     msg.Content = "你好，可以讲个笑话吗"
     req.Messages = [msg]
 
+    # hunyuan ChatStd/ChatPro 同时支持 stream 和非 stream 的情况
+    req.Stream = True
     resp = client.ChatStd(req)
 
     full_content = ""
-    for event in resp:
-        print(event)
-        data = json.loads(event['data'])
-        for choice in data['Choices']:
-            full_content += choice['Delta']['Content']
+    if req.Stream:  # stream 示例
+        for event in resp:
+            print(event["data"])
+            data = json.loads(event['data'])
+            for choice in data['Choices']:
+                full_content += choice['Delta']['Content']
+    else:  # 非 stream 示例
+        # 通过 Stream=False 参数来指定非 stream 协议, 一次性拿到结果
+        full_content = resp.Choices[0].Message.Content
 
     print(full_content)
 
