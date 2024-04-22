@@ -6933,17 +6933,29 @@ class DescribeHostCosInstanceListRequest(AbstractModel):
         r"""
         :param _CertificateId: 待部署的证书ID
         :type CertificateId: str
-        :param _ResourceType: 部署资源类型 cos
-        :type ResourceType: str
         :param _IsCache: 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
         :type IsCache: int
         :param _Filters: 过滤参数列表
         :type Filters: list of Filter
+        :param _ResourceType: 部署资源类型 cos
+        :type ResourceType: str
+        :param _OldCertificateId: 原证书ID	
+        :type OldCertificateId: str
+        :param _Offset: 分页偏移量，从0开始。
+        :type Offset: int
+        :param _Limit: 每页数量，默认10。	
+        :type Limit: int
+        :param _AsyncCache: 是否异步	
+        :type AsyncCache: int
         """
         self._CertificateId = None
-        self._ResourceType = None
         self._IsCache = None
         self._Filters = None
+        self._ResourceType = None
+        self._OldCertificateId = None
+        self._Offset = None
+        self._Limit = None
+        self._AsyncCache = None
 
     @property
     def CertificateId(self):
@@ -6952,14 +6964,6 @@ class DescribeHostCosInstanceListRequest(AbstractModel):
     @CertificateId.setter
     def CertificateId(self, CertificateId):
         self._CertificateId = CertificateId
-
-    @property
-    def ResourceType(self):
-        return self._ResourceType
-
-    @ResourceType.setter
-    def ResourceType(self, ResourceType):
-        self._ResourceType = ResourceType
 
     @property
     def IsCache(self):
@@ -6977,10 +6981,49 @@ class DescribeHostCosInstanceListRequest(AbstractModel):
     def Filters(self, Filters):
         self._Filters = Filters
 
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def OldCertificateId(self):
+        return self._OldCertificateId
+
+    @OldCertificateId.setter
+    def OldCertificateId(self, OldCertificateId):
+        self._OldCertificateId = OldCertificateId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def AsyncCache(self):
+        return self._AsyncCache
+
+    @AsyncCache.setter
+    def AsyncCache(self, AsyncCache):
+        self._AsyncCache = AsyncCache
+
 
     def _deserialize(self, params):
         self._CertificateId = params.get("CertificateId")
-        self._ResourceType = params.get("ResourceType")
         self._IsCache = params.get("IsCache")
         if params.get("Filters") is not None:
             self._Filters = []
@@ -6988,6 +7031,11 @@ class DescribeHostCosInstanceListRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._ResourceType = params.get("ResourceType")
+        self._OldCertificateId = params.get("OldCertificateId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._AsyncCache = params.get("AsyncCache")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

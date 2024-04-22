@@ -5269,10 +5269,13 @@ class GetEmbeddingResponse(AbstractModel):
         r"""
         :param _Data: 特征
         :type Data: list of EmbeddingObject
+        :param _Usage: 消耗量，返回TotalToken
+        :type Usage: :class:`tencentcloud.lke.v20231130.models.Usage`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
+        self._Usage = None
         self._RequestId = None
 
     @property
@@ -5282,6 +5285,14 @@ class GetEmbeddingResponse(AbstractModel):
     @Data.setter
     def Data(self, Data):
         self._Data = Data
+
+    @property
+    def Usage(self):
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
 
     @property
     def RequestId(self):
@@ -5299,6 +5310,9 @@ class GetEmbeddingResponse(AbstractModel):
                 obj = EmbeddingObject()
                 obj._deserialize(item)
                 self._Data.append(obj)
+        if params.get("Usage") is not None:
+            self._Usage = Usage()
+            self._Usage._deserialize(params.get("Usage"))
         self._RequestId = params.get("RequestId")
 
 
@@ -10733,7 +10747,7 @@ class ParseDocRequest(AbstractModel):
         :type TaskId: str
         :param _Policy: 切分策略
         :type Policy: str
-        :param _Operate: 默认值: split
+        :param _Operate: 默认值: parse
         :type Operate: str
         """
         self._Name = None
@@ -10776,10 +10790,14 @@ class ParseDocRequest(AbstractModel):
 
     @property
     def Operate(self):
+        warnings.warn("parameter `Operate` is deprecated", DeprecationWarning) 
+
         return self._Operate
 
     @Operate.setter
     def Operate(self, Operate):
+        warnings.warn("parameter `Operate` is deprecated", DeprecationWarning) 
+
         self._Operate = Operate
 
 
@@ -11251,6 +11269,8 @@ class QueryParseDocResultResponse(AbstractModel):
         :type Url: str
         :param _Reason: 解析失败原因
         :type Reason: str
+        :param _Usage: 消耗量，输出页数
+        :type Usage: :class:`tencentcloud.lke.v20231130.models.Usage`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -11258,6 +11278,7 @@ class QueryParseDocResultResponse(AbstractModel):
         self._Name = None
         self._Url = None
         self._Reason = None
+        self._Usage = None
         self._RequestId = None
 
     @property
@@ -11293,6 +11314,14 @@ class QueryParseDocResultResponse(AbstractModel):
         self._Reason = Reason
 
     @property
+    def Usage(self):
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -11306,6 +11335,9 @@ class QueryParseDocResultResponse(AbstractModel):
         self._Name = params.get("Name")
         self._Url = params.get("Url")
         self._Reason = params.get("Reason")
+        if params.get("Usage") is not None:
+            self._Usage = Usage()
+            self._Usage._deserialize(params.get("Usage"))
         self._RequestId = params.get("RequestId")
 
 
@@ -11380,10 +11412,13 @@ class QueryRewriteResponse(AbstractModel):
         r"""
         :param _Content: 改写结果
         :type Content: str
+        :param _Usage: 消耗量，返回输入token数，输出token数以及总token数
+        :type Usage: :class:`tencentcloud.lke.v20231130.models.Usage`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Content = None
+        self._Usage = None
         self._RequestId = None
 
     @property
@@ -11393,6 +11428,14 @@ class QueryRewriteResponse(AbstractModel):
     @Content.setter
     def Content(self, Content):
         self._Content = Content
+
+    @property
+    def Usage(self):
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
 
     @property
     def RequestId(self):
@@ -11405,6 +11448,9 @@ class QueryRewriteResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Content = params.get("Content")
+        if params.get("Usage") is not None:
+            self._Usage = Usage()
+            self._Usage._deserialize(params.get("Usage"))
         self._RequestId = params.get("RequestId")
 
 
@@ -13269,6 +13315,75 @@ class UploadAttributeLabelResponse(AbstractModel):
         self._ErrorLink = params.get("ErrorLink")
         self._ErrorLinkText = params.get("ErrorLinkText")
         self._RequestId = params.get("RequestId")
+
+
+class Usage(AbstractModel):
+    """消耗量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalPages: 文档页数
+        :type TotalPages: int
+        :param _InputTokens: 输入token数
+        :type InputTokens: int
+        :param _OutputTokens: 输出token数
+        :type OutputTokens: int
+        :param _TotalTokens: 总token数
+        :type TotalTokens: int
+        """
+        self._TotalPages = None
+        self._InputTokens = None
+        self._OutputTokens = None
+        self._TotalTokens = None
+
+    @property
+    def TotalPages(self):
+        return self._TotalPages
+
+    @TotalPages.setter
+    def TotalPages(self, TotalPages):
+        self._TotalPages = TotalPages
+
+    @property
+    def InputTokens(self):
+        return self._InputTokens
+
+    @InputTokens.setter
+    def InputTokens(self, InputTokens):
+        self._InputTokens = InputTokens
+
+    @property
+    def OutputTokens(self):
+        return self._OutputTokens
+
+    @OutputTokens.setter
+    def OutputTokens(self, OutputTokens):
+        self._OutputTokens = OutputTokens
+
+    @property
+    def TotalTokens(self):
+        return self._TotalTokens
+
+    @TotalTokens.setter
+    def TotalTokens(self, TotalTokens):
+        self._TotalTokens = TotalTokens
+
+
+    def _deserialize(self, params):
+        self._TotalPages = params.get("TotalPages")
+        self._InputTokens = params.get("InputTokens")
+        self._OutputTokens = params.get("OutputTokens")
+        self._TotalTokens = params.get("TotalTokens")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class VerifyQARequest(AbstractModel):

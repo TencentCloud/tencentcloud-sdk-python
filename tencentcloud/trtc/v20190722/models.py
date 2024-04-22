@@ -408,27 +408,36 @@ class AudioParams(AbstractModel):
 
 
 class CloudStorage(AbstractModel):
-    """第三方云存储的账号信息。
+    """腾讯云对象存储COS以及第三方云存储的账号信息
 
     """
 
     def __init__(self):
         r"""
-        :param _Vendor: 第三方云储存的供应商:
-0：腾讯云存储 COS。
-【*注意】：目前第三方仅支持腾讯云存储COS，暂不支持AWS等其他第三方云存储。
+        :param _Vendor: 腾讯云对象存储COS以及第三方云存储账号信息
+0：腾讯云对象存储 COS
+1：AWS
+【注意】目前第三方云存储仅支持AWS，更多第三方云存储陆续支持中
+示例值：0
         :type Vendor: int
-        :param _Region: 第三方云存储的地域信息。
+        :param _Region: 腾讯云对象存储的[地域信息]（https://cloud.tencent.com/document/product/436/6224#.E5.9C.B0.E5.9F.9F）。
+示例值：cn-shanghai-1
+
+AWS S3[地域信息]（https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions）
+示例值：ap-southeast-3	
         :type Region: str
-        :param _Bucket: 第三方存储桶信息。
+        :param _Bucket: 云存储桶名称。
         :type Bucket: str
-        :param _AccessKey: 第三方存储的access_key账号信息。
-若存储至腾讯云COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretId值。
+        :param _AccessKey: 云存储的access_key账号信息。
+若存储至腾讯云对象存储COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretId值。
+示例值：test-accesskey
         :type AccessKey: str
-        :param _SecretKey: 第三方存储的secret_key账号信息。
-若存储至腾讯云COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretKey值。
+        :param _SecretKey: 云存储的secret_key账号信息。
+若存储至腾讯云对象存储COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretKey值。
+示例值：test-secretkey
         :type SecretKey: str
-        :param _FileNamePrefix: 第三方云存储bucket 的指定位置，由字符串数组组成。合法的字符串范围a~z,A~Z,0~9,'_'和'-'，举个例子，录制文件xxx.m3u8在 ["prefix1", "prefix2"]作用下，会变成prefix1/prefix2/TaskId/xxx.m3u8。
+        :param _FileNamePrefix: 云存储bucket 的指定位置，由字符串数组组成。合法的字符串范围az,AZ,0~9,'_'和'-'，举个例子，录制文件xxx.m3u8在 ["prefix1", "prefix2"]作用下，会变成prefix1/prefix2/TaskId/xxx.m3u8。
+示例值：["prefix1", "prefix2"]
         :type FileNamePrefix: list of str
         """
         self._Vendor = None
@@ -3962,10 +3971,18 @@ class DescribeWebRecordResponse(AbstractModel):
         r"""
         :param _Status: 1: 正在录制中
         :type Status: int
+        :param _TaskId: 在使用RecordId查询时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _RecordId: 在使用TaskId查询时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Status = None
+        self._TaskId = None
+        self._RecordId = None
         self._RequestId = None
 
     @property
@@ -3975,6 +3992,22 @@ class DescribeWebRecordResponse(AbstractModel):
     @Status.setter
     def Status(self, Status):
         self._Status = Status
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RecordId(self):
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
 
     @property
     def RequestId(self):
@@ -3987,6 +4020,8 @@ class DescribeWebRecordResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
+        self._TaskId = params.get("TaskId")
+        self._RecordId = params.get("RecordId")
         self._RequestId = params.get("RequestId")
 
 
@@ -9207,15 +9242,15 @@ audio_video：音视频录制文件
 
 
 class StorageParams(AbstractModel):
-    """第三方存储参数。
+    """录制存储参数
 
     """
 
     def __init__(self):
         r"""
-        :param _CloudStorage: 第三方云存储的账号信息（特别说明：若您选择存储至对象存储COS将会收取录制文件投递至COS的费用，详见云端录制收费说明，存储至VOD将不收取此项费用。）。
+        :param _CloudStorage: 腾讯云对象存储COS以及第三方云存储的账号信息
         :type CloudStorage: :class:`tencentcloud.trtc.v20190722.models.CloudStorage`
-        :param _CloudVod: 腾讯云云点播的账号信息。
+        :param _CloudVod: 腾讯云云点播Vod的存储信息
         :type CloudVod: :class:`tencentcloud.trtc.v20190722.models.CloudVod`
         """
         self._CloudStorage = None

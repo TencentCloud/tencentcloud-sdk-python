@@ -61,6 +61,1321 @@ class AddNewBindRoleUserResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AlertExtraInfo(AbstractModel):
+    """告警下拉字段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RelateEvent: 相关攻击事件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelateEvent: :class:`tencentcloud.csip.v20221121.models.RelatedEvent`
+        :param _LeakContent: 泄漏内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LeakContent: str
+        :param _LeakAPI: 泄漏API
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LeakAPI: str
+        :param _SecretID: secretID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretID: str
+        :param _Rule: 命中规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rule: str
+        :param _RuleDesc: 规则描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleDesc: str
+        :param _ProtocolPort: 协议端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProtocolPort: str
+        :param _AttackContent: 攻击内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttackContent: str
+        :param _AttackIPProfile: 攻击IP画像
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttackIPProfile: str
+        :param _AttackIPTags: 攻击IP标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttackIPTags: str
+        :param _RequestMethod: 请求方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestMethod: str
+        :param _HttpLog: HTTP日志
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HttpLog: str
+        :param _AttackDomain: 被攻击域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttackDomain: str
+        :param _FilePath: 文件路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilePath: str
+        :param _UserAgent: user_agent
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserAgent: str
+        :param _RequestHeaders: 请求头
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestHeaders: str
+        :param _LoginUserName: 登录用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoginUserName: str
+        :param _VulnerabilityName: 漏洞名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VulnerabilityName: str
+        :param _CVE: 公共漏洞和暴露
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CVE: str
+        :param _ServiceProcess: 服务进程
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceProcess: str
+        :param _FileName: 文件名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileName: str
+        :param _FileSize: 文件大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileSize: str
+        :param _FileMD5: 文件MD5
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileMD5: str
+        :param _FileLastAccessTime: 文件最近访问时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileLastAccessTime: str
+        :param _FileModifyTime: 文件修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileModifyTime: str
+        :param _RecentAccessTime: 最近访问时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecentAccessTime: str
+        :param _RecentModifyTime: 最近修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecentModifyTime: str
+        :param _VirusName: 病毒名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirusName: str
+        :param _VirusFileTags: 病毒文件标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirusFileTags: str
+        :param _BehavioralCharacteristics: 行为特征
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BehavioralCharacteristics: str
+        :param _ProcessNamePID: 进程名（PID）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessNamePID: str
+        :param _ProcessPath: 进程路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessPath: str
+        :param _ProcessCommandLine: 进程命令行
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessCommandLine: str
+        :param _ProcessPermissions: 进程权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessPermissions: str
+        :param _ExecutedCommand: 执行命令
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutedCommand: str
+        :param _AffectedFileName: 受影响文件名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AffectedFileName: str
+        :param _DecoyPath: 诱饵路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DecoyPath: str
+        :param _MaliciousProcessFileSize: 恶意进程文件大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaliciousProcessFileSize: str
+        :param _MaliciousProcessFileMD5: 恶意进程文件MD5
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaliciousProcessFileMD5: str
+        :param _MaliciousProcessNamePID: 恶意进程名（PID）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaliciousProcessNamePID: str
+        :param _MaliciousProcessPath: 恶意进程路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaliciousProcessPath: str
+        :param _MaliciousProcessStartTime: 恶意进程启动时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaliciousProcessStartTime: str
+        :param _CommandContent: 命令内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CommandContent: str
+        :param _StartupUser: 启动用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartupUser: str
+        :param _UserGroup: 用户所属组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserGroup: str
+        :param _NewPermissions: 新增权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NewPermissions: str
+        :param _ParentProcess: 父进程
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentProcess: str
+        :param _ClassName: 类名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClassName: str
+        :param _ClassLoader: 所属类加载器
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClassLoader: str
+        :param _ClassFileSize: 类文件大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClassFileSize: str
+        :param _ClassFileMD5: 类文件MD5
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClassFileMD5: str
+        :param _ParentClassName: 父类名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentClassName: str
+        :param _InheritedInterface: 继承接口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InheritedInterface: str
+        :param _Comment: 注释
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Comment: str
+        :param _PayloadContent: 载荷内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayloadContent: str
+        :param _CallbackAddressPortrait: 回连地址画像
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CallbackAddressPortrait: str
+        :param _CallbackAddressTag: 回连地址标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CallbackAddressTag: str
+        :param _ProcessMD5: 进程MD5
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessMD5: str
+        :param _FilePermission: 文件权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilePermission: str
+        :param _FromLogAnalysisData: 来源于日志分析的信息字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FromLogAnalysisData: list of KeyValue
+        :param _HitProbe: 命中探针
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HitProbe: str
+        :param _HitHoneyPot: 命中蜜罐
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HitHoneyPot: str
+        :param _CommandList: 命令列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CommandList: str
+        :param _AttackEventDesc: 攻击事件描述
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttackEventDesc: str
+        :param _ProcessInfo: 进程信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessInfo: str
+        :param _UserNameAndPwd: 使用用户名&密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserNameAndPwd: str
+        :param _StrategyID: 主机防护策略ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrategyID: str
+        :param _StrategyName: 主机防护策略名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrategyName: str
+        :param _HitStrategy: 主机防护命中策略，是策略ID和策略名称的组合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HitStrategy: str
+        """
+        self._RelateEvent = None
+        self._LeakContent = None
+        self._LeakAPI = None
+        self._SecretID = None
+        self._Rule = None
+        self._RuleDesc = None
+        self._ProtocolPort = None
+        self._AttackContent = None
+        self._AttackIPProfile = None
+        self._AttackIPTags = None
+        self._RequestMethod = None
+        self._HttpLog = None
+        self._AttackDomain = None
+        self._FilePath = None
+        self._UserAgent = None
+        self._RequestHeaders = None
+        self._LoginUserName = None
+        self._VulnerabilityName = None
+        self._CVE = None
+        self._ServiceProcess = None
+        self._FileName = None
+        self._FileSize = None
+        self._FileMD5 = None
+        self._FileLastAccessTime = None
+        self._FileModifyTime = None
+        self._RecentAccessTime = None
+        self._RecentModifyTime = None
+        self._VirusName = None
+        self._VirusFileTags = None
+        self._BehavioralCharacteristics = None
+        self._ProcessNamePID = None
+        self._ProcessPath = None
+        self._ProcessCommandLine = None
+        self._ProcessPermissions = None
+        self._ExecutedCommand = None
+        self._AffectedFileName = None
+        self._DecoyPath = None
+        self._MaliciousProcessFileSize = None
+        self._MaliciousProcessFileMD5 = None
+        self._MaliciousProcessNamePID = None
+        self._MaliciousProcessPath = None
+        self._MaliciousProcessStartTime = None
+        self._CommandContent = None
+        self._StartupUser = None
+        self._UserGroup = None
+        self._NewPermissions = None
+        self._ParentProcess = None
+        self._ClassName = None
+        self._ClassLoader = None
+        self._ClassFileSize = None
+        self._ClassFileMD5 = None
+        self._ParentClassName = None
+        self._InheritedInterface = None
+        self._Comment = None
+        self._PayloadContent = None
+        self._CallbackAddressPortrait = None
+        self._CallbackAddressTag = None
+        self._ProcessMD5 = None
+        self._FilePermission = None
+        self._FromLogAnalysisData = None
+        self._HitProbe = None
+        self._HitHoneyPot = None
+        self._CommandList = None
+        self._AttackEventDesc = None
+        self._ProcessInfo = None
+        self._UserNameAndPwd = None
+        self._StrategyID = None
+        self._StrategyName = None
+        self._HitStrategy = None
+
+    @property
+    def RelateEvent(self):
+        return self._RelateEvent
+
+    @RelateEvent.setter
+    def RelateEvent(self, RelateEvent):
+        self._RelateEvent = RelateEvent
+
+    @property
+    def LeakContent(self):
+        return self._LeakContent
+
+    @LeakContent.setter
+    def LeakContent(self, LeakContent):
+        self._LeakContent = LeakContent
+
+    @property
+    def LeakAPI(self):
+        return self._LeakAPI
+
+    @LeakAPI.setter
+    def LeakAPI(self, LeakAPI):
+        self._LeakAPI = LeakAPI
+
+    @property
+    def SecretID(self):
+        return self._SecretID
+
+    @SecretID.setter
+    def SecretID(self, SecretID):
+        self._SecretID = SecretID
+
+    @property
+    def Rule(self):
+        return self._Rule
+
+    @Rule.setter
+    def Rule(self, Rule):
+        self._Rule = Rule
+
+    @property
+    def RuleDesc(self):
+        return self._RuleDesc
+
+    @RuleDesc.setter
+    def RuleDesc(self, RuleDesc):
+        self._RuleDesc = RuleDesc
+
+    @property
+    def ProtocolPort(self):
+        return self._ProtocolPort
+
+    @ProtocolPort.setter
+    def ProtocolPort(self, ProtocolPort):
+        self._ProtocolPort = ProtocolPort
+
+    @property
+    def AttackContent(self):
+        return self._AttackContent
+
+    @AttackContent.setter
+    def AttackContent(self, AttackContent):
+        self._AttackContent = AttackContent
+
+    @property
+    def AttackIPProfile(self):
+        return self._AttackIPProfile
+
+    @AttackIPProfile.setter
+    def AttackIPProfile(self, AttackIPProfile):
+        self._AttackIPProfile = AttackIPProfile
+
+    @property
+    def AttackIPTags(self):
+        return self._AttackIPTags
+
+    @AttackIPTags.setter
+    def AttackIPTags(self, AttackIPTags):
+        self._AttackIPTags = AttackIPTags
+
+    @property
+    def RequestMethod(self):
+        return self._RequestMethod
+
+    @RequestMethod.setter
+    def RequestMethod(self, RequestMethod):
+        self._RequestMethod = RequestMethod
+
+    @property
+    def HttpLog(self):
+        return self._HttpLog
+
+    @HttpLog.setter
+    def HttpLog(self, HttpLog):
+        self._HttpLog = HttpLog
+
+    @property
+    def AttackDomain(self):
+        return self._AttackDomain
+
+    @AttackDomain.setter
+    def AttackDomain(self, AttackDomain):
+        self._AttackDomain = AttackDomain
+
+    @property
+    def FilePath(self):
+        return self._FilePath
+
+    @FilePath.setter
+    def FilePath(self, FilePath):
+        self._FilePath = FilePath
+
+    @property
+    def UserAgent(self):
+        return self._UserAgent
+
+    @UserAgent.setter
+    def UserAgent(self, UserAgent):
+        self._UserAgent = UserAgent
+
+    @property
+    def RequestHeaders(self):
+        return self._RequestHeaders
+
+    @RequestHeaders.setter
+    def RequestHeaders(self, RequestHeaders):
+        self._RequestHeaders = RequestHeaders
+
+    @property
+    def LoginUserName(self):
+        return self._LoginUserName
+
+    @LoginUserName.setter
+    def LoginUserName(self, LoginUserName):
+        self._LoginUserName = LoginUserName
+
+    @property
+    def VulnerabilityName(self):
+        return self._VulnerabilityName
+
+    @VulnerabilityName.setter
+    def VulnerabilityName(self, VulnerabilityName):
+        self._VulnerabilityName = VulnerabilityName
+
+    @property
+    def CVE(self):
+        return self._CVE
+
+    @CVE.setter
+    def CVE(self, CVE):
+        self._CVE = CVE
+
+    @property
+    def ServiceProcess(self):
+        return self._ServiceProcess
+
+    @ServiceProcess.setter
+    def ServiceProcess(self, ServiceProcess):
+        self._ServiceProcess = ServiceProcess
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileSize(self):
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
+    @property
+    def FileMD5(self):
+        return self._FileMD5
+
+    @FileMD5.setter
+    def FileMD5(self, FileMD5):
+        self._FileMD5 = FileMD5
+
+    @property
+    def FileLastAccessTime(self):
+        return self._FileLastAccessTime
+
+    @FileLastAccessTime.setter
+    def FileLastAccessTime(self, FileLastAccessTime):
+        self._FileLastAccessTime = FileLastAccessTime
+
+    @property
+    def FileModifyTime(self):
+        return self._FileModifyTime
+
+    @FileModifyTime.setter
+    def FileModifyTime(self, FileModifyTime):
+        self._FileModifyTime = FileModifyTime
+
+    @property
+    def RecentAccessTime(self):
+        return self._RecentAccessTime
+
+    @RecentAccessTime.setter
+    def RecentAccessTime(self, RecentAccessTime):
+        self._RecentAccessTime = RecentAccessTime
+
+    @property
+    def RecentModifyTime(self):
+        return self._RecentModifyTime
+
+    @RecentModifyTime.setter
+    def RecentModifyTime(self, RecentModifyTime):
+        self._RecentModifyTime = RecentModifyTime
+
+    @property
+    def VirusName(self):
+        return self._VirusName
+
+    @VirusName.setter
+    def VirusName(self, VirusName):
+        self._VirusName = VirusName
+
+    @property
+    def VirusFileTags(self):
+        return self._VirusFileTags
+
+    @VirusFileTags.setter
+    def VirusFileTags(self, VirusFileTags):
+        self._VirusFileTags = VirusFileTags
+
+    @property
+    def BehavioralCharacteristics(self):
+        return self._BehavioralCharacteristics
+
+    @BehavioralCharacteristics.setter
+    def BehavioralCharacteristics(self, BehavioralCharacteristics):
+        self._BehavioralCharacteristics = BehavioralCharacteristics
+
+    @property
+    def ProcessNamePID(self):
+        return self._ProcessNamePID
+
+    @ProcessNamePID.setter
+    def ProcessNamePID(self, ProcessNamePID):
+        self._ProcessNamePID = ProcessNamePID
+
+    @property
+    def ProcessPath(self):
+        return self._ProcessPath
+
+    @ProcessPath.setter
+    def ProcessPath(self, ProcessPath):
+        self._ProcessPath = ProcessPath
+
+    @property
+    def ProcessCommandLine(self):
+        return self._ProcessCommandLine
+
+    @ProcessCommandLine.setter
+    def ProcessCommandLine(self, ProcessCommandLine):
+        self._ProcessCommandLine = ProcessCommandLine
+
+    @property
+    def ProcessPermissions(self):
+        return self._ProcessPermissions
+
+    @ProcessPermissions.setter
+    def ProcessPermissions(self, ProcessPermissions):
+        self._ProcessPermissions = ProcessPermissions
+
+    @property
+    def ExecutedCommand(self):
+        return self._ExecutedCommand
+
+    @ExecutedCommand.setter
+    def ExecutedCommand(self, ExecutedCommand):
+        self._ExecutedCommand = ExecutedCommand
+
+    @property
+    def AffectedFileName(self):
+        return self._AffectedFileName
+
+    @AffectedFileName.setter
+    def AffectedFileName(self, AffectedFileName):
+        self._AffectedFileName = AffectedFileName
+
+    @property
+    def DecoyPath(self):
+        return self._DecoyPath
+
+    @DecoyPath.setter
+    def DecoyPath(self, DecoyPath):
+        self._DecoyPath = DecoyPath
+
+    @property
+    def MaliciousProcessFileSize(self):
+        return self._MaliciousProcessFileSize
+
+    @MaliciousProcessFileSize.setter
+    def MaliciousProcessFileSize(self, MaliciousProcessFileSize):
+        self._MaliciousProcessFileSize = MaliciousProcessFileSize
+
+    @property
+    def MaliciousProcessFileMD5(self):
+        return self._MaliciousProcessFileMD5
+
+    @MaliciousProcessFileMD5.setter
+    def MaliciousProcessFileMD5(self, MaliciousProcessFileMD5):
+        self._MaliciousProcessFileMD5 = MaliciousProcessFileMD5
+
+    @property
+    def MaliciousProcessNamePID(self):
+        return self._MaliciousProcessNamePID
+
+    @MaliciousProcessNamePID.setter
+    def MaliciousProcessNamePID(self, MaliciousProcessNamePID):
+        self._MaliciousProcessNamePID = MaliciousProcessNamePID
+
+    @property
+    def MaliciousProcessPath(self):
+        return self._MaliciousProcessPath
+
+    @MaliciousProcessPath.setter
+    def MaliciousProcessPath(self, MaliciousProcessPath):
+        self._MaliciousProcessPath = MaliciousProcessPath
+
+    @property
+    def MaliciousProcessStartTime(self):
+        return self._MaliciousProcessStartTime
+
+    @MaliciousProcessStartTime.setter
+    def MaliciousProcessStartTime(self, MaliciousProcessStartTime):
+        self._MaliciousProcessStartTime = MaliciousProcessStartTime
+
+    @property
+    def CommandContent(self):
+        return self._CommandContent
+
+    @CommandContent.setter
+    def CommandContent(self, CommandContent):
+        self._CommandContent = CommandContent
+
+    @property
+    def StartupUser(self):
+        return self._StartupUser
+
+    @StartupUser.setter
+    def StartupUser(self, StartupUser):
+        self._StartupUser = StartupUser
+
+    @property
+    def UserGroup(self):
+        return self._UserGroup
+
+    @UserGroup.setter
+    def UserGroup(self, UserGroup):
+        self._UserGroup = UserGroup
+
+    @property
+    def NewPermissions(self):
+        return self._NewPermissions
+
+    @NewPermissions.setter
+    def NewPermissions(self, NewPermissions):
+        self._NewPermissions = NewPermissions
+
+    @property
+    def ParentProcess(self):
+        return self._ParentProcess
+
+    @ParentProcess.setter
+    def ParentProcess(self, ParentProcess):
+        self._ParentProcess = ParentProcess
+
+    @property
+    def ClassName(self):
+        return self._ClassName
+
+    @ClassName.setter
+    def ClassName(self, ClassName):
+        self._ClassName = ClassName
+
+    @property
+    def ClassLoader(self):
+        return self._ClassLoader
+
+    @ClassLoader.setter
+    def ClassLoader(self, ClassLoader):
+        self._ClassLoader = ClassLoader
+
+    @property
+    def ClassFileSize(self):
+        return self._ClassFileSize
+
+    @ClassFileSize.setter
+    def ClassFileSize(self, ClassFileSize):
+        self._ClassFileSize = ClassFileSize
+
+    @property
+    def ClassFileMD5(self):
+        return self._ClassFileMD5
+
+    @ClassFileMD5.setter
+    def ClassFileMD5(self, ClassFileMD5):
+        self._ClassFileMD5 = ClassFileMD5
+
+    @property
+    def ParentClassName(self):
+        return self._ParentClassName
+
+    @ParentClassName.setter
+    def ParentClassName(self, ParentClassName):
+        self._ParentClassName = ParentClassName
+
+    @property
+    def InheritedInterface(self):
+        return self._InheritedInterface
+
+    @InheritedInterface.setter
+    def InheritedInterface(self, InheritedInterface):
+        self._InheritedInterface = InheritedInterface
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def PayloadContent(self):
+        return self._PayloadContent
+
+    @PayloadContent.setter
+    def PayloadContent(self, PayloadContent):
+        self._PayloadContent = PayloadContent
+
+    @property
+    def CallbackAddressPortrait(self):
+        return self._CallbackAddressPortrait
+
+    @CallbackAddressPortrait.setter
+    def CallbackAddressPortrait(self, CallbackAddressPortrait):
+        self._CallbackAddressPortrait = CallbackAddressPortrait
+
+    @property
+    def CallbackAddressTag(self):
+        return self._CallbackAddressTag
+
+    @CallbackAddressTag.setter
+    def CallbackAddressTag(self, CallbackAddressTag):
+        self._CallbackAddressTag = CallbackAddressTag
+
+    @property
+    def ProcessMD5(self):
+        return self._ProcessMD5
+
+    @ProcessMD5.setter
+    def ProcessMD5(self, ProcessMD5):
+        self._ProcessMD5 = ProcessMD5
+
+    @property
+    def FilePermission(self):
+        return self._FilePermission
+
+    @FilePermission.setter
+    def FilePermission(self, FilePermission):
+        self._FilePermission = FilePermission
+
+    @property
+    def FromLogAnalysisData(self):
+        return self._FromLogAnalysisData
+
+    @FromLogAnalysisData.setter
+    def FromLogAnalysisData(self, FromLogAnalysisData):
+        self._FromLogAnalysisData = FromLogAnalysisData
+
+    @property
+    def HitProbe(self):
+        return self._HitProbe
+
+    @HitProbe.setter
+    def HitProbe(self, HitProbe):
+        self._HitProbe = HitProbe
+
+    @property
+    def HitHoneyPot(self):
+        return self._HitHoneyPot
+
+    @HitHoneyPot.setter
+    def HitHoneyPot(self, HitHoneyPot):
+        self._HitHoneyPot = HitHoneyPot
+
+    @property
+    def CommandList(self):
+        return self._CommandList
+
+    @CommandList.setter
+    def CommandList(self, CommandList):
+        self._CommandList = CommandList
+
+    @property
+    def AttackEventDesc(self):
+        return self._AttackEventDesc
+
+    @AttackEventDesc.setter
+    def AttackEventDesc(self, AttackEventDesc):
+        self._AttackEventDesc = AttackEventDesc
+
+    @property
+    def ProcessInfo(self):
+        return self._ProcessInfo
+
+    @ProcessInfo.setter
+    def ProcessInfo(self, ProcessInfo):
+        self._ProcessInfo = ProcessInfo
+
+    @property
+    def UserNameAndPwd(self):
+        return self._UserNameAndPwd
+
+    @UserNameAndPwd.setter
+    def UserNameAndPwd(self, UserNameAndPwd):
+        self._UserNameAndPwd = UserNameAndPwd
+
+    @property
+    def StrategyID(self):
+        return self._StrategyID
+
+    @StrategyID.setter
+    def StrategyID(self, StrategyID):
+        self._StrategyID = StrategyID
+
+    @property
+    def StrategyName(self):
+        return self._StrategyName
+
+    @StrategyName.setter
+    def StrategyName(self, StrategyName):
+        self._StrategyName = StrategyName
+
+    @property
+    def HitStrategy(self):
+        return self._HitStrategy
+
+    @HitStrategy.setter
+    def HitStrategy(self, HitStrategy):
+        self._HitStrategy = HitStrategy
+
+
+    def _deserialize(self, params):
+        if params.get("RelateEvent") is not None:
+            self._RelateEvent = RelatedEvent()
+            self._RelateEvent._deserialize(params.get("RelateEvent"))
+        self._LeakContent = params.get("LeakContent")
+        self._LeakAPI = params.get("LeakAPI")
+        self._SecretID = params.get("SecretID")
+        self._Rule = params.get("Rule")
+        self._RuleDesc = params.get("RuleDesc")
+        self._ProtocolPort = params.get("ProtocolPort")
+        self._AttackContent = params.get("AttackContent")
+        self._AttackIPProfile = params.get("AttackIPProfile")
+        self._AttackIPTags = params.get("AttackIPTags")
+        self._RequestMethod = params.get("RequestMethod")
+        self._HttpLog = params.get("HttpLog")
+        self._AttackDomain = params.get("AttackDomain")
+        self._FilePath = params.get("FilePath")
+        self._UserAgent = params.get("UserAgent")
+        self._RequestHeaders = params.get("RequestHeaders")
+        self._LoginUserName = params.get("LoginUserName")
+        self._VulnerabilityName = params.get("VulnerabilityName")
+        self._CVE = params.get("CVE")
+        self._ServiceProcess = params.get("ServiceProcess")
+        self._FileName = params.get("FileName")
+        self._FileSize = params.get("FileSize")
+        self._FileMD5 = params.get("FileMD5")
+        self._FileLastAccessTime = params.get("FileLastAccessTime")
+        self._FileModifyTime = params.get("FileModifyTime")
+        self._RecentAccessTime = params.get("RecentAccessTime")
+        self._RecentModifyTime = params.get("RecentModifyTime")
+        self._VirusName = params.get("VirusName")
+        self._VirusFileTags = params.get("VirusFileTags")
+        self._BehavioralCharacteristics = params.get("BehavioralCharacteristics")
+        self._ProcessNamePID = params.get("ProcessNamePID")
+        self._ProcessPath = params.get("ProcessPath")
+        self._ProcessCommandLine = params.get("ProcessCommandLine")
+        self._ProcessPermissions = params.get("ProcessPermissions")
+        self._ExecutedCommand = params.get("ExecutedCommand")
+        self._AffectedFileName = params.get("AffectedFileName")
+        self._DecoyPath = params.get("DecoyPath")
+        self._MaliciousProcessFileSize = params.get("MaliciousProcessFileSize")
+        self._MaliciousProcessFileMD5 = params.get("MaliciousProcessFileMD5")
+        self._MaliciousProcessNamePID = params.get("MaliciousProcessNamePID")
+        self._MaliciousProcessPath = params.get("MaliciousProcessPath")
+        self._MaliciousProcessStartTime = params.get("MaliciousProcessStartTime")
+        self._CommandContent = params.get("CommandContent")
+        self._StartupUser = params.get("StartupUser")
+        self._UserGroup = params.get("UserGroup")
+        self._NewPermissions = params.get("NewPermissions")
+        self._ParentProcess = params.get("ParentProcess")
+        self._ClassName = params.get("ClassName")
+        self._ClassLoader = params.get("ClassLoader")
+        self._ClassFileSize = params.get("ClassFileSize")
+        self._ClassFileMD5 = params.get("ClassFileMD5")
+        self._ParentClassName = params.get("ParentClassName")
+        self._InheritedInterface = params.get("InheritedInterface")
+        self._Comment = params.get("Comment")
+        self._PayloadContent = params.get("PayloadContent")
+        self._CallbackAddressPortrait = params.get("CallbackAddressPortrait")
+        self._CallbackAddressTag = params.get("CallbackAddressTag")
+        self._ProcessMD5 = params.get("ProcessMD5")
+        self._FilePermission = params.get("FilePermission")
+        if params.get("FromLogAnalysisData") is not None:
+            self._FromLogAnalysisData = []
+            for item in params.get("FromLogAnalysisData"):
+                obj = KeyValue()
+                obj._deserialize(item)
+                self._FromLogAnalysisData.append(obj)
+        self._HitProbe = params.get("HitProbe")
+        self._HitHoneyPot = params.get("HitHoneyPot")
+        self._CommandList = params.get("CommandList")
+        self._AttackEventDesc = params.get("AttackEventDesc")
+        self._ProcessInfo = params.get("ProcessInfo")
+        self._UserNameAndPwd = params.get("UserNameAndPwd")
+        self._StrategyID = params.get("StrategyID")
+        self._StrategyName = params.get("StrategyName")
+        self._HitStrategy = params.get("HitStrategy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AlertInfo(AbstractModel):
+    """告警中心全量告警列表数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 告警ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ID: str
+        :param _Name: 告警名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Source: 告警来源
+CFW:云防火墙
+WAF:Web应用防火墙
+CWP:主机安全
+CSIP:云安全中心
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Source: str
+        :param _Level: 告警等级
+1:提示
+2:低危
+3:中危
+4:高危
+5:严重
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Level: int
+        :param _Attacker: 攻击者
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Attacker: :class:`tencentcloud.csip.v20221121.models.RoleInfo`
+        :param _Victim: 受害者
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Victim: :class:`tencentcloud.csip.v20221121.models.RoleInfo`
+        :param _EvidenceData: 证据数据(比如攻击内容等)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EvidenceData: str
+        :param _EvidenceLocation: 证据位置(比如协议端口)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EvidenceLocation: str
+        :param _EvidencePath: 证据路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EvidencePath: str
+        :param _CreateTime: 首次告警时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _UpdateTime: 最近告警时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _Count: 告警次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        :param _UrgentSuggestion: 紧急缓解建议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UrgentSuggestion: str
+        :param _RemediationSuggestion: 根治建议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemediationSuggestion: str
+        :param _Status: 处理状态
+0：未处置，1：已忽略，2：已处置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _ProcessType: 告警处理类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessType: str
+        :param _Type: 告警大类
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _SubType: 告警小类
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubType: str
+        :param _ExtraInfo: 下拉字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtraInfo: :class:`tencentcloud.csip.v20221121.models.AlertExtraInfo`
+        :param _Key: 聚合字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Date: 告警日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Date: str
+        :param _AppID: appid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppID: str
+        :param _NickName: 账户名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NickName: str
+        :param _Uin: 账户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param _Action: 行为
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Action: int
+        :param _RiskInvestigation: 风险排查
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskInvestigation: str
+        :param _RiskTreatment: 风险处置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskTreatment: str
+        """
+        self._ID = None
+        self._Name = None
+        self._Source = None
+        self._Level = None
+        self._Attacker = None
+        self._Victim = None
+        self._EvidenceData = None
+        self._EvidenceLocation = None
+        self._EvidencePath = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Count = None
+        self._UrgentSuggestion = None
+        self._RemediationSuggestion = None
+        self._Status = None
+        self._ProcessType = None
+        self._Type = None
+        self._SubType = None
+        self._ExtraInfo = None
+        self._Key = None
+        self._Date = None
+        self._AppID = None
+        self._NickName = None
+        self._Uin = None
+        self._Action = None
+        self._RiskInvestigation = None
+        self._RiskTreatment = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Level(self):
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Attacker(self):
+        return self._Attacker
+
+    @Attacker.setter
+    def Attacker(self, Attacker):
+        self._Attacker = Attacker
+
+    @property
+    def Victim(self):
+        return self._Victim
+
+    @Victim.setter
+    def Victim(self, Victim):
+        self._Victim = Victim
+
+    @property
+    def EvidenceData(self):
+        return self._EvidenceData
+
+    @EvidenceData.setter
+    def EvidenceData(self, EvidenceData):
+        self._EvidenceData = EvidenceData
+
+    @property
+    def EvidenceLocation(self):
+        return self._EvidenceLocation
+
+    @EvidenceLocation.setter
+    def EvidenceLocation(self, EvidenceLocation):
+        self._EvidenceLocation = EvidenceLocation
+
+    @property
+    def EvidencePath(self):
+        return self._EvidencePath
+
+    @EvidencePath.setter
+    def EvidencePath(self, EvidencePath):
+        self._EvidencePath = EvidencePath
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def UrgentSuggestion(self):
+        return self._UrgentSuggestion
+
+    @UrgentSuggestion.setter
+    def UrgentSuggestion(self, UrgentSuggestion):
+        self._UrgentSuggestion = UrgentSuggestion
+
+    @property
+    def RemediationSuggestion(self):
+        return self._RemediationSuggestion
+
+    @RemediationSuggestion.setter
+    def RemediationSuggestion(self, RemediationSuggestion):
+        self._RemediationSuggestion = RemediationSuggestion
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ProcessType(self):
+        return self._ProcessType
+
+    @ProcessType.setter
+    def ProcessType(self, ProcessType):
+        self._ProcessType = ProcessType
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def SubType(self):
+        return self._SubType
+
+    @SubType.setter
+    def SubType(self, SubType):
+        self._SubType = SubType
+
+    @property
+    def ExtraInfo(self):
+        return self._ExtraInfo
+
+    @ExtraInfo.setter
+    def ExtraInfo(self, ExtraInfo):
+        self._ExtraInfo = ExtraInfo
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Date(self):
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+    @property
+    def AppID(self):
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+    @property
+    def NickName(self):
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Action(self):
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def RiskInvestigation(self):
+        return self._RiskInvestigation
+
+    @RiskInvestigation.setter
+    def RiskInvestigation(self, RiskInvestigation):
+        self._RiskInvestigation = RiskInvestigation
+
+    @property
+    def RiskTreatment(self):
+        return self._RiskTreatment
+
+    @RiskTreatment.setter
+    def RiskTreatment(self, RiskTreatment):
+        self._RiskTreatment = RiskTreatment
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Name = params.get("Name")
+        self._Source = params.get("Source")
+        self._Level = params.get("Level")
+        if params.get("Attacker") is not None:
+            self._Attacker = RoleInfo()
+            self._Attacker._deserialize(params.get("Attacker"))
+        if params.get("Victim") is not None:
+            self._Victim = RoleInfo()
+            self._Victim._deserialize(params.get("Victim"))
+        self._EvidenceData = params.get("EvidenceData")
+        self._EvidenceLocation = params.get("EvidenceLocation")
+        self._EvidencePath = params.get("EvidencePath")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Count = params.get("Count")
+        self._UrgentSuggestion = params.get("UrgentSuggestion")
+        self._RemediationSuggestion = params.get("RemediationSuggestion")
+        self._Status = params.get("Status")
+        self._ProcessType = params.get("ProcessType")
+        self._Type = params.get("Type")
+        self._SubType = params.get("SubType")
+        if params.get("ExtraInfo") is not None:
+            self._ExtraInfo = AlertExtraInfo()
+            self._ExtraInfo._deserialize(params.get("ExtraInfo"))
+        self._Key = params.get("Key")
+        self._Date = params.get("Date")
+        self._AppID = params.get("AppID")
+        self._NickName = params.get("NickName")
+        self._Uin = params.get("Uin")
+        self._Action = params.get("Action")
+        self._RiskInvestigation = params.get("RiskInvestigation")
+        self._RiskTreatment = params.get("RiskTreatment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AssetBaseInfoResponse(AbstractModel):
     """主机资产详情
 
@@ -5157,6 +6472,148 @@ class DeleteRiskScanTaskResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAlertListRequest(AbstractModel):
+    """DescribeAlertList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filter: 标签搜索筛选
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _OperatedMemberId: 被调用的集团账号的成员id
+        :type OperatedMemberId: list of str
+        :param _AssetType: 0:默认全部 1:资产ID 2:域名
+        :type AssetType: int
+        """
+        self._Filter = None
+        self._MemberId = None
+        self._OperatedMemberId = None
+        self._AssetType = None
+
+    @property
+    def Filter(self):
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def MemberId(self):
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def OperatedMemberId(self):
+        return self._OperatedMemberId
+
+    @OperatedMemberId.setter
+    def OperatedMemberId(self, OperatedMemberId):
+        self._OperatedMemberId = OperatedMemberId
+
+    @property
+    def AssetType(self):
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        self._MemberId = params.get("MemberId")
+        self._OperatedMemberId = params.get("OperatedMemberId")
+        self._AssetType = params.get("AssetType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAlertListResponse(AbstractModel):
+    """DescribeAlertList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AlertList: 全量告警列表
+        :type AlertList: list of AlertInfo
+        :param _AlertTypeCount: 告警大类数量
+        :type AlertTypeCount: list of TagCount
+        :param _TotalCount: 告警总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AlertList = None
+        self._AlertTypeCount = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def AlertList(self):
+        return self._AlertList
+
+    @AlertList.setter
+    def AlertList(self, AlertList):
+        self._AlertList = AlertList
+
+    @property
+    def AlertTypeCount(self):
+        return self._AlertTypeCount
+
+    @AlertTypeCount.setter
+    def AlertTypeCount(self, AlertTypeCount):
+        self._AlertTypeCount = AlertTypeCount
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AlertList") is not None:
+            self._AlertList = []
+            for item in params.get("AlertList"):
+                obj = AlertInfo()
+                obj._deserialize(item)
+                self._AlertList.append(obj)
+        if params.get("AlertTypeCount") is not None:
+            self._AlertTypeCount = []
+            for item in params.get("AlertTypeCount"):
+                obj = TagCount()
+                obj._deserialize(item)
+                self._AlertTypeCount.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -11230,6 +12687,53 @@ class IpAssetListVO(AbstractModel):
         
 
 
+class KeyValue(AbstractModel):
+    """KeyValue对
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: 值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyOrganizationAccountStatusRequest(AbstractModel):
     """ModifyOrganizationAccountStatus请求参数结构体
 
@@ -12551,6 +14055,66 @@ class PublicIpDomainListKey(AbstractModel):
         
 
 
+class RelatedEvent(AbstractModel):
+    """相关攻击事件结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventID: 事件ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventID: str
+        :param _Description: 事件描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _RelatedCount: 与事件关联的告警数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelatedCount: int
+        """
+        self._EventID = None
+        self._Description = None
+        self._RelatedCount = None
+
+    @property
+    def EventID(self):
+        return self._EventID
+
+    @EventID.setter
+    def EventID(self, EventID):
+        self._EventID = EventID
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def RelatedCount(self):
+        return self._RelatedCount
+
+    @RelatedCount.setter
+    def RelatedCount(self, RelatedCount):
+        self._RelatedCount = RelatedCount
+
+
+    def _deserialize(self, params):
+        self._EventID = params.get("EventID")
+        self._Description = params.get("Description")
+        self._RelatedCount = params.get("RelatedCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ReportItemKey(AbstractModel):
     """报告项key
 
@@ -12688,6 +14252,305 @@ class RiskCenterStatusKey(AbstractModel):
         self._PublicIPDomain = params.get("PublicIPDomain")
         self._InstanceId = params.get("InstanceId")
         self._AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RoleInfo(AbstractModel):
+    """告警数据攻击者或受害者信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IP: IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IP: str
+        :param _HostIP: HostIP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostIP: str
+        :param _OriginIP: 原始IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginIP: str
+        :param _Port: 端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param _InstanceID: 资产ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceID: str
+        :param _City: 城市
+注意：此字段可能返回 null，表示取不到有效值。
+        :type City: str
+        :param _Province: 省份
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Province: str
+        :param _Country: 国家
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Country: str
+        :param _Address: 地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Address: str
+        :param _Latitude: 纬度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Latitude: str
+        :param _Longitude: 经度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Longitude: str
+        :param _Info: 信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Info: str
+        :param _Domain: 域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domain: str
+        :param _Name: 企业名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Account: 账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Account: str
+        :param _Family: 家族团伙
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Family: str
+        :param _VirusName: 病毒名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirusName: str
+        :param _MD5: MD5值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MD5: str
+        :param _FileName: 恶意进程文件名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileName: str
+        :param _AssetType: 1:主机资产 2:域名资产 3:网络资产
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetType: int
+        :param _FromLogAnalysisData: 来源日志分析的信息字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FromLogAnalysisData: list of KeyValue
+        """
+        self._IP = None
+        self._HostIP = None
+        self._OriginIP = None
+        self._Port = None
+        self._InstanceID = None
+        self._City = None
+        self._Province = None
+        self._Country = None
+        self._Address = None
+        self._Latitude = None
+        self._Longitude = None
+        self._Info = None
+        self._Domain = None
+        self._Name = None
+        self._Account = None
+        self._Family = None
+        self._VirusName = None
+        self._MD5 = None
+        self._FileName = None
+        self._AssetType = None
+        self._FromLogAnalysisData = None
+
+    @property
+    def IP(self):
+        return self._IP
+
+    @IP.setter
+    def IP(self, IP):
+        self._IP = IP
+
+    @property
+    def HostIP(self):
+        return self._HostIP
+
+    @HostIP.setter
+    def HostIP(self, HostIP):
+        self._HostIP = HostIP
+
+    @property
+    def OriginIP(self):
+        return self._OriginIP
+
+    @OriginIP.setter
+    def OriginIP(self, OriginIP):
+        self._OriginIP = OriginIP
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def InstanceID(self):
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def City(self):
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def Province(self):
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def Country(self):
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def Address(self):
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def Latitude(self):
+        return self._Latitude
+
+    @Latitude.setter
+    def Latitude(self, Latitude):
+        self._Latitude = Latitude
+
+    @property
+    def Longitude(self):
+        return self._Longitude
+
+    @Longitude.setter
+    def Longitude(self, Longitude):
+        self._Longitude = Longitude
+
+    @property
+    def Info(self):
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Account(self):
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def Family(self):
+        return self._Family
+
+    @Family.setter
+    def Family(self, Family):
+        self._Family = Family
+
+    @property
+    def VirusName(self):
+        return self._VirusName
+
+    @VirusName.setter
+    def VirusName(self, VirusName):
+        self._VirusName = VirusName
+
+    @property
+    def MD5(self):
+        return self._MD5
+
+    @MD5.setter
+    def MD5(self, MD5):
+        self._MD5 = MD5
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def AssetType(self):
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
+    @property
+    def FromLogAnalysisData(self):
+        return self._FromLogAnalysisData
+
+    @FromLogAnalysisData.setter
+    def FromLogAnalysisData(self, FromLogAnalysisData):
+        self._FromLogAnalysisData = FromLogAnalysisData
+
+
+    def _deserialize(self, params):
+        self._IP = params.get("IP")
+        self._HostIP = params.get("HostIP")
+        self._OriginIP = params.get("OriginIP")
+        self._Port = params.get("Port")
+        self._InstanceID = params.get("InstanceID")
+        self._City = params.get("City")
+        self._Province = params.get("Province")
+        self._Country = params.get("Country")
+        self._Address = params.get("Address")
+        self._Latitude = params.get("Latitude")
+        self._Longitude = params.get("Longitude")
+        self._Info = params.get("Info")
+        self._Domain = params.get("Domain")
+        self._Name = params.get("Name")
+        self._Account = params.get("Account")
+        self._Family = params.get("Family")
+        self._VirusName = params.get("VirusName")
+        self._MD5 = params.get("MD5")
+        self._FileName = params.get("FileName")
+        self._AssetType = params.get("AssetType")
+        if params.get("FromLogAnalysisData") is not None:
+            self._FromLogAnalysisData = []
+            for item in params.get("FromLogAnalysisData"):
+                obj = KeyValue()
+                obj._deserialize(item)
+                self._FromLogAnalysisData.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

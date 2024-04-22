@@ -40,7 +40,7 @@ class HunyuanClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            return self.call_sse("ChatPro", params, headers=request.headers)
+            return self._call_and_deserialize("ChatPro", params, models.ChatProResponse, headers=request.headers)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -62,7 +62,7 @@ class HunyuanClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            return self.call_sse("ChatStd", params, headers=request.headers)
+            return self._call_and_deserialize("ChatStd", params, models.ChatStdResponse, headers=request.headers)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise

@@ -464,7 +464,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeAutoCalloutTasks(self, request):
-        """批量查询自动任务外呼
+        """批量查询自动外呼任务
 
         :param request: Request instance for DescribeAutoCalloutTasks.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeAutoCalloutTasksRequest`
@@ -1100,6 +1100,29 @@ class CccClient(AbstractClient):
             body = self.call("ModifyStaff", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyStaffResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyStaffPassword(self, request):
+        """修改座席的密码
+
+        :param request: Request instance for ModifyStaffPassword.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.ModifyStaffPasswordRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.ModifyStaffPasswordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyStaffPassword", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyStaffPasswordResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

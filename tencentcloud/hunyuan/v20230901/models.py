@@ -624,15 +624,15 @@ class EmbeddingData(AbstractModel):
 
 
 class EmbeddingUsage(AbstractModel):
-    """token 使用计数。
+    """Token 使用计数。
 
     """
 
     def __init__(self):
         r"""
-        :param _PromptTokens: 输入Token数。
+        :param _PromptTokens: 输入 Token 数。
         :type PromptTokens: int
-        :param _TotalTokens: 总Token数。
+        :param _TotalTokens: 总 Token 数。
         :type TotalTokens: int
         """
         self._PromptTokens = None
@@ -945,17 +945,17 @@ class Message(AbstractModel):
 
 
 class Usage(AbstractModel):
-    """token 数量
+    """Token 数量
 
     """
 
     def __init__(self):
         r"""
-        :param _PromptTokens: 输入 token 数量。
+        :param _PromptTokens: 输入 Token 数量。
         :type PromptTokens: int
-        :param _CompletionTokens: 输出 token 数量。
+        :param _CompletionTokens: 输出 Token 数量。
         :type CompletionTokens: int
-        :param _TotalTokens: 总 token 数量。
+        :param _TotalTokens: 总 Token 数量。
         :type TotalTokens: int
         """
         self._PromptTokens = None

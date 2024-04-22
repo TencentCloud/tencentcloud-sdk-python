@@ -19973,6 +19973,88 @@ class ModifyInstanceParamResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyInstanceUpgradeLimitDaysRequest(AbstractModel):
+    """ModifyInstanceUpgradeLimitDays请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _UpgradeLimitDays: 升级限制时间
+        :type UpgradeLimitDays: int
+        """
+        self._ClusterId = None
+        self._InstanceId = None
+        self._UpgradeLimitDays = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def UpgradeLimitDays(self):
+        return self._UpgradeLimitDays
+
+    @UpgradeLimitDays.setter
+    def UpgradeLimitDays(self, UpgradeLimitDays):
+        self._UpgradeLimitDays = UpgradeLimitDays
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._InstanceId = params.get("InstanceId")
+        self._UpgradeLimitDays = params.get("UpgradeLimitDays")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceUpgradeLimitDaysResponse(AbstractModel):
+    """ModifyInstanceUpgradeLimitDays返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyMaintainPeriodConfigRequest(AbstractModel):
     """ModifyMaintainPeriodConfig请求参数结构体
 

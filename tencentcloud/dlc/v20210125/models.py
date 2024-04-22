@@ -11811,6 +11811,15 @@ class DescribeNotebookSessionStatementSqlResultResponse(AbstractModel):
         :param _OutputPath: 存储结果地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type OutputPath: str
+        :param _UseTime: 引擎计算耗时
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UseTime: int
+        :param _AffectRows: 结果条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AffectRows: int
+        :param _DataAmount: 数据扫描量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataAmount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -11819,6 +11828,9 @@ class DescribeNotebookSessionStatementSqlResultResponse(AbstractModel):
         self._ResultSchema = None
         self._NextToken = None
         self._OutputPath = None
+        self._UseTime = None
+        self._AffectRows = None
+        self._DataAmount = None
         self._RequestId = None
 
     @property
@@ -11862,6 +11874,30 @@ class DescribeNotebookSessionStatementSqlResultResponse(AbstractModel):
         self._OutputPath = OutputPath
 
     @property
+    def UseTime(self):
+        return self._UseTime
+
+    @UseTime.setter
+    def UseTime(self, UseTime):
+        self._UseTime = UseTime
+
+    @property
+    def AffectRows(self):
+        return self._AffectRows
+
+    @AffectRows.setter
+    def AffectRows(self, AffectRows):
+        self._AffectRows = AffectRows
+
+    @property
+    def DataAmount(self):
+        return self._DataAmount
+
+    @DataAmount.setter
+    def DataAmount(self, DataAmount):
+        self._DataAmount = DataAmount
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -11881,6 +11917,9 @@ class DescribeNotebookSessionStatementSqlResultResponse(AbstractModel):
                 self._ResultSchema.append(obj)
         self._NextToken = params.get("NextToken")
         self._OutputPath = params.get("OutputPath")
+        self._UseTime = params.get("UseTime")
+        self._AffectRows = params.get("AffectRows")
+        self._DataAmount = params.get("DataAmount")
         self._RequestId = params.get("RequestId")
 
 

@@ -17707,6 +17707,8 @@ class DescribeGatewayFlowMonitorDetailRequest(AbstractModel):
         :type OrderField: str
         :param _OrderDirection: 排序方法。顺序：`ASC`，倒序：`DESC`。默认值`DESC`。
         :type OrderDirection: str
+        :param _PrivateIpAddress: VPC内部IPv4地址，精确匹配
+        :type PrivateIpAddress: str
         """
         self._TimePoint = None
         self._VpnId = None
@@ -17717,6 +17719,7 @@ class DescribeGatewayFlowMonitorDetailRequest(AbstractModel):
         self._Limit = None
         self._OrderField = None
         self._OrderDirection = None
+        self._PrivateIpAddress = None
 
     @property
     def TimePoint(self):
@@ -17790,6 +17793,14 @@ class DescribeGatewayFlowMonitorDetailRequest(AbstractModel):
     def OrderDirection(self, OrderDirection):
         self._OrderDirection = OrderDirection
 
+    @property
+    def PrivateIpAddress(self):
+        return self._PrivateIpAddress
+
+    @PrivateIpAddress.setter
+    def PrivateIpAddress(self, PrivateIpAddress):
+        self._PrivateIpAddress = PrivateIpAddress
+
 
     def _deserialize(self, params):
         self._TimePoint = params.get("TimePoint")
@@ -17801,6 +17812,7 @@ class DescribeGatewayFlowMonitorDetailRequest(AbstractModel):
         self._Limit = params.get("Limit")
         self._OrderField = params.get("OrderField")
         self._OrderDirection = params.get("OrderDirection")
+        self._PrivateIpAddress = params.get("PrivateIpAddress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26710,7 +26722,7 @@ class DownloadCustomerGatewayConfigurationRequest(AbstractModel):
         :type VpnGatewayId: str
         :param _VpnConnectionId: VPN通道实例ID。形如：vpnx-f49l6u0z。
         :type VpnConnectionId: str
-        :param _CustomerGatewayVendor: 对端网关厂商信息对象，可通过[DescribeCustomerGatewayVendors](https://cloud.tencent.com/document/api/215/17513)获取。
+        :param _CustomerGatewayVendor: 对端网关厂商信息对象，可通过[DescribeCustomerGatewayVendors](https://cloud.tencent.com/document/api/215/17517)获取。
         :type CustomerGatewayVendor: :class:`tencentcloud.vpc.v20170312.models.CustomerGatewayVendor`
         :param _InterfaceName: 通道接入设备物理接口名称。
         :type InterfaceName: str
@@ -35451,8 +35463,8 @@ class NatGateway(AbstractModel):
         :param _CreatedTime: NAT网关创建的时间。
         :type CreatedTime: str
         :param _State: NAT网关的状态。
- 'PENDING'：生产中，'DELETING'：删除中，'AVAILABLE'：运行中，'UPDATING'：升级中，
-‘FAILED’：失败。
+ 'PENDING'：生产中，'DELETING'：删除中/子实例关闭中，'AVAILABLE'：运行中，'UPDATING'：升级中，
+‘PENDFAILURE’：创建失败，‘DELETEFAILURE：删除失败，‘DENIED’：子实例关闭中
         :type State: str
         :param _InternetMaxBandwidthOut: 网关最大外网出带宽(单位:Mbps)。
         :type InternetMaxBandwidthOut: int

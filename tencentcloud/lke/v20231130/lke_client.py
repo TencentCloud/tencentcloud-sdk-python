@@ -787,6 +787,7 @@ class LkeClient(AbstractClient):
 
     def GetEmbedding(self, request):
         """获取特征向量
+        本接口有单账号调用上限控制，如您有提高并发限制的需求请 [联系我们](https://cloud.tencent.com/act/event/Online_service) 。
 
         :param request: Request instance for GetEmbedding.
         :type request: :class:`tencentcloud.lke.v20231130.models.GetEmbeddingRequest`
@@ -1523,6 +1524,7 @@ class LkeClient(AbstractClient):
 
     def QueryRewrite(self, request):
         """多轮改写
+        本接口有单账号调用上限控制，如您有提高并发限制的需求请 [联系我们](https://cloud.tencent.com/act/event/Online_service) 。
 
         :param request: Request instance for QueryRewrite.
         :type request: :class:`tencentcloud.lke.v20231130.models.QueryRewriteRequest`

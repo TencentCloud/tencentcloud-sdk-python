@@ -2303,6 +2303,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyInstanceUpgradeLimitDays(self, request):
+        """修改实例小版本升级限制时间
+
+        :param request: Request instance for ModifyInstanceUpgradeLimitDays.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyInstanceUpgradeLimitDaysRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyInstanceUpgradeLimitDaysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceUpgradeLimitDays", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceUpgradeLimitDaysResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyMaintainPeriodConfig(self, request):
         """修改维护时间配置
 

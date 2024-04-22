@@ -5733,6 +5733,8 @@ class CreateCdbProxyRequest(AbstractModel):
         :type Desc: str
         :param _ConnectionPoolLimit: 连接池阈值
         :type ConnectionPoolLimit: int
+        :param _ProxyVersion: 指定要购买的 proxy 内核版本。不填则默认发货最新版本的 proxy。
+        :type ProxyVersion: str
         """
         self._InstanceId = None
         self._UniqVpcId = None
@@ -5741,6 +5743,7 @@ class CreateCdbProxyRequest(AbstractModel):
         self._SecurityGroup = None
         self._Desc = None
         self._ConnectionPoolLimit = None
+        self._ProxyVersion = None
 
     @property
     def InstanceId(self):
@@ -5798,6 +5801,14 @@ class CreateCdbProxyRequest(AbstractModel):
     def ConnectionPoolLimit(self, ConnectionPoolLimit):
         self._ConnectionPoolLimit = ConnectionPoolLimit
 
+    @property
+    def ProxyVersion(self):
+        return self._ProxyVersion
+
+    @ProxyVersion.setter
+    def ProxyVersion(self, ProxyVersion):
+        self._ProxyVersion = ProxyVersion
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -5812,6 +5823,7 @@ class CreateCdbProxyRequest(AbstractModel):
         self._SecurityGroup = params.get("SecurityGroup")
         self._Desc = params.get("Desc")
         self._ConnectionPoolLimit = params.get("ConnectionPoolLimit")
+        self._ProxyVersion = params.get("ProxyVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
