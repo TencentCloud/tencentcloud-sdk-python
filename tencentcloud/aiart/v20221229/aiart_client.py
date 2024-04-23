@@ -50,6 +50,35 @@ class AiartClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def QueryDrawPortraitJob(self, request):
+        """AI 写真提供 AI 写真形象照的训练与生成能力，分为上传训练图片、训练模型、生成图片3个环节，需要依次调用对应接口。
+        每个写真模型自训练完成起1年内有效，有效期内可使用写真模型 ID 生成图片，期满后需要重新训练。
+        生成图片分为提交任务和查询任务2个接口。
+        - 提交生成写真图片任务：完成训练写真模型后，选择写真风格模板，提交一个生成写真图片异步任务，根据写真模型 ID 开始生成人物形象在指定风格上的写真图片，获得任务 ID。
+        - 查询生成写真图片任务：根据任务 ID 查询生成图片任务的处理状态、处理结果。
+
+        默认接口请求频率限制：20次/秒。
+
+        :param request: Request instance for QueryDrawPortraitJob.
+        :type request: :class:`tencentcloud.aiart.v20221229.models.QueryDrawPortraitJobRequest`
+        :rtype: :class:`tencentcloud.aiart.v20221229.models.QueryDrawPortraitJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryDrawPortraitJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryDrawPortraitJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def QueryTextToImageProJob(self, request):
         """文生图（高级版）接口基于高级版文生图大模型，将根据输入的文本描述，智能生成与之相关的结果图。分为提交任务和查询任务2个接口。
         提交任务：输入文本等，提交一个文生图（高级版）异步任务，获得任务 ID。
@@ -67,6 +96,64 @@ class AiartClient(AbstractClient):
             body = self.call("QueryTextToImageProJob", params, headers=headers)
             response = json.loads(body)
             model = models.QueryTextToImageProJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def QueryTrainPortraitModelJob(self, request):
+        """AI 写真提供 AI 写真形象照的训练与生成能力，分为上传训练图片、训练模型、生成图片3个环节，需要依次调用对应接口。
+        每个写真模型自训练完成起1年内有效，有效期内可使用写真模型 ID 生成图片，期满后需要重新训练。
+        训练模型分为提交任务和查询任务2个接口。
+        - 提交训练写真模型任务：完成上传训练图片后，提交一个训练写真模型异步任务，根据写真模型 ID 开始训练模型。
+        - 查询训练写真模型任务：根据写真模型 ID 查询训练任务的处理状态、处理结果。
+
+        默认接口请求频率限制：20次/秒。
+
+        :param request: Request instance for QueryTrainPortraitModelJob.
+        :type request: :class:`tencentcloud.aiart.v20221229.models.QueryTrainPortraitModelJobRequest`
+        :rtype: :class:`tencentcloud.aiart.v20221229.models.QueryTrainPortraitModelJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryTrainPortraitModelJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryTrainPortraitModelJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitDrawPortraitJob(self, request):
+        """AI 写真提供 AI 写真形象照的训练与生成能力，分为上传训练图片、训练模型、生成图片3个环节，需要依次调用对应接口。
+        每个写真模型自训练完成起1年内有效，有效期内可使用写真模型 ID 生成图片，期满后需要重新训练。
+        生成图片分为提交任务和查询任务2个接口。
+        - 提交生成写真图片任务：完成训练写真模型后，选择风格模板，提交一个生成写真图片异步任务，根据写真模型 ID 开始生成人物形象在指定风格上的写真图片，获得任务 ID。
+        - 查询生成写真图片任务：根据任务 ID 查询生成图片任务的处理状态、处理结果。
+
+        提交生成写真图片任务默认提供1个并发任务数。
+
+        :param request: Request instance for SubmitDrawPortraitJob.
+        :type request: :class:`tencentcloud.aiart.v20221229.models.SubmitDrawPortraitJobRequest`
+        :rtype: :class:`tencentcloud.aiart.v20221229.models.SubmitDrawPortraitJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitDrawPortraitJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitDrawPortraitJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -102,6 +189,34 @@ class AiartClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SubmitTrainPortraitModelJob(self, request):
+        """AI 写真提供 AI 写真形象照的训练与生成能力，分为上传训练图片、训练模型、生成图片3个环节，需要依次调用对应接口。
+        每个写真模型自训练完成起1年内有效，有效期内可使用写真模型 ID 生成图片，期满后需要重新训练。
+        训练模型分为提交任务和查询任务2个接口。
+        - 提交训练写真模型任务：完成上传训练图片后，提交一个训练写真模型异步任务，根据写真模型 ID 开始训练模型。
+        - 查询训练写真模型任务：根据写真模型 ID 查询训练任务的处理状态、处理结果。
+        提交训练写真模型任务按并发任务数计费，无默认并发额度。
+
+        :param request: Request instance for SubmitTrainPortraitModelJob.
+        :type request: :class:`tencentcloud.aiart.v20221229.models.SubmitTrainPortraitModelJobRequest`
+        :rtype: :class:`tencentcloud.aiart.v20221229.models.SubmitTrainPortraitModelJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitTrainPortraitModelJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitTrainPortraitModelJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def TextToImage(self, request):
         """智能文生图接口基于文生图（标准版）模型，将根据输入的文本描述，智能生成与之相关的结果图。
 
@@ -118,6 +233,31 @@ class AiartClient(AbstractClient):
             body = self.call("TextToImage", params, headers=headers)
             response = json.loads(body)
             model = models.TextToImageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UploadTrainPortraitImages(self, request):
+        """AI 写真提供 AI 写真形象照的训练与生成能力，分为上传训练图片、训练模型、生成图片3个环节，需要依次调用对应接口。
+        本接口用于指定一个人物形象的写真模型 ID，上传用于训练该模型的图片。一个写真模型仅用于一个人物形象的写真生成，上传的训练图片要求所属同一人，建议上传单人、正脸、脸部区域占比较大、脸部清晰无遮挡、无大角度偏转、无夸张表情的图片。
+        上传写真训练图片默认提供1个并发任务数。
+
+        :param request: Request instance for UploadTrainPortraitImages.
+        :type request: :class:`tencentcloud.aiart.v20221229.models.UploadTrainPortraitImagesRequest`
+        :rtype: :class:`tencentcloud.aiart.v20221229.models.UploadTrainPortraitImagesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UploadTrainPortraitImages", params, headers=headers)
+            response = json.loads(body)
+            model = models.UploadTrainPortraitImagesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -4676,6 +4676,8 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
         :type IsDcnStrongSyncSupported: int
         :param _IsDcnSwitchSupported: 是否支持DCN切换
         :type IsDcnSwitchSupported: int
+        :param _ProxyVersion: proxy版本号
+        :type ProxyVersion: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4738,6 +4740,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
         self._IsPhysicalReplicationSupported = None
         self._IsDcnStrongSyncSupported = None
         self._IsDcnSwitchSupported = None
+        self._ProxyVersion = None
         self._RequestId = None
 
     @property
@@ -5213,6 +5216,14 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
         self._IsDcnSwitchSupported = IsDcnSwitchSupported
 
     @property
+    def ProxyVersion(self):
+        return self._ProxyVersion
+
+    @ProxyVersion.setter
+    def ProxyVersion(self, ProxyVersion):
+        self._ProxyVersion = ProxyVersion
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -5300,6 +5311,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
         self._IsPhysicalReplicationSupported = params.get("IsPhysicalReplicationSupported")
         self._IsDcnStrongSyncSupported = params.get("IsDcnStrongSyncSupported")
         self._IsDcnSwitchSupported = params.get("IsDcnSwitchSupported")
+        self._ProxyVersion = params.get("ProxyVersion")
         self._RequestId = params.get("RequestId")
 
 
@@ -5390,6 +5402,8 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type ExclusterIds: list of str
         :param _TagKeys: 按标签key查询
         :type TagKeys: list of str
+        :param _Tags: 标签
+        :type Tags: list of Tag
         :param _FilterInstanceType: 实例类型过滤，1-独享实例，2-主实例，3-灾备实例，多个按逗号分隔
         :type FilterInstanceType: str
         :param _Status: 按照实例状态进行筛选
@@ -5413,6 +5427,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self._ExclusterType = None
         self._ExclusterIds = None
         self._TagKeys = None
+        self._Tags = None
         self._FilterInstanceType = None
         self._Status = None
         self._ExcludeStatus = None
@@ -5546,6 +5561,14 @@ class DescribeDBInstancesRequest(AbstractModel):
         self._TagKeys = TagKeys
 
     @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
     def FilterInstanceType(self):
         return self._FilterInstanceType
 
@@ -5587,6 +5610,12 @@ class DescribeDBInstancesRequest(AbstractModel):
         self._ExclusterType = params.get("ExclusterType")
         self._ExclusterIds = params.get("ExclusterIds")
         self._TagKeys = params.get("TagKeys")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         self._FilterInstanceType = params.get("FilterInstanceType")
         self._Status = params.get("Status")
         self._ExcludeStatus = params.get("ExcludeStatus")
@@ -12014,6 +12043,51 @@ class TablePrivilege(AbstractModel):
         self._Database = params.get("Database")
         self._Table = params.get("Table")
         self._Privileges = params.get("Privileges")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Tag(AbstractModel):
+    """标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: 标签键
+        :type TagKey: str
+        :param _TagValue: 标签值
+        :type TagValue: str
+        """
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

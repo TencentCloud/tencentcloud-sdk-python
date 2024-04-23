@@ -4001,11 +4001,14 @@ class CreateRabbitMQVirtualHostRequest(AbstractModel):
         :type Description: str
         :param _TraceFlag: 消息轨迹开关,true打开,false关闭,默认关闭
         :type TraceFlag: bool
+        :param _MirrorQueuePolicyFlag: 是否创建镜像队列策略，默认值 true
+        :type MirrorQueuePolicyFlag: bool
         """
         self._InstanceId = None
         self._VirtualHost = None
         self._Description = None
         self._TraceFlag = None
+        self._MirrorQueuePolicyFlag = None
 
     @property
     def InstanceId(self):
@@ -4039,12 +4042,21 @@ class CreateRabbitMQVirtualHostRequest(AbstractModel):
     def TraceFlag(self, TraceFlag):
         self._TraceFlag = TraceFlag
 
+    @property
+    def MirrorQueuePolicyFlag(self):
+        return self._MirrorQueuePolicyFlag
+
+    @MirrorQueuePolicyFlag.setter
+    def MirrorQueuePolicyFlag(self, MirrorQueuePolicyFlag):
+        self._MirrorQueuePolicyFlag = MirrorQueuePolicyFlag
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._VirtualHost = params.get("VirtualHost")
         self._Description = params.get("Description")
         self._TraceFlag = params.get("TraceFlag")
+        self._MirrorQueuePolicyFlag = params.get("MirrorQueuePolicyFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10167,6 +10179,15 @@ class DescribeRabbitMQQueueDetailResponse(AbstractModel):
         :param _Node: 节点
 注意：此字段可能返回 null，表示取不到有效值。
         :type Node: str
+        :param _DeadLetterStrategy: 仲裁队列死信一致性策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeadLetterStrategy: str
+        :param _QueueLeaderLocator: 仲裁队列的领导者选举策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueueLeaderLocator: str
+        :param _QuorumInitialGroupSize: 仲裁队列的初始副本组大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QuorumInitialGroupSize: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -10194,6 +10215,9 @@ class DescribeRabbitMQQueueDetailResponse(AbstractModel):
         self._MaxInMemoryBytes = None
         self._CreateTime = None
         self._Node = None
+        self._DeadLetterStrategy = None
+        self._QueueLeaderLocator = None
+        self._QuorumInitialGroupSize = None
         self._RequestId = None
 
     @property
@@ -10389,6 +10413,30 @@ class DescribeRabbitMQQueueDetailResponse(AbstractModel):
         self._Node = Node
 
     @property
+    def DeadLetterStrategy(self):
+        return self._DeadLetterStrategy
+
+    @DeadLetterStrategy.setter
+    def DeadLetterStrategy(self, DeadLetterStrategy):
+        self._DeadLetterStrategy = DeadLetterStrategy
+
+    @property
+    def QueueLeaderLocator(self):
+        return self._QueueLeaderLocator
+
+    @QueueLeaderLocator.setter
+    def QueueLeaderLocator(self, QueueLeaderLocator):
+        self._QueueLeaderLocator = QueueLeaderLocator
+
+    @property
+    def QuorumInitialGroupSize(self):
+        return self._QuorumInitialGroupSize
+
+    @QuorumInitialGroupSize.setter
+    def QuorumInitialGroupSize(self, QuorumInitialGroupSize):
+        self._QuorumInitialGroupSize = QuorumInitialGroupSize
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -10422,6 +10470,9 @@ class DescribeRabbitMQQueueDetailResponse(AbstractModel):
         self._MaxInMemoryBytes = params.get("MaxInMemoryBytes")
         self._CreateTime = params.get("CreateTime")
         self._Node = params.get("Node")
+        self._DeadLetterStrategy = params.get("DeadLetterStrategy")
+        self._QueueLeaderLocator = params.get("QueueLeaderLocator")
+        self._QuorumInitialGroupSize = params.get("QuorumInitialGroupSize")
         self._RequestId = params.get("RequestId")
 
 

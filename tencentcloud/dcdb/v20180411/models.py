@@ -6445,6 +6445,8 @@ class DescribeDCDBInstancesRequest(AbstractModel):
         :type ExclusterIds: list of str
         :param _TagKeys: 按标签key查询
         :type TagKeys: list of str
+        :param _Tags: 标签
+        :type Tags: list of Tag
         :param _FilterInstanceType: 实例类型过滤，1-独享实例，2-主实例，3-灾备实例，多个按逗号分隔
         :type FilterInstanceType: str
         :param _Status: 按实例状态筛选
@@ -6467,6 +6469,7 @@ class DescribeDCDBInstancesRequest(AbstractModel):
         self._IsFilterExcluster = None
         self._ExclusterIds = None
         self._TagKeys = None
+        self._Tags = None
         self._FilterInstanceType = None
         self._Status = None
         self._ExcludeStatus = None
@@ -6592,6 +6595,14 @@ class DescribeDCDBInstancesRequest(AbstractModel):
         self._TagKeys = TagKeys
 
     @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
     def FilterInstanceType(self):
         return self._FilterInstanceType
 
@@ -6632,6 +6643,12 @@ class DescribeDCDBInstancesRequest(AbstractModel):
         self._IsFilterExcluster = params.get("IsFilterExcluster")
         self._ExclusterIds = params.get("ExclusterIds")
         self._TagKeys = params.get("TagKeys")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         self._FilterInstanceType = params.get("FilterInstanceType")
         self._Status = params.get("Status")
         self._ExcludeStatus = params.get("ExcludeStatus")
@@ -12937,9 +12954,12 @@ class SwitchDBInstanceHARequest(AbstractModel):
         :type InstanceId: str
         :param _Zone: 切换的目标区域，会自动选择该可用区中延迟最低的节点。
         :type Zone: str
+        :param _ShardInstanceIds: 指定分片实例id进行切换
+        :type ShardInstanceIds: list of str
         """
         self._InstanceId = None
         self._Zone = None
+        self._ShardInstanceIds = None
 
     @property
     def InstanceId(self):
@@ -12957,10 +12977,19 @@ class SwitchDBInstanceHARequest(AbstractModel):
     def Zone(self, Zone):
         self._Zone = Zone
 
+    @property
+    def ShardInstanceIds(self):
+        return self._ShardInstanceIds
+
+    @ShardInstanceIds.setter
+    def ShardInstanceIds(self, ShardInstanceIds):
+        self._ShardInstanceIds = ShardInstanceIds
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._Zone = params.get("Zone")
+        self._ShardInstanceIds = params.get("ShardInstanceIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13100,6 +13129,51 @@ class TablePrivilege(AbstractModel):
         self._Database = params.get("Database")
         self._Table = params.get("Table")
         self._Privileges = params.get("Privileges")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Tag(AbstractModel):
+    """标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: 标签键
+        :type TagKey: str
+        :param _TagValue: 标签值
+        :type TagValue: str
+        """
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

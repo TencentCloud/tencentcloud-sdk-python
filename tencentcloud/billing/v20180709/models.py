@@ -5115,6 +5115,15 @@ class BillDetail(AbstractModel):
         :param _Id: 账单记录ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
+        :param _RegionType: 国内国际编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionType: str
+        :param _RegionTypeName: 国内国际：资源所属区域类型（国内、国际）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionTypeName: str
+        :param _ReserveDetail: 备注属性（实例配置）：其他备注信息，如预留实例的预留实例类型和交易类型、CCN 产品的两端地域信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReserveDetail: str
         """
         self._BusinessCodeName = None
         self._ProductCodeName = None
@@ -5147,6 +5156,9 @@ class BillDetail(AbstractModel):
         self._BillDay = None
         self._BillMonth = None
         self._Id = None
+        self._RegionType = None
+        self._RegionTypeName = None
+        self._ReserveDetail = None
 
     @property
     def BusinessCodeName(self):
@@ -5396,6 +5408,30 @@ class BillDetail(AbstractModel):
     def Id(self, Id):
         self._Id = Id
 
+    @property
+    def RegionType(self):
+        return self._RegionType
+
+    @RegionType.setter
+    def RegionType(self, RegionType):
+        self._RegionType = RegionType
+
+    @property
+    def RegionTypeName(self):
+        return self._RegionTypeName
+
+    @RegionTypeName.setter
+    def RegionTypeName(self, RegionTypeName):
+        self._RegionTypeName = RegionTypeName
+
+    @property
+    def ReserveDetail(self):
+        return self._ReserveDetail
+
+    @ReserveDetail.setter
+    def ReserveDetail(self, ReserveDetail):
+        self._ReserveDetail = ReserveDetail
+
 
     def _deserialize(self, params):
         self._BusinessCodeName = params.get("BusinessCodeName")
@@ -5441,6 +5477,9 @@ class BillDetail(AbstractModel):
         self._BillDay = params.get("BillDay")
         self._BillMonth = params.get("BillMonth")
         self._Id = params.get("Id")
+        self._RegionType = params.get("RegionType")
+        self._RegionTypeName = params.get("RegionTypeName")
+        self._ReserveDetail = params.get("ReserveDetail")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

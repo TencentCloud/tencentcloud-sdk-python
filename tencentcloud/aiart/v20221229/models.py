@@ -18,6 +18,76 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class Filter(AbstractModel):
+    """训练图像质量过滤开关配置。
+    支持开启或关闭对训练图像分辨率下限、脸部区域大小、脸部遮挡、脸部角度的过滤，默认开启以上过滤。
+    如果训练图像内包含多人脸或无人脸、和 Base 人像不为同一人也将被过滤，不可关闭该过滤条件。
+    建议：关闭以上过滤可能导致写真生成效果受损，建议使用单人、正脸、脸部清晰、无遮挡、无夸张表情、脸部区域占比较大的图像进行训练。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Resolution: 过滤不满足分辨率下限的训练图像，默认开启过滤
+开启后将过滤横边<512或竖边<720的图片，横、竖边上限均为2000，不支持调整
+
+1：开启过滤
+0：关闭过滤
+        :type Resolution: int
+        :param _Size: 过滤脸部区域过小的训练图像，默认开启过滤
+
+1：开启过滤
+0：关闭过滤
+        :type Size: int
+        :param _Occlusion: 过滤脸部存在明显遮挡、偏转角度过大等质量较差的训练图像，默认开启过滤
+
+1：开启过滤
+0：关闭过滤
+        :type Occlusion: int
+        """
+        self._Resolution = None
+        self._Size = None
+        self._Occlusion = None
+
+    @property
+    def Resolution(self):
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def Size(self):
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def Occlusion(self):
+        return self._Occlusion
+
+    @Occlusion.setter
+    def Occlusion(self, Occlusion):
+        self._Occlusion = Occlusion
+
+
+    def _deserialize(self, params):
+        self._Resolution = params.get("Resolution")
+        self._Size = params.get("Size")
+        self._Occlusion = params.get("Occlusion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImageToImageRequest(AbstractModel):
     """ImageToImage请求参数结构体
 
@@ -351,6 +421,138 @@ class LogoRect(AbstractModel):
         
 
 
+class QueryDrawPortraitJobRequest(AbstractModel):
+    """QueryDrawPortraitJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 查询生成写真图片任务 ID。
+        :type JobId: str
+        """
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryDrawPortraitJobResponse(AbstractModel):
+    """QueryDrawPortraitJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobStatusCode: 任务状态码。
+INIT: 初始化、WAIT：等待中、RUN：运行中、FAIL：处理失败、DONE：处理完成。
+        :type JobStatusCode: str
+        :param _JobStatusMsg: 任务状态信息。
+        :type JobStatusMsg: str
+        :param _JobErrorCode: 任务错误码。
+        :type JobErrorCode: str
+        :param _JobErrorMsg: 任务错误信息。
+        :type JobErrorMsg: str
+        :param _ResultUrls: 结果 URL 数组。
+URL 有效期1小时，请及时保存。
+        :type ResultUrls: list of str
+        :param _ResultDetails: 结果描述数组。
+        :type ResultDetails: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobStatusCode = None
+        self._JobStatusMsg = None
+        self._JobErrorCode = None
+        self._JobErrorMsg = None
+        self._ResultUrls = None
+        self._ResultDetails = None
+        self._RequestId = None
+
+    @property
+    def JobStatusCode(self):
+        return self._JobStatusCode
+
+    @JobStatusCode.setter
+    def JobStatusCode(self, JobStatusCode):
+        self._JobStatusCode = JobStatusCode
+
+    @property
+    def JobStatusMsg(self):
+        return self._JobStatusMsg
+
+    @JobStatusMsg.setter
+    def JobStatusMsg(self, JobStatusMsg):
+        self._JobStatusMsg = JobStatusMsg
+
+    @property
+    def JobErrorCode(self):
+        return self._JobErrorCode
+
+    @JobErrorCode.setter
+    def JobErrorCode(self, JobErrorCode):
+        self._JobErrorCode = JobErrorCode
+
+    @property
+    def JobErrorMsg(self):
+        return self._JobErrorMsg
+
+    @JobErrorMsg.setter
+    def JobErrorMsg(self, JobErrorMsg):
+        self._JobErrorMsg = JobErrorMsg
+
+    @property
+    def ResultUrls(self):
+        return self._ResultUrls
+
+    @ResultUrls.setter
+    def ResultUrls(self, ResultUrls):
+        self._ResultUrls = ResultUrls
+
+    @property
+    def ResultDetails(self):
+        return self._ResultDetails
+
+    @ResultDetails.setter
+    def ResultDetails(self, ResultDetails):
+        self._ResultDetails = ResultDetails
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobStatusCode = params.get("JobStatusCode")
+        self._JobStatusMsg = params.get("JobStatusMsg")
+        self._JobErrorCode = params.get("JobErrorCode")
+        self._JobErrorMsg = params.get("JobErrorMsg")
+        self._ResultUrls = params.get("ResultUrls")
+        self._ResultDetails = params.get("ResultDetails")
+        self._RequestId = params.get("RequestId")
+
+
 class QueryTextToImageProJobRequest(AbstractModel):
     """QueryTextToImageProJob请求参数结构体
 
@@ -499,6 +701,114 @@ class QueryTextToImageProJobResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class QueryTrainPortraitModelJobRequest(AbstractModel):
+    """QueryTrainPortraitModelJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelId: 写真模型 ID。
+
+        :type ModelId: str
+        """
+        self._ModelId = None
+
+    @property
+    def ModelId(self):
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+
+    def _deserialize(self, params):
+        self._ModelId = params.get("ModelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryTrainPortraitModelJobResponse(AbstractModel):
+    """QueryTrainPortraitModelJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobStatusCode: 任务状态码。
+INIT: 初始化、WAIT：等待中、RUN：运行中、FAIL：处理失败、DONE：处理完成。
+        :type JobStatusCode: str
+        :param _JobStatusMsg: 任务状态信息。
+        :type JobStatusMsg: str
+        :param _JobErrorCode: 任务错误码。
+        :type JobErrorCode: str
+        :param _JobErrorMsg: 任务错误信息。
+        :type JobErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobStatusCode = None
+        self._JobStatusMsg = None
+        self._JobErrorCode = None
+        self._JobErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def JobStatusCode(self):
+        return self._JobStatusCode
+
+    @JobStatusCode.setter
+    def JobStatusCode(self, JobStatusCode):
+        self._JobStatusCode = JobStatusCode
+
+    @property
+    def JobStatusMsg(self):
+        return self._JobStatusMsg
+
+    @JobStatusMsg.setter
+    def JobStatusMsg(self, JobStatusMsg):
+        self._JobStatusMsg = JobStatusMsg
+
+    @property
+    def JobErrorCode(self):
+        return self._JobErrorCode
+
+    @JobErrorCode.setter
+    def JobErrorCode(self, JobErrorCode):
+        self._JobErrorCode = JobErrorCode
+
+    @property
+    def JobErrorMsg(self):
+        return self._JobErrorMsg
+
+    @JobErrorMsg.setter
+    def JobErrorMsg(self, JobErrorMsg):
+        self._JobErrorMsg = JobErrorMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobStatusCode = params.get("JobStatusCode")
+        self._JobStatusMsg = params.get("JobStatusMsg")
+        self._JobErrorCode = params.get("JobErrorCode")
+        self._JobErrorMsg = params.get("JobErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
 class ResultConfig(AbstractModel):
     """返回结果配置
 
@@ -534,6 +844,185 @@ class ResultConfig(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SubmitDrawPortraitJobRequest(AbstractModel):
+    """SubmitDrawPortraitJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelId: 写真模型 ID。
+
+        :type ModelId: str
+        :param _StyleId: 风格模板，支持以下风格：
+zhengjian_female：证件照（适用女性）
+zhengjian_male：证件照（适用男性）
+hanfu_female：汉服（适用女性）
+hanfu2_female：汉服2（适用女性）
+qipao_female：旗袍（适用女性）
+green_female：绿色系穿搭（适用女性）
+white_sweater_female：白色系毛衣（适用女性）
+sports_female：蓝色系运动（适用女性）
+wedding_female：婚纱裙（适用女性）
+forest_female：户外森林（适用女性）
+flower_female：户外花丛（适用女性）
+lolita_female：洛丽塔（适用女性
+black_dress1_female：小黑裙1（适用女性）
+black_dress2_female：小黑裙2（适用女性）
+black_dress3_female：小黑裙3（适用女性）
+wedding2_female：婚纱裙2（适用女性）
+fire_female：火焰背景（适用女性）
+wreath_female：头戴花环（适用女性）
+bow_female：蝴蝶结发饰（适用女性）
+feather_female：羽毛（适用女性）
+blue_shirt_female：缤纷衬衣系列-蓝色（适用女性）
+green_shirt_female：缤纷衬衣系列-绿色（适用女性）
+purple_shirt_female：缤纷衬衣系列-紫色（适用女性）
+grey_suit_male: 灰色西装（适用男性）
+beige_suit_male: 米色西装（适用男性）
+white_sweater_male: 白色系毛衣（适用男性）
+christmas1_female: 圣诞1（适用女性）
+christmas2_female: 圣诞2（适用女性）
+christmas3_female: 圣诞3（适用女性）
+newyear1_female：新春1（适用女性）
+newyear2_female：新春2（适用女性）
+newyear3_female：新春3（适用女性）
+newyear5_female：新春5（适用女性）
+simple：简洁风格（通用），一般用于写真模型封面示意图，每个ModelId的生成结果固定，多次生成将返回相同图片
+        :type StyleId: str
+        :param _ImageNum: 本次生成的图片数量，取值范围[1,4]
+        :type ImageNum: int
+        :param _LogoAdd: 为生成结果图添加标识的开关，默认为1。 
+1：添加标识。
+ 0：不添加标识。 
+其他数值：默认按1处理。 
+建议您使用显著标识来提示结果图是 AI 生成的图片。
+        :type LogoAdd: int
+        :param _LogoParam: 标识内容设置。 
+默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        :type LogoParam: :class:`tencentcloud.aiart.v20221229.models.LogoParam`
+        :param _Definition: 清晰度，支持以下选项：
+sd：基础版，分辨率512:640
+hd：高清畅享版，分辨率1024:1280
+hdpro：高清优享版，分辨率1024:1280（推荐）
+uhd：超清版，分辨率2048:2560
+不填默认为sd。
+
+        :type Definition: str
+        """
+        self._ModelId = None
+        self._StyleId = None
+        self._ImageNum = None
+        self._LogoAdd = None
+        self._LogoParam = None
+        self._Definition = None
+
+    @property
+    def ModelId(self):
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+    @property
+    def StyleId(self):
+        return self._StyleId
+
+    @StyleId.setter
+    def StyleId(self, StyleId):
+        self._StyleId = StyleId
+
+    @property
+    def ImageNum(self):
+        return self._ImageNum
+
+    @ImageNum.setter
+    def ImageNum(self, ImageNum):
+        self._ImageNum = ImageNum
+
+    @property
+    def LogoAdd(self):
+        return self._LogoAdd
+
+    @LogoAdd.setter
+    def LogoAdd(self, LogoAdd):
+        self._LogoAdd = LogoAdd
+
+    @property
+    def LogoParam(self):
+        return self._LogoParam
+
+    @LogoParam.setter
+    def LogoParam(self, LogoParam):
+        self._LogoParam = LogoParam
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._ModelId = params.get("ModelId")
+        self._StyleId = params.get("StyleId")
+        self._ImageNum = params.get("ImageNum")
+        self._LogoAdd = params.get("LogoAdd")
+        if params.get("LogoParam") is not None:
+            self._LogoParam = LogoParam()
+            self._LogoParam._deserialize(params.get("LogoParam"))
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubmitDrawPortraitJobResponse(AbstractModel):
+    """SubmitDrawPortraitJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 提交生成写真图片任务 ID。
+
+        :type JobId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
 
 
 class SubmitTextToImageProJobRequest(AbstractModel):
@@ -677,6 +1166,66 @@ class SubmitTextToImageProJobResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
+
+
+class SubmitTrainPortraitModelJobRequest(AbstractModel):
+    """SubmitTrainPortraitModelJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelId: 在上传写真训练图片时指定的写真模型 ID。 
+每个 AI 写真模型自训练完成起1年内有效，有效期内可使用模型生成图片，期满后需要重新训练模型。
+
+        :type ModelId: str
+        """
+        self._ModelId = None
+
+    @property
+    def ModelId(self):
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+
+    def _deserialize(self, params):
+        self._ModelId = params.get("ModelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubmitTrainPortraitModelJobResponse(AbstractModel):
+    """SubmitTrainPortraitModelJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -839,4 +1388,139 @@ class TextToImageResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._ResultImage = params.get("ResultImage")
+        self._RequestId = params.get("RequestId")
+
+
+class UploadTrainPortraitImagesRequest(AbstractModel):
+    """UploadTrainPortraitImages请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelId: 写真模型 ID。由英文大小写字母、数字及下划线组成。
+用于唯一标识一个写真模型，一个写真模型只能用于一个人物的写真图片生成。
+        :type ModelId: str
+        :param _BaseUrl: 写真模型训练用的基础图像 URL，用于固定写真模型可生成的人物。
+图片数量：1张。
+图片内容：单人，脸部清晰。
+图片限制：单边分辨率小于2000，转成 Base64 字符串后小于 5MB。
+
+        :type BaseUrl: str
+        :param _Urls: 写真模型训练用的图像 URL 列表。
+图片数量：19 - 24 张。
+图片内容：单人，脸部清晰，和基础图像中的人物为同一人。
+图片限制：单边分辨率小于2000，转成 Base64 字符串后小于 5MB。
+
+        :type Urls: list of str
+        :param _Filter: 训练图像质量过滤开关配置。
+支持开启或关闭对训练图像分辨率下限、脸部区域大小、脸部遮挡的过滤，默认开启以上过滤。
+如果训练图像内包含多人脸或无人脸、和 Base 人像不为同一人也将被过滤，不可关闭该过滤条件。
+建议：关闭以上过滤可能导致写真生成效果受损，建议使用单人、正脸、脸部区域占比较大、脸部清晰无遮挡、无大角度偏转、无夸张表情的图像进行训练。
+        :type Filter: :class:`tencentcloud.aiart.v20221229.models.Filter`
+        :param _TrainMode: 是否开启快速训练模式。
+默认不开启。开启后只需要在 BaseUrl 中传入1张图片，Urls.N 中无需传入图片。  
+0：不开启  
+1：开启
+        :type TrainMode: int
+        """
+        self._ModelId = None
+        self._BaseUrl = None
+        self._Urls = None
+        self._Filter = None
+        self._TrainMode = None
+
+    @property
+    def ModelId(self):
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+    @property
+    def BaseUrl(self):
+        return self._BaseUrl
+
+    @BaseUrl.setter
+    def BaseUrl(self, BaseUrl):
+        self._BaseUrl = BaseUrl
+
+    @property
+    def Urls(self):
+        return self._Urls
+
+    @Urls.setter
+    def Urls(self, Urls):
+        self._Urls = Urls
+
+    @property
+    def Filter(self):
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def TrainMode(self):
+        return self._TrainMode
+
+    @TrainMode.setter
+    def TrainMode(self, TrainMode):
+        self._TrainMode = TrainMode
+
+
+    def _deserialize(self, params):
+        self._ModelId = params.get("ModelId")
+        self._BaseUrl = params.get("BaseUrl")
+        self._Urls = params.get("Urls")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        self._TrainMode = params.get("TrainMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UploadTrainPortraitImagesResponse(AbstractModel):
+    """UploadTrainPortraitImages返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResultDetails: 用于提示对应上传的Urls训练图片是否符合要求，如果未通过需要重新上传。如果基础图像不符合要求会直接通过ErrorCode提示。如果您选择了快速模式，该参数返回为空数组。
+        :type ResultDetails: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ResultDetails = None
+        self._RequestId = None
+
+    @property
+    def ResultDetails(self):
+        return self._ResultDetails
+
+    @ResultDetails.setter
+    def ResultDetails(self, ResultDetails):
+        self._ResultDetails = ResultDetails
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ResultDetails = params.get("ResultDetails")
         self._RequestId = params.get("RequestId")

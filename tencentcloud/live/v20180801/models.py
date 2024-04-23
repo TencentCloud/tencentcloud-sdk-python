@@ -5326,9 +5326,9 @@ class CreateRecordTaskRequest(AbstractModel):
         :type DomainName: str
         :param _AppName: 推流路径。
         :type AppName: str
-        :param _EndTime: 录制任务结束时间，Unix时间戳。设置时间必须大于StartTime及当前时间，且EndTime - StartTime不能超过24小时。
+        :param _EndTime: 录制任务结束时间，Unix时间戳。设置时间必须大于StartTime及当前时间，且小于当前时间+7天。
         :type EndTime: int
-        :param _StartTime: 录制任务开始时间，Unix时间戳。如果不填表示立即启动录制。StartTime不能超过当前时间+6天。
+        :param _StartTime: 录制任务开始时间，Unix时间戳。如果不填表示立即启动录制。EndTime - StartTime不能超过24小时。
         :type StartTime: int
         :param _StreamType: 推流类型，默认0。取值：
 0-直播推流。
@@ -5482,11 +5482,11 @@ class CreateScreenshotTaskRequest(AbstractModel):
         :type DomainName: str
         :param _AppName: 推流路径。
         :type AppName: str
-        :param _EndTime: 截图任务结束时间，Unix时间戳。设置时间必须大于StartTime及当前时间，且EndTime - StartTime不能超过24小时。
+        :param _EndTime: 截图任务结束时间，Unix时间戳。设置时间必须大于StartTime及当前时间，且小于当前时间+7天。
         :type EndTime: int
         :param _TemplateId: 截图模板ID，CreateLiveSnapshotTemplate 返回值。如果传入错误ID，则不拉起截图。
         :type TemplateId: int
-        :param _StartTime: 截图任务开始时间，Unix时间戳。如果不填表示立即启动截图。StartTime不能超过当前时间+6天。
+        :param _StartTime: 截图任务开始时间，Unix时间戳。如果不填表示立即启动截图。EndTime - StartTime不能超过24小时。
         :type StartTime: int
         :param _StreamType: 推流类型，默认0。取值：
 0-直播推流。

@@ -3825,7 +3825,7 @@ class DescribeChatMessagesRequest(AbstractModel):
         :type Offset: int
         :param _Order: 1为从早到晚，2为从晚到早，默认为2
         :type Order: int
-        :param _SessionId: 服务记录 SessionID（必填）
+        :param _SessionId: 服务记录 SessionID
         :type SessionId: str
         """
         self._InstanceId = None
@@ -3858,10 +3858,14 @@ class DescribeChatMessagesRequest(AbstractModel):
 
     @property
     def CdrId(self):
+        warnings.warn("parameter `CdrId` is deprecated", DeprecationWarning) 
+
         return self._CdrId
 
     @CdrId.setter
     def CdrId(self, CdrId):
+        warnings.warn("parameter `CdrId` is deprecated", DeprecationWarning) 
+
         self._CdrId = CdrId
 
     @property
