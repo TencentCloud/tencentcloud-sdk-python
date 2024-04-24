@@ -3537,10 +3537,13 @@ class ControlDeviceStreamRequest(AbstractModel):
 6:1080P/I；
 自定义的19201080等等（需设备支持）（不可以和 StreamType 同时下发））
         :type Resolution: str
+        :param _IsInternal: 是否内网
+        :type IsInternal: bool
         """
         self._ChannelId = None
         self._StreamType = None
         self._Resolution = None
+        self._IsInternal = None
 
     @property
     def ChannelId(self):
@@ -3566,11 +3569,20 @@ class ControlDeviceStreamRequest(AbstractModel):
     def Resolution(self, Resolution):
         self._Resolution = Resolution
 
+    @property
+    def IsInternal(self):
+        return self._IsInternal
+
+    @IsInternal.setter
+    def IsInternal(self, IsInternal):
+        self._IsInternal = IsInternal
+
 
     def _deserialize(self, params):
         self._ChannelId = params.get("ChannelId")
         self._StreamType = params.get("StreamType")
         self._Resolution = params.get("Resolution")
+        self._IsInternal = params.get("IsInternal")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7398,10 +7410,13 @@ class DescribeRecordPlaybackUrlRequest(AbstractModel):
         :type StartTime: int
         :param _EndTime: 回放结束时间，UTC秒数，例如：1662114246，开始和结束时间段最长为一天，且不能跨天
         :type EndTime: int
+        :param _IsInternal: 是否获取内网地址
+        :type IsInternal: bool
         """
         self._ChannelId = None
         self._StartTime = None
         self._EndTime = None
+        self._IsInternal = None
 
     @property
     def ChannelId(self):
@@ -7427,11 +7442,20 @@ class DescribeRecordPlaybackUrlRequest(AbstractModel):
     def EndTime(self, EndTime):
         self._EndTime = EndTime
 
+    @property
+    def IsInternal(self):
+        return self._IsInternal
+
+    @IsInternal.setter
+    def IsInternal(self, IsInternal):
+        self._IsInternal = IsInternal
+
 
     def _deserialize(self, params):
         self._ChannelId = params.get("ChannelId")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
+        self._IsInternal = params.get("IsInternal")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8391,12 +8415,15 @@ class DescribeVideoDownloadUrlRequest(AbstractModel):
         :type FileType: str
         :param _IsRespActualTime: 响应data中是否携带实际下载录像的开始时间与结束时间
         :type IsRespActualTime: bool
+        :param _IsInternal: 是否返回内网下载URL，默认是false，返回公网下载URL，true则返回内网下载URL
+        :type IsInternal: bool
         """
         self._ChannelId = None
         self._BeginTime = None
         self._EndTime = None
         self._FileType = None
         self._IsRespActualTime = None
+        self._IsInternal = None
 
     @property
     def ChannelId(self):
@@ -8438,6 +8465,14 @@ class DescribeVideoDownloadUrlRequest(AbstractModel):
     def IsRespActualTime(self, IsRespActualTime):
         self._IsRespActualTime = IsRespActualTime
 
+    @property
+    def IsInternal(self):
+        return self._IsInternal
+
+    @IsInternal.setter
+    def IsInternal(self, IsInternal):
+        self._IsInternal = IsInternal
+
 
     def _deserialize(self, params):
         self._ChannelId = params.get("ChannelId")
@@ -8445,6 +8480,7 @@ class DescribeVideoDownloadUrlRequest(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._FileType = params.get("FileType")
         self._IsRespActualTime = params.get("IsRespActualTime")
+        self._IsInternal = params.get("IsInternal")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11899,12 +11935,15 @@ class PlayRecordRequest(AbstractModel):
         :type StreamType: int
         :param _Resolution: 分辨率（1:QCIF；2:CIF； 3:4CIF； 4:D1； 5:720P； 6:1080P/I； 自定义的19201080等等（需设备支持）（不可以和 StreamType 同时下发））
         :type Resolution: str
+        :param _IsInternal: 是否内网
+        :type IsInternal: bool
         """
         self._ChannelId = None
         self._Start = None
         self._End = None
         self._StreamType = None
         self._Resolution = None
+        self._IsInternal = None
 
     @property
     def ChannelId(self):
@@ -11946,6 +11985,14 @@ class PlayRecordRequest(AbstractModel):
     def Resolution(self, Resolution):
         self._Resolution = Resolution
 
+    @property
+    def IsInternal(self):
+        return self._IsInternal
+
+    @IsInternal.setter
+    def IsInternal(self, IsInternal):
+        self._IsInternal = IsInternal
+
 
     def _deserialize(self, params):
         self._ChannelId = params.get("ChannelId")
@@ -11953,6 +12000,7 @@ class PlayRecordRequest(AbstractModel):
         self._End = params.get("End")
         self._StreamType = params.get("StreamType")
         self._Resolution = params.get("Resolution")
+        self._IsInternal = params.get("IsInternal")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

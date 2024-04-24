@@ -4739,6 +4739,9 @@ class DataConfig(AbstractModel):
         :param _CFSTurboSource: 配置TurboFS的数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type CFSTurboSource: :class:`tencentcloud.tione.v20211111.models.CFSTurbo`
+        :param _LocalDiskSource: 来自本地磁盘的信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocalDiskSource: :class:`tencentcloud.tione.v20211111.models.LocalDisk`
         """
         self._MappingPath = None
         self._DataSourceType = None
@@ -4748,6 +4751,7 @@ class DataConfig(AbstractModel):
         self._HDFSSource = None
         self._GooseFSSource = None
         self._CFSTurboSource = None
+        self._LocalDiskSource = None
 
     @property
     def MappingPath(self):
@@ -4813,6 +4817,14 @@ class DataConfig(AbstractModel):
     def CFSTurboSource(self, CFSTurboSource):
         self._CFSTurboSource = CFSTurboSource
 
+    @property
+    def LocalDiskSource(self):
+        return self._LocalDiskSource
+
+    @LocalDiskSource.setter
+    def LocalDiskSource(self, LocalDiskSource):
+        self._LocalDiskSource = LocalDiskSource
+
 
     def _deserialize(self, params):
         self._MappingPath = params.get("MappingPath")
@@ -4835,6 +4847,9 @@ class DataConfig(AbstractModel):
         if params.get("CFSTurboSource") is not None:
             self._CFSTurboSource = CFSTurbo()
             self._CFSTurboSource._deserialize(params.get("CFSTurboSource"))
+        if params.get("LocalDiskSource") is not None:
+            self._LocalDiskSource = LocalDisk()
+            self._LocalDiskSource._deserialize(params.get("LocalDiskSource"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13217,6 +13232,40 @@ class IntranetCallInfo(AbstractModel):
                 obj = DefaultInnerCallInfo()
                 obj._deserialize(item)
                 self._DefaultInnerCallInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LocalDisk(AbstractModel):
+    """本地磁盘信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

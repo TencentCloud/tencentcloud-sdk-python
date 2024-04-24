@@ -1476,52 +1476,6 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def ParseDoc(self, request):
-        """解析拆分文件
-
-        :param request: Request instance for ParseDoc.
-        :type request: :class:`tencentcloud.lke.v20231130.models.ParseDocRequest`
-        :rtype: :class:`tencentcloud.lke.v20231130.models.ParseDocResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ParseDoc", params, headers=headers)
-            response = json.loads(body)
-            model = models.ParseDocResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def QueryParseDocResult(self, request):
-        """查询文件解析结果
-
-        :param request: Request instance for QueryParseDocResult.
-        :type request: :class:`tencentcloud.lke.v20231130.models.QueryParseDocResultRequest`
-        :rtype: :class:`tencentcloud.lke.v20231130.models.QueryParseDocResultResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("QueryParseDocResult", params, headers=headers)
-            response = json.loads(body)
-            model = models.QueryParseDocResultResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def QueryRewrite(self, request):
         """多轮改写
         本接口有单账号调用上限控制，如您有提高并发限制的需求请 [联系我们](https://cloud.tencent.com/act/event/Online_service) 。

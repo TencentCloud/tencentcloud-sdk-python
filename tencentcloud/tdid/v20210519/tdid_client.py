@@ -326,7 +326,7 @@ class TdidClient(AbstractClient):
 
 
     def QueryCPT(self, request):
-        """查询凭证模版内容
+        """查询凭证模板内容
 
         :param request: Request instance for QueryCPT.
         :type request: :class:`tencentcloud.tdid.v20210519.models.QueryCPTRequest`

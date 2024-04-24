@@ -252,7 +252,7 @@ class CreateWorkspaceTokenRequest(AbstractModel):
         :type SpaceKey: str
         :param _TokenExpiredLimitSec: token过期时间，单位是秒，默认 3600
         :type TokenExpiredLimitSec: int
-        :param _Policies: token 授权策略，可选值为 workspace-run-only, all。默认为 all
+        :param _Policies: token 授权策略，可选值为 workspace-run-only, all。默认为 workspace-run-only
         :type Policies: list of str
         """
         self._SpaceKey = None

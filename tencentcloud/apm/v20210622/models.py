@@ -211,6 +211,263 @@ class ApmAgentInfo(AbstractModel):
         
 
 
+class ApmApplicationConfigView(AbstractModel):
+    """应用相关的配置列表项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceKey: 实例ID	
+        :type InstanceKey: str
+        :param _ServiceName: 服务名	
+        :type ServiceName: str
+        :param _OperationNameFilter: 接口过滤
+        :type OperationNameFilter: str
+        :param _ExceptionFilter: 异常过滤
+        :type ExceptionFilter: str
+        :param _ErrorCodeFilter: 错误码过滤	
+        :type ErrorCodeFilter: str
+        :param _EventEnable: 应用诊断开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventEnable: bool
+        :param _UrlConvergenceSwitch: URL收敛开关 0 关 1 开
+        :type UrlConvergenceSwitch: int
+        :param _UrlConvergenceThreshold: URL收敛阈值	
+        :type UrlConvergenceThreshold: int
+        :param _UrlConvergence: URL收敛规则正则	
+        :type UrlConvergence: str
+        :param _UrlExclude: URL排除规则正则
+        :type UrlExclude: str
+        :param _IsRelatedLog: 是否开启日志 0 关 1 开
+        :type IsRelatedLog: int
+        :param _LogSource: 日志来源	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogSource: str
+        :param _LogSet: CLS日志集 
+        :type LogSet: str
+        :param _LogTopicID: 日志主题ID
+        :type LogTopicID: str
+        :param _SnapshotEnable: 线程剖析开关
+        :type SnapshotEnable: bool
+        :param _SnapshotTimeout: 线程剖析超时阈值	
+        :type SnapshotTimeout: int
+        :param _AgentEnable: 探针开启开关
+        :type AgentEnable: bool
+        :param _InstrumentList: 组件列表开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstrumentList: list of Instrument
+        :param _TraceSquash: 链路压缩开关
+        :type TraceSquash: bool
+        """
+        self._InstanceKey = None
+        self._ServiceName = None
+        self._OperationNameFilter = None
+        self._ExceptionFilter = None
+        self._ErrorCodeFilter = None
+        self._EventEnable = None
+        self._UrlConvergenceSwitch = None
+        self._UrlConvergenceThreshold = None
+        self._UrlConvergence = None
+        self._UrlExclude = None
+        self._IsRelatedLog = None
+        self._LogSource = None
+        self._LogSet = None
+        self._LogTopicID = None
+        self._SnapshotEnable = None
+        self._SnapshotTimeout = None
+        self._AgentEnable = None
+        self._InstrumentList = None
+        self._TraceSquash = None
+
+    @property
+    def InstanceKey(self):
+        return self._InstanceKey
+
+    @InstanceKey.setter
+    def InstanceKey(self, InstanceKey):
+        self._InstanceKey = InstanceKey
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def OperationNameFilter(self):
+        return self._OperationNameFilter
+
+    @OperationNameFilter.setter
+    def OperationNameFilter(self, OperationNameFilter):
+        self._OperationNameFilter = OperationNameFilter
+
+    @property
+    def ExceptionFilter(self):
+        return self._ExceptionFilter
+
+    @ExceptionFilter.setter
+    def ExceptionFilter(self, ExceptionFilter):
+        self._ExceptionFilter = ExceptionFilter
+
+    @property
+    def ErrorCodeFilter(self):
+        return self._ErrorCodeFilter
+
+    @ErrorCodeFilter.setter
+    def ErrorCodeFilter(self, ErrorCodeFilter):
+        self._ErrorCodeFilter = ErrorCodeFilter
+
+    @property
+    def EventEnable(self):
+        return self._EventEnable
+
+    @EventEnable.setter
+    def EventEnable(self, EventEnable):
+        self._EventEnable = EventEnable
+
+    @property
+    def UrlConvergenceSwitch(self):
+        return self._UrlConvergenceSwitch
+
+    @UrlConvergenceSwitch.setter
+    def UrlConvergenceSwitch(self, UrlConvergenceSwitch):
+        self._UrlConvergenceSwitch = UrlConvergenceSwitch
+
+    @property
+    def UrlConvergenceThreshold(self):
+        return self._UrlConvergenceThreshold
+
+    @UrlConvergenceThreshold.setter
+    def UrlConvergenceThreshold(self, UrlConvergenceThreshold):
+        self._UrlConvergenceThreshold = UrlConvergenceThreshold
+
+    @property
+    def UrlConvergence(self):
+        return self._UrlConvergence
+
+    @UrlConvergence.setter
+    def UrlConvergence(self, UrlConvergence):
+        self._UrlConvergence = UrlConvergence
+
+    @property
+    def UrlExclude(self):
+        return self._UrlExclude
+
+    @UrlExclude.setter
+    def UrlExclude(self, UrlExclude):
+        self._UrlExclude = UrlExclude
+
+    @property
+    def IsRelatedLog(self):
+        return self._IsRelatedLog
+
+    @IsRelatedLog.setter
+    def IsRelatedLog(self, IsRelatedLog):
+        self._IsRelatedLog = IsRelatedLog
+
+    @property
+    def LogSource(self):
+        return self._LogSource
+
+    @LogSource.setter
+    def LogSource(self, LogSource):
+        self._LogSource = LogSource
+
+    @property
+    def LogSet(self):
+        return self._LogSet
+
+    @LogSet.setter
+    def LogSet(self, LogSet):
+        self._LogSet = LogSet
+
+    @property
+    def LogTopicID(self):
+        return self._LogTopicID
+
+    @LogTopicID.setter
+    def LogTopicID(self, LogTopicID):
+        self._LogTopicID = LogTopicID
+
+    @property
+    def SnapshotEnable(self):
+        return self._SnapshotEnable
+
+    @SnapshotEnable.setter
+    def SnapshotEnable(self, SnapshotEnable):
+        self._SnapshotEnable = SnapshotEnable
+
+    @property
+    def SnapshotTimeout(self):
+        return self._SnapshotTimeout
+
+    @SnapshotTimeout.setter
+    def SnapshotTimeout(self, SnapshotTimeout):
+        self._SnapshotTimeout = SnapshotTimeout
+
+    @property
+    def AgentEnable(self):
+        return self._AgentEnable
+
+    @AgentEnable.setter
+    def AgentEnable(self, AgentEnable):
+        self._AgentEnable = AgentEnable
+
+    @property
+    def InstrumentList(self):
+        return self._InstrumentList
+
+    @InstrumentList.setter
+    def InstrumentList(self, InstrumentList):
+        self._InstrumentList = InstrumentList
+
+    @property
+    def TraceSquash(self):
+        return self._TraceSquash
+
+    @TraceSquash.setter
+    def TraceSquash(self, TraceSquash):
+        self._TraceSquash = TraceSquash
+
+
+    def _deserialize(self, params):
+        self._InstanceKey = params.get("InstanceKey")
+        self._ServiceName = params.get("ServiceName")
+        self._OperationNameFilter = params.get("OperationNameFilter")
+        self._ExceptionFilter = params.get("ExceptionFilter")
+        self._ErrorCodeFilter = params.get("ErrorCodeFilter")
+        self._EventEnable = params.get("EventEnable")
+        self._UrlConvergenceSwitch = params.get("UrlConvergenceSwitch")
+        self._UrlConvergenceThreshold = params.get("UrlConvergenceThreshold")
+        self._UrlConvergence = params.get("UrlConvergence")
+        self._UrlExclude = params.get("UrlExclude")
+        self._IsRelatedLog = params.get("IsRelatedLog")
+        self._LogSource = params.get("LogSource")
+        self._LogSet = params.get("LogSet")
+        self._LogTopicID = params.get("LogTopicID")
+        self._SnapshotEnable = params.get("SnapshotEnable")
+        self._SnapshotTimeout = params.get("SnapshotTimeout")
+        self._AgentEnable = params.get("AgentEnable")
+        if params.get("InstrumentList") is not None:
+            self._InstrumentList = []
+            for item in params.get("InstrumentList"):
+                obj = Instrument()
+                obj._deserialize(item)
+                self._InstrumentList.append(obj)
+        self._TraceSquash = params.get("TraceSquash")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApmField(AbstractModel):
     """指标维度信息
 
@@ -1208,6 +1465,90 @@ class DescribeApmInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeGeneralApmApplicationConfigRequest(AbstractModel):
+    """DescribeGeneralApmApplicationConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceName: 应用名
+        :type ServiceName: str
+        :param _InstanceId: 实例Id
+        :type InstanceId: str
+        """
+        self._ServiceName = None
+        self._InstanceId = None
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._ServiceName = params.get("ServiceName")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGeneralApmApplicationConfigResponse(AbstractModel):
+    """DescribeGeneralApmApplicationConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApmApplicationConfigView: 应用配置项
+        :type ApmApplicationConfigView: :class:`tencentcloud.apm.v20210622.models.ApmApplicationConfigView`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ApmApplicationConfigView = None
+        self._RequestId = None
+
+    @property
+    def ApmApplicationConfigView(self):
+        return self._ApmApplicationConfigView
+
+    @ApmApplicationConfigView.setter
+    def ApmApplicationConfigView(self, ApmApplicationConfigView):
+        self._ApmApplicationConfigView = ApmApplicationConfigView
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ApmApplicationConfigView") is not None:
+            self._ApmApplicationConfigView = ApmApplicationConfigView()
+            self._ApmApplicationConfigView._deserialize(params.get("ApmApplicationConfigView"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeGeneralMetricDataRequest(AbstractModel):
     """DescribeGeneralMetricData请求参数结构体
 
@@ -2029,6 +2370,158 @@ class DescribeServiceOverviewResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTagValuesRequest(AbstractModel):
+    """DescribeTagValues请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: 维度名
+        :type TagKey: str
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _EndTime: 结束时间
+        :type EndTime: int
+        :param _Filters: 过滤条件
+        :type Filters: list of Filter
+        :param _StartTime: 开始时间
+        :type StartTime: int
+        :param _OrFilters: Or过滤条件
+        :type OrFilters: list of Filter
+        :param _Type: 使用类型
+        :type Type: str
+        """
+        self._TagKey = None
+        self._InstanceId = None
+        self._EndTime = None
+        self._Filters = None
+        self._StartTime = None
+        self._OrFilters = None
+        self._Type = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def OrFilters(self):
+        return self._OrFilters
+
+    @OrFilters.setter
+    def OrFilters(self, OrFilters):
+        self._OrFilters = OrFilters
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._InstanceId = params.get("InstanceId")
+        self._EndTime = params.get("EndTime")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._StartTime = params.get("StartTime")
+        if params.get("OrFilters") is not None:
+            self._OrFilters = []
+            for item in params.get("OrFilters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._OrFilters.append(obj)
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTagValuesResponse(AbstractModel):
+    """DescribeTagValues返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Values: 维度值列表
+        :type Values: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Values = None
+        self._RequestId = None
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Values = params.get("Values")
+        self._RequestId = params.get("RequestId")
+
+
 class Filter(AbstractModel):
     """查询过滤参数
 
@@ -2121,6 +2614,53 @@ class GeneralFilter(AbstractModel):
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Instrument(AbstractModel):
+    """组件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 组件名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Enable: 组件开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enable: bool
+        """
+        self._Name = None
+        self._Enable = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Enable = params.get("Enable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2485,6 +3025,105 @@ class ModifyApmInstanceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyGeneralApmApplicationConfigRequest(AbstractModel):
+    """ModifyGeneralApmApplicationConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例Id
+        :type InstanceId: str
+        :param _Tags: 需要修改的字段key value分别指定字段名、字段值
+        :type Tags: list of ApmTag
+        :param _ServiceNames: 需要修改配置的服务列表名称	
+        :type ServiceNames: list of str
+        """
+        self._InstanceId = None
+        self._Tags = None
+        self._ServiceNames = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def ServiceNames(self):
+        return self._ServiceNames
+
+    @ServiceNames.setter
+    def ServiceNames(self, ServiceNames):
+        self._ServiceNames = ServiceNames
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = ApmTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._ServiceNames = params.get("ServiceNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyGeneralApmApplicationConfigResponse(AbstractModel):
+    """ModifyGeneralApmApplicationConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Message: 返回值描述
+        :type Message: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Message = params.get("Message")
         self._RequestId = params.get("RequestId")
 
 

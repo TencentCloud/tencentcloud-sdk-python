@@ -115,6 +115,9 @@ class AccelerationDomain(AbstractModel):
 <li>HTTPS: HTTPS协议回源。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginProtocol: str
+        :param _Certificate: 域名证书信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Certificate: :class:`tencentcloud.teo.v20220901.models.AccelerationDomainCertificate`
         :param _HttpOriginPort: HTTP回源端口。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HttpOriginPort: int
@@ -139,15 +142,13 @@ class AccelerationDomain(AbstractModel):
         :param _OwnershipVerification: 当域名需要进行归属权验证才能继续提供服务时，该对象会携带对应验证方式所需要的信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnershipVerification: :class:`tencentcloud.teo.v20220901.models.OwnershipVerification`
-        :param _Certificate: 域名证书信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Certificate: :class:`tencentcloud.teo.v20220901.models.AccelerationDomainCertificate`
         """
         self._ZoneId = None
         self._DomainName = None
         self._DomainStatus = None
         self._OriginDetail = None
         self._OriginProtocol = None
+        self._Certificate = None
         self._HttpOriginPort = None
         self._HttpsOriginPort = None
         self._IPv6Status = None
@@ -156,7 +157,6 @@ class AccelerationDomain(AbstractModel):
         self._CreatedOn = None
         self._ModifiedOn = None
         self._OwnershipVerification = None
-        self._Certificate = None
 
     @property
     def ZoneId(self):
@@ -197,6 +197,14 @@ class AccelerationDomain(AbstractModel):
     @OriginProtocol.setter
     def OriginProtocol(self, OriginProtocol):
         self._OriginProtocol = OriginProtocol
+
+    @property
+    def Certificate(self):
+        return self._Certificate
+
+    @Certificate.setter
+    def Certificate(self, Certificate):
+        self._Certificate = Certificate
 
     @property
     def HttpOriginPort(self):
@@ -262,14 +270,6 @@ class AccelerationDomain(AbstractModel):
     def OwnershipVerification(self, OwnershipVerification):
         self._OwnershipVerification = OwnershipVerification
 
-    @property
-    def Certificate(self):
-        return self._Certificate
-
-    @Certificate.setter
-    def Certificate(self, Certificate):
-        self._Certificate = Certificate
-
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -279,6 +279,9 @@ class AccelerationDomain(AbstractModel):
             self._OriginDetail = OriginDetail()
             self._OriginDetail._deserialize(params.get("OriginDetail"))
         self._OriginProtocol = params.get("OriginProtocol")
+        if params.get("Certificate") is not None:
+            self._Certificate = AccelerationDomainCertificate()
+            self._Certificate._deserialize(params.get("Certificate"))
         self._HttpOriginPort = params.get("HttpOriginPort")
         self._HttpsOriginPort = params.get("HttpsOriginPort")
         self._IPv6Status = params.get("IPv6Status")
@@ -289,9 +292,6 @@ class AccelerationDomain(AbstractModel):
         if params.get("OwnershipVerification") is not None:
             self._OwnershipVerification = OwnershipVerification()
             self._OwnershipVerification._deserialize(params.get("OwnershipVerification"))
-        if params.get("Certificate") is not None:
-            self._Certificate = AccelerationDomainCertificate()
-            self._Certificate._deserialize(params.get("Certificate"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19342,7 +19342,7 @@ class OriginDetail(AbstractModel):
 <li>COS：腾讯云 COS 对象存储源站；</li>
 <li>AWS_S3：AWS S3 对象存储源站；</li>
 <li>ORIGIN_GROUP：源站组类型源站；</li>
- <li>VODEO：云点播（混合云版）；</li>
+<li>VODEO：云点播（混合云版）；</li>
 <li>SPACE：源站卸载，当前仅白名单开放；</li>
 <li>LB：负载均衡，当前仅白名单开放。</li>
         :type OriginType: str
@@ -19352,7 +19352,6 @@ class OriginDetail(AbstractModel):
 <li>当 OriginType = AWS_S3，该参数为 S3 桶的访问域名；</li>
 <li>当 OriginType = ORIGIN_GROUP 时，该参数为源站组 ID；</li>
 <li>当 OriginType = VODEO 时，如果 VodeoDistributionRange = ALL，则该参数为 "all-buckets-in-vodeo-application"；如果 VodeoDistributionRange = Bucket，则该参数为对应存储桶域名。</li>
-
         :type Origin: str
         :param _BackupOrigin: 备用源站组 ID，该参数仅在 OriginType = ORIGIN_GROUP 且配置了备源站组时会生效。
         :type BackupOrigin: str
@@ -19360,17 +19359,17 @@ class OriginDetail(AbstractModel):
         :type OriginGroupName: str
         :param _BackOriginGroupName: 备用源站组名称，该参数仅当 OriginType = ORIGIN_GROUP 且配置了备用源站组时会生效。
         :type BackOriginGroupName: str
-        :param _PrivateAccess: 指定是否允许访问私有对象存储源站，该参数仅当源站类型 OriginType = COS 或 AWS_S3 时会生效，取值有：
+        :param _PrivateAccess: 指定是否允许访问私有对象存储源站，该参数仅当源站类型OriginType = COS 或 AWS_S3 时会生效，取值有：
 <li>on：使用私有鉴权；</li>
 <li>off：不使用私有鉴权。</li>
-不填写，默认值为off。
+不填写，默认值为 off。
         :type PrivateAccess: str
         :param _PrivateParameters: 私有鉴权使用参数，该参数仅当源站类型 PrivateAccess = on 时会生效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PrivateParameters: list of PrivateParameter
         :param _VodeoSubAppId: MO 子应用 ID
         :type VodeoSubAppId: int
-        :param _VodeoDistributionRange: MO 分发范围，取值有： <li>All：全部</li> <li>Bucket：存储桶</li>	
+        :param _VodeoDistributionRange: MO 分发范围，取值有： <li>All：全部</li> <li>Bucket：存储桶</li>
         :type VodeoDistributionRange: str
         :param _VodeoBucketId: MO 存储桶 ID，分发范围(DistributionRange)为存储桶(Bucket)时必填
         :type VodeoBucketId: str

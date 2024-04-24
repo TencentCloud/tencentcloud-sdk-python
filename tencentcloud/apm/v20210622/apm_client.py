@@ -95,6 +95,29 @@ class ApmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeGeneralApmApplicationConfig(self, request):
+        """查询应用配置信息
+
+        :param request: Request instance for DescribeGeneralApmApplicationConfig.
+        :type request: :class:`tencentcloud.apm.v20210622.models.DescribeGeneralApmApplicationConfigRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.DescribeGeneralApmApplicationConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGeneralApmApplicationConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGeneralApmApplicationConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeGeneralMetricData(self, request):
         """获取指标数据通用接口。用户根据需要上送请求参数，返回对应的指标数据。
         接口调用频率限制为：20次/秒，1200次/分钟。单请求的数据点数限制为1440个。
@@ -188,6 +211,29 @@ class ApmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTagValues(self, request):
+        """根据维度名和过滤条件，查询维度数据.
+
+        :param request: Request instance for DescribeTagValues.
+        :type request: :class:`tencentcloud.apm.v20210622.models.DescribeTagValuesRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.DescribeTagValuesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTagValues", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTagValuesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyApmInstance(self, request):
         """修改APM实例接口
 
@@ -202,6 +248,29 @@ class ApmClient(AbstractClient):
             body = self.call("ModifyApmInstance", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyApmInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyGeneralApmApplicationConfig(self, request):
+        """对外开放的openApi，客户可以灵活的指定需要修改的字段，再加入需要修改的服务列表.
+
+        :param request: Request instance for ModifyGeneralApmApplicationConfig.
+        :type request: :class:`tencentcloud.apm.v20210622.models.ModifyGeneralApmApplicationConfigRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.ModifyGeneralApmApplicationConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyGeneralApmApplicationConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyGeneralApmApplicationConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

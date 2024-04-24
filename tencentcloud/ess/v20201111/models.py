@@ -3096,6 +3096,8 @@ class CreateBatchSignUrlRequest(AbstractModel):
 <li>**true**: 跳过合同流程列表, 直接进入合同内容页面进行签署</li>
 </ul>
         :type JumpToDetail: bool
+        :param _FlowBatchUrlInfo: 批量签署合同相关信息，指定合同和签署方的信息，用于补充动态签署人。	
+        :type FlowBatchUrlInfo: :class:`tencentcloud.ess.v20201111.models.FlowBatchUrlInfo`
         """
         self._Operator = None
         self._Name = None
@@ -3107,6 +3109,7 @@ class CreateBatchSignUrlRequest(AbstractModel):
         self._FlowIds = None
         self._OrganizationName = None
         self._JumpToDetail = None
+        self._FlowBatchUrlInfo = None
 
     @property
     def Operator(self):
@@ -3188,6 +3191,14 @@ class CreateBatchSignUrlRequest(AbstractModel):
     def JumpToDetail(self, JumpToDetail):
         self._JumpToDetail = JumpToDetail
 
+    @property
+    def FlowBatchUrlInfo(self):
+        return self._FlowBatchUrlInfo
+
+    @FlowBatchUrlInfo.setter
+    def FlowBatchUrlInfo(self, FlowBatchUrlInfo):
+        self._FlowBatchUrlInfo = FlowBatchUrlInfo
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -3204,6 +3215,9 @@ class CreateBatchSignUrlRequest(AbstractModel):
         self._FlowIds = params.get("FlowIds")
         self._OrganizationName = params.get("OrganizationName")
         self._JumpToDetail = params.get("JumpToDetail")
+        if params.get("FlowBatchUrlInfo") is not None:
+            self._FlowBatchUrlInfo = FlowBatchUrlInfo()
+            self._FlowBatchUrlInfo._deserialize(params.get("FlowBatchUrlInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15162,6 +15176,89 @@ class FlowApproverUrlInfo(AbstractModel):
         self._ApproverName = params.get("ApproverName")
         self._ApproverMobile = params.get("ApproverMobile")
         self._LongUrl = params.get("LongUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowBatchApproverInfo(AbstractModel):
+    """批量签署合同相关信息，指定批量签署合同和签署方的信息，用于补充动态签署人。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 合同流程ID。
+        :type FlowId: str
+        :param _RecipientId: 签署节点ID，用于生成动态签署人链接完成领取。注：`生成动态签署人补充链接时必传。`
+        :type RecipientId: str
+        """
+        self._FlowId = None
+        self._RecipientId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RecipientId(self):
+        return self._RecipientId
+
+    @RecipientId.setter
+    def RecipientId(self, RecipientId):
+        self._RecipientId = RecipientId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RecipientId = params.get("RecipientId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowBatchUrlInfo(AbstractModel):
+    """批量签署合同相关信息，指定批量签署合同和签署方的信息，用于补充动态签署人。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowBatchApproverInfos: 批量签署合同和签署方的信息，用于补充动态签署人。
+        :type FlowBatchApproverInfos: list of FlowBatchApproverInfo
+        """
+        self._FlowBatchApproverInfos = None
+
+    @property
+    def FlowBatchApproverInfos(self):
+        return self._FlowBatchApproverInfos
+
+    @FlowBatchApproverInfos.setter
+    def FlowBatchApproverInfos(self, FlowBatchApproverInfos):
+        self._FlowBatchApproverInfos = FlowBatchApproverInfos
+
+
+    def _deserialize(self, params):
+        if params.get("FlowBatchApproverInfos") is not None:
+            self._FlowBatchApproverInfos = []
+            for item in params.get("FlowBatchApproverInfos"):
+                obj = FlowBatchApproverInfo()
+                obj._deserialize(item)
+                self._FlowBatchApproverInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
