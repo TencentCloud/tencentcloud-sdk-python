@@ -43,7 +43,7 @@ class AutoSnapshotPolicyInfo(AbstractModel):
         :type NextActiveTime: str
         :param _Status: 快照策略状态，1代表快照策略状态正常。这里只有一种状态
         :type Status: str
-        :param _AppId: 帐号ID
+        :param _AppId: 账号ID
         :type AppId: int
         :param _AliveDays: 保留时间
         :type AliveDays: int
@@ -1271,7 +1271,12 @@ class CreateCfsRuleRequest(AbstractModel):
         :type Priority: int
         :param _RWPermission: 读写权限, 值为 RO、RW；其中 RO 为只读，RW 为读写，不填默认为只读
         :type RWPermission: str
-        :param _UserPermission: 用户权限，值为 all_squash、no_all_squash、root_squash、no_root_squash。其中all_squash为所有访问用户都会被映射为匿名用户或用户组；no_all_squash为访问用户会先与本机用户匹配，匹配失败后再映射为匿名用户或用户组；root_squash为将来访的root用户映射为匿名用户或用户组；no_root_squash为来访的root用户保持root帐号权限。不填默认为root_squash。
+        :param _UserPermission: 用户权限，值为 all_squash、no_all_squash、root_squash、no_root_squash。
+all_squash：所有访问用户（含 root 用户）都会被映射为匿名用户或用户组。
+no_all_squash：所有访问用户（含 root 用户）均保持原有的 UID/GID 信息。
+root_squash：将来访的 root 用户映射为匿名用户或用户组，非 root 用户保持原有的 UID/GID 信息。
+no_root_squash：与 no_all_squash 效果一致，所有访问用户（含 root 用户）均保持原有的 UID/GID 信息
+
         :type UserPermission: str
         """
         self._PGroupId = None
@@ -5123,7 +5128,11 @@ class PGroupRuleInfo(AbstractModel):
         :type AuthClientIp: str
         :param _RWPermission: 读写权限, ro为只读，rw为读写
         :type RWPermission: str
-        :param _UserPermission: 用户权限。其中all_squash为所有访问用户都会被映射为匿名用户或用户组；no_all_squash为访问用户会先与本机用户匹配，匹配失败后再映射为匿名用户或用户组；root_squash为将来访的root用户映射为匿名用户或用户组；no_root_squash为来访的root用户保持root帐号权限。
+        :param _UserPermission: all_squash：所有访问用户（含 root 用户）都会被映射为匿名用户或用户组。
+no_all_squash：所有访问用户（含 root 用户）均保持原有的 UID/GID 信息。
+root_squash：将来访的 root 用户映射为匿名用户或用户组，非 root 用户保持原有的 UID/GID 信息。
+no_root_squash：与 no_all_squash 效果一致，所有访问用户（含 root 用户）均保持原有的 UID/GID 信息
+
         :type UserPermission: str
         :param _Priority: 规则优先级，1-100。 其中 1 为最高，100为最低
         :type Priority: int
@@ -5459,7 +5468,7 @@ class SnapshotInfo(AbstractModel):
         :type AliveDay: int
         :param _Percent: 快照进度百分比，1表示1%
         :type Percent: int
-        :param _AppId: 帐号ID
+        :param _AppId: 账号ID
         :type AppId: int
         :param _DeleteTime: 快照删除时间
         :type DeleteTime: str
@@ -6588,7 +6597,12 @@ class UpdateCfsRuleRequest(AbstractModel):
         :type AuthClientIp: str
         :param _RWPermission: 读写权限, 值为RO、RW；其中 RO 为只读，RW 为读写，不填默认为只读
         :type RWPermission: str
-        :param _UserPermission: 用户权限，值为all_squash、no_all_squash、root_squash、no_root_squash。其中all_squash为所有访问用户都会被映射为匿名用户或用户组；no_all_squash为访问用户会先与本机用户匹配，匹配失败后再映射为匿名用户或用户组；root_squash为将来访的root用户映射为匿名用户或用户组；no_root_squash为来访的root用户保持root帐号权限。不填默认为root_squash。
+        :param _UserPermission: 用户权限，值为all_squash、no_all_squash、root_squash、no_root_squash。
+all_squash：所有访问用户（含 root 用户）都会被映射为匿名用户或用户组。
+no_all_squash：所有访问用户（含 root 用户）均保持原有的 UID/GID 信息。
+root_squash：将来访的 root 用户映射为匿名用户或用户组，非 root 用户保持原有的 UID/GID 信息。
+no_root_squash：与 no_all_squash 效果一致，所有访问用户（含 root 用户）均保持原有的 UID/GID 信息
+
         :type UserPermission: str
         :param _Priority: 规则优先级，参数范围1-100。 其中 1 为最高，100为最低
         :type Priority: int

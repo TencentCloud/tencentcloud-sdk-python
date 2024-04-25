@@ -41,14 +41,16 @@ class CreateWorkspaceRequest(AbstractModel):
         :type Extensions: list of str
         :param _Lifecycle: 工作空间生命周期钩子.  分为三个阶段 init, start, destroy. 分别表示工作空间数据初始化阶段, 工作空间启动阶段, 工作空间关闭阶段.  用户可以自定义 shell 命令. 
         :type Lifecycle: :class:`tencentcloud.cloudstudio.v20230508.models.LifeCycle`
-        :param _AppId: 应用名称
-        :type AppId: int
-        :param _Uin: 用户UIN
-        :type Uin: str
-        :param _UniqVpcId: VPCID
-        :type UniqVpcId: str
-        :param _SubnetId: 子网ID
-        :type SubnetId: str
+        :param _TenantAppId: 应用名称
+        :type TenantAppId: int
+        :param _TenantUin: 用户UIN
+        :type TenantUin: str
+        :param _TenantUniqVpcId: VPCID
+        :type TenantUniqVpcId: str
+        :param _TenantSubnetId: 子网ID
+        :type TenantSubnetId: str
+        :param _Region: 地域
+        :type Region: str
         """
         self._Name = None
         self._Description = None
@@ -58,10 +60,11 @@ class CreateWorkspaceRequest(AbstractModel):
         self._Envs = None
         self._Extensions = None
         self._Lifecycle = None
-        self._AppId = None
-        self._Uin = None
-        self._UniqVpcId = None
-        self._SubnetId = None
+        self._TenantAppId = None
+        self._TenantUin = None
+        self._TenantUniqVpcId = None
+        self._TenantSubnetId = None
+        self._Region = None
 
     @property
     def Name(self):
@@ -128,36 +131,44 @@ class CreateWorkspaceRequest(AbstractModel):
         self._Lifecycle = Lifecycle
 
     @property
-    def AppId(self):
-        return self._AppId
+    def TenantAppId(self):
+        return self._TenantAppId
 
-    @AppId.setter
-    def AppId(self, AppId):
-        self._AppId = AppId
-
-    @property
-    def Uin(self):
-        return self._Uin
-
-    @Uin.setter
-    def Uin(self, Uin):
-        self._Uin = Uin
+    @TenantAppId.setter
+    def TenantAppId(self, TenantAppId):
+        self._TenantAppId = TenantAppId
 
     @property
-    def UniqVpcId(self):
-        return self._UniqVpcId
+    def TenantUin(self):
+        return self._TenantUin
 
-    @UniqVpcId.setter
-    def UniqVpcId(self, UniqVpcId):
-        self._UniqVpcId = UniqVpcId
+    @TenantUin.setter
+    def TenantUin(self, TenantUin):
+        self._TenantUin = TenantUin
 
     @property
-    def SubnetId(self):
-        return self._SubnetId
+    def TenantUniqVpcId(self):
+        return self._TenantUniqVpcId
 
-    @SubnetId.setter
-    def SubnetId(self, SubnetId):
-        self._SubnetId = SubnetId
+    @TenantUniqVpcId.setter
+    def TenantUniqVpcId(self, TenantUniqVpcId):
+        self._TenantUniqVpcId = TenantUniqVpcId
+
+    @property
+    def TenantSubnetId(self):
+        return self._TenantSubnetId
+
+    @TenantSubnetId.setter
+    def TenantSubnetId(self, TenantSubnetId):
+        self._TenantSubnetId = TenantSubnetId
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
 
 
     def _deserialize(self, params):
@@ -178,10 +189,11 @@ class CreateWorkspaceRequest(AbstractModel):
         if params.get("Lifecycle") is not None:
             self._Lifecycle = LifeCycle()
             self._Lifecycle._deserialize(params.get("Lifecycle"))
-        self._AppId = params.get("AppId")
-        self._Uin = params.get("Uin")
-        self._UniqVpcId = params.get("UniqVpcId")
-        self._SubnetId = params.get("SubnetId")
+        self._TenantAppId = params.get("TenantAppId")
+        self._TenantUin = params.get("TenantUin")
+        self._TenantUniqVpcId = params.get("TenantUniqVpcId")
+        self._TenantSubnetId = params.get("TenantSubnetId")
+        self._Region = params.get("Region")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

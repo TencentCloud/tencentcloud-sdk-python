@@ -3815,7 +3815,7 @@ class DescribeChatMessagesRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例 ID（废弃）
         :type InstanceId: int
-        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :param _SdkAppId: 应用 ID，可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
         :param _CdrId: 服务记录ID（废弃）
         :type CdrId: str

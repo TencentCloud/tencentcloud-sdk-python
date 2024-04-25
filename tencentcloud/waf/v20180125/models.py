@@ -21435,7 +21435,7 @@ class ModifyModuleStatusRequest(AbstractModel):
         r"""
         :param _Domain: 需要设置的domain
         :type Domain: str
-        :param _WebSecurity: WEB 安全模块开关，0或1
+        :param _WebSecurity: Web 安全模块开关，0或1
         :type WebSecurity: int
         :param _AccessControl: 访问控制模块开关，0或者1
         :type AccessControl: int

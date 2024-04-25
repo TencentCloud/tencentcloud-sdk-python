@@ -27159,6 +27159,60 @@ class LiveStreamProcessTask(AbstractModel):
         
 
 
+class LiveStreamRecordResultInfo(AbstractModel):
+    """直播流录制结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordOver: 录制是否结束。
+0：录制未结束，返回单个文件结果
+1：录制结束，返回所有录制文件结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordOver: int
+        :param _FileResults: 文件列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileResults: list of LiveRecordFile
+        """
+        self._RecordOver = None
+        self._FileResults = None
+
+    @property
+    def RecordOver(self):
+        return self._RecordOver
+
+    @RecordOver.setter
+    def RecordOver(self, RecordOver):
+        self._RecordOver = RecordOver
+
+    @property
+    def FileResults(self):
+        return self._FileResults
+
+    @FileResults.setter
+    def FileResults(self, FileResults):
+        self._FileResults = FileResults
+
+
+    def _deserialize(self, params):
+        self._RecordOver = params.get("RecordOver")
+        if params.get("FileResults") is not None:
+            self._FileResults = []
+            for item in params.get("FileResults"):
+                obj = LiveRecordFile()
+                obj._deserialize(item)
+                self._FileResults.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LiveStreamTagRecognitionResult(AbstractModel):
     """直播 AI 打点识别结果
 
@@ -33995,6 +34049,7 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
         :param _NotificationType: 直播流处理结果类型，包含：
 <li>AiReviewResult：内容审核结果；</li>
 <li>AiRecognitionResult：内容识别结果；</li>
+<li>LiveRecordResult：直播录制结果；</li>
 <li>ProcessEof：直播流处理结束。</li>
         :type NotificationType: str
         :param _TaskId: 视频处理任务 ID。
@@ -34014,6 +34069,9 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
         :param _AiQualityControlResultInfo: 媒体质检结果，当 NotificationType 为 AiQualityControlResult 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AiQualityControlResultInfo: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiQualityControlResultInfo`
+        :param _LiveRecordResultInfo: 直播录制结果，当 NotificationType 为 LiveRecordResult 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LiveRecordResultInfo: :class:`tencentcloud.mps.v20190612.models.LiveStreamRecordResultInfo`
         :param _SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长50个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
         :param _SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长1000个字符。
@@ -34028,6 +34086,7 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
         self._AiRecognitionResultInfo = None
         self._AiAnalysisResultInfo = None
         self._AiQualityControlResultInfo = None
+        self._LiveRecordResultInfo = None
         self._SessionId = None
         self._SessionContext = None
         self._RequestId = None
@@ -34089,6 +34148,14 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
         self._AiQualityControlResultInfo = AiQualityControlResultInfo
 
     @property
+    def LiveRecordResultInfo(self):
+        return self._LiveRecordResultInfo
+
+    @LiveRecordResultInfo.setter
+    def LiveRecordResultInfo(self, LiveRecordResultInfo):
+        self._LiveRecordResultInfo = LiveRecordResultInfo
+
+    @property
     def SessionId(self):
         return self._SessionId
 
@@ -34131,6 +34198,9 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
         if params.get("AiQualityControlResultInfo") is not None:
             self._AiQualityControlResultInfo = LiveStreamAiQualityControlResultInfo()
             self._AiQualityControlResultInfo._deserialize(params.get("AiQualityControlResultInfo"))
+        if params.get("LiveRecordResultInfo") is not None:
+            self._LiveRecordResultInfo = LiveStreamRecordResultInfo()
+            self._LiveRecordResultInfo._deserialize(params.get("LiveRecordResultInfo"))
         self._SessionId = params.get("SessionId")
         self._SessionContext = params.get("SessionContext")
         self._RequestId = params.get("RequestId")

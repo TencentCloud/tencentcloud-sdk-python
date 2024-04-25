@@ -5529,6 +5529,10 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
         :type DeliveryConditions: list of DeliveryCondition
         :param _Sample: 采样比例，采用千分制，取值范围为1-1000，例如：填写 605 表示采样比例为 60.5%。不填表示采样比例为 100%。
         :type Sample: int
+        :param _LogFormat: 日志投递的输出格式。不填表示为默认格式，默认格式逻辑如下：
+<li>当 TaskType 取值为 custom_endpoint 时，默认格式为多个 JSON 对象组成的数组，每个 JSON 对象为一条日志；</li>
+<li>当 TaskType 取值为 s3 时，默认格式为 JSON Lines；</li>特别地，当 TaskType 取值为 cls 时，LogFormat.FormatType 的值只能为 json，且 LogFormat 中其他参数将被忽略，建议不传 LogFormat。
+        :type LogFormat: :class:`tencentcloud.teo.v20220901.models.LogFormat`
         :param _CLS: CLS 的配置信息。当 TaskType 取值为 cls 时，该参数必填。
         :type CLS: :class:`tencentcloud.teo.v20220901.models.CLSTopic`
         :param _CustomEndpoint: 自定义 HTTP 服务的配置信息。当 TaskType 取值为 custom_endpoint 时，该参数必填。
@@ -5546,6 +5550,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
         self._CustomFields = None
         self._DeliveryConditions = None
         self._Sample = None
+        self._LogFormat = None
         self._CLS = None
         self._CustomEndpoint = None
         self._S3 = None
@@ -5631,6 +5636,14 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
         self._Sample = Sample
 
     @property
+    def LogFormat(self):
+        return self._LogFormat
+
+    @LogFormat.setter
+    def LogFormat(self, LogFormat):
+        self._LogFormat = LogFormat
+
+    @property
     def CLS(self):
         return self._CLS
 
@@ -5676,6 +5689,9 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
                 obj._deserialize(item)
                 self._DeliveryConditions.append(obj)
         self._Sample = params.get("Sample")
+        if params.get("LogFormat") is not None:
+            self._LogFormat = LogFormat()
+            self._LogFormat._deserialize(params.get("LogFormat"))
         if params.get("CLS") is not None:
             self._CLS = CLSTopic()
             self._CLS._deserialize(params.get("CLS"))
@@ -6663,8 +6679,8 @@ class DDosProtectionConfig(AbstractModel):
         r"""
         :param _LevelMainland: 中国大陆地区独立 DDoS 防护的规格。详情请参考 [独立 DDoS 防护相关费用](https://cloud.tencent.com/document/product/1552/94162)
 <li>PLATFORM：平台默认防护，即不开启独立 DDoS 防护；</li>
-<li>BASE30_MAX300：开启独立 DDoS 防护，提供 30 Gbps 保底防护带宽，可配置最高 300 Gpbs 弹性防护带宽；</li>
-<li>BASE60_MAX600：开启独立 DDoS 防护，提供 60 Gbps 保底防护带宽，可配置最高 600 Gpbs 弹性防护带宽。</li>不填写参数时，取默认值 PLATFORM。
+<li>BASE30_MAX300：开启独立 DDoS 防护，提供 30 Gbps 保底防护带宽以及 300 Gbps 弹性防护带宽；</li>
+<li>BASE60_MAX600：开启独立 DDoS 防护，提供 60 Gbps 保底防护带宽以及 600 Gbps 弹性防护带宽。</li>不填写参数时，取默认值 PLATFORM。
         :type LevelMainland: str
         :param _MaxBandwidthMainland: 中国大陆地区独立 DDoS 防护的弹性防护带宽配置。
 仅当开启中国大陆区域独立 DDos 防护时有效（详见 LevelMainland 参数配置），且取值范围有如下限制：
@@ -6674,7 +6690,7 @@ class DDosProtectionConfig(AbstractModel):
         :type MaxBandwidthMainland: int
         :param _LevelOverseas: 全球（除中国大陆以外）地区独立 DDoS 防护的规格。
 <li>PLATFORM：平台默认防护，即不开启独立 DDoS 防护；</li>
-<li>ANYCAST300：开启独立 DDoS 防护，提供合计最大 300 Gbps 防护带宽；</li>
+<li>ANYCAST300：开启独立 DDoS 防护，提供 300 Gbps 防护带宽；</li>
 <li>ANYCAST_ALLIN：开启独立 DDoS 防护，使用全部可用防护资源进行防护。</li>不填写参数时，取默认值 PLATFORM。
         :type LevelOverseas: str
         """
@@ -16406,6 +16422,119 @@ class L7OfflineLog(AbstractModel):
         
 
 
+class LogFormat(AbstractModel):
+    """实时日志投递的输出格式。您可以直接通过 FormatType 参数使用指定预设日志输出格式（JSON Lines / csv），也可以在预设日志输出格式基础上，通过其他参数来自定义变体输出格式。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FormatType: 日志投递的预设输出格式类型，取值有：
+<li>json：使用预设日志输出格式 JSON Lines，单条日志中的字段以键值对方式呈现；</li>
+<li>csv：使用预设日志输出格式 csv，单条日志中仅呈现字段值，不呈现字段名称。</li>
+        :type FormatType: str
+        :param _BatchPrefix: 在每个日志投递批次之前添加的字符串。每个日志投递批次可能包含多条日志记录。
+        :type BatchPrefix: str
+        :param _BatchSuffix: 在每个日志投递批次后附加的字符串。
+        :type BatchSuffix: str
+        :param _RecordPrefix: 在每条日志记录之前添加的字符串。
+        :type RecordPrefix: str
+        :param _RecordSuffix: 在每条日志记录后附加的字符串。
+        :type RecordSuffix: str
+        :param _RecordDelimiter: 插入日志记录之间作为分隔符的字符串，取值有：
+<li>\n：换行符；</li>
+<li>\t：制表符；</li>
+<li>，：半角逗号。</li>
+        :type RecordDelimiter: str
+        :param _FieldDelimiter: 单条日志记录内，插入字段之间作为分隔符的字符串，取值有：
+<li>\t：制表符；</li>
+<li>，：半角逗号；</li>
+<li>;：半角分号。</li>
+        :type FieldDelimiter: str
+        """
+        self._FormatType = None
+        self._BatchPrefix = None
+        self._BatchSuffix = None
+        self._RecordPrefix = None
+        self._RecordSuffix = None
+        self._RecordDelimiter = None
+        self._FieldDelimiter = None
+
+    @property
+    def FormatType(self):
+        return self._FormatType
+
+    @FormatType.setter
+    def FormatType(self, FormatType):
+        self._FormatType = FormatType
+
+    @property
+    def BatchPrefix(self):
+        return self._BatchPrefix
+
+    @BatchPrefix.setter
+    def BatchPrefix(self, BatchPrefix):
+        self._BatchPrefix = BatchPrefix
+
+    @property
+    def BatchSuffix(self):
+        return self._BatchSuffix
+
+    @BatchSuffix.setter
+    def BatchSuffix(self, BatchSuffix):
+        self._BatchSuffix = BatchSuffix
+
+    @property
+    def RecordPrefix(self):
+        return self._RecordPrefix
+
+    @RecordPrefix.setter
+    def RecordPrefix(self, RecordPrefix):
+        self._RecordPrefix = RecordPrefix
+
+    @property
+    def RecordSuffix(self):
+        return self._RecordSuffix
+
+    @RecordSuffix.setter
+    def RecordSuffix(self, RecordSuffix):
+        self._RecordSuffix = RecordSuffix
+
+    @property
+    def RecordDelimiter(self):
+        return self._RecordDelimiter
+
+    @RecordDelimiter.setter
+    def RecordDelimiter(self, RecordDelimiter):
+        self._RecordDelimiter = RecordDelimiter
+
+    @property
+    def FieldDelimiter(self):
+        return self._FieldDelimiter
+
+    @FieldDelimiter.setter
+    def FieldDelimiter(self, FieldDelimiter):
+        self._FieldDelimiter = FieldDelimiter
+
+
+    def _deserialize(self, params):
+        self._FormatType = params.get("FormatType")
+        self._BatchPrefix = params.get("BatchPrefix")
+        self._BatchSuffix = params.get("BatchSuffix")
+        self._RecordPrefix = params.get("RecordPrefix")
+        self._RecordSuffix = params.get("RecordSuffix")
+        self._RecordDelimiter = params.get("RecordDelimiter")
+        self._FieldDelimiter = params.get("FieldDelimiter")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MaxAge(AbstractModel):
     """浏览器缓存规则配置，用于设置 MaxAge 默认值，默认为关闭状态
 
@@ -18052,6 +18181,8 @@ class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
         :type DeliveryConditions: list of DeliveryCondition
         :param _Sample: 采样比例，采用千分制，取值范围为1-1000，例如：填写 605 表示采样比例为 60.5%。不填保持原有配置。
         :type Sample: int
+        :param _LogFormat: 日志投递的输出格式。不填保持原有配置。
+        :type LogFormat: :class:`tencentcloud.teo.v20220901.models.LogFormat`
         :param _CustomEndpoint: 自定义 HTTP 服务的配置信息，不填保持原有配置。 
         :type CustomEndpoint: :class:`tencentcloud.teo.v20220901.models.CustomEndpoint`
         :param _S3: AWS S3 兼容存储桶的配置信息，不填保持原有配置。
@@ -18066,6 +18197,7 @@ class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
         self._CustomFields = None
         self._DeliveryConditions = None
         self._Sample = None
+        self._LogFormat = None
         self._CustomEndpoint = None
         self._S3 = None
 
@@ -18142,6 +18274,14 @@ class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
         self._Sample = Sample
 
     @property
+    def LogFormat(self):
+        return self._LogFormat
+
+    @LogFormat.setter
+    def LogFormat(self, LogFormat):
+        self._LogFormat = LogFormat
+
+    @property
     def CustomEndpoint(self):
         return self._CustomEndpoint
 
@@ -18178,6 +18318,9 @@ class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
                 obj._deserialize(item)
                 self._DeliveryConditions.append(obj)
         self._Sample = params.get("Sample")
+        if params.get("LogFormat") is not None:
+            self._LogFormat = LogFormat()
+            self._LogFormat._deserialize(params.get("LogFormat"))
         if params.get("CustomEndpoint") is not None:
             self._CustomEndpoint = CustomEndpoint()
             self._CustomEndpoint._deserialize(params.get("CustomEndpoint"))
@@ -21248,6 +21391,11 @@ class RealtimeLogDeliveryTask(AbstractModel):
         :type DeliveryConditions: list of DeliveryCondition
         :param _Sample: 采样比例，采用千分制，取值范围为1-1000，例如：605 表示采样比例为 60.5%。
         :type Sample: int
+        :param _LogFormat: 日志投递的输出格式。出参为 null 时表示为默认格式，默认格式逻辑如下：
+<li>当 TaskType 取值为 custom_endpoint 时，默认格式为多个 JSON 对象组成的数组，每个 JSON 对象为一条日志；</li>
+<li>当 TaskType 取值为 s3 时，默认格式为 JSON Lines。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogFormat: :class:`tencentcloud.teo.v20220901.models.LogFormat`
         :param _CLS: CLS 的配置信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CLS: :class:`tencentcloud.teo.v20220901.models.CLSTopic`
@@ -21273,6 +21421,7 @@ class RealtimeLogDeliveryTask(AbstractModel):
         self._CustomFields = None
         self._DeliveryConditions = None
         self._Sample = None
+        self._LogFormat = None
         self._CLS = None
         self._CustomEndpoint = None
         self._S3 = None
@@ -21368,6 +21517,14 @@ class RealtimeLogDeliveryTask(AbstractModel):
         self._Sample = Sample
 
     @property
+    def LogFormat(self):
+        return self._LogFormat
+
+    @LogFormat.setter
+    def LogFormat(self, LogFormat):
+        self._LogFormat = LogFormat
+
+    @property
     def CLS(self):
         return self._CLS
 
@@ -21430,6 +21587,9 @@ class RealtimeLogDeliveryTask(AbstractModel):
                 obj._deserialize(item)
                 self._DeliveryConditions.append(obj)
         self._Sample = params.get("Sample")
+        if params.get("LogFormat") is not None:
+            self._LogFormat = LogFormat()
+            self._LogFormat._deserialize(params.get("LogFormat"))
         if params.get("CLS") is not None:
             self._CLS = CLSTopic()
             self._CLS._deserialize(params.get("CLS"))
@@ -23843,21 +24003,25 @@ class Task(AbstractModel):
         r"""
         :param _JobId: 任务 ID。
         :type JobId: str
-        :param _Status: 状态。
-        :type Status: str
         :param _Target: 资源。
         :type Target: str
         :param _Type: 任务类型。
         :type Type: str
+        :param _Status: 状态。取值有：
+<li>processing：处理中；</li>
+<li>success：成功；</li>
+<li> failed：失败；</li>
+<li>timeout：超时。</li>
+        :type Status: str
         :param _CreateTime: 任务创建时间。
         :type CreateTime: str
         :param _UpdateTime: 任务完成时间。
         :type UpdateTime: str
         """
         self._JobId = None
-        self._Status = None
         self._Target = None
         self._Type = None
+        self._Status = None
         self._CreateTime = None
         self._UpdateTime = None
 
@@ -23868,14 +24032,6 @@ class Task(AbstractModel):
     @JobId.setter
     def JobId(self, JobId):
         self._JobId = JobId
-
-    @property
-    def Status(self):
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
 
     @property
     def Target(self):
@@ -23892,6 +24048,14 @@ class Task(AbstractModel):
     @Type.setter
     def Type(self, Type):
         self._Type = Type
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
     @property
     def CreateTime(self):
@@ -23912,9 +24076,9 @@ class Task(AbstractModel):
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
-        self._Status = params.get("Status")
         self._Target = params.get("Target")
         self._Type = params.get("Type")
+        self._Status = params.get("Status")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())

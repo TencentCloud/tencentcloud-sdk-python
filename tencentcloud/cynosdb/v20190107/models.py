@@ -5332,7 +5332,7 @@ class CreateProxyRequest(AbstractModel):
         :type UniqueVpcId: str
         :param _UniqueSubnetId: 私有网络子网ID，默认与集群子网ID保持一致
         :type UniqueSubnetId: str
-        :param _ProxyCount: 数据库代理组节点个数
+        :param _ProxyCount: 数据库代理组节点个数（该参数不再建议使用，建议使用ProxyZones)
         :type ProxyCount: int
         :param _ConnectionPoolType: 连接池类型：SessionConnectionPool(会话级别连接池 )
         :type ConnectionPoolType: str
@@ -5344,7 +5344,7 @@ class CreateProxyRequest(AbstractModel):
         :type SecurityGroupIds: list of str
         :param _Description: 描述说明
         :type Description: str
-        :param _ProxyZones: 数据库节点信息
+        :param _ProxyZones: 数据库节点信息（该参数与ProxyCount需要任选一个输入）
         :type ProxyZones: list of ProxyZone
         """
         self._ClusterId = None
@@ -11379,6 +11379,118 @@ class DescribeBinlogsResponse(AbstractModel):
                 obj = BinlogItem()
                 obj._deserialize(item)
                 self._Binlogs.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeChangedParamsAfterUpgradeRequest(AbstractModel):
+    """DescribeChangedParamsAfterUpgrade请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群ID
+        :type InstanceId: str
+        :param _DstCpu: 变配后的CPU
+        :type DstCpu: int
+        :param _DstMem: 变配后的MEM，单位G
+        :type DstMem: int
+        """
+        self._InstanceId = None
+        self._DstCpu = None
+        self._DstMem = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DstCpu(self):
+        return self._DstCpu
+
+    @DstCpu.setter
+    def DstCpu(self, DstCpu):
+        self._DstCpu = DstCpu
+
+    @property
+    def DstMem(self):
+        return self._DstMem
+
+    @DstMem.setter
+    def DstMem(self, DstMem):
+        self._DstMem = DstMem
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DstCpu = params.get("DstCpu")
+        self._DstMem = params.get("DstMem")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeChangedParamsAfterUpgradeResponse(AbstractModel):
+    """DescribeChangedParamsAfterUpgrade返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 参数个数
+        :type TotalCount: int
+        :param _Items: 实例参数列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of ParamItemInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = ParamItemInfo()
+                obj._deserialize(item)
+                self._Items.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -23094,6 +23206,82 @@ class ParamItemDetail(AbstractModel):
         self._Description = params.get("Description")
         self._IsFunc = params.get("IsFunc")
         self._Func = params.get("Func")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ParamItemInfo(AbstractModel):
+    """参数变化信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ParamName: 参数名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamName: str
+        :param _NewValue: 参数新值
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NewValue: str
+        :param _OldValue: 参数旧值
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OldValue: str
+        :param _ValueFunction: 参数公式
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValueFunction: str
+        """
+        self._ParamName = None
+        self._NewValue = None
+        self._OldValue = None
+        self._ValueFunction = None
+
+    @property
+    def ParamName(self):
+        return self._ParamName
+
+    @ParamName.setter
+    def ParamName(self, ParamName):
+        self._ParamName = ParamName
+
+    @property
+    def NewValue(self):
+        return self._NewValue
+
+    @NewValue.setter
+    def NewValue(self, NewValue):
+        self._NewValue = NewValue
+
+    @property
+    def OldValue(self):
+        return self._OldValue
+
+    @OldValue.setter
+    def OldValue(self, OldValue):
+        self._OldValue = OldValue
+
+    @property
+    def ValueFunction(self):
+        return self._ValueFunction
+
+    @ValueFunction.setter
+    def ValueFunction(self, ValueFunction):
+        self._ValueFunction = ValueFunction
+
+
+    def _deserialize(self, params):
+        self._ParamName = params.get("ParamName")
+        self._NewValue = params.get("NewValue")
+        self._OldValue = params.get("OldValue")
+        self._ValueFunction = params.get("ValueFunction")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

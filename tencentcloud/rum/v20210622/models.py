@@ -2117,7 +2117,7 @@ class DescribeDataEventUrlRequest(AbstractModel):
         :type NetType: str
         :param _Device: 机型
         :type Device: str
-        :param _IsAbroad: 是否海外
+        :param _IsAbroad: 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
         :type IsAbroad: str
         :param _Os: 操作系统
         :type Os: str

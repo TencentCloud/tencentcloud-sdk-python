@@ -9053,7 +9053,7 @@ class CreateSealPolicyRequest(AbstractModel):
 建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。
 可登录腾讯电子签控制台，在 "印章"->"印章中心"选择查看的印章，在"印章详情" 中查看某个印章的SealId(在页面中展示为印章ID)。
         :type SealId: str
-        :param _Expired: 授权有效期。时间戳秒级
+        :param _Expired: 授权有效期，时间戳秒级。可以传0，代表有效期到2099年12月12日23点59分59秒。
         :type Expired: int
         :param _UserIds: 需要授权的用户UserId集合。跟上面的SealId参数配合使用。选填，跟上面的Users同时起作用
         :type UserIds: list of str

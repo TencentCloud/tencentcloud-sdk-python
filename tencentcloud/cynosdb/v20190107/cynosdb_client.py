@@ -946,6 +946,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeChangedParamsAfterUpgrade(self, request):
+        """本接口（DescribeChangedParamsAfterUpgrade）用于查询升降配运行参数对比
+
+        :param request: Request instance for DescribeChangedParamsAfterUpgrade.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeChangedParamsAfterUpgradeRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeChangedParamsAfterUpgradeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeChangedParamsAfterUpgrade", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeChangedParamsAfterUpgradeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeClusterDatabases(self, request):
         """获取集群数据库列表
 

@@ -1085,7 +1085,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeIPStatusList(self, request):
-        """ip防护状态查询
+        """IP防护状态查询
 
         :param request: Request instance for DescribeIPStatusList.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeIPStatusListRequest`

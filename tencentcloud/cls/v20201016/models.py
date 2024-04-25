@@ -3184,6 +3184,12 @@ class CosRechargeInfo(AbstractModel):
         :param _ExtractRuleInfo: 见： ExtractRuleInfo 结构描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtractRuleInfo: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
+        :param _TaskType: COS导入任务类型。1：一次性导入任务；2：持续性导入任务。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskType: int
+        :param _Metadata: 元数据。支持 bucket，object。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Metadata: list of str
         """
         self._Id = None
         self._TopicId = None
@@ -3200,6 +3206,8 @@ class CosRechargeInfo(AbstractModel):
         self._Progress = None
         self._Compress = None
         self._ExtractRuleInfo = None
+        self._TaskType = None
+        self._Metadata = None
 
     @property
     def Id(self):
@@ -3321,6 +3329,22 @@ class CosRechargeInfo(AbstractModel):
     def ExtractRuleInfo(self, ExtractRuleInfo):
         self._ExtractRuleInfo = ExtractRuleInfo
 
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def Metadata(self):
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -3340,6 +3364,8 @@ class CosRechargeInfo(AbstractModel):
         if params.get("ExtractRuleInfo") is not None:
             self._ExtractRuleInfo = ExtractRuleInfo()
             self._ExtractRuleInfo._deserialize(params.get("ExtractRuleInfo"))
+        self._TaskType = params.get("TaskType")
+        self._Metadata = params.get("Metadata")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6785,7 +6811,7 @@ class DataTransformTaskInfo(AbstractModel):
         :type LogsetId: str
         :param _DstResources: 加工任务目的topic_id以及别名
         :type DstResources: list of DataTransformResouceInfo
-        :param _EtlContent: 加工逻辑函数
+        :param _EtlContent: 加工逻辑函数。
         :type EtlContent: str
         """
         self._Name = None
@@ -9246,7 +9272,7 @@ class DescribeDataTransformInfoRequest(AbstractModel):
 
 必选：否
 
-<br><li> srctopicId
+<br><li> topicId
 
 按照【源topicId】进行过滤。
 类型：String
@@ -11632,37 +11658,57 @@ class ExtractRuleInfo(AbstractModel):
         :param _UnMatchLogKey: 失败日志的key
 注意：此字段可能返回 null，表示取不到有效值。
         :type UnMatchLogKey: str
-        :param _Backtracking: 增量采集模式下的回溯数据量，默认-1（全量采集）；其他非负数表示增量采集（从最新的位置，往前采集${Backtracking}字节（Byte）的日志）最大支持1073741824（1G）。
+        :param _Backtracking: 增量采集模式下的回溯数据量，默认：-1（全量采集）；其他非负数表示增量采集（从最新的位置，往前采集${Backtracking}字节（Byte）的日志）最大支持1073741824（1G）。
+注意：
+- COS导入不支持此字段。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Backtracking: int
-        :param _IsGBK: 是否为Gbk编码.   0: 否, 1: 是
+        :param _IsGBK: 是否为Gbk编码。 0：否；1：是。
+注意：
+- COS导入不支持此字段。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsGBK: int
-        :param _JsonStandard: 是否为标准json.   0: 否, 1: 是
+        :param _JsonStandard: 是否为标准json。  0：否； 1：是。
 注意：此字段可能返回 null，表示取不到有效值。
         :type JsonStandard: int
         :param _Protocol: syslog传输协议，取值为tcp或者udp。
-该字段适用于：创建采集规则配置、修改采集规则配置
+注意：
+- 该字段适用于：创建采集规则配置、修改采集规则配置。
+- COS导入不支持此字段。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Protocol: str
         :param _Address: syslog系统日志采集指定采集器监听的地址和端口 ，形式：[ip]:[port]。举例：127.0.0.1:9000
-该字段适用于：创建采集规则配置、修改采集规则配置
+注意：
+- 该字段适用于：创建采集规则配置、修改采集规则配置。
+- COS导入不支持此字段。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Address: str
         :param _ParseProtocol: rfc3164：指定系统日志采集使用RFC3164协议解析日志。
 rfc5424：指定系统日志采集使用RFC5424协议解析日志。
-auto：自动匹配rfc3164或者rfc5424其中一种协议
-该字段适用于：创建采集规则配置、修改采集规则配置
+auto：自动匹配rfc3164或者rfc5424其中一种协议。
+注意：
+- 该字段适用于：创建采集规则配置、修改采集规则配置
+- COS导入不支持此字段。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParseProtocol: str
-        :param _MetadataType: 元数据类型，0: 不使用元数据信息，1:使用机器组元数据，2:使用用户自定义元数据，3:使用采集配置路径，
+        :param _MetadataType: 元数据类型。0: 不使用元数据信息；1:使用机器组元数据；2:使用用户自定义元数据；3:使用采集配置路径。
+注意：
+- COS导入不支持此字段。
         :type MetadataType: int
-        :param _PathRegex: 采集配置路径正则表达式，MetadataType为3时必填
+        :param _PathRegex: 采集配置路径正则表达式。
+注意：
+- MetadataType为3时必填。
+- COS导入不支持此字段。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PathRegex: str
-        :param _MetaTags: 用户自定义元数据信息，MetadataType为2时必填
+        :param _MetaTags: 用户自定义元数据信息。
+注意：
+- MetadataType为2时必填。
+- COS导入不支持此字段。
         :type MetaTags: list of MetaTagInfo
-        :param _EventLogRules: Windows事件日志采集
+        :param _EventLogRules: Windows事件日志采集。
+注意：
+- COS导入不支持此字段。
         :type EventLogRules: list of EventLog
         """
         self._TimeKey = None
@@ -14172,7 +14218,11 @@ class MergePartitionRequest(AbstractModel):
         r"""
         :param _TopicId: 日志主题ID
         :type TopicId: str
-        :param _PartitionId: 合并的PartitionId
+        :param _PartitionId: 合并的PartitionId（找到下一个分区InclusiveBeginKey与入参PartitionId对应的ExclusiveEndKey相等，且找到的分区必须是读写分区（Staus:readwrite），入参PartitionId与找到的PartitionId设置为只读分区（Status:readonly）,再新建一个新的读写分区） 。[获取分区列表](https://cloud.tencent.com/document/product/614/56469)
+
+1. 入参PartitionId只能是读写分区（Status的值有readonly，readwrite），且能找到入参PartitionId的下一个可读写分区（找到下一个分区InclusiveBeginKey与入参PartitionId对应的ExclusiveEndKey相等）；
+2. 入参PartitionId不能是最后一个分区（PartitionId的ExclusiveEndKey不能是ffffffffffffffffffffffffffffffff）；
+3. topic的分区数量是有限制的（默认50个），合并之后不能超过最大分区，否则不能合并。
         :type PartitionId: int
         """
         self._TopicId = None
@@ -16991,9 +17041,10 @@ class MonitorTime(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 可选值：
-<br><li> Period - 周期执行
-<br><li> Fixed - 定期执行
+        :param _Type: 执行周期， 可选值：Period；Fixed。
+
+- Period：固定频率
+- Fixed：固定时间
         :type Type: str
         :param _Time: 执行的周期，或者定制执行的时间节点。单位为分钟，取值范围为1~1440。
         :type Time: int
@@ -17303,7 +17354,7 @@ class OpenKafkaConsumerRequest(AbstractModel):
         r"""
         :param _FromTopicId: 日志主题ID
         :type FromTopicId: str
-        :param _Compression: 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
+        :param _Compression: 压缩方式[0:NONE；2:SNAPPY；3:LZ4]，默认：0
         :type Compression: int
         :param _ConsumerContent: kafka协议消费数据格式
         :type ConsumerContent: :class:`tencentcloud.cls.v20201016.models.KafkaConsumerContent`
@@ -18746,7 +18797,7 @@ class SearchCosRechargeInfoRequest(AbstractModel):
         :type BucketRegion: str
         :param _Prefix: cos文件所在文件夹的前缀
         :type Prefix: str
-        :param _Compress: 压缩模式:   "", "gzip", "lzop", "snappy”;   默认""
+        :param _Compress: 压缩模式:   "", "gzip", "lzop", "snappy";   默认""
         :type Compress: str
         """
         self._TopicId = None
@@ -19059,10 +19110,11 @@ class SearchLogRequest(AbstractModel):
         :type SyntaxRule: int
         :param _TopicId: - 要检索分析的日志主题ID，仅能指定一个日志主题。
 - 如需同时检索多个日志主题，请使用Topics参数。
+- TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。
         :type TopicId: str
         :param _Topics: - 要检索分析的日志主题列表，最大支持20个日志主题。
 - 检索单个日志主题时请使用TopicId。
-- 不能同时使用TopicId和Topics。
+- TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。
         :type Topics: list of MultiTopicSearchInformation
         :param _Limit: 表示单次查询返回的原始日志条数，默认为100，最大值为1000，获取后续日志需使用Context参数
 注意：

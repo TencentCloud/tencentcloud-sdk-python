@@ -73,7 +73,7 @@ class MariadbClient(AbstractClient):
 
 
     def CancelDcnJob(self, request):
-        """取消DCN同步
+        """本接口（CancelDcnJob）用于取消DCN同步
 
         :param request: Request instance for CancelDcnJob.
         :type request: :class:`tencentcloud.mariadb.v20170312.models.CancelDcnJobRequest`
