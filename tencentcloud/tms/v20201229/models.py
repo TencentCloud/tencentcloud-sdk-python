@@ -18,6 +18,76 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AnswerQuestionRequest(AbstractModel):
+    """AnswerQuestion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Question: 用户问题
+        :type Question: str
+        """
+        self._Question = None
+
+    @property
+    def Question(self):
+        return self._Question
+
+    @Question.setter
+    def Question(self, Question):
+        self._Question = Question
+
+
+    def _deserialize(self, params):
+        self._Question = params.get("Question")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnswerQuestionResponse(AbstractModel):
+    """AnswerQuestion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Answer: 匹配到的答案
+        :type Answer: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Answer = None
+        self._RequestId = None
+
+    @property
+    def Answer(self):
+        return self._Answer
+
+    @Answer.setter
+    def Answer(self, Answer):
+        self._Answer = Answer
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Answer = params.get("Answer")
+        self._RequestId = params.get("RequestId")
+
+
 class DetailResults(AbstractModel):
     """文本审核返回的详细结果
 

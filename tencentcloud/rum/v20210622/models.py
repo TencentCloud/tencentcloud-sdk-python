@@ -372,7 +372,7 @@ class CreateTawInstanceRequest(AbstractModel):
         :type Tags: list of Tag
         :param _InstanceDesc: 实例描述，(最大长度不超过1024字节)
         :type InstanceDesc: str
-        :param _CountNum: 每天数据上报量
+        :param _CountNum: 每天数据上报量，（不作量级限制）
         :type CountNum: str
         :param _PeriodRetain: 数据存储时长计费
         :type PeriodRetain: str
@@ -582,7 +582,7 @@ class CreateWhitelistRequest(AbstractModel):
         r"""
         :param _InstanceID: 实例ID：taw-123
         :type InstanceID: str
-        :param _Remark: 备注
+        :param _Remark: 备注（暂未作字节数限制）
         :type Remark: str
         :param _WhitelistUin: uin：业务方标识
         :type WhitelistUin: str
@@ -1783,7 +1783,7 @@ class DescribeDataCustomUrlRequest(AbstractModel):
         :type NetType: str
         :param _Device: 机型
         :type Device: str
-        :param _IsAbroad: 是否海外
+        :param _IsAbroad: 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
         :type IsAbroad: str
         :param _Os: 操作系统
         :type Os: str
@@ -2439,7 +2439,7 @@ class DescribeDataFetchProjectRequest(AbstractModel):
         :type NetType: str
         :param _Device: 机型
         :type Device: str
-        :param _IsAbroad: 是否海外
+        :param _IsAbroad: 是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
         :type IsAbroad: str
         :param _Os: 操作系统
         :type Os: str
@@ -2797,7 +2797,7 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
         :type NetType: str
         :param _Device: 机型
         :type Device: str
-        :param _IsAbroad: 是否海外
+        :param _IsAbroad: 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
         :type IsAbroad: str
         :param _Os: 操作系统
         :type Os: str
@@ -3131,7 +3131,7 @@ class DescribeDataFetchUrlRequest(AbstractModel):
         :type NetType: str
         :param _Device: 机型
         :type Device: str
-        :param _IsAbroad: 是否海外
+        :param _IsAbroad: 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
         :type IsAbroad: str
         :param _Os: 操作系统
         :type Os: str
@@ -3595,7 +3595,7 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
         :type NetType: str
         :param _Device: 机型
         :type Device: str
-        :param _IsAbroad: 是否海外
+        :param _IsAbroad: 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
         :type IsAbroad: str
         :param _Os: 操作系统
         :type Os: str
@@ -3899,7 +3899,7 @@ class DescribeDataPerformancePageRequest(AbstractModel):
         :type ExtSecond: str
         :param _ExtThird: 自定义3
         :type ExtThird: str
-        :param _IsAbroad: 是否海外
+        :param _IsAbroad: 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
         :type IsAbroad: str
         :param _Browser: 浏览器
         :type Browser: str
@@ -4239,7 +4239,7 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
         :type NetType: str
         :param _Device: 机型
         :type Device: str
-        :param _IsAbroad: 是否海外
+        :param _IsAbroad: 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
         :type IsAbroad: str
         :param _Os: 操作系统
         :type Os: str
@@ -4549,7 +4549,7 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
         :type NetType: str
         :param _Device: 机型
         :type Device: str
-        :param _IsAbroad: 显示是否海外
+        :param _IsAbroad: 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
         :type IsAbroad: str
         :param _Os: 操作系统
         :type Os: str
@@ -5085,7 +5085,7 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
         :type NetType: str
         :param _Device: 机型
         :type Device: str
-        :param _IsAbroad: 是否海外
+        :param _IsAbroad: 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
         :type IsAbroad: str
         :param _Os: 操作系统
         :type Os: str
@@ -5419,7 +5419,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
         :type NetType: str
         :param _Device: 机型
         :type Device: str
-        :param _IsAbroad: 是否海外
+        :param _IsAbroad: 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
         :type IsAbroad: str
         :param _Os: 操作系统
         :type Os: str
@@ -5753,7 +5753,7 @@ class DescribeDataStaticResourceRequest(AbstractModel):
         :type NetType: str
         :param _Device: 机型
         :type Device: str
-        :param _IsAbroad: 是否海外
+        :param _IsAbroad: 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
         :type IsAbroad: str
         :param _Os: 操作系统
         :type Os: str
@@ -6087,7 +6087,7 @@ class DescribeDataStaticUrlRequest(AbstractModel):
         :type NetType: str
         :param _Device: 机型
         :type Device: str
-        :param _IsAbroad: 是否海外
+        :param _IsAbroad: 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
         :type IsAbroad: str
         :param _Os: 操作系统
         :type Os: str
@@ -6421,7 +6421,7 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
         :type NetType: str
         :param _Device: 机型
         :type Device: str
-        :param _IsAbroad: 是否海外
+        :param _IsAbroad: 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
         :type IsAbroad: str
         :param _Os: 操作系统
         :type Os: str

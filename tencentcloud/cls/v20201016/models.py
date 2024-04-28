@@ -4608,6 +4608,10 @@ class CreateCosRechargeRequest(AbstractModel):
         :type Compress: str
         :param _ExtractRuleInfo: 提取规则，如果设置了ExtractRule，则必须设置LogType
         :type ExtractRuleInfo: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
+        :param _TaskType: COS导入任务类型。1：一次性导入任务；2：持续性导入任务。默认为1：一次性导入任务
+        :type TaskType: int
+        :param _Metadata: 元数据。
+        :type Metadata: list of str
         """
         self._TopicId = None
         self._LogsetId = None
@@ -4618,6 +4622,8 @@ class CreateCosRechargeRequest(AbstractModel):
         self._LogType = None
         self._Compress = None
         self._ExtractRuleInfo = None
+        self._TaskType = None
+        self._Metadata = None
 
     @property
     def TopicId(self):
@@ -4691,6 +4697,22 @@ class CreateCosRechargeRequest(AbstractModel):
     def ExtractRuleInfo(self, ExtractRuleInfo):
         self._ExtractRuleInfo = ExtractRuleInfo
 
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def Metadata(self):
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
+
 
     def _deserialize(self, params):
         self._TopicId = params.get("TopicId")
@@ -4704,6 +4726,8 @@ class CreateCosRechargeRequest(AbstractModel):
         if params.get("ExtractRuleInfo") is not None:
             self._ExtractRuleInfo = ExtractRuleInfo()
             self._ExtractRuleInfo._deserialize(params.get("ExtractRuleInfo"))
+        self._TaskType = params.get("TaskType")
+        self._Metadata = params.get("Metadata")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4721,7 +4745,7 @@ class CreateCosRechargeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: cos_recharge记录id
+        :param _Id: COS导入任务id
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -15593,19 +15617,43 @@ class ModifyCosRechargeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: COS导入配置ID
+        :param _Id: COS导入配置Id
         :type Id: str
         :param _TopicId: 日志主题Id
         :type TopicId: str
         :param _Name: COS导入任务名称
         :type Name: str
-        :param _Enable: 是否启用:   0： 未启用  ， 1：启用
+        :param _Enable: 任务状态   0： 停用 ， 1：启用
         :type Enable: int
+        :param _Bucket: COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。	
+        :type Bucket: str
+        :param _BucketRegion: COS存储桶所在地域，详见产品支持的[地域列表](https://cloud.tencent.com/document/product/436/6224)。
+        :type BucketRegion: str
+        :param _Prefix: COS文件所在文件夹的前缀
+        :type Prefix: str
+        :param _LogType: 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表单行全文； 默认为minimalist_log
+        :type LogType: str
+        :param _Compress: 解析格式。supported: "", "gzip", "lzop", "snappy"; 默认空
+        :type Compress: str
+        :param _ExtractRuleInfo: 提取规则，如果设置了ExtractRule，则必须设置LogType
+        :type ExtractRuleInfo: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
+        :param _TaskType: COS导入任务类型。1：一次性导入任务；2：持续性导入任务。
+        :type TaskType: int
+        :param _Metadata: 元数据。支持 bucket，object。
+        :type Metadata: list of str
         """
         self._Id = None
         self._TopicId = None
         self._Name = None
         self._Enable = None
+        self._Bucket = None
+        self._BucketRegion = None
+        self._Prefix = None
+        self._LogType = None
+        self._Compress = None
+        self._ExtractRuleInfo = None
+        self._TaskType = None
+        self._Metadata = None
 
     @property
     def Id(self):
@@ -15639,12 +15687,86 @@ class ModifyCosRechargeRequest(AbstractModel):
     def Enable(self, Enable):
         self._Enable = Enable
 
+    @property
+    def Bucket(self):
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def BucketRegion(self):
+        return self._BucketRegion
+
+    @BucketRegion.setter
+    def BucketRegion(self, BucketRegion):
+        self._BucketRegion = BucketRegion
+
+    @property
+    def Prefix(self):
+        return self._Prefix
+
+    @Prefix.setter
+    def Prefix(self, Prefix):
+        self._Prefix = Prefix
+
+    @property
+    def LogType(self):
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def Compress(self):
+        return self._Compress
+
+    @Compress.setter
+    def Compress(self, Compress):
+        self._Compress = Compress
+
+    @property
+    def ExtractRuleInfo(self):
+        return self._ExtractRuleInfo
+
+    @ExtractRuleInfo.setter
+    def ExtractRuleInfo(self, ExtractRuleInfo):
+        self._ExtractRuleInfo = ExtractRuleInfo
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def Metadata(self):
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
         self._TopicId = params.get("TopicId")
         self._Name = params.get("Name")
         self._Enable = params.get("Enable")
+        self._Bucket = params.get("Bucket")
+        self._BucketRegion = params.get("BucketRegion")
+        self._Prefix = params.get("Prefix")
+        self._LogType = params.get("LogType")
+        self._Compress = params.get("Compress")
+        if params.get("ExtractRuleInfo") is not None:
+            self._ExtractRuleInfo = ExtractRuleInfo()
+            self._ExtractRuleInfo._deserialize(params.get("ExtractRuleInfo"))
+        self._TaskType = params.get("TaskType")
+        self._Metadata = params.get("Metadata")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

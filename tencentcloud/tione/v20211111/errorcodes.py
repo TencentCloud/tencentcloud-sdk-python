@@ -263,6 +263,9 @@ INTERNALERROR_QUERYSUBNETINFOFAILED = 'InternalError.QuerySubnetInfoFailed'
 # 查询用户临时秘钥失败
 INTERNALERROR_QUERYUSERTMPCREDENTIALFAILED = 'InternalError.QueryUserTMPCredentialFailed'
 
+# 查询vpc信息失败
+INTERNALERROR_QUERYVPCINFOFAILED = 'InternalError.QueryVPCInfoFailed'
+
 # 停止任务失败。
 INTERNALERROR_STOPJOBINSTANCEFAILED = 'InternalError.StopJobInstanceFailed'
 
@@ -349,6 +352,9 @@ INVALIDPARAMETERVALUE_DATASETNUMLIMITEXCEEDED = 'InvalidParameterValue.DatasetNu
 
 # 实例名称冲突，请更换名称后重试。
 INVALIDPARAMETERVALUE_DUPLICATENAME = 'InvalidParameterValue.DuplicateName'
+
+# 文件系统路径访问权限受限
+INVALIDPARAMETERVALUE_FSPATHINACCESSIBLE = 'InvalidParameterValue.FSPathInaccessible'
 
 # 训练框架对应的版本不支持，请阅读文档查看TIONE目前支持的框架和版本。
 INVALIDPARAMETERVALUE_FRAMEWORKVERSIONNOTSUPPORT = 'InvalidParameterValue.FrameworkVersionNotSupport'
@@ -479,8 +485,14 @@ RESOURCEINSUFFICIENT = 'ResourceInsufficient'
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'
 
+# 文件系统不存在
+RESOURCENOTFOUND_CFSNOTFOUND = 'ResourceNotFound.CfsNotFound'
+
 # 没有该模型。
 RESOURCENOTFOUND_NOMODEL = 'ResourceNotFound.NoModel'
+
+# vpc不存在
+RESOURCENOTFOUND_VPCNOTFOUND = 'ResourceNotFound.VPCNotFound'
 
 # 资源不可用。
 RESOURCEUNAVAILABLE = 'ResourceUnavailable'

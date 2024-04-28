@@ -4363,7 +4363,7 @@ class CreateSparkAppRequest(AbstractModel):
         :type DataEngine: str
         :param _AppFile: spark作业程序包文件路径
         :type AppFile: str
-        :param _RoleArn: 数据访问策略，CAM Role arn
+        :param _RoleArn: 数据访问策略，CAM Role arn，控制台通过数据作业—>作业配置获取，SDK通过DescribeUserRoles接口获取对应的值；
         :type RoleArn: int
         :param _AppDriverSize: 指定的Driver规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
         :type AppDriverSize: str
@@ -21197,7 +21197,7 @@ class SparkJobInfo(AbstractModel):
         :type JobUpdateTime: int
         :param _CurrentTaskId: spark作业最近任务ID
         :type CurrentTaskId: str
-        :param _JobStatus: spark作业最近运行状态
+        :param _JobStatus: spark作业最近运行状态，初始化：0，运行中：1，成功：2，数据写入中： 3， 排队中： 4， 失败： -1， 已删除： -3，已过期： -5
         :type JobStatus: int
         :param _StreamingStat: spark流作业统计
 注意：此字段可能返回 null，表示取不到有效值。
@@ -21250,6 +21250,9 @@ class SparkJobInfo(AbstractModel):
         :param _IsSessionStarted: 是否使用session脚本的sql运行任务：false：否，true：是
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsSessionStarted: bool
+        :param _EngineTypeDetail: 引擎详细类型：SparkSQL、PrestoSQL、SparkBatch、StandardSpark、StandardPresto
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineTypeDetail: str
         """
         self._JobId = None
         self._JobName = None
@@ -21292,6 +21295,7 @@ class SparkJobInfo(AbstractModel):
         self._DataEngineImageVersion = None
         self._IsInherit = None
         self._IsSessionStarted = None
+        self._EngineTypeDetail = None
 
     @property
     def JobId(self):
@@ -21621,6 +21625,14 @@ class SparkJobInfo(AbstractModel):
     def IsSessionStarted(self, IsSessionStarted):
         self._IsSessionStarted = IsSessionStarted
 
+    @property
+    def EngineTypeDetail(self):
+        return self._EngineTypeDetail
+
+    @EngineTypeDetail.setter
+    def EngineTypeDetail(self, EngineTypeDetail):
+        self._EngineTypeDetail = EngineTypeDetail
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -21666,6 +21678,7 @@ class SparkJobInfo(AbstractModel):
         self._DataEngineImageVersion = params.get("DataEngineImageVersion")
         self._IsInherit = params.get("IsInherit")
         self._IsSessionStarted = params.get("IsSessionStarted")
+        self._EngineTypeDetail = params.get("EngineTypeDetail")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24721,7 +24734,7 @@ class UpdateUserDataEngineConfigRequest(AbstractModel):
         :type DataEngineId: str
         :param _DataEngineConfigPairs: 用户自定义引擎配置项集合。该参数需要传用户需要添加的全部配置项，例如，已有配置项k1:v1，添加k2:v2，需要传[k1:v1,k2:v2]。
         :type DataEngineConfigPairs: list of DataEngineConfigPair
-        :param _SessionResourceTemplate: 作业引擎资源配置模版
+        :param _SessionResourceTemplate: 作业引擎资源配置模板
         :type SessionResourceTemplate: :class:`tencentcloud.dlc.v20210125.models.SessionResourceTemplate`
         """
         self._DataEngineId = None

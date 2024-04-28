@@ -10730,6 +10730,110 @@ class Department(AbstractModel):
         
 
 
+class DescribeBatchOrganizationRegistrationUrlsRequest(AbstractModel):
+    """DescribeBatchOrganizationRegistrationUrls请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _TaskId: 通过接口CreateBatchOrganizationRegistrationTasks创建企业批量认证链接任得到的任务Id
+        :type TaskId: str
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        self._Operator = None
+        self._TaskId = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._TaskId = params.get("TaskId")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBatchOrganizationRegistrationUrlsResponse(AbstractModel):
+    """DescribeBatchOrganizationRegistrationUrls返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrganizationAuthUrls: 企业批量注册链接信息
+        :type OrganizationAuthUrls: list of OrganizationAuthUrl
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._OrganizationAuthUrls = None
+        self._RequestId = None
+
+    @property
+    def OrganizationAuthUrls(self):
+        return self._OrganizationAuthUrls
+
+    @OrganizationAuthUrls.setter
+    def OrganizationAuthUrls(self, OrganizationAuthUrls):
+        self._OrganizationAuthUrls = OrganizationAuthUrls
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("OrganizationAuthUrls") is not None:
+            self._OrganizationAuthUrls = []
+            for item in params.get("OrganizationAuthUrls"):
+                obj = OrganizationAuthUrl()
+                obj._deserialize(item)
+                self._OrganizationAuthUrls.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeBillUsageDetailRequest(AbstractModel):
     """DescribeBillUsageDetail请求参数结构体
 
@@ -18811,6 +18915,59 @@ class OrgBillSummary(AbstractModel):
         self._Used = params.get("Used")
         self._Available = params.get("Available")
         self._QuotaType = params.get("QuotaType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OrganizationAuthUrl(AbstractModel):
+    """企业批量注册链接信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuthUrl: 企业批量注册链接，根据Endpoint的不同设置，返回不同的链接地址。失效时间：7天
+跳转链接, 链接的有效期根据企业,员工状态和终端等有区别, 可以参考下表
+<table> <thead> <tr> <th>Endpoint</th> <th>示例</th> <th>链接有效期限</th> </tr> </thead>  <tbody>
+ <tr> <td>PC</td> <td>https://qian.tencent.com/console/batch-register?token=yDSx0UUgtjuaf4UEfd2MjCnfI1iuXFE6&orgName=批量认证线上测试企业9</td> <td>7天</td> </tr> 
+<tr> <td>PC_SHORT_URL</td> <td>https://test.essurl.cn/8gDKUBAWK8</td> <td>7天</td> </tr> 
+<tr> <td>APP</td> <td>/pages/guide/index?to=REGISTER_ENTERPRISE_FOR_BATCH&urlAuthToken=yDSx0UUgtjuaf4UEfd2MjCnfI1iuXFE6&orgName=批量认证线上测试企业9</td> <td>7天</td> </tr> </tbody> </table>
+注： 
+`1.创建的链接应避免被转义，如：&被转义为\u0026；如使用Postman请求后，请选择响应类型为 JSON，否则链接将被转义`
+
+        :type AuthUrl: str
+        :param _ErrorMessage: 企业批量注册的错误信息，例如：企业三要素不通过	
+        :type ErrorMessage: str
+        """
+        self._AuthUrl = None
+        self._ErrorMessage = None
+
+    @property
+    def AuthUrl(self):
+        return self._AuthUrl
+
+    @AuthUrl.setter
+    def AuthUrl(self, AuthUrl):
+        self._AuthUrl = AuthUrl
+
+    @property
+    def ErrorMessage(self):
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+
+    def _deserialize(self, params):
+        self._AuthUrl = params.get("AuthUrl")
+        self._ErrorMessage = params.get("ErrorMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

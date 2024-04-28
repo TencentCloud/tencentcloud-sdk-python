@@ -858,7 +858,7 @@ class SubmitDrawPortraitJobRequest(AbstractModel):
         :type ModelId: str
         :param _StyleId: 写真风格模板，支持以下风格：
 zhengjian_female：证件照-长发（女）
-zhengjian_shouthair_female：证件照-短发（女）
+zhengjian_shorthair_female：证件照-短发（女）
 zhengjian_male：证件照（男）
 grey_suit_male：灰色西装（男）
 beige_suit_male：米色西装（男）
@@ -1054,8 +1054,9 @@ class SubmitTextToImageProJobRequest(AbstractModel):
 建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
         :type LogoAdd: int
         :param _Engine: 文生图模型，默认使用engine1。
-engine1：文生图（高级版）-混元
-engine2：文生图（高级版）
+取值：
+engine1
+engine2
         :type Engine: str
         :param _Revise: prompt 扩写开关。1为开启，0为关闭，不传默认开启。
 开启扩写后，将自动扩写原始输入的 prompt 并使用扩写后的 prompt 生成图片，返回生成图片结果时将一并返回扩写后的 prompt 文本。

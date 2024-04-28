@@ -739,6 +739,29 @@ class DomainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyTemplate(self, request):
+        """修改模板信息
+
+        :param request: Request instance for ModifyTemplate.
+        :type request: :class:`tencentcloud.domain.v20180808.models.ModifyTemplateRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.ModifyTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RenewDomainBatch(self, request):
         """本接口 ( RenewDomainBatch ) 用于批量续费域名 。
 

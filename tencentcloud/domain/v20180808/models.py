@@ -4559,6 +4559,106 @@ class ModifyIntlCustomDnsHostResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyTemplateRequest(AbstractModel):
+    """ModifyTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertificateInfo: 证件信息
+        :type CertificateInfo: :class:`tencentcloud.domain.v20180808.models.CertificateInfo`
+        :param _ContactInfo: 联系人信息
+        :type ContactInfo: :class:`tencentcloud.domain.v20180808.models.ContactInfo`
+        :param _TemplateId: 模板ID
+        :type TemplateId: str
+        """
+        self._CertificateInfo = None
+        self._ContactInfo = None
+        self._TemplateId = None
+
+    @property
+    def CertificateInfo(self):
+        return self._CertificateInfo
+
+    @CertificateInfo.setter
+    def CertificateInfo(self, CertificateInfo):
+        self._CertificateInfo = CertificateInfo
+
+    @property
+    def ContactInfo(self):
+        return self._ContactInfo
+
+    @ContactInfo.setter
+    def ContactInfo(self, ContactInfo):
+        self._ContactInfo = ContactInfo
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+
+    def _deserialize(self, params):
+        if params.get("CertificateInfo") is not None:
+            self._CertificateInfo = CertificateInfo()
+            self._CertificateInfo._deserialize(params.get("CertificateInfo"))
+        if params.get("ContactInfo") is not None:
+            self._ContactInfo = ContactInfo()
+            self._ContactInfo._deserialize(params.get("ContactInfo"))
+        self._TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyTemplateResponse(AbstractModel):
+    """ModifyTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Template: 模板信息
+        :type Template: :class:`tencentcloud.domain.v20180808.models.TemplateInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Template = None
+        self._RequestId = None
+
+    @property
+    def Template(self):
+        return self._Template
+
+    @Template.setter
+    def Template(self, Template):
+        self._Template = Template
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Template") is not None:
+            self._Template = TemplateInfo()
+            self._Template._deserialize(params.get("Template"))
+        self._RequestId = params.get("RequestId")
+
+
 class PhoneEmailData(AbstractModel):
     """手机号邮箱列表
 

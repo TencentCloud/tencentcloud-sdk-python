@@ -18,6 +18,51 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AccurateQpsThreshold(AbstractModel):
+    """云原生网关限流插件参数限流的精确Qps阈值
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Unit: qps阈值控制维度,包含:second、minute、hour、day、month、year
+        :type Unit: str
+        :param _GlobalConfigId: 全局配置ID
+        :type GlobalConfigId: str
+        """
+        self._Unit = None
+        self._GlobalConfigId = None
+
+    @property
+    def Unit(self):
+        return self._Unit
+
+    @Unit.setter
+    def Unit(self, Unit):
+        self._Unit = Unit
+
+    @property
+    def GlobalConfigId(self):
+        return self._GlobalConfigId
+
+    @GlobalConfigId.setter
+    def GlobalConfigId(self, GlobalConfigId):
+        self._GlobalConfigId = GlobalConfigId
+
+
+    def _deserialize(self, params):
+        self._Unit = params.get("Unit")
+        self._GlobalConfigId = params.get("GlobalConfigId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApolloEnvParam(AbstractModel):
     """Apollo 环境配置参数
 
@@ -5600,6 +5645,8 @@ zk标准版没有跨地域部署，请不要填写
         :param _StorageOption: zk专业版至多有两个盘，且磁盘的容量在50-3200之间
 如果只有一个磁盘，storageCapacity与storageOption里面的capacity应该一致
         :type StorageOption: list of StorageOption
+        :param _AffinityConstraint: ZK引擎实例，可用区分布约束，STRICT:强约束，PERMISSIVE: 弱约束
+        :type AffinityConstraint: str
         """
         self._EngineType = None
         self._EngineVersion = None
@@ -5618,6 +5665,7 @@ zk标准版没有跨地域部署，请不要填写
         self._PrepaidRenewFlag = None
         self._EngineRegionInfos = None
         self._StorageOption = None
+        self._AffinityConstraint = None
 
     @property
     def EngineType(self):
@@ -5755,6 +5803,14 @@ zk标准版没有跨地域部署，请不要填写
     def StorageOption(self, StorageOption):
         self._StorageOption = StorageOption
 
+    @property
+    def AffinityConstraint(self):
+        return self._AffinityConstraint
+
+    @AffinityConstraint.setter
+    def AffinityConstraint(self, AffinityConstraint):
+        self._AffinityConstraint = AffinityConstraint
+
 
     def _deserialize(self, params):
         self._EngineType = params.get("EngineType")
@@ -5796,6 +5852,7 @@ zk标准版没有跨地域部署，请不要填写
                 obj = StorageOption()
                 obj._deserialize(item)
                 self._StorageOption.append(obj)
+        self._AffinityConstraint = params.get("AffinityConstraint")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14377,7 +14434,8 @@ class EngineRegionInfo(AbstractModel):
         :type Replica: int
         :param _VpcInfos: 集群网络信息
         :type VpcInfos: list of VpcInfo
-        :param _MainRegion: 是否为主地域
+        :param _MainRegion: Polaris: 是否为主地域
+Zookeeper: 是否为Leader固定地域
         :type MainRegion: bool
         :param _SpecId: 引擎规格ID
         :type SpecId: str
@@ -18643,10 +18701,14 @@ class LimitRule(AbstractModel):
         :param _QpsThresholds: 限流阈值
 注意：此字段可能返回 null，表示取不到有效值。
         :type QpsThresholds: list of QpsThreshold
+        :param _AccurateQpsThresholds: 精确限流阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccurateQpsThresholds: list of AccurateQpsThreshold
         """
         self._Filters = None
         self._LimitBy = None
         self._QpsThresholds = None
+        self._AccurateQpsThresholds = None
 
     @property
     def Filters(self):
@@ -18672,6 +18734,14 @@ class LimitRule(AbstractModel):
     def QpsThresholds(self, QpsThresholds):
         self._QpsThresholds = QpsThresholds
 
+    @property
+    def AccurateQpsThresholds(self):
+        return self._AccurateQpsThresholds
+
+    @AccurateQpsThresholds.setter
+    def AccurateQpsThresholds(self, AccurateQpsThresholds):
+        self._AccurateQpsThresholds = AccurateQpsThresholds
+
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
@@ -18692,6 +18762,12 @@ class LimitRule(AbstractModel):
                 obj = QpsThreshold()
                 obj._deserialize(item)
                 self._QpsThresholds.append(obj)
+        if params.get("AccurateQpsThresholds") is not None:
+            self._AccurateQpsThresholds = []
+            for item in params.get("AccurateQpsThresholds"):
+                obj = AccurateQpsThreshold()
+                obj._deserialize(item)
+                self._AccurateQpsThresholds.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -18255,7 +18255,7 @@ class RegistrationOrganizationInfo(AbstractModel):
 在注册流程中，必须是超管本人进行操作。
 如果法人作为超管管理组织机构,超管姓名就是法人姓名
         :type AdminName: str
-        :param _AdminMobile: 组织机构超管姓名。
+        :param _AdminMobile: 组织机构超管手机号。
 在注册流程中，这个手机号必须跟操作人在电子签注册的个人手机号一致。
         :type AdminMobile: str
         :param _AuthorizationTypes: 可选的此企业允许的授权方式, 可以设置的方式有:

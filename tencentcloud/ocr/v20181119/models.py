@@ -7850,6 +7850,70 @@ class GeneralMachineItem(AbstractModel):
         
 
 
+class GeneralWarnInfo(AbstractModel):
+    """通用告警详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsWarn: 是否存在该告警
+        :type IsWarn: bool
+        :param _Polygon: 告警位置四点坐标
+        :type Polygon: list of Polygon
+        :param _SpecificMatter: 特殊判定，支持包括
+
+Finger：由手指导致的不完整，仅在不完整告警中返回
+        :type SpecificMatter: str
+        """
+        self._IsWarn = None
+        self._Polygon = None
+        self._SpecificMatter = None
+
+    @property
+    def IsWarn(self):
+        return self._IsWarn
+
+    @IsWarn.setter
+    def IsWarn(self, IsWarn):
+        self._IsWarn = IsWarn
+
+    @property
+    def Polygon(self):
+        return self._Polygon
+
+    @Polygon.setter
+    def Polygon(self, Polygon):
+        self._Polygon = Polygon
+
+    @property
+    def SpecificMatter(self):
+        return self._SpecificMatter
+
+    @SpecificMatter.setter
+    def SpecificMatter(self, SpecificMatter):
+        self._SpecificMatter = SpecificMatter
+
+
+    def _deserialize(self, params):
+        self._IsWarn = params.get("IsWarn")
+        if params.get("Polygon") is not None:
+            self._Polygon = []
+            for item in params.get("Polygon"):
+                obj = Polygon()
+                obj._deserialize(item)
+                self._Polygon.append(obj)
+        self._SpecificMatter = params.get("SpecificMatter")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GetTaskStateRequest(AbstractModel):
     """GetTaskState请求参数结构体
 
@@ -16352,6 +16416,193 @@ class RecognizeGeneralInvoiceResponse(AbstractModel):
                 obj._deserialize(item)
                 self._MixedInvoiceItems.append(obj)
         self._TotalPDFCount = params.get("TotalPDFCount")
+        self._RequestId = params.get("RequestId")
+
+
+class RecognizeGeneralTextImageWarnRequest(AbstractModel):
+    """RecognizeGeneralTextImageWarn请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+支持的图片像素：需介于20-10000px之间。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        :param _ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+支持的图片像素：需介于20-10000px之间。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param _EnablePdf: 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。 示例值：false
+        :type EnablePdf: bool
+        :param _PdfPageNumber: 需要识别的PDF页面的对应页码，传入时仅支持PDF单页识别，当上传文件为PDF且EnablePdf参数值为true时有效，默认值为1。 示例值：1
+        :type PdfPageNumber: int
+        :param _Type: 支持的模板类型
+- General 通用告警
+- LicensePlate 车牌告警
+        :type Type: str
+        """
+        self._ImageUrl = None
+        self._ImageBase64 = None
+        self._EnablePdf = None
+        self._PdfPageNumber = None
+        self._Type = None
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageBase64(self):
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def EnablePdf(self):
+        return self._EnablePdf
+
+    @EnablePdf.setter
+    def EnablePdf(self, EnablePdf):
+        self._EnablePdf = EnablePdf
+
+    @property
+    def PdfPageNumber(self):
+        return self._PdfPageNumber
+
+    @PdfPageNumber.setter
+    def PdfPageNumber(self, PdfPageNumber):
+        self._PdfPageNumber = PdfPageNumber
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageBase64 = params.get("ImageBase64")
+        self._EnablePdf = params.get("EnablePdf")
+        self._PdfPageNumber = params.get("PdfPageNumber")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecognizeGeneralTextImageWarnResponse(AbstractModel):
+    """RecognizeGeneralTextImageWarn返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Copy: 复印告警信息
+        :type Copy: :class:`tencentcloud.ocr.v20181119.models.GeneralWarnInfo`
+        :param _Reprint: 翻拍告警信息
+        :type Reprint: :class:`tencentcloud.ocr.v20181119.models.GeneralWarnInfo`
+        :param _Blur: 模糊告警信息
+        :type Blur: :class:`tencentcloud.ocr.v20181119.models.GeneralWarnInfo`
+        :param _Reflection: 反光告警信息
+        :type Reflection: :class:`tencentcloud.ocr.v20181119.models.GeneralWarnInfo`
+        :param _BorderIncomplete: 边框不完整告警信息
+        :type BorderIncomplete: :class:`tencentcloud.ocr.v20181119.models.GeneralWarnInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Copy = None
+        self._Reprint = None
+        self._Blur = None
+        self._Reflection = None
+        self._BorderIncomplete = None
+        self._RequestId = None
+
+    @property
+    def Copy(self):
+        return self._Copy
+
+    @Copy.setter
+    def Copy(self, Copy):
+        self._Copy = Copy
+
+    @property
+    def Reprint(self):
+        return self._Reprint
+
+    @Reprint.setter
+    def Reprint(self, Reprint):
+        self._Reprint = Reprint
+
+    @property
+    def Blur(self):
+        return self._Blur
+
+    @Blur.setter
+    def Blur(self, Blur):
+        self._Blur = Blur
+
+    @property
+    def Reflection(self):
+        return self._Reflection
+
+    @Reflection.setter
+    def Reflection(self, Reflection):
+        self._Reflection = Reflection
+
+    @property
+    def BorderIncomplete(self):
+        return self._BorderIncomplete
+
+    @BorderIncomplete.setter
+    def BorderIncomplete(self, BorderIncomplete):
+        self._BorderIncomplete = BorderIncomplete
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Copy") is not None:
+            self._Copy = GeneralWarnInfo()
+            self._Copy._deserialize(params.get("Copy"))
+        if params.get("Reprint") is not None:
+            self._Reprint = GeneralWarnInfo()
+            self._Reprint._deserialize(params.get("Reprint"))
+        if params.get("Blur") is not None:
+            self._Blur = GeneralWarnInfo()
+            self._Blur._deserialize(params.get("Blur"))
+        if params.get("Reflection") is not None:
+            self._Reflection = GeneralWarnInfo()
+            self._Reflection._deserialize(params.get("Reflection"))
+        if params.get("BorderIncomplete") is not None:
+            self._BorderIncomplete = GeneralWarnInfo()
+            self._BorderIncomplete._deserialize(params.get("BorderIncomplete"))
         self._RequestId = params.get("RequestId")
 
 
