@@ -137,6 +137,9 @@ INVALIDPARAMETER_CONFIGCONFLICT = 'InvalidParameter.ConfigConflict'
 # 无效的Content。
 INVALIDPARAMETER_CONTENT = 'InvalidParameter.Content'
 
+# 仪表盘命名冲突。
+INVALIDPARAMETER_DASHBOARDNAMECONFLICT = 'InvalidParameter.DashboardNameConflict'
+
 # 数据加工任务冲突。
 INVALIDPARAMETER_DATAFROMTASKCONFLICT = 'InvalidParameter.DataFromTaskConflict'
 
@@ -272,6 +275,9 @@ OPERATIONDENIED_TOPICHASEXTERNALDATASOURCECONFIG = 'OperationDenied.TopicHasExte
 # topic绑定了scheduleSql任务。
 OPERATIONDENIED_TOPICHASSCHEDULESQLTASK = 'OperationDenied.TopicHasScheduleSqlTask'
 
+# 请求的次数超过了频率限制。
+REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'
+
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'
 
@@ -286,6 +292,12 @@ RESOURCENOTFOUND_ALARMNOTICENOTEXIST = 'ResourceNotFound.AlarmNoticeNotExist'
 
 # 指定的采集规则配置不存在。
 RESOURCENOTFOUND_CONFIGNOTEXIST = 'ResourceNotFound.ConfigNotExist'
+
+# 仪表盘记录不存在。
+RESOURCENOTFOUND_DASHBOARDRECORDNOTEXIST = 'ResourceNotFound.DashboardRecordNotExist'
+
+# 仪表盘订阅记录不存在。
+RESOURCENOTFOUND_DASHBOARDSUBSCRIBERECORDNOTEXIST = 'ResourceNotFound.DashboardSubscribeRecordNotExist'
 
 # 数据加工任务不存在。
 RESOURCENOTFOUND_DATAFROMTASKNOTEXIST = 'ResourceNotFound.DataFromTaskNotExist'

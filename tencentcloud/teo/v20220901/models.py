@@ -5212,6 +5212,118 @@ class CreatePlanForZoneResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreatePlanRequest(AbstractModel):
+    """CreatePlan请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlanType: 订阅的套餐类型，取值有：<li> personal：个人版套餐，预付费套餐；</li><li> basic：基础版套餐，预付费套餐；</li><li> standard：标准版套餐，预付费套餐；</li><li> enterprise：企业版套餐，后付费套餐。</li>订阅预付费套餐时，请确保账号内有足够余额，余额不足会产生一个待支付的订单。
+计费概述参考 [Edgeone计费概述](https://cloud.tencent.com/document/product/1552/94156)
+不同套餐区别参考 [Edgeone计费套餐选型对比](https://cloud.tencent.com/document/product/1552/94165)
+        :type PlanType: str
+        :param _AutoUseVoucher: 是否自动使用代金券，取值有：<li> true：是；</li><li> false：否。</li>该参数仅在 PlanType 为 personal, basic, standard 时有效。
+不填写使用默认值 false。
+        :type AutoUseVoucher: str
+        :param _PrepaidPlanParam: 订阅预付费套餐参数，PlanType 为 personal, basic, standard 时，可以选填该参数，用于传入套餐的订阅时长和是否开启自动续费。
+不填该参数时，默认开通套餐时长为 1 个月，不开启自动续费。
+        :type PrepaidPlanParam: :class:`tencentcloud.teo.v20220901.models.PrepaidPlanParam`
+        """
+        self._PlanType = None
+        self._AutoUseVoucher = None
+        self._PrepaidPlanParam = None
+
+    @property
+    def PlanType(self):
+        return self._PlanType
+
+    @PlanType.setter
+    def PlanType(self, PlanType):
+        self._PlanType = PlanType
+
+    @property
+    def AutoUseVoucher(self):
+        return self._AutoUseVoucher
+
+    @AutoUseVoucher.setter
+    def AutoUseVoucher(self, AutoUseVoucher):
+        self._AutoUseVoucher = AutoUseVoucher
+
+    @property
+    def PrepaidPlanParam(self):
+        return self._PrepaidPlanParam
+
+    @PrepaidPlanParam.setter
+    def PrepaidPlanParam(self, PrepaidPlanParam):
+        self._PrepaidPlanParam = PrepaidPlanParam
+
+
+    def _deserialize(self, params):
+        self._PlanType = params.get("PlanType")
+        self._AutoUseVoucher = params.get("AutoUseVoucher")
+        if params.get("PrepaidPlanParam") is not None:
+            self._PrepaidPlanParam = PrepaidPlanParam()
+            self._PrepaidPlanParam._deserialize(params.get("PrepaidPlanParam"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePlanResponse(AbstractModel):
+    """CreatePlan返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlanId: 套餐 ID，形如 edgeone-2unuvzjmmn2q。
+        :type PlanId: str
+        :param _DealName: 订单号。
+        :type DealName: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PlanId = None
+        self._DealName = None
+        self._RequestId = None
+
+    @property
+    def PlanId(self):
+        return self._PlanId
+
+    @PlanId.setter
+    def PlanId(self, PlanId):
+        self._PlanId = PlanId
+
+    @property
+    def DealName(self):
+        return self._DealName
+
+    @DealName.setter
+    def DealName(self, DealName):
+        self._DealName = DealName
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PlanId = params.get("PlanId")
+        self._DealName = params.get("DealName")
+        self._RequestId = params.get("RequestId")
+
+
 class CreatePrefetchTaskRequest(AbstractModel):
     """CreatePrefetchTask请求参数结构体
 
@@ -7771,6 +7883,7 @@ class DeliveryCondition(AbstractModel):
 <li>EdgeResponseStatusCode：按照 EdgeOne 节点响应返回给客户端的状态码进行过滤。<br>   支持运算符：equal、great、less、great_equal、less_equal<br>   取值范围：任意大于等于 0 的整数</li>
 <li>OriginResponseStatusCode：按照源站响应状态码进行过滤。<br>   支持运算符：equal、great、less、great_equal、less_equal<br>   取值范围：任意大于等于 -1 的整数</li>
 <li>SecurityAction：按照请求命中安全规则后的最终处置动作进行过滤。<br>   支持运算符：equal<br>   可选项如下：<br>   -：未知/未命中<br>   Monitor：观察<br>   JSChallenge：JavaScript 挑战<br>   Deny：拦截<br>   Allow：放行<br>   BlockIP：IP 封禁<br>   Redirect：重定向<br>   ReturnCustomPage：返回自定义页面<br>   ManagedChallenge：托管挑战<br>   Silence：静默<br>   LongDelay：长时间等待后响应<br>   ShortDelay：短时间等待后响应</li>
+<li>SecurityModule：按照最终处置请求的安全模块名称进行过滤。<br>   支持运算符：equal<br>   可选项如下：<br>   -：未知/未命中<br>   CustomRule：Web防护 - 自定义规则<br>   RateLimitingCustomRule：Web防护 - 速率限制规则<br>   ManagedRule：Web防护 - 托管规则<br>   L7DDoS：Web防护 - CC攻击防护<br>   BotManagement：Bot管理 - Bot基础管理<br>   BotClientReputation：Bot管理 - 客户端画像分析<br>   BotBehaviorAnalysis：Bot管理 - Bot智能分析<br>   BotCustomRule：Bot管理 - 自定义Bot规则<br>   BotActiveDetection：Bot管理 - 主动特征识别</li>
         :type Conditions: list of QueryCondition
         """
         self._Conditions = None
@@ -12968,6 +13081,64 @@ class DescribeZonesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DestroyPlanRequest(AbstractModel):
+    """DestroyPlan请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlanId: 套餐 ID，形如 edgeone-2wdo315m2y4c。
+        :type PlanId: str
+        """
+        self._PlanId = None
+
+    @property
+    def PlanId(self):
+        return self._PlanId
+
+    @PlanId.setter
+    def PlanId(self, PlanId):
+        self._PlanId = PlanId
+
+
+    def _deserialize(self, params):
+        self._PlanId = params.get("PlanId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DestroyPlanResponse(AbstractModel):
+    """DestroyPlan返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DetailHost(AbstractModel):
     """域名配置信息
 
@@ -15457,6 +15628,100 @@ class ImageOptimize(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class IncreasePlanQuotaRequest(AbstractModel):
+    """IncreasePlanQuota请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlanId: 套餐 ID, 形如 edgeone-2unuvzjmmn2q。
+        :type PlanId: str
+        :param _QuotaType: 新增的套餐配额类型，取值有：<li> site：站点数；</li><li> precise_access_control_rule：Web 防护 - 自定义规则 - 精准匹配策略的规则配额；</li><li> rate_limiting_rule：Web 防护 - 速率限制 - 精准速率限制模块的规则配额。</li>
+        :type QuotaType: str
+        :param _QuotaNumber: 新增的配额个数。单次新增的配额个数上限为 100。
+        :type QuotaNumber: int
+        """
+        self._PlanId = None
+        self._QuotaType = None
+        self._QuotaNumber = None
+
+    @property
+    def PlanId(self):
+        return self._PlanId
+
+    @PlanId.setter
+    def PlanId(self, PlanId):
+        self._PlanId = PlanId
+
+    @property
+    def QuotaType(self):
+        return self._QuotaType
+
+    @QuotaType.setter
+    def QuotaType(self, QuotaType):
+        self._QuotaType = QuotaType
+
+    @property
+    def QuotaNumber(self):
+        return self._QuotaNumber
+
+    @QuotaNumber.setter
+    def QuotaNumber(self, QuotaNumber):
+        self._QuotaNumber = QuotaNumber
+
+
+    def _deserialize(self, params):
+        self._PlanId = params.get("PlanId")
+        self._QuotaType = params.get("QuotaType")
+        self._QuotaNumber = params.get("QuotaNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IncreasePlanQuotaResponse(AbstractModel):
+    """IncreasePlanQuota返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DealName: 订单号。
+        :type DealName: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DealName = None
+        self._RequestId = None
+
+    @property
+    def DealName(self):
+        return self._DealName
+
+    @DealName.setter
+    def DealName(self, DealName):
+        self._DealName = DealName
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DealName = params.get("DealName")
+        self._RequestId = params.get("RequestId")
 
 
 class IntelligenceRule(AbstractModel):
@@ -18152,6 +18417,78 @@ class ModifyOriginGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyPlanRequest(AbstractModel):
+    """ModifyPlan请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlanId: 套餐 ID，形如 edgeone-2unuvzjmmn2q。
+        :type PlanId: str
+        :param _RenewFlag: 预付费套餐自动续费配置。若开启了自动续费，则会在套餐到期前一天自动续费，仅支持个人版，基础版，标准版套餐。不填写表示保持原有配置。
+        :type RenewFlag: :class:`tencentcloud.teo.v20220901.models.RenewFlag`
+        """
+        self._PlanId = None
+        self._RenewFlag = None
+
+    @property
+    def PlanId(self):
+        return self._PlanId
+
+    @PlanId.setter
+    def PlanId(self, PlanId):
+        self._PlanId = PlanId
+
+    @property
+    def RenewFlag(self):
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+
+    def _deserialize(self, params):
+        self._PlanId = params.get("PlanId")
+        if params.get("RenewFlag") is not None:
+            self._RenewFlag = RenewFlag()
+            self._RenewFlag._deserialize(params.get("RenewFlag"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPlanResponse(AbstractModel):
+    """ModifyPlan返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
     """ModifyRealtimeLogDeliveryTask请求参数结构体
 
@@ -20504,6 +20841,56 @@ class PostMaxSize(AbstractModel):
         
 
 
+class PrepaidPlanParam(AbstractModel):
+    """预付费套餐计费参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Period: 订阅预付费套餐的周期，单位：月，取值有：1，2，3，4，5，6，7，8，9，10，11，12，24，36。
+
+不填写使用默认值 1。
+        :type Period: int
+        :param _RenewFlag: 预付费套餐的自动续费标志，取值有：
+<li> on：开启自动续费；</li>
+<li> off：不开启自动续费。</li>
+不填写使用默认值 off，自动续费时，默认续费1个月。
+        :type RenewFlag: str
+        """
+        self._Period = None
+        self._RenewFlag = None
+
+    @property
+    def Period(self):
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def RenewFlag(self):
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+
+    def _deserialize(self, params):
+        self._Period = params.get("Period")
+        self._RenewFlag = params.get("RenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PrivateParameter(AbstractModel):
     """对象存储源站私有鉴权参数
 
@@ -21609,6 +21996,135 @@ class RealtimeLogDeliveryTask(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RenewFlag(AbstractModel):
+    """预付费套餐自动续费配置项。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 预付费套餐的自动续费标志，取值有：
+<li> on：开启自动续费；</li>
+<li> off：不开启自动续费。</li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenewPlanRequest(AbstractModel):
+    """RenewPlan请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlanId: 套餐 ID，形如 edgeone-2unuvzjmmn2q。
+        :type PlanId: str
+        :param _Period: 续费套餐的时长，单位：月，取值有：1，2，3，4，5，6，7，8，9，10，11，12，24，36。
+        :type Period: int
+        :param _AutoUseVoucher: 是否自动使用代金券，取值有：<li> true：是；</li><li> false：否。</li>不填写使用默认值 false。
+        :type AutoUseVoucher: str
+        """
+        self._PlanId = None
+        self._Period = None
+        self._AutoUseVoucher = None
+
+    @property
+    def PlanId(self):
+        return self._PlanId
+
+    @PlanId.setter
+    def PlanId(self, PlanId):
+        self._PlanId = PlanId
+
+    @property
+    def Period(self):
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def AutoUseVoucher(self):
+        return self._AutoUseVoucher
+
+    @AutoUseVoucher.setter
+    def AutoUseVoucher(self, AutoUseVoucher):
+        self._AutoUseVoucher = AutoUseVoucher
+
+
+    def _deserialize(self, params):
+        self._PlanId = params.get("PlanId")
+        self._Period = params.get("Period")
+        self._AutoUseVoucher = params.get("AutoUseVoucher")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenewPlanResponse(AbstractModel):
+    """RenewPlan返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DealName: 订单号。
+        :type DealName: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DealName = None
+        self._RequestId = None
+
+    @property
+    def DealName(self):
+        return self._DealName
+
+    @DealName.setter
+    def DealName(self, DealName):
+        self._DealName = DealName
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DealName = params.get("DealName")
+        self._RequestId = params.get("RequestId")
 
 
 class Resource(AbstractModel):
@@ -24558,6 +25074,100 @@ class TopEntryValue(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpgradePlanRequest(AbstractModel):
+    """UpgradePlan请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlanId: 套餐 ID，形如 edgeone-2unuvzjmmn2q。
+        :type PlanId: str
+        :param _PlanType: 需要升级到的目标套餐版本，取值有：<li> basic：基础版套餐；</li><li> standard：标准版套餐。</li>
+        :type PlanType: str
+        :param _AutoUseVoucher: 是否自动使用代金券，取值有：<li> true：是；</li><li> false：否。</li>不填写使用默认值 false。
+        :type AutoUseVoucher: str
+        """
+        self._PlanId = None
+        self._PlanType = None
+        self._AutoUseVoucher = None
+
+    @property
+    def PlanId(self):
+        return self._PlanId
+
+    @PlanId.setter
+    def PlanId(self, PlanId):
+        self._PlanId = PlanId
+
+    @property
+    def PlanType(self):
+        return self._PlanType
+
+    @PlanType.setter
+    def PlanType(self, PlanType):
+        self._PlanType = PlanType
+
+    @property
+    def AutoUseVoucher(self):
+        return self._AutoUseVoucher
+
+    @AutoUseVoucher.setter
+    def AutoUseVoucher(self, AutoUseVoucher):
+        self._AutoUseVoucher = AutoUseVoucher
+
+
+    def _deserialize(self, params):
+        self._PlanId = params.get("PlanId")
+        self._PlanType = params.get("PlanType")
+        self._AutoUseVoucher = params.get("AutoUseVoucher")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpgradePlanResponse(AbstractModel):
+    """UpgradePlan返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DealName: 订单号。
+        :type DealName: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DealName = None
+        self._RequestId = None
+
+    @property
+    def DealName(self):
+        return self._DealName
+
+    @DealName.setter
+    def DealName(self, DealName):
+        self._DealName = DealName
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DealName = params.get("DealName")
+        self._RequestId = params.get("RequestId")
 
 
 class UpstreamHttp2(AbstractModel):

@@ -1779,7 +1779,7 @@ class DescribeDataCustomUrlRequest(AbstractModel):
         :type ExtThird: str
         :param _ExtFirst: 自定义1
         :type ExtFirst: str
-        :param _NetType: 网络类型
+        :param _NetType: 网络类型（1,2,3,4,5,100），1表示WIFI, 2表示2G, 3表示3G, 4表示4G, 5表示5G, 6表示6G, 100表示未知。
         :type NetType: str
         :param _Device: 机型
         :type Device: str

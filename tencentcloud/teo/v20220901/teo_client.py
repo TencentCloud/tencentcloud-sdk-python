@@ -328,6 +328,30 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreatePlan(self, request):
+        """若您需要使用 Edgeone 产品，您需要通过此接口创建计费套餐。
+        > 创建套餐后，您需要通过 [CreateZone](https://cloud.tencent.com/document/product/1552/80719) 完成创建站点，绑定套餐的流程，Edgeone 才能正常提供服务。
+
+        :param request: Request instance for CreatePlan.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreatePlanRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreatePlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePlan", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePlanResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreatePlanForZone(self, request):
         """为未购买套餐的站点购买套餐
 
@@ -1645,6 +1669,36 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DestroyPlan(self, request):
+        """当您需要停止 Edgeone 套餐的计费，可以通过该接口销毁计费套餐。
+        > 销毁计费套餐需要满足以下条件：
+            1.套餐已过期（企业版套餐除外）；
+            2.套餐下所有站点均已关闭或删除。
+
+        > 站点状态可以通过 [查询站点列表](https://cloud.tencent.com/document/product/1552/80713) 接口进行查询
+        停用站点可以通过 [切换站点状态](https://cloud.tencent.com/document/product/1552/80707) 接口将站点切换至关闭状态
+        删除站点可以通过 [删除站点](https://cloud.tencent.com/document/product/1552/80717) 接口将站点删除
+
+        :param request: Request instance for DestroyPlan.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DestroyPlanRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DestroyPlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DestroyPlan", params, headers=headers)
+            response = json.loads(body)
+            model = models.DestroyPlanResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DownloadL4Logs(self, request):
         """本接口（DownloadL4Logs）用于下载四层离线日志。
 
@@ -1705,6 +1759,30 @@ class TeoClient(AbstractClient):
             body = self.call("IdentifyZone", params, headers=headers)
             response = json.loads(body)
             model = models.IdentifyZoneResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def IncreasePlanQuota(self, request):
+        """当您的套餐绑定的站点数，或配置的 Web 防护 - 自定义规则 - 精准匹配策略的规则数，或 Web 防护 - 速率限制 - 精准速率限制模块的规则数达到套餐允许的配额上限，可以通过该接口增购对应配额。
+        > 该接口该仅支持企业版套餐。
+
+        :param request: Request instance for IncreasePlanQuota.
+        :type request: :class:`tencentcloud.teo.v20220901.models.IncreasePlanQuotaRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.IncreasePlanQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("IncreasePlanQuota", params, headers=headers)
+            response = json.loads(body)
+            model = models.IncreasePlanQuotaResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2041,6 +2119,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyPlan(self, request):
+        """修改套餐配置。目前仅支持修改预付费套餐的自动续费开关。
+
+        :param request: Request instance for ModifyPlan.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyPlanRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyPlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyPlan", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyPlanResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyRealtimeLogDeliveryTask(self, request):
         """通过本接口修改实时日志投递任务配置。本接口有如下限制：<li>不支持修改实时日志投递任务目的地类型（TaskType）；</li><li>不支持修改数据投递类型（LogType）</li><li>不支持修改数据投递区域（Area）</li><li>当原实时日志投递任务的目的地为腾讯云 CLS 时，不支持修改目的地详细配置，如日志集、日志主题。</li>
 
@@ -2193,6 +2294,56 @@ class TeoClient(AbstractClient):
             body = self.call("ModifyZoneStatus", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyZoneStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RenewPlan(self, request):
+        """当您的套餐需要延长有效期，可以通过该接口进行续费。套餐续费仅支持个人版，基础版，标准版套餐。
+        > 费用详情可参考 [套餐费用](https://cloud.tencent.com/document/product/1552/94158)
+
+        :param request: Request instance for RenewPlan.
+        :type request: :class:`tencentcloud.teo.v20220901.models.RenewPlanRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.RenewPlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RenewPlan", params, headers=headers)
+            response = json.loads(body)
+            model = models.RenewPlanResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpgradePlan(self, request):
+        """当您需要使用高等级套餐才拥有的功能，可以通过本接口升级套餐，仅支持个人版，基础版套餐进行升级。
+        > 不同类型 Edgeone 计费套餐区别参考 [Edgeone计费套餐选型对比](https://cloud.tencent.com/document/product/1552/94165)
+        计费套餐升级规则以及资费详情参考 [Edgeone计费套餐升配说明](https://cloud.tencent.com/document/product/1552/95291)
+        如果需要将套餐升级至企业版，请 [联系我们](https://cloud.tencent.com/online-service)
+
+        :param request: Request instance for UpgradePlan.
+        :type request: :class:`tencentcloud.teo.v20220901.models.UpgradePlanRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.UpgradePlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpgradePlan", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpgradePlanResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

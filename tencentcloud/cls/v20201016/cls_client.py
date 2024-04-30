@@ -302,6 +302,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDashboardSubscribe(self, request):
+        """此接口用于创建仪表盘订阅
+
+        :param request: Request instance for CreateDashboardSubscribe.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateDashboardSubscribeRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateDashboardSubscribeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDashboardSubscribe", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDashboardSubscribeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDataTransform(self, request):
         """本接口用于创建数据加工任务。
 
@@ -684,6 +707,29 @@ class ClsClient(AbstractClient):
             body = self.call("DeleteConsumer", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteConsumerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteDashboardSubscribe(self, request):
+        """此接口用于删除仪表盘订阅
+
+        :param request: Request instance for DeleteDashboardSubscribe.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteDashboardSubscribeRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteDashboardSubscribeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDashboardSubscribe", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDashboardSubscribeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1121,6 +1167,29 @@ class ClsClient(AbstractClient):
             body = self.call("DescribeCosRecharges", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCosRechargesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDashboardSubscribes(self, request):
+        """本接口用于获取仪表盘订阅列表，支持分页
+
+        :param request: Request instance for DescribeDashboardSubscribes.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeDashboardSubscribesRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeDashboardSubscribesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDashboardSubscribes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDashboardSubscribesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1729,6 +1798,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDashboardSubscribe(self, request):
+        """此接口用于修改仪表盘订阅
+
+        :param request: Request instance for ModifyDashboardSubscribe.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyDashboardSubscribeRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyDashboardSubscribeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDashboardSubscribe", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDashboardSubscribeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDataTransform(self, request):
         """本接口用于修改数据加工任务
 
@@ -2065,6 +2157,29 @@ class ClsClient(AbstractClient):
             body = self.call("SearchCosRechargeInfo", params, headers=headers)
             response = json.loads(body)
             model = models.SearchCosRechargeInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SearchDashboardSubscribe(self, request):
+        """此接口用于预览仪表盘订阅
+
+        :param request: Request instance for SearchDashboardSubscribe.
+        :type request: :class:`tencentcloud.cls.v20201016.models.SearchDashboardSubscribeRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.SearchDashboardSubscribeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SearchDashboardSubscribe", params, headers=headers)
+            response = json.loads(body)
+            model = models.SearchDashboardSubscribeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

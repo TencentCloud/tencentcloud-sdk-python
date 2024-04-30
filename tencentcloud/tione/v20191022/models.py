@@ -3114,7 +3114,7 @@ class GitSecret(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NoSecret: 无秘钥，默认选项
+        :param _NoSecret: 无密钥，默认选项
         :type NoSecret: bool
         :param _Secret: Git用户名密码base64编码后的字符串
 编码前的内容应为Json字符串，如

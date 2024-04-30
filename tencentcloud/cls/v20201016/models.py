@@ -4776,6 +4776,37 @@ class CreateCosRechargeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateDashboardSubscribeRequest(AbstractModel):
+    """CreateDashboardSubscribe请求参数结构体
+
+    """
+
+
+class CreateDashboardSubscribeResponse(AbstractModel):
+    """CreateDashboardSubscribe返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateDataTransformRequest(AbstractModel):
     """CreateDataTransform请求参数结构体
 
@@ -4789,7 +4820,7 @@ class CreateDataTransformRequest(AbstractModel):
         :type SrcTopicId: str
         :param _Name: 加工任务名称
         :type Name: str
-        :param _EtlContent: 加工语句
+        :param _EtlContent: 加工语句。[创建加工任务](https://cloud.tencent.com/document/product/614/63940)  [函数总览](https://cloud.tencent.com/document/product/614/70395)
         :type EtlContent: str
         :param _TaskType: 加工类型。
 1：使用源日志主题中的随机数据，进行加工预览；2：使用用户自定义测试数据，进行加工预览；3：创建真实加工任务。
@@ -5618,19 +5649,19 @@ class CreateMachineGroupRequest(AbstractModel):
         r"""
         :param _GroupName: 机器组名字，不能重复
         :type GroupName: str
-        :param _MachineGroupType: 创建机器组类型，Type为ip，Values中为Ip字符串列表创建机器组，Type为label， Values中为标签字符串列表创建机器组
+        :param _MachineGroupType: 创建机器组类型。Type：ip，Values中为ip字符串列表创建机器组；Type：label，Values中为标签字符串列表创建机器组。
         :type MachineGroupType: :class:`tencentcloud.cls.v20201016.models.MachineGroupTypeInfo`
         :param _Tags: 标签描述列表，通过指定该参数可以同时绑定标签到相应的机器组。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。
         :type Tags: list of Tag
-        :param _AutoUpdate: 是否开启机器组自动更新
+        :param _AutoUpdate: 是否开启机器组自动更新。默认false
         :type AutoUpdate: bool
         :param _UpdateStartTime: 升级开始时间，建议业务低峰期升级LogListener
         :type UpdateStartTime: str
         :param _UpdateEndTime: 升级结束时间，建议业务低峰期升级LogListener
         :type UpdateEndTime: str
-        :param _ServiceLogging: 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
+        :param _ServiceLogging: 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费。默认false
         :type ServiceLogging: bool
-        :param _DelayCleanupTime: 机器组中机器离线清理时间
+        :param _DelayCleanupTime: 机器组中机器离线清理时间。单位：天
         :type DelayCleanupTime: int
         :param _MetaTags: 机器组元数据信息列表
         :type MetaTags: list of MetaTagInfo
@@ -7416,6 +7447,37 @@ class DeleteConsumerResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteDashboardSubscribeRequest(AbstractModel):
+    """DeleteDashboardSubscribe请求参数结构体
+
+    """
+
+
+class DeleteDashboardSubscribeResponse(AbstractModel):
+    """DeleteDashboardSubscribe返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteDataTransformRequest(AbstractModel):
     """DeleteDataTransform请求参数结构体
 
@@ -9133,6 +9195,37 @@ class DescribeCosRechargesResponse(AbstractModel):
                 obj = CosRechargeInfo()
                 obj._deserialize(item)
                 self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDashboardSubscribesRequest(AbstractModel):
+    """DescribeDashboardSubscribes请求参数结构体
+
+    """
+
+
+class DescribeDashboardSubscribesResponse(AbstractModel):
+    """DescribeDashboardSubscribes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -10948,9 +11041,11 @@ class DescribeShipperTasksRequest(AbstractModel):
         r"""
         :param _ShipperId: 投递规则ID
         :type ShipperId: str
-        :param _StartTime: 查询的开始时间戳，支持最近3天的查询， 毫秒
+        :param _StartTime: 查询的开始时间戳，支持最近3天的查询， 毫秒。
+StartTime必须小于EndTime
         :type StartTime: int
-        :param _EndTime: 查询的结束时间戳， 毫秒
+        :param _EndTime: 查询的结束时间戳， 毫秒。
+StartTime必须小于EndTime
         :type EndTime: int
         """
         self._ShipperId = None
@@ -14063,9 +14158,11 @@ class MachineGroupTypeInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 机器组类型，ip表示该机器组Values中存的是采集机器的IP地址，label表示该机器组Values中存储的是机器的标签
+        :param _Type: 机器组类型。支持 ip 和 label。
+- ip：表示该机器组Values中存的是采集机器的ip地址
+- label：表示该机器组Values中存储的是机器的标签
         :type Type: str
-        :param _Values: 机器描述列表
+        :param _Values: 机器描述列表。
         :type Values: list of str
         """
         self._Type = None
@@ -15802,6 +15899,37 @@ class ModifyCosRechargeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDashboardSubscribeRequest(AbstractModel):
+    """ModifyDashboardSubscribe请求参数结构体
+
+    """
+
+
+class ModifyDashboardSubscribeResponse(AbstractModel):
+    """ModifyDashboardSubscribe返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDataTransformRequest(AbstractModel):
     """ModifyDataTransform请求参数结构体
 
@@ -16414,7 +16542,7 @@ class ModifyMachineGroupRequest(AbstractModel):
         :type GroupId: str
         :param _GroupName: 机器组名称
         :type GroupName: str
-        :param _MachineGroupType: 机器组类型
+        :param _MachineGroupType: 机器组类型。Type：ip，Values中为ip字符串列表机器组；Type：label，Values中为标签字符串列表机器组。
         :type MachineGroupType: :class:`tencentcloud.cls.v20201016.models.MachineGroupTypeInfo`
         :param _Tags: 标签列表
         :type Tags: list of Tag
@@ -16426,7 +16554,7 @@ class ModifyMachineGroupRequest(AbstractModel):
         :type UpdateEndTime: str
         :param _ServiceLogging: 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
         :type ServiceLogging: bool
-        :param _DelayCleanupTime: 机器组中机器定期离线清理时间
+        :param _DelayCleanupTime: 机器组中机器定期离线清理时间。单位：天
         :type DelayCleanupTime: int
         :param _MetaTags: 机器组元数据信息列表
         :type MetaTags: list of MetaTagInfo
@@ -19090,6 +19218,37 @@ class SearchCosRechargeInfoResponse(AbstractModel):
         self._Path = params.get("Path")
         self._Msg = params.get("Msg")
         self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
+class SearchDashboardSubscribeRequest(AbstractModel):
+    """SearchDashboardSubscribe请求参数结构体
+
+    """
+
+
+class SearchDashboardSubscribeResponse(AbstractModel):
+    """SearchDashboardSubscribe返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
