@@ -3799,7 +3799,7 @@ class TkeClient(AbstractClient):
 
 
     def EnableEncryptionProtection(self, request):
-        """开启加密数据保护
+        """开启加密数据保护，需要先开启KMS能力，完成KMS授权
 
         :param request: Request instance for EnableEncryptionProtection.
         :type request: :class:`tencentcloud.tke.v20180525.models.EnableEncryptionProtectionRequest`
@@ -3983,7 +3983,7 @@ class TkeClient(AbstractClient):
 
 
     def GetUpgradeInstanceProgress(self, request):
-        """获得节点升级当前的进度
+        """获得节点升级当前的进度，若集群未处于节点升级状态，则接口会报错：任务未找到。
 
         :param request: Request instance for GetUpgradeInstanceProgress.
         :type request: :class:`tencentcloud.tke.v20180525.models.GetUpgradeInstanceProgressRequest`
@@ -4673,7 +4673,7 @@ class TkeClient(AbstractClient):
 
 
     def ScaleInClusterMaster(self, request):
-        """缩容独立集群master节点
+        """缩容独立集群master节点，本功能为内测能力，使用之前请先提单联系我们。
 
         :param request: Request instance for ScaleInClusterMaster.
         :type request: :class:`tencentcloud.tke.v20180525.models.ScaleInClusterMasterRequest`

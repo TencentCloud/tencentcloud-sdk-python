@@ -6745,6 +6745,252 @@ class DashboardInfo(AbstractModel):
         
 
 
+class DashboardNoticeMode(AbstractModel):
+    """仪表盘订阅通知方式
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReceiverType: 仪表盘通知方式。<br>
+<li/>Uin：腾讯云用户<br>
+<li/>Group：腾讯云用户组<br>
+<li/>Email：自定义Email<br>
+<li/>WeCom: 企业微信回调
+        :type ReceiverType: str
+        :param _Values: 知方式对应的值。
+<br> <li/> 当ReceiverType不是 Wecom 时，Values必填。
+        :type Values: list of str
+        :param _ReceiverChannels: 仪表盘通知渠道。
+<br><li/> 支持：["Email","Sms","WeChat","Phone"]。
+<br><li/> 当ReceiverType是 Email 或 Wecom 时，ReceiverChannels不能赋值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiverChannels: list of str
+        :param _Url: 回调Url。
+<br><li/> 当ReceiverType是 Wecom 时，Url必填。
+<br><li/> 当ReceiverType不是 Wecom 时，Url不能填写。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        """
+        self._ReceiverType = None
+        self._Values = None
+        self._ReceiverChannels = None
+        self._Url = None
+
+    @property
+    def ReceiverType(self):
+        return self._ReceiverType
+
+    @ReceiverType.setter
+    def ReceiverType(self, ReceiverType):
+        self._ReceiverType = ReceiverType
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+    @property
+    def ReceiverChannels(self):
+        return self._ReceiverChannels
+
+    @ReceiverChannels.setter
+    def ReceiverChannels(self, ReceiverChannels):
+        self._ReceiverChannels = ReceiverChannels
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._ReceiverType = params.get("ReceiverType")
+        self._Values = params.get("Values")
+        self._ReceiverChannels = params.get("ReceiverChannels")
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DashboardSubscribeData(AbstractModel):
+    """仪表盘订阅相关数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NoticeModes: 仪表盘订阅通知方式。
+        :type NoticeModes: list of DashboardNoticeMode
+        :param _DashboardTime: 仪表盘订阅时间，为空标识取仪表盘默认的时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DashboardTime: list of str
+        :param _TemplateVariables: 仪表盘订阅模板变量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateVariables: list of DashboardTemplateVariable
+        :param _Timezone: 时区。参考：https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#SHANGHAI
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timezone: str
+        :param _SubscribeLanguage: 语言。 zh 中文、en`英文。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubscribeLanguage: str
+        :param _JumpDomain: 调用链接域名。http:// 或者 https:// 开头，不能/结尾
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JumpDomain: str
+        :param _JumpUrl: 自定义跳转链接。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JumpUrl: str
+        """
+        self._NoticeModes = None
+        self._DashboardTime = None
+        self._TemplateVariables = None
+        self._Timezone = None
+        self._SubscribeLanguage = None
+        self._JumpDomain = None
+        self._JumpUrl = None
+
+    @property
+    def NoticeModes(self):
+        return self._NoticeModes
+
+    @NoticeModes.setter
+    def NoticeModes(self, NoticeModes):
+        self._NoticeModes = NoticeModes
+
+    @property
+    def DashboardTime(self):
+        return self._DashboardTime
+
+    @DashboardTime.setter
+    def DashboardTime(self, DashboardTime):
+        self._DashboardTime = DashboardTime
+
+    @property
+    def TemplateVariables(self):
+        return self._TemplateVariables
+
+    @TemplateVariables.setter
+    def TemplateVariables(self, TemplateVariables):
+        self._TemplateVariables = TemplateVariables
+
+    @property
+    def Timezone(self):
+        return self._Timezone
+
+    @Timezone.setter
+    def Timezone(self, Timezone):
+        self._Timezone = Timezone
+
+    @property
+    def SubscribeLanguage(self):
+        return self._SubscribeLanguage
+
+    @SubscribeLanguage.setter
+    def SubscribeLanguage(self, SubscribeLanguage):
+        self._SubscribeLanguage = SubscribeLanguage
+
+    @property
+    def JumpDomain(self):
+        return self._JumpDomain
+
+    @JumpDomain.setter
+    def JumpDomain(self, JumpDomain):
+        self._JumpDomain = JumpDomain
+
+    @property
+    def JumpUrl(self):
+        return self._JumpUrl
+
+    @JumpUrl.setter
+    def JumpUrl(self, JumpUrl):
+        self._JumpUrl = JumpUrl
+
+
+    def _deserialize(self, params):
+        if params.get("NoticeModes") is not None:
+            self._NoticeModes = []
+            for item in params.get("NoticeModes"):
+                obj = DashboardNoticeMode()
+                obj._deserialize(item)
+                self._NoticeModes.append(obj)
+        self._DashboardTime = params.get("DashboardTime")
+        if params.get("TemplateVariables") is not None:
+            self._TemplateVariables = []
+            for item in params.get("TemplateVariables"):
+                obj = DashboardTemplateVariable()
+                obj._deserialize(item)
+                self._TemplateVariables.append(obj)
+        self._Timezone = params.get("Timezone")
+        self._SubscribeLanguage = params.get("SubscribeLanguage")
+        self._JumpDomain = params.get("JumpDomain")
+        self._JumpUrl = params.get("JumpUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DashboardTemplateVariable(AbstractModel):
+    """仪表盘订阅模板变量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: key的值
+        :type Key: str
+        :param _Values: key对应的values取值values
+        :type Values: list of str
+        """
+        self._Key = None
+        self._Values = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DashboardTopicInfo(AbstractModel):
     """仪表盘关联的topic信息
 
@@ -19225,6 +19471,71 @@ class SearchDashboardSubscribeRequest(AbstractModel):
     """SearchDashboardSubscribe请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _DashboardId: 仪表盘id。
+        :type DashboardId: str
+        :param _SubscribeData: 仪表盘订阅数据。
+        :type SubscribeData: :class:`tencentcloud.cls.v20201016.models.DashboardSubscribeData`
+        :param _Id: 仪表盘订阅Id。
+        :type Id: int
+        :param _Name: 仪表盘订阅名称。
+        :type Name: str
+        """
+        self._DashboardId = None
+        self._SubscribeData = None
+        self._Id = None
+        self._Name = None
+
+    @property
+    def DashboardId(self):
+        return self._DashboardId
+
+    @DashboardId.setter
+    def DashboardId(self, DashboardId):
+        self._DashboardId = DashboardId
+
+    @property
+    def SubscribeData(self):
+        return self._SubscribeData
+
+    @SubscribeData.setter
+    def SubscribeData(self, SubscribeData):
+        self._SubscribeData = SubscribeData
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._DashboardId = params.get("DashboardId")
+        if params.get("SubscribeData") is not None:
+            self._SubscribeData = DashboardSubscribeData()
+            self._SubscribeData._deserialize(params.get("SubscribeData"))
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SearchDashboardSubscribeResponse(AbstractModel):
