@@ -1448,6 +1448,433 @@ class AttributeItemDTO(AbstractModel):
         
 
 
+class BaseClusterInfo(AbstractModel):
+    """集群基础信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param _ClusterType: 集群类型，EMR/CDW等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterType: str
+        :param _ClusterName: 集群名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterName: str
+        :param _RegionCn: 地域中文
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionCn: str
+        :param _RegionEn: 地域英文
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionEn: str
+        :param _RegionArea: 地区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionArea: str
+        :param _Used: 集群是否使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Used: bool
+        :param _Status: 集群状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _StatusInfo: 集群状态信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusInfo: str
+        :param _StorageType: 集群存储类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageType: str
+        :param _ComputeType: 集群计算类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComputeType: str
+        :param _ClusterResource: 集群资源量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterResource: str
+        :param _ChargeType: 集群付费方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChargeType: str
+        :param _CreateTime: 集群创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _ExtraConf: 额外配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtraConf: str
+        :param _RangerUserName: ranger账号名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RangerUserName: str
+        :param _CdwUserName: cdw账号（用于展示）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CdwUserName: str
+        """
+        self._ClusterId = None
+        self._ClusterType = None
+        self._ClusterName = None
+        self._RegionCn = None
+        self._RegionEn = None
+        self._RegionArea = None
+        self._Used = None
+        self._Status = None
+        self._StatusInfo = None
+        self._StorageType = None
+        self._ComputeType = None
+        self._ClusterResource = None
+        self._ChargeType = None
+        self._CreateTime = None
+        self._ExtraConf = None
+        self._RangerUserName = None
+        self._CdwUserName = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterType(self):
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def RegionCn(self):
+        return self._RegionCn
+
+    @RegionCn.setter
+    def RegionCn(self, RegionCn):
+        self._RegionCn = RegionCn
+
+    @property
+    def RegionEn(self):
+        return self._RegionEn
+
+    @RegionEn.setter
+    def RegionEn(self, RegionEn):
+        self._RegionEn = RegionEn
+
+    @property
+    def RegionArea(self):
+        return self._RegionArea
+
+    @RegionArea.setter
+    def RegionArea(self, RegionArea):
+        self._RegionArea = RegionArea
+
+    @property
+    def Used(self):
+        return self._Used
+
+    @Used.setter
+    def Used(self, Used):
+        self._Used = Used
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusInfo(self):
+        return self._StatusInfo
+
+    @StatusInfo.setter
+    def StatusInfo(self, StatusInfo):
+        self._StatusInfo = StatusInfo
+
+    @property
+    def StorageType(self):
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+    @property
+    def ComputeType(self):
+        return self._ComputeType
+
+    @ComputeType.setter
+    def ComputeType(self, ComputeType):
+        self._ComputeType = ComputeType
+
+    @property
+    def ClusterResource(self):
+        return self._ClusterResource
+
+    @ClusterResource.setter
+    def ClusterResource(self, ClusterResource):
+        self._ClusterResource = ClusterResource
+
+    @property
+    def ChargeType(self):
+        return self._ChargeType
+
+    @ChargeType.setter
+    def ChargeType(self, ChargeType):
+        self._ChargeType = ChargeType
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ExtraConf(self):
+        return self._ExtraConf
+
+    @ExtraConf.setter
+    def ExtraConf(self, ExtraConf):
+        self._ExtraConf = ExtraConf
+
+    @property
+    def RangerUserName(self):
+        return self._RangerUserName
+
+    @RangerUserName.setter
+    def RangerUserName(self, RangerUserName):
+        self._RangerUserName = RangerUserName
+
+    @property
+    def CdwUserName(self):
+        return self._CdwUserName
+
+    @CdwUserName.setter
+    def CdwUserName(self, CdwUserName):
+        self._CdwUserName = CdwUserName
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterType = params.get("ClusterType")
+        self._ClusterName = params.get("ClusterName")
+        self._RegionCn = params.get("RegionCn")
+        self._RegionEn = params.get("RegionEn")
+        self._RegionArea = params.get("RegionArea")
+        self._Used = params.get("Used")
+        self._Status = params.get("Status")
+        self._StatusInfo = params.get("StatusInfo")
+        self._StorageType = params.get("StorageType")
+        self._ComputeType = params.get("ComputeType")
+        self._ClusterResource = params.get("ClusterResource")
+        self._ChargeType = params.get("ChargeType")
+        self._CreateTime = params.get("CreateTime")
+        self._ExtraConf = params.get("ExtraConf")
+        self._RangerUserName = params.get("RangerUserName")
+        self._CdwUserName = params.get("CdwUserName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BaseTenant(AbstractModel):
+    """租户基础信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TenantId: 租户id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TenantId: str
+        :param _TenantName: 租户标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TenantName: str
+        :param _DisplayName: 租户显示名称，一般是中文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisplayName: str
+        :param _Description: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _OwnerUserId: 租户主账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerUserId: str
+        :param _Params: 租户的额外配置参数, json格式字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Params: str
+        """
+        self._TenantId = None
+        self._TenantName = None
+        self._DisplayName = None
+        self._Description = None
+        self._OwnerUserId = None
+        self._Params = None
+
+    @property
+    def TenantId(self):
+        return self._TenantId
+
+    @TenantId.setter
+    def TenantId(self, TenantId):
+        self._TenantId = TenantId
+
+    @property
+    def TenantName(self):
+        return self._TenantName
+
+    @TenantName.setter
+    def TenantName(self, TenantName):
+        self._TenantName = TenantName
+
+    @property
+    def DisplayName(self):
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def OwnerUserId(self):
+        return self._OwnerUserId
+
+    @OwnerUserId.setter
+    def OwnerUserId(self, OwnerUserId):
+        self._OwnerUserId = OwnerUserId
+
+    @property
+    def Params(self):
+        return self._Params
+
+    @Params.setter
+    def Params(self, Params):
+        self._Params = Params
+
+
+    def _deserialize(self, params):
+        self._TenantId = params.get("TenantId")
+        self._TenantName = params.get("TenantName")
+        self._DisplayName = params.get("DisplayName")
+        self._Description = params.get("Description")
+        self._OwnerUserId = params.get("OwnerUserId")
+        self._Params = params.get("Params")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BaseUser(AbstractModel):
+    """基础用户信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: 有云的UIN，全局唯一
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: str
+        :param _UserName: 用户全局唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param _DisplayName: 用户显示名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisplayName: str
+        :param _PhoneNum: 电话号码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PhoneNum: str
+        :param _Email: 邮箱
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Email: str
+        """
+        self._UserId = None
+        self._UserName = None
+        self._DisplayName = None
+        self._PhoneNum = None
+        self._Email = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def DisplayName(self):
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def PhoneNum(self):
+        return self._PhoneNum
+
+    @PhoneNum.setter
+    def PhoneNum(self, PhoneNum):
+        self._PhoneNum = PhoneNum
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        self._UserName = params.get("UserName")
+        self._DisplayName = params.get("DisplayName")
+        self._PhoneNum = params.get("PhoneNum")
+        self._Email = params.get("Email")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BatchCreateIntegrationTaskAlarmsRequest(AbstractModel):
     """BatchCreateIntegrationTaskAlarms请求参数结构体
 
@@ -20587,10 +21014,21 @@ class DescribeProjectResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Data: 项目信息
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.Project`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Data = None
         self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
 
     @property
     def RequestId(self):
@@ -20602,6 +21040,9 @@ class DescribeProjectResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = Project()
+            self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
 
@@ -42544,6 +42985,222 @@ class ProdSchedulerTask(AbstractModel):
         self._TaskId = params.get("TaskId")
         self._TaskName = params.get("TaskName")
         self._CycleType = params.get("CycleType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Project(AbstractModel):
+    """项目信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TenantId: 项目的所在租户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TenantId: str
+        :param _ProjectId: 项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param _ProjectName: 项目标识，英文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectName: str
+        :param _DisplayName: 项目显示名称，可以为中文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisplayName: str
+        :param _Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param _Description: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _Creator: 创建者
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Creator: :class:`tencentcloud.wedata.v20210820.models.BaseUser`
+        :param _Tenant: 租户信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tenant: :class:`tencentcloud.wedata.v20210820.models.BaseTenant`
+        :param _AdminUsers: 项目的管理员
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdminUsers: list of BaseUser
+        :param _Clusters: 项目关联的集群信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Clusters: list of BaseClusterInfo
+        :param _Params: 项目的额外配置参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Params: str
+        :param _Status: 项目状态：0：禁用，1：启用，-3:禁用中，2：启用中
+        :type Status: int
+        :param _Model: 项目类型，SIMPLE：简单模式 STANDARD：标准模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Model: str
+        """
+        self._TenantId = None
+        self._ProjectId = None
+        self._ProjectName = None
+        self._DisplayName = None
+        self._Region = None
+        self._Description = None
+        self._CreateTime = None
+        self._Creator = None
+        self._Tenant = None
+        self._AdminUsers = None
+        self._Clusters = None
+        self._Params = None
+        self._Status = None
+        self._Model = None
+
+    @property
+    def TenantId(self):
+        return self._TenantId
+
+    @TenantId.setter
+    def TenantId(self, TenantId):
+        self._TenantId = TenantId
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def DisplayName(self):
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Creator(self):
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def Tenant(self):
+        return self._Tenant
+
+    @Tenant.setter
+    def Tenant(self, Tenant):
+        self._Tenant = Tenant
+
+    @property
+    def AdminUsers(self):
+        return self._AdminUsers
+
+    @AdminUsers.setter
+    def AdminUsers(self, AdminUsers):
+        self._AdminUsers = AdminUsers
+
+    @property
+    def Clusters(self):
+        return self._Clusters
+
+    @Clusters.setter
+    def Clusters(self, Clusters):
+        self._Clusters = Clusters
+
+    @property
+    def Params(self):
+        return self._Params
+
+    @Params.setter
+    def Params(self, Params):
+        self._Params = Params
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Model(self):
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+
+    def _deserialize(self, params):
+        self._TenantId = params.get("TenantId")
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
+        self._DisplayName = params.get("DisplayName")
+        self._Region = params.get("Region")
+        self._Description = params.get("Description")
+        self._CreateTime = params.get("CreateTime")
+        if params.get("Creator") is not None:
+            self._Creator = BaseUser()
+            self._Creator._deserialize(params.get("Creator"))
+        if params.get("Tenant") is not None:
+            self._Tenant = BaseTenant()
+            self._Tenant._deserialize(params.get("Tenant"))
+        if params.get("AdminUsers") is not None:
+            self._AdminUsers = []
+            for item in params.get("AdminUsers"):
+                obj = BaseUser()
+                obj._deserialize(item)
+                self._AdminUsers.append(obj)
+        if params.get("Clusters") is not None:
+            self._Clusters = []
+            for item in params.get("Clusters"):
+                obj = BaseClusterInfo()
+                obj._deserialize(item)
+                self._Clusters.append(obj)
+        self._Params = params.get("Params")
+        self._Status = params.get("Status")
+        self._Model = params.get("Model")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

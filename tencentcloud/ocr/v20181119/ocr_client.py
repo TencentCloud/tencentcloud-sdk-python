@@ -1682,8 +1682,6 @@ class OcrClient(AbstractClient):
     def RecognizeGeneralTextImageWarn(self, request):
         """本接口支持多种类型证件有效性检测告警，包括卡证复印件告警、卡证翻拍告警等功能。可以应用于各种证件信息有效性校验场景，例如银行开户、用户注册等场景。
 
-        默认接口请求频率限制：10次/秒。
-
         :param request: Request instance for RecognizeGeneralTextImageWarn.
         :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeGeneralTextImageWarnRequest`
         :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizeGeneralTextImageWarnResponse`

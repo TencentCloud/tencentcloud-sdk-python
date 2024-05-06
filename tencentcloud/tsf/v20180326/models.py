@@ -3787,6 +3787,9 @@ class ClusterV2(AbstractModel):
         :param _KuberneteNativeSecret: native secret
 注意：此字段可能返回 null，表示取不到有效值。
         :type KuberneteNativeSecret: str
+        :param _EnableLogCollection: 是否开启cls日志功能
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableLogCollection: bool
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -3824,6 +3827,7 @@ class ClusterV2(AbstractModel):
         self._KuberneteApiServer = None
         self._KuberneteNativeType = None
         self._KuberneteNativeSecret = None
+        self._EnableLogCollection = None
 
     @property
     def ClusterId(self):
@@ -4113,6 +4117,14 @@ class ClusterV2(AbstractModel):
     def KuberneteNativeSecret(self, KuberneteNativeSecret):
         self._KuberneteNativeSecret = KuberneteNativeSecret
 
+    @property
+    def EnableLogCollection(self):
+        return self._EnableLogCollection
+
+    @EnableLogCollection.setter
+    def EnableLogCollection(self, EnableLogCollection):
+        self._EnableLogCollection = EnableLogCollection
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -4153,6 +4165,7 @@ class ClusterV2(AbstractModel):
         self._KuberneteApiServer = params.get("KuberneteApiServer")
         self._KuberneteNativeType = params.get("KuberneteNativeType")
         self._KuberneteNativeSecret = params.get("KuberneteNativeSecret")
+        self._EnableLogCollection = params.get("EnableLogCollection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7688,6 +7701,8 @@ class CreateClusterRequest(AbstractModel):
         :type KuberneteNativeSecret: str
         :param _ProgramIdList: 无
         :type ProgramIdList: list of str
+        :param _EnableLogCollection: 是否开启cls日志功能
+        :type EnableLogCollection: bool
         """
         self._ClusterName = None
         self._ClusterType = None
@@ -7705,6 +7720,7 @@ class CreateClusterRequest(AbstractModel):
         self._KuberneteNativeType = None
         self._KuberneteNativeSecret = None
         self._ProgramIdList = None
+        self._EnableLogCollection = None
 
     @property
     def ClusterName(self):
@@ -7834,6 +7850,14 @@ class CreateClusterRequest(AbstractModel):
     def ProgramIdList(self, ProgramIdList):
         self._ProgramIdList = ProgramIdList
 
+    @property
+    def EnableLogCollection(self):
+        return self._EnableLogCollection
+
+    @EnableLogCollection.setter
+    def EnableLogCollection(self, EnableLogCollection):
+        self._EnableLogCollection = EnableLogCollection
+
 
     def _deserialize(self, params):
         self._ClusterName = params.get("ClusterName")
@@ -7852,6 +7876,7 @@ class CreateClusterRequest(AbstractModel):
         self._KuberneteNativeType = params.get("KuberneteNativeType")
         self._KuberneteNativeSecret = params.get("KuberneteNativeSecret")
         self._ProgramIdList = params.get("ProgramIdList")
+        self._EnableLogCollection = params.get("EnableLogCollection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32348,11 +32373,17 @@ class ModifyClusterRequest(AbstractModel):
         :type ClusterDesc: str
         :param _ClusterRemarkName: 备注名
         :type ClusterRemarkName: str
+        :param _EnableLogCollection: 是否开启cls日志功能
+        :type EnableLogCollection: bool
+        :param _RepairLog: 是否修复cls日志功能
+        :type RepairLog: bool
         """
         self._ClusterId = None
         self._ClusterName = None
         self._ClusterDesc = None
         self._ClusterRemarkName = None
+        self._EnableLogCollection = None
+        self._RepairLog = None
 
     @property
     def ClusterId(self):
@@ -32386,12 +32417,30 @@ class ModifyClusterRequest(AbstractModel):
     def ClusterRemarkName(self, ClusterRemarkName):
         self._ClusterRemarkName = ClusterRemarkName
 
+    @property
+    def EnableLogCollection(self):
+        return self._EnableLogCollection
+
+    @EnableLogCollection.setter
+    def EnableLogCollection(self, EnableLogCollection):
+        self._EnableLogCollection = EnableLogCollection
+
+    @property
+    def RepairLog(self):
+        return self._RepairLog
+
+    @RepairLog.setter
+    def RepairLog(self, RepairLog):
+        self._RepairLog = RepairLog
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._ClusterName = params.get("ClusterName")
         self._ClusterDesc = params.get("ClusterDesc")
         self._ClusterRemarkName = params.get("ClusterRemarkName")
+        self._EnableLogCollection = params.get("EnableLogCollection")
+        self._RepairLog = params.get("RepairLog")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

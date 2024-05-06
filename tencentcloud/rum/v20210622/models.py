@@ -2405,11 +2405,11 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 开始时间
+        :param _StartTime: 开始时间，示例值：1625454840
         :type StartTime: int
         :param _Type: allcount：性能视图，day：14天数据，condition：条件列表，area：请求速度分布，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
         :type Type: str
-        :param _EndTime: 结束时间
+        :param _EndTime: 结束时间，示例值：1625454840
         :type EndTime: int
         :param _ID: 项目ID
         :type ID: int
@@ -2421,7 +2421,7 @@ class DescribeDataFetchProjectRequest(AbstractModel):
         :type Isp: str
         :param _From: 来源页面
         :type From: str
-        :param _Level: 日志等级
+        :param _Level: 日志等级（1表示白名单日志，2表示一般日志，4表示错误日志，8表示Promise 错误，16表示Ajax 请求异常，32表示JS 加载异常，64表示图片加载异常，128表示css 加载异常，256表示console.error，512表示音视频资源异常，1024表示retcode 异常，2048表示aegis report，4096表示PV日志，8192表示自定义事件，16384表示小程序 页面不存在，32768表示websocket错误，65536表示js bridge错误）
         :type Level: str
         :param _Brand: 品牌
         :type Brand: str
@@ -2435,7 +2435,7 @@ class DescribeDataFetchProjectRequest(AbstractModel):
         :type ExtThird: str
         :param _ExtFirst: 自定义1
         :type ExtFirst: str
-        :param _NetType: 网络类型
+        :param _NetType: 网络类型（1,2,3,4,5,100），1表示WIFI, 2表示2G, 3表示3G, 4表示4G, 5表示5G, 6表示6G, 100表示未知。
         :type NetType: str
         :param _Device: 机型
         :type Device: str
@@ -4857,7 +4857,7 @@ class DescribeDataReportCountRequest(AbstractModel):
         :type EndTime: int
         :param _ID: 项目ID
         :type ID: int
-        :param _ReportType: 上报类型
+        :param _ReportType: 上报类型（custom，event，log，miniProgramData，performance，pv，speed，webvitals）
         :type ReportType: str
         :param _InstanceID: 实例ID
         :type InstanceID: str
@@ -5401,7 +5401,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
         :type Isp: str
         :param _From: 来源页面
         :type From: str
-        :param _Level: 日志等级
+        :param _Level: 日志等级（1表示白名单日志，2表示一般日志，4表示错误日志，8表示Promise 错误，16表示Ajax 请求异常，32表示JS 加载异常，64表示图片加载异常，128表示css 加载异常，256表示console.error，512表示音视频资源异常，1024表示retcode 异常，2048表示aegis report，4096表示PV日志，8192表示自定义事件，16384表示小程序 页面不存在，32768表示websocket错误，65536表示js bridge错误）
         :type Level: str
         :param _Brand: 品牌
         :type Brand: str
@@ -5415,7 +5415,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
         :type ExtThird: str
         :param _ExtFirst: 自定义1
         :type ExtFirst: str
-        :param _NetType: 网络类型
+        :param _NetType: 网络类型（1,2,3,4,5,100），1表示WIFI, 2表示2G, 3表示3G, 4表示4G, 5表示5G, 6表示6G, 100表示未知。
         :type NetType: str
         :param _Device: 机型
         :type Device: str

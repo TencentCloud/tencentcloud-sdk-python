@@ -9942,7 +9942,7 @@ class DescribeAuditInstanceListRequest(AbstractModel):
         :type Filters: list of AuditInstanceFilters
         :param _AuditMode: 实例的审计规则模式。1-规则审计；0-全审计。
         :type AuditMode: int
-        :param _Limit: 单次请求返回的数量。默认值为30，最大值为 20000。
+        :param _Limit: 单次请求返回的数量。默认值为30，最大值为 100。
         :type Limit: int
         :param _Offset: 偏移量，默认值为 0。
         :type Offset: int

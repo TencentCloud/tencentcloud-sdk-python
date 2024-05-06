@@ -256,6 +256,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CloseSSL(self, request):
+        """关闭SSL连接功能。
+
+        :param request: Request instance for CloseSSL.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.CloseSSLRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.CloseSSLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloseSSL", params, headers=headers)
+            response = json.loads(body)
+            model = models.CloseSSLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CloseWanService(self, request):
         """本接口(CloseWanService)用于关闭云数据库实例的外网访问。关闭外网访问后，外网地址将不可访问。
 
@@ -2210,6 +2233,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSSLStatus(self, request):
+        """查询 SSL 开通情况。如果已经开通 SSL ，会同步返回证书下载链接。
+
+        :param request: Request instance for DescribeSSLStatus.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeSSLStatusRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeSSLStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSSLStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSSLStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSlowLogData(self, request):
         """条件检索实例的慢日志。只允许查看一个月之内的慢日志。
         使用时需要注意：可能存在单条慢日志太大，导致整个http请求的回包太大，进而引发接口超时。一旦发生超时，建议您缩小查询时的Limit参数值，从而降低包的大小，让接口能够及时返回内容。
@@ -3279,6 +3325,29 @@ class CdbClient(AbstractClient):
             body = self.call("OpenDBInstanceGTID", params, headers=headers)
             response = json.loads(body)
             model = models.OpenDBInstanceGTIDResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def OpenSSL(self, request):
+        """开启SSL连接功能。
+
+        :param request: Request instance for OpenSSL.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.OpenSSLRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.OpenSSLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenSSL", params, headers=headers)
+            response = json.loads(body)
+            model = models.OpenSSLResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

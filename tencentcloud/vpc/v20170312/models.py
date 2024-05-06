@@ -10986,9 +10986,9 @@ class CreateVpnGatewaySslServerRequest(AbstractModel):
         :type IntegrityAlgorithm: str
         :param _EncryptAlgorithm: 加密算法。可选 'AES-128-CBC','AES-192-CBC', 'AES-256-CBC', 'NONE'，默认NONE。
         :type EncryptAlgorithm: str
-        :param _Compress: 是否支持压缩。当前仅支持不支持压缩，默认False。
+        :param _Compress: 是否支持压缩。当前不支持压缩，默认False。
         :type Compress: bool
-        :param _SsoEnabled: 是否开启SSO认证。默认为False
+        :param _SsoEnabled: 是否开启SSO认证。默认为False。该功能当前需要申请开白使用。
         :type SsoEnabled: bool
         :param _AccessPolicyEnabled: 是否开启策略访问控制。默认为False
         :type AccessPolicyEnabled: bool
@@ -24554,7 +24554,7 @@ class DescribeVpnGatewaySslServersRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 请求对象个数。
         :type Limit: int
-        :param _SslVpnServerIds: SSL-VPN-SERVER实例ID。形如：vpngwSslServer-12345678。每次请求的实例的上限为100。参数不支持同时指定SslVpnServerIds和Filters。
+        :param _SslVpnServerIds: SSL-VPN-SERVER实例ID。形如：vpns-0p4rj60。每次请求的实例的上限为100。参数不支持同时指定SslVpnServerIds和Filters。
         :type SslVpnServerIds: list of str
         :param _Filters: 过滤条件，参数不支持同时指定SslVpnServerIds和Filters。
 <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
@@ -29174,15 +29174,15 @@ class InquiryPriceCreateVpnGatewayRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InternetMaxBandwidthOut: 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100；单位：Mbps。
+        :param _InternetMaxBandwidthOut: 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100, 200, 500, 1000, 3000；单位：Mbps。
         :type InternetMaxBandwidthOut: int
         :param _InstanceChargeType: VPN网关计费模式，PREPAID：表示预付费，即包年包月，POSTPAID_BY_HOUR：表示后付费，即按量计费。默认：POSTPAID_BY_HOUR，如果指定预付费模式，参数InstanceChargePrepaid必填。
         :type InstanceChargeType: str
         :param _InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
         :type InstanceChargePrepaid: :class:`tencentcloud.vpc.v20170312.models.InstanceChargePrepaid`
-        :param _MaxConnection: SSL VPN连接数设置，可选规格：5, 10, 20, 50, 100；单位：个。
+        :param _MaxConnection: SSL VPN连接数设置，可选规格：5, 10, 20, 50, 100, 200, 500, 1000；单位：个。
         :type MaxConnection: int
-        :param _Type: 查询的VPN类型，支持IPSEC和SSL两种类型，为SSL类型时，MaxConnection参数必传。
+        :param _Type: 查询的VPN类型，支持IPSEC、SSL两种类型，为SSL类型时，MaxConnection参数必传。
         :type Type: str
         """
         self._InternetMaxBandwidthOut = None
@@ -29384,7 +29384,7 @@ class InquiryPriceResetVpnGatewayInternetMaxBandwidthRequest(AbstractModel):
         r"""
         :param _VpnGatewayId: VPN网关实例ID。
         :type VpnGatewayId: str
-        :param _InternetMaxBandwidthOut: 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100；单位：Mbps。
+        :param _InternetMaxBandwidthOut: 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100, 200, 500, 1000；单位：Mbps。
         :type InternetMaxBandwidthOut: int
         """
         self._VpnGatewayId = None
@@ -29427,7 +29427,7 @@ class InquiryPriceResetVpnGatewayInternetMaxBandwidthResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Price: 商品价格。
+        :param _Price: 商品价格。仅支持未过期的预付费网关。
         :type Price: :class:`tencentcloud.vpc.v20170312.models.Price`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -35018,7 +35018,7 @@ class ModifyVpnGatewayCcnRoutesRequest(AbstractModel):
         r"""
         :param _VpnGatewayId: VPN网关实例ID。
         :type VpnGatewayId: str
-        :param _Routes: 云联网路由（IDC网段）列表。
+        :param _Routes: 云联网路由（IDC网段）列表。其中RouteId可通过[DescribeVpnGatewayCcnRoutes](https://cloud.tencent.com/document/product/215/43514)接口获取。 
         :type Routes: list of VpngwCcnRoutes
         """
         self._VpnGatewayId = None
@@ -35200,9 +35200,9 @@ class ModifyVpnGatewaySslServerRequest(AbstractModel):
         :type EncryptAlgorithm: str
         :param _IntegrityAlgorithm: 认证算法。可选 'SHA1', 'MD5', 'NONE'。默认NONE
         :type IntegrityAlgorithm: str
-        :param _Compress: 是否支持压缩。当前仅支持不支持压缩。默认False
+        :param _Compress: 是否支持压缩。当前不支持压缩。默认False。
         :type Compress: bool
-        :param _SsoEnabled: 是否开启SSO认证，默认False
+        :param _SsoEnabled: 是否开启SSO认证。默认为False。该功能当前需要申请开白使用。
         :type SsoEnabled: bool
         :param _SamlData: SAML-DATA
         :type SamlData: str
@@ -41659,7 +41659,7 @@ class SetVpnGatewaysRenewFlagRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpnGatewayIds: VPNGW字符型ID列表。可通过[DescribeVpnGateways](https://cloud.tencent.com/document/api/215/17514)接口返回值VpnGatewaySet中的VpnGatewayId获取。
+        :param _VpnGatewayIds: VPNGW字符型ID列表。可通过[DescribeVpnGateways](https://cloud.tencent.com/document/api/215/17514)接口返回值VpnGatewaySet中的VpnGatewayId获取，只能选择包年包月的VPN实例。
         :type VpnGatewayIds: list of str
         :param _AutoRenewFlag: 自动续费标记 [0, 1, 2]
 0表示默认状态(初始状态)， 1表示自动续费，2表示明确不自动续费。
@@ -42444,6 +42444,9 @@ class SslVpnSever(AbstractModel):
         :type AccessPolicyEnabled: int
         :param _AccessPolicy: 策略信息
         :type AccessPolicy: list of AccessPolicy
+        :param _SpName: CAM服务提供商Name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpName: str
         """
         self._VpcId = None
         self._SslVpnServerId = None
@@ -42464,6 +42467,7 @@ class SslVpnSever(AbstractModel):
         self._EiamApplicationId = None
         self._AccessPolicyEnabled = None
         self._AccessPolicy = None
+        self._SpName = None
 
     @property
     def VpcId(self):
@@ -42617,6 +42621,14 @@ class SslVpnSever(AbstractModel):
     def AccessPolicy(self, AccessPolicy):
         self._AccessPolicy = AccessPolicy
 
+    @property
+    def SpName(self):
+        return self._SpName
+
+    @SpName.setter
+    def SpName(self, SpName):
+        self._SpName = SpName
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -42643,6 +42655,7 @@ class SslVpnSever(AbstractModel):
                 obj = AccessPolicy()
                 obj._deserialize(item)
                 self._AccessPolicy.append(obj)
+        self._SpName = params.get("SpName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

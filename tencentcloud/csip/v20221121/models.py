@@ -5448,6 +5448,8 @@ class CreateRiskCenterScanTaskRequest(AbstractModel):
         :type ScanItem: list of str
         :param _ScanPlanType: 0-周期任务,1-立即扫描,2-定时扫描,3-自定义；0,2,3则ScanPlanContent必填
         :type ScanPlanType: int
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
         :param _Assets: 扫描资产信息列表
         :type Assets: list of TaskAssetObject
         :param _ScanPlanContent: 扫描计划详情
@@ -5467,6 +5469,7 @@ class CreateRiskCenterScanTaskRequest(AbstractModel):
         self._ScanAssetType = None
         self._ScanItem = None
         self._ScanPlanType = None
+        self._MemberId = None
         self._Assets = None
         self._ScanPlanContent = None
         self._SelfDefiningAssets = None
@@ -5506,6 +5509,14 @@ class CreateRiskCenterScanTaskRequest(AbstractModel):
     @ScanPlanType.setter
     def ScanPlanType(self, ScanPlanType):
         self._ScanPlanType = ScanPlanType
+
+    @property
+    def MemberId(self):
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
 
     @property
     def Assets(self):
@@ -5569,6 +5580,7 @@ class CreateRiskCenterScanTaskRequest(AbstractModel):
         self._ScanAssetType = params.get("ScanAssetType")
         self._ScanItem = params.get("ScanItem")
         self._ScanPlanType = params.get("ScanPlanType")
+        self._MemberId = params.get("MemberId")
         if params.get("Assets") is not None:
             self._Assets = []
             for item in params.get("Assets"):
@@ -6421,8 +6433,11 @@ class DeleteRiskScanTaskRequest(AbstractModel):
         r"""
         :param _TaskIdList: 任务id 列表
         :type TaskIdList: list of TaskIdListKey
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
         """
         self._TaskIdList = None
+        self._MemberId = None
 
     @property
     def TaskIdList(self):
@@ -6432,6 +6447,14 @@ class DeleteRiskScanTaskRequest(AbstractModel):
     def TaskIdList(self, TaskIdList):
         self._TaskIdList = TaskIdList
 
+    @property
+    def MemberId(self):
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
 
     def _deserialize(self, params):
         if params.get("TaskIdList") is not None:
@@ -6440,6 +6463,7 @@ class DeleteRiskScanTaskRequest(AbstractModel):
                 obj = TaskIdListKey()
                 obj._deserialize(item)
                 self._TaskIdList.append(obj)
+        self._MemberId = params.get("MemberId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8570,13 +8594,24 @@ class DescribeRiskCenterAssetViewCFGRiskListRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
         :param _Filter: 过滤内容
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
         :param _Tags: 资产标签
         :type Tags: list of AssetTag
         """
+        self._MemberId = None
         self._Filter = None
         self._Tags = None
+
+    @property
+    def MemberId(self):
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
 
     @property
     def Filter(self):
@@ -8596,6 +8631,7 @@ class DescribeRiskCenterAssetViewCFGRiskListRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
@@ -8778,13 +8814,24 @@ class DescribeRiskCenterAssetViewPortRiskListRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
         :param _Filter: 过滤内容
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
         :param _Tags: 资产标签
         :type Tags: list of AssetTag
         """
+        self._MemberId = None
         self._Filter = None
         self._Tags = None
+
+    @property
+    def MemberId(self):
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
 
     @property
     def Filter(self):
@@ -8804,6 +8851,7 @@ class DescribeRiskCenterAssetViewPortRiskListRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
@@ -8969,13 +9017,24 @@ class DescribeRiskCenterAssetViewVULRiskListRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
         :param _Filter: 过滤内容
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
         :param _Tags: 资产标签
         :type Tags: list of AssetTag
         """
+        self._MemberId = None
         self._Filter = None
         self._Tags = None
+
+    @property
+    def MemberId(self):
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
 
     @property
     def Filter(self):
@@ -8995,6 +9054,7 @@ class DescribeRiskCenterAssetViewVULRiskListRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
@@ -9160,13 +9220,24 @@ class DescribeRiskCenterAssetViewWeakPasswordRiskListRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
         :param _Filter: 过滤内容
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
         :param _Tags: 资产标签
         :type Tags: list of AssetTag
         """
+        self._MemberId = None
         self._Filter = None
         self._Tags = None
+
+    @property
+    def MemberId(self):
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
 
     @property
     def Filter(self):
@@ -9186,6 +9257,7 @@ class DescribeRiskCenterAssetViewWeakPasswordRiskListRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
@@ -9351,13 +9423,24 @@ class DescribeRiskCenterPortViewPortRiskListRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
         :param _Filter: 过滤内容
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
         :param _Tags: 资产标签
         :type Tags: list of AssetTag
         """
+        self._MemberId = None
         self._Filter = None
         self._Tags = None
+
+    @property
+    def MemberId(self):
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
 
     @property
     def Filter(self):
@@ -9377,6 +9460,7 @@ class DescribeRiskCenterPortViewPortRiskListRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
@@ -9508,13 +9592,24 @@ class DescribeRiskCenterServerRiskListRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
         :param _Filter: 过滤内容
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
         :param _Tags: 资产标签
         :type Tags: list of AssetTag
         """
+        self._MemberId = None
         self._Filter = None
         self._Tags = None
+
+    @property
+    def MemberId(self):
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
 
     @property
     def Filter(self):
@@ -9534,6 +9629,7 @@ class DescribeRiskCenterServerRiskListRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
@@ -9631,13 +9727,24 @@ class DescribeRiskCenterVULViewVULRiskListRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
         :param _Filter: 过滤内容
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
         :param _Tags: 资产标签
         :type Tags: list of AssetTag
         """
+        self._MemberId = None
         self._Filter = None
         self._Tags = None
+
+    @property
+    def MemberId(self):
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
 
     @property
     def Filter(self):
@@ -9657,6 +9764,7 @@ class DescribeRiskCenterVULViewVULRiskListRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
@@ -9788,13 +9896,24 @@ class DescribeRiskCenterWebsiteRiskListRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
         :param _Filter: 过滤内容
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
         :param _Tags: 资产标签
         :type Tags: list of AssetTag
         """
+        self._MemberId = None
         self._Filter = None
         self._Tags = None
+
+    @property
+    def MemberId(self):
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
 
     @property
     def Filter(self):
@@ -9814,6 +9933,7 @@ class DescribeRiskCenterWebsiteRiskListRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
@@ -9962,10 +10082,21 @@ class DescribeScanReportListRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
         :param _Filter: 列表过滤条件
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
+        self._MemberId = None
         self._Filter = None
+
+    @property
+    def MemberId(self):
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
 
     @property
     def Filter(self):
@@ -9977,6 +10108,7 @@ class DescribeScanReportListRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
@@ -10065,13 +10197,24 @@ class DescribeScanTaskListRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
         :param _Filter: 过滤内容
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
         :param _Tags: 标签
         :type Tags: list of Tags
         """
+        self._MemberId = None
         self._Filter = None
         self._Tags = None
+
+    @property
+    def MemberId(self):
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
 
     @property
     def Filter(self):
@@ -10091,6 +10234,7 @@ class DescribeScanTaskListRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
@@ -10470,10 +10614,21 @@ class DescribeTaskLogListRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
         :param _Filter: 过滤内容
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
+        self._MemberId = None
         self._Filter = None
+
+    @property
+    def MemberId(self):
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
 
     @property
     def Filter(self):
@@ -10485,6 +10640,7 @@ class DescribeTaskLogListRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
@@ -10589,12 +10745,15 @@ class DescribeTaskLogURLRequest(AbstractModel):
         r"""
         :param _Type: 0: 预览， 1: 下载
         :type Type: int
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
         :param _ReportItemKeyList: 任务报告Id 列表
         :type ReportItemKeyList: list of ReportItemKey
         :param _ReportTaskIdList: 报告中任务id列表
         :type ReportTaskIdList: list of ReportTaskIdList
         """
         self._Type = None
+        self._MemberId = None
         self._ReportItemKeyList = None
         self._ReportTaskIdList = None
 
@@ -10605,6 +10764,14 @@ class DescribeTaskLogURLRequest(AbstractModel):
     @Type.setter
     def Type(self, Type):
         self._Type = Type
+
+    @property
+    def MemberId(self):
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
 
     @property
     def ReportItemKeyList(self):
@@ -10625,6 +10792,7 @@ class DescribeTaskLogURLRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
+        self._MemberId = params.get("MemberId")
         if params.get("ReportItemKeyList") is not None:
             self._ReportItemKeyList = []
             for item in params.get("ReportItemKeyList"):
@@ -12817,10 +12985,13 @@ class ModifyRiskCenterRiskStatusRequest(AbstractModel):
         :type Status: int
         :param _Type: 风险类型，0-端口风险， 1-漏洞风险，2-弱口令风险， 3-网站内容风险，4-配置风险，5-风险服务暴露
         :type Type: int
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
         """
         self._RiskStatusKeys = None
         self._Status = None
         self._Type = None
+        self._MemberId = None
 
     @property
     def RiskStatusKeys(self):
@@ -12846,6 +13017,14 @@ class ModifyRiskCenterRiskStatusRequest(AbstractModel):
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def MemberId(self):
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
 
     def _deserialize(self, params):
         if params.get("RiskStatusKeys") is not None:
@@ -12856,6 +13035,7 @@ class ModifyRiskCenterRiskStatusRequest(AbstractModel):
                 self._RiskStatusKeys.append(obj)
         self._Status = params.get("Status")
         self._Type = params.get("Type")
+        self._MemberId = params.get("MemberId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12908,6 +13088,8 @@ class ModifyRiskCenterScanTaskRequest(AbstractModel):
         :type ScanPlanType: int
         :param _TaskId: 要修改的任务id
         :type TaskId: str
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
         :param _Assets: 扫描资产信息列表
         :type Assets: list of TaskAssetObject
         :param _ScanPlanContent: 扫描计划详情
@@ -12924,6 +13106,7 @@ class ModifyRiskCenterScanTaskRequest(AbstractModel):
         self._ScanItem = None
         self._ScanPlanType = None
         self._TaskId = None
+        self._MemberId = None
         self._Assets = None
         self._ScanPlanContent = None
         self._SelfDefiningAssets = None
@@ -12969,6 +13152,14 @@ class ModifyRiskCenterScanTaskRequest(AbstractModel):
     @TaskId.setter
     def TaskId(self, TaskId):
         self._TaskId = TaskId
+
+    @property
+    def MemberId(self):
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
 
     @property
     def Assets(self):
@@ -13017,6 +13208,7 @@ class ModifyRiskCenterScanTaskRequest(AbstractModel):
         self._ScanItem = params.get("ScanItem")
         self._ScanPlanType = params.get("ScanPlanType")
         self._TaskId = params.get("TaskId")
+        self._MemberId = params.get("MemberId")
         if params.get("Assets") is not None:
             self._Assets = []
             for item in params.get("Assets"):
@@ -15755,8 +15947,11 @@ class StopRiskCenterTaskRequest(AbstractModel):
         r"""
         :param _TaskIdList: 任务id 列表
         :type TaskIdList: list of TaskIdListKey
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
         """
         self._TaskIdList = None
+        self._MemberId = None
 
     @property
     def TaskIdList(self):
@@ -15766,6 +15961,14 @@ class StopRiskCenterTaskRequest(AbstractModel):
     def TaskIdList(self, TaskIdList):
         self._TaskIdList = TaskIdList
 
+    @property
+    def MemberId(self):
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
 
     def _deserialize(self, params):
         if params.get("TaskIdList") is not None:
@@ -15774,6 +15977,7 @@ class StopRiskCenterTaskRequest(AbstractModel):
                 obj = TaskIdListKey()
                 obj._deserialize(item)
                 self._TaskIdList.append(obj)
+        self._MemberId = params.get("MemberId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

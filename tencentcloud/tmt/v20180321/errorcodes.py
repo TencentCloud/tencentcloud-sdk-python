@@ -35,6 +35,12 @@ FAILEDOPERATION_SERVICEISOLATE = 'FailedOperation.ServiceIsolate'
 # 账号已停服。
 FAILEDOPERATION_STOPUSING = 'FailedOperation.StopUsing'
 
+# 当日提交任务数达到上限
+FAILEDOPERATION_SUBMISSIONLIMITREACHED = 'FailedOperation.SubmissionLimitReached'
+
+# 过多未完成任务
+FAILEDOPERATION_TOOMANYWAITPROCESS = 'FailedOperation.TooManyWaitProcess'
+
 # 服务未开通，请在腾讯云官网机器翻译控制台开通服务。
 FAILEDOPERATION_USERNOTREGISTERED = 'FailedOperation.UserNotRegistered'
 

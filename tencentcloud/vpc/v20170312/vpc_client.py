@@ -2691,7 +2691,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteVpnGateway(self, request):
-        """本接口（DeleteVpnGateway）用于删除VPN网关。目前只支持删除运行中的按量计费的IPSEC网关实例。
+        """本接口（DeleteVpnGateway）用于删除VPN网关。
 
         :param request: Request instance for DeleteVpnGateway.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteVpnGatewayRequest`
@@ -5532,7 +5532,7 @@ class VpcClient(AbstractClient):
 
 
     def InquiryPriceResetVpnGatewayInternetMaxBandwidth(self, request):
-        """本接口（InquiryPriceResetVpnGatewayInternetMaxBandwidth）调整VPN网关带宽上限询价。
+        """本接口（InquiryPriceResetVpnGatewayInternetMaxBandwidth）用于调整VPN网关带宽上限询价。
 
         :param request: Request instance for InquiryPriceResetVpnGatewayInternetMaxBandwidth.
         :type request: :class:`tencentcloud.vpc.v20170312.models.InquiryPriceResetVpnGatewayInternetMaxBandwidthRequest`

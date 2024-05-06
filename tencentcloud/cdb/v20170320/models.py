@@ -4334,6 +4334,88 @@ class CloseCdbProxyAddressResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CloseSSLRequest(AbstractModel):
+    """CloseSSL请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID 。只读组 ID为空时必填。
+        :type InstanceId: str
+        :param _RoGroupId: 只读组 ID。实例 ID为空时必填。
+        :type RoGroupId: str
+        """
+        self._InstanceId = None
+        self._RoGroupId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RoGroupId(self):
+        return self._RoGroupId
+
+    @RoGroupId.setter
+    def RoGroupId(self, RoGroupId):
+        self._RoGroupId = RoGroupId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RoGroupId = params.get("RoGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloseSSLResponse(AbstractModel):
+    """CloseSSL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AsyncRequestId: 异步请求 ID。
+        :type AsyncRequestId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AsyncRequestId = None
+        self._RequestId = None
+
+    @property
+    def AsyncRequestId(self):
+        return self._AsyncRequestId
+
+    @AsyncRequestId.setter
+    def AsyncRequestId(self, AsyncRequestId):
+        self._AsyncRequestId = AsyncRequestId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AsyncRequestId = params.get("AsyncRequestId")
+        self._RequestId = params.get("RequestId")
+
+
 class CloseWanServiceRequest(AbstractModel):
     """CloseWanService请求参数结构体
 
@@ -16312,6 +16394,100 @@ class DescribeRollbackTaskDetailResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSSLStatusRequest(AbstractModel):
+    """DescribeSSLStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID 。只读组 ID为空时必填。
+        :type InstanceId: str
+        :param _RoGroupId: 只读组 ID。实例 ID为空时必填。
+        :type RoGroupId: str
+        """
+        self._InstanceId = None
+        self._RoGroupId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RoGroupId(self):
+        return self._RoGroupId
+
+    @RoGroupId.setter
+    def RoGroupId(self, RoGroupId):
+        self._RoGroupId = RoGroupId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RoGroupId = params.get("RoGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSSLStatusResponse(AbstractModel):
+    """DescribeSSLStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 是否开通 SSL 。ON 代表开通 ，OFF 代表未开通。
+        :type Status: str
+        :param _Url: 证书下载链接。
+        :type Url: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._Url = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._Url = params.get("Url")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSlowLogDataRequest(AbstractModel):
     """DescribeSlowLogData请求参数结构体
 
@@ -23720,6 +23896,88 @@ class OpenDBInstanceGTIDResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _AsyncRequestId: 异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。
+        :type AsyncRequestId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AsyncRequestId = None
+        self._RequestId = None
+
+    @property
+    def AsyncRequestId(self):
+        return self._AsyncRequestId
+
+    @AsyncRequestId.setter
+    def AsyncRequestId(self, AsyncRequestId):
+        self._AsyncRequestId = AsyncRequestId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AsyncRequestId = params.get("AsyncRequestId")
+        self._RequestId = params.get("RequestId")
+
+
+class OpenSSLRequest(AbstractModel):
+    """OpenSSL请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID 。
+        :type InstanceId: str
+        :param _RoGroupId: 只读组 ID。
+        :type RoGroupId: str
+        """
+        self._InstanceId = None
+        self._RoGroupId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RoGroupId(self):
+        return self._RoGroupId
+
+    @RoGroupId.setter
+    def RoGroupId(self, RoGroupId):
+        self._RoGroupId = RoGroupId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RoGroupId = params.get("RoGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenSSLResponse(AbstractModel):
+    """OpenSSL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AsyncRequestId: 异步请求 ID。
         :type AsyncRequestId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

@@ -2837,31 +2837,6 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeAttackLogInfo(self, request):
-        """DescribeAttackEventInfo 接口替代
-
-        网络攻击日志详情
-
-        :param request: Request instance for DescribeAttackLogInfo.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackLogInfoRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackLogInfoResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeAttackLogInfo", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeAttackLogInfoResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeAttackLogs(self, request):
         """按分页形式展示网络攻击日志列表
 

@@ -176,13 +176,13 @@ class ApplyCertificateRequest(AbstractModel):
         :type DomainName: str
         :param _ProjectId: 项目 ID。
         :type ProjectId: int
-        :param _PackageType: 证书类型，目前仅支持类型2。2 = TrustAsia TLS RSA CA。
+        :param _PackageType: 证书类型，目前仅支持类型83。83 = TrustAsia C1 DV Free。
         :type PackageType: str
         :param _ContactEmail: 邮箱。
         :type ContactEmail: str
         :param _ContactPhone: 手机。
         :type ContactPhone: str
-        :param _ValidityPeriod: 有效期，默认12个月，目前仅支持12个月。
+        :param _ValidityPeriod: 有效期，默认3个月，目前仅支持3个月。
         :type ValidityPeriod: str
         :param _CsrEncryptAlgo: 加密算法，支持 RSA及ECC。
         :type CsrEncryptAlgo: str
