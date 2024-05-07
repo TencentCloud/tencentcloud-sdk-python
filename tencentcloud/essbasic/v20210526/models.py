@@ -18433,7 +18433,7 @@ class ReleasedApprover(AbstractModel):
      - 当指定C端签署人的签署方自定义控件别名不空时，除参数ApproverNumber外，可以只传参数ApproverSignRole。
 
     如果需要指定B端(企业身份类型)签署人，其中ReleasedApprover需要传递的参数如下：
-    `ApproverNumber`, `OrganizationName`, `ApproverType`必传。</br>
+    (`ApproverNumber`, `ReleasedApproverRecipientId`这两个二选一), `OrganizationName`, `ApproverType`必传。</br>
     对于其他身份标识：
     - **子客企业指定经办人**：OpenId必传，OrganizationOpenId必传；
     - **非子客企业经办人**：Name、Mobile必传。
@@ -18449,6 +18449,9 @@ class ReleasedApprover(AbstractModel):
 <ul><li> **ORGANIZATION**：企业(默认值)</li>
 <li> **ENTERPRISESERVER**：企业静默签</li></ul>
         :type ApproverType: str
+        :param _ReleasedApproverRecipientId: 签署人在原合同中的RecipientId，可以通过<a href="https://qian.tencent.com/developers/partnerApis/flows/DescribeFlowDetailInfo" target="_blank">DescribeFlowDetailInfo</a>接口查看原流程中的签署人信息，可参考返回结构体<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#flowapproverdetail" target="_blank">FlowApproverDetail</a>中的RecipientId。
+**注意**：当指定了此参数后，ApproverNumber即失效，会以本参数作为原合同参与人的选取。与ApproverNumber二选一。
+        :type ReleasedApproverRecipientId: str
         :param _Name: 签署人姓名，最大长度50个字。
         :type Name: str
         :param _IdCardType: 签署方经办人的证件类型，支持以下类型
@@ -18482,9 +18485,12 @@ class ReleasedApprover(AbstractModel):
         :param _ApproverSignRole: 参与方在合同中的角色是按照创建合同的时候来排序的，解除协议默认会将第一个参与人叫`甲方`,第二个叫`乙方`,  第三个叫`丙方`，以此类推。
 如果需改动此参与人的角色名字，可用此字段指定，由汉字,英文字符,数字组成，最大20个字。
         :type ApproverSignRole: str
+        :param _ApproverSignSealId: 印章Id，签署控件类型为印章时，用于指定本企业签署方在解除协议中使用那个印章进行签署
+        :type ApproverSignSealId: str
         """
         self._ApproverNumber = None
         self._ApproverType = None
+        self._ReleasedApproverRecipientId = None
         self._Name = None
         self._IdCardType = None
         self._IdCardNumber = None
@@ -18494,6 +18500,7 @@ class ReleasedApprover(AbstractModel):
         self._OpenId = None
         self._ApproverSignComponentType = None
         self._ApproverSignRole = None
+        self._ApproverSignSealId = None
 
     @property
     def ApproverNumber(self):
@@ -18510,6 +18517,14 @@ class ReleasedApprover(AbstractModel):
     @ApproverType.setter
     def ApproverType(self, ApproverType):
         self._ApproverType = ApproverType
+
+    @property
+    def ReleasedApproverRecipientId(self):
+        return self._ReleasedApproverRecipientId
+
+    @ReleasedApproverRecipientId.setter
+    def ReleasedApproverRecipientId(self, ReleasedApproverRecipientId):
+        self._ReleasedApproverRecipientId = ReleasedApproverRecipientId
 
     @property
     def Name(self):
@@ -18583,10 +18598,19 @@ class ReleasedApprover(AbstractModel):
     def ApproverSignRole(self, ApproverSignRole):
         self._ApproverSignRole = ApproverSignRole
 
+    @property
+    def ApproverSignSealId(self):
+        return self._ApproverSignSealId
+
+    @ApproverSignSealId.setter
+    def ApproverSignSealId(self, ApproverSignSealId):
+        self._ApproverSignSealId = ApproverSignSealId
+
 
     def _deserialize(self, params):
         self._ApproverNumber = params.get("ApproverNumber")
         self._ApproverType = params.get("ApproverType")
+        self._ReleasedApproverRecipientId = params.get("ReleasedApproverRecipientId")
         self._Name = params.get("Name")
         self._IdCardType = params.get("IdCardType")
         self._IdCardNumber = params.get("IdCardNumber")
@@ -18596,6 +18620,7 @@ class ReleasedApprover(AbstractModel):
         self._OpenId = params.get("OpenId")
         self._ApproverSignComponentType = params.get("ApproverSignComponentType")
         self._ApproverSignRole = params.get("ApproverSignRole")
+        self._ApproverSignSealId = params.get("ApproverSignSealId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

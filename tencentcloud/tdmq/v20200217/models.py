@@ -20491,7 +20491,7 @@ class RabbitMQClusterInfo(AbstractModel):
         :type ConsumerNumber: int
         :param _ExchangeNumber: Exchang数量
         :type ExchangeNumber: int
-        :param _ExceptionInformation: 集群异常。
+        :param _ExceptionInformation: 集群异常信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExceptionInformation: str
         :param _ClusterStatus: 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
@@ -20502,6 +20502,12 @@ class RabbitMQClusterInfo(AbstractModel):
         :param _MirrorQueuePolicyFlag: 是否开启镜像队列策略。1表示开启，0表示没开启。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MirrorQueuePolicyFlag: int
+        :param _MessageConsumeRate: 每秒消费消息数 单位：条/秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessageConsumeRate: float
+        :param _ClusterVersion: 集群版本信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterVersion: str
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -20523,6 +20529,8 @@ class RabbitMQClusterInfo(AbstractModel):
         self._ClusterStatus = None
         self._AutoRenewFlag = None
         self._MirrorQueuePolicyFlag = None
+        self._MessageConsumeRate = None
+        self._ClusterVersion = None
 
     @property
     def ClusterId(self):
@@ -20684,6 +20692,22 @@ class RabbitMQClusterInfo(AbstractModel):
     def MirrorQueuePolicyFlag(self, MirrorQueuePolicyFlag):
         self._MirrorQueuePolicyFlag = MirrorQueuePolicyFlag
 
+    @property
+    def MessageConsumeRate(self):
+        return self._MessageConsumeRate
+
+    @MessageConsumeRate.setter
+    def MessageConsumeRate(self, MessageConsumeRate):
+        self._MessageConsumeRate = MessageConsumeRate
+
+    @property
+    def ClusterVersion(self):
+        return self._ClusterVersion
+
+    @ClusterVersion.setter
+    def ClusterVersion(self, ClusterVersion):
+        self._ClusterVersion = ClusterVersion
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -20711,6 +20735,8 @@ class RabbitMQClusterInfo(AbstractModel):
         self._ClusterStatus = params.get("ClusterStatus")
         self._AutoRenewFlag = params.get("AutoRenewFlag")
         self._MirrorQueuePolicyFlag = params.get("MirrorQueuePolicyFlag")
+        self._MessageConsumeRate = params.get("MessageConsumeRate")
+        self._ClusterVersion = params.get("ClusterVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21113,6 +21139,30 @@ class RabbitMQQueueListInfo(AbstractModel):
         :param _ModifyTime: 修改时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyTime: str
+        :param _Durable: 队列是否持久化，true 为持久化，false 为非持久化
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Durable: bool
+        :param _AutoDelete: 队列是否为自动删除队列，true 为自动删除，false 为非自动删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoDelete: bool
+        :param _InstanceId: 队列所属实例 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _VirtualHost: 队列所属虚拟主机名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirtualHost: str
+        :param _Node: 队列所在主节点名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Node: str
+        :param _Policy: 生效的策略名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Policy: str
+        :param _Arguments: 扩展参数 key-value 对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Arguments: str
+        :param _Exclusive: 是否独占队列
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Exclusive: bool
         """
         self._QueueName = None
         self._Remark = None
@@ -21123,6 +21173,14 @@ class RabbitMQQueueListInfo(AbstractModel):
         self._MessageRateOut = None
         self._CreateTime = None
         self._ModifyTime = None
+        self._Durable = None
+        self._AutoDelete = None
+        self._InstanceId = None
+        self._VirtualHost = None
+        self._Node = None
+        self._Policy = None
+        self._Arguments = None
+        self._Exclusive = None
 
     @property
     def QueueName(self):
@@ -21196,6 +21254,70 @@ class RabbitMQQueueListInfo(AbstractModel):
     def ModifyTime(self, ModifyTime):
         self._ModifyTime = ModifyTime
 
+    @property
+    def Durable(self):
+        return self._Durable
+
+    @Durable.setter
+    def Durable(self, Durable):
+        self._Durable = Durable
+
+    @property
+    def AutoDelete(self):
+        return self._AutoDelete
+
+    @AutoDelete.setter
+    def AutoDelete(self, AutoDelete):
+        self._AutoDelete = AutoDelete
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def VirtualHost(self):
+        return self._VirtualHost
+
+    @VirtualHost.setter
+    def VirtualHost(self, VirtualHost):
+        self._VirtualHost = VirtualHost
+
+    @property
+    def Node(self):
+        return self._Node
+
+    @Node.setter
+    def Node(self, Node):
+        self._Node = Node
+
+    @property
+    def Policy(self):
+        return self._Policy
+
+    @Policy.setter
+    def Policy(self, Policy):
+        self._Policy = Policy
+
+    @property
+    def Arguments(self):
+        return self._Arguments
+
+    @Arguments.setter
+    def Arguments(self, Arguments):
+        self._Arguments = Arguments
+
+    @property
+    def Exclusive(self):
+        return self._Exclusive
+
+    @Exclusive.setter
+    def Exclusive(self, Exclusive):
+        self._Exclusive = Exclusive
+
 
     def _deserialize(self, params):
         self._QueueName = params.get("QueueName")
@@ -21209,6 +21331,14 @@ class RabbitMQQueueListInfo(AbstractModel):
         self._MessageRateOut = params.get("MessageRateOut")
         self._CreateTime = params.get("CreateTime")
         self._ModifyTime = params.get("ModifyTime")
+        self._Durable = params.get("Durable")
+        self._AutoDelete = params.get("AutoDelete")
+        self._InstanceId = params.get("InstanceId")
+        self._VirtualHost = params.get("VirtualHost")
+        self._Node = params.get("Node")
+        self._Policy = params.get("Policy")
+        self._Arguments = params.get("Arguments")
+        self._Exclusive = params.get("Exclusive")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21624,6 +21754,9 @@ class RabbitMQVirtualHostInfo(AbstractModel):
         :param _MessageRateOut: 输出消息速率
 注意：此字段可能返回 null，表示取不到有效值。
         :type MessageRateOut: float
+        :param _MirrorQueuePolicyFlag: 是否存在镜像队列策略，true 为存在，false 为不存
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MirrorQueuePolicyFlag: bool
         """
         self._InstanceId = None
         self._VirtualHost = None
@@ -21636,6 +21769,7 @@ class RabbitMQVirtualHostInfo(AbstractModel):
         self._MessageHeapCount = None
         self._MessageRateIn = None
         self._MessageRateOut = None
+        self._MirrorQueuePolicyFlag = None
 
     @property
     def InstanceId(self):
@@ -21725,6 +21859,14 @@ class RabbitMQVirtualHostInfo(AbstractModel):
     def MessageRateOut(self, MessageRateOut):
         self._MessageRateOut = MessageRateOut
 
+    @property
+    def MirrorQueuePolicyFlag(self):
+        return self._MirrorQueuePolicyFlag
+
+    @MirrorQueuePolicyFlag.setter
+    def MirrorQueuePolicyFlag(self, MirrorQueuePolicyFlag):
+        self._MirrorQueuePolicyFlag = MirrorQueuePolicyFlag
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -21740,6 +21882,7 @@ class RabbitMQVirtualHostInfo(AbstractModel):
         self._MessageHeapCount = params.get("MessageHeapCount")
         self._MessageRateIn = params.get("MessageRateIn")
         self._MessageRateOut = params.get("MessageRateOut")
+        self._MirrorQueuePolicyFlag = params.get("MirrorQueuePolicyFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

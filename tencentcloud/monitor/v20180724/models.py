@@ -23730,24 +23730,16 @@ class ModifyPrometheusInstanceAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceName: 实例名称
-        :type InstanceName: str
         :param _InstanceId: 实例 ID
         :type InstanceId: str
+        :param _InstanceName: 实例名称
+        :type InstanceName: str
         :param _DataRetentionTime: 存储时长（取值为 15、30、45。此参数不适用于包年包月实例）
         :type DataRetentionTime: int
         """
-        self._InstanceName = None
         self._InstanceId = None
+        self._InstanceName = None
         self._DataRetentionTime = None
-
-    @property
-    def InstanceName(self):
-        return self._InstanceName
-
-    @InstanceName.setter
-    def InstanceName(self, InstanceName):
-        self._InstanceName = InstanceName
 
     @property
     def InstanceId(self):
@@ -23756,6 +23748,14 @@ class ModifyPrometheusInstanceAttributesRequest(AbstractModel):
     @InstanceId.setter
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
 
     @property
     def DataRetentionTime(self):
@@ -23767,8 +23767,8 @@ class ModifyPrometheusInstanceAttributesRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._InstanceName = params.get("InstanceName")
         self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
         self._DataRetentionTime = params.get("DataRetentionTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -25821,7 +25821,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
         r"""
         :param _Region: 集群ID
         :type Region: str
-        :param _ClusterType: 集群类型
+        :param _ClusterType: 集群类型。可填入tke、eks、tkeedge、tdcc，分别代表标准集群、弹性集群、边缘集群、注册集群
         :type ClusterType: str
         :param _ClusterId: 集群ID
         :type ClusterId: str
@@ -26343,7 +26343,7 @@ class PrometheusInstancesItem(AbstractModel):
 <li>0：不自动续费</li>
 <li>1：开启自动续费</li>
 <li>2：禁止自动续费</li>
-<li>-1：无效</ii>
+<li>-1：无效</li>
 </ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRenewFlag: int

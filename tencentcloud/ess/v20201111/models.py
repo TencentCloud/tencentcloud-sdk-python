@@ -20066,6 +20066,8 @@ class ReleasedApprover(AbstractModel):
 如果需改动此参与人的角色名字，可用此字段指定，由汉字,英文字符,数字组成，最大20个字。
 
         :type ApproverSignRole: str
+        :param _ApproverSignSealId: 印章Id，签署控件类型为印章时，用于指定本企业签署方在解除协议中使用那个印章进行签署
+        :type ApproverSignSealId: str
         """
         self._Name = None
         self._Mobile = None
@@ -20073,6 +20075,7 @@ class ReleasedApprover(AbstractModel):
         self._ApproverType = None
         self._ApproverSignComponentType = None
         self._ApproverSignRole = None
+        self._ApproverSignSealId = None
 
     @property
     def Name(self):
@@ -20122,6 +20125,14 @@ class ReleasedApprover(AbstractModel):
     def ApproverSignRole(self, ApproverSignRole):
         self._ApproverSignRole = ApproverSignRole
 
+    @property
+    def ApproverSignSealId(self):
+        return self._ApproverSignSealId
+
+    @ApproverSignSealId.setter
+    def ApproverSignSealId(self, ApproverSignSealId):
+        self._ApproverSignSealId = ApproverSignSealId
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -20130,6 +20141,7 @@ class ReleasedApprover(AbstractModel):
         self._ApproverType = params.get("ApproverType")
         self._ApproverSignComponentType = params.get("ApproverSignComponentType")
         self._ApproverSignRole = params.get("ApproverSignRole")
+        self._ApproverSignSealId = params.get("ApproverSignSealId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

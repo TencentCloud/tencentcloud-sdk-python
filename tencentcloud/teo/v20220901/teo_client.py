@@ -1462,8 +1462,34 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSecurityIPGroup(self, request):
+        """查询安全 IP 组的配置信息，包括安全 IP 组的 ID、名称和内容。
+
+        :param request: Request instance for DescribeSecurityIPGroup.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityIPGroupRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityIPGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecurityIPGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSecurityIPGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSecurityIPGroupInfo(self, request):
-        """查询 IP 组的配置信息，包括 IP 组名称、 IP 组内容、 IP 组归属站点。
+        """接口已废弃，将于 2024 年 6 月 30 日停止服务。请使用 [查询安全 IP 组
+        ](https://cloud.tencent.com/document/product/1552/105866) 接口。
+
+        查询 IP 组的配置信息，包括 IP 组名称、 IP 组内容、 IP 组归属站点。
 
         :param request: Request instance for DescribeSecurityIPGroupInfo.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityIPGroupInfoRequest`
