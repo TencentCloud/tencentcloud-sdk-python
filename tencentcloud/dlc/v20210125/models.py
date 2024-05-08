@@ -5223,11 +5223,14 @@ class CreateTaskRequest(AbstractModel):
         :type DatasourceConnectionName: str
         :param _DataEngineName: 数据引擎名称，不填提交到默认集群
         :type DataEngineName: str
+        :param _ResourceGroupName: 标准spark执行任务resourceGroupName
+        :type ResourceGroupName: str
         """
         self._Task = None
         self._DatabaseName = None
         self._DatasourceConnectionName = None
         self._DataEngineName = None
+        self._ResourceGroupName = None
 
     @property
     def Task(self):
@@ -5261,6 +5264,14 @@ class CreateTaskRequest(AbstractModel):
     def DataEngineName(self, DataEngineName):
         self._DataEngineName = DataEngineName
 
+    @property
+    def ResourceGroupName(self):
+        return self._ResourceGroupName
+
+    @ResourceGroupName.setter
+    def ResourceGroupName(self, ResourceGroupName):
+        self._ResourceGroupName = ResourceGroupName
+
 
     def _deserialize(self, params):
         if params.get("Task") is not None:
@@ -5269,6 +5280,7 @@ class CreateTaskRequest(AbstractModel):
         self._DatabaseName = params.get("DatabaseName")
         self._DatasourceConnectionName = params.get("DatasourceConnectionName")
         self._DataEngineName = params.get("DataEngineName")
+        self._ResourceGroupName = params.get("ResourceGroupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5440,11 +5452,14 @@ class CreateTasksRequest(AbstractModel):
         :type DatasourceConnectionName: str
         :param _DataEngineName: 计算引擎名称，不填任务提交到默认集群
         :type DataEngineName: str
+        :param _ResourceGroupName: spark集群资源组名称
+        :type ResourceGroupName: str
         """
         self._DatabaseName = None
         self._Tasks = None
         self._DatasourceConnectionName = None
         self._DataEngineName = None
+        self._ResourceGroupName = None
 
     @property
     def DatabaseName(self):
@@ -5478,6 +5493,14 @@ class CreateTasksRequest(AbstractModel):
     def DataEngineName(self, DataEngineName):
         self._DataEngineName = DataEngineName
 
+    @property
+    def ResourceGroupName(self):
+        return self._ResourceGroupName
+
+    @ResourceGroupName.setter
+    def ResourceGroupName(self, ResourceGroupName):
+        self._ResourceGroupName = ResourceGroupName
+
 
     def _deserialize(self, params):
         self._DatabaseName = params.get("DatabaseName")
@@ -5486,6 +5509,7 @@ class CreateTasksRequest(AbstractModel):
             self._Tasks._deserialize(params.get("Tasks"))
         self._DatasourceConnectionName = params.get("DatasourceConnectionName")
         self._DataEngineName = params.get("DataEngineName")
+        self._ResourceGroupName = params.get("ResourceGroupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7243,6 +7267,12 @@ class DataEngineInfo(AbstractModel):
         :param _EngineNetworkId: 引擎网络ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineNetworkId: str
+        :param _EngineResourceGroupCount: 标准引擎关联的资源组个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineResourceGroupCount: int
+        :param _EngineResourceUsedCU: 引擎当前使用量（Cu）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineResourceUsedCU: int
         """
         self._DataEngineName = None
         self._EngineType = None
@@ -7293,6 +7323,8 @@ class DataEngineInfo(AbstractModel):
         self._EngineGeneration = None
         self._EngineTypeDetail = None
         self._EngineNetworkId = None
+        self._EngineResourceGroupCount = None
+        self._EngineResourceUsedCU = None
 
     @property
     def DataEngineName(self):
@@ -7686,6 +7718,22 @@ class DataEngineInfo(AbstractModel):
     def EngineNetworkId(self, EngineNetworkId):
         self._EngineNetworkId = EngineNetworkId
 
+    @property
+    def EngineResourceGroupCount(self):
+        return self._EngineResourceGroupCount
+
+    @EngineResourceGroupCount.setter
+    def EngineResourceGroupCount(self, EngineResourceGroupCount):
+        self._EngineResourceGroupCount = EngineResourceGroupCount
+
+    @property
+    def EngineResourceUsedCU(self):
+        return self._EngineResourceUsedCU
+
+    @EngineResourceUsedCU.setter
+    def EngineResourceUsedCU(self, EngineResourceUsedCU):
+        self._EngineResourceUsedCU = EngineResourceUsedCU
+
 
     def _deserialize(self, params):
         self._DataEngineName = params.get("DataEngineName")
@@ -7751,6 +7799,8 @@ class DataEngineInfo(AbstractModel):
         self._EngineGeneration = params.get("EngineGeneration")
         self._EngineTypeDetail = params.get("EngineTypeDetail")
         self._EngineNetworkId = params.get("EngineNetworkId")
+        self._EngineResourceGroupCount = params.get("EngineResourceGroupCount")
+        self._EngineResourceUsedCU = params.get("EngineResourceUsedCU")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10365,7 +10415,7 @@ class DescribeDataEngineImageVersionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EngineType: 引擎类型：SQL、SparkBatch
+        :param _EngineType: 引擎类型：SQL、SparkBatch、StandardSpark、StandardPresto
         :type EngineType: str
         """
         self._EngineType = None
@@ -13821,6 +13871,8 @@ task-kind - string （任务类型过滤）
         :type EndTime: str
         :param _DataEngineName: 数据引擎名称，用于筛选
         :type DataEngineName: str
+        :param _ResourceGroupName: spark引擎资源组名称
+        :type ResourceGroupName: str
         """
         self._Limit = None
         self._Offset = None
@@ -13830,6 +13882,7 @@ task-kind - string （任务类型过滤）
         self._StartTime = None
         self._EndTime = None
         self._DataEngineName = None
+        self._ResourceGroupName = None
 
     @property
     def Limit(self):
@@ -13895,6 +13948,14 @@ task-kind - string （任务类型过滤）
     def DataEngineName(self, DataEngineName):
         self._DataEngineName = DataEngineName
 
+    @property
+    def ResourceGroupName(self):
+        return self._ResourceGroupName
+
+    @ResourceGroupName.setter
+    def ResourceGroupName(self, ResourceGroupName):
+        self._ResourceGroupName = ResourceGroupName
+
 
     def _deserialize(self, params):
         self._Limit = params.get("Limit")
@@ -13910,6 +13971,7 @@ task-kind - string （任务类型过滤）
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._DataEngineName = params.get("DataEngineName")
+        self._ResourceGroupName = params.get("ResourceGroupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23314,6 +23376,12 @@ class TaskResponseInfo(AbstractModel):
         :param _ResultFormat: 结果文件格式：默认为csv
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResultFormat: str
+        :param _EngineTypeDetail: 引擎类型，SparkSQL：SparkSQL 引擎；SparkBatch：Spark作业引擎；PrestoSQL：Presto引擎
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineTypeDetail: str
+        :param _ResourceGroupName: spark引擎资源组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceGroupName: str
         """
         self._DatabaseName = None
         self._DataAmount = None
@@ -23356,6 +23424,8 @@ class TaskResponseInfo(AbstractModel):
         self._SparkMonitorMetrics = None
         self._PrestoMonitorMetrics = None
         self._ResultFormat = None
+        self._EngineTypeDetail = None
+        self._ResourceGroupName = None
 
     @property
     def DatabaseName(self):
@@ -23685,6 +23755,22 @@ class TaskResponseInfo(AbstractModel):
     def ResultFormat(self, ResultFormat):
         self._ResultFormat = ResultFormat
 
+    @property
+    def EngineTypeDetail(self):
+        return self._EngineTypeDetail
+
+    @EngineTypeDetail.setter
+    def EngineTypeDetail(self, EngineTypeDetail):
+        self._EngineTypeDetail = EngineTypeDetail
+
+    @property
+    def ResourceGroupName(self):
+        return self._ResourceGroupName
+
+    @ResourceGroupName.setter
+    def ResourceGroupName(self, ResourceGroupName):
+        self._ResourceGroupName = ResourceGroupName
+
 
     def _deserialize(self, params):
         self._DatabaseName = params.get("DatabaseName")
@@ -23734,6 +23820,8 @@ class TaskResponseInfo(AbstractModel):
             self._PrestoMonitorMetrics = PrestoMonitorMetrics()
             self._PrestoMonitorMetrics._deserialize(params.get("PrestoMonitorMetrics"))
         self._ResultFormat = params.get("ResultFormat")
+        self._EngineTypeDetail = params.get("EngineTypeDetail")
+        self._ResourceGroupName = params.get("ResourceGroupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

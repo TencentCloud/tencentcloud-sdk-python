@@ -5600,6 +5600,9 @@ class DescribeDomainData(AbstractModel):
         :param _AppId: 用户ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
+        :param _CertId: 证书ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertId: str
         """
         self._Id = None
         self._PlayDomain = None
@@ -5608,6 +5611,7 @@ class DescribeDomainData(AbstractModel):
         self._ClusterId = None
         self._ClusterName = None
         self._AppId = None
+        self._CertId = None
 
     @property
     def Id(self):
@@ -5665,6 +5669,14 @@ class DescribeDomainData(AbstractModel):
     def AppId(self, AppId):
         self._AppId = AppId
 
+    @property
+    def CertId(self):
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -5674,6 +5686,7 @@ class DescribeDomainData(AbstractModel):
         self._ClusterId = params.get("ClusterId")
         self._ClusterName = params.get("ClusterName")
         self._AppId = params.get("AppId")
+        self._CertId = params.get("CertId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

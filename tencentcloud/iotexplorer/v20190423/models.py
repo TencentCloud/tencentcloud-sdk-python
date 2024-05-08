@@ -931,33 +931,36 @@ class CloudStorageAIServiceTask(AbstractModel):
         :type DeviceName: str
         :param _ChannelId: 通道 ID
         :type ChannelId: int
+        :param _ServiceType: 云存 AI 服务类型。可能取值：
+
+- `PackageDetect`：包裹检测
+- `Highlight`：视频浓缩
+        :type ServiceType: str
         :param _StartTime: 对应云存视频的起始时间
         :type StartTime: int
         :param _EndTime: 对应云存视频的结束时间
         :type EndTime: int
-        :param _Status: 任务状态（1：失败；2：成功但结果为空；3：成功且结果非空）
+        :param _Status: 任务状态（1：失败；2：成功但结果为空；3：成功且结果非空；4：执行中）
         :type Status: int
         :param _Result: 任务结果
         :type Result: str
-        :param _ServiceType: 云存 AI 服务类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ServiceType: str
+        :param _Files: 任务输出文件列表
+        :type Files: list of str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
         :param _UpdateTime: 最后更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: int
         """
         self._TaskId = None
         self._ProductId = None
         self._DeviceName = None
         self._ChannelId = None
+        self._ServiceType = None
         self._StartTime = None
         self._EndTime = None
         self._Status = None
         self._Result = None
-        self._ServiceType = None
+        self._Files = None
         self._CreateTime = None
         self._UpdateTime = None
 
@@ -994,6 +997,14 @@ class CloudStorageAIServiceTask(AbstractModel):
         self._ChannelId = ChannelId
 
     @property
+    def ServiceType(self):
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
     def StartTime(self):
         return self._StartTime
 
@@ -1026,12 +1037,12 @@ class CloudStorageAIServiceTask(AbstractModel):
         self._Result = Result
 
     @property
-    def ServiceType(self):
-        return self._ServiceType
+    def Files(self):
+        return self._Files
 
-    @ServiceType.setter
-    def ServiceType(self, ServiceType):
-        self._ServiceType = ServiceType
+    @Files.setter
+    def Files(self, Files):
+        self._Files = Files
 
     @property
     def CreateTime(self):
@@ -1055,11 +1066,12 @@ class CloudStorageAIServiceTask(AbstractModel):
         self._ProductId = params.get("ProductId")
         self._DeviceName = params.get("DeviceName")
         self._ChannelId = params.get("ChannelId")
+        self._ServiceType = params.get("ServiceType")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._Status = params.get("Status")
         self._Result = params.get("Result")
-        self._ServiceType = params.get("ServiceType")
+        self._Files = params.get("Files")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
@@ -2765,6 +2777,94 @@ class CreateStudioProductResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateTRTCSignaturesWithRoomIdRequest(AbstractModel):
+    """CreateTRTCSignaturesWithRoomId请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TRTCUserIds: TRTC进房间的用户名称数组，数组元素不可重复，最长不超过 10 个。
+        :type TRTCUserIds: list of str
+        :param _RoomId: 房间id
+        :type RoomId: str
+        """
+        self._TRTCUserIds = None
+        self._RoomId = None
+
+    @property
+    def TRTCUserIds(self):
+        return self._TRTCUserIds
+
+    @TRTCUserIds.setter
+    def TRTCUserIds(self, TRTCUserIds):
+        self._TRTCUserIds = TRTCUserIds
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+
+    def _deserialize(self, params):
+        self._TRTCUserIds = params.get("TRTCUserIds")
+        self._RoomId = params.get("RoomId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTRTCSignaturesWithRoomIdResponse(AbstractModel):
+    """CreateTRTCSignaturesWithRoomId返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TRTCParamList: 返回参数数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TRTCParamList: list of TRTCParams
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TRTCParamList = None
+        self._RequestId = None
+
+    @property
+    def TRTCParamList(self):
+        return self._TRTCParamList
+
+    @TRTCParamList.setter
+    def TRTCParamList(self, TRTCParamList):
+        self._TRTCParamList = TRTCParamList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TRTCParamList") is not None:
+            self._TRTCParamList = []
+            for item in params.get("TRTCParamList"):
+                obj = TRTCParams()
+                obj._deserialize(item)
+                self._TRTCParamList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class CreateTopicPolicyRequest(AbstractModel):
     """CreateTopicPolicy请求参数结构体
 
@@ -4181,7 +4281,10 @@ class DescribeCloudStorageAIServiceRequest(AbstractModel):
         :type ProductId: str
         :param _DeviceName: 设备名称
         :type DeviceName: str
-        :param _ServiceType: 云存 AI 服务类型。可选值：PackageDetect
+        :param _ServiceType: 云存 AI 服务类型。可选值：
+
+- `PackageDetect`：包裹检测
+- `Highlight`：视频浓缩
         :type ServiceType: str
         """
         self._ProductId = None
@@ -4288,6 +4391,78 @@ class DescribeCloudStorageAIServiceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCloudStorageAIServiceTaskRequest(AbstractModel):
+    """DescribeCloudStorageAIServiceTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务 ID
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudStorageAIServiceTaskResponse(AbstractModel):
+    """DescribeCloudStorageAIServiceTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskInfo: 任务信息
+        :type TaskInfo: :class:`tencentcloud.iotexplorer.v20190423.models.CloudStorageAIServiceTask`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskInfo = None
+        self._RequestId = None
+
+    @property
+    def TaskInfo(self):
+        return self._TaskInfo
+
+    @TaskInfo.setter
+    def TaskInfo(self, TaskInfo):
+        self._TaskInfo = TaskInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TaskInfo") is not None:
+            self._TaskInfo = CloudStorageAIServiceTask()
+            self._TaskInfo._deserialize(params.get("TaskInfo"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCloudStorageAIServiceTasksRequest(AbstractModel):
     """DescribeCloudStorageAIServiceTasks请求参数结构体
 
@@ -4299,14 +4474,25 @@ class DescribeCloudStorageAIServiceTasksRequest(AbstractModel):
         :type ProductId: str
         :param _DeviceName: 设备名称
         :type DeviceName: str
-        :param _ServiceType: 云存 AI 服务类型。可选值：PackageDetect
+        :param _ServiceType: 云存 AI 服务类型。可选值：
+- `PackageDetect`：包裹检测
+- `Highlight`：视频浓缩
         :type ServiceType: str
         :param _Limit: 分页拉取数量
         :type Limit: int
         :param _Offset: 分页拉取偏移
         :type Offset: int
-        :param _Status: 任务状态（1：失败；2：成功但结果为空；3：成功且结果非空；不传则查询全部状态的任务）
+        :param _Status: 任务状态。可选值：
+- （不传）：查询全部状态的任务
+- `1`：失败
+- `2`：成功但结果为空
+- `3`：成功且结果非空
+- `4`：执行中
         :type Status: int
+        :param _UserId: 用户ID
+        :type UserId: str
+        :param _ChannelId: 通道ID 非NVR设备则不填 NVR设备则必填 默认为无
+        :type ChannelId: int
         """
         self._ProductId = None
         self._DeviceName = None
@@ -4314,6 +4500,8 @@ class DescribeCloudStorageAIServiceTasksRequest(AbstractModel):
         self._Limit = None
         self._Offset = None
         self._Status = None
+        self._UserId = None
+        self._ChannelId = None
 
     @property
     def ProductId(self):
@@ -4363,6 +4551,22 @@ class DescribeCloudStorageAIServiceTasksRequest(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def ChannelId(self):
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
@@ -4371,6 +4575,8 @@ class DescribeCloudStorageAIServiceTasksRequest(AbstractModel):
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
         self._Status = params.get("Status")
+        self._UserId = params.get("UserId")
+        self._ChannelId = params.get("ChannelId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9839,6 +10045,64 @@ class DisableTopicRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DismissRoomByStrRoomIdFromTRTCRequest(AbstractModel):
+    """DismissRoomByStrRoomIdFromTRTC请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoomId: 房间id
+        :type RoomId: str
+        """
+        self._RoomId = None
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+
+    def _deserialize(self, params):
+        self._RoomId = params.get("RoomId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DismissRoomByStrRoomIdFromTRTCResponse(AbstractModel):
+    """DismissRoomByStrRoomIdFromTRTC返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class EnableTopicRuleRequest(AbstractModel):
     """EnableTopicRule请求参数结构体
 
@@ -10641,6 +10905,112 @@ class GenSingleDeviceSignatureOfPublicResponse(AbstractModel):
         if params.get("DeviceSignature") is not None:
             self._DeviceSignature = DeviceSignatureInfo()
             self._DeviceSignature._deserialize(params.get("DeviceSignature"))
+        self._RequestId = params.get("RequestId")
+
+
+class GenerateCloudStorageAIServiceTaskFileURLRequest(AbstractModel):
+    """GenerateCloudStorageAIServiceTaskFileURL请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 产品 ID
+        :type TaskId: str
+        :param _FileName: 文件名
+        :type FileName: str
+        :param _ExpireTime: 过期时间 UNIX 时间戳（默认值为当前时间 1 小时后）
+        :type ExpireTime: int
+        """
+        self._TaskId = None
+        self._FileName = None
+        self._ExpireTime = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._FileName = params.get("FileName")
+        self._ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GenerateCloudStorageAIServiceTaskFileURLResponse(AbstractModel):
+    """GenerateCloudStorageAIServiceTaskFileURL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileURL: 文件下载 URL
+        :type FileURL: str
+        :param _ExpireTime: 过期时间 UNIX 时间戳
+        :type ExpireTime: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FileURL = None
+        self._ExpireTime = None
+        self._RequestId = None
+
+    @property
+    def FileURL(self):
+        return self._FileURL
+
+    @FileURL.setter
+    def FileURL(self, FileURL):
+        self._FileURL = FileURL
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FileURL = params.get("FileURL")
+        self._ExpireTime = params.get("ExpireTime")
         self._RequestId = params.get("RequestId")
 
 
@@ -13380,7 +13750,8 @@ class ModifyCloudStorageAIServiceCallbackRequest(AbstractModel):
         r"""
         :param _ProductId: 产品ID
         :type ProductId: str
-        :param _Type: 推送类型。http：HTTP 回调
+        :param _Type: 推送类型。可选值：
+- `http`：HTTP 回调
         :type Type: str
         :param _CallbackUrl: HTTP 回调 URL
         :type CallbackUrl: str
@@ -13476,18 +13847,23 @@ class ModifyCloudStorageAIServiceRequest(AbstractModel):
         :type ProductId: str
         :param _DeviceName: 设备名称
         :type DeviceName: str
-        :param _ServiceType: 云存 AI 服务类型。可选值：PackageDetect
+        :param _ServiceType: 云存 AI 服务类型。可选值：
+- `PackageDetect`：包裹检测
+- `Highlight`：视频浓缩
         :type ServiceType: str
         :param _Enabled: 启用状态
         :type Enabled: bool
         :param _ROI: 视频分析区域
         :type ROI: str
+        :param _Config: 云存 AI 服务的配置参数
+        :type Config: str
         """
         self._ProductId = None
         self._DeviceName = None
         self._ServiceType = None
         self._Enabled = None
         self._ROI = None
+        self._Config = None
 
     @property
     def ProductId(self):
@@ -13529,6 +13905,14 @@ class ModifyCloudStorageAIServiceRequest(AbstractModel):
     def ROI(self, ROI):
         self._ROI = ROI
 
+    @property
+    def Config(self):
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
@@ -13536,6 +13920,7 @@ class ModifyCloudStorageAIServiceRequest(AbstractModel):
         self._ServiceType = params.get("ServiceType")
         self._Enabled = params.get("Enabled")
         self._ROI = params.get("ROI")
+        self._Config = params.get("Config")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16451,6 +16836,76 @@ class ReleaseStudioProductResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RemoveUserByRoomIdFromTRTCRequest(AbstractModel):
+    """RemoveUserByRoomIdFromTRTC请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoomId: 房间id
+        :type RoomId: str
+        :param _TRTCUserIds: 用户名称数组，数组元素不可重复，最长不超过 10 个。
+        :type TRTCUserIds: list of str
+        """
+        self._RoomId = None
+        self._TRTCUserIds = None
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def TRTCUserIds(self):
+        return self._TRTCUserIds
+
+    @TRTCUserIds.setter
+    def TRTCUserIds(self, TRTCUserIds):
+        self._TRTCUserIds = TRTCUserIds
+
+
+    def _deserialize(self, params):
+        self._RoomId = params.get("RoomId")
+        self._TRTCUserIds = params.get("TRTCUserIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoveUserByRoomIdFromTRTCResponse(AbstractModel):
+    """RemoveUserByRoomIdFromTRTC返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ResetCloudStorageEventRequest(AbstractModel):
     """ResetCloudStorageEvent请求参数结构体
 
@@ -17041,6 +17496,87 @@ class SearchTopicRuleResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Rules.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class TRTCParams(AbstractModel):
+    """TRTC 的参数 可以用来加入房间
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: TRTC入参: TRTC的实例ID
+        :type SdkAppId: int
+        :param _UserId: TRTC入参: 用户加入房间的ID
+        :type UserId: str
+        :param _UserSig: TRTC入参: 用户的签名用来鉴权
+        :type UserSig: str
+        :param _StrRoomId: TRTC入参: 加入的TRTC房间名称
+        :type StrRoomId: str
+        :param _PrivateKey: TRTC入参: 校验TRTC的KEY
+        :type PrivateKey: str
+        """
+        self._SdkAppId = None
+        self._UserId = None
+        self._UserSig = None
+        self._StrRoomId = None
+        self._PrivateKey = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserSig(self):
+        return self._UserSig
+
+    @UserSig.setter
+    def UserSig(self, UserSig):
+        self._UserSig = UserSig
+
+    @property
+    def StrRoomId(self):
+        return self._StrRoomId
+
+    @StrRoomId.setter
+    def StrRoomId(self, StrRoomId):
+        self._StrRoomId = StrRoomId
+
+    @property
+    def PrivateKey(self):
+        return self._PrivateKey
+
+    @PrivateKey.setter
+    def PrivateKey(self, PrivateKey):
+        self._PrivateKey = PrivateKey
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._UserId = params.get("UserId")
+        self._UserSig = params.get("UserSig")
+        self._StrRoomId = params.get("StrRoomId")
+        self._PrivateKey = params.get("PrivateKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ThumbnailURLInfoList(AbstractModel):

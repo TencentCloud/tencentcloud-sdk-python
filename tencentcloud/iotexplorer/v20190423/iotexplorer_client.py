@@ -394,6 +394,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateTRTCSignaturesWithRoomId(self, request):
+        """创建TRTC通话参数
+
+        :param request: Request instance for CreateTRTCSignaturesWithRoomId.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateTRTCSignaturesWithRoomIdRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.CreateTRTCSignaturesWithRoomIdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateTRTCSignaturesWithRoomId", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateTRTCSignaturesWithRoomIdResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateTopicPolicy(self, request):
         """本接口（CreateTopicPolicy）用于创建一个Topic
 
@@ -822,6 +845,29 @@ class IotexplorerClient(AbstractClient):
             body = self.call("DescribeCloudStorageAIServiceCallback", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCloudStorageAIServiceCallbackResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudStorageAIServiceTask(self, request):
+        """查询指定的云存 AI 分析任务
+
+        :param request: Request instance for DescribeCloudStorageAIServiceTask.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageAIServiceTaskRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageAIServiceTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudStorageAIServiceTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudStorageAIServiceTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1774,6 +1820,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DismissRoomByStrRoomIdFromTRTC(self, request):
+        """解散TRTC房间
+
+        :param request: Request instance for DismissRoomByStrRoomIdFromTRTC.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DismissRoomByStrRoomIdFromTRTCRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DismissRoomByStrRoomIdFromTRTCResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DismissRoomByStrRoomIdFromTRTC", params, headers=headers)
+            response = json.loads(body)
+            model = models.DismissRoomByStrRoomIdFromTRTCResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def EnableTopicRule(self, request):
         """启用规则
 
@@ -1811,6 +1880,29 @@ class IotexplorerClient(AbstractClient):
             body = self.call("GenSingleDeviceSignatureOfPublic", params, headers=headers)
             response = json.loads(body)
             model = models.GenSingleDeviceSignatureOfPublicResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GenerateCloudStorageAIServiceTaskFileURL(self, request):
+        """获取云存 AI 分析任务输出文件的下载地址
+
+        :param request: Request instance for GenerateCloudStorageAIServiceTaskFileURL.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GenerateCloudStorageAIServiceTaskFileURLRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.GenerateCloudStorageAIServiceTaskFileURLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GenerateCloudStorageAIServiceTaskFileURL", params, headers=headers)
+            response = json.loads(body)
+            model = models.GenerateCloudStorageAIServiceTaskFileURLResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2616,6 +2708,29 @@ class IotexplorerClient(AbstractClient):
             body = self.call("ReleaseStudioProduct", params, headers=headers)
             response = json.loads(body)
             model = models.ReleaseStudioProductResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RemoveUserByRoomIdFromTRTC(self, request):
+        """TRTC操作，将用户从房间移出
+
+        :param request: Request instance for RemoveUserByRoomIdFromTRTC.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.RemoveUserByRoomIdFromTRTCRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.RemoveUserByRoomIdFromTRTCResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RemoveUserByRoomIdFromTRTC", params, headers=headers)
+            response = json.loads(body)
+            model = models.RemoveUserByRoomIdFromTRTCResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

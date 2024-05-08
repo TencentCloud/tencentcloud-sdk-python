@@ -256,6 +256,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateIpAccessControl(self, request):
+        """Waf IP黑白名单新增接口
+
+        :param request: Request instance for CreateIpAccessControl.
+        :type request: :class:`tencentcloud.waf.v20180125.models.CreateIpAccessControlRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.CreateIpAccessControlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateIpAccessControl", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateIpAccessControlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteAccessExport(self, request):
         """本接口用于删除访问日志导出
 
@@ -525,6 +548,29 @@ class WafClient(AbstractClient):
             body = self.call("DeleteIpAccessControl", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteIpAccessControlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteIpAccessControlV2(self, request):
+        """Waf IP黑白名单最新版本删除接口
+
+        :param request: Request instance for DeleteIpAccessControlV2.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DeleteIpAccessControlV2Request`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DeleteIpAccessControlV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteIpAccessControlV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteIpAccessControlV2Response()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2033,6 +2079,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ImportIpAccessControl(self, request):
+        """导入IP黑白名单
+
+        :param request: Request instance for ImportIpAccessControl.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ImportIpAccessControlRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ImportIpAccessControlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ImportIpAccessControl", params, headers=headers)
+            response = json.loads(body)
+            model = models.ImportIpAccessControlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyAccessPeriod(self, request):
         """本接口用于修改访问日志保存期限等字段信息
 
@@ -2623,6 +2692,29 @@ class WafClient(AbstractClient):
             body = self.call("ModifyInstanceRenewFlag", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyInstanceRenewFlagResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyIpAccessControl(self, request):
+        """Waf IP黑白名单编辑接口
+
+        :param request: Request instance for ModifyIpAccessControl.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyIpAccessControlRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyIpAccessControlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyIpAccessControl", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyIpAccessControlResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

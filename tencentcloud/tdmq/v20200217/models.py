@@ -10188,6 +10188,15 @@ class DescribeRabbitMQQueueDetailResponse(AbstractModel):
         :param _QuorumInitialGroupSize: 仲裁队列的初始副本组大小
 注意：此字段可能返回 null，表示取不到有效值。
         :type QuorumInitialGroupSize: int
+        :param _Exclusive: 是否为独占队列
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Exclusive: bool
+        :param _Policy: 生效的策略名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Policy: str
+        :param _Arguments: 扩展参数 key-value
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Arguments: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -10218,6 +10227,9 @@ class DescribeRabbitMQQueueDetailResponse(AbstractModel):
         self._DeadLetterStrategy = None
         self._QueueLeaderLocator = None
         self._QuorumInitialGroupSize = None
+        self._Exclusive = None
+        self._Policy = None
+        self._Arguments = None
         self._RequestId = None
 
     @property
@@ -10437,6 +10449,30 @@ class DescribeRabbitMQQueueDetailResponse(AbstractModel):
         self._QuorumInitialGroupSize = QuorumInitialGroupSize
 
     @property
+    def Exclusive(self):
+        return self._Exclusive
+
+    @Exclusive.setter
+    def Exclusive(self, Exclusive):
+        self._Exclusive = Exclusive
+
+    @property
+    def Policy(self):
+        return self._Policy
+
+    @Policy.setter
+    def Policy(self, Policy):
+        self._Policy = Policy
+
+    @property
+    def Arguments(self):
+        return self._Arguments
+
+    @Arguments.setter
+    def Arguments(self, Arguments):
+        self._Arguments = Arguments
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -10473,6 +10509,9 @@ class DescribeRabbitMQQueueDetailResponse(AbstractModel):
         self._DeadLetterStrategy = params.get("DeadLetterStrategy")
         self._QueueLeaderLocator = params.get("QueueLeaderLocator")
         self._QuorumInitialGroupSize = params.get("QuorumInitialGroupSize")
+        self._Exclusive = params.get("Exclusive")
+        self._Policy = params.get("Policy")
+        self._Arguments = params.get("Arguments")
         self._RequestId = params.get("RequestId")
 
 

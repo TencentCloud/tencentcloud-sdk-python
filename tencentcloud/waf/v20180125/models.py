@@ -4750,6 +4750,162 @@ class CreateHostResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateIpAccessControlRequest(AbstractModel):
+    """CreateIpAccessControl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 具体域名如：test.qcloudwaf.com
+全局域名为：global
+        :type Domain: str
+        :param _IpList: ip参数列表
+        :type IpList: list of str
+        :param _ActionType: 42为黑名单，40为白名单
+        :type ActionType: int
+        :param _ValidTS: valid_ts为有效日期，值为秒级时间戳（（如1680570420代表2023-04-04 09:07:00））
+        :type ValidTS: int
+        :param _InstanceId: 实例Id
+        :type InstanceId: str
+        :param _Edition: WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
+        :type Edition: str
+        :param _SourceType: 是否为批量防护IP黑白名单，当为批量防护IP黑白名单时，取值为batch，否则为空
+        :type SourceType: str
+        :param _Note: 备注
+        :type Note: str
+        """
+        self._Domain = None
+        self._IpList = None
+        self._ActionType = None
+        self._ValidTS = None
+        self._InstanceId = None
+        self._Edition = None
+        self._SourceType = None
+        self._Note = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def IpList(self):
+        return self._IpList
+
+    @IpList.setter
+    def IpList(self, IpList):
+        self._IpList = IpList
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def ValidTS(self):
+        return self._ValidTS
+
+    @ValidTS.setter
+    def ValidTS(self, ValidTS):
+        self._ValidTS = ValidTS
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Edition(self):
+        return self._Edition
+
+    @Edition.setter
+    def Edition(self, Edition):
+        self._Edition = Edition
+
+    @property
+    def SourceType(self):
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def Note(self):
+        return self._Note
+
+    @Note.setter
+    def Note(self, Note):
+        self._Note = Note
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._IpList = params.get("IpList")
+        self._ActionType = params.get("ActionType")
+        self._ValidTS = params.get("ValidTS")
+        self._InstanceId = params.get("InstanceId")
+        self._Edition = params.get("Edition")
+        self._SourceType = params.get("SourceType")
+        self._Note = params.get("Note")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateIpAccessControlResponse(AbstractModel):
+    """CreateIpAccessControl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 新增的规则对应的ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RuleId = None
+        self._RequestId = None
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._RequestId = params.get("RequestId")
+
+
 class DealData(AbstractModel):
     """计费下单响应实体
 
@@ -5789,6 +5945,124 @@ class DeleteIpAccessControlResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FailedItems = params.get("FailedItems")
+        self._FailedCount = params.get("FailedCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteIpAccessControlV2Request(AbstractModel):
+    """DeleteIpAccessControlV2请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _RuleIds: 规则ID列表，支持批量删除
+        :type RuleIds: list of int non-negative
+        :param _DeleteAll: 是否删除对应的域名下的所有黑/白IP名单，true表示全部删除，false表示只删除指定ip名单
+        :type DeleteAll: bool
+        :param _SourceType: batch表示为批量防护的IP黑白名单
+        :type SourceType: str
+        :param _ActionType: IP黑白名单类型，40为IP白名单，42为IP黑名单
+        :type ActionType: int
+        """
+        self._Domain = None
+        self._RuleIds = None
+        self._DeleteAll = None
+        self._SourceType = None
+        self._ActionType = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def RuleIds(self):
+        return self._RuleIds
+
+    @RuleIds.setter
+    def RuleIds(self, RuleIds):
+        self._RuleIds = RuleIds
+
+    @property
+    def DeleteAll(self):
+        return self._DeleteAll
+
+    @DeleteAll.setter
+    def DeleteAll(self, DeleteAll):
+        self._DeleteAll = DeleteAll
+
+    @property
+    def SourceType(self):
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._RuleIds = params.get("RuleIds")
+        self._DeleteAll = params.get("DeleteAll")
+        self._SourceType = params.get("SourceType")
+        self._ActionType = params.get("ActionType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteIpAccessControlV2Response(AbstractModel):
+    """DeleteIpAccessControlV2返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FailedCount: 在批量删除的时候表示删除失败的条数
+        :type FailedCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FailedCount = None
+        self._RequestId = None
+
+    @property
+    def FailedCount(self):
+        return self._FailedCount
+
+    @FailedCount.setter
+    def FailedCount(self, FailedCount):
+        self._FailedCount = FailedCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._FailedCount = params.get("FailedCount")
         self._RequestId = params.get("RequestId")
 
@@ -17124,6 +17398,106 @@ class HybridPkg(AbstractModel):
         
 
 
+class ImportIpAccessControlRequest(AbstractModel):
+    """ImportIpAccessControl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 导入的IP黑白名单列表
+        :type Data: list of IpAccessControlParam
+        :param _Domain: 具体域名如：test.qcloudwaf.com
+全局域名为：global
+        :type Domain: str
+        :param _SourceType: 是否为批量防护IP黑白名单，当为批量防护IP黑白名单时，取值为batch，否则为空
+        :type SourceType: str
+        :param _InstanceId: 实例Id
+        :type InstanceId: str
+        """
+        self._Data = None
+        self._Domain = None
+        self._SourceType = None
+        self._InstanceId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def SourceType(self):
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = IpAccessControlParam()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Domain = params.get("Domain")
+        self._SourceType = params.get("SourceType")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImportIpAccessControlResponse(AbstractModel):
+    """ImportIpAccessControl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class InstanceInfo(AbstractModel):
     """一个实例的详细信息
 
@@ -17834,6 +18208,75 @@ class IpAccessControlItem(AbstractModel):
         self._ValidStatus = params.get("ValidStatus")
         self._RuleId = params.get("RuleId")
         self._IpList = params.get("IpList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IpAccessControlParam(AbstractModel):
+    """IP黑白名单参数结构体，主要用于IP黑白名单的导入。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IpList: IP列表
+        :type IpList: list of str
+        :param _ValidTs: valid_ts为有效日期，值为秒级时间戳（（如1680570420代表2023-04-04 09:07:00））
+        :type ValidTs: int
+        :param _ActionType: 42为黑名单，40为白名单
+        :type ActionType: int
+        :param _Note: 备注
+        :type Note: str
+        """
+        self._IpList = None
+        self._ValidTs = None
+        self._ActionType = None
+        self._Note = None
+
+    @property
+    def IpList(self):
+        return self._IpList
+
+    @IpList.setter
+    def IpList(self, IpList):
+        self._IpList = IpList
+
+    @property
+    def ValidTs(self):
+        return self._ValidTs
+
+    @ValidTs.setter
+    def ValidTs(self, ValidTs):
+        self._ValidTs = ValidTs
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def Note(self):
+        return self._Note
+
+    @Note.setter
+    def Note(self, Note):
+        self._Note = Note
+
+
+    def _deserialize(self, params):
+        self._IpList = params.get("IpList")
+        self._ValidTs = params.get("ValidTs")
+        self._ActionType = params.get("ActionType")
+        self._Note = params.get("Note")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21403,6 +21846,161 @@ class ModifyInstanceRenewFlagRequest(AbstractModel):
 
 class ModifyInstanceRenewFlagResponse(AbstractModel):
     """ModifyInstanceRenewFlag返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyIpAccessControlRequest(AbstractModel):
+    """ModifyIpAccessControl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 具体域名如：test.qcloudwaf.com
+全局域名为：global
+        :type Domain: str
+        :param _IpList: ip参数列表
+        :type IpList: list of str
+        :param _ActionType: 42为黑名单，40为白名单
+        :type ActionType: int
+        :param _ValidTS: valid_ts为有效日期，值为秒级时间戳（（如1680570420代表2023-04-04 09:07:00））
+        :type ValidTS: int
+        :param _RuleId: 规则ID
+        :type RuleId: int
+        :param _InstanceId: 实例Id
+        :type InstanceId: str
+        :param _Edition: WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
+        :type Edition: str
+        :param _SourceType: 是否为批量防护IP黑白名单，当为批量防护IP黑白名单时，取值为batch，否则为空
+        :type SourceType: str
+        :param _Note: 备注
+        :type Note: str
+        """
+        self._Domain = None
+        self._IpList = None
+        self._ActionType = None
+        self._ValidTS = None
+        self._RuleId = None
+        self._InstanceId = None
+        self._Edition = None
+        self._SourceType = None
+        self._Note = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def IpList(self):
+        return self._IpList
+
+    @IpList.setter
+    def IpList(self, IpList):
+        self._IpList = IpList
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def ValidTS(self):
+        return self._ValidTS
+
+    @ValidTS.setter
+    def ValidTS(self, ValidTS):
+        self._ValidTS = ValidTS
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Edition(self):
+        return self._Edition
+
+    @Edition.setter
+    def Edition(self, Edition):
+        self._Edition = Edition
+
+    @property
+    def SourceType(self):
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def Note(self):
+        return self._Note
+
+    @Note.setter
+    def Note(self, Note):
+        self._Note = Note
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._IpList = params.get("IpList")
+        self._ActionType = params.get("ActionType")
+        self._ValidTS = params.get("ValidTS")
+        self._RuleId = params.get("RuleId")
+        self._InstanceId = params.get("InstanceId")
+        self._Edition = params.get("Edition")
+        self._SourceType = params.get("SourceType")
+        self._Note = params.get("Note")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyIpAccessControlResponse(AbstractModel):
+    """ModifyIpAccessControl返回参数结构体
 
     """
 

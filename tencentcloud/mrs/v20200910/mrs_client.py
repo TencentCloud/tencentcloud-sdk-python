@@ -26,6 +26,29 @@ class MrsClient(AbstractClient):
     _service = 'mrs'
 
 
+    def DrugInstructionObject(self, request):
+        """药品说明书PDF文件结构化
+
+        :param request: Request instance for DrugInstructionObject.
+        :type request: :class:`tencentcloud.mrs.v20200910.models.DrugInstructionObjectRequest`
+        :rtype: :class:`tencentcloud.mrs.v20200910.models.DrugInstructionObjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DrugInstructionObject", params, headers=headers)
+            response = json.loads(body)
+            model = models.DrugInstructionObjectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ImageMask(self, request):
         """医疗报告图片脱敏接口
 

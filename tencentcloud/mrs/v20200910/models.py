@@ -623,6 +623,814 @@ class BaseItem3(AbstractModel):
         
 
 
+class BiologicalProductInfo(AbstractModel):
+    """预防用生物制品说明书
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 药品名称，包括通用名和商品名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoName`
+        :param _IngredientAndAppearance: 成份和性状
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IngredientAndAppearance: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoIngredientAndAppearance`
+        :param _VaccinationTarget: 接种对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VaccinationTarget: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoVaccinationTarget`
+        :param _Indications: 作用与用途
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Indications: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoIndications`
+        :param _Brochure: 规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Brochure: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoBrochure`
+        :param _Dosage: 免疫程序和剂量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Dosage: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoDosage`
+        :param _AdverseReaction: 不良反应
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdverseReaction: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoAdverseReaction`
+        :param _Contraindications: 禁忌情况
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Contraindications: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoContraindications`
+        :param _Precautions: 注意事项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Precautions: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoPrecautions`
+        :param _Storage: 储存条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Storage: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoStorage`
+        :param _Packaging: 包装信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Packaging: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoPackaging`
+        :param _ValidityPeriod: 有效期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValidityPeriod: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoValidityPeriod`
+        :param _ExecutiveStandards: 执行标准
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutiveStandards: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoExecutiveStandards`
+        :param _Approval: 批准文号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Approval: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoApproval`
+        :param _Manufacturer: 生产企业名称和地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Manufacturer: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfoManufacturer`
+        """
+        self._Name = None
+        self._IngredientAndAppearance = None
+        self._VaccinationTarget = None
+        self._Indications = None
+        self._Brochure = None
+        self._Dosage = None
+        self._AdverseReaction = None
+        self._Contraindications = None
+        self._Precautions = None
+        self._Storage = None
+        self._Packaging = None
+        self._ValidityPeriod = None
+        self._ExecutiveStandards = None
+        self._Approval = None
+        self._Manufacturer = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def IngredientAndAppearance(self):
+        return self._IngredientAndAppearance
+
+    @IngredientAndAppearance.setter
+    def IngredientAndAppearance(self, IngredientAndAppearance):
+        self._IngredientAndAppearance = IngredientAndAppearance
+
+    @property
+    def VaccinationTarget(self):
+        return self._VaccinationTarget
+
+    @VaccinationTarget.setter
+    def VaccinationTarget(self, VaccinationTarget):
+        self._VaccinationTarget = VaccinationTarget
+
+    @property
+    def Indications(self):
+        return self._Indications
+
+    @Indications.setter
+    def Indications(self, Indications):
+        self._Indications = Indications
+
+    @property
+    def Brochure(self):
+        return self._Brochure
+
+    @Brochure.setter
+    def Brochure(self, Brochure):
+        self._Brochure = Brochure
+
+    @property
+    def Dosage(self):
+        return self._Dosage
+
+    @Dosage.setter
+    def Dosage(self, Dosage):
+        self._Dosage = Dosage
+
+    @property
+    def AdverseReaction(self):
+        return self._AdverseReaction
+
+    @AdverseReaction.setter
+    def AdverseReaction(self, AdverseReaction):
+        self._AdverseReaction = AdverseReaction
+
+    @property
+    def Contraindications(self):
+        return self._Contraindications
+
+    @Contraindications.setter
+    def Contraindications(self, Contraindications):
+        self._Contraindications = Contraindications
+
+    @property
+    def Precautions(self):
+        return self._Precautions
+
+    @Precautions.setter
+    def Precautions(self, Precautions):
+        self._Precautions = Precautions
+
+    @property
+    def Storage(self):
+        return self._Storage
+
+    @Storage.setter
+    def Storage(self, Storage):
+        self._Storage = Storage
+
+    @property
+    def Packaging(self):
+        return self._Packaging
+
+    @Packaging.setter
+    def Packaging(self, Packaging):
+        self._Packaging = Packaging
+
+    @property
+    def ValidityPeriod(self):
+        return self._ValidityPeriod
+
+    @ValidityPeriod.setter
+    def ValidityPeriod(self, ValidityPeriod):
+        self._ValidityPeriod = ValidityPeriod
+
+    @property
+    def ExecutiveStandards(self):
+        return self._ExecutiveStandards
+
+    @ExecutiveStandards.setter
+    def ExecutiveStandards(self, ExecutiveStandards):
+        self._ExecutiveStandards = ExecutiveStandards
+
+    @property
+    def Approval(self):
+        return self._Approval
+
+    @Approval.setter
+    def Approval(self, Approval):
+        self._Approval = Approval
+
+    @property
+    def Manufacturer(self):
+        return self._Manufacturer
+
+    @Manufacturer.setter
+    def Manufacturer(self, Manufacturer):
+        self._Manufacturer = Manufacturer
+
+
+    def _deserialize(self, params):
+        if params.get("Name") is not None:
+            self._Name = BiologicalProductInfoName()
+            self._Name._deserialize(params.get("Name"))
+        if params.get("IngredientAndAppearance") is not None:
+            self._IngredientAndAppearance = BiologicalProductInfoIngredientAndAppearance()
+            self._IngredientAndAppearance._deserialize(params.get("IngredientAndAppearance"))
+        if params.get("VaccinationTarget") is not None:
+            self._VaccinationTarget = BiologicalProductInfoVaccinationTarget()
+            self._VaccinationTarget._deserialize(params.get("VaccinationTarget"))
+        if params.get("Indications") is not None:
+            self._Indications = BiologicalProductInfoIndications()
+            self._Indications._deserialize(params.get("Indications"))
+        if params.get("Brochure") is not None:
+            self._Brochure = BiologicalProductInfoBrochure()
+            self._Brochure._deserialize(params.get("Brochure"))
+        if params.get("Dosage") is not None:
+            self._Dosage = BiologicalProductInfoDosage()
+            self._Dosage._deserialize(params.get("Dosage"))
+        if params.get("AdverseReaction") is not None:
+            self._AdverseReaction = BiologicalProductInfoAdverseReaction()
+            self._AdverseReaction._deserialize(params.get("AdverseReaction"))
+        if params.get("Contraindications") is not None:
+            self._Contraindications = BiologicalProductInfoContraindications()
+            self._Contraindications._deserialize(params.get("Contraindications"))
+        if params.get("Precautions") is not None:
+            self._Precautions = BiologicalProductInfoPrecautions()
+            self._Precautions._deserialize(params.get("Precautions"))
+        if params.get("Storage") is not None:
+            self._Storage = BiologicalProductInfoStorage()
+            self._Storage._deserialize(params.get("Storage"))
+        if params.get("Packaging") is not None:
+            self._Packaging = BiologicalProductInfoPackaging()
+            self._Packaging._deserialize(params.get("Packaging"))
+        if params.get("ValidityPeriod") is not None:
+            self._ValidityPeriod = BiologicalProductInfoValidityPeriod()
+            self._ValidityPeriod._deserialize(params.get("ValidityPeriod"))
+        if params.get("ExecutiveStandards") is not None:
+            self._ExecutiveStandards = BiologicalProductInfoExecutiveStandards()
+            self._ExecutiveStandards._deserialize(params.get("ExecutiveStandards"))
+        if params.get("Approval") is not None:
+            self._Approval = BiologicalProductInfoApproval()
+            self._Approval._deserialize(params.get("Approval"))
+        if params.get("Manufacturer") is not None:
+            self._Manufacturer = BiologicalProductInfoManufacturer()
+            self._Manufacturer._deserialize(params.get("Manufacturer"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BiologicalProductInfoAdverseReaction(AbstractModel):
+    """不良反应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BiologicalProductInfoApproval(AbstractModel):
+    """批准文号
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BiologicalProductInfoBrochure(AbstractModel):
+    """规格
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BiologicalProductInfoContraindications(AbstractModel):
+    """禁忌情况
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BiologicalProductInfoDosage(AbstractModel):
+    """免疫程序和剂量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BiologicalProductInfoExecutiveStandards(AbstractModel):
+    """执行标准
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BiologicalProductInfoIndications(AbstractModel):
+    """作用与用途
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BiologicalProductInfoIngredientAndAppearance(AbstractModel):
+    """成份和性状
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BiologicalProductInfoManufacturer(AbstractModel):
+    """生产企业名称和地址
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BiologicalProductInfoName(AbstractModel):
+    """药品名称，包括通用名和商品名
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        :param _GenericName: 通用名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GenericName: str
+        :param _BarndName: 品牌名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BarndName: str
+        :param _EnName: 英文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnName: str
+        :param _Pinyin: 拼音
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Pinyin: str
+        """
+        self._Text = None
+        self._GenericName = None
+        self._BarndName = None
+        self._EnName = None
+        self._Pinyin = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def GenericName(self):
+        return self._GenericName
+
+    @GenericName.setter
+    def GenericName(self, GenericName):
+        self._GenericName = GenericName
+
+    @property
+    def BarndName(self):
+        return self._BarndName
+
+    @BarndName.setter
+    def BarndName(self, BarndName):
+        self._BarndName = BarndName
+
+    @property
+    def EnName(self):
+        return self._EnName
+
+    @EnName.setter
+    def EnName(self, EnName):
+        self._EnName = EnName
+
+    @property
+    def Pinyin(self):
+        return self._Pinyin
+
+    @Pinyin.setter
+    def Pinyin(self, Pinyin):
+        self._Pinyin = Pinyin
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        self._GenericName = params.get("GenericName")
+        self._BarndName = params.get("BarndName")
+        self._EnName = params.get("EnName")
+        self._Pinyin = params.get("Pinyin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BiologicalProductInfoPackaging(AbstractModel):
+    """包装信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BiologicalProductInfoPrecautions(AbstractModel):
+    """注意事项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BiologicalProductInfoStorage(AbstractModel):
+    """储存条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BiologicalProductInfoVaccinationTarget(AbstractModel):
+    """接种对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BiologicalProductInfoValidityPeriod(AbstractModel):
+    """有效期
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BiopsyPart(AbstractModel):
     """活检部位
 
@@ -2007,6 +2815,1336 @@ class Check(AbstractModel):
                 obj = BlockTitle()
                 obj._deserialize(item)
                 self._BlockTitle.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChemicalProductInfo(AbstractModel):
+    """药品说明书消息定义
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 药品名称，包括通用名和商品名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoName`
+        :param _ActiveIngredient: 活性成份消息定义，如果是复方制剂，可以不列出每个活性成份的详细信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActiveIngredient: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoActiveIngredient`
+        :param _Appearance: 性状
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Appearance: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoAppearance`
+        :param _Indications: 适应症描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Indications: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoIndications`
+        :param _Brochure: 规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Brochure: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoBrochure`
+        :param _Dosage: 用法用量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Dosage: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoDosage`
+        :param _AdverseReaction: 不良反应
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdverseReaction: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoAdverseReaction`
+        :param _Contraindications: 禁忌情况
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Contraindications: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoContraindications`
+        :param _Precautions: 注意事项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Precautions: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoPrecautions`
+        :param _PregnancyLactationUse: 孕妇及哺乳期妇女用药
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PregnancyLactationUse: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoPregnancyLactationUse`
+        :param _PediatricUse: 儿童用药
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PediatricUse: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoPediatricUse`
+        :param _GeriatricUse: 老年用药
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GeriatricUse: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoGeriatricUse`
+        :param _Interactions: 药品的药物相互作用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Interactions: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoInteractions`
+        :param _Overdose: 药物过量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Overdose: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoOverdose`
+        :param _ClinicalTrial: 临床试验
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClinicalTrial: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoClinicalTrial`
+        :param _PharmacologyToxicology: 药理毒理
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PharmacologyToxicology: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoPharmacologyToxicology`
+        :param _Pharmacokinetics: 药代动力学
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Pharmacokinetics: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoPharmacokinetics`
+        :param _Storage: 储存条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Storage: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoStorage`
+        :param _Packaging: 包装信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Packaging: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoPackaging`
+        :param _ValidityPeriod: 有效期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValidityPeriod: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoValidityPeriod`
+        :param _ExecutiveStandards: 执行标准
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutiveStandards: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoExecutiveStandards`
+        :param _Approval: 批准文号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Approval: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoApproval`
+        :param _Manufacturer: 生产企业名称和地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Manufacturer: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfoManufacturer`
+        """
+        self._Name = None
+        self._ActiveIngredient = None
+        self._Appearance = None
+        self._Indications = None
+        self._Brochure = None
+        self._Dosage = None
+        self._AdverseReaction = None
+        self._Contraindications = None
+        self._Precautions = None
+        self._PregnancyLactationUse = None
+        self._PediatricUse = None
+        self._GeriatricUse = None
+        self._Interactions = None
+        self._Overdose = None
+        self._ClinicalTrial = None
+        self._PharmacologyToxicology = None
+        self._Pharmacokinetics = None
+        self._Storage = None
+        self._Packaging = None
+        self._ValidityPeriod = None
+        self._ExecutiveStandards = None
+        self._Approval = None
+        self._Manufacturer = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ActiveIngredient(self):
+        return self._ActiveIngredient
+
+    @ActiveIngredient.setter
+    def ActiveIngredient(self, ActiveIngredient):
+        self._ActiveIngredient = ActiveIngredient
+
+    @property
+    def Appearance(self):
+        return self._Appearance
+
+    @Appearance.setter
+    def Appearance(self, Appearance):
+        self._Appearance = Appearance
+
+    @property
+    def Indications(self):
+        return self._Indications
+
+    @Indications.setter
+    def Indications(self, Indications):
+        self._Indications = Indications
+
+    @property
+    def Brochure(self):
+        return self._Brochure
+
+    @Brochure.setter
+    def Brochure(self, Brochure):
+        self._Brochure = Brochure
+
+    @property
+    def Dosage(self):
+        return self._Dosage
+
+    @Dosage.setter
+    def Dosage(self, Dosage):
+        self._Dosage = Dosage
+
+    @property
+    def AdverseReaction(self):
+        return self._AdverseReaction
+
+    @AdverseReaction.setter
+    def AdverseReaction(self, AdverseReaction):
+        self._AdverseReaction = AdverseReaction
+
+    @property
+    def Contraindications(self):
+        return self._Contraindications
+
+    @Contraindications.setter
+    def Contraindications(self, Contraindications):
+        self._Contraindications = Contraindications
+
+    @property
+    def Precautions(self):
+        return self._Precautions
+
+    @Precautions.setter
+    def Precautions(self, Precautions):
+        self._Precautions = Precautions
+
+    @property
+    def PregnancyLactationUse(self):
+        return self._PregnancyLactationUse
+
+    @PregnancyLactationUse.setter
+    def PregnancyLactationUse(self, PregnancyLactationUse):
+        self._PregnancyLactationUse = PregnancyLactationUse
+
+    @property
+    def PediatricUse(self):
+        return self._PediatricUse
+
+    @PediatricUse.setter
+    def PediatricUse(self, PediatricUse):
+        self._PediatricUse = PediatricUse
+
+    @property
+    def GeriatricUse(self):
+        return self._GeriatricUse
+
+    @GeriatricUse.setter
+    def GeriatricUse(self, GeriatricUse):
+        self._GeriatricUse = GeriatricUse
+
+    @property
+    def Interactions(self):
+        return self._Interactions
+
+    @Interactions.setter
+    def Interactions(self, Interactions):
+        self._Interactions = Interactions
+
+    @property
+    def Overdose(self):
+        return self._Overdose
+
+    @Overdose.setter
+    def Overdose(self, Overdose):
+        self._Overdose = Overdose
+
+    @property
+    def ClinicalTrial(self):
+        return self._ClinicalTrial
+
+    @ClinicalTrial.setter
+    def ClinicalTrial(self, ClinicalTrial):
+        self._ClinicalTrial = ClinicalTrial
+
+    @property
+    def PharmacologyToxicology(self):
+        return self._PharmacologyToxicology
+
+    @PharmacologyToxicology.setter
+    def PharmacologyToxicology(self, PharmacologyToxicology):
+        self._PharmacologyToxicology = PharmacologyToxicology
+
+    @property
+    def Pharmacokinetics(self):
+        return self._Pharmacokinetics
+
+    @Pharmacokinetics.setter
+    def Pharmacokinetics(self, Pharmacokinetics):
+        self._Pharmacokinetics = Pharmacokinetics
+
+    @property
+    def Storage(self):
+        return self._Storage
+
+    @Storage.setter
+    def Storage(self, Storage):
+        self._Storage = Storage
+
+    @property
+    def Packaging(self):
+        return self._Packaging
+
+    @Packaging.setter
+    def Packaging(self, Packaging):
+        self._Packaging = Packaging
+
+    @property
+    def ValidityPeriod(self):
+        return self._ValidityPeriod
+
+    @ValidityPeriod.setter
+    def ValidityPeriod(self, ValidityPeriod):
+        self._ValidityPeriod = ValidityPeriod
+
+    @property
+    def ExecutiveStandards(self):
+        return self._ExecutiveStandards
+
+    @ExecutiveStandards.setter
+    def ExecutiveStandards(self, ExecutiveStandards):
+        self._ExecutiveStandards = ExecutiveStandards
+
+    @property
+    def Approval(self):
+        return self._Approval
+
+    @Approval.setter
+    def Approval(self, Approval):
+        self._Approval = Approval
+
+    @property
+    def Manufacturer(self):
+        return self._Manufacturer
+
+    @Manufacturer.setter
+    def Manufacturer(self, Manufacturer):
+        self._Manufacturer = Manufacturer
+
+
+    def _deserialize(self, params):
+        if params.get("Name") is not None:
+            self._Name = ChemicalProductInfoName()
+            self._Name._deserialize(params.get("Name"))
+        if params.get("ActiveIngredient") is not None:
+            self._ActiveIngredient = ChemicalProductInfoActiveIngredient()
+            self._ActiveIngredient._deserialize(params.get("ActiveIngredient"))
+        if params.get("Appearance") is not None:
+            self._Appearance = ChemicalProductInfoAppearance()
+            self._Appearance._deserialize(params.get("Appearance"))
+        if params.get("Indications") is not None:
+            self._Indications = ChemicalProductInfoIndications()
+            self._Indications._deserialize(params.get("Indications"))
+        if params.get("Brochure") is not None:
+            self._Brochure = ChemicalProductInfoBrochure()
+            self._Brochure._deserialize(params.get("Brochure"))
+        if params.get("Dosage") is not None:
+            self._Dosage = ChemicalProductInfoDosage()
+            self._Dosage._deserialize(params.get("Dosage"))
+        if params.get("AdverseReaction") is not None:
+            self._AdverseReaction = ChemicalProductInfoAdverseReaction()
+            self._AdverseReaction._deserialize(params.get("AdverseReaction"))
+        if params.get("Contraindications") is not None:
+            self._Contraindications = ChemicalProductInfoContraindications()
+            self._Contraindications._deserialize(params.get("Contraindications"))
+        if params.get("Precautions") is not None:
+            self._Precautions = ChemicalProductInfoPrecautions()
+            self._Precautions._deserialize(params.get("Precautions"))
+        if params.get("PregnancyLactationUse") is not None:
+            self._PregnancyLactationUse = ChemicalProductInfoPregnancyLactationUse()
+            self._PregnancyLactationUse._deserialize(params.get("PregnancyLactationUse"))
+        if params.get("PediatricUse") is not None:
+            self._PediatricUse = ChemicalProductInfoPediatricUse()
+            self._PediatricUse._deserialize(params.get("PediatricUse"))
+        if params.get("GeriatricUse") is not None:
+            self._GeriatricUse = ChemicalProductInfoGeriatricUse()
+            self._GeriatricUse._deserialize(params.get("GeriatricUse"))
+        if params.get("Interactions") is not None:
+            self._Interactions = ChemicalProductInfoInteractions()
+            self._Interactions._deserialize(params.get("Interactions"))
+        if params.get("Overdose") is not None:
+            self._Overdose = ChemicalProductInfoOverdose()
+            self._Overdose._deserialize(params.get("Overdose"))
+        if params.get("ClinicalTrial") is not None:
+            self._ClinicalTrial = ChemicalProductInfoClinicalTrial()
+            self._ClinicalTrial._deserialize(params.get("ClinicalTrial"))
+        if params.get("PharmacologyToxicology") is not None:
+            self._PharmacologyToxicology = ChemicalProductInfoPharmacologyToxicology()
+            self._PharmacologyToxicology._deserialize(params.get("PharmacologyToxicology"))
+        if params.get("Pharmacokinetics") is not None:
+            self._Pharmacokinetics = ChemicalProductInfoPharmacokinetics()
+            self._Pharmacokinetics._deserialize(params.get("Pharmacokinetics"))
+        if params.get("Storage") is not None:
+            self._Storage = ChemicalProductInfoStorage()
+            self._Storage._deserialize(params.get("Storage"))
+        if params.get("Packaging") is not None:
+            self._Packaging = ChemicalProductInfoPackaging()
+            self._Packaging._deserialize(params.get("Packaging"))
+        if params.get("ValidityPeriod") is not None:
+            self._ValidityPeriod = ChemicalProductInfoValidityPeriod()
+            self._ValidityPeriod._deserialize(params.get("ValidityPeriod"))
+        if params.get("ExecutiveStandards") is not None:
+            self._ExecutiveStandards = ChemicalProductInfoExecutiveStandards()
+            self._ExecutiveStandards._deserialize(params.get("ExecutiveStandards"))
+        if params.get("Approval") is not None:
+            self._Approval = ChemicalProductInfoApproval()
+            self._Approval._deserialize(params.get("Approval"))
+        if params.get("Manufacturer") is not None:
+            self._Manufacturer = ChemicalProductInfoManufacturer()
+            self._Manufacturer._deserialize(params.get("Manufacturer"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChemicalProductInfoActiveIngredient(AbstractModel):
+    """活性成份消息定义，如果是复方制剂，可以不列出每个活性成份的详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        :param _ChemicalName: 活性成份的化学名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChemicalName: str
+        :param _ChemicalFormula: 活性成份的化学结构式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChemicalFormula: str
+        :param _MolecularFormula: 活性成份的分子式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MolecularFormula: str
+        :param _MolecularWeight: 活性成份的分子量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MolecularWeight: str
+        """
+        self._Text = None
+        self._ChemicalName = None
+        self._ChemicalFormula = None
+        self._MolecularFormula = None
+        self._MolecularWeight = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def ChemicalName(self):
+        return self._ChemicalName
+
+    @ChemicalName.setter
+    def ChemicalName(self, ChemicalName):
+        self._ChemicalName = ChemicalName
+
+    @property
+    def ChemicalFormula(self):
+        return self._ChemicalFormula
+
+    @ChemicalFormula.setter
+    def ChemicalFormula(self, ChemicalFormula):
+        self._ChemicalFormula = ChemicalFormula
+
+    @property
+    def MolecularFormula(self):
+        return self._MolecularFormula
+
+    @MolecularFormula.setter
+    def MolecularFormula(self, MolecularFormula):
+        self._MolecularFormula = MolecularFormula
+
+    @property
+    def MolecularWeight(self):
+        return self._MolecularWeight
+
+    @MolecularWeight.setter
+    def MolecularWeight(self, MolecularWeight):
+        self._MolecularWeight = MolecularWeight
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        self._ChemicalName = params.get("ChemicalName")
+        self._ChemicalFormula = params.get("ChemicalFormula")
+        self._MolecularFormula = params.get("MolecularFormula")
+        self._MolecularWeight = params.get("MolecularWeight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChemicalProductInfoAdverseReaction(AbstractModel):
+    """不良反应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChemicalProductInfoAppearance(AbstractModel):
+    """性状
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChemicalProductInfoApproval(AbstractModel):
+    """批准文号
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChemicalProductInfoBrochure(AbstractModel):
+    """规格
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChemicalProductInfoClinicalTrial(AbstractModel):
+    """临床试验
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChemicalProductInfoContraindications(AbstractModel):
+    """禁忌情况
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChemicalProductInfoDosage(AbstractModel):
+    """用法用量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChemicalProductInfoExecutiveStandards(AbstractModel):
+    """执行标准
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChemicalProductInfoGeriatricUse(AbstractModel):
+    """老年用药
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChemicalProductInfoIndications(AbstractModel):
+    """适应症描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChemicalProductInfoInteractions(AbstractModel):
+    """药品的药物相互作用
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChemicalProductInfoManufacturer(AbstractModel):
+    """生产企业名称和地址
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        :param _Name: 企业名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Address: 生产地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Address: str
+        :param _PostalCode: 邮政编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PostalCode: str
+        :param _Phone: 电话，包含区号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Phone: str
+        :param _Fax: 传真，包含区号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Fax: str
+        :param _Website: 网址，如无则不填写
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Website: str
+        """
+        self._Text = None
+        self._Name = None
+        self._Address = None
+        self._PostalCode = None
+        self._Phone = None
+        self._Fax = None
+        self._Website = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Address(self):
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def PostalCode(self):
+        return self._PostalCode
+
+    @PostalCode.setter
+    def PostalCode(self, PostalCode):
+        self._PostalCode = PostalCode
+
+    @property
+    def Phone(self):
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
+
+    @property
+    def Fax(self):
+        return self._Fax
+
+    @Fax.setter
+    def Fax(self, Fax):
+        self._Fax = Fax
+
+    @property
+    def Website(self):
+        return self._Website
+
+    @Website.setter
+    def Website(self, Website):
+        self._Website = Website
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        self._Name = params.get("Name")
+        self._Address = params.get("Address")
+        self._PostalCode = params.get("PostalCode")
+        self._Phone = params.get("Phone")
+        self._Fax = params.get("Fax")
+        self._Website = params.get("Website")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChemicalProductInfoName(AbstractModel):
+    """药品名称，包括通用名和商品名
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        :param _GenericName: 通用名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GenericName: str
+        :param _BarndName: 品牌名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BarndName: str
+        :param _EnName: 英文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnName: str
+        :param _Pinyin: 拼音
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Pinyin: str
+        """
+        self._Text = None
+        self._GenericName = None
+        self._BarndName = None
+        self._EnName = None
+        self._Pinyin = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def GenericName(self):
+        return self._GenericName
+
+    @GenericName.setter
+    def GenericName(self, GenericName):
+        self._GenericName = GenericName
+
+    @property
+    def BarndName(self):
+        return self._BarndName
+
+    @BarndName.setter
+    def BarndName(self, BarndName):
+        self._BarndName = BarndName
+
+    @property
+    def EnName(self):
+        return self._EnName
+
+    @EnName.setter
+    def EnName(self, EnName):
+        self._EnName = EnName
+
+    @property
+    def Pinyin(self):
+        return self._Pinyin
+
+    @Pinyin.setter
+    def Pinyin(self, Pinyin):
+        self._Pinyin = Pinyin
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        self._GenericName = params.get("GenericName")
+        self._BarndName = params.get("BarndName")
+        self._EnName = params.get("EnName")
+        self._Pinyin = params.get("Pinyin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChemicalProductInfoOverdose(AbstractModel):
+    """药物过量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChemicalProductInfoPackaging(AbstractModel):
+    """包装信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChemicalProductInfoPediatricUse(AbstractModel):
+    """儿童用药
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChemicalProductInfoPharmacokinetics(AbstractModel):
+    """药代动力学
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChemicalProductInfoPharmacologyToxicology(AbstractModel):
+    """药理毒理
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChemicalProductInfoPrecautions(AbstractModel):
+    """注意事项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChemicalProductInfoPregnancyLactationUse(AbstractModel):
+    """孕妇及哺乳期妇女用药
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChemicalProductInfoStorage(AbstractModel):
+    """储存条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChemicalProductInfoValidityPeriod(AbstractModel):
+    """有效期
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3933,6 +6071,96 @@ class DrugHistoryBlock(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DrugInstructionObjectRequest(AbstractModel):
+    """DrugInstructionObject请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PdfInfo: 药品说明书PDF文件信息(目前只支持传PDF文件的Base64编码字符(PDF文件不能超过10MB，如果超过建议先压缩PDF，再转成base64)
+        :type PdfInfo: :class:`tencentcloud.mrs.v20200910.models.PdfInfo`
+        """
+        self._PdfInfo = None
+
+    @property
+    def PdfInfo(self):
+        return self._PdfInfo
+
+    @PdfInfo.setter
+    def PdfInfo(self, PdfInfo):
+        self._PdfInfo = PdfInfo
+
+
+    def _deserialize(self, params):
+        if params.get("PdfInfo") is not None:
+            self._PdfInfo = PdfInfo()
+            self._PdfInfo._deserialize(params.get("PdfInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DrugInstructionObjectResponse(AbstractModel):
+    """DrugInstructionObject返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChemicalProductInfo: 药品说明书消息定义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChemicalProductInfo: :class:`tencentcloud.mrs.v20200910.models.ChemicalProductInfo`
+        :param _BiologicalProductInfo: 预防用生物制品说明书
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BiologicalProductInfo: :class:`tencentcloud.mrs.v20200910.models.BiologicalProductInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ChemicalProductInfo = None
+        self._BiologicalProductInfo = None
+        self._RequestId = None
+
+    @property
+    def ChemicalProductInfo(self):
+        return self._ChemicalProductInfo
+
+    @ChemicalProductInfo.setter
+    def ChemicalProductInfo(self, ChemicalProductInfo):
+        self._ChemicalProductInfo = ChemicalProductInfo
+
+    @property
+    def BiologicalProductInfo(self):
+        return self._BiologicalProductInfo
+
+    @BiologicalProductInfo.setter
+    def BiologicalProductInfo(self, BiologicalProductInfo):
+        self._BiologicalProductInfo = BiologicalProductInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ChemicalProductInfo") is not None:
+            self._ChemicalProductInfo = ChemicalProductInfo()
+            self._ChemicalProductInfo._deserialize(params.get("ChemicalProductInfo"))
+        if params.get("BiologicalProductInfo") is not None:
+            self._BiologicalProductInfo = BiologicalProductInfo()
+            self._BiologicalProductInfo._deserialize(params.get("BiologicalProductInfo"))
+        self._RequestId = params.get("RequestId")
 
 
 class DrugListBlock(AbstractModel):
