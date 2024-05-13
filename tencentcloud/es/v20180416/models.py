@@ -12318,6 +12318,9 @@ class ServerlessSpace(AbstractModel):
         :param _AppId: 空间所属appid
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
+        :param _KibanaLanguage: //默认en， 可选zh-CN
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KibanaLanguage: str
         """
         self._SpaceId = None
         self._SpaceName = None
@@ -12336,6 +12339,7 @@ class ServerlessSpace(AbstractModel):
         self._EnableKibanaPublicAccess = None
         self._EnableKibanaPrivateAccess = None
         self._AppId = None
+        self._KibanaLanguage = None
 
     @property
     def SpaceId(self):
@@ -12473,6 +12477,14 @@ class ServerlessSpace(AbstractModel):
     def AppId(self, AppId):
         self._AppId = AppId
 
+    @property
+    def KibanaLanguage(self):
+        return self._KibanaLanguage
+
+    @KibanaLanguage.setter
+    def KibanaLanguage(self, KibanaLanguage):
+        self._KibanaLanguage = KibanaLanguage
+
 
     def _deserialize(self, params):
         self._SpaceId = params.get("SpaceId")
@@ -12501,6 +12513,7 @@ class ServerlessSpace(AbstractModel):
         self._EnableKibanaPublicAccess = params.get("EnableKibanaPublicAccess")
         self._EnableKibanaPrivateAccess = params.get("EnableKibanaPrivateAccess")
         self._AppId = params.get("AppId")
+        self._KibanaLanguage = params.get("KibanaLanguage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

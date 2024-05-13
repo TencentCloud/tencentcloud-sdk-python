@@ -119,6 +119,9 @@ FAILEDOPERATION_UNOPENERROR = 'FailedOperation.UnOpenError'
 # 剩余识别次数不足，请检查资源包状态。
 FAILEDOPERATION_USERQUOTAERROR = 'FailedOperation.UserQuotaError'
 
+# 通用告警服务异常
+FAILEDOPERATION_WARNINGSERVICEFAILED = 'FailedOperation.WarningServiceFailed'
+
 # 内部错误。
 INTERNALERROR = 'InternalError'
 

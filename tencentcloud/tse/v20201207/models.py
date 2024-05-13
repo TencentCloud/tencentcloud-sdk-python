@@ -1463,6 +1463,12 @@ class CloudNativeAPIGatewayNode(AbstractModel):
         :param _Status: 状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
+        :param _Weight: 节点权重
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Weight: int
+        :param _IsDefaultWeight: 是否默认权重
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsDefaultWeight: bool
         """
         self._NodeId = None
         self._NodeIp = None
@@ -1471,6 +1477,8 @@ class CloudNativeAPIGatewayNode(AbstractModel):
         self._GroupId = None
         self._GroupName = None
         self._Status = None
+        self._Weight = None
+        self._IsDefaultWeight = None
 
     @property
     def NodeId(self):
@@ -1528,6 +1536,22 @@ class CloudNativeAPIGatewayNode(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def Weight(self):
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def IsDefaultWeight(self):
+        return self._IsDefaultWeight
+
+    @IsDefaultWeight.setter
+    def IsDefaultWeight(self, IsDefaultWeight):
+        self._IsDefaultWeight = IsDefaultWeight
+
 
     def _deserialize(self, params):
         self._NodeId = params.get("NodeId")
@@ -1537,6 +1561,8 @@ class CloudNativeAPIGatewayNode(AbstractModel):
         self._GroupId = params.get("GroupId")
         self._GroupName = params.get("GroupName")
         self._Status = params.get("Status")
+        self._Weight = params.get("Weight")
+        self._IsDefaultWeight = params.get("IsDefaultWeight")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21406,6 +21432,9 @@ class NativeGatewayServerGroup(AbstractModel):
         :param _SubnetIds: 子网id
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetIds: str
+        :param _DefaultWeight: 分组默认权重
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultWeight: int
         """
         self._GroupId = None
         self._Name = None
@@ -21419,6 +21448,7 @@ class NativeGatewayServerGroup(AbstractModel):
         self._InternetMaxBandwidthOut = None
         self._ModifyTime = None
         self._SubnetIds = None
+        self._DefaultWeight = None
 
     @property
     def GroupId(self):
@@ -21516,6 +21546,14 @@ class NativeGatewayServerGroup(AbstractModel):
     def SubnetIds(self, SubnetIds):
         self._SubnetIds = SubnetIds
 
+    @property
+    def DefaultWeight(self):
+        return self._DefaultWeight
+
+    @DefaultWeight.setter
+    def DefaultWeight(self, DefaultWeight):
+        self._DefaultWeight = DefaultWeight
+
 
     def _deserialize(self, params):
         self._GroupId = params.get("GroupId")
@@ -21534,6 +21572,7 @@ class NativeGatewayServerGroup(AbstractModel):
         self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
         self._ModifyTime = params.get("ModifyTime")
         self._SubnetIds = params.get("SubnetIds")
+        self._DefaultWeight = params.get("DefaultWeight")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

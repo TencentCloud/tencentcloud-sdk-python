@@ -1170,6 +1170,40 @@ INIT, STARTING, RUNNING, FAILED, STOPPING, STOPPED, SUCCEED
         
 
 
+class CBSConfig(AbstractModel):
+    """CBS存储配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VolumeSizeInGB: 存储大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VolumeSizeInGB: int
+        """
+        self._VolumeSizeInGB = None
+
+    @property
+    def VolumeSizeInGB(self):
+        return self._VolumeSizeInGB
+
+    @VolumeSizeInGB.setter
+    def VolumeSizeInGB(self, VolumeSizeInGB):
+        self._VolumeSizeInGB = VolumeSizeInGB
+
+
+    def _deserialize(self, params):
+        self._VolumeSizeInGB = params.get("VolumeSizeInGB")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CFSConfig(AbstractModel):
     """CFS存储的配置
 
@@ -4742,6 +4776,9 @@ class DataConfig(AbstractModel):
         :param _LocalDiskSource: 来自本地磁盘的信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type LocalDiskSource: :class:`tencentcloud.tione.v20211111.models.LocalDisk`
+        :param _CBSSource: CBS配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CBSSource: :class:`tencentcloud.tione.v20211111.models.CBSConfig`
         """
         self._MappingPath = None
         self._DataSourceType = None
@@ -4752,6 +4789,7 @@ class DataConfig(AbstractModel):
         self._GooseFSSource = None
         self._CFSTurboSource = None
         self._LocalDiskSource = None
+        self._CBSSource = None
 
     @property
     def MappingPath(self):
@@ -4825,6 +4863,14 @@ class DataConfig(AbstractModel):
     def LocalDiskSource(self, LocalDiskSource):
         self._LocalDiskSource = LocalDiskSource
 
+    @property
+    def CBSSource(self):
+        return self._CBSSource
+
+    @CBSSource.setter
+    def CBSSource(self, CBSSource):
+        self._CBSSource = CBSSource
+
 
     def _deserialize(self, params):
         self._MappingPath = params.get("MappingPath")
@@ -4850,6 +4896,9 @@ class DataConfig(AbstractModel):
         if params.get("LocalDiskSource") is not None:
             self._LocalDiskSource = LocalDisk()
             self._LocalDiskSource._deserialize(params.get("LocalDiskSource"))
+        if params.get("CBSSource") is not None:
+            self._CBSSource = CBSConfig()
+            self._CBSSource._deserialize(params.get("CBSSource"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -18709,7 +18709,7 @@ class DspaDiscoveryTaskDataSource(AbstractModel):
         :param _ResourceRegion: 资源所在地域
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceRegion: str
-        :param _DataSourceType: 无
+        :param _DataSourceType: 数据源类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceType: str
         """

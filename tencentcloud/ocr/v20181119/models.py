@@ -5478,7 +5478,7 @@ class Encryption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CiphertextBlob: 有加密需求的用户，接入传入kms的CiphertextBlob，关于数据加密可查阅数据加密 文档。
+        :param _CiphertextBlob: 有加密需求的用户，接入传入kms的CiphertextBlob，关于数据加密可查阅[敏感数据加密指引](https://cloud.tencent.com/document/product/866/106048)文档。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CiphertextBlob: str
         :param _Iv: 有加密需求的用户，传入CBC加密的初始向量（客户自定义字符串，长度16字符）。
@@ -8034,10 +8034,10 @@ class HKIDCardOCRRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DetectFake: 是否鉴伪。
-        :type DetectFake: bool
         :param _ReturnHeadImage: 是否返回人像照片。
         :type ReturnHeadImage: bool
+        :param _DetectFake: 是否鉴伪。
+        :type DetectFake: bool
         :param _ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -8049,18 +8049,10 @@ class HKIDCardOCRRequest(AbstractModel):
 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type ImageUrl: str
         """
-        self._DetectFake = None
         self._ReturnHeadImage = None
+        self._DetectFake = None
         self._ImageBase64 = None
         self._ImageUrl = None
-
-    @property
-    def DetectFake(self):
-        return self._DetectFake
-
-    @DetectFake.setter
-    def DetectFake(self, DetectFake):
-        self._DetectFake = DetectFake
 
     @property
     def ReturnHeadImage(self):
@@ -8069,6 +8061,18 @@ class HKIDCardOCRRequest(AbstractModel):
     @ReturnHeadImage.setter
     def ReturnHeadImage(self, ReturnHeadImage):
         self._ReturnHeadImage = ReturnHeadImage
+
+    @property
+    def DetectFake(self):
+        warnings.warn("parameter `DetectFake` is deprecated", DeprecationWarning) 
+
+        return self._DetectFake
+
+    @DetectFake.setter
+    def DetectFake(self, DetectFake):
+        warnings.warn("parameter `DetectFake` is deprecated", DeprecationWarning) 
+
+        self._DetectFake = DetectFake
 
     @property
     def ImageBase64(self):
@@ -8088,8 +8092,8 @@ class HKIDCardOCRRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._DetectFake = params.get("DetectFake")
         self._ReturnHeadImage = params.get("ReturnHeadImage")
+        self._DetectFake = params.get("DetectFake")
         self._ImageBase64 = params.get("ImageBase64")
         self._ImageUrl = params.get("ImageUrl")
         memeber_set = set(params.keys())
@@ -8145,6 +8149,14 @@ class HKIDCardOCRResponse(AbstractModel):
 -9102：证照复印件告警
 -9103：证照翻拍告警
         :type WarningCode: list of int
+        :param _WarnCardInfos: 告警码
+-9101 证件边框不完整告警
+-9102 证件复印件告警
+-9103 证件翻拍告警
+-9107 证件反光告警
+-9108 证件模糊告警
+-9109 告警能力未开通
+        :type WarnCardInfos: list of int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -8161,6 +8173,7 @@ class HKIDCardOCRResponse(AbstractModel):
         self._FakeDetectResult = None
         self._HeadImage = None
         self._WarningCode = None
+        self._WarnCardInfos = None
         self._RequestId = None
 
     @property
@@ -8245,10 +8258,14 @@ class HKIDCardOCRResponse(AbstractModel):
 
     @property
     def FakeDetectResult(self):
+        warnings.warn("parameter `FakeDetectResult` is deprecated", DeprecationWarning) 
+
         return self._FakeDetectResult
 
     @FakeDetectResult.setter
     def FakeDetectResult(self, FakeDetectResult):
+        warnings.warn("parameter `FakeDetectResult` is deprecated", DeprecationWarning) 
+
         self._FakeDetectResult = FakeDetectResult
 
     @property
@@ -8261,11 +8278,23 @@ class HKIDCardOCRResponse(AbstractModel):
 
     @property
     def WarningCode(self):
+        warnings.warn("parameter `WarningCode` is deprecated", DeprecationWarning) 
+
         return self._WarningCode
 
     @WarningCode.setter
     def WarningCode(self, WarningCode):
+        warnings.warn("parameter `WarningCode` is deprecated", DeprecationWarning) 
+
         self._WarningCode = WarningCode
+
+    @property
+    def WarnCardInfos(self):
+        return self._WarnCardInfos
+
+    @WarnCardInfos.setter
+    def WarnCardInfos(self, WarnCardInfos):
+        self._WarnCardInfos = WarnCardInfos
 
     @property
     def RequestId(self):
@@ -8290,6 +8319,7 @@ class HKIDCardOCRResponse(AbstractModel):
         self._FakeDetectResult = params.get("FakeDetectResult")
         self._HeadImage = params.get("HeadImage")
         self._WarningCode = params.get("WarningCode")
+        self._WarnCardInfos = params.get("WarnCardInfos")
         self._RequestId = params.get("RequestId")
 
 
@@ -10252,6 +10282,14 @@ MyKid 儿童卡
         :type Type: str
         :param _Birthday: 出生日期（目前该字段仅支持IKAD劳工证、MyKad 身份证）
         :type Birthday: str
+        :param _WarnCardInfos: 告警码
+-9101 证件边框不完整告警
+-9102 证件复印件告警
+-9103 证件翻拍告警
+-9107 证件反光告警
+-9108 证件模糊告警
+-9109 告警能力未开通
+        :type WarnCardInfos: list of int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -10264,6 +10302,7 @@ MyKid 儿童卡
         self._AdvancedInfo = None
         self._Type = None
         self._Birthday = None
+        self._WarnCardInfos = None
         self._RequestId = None
 
     @property
@@ -10300,10 +10339,14 @@ MyKid 儿童卡
 
     @property
     def Warn(self):
+        warnings.warn("parameter `Warn` is deprecated", DeprecationWarning) 
+
         return self._Warn
 
     @Warn.setter
     def Warn(self, Warn):
+        warnings.warn("parameter `Warn` is deprecated", DeprecationWarning) 
+
         self._Warn = Warn
 
     @property
@@ -10339,6 +10382,14 @@ MyKid 儿童卡
         self._Birthday = Birthday
 
     @property
+    def WarnCardInfos(self):
+        return self._WarnCardInfos
+
+    @WarnCardInfos.setter
+    def WarnCardInfos(self, WarnCardInfos):
+        self._WarnCardInfos = WarnCardInfos
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -10357,6 +10408,7 @@ MyKid 儿童卡
         self._AdvancedInfo = params.get("AdvancedInfo")
         self._Type = params.get("Type")
         self._Birthday = params.get("Birthday")
+        self._WarnCardInfos = params.get("WarnCardInfos")
         self._RequestId = params.get("RequestId")
 
 
@@ -16938,6 +16990,14 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
         :type Provinsi: str
         :param _Kota: 城市，Scene为V2时支持识别
         :type Kota: str
+        :param _WarnCardInfos: 告警码
+-9101 证件边框不完整告警
+-9102 证件复印件告警
+-9103 证件翻拍告警
+-9107 证件反光告警
+-9108 证件模糊告警
+-9109 告警能力未开通
+        :type WarnCardInfos: list of int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -16959,6 +17019,7 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
         self._Photo = None
         self._Provinsi = None
         self._Kota = None
+        self._WarnCardInfos = None
         self._RequestId = None
 
     @property
@@ -17106,6 +17167,14 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
         self._Kota = Kota
 
     @property
+    def WarnCardInfos(self):
+        return self._WarnCardInfos
+
+    @WarnCardInfos.setter
+    def WarnCardInfos(self, WarnCardInfos):
+        self._WarnCardInfos = WarnCardInfos
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -17133,6 +17202,7 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
         self._Photo = params.get("Photo")
         self._Provinsi = params.get("Provinsi")
         self._Kota = params.get("Kota")
+        self._WarnCardInfos = params.get("WarnCardInfos")
         self._RequestId = params.get("RequestId")
 
 
@@ -18785,6 +18855,14 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         :type Address: str
         :param _PortraitImage: 证件人像照片抠取
         :type PortraitImage: str
+        :param _WarnCardInfos: 告警码
+-9101 证件边框不完整告警
+-9102 证件复印件告警
+-9103 证件翻拍告警
+-9107 证件反光告警
+-9108 证件模糊告警
+-9109 告警能力未开通
+        :type WarnCardInfos: list of int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -18797,6 +18875,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         self._Birthday = None
         self._Address = None
         self._PortraitImage = None
+        self._WarnCardInfos = None
         self._RequestId = None
 
     @property
@@ -18872,6 +18951,14 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         self._PortraitImage = PortraitImage
 
     @property
+    def WarnCardInfos(self):
+        return self._WarnCardInfos
+
+    @WarnCardInfos.setter
+    def WarnCardInfos(self, WarnCardInfos):
+        self._WarnCardInfos = WarnCardInfos
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -18890,6 +18977,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         self._Birthday = params.get("Birthday")
         self._Address = params.get("Address")
         self._PortraitImage = params.get("PortraitImage")
+        self._WarnCardInfos = params.get("WarnCardInfos")
         self._RequestId = params.get("RequestId")
 
 

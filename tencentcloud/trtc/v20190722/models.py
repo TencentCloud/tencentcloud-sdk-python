@@ -5801,6 +5801,8 @@ class McuWaterMarkText(AbstractModel):
         :type DynamicPosType: int
         :param _ZOrder: 水印在输出时的层级，不填默认为0。
         :type ZOrder: int
+        :param _Font: 水印字体，不填默认为Tencent。支持设置以下值： Tencent （默认） SourceHanSans
+        :type Font: str
         """
         self._Text = None
         self._WaterMarkWidth = None
@@ -5812,6 +5814,7 @@ class McuWaterMarkText(AbstractModel):
         self._BackGroundColor = None
         self._DynamicPosType = None
         self._ZOrder = None
+        self._Font = None
 
     @property
     def Text(self):
@@ -5893,6 +5896,14 @@ class McuWaterMarkText(AbstractModel):
     def ZOrder(self, ZOrder):
         self._ZOrder = ZOrder
 
+    @property
+    def Font(self):
+        return self._Font
+
+    @Font.setter
+    def Font(self, Font):
+        self._Font = Font
+
 
     def _deserialize(self, params):
         self._Text = params.get("Text")
@@ -5905,6 +5916,7 @@ class McuWaterMarkText(AbstractModel):
         self._BackGroundColor = params.get("BackGroundColor")
         self._DynamicPosType = params.get("DynamicPosType")
         self._ZOrder = params.get("ZOrder")
+        self._Font = params.get("Font")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

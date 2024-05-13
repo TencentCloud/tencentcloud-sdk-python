@@ -530,26 +530,3 @@ class TioneClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def UpdateNotebookLifecycleScript(self, request):
-        """更新notebook生命周期脚本
-
-        :param request: Request instance for UpdateNotebookLifecycleScript.
-        :type request: :class:`tencentcloud.tione.v20191022.models.UpdateNotebookLifecycleScriptRequest`
-        :rtype: :class:`tencentcloud.tione.v20191022.models.UpdateNotebookLifecycleScriptResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("UpdateNotebookLifecycleScript", params, headers=headers)
-            response = json.loads(body)
-            model = models.UpdateNotebookLifecycleScriptResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))

@@ -16736,11 +16736,14 @@ class TargetGroupAssociation(AbstractModel):
         :type ListenerId: str
         :param _LocationId: 转发规则ID
         :type LocationId: str
+        :param _Weight: 目标组权重，范围[0, 100]。仅绑定v2目标组时生效，如果不存在，则默认为10。
+        :type Weight: int
         """
         self._LoadBalancerId = None
         self._TargetGroupId = None
         self._ListenerId = None
         self._LocationId = None
+        self._Weight = None
 
     @property
     def LoadBalancerId(self):
@@ -16774,12 +16777,21 @@ class TargetGroupAssociation(AbstractModel):
     def LocationId(self, LocationId):
         self._LocationId = LocationId
 
+    @property
+    def Weight(self):
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
 
     def _deserialize(self, params):
         self._LoadBalancerId = params.get("LoadBalancerId")
         self._TargetGroupId = params.get("TargetGroupId")
         self._ListenerId = params.get("ListenerId")
         self._LocationId = params.get("LocationId")
+        self._Weight = params.get("Weight")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

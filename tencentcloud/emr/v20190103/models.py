@@ -7613,6 +7613,15 @@ class ImpalaQuery(AbstractModel):
         :param _PerNodePeakMemoryBytesSum: 单节点内存峰值和(Bytes)
 注意：此字段可能返回 null，表示取不到有效值。
         :type PerNodePeakMemoryBytesSum: int
+        :param _BackendsCount: 后端个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackendsCount: int
+        :param _FragmentInstancesCount: fragment数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FragmentInstancesCount: int
+        :param _RemainingFragmentCount: 剩余未完成Fragment数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemainingFragmentCount: int
         """
         self._Statement = None
         self._Id = None
@@ -7638,6 +7647,9 @@ class ImpalaQuery(AbstractModel):
         self._NumRowsFetchedFromCache = None
         self._SessionId = None
         self._PerNodePeakMemoryBytesSum = None
+        self._BackendsCount = None
+        self._FragmentInstancesCount = None
+        self._RemainingFragmentCount = None
 
     @property
     def Statement(self):
@@ -7831,6 +7843,30 @@ class ImpalaQuery(AbstractModel):
     def PerNodePeakMemoryBytesSum(self, PerNodePeakMemoryBytesSum):
         self._PerNodePeakMemoryBytesSum = PerNodePeakMemoryBytesSum
 
+    @property
+    def BackendsCount(self):
+        return self._BackendsCount
+
+    @BackendsCount.setter
+    def BackendsCount(self, BackendsCount):
+        self._BackendsCount = BackendsCount
+
+    @property
+    def FragmentInstancesCount(self):
+        return self._FragmentInstancesCount
+
+    @FragmentInstancesCount.setter
+    def FragmentInstancesCount(self, FragmentInstancesCount):
+        self._FragmentInstancesCount = FragmentInstancesCount
+
+    @property
+    def RemainingFragmentCount(self):
+        return self._RemainingFragmentCount
+
+    @RemainingFragmentCount.setter
+    def RemainingFragmentCount(self, RemainingFragmentCount):
+        self._RemainingFragmentCount = RemainingFragmentCount
+
 
     def _deserialize(self, params):
         self._Statement = params.get("Statement")
@@ -7857,6 +7893,9 @@ class ImpalaQuery(AbstractModel):
         self._NumRowsFetchedFromCache = params.get("NumRowsFetchedFromCache")
         self._SessionId = params.get("SessionId")
         self._PerNodePeakMemoryBytesSum = params.get("PerNodePeakMemoryBytesSum")
+        self._BackendsCount = params.get("BackendsCount")
+        self._FragmentInstancesCount = params.get("FragmentInstancesCount")
+        self._RemainingFragmentCount = params.get("RemainingFragmentCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

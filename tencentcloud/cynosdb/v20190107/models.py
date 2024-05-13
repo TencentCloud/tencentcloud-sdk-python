@@ -2755,6 +2755,117 @@ class BizTaskModifyParamsData(AbstractModel):
         
 
 
+class CLSInfo(AbstractModel):
+    """CLS日志投递配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicOperation: 日志主题操作：可选create,reuse。
+create:新增日志主题，使用TopicName创建日志主题。
+reuse:使用已有日志主题，使用TopicId指定日志主题。
+不允许使用已有日志主题且新建日志集的组合。
+        :type TopicOperation: str
+        :param _GroupOperation: 日志集操作：可选create,reuse。
+create:新增日志集，使用GroupName创建日志集。
+reuse:使用已有日志集，使用GroupId指定日志集。
+不允许使用已有日志主题且新建日志集的组合。
+        :type GroupOperation: str
+        :param _Region: 日志投递地域
+        :type Region: str
+        :param _TopicId: 日志主题id
+        :type TopicId: str
+        :param _TopicName: 日志主题name
+        :type TopicName: str
+        :param _GroupId: 日志集id
+        :type GroupId: str
+        :param _GroupName: 日志集name
+        :type GroupName: str
+        """
+        self._TopicOperation = None
+        self._GroupOperation = None
+        self._Region = None
+        self._TopicId = None
+        self._TopicName = None
+        self._GroupId = None
+        self._GroupName = None
+
+    @property
+    def TopicOperation(self):
+        return self._TopicOperation
+
+    @TopicOperation.setter
+    def TopicOperation(self, TopicOperation):
+        self._TopicOperation = TopicOperation
+
+    @property
+    def GroupOperation(self):
+        return self._GroupOperation
+
+    @GroupOperation.setter
+    def GroupOperation(self, GroupOperation):
+        self._GroupOperation = GroupOperation
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def TopicId(self):
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def TopicName(self):
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+
+    def _deserialize(self, params):
+        self._TopicOperation = params.get("TopicOperation")
+        self._GroupOperation = params.get("GroupOperation")
+        self._Region = params.get("Region")
+        self._TopicId = params.get("TopicId")
+        self._TopicName = params.get("TopicName")
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CloseAuditServiceRequest(AbstractModel):
     """CloseAuditService请求参数结构体
 
@@ -4055,6 +4166,50 @@ class CreateCLSDeliveryRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _CLSInfoList: 日志投递配置
+        :type CLSInfoList: list of CLSInfo
+        """
+        self._InstanceId = None
+        self._CLSInfoList = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def CLSInfoList(self):
+        return self._CLSInfoList
+
+    @CLSInfoList.setter
+    def CLSInfoList(self, CLSInfoList):
+        self._CLSInfoList = CLSInfoList
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("CLSInfoList") is not None:
+            self._CLSInfoList = []
+            for item in params.get("CLSInfoList"):
+                obj = CLSInfo()
+                obj._deserialize(item)
+                self._CLSInfoList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class CreateCLSDeliveryResponse(AbstractModel):
     """CreateCLSDelivery返回参数结构体
@@ -4063,10 +4218,21 @@ class CreateCLSDeliveryResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TaskId: 异步任务id
+        :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TaskId = None
         self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -4078,6 +4244,7 @@ class CreateCLSDeliveryResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -9411,6 +9578,45 @@ class DeleteCLSDeliveryRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _CLSTopicIds: 日志主题id
+        :type CLSTopicIds: list of str
+        """
+        self._InstanceId = None
+        self._CLSTopicIds = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def CLSTopicIds(self):
+        return self._CLSTopicIds
+
+    @CLSTopicIds.setter
+    def CLSTopicIds(self, CLSTopicIds):
+        self._CLSTopicIds = CLSTopicIds
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._CLSTopicIds = params.get("CLSTopicIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DeleteCLSDeliveryResponse(AbstractModel):
     """DeleteCLSDelivery返回参数结构体
@@ -9419,10 +9625,22 @@ class DeleteCLSDeliveryResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TaskId: 异步任务id
+
+        :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TaskId = None
         self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -9434,6 +9652,7 @@ class DeleteCLSDeliveryResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -12807,6 +13026,33 @@ class DescribeInstanceCLSLogDeliveryRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeInstanceCLSLogDeliveryResponse(AbstractModel):
     """DescribeInstanceCLSLogDelivery返回参数结构体
@@ -12815,10 +13061,34 @@ class DescribeInstanceCLSLogDeliveryResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TotalCount: 总数量
+
+        :type TotalCount: int
+        :param _InstanceCLSDeliveryInfos: 实例投递信息
+
+        :type InstanceCLSDeliveryInfos: list of InstanceCLSDeliveryInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TotalCount = None
+        self._InstanceCLSDeliveryInfos = None
         self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def InstanceCLSDeliveryInfos(self):
+        return self._InstanceCLSDeliveryInfos
+
+    @InstanceCLSDeliveryInfos.setter
+    def InstanceCLSDeliveryInfos(self, InstanceCLSDeliveryInfos):
+        self._InstanceCLSDeliveryInfos = InstanceCLSDeliveryInfos
 
     @property
     def RequestId(self):
@@ -12830,6 +13100,13 @@ class DescribeInstanceCLSLogDeliveryResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("InstanceCLSDeliveryInfos") is not None:
+            self._InstanceCLSDeliveryInfos = []
+            for item in params.get("InstanceCLSDeliveryInfos"):
+                obj = InstanceCLSDeliveryInfo()
+                obj._deserialize(item)
+                self._InstanceCLSDeliveryInfos.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -17141,6 +17418,137 @@ class InstanceAuditStatus(AbstractModel):
             self._InstanceInfo._deserialize(params.get("InstanceInfo"))
         self._RealStorage = params.get("RealStorage")
         self._RuleTemplateIds = params.get("RuleTemplateIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceCLSDeliveryInfo(AbstractModel):
+    """实例日志投递信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _InstanceName: 实例name
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param _TopicId: 日志主题id
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicId: str
+        :param _TopicName: 日志主题name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicName: str
+        :param _GroupId: 日志集id
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param _GroupName: 日志集name
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param _Region: 日志投递地域
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param _Status: 投递状态creating,running,offlining,offlined
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        """
+        self._InstanceId = None
+        self._InstanceName = None
+        self._TopicId = None
+        self._TopicName = None
+        self._GroupId = None
+        self._GroupName = None
+        self._Region = None
+        self._Status = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def TopicId(self):
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def TopicName(self):
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._TopicId = params.get("TopicId")
+        self._TopicName = params.get("TopicName")
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._Region = params.get("Region")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27391,6 +27799,45 @@ class StartCLSDeliveryRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _CLSTopicIds: 开通的日志主题id
+        :type CLSTopicIds: list of str
+        """
+        self._InstanceId = None
+        self._CLSTopicIds = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def CLSTopicIds(self):
+        return self._CLSTopicIds
+
+    @CLSTopicIds.setter
+    def CLSTopicIds(self, CLSTopicIds):
+        self._CLSTopicIds = CLSTopicIds
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._CLSTopicIds = params.get("CLSTopicIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class StartCLSDeliveryResponse(AbstractModel):
     """StartCLSDelivery返回参数结构体
@@ -27399,10 +27846,21 @@ class StartCLSDeliveryResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TaskId: 异步任务id
+        :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TaskId = None
         self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -27414,6 +27872,7 @@ class StartCLSDeliveryResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -27421,6 +27880,45 @@ class StopCLSDeliveryRequest(AbstractModel):
     """StopCLSDelivery请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _CLSTopicIds: 日志主题id
+        :type CLSTopicIds: list of str
+        """
+        self._InstanceId = None
+        self._CLSTopicIds = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def CLSTopicIds(self):
+        return self._CLSTopicIds
+
+    @CLSTopicIds.setter
+    def CLSTopicIds(self, CLSTopicIds):
+        self._CLSTopicIds = CLSTopicIds
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._CLSTopicIds = params.get("CLSTopicIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class StopCLSDeliveryResponse(AbstractModel):
@@ -27430,10 +27928,22 @@ class StopCLSDeliveryResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TaskId: 异步任务id
+
+        :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TaskId = None
         self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -27445,6 +27955,7 @@ class StopCLSDeliveryResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 

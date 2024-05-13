@@ -2063,7 +2063,7 @@ class CreateCompareTaskRequest(AbstractModel):
         :type TaskName: str
         :param _ObjectMode: 数据对比对象模式，sameAsMigrate(全部迁移对象， 默认为此项配置)，custom(自定义模式)
         :type ObjectMode: str
-        :param _Objects: 一致性对比对象配置
+        :param _Objects: 数据对比对象，当ObjectMode为custom时，此项需要填写。
         :type Objects: :class:`tencentcloud.dts.v20211206.models.CompareObject`
         :param _Options: 一致性校验选项
         :type Options: :class:`tencentcloud.dts.v20211206.models.CompareOptions`
