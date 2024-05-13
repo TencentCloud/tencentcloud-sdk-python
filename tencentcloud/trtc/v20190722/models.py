@@ -6314,7 +6314,7 @@ class MixUserInfo(AbstractModel):
         :type UserId: str
         :param _RoomId: 动态布局时房间信息必须和主房间信息保持一致，自定义布局时房间信息必须和MixLayoutList中对应用户的房间信息保持一致，不填时默认与主房间信息一致。
         :type RoomId: str
-        :param _RoomIdType: 房间号类型，0为整形房间号，1为字符串房间号。
+        :param _RoomIdType: 房间号类型，0为整型房间号，1为字符串房间号。
         :type RoomIdType: int
         """
         self._UserId = None
@@ -8291,7 +8291,7 @@ class StartPublishCdnStreamRequest(AbstractModel):
         :type SdkAppId: int
         :param _RoomId: 主房间信息RoomId，转推的TRTC房间所对应的RoomId。
         :type RoomId: str
-        :param _RoomIdType: 主房间信息RoomType，必须和转推的房间所对应的RoomId类型相同，0为整形房间号，1为字符串房间号。
+        :param _RoomIdType: 主房间信息RoomType，必须和转推的房间所对应的RoomId类型相同，0为整型房间号，1为字符串房间号。
         :type RoomIdType: int
         :param _AgentParams: 转推服务加入TRTC房间的机器人参数。
         :type AgentParams: :class:`tencentcloud.trtc.v20190722.models.AgentParams`

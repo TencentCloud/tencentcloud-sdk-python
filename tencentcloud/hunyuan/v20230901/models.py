@@ -25,7 +25,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Model: 模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-pro。
+        :param _Model: 模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-pro。
 各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。
 
 注意：
@@ -1190,6 +1190,282 @@ class Message(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class QueryHunyuanImageJobRequest(AbstractModel):
+    """QueryHunyuanImageJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务 ID。
+        :type JobId: str
+        """
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryHunyuanImageJobResponse(AbstractModel):
+    """QueryHunyuanImageJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobStatusCode: 当前任务状态码：
+1：等待中、2：运行中、4：处理失败、5：处理完成。
+        :type JobStatusCode: str
+        :param _JobStatusMsg: 当前任务状态：排队中、处理中、处理失败或者处理完成。
+
+        :type JobStatusMsg: str
+        :param _JobErrorCode: 任务处理失败错误码。
+
+        :type JobErrorCode: str
+        :param _JobErrorMsg: 任务处理失败错误信息。
+
+        :type JobErrorMsg: str
+        :param _ResultImage: 生成图 URL 列表，有效期1小时，请及时保存。
+
+        :type ResultImage: list of str
+        :param _ResultDetails: 结果 detail 数组，Success 代表成功。
+
+        :type ResultDetails: list of str
+        :param _RevisedPrompt: 对应 SubmitTextToImageProJob 接口中 Revise 参数。开启扩写时，返回扩写后的 prompt 文本。 如果关闭扩写，将直接返回原始输入的 prompt。
+        :type RevisedPrompt: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobStatusCode = None
+        self._JobStatusMsg = None
+        self._JobErrorCode = None
+        self._JobErrorMsg = None
+        self._ResultImage = None
+        self._ResultDetails = None
+        self._RevisedPrompt = None
+        self._RequestId = None
+
+    @property
+    def JobStatusCode(self):
+        return self._JobStatusCode
+
+    @JobStatusCode.setter
+    def JobStatusCode(self, JobStatusCode):
+        self._JobStatusCode = JobStatusCode
+
+    @property
+    def JobStatusMsg(self):
+        return self._JobStatusMsg
+
+    @JobStatusMsg.setter
+    def JobStatusMsg(self, JobStatusMsg):
+        self._JobStatusMsg = JobStatusMsg
+
+    @property
+    def JobErrorCode(self):
+        return self._JobErrorCode
+
+    @JobErrorCode.setter
+    def JobErrorCode(self, JobErrorCode):
+        self._JobErrorCode = JobErrorCode
+
+    @property
+    def JobErrorMsg(self):
+        return self._JobErrorMsg
+
+    @JobErrorMsg.setter
+    def JobErrorMsg(self, JobErrorMsg):
+        self._JobErrorMsg = JobErrorMsg
+
+    @property
+    def ResultImage(self):
+        return self._ResultImage
+
+    @ResultImage.setter
+    def ResultImage(self, ResultImage):
+        self._ResultImage = ResultImage
+
+    @property
+    def ResultDetails(self):
+        return self._ResultDetails
+
+    @ResultDetails.setter
+    def ResultDetails(self, ResultDetails):
+        self._ResultDetails = ResultDetails
+
+    @property
+    def RevisedPrompt(self):
+        return self._RevisedPrompt
+
+    @RevisedPrompt.setter
+    def RevisedPrompt(self, RevisedPrompt):
+        self._RevisedPrompt = RevisedPrompt
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobStatusCode = params.get("JobStatusCode")
+        self._JobStatusMsg = params.get("JobStatusMsg")
+        self._JobErrorCode = params.get("JobErrorCode")
+        self._JobErrorMsg = params.get("JobErrorMsg")
+        self._ResultImage = params.get("ResultImage")
+        self._ResultDetails = params.get("ResultDetails")
+        self._RevisedPrompt = params.get("RevisedPrompt")
+        self._RequestId = params.get("RequestId")
+
+
+class SubmitHunyuanImageJobRequest(AbstractModel):
+    """SubmitHunyuanImageJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Prompt: 文本描述。 算法将根据输入的文本智能生成与之相关的图像。 不能为空，推荐使用中文。最多可传100个 utf-8 字符。
+        :type Prompt: str
+        :param _Style: 绘画风格。
+请在 [混元生图风格列表](https://cloud.tencent.com/document/product/1729/105846) 中选择期望的风格，传入风格编号。
+不传默认不指定风格。
+        :type Style: str
+        :param _Resolution: 生成图分辨率。
+支持生成以下分辨率的图片：768:768（1:1）、768:1024（3:4）、1024:768（4:3）、1024:1024（1:1）、720:1280（9:16）、1280:720（16:9）、768:1280（3:5）、1280:768（5:3），不传默认使用1024:1024。
+        :type Resolution: str
+        :param _LogoAdd: 为生成结果图添加显式水印标识的开关，默认为1。  
+1：添加。  
+0：不添加。  
+其他数值：默认按1处理。  
+建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
+        :type LogoAdd: int
+        :param _Revise: prompt 扩写开关。1为开启，0为关闭，不传默认开启。
+开启扩写后，将自动扩写原始输入的 prompt 并使用扩写后的 prompt 生成图片，返回生成图片结果时将一并返回扩写后的 prompt 文本。
+如果关闭扩写，将直接使用原始输入的 prompt 生成图片。
+建议开启，在多数场景下可提升生成图片效果、丰富生成图片细节。
+        :type Revise: int
+        """
+        self._Prompt = None
+        self._Style = None
+        self._Resolution = None
+        self._LogoAdd = None
+        self._Revise = None
+
+    @property
+    def Prompt(self):
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def Style(self):
+        return self._Style
+
+    @Style.setter
+    def Style(self, Style):
+        self._Style = Style
+
+    @property
+    def Resolution(self):
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def LogoAdd(self):
+        return self._LogoAdd
+
+    @LogoAdd.setter
+    def LogoAdd(self, LogoAdd):
+        self._LogoAdd = LogoAdd
+
+    @property
+    def Revise(self):
+        return self._Revise
+
+    @Revise.setter
+    def Revise(self, Revise):
+        self._Revise = Revise
+
+
+    def _deserialize(self, params):
+        self._Prompt = params.get("Prompt")
+        self._Style = params.get("Style")
+        self._Resolution = params.get("Resolution")
+        self._LogoAdd = params.get("LogoAdd")
+        self._Revise = params.get("Revise")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubmitHunyuanImageJobResponse(AbstractModel):
+    """SubmitHunyuanImageJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务 ID。
+        :type JobId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
 
 
 class Usage(AbstractModel):

@@ -1022,7 +1022,7 @@ FAILED：表示操作失败
         :param _CreateTime: 实例创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _MaxOutBandwidth: 公网出带宽上限，默认5Mbps
+        :param _MaxOutBandwidth: 公网出带宽上限，默认10Mbps
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxOutBandwidth: str
         :param _MaxFreeTraffic: 每月免费流量，默认500G

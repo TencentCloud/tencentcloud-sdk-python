@@ -4062,7 +4062,7 @@ class DescribeDiskDiscountRequest(AbstractModel):
         r"""
         :param _DiskType: 云硬盘类型, 取值范围: CLOUD_PREMIUM: 高性能云硬盘，CLOUD_SSD: SSD云硬盘
         :type DiskType: str
-        :param _DiskSize: 云硬盘大小。
+        :param _DiskSize: 云硬盘大小, 单位: GB。
         :type DiskSize: int
         :param _DiskBackupQuota: 指定云硬盘备份点配额，不传时默认为不带备份点配额。目前只支持不带或设置1个云硬盘备份点配额。
         :type DiskBackupQuota: int
@@ -10374,6 +10374,9 @@ FAILED：表示操作失败
         :param _LatestOperationRequestId: 实例最新操作的唯一请求 ID。 
 注意：此字段可能返回 空值，表示取不到有效值。
         :type LatestOperationRequestId: str
+        :param _LatestOperationStartedTime: 实例最新操作的开始时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LatestOperationStartedTime: str
         :param _IsolatedTime: 隔离时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
 格式为： YYYY-MM-DDThh:mm:ssZ。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -10420,6 +10423,7 @@ FAILED：表示操作失败
         self._LatestOperation = None
         self._LatestOperationState = None
         self._LatestOperationRequestId = None
+        self._LatestOperationStartedTime = None
         self._IsolatedTime = None
         self._CreatedTime = None
         self._ExpiredTime = None
@@ -10576,6 +10580,14 @@ FAILED：表示操作失败
         self._LatestOperationRequestId = LatestOperationRequestId
 
     @property
+    def LatestOperationStartedTime(self):
+        return self._LatestOperationStartedTime
+
+    @LatestOperationStartedTime.setter
+    def LatestOperationStartedTime(self, LatestOperationStartedTime):
+        self._LatestOperationStartedTime = LatestOperationStartedTime
+
+    @property
     def IsolatedTime(self):
         return self._IsolatedTime
 
@@ -10681,6 +10693,7 @@ FAILED：表示操作失败
         self._LatestOperation = params.get("LatestOperation")
         self._LatestOperationState = params.get("LatestOperationState")
         self._LatestOperationRequestId = params.get("LatestOperationRequestId")
+        self._LatestOperationStartedTime = params.get("LatestOperationStartedTime")
         self._IsolatedTime = params.get("IsolatedTime")
         self._CreatedTime = params.get("CreatedTime")
         self._ExpiredTime = params.get("ExpiredTime")

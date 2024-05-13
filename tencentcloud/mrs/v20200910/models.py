@@ -6080,7 +6080,7 @@ class DrugInstructionObjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PdfInfo: 药品说明书PDF文件信息(目前只支持传PDF文件的Base64编码字符(PDF文件不能超过10MB，如果超过建议先压缩PDF，再转成base64)
+        :param _PdfInfo: 药品说明书PDF文件信息, 目前只支持传PDF文件的Base64编码字符(PDF文件不能超过10MB，如果超过建议先压缩PDF，再转成base64).
         :type PdfInfo: :class:`tencentcloud.mrs.v20200910.models.PdfInfo`
         """
         self._PdfInfo = None

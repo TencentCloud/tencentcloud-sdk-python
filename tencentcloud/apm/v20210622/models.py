@@ -1474,7 +1474,7 @@ class DescribeGeneralApmApplicationConfigRequest(AbstractModel):
         r"""
         :param _ServiceName: 应用名
         :type ServiceName: str
-        :param _InstanceId: 实例Id
+        :param _InstanceId: 业务系统ID
         :type InstanceId: str
         """
         self._ServiceName = None

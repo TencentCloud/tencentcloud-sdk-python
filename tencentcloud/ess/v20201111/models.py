@@ -2124,7 +2124,8 @@ class Component(AbstractModel):
 <li> <b>FillMethod</b> : int. 填充方式。0-铺满（默认）；1-等比例缩放</li></ul>
 
 <font color="red">ComponentType为SIGN_SIGNATURE类型时</font>，可以**ComponentTypeLimit**参数控制签署方式
-<ul><li> <b>HANDWRITE</b> : 手写签名</li>
+<ul><li> <b>HANDWRITE</b> :  需要实时手写的手写签名</li>
+<li> <b>HANDWRITTEN_ESIGN</b> : 长效手写签名， 是使用保存到个人中心的印章列表的手写签名(并且包含HANDWRITE)</li>
 <li> <b>OCR_ESIGN</b> : AI智能识别手写签名</li>
 <li> <b>ESIGN</b> : 个人印章类型</li>
 <li> <b>SYSTEM_ESIGN</b> : 系统签名（该类型可以在用户签署时根据用户姓名一键生成一个签名来进行签署）</li>
@@ -2510,7 +2511,8 @@ class ComponentLimit(AbstractModel):
 
 2.当ComponentType 是 SIGN_SIGNATURE 时可传入以下类型（支持多个）
 
-<ul><li>HANDWRITE : 手写签名</li>
+<ul><li>HANDWRITE : 需要实时手写的手写签名</li>
+<li>HANDWRITTEN_ESIGN : 长效手写签名， 是使用保存到个人中心的印章列表的手写签名(并且包含HANDWRITE)</li>
 <li>OCR_ESIGN : OCR印章（智慧手写签名）</li>
 <li>ESIGN : 个人印章</li>
 <li>SYSTEM_ESIGN : 系统印章</li></ul>
@@ -9977,6 +9979,206 @@ class CreateUserAutoSignSealUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateUserVerifyUrlRequest(AbstractModel):
+    """CreateUserVerifyUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 操作人信息
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _Name: 要实名的姓名
+        :type Name: str
+        :param _IdCardNumber: 要实名的身份证号码，
+身份证号码如果有x的话，统一传大写X
+        :type IdCardNumber: str
+        :param _IdCardType: 证件类型，目前只支持身份证类型：ID_CARD
+        :type IdCardType: str
+        :param _Mobile: 要实名的手机号，兼容带+86的格式
+        :type Mobile: str
+        :param _Endpoint: 要跳转的链接类型
+
+- HTTP：
+跳转电子签小程序的http_url,短信通知或者H5跳转适合此类型 ，此时返回长链 (默认类型)
+
+- HTTP_SHORT_URL：
+跳转电子签小程序的http_url,短信通知或者H5跳转适合此类型，此时返回短链
+
+- APP：
+第三方APP或小程序跳转电子签小程序的path, APP或者小程序跳转适合此类型
+
+如果不传递，默认值是 APP
+        :type Endpoint: str
+        :param _AutoJumpBack: 签署完成后是否自动回跳
+<ul><li>false：否, 实名完成不会自动跳转回来(默认)</li><li>true：是, 实名完成会自动跳转回来</li></ul>
+
+注: 
+1. 该参数<font color="red">只针对APP类型（电子签小程序跳转贵方小程序）场景</font> 的实名链接有效
+2. <font color="red">手机应用APP 或 微信小程序需要监控界面的返回走后序逻辑</font>, 微信小程序的文档可以参考[这个](https://developers.weixin.qq.com/miniprogram/dev/reference/api/App.html#onShow-Object-object)
+3. <font color="red">电子签小程序跳转贵方APP，不支持自动跳转，必需用户手动点击完成按钮（微信的限制）</font> 
+        :type AutoJumpBack: bool
+        """
+        self._Operator = None
+        self._Name = None
+        self._IdCardNumber = None
+        self._IdCardType = None
+        self._Mobile = None
+        self._Endpoint = None
+        self._AutoJumpBack = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def IdCardNumber(self):
+        return self._IdCardNumber
+
+    @IdCardNumber.setter
+    def IdCardNumber(self, IdCardNumber):
+        self._IdCardNumber = IdCardNumber
+
+    @property
+    def IdCardType(self):
+        return self._IdCardType
+
+    @IdCardType.setter
+    def IdCardType(self, IdCardType):
+        self._IdCardType = IdCardType
+
+    @property
+    def Mobile(self):
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+    @property
+    def Endpoint(self):
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
+    @property
+    def AutoJumpBack(self):
+        return self._AutoJumpBack
+
+    @AutoJumpBack.setter
+    def AutoJumpBack(self, AutoJumpBack):
+        self._AutoJumpBack = AutoJumpBack
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._Name = params.get("Name")
+        self._IdCardNumber = params.get("IdCardNumber")
+        self._IdCardType = params.get("IdCardType")
+        self._Mobile = params.get("Mobile")
+        self._Endpoint = params.get("Endpoint")
+        self._AutoJumpBack = params.get("AutoJumpBack")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateUserVerifyUrlResponse(AbstractModel):
+    """CreateUserVerifyUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserVerifyUrl: 腾讯电子签小程序的实名认证链接。
+如果没有传递，默认值是 HTTP。 链接的有效期均是 7 天。
+
+- 如果EndPoint是APP，
+得到的链接类似于pages/guide/index?to=MP_PERSONAL_VERIFY&shortKey=yDCZHUyOcExAlcOvNod0, 用法可以参考描述中的"跳转到小程序的实现"
+
+- 如果EndPoint是HTTP，
+得到的链接类似于https://res.ess.tencent.cn/cdn/h5-activity/jump-mp.html?to=TAG_VERIFY&shortKey=yDCZHUyOcChrfpaswT0d，点击后会跳转到腾讯电子签小程序进行签署
+
+- 如果EndPoint是HTTP_SHORT_URL，
+得到的链接类似于https://essurl.cn/2n**42Nd，点击后会跳转到腾讯电子签小程序进行签署
+
+
+注： 生成的链路后面不能再增加参数
+示例值：https://essurl.cn/2n**42Nd
+        :type UserVerifyUrl: str
+        :param _ExpireTime: 链接过期时间
+        :type ExpireTime: int
+        :param _MiniAppId: 小程序appid，用于半屏拉起电子签小程序， 仅在 Endpoint 设置为 APP 的时候返回
+        :type MiniAppId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._UserVerifyUrl = None
+        self._ExpireTime = None
+        self._MiniAppId = None
+        self._RequestId = None
+
+    @property
+    def UserVerifyUrl(self):
+        return self._UserVerifyUrl
+
+    @UserVerifyUrl.setter
+    def UserVerifyUrl(self, UserVerifyUrl):
+        self._UserVerifyUrl = UserVerifyUrl
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def MiniAppId(self):
+        return self._MiniAppId
+
+    @MiniAppId.setter
+    def MiniAppId(self, MiniAppId):
+        self._MiniAppId = MiniAppId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._UserVerifyUrl = params.get("UserVerifyUrl")
+        self._ExpireTime = params.get("ExpireTime")
+        self._MiniAppId = params.get("MiniAppId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateWebThemeConfigRequest(AbstractModel):
     """CreateWebThemeConfig请求参数结构体
 
@@ -13957,6 +14159,103 @@ class DescribeUserAutoSignStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeUserVerifyStatusRequest(AbstractModel):
+    """DescribeUserVerifyStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 用户信息
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _Name: 姓名
+        :type Name: str
+        :param _IdCardNumber: 证件号，身份证如果有x的话，统一按照大写X传递
+        :type IdCardNumber: str
+        """
+        self._Operator = None
+        self._Name = None
+        self._IdCardNumber = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def IdCardNumber(self):
+        return self._IdCardNumber
+
+    @IdCardNumber.setter
+    def IdCardNumber(self, IdCardNumber):
+        self._IdCardNumber = IdCardNumber
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._Name = params.get("Name")
+        self._IdCardNumber = params.get("IdCardNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserVerifyStatusResponse(AbstractModel):
+    """DescribeUserVerifyStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VerifyStatus: true:表示已实名
+false：表示未实名
+        :type VerifyStatus: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._VerifyStatus = None
+        self._RequestId = None
+
+    @property
+    def VerifyStatus(self):
+        return self._VerifyStatus
+
+    @VerifyStatus.setter
+    def VerifyStatus(self, VerifyStatus):
+        self._VerifyStatus = VerifyStatus
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._VerifyStatus = params.get("VerifyStatus")
+        self._RequestId = params.get("RequestId")
+
+
 class DetectInfoVideoData(AbstractModel):
     """视频认证结果
 
@@ -15649,7 +15948,8 @@ class FlowCreateApprover(AbstractModel):
         :type Components: list of Component
         :param _ComponentLimitType: 当签署方控件类型为 <b>SIGN_SIGNATURE</b> 时，可以指定签署方签名方式。如果不指定，签署人可以使用所有的签名类型，可指定的签名类型包括：
 
-<ul><li> <b>HANDWRITE</b> :手写签名。</li>
+<ul><li> <b>HANDWRITE</b> :需要实时手写的手写签名。</li>
+<li> <b>HANDWRITTEN_ESIGN</b> :长效手写签名， 是使用保存到个人中心的印章列表的手写签名。(并且包含HANDWRITE)</li>
 <li> <b>OCR_ESIGN</b> :AI智能识别手写签名。</li>
 <li> <b>ESIGN</b> :个人印章类型。</li>
 <li> <b>IMG_ESIGN</b>  : 图片印章。该类型支持用户在签署将上传的PNG格式的图片作为签名。</li>

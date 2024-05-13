@@ -1022,10 +1022,10 @@ CSIP:云安全中心
         :param _Victim: 受害者
 注意：此字段可能返回 null，表示取不到有效值。
         :type Victim: :class:`tencentcloud.csip.v20221121.models.RoleInfo`
-        :param _EvidenceData: 证据数据(比如攻击内容等)
+        :param _EvidenceData: 证据数据(例如攻击内容等)
 注意：此字段可能返回 null，表示取不到有效值。
         :type EvidenceData: str
-        :param _EvidenceLocation: 证据位置(比如协议端口)
+        :param _EvidenceLocation: 证据位置(例如协议端口)
 注意：此字段可能返回 null，表示取不到有效值。
         :type EvidenceLocation: str
         :param _EvidencePath: 证据路径
@@ -7026,6 +7026,9 @@ class DescribeCVMAssetsResponse(AbstractModel):
         :param _AssetMapInstanceTypeList: 资产类型和实例类型的对应关系
 注意：此字段可能返回 null，表示取不到有效值。
         :type AssetMapInstanceTypeList: list of AssetInstanceTypeMap
+        :param _PublicPrivateAttr: 公网内网枚举
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicPrivateAttr: list of FilterDataObject
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7041,6 +7044,7 @@ class DescribeCVMAssetsResponse(AbstractModel):
         self._ZoneList = None
         self._OsList = None
         self._AssetMapInstanceTypeList = None
+        self._PublicPrivateAttr = None
         self._RequestId = None
 
     @property
@@ -7140,6 +7144,14 @@ class DescribeCVMAssetsResponse(AbstractModel):
         self._AssetMapInstanceTypeList = AssetMapInstanceTypeList
 
     @property
+    def PublicPrivateAttr(self):
+        return self._PublicPrivateAttr
+
+    @PublicPrivateAttr.setter
+    def PublicPrivateAttr(self, PublicPrivateAttr):
+        self._PublicPrivateAttr = PublicPrivateAttr
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -7216,6 +7228,12 @@ class DescribeCVMAssetsResponse(AbstractModel):
                 obj = AssetInstanceTypeMap()
                 obj._deserialize(item)
                 self._AssetMapInstanceTypeList.append(obj)
+        if params.get("PublicPrivateAttr") is not None:
+            self._PublicPrivateAttr = []
+            for item in params.get("PublicPrivateAttr"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._PublicPrivateAttr.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -7456,13 +7474,24 @@ class DescribeDbAssetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
         :param _Filter: -
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
         :param _AssetTypes: 资产类型:MYSQL/MARIADB/REDIS/MONGODB/POSTGRES/CTS/ES/KAFKA/COS/CBS/CFS
         :type AssetTypes: list of str
         """
+        self._MemberId = None
         self._Filter = None
         self._AssetTypes = None
+
+    @property
+    def MemberId(self):
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
 
     @property
     def Filter(self):
@@ -7482,6 +7511,7 @@ class DescribeDbAssetsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
@@ -7521,6 +7551,9 @@ class DescribeDbAssetsResponse(AbstractModel):
         :param _AppIdList: Appid枚举
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppIdList: list of FilterDataObject
+        :param _PublicPrivateAttr: 公网内网枚举
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicPrivateAttr: list of FilterDataObject
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7530,6 +7563,7 @@ class DescribeDbAssetsResponse(AbstractModel):
         self._AssetTypeList = None
         self._VpcList = None
         self._AppIdList = None
+        self._PublicPrivateAttr = None
         self._RequestId = None
 
     @property
@@ -7581,6 +7615,14 @@ class DescribeDbAssetsResponse(AbstractModel):
         self._AppIdList = AppIdList
 
     @property
+    def PublicPrivateAttr(self):
+        return self._PublicPrivateAttr
+
+    @PublicPrivateAttr.setter
+    def PublicPrivateAttr(self, PublicPrivateAttr):
+        self._PublicPrivateAttr = PublicPrivateAttr
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -7621,6 +7663,12 @@ class DescribeDbAssetsResponse(AbstractModel):
                 obj = FilterDataObject()
                 obj._deserialize(item)
                 self._AppIdList.append(obj)
+        if params.get("PublicPrivateAttr") is not None:
+            self._PublicPrivateAttr = []
+            for item in params.get("PublicPrivateAttr"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._PublicPrivateAttr.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -8264,13 +8312,24 @@ class DescribeOrganizationUserInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
         :param _Filter: 过滤内容
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
         :param _NotSupportCloud: 不支持多云
         :type NotSupportCloud: bool
         """
+        self._MemberId = None
         self._Filter = None
         self._NotSupportCloud = None
+
+    @property
+    def MemberId(self):
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
 
     @property
     def Filter(self):
@@ -8290,6 +8349,7 @@ class DescribeOrganizationUserInfoRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
@@ -8317,11 +8377,19 @@ class DescribeOrganizationUserInfoResponse(AbstractModel):
         :param _Data: 集团用户列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of OrganizationUserInfo
+        :param _JoinTypeLst: 加入方式枚举
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JoinTypeLst: list of FilterDataObject
+        :param _CloudTypeLst: 云厂商枚举
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CloudTypeLst: list of FilterDataObject
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
         self._Data = None
+        self._JoinTypeLst = None
+        self._CloudTypeLst = None
         self._RequestId = None
 
     @property
@@ -8341,6 +8409,22 @@ class DescribeOrganizationUserInfoResponse(AbstractModel):
         self._Data = Data
 
     @property
+    def JoinTypeLst(self):
+        return self._JoinTypeLst
+
+    @JoinTypeLst.setter
+    def JoinTypeLst(self, JoinTypeLst):
+        self._JoinTypeLst = JoinTypeLst
+
+    @property
+    def CloudTypeLst(self):
+        return self._CloudTypeLst
+
+    @CloudTypeLst.setter
+    def CloudTypeLst(self, CloudTypeLst):
+        self._CloudTypeLst = CloudTypeLst
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -8357,6 +8441,18 @@ class DescribeOrganizationUserInfoResponse(AbstractModel):
                 obj = OrganizationUserInfo()
                 obj._deserialize(item)
                 self._Data.append(obj)
+        if params.get("JoinTypeLst") is not None:
+            self._JoinTypeLst = []
+            for item in params.get("JoinTypeLst"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._JoinTypeLst.append(obj)
+        if params.get("CloudTypeLst") is not None:
+            self._CloudTypeLst = []
+            for item in params.get("CloudTypeLst"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._CloudTypeLst.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -13696,6 +13792,12 @@ class OrganizationUserInfo(AbstractModel):
 2 非腾讯云
 注意：此字段可能返回 null，表示取不到有效值。
         :type TcMemberType: int
+        :param _SubUserCount: 子账号数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubUserCount: int
+        :param _JoinTypeInfo: 加入方式详细信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JoinTypeInfo: str
         """
         self._Uin = None
         self._NickName = None
@@ -13719,6 +13821,8 @@ class OrganizationUserInfo(AbstractModel):
         self._PermissionList = None
         self._AuthType = None
         self._TcMemberType = None
+        self._SubUserCount = None
+        self._JoinTypeInfo = None
 
     @property
     def Uin(self):
@@ -13896,6 +14000,22 @@ class OrganizationUserInfo(AbstractModel):
     def TcMemberType(self, TcMemberType):
         self._TcMemberType = TcMemberType
 
+    @property
+    def SubUserCount(self):
+        return self._SubUserCount
+
+    @SubUserCount.setter
+    def SubUserCount(self, SubUserCount):
+        self._SubUserCount = SubUserCount
+
+    @property
+    def JoinTypeInfo(self):
+        return self._JoinTypeInfo
+
+    @JoinTypeInfo.setter
+    def JoinTypeInfo(self, JoinTypeInfo):
+        self._JoinTypeInfo = JoinTypeInfo
+
 
     def _deserialize(self, params):
         self._Uin = params.get("Uin")
@@ -13920,6 +14040,8 @@ class OrganizationUserInfo(AbstractModel):
         self._PermissionList = params.get("PermissionList")
         self._AuthType = params.get("AuthType")
         self._TcMemberType = params.get("TcMemberType")
+        self._SubUserCount = params.get("SubUserCount")
+        self._JoinTypeInfo = params.get("JoinTypeInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

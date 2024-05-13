@@ -487,7 +487,7 @@ class AllocationDetail(AbstractModel):
         :param _AllocationType: 费用归集类型：费用来源类型，分摊、归集、未分配
 0 - 分摊
 1 - 归集
--1 - 未分配
+2 - 未分配
 注意：此字段可能返回 null，表示取不到有效值。
         :type AllocationType: int
         """
@@ -14085,7 +14085,7 @@ class DescribeBillDownloadUrlResponse(AbstractModel):
         r"""
         :param _Ready: 账单文件是否准备就绪，0文件生成中，1文件已生成
         :type Ready: int
-        :param _DownloadUrl: 账单文件下载链接，有效时长为一小时
+        :param _DownloadUrl: 账单文件下载链接，有效时长为一天
 注意：此字段可能返回 null，表示取不到有效值。
         :type DownloadUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

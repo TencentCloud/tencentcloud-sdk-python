@@ -9898,6 +9898,89 @@ class DescribeLivePackageInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeLivePadProcessorListRequest(AbstractModel):
+    """DescribeLivePadProcessorList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        :type AppName: str
+        :param _PushDomainName: 您的推流域名。
+        :type PushDomainName: str
+        """
+        self._AppName = None
+        self._PushDomainName = None
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def PushDomainName(self):
+        return self._PushDomainName
+
+    @PushDomainName.setter
+    def PushDomainName(self, PushDomainName):
+        self._PushDomainName = PushDomainName
+
+
+    def _deserialize(self, params):
+        self._AppName = params.get("AppName")
+        self._PushDomainName = params.get("PushDomainName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLivePadProcessorListResponse(AbstractModel):
+    """DescribeLivePadProcessorList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StreamNameList: 当前正在拉取垫片的流名称列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StreamNameList: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._StreamNameList = None
+        self._RequestId = None
+
+    @property
+    def StreamNameList(self):
+        return self._StreamNameList
+
+    @StreamNameList.setter
+    def StreamNameList(self, StreamNameList):
+        self._StreamNameList = StreamNameList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._StreamNameList = params.get("StreamNameList")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeLivePadRulesRequest(AbstractModel):
     """DescribeLivePadRules请求参数结构体
 
@@ -24714,6 +24797,113 @@ class StartLiveStreamMonitorResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class StopLivePadProcessorRequest(AbstractModel):
+    """StopLivePadProcessor请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        :type AppName: str
+        :param _PushDomainName: 您的推流域名。
+        :type PushDomainName: str
+        :param _StreamName: 流名称。
+        :type StreamName: str
+        :param _Operator: 操作人备注信息。
+        :type Operator: str
+        """
+        self._AppName = None
+        self._PushDomainName = None
+        self._StreamName = None
+        self._Operator = None
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def PushDomainName(self):
+        return self._PushDomainName
+
+    @PushDomainName.setter
+    def PushDomainName(self, PushDomainName):
+        self._PushDomainName = PushDomainName
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+
+    def _deserialize(self, params):
+        self._AppName = params.get("AppName")
+        self._PushDomainName = params.get("PushDomainName")
+        self._StreamName = params.get("StreamName")
+        self._Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopLivePadProcessorResponse(AbstractModel):
+    """StopLivePadProcessor返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResultMessage: 处理结果信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultMessage: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ResultMessage = None
+        self._RequestId = None
+
+    @property
+    def ResultMessage(self):
+        return self._ResultMessage
+
+    @ResultMessage.setter
+    def ResultMessage(self, ResultMessage):
+        self._ResultMessage = ResultMessage
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ResultMessage = params.get("ResultMessage")
         self._RequestId = params.get("RequestId")
 
 

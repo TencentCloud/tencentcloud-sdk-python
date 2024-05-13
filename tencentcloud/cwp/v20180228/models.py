@@ -42359,7 +42359,7 @@ class DescribePublicProxyInstallCommandRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ip: nginx主机ip列表，逗号分隔
+        :param _Ip: nginx主机IP列表，逗号分隔
         :type Ip: str
         """
         self._Ip = None
@@ -57302,7 +57302,7 @@ class ExportBaselineItemListRequest(AbstractModel):
 <li>ItemName - String - 是否必填：否 - 项名称</li>
 <li>DetectStatus - int - 是否必填：否 - 检测状态[0:未通过|3:通过|5:检测中]</li>
 <li>Level - int - 是否必填：否 - 风险等级</li>
-<li>StartTime - string - 是否必填：否 - 开时时间</li>
+<li>StartTime - string - 是否必填：否 - 开始时间</li>
 <li>EndTime - string - 是否必填：否 - 结束时间</li>
         :type Filters: list of Filter
         :param _ExportAll: 0:过滤的结果导出；1:全部导出
@@ -58092,7 +58092,7 @@ class ExportFileTamperRulesRequest(AbstractModel):
         r"""
         :param _Filters: 过滤条件。
 <li>RuleCategory- string- 规则类别  0=系统规则，1=用户规则</li>
-<li>Name- String - 规则名称/li>
+<li>Name- String - 规则名称</li>
         :type Filters: list of Filters
         """
         self._Filters = None
@@ -64057,10 +64057,14 @@ class Item(AbstractModel):
         :param _CustomItemValues: 自定义阈值
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomItemValues: list of int non-negative
+        :param _CategoryId: 检测项所属分类
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CategoryId: int
         """
         self._ItemId = None
         self._ItemName = None
         self._CustomItemValues = None
+        self._CategoryId = None
 
     @property
     def ItemId(self):
@@ -64086,11 +64090,20 @@ class Item(AbstractModel):
     def CustomItemValues(self, CustomItemValues):
         self._CustomItemValues = CustomItemValues
 
+    @property
+    def CategoryId(self):
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
 
     def _deserialize(self, params):
         self._ItemId = params.get("ItemId")
         self._ItemName = params.get("ItemName")
         self._CustomItemValues = params.get("CustomItemValues")
+        self._CategoryId = params.get("CategoryId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

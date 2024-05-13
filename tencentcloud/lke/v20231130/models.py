@@ -10530,6 +10530,9 @@ class MsgRecord(AbstractModel):
         r"""
         :param _Content: 内容
         :type Content: str
+        :param _SessionId: 当前记录所对应的 Session ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionId: str
         :param _RecordId: 记录ID
         :type RecordId: str
         :param _RelatedRecordId: 关联记录ID
@@ -10548,6 +10551,9 @@ class MsgRecord(AbstractModel):
         :type Score: int
         :param _CanRating: 是否评分
         :type CanRating: bool
+        :param _CanFeedback: 是否展示反馈按钮
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CanFeedback: bool
         :param _Type: 记录类型
         :type Type: int
         :param _References: 引用来源
@@ -10561,8 +10567,18 @@ class MsgRecord(AbstractModel):
         :param _TokenStat: 当次 token 统计信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type TokenStat: :class:`tencentcloud.lke.v20231130.models.TokenStat`
+        :param _ReplyMethod: 回复方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReplyMethod: int
+        :param _OptionCards: 选项卡, 用于多轮对话
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OptionCards: list of str
+        :param _TaskFlow: 任务信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskFlow: :class:`tencentcloud.lke.v20231130.models.TaskFlowInfo`
         """
         self._Content = None
+        self._SessionId = None
         self._RecordId = None
         self._RelatedRecordId = None
         self._IsFromSelf = None
@@ -10572,12 +10588,16 @@ class MsgRecord(AbstractModel):
         self._HasRead = None
         self._Score = None
         self._CanRating = None
+        self._CanFeedback = None
         self._Type = None
         self._References = None
         self._Reasons = None
         self._IsLlmGenerated = None
         self._ImageUrls = None
         self._TokenStat = None
+        self._ReplyMethod = None
+        self._OptionCards = None
+        self._TaskFlow = None
 
     @property
     def Content(self):
@@ -10586,6 +10606,14 @@ class MsgRecord(AbstractModel):
     @Content.setter
     def Content(self, Content):
         self._Content = Content
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
 
     @property
     def RecordId(self):
@@ -10660,6 +10688,14 @@ class MsgRecord(AbstractModel):
         self._CanRating = CanRating
 
     @property
+    def CanFeedback(self):
+        return self._CanFeedback
+
+    @CanFeedback.setter
+    def CanFeedback(self, CanFeedback):
+        self._CanFeedback = CanFeedback
+
+    @property
     def Type(self):
         return self._Type
 
@@ -10707,9 +10743,34 @@ class MsgRecord(AbstractModel):
     def TokenStat(self, TokenStat):
         self._TokenStat = TokenStat
 
+    @property
+    def ReplyMethod(self):
+        return self._ReplyMethod
+
+    @ReplyMethod.setter
+    def ReplyMethod(self, ReplyMethod):
+        self._ReplyMethod = ReplyMethod
+
+    @property
+    def OptionCards(self):
+        return self._OptionCards
+
+    @OptionCards.setter
+    def OptionCards(self, OptionCards):
+        self._OptionCards = OptionCards
+
+    @property
+    def TaskFlow(self):
+        return self._TaskFlow
+
+    @TaskFlow.setter
+    def TaskFlow(self, TaskFlow):
+        self._TaskFlow = TaskFlow
+
 
     def _deserialize(self, params):
         self._Content = params.get("Content")
+        self._SessionId = params.get("SessionId")
         self._RecordId = params.get("RecordId")
         self._RelatedRecordId = params.get("RelatedRecordId")
         self._IsFromSelf = params.get("IsFromSelf")
@@ -10719,6 +10780,7 @@ class MsgRecord(AbstractModel):
         self._HasRead = params.get("HasRead")
         self._Score = params.get("Score")
         self._CanRating = params.get("CanRating")
+        self._CanFeedback = params.get("CanFeedback")
         self._Type = params.get("Type")
         if params.get("References") is not None:
             self._References = []
@@ -10732,6 +10794,11 @@ class MsgRecord(AbstractModel):
         if params.get("TokenStat") is not None:
             self._TokenStat = TokenStat()
             self._TokenStat._deserialize(params.get("TokenStat"))
+        self._ReplyMethod = params.get("ReplyMethod")
+        self._OptionCards = params.get("OptionCards")
+        if params.get("TaskFlow") is not None:
+            self._TaskFlow = TaskFlowInfo()
+            self._TaskFlow._deserialize(params.get("TaskFlow"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13283,6 +13350,96 @@ class SummaryOutput(AbstractModel):
         self._Method = params.get("Method")
         self._Requirement = params.get("Requirement")
         self._RequireCommand = params.get("RequireCommand")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskFlowInfo(AbstractModel):
+    """任务流程信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskFlowId: 任务流程ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskFlowId: str
+        :param _TaskFlowName: 任务流程名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskFlowName: str
+        :param _QueryRewrite: Query 重写结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueryRewrite: str
+        :param _HitIntent: 命中意图
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HitIntent: str
+        :param _Type: 任务流程回复类型
+0: 任务流回复
+1: 任务流静默
+2: 任务流拉回话术
+3: 任务流自定义回复
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        """
+        self._TaskFlowId = None
+        self._TaskFlowName = None
+        self._QueryRewrite = None
+        self._HitIntent = None
+        self._Type = None
+
+    @property
+    def TaskFlowId(self):
+        return self._TaskFlowId
+
+    @TaskFlowId.setter
+    def TaskFlowId(self, TaskFlowId):
+        self._TaskFlowId = TaskFlowId
+
+    @property
+    def TaskFlowName(self):
+        return self._TaskFlowName
+
+    @TaskFlowName.setter
+    def TaskFlowName(self, TaskFlowName):
+        self._TaskFlowName = TaskFlowName
+
+    @property
+    def QueryRewrite(self):
+        return self._QueryRewrite
+
+    @QueryRewrite.setter
+    def QueryRewrite(self, QueryRewrite):
+        self._QueryRewrite = QueryRewrite
+
+    @property
+    def HitIntent(self):
+        return self._HitIntent
+
+    @HitIntent.setter
+    def HitIntent(self, HitIntent):
+        self._HitIntent = HitIntent
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._TaskFlowId = params.get("TaskFlowId")
+        self._TaskFlowName = params.get("TaskFlowName")
+        self._QueryRewrite = params.get("QueryRewrite")
+        self._HitIntent = params.get("HitIntent")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

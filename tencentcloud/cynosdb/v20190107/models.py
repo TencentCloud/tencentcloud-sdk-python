@@ -4050,6 +4050,37 @@ class CreateBackupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateCLSDeliveryRequest(AbstractModel):
+    """CreateCLSDelivery请求参数结构体
+
+    """
+
+
+class CreateCLSDeliveryResponse(AbstractModel):
+    """CreateCLSDelivery返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateClusterDatabaseRequest(AbstractModel):
     """CreateClusterDatabase请求参数结构体
 
@@ -9375,6 +9406,37 @@ class DeleteBackupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteCLSDeliveryRequest(AbstractModel):
+    """DeleteCLSDelivery请求参数结构体
+
+    """
+
+
+class DeleteCLSDeliveryResponse(AbstractModel):
+    """DeleteCLSDelivery返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteClusterDatabaseRequest(AbstractModel):
     """DeleteClusterDatabase请求参数结构体
 
@@ -12737,6 +12799,37 @@ class DescribeFlowResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInstanceCLSLogDeliveryRequest(AbstractModel):
+    """DescribeInstanceCLSLogDelivery请求参数结构体
+
+    """
+
+
+class DescribeInstanceCLSLogDeliveryResponse(AbstractModel):
+    """DescribeInstanceCLSLogDelivery返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -24829,9 +24922,13 @@ class ResourcePackage(AbstractModel):
 DISK：存储资源包
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackageType: str
+        :param _DeductionPriority: 当前资源包绑定在当前实例下的抵扣优先级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeductionPriority: int
         """
         self._PackageId = None
         self._PackageType = None
+        self._DeductionPriority = None
 
     @property
     def PackageId(self):
@@ -24849,10 +24946,19 @@ DISK：存储资源包
     def PackageType(self, PackageType):
         self._PackageType = PackageType
 
+    @property
+    def DeductionPriority(self):
+        return self._DeductionPriority
+
+    @DeductionPriority.setter
+    def DeductionPriority(self, DeductionPriority):
+        self._DeductionPriority = DeductionPriority
+
 
     def _deserialize(self, params):
         self._PackageId = params.get("PackageId")
         self._PackageType = params.get("PackageType")
+        self._DeductionPriority = params.get("DeductionPriority")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27278,6 +27384,68 @@ class SlowQueriesItem(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class StartCLSDeliveryRequest(AbstractModel):
+    """StartCLSDelivery请求参数结构体
+
+    """
+
+
+class StartCLSDeliveryResponse(AbstractModel):
+    """StartCLSDelivery返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class StopCLSDeliveryRequest(AbstractModel):
+    """StopCLSDelivery请求参数结构体
+
+    """
+
+
+class StopCLSDeliveryResponse(AbstractModel):
+    """StopCLSDelivery返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class SwitchClusterLogBin(AbstractModel):

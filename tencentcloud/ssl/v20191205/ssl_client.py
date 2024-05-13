@@ -555,6 +555,29 @@ class SslClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDownloadCertificateUrl(self, request):
+        """获取下载证书链接
+
+        :param request: Request instance for DescribeDownloadCertificateUrl.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeDownloadCertificateUrlRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DescribeDownloadCertificateUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDownloadCertificateUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDownloadCertificateUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeHostApiGatewayInstanceList(self, request):
         """查询证书apiGateway云资源部署实例列表
 

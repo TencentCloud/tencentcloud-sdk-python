@@ -63,6 +63,66 @@ class Annotation(AbstractModel):
         
 
 
+class AutoUpgradeOptions(AbstractModel):
+    """托管节点池运维窗口设置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AutoUpgradeStartTime: 自动升级开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoUpgradeStartTime: str
+        :param _Duration: 自动升级持续时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Duration: str
+        :param _WeeklyPeriod: 运维日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WeeklyPeriod: list of str
+        """
+        self._AutoUpgradeStartTime = None
+        self._Duration = None
+        self._WeeklyPeriod = None
+
+    @property
+    def AutoUpgradeStartTime(self):
+        return self._AutoUpgradeStartTime
+
+    @AutoUpgradeStartTime.setter
+    def AutoUpgradeStartTime(self, AutoUpgradeStartTime):
+        self._AutoUpgradeStartTime = AutoUpgradeStartTime
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def WeeklyPeriod(self):
+        return self._WeeklyPeriod
+
+    @WeeklyPeriod.setter
+    def WeeklyPeriod(self, WeeklyPeriod):
+        self._WeeklyPeriod = WeeklyPeriod
+
+
+    def _deserialize(self, params):
+        self._AutoUpgradeStartTime = params.get("AutoUpgradeStartTime")
+        self._Duration = params.get("Duration")
+        self._WeeklyPeriod = params.get("WeeklyPeriod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AutoscalingAdded(AbstractModel):
     """自动扩所容的节点
 
@@ -130,6 +190,707 @@ class AutoscalingAdded(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateNativeNodePoolParam(AbstractModel):
+    """原生节点池创建参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Scaling: 节点池伸缩配置
+        :type Scaling: :class:`tencentcloud.tke.v20220501.models.MachineSetScaling`
+        :param _SubnetIds: 子网列表
+        :type SubnetIds: list of str
+        :param _InstanceChargeType: 节点计费类型。PREPAID：包年包月；POSTPAID_BY_HOUR：按量计费（默认）；
+        :type InstanceChargeType: str
+        :param _SystemDisk: 系统盘配置
+        :type SystemDisk: :class:`tencentcloud.tke.v20220501.models.Disk`
+        :param _InstanceTypes: 机型列表
+        :type InstanceTypes: list of str
+        :param _SecurityGroupIds: 安全组列表
+        :type SecurityGroupIds: list of str
+        :param _UpgradeSettings: 自动升级配置
+        :type UpgradeSettings: :class:`tencentcloud.tke.v20220501.models.MachineUpgradeSettings`
+        :param _AutoRepair: 是否开启自愈能力
+        :type AutoRepair: bool
+        :param _InstanceChargePrepaid: 包年包月机型计费配置
+        :type InstanceChargePrepaid: :class:`tencentcloud.tke.v20220501.models.InstanceChargePrepaid`
+        :param _Management: 节点池 Management 参数设置
+        :type Management: :class:`tencentcloud.tke.v20220501.models.ManagementConfig`
+        :param _HealthCheckPolicyName: 故障自愈规则名称
+        :type HealthCheckPolicyName: str
+        :param _HostNamePattern: 原生节点池hostName模式串
+        :type HostNamePattern: str
+        :param _KubeletArgs: kubelet 自定义参数
+        :type KubeletArgs: list of str
+        :param _Lifecycle: 预定义脚本
+        :type Lifecycle: :class:`tencentcloud.tke.v20220501.models.LifecycleConfig`
+        :param _RuntimeRootDir: 运行时根目录
+        :type RuntimeRootDir: str
+        :param _EnableAutoscaling: 是否开启弹性伸缩
+        :type EnableAutoscaling: bool
+        :param _Replicas: 期望节点数
+        :type Replicas: int
+        :param _InternetAccessible: 公网带宽设置
+        :type InternetAccessible: :class:`tencentcloud.tke.v20220501.models.InternetAccessible`
+        :param _DataDisks: 原生节点池数据盘列表
+        :type DataDisks: list of DataDisk
+        :param _KeyIds: 节点池ssh公钥id数组
+        :type KeyIds: list of str
+        """
+        self._Scaling = None
+        self._SubnetIds = None
+        self._InstanceChargeType = None
+        self._SystemDisk = None
+        self._InstanceTypes = None
+        self._SecurityGroupIds = None
+        self._UpgradeSettings = None
+        self._AutoRepair = None
+        self._InstanceChargePrepaid = None
+        self._Management = None
+        self._HealthCheckPolicyName = None
+        self._HostNamePattern = None
+        self._KubeletArgs = None
+        self._Lifecycle = None
+        self._RuntimeRootDir = None
+        self._EnableAutoscaling = None
+        self._Replicas = None
+        self._InternetAccessible = None
+        self._DataDisks = None
+        self._KeyIds = None
+
+    @property
+    def Scaling(self):
+        return self._Scaling
+
+    @Scaling.setter
+    def Scaling(self, Scaling):
+        self._Scaling = Scaling
+
+    @property
+    def SubnetIds(self):
+        return self._SubnetIds
+
+    @SubnetIds.setter
+    def SubnetIds(self, SubnetIds):
+        self._SubnetIds = SubnetIds
+
+    @property
+    def InstanceChargeType(self):
+        return self._InstanceChargeType
+
+    @InstanceChargeType.setter
+    def InstanceChargeType(self, InstanceChargeType):
+        self._InstanceChargeType = InstanceChargeType
+
+    @property
+    def SystemDisk(self):
+        return self._SystemDisk
+
+    @SystemDisk.setter
+    def SystemDisk(self, SystemDisk):
+        self._SystemDisk = SystemDisk
+
+    @property
+    def InstanceTypes(self):
+        return self._InstanceTypes
+
+    @InstanceTypes.setter
+    def InstanceTypes(self, InstanceTypes):
+        self._InstanceTypes = InstanceTypes
+
+    @property
+    def SecurityGroupIds(self):
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def UpgradeSettings(self):
+        return self._UpgradeSettings
+
+    @UpgradeSettings.setter
+    def UpgradeSettings(self, UpgradeSettings):
+        self._UpgradeSettings = UpgradeSettings
+
+    @property
+    def AutoRepair(self):
+        return self._AutoRepair
+
+    @AutoRepair.setter
+    def AutoRepair(self, AutoRepair):
+        self._AutoRepair = AutoRepair
+
+    @property
+    def InstanceChargePrepaid(self):
+        return self._InstanceChargePrepaid
+
+    @InstanceChargePrepaid.setter
+    def InstanceChargePrepaid(self, InstanceChargePrepaid):
+        self._InstanceChargePrepaid = InstanceChargePrepaid
+
+    @property
+    def Management(self):
+        return self._Management
+
+    @Management.setter
+    def Management(self, Management):
+        self._Management = Management
+
+    @property
+    def HealthCheckPolicyName(self):
+        return self._HealthCheckPolicyName
+
+    @HealthCheckPolicyName.setter
+    def HealthCheckPolicyName(self, HealthCheckPolicyName):
+        self._HealthCheckPolicyName = HealthCheckPolicyName
+
+    @property
+    def HostNamePattern(self):
+        return self._HostNamePattern
+
+    @HostNamePattern.setter
+    def HostNamePattern(self, HostNamePattern):
+        self._HostNamePattern = HostNamePattern
+
+    @property
+    def KubeletArgs(self):
+        return self._KubeletArgs
+
+    @KubeletArgs.setter
+    def KubeletArgs(self, KubeletArgs):
+        self._KubeletArgs = KubeletArgs
+
+    @property
+    def Lifecycle(self):
+        return self._Lifecycle
+
+    @Lifecycle.setter
+    def Lifecycle(self, Lifecycle):
+        self._Lifecycle = Lifecycle
+
+    @property
+    def RuntimeRootDir(self):
+        return self._RuntimeRootDir
+
+    @RuntimeRootDir.setter
+    def RuntimeRootDir(self, RuntimeRootDir):
+        self._RuntimeRootDir = RuntimeRootDir
+
+    @property
+    def EnableAutoscaling(self):
+        return self._EnableAutoscaling
+
+    @EnableAutoscaling.setter
+    def EnableAutoscaling(self, EnableAutoscaling):
+        self._EnableAutoscaling = EnableAutoscaling
+
+    @property
+    def Replicas(self):
+        return self._Replicas
+
+    @Replicas.setter
+    def Replicas(self, Replicas):
+        self._Replicas = Replicas
+
+    @property
+    def InternetAccessible(self):
+        return self._InternetAccessible
+
+    @InternetAccessible.setter
+    def InternetAccessible(self, InternetAccessible):
+        self._InternetAccessible = InternetAccessible
+
+    @property
+    def DataDisks(self):
+        return self._DataDisks
+
+    @DataDisks.setter
+    def DataDisks(self, DataDisks):
+        self._DataDisks = DataDisks
+
+    @property
+    def KeyIds(self):
+        return self._KeyIds
+
+    @KeyIds.setter
+    def KeyIds(self, KeyIds):
+        self._KeyIds = KeyIds
+
+
+    def _deserialize(self, params):
+        if params.get("Scaling") is not None:
+            self._Scaling = MachineSetScaling()
+            self._Scaling._deserialize(params.get("Scaling"))
+        self._SubnetIds = params.get("SubnetIds")
+        self._InstanceChargeType = params.get("InstanceChargeType")
+        if params.get("SystemDisk") is not None:
+            self._SystemDisk = Disk()
+            self._SystemDisk._deserialize(params.get("SystemDisk"))
+        self._InstanceTypes = params.get("InstanceTypes")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        if params.get("UpgradeSettings") is not None:
+            self._UpgradeSettings = MachineUpgradeSettings()
+            self._UpgradeSettings._deserialize(params.get("UpgradeSettings"))
+        self._AutoRepair = params.get("AutoRepair")
+        if params.get("InstanceChargePrepaid") is not None:
+            self._InstanceChargePrepaid = InstanceChargePrepaid()
+            self._InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        if params.get("Management") is not None:
+            self._Management = ManagementConfig()
+            self._Management._deserialize(params.get("Management"))
+        self._HealthCheckPolicyName = params.get("HealthCheckPolicyName")
+        self._HostNamePattern = params.get("HostNamePattern")
+        self._KubeletArgs = params.get("KubeletArgs")
+        if params.get("Lifecycle") is not None:
+            self._Lifecycle = LifecycleConfig()
+            self._Lifecycle._deserialize(params.get("Lifecycle"))
+        self._RuntimeRootDir = params.get("RuntimeRootDir")
+        self._EnableAutoscaling = params.get("EnableAutoscaling")
+        self._Replicas = params.get("Replicas")
+        if params.get("InternetAccessible") is not None:
+            self._InternetAccessible = InternetAccessible()
+            self._InternetAccessible._deserialize(params.get("InternetAccessible"))
+        if params.get("DataDisks") is not None:
+            self._DataDisks = []
+            for item in params.get("DataDisks"):
+                obj = DataDisk()
+                obj._deserialize(item)
+                self._DataDisks.append(obj)
+        self._KeyIds = params.get("KeyIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateNodePoolRequest(AbstractModel):
+    """CreateNodePool请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群 ID
+        :type ClusterId: str
+        :param _Name: 节点池名称
+        :type Name: str
+        :param _Type: 节点池类型
+        :type Type: str
+        :param _Labels: 节点  Labels
+        :type Labels: list of Label
+        :param _Taints: 节点污点
+        :type Taints: list of Taint
+        :param _Tags: 节点标签
+        :type Tags: list of TagSpecification
+        :param _DeletionProtection: 是否开启删除保护
+        :type DeletionProtection: bool
+        :param _Unschedulable: 节点是否默认不可调度
+        :type Unschedulable: bool
+        :param _Native: 原生节点池创建参数
+        :type Native: :class:`tencentcloud.tke.v20220501.models.CreateNativeNodePoolParam`
+        :param _Annotations: 节点 Annotation 列表
+        :type Annotations: list of Annotation
+        """
+        self._ClusterId = None
+        self._Name = None
+        self._Type = None
+        self._Labels = None
+        self._Taints = None
+        self._Tags = None
+        self._DeletionProtection = None
+        self._Unschedulable = None
+        self._Native = None
+        self._Annotations = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Labels(self):
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def Taints(self):
+        return self._Taints
+
+    @Taints.setter
+    def Taints(self, Taints):
+        self._Taints = Taints
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def DeletionProtection(self):
+        return self._DeletionProtection
+
+    @DeletionProtection.setter
+    def DeletionProtection(self, DeletionProtection):
+        self._DeletionProtection = DeletionProtection
+
+    @property
+    def Unschedulable(self):
+        return self._Unschedulable
+
+    @Unschedulable.setter
+    def Unschedulable(self, Unschedulable):
+        self._Unschedulable = Unschedulable
+
+    @property
+    def Native(self):
+        return self._Native
+
+    @Native.setter
+    def Native(self, Native):
+        self._Native = Native
+
+    @property
+    def Annotations(self):
+        return self._Annotations
+
+    @Annotations.setter
+    def Annotations(self, Annotations):
+        self._Annotations = Annotations
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        if params.get("Labels") is not None:
+            self._Labels = []
+            for item in params.get("Labels"):
+                obj = Label()
+                obj._deserialize(item)
+                self._Labels.append(obj)
+        if params.get("Taints") is not None:
+            self._Taints = []
+            for item in params.get("Taints"):
+                obj = Taint()
+                obj._deserialize(item)
+                self._Taints.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = TagSpecification()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._DeletionProtection = params.get("DeletionProtection")
+        self._Unschedulable = params.get("Unschedulable")
+        if params.get("Native") is not None:
+            self._Native = CreateNativeNodePoolParam()
+            self._Native._deserialize(params.get("Native"))
+        if params.get("Annotations") is not None:
+            self._Annotations = []
+            for item in params.get("Annotations"):
+                obj = Annotation()
+                obj._deserialize(item)
+                self._Annotations.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateNodePoolResponse(AbstractModel):
+    """CreateNodePool返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodePoolId: 节点池 ID
+        :type NodePoolId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._NodePoolId = None
+        self._RequestId = None
+
+    @property
+    def NodePoolId(self):
+        return self._NodePoolId
+
+    @NodePoolId.setter
+    def NodePoolId(self, NodePoolId):
+        self._NodePoolId = NodePoolId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._NodePoolId = params.get("NodePoolId")
+        self._RequestId = params.get("RequestId")
+
+
+class DataDisk(AbstractModel):
+    """描述了k8s节点数据盘相关配置与信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DiskType: 云盘类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskType: str
+        :param _FileSystem: 文件系统(ext3/ext4/xfs)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileSystem: str
+        :param _DiskSize: 云盘大小(G）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskSize: int
+        :param _AutoFormatAndMount: 是否自动化格式盘并挂载
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoFormatAndMount: bool
+        :param _DiskPartition: 挂载设备名或分区名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskPartition: str
+        :param _MountTarget: 挂载目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MountTarget: str
+        :param _Encrypt: 传入该参数用于创建加密云盘，取值固定为ENCRYPT
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Encrypt: str
+        :param _KmsKeyId: 购买加密盘时自定义密钥，当传入该参数时, Encrypt入参不为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KmsKeyId: str
+        :param _SnapshotId: 快照ID，如果传入则根据此快照创建云硬盘，快照类型必须为数据盘快照
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SnapshotId: str
+        :param _ThroughputPerformance: 云硬盘性能，单位：MB/s。使用此参数可给云硬盘购买额外的性能
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ThroughputPerformance: int
+        """
+        self._DiskType = None
+        self._FileSystem = None
+        self._DiskSize = None
+        self._AutoFormatAndMount = None
+        self._DiskPartition = None
+        self._MountTarget = None
+        self._Encrypt = None
+        self._KmsKeyId = None
+        self._SnapshotId = None
+        self._ThroughputPerformance = None
+
+    @property
+    def DiskType(self):
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def FileSystem(self):
+        return self._FileSystem
+
+    @FileSystem.setter
+    def FileSystem(self, FileSystem):
+        self._FileSystem = FileSystem
+
+    @property
+    def DiskSize(self):
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def AutoFormatAndMount(self):
+        return self._AutoFormatAndMount
+
+    @AutoFormatAndMount.setter
+    def AutoFormatAndMount(self, AutoFormatAndMount):
+        self._AutoFormatAndMount = AutoFormatAndMount
+
+    @property
+    def DiskPartition(self):
+        return self._DiskPartition
+
+    @DiskPartition.setter
+    def DiskPartition(self, DiskPartition):
+        self._DiskPartition = DiskPartition
+
+    @property
+    def MountTarget(self):
+        return self._MountTarget
+
+    @MountTarget.setter
+    def MountTarget(self, MountTarget):
+        self._MountTarget = MountTarget
+
+    @property
+    def Encrypt(self):
+        return self._Encrypt
+
+    @Encrypt.setter
+    def Encrypt(self, Encrypt):
+        self._Encrypt = Encrypt
+
+    @property
+    def KmsKeyId(self):
+        return self._KmsKeyId
+
+    @KmsKeyId.setter
+    def KmsKeyId(self, KmsKeyId):
+        self._KmsKeyId = KmsKeyId
+
+    @property
+    def SnapshotId(self):
+        return self._SnapshotId
+
+    @SnapshotId.setter
+    def SnapshotId(self, SnapshotId):
+        self._SnapshotId = SnapshotId
+
+    @property
+    def ThroughputPerformance(self):
+        return self._ThroughputPerformance
+
+    @ThroughputPerformance.setter
+    def ThroughputPerformance(self, ThroughputPerformance):
+        self._ThroughputPerformance = ThroughputPerformance
+
+
+    def _deserialize(self, params):
+        self._DiskType = params.get("DiskType")
+        self._FileSystem = params.get("FileSystem")
+        self._DiskSize = params.get("DiskSize")
+        self._AutoFormatAndMount = params.get("AutoFormatAndMount")
+        self._DiskPartition = params.get("DiskPartition")
+        self._MountTarget = params.get("MountTarget")
+        self._Encrypt = params.get("Encrypt")
+        self._KmsKeyId = params.get("KmsKeyId")
+        self._SnapshotId = params.get("SnapshotId")
+        self._ThroughputPerformance = params.get("ThroughputPerformance")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteNodePoolRequest(AbstractModel):
+    """DeleteNodePool请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群 ID
+        :type ClusterId: str
+        :param _NodePoolId: 节点池 ID
+        :type NodePoolId: str
+        """
+        self._ClusterId = None
+        self._NodePoolId = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def NodePoolId(self):
+        return self._NodePoolId
+
+    @NodePoolId.setter
+    def NodePoolId(self, NodePoolId):
+        self._NodePoolId = NodePoolId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._NodePoolId = params.get("NodePoolId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteNodePoolResponse(AbstractModel):
+    """DeleteNodePool返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeClusterInstancesRequest(AbstractModel):
@@ -434,6 +1195,87 @@ class DescribeNodePoolsResponse(AbstractModel):
                 self._NodePools.append(obj)
         self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
+
+
+class Disk(AbstractModel):
+    """节点系统盘和数据盘配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DiskType: 云盘类型
+        :type DiskType: str
+        :param _DiskSize: 云盘大小(G）
+        :type DiskSize: int
+        :param _AutoFormatAndMount: 是否自动化格式盘并挂载
+        :type AutoFormatAndMount: bool
+        :param _FileSystem: 文件系统
+        :type FileSystem: str
+        :param _MountTarget: 挂载目录
+        :type MountTarget: str
+        """
+        self._DiskType = None
+        self._DiskSize = None
+        self._AutoFormatAndMount = None
+        self._FileSystem = None
+        self._MountTarget = None
+
+    @property
+    def DiskType(self):
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def DiskSize(self):
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def AutoFormatAndMount(self):
+        return self._AutoFormatAndMount
+
+    @AutoFormatAndMount.setter
+    def AutoFormatAndMount(self, AutoFormatAndMount):
+        self._AutoFormatAndMount = AutoFormatAndMount
+
+    @property
+    def FileSystem(self):
+        return self._FileSystem
+
+    @FileSystem.setter
+    def FileSystem(self, FileSystem):
+        self._FileSystem = FileSystem
+
+    @property
+    def MountTarget(self):
+        return self._MountTarget
+
+    @MountTarget.setter
+    def MountTarget(self, MountTarget):
+        self._MountTarget = MountTarget
+
+
+    def _deserialize(self, params):
+        self._DiskType = params.get("DiskType")
+        self._DiskSize = params.get("DiskSize")
+        self._AutoFormatAndMount = params.get("AutoFormatAndMount")
+        self._FileSystem = params.get("FileSystem")
+        self._MountTarget = params.get("MountTarget")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ExternalNodeInfo(AbstractModel):
@@ -888,6 +1730,56 @@ class InstanceAdvancedSettings(AbstractModel):
         
 
 
+class InstanceChargePrepaid(AbstractModel):
+    """包年包月配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Period: 后付费计费周期，单位（月）：
+1，2，3，4，5，，6，7， 8，9，10，11，12，24，36，48，60
+        :type Period: int
+        :param _RenewFlag: 预付费续费方式：
+- NOTIFY_AND_AUTO_RENEW：通知用户过期，且自动续费 (默认）
+- NOTIFY_AND_MANUAL_RENEW：通知用户过期，但不不自动续费
+- DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知用户过期，也不自动续费
+
+        :type RenewFlag: str
+        """
+        self._Period = None
+        self._RenewFlag = None
+
+    @property
+    def Period(self):
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def RenewFlag(self):
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+
+    def _deserialize(self, params):
+        self._Period = params.get("Period")
+        self._RenewFlag = params.get("RenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceExtraArgs(AbstractModel):
     """节点自定义参数
 
@@ -912,6 +1804,66 @@ class InstanceExtraArgs(AbstractModel):
 
     def _deserialize(self, params):
         self._Kubelet = params.get("Kubelet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IntOrString(AbstractModel):
+    """数值结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 数值类型，0是int,  1是字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        :param _IntVal: 整数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntVal: int
+        :param _StrVal: 字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrVal: str
+        """
+        self._Type = None
+        self._IntVal = None
+        self._StrVal = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def IntVal(self):
+        return self._IntVal
+
+    @IntVal.setter
+    def IntVal(self, IntVal):
+        self._IntVal = IntVal
+
+    @property
+    def StrVal(self):
+        return self._StrVal
+
+    @StrVal.setter
+    def StrVal(self, StrVal):
+        self._StrVal = StrVal
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._IntVal = params.get("IntVal")
+        self._StrVal = params.get("StrVal")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1024,6 +1976,250 @@ class Label(AbstractModel):
         
 
 
+class LifecycleConfig(AbstractModel):
+    """节点池自定义脚本
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PreInit: 节点初始化前自定义脚本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PreInit: str
+        :param _PostInit: 节点初始化后自定义脚本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PostInit: str
+        """
+        self._PreInit = None
+        self._PostInit = None
+
+    @property
+    def PreInit(self):
+        return self._PreInit
+
+    @PreInit.setter
+    def PreInit(self, PreInit):
+        self._PreInit = PreInit
+
+    @property
+    def PostInit(self):
+        return self._PostInit
+
+    @PostInit.setter
+    def PostInit(self, PostInit):
+        self._PostInit = PostInit
+
+
+    def _deserialize(self, params):
+        self._PreInit = params.get("PreInit")
+        self._PostInit = params.get("PostInit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MachineSetScaling(AbstractModel):
+    """节点池弹性伸缩配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MinReplicas: 节点池最小副本数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinReplicas: int
+        :param _MaxReplicas: 节点池最大副本数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxReplicas: int
+        :param _CreatePolicy: 节点池扩容策略。ZoneEquality：多可用区打散；ZonePriority：首选可用区优先；
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatePolicy: str
+        """
+        self._MinReplicas = None
+        self._MaxReplicas = None
+        self._CreatePolicy = None
+
+    @property
+    def MinReplicas(self):
+        return self._MinReplicas
+
+    @MinReplicas.setter
+    def MinReplicas(self, MinReplicas):
+        self._MinReplicas = MinReplicas
+
+    @property
+    def MaxReplicas(self):
+        return self._MaxReplicas
+
+    @MaxReplicas.setter
+    def MaxReplicas(self, MaxReplicas):
+        self._MaxReplicas = MaxReplicas
+
+    @property
+    def CreatePolicy(self):
+        return self._CreatePolicy
+
+    @CreatePolicy.setter
+    def CreatePolicy(self, CreatePolicy):
+        self._CreatePolicy = CreatePolicy
+
+
+    def _deserialize(self, params):
+        self._MinReplicas = params.get("MinReplicas")
+        self._MaxReplicas = params.get("MaxReplicas")
+        self._CreatePolicy = params.get("CreatePolicy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MachineUpgradeSettings(AbstractModel):
+    """托管节点池自动升级配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AutoUpgrade: 是否开启自动升级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoUpgrade: bool
+        :param _UpgradeOptions: 运维窗口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpgradeOptions: :class:`tencentcloud.tke.v20220501.models.AutoUpgradeOptions`
+        :param _Components: 升级项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Components: list of str
+        :param _MaxUnavailable: 升级时，最大不可升级的节点数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxUnavailable: :class:`tencentcloud.tke.v20220501.models.IntOrString`
+        """
+        self._AutoUpgrade = None
+        self._UpgradeOptions = None
+        self._Components = None
+        self._MaxUnavailable = None
+
+    @property
+    def AutoUpgrade(self):
+        return self._AutoUpgrade
+
+    @AutoUpgrade.setter
+    def AutoUpgrade(self, AutoUpgrade):
+        self._AutoUpgrade = AutoUpgrade
+
+    @property
+    def UpgradeOptions(self):
+        return self._UpgradeOptions
+
+    @UpgradeOptions.setter
+    def UpgradeOptions(self, UpgradeOptions):
+        self._UpgradeOptions = UpgradeOptions
+
+    @property
+    def Components(self):
+        return self._Components
+
+    @Components.setter
+    def Components(self, Components):
+        self._Components = Components
+
+    @property
+    def MaxUnavailable(self):
+        return self._MaxUnavailable
+
+    @MaxUnavailable.setter
+    def MaxUnavailable(self, MaxUnavailable):
+        self._MaxUnavailable = MaxUnavailable
+
+
+    def _deserialize(self, params):
+        self._AutoUpgrade = params.get("AutoUpgrade")
+        if params.get("UpgradeOptions") is not None:
+            self._UpgradeOptions = AutoUpgradeOptions()
+            self._UpgradeOptions._deserialize(params.get("UpgradeOptions"))
+        self._Components = params.get("Components")
+        if params.get("MaxUnavailable") is not None:
+            self._MaxUnavailable = IntOrString()
+            self._MaxUnavailable._deserialize(params.get("MaxUnavailable"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ManagementConfig(AbstractModel):
+    """托管节点池Management配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Nameservers: dns 配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Nameservers: list of str
+        :param _Hosts: hosts 配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Hosts: list of str
+        :param _KernelArgs: 内核参数配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KernelArgs: list of str
+        """
+        self._Nameservers = None
+        self._Hosts = None
+        self._KernelArgs = None
+
+    @property
+    def Nameservers(self):
+        return self._Nameservers
+
+    @Nameservers.setter
+    def Nameservers(self, Nameservers):
+        self._Nameservers = Nameservers
+
+    @property
+    def Hosts(self):
+        return self._Hosts
+
+    @Hosts.setter
+    def Hosts(self, Hosts):
+        self._Hosts = Hosts
+
+    @property
+    def KernelArgs(self):
+        return self._KernelArgs
+
+    @KernelArgs.setter
+    def KernelArgs(self, KernelArgs):
+        self._KernelArgs = KernelArgs
+
+
+    def _deserialize(self, params):
+        self._Nameservers = params.get("Nameservers")
+        self._Hosts = params.get("Hosts")
+        self._KernelArgs = params.get("KernelArgs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ManuallyAdded(AbstractModel):
     """手动加入的节点
 
@@ -1091,6 +2287,194 @@ class ManuallyAdded(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyNodePoolRequest(AbstractModel):
+    """ModifyNodePool请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群 ID
+        :type ClusterId: str
+        :param _NodePoolId: 节点池 ID
+        :type NodePoolId: str
+        :param _Name: 节点池名称
+        :type Name: str
+        :param _Labels: 节点  Labels
+        :type Labels: list of Label
+        :param _Taints: 节点污点
+        :type Taints: list of Taint
+        :param _Tags: 节点标签
+        :type Tags: list of TagSpecification
+        :param _DeletionProtection: 是否开启删除保护
+        :type DeletionProtection: bool
+        :param _Unschedulable: 节点是否不可调度
+        :type Unschedulable: bool
+        :param _Native: 原生节点池更新参数
+        :type Native: :class:`tencentcloud.tke.v20220501.models.UpdateNativeNodePoolParam`
+        :param _Annotations: 节点 Annotation 列表
+        :type Annotations: list of Annotation
+        """
+        self._ClusterId = None
+        self._NodePoolId = None
+        self._Name = None
+        self._Labels = None
+        self._Taints = None
+        self._Tags = None
+        self._DeletionProtection = None
+        self._Unschedulable = None
+        self._Native = None
+        self._Annotations = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def NodePoolId(self):
+        return self._NodePoolId
+
+    @NodePoolId.setter
+    def NodePoolId(self, NodePoolId):
+        self._NodePoolId = NodePoolId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Labels(self):
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def Taints(self):
+        return self._Taints
+
+    @Taints.setter
+    def Taints(self, Taints):
+        self._Taints = Taints
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def DeletionProtection(self):
+        return self._DeletionProtection
+
+    @DeletionProtection.setter
+    def DeletionProtection(self, DeletionProtection):
+        self._DeletionProtection = DeletionProtection
+
+    @property
+    def Unschedulable(self):
+        return self._Unschedulable
+
+    @Unschedulable.setter
+    def Unschedulable(self, Unschedulable):
+        self._Unschedulable = Unschedulable
+
+    @property
+    def Native(self):
+        return self._Native
+
+    @Native.setter
+    def Native(self, Native):
+        self._Native = Native
+
+    @property
+    def Annotations(self):
+        return self._Annotations
+
+    @Annotations.setter
+    def Annotations(self, Annotations):
+        self._Annotations = Annotations
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._NodePoolId = params.get("NodePoolId")
+        self._Name = params.get("Name")
+        if params.get("Labels") is not None:
+            self._Labels = []
+            for item in params.get("Labels"):
+                obj = Label()
+                obj._deserialize(item)
+                self._Labels.append(obj)
+        if params.get("Taints") is not None:
+            self._Taints = []
+            for item in params.get("Taints"):
+                obj = Taint()
+                obj._deserialize(item)
+                self._Taints.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = TagSpecification()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._DeletionProtection = params.get("DeletionProtection")
+        self._Unschedulable = params.get("Unschedulable")
+        if params.get("Native") is not None:
+            self._Native = UpdateNativeNodePoolParam()
+            self._Native._deserialize(params.get("Native"))
+        if params.get("Annotations") is not None:
+            self._Annotations = []
+            for item in params.get("Annotations"):
+                obj = Annotation()
+                obj._deserialize(item)
+                self._Annotations.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNodePoolResponse(AbstractModel):
+    """ModifyNodePool返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class NativeNodeInfo(AbstractModel):
@@ -1396,14 +2780,91 @@ class NativeNodePoolInfo(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Scaling: 伸缩配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Scaling: :class:`tencentcloud.tke.v20220501.models.MachineSetScaling`
         :param _SubnetIds: 子网列表
         :type SubnetIds: list of str
         :param _SecurityGroupIds: 安全组列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroupIds: list of str
+        :param _UpgradeSettings: 自动升级配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpgradeSettings: :class:`tencentcloud.tke.v20220501.models.MachineUpgradeSettings`
+        :param _AutoRepair: 是否开启自愈能力
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoRepair: bool
+        :param _InstanceChargeType: 节点计费类型
+        :type InstanceChargeType: str
+        :param _InstanceChargePrepaid: 包年包月机型计费配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceChargePrepaid: :class:`tencentcloud.tke.v20220501.models.InstanceChargePrepaid`
+        :param _SystemDisk: 系统盘配置
+        :type SystemDisk: :class:`tencentcloud.tke.v20220501.models.Disk`
+        :param _KeyIds: 密钥 ID 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyIds: list of str
+        :param _Management: Machine 系统配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Management: :class:`tencentcloud.tke.v20220501.models.ManagementConfig`
+        :param _HealthCheckPolicyName: 故障自愈规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthCheckPolicyName: str
+        :param _HostNamePattern: 原生节点池hostName模式串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostNamePattern: str
+        :param _KubeletArgs: kubelet 自定义参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KubeletArgs: list of str
+        :param _Lifecycle: 预定义脚本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Lifecycle: :class:`tencentcloud.tke.v20220501.models.LifecycleConfig`
+        :param _RuntimeRootDir: 运行时根目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuntimeRootDir: str
+        :param _EnableAutoscaling: 是否开启弹性伸缩
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableAutoscaling: bool
+        :param _InstanceTypes: 机型列表
+        :type InstanceTypes: list of str
+        :param _Replicas: 期望节点数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Replicas: int
+        :param _InternetAccessible: 公网带宽设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InternetAccessible: :class:`tencentcloud.tke.v20220501.models.InternetAccessible`
+        :param _DataDisks: 原生节点池数据盘
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataDisks: list of DataDisk
         """
+        self._Scaling = None
         self._SubnetIds = None
         self._SecurityGroupIds = None
+        self._UpgradeSettings = None
+        self._AutoRepair = None
+        self._InstanceChargeType = None
+        self._InstanceChargePrepaid = None
+        self._SystemDisk = None
+        self._KeyIds = None
+        self._Management = None
+        self._HealthCheckPolicyName = None
+        self._HostNamePattern = None
+        self._KubeletArgs = None
+        self._Lifecycle = None
+        self._RuntimeRootDir = None
+        self._EnableAutoscaling = None
+        self._InstanceTypes = None
+        self._Replicas = None
+        self._InternetAccessible = None
+        self._DataDisks = None
+
+    @property
+    def Scaling(self):
+        return self._Scaling
+
+    @Scaling.setter
+    def Scaling(self, Scaling):
+        self._Scaling = Scaling
 
     @property
     def SubnetIds(self):
@@ -1421,10 +2882,183 @@ class NativeNodePoolInfo(AbstractModel):
     def SecurityGroupIds(self, SecurityGroupIds):
         self._SecurityGroupIds = SecurityGroupIds
 
+    @property
+    def UpgradeSettings(self):
+        return self._UpgradeSettings
+
+    @UpgradeSettings.setter
+    def UpgradeSettings(self, UpgradeSettings):
+        self._UpgradeSettings = UpgradeSettings
+
+    @property
+    def AutoRepair(self):
+        return self._AutoRepair
+
+    @AutoRepair.setter
+    def AutoRepair(self, AutoRepair):
+        self._AutoRepair = AutoRepair
+
+    @property
+    def InstanceChargeType(self):
+        return self._InstanceChargeType
+
+    @InstanceChargeType.setter
+    def InstanceChargeType(self, InstanceChargeType):
+        self._InstanceChargeType = InstanceChargeType
+
+    @property
+    def InstanceChargePrepaid(self):
+        return self._InstanceChargePrepaid
+
+    @InstanceChargePrepaid.setter
+    def InstanceChargePrepaid(self, InstanceChargePrepaid):
+        self._InstanceChargePrepaid = InstanceChargePrepaid
+
+    @property
+    def SystemDisk(self):
+        return self._SystemDisk
+
+    @SystemDisk.setter
+    def SystemDisk(self, SystemDisk):
+        self._SystemDisk = SystemDisk
+
+    @property
+    def KeyIds(self):
+        return self._KeyIds
+
+    @KeyIds.setter
+    def KeyIds(self, KeyIds):
+        self._KeyIds = KeyIds
+
+    @property
+    def Management(self):
+        return self._Management
+
+    @Management.setter
+    def Management(self, Management):
+        self._Management = Management
+
+    @property
+    def HealthCheckPolicyName(self):
+        return self._HealthCheckPolicyName
+
+    @HealthCheckPolicyName.setter
+    def HealthCheckPolicyName(self, HealthCheckPolicyName):
+        self._HealthCheckPolicyName = HealthCheckPolicyName
+
+    @property
+    def HostNamePattern(self):
+        return self._HostNamePattern
+
+    @HostNamePattern.setter
+    def HostNamePattern(self, HostNamePattern):
+        self._HostNamePattern = HostNamePattern
+
+    @property
+    def KubeletArgs(self):
+        return self._KubeletArgs
+
+    @KubeletArgs.setter
+    def KubeletArgs(self, KubeletArgs):
+        self._KubeletArgs = KubeletArgs
+
+    @property
+    def Lifecycle(self):
+        return self._Lifecycle
+
+    @Lifecycle.setter
+    def Lifecycle(self, Lifecycle):
+        self._Lifecycle = Lifecycle
+
+    @property
+    def RuntimeRootDir(self):
+        return self._RuntimeRootDir
+
+    @RuntimeRootDir.setter
+    def RuntimeRootDir(self, RuntimeRootDir):
+        self._RuntimeRootDir = RuntimeRootDir
+
+    @property
+    def EnableAutoscaling(self):
+        return self._EnableAutoscaling
+
+    @EnableAutoscaling.setter
+    def EnableAutoscaling(self, EnableAutoscaling):
+        self._EnableAutoscaling = EnableAutoscaling
+
+    @property
+    def InstanceTypes(self):
+        return self._InstanceTypes
+
+    @InstanceTypes.setter
+    def InstanceTypes(self, InstanceTypes):
+        self._InstanceTypes = InstanceTypes
+
+    @property
+    def Replicas(self):
+        return self._Replicas
+
+    @Replicas.setter
+    def Replicas(self, Replicas):
+        self._Replicas = Replicas
+
+    @property
+    def InternetAccessible(self):
+        return self._InternetAccessible
+
+    @InternetAccessible.setter
+    def InternetAccessible(self, InternetAccessible):
+        self._InternetAccessible = InternetAccessible
+
+    @property
+    def DataDisks(self):
+        return self._DataDisks
+
+    @DataDisks.setter
+    def DataDisks(self, DataDisks):
+        self._DataDisks = DataDisks
+
 
     def _deserialize(self, params):
+        if params.get("Scaling") is not None:
+            self._Scaling = MachineSetScaling()
+            self._Scaling._deserialize(params.get("Scaling"))
         self._SubnetIds = params.get("SubnetIds")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
+        if params.get("UpgradeSettings") is not None:
+            self._UpgradeSettings = MachineUpgradeSettings()
+            self._UpgradeSettings._deserialize(params.get("UpgradeSettings"))
+        self._AutoRepair = params.get("AutoRepair")
+        self._InstanceChargeType = params.get("InstanceChargeType")
+        if params.get("InstanceChargePrepaid") is not None:
+            self._InstanceChargePrepaid = InstanceChargePrepaid()
+            self._InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        if params.get("SystemDisk") is not None:
+            self._SystemDisk = Disk()
+            self._SystemDisk._deserialize(params.get("SystemDisk"))
+        self._KeyIds = params.get("KeyIds")
+        if params.get("Management") is not None:
+            self._Management = ManagementConfig()
+            self._Management._deserialize(params.get("Management"))
+        self._HealthCheckPolicyName = params.get("HealthCheckPolicyName")
+        self._HostNamePattern = params.get("HostNamePattern")
+        self._KubeletArgs = params.get("KubeletArgs")
+        if params.get("Lifecycle") is not None:
+            self._Lifecycle = LifecycleConfig()
+            self._Lifecycle._deserialize(params.get("Lifecycle"))
+        self._RuntimeRootDir = params.get("RuntimeRootDir")
+        self._EnableAutoscaling = params.get("EnableAutoscaling")
+        self._InstanceTypes = params.get("InstanceTypes")
+        self._Replicas = params.get("Replicas")
+        if params.get("InternetAccessible") is not None:
+            self._InternetAccessible = InternetAccessible()
+            self._InternetAccessible._deserialize(params.get("InternetAccessible"))
+        if params.get("DataDisks") is not None:
+            self._DataDisks = []
+            for item in params.get("DataDisks"):
+                obj = DataDisk()
+                obj._deserialize(item)
+                self._DataDisks.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1497,12 +3131,18 @@ class NodePool(AbstractModel):
         :type ClusterId: str
         :param _NodePoolId: 节点池 ID
         :type NodePoolId: str
+        :param _Tags: 节点标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of TagSpecification
         :param _Taints: 节点污点
 注意：此字段可能返回 null，表示取不到有效值。
         :type Taints: list of Taint
         :param _DeletionProtection: 是否开启删除保护
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeletionProtection: bool
+        :param _Unschedulable: 节点是否不可调度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Unschedulable: bool
         :param _Type: 节点池类型
         :type Type: str
         :param _Labels: 节点  Labels
@@ -1532,8 +3172,10 @@ class NodePool(AbstractModel):
         """
         self._ClusterId = None
         self._NodePoolId = None
+        self._Tags = None
         self._Taints = None
         self._DeletionProtection = None
+        self._Unschedulable = None
         self._Type = None
         self._Labels = None
         self._LifeState = None
@@ -1562,6 +3204,14 @@ class NodePool(AbstractModel):
         self._NodePoolId = NodePoolId
 
     @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
     def Taints(self):
         return self._Taints
 
@@ -1576,6 +3226,14 @@ class NodePool(AbstractModel):
     @DeletionProtection.setter
     def DeletionProtection(self, DeletionProtection):
         self._DeletionProtection = DeletionProtection
+
+    @property
+    def Unschedulable(self):
+        return self._Unschedulable
+
+    @Unschedulable.setter
+    def Unschedulable(self, Unschedulable):
+        self._Unschedulable = Unschedulable
 
     @property
     def Type(self):
@@ -1661,6 +3319,12 @@ class NodePool(AbstractModel):
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._NodePoolId = params.get("NodePoolId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = TagSpecification()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         if params.get("Taints") is not None:
             self._Taints = []
             for item in params.get("Taints"):
@@ -1668,6 +3332,7 @@ class NodePool(AbstractModel):
                 obj._deserialize(item)
                 self._Taints.append(obj)
         self._DeletionProtection = params.get("DeletionProtection")
+        self._Unschedulable = params.get("Unschedulable")
         self._Type = params.get("Type")
         if params.get("Labels") is not None:
             self._Labels = []
@@ -2249,6 +3914,103 @@ class SuperNodePoolInfo(AbstractModel):
         
 
 
+class Tag(AbstractModel):
+    """标签绑定的资源类型，当前支持类型："cluster"
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 标签键
+        :type Key: str
+        :param _Value: 标签值
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TagSpecification(AbstractModel):
+    """标签描述列表。通过指定该参数可以同时绑定标签到相应的资源实例，当前仅支持绑定标签到云主机实例。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceType: 标签绑定的资源类型，当前支持类型："cluster"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceType: str
+        :param _Tags: 标签对列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        """
+        self._ResourceType = None
+        self._Tags = None
+
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._ResourceType = params.get("ResourceType")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Taint(AbstractModel):
     """kubernetes Taint
 
@@ -2296,6 +4058,275 @@ class Taint(AbstractModel):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
         self._Effect = params.get("Effect")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateNativeNodePoolParam(AbstractModel):
+    """修改原生节点池参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Scaling: 伸缩配置
+        :type Scaling: :class:`tencentcloud.tke.v20220501.models.MachineSetScaling`
+        :param _SubnetIds: 子网列表
+        :type SubnetIds: list of str
+        :param _SecurityGroupIds: 安全组列表
+        :type SecurityGroupIds: list of str
+        :param _UpgradeSettings: 自动升级配置
+        :type UpgradeSettings: :class:`tencentcloud.tke.v20220501.models.MachineUpgradeSettings`
+        :param _AutoRepair: 是否开启自愈能力
+        :type AutoRepair: bool
+        :param _InstanceChargeType: 节点计费类型变更
+当前仅支持按量计费转包年包月：
+- PREPAID
+
+        :type InstanceChargeType: str
+        :param _InstanceChargePrepaid: 包年包月机型计费配置
+        :type InstanceChargePrepaid: :class:`tencentcloud.tke.v20220501.models.InstanceChargePrepaid`
+        :param _SystemDisk: 系统盘配置
+        :type SystemDisk: :class:`tencentcloud.tke.v20220501.models.Disk`
+        :param _Management: Machine 系统配置
+        :type Management: :class:`tencentcloud.tke.v20220501.models.ManagementConfig`
+        :param _HealthCheckPolicyName: 故障自愈规则名称
+        :type HealthCheckPolicyName: str
+        :param _HostNamePattern: 原生节点池hostName模式串
+        :type HostNamePattern: str
+        :param _KubeletArgs: kubelet 自定义参数
+        :type KubeletArgs: list of str
+        :param _Lifecycle: 预定义脚本
+        :type Lifecycle: :class:`tencentcloud.tke.v20220501.models.LifecycleConfig`
+        :param _RuntimeRootDir: 运行时根目录
+        :type RuntimeRootDir: str
+        :param _EnableAutoscaling: 是否开启弹性伸缩
+        :type EnableAutoscaling: bool
+        :param _InstanceTypes: 机型列表
+        :type InstanceTypes: list of str
+        :param _Replicas: 期望节点数
+        :type Replicas: int
+        :param _DataDisks: 数据盘列表
+        :type DataDisks: list of DataDisk
+        :param _KeyIds: ssh公钥id数组
+        :type KeyIds: list of str
+        """
+        self._Scaling = None
+        self._SubnetIds = None
+        self._SecurityGroupIds = None
+        self._UpgradeSettings = None
+        self._AutoRepair = None
+        self._InstanceChargeType = None
+        self._InstanceChargePrepaid = None
+        self._SystemDisk = None
+        self._Management = None
+        self._HealthCheckPolicyName = None
+        self._HostNamePattern = None
+        self._KubeletArgs = None
+        self._Lifecycle = None
+        self._RuntimeRootDir = None
+        self._EnableAutoscaling = None
+        self._InstanceTypes = None
+        self._Replicas = None
+        self._DataDisks = None
+        self._KeyIds = None
+
+    @property
+    def Scaling(self):
+        return self._Scaling
+
+    @Scaling.setter
+    def Scaling(self, Scaling):
+        self._Scaling = Scaling
+
+    @property
+    def SubnetIds(self):
+        return self._SubnetIds
+
+    @SubnetIds.setter
+    def SubnetIds(self, SubnetIds):
+        self._SubnetIds = SubnetIds
+
+    @property
+    def SecurityGroupIds(self):
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def UpgradeSettings(self):
+        return self._UpgradeSettings
+
+    @UpgradeSettings.setter
+    def UpgradeSettings(self, UpgradeSettings):
+        self._UpgradeSettings = UpgradeSettings
+
+    @property
+    def AutoRepair(self):
+        return self._AutoRepair
+
+    @AutoRepair.setter
+    def AutoRepair(self, AutoRepair):
+        self._AutoRepair = AutoRepair
+
+    @property
+    def InstanceChargeType(self):
+        return self._InstanceChargeType
+
+    @InstanceChargeType.setter
+    def InstanceChargeType(self, InstanceChargeType):
+        self._InstanceChargeType = InstanceChargeType
+
+    @property
+    def InstanceChargePrepaid(self):
+        return self._InstanceChargePrepaid
+
+    @InstanceChargePrepaid.setter
+    def InstanceChargePrepaid(self, InstanceChargePrepaid):
+        self._InstanceChargePrepaid = InstanceChargePrepaid
+
+    @property
+    def SystemDisk(self):
+        return self._SystemDisk
+
+    @SystemDisk.setter
+    def SystemDisk(self, SystemDisk):
+        self._SystemDisk = SystemDisk
+
+    @property
+    def Management(self):
+        return self._Management
+
+    @Management.setter
+    def Management(self, Management):
+        self._Management = Management
+
+    @property
+    def HealthCheckPolicyName(self):
+        return self._HealthCheckPolicyName
+
+    @HealthCheckPolicyName.setter
+    def HealthCheckPolicyName(self, HealthCheckPolicyName):
+        self._HealthCheckPolicyName = HealthCheckPolicyName
+
+    @property
+    def HostNamePattern(self):
+        return self._HostNamePattern
+
+    @HostNamePattern.setter
+    def HostNamePattern(self, HostNamePattern):
+        self._HostNamePattern = HostNamePattern
+
+    @property
+    def KubeletArgs(self):
+        return self._KubeletArgs
+
+    @KubeletArgs.setter
+    def KubeletArgs(self, KubeletArgs):
+        self._KubeletArgs = KubeletArgs
+
+    @property
+    def Lifecycle(self):
+        return self._Lifecycle
+
+    @Lifecycle.setter
+    def Lifecycle(self, Lifecycle):
+        self._Lifecycle = Lifecycle
+
+    @property
+    def RuntimeRootDir(self):
+        return self._RuntimeRootDir
+
+    @RuntimeRootDir.setter
+    def RuntimeRootDir(self, RuntimeRootDir):
+        self._RuntimeRootDir = RuntimeRootDir
+
+    @property
+    def EnableAutoscaling(self):
+        return self._EnableAutoscaling
+
+    @EnableAutoscaling.setter
+    def EnableAutoscaling(self, EnableAutoscaling):
+        self._EnableAutoscaling = EnableAutoscaling
+
+    @property
+    def InstanceTypes(self):
+        return self._InstanceTypes
+
+    @InstanceTypes.setter
+    def InstanceTypes(self, InstanceTypes):
+        self._InstanceTypes = InstanceTypes
+
+    @property
+    def Replicas(self):
+        return self._Replicas
+
+    @Replicas.setter
+    def Replicas(self, Replicas):
+        self._Replicas = Replicas
+
+    @property
+    def DataDisks(self):
+        return self._DataDisks
+
+    @DataDisks.setter
+    def DataDisks(self, DataDisks):
+        self._DataDisks = DataDisks
+
+    @property
+    def KeyIds(self):
+        return self._KeyIds
+
+    @KeyIds.setter
+    def KeyIds(self, KeyIds):
+        self._KeyIds = KeyIds
+
+
+    def _deserialize(self, params):
+        if params.get("Scaling") is not None:
+            self._Scaling = MachineSetScaling()
+            self._Scaling._deserialize(params.get("Scaling"))
+        self._SubnetIds = params.get("SubnetIds")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        if params.get("UpgradeSettings") is not None:
+            self._UpgradeSettings = MachineUpgradeSettings()
+            self._UpgradeSettings._deserialize(params.get("UpgradeSettings"))
+        self._AutoRepair = params.get("AutoRepair")
+        self._InstanceChargeType = params.get("InstanceChargeType")
+        if params.get("InstanceChargePrepaid") is not None:
+            self._InstanceChargePrepaid = InstanceChargePrepaid()
+            self._InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        if params.get("SystemDisk") is not None:
+            self._SystemDisk = Disk()
+            self._SystemDisk._deserialize(params.get("SystemDisk"))
+        if params.get("Management") is not None:
+            self._Management = ManagementConfig()
+            self._Management._deserialize(params.get("Management"))
+        self._HealthCheckPolicyName = params.get("HealthCheckPolicyName")
+        self._HostNamePattern = params.get("HostNamePattern")
+        self._KubeletArgs = params.get("KubeletArgs")
+        if params.get("Lifecycle") is not None:
+            self._Lifecycle = LifecycleConfig()
+            self._Lifecycle._deserialize(params.get("Lifecycle"))
+        self._RuntimeRootDir = params.get("RuntimeRootDir")
+        self._EnableAutoscaling = params.get("EnableAutoscaling")
+        self._InstanceTypes = params.get("InstanceTypes")
+        self._Replicas = params.get("Replicas")
+        if params.get("DataDisks") is not None:
+            self._DataDisks = []
+            for item in params.get("DataDisks"):
+                obj = DataDisk()
+                obj._deserialize(item)
+                self._DataDisks.append(obj)
+        self._KeyIds = params.get("KeyIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

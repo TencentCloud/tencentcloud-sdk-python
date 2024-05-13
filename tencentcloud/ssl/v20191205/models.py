@@ -6361,6 +6361,100 @@ class DescribeDeployedResourcesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDownloadCertificateUrlRequest(AbstractModel):
+    """DescribeDownloadCertificateUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertificateId: 证书ID
+        :type CertificateId: str
+        :param _ServiceType: 下载的服务类型: nginx tomcat apache iis jks other root
+        :type ServiceType: str
+        """
+        self._CertificateId = None
+        self._ServiceType = None
+
+    @property
+    def CertificateId(self):
+        return self._CertificateId
+
+    @CertificateId.setter
+    def CertificateId(self, CertificateId):
+        self._CertificateId = CertificateId
+
+    @property
+    def ServiceType(self):
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+
+    def _deserialize(self, params):
+        self._CertificateId = params.get("CertificateId")
+        self._ServiceType = params.get("ServiceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDownloadCertificateUrlResponse(AbstractModel):
+    """DescribeDownloadCertificateUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DownloadCertificateUrl: 下载链接
+        :type DownloadCertificateUrl: str
+        :param _DownloadFilename: 下载文件的名称
+        :type DownloadFilename: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DownloadCertificateUrl = None
+        self._DownloadFilename = None
+        self._RequestId = None
+
+    @property
+    def DownloadCertificateUrl(self):
+        return self._DownloadCertificateUrl
+
+    @DownloadCertificateUrl.setter
+    def DownloadCertificateUrl(self, DownloadCertificateUrl):
+        self._DownloadCertificateUrl = DownloadCertificateUrl
+
+    @property
+    def DownloadFilename(self):
+        return self._DownloadFilename
+
+    @DownloadFilename.setter
+    def DownloadFilename(self, DownloadFilename):
+        self._DownloadFilename = DownloadFilename
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DownloadCertificateUrl = params.get("DownloadCertificateUrl")
+        self._DownloadFilename = params.get("DownloadFilename")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeHostApiGatewayInstanceListRequest(AbstractModel):
     """DescribeHostApiGatewayInstanceList请求参数结构体
 

@@ -348,6 +348,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCLSDelivery(self, request):
+        """创建日志投递
+
+        :param request: Request instance for CreateCLSDelivery.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CreateCLSDeliveryRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CreateCLSDeliveryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCLSDelivery", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCLSDeliveryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateClusterDatabase(self, request):
         """创建数据库
 
@@ -569,6 +592,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("DeleteBackup", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteBackupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCLSDelivery(self, request):
+        """删除日志投递
+
+        :param request: Request instance for DeleteCLSDelivery.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DeleteCLSDeliveryRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DeleteCLSDeliveryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCLSDelivery", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCLSDeliveryResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1213,6 +1259,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("DescribeFlow", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeFlowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInstanceCLSLogDelivery(self, request):
+        """查询实例日志投递信息
+
+        :param request: Request instance for DescribeInstanceCLSLogDelivery.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeInstanceCLSLogDeliveryRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeInstanceCLSLogDeliveryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceCLSLogDelivery", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceCLSLogDeliveryResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2961,6 +3030,52 @@ class CynosdbClient(AbstractClient):
             body = self.call("SetRenewFlag", params, headers=headers)
             response = json.loads(body)
             model = models.SetRenewFlagResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StartCLSDelivery(self, request):
+        """开启日志投递
+
+        :param request: Request instance for StartCLSDelivery.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.StartCLSDeliveryRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.StartCLSDeliveryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartCLSDelivery", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartCLSDeliveryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopCLSDelivery(self, request):
+        """停止日志投递
+
+        :param request: Request instance for StopCLSDelivery.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.StopCLSDeliveryRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.StopCLSDeliveryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopCLSDelivery", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopCLSDeliveryResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

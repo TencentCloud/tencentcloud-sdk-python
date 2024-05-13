@@ -7727,18 +7727,12 @@ class PhoneVerificationResponse(AbstractModel):
 取值范围为["","移动","电信","联通"]
         :type Isp: str
         :param _ResultDetail: 业务结果详细信息。（当VerifyMode配置"详版"，且Result为"-4: 三要素信息不一致"时返回）
-
 枚举值：
-
-手机号码与姓名一致，与身份证号不一致；
-
-手机号码身份证号一致，与姓名不一致；
-
-手机号码与姓名和身份证号均不一致；
-
-姓名和身份证号不一致；
-
-其他不一致。
+PhoneIdCardMismatch：手机号码与姓名一致，与身份证号不一致；
+PhoneNameMismatch：手机号码身份证号一致，与姓名不一致；
+PhoneNameIdCardMismatch：手机号码与姓名和身份证号均不一致；
+NameIdCardMismatch：姓名和身份证号不一致；
+OtherMismatch：其他不一致；
         :type ResultDetail: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
