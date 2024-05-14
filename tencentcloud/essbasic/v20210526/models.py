@@ -13961,53 +13961,8 @@ class FlowApproverInfo(AbstractModel):
 
     **各种场景传参说明**:
 
-    <table>
-    <thead>
-    <tr>
-    <th>场景编号</th>
-    <th>可作为发起方类型</th>
-    <th>可作为签署方的类型</th>
-    <th>签署方传参说明</th>
-    </tr>
-    </thead>
+    <table>     <thead>     <tr>         <th>场景编号</th>         <th>发起方类型</th>         <th>签署方类型</th>         <th>签署方传参说明</th>     </tr>     </thead>     <tbody>     <tr>         <td>场景一</td>         <td>第三方子企业A员工</td>         <td>第三方子企业A员工</td>         <td>             <ul>                 <li>（选填）IdCardNumber和IdCardType：证件类型和证件号</li>                 <li>（必传）Name：签署方的名字</li>                 <li>（必传）Mobile：签署方的手机号</li>                 <li>（必传）OpenId：企业员工标识</li>                 <li>（必传）OrganizationName：子企业名称</li>                 <li>（必传）OrganizationOpenId：子企业的标识</li>                 <li>（固定）ApproverType：需设置为ORGANIZATION</li>             </ul>         </td>     </tr>     <tr>         <td>场景二</td>         <td>第三方子企业A员工</td>         <td>第三方子企业B(不指定经办人走领取方式)</td>         <td>             <ul>                 <li>（必传）OrganizationName：子企业名称</li>                 <li>（必传）OrganizationOpenId：子企业的标识</li>                 <li>（固定）ApproverType：需设置为ORGANIZATION</li>                 <li>（固定）ApproverOption.FillType：需设置为1</li>             </ul>         </td>     </tr>     <tr>         <td>场景三</td>         <td>第三方子企业A员工</td>         <td>第三方子企业B员工</td>         <td>  <ul>             <li>（选填）IdCardNumber和IdCardType：证件类型和证件号</li>             <li>（必传）Name：签署方的名字</li>             <li>（必传）Mobile：签署方的手机号</li>             <li>（必传）OpenId：企业员工标识</li>             <li>（必传）OrganizationName：子企业名称</li>             <li>（必传）OrganizationOpenId：子企业的标识</li>             <li>（固定）ApproverType：需设置为ORGANIZATION</li>         </ul></td>     </tr>     <tr>         <td>场景四</td>         <td>第三方子企业A员工</td>         <td>个人/自然人</td>         <td>             <ul>                 <li>（选填）IdCardNumber和IdCardType：证件类型和证件号</li>                 <li>（必传）Name：签署方的名字</li>                 <li>（必传）Mobile：签署方的手机号</li>                 <li>（固定）ApproverType：需设置为PERSON</li>             </ul>         </td>     </tr>     <tr>         <td>场景五</td>         <td>第三方子企业A员工</td>         <td>SaaS平台企业员工</td>         <td>             <ul>                 <li>（选填）IdCardNumber和IdCardType：证件类型和证件号</li>                 <li>（必传）OrganizationName：SaaS企业的名字</li>                 <li>（必传）Name：签署方的名字</li>                 <li>（必传）Mobile：签署方的手机号</li>                 <li>（必传）OrganizationOpenId：子企业的标识</li>                 <li>（固定）ApproverType：需设置为ORGANIZATION</li>                 <li>（固定）NotChannelOrganization：需设置为True</li>             </ul>         </td>     </tr>     </tbody> </table>
 
-    <tbody>
-    <tr>
-    <td>场景一</td>
-    <td>第三方子企业A员工</td>
-    <td>第三方子企业A员工</td>
-    <td>OpenId、OrganizationName、OrganizationOpenId必传 ,ApproverType设置为ORGANIZATION</td>
-    </tr>
-
-    <tr>
-    <td>场景二</td>
-    <td>第三方子企业A员工</td>
-    <td>第三方子企业B(不指定经办人)</td>
-    <td>OrganizationName、OrganizationOpenId必传 ,ApproverType设置为ORGANIZATION</td>
-    </tr>
-
-    <tr>
-    <td>场景三</td>
-    <td>第三方子企业A员工</td>
-    <td>第三方子企业B员工</td>
-    <td>OpenId、OrganizationOpenId、OrganizationName必传, ApproverType设置为ORGANIZATION</td>
-    </tr>
-
-    <tr>
-    <td>场景四</td>
-    <td>第三方子企业A员工</td>
-    <td>个人/自然人</td>
-    <td>Name、Mobile必传, ApproverType设置为PERSON</td>
-    </tr>
-
-    <tr>
-    <td>场景五</td>
-    <td>第三方子企业A员工</td>
-    <td>SaaS平台企业员工</td>
-    <td>Name、Mobile、OrganizationName必传，且NotChannelOrganization=True。 ApproverType设置为ORGANIZATION</td>
-    </tr>
-    </tbody>
-    </table>
 
     **注1**: `使用模板发起合同时，RecipientId（模板发起合同时）必传`
 

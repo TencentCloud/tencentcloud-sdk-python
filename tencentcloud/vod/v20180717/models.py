@@ -24605,7 +24605,8 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param _Status: 任务状态，取值：
 <li>WAITING：等待中；</li>
 <li>PROCESSING：处理中；</li>
-<li>FINISH：已完成。</li>
+<li>FINISH：已完成；</li>
+<li>ABORTED：已终止。</li>
         :type Status: str
         :param _CreateTime: 任务的创建时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
         :type CreateTime: str
@@ -55524,7 +55525,7 @@ class TaskSimpleInfo(AbstractModel):
         r"""
         :param _TaskId: 任务 ID。
         :type TaskId: str
-        :param _Status: 任务状态。取值：WAITING（等待中）、PROCESSING（处理中）、FINISH（已完成）。
+        :param _Status: 任务状态。取值：WAITING（等待中）、PROCESSING（处理中）、FINISH（已完成）、ABORTED（已终止）。
         :type Status: str
         :param _FileId: 视频 ID。
         :type FileId: str

@@ -2133,12 +2133,24 @@ class DescribeSlowQueryRecordsDownloadRequest(AbstractModel):
         :type EndTime: str
         :param _DurationMs: 排序参数
         :type DurationMs: str
+        :param _Sql: 查询sql
+        :type Sql: str
+        :param _ReadRows: 排序参数
+        :type ReadRows: str
+        :param _ResultBytes: 排序参数
+        :type ResultBytes: str
+        :param _MemoryUsage: 排序参数
+        :type MemoryUsage: str
         """
         self._InstanceId = None
         self._QueryDurationMs = None
         self._StartTime = None
         self._EndTime = None
         self._DurationMs = None
+        self._Sql = None
+        self._ReadRows = None
+        self._ResultBytes = None
+        self._MemoryUsage = None
 
     @property
     def InstanceId(self):
@@ -2180,6 +2192,38 @@ class DescribeSlowQueryRecordsDownloadRequest(AbstractModel):
     def DurationMs(self, DurationMs):
         self._DurationMs = DurationMs
 
+    @property
+    def Sql(self):
+        return self._Sql
+
+    @Sql.setter
+    def Sql(self, Sql):
+        self._Sql = Sql
+
+    @property
+    def ReadRows(self):
+        return self._ReadRows
+
+    @ReadRows.setter
+    def ReadRows(self, ReadRows):
+        self._ReadRows = ReadRows
+
+    @property
+    def ResultBytes(self):
+        return self._ResultBytes
+
+    @ResultBytes.setter
+    def ResultBytes(self, ResultBytes):
+        self._ResultBytes = ResultBytes
+
+    @property
+    def MemoryUsage(self):
+        return self._MemoryUsage
+
+    @MemoryUsage.setter
+    def MemoryUsage(self, MemoryUsage):
+        self._MemoryUsage = MemoryUsage
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -2187,6 +2231,10 @@ class DescribeSlowQueryRecordsDownloadRequest(AbstractModel):
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._DurationMs = params.get("DurationMs")
+        self._Sql = params.get("Sql")
+        self._ReadRows = params.get("ReadRows")
+        self._ResultBytes = params.get("ResultBytes")
+        self._MemoryUsage = params.get("MemoryUsage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2261,6 +2309,14 @@ class DescribeSlowQueryRecordsRequest(AbstractModel):
         :type IsQuery: int
         :param _CatalogName: catalog名称
         :type CatalogName: list of str
+        :param _Sql: sql名
+        :type Sql: str
+        :param _ReadRows: ReadRows排序字段
+        :type ReadRows: str
+        :param _ResultBytes: ResultBytes排序字段
+        :type ResultBytes: str
+        :param _MemoryUsage: MemoryUsage排序字段
+        :type MemoryUsage: str
         """
         self._InstanceId = None
         self._QueryDurationMs = None
@@ -2272,6 +2328,10 @@ class DescribeSlowQueryRecordsRequest(AbstractModel):
         self._DbName = None
         self._IsQuery = None
         self._CatalogName = None
+        self._Sql = None
+        self._ReadRows = None
+        self._ResultBytes = None
+        self._MemoryUsage = None
 
     @property
     def InstanceId(self):
@@ -2353,6 +2413,38 @@ class DescribeSlowQueryRecordsRequest(AbstractModel):
     def CatalogName(self, CatalogName):
         self._CatalogName = CatalogName
 
+    @property
+    def Sql(self):
+        return self._Sql
+
+    @Sql.setter
+    def Sql(self, Sql):
+        self._Sql = Sql
+
+    @property
+    def ReadRows(self):
+        return self._ReadRows
+
+    @ReadRows.setter
+    def ReadRows(self, ReadRows):
+        self._ReadRows = ReadRows
+
+    @property
+    def ResultBytes(self):
+        return self._ResultBytes
+
+    @ResultBytes.setter
+    def ResultBytes(self, ResultBytes):
+        self._ResultBytes = ResultBytes
+
+    @property
+    def MemoryUsage(self):
+        return self._MemoryUsage
+
+    @MemoryUsage.setter
+    def MemoryUsage(self, MemoryUsage):
+        self._MemoryUsage = MemoryUsage
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -2365,6 +2457,10 @@ class DescribeSlowQueryRecordsRequest(AbstractModel):
         self._DbName = params.get("DbName")
         self._IsQuery = params.get("IsQuery")
         self._CatalogName = params.get("CatalogName")
+        self._Sql = params.get("Sql")
+        self._ReadRows = params.get("ReadRows")
+        self._ResultBytes = params.get("ResultBytes")
+        self._MemoryUsage = params.get("MemoryUsage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

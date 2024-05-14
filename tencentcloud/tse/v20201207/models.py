@@ -5672,6 +5672,11 @@ zk专业版跨地域部署开启了固定Leader所在地域，需要满足以下
 - 固定Leader所在地域当前仅支持跨两个地域
 - leader地域的副本数必须是3/2 + 1，5/2+1，7/2+1，也就是 2，3，4
         :type EngineRegionInfos: list of EngineRegionInfo
+        :param _StorageType: zk标准版请填CLOUD_PREMIUM，zk标准版无法选择磁盘类型和磁盘容量，默认为CLOUD_PREMIUM
+zk专业版可以为：CLOUD_SSD,CLOUD_SSD_PLUS,CLOUD_PREMIUM
+        :type StorageType: str
+        :param _StorageCapacity: zk标准版请填50，zk标准版无法选择磁盘类型和磁盘容量，磁盘容量默认为50
+        :type StorageCapacity: int
         :param _StorageOption: zk专业版至多有两个盘，且磁盘的容量在50-3200之间
 如果只有一个磁盘，storageCapacity与storageOption里面的capacity应该一致
         :type StorageOption: list of StorageOption
@@ -5694,6 +5699,8 @@ zk专业版跨地域部署开启了固定Leader所在地域，需要满足以下
         self._PrepaidPeriod = None
         self._PrepaidRenewFlag = None
         self._EngineRegionInfos = None
+        self._StorageType = None
+        self._StorageCapacity = None
         self._StorageOption = None
         self._AffinityConstraint = None
 
@@ -5826,6 +5833,22 @@ zk专业版跨地域部署开启了固定Leader所在地域，需要满足以下
         self._EngineRegionInfos = EngineRegionInfos
 
     @property
+    def StorageType(self):
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+    @property
+    def StorageCapacity(self):
+        return self._StorageCapacity
+
+    @StorageCapacity.setter
+    def StorageCapacity(self, StorageCapacity):
+        self._StorageCapacity = StorageCapacity
+
+    @property
     def StorageOption(self):
         return self._StorageOption
 
@@ -5876,6 +5899,8 @@ zk专业版跨地域部署开启了固定Leader所在地域，需要满足以下
                 obj = EngineRegionInfo()
                 obj._deserialize(item)
                 self._EngineRegionInfos.append(obj)
+        self._StorageType = params.get("StorageType")
+        self._StorageCapacity = params.get("StorageCapacity")
         if params.get("StorageOption") is not None:
             self._StorageOption = []
             for item in params.get("StorageOption"):
