@@ -2077,7 +2077,7 @@ class CreateRecordRequest(AbstractModel):
         :type RecordLineId: str
         :param _MX: MX 优先级，当记录类型是 MX 时有效，范围1-20，MX 记录时必选。
         :type MX: int
-        :param _TTL: TTL，范围1-604800，不同等级域名最小值不同。
+        :param _TTL: TTL，范围1-604800，不同套餐域名最小值不同。
         :type TTL: int
         :param _Weight: 权重信息，0到100的整数。0 表示关闭，不传该参数，表示不设置权重信息。
         :type Weight: int

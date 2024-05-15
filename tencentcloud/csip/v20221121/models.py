@@ -13717,6 +13717,123 @@ class NICAsset(AbstractModel):
         
 
 
+class NewAlertKey(AbstractModel):
+    """该结构体用来传入告警的key，以更新告警的status
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: 需要更改的用户appid
+        :type AppId: str
+        :param _Type: 告警类别
+        :type Type: str
+        :param _SubType: 告警子类别
+        :type SubType: str
+        :param _Source: 告警来源
+        :type Source: str
+        :param _Name: 告警名称
+        :type Name: str
+        :param _Key: 告警key
+        :type Key: str
+        :param _Date: 时间
+        :type Date: str
+        :param _Status: 状态
+        :type Status: int
+        """
+        self._AppId = None
+        self._Type = None
+        self._SubType = None
+        self._Source = None
+        self._Name = None
+        self._Key = None
+        self._Date = None
+        self._Status = None
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def SubType(self):
+        return self._SubType
+
+    @SubType.setter
+    def SubType(self, SubType):
+        self._SubType = SubType
+
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Date(self):
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._Type = params.get("Type")
+        self._SubType = params.get("SubType")
+        self._Source = params.get("Source")
+        self._Name = params.get("Name")
+        self._Key = params.get("Key")
+        self._Date = params.get("Date")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OrganizationUserInfo(AbstractModel):
     """集团账号成员详情
 
@@ -17183,6 +17300,123 @@ class TaskLogURL(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateAlertStatusListRequest(AbstractModel):
+    """UpdateAlertStatusList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 告警ID列表
+        :type ID: list of NewAlertKey
+        :param _OperateType: 操作类型 
+1:撤销处置 
+2:标记为已处置 
+3:标记忽略 
+4:取消标记处置
+5:取消标记忽略
+        :type OperateType: int
+        :param _OperatedMemberId: 被调用的集团账号的成员id
+        :type OperatedMemberId: list of str
+        """
+        self._ID = None
+        self._OperateType = None
+        self._OperatedMemberId = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def OperateType(self):
+        return self._OperateType
+
+    @OperateType.setter
+    def OperateType(self, OperateType):
+        self._OperateType = OperateType
+
+    @property
+    def OperatedMemberId(self):
+        return self._OperatedMemberId
+
+    @OperatedMemberId.setter
+    def OperatedMemberId(self, OperatedMemberId):
+        self._OperatedMemberId = OperatedMemberId
+
+
+    def _deserialize(self, params):
+        if params.get("ID") is not None:
+            self._ID = []
+            for item in params.get("ID"):
+                obj = NewAlertKey()
+                obj._deserialize(item)
+                self._ID.append(obj)
+        self._OperateType = params.get("OperateType")
+        self._OperatedMemberId = params.get("OperatedMemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateAlertStatusListResponse(AbstractModel):
+    """UpdateAlertStatusList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Msg: 结果信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param _Code: 结果代码
+        :type Code: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Msg = None
+        self._Code = None
+        self._RequestId = None
+
+    @property
+    def Msg(self):
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Msg = params.get("Msg")
+        self._Code = params.get("Code")
+        self._RequestId = params.get("RequestId")
 
 
 class VULRiskAdvanceCFGList(AbstractModel):

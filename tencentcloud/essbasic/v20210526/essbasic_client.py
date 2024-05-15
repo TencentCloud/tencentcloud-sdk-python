@@ -2130,7 +2130,7 @@ class EssbasicClient(AbstractClient):
 
         **第二种**: 渠道方企业在**企业应用管理**的配置界面打开需要配置的应用，点击**应用扩展服务**开通此功能，需要**渠道方企业的超管**扫描二维码跳转到电子签小程序签署 <<渠道端下载渠道子客合同功能开通知情同意书>>
         注:
-        1. `请注意如果第三方应用的子客主动关闭了渠道端下载渠道子客合同功能功能，那么渠道方开通了此功能也无法下载子客的合同文件`
+        1. `请注意如果第三方应用的子客主动关闭了渠道端下载渠道子客合同功能开关，那么渠道方开通了此功能也无法下载子客的合同文件`
         ![image](https://qcloudimg.tencent-cloud.cn/raw/238979ef51dd381ccbdbc755a593debc/channel_DescribeResourceUrlsByFlows_appilications2.png)
 
         :param request: Request instance for DescribeResourceUrlsByFlows.

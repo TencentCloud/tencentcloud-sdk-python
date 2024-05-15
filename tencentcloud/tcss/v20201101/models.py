@@ -28662,6 +28662,150 @@ class DescribeEscapeWhiteListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeEventEscapeImageListRequest(AbstractModel):
+    """DescribeEventEscapeImageList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _Filters: 过滤参数:
+EventType: 事件类型(MOUNT_SENSITIVE_PTAH:敏感路径挂载 PRIVILEGE_CONTAINER_START:特权容器)
+Status: 事件状态(EVENT_UNDEAL:未处理，EVENT_DEALED:已处理，EVENT_INGNORE:忽略)
+ImageID: 镜像id
+ImageName:镜像名称
+        :type Filters: list of RunTimeFilters
+        :param _Order: 升序降序,asc desc
+        :type Order: str
+        :param _By: 排序字段
+        :type By: str
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+        self._Order = None
+        self._By = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEventEscapeImageListResponse(AbstractModel):
+    """DescribeEventEscapeImageList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: 风险容器镜像列表
+        :type List: list of EventEscapeImageInfo
+        :param _TotalCount: 事件总数量
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = EventEscapeImageInfo()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeExportJobDownloadURLRequest(AbstractModel):
     """DescribeExportJobDownloadURL请求参数结构体
 
@@ -44960,6 +45104,178 @@ class EscapeWhiteListInfo(AbstractModel):
         self._InsertTime = params.get("InsertTime")
         self._UpdateTime = params.get("UpdateTime")
         self._ImageSize = params.get("ImageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventEscapeImageInfo(AbstractModel):
+    """风险容器信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageId: 镜像id，用于跳转
+        :type ImageId: str
+        :param _UniqueKey: 唯一值
+        :type UniqueKey: str
+        :param _EventType: 事件类型
+   ESCAPE_CGROUPS：利用cgroup机制逃逸
+   ESCAPE_TAMPER_SENSITIVE_FILE：篡改敏感文件逃逸
+   ESCAPE_DOCKER_API：访问Docker API接口逃逸
+   ESCAPE_VUL_OCCURRED：逃逸漏洞利用
+   MOUNT_SENSITIVE_PTAH：敏感路径挂载
+   PRIVILEGE_CONTAINER_START：特权容器
+   PRIVILEGE：程序提权逃逸
+        :type EventType: str
+        :param _OriginEventType: 原始事件类型
+        :type OriginEventType: str
+        :param _ImageName: 镜像名
+        :type ImageName: str
+        :param _ContainerCount: 容器数量
+        :type ContainerCount: int
+        :param _FoundTime: 生成时间
+        :type FoundTime: str
+        :param _LatestFoundTime: 最近生成时间
+        :type LatestFoundTime: str
+        :param _EventCount: 事件数量
+        :type EventCount: int
+        :param _Status: 状态，EVENT_UNDEAL:未处理，EVENT_DEALED:已处理，EVENT_INGNORE:忽略
+        :type Status: str
+        :param _Description: 风险描述
+        :type Description: str
+        :param _Solution: 解决方案
+        :type Solution: str
+        """
+        self._ImageId = None
+        self._UniqueKey = None
+        self._EventType = None
+        self._OriginEventType = None
+        self._ImageName = None
+        self._ContainerCount = None
+        self._FoundTime = None
+        self._LatestFoundTime = None
+        self._EventCount = None
+        self._Status = None
+        self._Description = None
+        self._Solution = None
+
+    @property
+    def ImageId(self):
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def UniqueKey(self):
+        return self._UniqueKey
+
+    @UniqueKey.setter
+    def UniqueKey(self, UniqueKey):
+        self._UniqueKey = UniqueKey
+
+    @property
+    def EventType(self):
+        return self._EventType
+
+    @EventType.setter
+    def EventType(self, EventType):
+        self._EventType = EventType
+
+    @property
+    def OriginEventType(self):
+        return self._OriginEventType
+
+    @OriginEventType.setter
+    def OriginEventType(self, OriginEventType):
+        self._OriginEventType = OriginEventType
+
+    @property
+    def ImageName(self):
+        return self._ImageName
+
+    @ImageName.setter
+    def ImageName(self, ImageName):
+        self._ImageName = ImageName
+
+    @property
+    def ContainerCount(self):
+        return self._ContainerCount
+
+    @ContainerCount.setter
+    def ContainerCount(self, ContainerCount):
+        self._ContainerCount = ContainerCount
+
+    @property
+    def FoundTime(self):
+        return self._FoundTime
+
+    @FoundTime.setter
+    def FoundTime(self, FoundTime):
+        self._FoundTime = FoundTime
+
+    @property
+    def LatestFoundTime(self):
+        return self._LatestFoundTime
+
+    @LatestFoundTime.setter
+    def LatestFoundTime(self, LatestFoundTime):
+        self._LatestFoundTime = LatestFoundTime
+
+    @property
+    def EventCount(self):
+        return self._EventCount
+
+    @EventCount.setter
+    def EventCount(self, EventCount):
+        self._EventCount = EventCount
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Solution(self):
+        return self._Solution
+
+    @Solution.setter
+    def Solution(self, Solution):
+        self._Solution = Solution
+
+
+    def _deserialize(self, params):
+        self._ImageId = params.get("ImageId")
+        self._UniqueKey = params.get("UniqueKey")
+        self._EventType = params.get("EventType")
+        self._OriginEventType = params.get("OriginEventType")
+        self._ImageName = params.get("ImageName")
+        self._ContainerCount = params.get("ContainerCount")
+        self._FoundTime = params.get("FoundTime")
+        self._LatestFoundTime = params.get("LatestFoundTime")
+        self._EventCount = params.get("EventCount")
+        self._Status = params.get("Status")
+        self._Description = params.get("Description")
+        self._Solution = params.get("Solution")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

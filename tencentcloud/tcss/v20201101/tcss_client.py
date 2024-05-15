@@ -3824,6 +3824,29 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeEventEscapeImageList(self, request):
+        """DescribeRiskContainerImageList查询风险容器镜像列表
+
+        :param request: Request instance for DescribeEventEscapeImageList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeEventEscapeImageListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeEventEscapeImageListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEventEscapeImageList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEventEscapeImageListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeExportJobDownloadURL(self, request):
         """查询导出任务下载URL
 

@@ -2201,12 +2201,16 @@ class ClickHouseSchema(AbstractModel):
     def __init__(self):
         r"""
         :param _ColumnName: 表的列名
+注意：此字段可能返回 null，表示取不到有效值。
         :type ColumnName: str
         :param _JsonKey: 该列对应的jsonKey名
+注意：此字段可能返回 null，表示取不到有效值。
         :type JsonKey: str
         :param _Type: 表列项的类型
+注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _AllowNull: 列项是否允许为空
+注意：此字段可能返回 null，表示取不到有效值。
         :type AllowNull: bool
         """
         self._ColumnName = None
@@ -2270,15 +2274,20 @@ class ClsParam(AbstractModel):
     def __init__(self):
         r"""
         :param _DecodeJson: 生产的信息是否为json格式
+注意：此字段可能返回 null，表示取不到有效值。
         :type DecodeJson: bool
         :param _Resource: cls日志主题id
+注意：此字段可能返回 null，表示取不到有效值。
         :type Resource: str
         :param _LogSet: cls日志集id
+注意：此字段可能返回 null，表示取不到有效值。
         :type LogSet: str
         :param _ContentKey: 当DecodeJson为false时必填
+注意：此字段可能返回 null，表示取不到有效值。
         :type ContentKey: str
         :param _TimeField: 指定消息中的某字段内容作为cls日志的时间。
 字段内容格式需要是秒级时间戳
+注意：此字段可能返回 null，表示取不到有效值。
         :type TimeField: str
         """
         self._DecodeJson = None
@@ -3090,20 +3099,28 @@ class CosParam(AbstractModel):
     def __init__(self):
         r"""
         :param _BucketName: cos 存储桶名称
+注意：此字段可能返回 null，表示取不到有效值。
         :type BucketName: str
         :param _Region: 地域代码
+注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _ObjectKey: 对象名称
+注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectKey: str
         :param _AggregateBatchSize: 汇聚消息量的大小（单位：MB)
+注意：此字段可能返回 null，表示取不到有效值。
         :type AggregateBatchSize: int
         :param _AggregateInterval: 汇聚的时间间隔（单位：小时）
+注意：此字段可能返回 null，表示取不到有效值。
         :type AggregateInterval: int
         :param _FormatOutputType: 消息汇聚后的文件格式（支持csv, json）
+注意：此字段可能返回 null，表示取不到有效值。
         :type FormatOutputType: str
         :param _ObjectKeyPrefix: 转储的对象目录前缀
+注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectKeyPrefix: str
         :param _DirectoryTimeFormat: 根据strptime 时间格式化的分区格式
+注意：此字段可能返回 null，表示取不到有效值。
         :type DirectoryTimeFormat: str
         """
         self._BucketName = None
@@ -6685,8 +6702,10 @@ class CtsdbParam(AbstractModel):
     def __init__(self):
         r"""
         :param _Resource: 连接管理实例资源
+注意：此字段可能返回 null，表示取不到有效值。
         :type Resource: str
         :param _CtsdbMetric: Ctsdb的metric
+注意：此字段可能返回 null，表示取不到有效值。
         :type CtsdbMetric: str
         """
         self._Resource = None
@@ -6779,6 +6798,9 @@ class DatahubResource(AbstractModel):
         :param _ScfParam: Scf配置，Type为SCF时必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScfParam: :class:`tencentcloud.ckafka.v20190819.models.ScfParam`
+        :param _MqttParam: MQTT配置，Type为 MQTT 时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MqttParam: :class:`tencentcloud.ckafka.v20190819.models.MqttParam`
         """
         self._Type = None
         self._KafkaParam = None
@@ -6797,6 +6819,7 @@ class DatahubResource(AbstractModel):
         self._SQLServerParam = None
         self._CtsdbParam = None
         self._ScfParam = None
+        self._MqttParam = None
 
     @property
     def Type(self):
@@ -6934,6 +6957,14 @@ class DatahubResource(AbstractModel):
     def ScfParam(self, ScfParam):
         self._ScfParam = ScfParam
 
+    @property
+    def MqttParam(self):
+        return self._MqttParam
+
+    @MqttParam.setter
+    def MqttParam(self, MqttParam):
+        self._MqttParam = MqttParam
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -6985,6 +7016,9 @@ class DatahubResource(AbstractModel):
         if params.get("ScfParam") is not None:
             self._ScfParam = ScfParam()
             self._ScfParam._deserialize(params.get("ScfParam"))
+        if params.get("MqttParam") is not None:
+            self._MqttParam = MqttParam()
+            self._MqttParam._deserialize(params.get("MqttParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9093,6 +9127,9 @@ class DescribeConnectResource(AbstractModel):
         :param _KafkaConnectParam: Kafka配置，Type 为 KAFKA 时返回
 注意：此字段可能返回 null，表示取不到有效值。
         :type KafkaConnectParam: :class:`tencentcloud.ckafka.v20190819.models.KafkaConnectParam`
+        :param _MqttConnectParam: MQTT配置，Type 为 MQTT 时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MqttConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MqttConnectParam`
         """
         self._ResourceId = None
         self._ResourceName = None
@@ -9116,6 +9153,7 @@ class DescribeConnectResource(AbstractModel):
         self._CtsdbConnectParam = None
         self._DorisConnectParam = None
         self._KafkaConnectParam = None
+        self._MqttConnectParam = None
 
     @property
     def ResourceId(self):
@@ -9293,6 +9331,14 @@ class DescribeConnectResource(AbstractModel):
     def KafkaConnectParam(self, KafkaConnectParam):
         self._KafkaConnectParam = KafkaConnectParam
 
+    @property
+    def MqttConnectParam(self):
+        return self._MqttConnectParam
+
+    @MqttConnectParam.setter
+    def MqttConnectParam(self, MqttConnectParam):
+        self._MqttConnectParam = MqttConnectParam
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
@@ -9339,6 +9385,9 @@ class DescribeConnectResource(AbstractModel):
         if params.get("KafkaConnectParam") is not None:
             self._KafkaConnectParam = KafkaConnectParam()
             self._KafkaConnectParam._deserialize(params.get("KafkaConnectParam"))
+        if params.get("MqttConnectParam") is not None:
+            self._MqttConnectParam = MqttConnectParam()
+            self._MqttConnectParam._deserialize(params.get("MqttConnectParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9449,6 +9498,9 @@ class DescribeConnectResourceResp(AbstractModel):
         :param _KafkaConnectParam: Kafka配置，Type 为 KAFKA 时返回
 注意：此字段可能返回 null，表示取不到有效值。
         :type KafkaConnectParam: :class:`tencentcloud.ckafka.v20190819.models.KafkaConnectParam`
+        :param _MqttConnectParam: MQTT配置，Type 为 MQTT 时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MqttConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MqttConnectParam`
         """
         self._ResourceId = None
         self._ResourceName = None
@@ -9470,6 +9522,7 @@ class DescribeConnectResourceResp(AbstractModel):
         self._CtsdbConnectParam = None
         self._DorisConnectParam = None
         self._KafkaConnectParam = None
+        self._MqttConnectParam = None
 
     @property
     def ResourceId(self):
@@ -9631,6 +9684,14 @@ class DescribeConnectResourceResp(AbstractModel):
     def KafkaConnectParam(self, KafkaConnectParam):
         self._KafkaConnectParam = KafkaConnectParam
 
+    @property
+    def MqttConnectParam(self):
+        return self._MqttConnectParam
+
+    @MqttConnectParam.setter
+    def MqttConnectParam(self, MqttConnectParam):
+        self._MqttConnectParam = MqttConnectParam
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
@@ -9675,6 +9736,9 @@ class DescribeConnectResourceResp(AbstractModel):
         if params.get("KafkaConnectParam") is not None:
             self._KafkaConnectParam = KafkaConnectParam()
             self._KafkaConnectParam._deserialize(params.get("KafkaConnectParam"))
+        if params.get("MqttConnectParam") is not None:
+            self._MqttConnectParam = MqttConnectParam()
+            self._MqttConnectParam._deserialize(params.get("MqttConnectParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13573,20 +13637,28 @@ class DtsParam(AbstractModel):
     def __init__(self):
         r"""
         :param _Resource: Dts实例Id
+注意：此字段可能返回 null，表示取不到有效值。
         :type Resource: str
         :param _Ip: Dts的连接ip
+注意：此字段可能返回 null，表示取不到有效值。
         :type Ip: str
         :param _Port: Dts的连接port
+注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
         :param _Topic: Dts订阅的topic
+注意：此字段可能返回 null，表示取不到有效值。
         :type Topic: str
         :param _GroupId: Dts消费分组的Id
+注意：此字段可能返回 null，表示取不到有效值。
         :type GroupId: str
         :param _GroupUser: Dts消费分组的账号
+注意：此字段可能返回 null，表示取不到有效值。
         :type GroupUser: str
         :param _GroupPassword: Dts消费分组的密码
+注意：此字段可能返回 null，表示取不到有效值。
         :type GroupPassword: str
         :param _TranSql: false同步原始数据，true同步解析后的json格式数据,默认true
+注意：此字段可能返回 null，表示取不到有效值。
         :type TranSql: bool
         """
         self._Resource = None
@@ -14086,44 +14158,64 @@ class EsParam(AbstractModel):
     def __init__(self):
         r"""
         :param _Resource: 实例资源
+注意：此字段可能返回 null，表示取不到有效值。
         :type Resource: str
         :param _Port: Es的连接port
+注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
         :param _UserName: Es用户名
+注意：此字段可能返回 null，表示取不到有效值。
         :type UserName: str
         :param _Password: Es密码
+注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
         :param _SelfBuilt: 是否为自建集群
+注意：此字段可能返回 null，表示取不到有效值。
         :type SelfBuilt: bool
         :param _ServiceVip: 实例vip
+注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceVip: str
         :param _UniqVpcId: 实例的vpcId
+注意：此字段可能返回 null，表示取不到有效值。
         :type UniqVpcId: str
         :param _DropInvalidMessage: Es是否抛弃解析失败的消息
+注意：此字段可能返回 null，表示取不到有效值。
         :type DropInvalidMessage: bool
         :param _Index: Es自定义index名称
+注意：此字段可能返回 null，表示取不到有效值。
         :type Index: str
         :param _DateFormat: Es自定义日期后缀
+注意：此字段可能返回 null，表示取不到有效值。
         :type DateFormat: str
         :param _ContentKey: 非json格式数据的自定义key
+注意：此字段可能返回 null，表示取不到有效值。
         :type ContentKey: str
         :param _DropInvalidJsonMessage: Es是否抛弃非json格式的消息
+注意：此字段可能返回 null，表示取不到有效值。
         :type DropInvalidJsonMessage: bool
         :param _DocumentIdField: 转储到Es中的文档ID取值字段名
+注意：此字段可能返回 null，表示取不到有效值。
         :type DocumentIdField: str
         :param _IndexType: Es自定义index名称的类型，STRING，JSONPATH，默认为STRING
+注意：此字段可能返回 null，表示取不到有效值。
         :type IndexType: str
         :param _DropCls: 当设置成员参数DropInvalidMessageToCls设置为true时,DropInvalidMessage参数失效
+注意：此字段可能返回 null，表示取不到有效值。
         :type DropCls: :class:`tencentcloud.ckafka.v20190819.models.DropCls`
         :param _DatabasePrimaryKey: 转储到ES的消息为Database的binlog时，如果需要同步数据库操作，即增删改的操作到ES时填写数据库表主键
+注意：此字段可能返回 null，表示取不到有效值。
         :type DatabasePrimaryKey: str
         :param _DropDlq: 死信队列
+注意：此字段可能返回 null，表示取不到有效值。
         :type DropDlq: :class:`tencentcloud.ckafka.v20190819.models.FailureParam`
         :param _RecordMappingList: 使用数据订阅格式导入 es 时，消息与 es 索引字段映射关系。不填默认为默认字段匹配
+注意：此字段可能返回 null，表示取不到有效值。
         :type RecordMappingList: list of EsRecordMapping
         :param _DateField: 消息要映射为 es 索引中 @timestamp 的字段，如果当前配置为空，则使用消息的时间戳进行映射
+注意：此字段可能返回 null，表示取不到有效值。
         :type DateField: str
         :param _RecordMappingMode: 用来区分当前索引映射，属于新建索引还是存量索引。"EXIST_MAPPING"：从存量索引中选择；"NEW_MAPPING"：新建索引
+注意：此字段可能返回 null，表示取不到有效值。
         :type RecordMappingMode: str
         """
         self._Resource = None
@@ -14356,8 +14448,10 @@ class EsRecordMapping(AbstractModel):
     def __init__(self):
         r"""
         :param _ColumnName: es 索引成员名称
+注意：此字段可能返回 null，表示取不到有效值。
         :type ColumnName: str
         :param _JsonKey: 消息字段名称
+注意：此字段可能返回 null，表示取不到有效值。
         :type JsonKey: str
         """
         self._ColumnName = None
@@ -18160,7 +18254,7 @@ class KafkaConnectParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Resource: Kafka连接源的实例资源, 非自建时必填
+        :param _Resource: Kafka连接源的实例资源, 非自建时必填，NetworkType=VPC时传clb实例id
 注意：此字段可能返回 null，表示取不到有效值。
         :type Resource: str
         :param _SelfBuilt: 是否为自建集群
@@ -18169,7 +18263,7 @@ class KafkaConnectParam(AbstractModel):
         :param _IsUpdate: 是否更新到关联的Dip任务
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsUpdate: bool
-        :param _BrokerAddress: Kafka连接的broker地址, 自建时必填
+        :param _BrokerAddress: Kafka连接的broker地址, NetworkType=PUBLIC公网时必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type BrokerAddress: str
         :param _Region: CKafka连接源的实例资源地域, 跨地域时必填
@@ -18791,24 +18885,34 @@ class MariaDBParam(AbstractModel):
     def __init__(self):
         r"""
         :param _Database: MariaDB的数据库名称，"*"为全数据库
+注意：此字段可能返回 null，表示取不到有效值。
         :type Database: str
         :param _Table: MariaDB的数据表名称，"*"为所监听的所有数据库中的非系统表，可以","间隔，监听多个数据表，但数据表需要以"数据库名.数据表名"的格式进行填写
+注意：此字段可能返回 null，表示取不到有效值。
         :type Table: str
         :param _Resource: 该MariaDB在连接管理内的Id
+注意：此字段可能返回 null，表示取不到有效值。
         :type Resource: str
         :param _SnapshotMode: 复制存量信息(schema_only不复制, initial全量)，默认位initial
+注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotMode: str
         :param _KeyColumns: 格式：库1.表1:字段1,字段2;库2.表2:字段2，表之间;（分号）隔开，字段之间,（逗号）隔开。不指定的表默认取表的主键
+注意：此字段可能返回 null，表示取不到有效值。
         :type KeyColumns: str
         :param _IsTablePrefix: 当Table输入的是前缀时，该项值为true，否则为false
+注意：此字段可能返回 null，表示取不到有效值。
         :type IsTablePrefix: bool
         :param _OutputFormat: 输出格式，DEFAULT、CANAL_1、CANAL_2
+注意：此字段可能返回 null，表示取不到有效值。
         :type OutputFormat: str
         :param _IncludeContentChanges: 如果该值为all，则DDL数据以及DML数据也会写入到选中的topic；若该值为dml，则只有DML数据写入到选中的topic
+注意：此字段可能返回 null，表示取不到有效值。
         :type IncludeContentChanges: str
         :param _IncludeQuery: 如果该值为true，且MySQL中"binlog_rows_query_log_events"配置项的值为"ON"，则流入到topic的数据包含原SQL语句；若该值为false，流入到topic的数据不包含原SQL语句
+注意：此字段可能返回 null，表示取不到有效值。
         :type IncludeQuery: bool
         :param _RecordWithSchema: 如果该值为 true，则消息中会携带消息结构体对应的schema，如果该值为false则不会携带
+注意：此字段可能返回 null，表示取不到有效值。
         :type RecordWithSchema: bool
         """
         self._Database = None
@@ -20620,28 +20724,40 @@ class MongoDBParam(AbstractModel):
     def __init__(self):
         r"""
         :param _Database: MongoDB的数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
         :type Database: str
         :param _Collection: MongoDB的集群
+注意：此字段可能返回 null，表示取不到有效值。
         :type Collection: str
         :param _CopyExisting: 是否复制存量数据，默认传参true
+注意：此字段可能返回 null，表示取不到有效值。
         :type CopyExisting: bool
         :param _Resource: 实例资源
+注意：此字段可能返回 null，表示取不到有效值。
         :type Resource: str
         :param _Ip: MongoDB的连接ip
+注意：此字段可能返回 null，表示取不到有效值。
         :type Ip: str
         :param _Port: MongoDB的连接port
+注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
         :param _UserName: MongoDB数据库用户名
+注意：此字段可能返回 null，表示取不到有效值。
         :type UserName: str
         :param _Password: MongoDB数据库密码
+注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
         :param _ListeningEvent: 监听事件类型，为空时表示全选。取值包括insert,update,replace,delete,invalidate,drop,dropdatabase,rename，多个类型间使用,逗号分隔
+注意：此字段可能返回 null，表示取不到有效值。
         :type ListeningEvent: str
         :param _ReadPreference: 主从优先级，默认主节点
+注意：此字段可能返回 null，表示取不到有效值。
         :type ReadPreference: str
         :param _Pipeline: 聚合管道
+注意：此字段可能返回 null，表示取不到有效值。
         :type Pipeline: str
         :param _SelfBuilt: 是否为自建集群
+注意：此字段可能返回 null，表示取不到有效值。
         :type SelfBuilt: bool
         """
         self._Database = None
@@ -20766,6 +20882,295 @@ class MongoDBParam(AbstractModel):
         self._ListeningEvent = params.get("ListeningEvent")
         self._ReadPreference = params.get("ReadPreference")
         self._Pipeline = params.get("Pipeline")
+        self._SelfBuilt = params.get("SelfBuilt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MqttConnectParam(AbstractModel):
+    """MQTT连接源参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserName: MQTT连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param _Password: MQTT连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param _Resource: MQTT连接源的实例资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: str
+        :param _UniqVpcId: MQTT Instance vpc-id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqVpcId: str
+        :param _SelfBuilt: 是否为自建集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SelfBuilt: bool
+        :param _IsUpdate: 是否更新到关联的Dip任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsUpdate: bool
+        :param _Region: MQTT连接源的实例资源地域, 跨地域时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        """
+        self._UserName = None
+        self._Password = None
+        self._Resource = None
+        self._UniqVpcId = None
+        self._SelfBuilt = None
+        self._IsUpdate = None
+        self._Region = None
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def Resource(self):
+        return self._Resource
+
+    @Resource.setter
+    def Resource(self, Resource):
+        self._Resource = Resource
+
+    @property
+    def UniqVpcId(self):
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def SelfBuilt(self):
+        return self._SelfBuilt
+
+    @SelfBuilt.setter
+    def SelfBuilt(self, SelfBuilt):
+        self._SelfBuilt = SelfBuilt
+
+    @property
+    def IsUpdate(self):
+        return self._IsUpdate
+
+    @IsUpdate.setter
+    def IsUpdate(self, IsUpdate):
+        self._IsUpdate = IsUpdate
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+
+    def _deserialize(self, params):
+        self._UserName = params.get("UserName")
+        self._Password = params.get("Password")
+        self._Resource = params.get("Resource")
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._SelfBuilt = params.get("SelfBuilt")
+        self._IsUpdate = params.get("IsUpdate")
+        self._Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MqttParam(AbstractModel):
+    """创建MQTT 为Source的Data Hub Task参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Topics: 需要同步的MQTT Topic列表, CSV格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Topics: str
+        :param _CleanSession: MQTT clean-session
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CleanSession: bool
+        :param _Resource: MQTT instance-id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: str
+        :param _Ip: MQTT实例VIP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ip: str
+        :param _Port: MQTT VIP 端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param _UserName: MQTT实例用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param _Password: MQTT实例内账户密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param _Qos: QoS
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Qos: int
+        :param _MaxTasks: tasks.max 订阅Topic的并发Task个数, 默认为1; 当设置大于1时, 使用Shared Subscription
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxTasks: int
+        :param _ServiceVip: MQTT 实例的Service VIP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceVip: str
+        :param _UniqVpcId: MQTT实例的VPC ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqVpcId: str
+        :param _SelfBuilt: 是否为自建集群, MQTT只支持非自建集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SelfBuilt: bool
+        """
+        self._Topics = None
+        self._CleanSession = None
+        self._Resource = None
+        self._Ip = None
+        self._Port = None
+        self._UserName = None
+        self._Password = None
+        self._Qos = None
+        self._MaxTasks = None
+        self._ServiceVip = None
+        self._UniqVpcId = None
+        self._SelfBuilt = None
+
+    @property
+    def Topics(self):
+        return self._Topics
+
+    @Topics.setter
+    def Topics(self, Topics):
+        self._Topics = Topics
+
+    @property
+    def CleanSession(self):
+        return self._CleanSession
+
+    @CleanSession.setter
+    def CleanSession(self, CleanSession):
+        self._CleanSession = CleanSession
+
+    @property
+    def Resource(self):
+        return self._Resource
+
+    @Resource.setter
+    def Resource(self, Resource):
+        self._Resource = Resource
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def Qos(self):
+        return self._Qos
+
+    @Qos.setter
+    def Qos(self, Qos):
+        self._Qos = Qos
+
+    @property
+    def MaxTasks(self):
+        return self._MaxTasks
+
+    @MaxTasks.setter
+    def MaxTasks(self, MaxTasks):
+        self._MaxTasks = MaxTasks
+
+    @property
+    def ServiceVip(self):
+        return self._ServiceVip
+
+    @ServiceVip.setter
+    def ServiceVip(self, ServiceVip):
+        self._ServiceVip = ServiceVip
+
+    @property
+    def UniqVpcId(self):
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def SelfBuilt(self):
+        return self._SelfBuilt
+
+    @SelfBuilt.setter
+    def SelfBuilt(self, SelfBuilt):
+        self._SelfBuilt = SelfBuilt
+
+
+    def _deserialize(self, params):
+        self._Topics = params.get("Topics")
+        self._CleanSession = params.get("CleanSession")
+        self._Resource = params.get("Resource")
+        self._Ip = params.get("Ip")
+        self._Port = params.get("Port")
+        self._UserName = params.get("UserName")
+        self._Password = params.get("Password")
+        self._Qos = params.get("Qos")
+        self._MaxTasks = params.get("MaxTasks")
+        self._ServiceVip = params.get("ServiceVip")
+        self._UniqVpcId = params.get("UniqVpcId")
         self._SelfBuilt = params.get("SelfBuilt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -21903,30 +22308,43 @@ class PostgreSQLParam(AbstractModel):
     def __init__(self):
         r"""
         :param _Database: PostgreSQL的数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
         :type Database: str
         :param _Table: PostgreSQL的数据表名称，"*"为所监听的所有数据库中的非系统表，可以","间隔，监听多个数据表，但数据表需要以"Schema名.数据表名"的格式进行填写，需要填入正则表达式时，格式为"Schema名\\.数据表名"
+注意：此字段可能返回 null，表示取不到有效值。
         :type Table: str
         :param _Resource: 该PostgreSQL在连接管理内的Id
+注意：此字段可能返回 null，表示取不到有效值。
         :type Resource: str
         :param _PluginName: 插件名(decoderbufs/pgoutput)，默认为decoderbufs
+注意：此字段可能返回 null，表示取不到有效值。
         :type PluginName: str
         :param _SnapshotMode: 复制存量信息(never增量, initial全量)，默认为initial
+注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotMode: str
         :param _DataFormat: 上游数据格式(JSON/Debezium), 当数据库同步模式为默认字段匹配时,必填
+注意：此字段可能返回 null，表示取不到有效值。
         :type DataFormat: str
         :param _DataTargetInsertMode: "INSERT" 表示使用 Insert 模式插入，"UPSERT" 表示使用 Upsert 模式插入
+注意：此字段可能返回 null，表示取不到有效值。
         :type DataTargetInsertMode: str
         :param _DataTargetPrimaryKeyField: 当 "DataInsertMode"="UPSERT" 时，传入当前 upsert 时依赖的主键
+注意：此字段可能返回 null，表示取不到有效值。
         :type DataTargetPrimaryKeyField: str
         :param _DataTargetRecordMapping: 表与消息间的映射关系
+注意：此字段可能返回 null，表示取不到有效值。
         :type DataTargetRecordMapping: list of RecordMapping
         :param _DropInvalidMessage: 是否抛弃解析失败的消息，默认为true
+注意：此字段可能返回 null，表示取不到有效值。
         :type DropInvalidMessage: bool
         :param _IsTableRegular: 输入的table是否为正则表达式
+注意：此字段可能返回 null，表示取不到有效值。
         :type IsTableRegular: bool
         :param _KeyColumns: 格式：库1.表1:字段1,字段2;库2.表2:字段2，表之间;（分号）隔开，字段之间,（逗号）隔开。不指定的表默认取表的主键
+注意：此字段可能返回 null，表示取不到有效值。
         :type KeyColumns: str
         :param _RecordWithSchema: 如果该值为 true，则消息中会携带消息结构体对应的schema，如果该值为false则不会携带
+注意：此字段可能返回 null，表示取不到有效值。
         :type RecordWithSchema: bool
         """
         self._Database = None
@@ -23405,12 +23823,16 @@ class SQLServerParam(AbstractModel):
     def __init__(self):
         r"""
         :param _Database: SQLServer的数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
         :type Database: str
         :param _Table: SQLServer的数据表名称，"*"为所监听的所有数据库中的非系统表，可以","间隔，监听多个数据表，但数据表需要以"数据库名.数据表名"的格式进行填写
+注意：此字段可能返回 null，表示取不到有效值。
         :type Table: str
         :param _Resource: 该SQLServer在连接管理内的Id
+注意：此字段可能返回 null，表示取不到有效值。
         :type Resource: str
         :param _SnapshotMode: 复制存量信息(schema_only增量, initial全量)，默认为initial
+注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotMode: str
         """
         self._Database = None
@@ -23581,14 +24003,19 @@ class ScfParam(AbstractModel):
     def __init__(self):
         r"""
         :param _FunctionName: SCF云函数函数名
+注意：此字段可能返回 null，表示取不到有效值。
         :type FunctionName: str
         :param _Namespace: SCF云函数命名空间, 默认为default
+注意：此字段可能返回 null，表示取不到有效值。
         :type Namespace: str
         :param _Qualifier: SCF云函数版本及别名, 默认为$DEFAULT
+注意：此字段可能返回 null，表示取不到有效值。
         :type Qualifier: str
         :param _BatchSize: 每批最大发送消息数, 默认为1000
+注意：此字段可能返回 null，表示取不到有效值。
         :type BatchSize: int
         :param _MaxRetries: SCF调用失败后重试次数, 默认为5
+注意：此字段可能返回 null，表示取不到有效值。
         :type MaxRetries: int
         """
         self._FunctionName = None
@@ -24100,14 +24527,19 @@ class TdwParam(AbstractModel):
     def __init__(self):
         r"""
         :param _Bid: Tdw的bid
+注意：此字段可能返回 null，表示取不到有效值。
         :type Bid: str
         :param _Tid: Tdw的tid
+注意：此字段可能返回 null，表示取不到有效值。
         :type Tid: str
         :param _IsDomestic: 默认true
+注意：此字段可能返回 null，表示取不到有效值。
         :type IsDomestic: bool
         :param _TdwHost: TDW地址，默认tl-tdbank-tdmanager.tencent-distribute.com
+注意：此字段可能返回 null，表示取不到有效值。
         :type TdwHost: str
         :param _TdwPort: TDW端口，默认8099
+注意：此字段可能返回 null，表示取不到有效值。
         :type TdwPort: int
         """
         self._Bid = None
