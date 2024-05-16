@@ -611,13 +611,13 @@ class AttachPolicyInfo(AbstractModel):
         :param _Remark: 策略备注
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
-        :param _OperateOwnerUin: 策略关联操作者主帐号
+        :param _OperateOwnerUin: 策略关联操作者主账号
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperateOwnerUin: str
-        :param _OperateUin: 策略关联操作者ID，如果UinType为0表示子帐号Uin，如果UinType为1表示角色ID
+        :param _OperateUin: 策略关联操作者ID，如果UinType为0表示子账号Uin，如果UinType为1表示角色ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperateUin: str
-        :param _OperateUinType: UinType为0表示OperateUin字段是子帐号Uin，如果UinType为1表示OperateUin字段是角色ID
+        :param _OperateUinType: UinType为0表示OperateUin字段是子账号Uin，如果UinType为1表示OperateUin字段是角色ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperateUinType: int
         :param _Deactived: 是否已下线
@@ -1545,19 +1545,19 @@ class CreateOIDCConfigRequest(AbstractModel):
         r"""
         :param _IdentityUrl: 身份提供商URL
         :type IdentityUrl: str
-        :param _IdentityKey: 签名公钥，需要base64
-        :type IdentityKey: str
         :param _ClientId: 客户端ID
         :type ClientId: list of str
         :param _Name: 名称
         :type Name: str
+        :param _IdentityKey: 签名公钥，需要base64
+        :type IdentityKey: str
         :param _Description: 描述
         :type Description: str
         """
         self._IdentityUrl = None
-        self._IdentityKey = None
         self._ClientId = None
         self._Name = None
+        self._IdentityKey = None
         self._Description = None
 
     @property
@@ -1567,14 +1567,6 @@ class CreateOIDCConfigRequest(AbstractModel):
     @IdentityUrl.setter
     def IdentityUrl(self, IdentityUrl):
         self._IdentityUrl = IdentityUrl
-
-    @property
-    def IdentityKey(self):
-        return self._IdentityKey
-
-    @IdentityKey.setter
-    def IdentityKey(self, IdentityKey):
-        self._IdentityKey = IdentityKey
 
     @property
     def ClientId(self):
@@ -1593,6 +1585,14 @@ class CreateOIDCConfigRequest(AbstractModel):
         self._Name = Name
 
     @property
+    def IdentityKey(self):
+        return self._IdentityKey
+
+    @IdentityKey.setter
+    def IdentityKey(self, IdentityKey):
+        self._IdentityKey = IdentityKey
+
+    @property
     def Description(self):
         return self._Description
 
@@ -1603,9 +1603,9 @@ class CreateOIDCConfigRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._IdentityUrl = params.get("IdentityUrl")
-        self._IdentityKey = params.get("IdentityKey")
         self._ClientId = params.get("ClientId")
         self._Name = params.get("Name")
+        self._IdentityKey = params.get("IdentityKey")
         self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -2183,8 +2183,6 @@ class CreateUserOIDCConfigRequest(AbstractModel):
         :param _IdentityUrl: 身份提供商URL。OpenID Connect身份提供商标识。
 对应企业IdP提供的Openid-configuration中"issuer"字段的值。
         :type IdentityUrl: str
-        :param _IdentityKey: 签名公钥，需要base64_encode。验证OpenID Connect身份提供商ID Token签名的公钥。为了您的帐号安全，建议您定期轮换签名公钥。
-        :type IdentityKey: str
         :param _ClientId: 客户端ID，在OpenID Connect身份提供商注册的客户端ID。
         :type ClientId: str
         :param _AuthorizationEndpoint: 授权请求Endpoint，OpenID Connect身份提供商授权地址。对应企业IdP提供的Openid-configuration中"authorization_endpoint"字段的值。
@@ -2195,18 +2193,20 @@ class CreateUserOIDCConfigRequest(AbstractModel):
         :type ResponseMode: str
         :param _MappingFiled: 映射字段名称。IdP的id_token中哪一个字段映射到子用户的用户名，通常是sub或者name字段
         :type MappingFiled: str
+        :param _IdentityKey: 签名公钥，需要base64_encode。验证OpenID Connect身份提供商ID Token签名的公钥。为了您的账号安全，建议您定期轮换签名公钥。
+        :type IdentityKey: str
         :param _Scope: 授权请求Scope。openid; email;profile。授权请求信息范围。默认必选openid。
         :type Scope: list of str
         :param _Description: 描述
         :type Description: str
         """
         self._IdentityUrl = None
-        self._IdentityKey = None
         self._ClientId = None
         self._AuthorizationEndpoint = None
         self._ResponseType = None
         self._ResponseMode = None
         self._MappingFiled = None
+        self._IdentityKey = None
         self._Scope = None
         self._Description = None
 
@@ -2217,14 +2217,6 @@ class CreateUserOIDCConfigRequest(AbstractModel):
     @IdentityUrl.setter
     def IdentityUrl(self, IdentityUrl):
         self._IdentityUrl = IdentityUrl
-
-    @property
-    def IdentityKey(self):
-        return self._IdentityKey
-
-    @IdentityKey.setter
-    def IdentityKey(self, IdentityKey):
-        self._IdentityKey = IdentityKey
 
     @property
     def ClientId(self):
@@ -2267,6 +2259,14 @@ class CreateUserOIDCConfigRequest(AbstractModel):
         self._MappingFiled = MappingFiled
 
     @property
+    def IdentityKey(self):
+        return self._IdentityKey
+
+    @IdentityKey.setter
+    def IdentityKey(self, IdentityKey):
+        self._IdentityKey = IdentityKey
+
+    @property
     def Scope(self):
         return self._Scope
 
@@ -2285,12 +2285,12 @@ class CreateUserOIDCConfigRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._IdentityUrl = params.get("IdentityUrl")
-        self._IdentityKey = params.get("IdentityKey")
         self._ClientId = params.get("ClientId")
         self._AuthorizationEndpoint = params.get("AuthorizationEndpoint")
         self._ResponseType = params.get("ResponseType")
         self._ResponseMode = params.get("ResponseMode")
         self._MappingFiled = params.get("MappingFiled")
+        self._IdentityKey = params.get("IdentityKey")
         self._Scope = params.get("Scope")
         self._Description = params.get("Description")
         memeber_set = set(params.keys())
@@ -4367,7 +4367,7 @@ class GetCustomMFATokenInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Uin: 自定义多因子验证Token对应的帐号Id
+        :param _Uin: 自定义多因子验证Token对应的账号Id
         :type Uin: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8096,11 +8096,11 @@ class LoginActionMfaFlag(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Phone: 是否设置手机号为登陆和敏感操作安全校验方式， 1: 设置，0: 不设置
+        :param _Phone: 是否设置手机号为登录和敏感操作安全校验方式， 1: 设置，0: 不设置
         :type Phone: int
-        :param _Stoken: 是否设置软token为登陆和敏感操作安全校验方式， 1: 设置，0: 不设置
+        :param _Stoken: 是否设置软token为登录和敏感操作安全校验方式， 1: 设置，0: 不设置
         :type Stoken: int
-        :param _Wechat: 是否设置微信为登陆和敏感操作安全校验方式， 1: 设置，0: 不设置
+        :param _Wechat: 是否设置微信为登录和敏感操作安全校验方式， 1: 设置，0: 不设置
         :type Wechat: int
         """
         self._Phone = None
@@ -9963,19 +9963,19 @@ class UpdateOIDCConfigRequest(AbstractModel):
         r"""
         :param _IdentityUrl: 身份提供商URL
         :type IdentityUrl: str
-        :param _IdentityKey: 签名公钥，需要base64
-        :type IdentityKey: str
         :param _ClientId: 客户端ID
         :type ClientId: list of str
         :param _Name: 名称
         :type Name: str
+        :param _IdentityKey: 签名公钥，需要base64
+        :type IdentityKey: str
         :param _Description: 描述
         :type Description: str
         """
         self._IdentityUrl = None
-        self._IdentityKey = None
         self._ClientId = None
         self._Name = None
+        self._IdentityKey = None
         self._Description = None
 
     @property
@@ -9985,14 +9985,6 @@ class UpdateOIDCConfigRequest(AbstractModel):
     @IdentityUrl.setter
     def IdentityUrl(self, IdentityUrl):
         self._IdentityUrl = IdentityUrl
-
-    @property
-    def IdentityKey(self):
-        return self._IdentityKey
-
-    @IdentityKey.setter
-    def IdentityKey(self, IdentityKey):
-        self._IdentityKey = IdentityKey
 
     @property
     def ClientId(self):
@@ -10011,6 +10003,14 @@ class UpdateOIDCConfigRequest(AbstractModel):
         self._Name = Name
 
     @property
+    def IdentityKey(self):
+        return self._IdentityKey
+
+    @IdentityKey.setter
+    def IdentityKey(self, IdentityKey):
+        self._IdentityKey = IdentityKey
+
+    @property
     def Description(self):
         return self._Description
 
@@ -10021,9 +10021,9 @@ class UpdateOIDCConfigRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._IdentityUrl = params.get("IdentityUrl")
-        self._IdentityKey = params.get("IdentityKey")
         self._ClientId = params.get("ClientId")
         self._Name = params.get("Name")
+        self._IdentityKey = params.get("IdentityKey")
         self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -10435,8 +10435,6 @@ class UpdateUserOIDCConfigRequest(AbstractModel):
         :param _IdentityUrl: 身份提供商URL。OpenID Connect身份提供商标识。
 对应企业IdP提供的Openid-configuration中"issuer"字段的值，该URL必须以https开头，符合标准URL格式，不允许带有query参数（以?标识）、fragment片段（以#标识）和登录信息（以@标识）。
         :type IdentityUrl: str
-        :param _IdentityKey: RSA签名公钥，JWKS格式，需要进行base64_encode。验证OpenID Connect身份提供商ID Token签名的公钥。为了您的账号安全，建议您定期轮换签名公钥。
-        :type IdentityKey: str
         :param _ClientId: 客户端ID，在OpenID Connect身份提供商注册的客户端ID，允许英文字母、数字、特殊字符.-_:/，不能以特殊字符.-_:/开头，单个客户端ID最大64个字符。
         :type ClientId: str
         :param _AuthorizationEndpoint: 授权请求Endpoint，OpenID Connect身份提供商授权地址。对应企业IdP提供的Openid-configuration中"authorization_endpoint"字段的值，该URL必须以https开头，符合标准URL格式，不允许带有query参数（以?标识）、fragment片段（以#标识）和登录信息（以@标识）。
@@ -10445,20 +10443,22 @@ class UpdateUserOIDCConfigRequest(AbstractModel):
         :type ResponseType: str
         :param _ResponseMode: 授权请求Response mode。授权请求返回模式，有form_post和fragment两种可选模式，推荐选择form_post模式。
         :type ResponseMode: str
-        :param _MappingFiled: 映射字段名称。IdP的id_token中哪一个字段映射到子用户的用户名，通常是sub或者name字段,仅支持英文字母、数宇、汉字、符号@、＆_[]-的组合，1-255个中文或英文字符
+        :param _MappingFiled: 映射字段名称。IdP的id_token中哪一个字段映射到子用户的用户名，通常是sub或者name字段,仅支持英文字母、数字、汉字、符号@、＆_[]-的组合，1-255个中文或英文字符
         :type MappingFiled: str
+        :param _IdentityKey: RSA签名公钥，JWKS格式，需要进行base64_encode。验证OpenID Connect身份提供商ID Token签名的公钥。为了您的账号安全，建议您定期轮换签名公钥。
+        :type IdentityKey: str
         :param _Scope: 授权请求Scope。有openid; email;profile三种。代表授权请求信息范围openid表示请求访问用户的身份信息，email表示请求访问用户的电子邮件地址，profile表示请求访问用户的基本信息。默认必选openid。
         :type Scope: list of str
         :param _Description: 描述，长度为1~255个英文或中文字符，默认值为空。
         :type Description: str
         """
         self._IdentityUrl = None
-        self._IdentityKey = None
         self._ClientId = None
         self._AuthorizationEndpoint = None
         self._ResponseType = None
         self._ResponseMode = None
         self._MappingFiled = None
+        self._IdentityKey = None
         self._Scope = None
         self._Description = None
 
@@ -10469,14 +10469,6 @@ class UpdateUserOIDCConfigRequest(AbstractModel):
     @IdentityUrl.setter
     def IdentityUrl(self, IdentityUrl):
         self._IdentityUrl = IdentityUrl
-
-    @property
-    def IdentityKey(self):
-        return self._IdentityKey
-
-    @IdentityKey.setter
-    def IdentityKey(self, IdentityKey):
-        self._IdentityKey = IdentityKey
 
     @property
     def ClientId(self):
@@ -10519,6 +10511,14 @@ class UpdateUserOIDCConfigRequest(AbstractModel):
         self._MappingFiled = MappingFiled
 
     @property
+    def IdentityKey(self):
+        return self._IdentityKey
+
+    @IdentityKey.setter
+    def IdentityKey(self, IdentityKey):
+        self._IdentityKey = IdentityKey
+
+    @property
     def Scope(self):
         return self._Scope
 
@@ -10537,12 +10537,12 @@ class UpdateUserOIDCConfigRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._IdentityUrl = params.get("IdentityUrl")
-        self._IdentityKey = params.get("IdentityKey")
         self._ClientId = params.get("ClientId")
         self._AuthorizationEndpoint = params.get("AuthorizationEndpoint")
         self._ResponseType = params.get("ResponseType")
         self._ResponseMode = params.get("ResponseMode")
         self._MappingFiled = params.get("MappingFiled")
+        self._IdentityKey = params.get("IdentityKey")
         self._Scope = params.get("Scope")
         self._Description = params.get("Description")
         memeber_set = set(params.keys())

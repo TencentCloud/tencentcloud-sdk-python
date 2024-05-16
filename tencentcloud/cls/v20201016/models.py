@@ -4627,11 +4627,11 @@ class CreateCosRechargeRequest(AbstractModel):
         :type Bucket: str
         :param _BucketRegion: COS存储桶所在地域，详见产品支持的[地域列表](https://cloud.tencent.com/document/product/436/6224)。
         :type BucketRegion: str
-        :param _Prefix: COS文件所在文件夹的前缀
-        :type Prefix: str
         :param _LogType: 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表单行全文；
 默认为minimalist_log
         :type LogType: str
+        :param _Prefix: COS文件所在文件夹的前缀。默认为空，投递存储桶下所有的文件。
+        :type Prefix: str
         :param _Compress: supported: "", "gzip", "lzop", "snappy"; 默认空
         :type Compress: str
         :param _ExtractRuleInfo: 提取规则，如果设置了ExtractRule，则必须设置LogType
@@ -4646,8 +4646,8 @@ class CreateCosRechargeRequest(AbstractModel):
         self._Name = None
         self._Bucket = None
         self._BucketRegion = None
-        self._Prefix = None
         self._LogType = None
+        self._Prefix = None
         self._Compress = None
         self._ExtractRuleInfo = None
         self._TaskType = None
@@ -4694,20 +4694,20 @@ class CreateCosRechargeRequest(AbstractModel):
         self._BucketRegion = BucketRegion
 
     @property
-    def Prefix(self):
-        return self._Prefix
-
-    @Prefix.setter
-    def Prefix(self, Prefix):
-        self._Prefix = Prefix
-
-    @property
     def LogType(self):
         return self._LogType
 
     @LogType.setter
     def LogType(self, LogType):
         self._LogType = LogType
+
+    @property
+    def Prefix(self):
+        return self._Prefix
+
+    @Prefix.setter
+    def Prefix(self, Prefix):
+        self._Prefix = Prefix
 
     @property
     def Compress(self):
@@ -4748,8 +4748,8 @@ class CreateCosRechargeRequest(AbstractModel):
         self._Name = params.get("Name")
         self._Bucket = params.get("Bucket")
         self._BucketRegion = params.get("BucketRegion")
-        self._Prefix = params.get("Prefix")
         self._LogType = params.get("LogType")
+        self._Prefix = params.get("Prefix")
         self._Compress = params.get("Compress")
         if params.get("ExtractRuleInfo") is not None:
             self._ExtractRuleInfo = ExtractRuleInfo()
@@ -16040,7 +16040,7 @@ class ModifyCosRechargeRequest(AbstractModel):
         :type Bucket: str
         :param _BucketRegion: COS存储桶所在地域，详见产品支持的[地域列表](https://cloud.tencent.com/document/product/436/6224)。
         :type BucketRegion: str
-        :param _Prefix: COS文件所在文件夹的前缀
+        :param _Prefix: COS文件所在文件夹的前缀。为空串时投递存储桶下所有的文件。
         :type Prefix: str
         :param _LogType: 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表单行全文； 默认为minimalist_log
         :type LogType: str
@@ -19446,7 +19446,7 @@ class SearchCosRechargeInfoRequest(AbstractModel):
         :type Bucket: str
         :param _BucketRegion: COS存储桶所在地域，详见产品支持的[地域列表](https://cloud.tencent.com/document/product/436/6224)。
         :type BucketRegion: str
-        :param _Prefix: cos文件所在文件夹的前缀
+        :param _Prefix: COS文件所在文件夹的前缀。默认为空，投递存储桶下所有的文件。
         :type Prefix: str
         :param _Compress: 压缩模式:   "", "gzip", "lzop", "snappy";   默认""
         :type Compress: str

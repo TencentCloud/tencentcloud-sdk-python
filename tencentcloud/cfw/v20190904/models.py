@@ -8070,7 +8070,7 @@ class DescribeIPStatusListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StatusList: ip状态信息
+        :param _StatusList: IP状态信息
         :type StatusList: list of IPDefendStatus
         :param _ReturnCode: 状态码
         :type ReturnCode: int

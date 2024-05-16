@@ -632,6 +632,9 @@ INVALIDZONE_MISMATCHREGION = 'InvalidZone.MismatchRegion'
 # 一个实例绑定安全组数量不能超过5个
 LIMITEXCEEDED_ASSOCIATEUSGLIMITEXCEEDED = 'LimitExceeded.AssociateUSGLimitExceeded'
 
+# 已达到可购买实例的配额上限。
+LIMITEXCEEDED_CVMINSTANCEQUOTA = 'LimitExceeded.CvmInstanceQuota'
+
 # 安全组关联云主机弹性网卡配额超限。
 LIMITEXCEEDED_CVMSVIFSPERSECGROUPLIMITEXCEEDED = 'LimitExceeded.CvmsVifsPerSecGroupLimitExceeded'
 
@@ -724,6 +727,9 @@ OPERATIONDENIED_INNERUSERPROHIBITACTION = 'OperationDenied.InnerUserProhibitActi
 
 # 实例正在执行其他操作，请稍后再试。
 OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = 'OperationDenied.InstanceOperationInProgress'
+
+# 非带宽上移用户不允许申请边缘可用区外网IP。
+OPERATIONDENIED_NOTBANDWIDTHSHIFTUPUSERAPPLYEDGEZONEEIP = 'OperationDenied.NotBandwidthShiftUpUserApplyEdgeZoneEip'
 
 # 镜像共享超过配额。
 OVERQUOTA = 'OverQuota'

@@ -2632,7 +2632,7 @@ class CreateCmqQueueRequest(AbstractModel):
         :type PollingWaitSeconds: int
         :param _VisibilityTimeout: 消息可见性超时。取值范围 1-43200 秒（即12小时内），默认值 30。
         :type VisibilityTimeout: int
-        :param _MaxMsgSize: 消息最大长度。取值范围 1024-65536 Byte（即1-64K），默认值 65536。
+        :param _MaxMsgSize: 消息最大长度。取值范围 1024-1048576 Byte（即1-1024K），默认值 1048576。
         :type MaxMsgSize: int
         :param _MsgRetentionSeconds: 消息最长未确认时间。取值范围 30-43200 秒（30秒~12小时），默认值 3600 (1 小时)。
         :type MsgRetentionSeconds: int
@@ -17165,7 +17165,7 @@ class ModifyCmqSubscriptionAttributeRequest(AbstractModel):
         r"""
         :param _TopicName: 主题名字，在单个地域同一账号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
         :type TopicName: str
-        :param _SubscriptionName: 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+        :param _SubscriptionName: 订阅名字，在单个地域同一账号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
         :type SubscriptionName: str
         :param _NotifyStrategy: 向 Endpoint 推送消息出现错误时，CMQ 推送服务器的重试策略。取值如下：
 （1）BACKOFF_RETRY，退避重试。每隔一定时间重试一次，重试够一定次数后，就把该消息丢弃，继续推送下一条消息。
@@ -25577,7 +25577,7 @@ class SendCmqMsgRequest(AbstractModel):
         :type QueueName: str
         :param _MsgContent: 消息内容
         :type MsgContent: str
-        :param _DelaySeconds: 延迟时间
+        :param _DelaySeconds: 延迟时间。单位为秒，默认值为0秒，最大不能超过队列配置的消息最长未确认时间。
         :type DelaySeconds: int
         """
         self._QueueName = None

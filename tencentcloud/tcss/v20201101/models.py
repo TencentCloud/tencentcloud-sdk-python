@@ -22480,7 +22480,7 @@ class DescribeAssetImageRegistryVulListExportRequest(AbstractModel):
         :type Filters: list of AssetFilters
         :param _ImageInfo: 镜像信息
         :type ImageInfo: :class:`tencentcloud.tcss.v20201101.models.ImageInfo`
-        :param _Id: 镜像标识Id
+        :param _Id: 必填参数，镜像唯一ID，可通过DescribeAssetImageRegistryList接口获取
         :type Id: int
         """
         self._ExportField = None
@@ -22618,7 +22618,7 @@ class DescribeAssetImageRegistryVulListRequest(AbstractModel):
         :type Filters: list of AssetFilters
         :param _ImageInfo: 镜像信息
         :type ImageInfo: :class:`tencentcloud.tcss.v20201101.models.ImageInfo`
-        :param _Id: 镜像标识Id
+        :param _Id: 必填参数，镜像唯一ID，可通过DescribeAssetImageRegistryList接口获取
         :type Id: int
         """
         self._Limit = None

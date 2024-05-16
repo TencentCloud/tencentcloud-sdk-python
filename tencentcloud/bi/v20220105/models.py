@@ -1148,6 +1148,47 @@ class CreateEmbedTokenRequest(AbstractModel):
         :type UserId: str
         :param _TicketNum: 访问次数限制，限制范围1-99999，为空则不设置访问次数限制
         :type TicketNum: int
+        :param _GlobalParam: 全局筛选参数 报表过滤条件的全局参数。 格式为JSON格式的字符串
+**目前仅支持字符类型页面参数绑定到全局参数
+**
+[
+    {
+        "ParamKey": "name",  //页面参数名称
+        "JoinType": "AND",     // 连接方式,目前仅支持AND
+        "WhereList": [
+            {
+                "Operator": "-neq",   // 操作符，参考以下说明
+                "Value": [                   //操作值，单值数组只传一个值
+                    "zZWJMD",
+                    "ZzVGHX",
+                    "湖南省",
+                    "河北省"
+                ]
+            }
+        ]
+    },
+    {
+        "ParamKey": "genderParam",
+        "JoinType": "AND",
+        "WhereList": [
+            {
+                "Operator": "-neq",
+                "Value": [
+                    "男"
+                ]
+            }
+        ]
+    }
+]
+
+
+
+Operator 目前支持
+-neq  不等于!=操作符
+-eq  等于=操作符
+-is     in操作符
+
+        :type GlobalParam: str
         """
         self._ProjectId = None
         self._PageId = None
@@ -1157,6 +1198,7 @@ class CreateEmbedTokenRequest(AbstractModel):
         self._UserCorpId = None
         self._UserId = None
         self._TicketNum = None
+        self._GlobalParam = None
 
     @property
     def ProjectId(self):
@@ -1222,6 +1264,14 @@ class CreateEmbedTokenRequest(AbstractModel):
     def TicketNum(self, TicketNum):
         self._TicketNum = TicketNum
 
+    @property
+    def GlobalParam(self):
+        return self._GlobalParam
+
+    @GlobalParam.setter
+    def GlobalParam(self, GlobalParam):
+        self._GlobalParam = GlobalParam
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -1232,6 +1282,7 @@ class CreateEmbedTokenRequest(AbstractModel):
         self._UserCorpId = params.get("UserCorpId")
         self._UserId = params.get("UserId")
         self._TicketNum = params.get("TicketNum")
+        self._GlobalParam = params.get("GlobalParam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3919,6 +3970,9 @@ class EmbedTokenInfo(AbstractModel):
         :param _TicketNum: 访问次数限制，限制范围1-99999，为空则不设置访问次数限制
 注意：此字段可能返回 null，表示取不到有效值。
         :type TicketNum: int
+        :param _GlobalParam: 全局参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GlobalParam: str
         """
         self._Id = None
         self._BIToken = None
@@ -3934,6 +3988,7 @@ class EmbedTokenInfo(AbstractModel):
         self._UserCorpId = None
         self._UserId = None
         self._TicketNum = None
+        self._GlobalParam = None
 
     @property
     def Id(self):
@@ -4047,6 +4102,14 @@ class EmbedTokenInfo(AbstractModel):
     def TicketNum(self, TicketNum):
         self._TicketNum = TicketNum
 
+    @property
+    def GlobalParam(self):
+        return self._GlobalParam
+
+    @GlobalParam.setter
+    def GlobalParam(self, GlobalParam):
+        self._GlobalParam = GlobalParam
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -4063,6 +4126,7 @@ class EmbedTokenInfo(AbstractModel):
         self._UserCorpId = params.get("UserCorpId")
         self._UserId = params.get("UserId")
         self._TicketNum = params.get("TicketNum")
+        self._GlobalParam = params.get("GlobalParam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

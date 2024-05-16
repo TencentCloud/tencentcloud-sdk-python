@@ -1062,7 +1062,9 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeCmqDeadLetterSourceQueues(self, request):
-        """枚举cmq死信队列源队列
+        """接口很久之前已删除，需下线
+
+        枚举cmq死信队列源队列
 
         :param request: Request instance for DescribeCmqDeadLetterSourceQueues.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeCmqDeadLetterSourceQueuesRequest`

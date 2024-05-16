@@ -3720,6 +3720,8 @@ class CreateConnectResourceRequest(AbstractModel):
         :type DorisConnectParam: :class:`tencentcloud.ckafka.v20190819.models.DorisConnectParam`
         :param _KafkaConnectParam: Kafka配置，Type为 KAFKA 时必填
         :type KafkaConnectParam: :class:`tencentcloud.ckafka.v20190819.models.KafkaConnectParam`
+        :param _MqttConnectParam: MQTT配置，Type为 MQTT 时必填
+        :type MqttConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MqttConnectParam`
         """
         self._ResourceName = None
         self._Type = None
@@ -3734,6 +3736,7 @@ class CreateConnectResourceRequest(AbstractModel):
         self._SQLServerConnectParam = None
         self._DorisConnectParam = None
         self._KafkaConnectParam = None
+        self._MqttConnectParam = None
 
     @property
     def ResourceName(self):
@@ -3839,6 +3842,14 @@ class CreateConnectResourceRequest(AbstractModel):
     def KafkaConnectParam(self, KafkaConnectParam):
         self._KafkaConnectParam = KafkaConnectParam
 
+    @property
+    def MqttConnectParam(self):
+        return self._MqttConnectParam
+
+    @MqttConnectParam.setter
+    def MqttConnectParam(self, MqttConnectParam):
+        self._MqttConnectParam = MqttConnectParam
+
 
     def _deserialize(self, params):
         self._ResourceName = params.get("ResourceName")
@@ -3874,6 +3885,9 @@ class CreateConnectResourceRequest(AbstractModel):
         if params.get("KafkaConnectParam") is not None:
             self._KafkaConnectParam = KafkaConnectParam()
             self._KafkaConnectParam._deserialize(params.get("KafkaConnectParam"))
+        if params.get("MqttConnectParam") is not None:
+            self._MqttConnectParam = MqttConnectParam()
+            self._MqttConnectParam._deserialize(params.get("MqttConnectParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19159,6 +19173,8 @@ class ModifyConnectResourceRequest(AbstractModel):
         :type DorisConnectParam: :class:`tencentcloud.ckafka.v20190819.models.DorisModifyConnectParam`
         :param _KafkaConnectParam: Kafka配置，Type为 KAFKA 时必填
         :type KafkaConnectParam: :class:`tencentcloud.ckafka.v20190819.models.KafkaConnectParam`
+        :param _MqttConnectParam: MQTT配置，Type为 MQTT 时必填
+        :type MqttConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MqttConnectParam`
         """
         self._ResourceId = None
         self._ResourceName = None
@@ -19175,6 +19191,7 @@ class ModifyConnectResourceRequest(AbstractModel):
         self._CtsdbConnectParam = None
         self._DorisConnectParam = None
         self._KafkaConnectParam = None
+        self._MqttConnectParam = None
 
     @property
     def ResourceId(self):
@@ -19296,6 +19313,14 @@ class ModifyConnectResourceRequest(AbstractModel):
     def KafkaConnectParam(self, KafkaConnectParam):
         self._KafkaConnectParam = KafkaConnectParam
 
+    @property
+    def MqttConnectParam(self):
+        return self._MqttConnectParam
+
+    @MqttConnectParam.setter
+    def MqttConnectParam(self, MqttConnectParam):
+        self._MqttConnectParam = MqttConnectParam
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
@@ -19335,6 +19360,9 @@ class ModifyConnectResourceRequest(AbstractModel):
         if params.get("KafkaConnectParam") is not None:
             self._KafkaConnectParam = KafkaConnectParam()
             self._KafkaConnectParam._deserialize(params.get("KafkaConnectParam"))
+        if params.get("MqttConnectParam") is not None:
+            self._MqttConnectParam = MqttConnectParam()
+            self._MqttConnectParam._deserialize(params.get("MqttConnectParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

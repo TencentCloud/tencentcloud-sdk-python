@@ -303,6 +303,52 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeEmrOverviewMetrics(self, request):
+        """查询监控概览页指标数据
+
+        :param request: Request instance for DescribeEmrOverviewMetrics.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeEmrOverviewMetricsRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeEmrOverviewMetricsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEmrOverviewMetrics", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEmrOverviewMetricsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeHBaseTableOverview(self, request):
+        """获取Hbase表级监控数据概览接口
+
+        :param request: Request instance for DescribeHBaseTableOverview.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeHBaseTableOverviewRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeHBaseTableOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHBaseTableOverview", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHBaseTableOverviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeHiveQueries(self, request):
         """获取hive查询信息
 

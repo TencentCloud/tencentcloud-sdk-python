@@ -1314,6 +1314,11 @@ def test_import_ump():
     from tencentcloud.ump.v20200918 import models
 
 
+def test_import_vcg():
+    from tencentcloud.vcg.v20240404 import vcg_client
+    from tencentcloud.vcg.v20240404 import models
+
+
 def test_import_vm():
     from tencentcloud.vm.v20200709 import vm_client
     from tencentcloud.vm.v20200709 import models
@@ -1347,6 +1352,11 @@ def test_import_vpc():
 def test_import_vrs():
     from tencentcloud.vrs.v20200824 import vrs_client
     from tencentcloud.vrs.v20200824 import models
+
+
+def test_import_vtc():
+    from tencentcloud.vtc.v20240223 import vtc_client
+    from tencentcloud.vtc.v20240223 import models
 
 
 def test_import_waf():

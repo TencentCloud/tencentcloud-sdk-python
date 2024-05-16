@@ -53319,6 +53319,8 @@ class SimpleHlsClipRequest(AbstractModel):
         :type SourceContext: str
         :param _SessionContext: 会话上下文，用于透传用户请求信息，当指定 Procedure 参数后，[任务流状态变更回调](/document/product/266/9636) 将返回该字段值，最长 1000 个字符。仅 IsPersistence 为 1 时有效。
         :type SessionContext: str
+        :param _ExtInfo: 保留字段，特殊用途时使用。 示例值：""
+        :type ExtInfo: str
         """
         self._Url = None
         self._SubAppId = None
@@ -53330,6 +53332,7 @@ class SimpleHlsClipRequest(AbstractModel):
         self._ClassId = None
         self._SourceContext = None
         self._SessionContext = None
+        self._ExtInfo = None
 
     @property
     def Url(self):
@@ -53411,6 +53414,14 @@ class SimpleHlsClipRequest(AbstractModel):
     def SessionContext(self, SessionContext):
         self._SessionContext = SessionContext
 
+    @property
+    def ExtInfo(self):
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
 
     def _deserialize(self, params):
         self._Url = params.get("Url")
@@ -53423,6 +53434,7 @@ class SimpleHlsClipRequest(AbstractModel):
         self._ClassId = params.get("ClassId")
         self._SourceContext = params.get("SourceContext")
         self._SessionContext = params.get("SessionContext")
+        self._ExtInfo = params.get("ExtInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

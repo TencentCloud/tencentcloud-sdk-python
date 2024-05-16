@@ -1157,6 +1157,52 @@ class ConfigureChcDeployVpcResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CpuTopology(AbstractModel):
+    """描述了实例CPU拓扑结构的相关信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CoreCount: 决定启用的CPU物理核心数。
+        :type CoreCount: int
+        :param _ThreadPerCore: 每核心线程数。该参数决定是否开启或关闭超线程。<br><li>1 表示关闭超线程 </li><br><li>2 表示开启超线程</li>
+ 不设置时，实例使用默认的超线程策略。开关超线程请参考文档：[开启与关闭超线程](https://cloud.tencent.com/document/product/213/103798)。
+        :type ThreadPerCore: int
+        """
+        self._CoreCount = None
+        self._ThreadPerCore = None
+
+    @property
+    def CoreCount(self):
+        return self._CoreCount
+
+    @CoreCount.setter
+    def CoreCount(self, CoreCount):
+        self._CoreCount = CoreCount
+
+    @property
+    def ThreadPerCore(self):
+        return self._ThreadPerCore
+
+    @ThreadPerCore.setter
+    def ThreadPerCore(self, ThreadPerCore):
+        self._ThreadPerCore = ThreadPerCore
+
+
+    def _deserialize(self, params):
+        self._CoreCount = params.get("CoreCount")
+        self._ThreadPerCore = params.get("ThreadPerCore")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateDisasterRecoverGroupRequest(AbstractModel):
     """CreateDisasterRecoverGroup请求参数结构体
 
@@ -16664,6 +16710,8 @@ true：发送检查请求，不会创建实例。检查项包括是否填写了�
 如果检查通过，则返回RequestId.
 false（默认）：发送正常请求，通过检查后直接创建实例
         :type DryRun: bool
+        :param _CpuTopology: 描述了实例CPU拓扑结构的相关信息。若不指定该参数，则按系统资源情况决定。
+        :type CpuTopology: :class:`tencentcloud.cvm.v20170312.models.CpuTopology`
         :param _CamRoleName: CAM角色名称。可通过[`DescribeRoleList`](https://cloud.tencent.com/document/product/598/13887)接口返回值中的`roleName`获取。
         :type CamRoleName: str
         :param _HpcClusterId: 高性能计算集群ID。若创建的实例为高性能计算实例，需指定实例放置的集群，否则不可指定。
@@ -16699,6 +16747,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         self._InstanceMarketOptions = None
         self._UserData = None
         self._DryRun = None
+        self._CpuTopology = None
         self._CamRoleName = None
         self._HpcClusterId = None
         self._LaunchTemplate = None
@@ -16883,6 +16932,14 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         self._DryRun = DryRun
 
     @property
+    def CpuTopology(self):
+        return self._CpuTopology
+
+    @CpuTopology.setter
+    def CpuTopology(self, CpuTopology):
+        self._CpuTopology = CpuTopology
+
+    @property
     def CamRoleName(self):
         return self._CamRoleName
 
@@ -16982,6 +17039,9 @@ false（默认）：发送正常请求，通过检查后直接创建实例
             self._InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
         self._UserData = params.get("UserData")
         self._DryRun = params.get("DryRun")
+        if params.get("CpuTopology") is not None:
+            self._CpuTopology = CpuTopology()
+            self._CpuTopology._deserialize(params.get("CpuTopology"))
         self._CamRoleName = params.get("CamRoleName")
         self._HpcClusterId = params.get("HpcClusterId")
         if params.get("LaunchTemplate") is not None:
