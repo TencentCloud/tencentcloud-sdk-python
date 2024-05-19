@@ -1074,15 +1074,27 @@ class CompanyApplyInfo(AbstractModel):
         :param _CorporationIdPicUrl: 法定代表人身份证正反面扫描件。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
 注意：此字段可能返回 null，表示取不到有效值。
         :type CorporationIdPicUrl: str
-        :param _BusinessScope: 业务经营范围
+        :param _NetworkCommitmentPicUrl: 安全合规使用承诺书。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
 注意：此字段可能返回 null，表示取不到有效值。
-        :type BusinessScope: str
+        :type NetworkCommitmentPicUrl: str
+        :param _IsEqualTencentCloud: 是否与腾讯云账号的资质一致,0-不一致,1-一致
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsEqualTencentCloud: int
+        :param _CorporationMobile: 法定代表人手机号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CorporationMobile: str
+        :param _CorporationMobilePicUrl: 法定代表人手机号码实名认证。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CorporationMobilePicUrl: str
+        :param _UseDescribeFileUrl: 通话话术。(支持doc、docx格式的文档不超过50MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UseDescribeFileUrl: str
+        :param _CompanyAuthLetterPicUrl: 公司授权函。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompanyAuthLetterPicUrl: str
         :param _AcceptPicUrl: 电话受理单。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
 注意：此字段可能返回 null，表示取不到有效值。
         :type AcceptPicUrl: str
-        :param _NetworkCommitmentPicUrl: 电信入网承诺书。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
-注意：此字段可能返回 null，表示取不到有效值。
-        :type NetworkCommitmentPicUrl: str
         :param _CorporationHoldingOnIdPicUrl: 法定代表人手持身份证照，申请人类型为法定代表人时必填。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
 注意：此字段可能返回 null，表示取不到有效值。
         :type CorporationHoldingOnIdPicUrl: str
@@ -1101,6 +1113,15 @@ class CompanyApplyInfo(AbstractModel):
         :param _CommissionPicUrl: 委托授权书，申请人类型为经办人时必填。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
 注意：此字段可能返回 null，表示取不到有效值。
         :type CommissionPicUrl: str
+        :param _OperatorMobile: 经办人手机号，申请人类型为经办人时必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperatorMobile: str
+        :param _OperatorEmail: 经办人邮箱，申请人类型为经办人时必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperatorEmail: str
+        :param _OperatorMobilePicUrl: 经办人手机号码实名认证，申请人类型为经办人时必填。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperatorMobilePicUrl: str
         """
         self._ApplicantType = None
         self._CompanyName = None
@@ -1109,15 +1130,22 @@ class CompanyApplyInfo(AbstractModel):
         self._CorporationName = None
         self._CorporationId = None
         self._CorporationIdPicUrl = None
-        self._BusinessScope = None
-        self._AcceptPicUrl = None
         self._NetworkCommitmentPicUrl = None
+        self._IsEqualTencentCloud = None
+        self._CorporationMobile = None
+        self._CorporationMobilePicUrl = None
+        self._UseDescribeFileUrl = None
+        self._CompanyAuthLetterPicUrl = None
+        self._AcceptPicUrl = None
         self._CorporationHoldingOnIdPicUrl = None
         self._OperatorName = None
         self._OperatorId = None
         self._OperatorIdPicUrl = None
         self._OperatorHoldingOnIdPicUrl = None
         self._CommissionPicUrl = None
+        self._OperatorMobile = None
+        self._OperatorEmail = None
+        self._OperatorMobilePicUrl = None
 
     @property
     def ApplicantType(self):
@@ -1176,12 +1204,52 @@ class CompanyApplyInfo(AbstractModel):
         self._CorporationIdPicUrl = CorporationIdPicUrl
 
     @property
-    def BusinessScope(self):
-        return self._BusinessScope
+    def NetworkCommitmentPicUrl(self):
+        return self._NetworkCommitmentPicUrl
 
-    @BusinessScope.setter
-    def BusinessScope(self, BusinessScope):
-        self._BusinessScope = BusinessScope
+    @NetworkCommitmentPicUrl.setter
+    def NetworkCommitmentPicUrl(self, NetworkCommitmentPicUrl):
+        self._NetworkCommitmentPicUrl = NetworkCommitmentPicUrl
+
+    @property
+    def IsEqualTencentCloud(self):
+        return self._IsEqualTencentCloud
+
+    @IsEqualTencentCloud.setter
+    def IsEqualTencentCloud(self, IsEqualTencentCloud):
+        self._IsEqualTencentCloud = IsEqualTencentCloud
+
+    @property
+    def CorporationMobile(self):
+        return self._CorporationMobile
+
+    @CorporationMobile.setter
+    def CorporationMobile(self, CorporationMobile):
+        self._CorporationMobile = CorporationMobile
+
+    @property
+    def CorporationMobilePicUrl(self):
+        return self._CorporationMobilePicUrl
+
+    @CorporationMobilePicUrl.setter
+    def CorporationMobilePicUrl(self, CorporationMobilePicUrl):
+        self._CorporationMobilePicUrl = CorporationMobilePicUrl
+
+    @property
+    def UseDescribeFileUrl(self):
+        return self._UseDescribeFileUrl
+
+    @UseDescribeFileUrl.setter
+    def UseDescribeFileUrl(self, UseDescribeFileUrl):
+        self._UseDescribeFileUrl = UseDescribeFileUrl
+
+    @property
+    def CompanyAuthLetterPicUrl(self):
+        return self._CompanyAuthLetterPicUrl
+
+    @CompanyAuthLetterPicUrl.setter
+    def CompanyAuthLetterPicUrl(self, CompanyAuthLetterPicUrl):
+        self._CompanyAuthLetterPicUrl = CompanyAuthLetterPicUrl
 
     @property
     def AcceptPicUrl(self):
@@ -1190,14 +1258,6 @@ class CompanyApplyInfo(AbstractModel):
     @AcceptPicUrl.setter
     def AcceptPicUrl(self, AcceptPicUrl):
         self._AcceptPicUrl = AcceptPicUrl
-
-    @property
-    def NetworkCommitmentPicUrl(self):
-        return self._NetworkCommitmentPicUrl
-
-    @NetworkCommitmentPicUrl.setter
-    def NetworkCommitmentPicUrl(self, NetworkCommitmentPicUrl):
-        self._NetworkCommitmentPicUrl = NetworkCommitmentPicUrl
 
     @property
     def CorporationHoldingOnIdPicUrl(self):
@@ -1247,6 +1307,30 @@ class CompanyApplyInfo(AbstractModel):
     def CommissionPicUrl(self, CommissionPicUrl):
         self._CommissionPicUrl = CommissionPicUrl
 
+    @property
+    def OperatorMobile(self):
+        return self._OperatorMobile
+
+    @OperatorMobile.setter
+    def OperatorMobile(self, OperatorMobile):
+        self._OperatorMobile = OperatorMobile
+
+    @property
+    def OperatorEmail(self):
+        return self._OperatorEmail
+
+    @OperatorEmail.setter
+    def OperatorEmail(self, OperatorEmail):
+        self._OperatorEmail = OperatorEmail
+
+    @property
+    def OperatorMobilePicUrl(self):
+        return self._OperatorMobilePicUrl
+
+    @OperatorMobilePicUrl.setter
+    def OperatorMobilePicUrl(self, OperatorMobilePicUrl):
+        self._OperatorMobilePicUrl = OperatorMobilePicUrl
+
 
     def _deserialize(self, params):
         self._ApplicantType = params.get("ApplicantType")
@@ -1256,15 +1340,22 @@ class CompanyApplyInfo(AbstractModel):
         self._CorporationName = params.get("CorporationName")
         self._CorporationId = params.get("CorporationId")
         self._CorporationIdPicUrl = params.get("CorporationIdPicUrl")
-        self._BusinessScope = params.get("BusinessScope")
-        self._AcceptPicUrl = params.get("AcceptPicUrl")
         self._NetworkCommitmentPicUrl = params.get("NetworkCommitmentPicUrl")
+        self._IsEqualTencentCloud = params.get("IsEqualTencentCloud")
+        self._CorporationMobile = params.get("CorporationMobile")
+        self._CorporationMobilePicUrl = params.get("CorporationMobilePicUrl")
+        self._UseDescribeFileUrl = params.get("UseDescribeFileUrl")
+        self._CompanyAuthLetterPicUrl = params.get("CompanyAuthLetterPicUrl")
+        self._AcceptPicUrl = params.get("AcceptPicUrl")
         self._CorporationHoldingOnIdPicUrl = params.get("CorporationHoldingOnIdPicUrl")
         self._OperatorName = params.get("OperatorName")
         self._OperatorId = params.get("OperatorId")
         self._OperatorIdPicUrl = params.get("OperatorIdPicUrl")
         self._OperatorHoldingOnIdPicUrl = params.get("OperatorHoldingOnIdPicUrl")
         self._CommissionPicUrl = params.get("CommissionPicUrl")
+        self._OperatorMobile = params.get("OperatorMobile")
+        self._OperatorEmail = params.get("OperatorEmail")
+        self._OperatorMobilePicUrl = params.get("OperatorMobilePicUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1302,6 +1393,9 @@ class CompanyStateInfo(AbstractModel):
         :param _BusinessId: 公司统一社会信用代码
 注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessId: str
+        :param _ModifyTime: 修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: int
         """
         self._Id = None
         self._CompanyName = None
@@ -1310,6 +1404,7 @@ class CompanyStateInfo(AbstractModel):
         self._CheckMsg = None
         self._State = None
         self._BusinessId = None
+        self._ModifyTime = None
 
     @property
     def Id(self):
@@ -1367,6 +1462,14 @@ class CompanyStateInfo(AbstractModel):
     def BusinessId(self, BusinessId):
         self._BusinessId = BusinessId
 
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -1376,6 +1479,7 @@ class CompanyStateInfo(AbstractModel):
         self._CheckMsg = params.get("CheckMsg")
         self._State = params.get("State")
         self._BusinessId = params.get("BusinessId")
+        self._ModifyTime = params.get("ModifyTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

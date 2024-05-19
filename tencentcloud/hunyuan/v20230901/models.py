@@ -70,6 +70,13 @@ class ChatCompletionsRequest(AbstractModel):
 2. 默认 1.0，取值区间为 [0.0, 2.0]。
 3. 非必要不建议使用，不合理的取值会影响效果。
         :type Temperature: float
+        :param _EnableEnhancement: 功能增强（如搜索）开关。
+说明：
+1. 仅 hunyuan-pro 模型可用，其它版本不生效。
+2. 未传值时默认打开开关。
+3. 关闭时将直接由主模型生成回复内容，可以降低响应时延（对于流式输出时的首字时延尤为明显）。但在少数场景里，回复效果可能会下降。
+4. 安全审核能力不属于功能增强范围，不受此字段影响。
+        :type EnableEnhancement: bool
         """
         self._Model = None
         self._Messages = None
@@ -77,6 +84,7 @@ class ChatCompletionsRequest(AbstractModel):
         self._StreamModeration = None
         self._TopP = None
         self._Temperature = None
+        self._EnableEnhancement = None
 
     @property
     def Model(self):
@@ -126,6 +134,14 @@ class ChatCompletionsRequest(AbstractModel):
     def Temperature(self, Temperature):
         self._Temperature = Temperature
 
+    @property
+    def EnableEnhancement(self):
+        return self._EnableEnhancement
+
+    @EnableEnhancement.setter
+    def EnableEnhancement(self, EnableEnhancement):
+        self._EnableEnhancement = EnableEnhancement
+
 
     def _deserialize(self, params):
         self._Model = params.get("Model")
@@ -139,6 +155,7 @@ class ChatCompletionsRequest(AbstractModel):
         self._StreamModeration = params.get("StreamModeration")
         self._TopP = params.get("TopP")
         self._Temperature = params.get("Temperature")
+        self._EnableEnhancement = params.get("EnableEnhancement")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
