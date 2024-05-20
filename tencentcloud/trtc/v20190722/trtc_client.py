@@ -129,6 +129,29 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAITranscription(self, request):
+        """查询AI转录状态
+
+        :param request: Request instance for DescribeAITranscription.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeAITranscriptionRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeAITranscriptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAITranscription", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAITranscriptionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCallDetailInfo(self, request):
         """查询指定时间内的用户列表及用户通话质量数据，最大可查询14天内数据。DataType 不为null，查询起止时间不超过1个小时，查询用户不超过6个，支持跨天查询。DataType为null时，查询起止时间不超过4个小时， 默认查询6个用户，同时支持每页查询100以内用户个数（PageSize不超过100）。接口用于查询质量问题，不推荐作为计费使用。（同老接口DescribeCallDetail）
         **注意**：
@@ -945,6 +968,29 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def StartAITranscription(self, request):
+        """这个接口调用后，后台会启动机器人，实时进行语音识别并下发字幕和会议记录。
+
+        :param request: Request instance for StartAITranscription.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.StartAITranscriptionRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.StartAITranscriptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartAITranscription", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartAITranscriptionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StartMCUMixTranscode(self, request):
         """接口说明：启动云端混流，并指定混流画面中各路画面的布局位置。
 
@@ -1198,6 +1244,29 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def StopAITranscription(self, request):
+        """停止AI转录
+
+        :param request: Request instance for StopAITranscription.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.StopAITranscriptionRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.StopAITranscriptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopAITranscription", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopAITranscriptionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StopMCUMixTranscode(self, request):
         """接口说明：结束云端混流
 
@@ -1304,6 +1373,29 @@ class TrtcClient(AbstractClient):
             body = self.call("StopWebRecord", params, headers=headers)
             response = json.loads(body)
             model = models.StopWebRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SummarizeTranscription(self, request):
+        """对转录的文本进行总结
+
+        :param request: Request instance for SummarizeTranscription.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.SummarizeTranscriptionRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.SummarizeTranscriptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SummarizeTranscription", params, headers=headers)
+            response = json.loads(body)
+            model = models.SummarizeTranscriptionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

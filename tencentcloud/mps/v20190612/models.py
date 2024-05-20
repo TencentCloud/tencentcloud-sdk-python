@@ -1367,7 +1367,7 @@ class AiAnalysisResult(AbstractModel):
 <li>Tag：智能标签</li>
 <li>FrameTag：智能按帧标签</li>
 <li>Highlight：智能精彩集锦</li>
-<li>DeLogo：智能去水印</li>
+<li>DeLogo：智能擦除</li>
 <li>Description：大模型摘要</li>
         :type Type: str
         :param _ClassificationTask: 视频内容分析智能分类任务的查询结果，当任务类型为 Classification 时有效。
@@ -1385,7 +1385,7 @@ class AiAnalysisResult(AbstractModel):
         :param _HighlightTask: 视频内容分析集锦任务的查询结果，当任务类型为 Highlight时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HighlightTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHighlightResult`
-        :param _DeLogoTask: 视频内容分析去水印任务的查询结果，当任务类型为 DeLogo 时有效。
+        :param _DeLogoTask: 视频内容分析智能擦除任务的查询结果，当任务类型为 DeLogo 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeLogoTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDelLogoResult`
         :param _HeadTailTask: 视频内容分析片头片尾任务的查询结果，当任务类型为 HeadTailRecognition 时有效。
@@ -1867,13 +1867,13 @@ class AiAnalysisTaskCoverResult(AbstractModel):
 
 
 class AiAnalysisTaskDelLogoInput(AbstractModel):
-    """智能去水印任务输入类型
+    """智能擦除任务输入类型
 
     """
 
     def __init__(self):
         r"""
-        :param _Definition: 视频智能去水印模板 ID。
+        :param _Definition: 视频智能擦除模板 ID。
         :type Definition: int
         """
         self._Definition = None
@@ -1900,15 +1900,15 @@ class AiAnalysisTaskDelLogoInput(AbstractModel):
 
 
 class AiAnalysisTaskDelLogoOutput(AbstractModel):
-    """智能去水印结果信息
+    """智能擦除结果信息
 
     """
 
     def __init__(self):
         r"""
-        :param _Path: 去水印后文件的路径。
+        :param _Path: 擦除后文件的路径。
         :type Path: str
-        :param _OutputStorage: 去水印后文件的存储位置。
+        :param _OutputStorage: 擦除后文件的存储位置。
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         self._Path = None
@@ -1947,7 +1947,7 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
 
 
 class AiAnalysisTaskDelLogoResult(AbstractModel):
-    """智能去水印结果类型
+    """智能擦除结果类型
 
     """
 
@@ -1959,9 +1959,9 @@ class AiAnalysisTaskDelLogoResult(AbstractModel):
         :type ErrCode: int
         :param _Message: 错误信息。
         :type Message: str
-        :param _Input: 智能去水印任务输入。
+        :param _Input: 智能擦除任务输入。
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDelLogoInput`
-        :param _Output: 智能去水印任务输出。
+        :param _Output: 智能擦除任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDelLogoOutput`
         """

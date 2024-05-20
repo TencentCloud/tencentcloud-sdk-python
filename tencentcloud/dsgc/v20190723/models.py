@@ -948,7 +948,7 @@ class AssessmentTask(AbstractModel):
 
 
 class AssessmentTemplate(AbstractModel):
-    """DSPA评估模版
+    """DSPA评估模板
 
     """
 
@@ -3055,13 +3055,13 @@ class CreateDSPAAssessmentRiskTemplateRequest(AbstractModel):
         r"""
         :param _DspaId: dspa实例id
         :type DspaId: str
-        :param _TemplateName: 模版名称
+        :param _TemplateName: 模板名称
         :type TemplateName: str
         :param _RiskLevelId: 风险等级id
         :type RiskLevelId: int
         :param _RiskIdList: 风险id列表
         :type RiskIdList: list of int
-        :param _TemplateDescription: 模版描述
+        :param _TemplateDescription: 模板描述
         :type TemplateDescription: str
         """
         self._DspaId = None
@@ -10796,12 +10796,7 @@ class DescribeDSPAAssessmentTemplatesRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 结果集个数限制。默认为20，最大值为100
         :type Limit: int
-        :param _Filters: 过滤项。
-支持模糊搜索：（TemplateId，TemplateName）
-支持过滤：
-Source：模版来源，system / user
-UseType：模版类型，auto，semi-auto，law等
-Status：模版启用状态，draft / launched
+        :param _Filters: 过滤项。支持模糊搜索：（TemplateId，TemplateName）支持过滤：Source：模板来源，system / userUseType：模板类型，auto，semi-auto，law等Status：模板启用状态，draft / launched
         :type Filters: list of DspaAssessmentFilter
         """
         self._DspaId = None

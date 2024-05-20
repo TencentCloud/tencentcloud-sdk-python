@@ -18849,8 +18849,18 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         :type IssueDate: str
         :param _ExpirationDate: 泰文到期日期
         :type ExpirationDate: str
+        :param _EnIssueDate: 英文签发日期
+        :type EnIssueDate: str
+        :param _EnExpirationDate: 英文到期日期
+        :type EnExpirationDate: str
         :param _Birthday: 泰文出生日期
         :type Birthday: str
+        :param _EnBirthday: 英文出生日期
+        :type EnBirthday: str
+        :param _Religion: 宗教信仰
+        :type Religion: str
+        :param _SerialNumber: 序列号
+        :type SerialNumber: str
         :param _Address: 地址
         :type Address: str
         :param _PortraitImage: 证件人像照片抠取
@@ -18872,7 +18882,12 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         self._EnLastName = None
         self._IssueDate = None
         self._ExpirationDate = None
+        self._EnIssueDate = None
+        self._EnExpirationDate = None
         self._Birthday = None
+        self._EnBirthday = None
+        self._Religion = None
+        self._SerialNumber = None
         self._Address = None
         self._PortraitImage = None
         self._WarnCardInfos = None
@@ -18927,12 +18942,52 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         self._ExpirationDate = ExpirationDate
 
     @property
+    def EnIssueDate(self):
+        return self._EnIssueDate
+
+    @EnIssueDate.setter
+    def EnIssueDate(self, EnIssueDate):
+        self._EnIssueDate = EnIssueDate
+
+    @property
+    def EnExpirationDate(self):
+        return self._EnExpirationDate
+
+    @EnExpirationDate.setter
+    def EnExpirationDate(self, EnExpirationDate):
+        self._EnExpirationDate = EnExpirationDate
+
+    @property
     def Birthday(self):
         return self._Birthday
 
     @Birthday.setter
     def Birthday(self, Birthday):
         self._Birthday = Birthday
+
+    @property
+    def EnBirthday(self):
+        return self._EnBirthday
+
+    @EnBirthday.setter
+    def EnBirthday(self, EnBirthday):
+        self._EnBirthday = EnBirthday
+
+    @property
+    def Religion(self):
+        return self._Religion
+
+    @Religion.setter
+    def Religion(self, Religion):
+        self._Religion = Religion
+
+    @property
+    def SerialNumber(self):
+        return self._SerialNumber
+
+    @SerialNumber.setter
+    def SerialNumber(self, SerialNumber):
+        self._SerialNumber = SerialNumber
 
     @property
     def Address(self):
@@ -18974,7 +19029,12 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         self._EnLastName = params.get("EnLastName")
         self._IssueDate = params.get("IssueDate")
         self._ExpirationDate = params.get("ExpirationDate")
+        self._EnIssueDate = params.get("EnIssueDate")
+        self._EnExpirationDate = params.get("EnExpirationDate")
         self._Birthday = params.get("Birthday")
+        self._EnBirthday = params.get("EnBirthday")
+        self._Religion = params.get("Religion")
+        self._SerialNumber = params.get("SerialNumber")
         self._Address = params.get("Address")
         self._PortraitImage = params.get("PortraitImage")
         self._WarnCardInfos = params.get("WarnCardInfos")

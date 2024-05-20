@@ -242,7 +242,8 @@ class AddSmsTemplateRequest(AbstractModel):
         :type TemplateName: str
         :param _TemplateContent: 模板内容。
         :type TemplateContent: str
-        :param _SmsType: 短信类型，0表示普通短信, 1表示营销短信。
+        :param _SmsType: 短信类型，1表示营销短信，2表示通知短信，3表示验证码短信。
+注：原“普通短信”类型模板目前仍支持提交申请，但为进一步提升短信发送质量、提高短信模板审核通过率，建议按“通知短信”类型或“验证码短信”类型申请新增模板，可参考[关于腾讯云短信模板类型优化公告](https://cloud.tencent.com/document/product/382/106171)。
         :type SmsType: int
         :param _International: 是否国际/港澳台短信：
 0：表示国内短信。
@@ -1593,7 +1594,8 @@ class ModifySmsTemplateRequest(AbstractModel):
         :type TemplateName: str
         :param _TemplateContent: 新的模板内容。
         :type TemplateContent: str
-        :param _SmsType: 短信类型，0表示普通短信, 1表示营销短信。
+        :param _SmsType: 短信类型，1表示营销短信，2表示通知短信，3表示验证码短信。
+注：原“普通短信”类型模板目前仍支持提交申请，为进一步提升短信发送质量、提高短信模板审核通过率，建议按“通知短信”类型或“验证码短信”类型申请新增模板，可参考[关于腾讯云短信模板类型优化公告](https://cloud.tencent.com/document/product/382/106171)。
         :type SmsType: int
         :param _International: 是否国际/港澳台短信：
 0：表示国内短信。

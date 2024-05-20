@@ -3016,8 +3016,21 @@ on：开启
 off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
+        :param _FallbackFormats: 当原图是 avif 且客户端 Accept 头包含 image/avif 时，直接返回原图。
+当原图是 avif 且客户端 Accept 头不包含 image/avif 时但包含 image/webp，将 avif 转 webp 格式返回。如果 Accept 头不包含 image/webp, 则转 jpeg 返回。
+
+可用的枚举值： 
+- []
+- ["webp"]
+- ["jpeg"]
+- ["webp", "jpeg"]
+
+"webp"：是否开启  avif 转 webp，"jpeg": 是否开启 avif 转 jpeg。如果 webp 和 jpeg 都开启的情况下，webp 必须在 jpeg 前面。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FallbackFormats: list of str
         """
         self._Switch = None
+        self._FallbackFormats = None
 
     @property
     def Switch(self):
@@ -3027,9 +3040,18 @@ off：关闭
     def Switch(self, Switch):
         self._Switch = Switch
 
+    @property
+    def FallbackFormats(self):
+        return self._FallbackFormats
+
+    @FallbackFormats.setter
+    def FallbackFormats(self, FallbackFormats):
+        self._FallbackFormats = FallbackFormats
+
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
+        self._FallbackFormats = params.get("FallbackFormats")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

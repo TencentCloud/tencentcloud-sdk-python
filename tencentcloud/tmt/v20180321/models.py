@@ -863,18 +863,26 @@ class SpeechTranslateRequest(AbstractModel):
 
     @property
     def Mode(self):
+        warnings.warn("parameter `Mode` is deprecated", DeprecationWarning) 
+
         return self._Mode
 
     @Mode.setter
     def Mode(self, Mode):
+        warnings.warn("parameter `Mode` is deprecated", DeprecationWarning) 
+
         self._Mode = Mode
 
     @property
     def TransType(self):
+        warnings.warn("parameter `TransType` is deprecated", DeprecationWarning) 
+
         return self._TransType
 
     @TransType.setter
     def TransType(self, TransType):
+        warnings.warn("parameter `TransType` is deprecated", DeprecationWarning) 
+
         self._TransType = TransType
 
 

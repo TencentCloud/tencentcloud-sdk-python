@@ -1044,6 +1044,88 @@ class DeletePictureResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAITranscriptionRequest(AbstractModel):
+    """DescribeAITranscription请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 唯一标识AI转录任务。
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAITranscriptionResponse(AbstractModel):
+    """DescribeAITranscription返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 起始时间。
+        :type StartTime: str
+        :param _Status: 转录任务状态。
+        :type Status: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._StartTime = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCallDetailInfoRequest(AbstractModel):
     """DescribeCallDetailInfo请求参数结构体
 
@@ -7084,6 +7166,65 @@ class QualityData(AbstractModel):
         
 
 
+class RecognizeConfig(AbstractModel):
+    """语音识别使用的配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Language: 支持的语言，目前支持语言如下：
+    Chinese = "zh"
+    Chinese_TW = "zh-TW"
+    English = "en"
+    Vietnamese = "vi"
+    Japanese = "ja"
+    Korean = "ko"
+    Indonesia = "id"
+    Thai = "th"
+    Portuguese = "pt"
+    Turkish = "tr"
+    Arabic = "ar"
+    Spanish = "es"
+    Hindi = "hi"
+    French = "fr"
+        :type Language: str
+        :param _TranslationLanguage: 选填，如果填写，则会启用翻译，不填则忽略。支持语言同Language字段。
+        :type TranslationLanguage: str
+        """
+        self._Language = None
+        self._TranslationLanguage = None
+
+    @property
+    def Language(self):
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
+    @property
+    def TranslationLanguage(self):
+        return self._TranslationLanguage
+
+    @TranslationLanguage.setter
+    def TranslationLanguage(self, TranslationLanguage):
+        self._TranslationLanguage = TranslationLanguage
+
+
+    def _deserialize(self, params):
+        self._Language = params.get("Language")
+        self._TranslationLanguage = params.get("TranslationLanguage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RecordParams(AbstractModel):
     """云端录制控制参数。
 
@@ -8038,6 +8179,128 @@ class SmallVideoLayoutParams(AbstractModel):
         
 
 
+class StartAITranscriptionRequest(AbstractModel):
+    """StartAITranscription请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，使用该sdkappid开启任务。
+        :type SdkAppId: int
+        :param _RoomId: TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，使用该roomid开启任务。
+        :type RoomId: str
+        :param _TranscriptionParams: 启动转录机器人和鉴权的参数。
+        :type TranscriptionParams: :class:`tencentcloud.trtc.v20190722.models.TranscriptionParams`
+        :param _RoomIdType: TRTC房间号的类型，0代表数字房间号，1代表字符串房间号。不填默认是数字房间号。
+        :type RoomIdType: int
+        :param _RecognizeConfig: 语音识别配置
+        :type RecognizeConfig: :class:`tencentcloud.trtc.v20190722.models.RecognizeConfig`
+        """
+        self._SdkAppId = None
+        self._RoomId = None
+        self._TranscriptionParams = None
+        self._RoomIdType = None
+        self._RecognizeConfig = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def TranscriptionParams(self):
+        return self._TranscriptionParams
+
+    @TranscriptionParams.setter
+    def TranscriptionParams(self, TranscriptionParams):
+        self._TranscriptionParams = TranscriptionParams
+
+    @property
+    def RoomIdType(self):
+        return self._RoomIdType
+
+    @RoomIdType.setter
+    def RoomIdType(self, RoomIdType):
+        self._RoomIdType = RoomIdType
+
+    @property
+    def RecognizeConfig(self):
+        return self._RecognizeConfig
+
+    @RecognizeConfig.setter
+    def RecognizeConfig(self, RecognizeConfig):
+        self._RecognizeConfig = RecognizeConfig
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
+        if params.get("TranscriptionParams") is not None:
+            self._TranscriptionParams = TranscriptionParams()
+            self._TranscriptionParams._deserialize(params.get("TranscriptionParams"))
+        self._RoomIdType = params.get("RoomIdType")
+        if params.get("RecognizeConfig") is not None:
+            self._RecognizeConfig = RecognizeConfig()
+            self._RecognizeConfig._deserialize(params.get("RecognizeConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartAITranscriptionResponse(AbstractModel):
+    """StartAITranscription返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 用于唯一标识转录任务。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class StartMCUMixTranscodeByStrRoomIdRequest(AbstractModel):
     """StartMCUMixTranscodeByStrRoomId请求参数结构体
 
@@ -8851,6 +9114,64 @@ class StartWebRecordResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class StopAITranscriptionRequest(AbstractModel):
+    """StopAITranscription请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 唯一标识转录任务。
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopAITranscriptionResponse(AbstractModel):
+    """StopAITranscription返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class StopMCUMixTranscodeByStrRoomIdRequest(AbstractModel):
     """StopMCUMixTranscodeByStrRoomId请求参数结构体
 
@@ -9393,6 +9714,37 @@ class SubscribeStreamUserIds(AbstractModel):
         
 
 
+class SummarizeTranscriptionRequest(AbstractModel):
+    """SummarizeTranscription请求参数结构体
+
+    """
+
+
+class SummarizeTranscriptionResponse(AbstractModel):
+    """SummarizeTranscription返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class TRTCDataResp(AbstractModel):
     """TRTC数据大盘/实时监控 API接口数据出参
 
@@ -9689,6 +10041,112 @@ class TimeValue(AbstractModel):
     def _deserialize(self, params):
         self._Time = params.get("Time")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TranscriptionParams(AbstractModel):
+    """AI转录参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: 转录机器人的UserId，用于进房发起转录任务。【注意】这个UserId不能与当前房间内的主播观众[UserId](https://cloud.tencent.com/document/product/647/46351#userid)重复。如果一个房间发起多个转录任务时，机器人的userid也不能相互重复，否则会中断前一个任务。需要保证转录机器人UserId在房间内唯一。
+        :type UserId: str
+        :param _UserSig: 转录机器人UserId对应的校验签名，即UserId和UserSig相当于转录机器人进房的登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
+        :type UserSig: str
+        :param _IMAdminUserId: IM[管理员账户](
+https://cloud.tencent.com/document/product/269/31999#app-.E7.AE.A1.E7.90.86.E5.91.98)，如果填写，后台下发消息会使用IM通道，而不是TRTC自定义消息。
+        :type IMAdminUserId: str
+        :param _IMAdminUserSig: IM管理员账户生成的签名，用于向特定群组发送消息。如果填写，后台下发消息会使用IM通道，而不是TRTC自定义消息。必须和IM管理员的UserId一起填写。
+        :type IMAdminUserSig: str
+        :param _MaxIdleTime: 房间内推流用户全部退出后超过MaxIdleTime秒，后台自动关闭转录任务，默认值是60s。
+        :type MaxIdleTime: int
+        :param _TranscriptionMode: 1表示机器人只订阅单个人的流，0表示机器人订阅整个房间的流，如果不填默认订阅整个房间的流。
+        :type TranscriptionMode: int
+        :param _TargetUserId: TranscriptionMode为1时必填，机器人只会拉该userid的流，忽略房间里其他用户。
+        :type TargetUserId: str
+        """
+        self._UserId = None
+        self._UserSig = None
+        self._IMAdminUserId = None
+        self._IMAdminUserSig = None
+        self._MaxIdleTime = None
+        self._TranscriptionMode = None
+        self._TargetUserId = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserSig(self):
+        return self._UserSig
+
+    @UserSig.setter
+    def UserSig(self, UserSig):
+        self._UserSig = UserSig
+
+    @property
+    def IMAdminUserId(self):
+        return self._IMAdminUserId
+
+    @IMAdminUserId.setter
+    def IMAdminUserId(self, IMAdminUserId):
+        self._IMAdminUserId = IMAdminUserId
+
+    @property
+    def IMAdminUserSig(self):
+        return self._IMAdminUserSig
+
+    @IMAdminUserSig.setter
+    def IMAdminUserSig(self, IMAdminUserSig):
+        self._IMAdminUserSig = IMAdminUserSig
+
+    @property
+    def MaxIdleTime(self):
+        return self._MaxIdleTime
+
+    @MaxIdleTime.setter
+    def MaxIdleTime(self, MaxIdleTime):
+        self._MaxIdleTime = MaxIdleTime
+
+    @property
+    def TranscriptionMode(self):
+        return self._TranscriptionMode
+
+    @TranscriptionMode.setter
+    def TranscriptionMode(self, TranscriptionMode):
+        self._TranscriptionMode = TranscriptionMode
+
+    @property
+    def TargetUserId(self):
+        return self._TargetUserId
+
+    @TargetUserId.setter
+    def TargetUserId(self, TargetUserId):
+        self._TargetUserId = TargetUserId
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        self._UserSig = params.get("UserSig")
+        self._IMAdminUserId = params.get("IMAdminUserId")
+        self._IMAdminUserSig = params.get("IMAdminUserSig")
+        self._MaxIdleTime = params.get("MaxIdleTime")
+        self._TranscriptionMode = params.get("TranscriptionMode")
+        self._TargetUserId = params.get("TargetUserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
