@@ -2644,6 +2644,10 @@ class CreateStudioProductRequest(AbstractModel):
         :type ProductDesc: str
         :param _ProjectId: 产品的项目ID
         :type ProjectId: str
+        :param _Rate: 平均传输速率
+        :type Rate: str
+        :param _Period: 期限
+        :type Period: str
         """
         self._ProductName = None
         self._CategoryId = None
@@ -2653,6 +2657,8 @@ class CreateStudioProductRequest(AbstractModel):
         self._DataProtocol = None
         self._ProductDesc = None
         self._ProjectId = None
+        self._Rate = None
+        self._Period = None
 
     @property
     def ProductName(self):
@@ -2718,6 +2724,22 @@ class CreateStudioProductRequest(AbstractModel):
     def ProjectId(self, ProjectId):
         self._ProjectId = ProjectId
 
+    @property
+    def Rate(self):
+        return self._Rate
+
+    @Rate.setter
+    def Rate(self, Rate):
+        self._Rate = Rate
+
+    @property
+    def Period(self):
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
 
     def _deserialize(self, params):
         self._ProductName = params.get("ProductName")
@@ -2728,6 +2750,8 @@ class CreateStudioProductRequest(AbstractModel):
         self._DataProtocol = params.get("DataProtocol")
         self._ProductDesc = params.get("ProductDesc")
         self._ProjectId = params.get("ProjectId")
+        self._Rate = params.get("Rate")
+        self._Period = params.get("Period")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15885,6 +15909,12 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
         :param _DeviceCount: 设备数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceCount: int
+        :param _Rate: 平均传输速率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rate: str
+        :param _Period: 有效期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Period: str
         """
         self._ProductId = None
         self._ProductName = None
@@ -15905,6 +15935,8 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
         self._CreatorNickName = None
         self._BindStrategy = None
         self._DeviceCount = None
+        self._Rate = None
+        self._Period = None
 
     @property
     def ProductId(self):
@@ -16058,6 +16090,22 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
     def DeviceCount(self, DeviceCount):
         self._DeviceCount = DeviceCount
 
+    @property
+    def Rate(self):
+        return self._Rate
+
+    @Rate.setter
+    def Rate(self, Rate):
+        self._Rate = Rate
+
+    @property
+    def Period(self):
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
@@ -16079,6 +16127,8 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
         self._CreatorNickName = params.get("CreatorNickName")
         self._BindStrategy = params.get("BindStrategy")
         self._DeviceCount = params.get("DeviceCount")
+        self._Rate = params.get("Rate")
+        self._Period = params.get("Period")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

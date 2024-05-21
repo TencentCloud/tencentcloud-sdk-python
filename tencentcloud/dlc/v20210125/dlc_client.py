@@ -1866,6 +1866,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTaskLog(self, request):
+        """本接口（DescribeTaskLog）用于获取spark 作业任务日志详情
+
+        :param request: Request instance for DescribeTaskLog.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeTaskLogRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeTaskLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTaskLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTaskLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTaskResult(self, request):
         """查询任务结果
 

@@ -3617,6 +3617,29 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DisableLaneRule(self, request):
+        """禁用泳道规则
+
+        :param request: Request instance for DisableLaneRule.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DisableLaneRuleRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DisableLaneRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisableLaneRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisableLaneRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DisableTask(self, request):
         """停用任务
 
@@ -3769,6 +3792,29 @@ class TsfClient(AbstractClient):
             body = self.call("DraftApiGroup", params, headers=headers)
             response = json.loads(body)
             model = models.DraftApiGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def EnableLaneRule(self, request):
+        """启用泳道规则
+
+        :param request: Request instance for EnableLaneRule.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.EnableLaneRuleRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.EnableLaneRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnableLaneRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnableLaneRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -2577,8 +2577,10 @@ HYBRID_PAID:
         :type Command: str
         :param _ServiceEIP: 是否开启TIONE内网访问外部，此功能仅支持后付费机型与从TIONE平台购买的预付费机型；使用从CVM选择资源组时此配置不生效。
         :type ServiceEIP: :class:`tencentcloud.tione.v20211111.models.ServiceEIP`
-        :param _CommandBase64: 服务的启动命令，以base64格式进行输入
+        :param _CommandBase64: 服务的启动命令，以base64格式进行输入，与Command同时配置时，仅当前参数生效
         :type CommandBase64: str
+        :param _ServicePort: 服务端口，仅在非内置镜像时生效，默认8501。不支持输入8501-8510,6006,9092
+        :type ServicePort: int
         """
         self._ServiceGroupId = None
         self._ServiceGroupName = None
@@ -2612,6 +2614,7 @@ HYBRID_PAID:
         self._Command = None
         self._ServiceEIP = None
         self._CommandBase64 = None
+        self._ServicePort = None
 
     @property
     def ServiceGroupId(self):
@@ -2869,6 +2872,14 @@ HYBRID_PAID:
     def CommandBase64(self, CommandBase64):
         self._CommandBase64 = CommandBase64
 
+    @property
+    def ServicePort(self):
+        return self._ServicePort
+
+    @ServicePort.setter
+    def ServicePort(self, ServicePort):
+        self._ServicePort = ServicePort
+
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
@@ -2936,6 +2947,7 @@ HYBRID_PAID:
             self._ServiceEIP = ServiceEIP()
             self._ServiceEIP._deserialize(params.get("ServiceEIP"))
         self._CommandBase64 = params.get("CommandBase64")
+        self._ServicePort = params.get("ServicePort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12550,7 +12562,7 @@ class ImageInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageType: 镜像类型：TCR为腾讯云TCR镜像; CCR为腾讯云TCR个人版镜像，PreSet为平台预置镜像
+        :param _ImageType: 镜像类型：TCR为腾讯云TCR镜像; CCR为腾讯云TCR个人版镜像，PreSet为平台预置镜像，CUSTOM为第三方自定义镜像
         :type ImageType: str
         :param _ImageUrl: 镜像地址
         :type ImageUrl: str
@@ -12569,6 +12581,9 @@ class ImageInfo(AbstractModel):
         :param _SupportDataPipeline: 是否支持数据构建
 注意：此字段可能返回 null，表示取不到有效值。
         :type SupportDataPipeline: bool
+        :param _ImageSecret: 镜像仓库用户名密码信息(仅当ImageType为CUSTOM第三方镜像的时候需要)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageSecret: :class:`tencentcloud.tione.v20211111.models.ImageSecret`
         """
         self._ImageType = None
         self._ImageUrl = None
@@ -12577,6 +12592,7 @@ class ImageInfo(AbstractModel):
         self._AllowSaveAllContent = None
         self._ImageName = None
         self._SupportDataPipeline = None
+        self._ImageSecret = None
 
     @property
     def ImageType(self):
@@ -12634,6 +12650,14 @@ class ImageInfo(AbstractModel):
     def SupportDataPipeline(self, SupportDataPipeline):
         self._SupportDataPipeline = SupportDataPipeline
 
+    @property
+    def ImageSecret(self):
+        return self._ImageSecret
+
+    @ImageSecret.setter
+    def ImageSecret(self, ImageSecret):
+        self._ImageSecret = ImageSecret
+
 
     def _deserialize(self, params):
         self._ImageType = params.get("ImageType")
@@ -12643,6 +12667,69 @@ class ImageInfo(AbstractModel):
         self._AllowSaveAllContent = params.get("AllowSaveAllContent")
         self._ImageName = params.get("ImageName")
         self._SupportDataPipeline = params.get("SupportDataPipeline")
+        if params.get("ImageSecret") is not None:
+            self._ImageSecret = ImageSecret()
+            self._ImageSecret._deserialize(params.get("ImageSecret"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageSecret(AbstractModel):
+    """自定义镜像仓库凭据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KeyId: 用于加密密码的KMS公钥ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyId: str
+        :param _Username: 用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Username: str
+        :param _Password: 密码,base64编码； 当keyId不为空时，密码是加密后的
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        """
+        self._KeyId = None
+        self._Username = None
+        self._Password = None
+
+    @property
+    def KeyId(self):
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def Username(self):
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+
+    def _deserialize(self, params):
+        self._KeyId = params.get("KeyId")
+        self._Username = params.get("Username")
+        self._Password = params.get("Password")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14835,8 +14922,10 @@ HYBRID_PAID:
         :type Command: str
         :param _ServiceEIP: 是否开启TIONE内网访问外部，此功能仅支持后付费机型与从TIONE平台购买的预付费机型；使用从CVM选择资源组时此配置不生效。
         :type ServiceEIP: :class:`tencentcloud.tione.v20211111.models.ServiceEIP`
-        :param _CommandBase64: 服务的启动命令，以base64格式进行输入
+        :param _CommandBase64: 服务的启动命令，以base64格式进行输入，与Command同时配置时，仅当前参数生效
         :type CommandBase64: str
+        :param _ServicePort: 服务端口，仅在非内置镜像时生效，默认8501。不支持输入8501-8510,6006,9092
+        :type ServicePort: int
         """
         self._ServiceId = None
         self._ModelInfo = None
@@ -14862,6 +14951,7 @@ HYBRID_PAID:
         self._Command = None
         self._ServiceEIP = None
         self._CommandBase64 = None
+        self._ServicePort = None
 
     @property
     def ServiceId(self):
@@ -15055,6 +15145,14 @@ HYBRID_PAID:
     def CommandBase64(self, CommandBase64):
         self._CommandBase64 = CommandBase64
 
+    @property
+    def ServicePort(self):
+        return self._ServicePort
+
+    @ServicePort.setter
+    def ServicePort(self, ServicePort):
+        self._ServicePort = ServicePort
+
 
     def _deserialize(self, params):
         self._ServiceId = params.get("ServiceId")
@@ -15109,6 +15207,7 @@ HYBRID_PAID:
             self._ServiceEIP = ServiceEIP()
             self._ServiceEIP._deserialize(params.get("ServiceEIP"))
         self._CommandBase64 = params.get("CommandBase64")
+        self._ServicePort = params.get("ServicePort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19908,6 +20007,9 @@ HYBRID_PAID:
         :param _ServiceEIP: 开启TIONE内网访问外部设置
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceEIP: :class:`tencentcloud.tione.v20211111.models.ServiceEIP`
+        :param _ServicePort: 服务端口，默认为8501
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServicePort: int
         """
         self._Replicas = None
         self._ImageInfo = None
@@ -19939,6 +20041,7 @@ HYBRID_PAID:
         self._InferCodeInfo = None
         self._Command = None
         self._ServiceEIP = None
+        self._ServicePort = None
 
     @property
     def Replicas(self):
@@ -20188,6 +20291,14 @@ HYBRID_PAID:
     def ServiceEIP(self, ServiceEIP):
         self._ServiceEIP = ServiceEIP
 
+    @property
+    def ServicePort(self):
+        return self._ServicePort
+
+    @ServicePort.setter
+    def ServicePort(self, ServicePort):
+        self._ServicePort = ServicePort
+
 
     def _deserialize(self, params):
         self._Replicas = params.get("Replicas")
@@ -20259,6 +20370,7 @@ HYBRID_PAID:
         if params.get("ServiceEIP") is not None:
             self._ServiceEIP = ServiceEIP()
             self._ServiceEIP._deserialize(params.get("ServiceEIP"))
+        self._ServicePort = params.get("ServicePort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

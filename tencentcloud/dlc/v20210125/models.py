@@ -13734,6 +13734,210 @@ class DescribeTablesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTaskLogRequest(AbstractModel):
+    """DescribeTaskLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 列表返回的Id
+        :type TaskId: str
+        :param _StartTime: 开始运行时间，unix时间戳（毫秒）
+        :type StartTime: int
+        :param _EndTime: 结束运行时间，unix时间戳（毫秒）
+        :type EndTime: int
+        :param _Limit: 分页大小，最大1000，配合Context一起使用
+        :type Limit: int
+        :param _Context: 下一次分页参数，第一次传空。透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。
+        :type Context: str
+        :param _Asc: 是否升序排列，true:升序排序，false:倒序，默认false，倒序排列
+        :type Asc: bool
+        :param _Filters: 预览日志的通用过滤条件
+        :type Filters: list of Filter
+        :param _BatchId: SparkSQL任务唯一ID
+        :type BatchId: str
+        """
+        self._TaskId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Limit = None
+        self._Context = None
+        self._Asc = None
+        self._Filters = None
+        self._BatchId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Context(self):
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+    @property
+    def Asc(self):
+        return self._Asc
+
+    @Asc.setter
+    def Asc(self, Asc):
+        self._Asc = Asc
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def BatchId(self):
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Limit = params.get("Limit")
+        self._Context = params.get("Context")
+        self._Asc = params.get("Asc")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._BatchId = params.get("BatchId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTaskLogResponse(AbstractModel):
+    """DescribeTaskLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Context: 下一次分页参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Context: str
+        :param _ListOver: 是否获取完结
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ListOver: bool
+        :param _Results: 日志详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Results: list of JobLogResult
+        :param _LogUrl: 日志url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogUrl: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Context = None
+        self._ListOver = None
+        self._Results = None
+        self._LogUrl = None
+        self._RequestId = None
+
+    @property
+    def Context(self):
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+    @property
+    def ListOver(self):
+        return self._ListOver
+
+    @ListOver.setter
+    def ListOver(self, ListOver):
+        self._ListOver = ListOver
+
+    @property
+    def Results(self):
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def LogUrl(self):
+        return self._LogUrl
+
+    @LogUrl.setter
+    def LogUrl(self, LogUrl):
+        self._LogUrl = LogUrl
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Context = params.get("Context")
+        self._ListOver = params.get("ListOver")
+        if params.get("Results") is not None:
+            self._Results = []
+            for item in params.get("Results"):
+                obj = JobLogResult()
+                obj._deserialize(item)
+                self._Results.append(obj)
+        self._LogUrl = params.get("LogUrl")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTaskResultRequest(AbstractModel):
     """DescribeTaskResult请求参数结构体
 
