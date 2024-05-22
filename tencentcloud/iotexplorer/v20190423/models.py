@@ -18261,6 +18261,100 @@ class UnbindProductsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class UpdateDeviceTWeCallAuthorizeStatusRequest(AbstractModel):
+    """UpdateDeviceTWeCallAuthorizeStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: TweCall授权状态：0未授权，1已授权
+        :type Status: int
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _DeviceName: 设备名
+        :type DeviceName: str
+        :param _WechatOpenId: 微信用户的openId
+        :type WechatOpenId: str
+        """
+        self._Status = None
+        self._ProductId = None
+        self._DeviceName = None
+        self._WechatOpenId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def WechatOpenId(self):
+        return self._WechatOpenId
+
+    @WechatOpenId.setter
+    def WechatOpenId(self, WechatOpenId):
+        self._WechatOpenId = WechatOpenId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._WechatOpenId = params.get("WechatOpenId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateDeviceTWeCallAuthorizeStatusResponse(AbstractModel):
+    """UpdateDeviceTWeCallAuthorizeStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class UpdateDevicesEnableStateRequest(AbstractModel):
     """UpdateDevicesEnableState请求参数结构体
 

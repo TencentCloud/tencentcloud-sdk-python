@@ -22626,10 +22626,14 @@ class PrometheusDTO(AbstractModel):
         :type SourceIp: str
         :param _SourcePort: vport
         :type SourcePort: int
+        :param _BrokerIp: broker地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BrokerIp: str
         """
         self._Type = None
         self._SourceIp = None
         self._SourcePort = None
+        self._BrokerIp = None
 
     @property
     def Type(self):
@@ -22655,11 +22659,20 @@ class PrometheusDTO(AbstractModel):
     def SourcePort(self, SourcePort):
         self._SourcePort = SourcePort
 
+    @property
+    def BrokerIp(self):
+        return self._BrokerIp
+
+    @BrokerIp.setter
+    def BrokerIp(self, BrokerIp):
+        self._BrokerIp = BrokerIp
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
         self._SourceIp = params.get("SourceIp")
         self._SourcePort = params.get("SourcePort")
+        self._BrokerIp = params.get("BrokerIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -20208,9 +20208,11 @@ class RegistrationOrganizationInfo(AbstractModel):
         :param _AdminName: 组织机构超管姓名。
 在注册流程中，必须是超管本人进行操作。
 如果法人做为超管管理组织机构,超管姓名就是法人姓名
+如果入参中传递超管授权书PowerOfAttorneys，则此参数为必填参数。
         :type AdminName: str
-        :param _AdminMobile: 组织机构超管姓名。
+        :param _AdminMobile: 组织机构超管手机号。
 在注册流程中，这个手机号必须跟操作人在电子签注册的个人手机号一致。
+如果入参中传递超管授权书PowerOfAttorneys，则此参数为必填参数
         :type AdminMobile: str
         :param _AuthorizationTypes: 可选的此企业允许的授权方式, 可以设置的方式有:
 1：上传授权书
@@ -20223,7 +20225,8 @@ class RegistrationOrganizationInfo(AbstractModel):
 `2. 如果当前的企业类型是政府/事业单位, 则只支持上传授权书+对公打款`
 `3. 如果当前操作人是法人,则是法人认证`
         :type AuthorizationTypes: list of int non-negative
-        :param _AdminIdCardNumber: 认证人身份证号
+        :param _AdminIdCardNumber: 认证人身份证号，如果入参中传递超管授权书PowerOfAttorneys，则此参数为必填参数
+
         :type AdminIdCardNumber: str
         :param _AdminIdCardType: 认证人证件类型 
 支持以下类型
@@ -20234,6 +20237,13 @@ class RegistrationOrganizationInfo(AbstractModel):
         :type AdminIdCardType: str
         :param _BusinessLicense: 营业执照正面照(PNG或JPG) base64格式, 大小不超过5M
         :type BusinessLicense: str
+        :param _PowerOfAttorneys: 授权书(PNG或JPG或PDF) base64格式, 大小不超过8M 。
+p.s. 如果上传授权书 ，需遵循以下条件
+1. 超管的信息（超管姓名，超管身份证，超管手机号）必须为必填参数。
+2. 超管的个人身份必须在电子签已经实名。
+2. 认证方式AuthorizationTypes必须只能是上传授权书方式 
+
+        :type PowerOfAttorneys: list of str
         """
         self._OrganizationName = None
         self._UniformSocialCreditCode = None
@@ -20245,6 +20255,7 @@ class RegistrationOrganizationInfo(AbstractModel):
         self._AdminIdCardNumber = None
         self._AdminIdCardType = None
         self._BusinessLicense = None
+        self._PowerOfAttorneys = None
 
     @property
     def OrganizationName(self):
@@ -20326,6 +20337,14 @@ class RegistrationOrganizationInfo(AbstractModel):
     def BusinessLicense(self, BusinessLicense):
         self._BusinessLicense = BusinessLicense
 
+    @property
+    def PowerOfAttorneys(self):
+        return self._PowerOfAttorneys
+
+    @PowerOfAttorneys.setter
+    def PowerOfAttorneys(self, PowerOfAttorneys):
+        self._PowerOfAttorneys = PowerOfAttorneys
+
 
     def _deserialize(self, params):
         self._OrganizationName = params.get("OrganizationName")
@@ -20338,6 +20357,7 @@ class RegistrationOrganizationInfo(AbstractModel):
         self._AdminIdCardNumber = params.get("AdminIdCardNumber")
         self._AdminIdCardType = params.get("AdminIdCardType")
         self._BusinessLicense = params.get("BusinessLicense")
+        self._PowerOfAttorneys = params.get("PowerOfAttorneys")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

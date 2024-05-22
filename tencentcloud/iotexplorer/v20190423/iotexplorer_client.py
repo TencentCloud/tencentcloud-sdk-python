@@ -2924,6 +2924,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def UpdateDeviceTWeCallAuthorizeStatus(self, request):
+        """更新用户对设备的TweCall授权状态
+
+        :param request: Request instance for UpdateDeviceTWeCallAuthorizeStatus.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.UpdateDeviceTWeCallAuthorizeStatusRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.UpdateDeviceTWeCallAuthorizeStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateDeviceTWeCallAuthorizeStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateDeviceTWeCallAuthorizeStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def UpdateDevicesEnableState(self, request):
         """批量禁用启用设备
 

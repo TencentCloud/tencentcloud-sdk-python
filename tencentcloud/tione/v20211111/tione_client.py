@@ -49,52 +49,6 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateBatchModelAccTasks(self, request):
-        """批量创建模型加速任务
-
-        :param request: Request instance for CreateBatchModelAccTasks.
-        :type request: :class:`tencentcloud.tione.v20211111.models.CreateBatchModelAccTasksRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.CreateBatchModelAccTasksResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateBatchModelAccTasks", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateBatchModelAccTasksResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def CreateBatchTask(self, request):
-        """创建批量预测任务
-
-        :param request: Request instance for CreateBatchTask.
-        :type request: :class:`tencentcloud.tione.v20211111.models.CreateBatchTaskRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.CreateBatchTaskResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateBatchTask", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateBatchTaskResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreateDataset(self, request):
         """创建数据集
 
@@ -164,52 +118,6 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateNotebookImage(self, request):
-        """保存镜像
-
-        :param request: Request instance for CreateNotebookImage.
-        :type request: :class:`tencentcloud.tione.v20211111.models.CreateNotebookImageRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.CreateNotebookImageResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateNotebookImage", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateNotebookImageResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def CreateOptimizedModel(self, request):
-        """保存优化模型
-
-        :param request: Request instance for CreateOptimizedModel.
-        :type request: :class:`tencentcloud.tione.v20211111.models.CreateOptimizedModelRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.CreateOptimizedModelResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateOptimizedModel", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateOptimizedModelResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreatePresignedNotebookUrl(self, request):
         """生成Notebook访问链接
 
@@ -256,52 +164,6 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateTrainingTask(self, request):
-        """创建模型训练任务
-
-        :param request: Request instance for CreateTrainingTask.
-        :type request: :class:`tencentcloud.tione.v20211111.models.CreateTrainingTaskRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.CreateTrainingTaskResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateTrainingTask", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateTrainingTaskResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DeleteBatchTask(self, request):
-        """删除批量预测任务
-
-        :param request: Request instance for DeleteBatchTask.
-        :type request: :class:`tencentcloud.tione.v20211111.models.DeleteBatchTaskRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.DeleteBatchTaskResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteBatchTask", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteBatchTaskResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DeleteDataset(self, request):
         """删除数据集
 
@@ -316,29 +178,6 @@ class TioneClient(AbstractClient):
             body = self.call("DeleteDataset", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteDatasetResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DeleteModelAccelerateTask(self, request):
-        """删除模型加速任务
-
-        :param request: Request instance for DeleteModelAccelerateTask.
-        :type request: :class:`tencentcloud.tione.v20211111.models.DeleteModelAccelerateTaskRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.DeleteModelAccelerateTaskResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteModelAccelerateTask", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteModelAccelerateTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -417,29 +256,6 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DeleteNotebookImageRecord(self, request):
-        """删除notebook镜像保存记录
-
-        :param request: Request instance for DeleteNotebookImageRecord.
-        :type request: :class:`tencentcloud.tione.v20211111.models.DeleteNotebookImageRecordRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.DeleteNotebookImageRecordResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteNotebookImageRecord", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteNotebookImageRecordResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DeleteTrainingModel(self, request):
         """删除模型
 
@@ -477,121 +293,6 @@ class TioneClient(AbstractClient):
             body = self.call("DeleteTrainingModelVersion", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteTrainingModelVersionResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DeleteTrainingTask(self, request):
-        """删除训练任务
-
-        :param request: Request instance for DeleteTrainingTask.
-        :type request: :class:`tencentcloud.tione.v20211111.models.DeleteTrainingTaskRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.DeleteTrainingTaskResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteTrainingTask", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteTrainingTaskResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeAPIConfigs(self, request):
-        """列举API
-
-        :param request: Request instance for DescribeAPIConfigs.
-        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeAPIConfigsRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeAPIConfigsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeAPIConfigs", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeAPIConfigsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeBatchTask(self, request):
-        """查询批量预测任务
-
-        :param request: Request instance for DescribeBatchTask.
-        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeBatchTaskRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeBatchTaskResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeBatchTask", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeBatchTaskResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeBatchTaskInstances(self, request):
-        """查询批量预测任务实例列表
-
-        :param request: Request instance for DescribeBatchTaskInstances.
-        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeBatchTaskInstancesRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeBatchTaskInstancesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeBatchTaskInstances", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeBatchTaskInstancesResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeBatchTasks(self, request):
-        """查询批量预测任务列表信息
-
-        :param request: Request instance for DescribeBatchTasks.
-        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeBatchTasksRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeBatchTasksResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeBatchTasks", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeBatchTasksResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -670,52 +371,6 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeBillingSpecs(self, request):
-        """本接口(DescribeBillingSpecs)用于查询计费项列表
-
-        :param request: Request instance for DescribeBillingSpecs.
-        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeBillingSpecsRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeBillingSpecsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeBillingSpecs", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeBillingSpecsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeBillingSpecsPrice(self, request):
-        """本接口(DescribeBillingSpecsPrice)用于查询按量计费计费项价格。
-
-        :param request: Request instance for DescribeBillingSpecsPrice.
-        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeBillingSpecsPriceRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeBillingSpecsPriceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeBillingSpecsPrice", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeBillingSpecsPriceResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeBuildInImages(self, request):
         """获取内置镜像列表
 
@@ -730,52 +385,6 @@ class TioneClient(AbstractClient):
             body = self.call("DescribeBuildInImages", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeBuildInImagesResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeDatasetDetailStructured(self, request):
-        """查询结构化数据集详情
-
-        :param request: Request instance for DescribeDatasetDetailStructured.
-        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeDatasetDetailStructuredRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeDatasetDetailStructuredResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeDatasetDetailStructured", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeDatasetDetailStructuredResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeDatasetDetailUnstructured(self, request):
-        """查询非结构化数据集详情
-
-        :param request: Request instance for DescribeDatasetDetailUnstructured.
-        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeDatasetDetailUnstructuredRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeDatasetDetailUnstructuredResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeDatasetDetailUnstructured", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeDatasetDetailUnstructuredResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -808,29 +417,6 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeEvents(self, request):
-        """获取任务式建模训练任务，Notebook，在线服务和批量预测任务的事件API
-
-        :param request: Request instance for DescribeEvents.
-        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeEventsRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeEventsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeEvents", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeEventsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeInferTemplates(self, request):
         """查询推理镜像模板
 
@@ -854,75 +440,6 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeLatestTrainingMetrics(self, request):
-        """查询最近上报的训练自定义指标
-
-        :param request: Request instance for DescribeLatestTrainingMetrics.
-        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeLatestTrainingMetricsRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeLatestTrainingMetricsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeLatestTrainingMetrics", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeLatestTrainingMetricsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeLogs(self, request):
-        """获取任务式建模训练任务，Notebook，在线服务和批量预测任务的日志API
-
-        :param request: Request instance for DescribeLogs.
-        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeLogsRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeLogsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeLogs", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeLogsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeModelAccEngineVersions(self, request):
-        """查询模型加速引擎版本列表
-
-        :param request: Request instance for DescribeModelAccEngineVersions.
-        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeModelAccEngineVersionsRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeModelAccEngineVersionsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeModelAccEngineVersions", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeModelAccEngineVersionsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeModelAccelerateTask(self, request):
         """查询模型优化任务详情
 
@@ -937,29 +454,6 @@ class TioneClient(AbstractClient):
             body = self.call("DescribeModelAccelerateTask", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeModelAccelerateTaskResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeModelAccelerateTasks(self, request):
-        """查询模型加速任务列表
-
-        :param request: Request instance for DescribeModelAccelerateTasks.
-        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeModelAccelerateTasksRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeModelAccelerateTasksResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeModelAccelerateTasks", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeModelAccelerateTasksResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1084,29 +578,6 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeModelServiceHistory(self, request):
-        """展示服务的历史版本
-
-        :param request: Request instance for DescribeModelServiceHistory.
-        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeModelServiceHistoryRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeModelServiceHistoryResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeModelServiceHistory", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeModelServiceHistoryResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeModelServiceHotUpdated(self, request):
         """用于查询模型服务能否开启热更新
 
@@ -1121,29 +592,6 @@ class TioneClient(AbstractClient):
             body = self.call("DescribeModelServiceHotUpdated", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeModelServiceHotUpdatedResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeModelServices(self, request):
-        """查询多个服务
-
-        :param request: Request instance for DescribeModelServices.
-        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeModelServicesRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeModelServicesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeModelServices", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeModelServicesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1176,52 +624,6 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeNotebookImageKernels(self, request):
-        """查询镜像kernel
-
-        :param request: Request instance for DescribeNotebookImageKernels.
-        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeNotebookImageKernelsRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeNotebookImageKernelsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeNotebookImageKernels", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeNotebookImageKernelsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeNotebookImageRecords(self, request):
-        """查看notebook镜像保存记录
-
-        :param request: Request instance for DescribeNotebookImageRecords.
-        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeNotebookImageRecordsRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeNotebookImageRecordsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeNotebookImageRecords", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeNotebookImageRecordsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeNotebooks(self, request):
         """Notebook列表
 
@@ -1236,52 +638,6 @@ class TioneClient(AbstractClient):
             body = self.call("DescribeNotebooks", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeNotebooksResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeTrainingFrameworks(self, request):
-        """训练框架列表
-
-        :param request: Request instance for DescribeTrainingFrameworks.
-        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeTrainingFrameworksRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeTrainingFrameworksResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeTrainingFrameworks", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeTrainingFrameworksResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeTrainingMetrics(self, request):
-        """查询训练自定义指标
-
-        :param request: Request instance for DescribeTrainingMetrics.
-        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeTrainingMetricsRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeTrainingMetricsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeTrainingMetrics", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeTrainingMetricsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1328,29 +684,6 @@ class TioneClient(AbstractClient):
             body = self.call("DescribeTrainingModelVersions", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTrainingModelVersionsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeTrainingModels(self, request):
-        """模型列表
-
-        :param request: Request instance for DescribeTrainingModels.
-        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeTrainingModelsRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeTrainingModelsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeTrainingModels", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeTrainingModelsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1452,98 +785,6 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def ModifyModelServicePartialConfig(self, request):
-        """增量更新在线推理服务的部分配置，不更新的配置项不需要传入
-
-        :param request: Request instance for ModifyModelServicePartialConfig.
-        :type request: :class:`tencentcloud.tione.v20211111.models.ModifyModelServicePartialConfigRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.ModifyModelServicePartialConfigResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyModelServicePartialConfig", params, headers=headers)
-            response = json.loads(body)
-            model = models.ModifyModelServicePartialConfigResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ModifyNotebook(self, request):
-        """修改Notebook
-
-        :param request: Request instance for ModifyNotebook.
-        :type request: :class:`tencentcloud.tione.v20211111.models.ModifyNotebookRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.ModifyNotebookResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyNotebook", params, headers=headers)
-            response = json.loads(body)
-            model = models.ModifyNotebookResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ModifyNotebookTags(self, request):
-        """修改Notebook标签
-
-        :param request: Request instance for ModifyNotebookTags.
-        :type request: :class:`tencentcloud.tione.v20211111.models.ModifyNotebookTagsRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.ModifyNotebookTagsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyNotebookTags", params, headers=headers)
-            response = json.loads(body)
-            model = models.ModifyNotebookTagsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ModifyServiceGroupWeights(self, request):
-        """更新推理服务组流量分配
-
-        :param request: Request instance for ModifyServiceGroupWeights.
-        :type request: :class:`tencentcloud.tione.v20211111.models.ModifyServiceGroupWeightsRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.ModifyServiceGroupWeightsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyServiceGroupWeights", params, headers=headers)
-            response = json.loads(body)
-            model = models.ModifyServiceGroupWeightsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def PushTrainingMetrics(self, request):
         """上报训练自定义指标
 
@@ -1558,29 +799,6 @@ class TioneClient(AbstractClient):
             body = self.call("PushTrainingMetrics", params, headers=headers)
             response = json.loads(body)
             model = models.PushTrainingMetricsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def RestartModelAccelerateTask(self, request):
-        """重启模型加速任务
-
-        :param request: Request instance for RestartModelAccelerateTask.
-        :type request: :class:`tencentcloud.tione.v20211111.models.RestartModelAccelerateTaskRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.RestartModelAccelerateTaskResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("RestartModelAccelerateTask", params, headers=headers)
-            response = json.loads(body)
-            model = models.RestartModelAccelerateTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1636,75 +854,6 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def StartTrainingTask(self, request):
-        """启动模型训练任务
-
-        :param request: Request instance for StartTrainingTask.
-        :type request: :class:`tencentcloud.tione.v20211111.models.StartTrainingTaskRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.StartTrainingTaskResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("StartTrainingTask", params, headers=headers)
-            response = json.loads(body)
-            model = models.StartTrainingTaskResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def StopBatchTask(self, request):
-        """停止批量预测任务
-
-        :param request: Request instance for StopBatchTask.
-        :type request: :class:`tencentcloud.tione.v20211111.models.StopBatchTaskRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.StopBatchTaskResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("StopBatchTask", params, headers=headers)
-            response = json.loads(body)
-            model = models.StopBatchTaskResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def StopCreatingImage(self, request):
-        """停止保存镜像
-
-        :param request: Request instance for StopCreatingImage.
-        :type request: :class:`tencentcloud.tione.v20211111.models.StopCreatingImageRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.StopCreatingImageResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("StopCreatingImage", params, headers=headers)
-            response = json.loads(body)
-            model = models.StopCreatingImageResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def StopModelAccelerateTask(self, request):
         """停止模型加速任务
 
@@ -1742,29 +891,6 @@ class TioneClient(AbstractClient):
             body = self.call("StopNotebook", params, headers=headers)
             response = json.loads(body)
             model = models.StopNotebookResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def StopTrainingTask(self, request):
-        """停止模型训练任务
-
-        :param request: Request instance for StopTrainingTask.
-        :type request: :class:`tencentcloud.tione.v20211111.models.StopTrainingTaskRequest`
-        :rtype: :class:`tencentcloud.tione.v20211111.models.StopTrainingTaskResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("StopTrainingTask", params, headers=headers)
-            response = json.loads(body)
-            model = models.StopTrainingTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
