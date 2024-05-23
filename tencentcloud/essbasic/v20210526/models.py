@@ -4743,11 +4743,14 @@ class ChannelCreatePrepareFlowResponse(AbstractModel):
         :type PrepareFlowUrl: str
         :param _PreviewFlowUrl: 合同发起后预览链接， 注意此时合同并未发起，仅只是展示效果， 有效期为5分钟
         :type PreviewFlowUrl: str
+        :param _FlowId: 发起的合同临时Id， 只有当点击进入链接，成功发起合同后， 此Id才有效
+        :type FlowId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._PrepareFlowUrl = None
         self._PreviewFlowUrl = None
+        self._FlowId = None
         self._RequestId = None
 
     @property
@@ -4767,6 +4770,14 @@ class ChannelCreatePrepareFlowResponse(AbstractModel):
         self._PreviewFlowUrl = PreviewFlowUrl
 
     @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -4778,6 +4789,7 @@ class ChannelCreatePrepareFlowResponse(AbstractModel):
     def _deserialize(self, params):
         self._PrepareFlowUrl = params.get("PrepareFlowUrl")
         self._PreviewFlowUrl = params.get("PreviewFlowUrl")
+        self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
 
 

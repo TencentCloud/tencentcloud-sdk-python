@@ -854,6 +854,29 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRedisBigKeyAnalysisTasks(self, request):
+        """查询redis大key分析任务列表。
+
+        :param request: Request instance for DescribeRedisBigKeyAnalysisTasks.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeRedisBigKeyAnalysisTasksRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeRedisBigKeyAnalysisTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRedisBigKeyAnalysisTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRedisBigKeyAnalysisTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRedisProcessList(self, request):
         """获取 Redis 实例所有 proxy 节点的实时会话详情列表。
 
@@ -1292,7 +1315,7 @@ class DbbrainClient(AbstractClient):
 
 
     def ModifyDiagDBInstanceConf(self, request):
-        """修改实例巡检开关。
+        """修改实例的配置信息。
 
         :param request: Request instance for ModifyDiagDBInstanceConf.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.ModifyDiagDBInstanceConfRequest`

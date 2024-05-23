@@ -1171,7 +1171,7 @@ class Message(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Role: 角色
+        :param _Role: 角色，可选值包括 system、user、assistant。
         :type Role: str
         :param _Content: 文本内容
         :type Content: str

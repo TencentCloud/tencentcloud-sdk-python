@@ -16431,10 +16431,19 @@ class DescribePrometheusClusterAgentsRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 用于分页
         :type Limit: int
+        :param _ClusterIds: 用于通过集群id过滤被绑定集群
+        :type ClusterIds: list of str
+        :param _ClusterTypes: 用于通过集群类型过滤被绑定集群
+        :type ClusterTypes: list of str
+        :param _ClusterName: 用于通过名称搜索被绑定集群
+        :type ClusterName: str
         """
         self._InstanceId = None
         self._Offset = None
         self._Limit = None
+        self._ClusterIds = None
+        self._ClusterTypes = None
+        self._ClusterName = None
 
     @property
     def InstanceId(self):
@@ -16460,11 +16469,38 @@ class DescribePrometheusClusterAgentsRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def ClusterIds(self):
+        return self._ClusterIds
+
+    @ClusterIds.setter
+    def ClusterIds(self, ClusterIds):
+        self._ClusterIds = ClusterIds
+
+    @property
+    def ClusterTypes(self):
+        return self._ClusterTypes
+
+    @ClusterTypes.setter
+    def ClusterTypes(self, ClusterTypes):
+        self._ClusterTypes = ClusterTypes
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._ClusterIds = params.get("ClusterIds")
+        self._ClusterTypes = params.get("ClusterTypes")
+        self._ClusterName = params.get("ClusterName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

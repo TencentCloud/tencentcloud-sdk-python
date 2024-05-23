@@ -47,3 +47,72 @@ class SvpClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSavingPlanDeduct(self, request):
+        """查询节省计划抵扣明细
+
+        :param request: Request instance for DescribeSavingPlanDeduct.
+        :type request: :class:`tencentcloud.svp.v20240125.models.DescribeSavingPlanDeductRequest`
+        :rtype: :class:`tencentcloud.svp.v20240125.models.DescribeSavingPlanDeductResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSavingPlanDeduct", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSavingPlanDeductResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSavingPlanOverview(self, request):
+        """查用当前用户明细节省计划总览查询时段内的使用情况
+
+        :param request: Request instance for DescribeSavingPlanOverview.
+        :type request: :class:`tencentcloud.svp.v20240125.models.DescribeSavingPlanOverviewRequest`
+        :rtype: :class:`tencentcloud.svp.v20240125.models.DescribeSavingPlanOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSavingPlanOverview", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSavingPlanOverviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSavingPlanUsage(self, request):
+        """查用当前用户明细节省计划查询时段内的使用情况
+
+        :param request: Request instance for DescribeSavingPlanUsage.
+        :type request: :class:`tencentcloud.svp.v20240125.models.DescribeSavingPlanUsageRequest`
+        :rtype: :class:`tencentcloud.svp.v20240125.models.DescribeSavingPlanUsageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSavingPlanUsage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSavingPlanUsageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))

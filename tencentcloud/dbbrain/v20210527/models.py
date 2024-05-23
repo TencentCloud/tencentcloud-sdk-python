@@ -4264,7 +4264,7 @@ class DescribeDiagDBInstancesRequest(AbstractModel):
         r"""
         :param _IsSupported: 是否是DBbrain支持的实例，固定传 true。
         :type IsSupported: bool
-        :param _Product: 服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"cynosdb" - 云数据库 TDSQL-C for MySQL，"dbbrain-mysql" - 自建 MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"cynosdb" - 云数据库 TDSQL-C for MySQL，"dbbrain-mysql" - 自建 MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
         :type Product: str
         :param _Offset: 分页参数，偏移量。
         :type Offset: int
@@ -5545,6 +5545,130 @@ class DescribeProxySessionKillTasksResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Tasks.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRedisBigKeyAnalysisTasksRequest(AbstractModel):
+    """DescribeRedisBigKeyAnalysisTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Product: 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
+        :type Product: str
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        :param _Limit: 查询数目，默认为20，最大值为100。
+        :type Limit: int
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        """
+        self._Product = None
+        self._InstanceId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._Product = params.get("Product")
+        self._InstanceId = params.get("InstanceId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRedisBigKeyAnalysisTasksResponse(AbstractModel):
+    """DescribeRedisBigKeyAnalysisTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 任务总数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _Tasks: 任务列表。
+        :type Tasks: list of RedisBigKeyTask
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Tasks = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Tasks(self):
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = RedisBigKeyTask()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -8791,11 +8915,15 @@ class InstanceConfs(AbstractModel):
         :param _ShardNum: 分片节点数量。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ShardNum: str
+        :param _AnalysisTopKey: 是否开启大key周期性分析，仅redis产品有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnalysisTopKey: str
         """
         self._DailyInspection = None
         self._OverviewDisplay = None
         self._KeyDelimiters = None
         self._ShardNum = None
+        self._AnalysisTopKey = None
 
     @property
     def DailyInspection(self):
@@ -8829,12 +8957,21 @@ class InstanceConfs(AbstractModel):
     def ShardNum(self, ShardNum):
         self._ShardNum = ShardNum
 
+    @property
+    def AnalysisTopKey(self):
+        return self._AnalysisTopKey
+
+    @AnalysisTopKey.setter
+    def AnalysisTopKey(self, AnalysisTopKey):
+        self._AnalysisTopKey = AnalysisTopKey
+
 
     def _deserialize(self, params):
         self._DailyInspection = params.get("DailyInspection")
         self._OverviewDisplay = params.get("OverviewDisplay")
         self._KeyDelimiters = params.get("KeyDelimiters")
         self._ShardNum = params.get("ShardNum")
+        self._AnalysisTopKey = params.get("AnalysisTopKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9948,7 +10085,7 @@ class ModifyDiagDBInstanceConfRequest(AbstractModel):
         :type InstanceConfs: :class:`tencentcloud.dbbrain.v20210527.models.InstanceConfs`
         :param _Regions: 生效实例地域，取值为"All"，代表全地域。
         :type Regions: str
-        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL。
+        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，"redis" - 云数据库 Redis。
         :type Product: str
         :param _InstanceIds: 指定更改巡检状态的实例ID。
         :type InstanceIds: list of str
@@ -11074,6 +11211,111 @@ class ReceiveUin(AbstractModel):
     def _deserialize(self, params):
         self._UinName = params.get("UinName")
         self._Uin = params.get("Uin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RedisBigKeyTask(AbstractModel):
+    """Redis大Key分析任务详情。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AsyncRequestId: 异步任务请求 ID。
+        :type AsyncRequestId: int
+        :param _CreateTime: 任务创建时间。
+        :type CreateTime: str
+        :param _StartTime: 任务开始时间。
+        :type StartTime: str
+        :param _EndTime: 任务结束时间。
+        :type EndTime: str
+        :param _TaskStatus: 任务状态。
+        :type TaskStatus: str
+        :param _Progress: 任务执行进度。
+        :type Progress: int
+        :param _ShardIds: 任务包含的分片节点序号列表。
+        :type ShardIds: list of int
+        """
+        self._AsyncRequestId = None
+        self._CreateTime = None
+        self._StartTime = None
+        self._EndTime = None
+        self._TaskStatus = None
+        self._Progress = None
+        self._ShardIds = None
+
+    @property
+    def AsyncRequestId(self):
+        return self._AsyncRequestId
+
+    @AsyncRequestId.setter
+    def AsyncRequestId(self, AsyncRequestId):
+        self._AsyncRequestId = AsyncRequestId
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def TaskStatus(self):
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def ShardIds(self):
+        return self._ShardIds
+
+    @ShardIds.setter
+    def ShardIds(self, ShardIds):
+        self._ShardIds = ShardIds
+
+
+    def _deserialize(self, params):
+        self._AsyncRequestId = params.get("AsyncRequestId")
+        self._CreateTime = params.get("CreateTime")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._TaskStatus = params.get("TaskStatus")
+        self._Progress = params.get("Progress")
+        self._ShardIds = params.get("ShardIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

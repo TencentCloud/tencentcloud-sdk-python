@@ -25843,6 +25843,7 @@ class LiveStreamAiRecognitionResultItem(AbstractModel):
 <li>AsrFullTextRecognition：语音全文识别，</li>
 <li>OcrFullTextRecognition：文本全文识别。</li>
 <li>TransTextRecognition：语音翻译。</li>
+<li>ObjectRecognition：目标检测。</li>
 <li>TagRecognition：精彩打点。</li>
         :type Type: str
         :param _FaceRecognitionResultSet: 人脸识别结果，当 Type 为
@@ -25862,6 +25863,8 @@ OcrFullTextRecognition 时有效。
         :type OcrFullTextRecognitionResultSet: list of LiveStreamOcrFullTextRecognitionResult
         :param _TransTextRecognitionResultSet: 翻译结果，当Type 为 TransTextRecognition 时有效。
         :type TransTextRecognitionResultSet: list of LiveStreamTransTextRecognitionResult
+        :param _ObjectRecognitionResultSet: 目标检测结果，当Type为 ObjectRecognition 时有效。
+        :type ObjectRecognitionResultSet: list of LiveStreamObjectRecognitionResult
         :param _TagRecognitionResultSet: 打点结果，当Type 为 TagRecognition 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagRecognitionResultSet: list of LiveStreamTagRecognitionResult
@@ -25873,6 +25876,7 @@ OcrFullTextRecognition 时有效。
         self._AsrFullTextRecognitionResultSet = None
         self._OcrFullTextRecognitionResultSet = None
         self._TransTextRecognitionResultSet = None
+        self._ObjectRecognitionResultSet = None
         self._TagRecognitionResultSet = None
 
     @property
@@ -25932,6 +25936,14 @@ OcrFullTextRecognition 时有效。
         self._TransTextRecognitionResultSet = TransTextRecognitionResultSet
 
     @property
+    def ObjectRecognitionResultSet(self):
+        return self._ObjectRecognitionResultSet
+
+    @ObjectRecognitionResultSet.setter
+    def ObjectRecognitionResultSet(self, ObjectRecognitionResultSet):
+        self._ObjectRecognitionResultSet = ObjectRecognitionResultSet
+
+    @property
     def TagRecognitionResultSet(self):
         return self._TagRecognitionResultSet
 
@@ -25978,6 +25990,12 @@ OcrFullTextRecognition 时有效。
                 obj = LiveStreamTransTextRecognitionResult()
                 obj._deserialize(item)
                 self._TransTextRecognitionResultSet.append(obj)
+        if params.get("ObjectRecognitionResultSet") is not None:
+            self._ObjectRecognitionResultSet = []
+            for item in params.get("ObjectRecognitionResultSet"):
+                obj = LiveStreamObjectRecognitionResult()
+                obj._deserialize(item)
+                self._ObjectRecognitionResultSet.append(obj)
         if params.get("TagRecognitionResultSet") is not None:
             self._TagRecognitionResultSet = []
             for item in params.get("TagRecognitionResultSet"):
@@ -26858,6 +26876,87 @@ class LiveStreamFaceRecognitionResult(AbstractModel):
         self._Type = params.get("Type")
         self._StartPtsTime = params.get("StartPtsTime")
         self._EndPtsTime = params.get("EndPtsTime")
+        self._Confidence = params.get("Confidence")
+        self._AreaCoordSet = params.get("AreaCoordSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveStreamObjectRecognitionResult(AbstractModel):
+    """直播 AI 物体识别结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 识别的物体名称。
+        :type Name: str
+        :param _StartPtsOffset: 识别片段起始的 PTS 时间，单位：秒。
+        :type StartPtsOffset: float
+        :param _EndPtsOffset: 识别片段终止的 PTS 时间，单位：秒。
+        :type EndPtsOffset: float
+        :param _Confidence: 识别片段置信度。取值：0~100。
+        :type Confidence: float
+        :param _AreaCoordSet: 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+        :type AreaCoordSet: list of int
+        """
+        self._Name = None
+        self._StartPtsOffset = None
+        self._EndPtsOffset = None
+        self._Confidence = None
+        self._AreaCoordSet = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def StartPtsOffset(self):
+        return self._StartPtsOffset
+
+    @StartPtsOffset.setter
+    def StartPtsOffset(self, StartPtsOffset):
+        self._StartPtsOffset = StartPtsOffset
+
+    @property
+    def EndPtsOffset(self):
+        return self._EndPtsOffset
+
+    @EndPtsOffset.setter
+    def EndPtsOffset(self, EndPtsOffset):
+        self._EndPtsOffset = EndPtsOffset
+
+    @property
+    def Confidence(self):
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def AreaCoordSet(self):
+        return self._AreaCoordSet
+
+    @AreaCoordSet.setter
+    def AreaCoordSet(self, AreaCoordSet):
+        self._AreaCoordSet = AreaCoordSet
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._StartPtsOffset = params.get("StartPtsOffset")
+        self._EndPtsOffset = params.get("EndPtsOffset")
         self._Confidence = params.get("Confidence")
         self._AreaCoordSet = params.get("AreaCoordSet")
         memeber_set = set(params.keys())

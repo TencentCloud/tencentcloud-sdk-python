@@ -110,6 +110,37 @@ class AddDMSPartitionsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AddOptimizerEnginesRequest(AbstractModel):
+    """AddOptimizerEngines请求参数结构体
+
+    """
+
+
+class AddOptimizerEnginesResponse(AbstractModel):
+    """AddOptimizerEngines返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class AddUsersToWorkGroupRequest(AbstractModel):
     """AddUsersToWorkGroup请求参数结构体
 
@@ -14044,6 +14075,159 @@ class DescribeTaskResultResponse(AbstractModel):
         if params.get("TaskInfo") is not None:
             self._TaskInfo = TaskResultInfo()
             self._TaskInfo._deserialize(params.get("TaskInfo"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTasksCostInfoRequest(AbstractModel):
+    """DescribeTasksCostInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 过滤条件，如下支持的过滤类型，传参Name应为以下其中一个,其中task-id支持最大50个过滤个数，其他过滤参数支持的总数不超过5个。
+task-id - String - （任务ID准确过滤）task-id取值形如：e386471f-139a-4e59-877f-50ece8135b99。
+task-state - String - （任务状态过滤）取值范围 0(初始化)， 1(运行中)， 2(成功)， -1(失败)。
+task-sql-keyword - String - （SQL语句关键字模糊过滤）取值形如：DROP TABLE。
+task-operator- string （子uin过滤）
+        :type Filters: list of Filter
+        :param _StartTime: 起始时间点，格式为yyyy-mm-dd HH:MM:SS。默认为45天前的当前时刻
+        :type StartTime: str
+        :param _EndTime: 结束时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近45天数据查询。默认为当前时刻
+        :type EndTime: str
+        :param _DataEngineName: 数据引擎名称，用于筛选
+        :type DataEngineName: str
+        :param _SearchAfter: 下一页的标识
+        :type SearchAfter: str
+        :param _PageSize: 每页的大小
+        :type PageSize: int
+        """
+        self._Filters = None
+        self._StartTime = None
+        self._EndTime = None
+        self._DataEngineName = None
+        self._SearchAfter = None
+        self._PageSize = None
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def DataEngineName(self):
+        return self._DataEngineName
+
+    @DataEngineName.setter
+    def DataEngineName(self, DataEngineName):
+        self._DataEngineName = DataEngineName
+
+    @property
+    def SearchAfter(self):
+        return self._SearchAfter
+
+    @SearchAfter.setter
+    def SearchAfter(self, SearchAfter):
+        self._SearchAfter = SearchAfter
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._DataEngineName = params.get("DataEngineName")
+        self._SearchAfter = params.get("SearchAfter")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTasksCostInfoResponse(AbstractModel):
+    """DescribeTasksCostInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SearchAfter: 下一页的标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SearchAfter: str
+        :param _Data: 返回的数据，字符串类型的二维数组，首行为列中文名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SearchAfter = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def SearchAfter(self):
+        return self._SearchAfter
+
+    @SearchAfter.setter
+    def SearchAfter(self, SearchAfter):
+        self._SearchAfter = SearchAfter
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SearchAfter = params.get("SearchAfter")
+        self._Data = params.get("Data")
         self._RequestId = params.get("RequestId")
 
 

@@ -6689,6 +6689,90 @@ class CreateIntegrationRoleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateIntegrationSubOrganizationActiveRecordRequest(AbstractModel):
+    """CreateIntegrationSubOrganizationActiveRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。使用此接口时，必须填写userId。 支持填入集团子公司经办人 userId 代发合同。  注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _SubOrganizationIds: 待激活成员企业ID集合
+        :type SubOrganizationIds: list of str
+        """
+        self._Operator = None
+        self._SubOrganizationIds = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def SubOrganizationIds(self):
+        return self._SubOrganizationIds
+
+    @SubOrganizationIds.setter
+    def SubOrganizationIds(self, SubOrganizationIds):
+        self._SubOrganizationIds = SubOrganizationIds
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._SubOrganizationIds = params.get("SubOrganizationIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateIntegrationSubOrganizationActiveRecordResponse(AbstractModel):
+    """CreateIntegrationSubOrganizationActiveRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FailedSubOrganizationIds: 激活失败的成员企业ID集合
+        :type FailedSubOrganizationIds: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FailedSubOrganizationIds = None
+        self._RequestId = None
+
+    @property
+    def FailedSubOrganizationIds(self):
+        return self._FailedSubOrganizationIds
+
+    @FailedSubOrganizationIds.setter
+    def FailedSubOrganizationIds(self, FailedSubOrganizationIds):
+        self._FailedSubOrganizationIds = FailedSubOrganizationIds
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FailedSubOrganizationIds = params.get("FailedSubOrganizationIds")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateIntegrationUserRolesRequest(AbstractModel):
     """CreateIntegrationUserRoles请求参数结构体
 
@@ -7566,6 +7650,137 @@ class CreateOrganizationBatchSignUrlResponse(AbstractModel):
     def _deserialize(self, params):
         self._SignUrl = params.get("SignUrl")
         self._ExpiredTime = params.get("ExpiredTime")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateOrganizationGroupInvitationLinkRequest(AbstractModel):
+    """CreateOrganizationGroupInvitationLink请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。使用此接口时，必须填写userId。 支持填入集团子公司经办人 userId 代发合同。  注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _ExpireTime: 到期时间（以秒为单位的时间戳），其上限为30天的有效期限。
+        :type ExpireTime: int
+        """
+        self._Operator = None
+        self._ExpireTime = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOrganizationGroupInvitationLinkResponse(AbstractModel):
+    """CreateOrganizationGroupInvitationLink返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Link: 加入集团二维码链接，子企业的管理员可以直接扫码进入。
+注意:1. 该链接有效期时间为ExpireTime，同时需要注意保密，不要外泄给无关用户。2. 该链接不支持小程序嵌入，仅支持<b>移动端浏览器</b>打开。3. <font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）
+        :type Link: str
+        :param _ExpireTime: 到期时间（以秒为单位的时间戳）
+        :type ExpireTime: int
+        :param _JumpUrl: 加入集团短链接。
+注意:
+1. 该链接有效期时间为ExpireTime，同时需要注意保密，不要外泄给无关用户。
+2. 该链接不支持小程序嵌入，仅支持<b>移动端浏览器</b>打开。
+3. <font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）
+        :type JumpUrl: str
+        :param _MiniAppPath: 腾讯电子签小程序加入集团链接。
+
+<li>小程序和APP集成使用</li>
+<li>得到的链接类似于`pages/guide?shortKey=yDw***k1xFc5`, 用法可以参考：<a href="https://qian.tencent.com/developers/company/openwxminiprogram" target="_blank">跳转电子签小程序</a></li>
+
+
+注： <font color="red">生成的链路后面不能再增加参数</font>
+        :type MiniAppPath: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Link = None
+        self._ExpireTime = None
+        self._JumpUrl = None
+        self._MiniAppPath = None
+        self._RequestId = None
+
+    @property
+    def Link(self):
+        return self._Link
+
+    @Link.setter
+    def Link(self, Link):
+        self._Link = Link
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def JumpUrl(self):
+        return self._JumpUrl
+
+    @JumpUrl.setter
+    def JumpUrl(self, JumpUrl):
+        self._JumpUrl = JumpUrl
+
+    @property
+    def MiniAppPath(self):
+        return self._MiniAppPath
+
+    @MiniAppPath.setter
+    def MiniAppPath(self, MiniAppPath):
+        self._MiniAppPath = MiniAppPath
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Link = params.get("Link")
+        self._ExpireTime = params.get("ExpireTime")
+        self._JumpUrl = params.get("JumpUrl")
+        self._MiniAppPath = params.get("MiniAppPath")
         self._RequestId = params.get("RequestId")
 
 

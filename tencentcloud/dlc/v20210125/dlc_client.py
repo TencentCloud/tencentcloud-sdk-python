@@ -49,6 +49,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AddOptimizerEngines(self, request):
+        """添加数据优化资源
+
+        :param request: Request instance for AddOptimizerEngines.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.AddOptimizerEnginesRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.AddOptimizerEnginesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddOptimizerEngines", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddOptimizerEnginesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AddUsersToWorkGroup(self, request):
         """添加用户到工作组
 
@@ -1926,6 +1949,29 @@ class DlcClient(AbstractClient):
             body = self.call("DescribeTasks", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTasksCostInfo(self, request):
+        """该接口（DescribeTasksCostInfo）用于查询任务消耗
+
+        :param request: Request instance for DescribeTasksCostInfo.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeTasksCostInfoRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeTasksCostInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTasksCostInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTasksCostInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
