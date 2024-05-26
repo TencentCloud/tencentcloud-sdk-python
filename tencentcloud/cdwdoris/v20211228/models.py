@@ -2141,6 +2141,8 @@ class DescribeSlowQueryRecordsDownloadRequest(AbstractModel):
         :type ResultBytes: str
         :param _MemoryUsage: 排序参数
         :type MemoryUsage: str
+        :param _IsQuery: IsQuery条件
+        :type IsQuery: int
         """
         self._InstanceId = None
         self._QueryDurationMs = None
@@ -2151,6 +2153,7 @@ class DescribeSlowQueryRecordsDownloadRequest(AbstractModel):
         self._ReadRows = None
         self._ResultBytes = None
         self._MemoryUsage = None
+        self._IsQuery = None
 
     @property
     def InstanceId(self):
@@ -2224,6 +2227,14 @@ class DescribeSlowQueryRecordsDownloadRequest(AbstractModel):
     def MemoryUsage(self, MemoryUsage):
         self._MemoryUsage = MemoryUsage
 
+    @property
+    def IsQuery(self):
+        return self._IsQuery
+
+    @IsQuery.setter
+    def IsQuery(self, IsQuery):
+        self._IsQuery = IsQuery
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -2235,6 +2246,7 @@ class DescribeSlowQueryRecordsDownloadRequest(AbstractModel):
         self._ReadRows = params.get("ReadRows")
         self._ResultBytes = params.get("ResultBytes")
         self._MemoryUsage = params.get("MemoryUsage")
+        self._IsQuery = params.get("IsQuery")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

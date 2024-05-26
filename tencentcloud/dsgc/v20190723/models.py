@@ -19400,6 +19400,9 @@ class DspaInstance(AbstractModel):
 1: 开启自动续费
 2: 明确不自动续费
         :type RenewFlag: int
+        :param _Channel: 实例渠道
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Channel: str
         """
         self._DspaId = None
         self._DspaName = None
@@ -19416,6 +19419,7 @@ class DspaInstance(AbstractModel):
         self._CosTotalQuota = None
         self._CosQuotaUnit = None
         self._RenewFlag = None
+        self._Channel = None
 
     @property
     def DspaId(self):
@@ -19537,6 +19541,14 @@ class DspaInstance(AbstractModel):
     def RenewFlag(self, RenewFlag):
         self._RenewFlag = RenewFlag
 
+    @property
+    def Channel(self):
+        return self._Channel
+
+    @Channel.setter
+    def Channel(self, Channel):
+        self._Channel = Channel
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
@@ -19554,6 +19566,7 @@ class DspaInstance(AbstractModel):
         self._CosTotalQuota = params.get("CosTotalQuota")
         self._CosQuotaUnit = params.get("CosQuotaUnit")
         self._RenewFlag = params.get("RenewFlag")
+        self._Channel = params.get("Channel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -26,6 +26,52 @@ class IotexplorerClient(AbstractClient):
     _service = 'iotexplorer'
 
 
+    def ActivateTWeCallLicense(self, request):
+        """激活
+
+        :param request: Request instance for ActivateTWeCallLicense.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ActivateTWeCallLicenseRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.ActivateTWeCallLicenseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ActivateTWeCallLicense", params, headers=headers)
+            response = json.loads(body)
+            model = models.ActivateTWeCallLicenseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def AssignTWeCallLicense(self, request):
+        """分配License
+
+        :param request: Request instance for AssignTWeCallLicense.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.AssignTWeCallLicenseRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.AssignTWeCallLicenseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AssignTWeCallLicense", params, headers=headers)
+            response = json.loads(body)
+            model = models.AssignTWeCallLicenseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BindCloudStorageUser(self, request):
         """绑定云存用户
 
@@ -132,6 +178,29 @@ class IotexplorerClient(AbstractClient):
             body = self.call("CallDeviceActionSync", params, headers=headers)
             response = json.loads(body)
             model = models.CallDeviceActionSyncResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CancelAssignTWeCallLicense(self, request):
+        """取消分配
+
+        :param request: Request instance for CancelAssignTWeCallLicense.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CancelAssignTWeCallLicenseRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.CancelAssignTWeCallLicenseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CancelAssignTWeCallLicense", params, headers=headers)
+            response = json.loads(body)
+            model = models.CancelAssignTWeCallLicenseResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1935,6 +2004,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetAuthMiniProgramAppList(self, request):
+        """查询小程序列表
+
+        :param request: Request instance for GetAuthMiniProgramAppList.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetAuthMiniProgramAppListRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.GetAuthMiniProgramAppListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetAuthMiniProgramAppList", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetAuthMiniProgramAppListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetBatchProductionsList(self, request):
         """列出量产数据列表信息。
 
@@ -2179,6 +2271,52 @@ class IotexplorerClient(AbstractClient):
             body = self.call("GetStudioProductList", params, headers=headers)
             response = json.loads(body)
             model = models.GetStudioProductListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetTWeCallActiveStatus(self, request):
+        """查询激活状态
+
+        :param request: Request instance for GetTWeCallActiveStatus.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetTWeCallActiveStatusRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.GetTWeCallActiveStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetTWeCallActiveStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetTWeCallActiveStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetTWeCallPkgList(self, request):
+        """查询TWeCall包列表
+
+        :param request: Request instance for GetTWeCallPkgList.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetTWeCallPkgListRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.GetTWeCallPkgListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetTWeCallPkgList", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetTWeCallPkgListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

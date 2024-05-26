@@ -2679,6 +2679,100 @@ class DeleteDBDiagReportTasksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteRedisBigKeyAnalysisTasksRequest(AbstractModel):
+    """DeleteRedisBigKeyAnalysisTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        :param _AsyncRequestIds: 待删除的异步任务ID列表。
+        :type AsyncRequestIds: list of int
+        :param _Product: 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
+        :type Product: str
+        """
+        self._InstanceId = None
+        self._AsyncRequestIds = None
+        self._Product = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def AsyncRequestIds(self):
+        return self._AsyncRequestIds
+
+    @AsyncRequestIds.setter
+    def AsyncRequestIds(self, AsyncRequestIds):
+        self._AsyncRequestIds = AsyncRequestIds
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._AsyncRequestIds = params.get("AsyncRequestIds")
+        self._Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRedisBigKeyAnalysisTasksResponse(AbstractModel):
+    """DeleteRedisBigKeyAnalysisTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 状态值，为0时代表正常处理。
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteSecurityAuditLogExportTasksRequest(AbstractModel):
     """DeleteSecurityAuditLogExportTasks请求参数结构体
 

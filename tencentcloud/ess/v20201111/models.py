@@ -14397,12 +14397,21 @@ class DescribeUserVerifyStatusRequest(AbstractModel):
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _Name: 姓名
         :type Name: str
-        :param _IdCardNumber: 证件号，身份证如果有x的话，统一按照大写X传递
+        :param _IdCardNumber: 证件号码，应符合以下规则
+<ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给香港居民，“M”字头签发给澳门居民；第2位至第11位为数字。</li>
+<li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :type IdCardNumber: str
+        :param _IdCardType: 证件类型，支持以下类型
+<ul><li>ID_CARD : 居民身份证 (默认值)</li>
+<li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
+<li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
+        :type IdCardType: str
         """
         self._Operator = None
         self._Name = None
         self._IdCardNumber = None
+        self._IdCardType = None
 
     @property
     def Operator(self):
@@ -14428,6 +14437,14 @@ class DescribeUserVerifyStatusRequest(AbstractModel):
     def IdCardNumber(self, IdCardNumber):
         self._IdCardNumber = IdCardNumber
 
+    @property
+    def IdCardType(self):
+        return self._IdCardType
+
+    @IdCardType.setter
+    def IdCardType(self, IdCardType):
+        self._IdCardType = IdCardType
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -14435,6 +14452,7 @@ class DescribeUserVerifyStatusRequest(AbstractModel):
             self._Operator._deserialize(params.get("Operator"))
         self._Name = params.get("Name")
         self._IdCardNumber = params.get("IdCardNumber")
+        self._IdCardType = params.get("IdCardType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

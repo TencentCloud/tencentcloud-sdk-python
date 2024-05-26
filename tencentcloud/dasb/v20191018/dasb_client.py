@@ -187,6 +187,29 @@ class DasbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateChangePwdTask(self, request):
+        """创建修改密码任务
+
+        :param request: Request instance for CreateChangePwdTask.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.CreateChangePwdTaskRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.CreateChangePwdTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateChangePwdTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateChangePwdTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCmdTemplate(self, request):
         """新建高危命令模板
 
@@ -339,6 +362,29 @@ class DasbClient(AbstractClient):
             body = self.call("DeleteAcls", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteAclsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteChangePwdTask(self, request):
+        """删除改密任务
+
+        :param request: Request instance for DeleteChangePwdTask.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.DeleteChangePwdTaskRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.DeleteChangePwdTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteChangePwdTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteChangePwdTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -592,6 +638,52 @@ class DasbClient(AbstractClient):
             body = self.call("DescribeAssetSyncStatus", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAssetSyncStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeChangePwdTask(self, request):
+        """查询改密任务列表
+
+        :param request: Request instance for DescribeChangePwdTask.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.DescribeChangePwdTaskRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.DescribeChangePwdTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeChangePwdTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeChangePwdTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeChangePwdTaskDetail(self, request):
+        """查询改密任务详情
+
+        :param request: Request instance for DescribeChangePwdTaskDetail.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.DescribeChangePwdTaskDetailRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.DescribeChangePwdTaskDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeChangePwdTaskDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeChangePwdTaskDetailResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -923,6 +1015,29 @@ class DasbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyChangePwdTask(self, request):
+        """更新修改密码任务
+
+        :param request: Request instance for ModifyChangePwdTask.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.ModifyChangePwdTaskRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.ModifyChangePwdTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyChangePwdTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyChangePwdTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyCmdTemplate(self, request):
         """修改高危命令模板
 
@@ -1144,6 +1259,29 @@ class DasbClient(AbstractClient):
             body = self.call("ResetUser", params, headers=headers)
             response = json.loads(body)
             model = models.ResetUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RunChangePwdTask(self, request):
+        """执行改密任务
+
+        :param request: Request instance for RunChangePwdTask.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.RunChangePwdTaskRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.RunChangePwdTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RunChangePwdTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.RunChangePwdTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

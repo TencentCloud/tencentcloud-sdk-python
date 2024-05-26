@@ -2372,6 +2372,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListTaskJobLogName(self, request):
+        """本接口（ListTaskJobLogName）用于获取spark-jar日志名称列表
+
+        :param request: Request instance for ListTaskJobLogName.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ListTaskJobLogNameRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ListTaskJobLogNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListTaskJobLogName", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListTaskJobLogNameResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def LockMetaData(self, request):
         """元数据锁
 

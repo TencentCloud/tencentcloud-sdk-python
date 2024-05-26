@@ -1069,6 +1069,368 @@ class BindDeviceResourceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ChangePwdTaskDetail(AbstractModel):
+    """查询改密计划详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Device: 资产信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Device: :class:`tencentcloud.dasb.v20191018.models.Device`
+        :param _Account: 资产账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Account: str
+        :param _LastChangeStatus: 上次改密结果。0-未改密  1-改密成功 2-改密失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastChangeStatus: int
+        """
+        self._Device = None
+        self._Account = None
+        self._LastChangeStatus = None
+
+    @property
+    def Device(self):
+        return self._Device
+
+    @Device.setter
+    def Device(self, Device):
+        self._Device = Device
+
+    @property
+    def Account(self):
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def LastChangeStatus(self):
+        return self._LastChangeStatus
+
+    @LastChangeStatus.setter
+    def LastChangeStatus(self, LastChangeStatus):
+        self._LastChangeStatus = LastChangeStatus
+
+
+    def _deserialize(self, params):
+        if params.get("Device") is not None:
+            self._Device = Device()
+            self._Device._deserialize(params.get("Device"))
+        self._Account = params.get("Account")
+        self._LastChangeStatus = params.get("LastChangeStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChangePwdTaskInfo(AbstractModel):
+    """修改密码任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param _OperationId: 任务id
+        :type OperationId: str
+        :param _TaskName: 任务名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskName: str
+        :param _Department: 所属部门信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Department: :class:`tencentcloud.dasb.v20191018.models.Department`
+        :param _ChangeMethod: 改密方式。1：使用执行账号。2：修改自身密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChangeMethod: int
+        :param _RunAccount: 执行账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunAccount: str
+        :param _AuthGenerationStrategy: 密码生成策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthGenerationStrategy: int
+        :param _PasswordLength: 密码长度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PasswordLength: int
+        :param _SmallLetter: 包含小写字母
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SmallLetter: int
+        :param _BigLetter: 包含大写字母
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BigLetter: int
+        :param _Digit: 包含数字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Digit: int
+        :param _Symbol: 包含的特殊字符，base64
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Symbol: str
+        :param _CompleteNotify: 改密完成通知。0-通知，1-不通知
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompleteNotify: int
+        :param _NotifyEmails: 通知人邮箱
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotifyEmails: list of str
+        :param _FilePassword: 加密附件密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilePassword: str
+        :param _AccountSet: 需要改密的账户
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountSet: list of str
+        :param _DeviceSet: 需要改密的主机
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceSet: list of Device
+        :param _Type: 任务类型：4手动，5自动
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        :param _Period: 周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Period: int
+        :param _FirstTime: 首次执行时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FirstTime: str
+        :param _NextTime: 下次执行时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextTime: str
+        """
+        self._Id = None
+        self._OperationId = None
+        self._TaskName = None
+        self._Department = None
+        self._ChangeMethod = None
+        self._RunAccount = None
+        self._AuthGenerationStrategy = None
+        self._PasswordLength = None
+        self._SmallLetter = None
+        self._BigLetter = None
+        self._Digit = None
+        self._Symbol = None
+        self._CompleteNotify = None
+        self._NotifyEmails = None
+        self._FilePassword = None
+        self._AccountSet = None
+        self._DeviceSet = None
+        self._Type = None
+        self._Period = None
+        self._FirstTime = None
+        self._NextTime = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def OperationId(self):
+        return self._OperationId
+
+    @OperationId.setter
+    def OperationId(self, OperationId):
+        self._OperationId = OperationId
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def Department(self):
+        return self._Department
+
+    @Department.setter
+    def Department(self, Department):
+        self._Department = Department
+
+    @property
+    def ChangeMethod(self):
+        return self._ChangeMethod
+
+    @ChangeMethod.setter
+    def ChangeMethod(self, ChangeMethod):
+        self._ChangeMethod = ChangeMethod
+
+    @property
+    def RunAccount(self):
+        return self._RunAccount
+
+    @RunAccount.setter
+    def RunAccount(self, RunAccount):
+        self._RunAccount = RunAccount
+
+    @property
+    def AuthGenerationStrategy(self):
+        return self._AuthGenerationStrategy
+
+    @AuthGenerationStrategy.setter
+    def AuthGenerationStrategy(self, AuthGenerationStrategy):
+        self._AuthGenerationStrategy = AuthGenerationStrategy
+
+    @property
+    def PasswordLength(self):
+        return self._PasswordLength
+
+    @PasswordLength.setter
+    def PasswordLength(self, PasswordLength):
+        self._PasswordLength = PasswordLength
+
+    @property
+    def SmallLetter(self):
+        return self._SmallLetter
+
+    @SmallLetter.setter
+    def SmallLetter(self, SmallLetter):
+        self._SmallLetter = SmallLetter
+
+    @property
+    def BigLetter(self):
+        return self._BigLetter
+
+    @BigLetter.setter
+    def BigLetter(self, BigLetter):
+        self._BigLetter = BigLetter
+
+    @property
+    def Digit(self):
+        return self._Digit
+
+    @Digit.setter
+    def Digit(self, Digit):
+        self._Digit = Digit
+
+    @property
+    def Symbol(self):
+        return self._Symbol
+
+    @Symbol.setter
+    def Symbol(self, Symbol):
+        self._Symbol = Symbol
+
+    @property
+    def CompleteNotify(self):
+        return self._CompleteNotify
+
+    @CompleteNotify.setter
+    def CompleteNotify(self, CompleteNotify):
+        self._CompleteNotify = CompleteNotify
+
+    @property
+    def NotifyEmails(self):
+        return self._NotifyEmails
+
+    @NotifyEmails.setter
+    def NotifyEmails(self, NotifyEmails):
+        self._NotifyEmails = NotifyEmails
+
+    @property
+    def FilePassword(self):
+        return self._FilePassword
+
+    @FilePassword.setter
+    def FilePassword(self, FilePassword):
+        self._FilePassword = FilePassword
+
+    @property
+    def AccountSet(self):
+        return self._AccountSet
+
+    @AccountSet.setter
+    def AccountSet(self, AccountSet):
+        self._AccountSet = AccountSet
+
+    @property
+    def DeviceSet(self):
+        return self._DeviceSet
+
+    @DeviceSet.setter
+    def DeviceSet(self, DeviceSet):
+        self._DeviceSet = DeviceSet
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Period(self):
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def FirstTime(self):
+        return self._FirstTime
+
+    @FirstTime.setter
+    def FirstTime(self, FirstTime):
+        self._FirstTime = FirstTime
+
+    @property
+    def NextTime(self):
+        return self._NextTime
+
+    @NextTime.setter
+    def NextTime(self, NextTime):
+        self._NextTime = NextTime
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._OperationId = params.get("OperationId")
+        self._TaskName = params.get("TaskName")
+        if params.get("Department") is not None:
+            self._Department = Department()
+            self._Department._deserialize(params.get("Department"))
+        self._ChangeMethod = params.get("ChangeMethod")
+        self._RunAccount = params.get("RunAccount")
+        self._AuthGenerationStrategy = params.get("AuthGenerationStrategy")
+        self._PasswordLength = params.get("PasswordLength")
+        self._SmallLetter = params.get("SmallLetter")
+        self._BigLetter = params.get("BigLetter")
+        self._Digit = params.get("Digit")
+        self._Symbol = params.get("Symbol")
+        self._CompleteNotify = params.get("CompleteNotify")
+        self._NotifyEmails = params.get("NotifyEmails")
+        self._FilePassword = params.get("FilePassword")
+        self._AccountSet = params.get("AccountSet")
+        if params.get("DeviceSet") is not None:
+            self._DeviceSet = []
+            for item in params.get("DeviceSet"):
+                obj = Device()
+                obj._deserialize(item)
+                self._DeviceSet.append(obj)
+        self._Type = params.get("Type")
+        self._Period = params.get("Period")
+        self._FirstTime = params.get("FirstTime")
+        self._NextTime = params.get("NextTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CmdTemplate(AbstractModel):
     """高危命令模板
 
@@ -1810,6 +2172,293 @@ class CreateAssetSyncJobResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateChangePwdTaskRequest(AbstractModel):
+    """CreateChangePwdTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskName: 任务名
+        :type TaskName: str
+        :param _DeviceIdSet: 资产id数组
+        :type DeviceIdSet: list of int non-negative
+        :param _AccountSet: 修改的账户数组
+        :type AccountSet: list of str
+        :param _ChangeMethod: 改密方式。1：使用执行账号修改密码；2：修改自身密码
+        :type ChangeMethod: int
+        :param _AuthGenerationStrategy: 认证生成方式。 1:自动生成相同密码 2:自动生成不同密码 3:手动指定相同密码
+        :type AuthGenerationStrategy: int
+        :param _RunAccount: 执行账号
+        :type RunAccount: str
+        :param _Password: 手动指定密码时必传
+        :type Password: str
+        :param _PasswordLength: 密码限制长度，长度大于 12 位
+        :type PasswordLength: int
+        :param _SmallLetter: 密码包含小写字母。0：否，1：是
+        :type SmallLetter: int
+        :param _BigLetter: 密码包含大写字母。0：否，1：是
+        :type BigLetter: int
+        :param _Digit: 密码包含数字。0：否，1：是
+        :type Digit: int
+        :param _Symbol: 密码包含的特殊字符（base64编码），包含：^[-_#();%~!+=]*$
+        :type Symbol: str
+        :param _CompleteNotify: 改密完成通知。0：不通知 
+  1：通知
+        :type CompleteNotify: int
+        :param _NotifyEmails: 通知邮箱
+        :type NotifyEmails: list of str
+        :param _FilePassword: 加密压缩文件密码
+        :type FilePassword: str
+        :param _DepartmentId: 所属部门id。“1.2.3”
+        :type DepartmentId: str
+        :param _Type: 任务类型  4-手工执行  5-周期自动执行
+        :type Type: int
+        :param _Period: 执行周期，单位天（大于等于 1，小于等于 365）
+        :type Period: int
+        :param _FirstTime: 周期任务首次执行时间
+        :type FirstTime: str
+        """
+        self._TaskName = None
+        self._DeviceIdSet = None
+        self._AccountSet = None
+        self._ChangeMethod = None
+        self._AuthGenerationStrategy = None
+        self._RunAccount = None
+        self._Password = None
+        self._PasswordLength = None
+        self._SmallLetter = None
+        self._BigLetter = None
+        self._Digit = None
+        self._Symbol = None
+        self._CompleteNotify = None
+        self._NotifyEmails = None
+        self._FilePassword = None
+        self._DepartmentId = None
+        self._Type = None
+        self._Period = None
+        self._FirstTime = None
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def DeviceIdSet(self):
+        return self._DeviceIdSet
+
+    @DeviceIdSet.setter
+    def DeviceIdSet(self, DeviceIdSet):
+        self._DeviceIdSet = DeviceIdSet
+
+    @property
+    def AccountSet(self):
+        return self._AccountSet
+
+    @AccountSet.setter
+    def AccountSet(self, AccountSet):
+        self._AccountSet = AccountSet
+
+    @property
+    def ChangeMethod(self):
+        return self._ChangeMethod
+
+    @ChangeMethod.setter
+    def ChangeMethod(self, ChangeMethod):
+        self._ChangeMethod = ChangeMethod
+
+    @property
+    def AuthGenerationStrategy(self):
+        return self._AuthGenerationStrategy
+
+    @AuthGenerationStrategy.setter
+    def AuthGenerationStrategy(self, AuthGenerationStrategy):
+        self._AuthGenerationStrategy = AuthGenerationStrategy
+
+    @property
+    def RunAccount(self):
+        return self._RunAccount
+
+    @RunAccount.setter
+    def RunAccount(self, RunAccount):
+        self._RunAccount = RunAccount
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def PasswordLength(self):
+        return self._PasswordLength
+
+    @PasswordLength.setter
+    def PasswordLength(self, PasswordLength):
+        self._PasswordLength = PasswordLength
+
+    @property
+    def SmallLetter(self):
+        return self._SmallLetter
+
+    @SmallLetter.setter
+    def SmallLetter(self, SmallLetter):
+        self._SmallLetter = SmallLetter
+
+    @property
+    def BigLetter(self):
+        return self._BigLetter
+
+    @BigLetter.setter
+    def BigLetter(self, BigLetter):
+        self._BigLetter = BigLetter
+
+    @property
+    def Digit(self):
+        return self._Digit
+
+    @Digit.setter
+    def Digit(self, Digit):
+        self._Digit = Digit
+
+    @property
+    def Symbol(self):
+        return self._Symbol
+
+    @Symbol.setter
+    def Symbol(self, Symbol):
+        self._Symbol = Symbol
+
+    @property
+    def CompleteNotify(self):
+        return self._CompleteNotify
+
+    @CompleteNotify.setter
+    def CompleteNotify(self, CompleteNotify):
+        self._CompleteNotify = CompleteNotify
+
+    @property
+    def NotifyEmails(self):
+        return self._NotifyEmails
+
+    @NotifyEmails.setter
+    def NotifyEmails(self, NotifyEmails):
+        self._NotifyEmails = NotifyEmails
+
+    @property
+    def FilePassword(self):
+        return self._FilePassword
+
+    @FilePassword.setter
+    def FilePassword(self, FilePassword):
+        self._FilePassword = FilePassword
+
+    @property
+    def DepartmentId(self):
+        return self._DepartmentId
+
+    @DepartmentId.setter
+    def DepartmentId(self, DepartmentId):
+        self._DepartmentId = DepartmentId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Period(self):
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def FirstTime(self):
+        return self._FirstTime
+
+    @FirstTime.setter
+    def FirstTime(self, FirstTime):
+        self._FirstTime = FirstTime
+
+
+    def _deserialize(self, params):
+        self._TaskName = params.get("TaskName")
+        self._DeviceIdSet = params.get("DeviceIdSet")
+        self._AccountSet = params.get("AccountSet")
+        self._ChangeMethod = params.get("ChangeMethod")
+        self._AuthGenerationStrategy = params.get("AuthGenerationStrategy")
+        self._RunAccount = params.get("RunAccount")
+        self._Password = params.get("Password")
+        self._PasswordLength = params.get("PasswordLength")
+        self._SmallLetter = params.get("SmallLetter")
+        self._BigLetter = params.get("BigLetter")
+        self._Digit = params.get("Digit")
+        self._Symbol = params.get("Symbol")
+        self._CompleteNotify = params.get("CompleteNotify")
+        self._NotifyEmails = params.get("NotifyEmails")
+        self._FilePassword = params.get("FilePassword")
+        self._DepartmentId = params.get("DepartmentId")
+        self._Type = params.get("Type")
+        self._Period = params.get("Period")
+        self._FirstTime = params.get("FirstTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateChangePwdTaskResponse(AbstractModel):
+    """CreateChangePwdTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OperationId: 任务id
+        :type OperationId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._OperationId = None
+        self._RequestId = None
+
+    @property
+    def OperationId(self):
+        return self._OperationId
+
+    @OperationId.setter
+    def OperationId(self, OperationId):
+        self._OperationId = OperationId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._OperationId = params.get("OperationId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateCmdTemplateRequest(AbstractModel):
     """CreateCmdTemplate请求参数结构体
 
@@ -2546,6 +3195,64 @@ class DeleteAclsRequest(AbstractModel):
 
 class DeleteAclsResponse(AbstractModel):
     """DeleteAcls返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteChangePwdTaskRequest(AbstractModel):
+    """DeleteChangePwdTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IdSet: 改密任务id列表
+        :type IdSet: list of int
+        """
+        self._IdSet = None
+
+    @property
+    def IdSet(self):
+        return self._IdSet
+
+    @IdSet.setter
+    def IdSet(self, IdSet):
+        self._IdSet = IdSet
+
+
+    def _deserialize(self, params):
+        self._IdSet = params.get("IdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteChangePwdTaskResponse(AbstractModel):
+    """DeleteChangePwdTask返回参数结构体
 
     """
 
@@ -3598,6 +4305,277 @@ class DescribeAssetSyncStatusResponse(AbstractModel):
         if params.get("Status") is not None:
             self._Status = AssetSyncStatus()
             self._Status._deserialize(params.get("Status"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeChangePwdTaskDetailRequest(AbstractModel):
+    """DescribeChangePwdTaskDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OperationId: 改密任务Id
+        :type OperationId: str
+        :param _DepartmentId: 所属部门ID，如：“1.2.3”
+        :type DepartmentId: str
+        :param _Filters: 过滤数组，支持：InstanceId 资产ID，DeviceName 资产名称，Ip 内外IP，Account 资产账号，LastChangeStatus 上次改密状态。
+        :type Filters: list of Filter
+        :param _Offset: 分页偏移位置，默认0
+        :type Offset: int
+        :param _Limit: 每页条目。默认20
+        :type Limit: int
+        """
+        self._OperationId = None
+        self._DepartmentId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def OperationId(self):
+        return self._OperationId
+
+    @OperationId.setter
+    def OperationId(self, OperationId):
+        self._OperationId = OperationId
+
+    @property
+    def DepartmentId(self):
+        return self._DepartmentId
+
+    @DepartmentId.setter
+    def DepartmentId(self, DepartmentId):
+        self._DepartmentId = DepartmentId
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._OperationId = params.get("OperationId")
+        self._DepartmentId = params.get("DepartmentId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeChangePwdTaskDetailResponse(AbstractModel):
+    """DescribeChangePwdTaskDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _Details: 任务详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Details: list of ChangePwdTaskDetail
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Details = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Details(self):
+        return self._Details
+
+    @Details.setter
+    def Details(self, Details):
+        self._Details = Details
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Details") is not None:
+            self._Details = []
+            for item in params.get("Details"):
+                obj = ChangePwdTaskDetail()
+                obj._deserialize(item)
+                self._Details.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeChangePwdTaskRequest(AbstractModel):
+    """DescribeChangePwdTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 过滤数组。过滤数组。Name支持以下值: OperationId 任务ID TaskName 任务名
+        :type Filters: list of Filter
+        :param _DepartmentId: 所属部门ID
+        :type DepartmentId: str
+        :param _Offset: 分页偏移量，默认0
+        :type Offset: int
+        :param _Limit: 每页条目数量，默认20
+        :type Limit: int
+        """
+        self._Filters = None
+        self._DepartmentId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def DepartmentId(self):
+        return self._DepartmentId
+
+    @DepartmentId.setter
+    def DepartmentId(self, DepartmentId):
+        self._DepartmentId = DepartmentId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._DepartmentId = params.get("DepartmentId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeChangePwdTaskResponse(AbstractModel):
+    """DescribeChangePwdTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Tasks: 任务详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tasks: list of ChangePwdTaskInfo
+        :param _TotalCount: 任务总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Tasks = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Tasks(self):
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = ChangePwdTaskInfo()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -6512,6 +7490,304 @@ class ModifyAclResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyChangePwdTaskRequest(AbstractModel):
+    """ModifyChangePwdTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OperationId: 改密任务id
+        :type OperationId: str
+        :param _DeviceIdSet: 改密资产id列表
+        :type DeviceIdSet: list of int non-negative
+        :param _AccountSet: 改密资产的账号列表
+        :type AccountSet: list of str
+        :param _ModifyType: 修改类型：1：修改任务信息  2：关联任务资产账号
+        :type ModifyType: int
+        :param _ChangeMethod: 改密方式。1：使用执行账号修改密码；2：修改自身密码
+        :type ChangeMethod: int
+        :param _AuthGenerationStrategy: 密码生成方式。 1:自动生成相同密码 2:自动生成不同密码 3:手动指定相同密码
+        :type AuthGenerationStrategy: int
+        :param _TaskName: 任务名称
+        :type TaskName: str
+        :param _DepartmentId: 所属部门ID，"1,2,3"
+        :type DepartmentId: str
+        :param _RunAccount: 任务的执行账号	
+        :type RunAccount: str
+        :param _Password: 密码，手动指定密码时必传。
+        :type Password: str
+        :param _PasswordLength: 密码限制长度，自动生成密码必传。	
+        :type PasswordLength: int
+        :param _SmallLetter: 密码包含小写字母，0：否，1：是。
+        :type SmallLetter: int
+        :param _BigLetter: 密码包含大写字母，0：否，1：是。
+        :type BigLetter: int
+        :param _Digit: 密码包含数字，0：否，1：是。
+        :type Digit: int
+        :param _Symbol: 密码包含的特殊字符（base64编码），包含：^[-_#();%~!+=]*$
+        :type Symbol: str
+        :param _CompleteNotify: 改密完成通知。0：不通知 1：通知
+        :type CompleteNotify: int
+        :param _NotifyEmails: 通知邮箱
+        :type NotifyEmails: list of str
+        :param _FilePassword: 加密压缩文件密码
+        :type FilePassword: str
+        :param _Type: 任务类型， 4：手工执行  5：周期自动执行
+        :type Type: int
+        :param _Period: 周期任务周期，单位天（大于等于 1，小于等于 365）
+        :type Period: int
+        :param _FirstTime: 周期任务首次执行时间
+        :type FirstTime: str
+        """
+        self._OperationId = None
+        self._DeviceIdSet = None
+        self._AccountSet = None
+        self._ModifyType = None
+        self._ChangeMethod = None
+        self._AuthGenerationStrategy = None
+        self._TaskName = None
+        self._DepartmentId = None
+        self._RunAccount = None
+        self._Password = None
+        self._PasswordLength = None
+        self._SmallLetter = None
+        self._BigLetter = None
+        self._Digit = None
+        self._Symbol = None
+        self._CompleteNotify = None
+        self._NotifyEmails = None
+        self._FilePassword = None
+        self._Type = None
+        self._Period = None
+        self._FirstTime = None
+
+    @property
+    def OperationId(self):
+        return self._OperationId
+
+    @OperationId.setter
+    def OperationId(self, OperationId):
+        self._OperationId = OperationId
+
+    @property
+    def DeviceIdSet(self):
+        return self._DeviceIdSet
+
+    @DeviceIdSet.setter
+    def DeviceIdSet(self, DeviceIdSet):
+        self._DeviceIdSet = DeviceIdSet
+
+    @property
+    def AccountSet(self):
+        return self._AccountSet
+
+    @AccountSet.setter
+    def AccountSet(self, AccountSet):
+        self._AccountSet = AccountSet
+
+    @property
+    def ModifyType(self):
+        return self._ModifyType
+
+    @ModifyType.setter
+    def ModifyType(self, ModifyType):
+        self._ModifyType = ModifyType
+
+    @property
+    def ChangeMethod(self):
+        return self._ChangeMethod
+
+    @ChangeMethod.setter
+    def ChangeMethod(self, ChangeMethod):
+        self._ChangeMethod = ChangeMethod
+
+    @property
+    def AuthGenerationStrategy(self):
+        return self._AuthGenerationStrategy
+
+    @AuthGenerationStrategy.setter
+    def AuthGenerationStrategy(self, AuthGenerationStrategy):
+        self._AuthGenerationStrategy = AuthGenerationStrategy
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def DepartmentId(self):
+        return self._DepartmentId
+
+    @DepartmentId.setter
+    def DepartmentId(self, DepartmentId):
+        self._DepartmentId = DepartmentId
+
+    @property
+    def RunAccount(self):
+        return self._RunAccount
+
+    @RunAccount.setter
+    def RunAccount(self, RunAccount):
+        self._RunAccount = RunAccount
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def PasswordLength(self):
+        return self._PasswordLength
+
+    @PasswordLength.setter
+    def PasswordLength(self, PasswordLength):
+        self._PasswordLength = PasswordLength
+
+    @property
+    def SmallLetter(self):
+        return self._SmallLetter
+
+    @SmallLetter.setter
+    def SmallLetter(self, SmallLetter):
+        self._SmallLetter = SmallLetter
+
+    @property
+    def BigLetter(self):
+        return self._BigLetter
+
+    @BigLetter.setter
+    def BigLetter(self, BigLetter):
+        self._BigLetter = BigLetter
+
+    @property
+    def Digit(self):
+        return self._Digit
+
+    @Digit.setter
+    def Digit(self, Digit):
+        self._Digit = Digit
+
+    @property
+    def Symbol(self):
+        return self._Symbol
+
+    @Symbol.setter
+    def Symbol(self, Symbol):
+        self._Symbol = Symbol
+
+    @property
+    def CompleteNotify(self):
+        return self._CompleteNotify
+
+    @CompleteNotify.setter
+    def CompleteNotify(self, CompleteNotify):
+        self._CompleteNotify = CompleteNotify
+
+    @property
+    def NotifyEmails(self):
+        return self._NotifyEmails
+
+    @NotifyEmails.setter
+    def NotifyEmails(self, NotifyEmails):
+        self._NotifyEmails = NotifyEmails
+
+    @property
+    def FilePassword(self):
+        return self._FilePassword
+
+    @FilePassword.setter
+    def FilePassword(self, FilePassword):
+        self._FilePassword = FilePassword
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Period(self):
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def FirstTime(self):
+        return self._FirstTime
+
+    @FirstTime.setter
+    def FirstTime(self, FirstTime):
+        self._FirstTime = FirstTime
+
+
+    def _deserialize(self, params):
+        self._OperationId = params.get("OperationId")
+        self._DeviceIdSet = params.get("DeviceIdSet")
+        self._AccountSet = params.get("AccountSet")
+        self._ModifyType = params.get("ModifyType")
+        self._ChangeMethod = params.get("ChangeMethod")
+        self._AuthGenerationStrategy = params.get("AuthGenerationStrategy")
+        self._TaskName = params.get("TaskName")
+        self._DepartmentId = params.get("DepartmentId")
+        self._RunAccount = params.get("RunAccount")
+        self._Password = params.get("Password")
+        self._PasswordLength = params.get("PasswordLength")
+        self._SmallLetter = params.get("SmallLetter")
+        self._BigLetter = params.get("BigLetter")
+        self._Digit = params.get("Digit")
+        self._Symbol = params.get("Symbol")
+        self._CompleteNotify = params.get("CompleteNotify")
+        self._NotifyEmails = params.get("NotifyEmails")
+        self._FilePassword = params.get("FilePassword")
+        self._Type = params.get("Type")
+        self._Period = params.get("Period")
+        self._FirstTime = params.get("FirstTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyChangePwdTaskResponse(AbstractModel):
+    """ModifyChangePwdTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyCmdTemplateRequest(AbstractModel):
     """ModifyCmdTemplate请求参数结构体
 
@@ -7976,6 +9252,138 @@ class Resource(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RunChangePwdTaskDetail(AbstractModel):
+    """立即执行改密任务的入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceId: 资产id
+        :type DeviceId: int
+        :param _Account: 资产账号
+        :type Account: str
+        """
+        self._DeviceId = None
+        self._Account = None
+
+    @property
+    def DeviceId(self):
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def Account(self):
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+
+    def _deserialize(self, params):
+        self._DeviceId = params.get("DeviceId")
+        self._Account = params.get("Account")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RunChangePwdTaskRequest(AbstractModel):
+    """RunChangePwdTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OperationId: 任务Id
+        :type OperationId: str
+        :param _DepartmentId: 部门id
+        :type DepartmentId: str
+        :param _Details: 改密任务详情
+        :type Details: list of RunChangePwdTaskDetail
+        """
+        self._OperationId = None
+        self._DepartmentId = None
+        self._Details = None
+
+    @property
+    def OperationId(self):
+        return self._OperationId
+
+    @OperationId.setter
+    def OperationId(self, OperationId):
+        self._OperationId = OperationId
+
+    @property
+    def DepartmentId(self):
+        return self._DepartmentId
+
+    @DepartmentId.setter
+    def DepartmentId(self, DepartmentId):
+        self._DepartmentId = DepartmentId
+
+    @property
+    def Details(self):
+        return self._Details
+
+    @Details.setter
+    def Details(self, Details):
+        self._Details = Details
+
+
+    def _deserialize(self, params):
+        self._OperationId = params.get("OperationId")
+        self._DepartmentId = params.get("DepartmentId")
+        if params.get("Details") is not None:
+            self._Details = []
+            for item in params.get("Details"):
+                obj = RunChangePwdTaskDetail()
+                obj._deserialize(item)
+                self._Details.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RunChangePwdTaskResponse(AbstractModel):
+    """RunChangePwdTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class SearchAuditLogRequest(AbstractModel):

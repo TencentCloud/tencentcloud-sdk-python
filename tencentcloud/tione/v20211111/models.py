@@ -6292,10 +6292,14 @@ class GooseFS(AbstractModel):
         :param _Path: GooseFSx实例需要挂载的路径
 注意：此字段可能返回 null，表示取不到有效值。
         :type Path: str
+        :param _NameSpace: GooseFS命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NameSpace: str
         """
         self._Id = None
         self._Type = None
         self._Path = None
+        self._NameSpace = None
 
     @property
     def Id(self):
@@ -6321,11 +6325,20 @@ class GooseFS(AbstractModel):
     def Path(self, Path):
         self._Path = Path
 
+    @property
+    def NameSpace(self):
+        return self._NameSpace
+
+    @NameSpace.setter
+    def NameSpace(self, NameSpace):
+        self._NameSpace = NameSpace
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
         self._Type = params.get("Type")
         self._Path = params.get("Path")
+        self._NameSpace = params.get("NameSpace")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

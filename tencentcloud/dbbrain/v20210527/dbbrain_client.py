@@ -371,6 +371,29 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteRedisBigKeyAnalysisTasks(self, request):
+        """删除Redis实例的大key分析任务。
+
+        :param request: Request instance for DeleteRedisBigKeyAnalysisTasks.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DeleteRedisBigKeyAnalysisTasksRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DeleteRedisBigKeyAnalysisTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRedisBigKeyAnalysisTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRedisBigKeyAnalysisTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteSecurityAuditLogExportTasks(self, request):
         """删除安全审计日志导出任务。
 

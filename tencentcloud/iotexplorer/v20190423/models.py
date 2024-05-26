@@ -18,6 +18,93 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ActivateTWeCallLicenseRequest(AbstractModel):
+    """ActivateTWeCallLicense请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PkgType: voip类型
+        :type PkgType: int
+        :param _MiniProgramAppId: appId
+        :type MiniProgramAppId: str
+        :param _DeviceList: 设备列表
+        :type DeviceList: list of TWeCallInfo
+        """
+        self._PkgType = None
+        self._MiniProgramAppId = None
+        self._DeviceList = None
+
+    @property
+    def PkgType(self):
+        return self._PkgType
+
+    @PkgType.setter
+    def PkgType(self, PkgType):
+        self._PkgType = PkgType
+
+    @property
+    def MiniProgramAppId(self):
+        return self._MiniProgramAppId
+
+    @MiniProgramAppId.setter
+    def MiniProgramAppId(self, MiniProgramAppId):
+        self._MiniProgramAppId = MiniProgramAppId
+
+    @property
+    def DeviceList(self):
+        return self._DeviceList
+
+    @DeviceList.setter
+    def DeviceList(self, DeviceList):
+        self._DeviceList = DeviceList
+
+
+    def _deserialize(self, params):
+        self._PkgType = params.get("PkgType")
+        self._MiniProgramAppId = params.get("MiniProgramAppId")
+        if params.get("DeviceList") is not None:
+            self._DeviceList = []
+            for item in params.get("DeviceList"):
+                obj = TWeCallInfo()
+                obj._deserialize(item)
+                self._DeviceList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ActivateTWeCallLicenseResponse(AbstractModel):
+    """ActivateTWeCallLicense返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class AppDeviceInfo(AbstractModel):
     """云api直接绑定设备出参
 
@@ -149,6 +236,187 @@ class AppDeviceInfo(AbstractModel):
         self._DeviceType = params.get("DeviceType")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssignTWeCallLicenseRequest(AbstractModel):
+    """AssignTWeCallLicense请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PkgType: voip类型
+        :type PkgType: int
+        :param _MiniProgramAppId: appId
+        :type MiniProgramAppId: str
+        :param _DeductNum: License数
+        :type DeductNum: int
+        """
+        self._PkgType = None
+        self._MiniProgramAppId = None
+        self._DeductNum = None
+
+    @property
+    def PkgType(self):
+        return self._PkgType
+
+    @PkgType.setter
+    def PkgType(self, PkgType):
+        self._PkgType = PkgType
+
+    @property
+    def MiniProgramAppId(self):
+        return self._MiniProgramAppId
+
+    @MiniProgramAppId.setter
+    def MiniProgramAppId(self, MiniProgramAppId):
+        self._MiniProgramAppId = MiniProgramAppId
+
+    @property
+    def DeductNum(self):
+        return self._DeductNum
+
+    @DeductNum.setter
+    def DeductNum(self, DeductNum):
+        self._DeductNum = DeductNum
+
+
+    def _deserialize(self, params):
+        self._PkgType = params.get("PkgType")
+        self._MiniProgramAppId = params.get("MiniProgramAppId")
+        self._DeductNum = params.get("DeductNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssignTWeCallLicenseResponse(AbstractModel):
+    """AssignTWeCallLicense返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class AuthMiniProgramAppInfo(AbstractModel):
+    """授权小程序信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MiniProgramAppId: 小程序APPID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MiniProgramAppId: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param _MiniProgramName: 小程序名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MiniProgramName: str
+        :param _LicenseNum: 激活码数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LicenseNum: int
+        :param _IotAppId: 应用ID 
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IotAppId: str
+        :param _IotAppName: 应用名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IotAppName: str
+        """
+        self._MiniProgramAppId = None
+        self._CreateTime = None
+        self._MiniProgramName = None
+        self._LicenseNum = None
+        self._IotAppId = None
+        self._IotAppName = None
+
+    @property
+    def MiniProgramAppId(self):
+        return self._MiniProgramAppId
+
+    @MiniProgramAppId.setter
+    def MiniProgramAppId(self, MiniProgramAppId):
+        self._MiniProgramAppId = MiniProgramAppId
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def MiniProgramName(self):
+        return self._MiniProgramName
+
+    @MiniProgramName.setter
+    def MiniProgramName(self, MiniProgramName):
+        self._MiniProgramName = MiniProgramName
+
+    @property
+    def LicenseNum(self):
+        return self._LicenseNum
+
+    @LicenseNum.setter
+    def LicenseNum(self, LicenseNum):
+        self._LicenseNum = LicenseNum
+
+    @property
+    def IotAppId(self):
+        return self._IotAppId
+
+    @IotAppId.setter
+    def IotAppId(self, IotAppId):
+        self._IotAppId = IotAppId
+
+    @property
+    def IotAppName(self):
+        return self._IotAppName
+
+    @IotAppName.setter
+    def IotAppName(self, IotAppName):
+        self._IotAppName = IotAppName
+
+
+    def _deserialize(self, params):
+        self._MiniProgramAppId = params.get("MiniProgramAppId")
+        self._CreateTime = params.get("CreateTime")
+        self._MiniProgramName = params.get("MiniProgramName")
+        self._LicenseNum = params.get("LicenseNum")
+        self._IotAppId = params.get("IotAppId")
+        self._IotAppName = params.get("IotAppName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -913,6 +1181,64 @@ class CallDeviceActionSyncResponse(AbstractModel):
         self._ClientToken = params.get("ClientToken")
         self._OutputParams = params.get("OutputParams")
         self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
+class CancelAssignTWeCallLicenseRequest(AbstractModel):
+    """CancelAssignTWeCallLicense请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PkgId: 订单号
+        :type PkgId: str
+        """
+        self._PkgId = None
+
+    @property
+    def PkgId(self):
+        return self._PkgId
+
+    @PkgId.setter
+    def PkgId(self, PkgId):
+        self._PkgId = PkgId
+
+
+    def _deserialize(self, params):
+        self._PkgId = params.get("PkgId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelAssignTWeCallLicenseResponse(AbstractModel):
+    """CancelAssignTWeCallLicense返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -11132,6 +11458,117 @@ class GenerateSignedVideoURLResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetAuthMiniProgramAppListRequest(AbstractModel):
+    """GetAuthMiniProgramAppList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MiniProgramAppId: appId
+        :type MiniProgramAppId: str
+        :param _Offset: 页码
+        :type Offset: int
+        :param _Limit: 每页大小
+        :type Limit: int
+        """
+        self._MiniProgramAppId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def MiniProgramAppId(self):
+        return self._MiniProgramAppId
+
+    @MiniProgramAppId.setter
+    def MiniProgramAppId(self, MiniProgramAppId):
+        self._MiniProgramAppId = MiniProgramAppId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._MiniProgramAppId = params.get("MiniProgramAppId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetAuthMiniProgramAppListResponse(AbstractModel):
+    """GetAuthMiniProgramAppList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MiniProgramList: 小程序列表
+        :type MiniProgramList: list of AuthMiniProgramAppInfo
+        :param _Total: 总数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MiniProgramList = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def MiniProgramList(self):
+        return self._MiniProgramList
+
+    @MiniProgramList.setter
+    def MiniProgramList(self, MiniProgramList):
+        self._MiniProgramList = MiniProgramList
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("MiniProgramList") is not None:
+            self._MiniProgramList = []
+            for item in params.get("MiniProgramList"):
+                obj = AuthMiniProgramAppInfo()
+                obj._deserialize(item)
+                self._MiniProgramList.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
 class GetBatchProductionsListRequest(AbstractModel):
     """GetBatchProductionsList请求参数结构体
 
@@ -12491,6 +12928,233 @@ class GetStudioProductListResponse(AbstractModel):
                 obj = ProductEntry()
                 obj._deserialize(item)
                 self._Products.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class GetTWeCallActiveStatusRequest(AbstractModel):
+    """GetTWeCallActiveStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MiniProgramAppId: appId
+        :type MiniProgramAppId: str
+        :param _DeviceList: 设备列表
+        :type DeviceList: list of TWeCallInfo
+        """
+        self._MiniProgramAppId = None
+        self._DeviceList = None
+
+    @property
+    def MiniProgramAppId(self):
+        return self._MiniProgramAppId
+
+    @MiniProgramAppId.setter
+    def MiniProgramAppId(self, MiniProgramAppId):
+        self._MiniProgramAppId = MiniProgramAppId
+
+    @property
+    def DeviceList(self):
+        return self._DeviceList
+
+    @DeviceList.setter
+    def DeviceList(self, DeviceList):
+        self._DeviceList = DeviceList
+
+
+    def _deserialize(self, params):
+        self._MiniProgramAppId = params.get("MiniProgramAppId")
+        if params.get("DeviceList") is not None:
+            self._DeviceList = []
+            for item in params.get("DeviceList"):
+                obj = TWeCallInfo()
+                obj._deserialize(item)
+                self._DeviceList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetTWeCallActiveStatusResponse(AbstractModel):
+    """GetTWeCallActiveStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TWeCallActiveInfos: 激活状态
+        :type TWeCallActiveInfos: list of TWeCallActiveInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TWeCallActiveInfos = None
+        self._RequestId = None
+
+    @property
+    def TWeCallActiveInfos(self):
+        return self._TWeCallActiveInfos
+
+    @TWeCallActiveInfos.setter
+    def TWeCallActiveInfos(self, TWeCallActiveInfos):
+        self._TWeCallActiveInfos = TWeCallActiveInfos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TWeCallActiveInfos") is not None:
+            self._TWeCallActiveInfos = []
+            for item in params.get("TWeCallActiveInfos"):
+                obj = TWeCallActiveInfo()
+                obj._deserialize(item)
+                self._TWeCallActiveInfos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class GetTWeCallPkgListRequest(AbstractModel):
+    """GetTWeCallPkgList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MiniProgramAppId: appId
+        :type MiniProgramAppId: str
+        :param _PkgType: 类型
+        :type PkgType: list of int
+        :param _Status: 状态
+        :type Status: list of int
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _Limit: 每页数据大小
+        :type Limit: int
+        """
+        self._MiniProgramAppId = None
+        self._PkgType = None
+        self._Status = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def MiniProgramAppId(self):
+        return self._MiniProgramAppId
+
+    @MiniProgramAppId.setter
+    def MiniProgramAppId(self, MiniProgramAppId):
+        self._MiniProgramAppId = MiniProgramAppId
+
+    @property
+    def PkgType(self):
+        return self._PkgType
+
+    @PkgType.setter
+    def PkgType(self, PkgType):
+        self._PkgType = PkgType
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._MiniProgramAppId = params.get("MiniProgramAppId")
+        self._PkgType = params.get("PkgType")
+        self._Status = params.get("Status")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetTWeCallPkgListResponse(AbstractModel):
+    """GetTWeCallPkgList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TWeCallPkgList: 激活状态
+        :type TWeCallPkgList: list of TWeCallPkgInfo
+        :param _Total: 总数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TWeCallPkgList = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def TWeCallPkgList(self):
+        return self._TWeCallPkgList
+
+    @TWeCallPkgList.setter
+    def TWeCallPkgList(self, TWeCallPkgList):
+        self._TWeCallPkgList = TWeCallPkgList
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TWeCallPkgList") is not None:
+            self._TWeCallPkgList = []
+            for item in params.get("TWeCallPkgList"):
+                obj = TWeCallPkgInfo()
+                obj._deserialize(item)
+                self._TWeCallPkgList.append(obj)
         self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
@@ -17619,6 +18283,238 @@ class TRTCParams(AbstractModel):
         self._UserSig = params.get("UserSig")
         self._StrRoomId = params.get("StrRoomId")
         self._PrivateKey = params.get("PrivateKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TWeCallActiveInfo(AbstractModel):
+    """TWeCall设备激活信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelId: 小程序ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelId: str
+        :param _Sn: Sn信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sn: str
+        :param _ExpireTime: 过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: int
+        """
+        self._ModelId = None
+        self._Sn = None
+        self._ExpireTime = None
+
+    @property
+    def ModelId(self):
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+    @property
+    def Sn(self):
+        return self._Sn
+
+    @Sn.setter
+    def Sn(self, Sn):
+        self._Sn = Sn
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+
+    def _deserialize(self, params):
+        self._ModelId = params.get("ModelId")
+        self._Sn = params.get("Sn")
+        self._ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TWeCallInfo(AbstractModel):
+    """TWeCall信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelId: 小程序ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelId: str
+        :param _Sn: Sn信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sn: str
+        :param _ActiveNum: 激活数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActiveNum: int
+        """
+        self._ModelId = None
+        self._Sn = None
+        self._ActiveNum = None
+
+    @property
+    def ModelId(self):
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+    @property
+    def Sn(self):
+        return self._Sn
+
+    @Sn.setter
+    def Sn(self, Sn):
+        self._Sn = Sn
+
+    @property
+    def ActiveNum(self):
+        return self._ActiveNum
+
+    @ActiveNum.setter
+    def ActiveNum(self, ActiveNum):
+        self._ActiveNum = ActiveNum
+
+
+    def _deserialize(self, params):
+        self._ModelId = params.get("ModelId")
+        self._Sn = params.get("Sn")
+        self._ActiveNum = params.get("ActiveNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TWeCallPkgInfo(AbstractModel):
+    """TWeCall设备信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PkgId: 包ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PkgId: str
+        :param _PkgType: 包类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PkgType: int
+        :param _CreateTime: 生效时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param _ExpireTime: 过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: int
+        :param _Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _LicenseUsedNum: 已使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LicenseUsedNum: int
+        :param _LicenseTotalNum: 总量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LicenseTotalNum: int
+        """
+        self._PkgId = None
+        self._PkgType = None
+        self._CreateTime = None
+        self._ExpireTime = None
+        self._Status = None
+        self._LicenseUsedNum = None
+        self._LicenseTotalNum = None
+
+    @property
+    def PkgId(self):
+        return self._PkgId
+
+    @PkgId.setter
+    def PkgId(self, PkgId):
+        self._PkgId = PkgId
+
+    @property
+    def PkgType(self):
+        return self._PkgType
+
+    @PkgType.setter
+    def PkgType(self, PkgType):
+        self._PkgType = PkgType
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def LicenseUsedNum(self):
+        return self._LicenseUsedNum
+
+    @LicenseUsedNum.setter
+    def LicenseUsedNum(self, LicenseUsedNum):
+        self._LicenseUsedNum = LicenseUsedNum
+
+    @property
+    def LicenseTotalNum(self):
+        return self._LicenseTotalNum
+
+    @LicenseTotalNum.setter
+    def LicenseTotalNum(self, LicenseTotalNum):
+        self._LicenseTotalNum = LicenseTotalNum
+
+
+    def _deserialize(self, params):
+        self._PkgId = params.get("PkgId")
+        self._PkgType = params.get("PkgType")
+        self._CreateTime = params.get("CreateTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._Status = params.get("Status")
+        self._LicenseUsedNum = params.get("LicenseUsedNum")
+        self._LicenseTotalNum = params.get("LicenseTotalNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

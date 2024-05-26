@@ -12136,7 +12136,7 @@ class DescribeChannelSealPolicyWorkflowUrlRequest(AbstractModel):
 第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId
 第三方平台子客企业和员工必须已经经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _WorkflowInstanceId: 用印审批单的ID，可通过用印申请回调获取。
+        :param _WorkflowInstanceId: 用印审批单的ID，可通过用印[申请回调](https://qian.tencent.com/developers/partner/callback_types_seals#%E4%B8%89-%E7%94%A8%E5%8D%B0%E7%94%B3%E8%AF%B7%E5%AE%A1%E6%89%B9%E7%8A%B6%E6%80%81%E9%80%9A%E7%9F%A5)获取。
         :type WorkflowInstanceId: str
         :param _Endpoint: 生成链接的类型：
 生成链接的类型

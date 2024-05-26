@@ -431,6 +431,8 @@ class AddInstancesRequest(AbstractModel):
         :type Memory: int
         :param _ReadOnlyCount: 新增只读实例数，取值范围为(0,15]
         :type ReadOnlyCount: int
+        :param _DeviceType: 实例机器类型
+        :type DeviceType: str
         :param _InstanceGrpId: 实例组ID，在已有RO组中新增实例时使用，不传则新增RO组。当前版本不建议传输该值。
         :type InstanceGrpId: str
         :param _VpcId: 所属VPC网络ID。
@@ -463,6 +465,7 @@ class AddInstancesRequest(AbstractModel):
         self._Cpu = None
         self._Memory = None
         self._ReadOnlyCount = None
+        self._DeviceType = None
         self._InstanceGrpId = None
         self._VpcId = None
         self._SubnetId = None
@@ -508,6 +511,14 @@ class AddInstancesRequest(AbstractModel):
     @ReadOnlyCount.setter
     def ReadOnlyCount(self, ReadOnlyCount):
         self._ReadOnlyCount = ReadOnlyCount
+
+    @property
+    def DeviceType(self):
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
 
     @property
     def InstanceGrpId(self):
@@ -623,6 +634,7 @@ class AddInstancesRequest(AbstractModel):
         self._Cpu = params.get("Cpu")
         self._Memory = params.get("Memory")
         self._ReadOnlyCount = params.get("ReadOnlyCount")
+        self._DeviceType = params.get("DeviceType")
         self._InstanceGrpId = params.get("InstanceGrpId")
         self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")
@@ -3235,6 +3247,12 @@ class ClusterInstanceDetail(AbstractModel):
         :param _ServerlessStatus: serverless实例子状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServerlessStatus: str
+        :param _InstanceTasks: 实例任务信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceTasks: list of ObjectTask
+        :param _InstanceDeviceType: 实例机器类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceDeviceType: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -3249,6 +3267,8 @@ class ClusterInstanceDetail(AbstractModel):
         self._MaintainDuration = None
         self._MaintainWeekDays = None
         self._ServerlessStatus = None
+        self._InstanceTasks = None
+        self._InstanceDeviceType = None
 
     @property
     def InstanceId(self):
@@ -3354,6 +3374,22 @@ class ClusterInstanceDetail(AbstractModel):
     def ServerlessStatus(self, ServerlessStatus):
         self._ServerlessStatus = ServerlessStatus
 
+    @property
+    def InstanceTasks(self):
+        return self._InstanceTasks
+
+    @InstanceTasks.setter
+    def InstanceTasks(self, InstanceTasks):
+        self._InstanceTasks = InstanceTasks
+
+    @property
+    def InstanceDeviceType(self):
+        return self._InstanceDeviceType
+
+    @InstanceDeviceType.setter
+    def InstanceDeviceType(self, InstanceDeviceType):
+        self._InstanceDeviceType = InstanceDeviceType
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -3369,6 +3405,13 @@ class ClusterInstanceDetail(AbstractModel):
         self._MaintainDuration = params.get("MaintainDuration")
         self._MaintainWeekDays = params.get("MaintainWeekDays")
         self._ServerlessStatus = params.get("ServerlessStatus")
+        if params.get("InstanceTasks") is not None:
+            self._InstanceTasks = []
+            for item in params.get("InstanceTasks"):
+                obj = ObjectTask()
+                obj._deserialize(item)
+                self._InstanceTasks.append(obj)
+        self._InstanceDeviceType = params.get("InstanceDeviceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7388,6 +7431,9 @@ pause
         :param _InstanceAbility: 当前实例支持的能力
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceAbility: :class:`tencentcloud.cynosdb.v20190107.models.InstanceAbility`
+        :param _DeviceType: 实例机器类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceType: str
         """
         self._Uin = None
         self._AppId = None
@@ -7443,6 +7489,7 @@ pause
         self._ResourcePackages = None
         self._InstanceIndexMode = None
         self._InstanceAbility = None
+        self._DeviceType = None
 
     @property
     def Uin(self):
@@ -7876,6 +7923,14 @@ pause
     def InstanceAbility(self, InstanceAbility):
         self._InstanceAbility = InstanceAbility
 
+    @property
+    def DeviceType(self):
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
+
 
     def _deserialize(self, params):
         self._Uin = params.get("Uin")
@@ -7954,6 +8009,7 @@ pause
         if params.get("InstanceAbility") is not None:
             self._InstanceAbility = InstanceAbility()
             self._InstanceAbility._deserialize(params.get("InstanceAbility"))
+        self._DeviceType = params.get("DeviceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13685,9 +13741,12 @@ class DescribeInstanceSpecsRequest(AbstractModel):
         :type DbType: str
         :param _IncludeZoneStocks: 是否需要返回可用区信息
         :type IncludeZoneStocks: bool
+        :param _DeviceType: 实例机器类型
+        :type DeviceType: str
         """
         self._DbType = None
         self._IncludeZoneStocks = None
+        self._DeviceType = None
 
     @property
     def DbType(self):
@@ -13705,10 +13764,19 @@ class DescribeInstanceSpecsRequest(AbstractModel):
     def IncludeZoneStocks(self, IncludeZoneStocks):
         self._IncludeZoneStocks = IncludeZoneStocks
 
+    @property
+    def DeviceType(self):
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
+
 
     def _deserialize(self, params):
         self._DbType = params.get("DbType")
         self._IncludeZoneStocks = params.get("IncludeZoneStocks")
+        self._DeviceType = params.get("DeviceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16698,6 +16766,8 @@ class InquirePriceCreateRequest(AbstractModel):
         :type InstancePayMode: str
         :param _StoragePayMode: 存储购买类型，可选值为：PREPAID, POSTPAID
         :type StoragePayMode: str
+        :param _DeviceType: 实例设备类型
+        :type DeviceType: str
         :param _Cpu: CPU核数，PREPAID与POSTPAID实例类型必传
         :type Cpu: int
         :param _Memory: 内存大小，单位G，PREPAID与POSTPAID实例类型必传
@@ -16715,6 +16785,7 @@ class InquirePriceCreateRequest(AbstractModel):
         self._GoodsNum = None
         self._InstancePayMode = None
         self._StoragePayMode = None
+        self._DeviceType = None
         self._Cpu = None
         self._Memory = None
         self._Ccu = None
@@ -16753,6 +16824,14 @@ class InquirePriceCreateRequest(AbstractModel):
     @StoragePayMode.setter
     def StoragePayMode(self, StoragePayMode):
         self._StoragePayMode = StoragePayMode
+
+    @property
+    def DeviceType(self):
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
 
     @property
     def Cpu(self):
@@ -16808,6 +16887,7 @@ class InquirePriceCreateRequest(AbstractModel):
         self._GoodsNum = params.get("GoodsNum")
         self._InstancePayMode = params.get("InstancePayMode")
         self._StoragePayMode = params.get("StoragePayMode")
+        self._DeviceType = params.get("DeviceType")
         self._Cpu = params.get("Cpu")
         self._Memory = params.get("Memory")
         self._Ccu = params.get("Ccu")
@@ -17582,6 +17662,8 @@ class InstanceInitInfo(AbstractModel):
         :type MinRoCpu: float
         :param _MaxRoCpu: Serverless实例最大规格
         :type MaxRoCpu: float
+        :param _DeviceType: 实例机器类型
+        :type DeviceType: str
         """
         self._Cpu = None
         self._Memory = None
@@ -17591,6 +17673,7 @@ class InstanceInitInfo(AbstractModel):
         self._MaxRoCount = None
         self._MinRoCpu = None
         self._MaxRoCpu = None
+        self._DeviceType = None
 
     @property
     def Cpu(self):
@@ -17656,6 +17739,14 @@ class InstanceInitInfo(AbstractModel):
     def MaxRoCpu(self, MaxRoCpu):
         self._MaxRoCpu = MaxRoCpu
 
+    @property
+    def DeviceType(self):
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
+
 
     def _deserialize(self, params):
         self._Cpu = params.get("Cpu")
@@ -17666,6 +17757,7 @@ class InstanceInitInfo(AbstractModel):
         self._MaxRoCount = params.get("MaxRoCount")
         self._MinRoCpu = params.get("MinRoCpu")
         self._MaxRoCpu = params.get("MaxRoCpu")
+        self._DeviceType = params.get("DeviceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20302,6 +20394,12 @@ class ModifyInstanceData(AbstractModel):
         :type OldMemory: int
         :param _OldStorageLimit: 变配前存储上限
         :type OldStorageLimit: int
+        :param _OldDeviceType: 变配前实例机器类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OldDeviceType: str
+        :param _DeviceType: 变配后实例机器类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceType: str
         :param _UpgradeType: 升级方式。升级完成后切换或维护时间内切换
         :type UpgradeType: str
         """
@@ -20311,6 +20409,8 @@ class ModifyInstanceData(AbstractModel):
         self._OldCpu = None
         self._OldMemory = None
         self._OldStorageLimit = None
+        self._OldDeviceType = None
+        self._DeviceType = None
         self._UpgradeType = None
 
     @property
@@ -20362,6 +20462,22 @@ class ModifyInstanceData(AbstractModel):
         self._OldStorageLimit = OldStorageLimit
 
     @property
+    def OldDeviceType(self):
+        return self._OldDeviceType
+
+    @OldDeviceType.setter
+    def OldDeviceType(self, OldDeviceType):
+        self._OldDeviceType = OldDeviceType
+
+    @property
+    def DeviceType(self):
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
+
+    @property
     def UpgradeType(self):
         return self._UpgradeType
 
@@ -20377,6 +20493,8 @@ class ModifyInstanceData(AbstractModel):
         self._OldCpu = params.get("OldCpu")
         self._OldMemory = params.get("OldMemory")
         self._OldStorageLimit = params.get("OldStorageLimit")
+        self._OldDeviceType = params.get("OldDeviceType")
+        self._DeviceType = params.get("DeviceType")
         self._UpgradeType = params.get("UpgradeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -26175,14 +26293,20 @@ class RollbackToNewClusterRequest(AbstractModel):
         :type Zone: str
         :param _OriginalClusterId: 回档时，传入源集群ID，用于查找源poolId
         :type OriginalClusterId: str
-        :param _ClusterName: 集群名称，长度小于64个字符，每个字符取值范围：大/小写字母，数字，特殊符号（'-','_','.'）
-        :type ClusterName: str
         :param _UniqVpcId: 所属VPC网络ID
         :type UniqVpcId: str
         :param _UniqSubnetId: 所属子网ID
         :type UniqSubnetId: str
+        :param _ClusterName: 集群名称，长度小于64个字符，每个字符取值范围：大/小写字母，数字，特殊符号（'-','_','.'）
+        :type ClusterName: str
+        :param _RollbackId: 快照回档，表示snapshotId；时间点回档，表示queryId，为0，表示需要判断时间点是否有效
+        :type RollbackId: int
+        :param _ExpectTime: 时间点回档，指定时间；快照回档，快照时间
+        :type ExpectTime: str
         :param _AutoVoucher: 是否自动选择代金券 1是 0否 默认为0
         :type AutoVoucher: int
+        :param _ResourceTags: 集群创建需要绑定的tag数组信息
+        :type ResourceTags: list of Tag
         :param _DbMode: Db类型
 当DbType为MYSQL时可选(默认NORMAL)：
 <li>NORMAL</li>
@@ -26208,25 +26332,24 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         :type AlarmPolicyIds: list of str
         :param _ClusterParams: 参数数组，暂时支持character_set_server （utf8｜latin1｜gbk｜utf8mb4） ，lower_case_table_names，1-大小写不敏感，0-大小写敏感
         :type ClusterParams: list of ParamItem
-        :param _DealMode: 0-下单并支付 1-下单
-        :type DealMode: int
         :param _ParamTemplateId: 参数模板ID，可以通过查询参数模板信息DescribeParamTemplates获得参数模板ID
         :type ParamTemplateId: int
-        :param _ResourceTags: 集群创建需要绑定的tag数组信息
-        :type ResourceTags: list of Tag
         :param _InstanceInitInfos: 实例初始化配置信息，主要用于购买集群时选不同规格实例
         :type InstanceInitInfos: list of InstanceInitInfo
-        :param _RollbackId: 快照回档，表示snapshotId；时间点回档，表示queryId，为0，表示需要判断时间点是否有效
-        :type RollbackId: int
-        :param _ExpectTime: 时间点回档，指定时间；快照回档，快照时间
-        :type ExpectTime: str
+        :param _DealMode: 0-下单并支付 1-下单
+        :type DealMode: int
+        :param _PayMode: 计算节点付费模式：0-按量计费，1-预付费
+        :type PayMode: int
         """
         self._Zone = None
         self._OriginalClusterId = None
-        self._ClusterName = None
         self._UniqVpcId = None
         self._UniqSubnetId = None
+        self._ClusterName = None
+        self._RollbackId = None
+        self._ExpectTime = None
         self._AutoVoucher = None
+        self._ResourceTags = None
         self._DbMode = None
         self._MinCpu = None
         self._MaxCpu = None
@@ -26235,12 +26358,10 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         self._SecurityGroupIds = None
         self._AlarmPolicyIds = None
         self._ClusterParams = None
-        self._DealMode = None
         self._ParamTemplateId = None
-        self._ResourceTags = None
         self._InstanceInitInfos = None
-        self._RollbackId = None
-        self._ExpectTime = None
+        self._DealMode = None
+        self._PayMode = None
 
     @property
     def Zone(self):
@@ -26259,14 +26380,6 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         self._OriginalClusterId = OriginalClusterId
 
     @property
-    def ClusterName(self):
-        return self._ClusterName
-
-    @ClusterName.setter
-    def ClusterName(self, ClusterName):
-        self._ClusterName = ClusterName
-
-    @property
     def UniqVpcId(self):
         return self._UniqVpcId
 
@@ -26283,12 +26396,44 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         self._UniqSubnetId = UniqSubnetId
 
     @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def RollbackId(self):
+        return self._RollbackId
+
+    @RollbackId.setter
+    def RollbackId(self, RollbackId):
+        self._RollbackId = RollbackId
+
+    @property
+    def ExpectTime(self):
+        return self._ExpectTime
+
+    @ExpectTime.setter
+    def ExpectTime(self, ExpectTime):
+        self._ExpectTime = ExpectTime
+
+    @property
     def AutoVoucher(self):
         return self._AutoVoucher
 
     @AutoVoucher.setter
     def AutoVoucher(self, AutoVoucher):
         self._AutoVoucher = AutoVoucher
+
+    @property
+    def ResourceTags(self):
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
 
     @property
     def DbMode(self):
@@ -26355,28 +26500,12 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         self._ClusterParams = ClusterParams
 
     @property
-    def DealMode(self):
-        return self._DealMode
-
-    @DealMode.setter
-    def DealMode(self, DealMode):
-        self._DealMode = DealMode
-
-    @property
     def ParamTemplateId(self):
         return self._ParamTemplateId
 
     @ParamTemplateId.setter
     def ParamTemplateId(self, ParamTemplateId):
         self._ParamTemplateId = ParamTemplateId
-
-    @property
-    def ResourceTags(self):
-        return self._ResourceTags
-
-    @ResourceTags.setter
-    def ResourceTags(self, ResourceTags):
-        self._ResourceTags = ResourceTags
 
     @property
     def InstanceInitInfos(self):
@@ -26387,29 +26516,37 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         self._InstanceInitInfos = InstanceInitInfos
 
     @property
-    def RollbackId(self):
-        return self._RollbackId
+    def DealMode(self):
+        return self._DealMode
 
-    @RollbackId.setter
-    def RollbackId(self, RollbackId):
-        self._RollbackId = RollbackId
+    @DealMode.setter
+    def DealMode(self, DealMode):
+        self._DealMode = DealMode
 
     @property
-    def ExpectTime(self):
-        return self._ExpectTime
+    def PayMode(self):
+        return self._PayMode
 
-    @ExpectTime.setter
-    def ExpectTime(self, ExpectTime):
-        self._ExpectTime = ExpectTime
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
 
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
         self._OriginalClusterId = params.get("OriginalClusterId")
-        self._ClusterName = params.get("ClusterName")
         self._UniqVpcId = params.get("UniqVpcId")
         self._UniqSubnetId = params.get("UniqSubnetId")
+        self._ClusterName = params.get("ClusterName")
+        self._RollbackId = params.get("RollbackId")
+        self._ExpectTime = params.get("ExpectTime")
         self._AutoVoucher = params.get("AutoVoucher")
+        if params.get("ResourceTags") is not None:
+            self._ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._ResourceTags.append(obj)
         self._DbMode = params.get("DbMode")
         self._MinCpu = params.get("MinCpu")
         self._MaxCpu = params.get("MaxCpu")
@@ -26423,22 +26560,15 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
                 obj = ParamItem()
                 obj._deserialize(item)
                 self._ClusterParams.append(obj)
-        self._DealMode = params.get("DealMode")
         self._ParamTemplateId = params.get("ParamTemplateId")
-        if params.get("ResourceTags") is not None:
-            self._ResourceTags = []
-            for item in params.get("ResourceTags"):
-                obj = Tag()
-                obj._deserialize(item)
-                self._ResourceTags.append(obj)
         if params.get("InstanceInitInfos") is not None:
             self._InstanceInitInfos = []
             for item in params.get("InstanceInitInfos"):
                 obj = InstanceInitInfo()
                 obj._deserialize(item)
                 self._InstanceInitInfos.append(obj)
-        self._RollbackId = params.get("RollbackId")
-        self._ExpectTime = params.get("ExpectTime")
+        self._DealMode = params.get("DealMode")
+        self._PayMode = params.get("PayMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28896,6 +29026,8 @@ class UpgradeInstanceRequest(AbstractModel):
         :type Memory: int
         :param _UpgradeType: 升级类型：upgradeImmediate，upgradeInMaintain
         :type UpgradeType: str
+        :param _DeviceType: 实例机器类型
+        :type DeviceType: str
         :param _StorageLimit: 该参数已废弃
         :type StorageLimit: int
         :param _AutoVoucher: 是否自动选择代金券 1是 0否 默认为0
@@ -28913,6 +29045,7 @@ class UpgradeInstanceRequest(AbstractModel):
         self._Cpu = None
         self._Memory = None
         self._UpgradeType = None
+        self._DeviceType = None
         self._StorageLimit = None
         self._AutoVoucher = None
         self._DbType = None
@@ -28951,6 +29084,14 @@ class UpgradeInstanceRequest(AbstractModel):
     @UpgradeType.setter
     def UpgradeType(self, UpgradeType):
         self._UpgradeType = UpgradeType
+
+    @property
+    def DeviceType(self):
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
 
     @property
     def StorageLimit(self):
@@ -29006,6 +29147,7 @@ class UpgradeInstanceRequest(AbstractModel):
         self._Cpu = params.get("Cpu")
         self._Memory = params.get("Memory")
         self._UpgradeType = params.get("UpgradeType")
+        self._DeviceType = params.get("DeviceType")
         self._StorageLimit = params.get("StorageLimit")
         self._AutoVoucher = params.get("AutoVoucher")
         self._DbType = params.get("DbType")
