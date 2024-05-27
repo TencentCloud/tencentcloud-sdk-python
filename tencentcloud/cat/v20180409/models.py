@@ -2662,7 +2662,7 @@ class UpdateProbeTaskAttributesRequest(AbstractModel):
         r"""
         :param _TaskId: 任务 ID
         :type TaskId: str
-        :param _Name: 任务名
+        :param _Name: 任务名，该参数为空时不作任何修改。
         :type Name: str
         """
         self._TaskId = None

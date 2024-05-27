@@ -2770,11 +2770,11 @@ class CreateSyncJobRequest(AbstractModel):
         r"""
         :param _PayMode: 付款类型, 如：PrePay(表示包年包月)、PostPay(表示按时按量)
         :type PayMode: str
-        :param _SrcDatabaseType: 源端数据库类型,如mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql等
+        :param _SrcDatabaseType: 源端数据库类型,如mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql,tdstore等
         :type SrcDatabaseType: str
         :param _SrcRegion: 源端数据库所在地域,如ap-guangzhou
         :type SrcRegion: str
-        :param _DstDatabaseType: 目标端数据库类型,如mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql,kafka等
+        :param _DstDatabaseType: 目标端数据库类型,如mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql,kafka,tdstore等
         :type DstDatabaseType: str
         :param _DstRegion: 目标端数据库所在地域,如ap-guangzhou
         :type DstRegion: str

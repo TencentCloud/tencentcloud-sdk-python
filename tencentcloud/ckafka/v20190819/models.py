@@ -22629,11 +22629,19 @@ class PrometheusDTO(AbstractModel):
         :param _BrokerIp: broker地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type BrokerIp: str
+        :param _VpcId: VPC ID信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param _SubnetId: 子网ID信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
         """
         self._Type = None
         self._SourceIp = None
         self._SourcePort = None
         self._BrokerIp = None
+        self._VpcId = None
+        self._SubnetId = None
 
     @property
     def Type(self):
@@ -22667,12 +22675,30 @@ class PrometheusDTO(AbstractModel):
     def BrokerIp(self, BrokerIp):
         self._BrokerIp = BrokerIp
 
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
         self._SourceIp = params.get("SourceIp")
         self._SourcePort = params.get("SourcePort")
         self._BrokerIp = params.get("BrokerIp")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

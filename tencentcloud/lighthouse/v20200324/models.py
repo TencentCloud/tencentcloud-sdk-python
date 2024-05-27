@@ -437,9 +437,9 @@ class AttachDisksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskIds: 云硬盘ID列表。
+        :param _DiskIds: 云硬盘ID列表。每次批量请求云硬盘的上限为 100。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
         :type DiskIds: list of str
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
         :type InstanceId: str
         :param _RenewFlag: 自动续费标识。取值范围：
 
@@ -4171,7 +4171,7 @@ class DescribeDisksDeniedActionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskIds: 云硬盘ID列表。
+        :param _DiskIds: 云硬盘ID列表。每次批量请求云硬盘的上限为 100。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
         :type DiskIds: list of str
         """
         self._DiskIds = None
@@ -4246,7 +4246,7 @@ class DescribeDisksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskIds: 云硬盘ID列表。
+        :param _DiskIds: 云硬盘ID列表。每次批量请求云硬盘的上限为 100。
         :type DiskIds: list of str
         :param _Filters: 过滤器列表。
 disk-id
@@ -4425,7 +4425,7 @@ class DescribeDisksReturnableRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskIds: 云硬盘ID列表。
+        :param _DiskIds: 云硬盘ID列表。每次批量请求云硬盘的上限为 10。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
         :type DiskIds: list of str
         :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
@@ -7349,7 +7349,7 @@ class DetachCcnRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CcnId: 云联网实例ID。
+        :param _CcnId: 云联网实例ID。可通过[DescribeCcnAttachedInstances](https://cloud.tencent.com/document/product/1207/58797)接口返回值中的CcnId获取。
         :type CcnId: str
         """
         self._CcnId = None
@@ -7407,7 +7407,7 @@ class DetachDisksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskIds: 云硬盘ID列表。
+        :param _DiskIds: 云硬盘ID列表。每次批量请求云硬盘的上限为 100。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
         :type DiskIds: list of str
         """
         self._DiskIds = None
@@ -10081,7 +10081,7 @@ class InquirePriceRenewDisksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskIds: 云硬盘ID列表。
+        :param _DiskIds: 云硬盘ID列表。每次批量请求云硬盘的上限为 1。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
         :type DiskIds: list of str
         :param _RenewDiskChargePrepaid: 续费云硬盘包年包月相关参数设置。
         :type RenewDiskChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.RenewDiskChargePrepaid`
@@ -11743,7 +11743,7 @@ class ModifyDisksAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskIds: 云硬盘ID列表。
+        :param _DiskIds: 云硬盘ID列表。每次批量请求云硬盘的上限为 100。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
         :type DiskIds: list of str
         :param _DiskName: 云硬盘名称。
         :type DiskName: str
@@ -11883,9 +11883,15 @@ class ModifyDisksRenewFlagRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskIds: 云硬盘ID列表。
+        :param _DiskIds: 云硬盘ID列表。每次批量请求云硬盘的上限为 100。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
         :type DiskIds: list of str
-        :param _RenewFlag: 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费<br><br>若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
+        :param _RenewFlag: 自动续费标识。取值范围：
+
+- NOTIFY_AND_AUTO_RENEW：通知过期且自动续费
+- NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费
+- DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费
+
+若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
         :type RenewFlag: str
         """
         self._DiskIds = None
@@ -13585,7 +13591,7 @@ class ResetAttachCcnRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CcnId: 云联网实例ID。
+        :param _CcnId: 云联网实例ID。可通过[DescribeCcnAttachedInstances](https://cloud.tencent.com/document/product/1207/58797)接口返回值中的CcnId获取。
         :type CcnId: str
         """
         self._CcnId = None

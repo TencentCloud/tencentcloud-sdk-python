@@ -1556,6 +1556,18 @@ WARN_RESHOOT_CARD翻拍件告警
 
 
         :type Angle: float
+        :param _NationalEmblem: 是否有国徽。0为没有，1为有。
+        :type NationalEmblem: bool
+        :param _QRCode: 是否有二维码。0为没有，1为有。
+        :type QRCode: bool
+        :param _Seal: 是否有印章。0为没有，1为有。
+        :type Seal: bool
+        :param _Title: 标题
+        :type Title: str
+        :param _SerialNumber: 编号
+        :type SerialNumber: str
+        :param _RegistrationAuthority: 登记机关
+        :type RegistrationAuthority: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1574,6 +1586,12 @@ WARN_RESHOOT_CARD翻拍件告警
         self._IsDuplication = None
         self._RegistrationDate = None
         self._Angle = None
+        self._NationalEmblem = None
+        self._QRCode = None
+        self._Seal = None
+        self._Title = None
+        self._SerialNumber = None
+        self._RegistrationAuthority = None
         self._RequestId = None
 
     @property
@@ -1697,6 +1715,54 @@ WARN_RESHOOT_CARD翻拍件告警
         self._Angle = Angle
 
     @property
+    def NationalEmblem(self):
+        return self._NationalEmblem
+
+    @NationalEmblem.setter
+    def NationalEmblem(self, NationalEmblem):
+        self._NationalEmblem = NationalEmblem
+
+    @property
+    def QRCode(self):
+        return self._QRCode
+
+    @QRCode.setter
+    def QRCode(self, QRCode):
+        self._QRCode = QRCode
+
+    @property
+    def Seal(self):
+        return self._Seal
+
+    @Seal.setter
+    def Seal(self, Seal):
+        self._Seal = Seal
+
+    @property
+    def Title(self):
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def SerialNumber(self):
+        return self._SerialNumber
+
+    @SerialNumber.setter
+    def SerialNumber(self, SerialNumber):
+        self._SerialNumber = SerialNumber
+
+    @property
+    def RegistrationAuthority(self):
+        return self._RegistrationAuthority
+
+    @RegistrationAuthority.setter
+    def RegistrationAuthority(self, RegistrationAuthority):
+        self._RegistrationAuthority = RegistrationAuthority
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -1721,6 +1787,12 @@ WARN_RESHOOT_CARD翻拍件告警
         self._IsDuplication = params.get("IsDuplication")
         self._RegistrationDate = params.get("RegistrationDate")
         self._Angle = params.get("Angle")
+        self._NationalEmblem = params.get("NationalEmblem")
+        self._QRCode = params.get("QRCode")
+        self._Seal = params.get("Seal")
+        self._Title = params.get("Title")
+        self._SerialNumber = params.get("SerialNumber")
+        self._RegistrationAuthority = params.get("RegistrationAuthority")
         self._RequestId = params.get("RequestId")
 
 

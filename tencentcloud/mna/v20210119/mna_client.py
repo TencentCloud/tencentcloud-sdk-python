@@ -279,6 +279,29 @@ class MnaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetFlowAlarmInfo(self, request):
+        """根据AppId查询用户设置的流量告警信息，包括阈值，回调url和key
+
+        :param request: Request instance for GetFlowAlarmInfo.
+        :type request: :class:`tencentcloud.mna.v20210119.models.GetFlowAlarmInfoRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.GetFlowAlarmInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetFlowAlarmInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetFlowAlarmInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetFlowPackages(self, request):
         """获取流量包列表
 
@@ -316,6 +339,29 @@ class MnaClient(AbstractClient):
             body = self.call("GetFlowStatistic", params, headers=headers)
             response = json.loads(body)
             model = models.GetFlowStatisticResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetFlowStatisticByGroup(self, request):
+        """获取指定分组，指定时间数据流量使用情况
+
+        :param request: Request instance for GetFlowStatisticByGroup.
+        :type request: :class:`tencentcloud.mna.v20210119.models.GetFlowStatisticByGroupRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.GetFlowStatisticByGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetFlowStatisticByGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetFlowStatisticByGroupResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

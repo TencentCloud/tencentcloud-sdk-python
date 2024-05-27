@@ -2416,6 +2416,76 @@ class GetDevicesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetFlowAlarmInfoRequest(AbstractModel):
+    """GetFlowAlarmInfo请求参数结构体
+
+    """
+
+
+class GetFlowAlarmInfoResponse(AbstractModel):
+    """GetFlowAlarmInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AlarmValue: 流量包的告警阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmValue: int
+        :param _NotifyUrl: 告警通知回调url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotifyUrl: str
+        :param _CallbackKey: 告警通知回调key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CallbackKey: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AlarmValue = None
+        self._NotifyUrl = None
+        self._CallbackKey = None
+        self._RequestId = None
+
+    @property
+    def AlarmValue(self):
+        return self._AlarmValue
+
+    @AlarmValue.setter
+    def AlarmValue(self, AlarmValue):
+        self._AlarmValue = AlarmValue
+
+    @property
+    def NotifyUrl(self):
+        return self._NotifyUrl
+
+    @NotifyUrl.setter
+    def NotifyUrl(self, NotifyUrl):
+        self._NotifyUrl = NotifyUrl
+
+    @property
+    def CallbackKey(self):
+        return self._CallbackKey
+
+    @CallbackKey.setter
+    def CallbackKey(self, CallbackKey):
+        self._CallbackKey = CallbackKey
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AlarmValue = params.get("AlarmValue")
+        self._NotifyUrl = params.get("NotifyUrl")
+        self._CallbackKey = params.get("CallbackKey")
+        self._RequestId = params.get("RequestId")
+
+
 class GetFlowPackagesRequest(AbstractModel):
     """GetFlowPackages请求参数结构体
 
@@ -2549,6 +2619,189 @@ class GetFlowPackagesResponse(AbstractModel):
                 obj._deserialize(item)
                 self._PackageList.append(obj)
         self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class GetFlowStatisticByGroupRequest(AbstractModel):
+    """GetFlowStatisticByGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: 分组ID
+        :type GroupId: str
+        :param _BeginTime: 开始查找时间
+        :type BeginTime: int
+        :param _EndTime: 截止时间
+        :type EndTime: int
+        :param _Type: 流量种类（1：上行流量，2：下行流量， 3: 上下行总和）
+        :type Type: int
+        :param _TimeGranularity: 时间粒度（1：按小时统计，2：按天统计）
+        :type TimeGranularity: int
+        :param _AccessRegion: 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+        :type AccessRegion: str
+        :param _GatewayType: 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+        :type GatewayType: int
+        """
+        self._GroupId = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._Type = None
+        self._TimeGranularity = None
+        self._AccessRegion = None
+        self._GatewayType = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def TimeGranularity(self):
+        return self._TimeGranularity
+
+    @TimeGranularity.setter
+    def TimeGranularity(self, TimeGranularity):
+        self._TimeGranularity = TimeGranularity
+
+    @property
+    def AccessRegion(self):
+        return self._AccessRegion
+
+    @AccessRegion.setter
+    def AccessRegion(self, AccessRegion):
+        self._AccessRegion = AccessRegion
+
+    @property
+    def GatewayType(self):
+        return self._GatewayType
+
+    @GatewayType.setter
+    def GatewayType(self, GatewayType):
+        self._GatewayType = GatewayType
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._Type = params.get("Type")
+        self._TimeGranularity = params.get("TimeGranularity")
+        self._AccessRegion = params.get("AccessRegion")
+        self._GatewayType = params.get("GatewayType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetFlowStatisticByGroupResponse(AbstractModel):
+    """GetFlowStatisticByGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NetDetails: 流量详细信息
+        :type NetDetails: list of NetDetails
+        :param _MaxValue: 查找时间段流量使用最大值（单位：byte）
+        :type MaxValue: float
+        :param _AvgValue: 查找时间段流量使用平均值（单位：byte）
+        :type AvgValue: float
+        :param _TotalValue: 查找时间段流量使用总量（单位：byte）
+        :type TotalValue: float
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._NetDetails = None
+        self._MaxValue = None
+        self._AvgValue = None
+        self._TotalValue = None
+        self._RequestId = None
+
+    @property
+    def NetDetails(self):
+        return self._NetDetails
+
+    @NetDetails.setter
+    def NetDetails(self, NetDetails):
+        self._NetDetails = NetDetails
+
+    @property
+    def MaxValue(self):
+        return self._MaxValue
+
+    @MaxValue.setter
+    def MaxValue(self, MaxValue):
+        self._MaxValue = MaxValue
+
+    @property
+    def AvgValue(self):
+        return self._AvgValue
+
+    @AvgValue.setter
+    def AvgValue(self, AvgValue):
+        self._AvgValue = AvgValue
+
+    @property
+    def TotalValue(self):
+        return self._TotalValue
+
+    @TotalValue.setter
+    def TotalValue(self, TotalValue):
+        self._TotalValue = TotalValue
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("NetDetails") is not None:
+            self._NetDetails = []
+            for item in params.get("NetDetails"):
+                obj = NetDetails()
+                obj._deserialize(item)
+                self._NetDetails.append(obj)
+        self._MaxValue = params.get("MaxValue")
+        self._AvgValue = params.get("AvgValue")
+        self._TotalValue = params.get("TotalValue")
         self._RequestId = params.get("RequestId")
 
 

@@ -7024,7 +7024,7 @@ class DescribePvListRequest(AbstractModel):
         :type EndTime: str
         :param _StartTime: 开始时间
         :type StartTime: str
-        :param _Dimension: 获取day：d，   获取min则不填
+        :param _Dimension: 对PV指标的查询维度。获取day：d，   获取min则不填。
         :type Dimension: str
         """
         self._ProjectId = None
@@ -8100,11 +8100,11 @@ class DescribeTawAreasRequest(AbstractModel):
         :type AreaIds: list of int
         :param _AreaKeys: 片区Key
         :type AreaKeys: list of str
-        :param _Limit: 分页Limit
+        :param _Limit: 分页Limit，默认根据AreaKeys和AreaStatuses参数查询所有。
         :type Limit: int
         :param _AreaStatuses: 片区状态(1=有效，2=无效)
         :type AreaStatuses: list of int
-        :param _Offset: 分页Offset
+        :param _Offset: 分页Offset，默认根据AreaKeys和AreaStatuses参数查询所有。
         :type Offset: int
         """
         self._AreaIds = None

@@ -49,6 +49,29 @@ class DomainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BidDetailPage(self, request):
+        """该接口用于用户详情页出价请求
+
+        :param request: Request instance for BidDetailPage.
+        :type request: :class:`tencentcloud.domain.v20180808.models.BidDetailPageRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.BidDetailPageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BidDetailPage", params, headers=headers)
+            response = json.loads(body)
+            model = models.BidDetailPageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BidPreDomains(self, request):
         """用户合作商预释放出价
 
@@ -63,6 +86,29 @@ class DomainClient(AbstractClient):
             body = self.call("BidPreDomains", params, headers=headers)
             response = json.loads(body)
             model = models.BidPreDomainsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def BiddingPreRelease(self, request):
+        """用于出价界面出价请求
+
+        :param request: Request instance for BiddingPreRelease.
+        :type request: :class:`tencentcloud.domain.v20180808.models.BiddingPreReleaseRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.BiddingPreReleaseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BiddingPreRelease", params, headers=headers)
+            response = json.loads(body)
+            model = models.BiddingPreReleaseResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -233,6 +279,29 @@ class DomainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteBidding(self, request):
+        """删除记录。
+
+        :param request: Request instance for DeleteBidding.
+        :type request: :class:`tencentcloud.domain.v20180808.models.DeleteBiddingRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.DeleteBiddingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteBidding", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteBiddingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteCustomDnsHost(self, request):
         """删除自定义DNS Host
 
@@ -325,6 +394,29 @@ class DomainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAuctionList(self, request):
+        """用户控制台获取竞价列表
+
+        :param request: Request instance for DescribeAuctionList.
+        :type request: :class:`tencentcloud.domain.v20180808.models.DescribeAuctionListRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.DescribeAuctionListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuctionList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAuctionListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBatchOperationLogDetails(self, request):
         """本接口 ( DescribeBatchOperationLogDetails ) 用于获取批量操作日志详情。
 
@@ -362,6 +454,144 @@ class DomainClient(AbstractClient):
             body = self.call("DescribeBatchOperationLogs", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeBatchOperationLogsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBiddingAppointDetail(self, request):
+        """我预约的域名-预约详情。
+
+        :param request: Request instance for DescribeBiddingAppointDetail.
+        :type request: :class:`tencentcloud.domain.v20180808.models.DescribeBiddingAppointDetailRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.DescribeBiddingAppointDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBiddingAppointDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBiddingAppointDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBiddingAppointList(self, request):
+        """我预定的域名。
+
+        :param request: Request instance for DescribeBiddingAppointList.
+        :type request: :class:`tencentcloud.domain.v20180808.models.DescribeBiddingAppointListRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.DescribeBiddingAppointListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBiddingAppointList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBiddingAppointListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBiddingDetail(self, request):
+        """我竞价的域名-竞价详情。
+
+        :param request: Request instance for DescribeBiddingDetail.
+        :type request: :class:`tencentcloud.domain.v20180808.models.DescribeBiddingDetailRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.DescribeBiddingDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBiddingDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBiddingDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBiddingList(self, request):
+        """我竞价的域名。
+
+        :param request: Request instance for DescribeBiddingList.
+        :type request: :class:`tencentcloud.domain.v20180808.models.DescribeBiddingListRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.DescribeBiddingListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBiddingList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBiddingListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBiddingSuccessfulDetail(self, request):
+        """我得标的域名-得标详情。
+
+        :param request: Request instance for DescribeBiddingSuccessfulDetail.
+        :type request: :class:`tencentcloud.domain.v20180808.models.DescribeBiddingSuccessfulDetailRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.DescribeBiddingSuccessfulDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBiddingSuccessfulDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBiddingSuccessfulDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBiddingSuccessfulList(self, request):
+        """我得标的域名。
+
+        :param request: Request instance for DescribeBiddingSuccessfulList.
+        :type request: :class:`tencentcloud.domain.v20180808.models.DescribeBiddingSuccessfulListRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.DescribeBiddingSuccessfulListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBiddingSuccessfulList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBiddingSuccessfulListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -486,6 +716,29 @@ class DomainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePayWaitDetail(self, request):
+        """等待支付详情接口
+
+        :param request: Request instance for DescribePayWaitDetail.
+        :type request: :class:`tencentcloud.domain.v20180808.models.DescribePayWaitDetailRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.DescribePayWaitDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePayWaitDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePayWaitDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePhoneEmailList(self, request):
         """本接口用于获取已验证的手机邮箱列表
 
@@ -509,6 +762,29 @@ class DomainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePreAuctionList(self, request):
+        """用于预释放竞价列表数据查询
+
+        :param request: Request instance for DescribePreAuctionList.
+        :type request: :class:`tencentcloud.domain.v20180808.models.DescribePreAuctionListRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.DescribePreAuctionListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePreAuctionList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePreAuctionListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePreDomainList(self, request):
         """用户服务商提前获取预释放域名数据，查询数据根据结束时间进行倒序。
 
@@ -523,6 +799,29 @@ class DomainClient(AbstractClient):
             body = self.call("DescribePreDomainList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribePreDomainListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePreReleaseList(self, request):
+        """接口用于预释放页面查询
+
+        :param request: Request instance for DescribePreReleaseList.
+        :type request: :class:`tencentcloud.domain.v20180808.models.DescribePreReleaseListRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.DescribePreReleaseListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePreReleaseList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePreReleaseListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -638,6 +937,29 @@ class DomainClient(AbstractClient):
             body = self.call("DescribeTldList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTldListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeUnPreDomainDetail(self, request):
+        """查询预释放未预约域名详情接口
+
+        :param request: Request instance for DescribeUnPreDomainDetail.
+        :type request: :class:`tencentcloud.domain.v20180808.models.DescribeUnPreDomainDetailRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.DescribeUnPreDomainDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUnPreDomainDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUnPreDomainDetailResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

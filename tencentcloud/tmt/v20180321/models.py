@@ -224,7 +224,6 @@ class GetFileTranslateData(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param _Progress: 翻译进度
-注意：此字段可能返回 null，表示取不到有效值。
         :type Progress: int
         """
         self._TaskId = None

@@ -18655,6 +18655,7 @@ class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
         :param _Sample: 采样比例，采用千分制，取值范围为1-1000，例如：填写 605 表示采样比例为 60.5%。不填保持原有配置。
         :type Sample: int
         :param _LogFormat: 日志投递的输出格式。不填保持原有配置。
+特别地，当 TaskType 取值为 cls 时，LogFormat.FormatType 的值只能为 json，且 LogFormat 中其他参数将被忽略，建议不传 LogFormat。
         :type LogFormat: :class:`tencentcloud.teo.v20220901.models.LogFormat`
         :param _CustomEndpoint: 自定义 HTTP 服务的配置信息，不填保持原有配置。 
         :type CustomEndpoint: :class:`tencentcloud.teo.v20220901.models.CustomEndpoint`
