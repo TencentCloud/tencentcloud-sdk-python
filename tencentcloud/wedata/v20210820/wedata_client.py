@@ -3894,7 +3894,7 @@ class WedataClient(AbstractClient):
 
 
     def FreezeOpsTasks(self, request):
-        """任务运维-批量冻结任务
+        """任务运维-批量暂停任务
 
         :param request: Request instance for FreezeOpsTasks.
         :type request: :class:`tencentcloud.wedata.v20210820.models.FreezeOpsTasksRequest`

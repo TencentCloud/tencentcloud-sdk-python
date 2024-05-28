@@ -252,7 +252,7 @@ class AssociateInstancesKeyPairsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _KeyIds: 密钥对 ID 列表。每次请求批量密钥对的上限为 100。
+        :param _KeyIds: 密钥对 ID 列表，每次请求批量密钥对的上限为 100。可通过[DescribeKeyPairs](https://cloud.tencent.com/document/api/1207/55540)接口返回值中的KeyId获取。
         :type KeyIds: list of str
         :param _InstanceIds: 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
         :type InstanceIds: list of str
@@ -322,7 +322,7 @@ class AttachCcnRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CcnId: 云联网实例ID。
+        :param _CcnId: 云联网实例ID。可通过[DescribeCcnAttachedInstances](https://cloud.tencent.com/document/product/1207/58797)接口返回值中的CcnId获取。
         :type CcnId: str
         """
         self._CcnId = None
@@ -2946,7 +2946,7 @@ class DeleteKeyPairsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _KeyIds: 密钥对 ID 列表，每次请求批量密钥对的上限为 10。
+        :param _KeyIds: 密钥对 ID 列表，每次请求批量密钥对的上限为 10。可通过[DescribeKeyPairs](https://cloud.tencent.com/document/api/1207/55540)接口返回值中的KeyId获取。
         :type KeyIds: list of str
         """
         self._KeyIds = None
@@ -6055,7 +6055,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: 实例 ID 列表。每次请求批量实例的上限为 100。
+        :param _InstanceIds: 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
         :type InstanceIds: list of str
         :param _Filters: 过滤器列表。
 <li>instance-name</li>按照【实例名称】进行过滤。
@@ -6430,7 +6430,7 @@ class DescribeKeyPairsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _KeyIds: 密钥对 ID 列表。
+        :param _KeyIds: 密钥对 ID 列表，每次请求批量密钥对的上限为 100。
         :type KeyIds: list of str
         :param _Offset: 偏移量，默认为 0。
         :type Offset: int
@@ -7548,7 +7548,7 @@ class DisassociateInstancesKeyPairsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _KeyIds: 密钥对 ID 列表。每次请求批量密钥对的上限为 100。
+        :param _KeyIds: 密钥对 ID 列表，每次请求批量密钥对的上限为 100。可通过[DescribeKeyPairs](https://cloud.tencent.com/document/api/1207/55540)接口返回值中的KeyId获取。
         :type KeyIds: list of str
         :param _InstanceIds: 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
         :type InstanceIds: list of str
@@ -13411,9 +13411,9 @@ class ReplaceFirewallTemplateRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 防火墙模板ID。
+        :param _TemplateId: 防火墙模板ID。可通过 [DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874) 的返回值 TemplateSet 获取。
         :type TemplateId: str
-        :param _TemplateRuleId: 防火墙模板规则ID。
+        :param _TemplateRuleId: 防火墙模板规则ID。可通过 [DescribeFirewallTemplateRules](https://cloud.tencent.com/document/product/1207/96875) 的返回值 TemplateRuleSet 获取。
         :type TemplateRuleId: str
         :param _TemplateRule: 替换后的防火墙模板规则。
         :type TemplateRule: :class:`tencentcloud.lighthouse.v20200324.models.FirewallRule`

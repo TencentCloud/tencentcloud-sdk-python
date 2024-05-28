@@ -50,7 +50,7 @@ class TrocketClient(AbstractClient):
 
 
     def CreateInstance(self, request):
-        """购买新实例
+        """创建 RocketMQ 5.x 集群
 
         :param request: Request instance for CreateInstance.
         :type request: :class:`tencentcloud.trocket.v20230308.models.CreateInstanceRequest`

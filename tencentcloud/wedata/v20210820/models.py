@@ -3818,9 +3818,12 @@ class BatchStopOpsTasksRequest(AbstractModel):
         :type TaskIdList: list of str
         :param _ProjectId: 项目Id
         :type ProjectId: str
+        :param _KillInstance: 是否终止已生成的实例
+        :type KillInstance: bool
         """
         self._TaskIdList = None
         self._ProjectId = None
+        self._KillInstance = None
 
     @property
     def TaskIdList(self):
@@ -3838,10 +3841,19 @@ class BatchStopOpsTasksRequest(AbstractModel):
     def ProjectId(self, ProjectId):
         self._ProjectId = ProjectId
 
+    @property
+    def KillInstance(self):
+        return self._KillInstance
+
+    @KillInstance.setter
+    def KillInstance(self, KillInstance):
+        self._KillInstance = KillInstance
+
 
     def _deserialize(self, params):
         self._TaskIdList = params.get("TaskIdList")
         self._ProjectId = params.get("ProjectId")
+        self._KillInstance = params.get("KillInstance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3902,9 +3914,12 @@ class BatchStopWorkflowsByIdsRequest(AbstractModel):
         :type WorkflowIds: list of str
         :param _ProjectId: 项目id
         :type ProjectId: str
+        :param _KillInstance: 是否终止已生成的实例
+        :type KillInstance: bool
         """
         self._WorkflowIds = None
         self._ProjectId = None
+        self._KillInstance = None
 
     @property
     def WorkflowIds(self):
@@ -3922,10 +3937,19 @@ class BatchStopWorkflowsByIdsRequest(AbstractModel):
     def ProjectId(self, ProjectId):
         self._ProjectId = ProjectId
 
+    @property
+    def KillInstance(self):
+        return self._KillInstance
+
+    @KillInstance.setter
+    def KillInstance(self, KillInstance):
+        self._KillInstance = KillInstance
+
 
     def _deserialize(self, params):
         self._WorkflowIds = params.get("WorkflowIds")
         self._ProjectId = params.get("ProjectId")
+        self._KillInstance = params.get("KillInstance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7552,6 +7576,8 @@ class CreateHiveTableByDDLRequest(AbstractModel):
         :type Type: str
         :param _Incharge: 责任人
         :type Incharge: str
+        :param _SchemaName: schema名称
+        :type SchemaName: str
         """
         self._DatasourceId = None
         self._Database = None
@@ -7560,6 +7586,7 @@ class CreateHiveTableByDDLRequest(AbstractModel):
         self._ProjectId = None
         self._Type = None
         self._Incharge = None
+        self._SchemaName = None
 
     @property
     def DatasourceId(self):
@@ -7617,6 +7644,14 @@ class CreateHiveTableByDDLRequest(AbstractModel):
     def Incharge(self, Incharge):
         self._Incharge = Incharge
 
+    @property
+    def SchemaName(self):
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
 
     def _deserialize(self, params):
         self._DatasourceId = params.get("DatasourceId")
@@ -7626,6 +7661,7 @@ class CreateHiveTableByDDLRequest(AbstractModel):
         self._ProjectId = params.get("ProjectId")
         self._Type = params.get("Type")
         self._Incharge = params.get("Incharge")
+        self._SchemaName = params.get("SchemaName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11034,6 +11070,9 @@ class DatasourceBaseInfo(AbstractModel):
         :param _ParamsString: 数据源附带参数信息Params json字符串
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParamsString: str
+        :param _Category: 区分数据源类型自定义源还是系统源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Category: str
         """
         self._DatabaseNames = None
         self._Description = None
@@ -11045,6 +11084,7 @@ class DatasourceBaseInfo(AbstractModel):
         self._ClusterId = None
         self._Version = None
         self._ParamsString = None
+        self._Category = None
 
     @property
     def DatabaseNames(self):
@@ -11126,6 +11166,14 @@ class DatasourceBaseInfo(AbstractModel):
     def ParamsString(self, ParamsString):
         self._ParamsString = ParamsString
 
+    @property
+    def Category(self):
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
 
     def _deserialize(self, params):
         self._DatabaseNames = params.get("DatabaseNames")
@@ -11138,6 +11186,7 @@ class DatasourceBaseInfo(AbstractModel):
         self._ClusterId = params.get("ClusterId")
         self._Version = params.get("Version")
         self._ParamsString = params.get("ParamsString")
+        self._Category = params.get("Category")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19758,6 +19807,10 @@ class DescribeOperateOpsTasksRequest(AbstractModel):
         :type TaskTags: list of TaskTag
         :param _KeyWord: 查询关键字
         :type KeyWord: str
+        :param _InitStrategy: 实例生成方式
+        :type InitStrategy: str
+        :param _RequestResourceTypes: 额外请求的资源类型
+        :type RequestResourceTypes: list of str
         """
         self._ProjectId = None
         self._FolderIdList = None
@@ -19782,6 +19835,8 @@ class DescribeOperateOpsTasksRequest(AbstractModel):
         self._ExecutorGroupIdList = None
         self._TaskTags = None
         self._KeyWord = None
+        self._InitStrategy = None
+        self._RequestResourceTypes = None
 
     @property
     def ProjectId(self):
@@ -19967,6 +20022,22 @@ class DescribeOperateOpsTasksRequest(AbstractModel):
     def KeyWord(self, KeyWord):
         self._KeyWord = KeyWord
 
+    @property
+    def InitStrategy(self):
+        return self._InitStrategy
+
+    @InitStrategy.setter
+    def InitStrategy(self, InitStrategy):
+        self._InitStrategy = InitStrategy
+
+    @property
+    def RequestResourceTypes(self):
+        return self._RequestResourceTypes
+
+    @RequestResourceTypes.setter
+    def RequestResourceTypes(self, RequestResourceTypes):
+        self._RequestResourceTypes = RequestResourceTypes
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -19997,6 +20068,8 @@ class DescribeOperateOpsTasksRequest(AbstractModel):
                 obj._deserialize(item)
                 self._TaskTags.append(obj)
         self._KeyWord = params.get("KeyWord")
+        self._InitStrategy = params.get("InitStrategy")
+        self._RequestResourceTypes = params.get("RequestResourceTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30873,9 +30946,12 @@ class FreezeOpsTasksRequest(AbstractModel):
         :type Tasks: list of SimpleTaskInfo
         :param _OperateIsInform: 任务操作是否消息通知下游任务责任人
         :type OperateIsInform: bool
+        :param _KillInstance: 是否终止已生成的实例
+        :type KillInstance: bool
         """
         self._Tasks = None
         self._OperateIsInform = None
+        self._KillInstance = None
 
     @property
     def Tasks(self):
@@ -30893,6 +30969,14 @@ class FreezeOpsTasksRequest(AbstractModel):
     def OperateIsInform(self, OperateIsInform):
         self._OperateIsInform = OperateIsInform
 
+    @property
+    def KillInstance(self):
+        return self._KillInstance
+
+    @KillInstance.setter
+    def KillInstance(self, KillInstance):
+        self._KillInstance = KillInstance
+
 
     def _deserialize(self, params):
         if params.get("Tasks") is not None:
@@ -30902,6 +30986,7 @@ class FreezeOpsTasksRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tasks.append(obj)
         self._OperateIsInform = params.get("OperateIsInform")
+        self._KillInstance = params.get("KillInstance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30960,9 +31045,12 @@ class FreezeTasksByWorkflowIdsRequest(AbstractModel):
         :type WorkflowIds: list of str
         :param _ProjectId: 项目id
         :type ProjectId: str
+        :param _KillInstance: 是否终止已生成的实例
+        :type KillInstance: bool
         """
         self._WorkflowIds = None
         self._ProjectId = None
+        self._KillInstance = None
 
     @property
     def WorkflowIds(self):
@@ -30980,10 +31068,19 @@ class FreezeTasksByWorkflowIdsRequest(AbstractModel):
     def ProjectId(self, ProjectId):
         self._ProjectId = ProjectId
 
+    @property
+    def KillInstance(self):
+        return self._KillInstance
+
+    @KillInstance.setter
+    def KillInstance(self, KillInstance):
+        self._KillInstance = KillInstance
+
 
     def _deserialize(self, params):
         self._WorkflowIds = params.get("WorkflowIds")
         self._ProjectId = params.get("ProjectId")
+        self._KillInstance = params.get("KillInstance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33760,6 +33857,12 @@ class InstanceOpsDto(AbstractModel):
         :param _RetryAttempts: 自动重试次数
 注意：此字段可能返回 null，表示取不到有效值。
         :type RetryAttempts: int
+        :param _DeletedFatherList: 紧急去除的依赖父实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeletedFatherList: list of str
+        :param _CirculateInstanceList: 循环依赖关联的实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CirculateInstanceList: list of InstanceOpsDto
         """
         self._TaskId = None
         self._TaskName = None
@@ -33821,6 +33924,8 @@ class InstanceOpsDto(AbstractModel):
         self._UserId = None
         self._InstanceLifeCycleOpsDto = None
         self._RetryAttempts = None
+        self._DeletedFatherList = None
+        self._CirculateInstanceList = None
 
     @property
     def TaskId(self):
@@ -34302,6 +34407,22 @@ class InstanceOpsDto(AbstractModel):
     def RetryAttempts(self, RetryAttempts):
         self._RetryAttempts = RetryAttempts
 
+    @property
+    def DeletedFatherList(self):
+        return self._DeletedFatherList
+
+    @DeletedFatherList.setter
+    def DeletedFatherList(self, DeletedFatherList):
+        self._DeletedFatherList = DeletedFatherList
+
+    @property
+    def CirculateInstanceList(self):
+        return self._CirculateInstanceList
+
+    @CirculateInstanceList.setter
+    def CirculateInstanceList(self, CirculateInstanceList):
+        self._CirculateInstanceList = CirculateInstanceList
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -34373,6 +34494,13 @@ class InstanceOpsDto(AbstractModel):
             self._InstanceLifeCycleOpsDto = InstanceLifeCycleOpsDto()
             self._InstanceLifeCycleOpsDto._deserialize(params.get("InstanceLifeCycleOpsDto"))
         self._RetryAttempts = params.get("RetryAttempts")
+        self._DeletedFatherList = params.get("DeletedFatherList")
+        if params.get("CirculateInstanceList") is not None:
+            self._CirculateInstanceList = []
+            for item in params.get("CirculateInstanceList"):
+                obj = InstanceOpsDto()
+                obj._deserialize(item)
+                self._CirculateInstanceList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41950,9 +42078,13 @@ class OpsTaskCanvasInfoList(AbstractModel):
         :type TasksList: list of OpsTaskCanvasDto
         :param _LinksList: 画布任务链接信息
         :type LinksList: list of OpsTaskLinkInfoDto
+        :param _CirculateTaskList: 画布循环依赖任务信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CirculateTaskList: :class:`tencentcloud.wedata.v20210820.models.OpsTaskCanvasDto`
         """
         self._TasksList = None
         self._LinksList = None
+        self._CirculateTaskList = None
 
     @property
     def TasksList(self):
@@ -41970,6 +42102,14 @@ class OpsTaskCanvasInfoList(AbstractModel):
     def LinksList(self, LinksList):
         self._LinksList = LinksList
 
+    @property
+    def CirculateTaskList(self):
+        return self._CirculateTaskList
+
+    @CirculateTaskList.setter
+    def CirculateTaskList(self, CirculateTaskList):
+        self._CirculateTaskList = CirculateTaskList
+
 
     def _deserialize(self, params):
         if params.get("TasksList") is not None:
@@ -41984,6 +42124,9 @@ class OpsTaskCanvasInfoList(AbstractModel):
                 obj = OpsTaskLinkInfoDto()
                 obj._deserialize(item)
                 self._LinksList.append(obj)
+        if params.get("CirculateTaskList") is not None:
+            self._CirculateTaskList = OpsTaskCanvasDto()
+            self._CirculateTaskList._deserialize(params.get("CirculateTaskList"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -42107,11 +42250,15 @@ class OpsTaskLinkInfoDto(AbstractModel):
         :type LinkType: str
         :param _LinkId: 依赖边id
         :type LinkId: str
+        :param _LinkStyle: 为了区分新增的循环依赖新增的类型。默认是normal，循环依赖则是circulate
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LinkStyle: str
         """
         self._TaskTo = None
         self._TaskFrom = None
         self._LinkType = None
         self._LinkId = None
+        self._LinkStyle = None
 
     @property
     def TaskTo(self):
@@ -42145,12 +42292,21 @@ class OpsTaskLinkInfoDto(AbstractModel):
     def LinkId(self, LinkId):
         self._LinkId = LinkId
 
+    @property
+    def LinkStyle(self):
+        return self._LinkStyle
+
+    @LinkStyle.setter
+    def LinkStyle(self, LinkStyle):
+        self._LinkStyle = LinkStyle
+
 
     def _deserialize(self, params):
         self._TaskTo = params.get("TaskTo")
         self._TaskFrom = params.get("TaskFrom")
         self._LinkType = params.get("LinkType")
         self._LinkId = params.get("LinkId")
+        self._LinkStyle = params.get("LinkStyle")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

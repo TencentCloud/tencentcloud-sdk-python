@@ -1431,6 +1431,40 @@ class ChangePwdTaskInfo(AbstractModel):
         
 
 
+class Clb(AbstractModel):
+    """负载均衡
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClbIp: 负载均衡IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClbIp: str
+        """
+        self._ClbIp = None
+
+    @property
+    def ClbIp(self):
+        return self._ClbIp
+
+    @ClbIp.setter
+    def ClbIp(self, ClbIp):
+        self._ClbIp = ClbIp
+
+
+    def _deserialize(self, params):
+        self._ClbIp = params.get("ClbIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CmdTemplate(AbstractModel):
     """高危命令模板
 
@@ -5836,10 +5870,16 @@ class DescribeResourcesRequest(AbstractModel):
         :type VpcId: str
         :param _ResourceIds: 资源ID集合，当传入ID集合时忽略 ApCode 和 VpcId
         :type ResourceIds: list of str
+        :param _Limit: 每页条目数量
+        :type Limit: int
+        :param _Offset: 分页偏移位置
+        :type Offset: int
         """
         self._ApCode = None
         self._VpcId = None
         self._ResourceIds = None
+        self._Limit = None
+        self._Offset = None
 
     @property
     def ApCode(self):
@@ -5865,11 +5905,29 @@ class DescribeResourcesRequest(AbstractModel):
     def ResourceIds(self, ResourceIds):
         self._ResourceIds = ResourceIds
 
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
 
     def _deserialize(self, params):
         self._ApCode = params.get("ApCode")
         self._VpcId = params.get("VpcId")
         self._ResourceIds = params.get("ResourceIds")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5889,10 +5947,14 @@ class DescribeResourcesResponse(AbstractModel):
         r"""
         :param _ResourceSet: 堡垒机资源列表
         :type ResourceSet: list of Resource
+        :param _TotalCount: 堡垒机资源数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ResourceSet = None
+        self._TotalCount = None
         self._RequestId = None
 
     @property
@@ -5902,6 +5964,14 @@ class DescribeResourcesResponse(AbstractModel):
     @ResourceSet.setter
     def ResourceSet(self, ResourceSet):
         self._ResourceSet = ResourceSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
     @property
     def RequestId(self):
@@ -5919,6 +5989,7 @@ class DescribeResourcesResponse(AbstractModel):
                 obj = Resource()
                 obj._deserialize(item)
                 self._ResourceSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -8950,6 +9021,9 @@ class Resource(AbstractModel):
         :param _LogDeliveryArgs: 日志投递规格信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogDeliveryArgs: str
+        :param _ClbSet: 堡垒机资源LB
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClbSet: list of Clb
         """
         self._ResourceId = None
         self._ApCode = None
@@ -8980,6 +9054,7 @@ class Resource(AbstractModel):
         self._PackageBandwidth = None
         self._PackageNode = None
         self._LogDeliveryArgs = None
+        self._ClbSet = None
 
     @property
     def ResourceId(self):
@@ -9213,6 +9288,14 @@ class Resource(AbstractModel):
     def LogDeliveryArgs(self, LogDeliveryArgs):
         self._LogDeliveryArgs = LogDeliveryArgs
 
+    @property
+    def ClbSet(self):
+        return self._ClbSet
+
+    @ClbSet.setter
+    def ClbSet(self, ClbSet):
+        self._ClbSet = ClbSet
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
@@ -9244,6 +9327,12 @@ class Resource(AbstractModel):
         self._PackageBandwidth = params.get("PackageBandwidth")
         self._PackageNode = params.get("PackageNode")
         self._LogDeliveryArgs = params.get("LogDeliveryArgs")
+        if params.get("ClbSet") is not None:
+            self._ClbSet = []
+            for item in params.get("ClbSet"):
+                obj = Clb()
+                obj._deserialize(item)
+                self._ClbSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -227,6 +227,9 @@ INVALIDPARAMETER_USERIDSMORETHANSIX = 'InvalidParameter.UserIdsMorethanSix'
 # UserSig过期或错误。
 INVALIDPARAMETER_USERSIG = 'InvalidParameter.UserSig'
 
+# UserSig 不是超级管理员。
+INVALIDPARAMETER_USERSIGNOTADMIN = 'InvalidParameter.UserSigNotAdmin'
+
 # 视频分辨率参数错误。
 INVALIDPARAMETER_VIDEORESOLUTION = 'InvalidParameter.VideoResolution'
 

@@ -3046,6 +3046,8 @@ PullVodPushLive -点播。
         :type RecordTemplateId: str
         :param _BackupToUrl: 新的目标地址，用于任务同时推两路场景。
         :type BackupToUrl: str
+        :param _TranscodeTemplateName: 直播转码模板，使用云直播的转码功能进行转码后再转推出去。转码模板需在云直播控制台创建。
+        :type TranscodeTemplateName: str
         """
         self._SourceType = None
         self._SourceUrls = None
@@ -3070,6 +3072,7 @@ PullVodPushLive -点播。
         self._VodLocalMode = None
         self._RecordTemplateId = None
         self._BackupToUrl = None
+        self._TranscodeTemplateName = None
 
     @property
     def SourceType(self):
@@ -3255,6 +3258,14 @@ PullVodPushLive -点播。
     def BackupToUrl(self, BackupToUrl):
         self._BackupToUrl = BackupToUrl
 
+    @property
+    def TranscodeTemplateName(self):
+        return self._TranscodeTemplateName
+
+    @TranscodeTemplateName.setter
+    def TranscodeTemplateName(self, TranscodeTemplateName):
+        self._TranscodeTemplateName = TranscodeTemplateName
+
 
     def _deserialize(self, params):
         self._SourceType = params.get("SourceType")
@@ -3285,6 +3296,7 @@ PullVodPushLive -点播。
         self._VodLocalMode = params.get("VodLocalMode")
         self._RecordTemplateId = params.get("RecordTemplateId")
         self._BackupToUrl = params.get("BackupToUrl")
+        self._TranscodeTemplateName = params.get("TranscodeTemplateName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22475,6 +22487,9 @@ PullVodPushLive -点播。
         :param _BackupToUrl: 新增的推流地址。用于单任务推两路场景。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BackupToUrl: str
+        :param _TranscodeTemplateName: 直播转码模板。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TranscodeTemplateName: str
         """
         self._TaskId = None
         self._SourceType = None
@@ -22505,6 +22520,7 @@ PullVodPushLive -点播。
         self._VodLocalMode = None
         self._RecordTemplateId = None
         self._BackupToUrl = None
+        self._TranscodeTemplateName = None
 
     @property
     def TaskId(self):
@@ -22738,6 +22754,14 @@ PullVodPushLive -点播。
     def BackupToUrl(self, BackupToUrl):
         self._BackupToUrl = BackupToUrl
 
+    @property
+    def TranscodeTemplateName(self):
+        return self._TranscodeTemplateName
+
+    @TranscodeTemplateName.setter
+    def TranscodeTemplateName(self, TranscodeTemplateName):
+        self._TranscodeTemplateName = TranscodeTemplateName
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -22776,6 +22800,7 @@ PullVodPushLive -点播。
         self._VodLocalMode = params.get("VodLocalMode")
         self._RecordTemplateId = params.get("RecordTemplateId")
         self._BackupToUrl = params.get("BackupToUrl")
+        self._TranscodeTemplateName = params.get("TranscodeTemplateName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

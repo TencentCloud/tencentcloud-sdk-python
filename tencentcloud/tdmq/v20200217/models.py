@@ -19674,6 +19674,9 @@ class PulsarNetworkAccessPointInfo(AbstractModel):
 4:跨地域访问，目标集群已经完成异地切回，等待删除状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperationType: int
+        :param _AccessPointsType: 接入点类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessPointsType: str
         """
         self._VpcId = None
         self._SubnetId = None
@@ -19681,6 +19684,7 @@ class PulsarNetworkAccessPointInfo(AbstractModel):
         self._InstanceId = None
         self._RouteType = None
         self._OperationType = None
+        self._AccessPointsType = None
 
     @property
     def VpcId(self):
@@ -19730,6 +19734,14 @@ class PulsarNetworkAccessPointInfo(AbstractModel):
     def OperationType(self, OperationType):
         self._OperationType = OperationType
 
+    @property
+    def AccessPointsType(self):
+        return self._AccessPointsType
+
+    @AccessPointsType.setter
+    def AccessPointsType(self, AccessPointsType):
+        self._AccessPointsType = AccessPointsType
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -19738,6 +19750,7 @@ class PulsarNetworkAccessPointInfo(AbstractModel):
         self._InstanceId = params.get("InstanceId")
         self._RouteType = params.get("RouteType")
         self._OperationType = params.get("OperationType")
+        self._AccessPointsType = params.get("AccessPointsType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

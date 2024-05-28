@@ -8787,9 +8787,9 @@ class StartStreamIngestRequest(AbstractModel):
         :type StreamUrl: str
         :param _PrivateMapKey: TRTC房间权限加密串，只有在TRTC控制台启用了高级权限控制的时候需要携带，在TRTC控制台如果开启高级权限控制后，TRTC 的后台服务系统会校验一个叫做 [PrivateMapKey] 的“权限票据”，权限票据中包含了一个加密后的 RoomId 和一个加密后的“权限位列表”。由于 PrivateMapKey 中包含 RoomId，所以只提供了 UserSig 没有提供 PrivateMapKey 时，并不能进入指定的房间。
         :type PrivateMapKey: str
-        :param _VideoEncodeParams: 视频编码参数。可选，如果不填，保持原始流的参数。
+        :param _VideoEncodeParams: 【本字段已废弃】视频编码参数。可选，如果不填，保持原始流的参数。
         :type VideoEncodeParams: :class:`tencentcloud.trtc.v20190722.models.VideoEncodeParams`
-        :param _AudioEncodeParams: 音频编码参数。可选，如果不填，保持原始流的参数。
+        :param _AudioEncodeParams: 【本字段已废弃】音频编码参数。可选，如果不填，保持原始流的参数。
         :type AudioEncodeParams: :class:`tencentcloud.trtc.v20190722.models.AudioEncodeParams`
         :param _SourceUrl: 【本字段已废弃，请使用 StreamUrl 字段】源流URL，支持一个地址。
         :type SourceUrl: list of str
