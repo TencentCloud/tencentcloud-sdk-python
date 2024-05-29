@@ -10308,17 +10308,31 @@ class DescribeLogContextRequest(AbstractModel):
         r"""
         :param _TopicId: 要查询的日志主题ID
         :type TopicId: str
-        :param _BTime: 日志时间,  需按照 UTC+8 时区将日志中的Unix时间戳转换为 YYYY-mm-dd HH:MM:SS.FFF 格式的字符串。
+        :param _BTime: 日志时间,  即SearchLog接口返回信息中Results结构体中的Time，需按照 UTC+8 时区将该毫秒级Unix时间戳转换为 YYYY-mm-dd HH:MM:SS.FFF 格式的字符串。
         :type BTime: str
-        :param _PkgId: 日志包序号。SearchLog接口返回信息中Results结构体中的PkgId。
+        :param _PkgId: 日志包序号，即SearchLog接口返回信息中Results结构体中的PkgId。
         :type PkgId: str
-        :param _PkgLogId: 日志包内一条日志的序号。
-SearchLog接口返回信息中Results结构中的PkgLogId。
+        :param _PkgLogId: 日志包内一条日志的序号，即SearchLog接口返回信息中Results结构中的PkgLogId。
         :type PkgLogId: int
         :param _PrevLogs: 前${PrevLogs}条日志，默认值10。
         :type PrevLogs: int
         :param _NextLogs: 后${NextLogs}条日志，默认值10。
         :type NextLogs: int
+        :param _Query: 检索语句，对日志上下文进行过滤，最大长度为12KB
+语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a>构成，不支持SQL语句
+        :type Query: str
+        :param _From: 上下文检索的开始时间，单位：毫秒级时间戳
+注意：
+- From为空时，表示上下文检索的开始时间不做限制
+- From和To非空时，From < To
+- 暂时仅支持上海 / 弗吉尼亚/ 新加坡地域
+        :type From: int
+        :param _To: 上下文检索的结束时间，单位：毫秒级时间戳。
+注意：
+- To为空时，表示上下文检索的结束时间不做限制
+- From和To非空时，From < To
+- 暂时仅支持上海 / 弗吉尼亚/ 新加坡地域
+        :type To: int
         """
         self._TopicId = None
         self._BTime = None
@@ -10326,6 +10340,9 @@ SearchLog接口返回信息中Results结构中的PkgLogId。
         self._PkgLogId = None
         self._PrevLogs = None
         self._NextLogs = None
+        self._Query = None
+        self._From = None
+        self._To = None
 
     @property
     def TopicId(self):
@@ -10375,6 +10392,30 @@ SearchLog接口返回信息中Results结构中的PkgLogId。
     def NextLogs(self, NextLogs):
         self._NextLogs = NextLogs
 
+    @property
+    def Query(self):
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def From(self):
+        return self._From
+
+    @From.setter
+    def From(self, From):
+        self._From = From
+
+    @property
+    def To(self):
+        return self._To
+
+    @To.setter
+    def To(self, To):
+        self._To = To
+
 
     def _deserialize(self, params):
         self._TopicId = params.get("TopicId")
@@ -10383,6 +10424,9 @@ SearchLog接口返回信息中Results结构中的PkgLogId。
         self._PkgLogId = params.get("PkgLogId")
         self._PrevLogs = params.get("PrevLogs")
         self._NextLogs = params.get("NextLogs")
+        self._Query = params.get("Query")
+        self._From = params.get("From")
+        self._To = params.get("To")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -13534,6 +13534,8 @@ class DescribeWxGatewaysRequest(AbstractModel):
         r"""
         :param _EnvId: 环境ID
         :type EnvId: str
+        :param _GatewayId: 网关ID
+        :type GatewayId: str
         :param _GatewayName: 服务名称，精确匹配
         :type GatewayName: str
         :param _Limit: 分页参数
@@ -13542,6 +13544,7 @@ class DescribeWxGatewaysRequest(AbstractModel):
         :type Offset: int
         """
         self._EnvId = None
+        self._GatewayId = None
         self._GatewayName = None
         self._Limit = None
         self._Offset = None
@@ -13553,6 +13556,14 @@ class DescribeWxGatewaysRequest(AbstractModel):
     @EnvId.setter
     def EnvId(self, EnvId):
         self._EnvId = EnvId
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
 
     @property
     def GatewayName(self):
@@ -13581,6 +13592,7 @@ class DescribeWxGatewaysRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._EnvId = params.get("EnvId")
+        self._GatewayId = params.get("GatewayId")
         self._GatewayName = params.get("GatewayName")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
@@ -15453,6 +15465,9 @@ class GatewayItem(AbstractModel):
         :param _AppId: 用户appid
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
+        :param _WxAppId: WxAppId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WxAppId: str
         :param _EnvId: 环境id
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnvId: str
@@ -15489,6 +15504,12 @@ class GatewayItem(AbstractModel):
         :param _Region: 地域
 注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
+        :param _CanRenew: 是否可以续费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CanRenew: bool
+        :param _AutoRenewFlag: 自动续费标志
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoRenewFlag: int
         :param _IsolateTime: 隔离时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsolateTime: str
@@ -15501,15 +15522,25 @@ class GatewayItem(AbstractModel):
         :param _UpdateTime: 变更时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
+        :param _CanDowngrade: 是否可以降配
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CanDowngrade: bool
         :param _AllowUncertified: 允许未登录访问
 注意：此字段可能返回 null，表示取不到有效值。
         :type AllowUncertified: int
         :param _VersionNumLimit: 网关版本限额
 注意：此字段可能返回 null，表示取不到有效值。
         :type VersionNumLimit: int
+        :param _LongAccessId: Donut接入ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LongAccessId: str
+        :param _AccessDomain: Donut接入域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessDomain: str
         """
         self._Uin = None
         self._AppId = None
+        self._WxAppId = None
         self._EnvId = None
         self._GatewayId = None
         self._GatewayName = None
@@ -15522,12 +15553,17 @@ class GatewayItem(AbstractModel):
         self._Status = None
         self._L5Addr = None
         self._Region = None
+        self._CanRenew = None
+        self._AutoRenewFlag = None
         self._IsolateTime = None
         self._ExpireTime = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._CanDowngrade = None
         self._AllowUncertified = None
         self._VersionNumLimit = None
+        self._LongAccessId = None
+        self._AccessDomain = None
 
     @property
     def Uin(self):
@@ -15544,6 +15580,14 @@ class GatewayItem(AbstractModel):
     @AppId.setter
     def AppId(self, AppId):
         self._AppId = AppId
+
+    @property
+    def WxAppId(self):
+        return self._WxAppId
+
+    @WxAppId.setter
+    def WxAppId(self, WxAppId):
+        self._WxAppId = WxAppId
 
     @property
     def EnvId(self):
@@ -15642,6 +15686,22 @@ class GatewayItem(AbstractModel):
         self._Region = Region
 
     @property
+    def CanRenew(self):
+        return self._CanRenew
+
+    @CanRenew.setter
+    def CanRenew(self, CanRenew):
+        self._CanRenew = CanRenew
+
+    @property
+    def AutoRenewFlag(self):
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
     def IsolateTime(self):
         return self._IsolateTime
 
@@ -15674,6 +15734,14 @@ class GatewayItem(AbstractModel):
         self._UpdateTime = UpdateTime
 
     @property
+    def CanDowngrade(self):
+        return self._CanDowngrade
+
+    @CanDowngrade.setter
+    def CanDowngrade(self, CanDowngrade):
+        self._CanDowngrade = CanDowngrade
+
+    @property
     def AllowUncertified(self):
         return self._AllowUncertified
 
@@ -15689,10 +15757,27 @@ class GatewayItem(AbstractModel):
     def VersionNumLimit(self, VersionNumLimit):
         self._VersionNumLimit = VersionNumLimit
 
+    @property
+    def LongAccessId(self):
+        return self._LongAccessId
+
+    @LongAccessId.setter
+    def LongAccessId(self, LongAccessId):
+        self._LongAccessId = LongAccessId
+
+    @property
+    def AccessDomain(self):
+        return self._AccessDomain
+
+    @AccessDomain.setter
+    def AccessDomain(self, AccessDomain):
+        self._AccessDomain = AccessDomain
+
 
     def _deserialize(self, params):
         self._Uin = params.get("Uin")
         self._AppId = params.get("AppId")
+        self._WxAppId = params.get("WxAppId")
         self._EnvId = params.get("EnvId")
         self._GatewayId = params.get("GatewayId")
         self._GatewayName = params.get("GatewayName")
@@ -15705,12 +15790,17 @@ class GatewayItem(AbstractModel):
         self._Status = params.get("Status")
         self._L5Addr = params.get("L5Addr")
         self._Region = params.get("Region")
+        self._CanRenew = params.get("CanRenew")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
         self._IsolateTime = params.get("IsolateTime")
         self._ExpireTime = params.get("ExpireTime")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._CanDowngrade = params.get("CanDowngrade")
         self._AllowUncertified = params.get("AllowUncertified")
         self._VersionNumLimit = params.get("VersionNumLimit")
+        self._LongAccessId = params.get("LongAccessId")
+        self._AccessDomain = params.get("AccessDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

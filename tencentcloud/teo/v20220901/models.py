@@ -22519,25 +22519,17 @@ class Rule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Actions: 执行的功能。
-        :type Actions: list of Action
         :param _Conditions: 执行功能判断条件。
 注意：满足该数组内任意一项条件，功能即可执行。
         :type Conditions: list of RuleAndConditions
-        :param _SubRules: 嵌套规则。
+        :param _Actions: 执行的功能。注意：Actions 和 SubRules 不可都为空
+        :type Actions: list of Action
+        :param _SubRules: 嵌套规则。注意：SubRules 和 Actions 不可都为空
         :type SubRules: list of SubRuleItem
         """
-        self._Actions = None
         self._Conditions = None
+        self._Actions = None
         self._SubRules = None
-
-    @property
-    def Actions(self):
-        return self._Actions
-
-    @Actions.setter
-    def Actions(self, Actions):
-        self._Actions = Actions
 
     @property
     def Conditions(self):
@@ -22546,6 +22538,14 @@ class Rule(AbstractModel):
     @Conditions.setter
     def Conditions(self, Conditions):
         self._Conditions = Conditions
+
+    @property
+    def Actions(self):
+        return self._Actions
+
+    @Actions.setter
+    def Actions(self, Actions):
+        self._Actions = Actions
 
     @property
     def SubRules(self):
@@ -22557,18 +22557,18 @@ class Rule(AbstractModel):
 
 
     def _deserialize(self, params):
-        if params.get("Actions") is not None:
-            self._Actions = []
-            for item in params.get("Actions"):
-                obj = Action()
-                obj._deserialize(item)
-                self._Actions.append(obj)
         if params.get("Conditions") is not None:
             self._Conditions = []
             for item in params.get("Conditions"):
                 obj = RuleAndConditions()
                 obj._deserialize(item)
                 self._Conditions.append(obj)
+        if params.get("Actions") is not None:
+            self._Actions = []
+            for item in params.get("Actions"):
+                obj = Action()
+                obj._deserialize(item)
+                self._Actions.append(obj)
         if params.get("SubRules") is not None:
             self._SubRules = []
             for item in params.get("SubRules"):

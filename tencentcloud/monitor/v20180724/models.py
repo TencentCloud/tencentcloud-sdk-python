@@ -1822,6 +1822,9 @@ re=正则匹配
         :param _HierarchicalValue: 告警分级阈值配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type HierarchicalValue: :class:`tencentcloud.monitor.v20180724.models.AlarmHierarchicalValue`
+        :param _IsLatenessMetric: 是否延迟指标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsLatenessMetric: int
         """
         self._MetricName = None
         self._Period = None
@@ -1840,6 +1843,7 @@ re=正则匹配
         self._ValueMax = None
         self._ValueMin = None
         self._HierarchicalValue = None
+        self._IsLatenessMetric = None
 
     @property
     def MetricName(self):
@@ -1977,6 +1981,14 @@ re=正则匹配
     def HierarchicalValue(self, HierarchicalValue):
         self._HierarchicalValue = HierarchicalValue
 
+    @property
+    def IsLatenessMetric(self):
+        return self._IsLatenessMetric
+
+    @IsLatenessMetric.setter
+    def IsLatenessMetric(self, IsLatenessMetric):
+        self._IsLatenessMetric = IsLatenessMetric
+
 
     def _deserialize(self, params):
         self._MetricName = params.get("MetricName")
@@ -2000,6 +2012,7 @@ re=正则匹配
         if params.get("HierarchicalValue") is not None:
             self._HierarchicalValue = AlarmHierarchicalValue()
             self._HierarchicalValue._deserialize(params.get("HierarchicalValue"))
+        self._IsLatenessMetric = params.get("IsLatenessMetric")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21564,6 +21577,9 @@ class Metric(AbstractModel):
         :param _Periods: 指标触发
 注意：此字段可能返回 null，表示取不到有效值。
         :type Periods: list of int
+        :param _IsLatenessMetric: 是否延迟指标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsLatenessMetric: int
         """
         self._Namespace = None
         self._MetricName = None
@@ -21578,6 +21594,7 @@ class Metric(AbstractModel):
         self._ProductId = None
         self._Operators = None
         self._Periods = None
+        self._IsLatenessMetric = None
 
     @property
     def Namespace(self):
@@ -21683,6 +21700,14 @@ class Metric(AbstractModel):
     def Periods(self, Periods):
         self._Periods = Periods
 
+    @property
+    def IsLatenessMetric(self):
+        return self._IsLatenessMetric
+
+    @IsLatenessMetric.setter
+    def IsLatenessMetric(self, IsLatenessMetric):
+        self._IsLatenessMetric = IsLatenessMetric
+
 
     def _deserialize(self, params):
         self._Namespace = params.get("Namespace")
@@ -21705,6 +21730,7 @@ class Metric(AbstractModel):
                 obj._deserialize(item)
                 self._Operators.append(obj)
         self._Periods = params.get("Periods")
+        self._IsLatenessMetric = params.get("IsLatenessMetric")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

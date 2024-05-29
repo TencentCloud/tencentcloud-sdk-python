@@ -1219,6 +1219,10 @@ class CloneInstancesRequest(AbstractModel):
         :type TemplateId: str
         :param _AlarmPolicyList: 指定克隆实例的告警策略 ID。请登录[腾讯云可观测平台控制台](https://console.cloud.tencent.com/monitor/alarm2/policy)，在 <b>告警管理</b> > <b>策略管理</b>页面获取策略 ID 信息。
         :type AlarmPolicyList: list of str
+        :param _CloneTime: 克隆指定恢复数据的时间。
+仅支持已开通秒级备份的实例
+
+        :type CloneTime: str
         """
         self._InstanceId = None
         self._GoodsNum = None
@@ -1239,6 +1243,7 @@ class CloneInstancesRequest(AbstractModel):
         self._ResourceTags = None
         self._TemplateId = None
         self._AlarmPolicyList = None
+        self._CloneTime = None
 
     @property
     def InstanceId(self):
@@ -1392,6 +1397,14 @@ class CloneInstancesRequest(AbstractModel):
     def AlarmPolicyList(self, AlarmPolicyList):
         self._AlarmPolicyList = AlarmPolicyList
 
+    @property
+    def CloneTime(self):
+        return self._CloneTime
+
+    @CloneTime.setter
+    def CloneTime(self, CloneTime):
+        self._CloneTime = CloneTime
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -1423,6 +1436,7 @@ class CloneInstancesRequest(AbstractModel):
                 self._ResourceTags.append(obj)
         self._TemplateId = params.get("TemplateId")
         self._AlarmPolicyList = params.get("AlarmPolicyList")
+        self._CloneTime = params.get("CloneTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6520,7 +6534,16 @@ class DescribeParamTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProductTypes: 产品类型数组。产品类型：1 – Redis2.8内存版（集群架构），2 – Redis2.8内存版（标准架构），3 – CKV 3.2内存版(标准架构)，4 – CKV 3.2内存版(集群架构)，5 – Redis2.8内存版（单机），6 – Redis4.0内存版（标准架构），7 – Redis4.0内存版（集群架构），8 – Redis5.0内存版（标准架构），9 – Redis5.0内存版（集群架构）
+        :param _ProductTypes: 产品类型数组。
+- 2：Redis 2.8 内存版（标准架构）。
+- 3：CKV 3.2 内存版（标准架构）。
+- 4：CKV 3.2 内存版（集群架构）。
+- 6：Redis 4.0 内存版（标准架构）。
+- 7：Redis 4.0 内存版（集群架构）。
+- 8：Redis 5.0 内存版（标准架构）。
+- 9：Redis 5.0 内存版（集群架构）。
+- 15：Redis 6.2 内存版（标准架构）。
+- 16：Redis 6.2 内存版（集群架构）。
         :type ProductTypes: list of int
         :param _TemplateNames: 模板名称数组。
         :type TemplateNames: list of str
@@ -7609,25 +7632,62 @@ class DescribeTaskListRequest(AbstractModel):
         :param _ProjectIds: 项目 ID。登录 [Redis 控制台](https://console.cloud.tencent.com/redis)，在右上角的账号信息下拉菜单中，选择**项目管理**，即可获取对应的项目 ID。
         :type ProjectIds: list of int
         :param _TaskTypes: 任务类型。
-- FLOW_CREATE：创建实例。
-- FLOW_MODIFYCONNECTIONCONFIG：调整带宽连接数。
-- FLOW_MODIFYINSTANCEPASSWORDFREE：免密变更流程。
-- FLOW_CLEARNETWORK：VPC退还中。
-- FLOW_SETPWD：设置访问密码。
-- FLOW_EXPORSHR：扩缩容流程。
-- FLOW_UpgradeArch：实例架构升级流程。
-- FLOW_MODIFYINSTANCEPARAMS：修改实例参数。
-- FLOW_MODIFYINSTACEREADONLY：只读变更流程。
-- FLOW_CLOSE：关闭实例。
-- FLOW_DELETE：删除实例。
-- FLOW_OPEN_WAN：开启外网。
-- FLOW_CLEAN：清空实例。      
-- FLOW_MODIFYINSTANCEACCOUNT：修改实例账号。
-- FLOW_ENABLEINSTANCE_REPLICATE：开启副本只读。
-- FLOW_DISABLEINSTANCE_REPLICATE: 关闭副本只读。
-- FLOW_SWITCHINSTANCEVIP：交换实例 VIP。
-- FLOW_CHANGE_REPLICA_TO_MSTER：副本节点升主节点。
-- FLOW_BACKUPINSTANCE：备份实例。
+
+- FLOW_CREATE: "001"，新建实例。
+- FLOW_RESIZE ： "002"，配置变更。
+- FLOW_CLOSE："003"，关闭实例。
+- FLOW_CLEAN： "004"，清空实例。
+- FLOW_STARTUP："005"，实例启用。
+- FLOW_DELETE："006"，删除实例。
+- FLOW_SETPWD："007"，重置密码。
+- FLOW_EXPORTBACKUP："009"，导出备份文件。
+- FLOW_RESTOREBACKUP："010"，恢复备份。
+- FLOW_BACKUPINSTANCE："012"，备份实例。
+- FLOW_MIGRATEINSTANCE："013"，迁移实例。
+- FLOW_DELBACKUP："014"，删除备份。
+- FLOW_EXCHANGEINSTANCE： "016"，切换实例流程。
+- FLOW_AUTOBACKUP："017"，自动备份实例。
+- FLOW_MIGRATECHECK： "022"，迁移参数校验。
+- FLOW_MIGRATETASK："023"，数据迁移中。
+- FLOW_CLEANDB："025"，清空某个数据库。
+- FLOW_CLONEBACKUP："026"，克隆备份。
+- FLOW_CHANGEVIP： "027"，改变vip地址。
+- FLOW_EXPORSHR ："028"，扩缩容。
+- FLOW_ADDNODES："029"，加（减）节点。
+- FLOW_CHANGENET："031"，改变网络类型。
+- FLOW_MODIFYINSTACEREADONLY："033"，只读策略变更。
+- FLOW_MODIFYINSTANCEPARAMS："034"，修改实例参数。
+- FLOW_MODIFYINSTANCEPASSWORDFREE："035"，设置免密。
+- FLOW_SWITCHINSTANCEVIP："036"，实例VIP切换。
+- FLOW_MODIFYINSTANCEACCOUNT："037"，实例帐号变更。
+- FLOW_MODIFYINSTANCEBANDWIDTH："038"，实例带宽变更。
+- FLOW_ENABLEINSTANCE_REPLICATE："039"，开启副本只读。
+- FLOW_DISABLEINSTANCE_REPLICATE："040"，关闭副本只读。
+- FLOW_UpgradeArch："041"，实例架构升级，主从升集群。
+- FLOW_DowngradeArch： "042"，实例架构降级，集群降主从。
+- FLOW_UpgradeVersion： "043"，版本升级。
+- FLOW_MODIFYCONNECTIONCONFIG："044"，带宽连接数调整，
+- FLOW_CLEARNETWORK："045"，更换网络，
+- FLOW_REMOVE_BACKUP_FILE："046"，删除备份。
+- FLOW_UPGRADE_SUPPORT_MULTI_AZ："047"，升级实例支持多可用区。
+- FLOW_SHUTDOWN_MASTER："048"，模拟故障。
+- FLOW_CHANGE_REPLICA_TO_MASTER："049"，手动提主。
+- FLOW_CODE_ADD_REPLICATION_INSTANCE："050"，新增复制组。
+- FLOW_OPEN_WAN："052"，开通外网。
+- FLOW_CLOSE_WAN："053"，关闭外网FLOW_UPDATE_WAN："054"，更新外网。
+- FLOW_CODE_DELETE_REPLICATION_INSTANCE："055"，解绑复制组。
+- FLOW_CODE_CHANGE_MASTER_INSTANCE："056"，复制组实例切主。
+- FLOW_CODE_CHANGE_INSTANCE_ROLE： "057"，更改复制组实例角色。
+- FLOW_MIGRATE_NODE："058"，迁移节点。
+- FLOW_SWITCH_NODE："059"，切换节点。
+- FLOW_UPGRADE_SMALL_VERSION："060"，升级 Redi s版本。
+- FLOW_UPGRADE_PROXY_VERSION："061"，升级 Proxy 版本。
+- FLOW_MODIFY_INSTANCE_NETWORK： "062"，实例修改网络。
+- FLOW_MIGRATE_PROXY_NODE："063"，迁移proxy节点。
+- FLOW_MIGRATION_INSTANCE_ZONE："066"，实例可用区迁移中。
+- FLOW_UPGRADE_INSTANCE_CACHE_AND_PROXY： "067"，实例版本升级中。
+- FLOW_MODIFY_PROXY_NUM："069"，加（减）Proxy 节点。
+- FLOW_MODIFYBACKUPMOD："070"，变更实例备份模式。
         :type TaskTypes: list of str
         :param _BeginTime: 任务执行的起始时间。格式如：2021-12-30 00:00:00。
         :type BeginTime: str
@@ -9685,7 +9745,7 @@ class InstanceMultiParam(AbstractModel):
         :type CurrentValue: str
         :param _Tips: 参数说明。
         :type Tips: str
-        :param _EnumValue: 参数说明。
+        :param _EnumValue: 参数枚举值。
         :type EnumValue: list of str
         :param _Status: 参数修改的状态。
 - 1：修改中。
@@ -10248,6 +10308,9 @@ class InstanceSet(AbstractModel):
         :param _UpgradeRedisVersion: 实例可升级Cache小版本。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpgradeRedisVersion: str
+        :param _BackupMode: 备份模式：- SecondLevelBackup   秒级备份- NormalLevelBackup    普通备份
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupMode: str
         """
         self._InstanceName = None
         self._InstanceId = None
@@ -10305,6 +10368,7 @@ class InstanceSet(AbstractModel):
         self._CurrentRedisVersion = None
         self._UpgradeProxyVersion = None
         self._UpgradeRedisVersion = None
+        self._BackupMode = None
 
     @property
     def InstanceName(self):
@@ -10754,6 +10818,14 @@ class InstanceSet(AbstractModel):
     def UpgradeRedisVersion(self, UpgradeRedisVersion):
         self._UpgradeRedisVersion = UpgradeRedisVersion
 
+    @property
+    def BackupMode(self):
+        return self._BackupMode
+
+    @BackupMode.setter
+    def BackupMode(self, BackupMode):
+        self._BackupMode = BackupMode
+
 
     def _deserialize(self, params):
         self._InstanceName = params.get("InstanceName")
@@ -10827,6 +10899,7 @@ class InstanceSet(AbstractModel):
         self._CurrentRedisVersion = params.get("CurrentRedisVersion")
         self._UpgradeProxyVersion = params.get("UpgradeProxyVersion")
         self._UpgradeRedisVersion = params.get("UpgradeRedisVersion")
+        self._BackupMode = params.get("BackupMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12132,7 +12205,7 @@ class ModifyInstanceAccountRequest(AbstractModel):
         :type ReadonlyPolicy: list of str
         :param _Privilege: 子账号读写策略：填写r、w、rw，表示只读，只写，读写策略
         :type Privilege: str
-        :param _NoAuth: true表示将主账号切换为免密账号，这里只适用于主账号，子账号不可免密
+        :param _NoAuth: true表示将主账号切换为免密账号，这里只适用于主账号，子账号不可免密。
         :type NoAuth: bool
         """
         self._InstanceId = None
@@ -13632,7 +13705,7 @@ class ProductConf(AbstractModel):
 - true：售罄。
 - false：未售罄。
         :type Saleout: bool
-        :param _Engine: 产品引擎。包括：腾讯云 CKV与社区版 Redis。
+        :param _Engine: 产品引擎。Redis 或者 CKV。
         :type Engine: str
         :param _Version: 兼容版本。包括：Redis-2.8、Redis-3.2、Redis-4.0、Redis-5.0、Redis-6.2。
         :type Version: str
@@ -15055,7 +15128,7 @@ class ReplicaGroup(AbstractModel):
         :type GroupName: str
         :param _ZoneId: 节点的可用区ID，比如ap-guangzhou-1
         :type ZoneId: str
-        :param _Role: 节点组类型，master为主节点，replica为副本节点
+        :param _Role: 节点组类型，master为主节点，replica为副本节点。
         :type Role: str
         :param _RedisNodes: 节点组节点列表
         :type RedisNodes: list of RedisNode
@@ -15599,6 +15672,8 @@ class SecurityGroupsInboundAndOutbound(AbstractModel):
     def __init__(self):
         r"""
         :param _Action: 标识出入数据库的IP与端口是否被允许。
+- ACCEPT：允许。
+- DROP：不允许。
         :type Action: str
         :param _Ip: 出入数据库的IP地址
         :type Ip: str
@@ -16093,25 +16168,61 @@ class TaskInfoDetail(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param _TaskType: 任务类型。
-- FLOW_CREATE：创建实例。
-- FLOW_MODIFYCONNECTIONCONFIG：调整带宽连接数。
-- FLOW_MODIFYINSTANCEPASSWORDFREE：免密变更流程。
-- FLOW_CLEARNETWORK：VPC退还中。
-- FLOW_SETPWD：设置访问密码。
-- FLOW_EXPORSHR：扩缩容流程。
-- FLOW_UpgradeArch：实例架构升级流程。
-- FLOW_MODIFYINSTANCEPARAMS：修改实例参数。
-- FLOW_MODIFYINSTACEREADONLY：只读变更流程。
-- FLOW_CLOSE：关闭实例。
-- FLOW_DELETE：删除实例。
-- FLOW_OPEN_WAN：开启外网。
-- FLOW_CLEAN：清空实例。      
-- FLOW_MODIFYINSTANCEACCOUNT：修改实例账号。
-- FLOW_ENABLEINSTANCE_REPLICATE：开启副本只读。
-- FLOW_DISABLEINSTANCE_REPLICATE: 关闭副本只读。
-- FLOW_SWITCHINSTANCEVIP：交换实例 VIP。
-- FLOW_CHANGE_REPLICA_TO_MSTER：副本节点升主节点。
-- FLOW_BACKUPINSTANCE：备份实例。
+- FLOW_CREATE: "001"，新建实例
+- FLOW_RESIZE ： "002"，配置变更
+- FLOW_CLOSE："003"，关闭实例
+- FLOW_CLEAN： "004"，清空实例
+- FLOW_STARTUP："005"，实例启用。
+- FLOW_DELETE："006"，删除实例。
+- FLOW_SETPWD："007"，重置密码。
+- FLOW_EXPORTBACKUP："009"，导出备份文件。
+- FLOW_RESTOREBACKUP："010"，恢复备份。
+- FLOW_BACKUPINSTANCE："012"，备份实例。
+- FLOW_MIGRATEINSTANCE："013"，迁移实例。
+- FLOW_DELBACKUP："014"，删除备份。
+- FLOW_EXCHANGEINSTANCE： "016"，切换实例流程。
+- FLOW_AUTOBACKUP："017"，自动备份实例。
+- FLOW_MIGRATECHECK： "022"，迁移参数校验。
+- FLOW_MIGRATETASK："023"，数据迁移中。
+- FLOW_CLEANDB："025"，清空某个数据库。
+- FLOW_CLONEBACKUP："026"，克隆备份。
+- FLOW_CHANGEVIP： "027"，改变vip地址。
+- FLOW_EXPORSHR ："028"，扩缩容。
+- FLOW_ADDNODES："029"，加（减）节点。
+- FLOW_CHANGENET："031"，改变网络类型。
+- FLOW_MODIFYINSTACEREADONLY："033"，只读策略变更。
+- FLOW_MODIFYINSTANCEPARAMS："034"，修改实例参数。
+- FLOW_MODIFYINSTANCEPASSWORDFREE："035"，设置免密。
+- FLOW_SWITCHINSTANCEVIP："036"，实例VIP切换。
+- FLOW_MODIFYINSTANCEACCOUNT："037"，实例帐号变更。
+- FLOW_MODIFYINSTANCEBANDWIDTH："038"，实例带宽变更。
+- FLOW_ENABLEINSTANCE_REPLICATE："039"，开启副本只读。
+- FLOW_DISABLEINSTANCE_REPLICATE："040"，关闭副本只读。
+- FLOW_UpgradeArch："041"，实例架构升级，主从升集群。
+- FLOW_DowngradeArch： "042"，实例架构降级，集群降主从。
+- FLOW_UpgradeVersion： "043"，版本升级。
+- FLOW_MODIFYCONNECTIONCONFIG："044"，带宽连接数调整。
+- FLOW_CLEARNETWORK："045"，更换网络，
+- FLOW_REMOVE_BACKUP_FILE："046"，删除备份。
+- FLOW_UPGRADE_SUPPORT_MULTI_AZ："047"，升级实例支持多可用区。
+- FLOW_SHUTDOWN_MASTER："048"，模拟故障。
+- FLOW_CHANGE_REPLICA_TO_MASTER："049"，手动提主。
+- FLOW_CODE_ADD_REPLICATION_INSTANCE："050"，新增复制组。
+- FLOW_OPEN_WAN："052"，开通外网。
+- FLOW_CLOSE_WAN："053"，关闭外网FLOW_UPDATE_WAN："054"，更新外网。
+- FLOW_CODE_DELETE_REPLICATION_INSTANCE："055"，解绑复制组。
+- FLOW_CODE_CHANGE_MASTER_INSTANCE："056"，复制组实例切主。
+- FLOW_CODE_CHANGE_INSTANCE_ROLE： "057"，更改复制组实例角色。
+- FLOW_MIGRATE_NODE："058"，迁移节点。
+- FLOW_SWITCH_NODE："059"，切换节点。
+- FLOW_UPGRADE_SMALL_VERSION："060"，升级 Redi s版本。
+- FLOW_UPGRADE_PROXY_VERSION："061"，升级 Proxy 版本。
+- FLOW_MODIFY_INSTANCE_NETWORK： "062"，实例修改网络。
+- FLOW_MIGRATE_PROXY_NODE："063"，迁移proxy节点。
+- FLOW_MIGRATION_INSTANCE_ZONE："066"，实例可用区迁移中。
+- FLOW_UPGRADE_INSTANCE_CACHE_AND_PROXY： "067"，实例版本升级中。
+- FLOW_MODIFY_PROXY_NUM："069"，加（减）Proxy 节点。
+- FLOW_MODIFYBACKUPMOD："070"，变更实例备份模式。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskType: str
         :param _InstanceName: 实例名称。

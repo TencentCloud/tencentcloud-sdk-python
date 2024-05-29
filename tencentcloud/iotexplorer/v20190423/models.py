@@ -11269,7 +11269,7 @@ class GenerateCloudStorageAIServiceTaskFileURLRequest(AbstractModel):
         :type TaskId: str
         :param _FileName: 文件名
         :type FileName: str
-        :param _ExpireTime: 过期时间 UNIX 时间戳（默认值为当前时间 1 小时后）
+        :param _ExpireTime: 过期时间 UNIX 时间戳（默认值为当前时间 1 小时后，最大不超过文件所属任务的过期时间）
         :type ExpireTime: int
         """
         self._TaskId = None
@@ -11324,7 +11324,7 @@ class GenerateCloudStorageAIServiceTaskFileURLResponse(AbstractModel):
         r"""
         :param _FileURL: 文件下载 URL
         :type FileURL: str
-        :param _ExpireTime: 过期时间 UNIX 时间戳
+        :param _ExpireTime: 过期时间 UNIX 时间戳（最大不超过文件所属任务的过期时间）
         :type ExpireTime: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

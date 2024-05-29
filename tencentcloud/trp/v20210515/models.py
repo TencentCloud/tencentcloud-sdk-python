@@ -689,6 +689,21 @@ class CodePack(AbstractModel):
         :param _RelateType: 码关系是否预关联
 0:否, 1:是
         :type RelateType: int
+        :param _SceneCode: 场景码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SceneCode: int
+        :param _CodeRule: 码规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CodeRule: str
+        :param _UsedAmount: 已使用码数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsedAmount: int
+        :param _SerialStart: 开始流水号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SerialStart: int
+        :param _SerialEnd: 结束流水号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SerialEnd: int
         """
         self._PackId = None
         self._CorpId = None
@@ -714,6 +729,11 @@ class CodePack(AbstractModel):
         self._ProductSpecification = None
         self._ProductId = None
         self._RelateType = None
+        self._SceneCode = None
+        self._CodeRule = None
+        self._UsedAmount = None
+        self._SerialStart = None
+        self._SerialEnd = None
 
     @property
     def PackId(self):
@@ -907,6 +927,46 @@ class CodePack(AbstractModel):
     def RelateType(self, RelateType):
         self._RelateType = RelateType
 
+    @property
+    def SceneCode(self):
+        return self._SceneCode
+
+    @SceneCode.setter
+    def SceneCode(self, SceneCode):
+        self._SceneCode = SceneCode
+
+    @property
+    def CodeRule(self):
+        return self._CodeRule
+
+    @CodeRule.setter
+    def CodeRule(self, CodeRule):
+        self._CodeRule = CodeRule
+
+    @property
+    def UsedAmount(self):
+        return self._UsedAmount
+
+    @UsedAmount.setter
+    def UsedAmount(self, UsedAmount):
+        self._UsedAmount = UsedAmount
+
+    @property
+    def SerialStart(self):
+        return self._SerialStart
+
+    @SerialStart.setter
+    def SerialStart(self, SerialStart):
+        self._SerialStart = SerialStart
+
+    @property
+    def SerialEnd(self):
+        return self._SerialEnd
+
+    @SerialEnd.setter
+    def SerialEnd(self, SerialEnd):
+        self._SerialEnd = SerialEnd
+
 
     def _deserialize(self, params):
         self._PackId = params.get("PackId")
@@ -938,6 +998,11 @@ class CodePack(AbstractModel):
         self._ProductSpecification = params.get("ProductSpecification")
         self._ProductId = params.get("ProductId")
         self._RelateType = params.get("RelateType")
+        self._SceneCode = params.get("SceneCode")
+        self._CodeRule = params.get("CodeRule")
+        self._UsedAmount = params.get("UsedAmount")
+        self._SerialStart = params.get("SerialStart")
+        self._SerialEnd = params.get("SerialEnd")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1327,6 +1392,8 @@ class CreateCodePackRequest(AbstractModel):
         :type ProductId: str
         :param _RelateType: 层级码时是否提前生成关联关系，默认为 1
         :type RelateType: int
+        :param _SceneCode: 场景值
+        :type SceneCode: int
         """
         self._MerchantId = None
         self._CodeLength = None
@@ -1340,6 +1407,7 @@ class CreateCodePackRequest(AbstractModel):
         self._SerialType = None
         self._ProductId = None
         self._RelateType = None
+        self._SceneCode = None
 
     @property
     def MerchantId(self):
@@ -1437,6 +1505,14 @@ class CreateCodePackRequest(AbstractModel):
     def RelateType(self, RelateType):
         self._RelateType = RelateType
 
+    @property
+    def SceneCode(self):
+        return self._SceneCode
+
+    @SceneCode.setter
+    def SceneCode(self, SceneCode):
+        self._SceneCode = SceneCode
+
 
     def _deserialize(self, params):
         self._MerchantId = params.get("MerchantId")
@@ -1456,6 +1532,7 @@ class CreateCodePackRequest(AbstractModel):
         self._SerialType = params.get("SerialType")
         self._ProductId = params.get("ProductId")
         self._RelateType = params.get("RelateType")
+        self._SceneCode = params.get("SceneCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1703,6 +1780,8 @@ class CreateCustomPackRequest(AbstractModel):
 0: 否, 1:是
 默认为1，仅对层级码有效
         :type RelateType: int
+        :param _SceneCode: 场景值
+        :type SceneCode: int
         """
         self._MerchantId = None
         self._Amount = None
@@ -1716,6 +1795,7 @@ class CreateCustomPackRequest(AbstractModel):
         self._SerialType = None
         self._ProductId = None
         self._RelateType = None
+        self._SceneCode = None
 
     @property
     def MerchantId(self):
@@ -1813,6 +1893,14 @@ class CreateCustomPackRequest(AbstractModel):
     def RelateType(self, RelateType):
         self._RelateType = RelateType
 
+    @property
+    def SceneCode(self):
+        return self._SceneCode
+
+    @SceneCode.setter
+    def SceneCode(self, SceneCode):
+        self._SceneCode = SceneCode
+
 
     def _deserialize(self, params):
         self._MerchantId = params.get("MerchantId")
@@ -1837,6 +1925,7 @@ class CreateCustomPackRequest(AbstractModel):
         self._SerialType = params.get("SerialType")
         self._ProductId = params.get("ProductId")
         self._RelateType = params.get("RelateType")
+        self._SceneCode = params.get("SceneCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4012,6 +4101,10 @@ class DescribeCodePacksRequest(AbstractModel):
         :type ResType: str
         :param _ResId: 资源ID ResType是 batch 时对应是批次ID, 是 order_in, order_out时，则是订单ID
         :type ResId: str
+        :param _SceneCode: 应用场景
+        :type SceneCode: int
+        :param _Status: 码包状态
+        :type Status: str
         """
         self._PageSize = None
         self._PageNumber = None
@@ -4020,6 +4113,8 @@ class DescribeCodePacksRequest(AbstractModel):
         self._SerialType = None
         self._ResType = None
         self._ResId = None
+        self._SceneCode = None
+        self._Status = None
 
     @property
     def PageSize(self):
@@ -4077,6 +4172,22 @@ class DescribeCodePacksRequest(AbstractModel):
     def ResId(self, ResId):
         self._ResId = ResId
 
+    @property
+    def SceneCode(self):
+        return self._SceneCode
+
+    @SceneCode.setter
+    def SceneCode(self, SceneCode):
+        self._SceneCode = SceneCode
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
 
     def _deserialize(self, params):
         self._PageSize = params.get("PageSize")
@@ -4086,6 +4197,8 @@ class DescribeCodePacksRequest(AbstractModel):
         self._SerialType = params.get("SerialType")
         self._ResType = params.get("ResType")
         self._ResId = params.get("ResId")
+        self._SceneCode = params.get("SceneCode")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6614,9 +6727,13 @@ class Job(AbstractModel):
         :type JobId: int
         :param _Status: 执行状态 init:初始化, pending: 执行中, done: 执行成功, error: 执行失败
         :type Status: str
+        :param _ErrorMessage: 任务错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMessage: str
         """
         self._JobId = None
         self._Status = None
+        self._ErrorMessage = None
 
     @property
     def JobId(self):
@@ -6634,10 +6751,19 @@ class Job(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def ErrorMessage(self):
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
         self._Status = params.get("Status")
+        self._ErrorMessage = params.get("ErrorMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8109,12 +8235,20 @@ class PackSpec(AbstractModel):
         :param _CodeParts: 码段配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type CodeParts: list of CodePart
+        :param _Unit: 包装单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Unit: str
+        :param _SceneCode: 场景值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SceneCode: int
         """
         self._Level = None
         self._Rate = None
         self._Amount = None
         self._CustomId = None
         self._CodeParts = None
+        self._Unit = None
+        self._SceneCode = None
 
     @property
     def Level(self):
@@ -8156,6 +8290,22 @@ class PackSpec(AbstractModel):
     def CodeParts(self, CodeParts):
         self._CodeParts = CodeParts
 
+    @property
+    def Unit(self):
+        return self._Unit
+
+    @Unit.setter
+    def Unit(self, Unit):
+        self._Unit = Unit
+
+    @property
+    def SceneCode(self):
+        return self._SceneCode
+
+    @SceneCode.setter
+    def SceneCode(self, SceneCode):
+        self._SceneCode = SceneCode
+
 
     def _deserialize(self, params):
         self._Level = params.get("Level")
@@ -8168,6 +8318,8 @@ class PackSpec(AbstractModel):
                 obj = CodePart()
                 obj._deserialize(item)
                 self._CodeParts.append(obj)
+        self._Unit = params.get("Unit")
+        self._SceneCode = params.get("SceneCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9145,6 +9297,15 @@ class ScanLog(AbstractModel):
         :param _ProductName: 产品名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductName: str
+        :param _ProductLogo: 产品Logo
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductLogo: str
+        :param _Status: 风险状态
+0: 未知, 1:通过, 2:失败/风险, 3:存疑
+        :type Status: int
+        :param _Verify: 是否开启验证
+0:否, 1:是
+        :type Verify: int
         """
         self._LogId = None
         self._Openid = None
@@ -9165,6 +9326,9 @@ class ScanLog(AbstractModel):
         self._Type = None
         self._MerchantName = None
         self._ProductName = None
+        self._ProductLogo = None
+        self._Status = None
+        self._Verify = None
 
     @property
     def LogId(self):
@@ -9318,6 +9482,30 @@ class ScanLog(AbstractModel):
     def ProductName(self, ProductName):
         self._ProductName = ProductName
 
+    @property
+    def ProductLogo(self):
+        return self._ProductLogo
+
+    @ProductLogo.setter
+    def ProductLogo(self, ProductLogo):
+        self._ProductLogo = ProductLogo
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Verify(self):
+        return self._Verify
+
+    @Verify.setter
+    def Verify(self, Verify):
+        self._Verify = Verify
+
 
     def _deserialize(self, params):
         self._LogId = params.get("LogId")
@@ -9339,6 +9527,9 @@ class ScanLog(AbstractModel):
         self._Type = params.get("Type")
         self._MerchantName = params.get("MerchantName")
         self._ProductName = params.get("ProductName")
+        self._ProductLogo = params.get("ProductLogo")
+        self._Status = params.get("Status")
+        self._Verify = params.get("Verify")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9535,6 +9726,15 @@ class TraceCode(AbstractModel):
         :type AgentId: int
         :param _Level: 码层级 0: 最小级, 1: 一级, 2: 二级
         :type Level: int
+        :param _PackSpec: 码层级详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackSpec: list of PackSpec
+        :param _SceneCode: 场景码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SceneCode: int
+        :param _SerialCode: 流水码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SerialCode: int
         """
         self._Code = None
         self._CorpId = None
@@ -9549,6 +9749,9 @@ class TraceCode(AbstractModel):
         self._ProductName = None
         self._AgentId = None
         self._Level = None
+        self._PackSpec = None
+        self._SceneCode = None
+        self._SerialCode = None
 
     @property
     def Code(self):
@@ -9654,6 +9857,30 @@ class TraceCode(AbstractModel):
     def Level(self, Level):
         self._Level = Level
 
+    @property
+    def PackSpec(self):
+        return self._PackSpec
+
+    @PackSpec.setter
+    def PackSpec(self, PackSpec):
+        self._PackSpec = PackSpec
+
+    @property
+    def SceneCode(self):
+        return self._SceneCode
+
+    @SceneCode.setter
+    def SceneCode(self, SceneCode):
+        self._SceneCode = SceneCode
+
+    @property
+    def SerialCode(self):
+        return self._SerialCode
+
+    @SerialCode.setter
+    def SerialCode(self, SerialCode):
+        self._SerialCode = SerialCode
+
 
     def _deserialize(self, params):
         self._Code = params.get("Code")
@@ -9669,6 +9896,14 @@ class TraceCode(AbstractModel):
         self._ProductName = params.get("ProductName")
         self._AgentId = params.get("AgentId")
         self._Level = params.get("Level")
+        if params.get("PackSpec") is not None:
+            self._PackSpec = []
+            for item in params.get("PackSpec"):
+                obj = PackSpec()
+                obj._deserialize(item)
+                self._PackSpec.append(obj)
+        self._SceneCode = params.get("SceneCode")
+        self._SerialCode = params.get("SerialCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
