@@ -9975,6 +9975,8 @@ class CreateAssetImageScanSettingRequest(AbstractModel):
         :param _ScanEndTime: 扫描结束时间
 02:00 时分
         :type ScanEndTime: str
+        :param _ExcludeImages: 排除扫描的镜像
+        :type ExcludeImages: list of str
         """
         self._Enable = None
         self._ScanTime = None
@@ -9987,6 +9989,7 @@ class CreateAssetImageScanSettingRequest(AbstractModel):
         self._ContainerRunning = None
         self._ScanScope = None
         self._ScanEndTime = None
+        self._ExcludeImages = None
 
     @property
     def Enable(self):
@@ -10080,6 +10083,14 @@ class CreateAssetImageScanSettingRequest(AbstractModel):
     def ScanEndTime(self, ScanEndTime):
         self._ScanEndTime = ScanEndTime
 
+    @property
+    def ExcludeImages(self):
+        return self._ExcludeImages
+
+    @ExcludeImages.setter
+    def ExcludeImages(self, ExcludeImages):
+        self._ExcludeImages = ExcludeImages
+
 
     def _deserialize(self, params):
         self._Enable = params.get("Enable")
@@ -10093,6 +10104,7 @@ class CreateAssetImageScanSettingRequest(AbstractModel):
         self._ContainerRunning = params.get("ContainerRunning")
         self._ScanScope = params.get("ScanScope")
         self._ScanEndTime = params.get("ScanEndTime")
+        self._ExcludeImages = params.get("ExcludeImages")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23039,6 +23051,9 @@ class DescribeAssetImageScanSettingResponse(AbstractModel):
         :type ScanScope: int
         :param _ScanEndTime: 扫描结束时间 02:00 时分
         :type ScanEndTime: str
+        :param _ExcludeImages: 排除的扫描镜像
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExcludeImages: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -23053,6 +23068,7 @@ class DescribeAssetImageScanSettingResponse(AbstractModel):
         self._ContainerRunning = None
         self._ScanScope = None
         self._ScanEndTime = None
+        self._ExcludeImages = None
         self._RequestId = None
 
     @property
@@ -23148,6 +23164,14 @@ class DescribeAssetImageScanSettingResponse(AbstractModel):
         self._ScanEndTime = ScanEndTime
 
     @property
+    def ExcludeImages(self):
+        return self._ExcludeImages
+
+    @ExcludeImages.setter
+    def ExcludeImages(self, ExcludeImages):
+        self._ExcludeImages = ExcludeImages
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -23168,6 +23192,7 @@ class DescribeAssetImageScanSettingResponse(AbstractModel):
         self._ContainerRunning = params.get("ContainerRunning")
         self._ScanScope = params.get("ScanScope")
         self._ScanEndTime = params.get("ScanEndTime")
+        self._ExcludeImages = params.get("ExcludeImages")
         self._RequestId = params.get("RequestId")
 
 
@@ -30021,6 +30046,9 @@ class DescribeImageRegistryTimingScanTaskResponse(AbstractModel):
         :type ScanScope: int
         :param _Namespace: 命名空间
         :type Namespace: list of str
+        :param _ExcludeImageAssetIds: 排除的镜像资产id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExcludeImageAssetIds: list of int non-negative
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -30037,6 +30065,7 @@ class DescribeImageRegistryTimingScanTaskResponse(AbstractModel):
         self._ContainerRunning = None
         self._ScanScope = None
         self._Namespace = None
+        self._ExcludeImageAssetIds = None
         self._RequestId = None
 
     @property
@@ -30148,6 +30177,14 @@ class DescribeImageRegistryTimingScanTaskResponse(AbstractModel):
         self._Namespace = Namespace
 
     @property
+    def ExcludeImageAssetIds(self):
+        return self._ExcludeImageAssetIds
+
+    @ExcludeImageAssetIds.setter
+    def ExcludeImageAssetIds(self, ExcludeImageAssetIds):
+        self._ExcludeImageAssetIds = ExcludeImageAssetIds
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -30175,6 +30212,7 @@ class DescribeImageRegistryTimingScanTaskResponse(AbstractModel):
         self._ContainerRunning = params.get("ContainerRunning")
         self._ScanScope = params.get("ScanScope")
         self._Namespace = params.get("Namespace")
+        self._ExcludeImageAssetIds = params.get("ExcludeImageAssetIds")
         self._RequestId = params.get("RequestId")
 
 
@@ -60573,6 +60611,8 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
         :type RegistryType: list of str
         :param _Namespace: 命名空间
         :type Namespace: list of str
+        :param _ExcludeImageAssetIds: 排除的镜像资产id
+        :type ExcludeImageAssetIds: list of int non-negative
         """
         self._ScanPeriod = None
         self._Enable = None
@@ -60587,6 +60627,7 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
         self._ScanScope = None
         self._RegistryType = None
         self._Namespace = None
+        self._ExcludeImageAssetIds = None
 
     @property
     def ScanPeriod(self):
@@ -60696,6 +60737,14 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
     def Namespace(self, Namespace):
         self._Namespace = Namespace
 
+    @property
+    def ExcludeImageAssetIds(self):
+        return self._ExcludeImageAssetIds
+
+    @ExcludeImageAssetIds.setter
+    def ExcludeImageAssetIds(self, ExcludeImageAssetIds):
+        self._ExcludeImageAssetIds = ExcludeImageAssetIds
+
 
     def _deserialize(self, params):
         self._ScanPeriod = params.get("ScanPeriod")
@@ -60716,6 +60765,7 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
         self._ScanScope = params.get("ScanScope")
         self._RegistryType = params.get("RegistryType")
         self._Namespace = params.get("Namespace")
+        self._ExcludeImageAssetIds = params.get("ExcludeImageAssetIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

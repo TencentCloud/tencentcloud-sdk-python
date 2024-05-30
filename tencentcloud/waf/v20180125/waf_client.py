@@ -535,7 +535,7 @@ class WafClient(AbstractClient):
 
 
     def DeleteIpAccessControl(self, request):
-        """Waf IP黑白名单Delete接口
+        """Waf IP黑白名单Delete接口（建议使用DeleteIpAccessControlV2来替换当前接口）
 
         :param request: Request instance for DeleteIpAccessControl.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteIpAccessControlRequest`
@@ -3139,7 +3139,7 @@ class WafClient(AbstractClient):
 
 
     def UpsertIpAccessControl(self, request):
-        """Waf IP黑白名单Upsert接口
+        """Waf IP黑白名单Upsert接口（建议使用CreateIpAccessControl、ModifyIpAccessControl来替换当前接口）
 
         :param request: Request instance for UpsertIpAccessControl.
         :type request: :class:`tencentcloud.waf.v20180125.models.UpsertIpAccessControlRequest`

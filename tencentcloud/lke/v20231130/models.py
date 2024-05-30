@@ -670,9 +670,9 @@ class BaseConfig(AbstractModel):
         r"""
         :param _Name: 应用名称
         :type Name: str
-        :param _Avatar: 机器人头像
+        :param _Avatar: 应用头像
         :type Avatar: str
-        :param _Desc: 机器人描述
+        :param _Desc: 应用描述
         :type Desc: str
         """
         self._Name = None
@@ -12881,13 +12881,13 @@ class SaveDocRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _FileName: 文件名
         :type FileName: str
         :param _FileType: 文件类型(md|txt|docx|pdf|xlsx)
         :type FileType: str
-        :param _CosUrl: cos路径
+        :param _CosUrl: 平台cos路径，与DescribeStorageCredential接口查询UploadPath参数保持一致
         :type CosUrl: str
         :param _ETag: ETag 全称为 Entity Tag，是对象被创建时标识对象内容的信息标签，可用于检查对象的内容是否发生变化
         :type ETag: str

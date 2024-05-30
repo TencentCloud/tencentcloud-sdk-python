@@ -1010,9 +1010,12 @@ class BindDeviceResourceRequest(AbstractModel):
         :type DeviceIdSet: list of int non-negative
         :param _ResourceId: 堡垒机服务ID
         :type ResourceId: str
+        :param _DomainId: 网络域ID
+        :type DomainId: str
         """
         self._DeviceIdSet = None
         self._ResourceId = None
+        self._DomainId = None
 
     @property
     def DeviceIdSet(self):
@@ -1030,10 +1033,19 @@ class BindDeviceResourceRequest(AbstractModel):
     def ResourceId(self, ResourceId):
         self._ResourceId = ResourceId
 
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
 
     def _deserialize(self, params):
         self._DeviceIdSet = params.get("DeviceIdSet")
         self._ResourceId = params.get("ResourceId")
+        self._DomainId = params.get("DomainId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6531,6 +6543,12 @@ class Device(AbstractModel):
         :param _IpPortSet: 数据库资产的多节点
 注意：此字段可能返回 null，表示取不到有效值。
         :type IpPortSet: list of str
+        :param _DomainId: 网络域Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DomainId: str
+        :param _DomainName: 网络域名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DomainName: str
         """
         self._Id = None
         self._InstanceId = None
@@ -6548,6 +6566,8 @@ class Device(AbstractModel):
         self._Resource = None
         self._Department = None
         self._IpPortSet = None
+        self._DomainId = None
+        self._DomainName = None
 
     @property
     def Id(self):
@@ -6677,6 +6697,22 @@ class Device(AbstractModel):
     def IpPortSet(self, IpPortSet):
         self._IpPortSet = IpPortSet
 
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -6704,6 +6740,8 @@ class Device(AbstractModel):
             self._Department = Department()
             self._Department._deserialize(params.get("Department"))
         self._IpPortSet = params.get("IpPortSet")
+        self._DomainId = params.get("DomainId")
+        self._DomainName = params.get("DomainName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8051,11 +8089,14 @@ class ModifyDeviceRequest(AbstractModel):
         :type GroupIdSet: list of int non-negative
         :param _DepartmentId: 资产所属部门ID
         :type DepartmentId: str
+        :param _DomainId: 网络域Id
+        :type DomainId: str
         """
         self._Id = None
         self._Port = None
         self._GroupIdSet = None
         self._DepartmentId = None
+        self._DomainId = None
 
     @property
     def Id(self):
@@ -8089,12 +8130,21 @@ class ModifyDeviceRequest(AbstractModel):
     def DepartmentId(self, DepartmentId):
         self._DepartmentId = DepartmentId
 
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
         self._Port = params.get("Port")
         self._GroupIdSet = params.get("GroupIdSet")
         self._DepartmentId = params.get("DepartmentId")
+        self._DomainId = params.get("DomainId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9024,6 +9074,12 @@ class Resource(AbstractModel):
         :param _ClbSet: 堡垒机资源LB
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClbSet: list of Clb
+        :param _DomainCount: 网络域个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DomainCount: int
+        :param _UsedDomainCount: 已使用网络域个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsedDomainCount: int
         """
         self._ResourceId = None
         self._ApCode = None
@@ -9055,6 +9111,8 @@ class Resource(AbstractModel):
         self._PackageNode = None
         self._LogDeliveryArgs = None
         self._ClbSet = None
+        self._DomainCount = None
+        self._UsedDomainCount = None
 
     @property
     def ResourceId(self):
@@ -9296,6 +9354,22 @@ class Resource(AbstractModel):
     def ClbSet(self, ClbSet):
         self._ClbSet = ClbSet
 
+    @property
+    def DomainCount(self):
+        return self._DomainCount
+
+    @DomainCount.setter
+    def DomainCount(self, DomainCount):
+        self._DomainCount = DomainCount
+
+    @property
+    def UsedDomainCount(self):
+        return self._UsedDomainCount
+
+    @UsedDomainCount.setter
+    def UsedDomainCount(self, UsedDomainCount):
+        self._UsedDomainCount = UsedDomainCount
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
@@ -9333,6 +9407,8 @@ class Resource(AbstractModel):
                 obj = Clb()
                 obj._deserialize(item)
                 self._ClbSet.append(obj)
+        self._DomainCount = params.get("DomainCount")
+        self._UsedDomainCount = params.get("UsedDomainCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

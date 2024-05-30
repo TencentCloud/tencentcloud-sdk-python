@@ -1023,8 +1023,6 @@ class AddCustomRuleRequest(AbstractModel):
         :type Name: str
         :param _SortId: 优先级
         :type SortId: str
-        :param _ExpireTime: 过期时间，单位为秒级时间戳，例如1677254399表示过期时间为2023-02-24 23:59:59. 0表示永不过期
-        :type ExpireTime: str
         :param _Strategies: 策略详情
         :type Strategies: list of Strategy
         :param _Domain: 需要添加策略的域名
@@ -1033,23 +1031,43 @@ class AddCustomRuleRequest(AbstractModel):
         :type ActionType: str
         :param _Redirect: 如果动作是重定向，则表示重定向的地址；其他情况可以为空
         :type Redirect: str
+        :param _ExpireTime: 过期时间，单位为秒级时间戳，例如1677254399表示过期时间为2023-02-24 23:59:59. 0表示永不过期
+        :type ExpireTime: str
         :param _Edition: WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
         :type Edition: str
         :param _Bypass: 放行的详情
         :type Bypass: str
         :param _EventId: 添加规则的来源，默认为空
         :type EventId: str
+        :param _JobType: 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+        :type JobType: str
+        :param _JobDateTime: 规则执行的时间
+        :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        :param _Source: 规则来源，判断是不是小程序的
+        :type Source: str
+        :param _Label: 规则标签，小程序规则用，标识是内置规则还是自定义规则
+        :type Label: str
+        :param _Status: 开关状态，小程序风控规则的时候传该值
+        :type Status: int
+        :param _PageId: 拦截页面id
+        :type PageId: str
         """
         self._Name = None
         self._SortId = None
-        self._ExpireTime = None
         self._Strategies = None
         self._Domain = None
         self._ActionType = None
         self._Redirect = None
+        self._ExpireTime = None
         self._Edition = None
         self._Bypass = None
         self._EventId = None
+        self._JobType = None
+        self._JobDateTime = None
+        self._Source = None
+        self._Label = None
+        self._Status = None
+        self._PageId = None
 
     @property
     def Name(self):
@@ -1066,14 +1084,6 @@ class AddCustomRuleRequest(AbstractModel):
     @SortId.setter
     def SortId(self, SortId):
         self._SortId = SortId
-
-    @property
-    def ExpireTime(self):
-        return self._ExpireTime
-
-    @ExpireTime.setter
-    def ExpireTime(self, ExpireTime):
-        self._ExpireTime = ExpireTime
 
     @property
     def Strategies(self):
@@ -1108,6 +1118,14 @@ class AddCustomRuleRequest(AbstractModel):
         self._Redirect = Redirect
 
     @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
     def Edition(self):
         return self._Edition
 
@@ -1131,11 +1149,58 @@ class AddCustomRuleRequest(AbstractModel):
     def EventId(self, EventId):
         self._EventId = EventId
 
+    @property
+    def JobType(self):
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def JobDateTime(self):
+        return self._JobDateTime
+
+    @JobDateTime.setter
+    def JobDateTime(self, JobDateTime):
+        self._JobDateTime = JobDateTime
+
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def PageId(self):
+        return self._PageId
+
+    @PageId.setter
+    def PageId(self, PageId):
+        self._PageId = PageId
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._SortId = params.get("SortId")
-        self._ExpireTime = params.get("ExpireTime")
         if params.get("Strategies") is not None:
             self._Strategies = []
             for item in params.get("Strategies"):
@@ -1145,9 +1210,18 @@ class AddCustomRuleRequest(AbstractModel):
         self._Domain = params.get("Domain")
         self._ActionType = params.get("ActionType")
         self._Redirect = params.get("Redirect")
+        self._ExpireTime = params.get("ExpireTime")
         self._Edition = params.get("Edition")
         self._Bypass = params.get("Bypass")
         self._EventId = params.get("EventId")
+        self._JobType = params.get("JobType")
+        if params.get("JobDateTime") is not None:
+            self._JobDateTime = JobDateTime()
+            self._JobDateTime._deserialize(params.get("JobDateTime"))
+        self._Source = params.get("Source")
+        self._Label = params.get("Label")
+        self._Status = params.get("Status")
+        self._PageId = params.get("PageId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1229,6 +1303,10 @@ class AddCustomWhiteRuleRequest(AbstractModel):
         :type Domain: str
         :param _Bypass: 放行的详情
         :type Bypass: str
+        :param _JobType: 定时任务类型
+        :type JobType: str
+        :param _JobDateTime: 定时任务配置
+        :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
         """
         self._Name = None
         self._SortId = None
@@ -1236,6 +1314,8 @@ class AddCustomWhiteRuleRequest(AbstractModel):
         self._Strategies = None
         self._Domain = None
         self._Bypass = None
+        self._JobType = None
+        self._JobDateTime = None
 
     @property
     def Name(self):
@@ -1285,6 +1365,22 @@ class AddCustomWhiteRuleRequest(AbstractModel):
     def Bypass(self, Bypass):
         self._Bypass = Bypass
 
+    @property
+    def JobType(self):
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def JobDateTime(self):
+        return self._JobDateTime
+
+    @JobDateTime.setter
+    def JobDateTime(self, JobDateTime):
+        self._JobDateTime = JobDateTime
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -1298,6 +1394,10 @@ class AddCustomWhiteRuleRequest(AbstractModel):
                 self._Strategies.append(obj)
         self._Domain = params.get("Domain")
         self._Bypass = params.get("Bypass")
+        self._JobType = params.get("JobType")
+        if params.get("JobDateTime") is not None:
+            self._JobDateTime = JobDateTime()
+            self._JobDateTime._deserialize(params.get("JobDateTime"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1601,6 +1701,8 @@ cdn-waf：CDN上的Web防护能力
         :type UpstreamHost: str
         :param _ProxyBuffer: 是否开启缓存 0-关闭 1-开启
         :type ProxyBuffer: int
+        :param _ProbeStatus: 0: 禁用拨测, 1: 启用拨测。默认启用拨测
+        :type ProbeStatus: int
         """
         self._Domain = None
         self._CertType = None
@@ -1639,6 +1741,7 @@ cdn-waf：CDN上的Web防护能力
         self._Note = None
         self._UpstreamHost = None
         self._ProxyBuffer = None
+        self._ProbeStatus = None
 
     @property
     def Domain(self):
@@ -1936,6 +2039,14 @@ cdn-waf：CDN上的Web防护能力
     def ProxyBuffer(self, ProxyBuffer):
         self._ProxyBuffer = ProxyBuffer
 
+    @property
+    def ProbeStatus(self):
+        return self._ProbeStatus
+
+    @ProbeStatus.setter
+    def ProbeStatus(self, ProbeStatus):
+        self._ProbeStatus = ProbeStatus
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -1980,6 +2091,7 @@ cdn-waf：CDN上的Web防护能力
         self._Note = params.get("Note")
         self._UpstreamHost = params.get("UpstreamHost")
         self._ProxyBuffer = params.get("ProxyBuffer")
+        self._ProbeStatus = params.get("ProbeStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2408,6 +2520,9 @@ class BatchIpAccessControlItem(AbstractModel):
         :param _IpList: IP列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type IpList: list of str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
         """
         self._Id = None
         self._ActionType = None
@@ -2419,6 +2534,7 @@ class BatchIpAccessControlItem(AbstractModel):
         self._Hosts = None
         self._RuleId = None
         self._IpList = None
+        self._CreateTime = None
 
     @property
     def Id(self):
@@ -2500,6 +2616,14 @@ class BatchIpAccessControlItem(AbstractModel):
     def IpList(self, IpList):
         self._IpList = IpList
 
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -2512,6 +2636,7 @@ class BatchIpAccessControlItem(AbstractModel):
         self._Hosts = params.get("Hosts")
         self._RuleId = params.get("RuleId")
         self._IpList = params.get("IpList")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3117,6 +3242,9 @@ class CCRuleItems(AbstractModel):
         :param _SessionApplied: 关联的Session规则
 注意：此字段可能返回 null，表示取不到有效值。
         :type SessionApplied: list of int
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
         """
         self._Name = None
         self._Status = None
@@ -3133,6 +3261,7 @@ class CCRuleItems(AbstractModel):
         self._RuleId = None
         self._EventId = None
         self._SessionApplied = None
+        self._CreateTime = None
 
     @property
     def Name(self):
@@ -3254,6 +3383,14 @@ class CCRuleItems(AbstractModel):
     def SessionApplied(self, SessionApplied):
         self._SessionApplied = SessionApplied
 
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -3271,6 +3408,7 @@ class CCRuleItems(AbstractModel):
         self._RuleId = params.get("RuleId")
         self._EventId = params.get("EventId")
         self._SessionApplied = params.get("SessionApplied")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3444,6 +3582,12 @@ class CacheUrlItems(AbstractModel):
         :type Protocol: str
         :param _Status: 状态
         :type Status: int
+        :param _ModifyTime: 修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
         """
         self._Id = None
         self._Name = None
@@ -3451,6 +3595,8 @@ class CacheUrlItems(AbstractModel):
         self._Uri = None
         self._Protocol = None
         self._Status = None
+        self._ModifyTime = None
+        self._CreateTime = None
 
     @property
     def Id(self):
@@ -3500,6 +3646,22 @@ class CacheUrlItems(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -3508,6 +3670,8 @@ class CacheUrlItems(AbstractModel):
         self._Uri = params.get("Uri")
         self._Protocol = params.get("Protocol")
         self._Status = params.get("Status")
+        self._ModifyTime = params.get("ModifyTime")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4770,7 +4934,7 @@ class CreateIpAccessControlRequest(AbstractModel):
         :type InstanceId: str
         :param _Edition: WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
         :type Edition: str
-        :param _SourceType: 是否为批量防护IP黑白名单，当为批量防护IP黑白名单时，取值为batch，否则为空
+        :param _SourceType: 可选值为：batch（批量添加）、bot、cc、custom（非批量添加时的默认值）
         :type SourceType: str
         :param _Note: 备注
         :type Note: str
@@ -4904,6 +5068,79 @@ class CreateIpAccessControlResponse(AbstractModel):
     def _deserialize(self, params):
         self._RuleId = params.get("RuleId")
         self._RequestId = params.get("RequestId")
+
+
+class CronJob(AbstractModel):
+    """规则周期执行的数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Days: 每个月的几号执行
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Days: list of int non-negative
+        :param _WDays: 每个星期的星期几执行
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WDays: list of int non-negative
+        :param _StartTime: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _EndTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        """
+        self._Days = None
+        self._WDays = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def Days(self):
+        return self._Days
+
+    @Days.setter
+    def Days(self, Days):
+        self._Days = Days
+
+    @property
+    def WDays(self):
+        return self._WDays
+
+    @WDays.setter
+    def WDays(self, WDays):
+        self._WDays = WDays
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._Days = params.get("Days")
+        self._WDays = params.get("WDays")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DealData(AbstractModel):
@@ -5434,10 +5671,13 @@ class DeleteCustomRuleRequest(AbstractModel):
         :type RuleId: str
         :param _Edition: WAF的版本，clb-waf代表负载均衡WAF、sparta-waf代表SaaS WAF，默认是sparta-waf。
         :type Edition: str
+        :param _DomainRuleIdList: 批量删除的规则列表
+        :type DomainRuleIdList: list of DomainRuleId
         """
         self._Domain = None
         self._RuleId = None
         self._Edition = None
+        self._DomainRuleIdList = None
 
     @property
     def Domain(self):
@@ -5463,11 +5703,25 @@ class DeleteCustomRuleRequest(AbstractModel):
     def Edition(self, Edition):
         self._Edition = Edition
 
+    @property
+    def DomainRuleIdList(self):
+        return self._DomainRuleIdList
+
+    @DomainRuleIdList.setter
+    def DomainRuleIdList(self, DomainRuleIdList):
+        self._DomainRuleIdList = DomainRuleIdList
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
         self._RuleId = params.get("RuleId")
         self._Edition = params.get("Edition")
+        if params.get("DomainRuleIdList") is not None:
+            self._DomainRuleIdList = []
+            for item in params.get("DomainRuleIdList"):
+                obj = DomainRuleId()
+                obj._deserialize(item)
+                self._DomainRuleIdList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5485,10 +5739,21 @@ class DeleteCustomRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Success: 操作的状态码，如果所有的资源操作成功则返回的是成功的状态码，如果有资源操作失败则需要解析Message的内容来查看哪个资源失败
+        :type Success: :class:`tencentcloud.waf.v20180125.models.ResponseCode`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Success = None
         self._RequestId = None
+
+    @property
+    def Success(self):
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
 
     @property
     def RequestId(self):
@@ -5500,6 +5765,9 @@ class DeleteCustomRuleResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Success") is not None:
+            self._Success = ResponseCode()
+            self._Success._deserialize(params.get("Success"))
         self._RequestId = params.get("RequestId")
 
 
@@ -7379,6 +7647,9 @@ class DescribeAntiLeakageItem(AbstractModel):
         :param _Uri: 匹配的URL
 注意：此字段可能返回 null，表示取不到有效值。
         :type Uri: str
+        :param _ModifyTime: 修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
         """
         self._RuleId = None
         self._Name = None
@@ -7387,6 +7658,7 @@ class DescribeAntiLeakageItem(AbstractModel):
         self._CreateTime = None
         self._Strategies = None
         self._Uri = None
+        self._ModifyTime = None
 
     @property
     def RuleId(self):
@@ -7444,6 +7716,14 @@ class DescribeAntiLeakageItem(AbstractModel):
     def Uri(self, Uri):
         self._Uri = Uri
 
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
 
     def _deserialize(self, params):
         self._RuleId = params.get("RuleId")
@@ -7458,6 +7738,7 @@ class DescribeAntiLeakageItem(AbstractModel):
                 obj._deserialize(item)
                 self._Strategies.append(obj)
         self._Uri = params.get("Uri")
+        self._ModifyTime = params.get("ModifyTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8899,6 +9180,8 @@ class DescribeCustomRuleListRequest(AbstractModel):
         :type Order: str
         :param _By: exp_ts或者mod_ts
         :type By: str
+        :param _DomainList: 查询的域名列表,访问控制页面不用传
+        :type DomainList: list of str
         """
         self._Domain = None
         self._Offset = None
@@ -8906,6 +9189,7 @@ class DescribeCustomRuleListRequest(AbstractModel):
         self._Filters = None
         self._Order = None
         self._By = None
+        self._DomainList = None
 
     @property
     def Domain(self):
@@ -8955,6 +9239,14 @@ class DescribeCustomRuleListRequest(AbstractModel):
     def By(self, By):
         self._By = By
 
+    @property
+    def DomainList(self):
+        return self._DomainList
+
+    @DomainList.setter
+    def DomainList(self, DomainList):
+        self._DomainList = DomainList
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -8968,6 +9260,7 @@ class DescribeCustomRuleListRequest(AbstractModel):
                 self._Filters.append(obj)
         self._Order = params.get("Order")
         self._By = params.get("By")
+        self._DomainList = params.get("DomainList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9071,6 +9364,24 @@ class DescribeCustomRulesRspRuleListItem(AbstractModel):
         :param _Source: 来源
 注意：此字段可能返回 null，表示取不到有效值。
         :type Source: str
+        :param _JobType: 定时任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobType: str
+        :param _JobDateTime: 定时任务配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        :param _CronType: 周期任务粒度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CronType: str
+        :param _Label: 自定义标签，风控规则用，用来表示是内置规则还是用户自定义的
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Label: str
+        :param _PageId: 拦截页面id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageId: str
+        :param _Domain: 域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domain: str
         """
         self._ActionType = None
         self._Bypass = None
@@ -9086,6 +9397,12 @@ class DescribeCustomRulesRspRuleListItem(AbstractModel):
         self._ModifyTime = None
         self._ValidStatus = None
         self._Source = None
+        self._JobType = None
+        self._JobDateTime = None
+        self._CronType = None
+        self._Label = None
+        self._PageId = None
+        self._Domain = None
 
     @property
     def ActionType(self):
@@ -9199,6 +9516,54 @@ class DescribeCustomRulesRspRuleListItem(AbstractModel):
     def Source(self, Source):
         self._Source = Source
 
+    @property
+    def JobType(self):
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def JobDateTime(self):
+        return self._JobDateTime
+
+    @JobDateTime.setter
+    def JobDateTime(self, JobDateTime):
+        self._JobDateTime = JobDateTime
+
+    @property
+    def CronType(self):
+        return self._CronType
+
+    @CronType.setter
+    def CronType(self, CronType):
+        self._CronType = CronType
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def PageId(self):
+        return self._PageId
+
+    @PageId.setter
+    def PageId(self, PageId):
+        self._PageId = PageId
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
 
     def _deserialize(self, params):
         self._ActionType = params.get("ActionType")
@@ -9220,6 +9585,14 @@ class DescribeCustomRulesRspRuleListItem(AbstractModel):
         self._ModifyTime = params.get("ModifyTime")
         self._ValidStatus = params.get("ValidStatus")
         self._Source = params.get("Source")
+        self._JobType = params.get("JobType")
+        if params.get("JobDateTime") is not None:
+            self._JobDateTime = JobDateTime()
+            self._JobDateTime._deserialize(params.get("JobDateTime"))
+        self._CronType = params.get("CronType")
+        self._Label = params.get("Label")
+        self._PageId = params.get("PageId")
+        self._Domain = params.get("Domain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14357,6 +14730,53 @@ class DomainPackageNew(AbstractModel):
         
 
 
+class DomainRuleId(AbstractModel):
+    """域名-规则id结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domain: str
+        :param _RuleId: 规则id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleId: str
+        """
+        self._Domain = None
+        self._RuleId = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._RuleId = params.get("RuleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DomainURI(AbstractModel):
     """唯一定位Domain
 
@@ -17609,6 +18029,12 @@ class InstanceInfo(AbstractModel):
         :param _LastQpsExceedTime: 最近一次超量时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastQpsExceedTime: str
+        :param _MiniExtendPkg: 小程序安全接入ID数量扩张包
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MiniExtendPkg: :class:`tencentcloud.waf.v20180125.models.MiniExtendPkg`
+        :param _BillingItem: 计费项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillingItem: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -17648,6 +18074,8 @@ class InstanceInfo(AbstractModel):
         self._MiniQpsStandard = None
         self._MiniMaxQPS = None
         self._LastQpsExceedTime = None
+        self._MiniExtendPkg = None
+        self._BillingItem = None
 
     @property
     def InstanceId(self):
@@ -17953,6 +18381,22 @@ class InstanceInfo(AbstractModel):
     def LastQpsExceedTime(self, LastQpsExceedTime):
         self._LastQpsExceedTime = LastQpsExceedTime
 
+    @property
+    def MiniExtendPkg(self):
+        return self._MiniExtendPkg
+
+    @MiniExtendPkg.setter
+    def MiniExtendPkg(self, MiniExtendPkg):
+        self._MiniExtendPkg = MiniExtendPkg
+
+    @property
+    def BillingItem(self):
+        return self._BillingItem
+
+    @BillingItem.setter
+    def BillingItem(self, BillingItem):
+        self._BillingItem = BillingItem
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -18011,6 +18455,10 @@ class InstanceInfo(AbstractModel):
         self._MiniQpsStandard = params.get("MiniQpsStandard")
         self._MiniMaxQPS = params.get("MiniMaxQPS")
         self._LastQpsExceedTime = params.get("LastQpsExceedTime")
+        if params.get("MiniExtendPkg") is not None:
+            self._MiniExtendPkg = MiniExtendPkg()
+            self._MiniExtendPkg._deserialize(params.get("MiniExtendPkg"))
+        self._BillingItem = params.get("BillingItem")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18104,6 +18552,9 @@ class IpAccessControlItem(AbstractModel):
         :param _IpList: IP列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type IpList: list of str
+        :param _CreateTime: 规则创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
         """
         self._Id = None
         self._ActionType = None
@@ -18115,6 +18566,7 @@ class IpAccessControlItem(AbstractModel):
         self._ValidStatus = None
         self._RuleId = None
         self._IpList = None
+        self._CreateTime = None
 
     @property
     def Id(self):
@@ -18196,6 +18648,14 @@ class IpAccessControlItem(AbstractModel):
     def IpList(self, IpList):
         self._IpList = IpList
 
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -18208,6 +18668,7 @@ class IpAccessControlItem(AbstractModel):
         self._ValidStatus = params.get("ValidStatus")
         self._RuleId = params.get("RuleId")
         self._IpList = params.get("IpList")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18420,6 +18881,76 @@ class IpHitItemsData(AbstractModel):
                 obj._deserialize(item)
                 self._Res.append(obj)
         self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class JobDateTime(AbstractModel):
+    """规则执行的时间结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Timed: 定时执行的时间参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timed: list of TimedJob
+        :param _Cron: 周期执行的时间参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cron: list of CronJob
+        :param _TimeTZone: 时区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeTZone: str
+        """
+        self._Timed = None
+        self._Cron = None
+        self._TimeTZone = None
+
+    @property
+    def Timed(self):
+        return self._Timed
+
+    @Timed.setter
+    def Timed(self, Timed):
+        self._Timed = Timed
+
+    @property
+    def Cron(self):
+        return self._Cron
+
+    @Cron.setter
+    def Cron(self, Cron):
+        self._Cron = Cron
+
+    @property
+    def TimeTZone(self):
+        return self._TimeTZone
+
+    @TimeTZone.setter
+    def TimeTZone(self, TimeTZone):
+        self._TimeTZone = TimeTZone
+
+
+    def _deserialize(self, params):
+        if params.get("Timed") is not None:
+            self._Timed = []
+            for item in params.get("Timed"):
+                obj = TimedJob()
+                obj._deserialize(item)
+                self._Timed.append(obj)
+        if params.get("Cron") is not None:
+            self._Cron = []
+            for item in params.get("Cron"):
+                obj = CronJob()
+                obj._deserialize(item)
+                self._Cron.append(obj)
+        self._TimeTZone = params.get("TimeTZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19034,6 +19565,131 @@ class MajorEventsPkg(AbstractModel):
         self._RenewFlag = params.get("RenewFlag")
         self._BillingItem = params.get("BillingItem")
         self._HWState = params.get("HWState")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MiniExtendPkg(AbstractModel):
+    """小程序安全接入ID扩展资源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceIds: 资源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceIds: str
+        :param _Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: int
+        :param _BeginTime: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BeginTime: str
+        :param _EndTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _Count: 购买数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        :param _RenewFlag: 续费标志
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RenewFlag: int
+        :param _BillingItem: 计费项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillingItem: str
+        """
+        self._ResourceIds = None
+        self._Status = None
+        self._Region = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._Count = None
+        self._RenewFlag = None
+        self._BillingItem = None
+
+    @property
+    def ResourceIds(self):
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def RenewFlag(self):
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def BillingItem(self):
+        return self._BillingItem
+
+    @BillingItem.setter
+    def BillingItem(self, BillingItem):
+        self._BillingItem = BillingItem
+
+
+    def _deserialize(self, params):
+        self._ResourceIds = params.get("ResourceIds")
+        self._Status = params.get("Status")
+        self._Region = params.get("Region")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._Count = params.get("Count")
+        self._RenewFlag = params.get("RenewFlag")
+        self._BillingItem = params.get("BillingItem")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20178,6 +20834,16 @@ class ModifyCustomRuleRequest(AbstractModel):
         :param _ExpireTime: 规则生效截止时间，0：永久生效，其它值为对应时间的时间戳。
 默认是0
         :type ExpireTime: int
+        :param _JobType: 定时任务类型
+        :type JobType: str
+        :param _JobDateTime: 定时任务配置
+        :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        :param _Source: 规则来源，判断是不是小程序的
+        :type Source: str
+        :param _Status: 开关状态，小程序风控规则的时候传该值
+        :type Status: int
+        :param _PageId: 拦截页面id
+        :type PageId: str
         """
         self._Domain = None
         self._RuleId = None
@@ -20189,6 +20855,11 @@ class ModifyCustomRuleRequest(AbstractModel):
         self._Bypass = None
         self._SortId = None
         self._ExpireTime = None
+        self._JobType = None
+        self._JobDateTime = None
+        self._Source = None
+        self._Status = None
+        self._PageId = None
 
     @property
     def Domain(self):
@@ -20270,6 +20941,46 @@ class ModifyCustomRuleRequest(AbstractModel):
     def ExpireTime(self, ExpireTime):
         self._ExpireTime = ExpireTime
 
+    @property
+    def JobType(self):
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def JobDateTime(self):
+        return self._JobDateTime
+
+    @JobDateTime.setter
+    def JobDateTime(self, JobDateTime):
+        self._JobDateTime = JobDateTime
+
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def PageId(self):
+        return self._PageId
+
+    @PageId.setter
+    def PageId(self, PageId):
+        self._PageId = PageId
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -20287,6 +20998,13 @@ class ModifyCustomRuleRequest(AbstractModel):
         self._Bypass = params.get("Bypass")
         self._SortId = params.get("SortId")
         self._ExpireTime = params.get("ExpireTime")
+        self._JobType = params.get("JobType")
+        if params.get("JobDateTime") is not None:
+            self._JobDateTime = JobDateTime()
+            self._JobDateTime._deserialize(params.get("JobDateTime"))
+        self._Source = params.get("Source")
+        self._Status = params.get("Status")
+        self._PageId = params.get("PageId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20304,10 +21022,21 @@ class ModifyCustomRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Success: 操作的状态码，如果所有的资源操作成功则返回的是成功的状态码，如果有资源操作失败则需要解析Message的内容来查看哪个资源失败
+        :type Success: :class:`tencentcloud.waf.v20180125.models.ResponseCode`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Success = None
         self._RequestId = None
+
+    @property
+    def Success(self):
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
 
     @property
     def RequestId(self):
@@ -20319,6 +21048,9 @@ class ModifyCustomRuleResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Success") is not None:
+            self._Success = ResponseCode()
+            self._Success._deserialize(params.get("Success"))
         self._RequestId = params.get("RequestId")
 
 
@@ -20337,11 +21069,14 @@ class ModifyCustomRuleStatusRequest(AbstractModel):
         :type Status: int
         :param _Edition: WAF的版本，clb-waf代表负载均衡WAF、sparta-waf代表SaaS WAF，默认是sparta-waf。
         :type Edition: str
+        :param _DomainRuleIdList: 规则id
+        :type DomainRuleIdList: list of DomainRuleId
         """
         self._Domain = None
         self._RuleId = None
         self._Status = None
         self._Edition = None
+        self._DomainRuleIdList = None
 
     @property
     def Domain(self):
@@ -20375,12 +21110,26 @@ class ModifyCustomRuleStatusRequest(AbstractModel):
     def Edition(self, Edition):
         self._Edition = Edition
 
+    @property
+    def DomainRuleIdList(self):
+        return self._DomainRuleIdList
+
+    @DomainRuleIdList.setter
+    def DomainRuleIdList(self, DomainRuleIdList):
+        self._DomainRuleIdList = DomainRuleIdList
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
         self._RuleId = params.get("RuleId")
         self._Status = params.get("Status")
         self._Edition = params.get("Edition")
+        if params.get("DomainRuleIdList") is not None:
+            self._DomainRuleIdList = []
+            for item in params.get("DomainRuleIdList"):
+                obj = DomainRuleId()
+                obj._deserialize(item)
+                self._DomainRuleIdList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20451,6 +21200,10 @@ class ModifyCustomWhiteRuleRequest(AbstractModel):
         :type ExpireTime: int
         :param _Strategies: 匹配条件数组
         :type Strategies: list of Strategy
+        :param _JobType: 定时任务类型
+        :type JobType: str
+        :param _JobDateTime: 定时任务配置
+        :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
         """
         self._Domain = None
         self._RuleId = None
@@ -20459,6 +21212,8 @@ class ModifyCustomWhiteRuleRequest(AbstractModel):
         self._SortId = None
         self._ExpireTime = None
         self._Strategies = None
+        self._JobType = None
+        self._JobDateTime = None
 
     @property
     def Domain(self):
@@ -20516,6 +21271,22 @@ class ModifyCustomWhiteRuleRequest(AbstractModel):
     def Strategies(self, Strategies):
         self._Strategies = Strategies
 
+    @property
+    def JobType(self):
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def JobDateTime(self):
+        return self._JobDateTime
+
+    @JobDateTime.setter
+    def JobDateTime(self, JobDateTime):
+        self._JobDateTime = JobDateTime
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -20530,6 +21301,10 @@ class ModifyCustomWhiteRuleRequest(AbstractModel):
                 obj = Strategy()
                 obj._deserialize(item)
                 self._Strategies.append(obj)
+        self._JobType = params.get("JobType")
+        if params.get("JobDateTime") is not None:
+            self._JobDateTime = JobDateTime()
+            self._JobDateTime._deserialize(params.get("JobDateTime"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22575,6 +23350,8 @@ https：使用https协议回源
         :type UpstreamHost: str
         :param _ProxyBuffer: 是否开启缓存 0-关闭 1-开启
         :type ProxyBuffer: int
+        :param _ProbeStatus: 0: 禁用拨测, 1: 启用拨测。默认启用拨测
+        :type ProbeStatus: int
         """
         self._Domain = None
         self._DomainId = None
@@ -22612,6 +23389,7 @@ https：使用https协议回源
         self._Note = None
         self._UpstreamHost = None
         self._ProxyBuffer = None
+        self._ProbeStatus = None
 
     @property
     def Domain(self):
@@ -22901,6 +23679,14 @@ https：使用https协议回源
     def ProxyBuffer(self, ProxyBuffer):
         self._ProxyBuffer = ProxyBuffer
 
+    @property
+    def ProbeStatus(self):
+        return self._ProbeStatus
+
+    @ProbeStatus.setter
+    def ProbeStatus(self, ProbeStatus):
+        self._ProbeStatus = ProbeStatus
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -22944,6 +23730,7 @@ https：使用https协议回源
         self._Note = params.get("Note")
         self._UpstreamHost = params.get("UpstreamHost")
         self._ProxyBuffer = params.get("ProxyBuffer")
+        self._ProbeStatus = params.get("ProbeStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24650,6 +25437,9 @@ class RuleList(AbstractModel):
         :type Time: str
         :param _Status: 开关状态
         :type Status: int
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
         """
         self._Id = None
         self._Rules = None
@@ -24657,6 +25447,7 @@ class RuleList(AbstractModel):
         self._Function = None
         self._Time = None
         self._Status = None
+        self._CreateTime = None
 
     @property
     def Id(self):
@@ -24706,6 +25497,14 @@ class RuleList(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -24714,6 +25513,7 @@ class RuleList(AbstractModel):
         self._Function = params.get("Function")
         self._Time = params.get("Time")
         self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25990,6 +26790,53 @@ class TargetEntity(AbstractModel):
         
 
 
+class TimedJob(AbstractModel):
+    """规则定时任务数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartDateTime: 开始时间戳，单位为秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartDateTime: int
+        :param _EndDateTime: 结束时间戳，单位为秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndDateTime: int
+        """
+        self._StartDateTime = None
+        self._EndDateTime = None
+
+    @property
+    def StartDateTime(self):
+        return self._StartDateTime
+
+    @StartDateTime.setter
+    def StartDateTime(self, StartDateTime):
+        self._StartDateTime = StartDateTime
+
+    @property
+    def EndDateTime(self):
+        return self._EndDateTime
+
+    @EndDateTime.setter
+    def EndDateTime(self, EndDateTime):
+        self._EndDateTime = EndDateTime
+
+
+    def _deserialize(self, params):
+        self._StartDateTime = params.get("StartDateTime")
+        self._EndDateTime = params.get("EndDateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UpsertCCAutoStatusRequest(AbstractModel):
     """UpsertCCAutoStatus请求参数结构体
 
@@ -26126,6 +26973,8 @@ class UpsertCCRuleRequest(AbstractModel):
         :type SessionApplied: list of int
         :param _RuleId: 规则ID，新增时填0
         :type RuleId: int
+        :param _CreateTime: 规则创建时间
+        :type CreateTime: int
         """
         self._Domain = None
         self._Name = None
@@ -26144,6 +26993,7 @@ class UpsertCCRuleRequest(AbstractModel):
         self._EventId = None
         self._SessionApplied = None
         self._RuleId = None
+        self._CreateTime = None
 
     @property
     def Domain(self):
@@ -26281,6 +27131,14 @@ class UpsertCCRuleRequest(AbstractModel):
     def RuleId(self, RuleId):
         self._RuleId = RuleId
 
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -26300,6 +27158,7 @@ class UpsertCCRuleRequest(AbstractModel):
         self._EventId = params.get("EventId")
         self._SessionApplied = params.get("SessionApplied")
         self._RuleId = params.get("RuleId")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26370,13 +27229,13 @@ class UpsertIpAccessControlRequest(AbstractModel):
         :param _Domain: 具体域名如：test.qcloudwaf.com
 全局域名为：global
         :type Domain: str
-        :param _Items: ip 参数列表，json数组由ip，source，note，action，valid_ts组成。ip对应配置的ip地址，source固定为custom值，note为注释，action值42为黑名单，40为白名单，valid_ts为有效日期，值为秒级时间戳（（如1680570420代表2023-04-04 09:07:00））
+        :param _Items: IP 参数列表，json数组由IP，source，note，action，valid_ts组成。IP对应配置的IP地址，source固定为custom值，note为注释，action值42为黑名单，40为白名单，valid_ts为有效日期，值为秒级时间戳（（如1680570420代表2023-04-04 09:07:00））
         :type Items: list of str
         :param _InstanceId: 实例Id
         :type InstanceId: str
         :param _Edition: WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
         :type Edition: str
-        :param _SourceType: 是否为多域名黑白名单，当为多域名的黑白名单时，取值为batch，否则为空
+        :param _SourceType: 可选值为：batch（批量添加）、bot、cc、custom（非批量添加时的默认值）
         :type SourceType: str
         """
         self._Domain = None
@@ -26729,6 +27588,15 @@ class UserDomainInfo(AbstractModel):
         :param _CloudType: 标记是否是混合云接入。hybrid表示混合云接入域名
 注意：此字段可能返回 null，表示取不到有效值。
         :type CloudType: str
+        :param _AlbType: 标记clbwaf类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlbType: str
+        :param _BotStatus: BOT开关状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BotStatus: int
+        :param _ApiStatus: API开关状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiStatus: int
         """
         self._Appid = None
         self._Domain = None
@@ -26740,6 +27608,9 @@ class UserDomainInfo(AbstractModel):
         self._WriteConfig = None
         self._Cls = None
         self._CloudType = None
+        self._AlbType = None
+        self._BotStatus = None
+        self._ApiStatus = None
 
     @property
     def Appid(self):
@@ -26821,6 +27692,30 @@ class UserDomainInfo(AbstractModel):
     def CloudType(self, CloudType):
         self._CloudType = CloudType
 
+    @property
+    def AlbType(self):
+        return self._AlbType
+
+    @AlbType.setter
+    def AlbType(self, AlbType):
+        self._AlbType = AlbType
+
+    @property
+    def BotStatus(self):
+        return self._BotStatus
+
+    @BotStatus.setter
+    def BotStatus(self, BotStatus):
+        self._BotStatus = BotStatus
+
+    @property
+    def ApiStatus(self):
+        return self._ApiStatus
+
+    @ApiStatus.setter
+    def ApiStatus(self, ApiStatus):
+        self._ApiStatus = ApiStatus
+
 
     def _deserialize(self, params):
         self._Appid = params.get("Appid")
@@ -26833,6 +27728,9 @@ class UserDomainInfo(AbstractModel):
         self._WriteConfig = params.get("WriteConfig")
         self._Cls = params.get("Cls")
         self._CloudType = params.get("CloudType")
+        self._AlbType = params.get("AlbType")
+        self._BotStatus = params.get("BotStatus")
+        self._ApiStatus = params.get("ApiStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -6505,12 +6505,20 @@ class UserInfo(AbstractModel):
         :param _AreaCode: 手机号区号
 注意：此字段可能返回 null，表示取不到有效值。
         :type AreaCode: str
+        :param _AppUserId: 企微账号id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppUserId: str
+        :param _AppUserName: 企微账号名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppUserName: str
         """
         self._UserId = None
         self._UserName = None
         self._Email = None
         self._PhoneNumber = None
         self._AreaCode = None
+        self._AppUserId = None
+        self._AppUserName = None
 
     @property
     def UserId(self):
@@ -6552,6 +6560,22 @@ class UserInfo(AbstractModel):
     def AreaCode(self, AreaCode):
         self._AreaCode = AreaCode
 
+    @property
+    def AppUserId(self):
+        return self._AppUserId
+
+    @AppUserId.setter
+    def AppUserId(self, AppUserId):
+        self._AppUserId = AppUserId
+
+    @property
+    def AppUserName(self):
+        return self._AppUserName
+
+    @AppUserName.setter
+    def AppUserName(self, AppUserName):
+        self._AppUserName = AppUserName
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
@@ -6559,6 +6583,8 @@ class UserInfo(AbstractModel):
         self._Email = params.get("Email")
         self._PhoneNumber = params.get("PhoneNumber")
         self._AreaCode = params.get("AreaCode")
+        self._AppUserId = params.get("AppUserId")
+        self._AppUserName = params.get("AppUserName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6799,6 +6825,9 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
         :param _InValidateAppRange: 是否在可见范围内
 注意：此字段可能返回 null，表示取不到有效值。
         :type InValidateAppRange: bool
+        :param _AppOpenUserId: 用户openid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppOpenUserId: str
         """
         self._Id = None
         self._RoleList = None
@@ -6821,6 +6850,7 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
         self._AppUserAliasName = None
         self._AppUserName = None
         self._InValidateAppRange = None
+        self._AppOpenUserId = None
 
     @property
     def Id(self):
@@ -6990,6 +7020,14 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
     def InValidateAppRange(self, InValidateAppRange):
         self._InValidateAppRange = InValidateAppRange
 
+    @property
+    def AppOpenUserId(self):
+        return self._AppOpenUserId
+
+    @AppOpenUserId.setter
+    def AppOpenUserId(self, AppOpenUserId):
+        self._AppOpenUserId = AppOpenUserId
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -7018,6 +7056,7 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
         self._AppUserAliasName = params.get("AppUserAliasName")
         self._AppUserName = params.get("AppUserName")
         self._InValidateAppRange = params.get("InValidateAppRange")
+        self._AppOpenUserId = params.get("AppOpenUserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

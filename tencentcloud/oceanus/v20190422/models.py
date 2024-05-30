@@ -368,6 +368,15 @@ class Cluster(AbstractModel):
         :param _WebUIType: 0 公网访问 // 1 内网访问	
 注意：此字段可能返回 null，表示取不到有效值。
         :type WebUIType: int
+        :param _Type: 2 独享集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        :param _SubEks: 子eks集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubEks: :class:`tencentcloud.oceanus.v20190422.models.SubEks`
+        :param _AgentSerialId: 上级集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentSerialId: str
         """
         self._ClusterId = None
         self._Name = None
@@ -410,6 +419,9 @@ class Cluster(AbstractModel):
         self._Orders = None
         self._SqlGateways = None
         self._WebUIType = None
+        self._Type = None
+        self._SubEks = None
+        self._AgentSerialId = None
 
     @property
     def ClusterId(self):
@@ -739,6 +751,30 @@ class Cluster(AbstractModel):
     def WebUIType(self, WebUIType):
         self._WebUIType = WebUIType
 
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def SubEks(self):
+        return self._SubEks
+
+    @SubEks.setter
+    def SubEks(self, SubEks):
+        self._SubEks = SubEks
+
+    @property
+    def AgentSerialId(self):
+        return self._AgentSerialId
+
+    @AgentSerialId.setter
+    def AgentSerialId(self, AgentSerialId):
+        self._AgentSerialId = AgentSerialId
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -814,6 +850,11 @@ class Cluster(AbstractModel):
                 obj._deserialize(item)
                 self._SqlGateways.append(obj)
         self._WebUIType = params.get("WebUIType")
+        self._Type = params.get("Type")
+        if params.get("SubEks") is not None:
+            self._SubEks = SubEks()
+            self._SubEks._deserialize(params.get("SubEks"))
+        self._AgentSerialId = params.get("AgentSerialId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -869,6 +910,9 @@ class ClusterGroupSetItem(AbstractModel):
         :type RunningCu: float
         :param _PayMode: 付费模式
         :type PayMode: int
+        :param _SubEks: 弹性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubEks: :class:`tencentcloud.oceanus.v20190422.models.SubEks`
         """
         self._ClusterId = None
         self._Name = None
@@ -889,6 +933,7 @@ class ClusterGroupSetItem(AbstractModel):
         self._FreeCu = None
         self._RunningCu = None
         self._PayMode = None
+        self._SubEks = None
 
     @property
     def ClusterId(self):
@@ -1042,6 +1087,14 @@ class ClusterGroupSetItem(AbstractModel):
     def PayMode(self, PayMode):
         self._PayMode = PayMode
 
+    @property
+    def SubEks(self):
+        return self._SubEks
+
+    @SubEks.setter
+    def SubEks(self, SubEks):
+        self._SubEks = SubEks
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -1063,6 +1116,9 @@ class ClusterGroupSetItem(AbstractModel):
         self._FreeCu = params.get("FreeCu")
         self._RunningCu = params.get("RunningCu")
         self._PayMode = params.get("PayMode")
+        if params.get("SubEks") is not None:
+            self._SubEks = SubEks()
+            self._SubEks._deserialize(params.get("SubEks"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10349,6 +10405,92 @@ class StopJobsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class SubEks(AbstractModel):
+    """混合计费
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SerialId: 集群id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SerialId: str
+        :param _CuNum: cu数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CuNum: int
+        :param _Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _StatusDesc: 状态描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusDesc: str
+        :param _RunningCu: 运行cu
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunningCu: float
+        """
+        self._SerialId = None
+        self._CuNum = None
+        self._Status = None
+        self._StatusDesc = None
+        self._RunningCu = None
+
+    @property
+    def SerialId(self):
+        return self._SerialId
+
+    @SerialId.setter
+    def SerialId(self, SerialId):
+        self._SerialId = SerialId
+
+    @property
+    def CuNum(self):
+        return self._CuNum
+
+    @CuNum.setter
+    def CuNum(self, CuNum):
+        self._CuNum = CuNum
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusDesc(self):
+        return self._StatusDesc
+
+    @StatusDesc.setter
+    def StatusDesc(self, StatusDesc):
+        self._StatusDesc = StatusDesc
+
+    @property
+    def RunningCu(self):
+        return self._RunningCu
+
+    @RunningCu.setter
+    def RunningCu(self, RunningCu):
+        self._RunningCu = RunningCu
+
+
+    def _deserialize(self, params):
+        self._SerialId = params.get("SerialId")
+        self._CuNum = params.get("CuNum")
+        self._Status = params.get("Status")
+        self._StatusDesc = params.get("StatusDesc")
+        self._RunningCu = params.get("RunningCu")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SubFolderInfo(AbstractModel):

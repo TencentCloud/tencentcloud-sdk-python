@@ -11440,10 +11440,22 @@ class DescribeLakeFsInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _LakeFsInfos: 托管存储信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LakeFsInfos: list of LakeFsInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._LakeFsInfos = None
         self._RequestId = None
+
+    @property
+    def LakeFsInfos(self):
+        return self._LakeFsInfos
+
+    @LakeFsInfos.setter
+    def LakeFsInfos(self, LakeFsInfos):
+        self._LakeFsInfos = LakeFsInfos
 
     @property
     def RequestId(self):
@@ -11455,6 +11467,12 @@ class DescribeLakeFsInfoResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("LakeFsInfos") is not None:
+            self._LakeFsInfos = []
+            for item in params.get("LakeFsInfos"):
+                obj = LakeFsInfo()
+                obj._deserialize(item)
+                self._LakeFsInfos.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -17260,6 +17278,75 @@ class LakeFileSystemToken(AbstractModel):
         self._Token = params.get("Token")
         self._ExpiredTime = params.get("ExpiredTime")
         self._IssueTime = params.get("IssueTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LakeFsInfo(AbstractModel):
+    """描述DLC托管存储基本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 托管存储名称
+        :type Name: str
+        :param _Type: 托管存储类型
+        :type Type: str
+        :param _SpaceUsedSize: 容量
+        :type SpaceUsedSize: float
+        :param _CreateTimeStamp: 创建时候的时间戳
+        :type CreateTimeStamp: int
+        """
+        self._Name = None
+        self._Type = None
+        self._SpaceUsedSize = None
+        self._CreateTimeStamp = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def SpaceUsedSize(self):
+        return self._SpaceUsedSize
+
+    @SpaceUsedSize.setter
+    def SpaceUsedSize(self, SpaceUsedSize):
+        self._SpaceUsedSize = SpaceUsedSize
+
+    @property
+    def CreateTimeStamp(self):
+        return self._CreateTimeStamp
+
+    @CreateTimeStamp.setter
+    def CreateTimeStamp(self, CreateTimeStamp):
+        self._CreateTimeStamp = CreateTimeStamp
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._SpaceUsedSize = params.get("SpaceUsedSize")
+        self._CreateTimeStamp = params.get("CreateTimeStamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
