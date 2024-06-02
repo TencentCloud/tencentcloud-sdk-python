@@ -443,6 +443,34 @@ class TrocketClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeFusionInstanceList(self, request):
+        """获取实例列表，Filters参数使用说明如下：
+        1. InstanceName, 名称模糊查询
+        2. InstanceId，实例ID查询
+        3. InstanceType, 实例类型查询，支持多选
+        4. Version，实例版本查询
+        当使用TagFilters查询时，Filters参数失效。
+
+        :param request: Request instance for DescribeFusionInstanceList.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeFusionInstanceListRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DescribeFusionInstanceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFusionInstanceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFusionInstanceListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstance(self, request):
         """查询实例信息
 

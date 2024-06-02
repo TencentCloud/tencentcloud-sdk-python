@@ -25,7 +25,7 @@ class ActivateTWeCallLicenseRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PkgType: voip类型
+        :param _PkgType: TWecall类型： 1-家庭安防场景； 2-穿戴类场景； 3-生活娱乐场景； 4-对讲及其它场景
         :type PkgType: int
         :param _MiniProgramAppId: appId
         :type MiniProgramAppId: str
@@ -18363,7 +18363,7 @@ class TWeCallInfo(AbstractModel):
         :param _ModelId: 小程序ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelId: str
-        :param _Sn: Sn信息
+        :param _Sn: Sn信息，SN格式：产品ID_设备名
 注意：此字段可能返回 null，表示取不到有效值。
         :type Sn: str
         :param _ActiveNum: 激活数

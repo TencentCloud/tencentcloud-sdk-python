@@ -565,6 +565,11 @@ class EssClient(AbstractClient):
         -  合同**发起后就会扣减合同的额度**, 只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。（**过期，拒签，签署完成，解除完成等状态不会返还额度**）
         - **静默（自动）签署不支持合同签署方存在填写**功能
 
+
+        <font color="red">相关视频指引</font> <br>
+        1. <a href="https://dyn.ess.tencent.cn/guide/apivideo/ess_uploadfiles.mp4" target="_blank">上传用于合同发起的PDF文件代码编写示例</a><br>
+        2.  <a href="https://dyn.ess.tencent.cn/guide/apivideo/ess-CreateFlowByFiles.mp4" target="_blank">用PDF文件创建签署流程编写示例</a><br>
+
         :param request: Request instance for CreateFlowByFiles.
         :type request: :class:`tencentcloud.ess.v20201111.models.CreateFlowByFilesRequest`
         :rtype: :class:`tencentcloud.ess.v20201111.models.CreateFlowByFilesResponse`

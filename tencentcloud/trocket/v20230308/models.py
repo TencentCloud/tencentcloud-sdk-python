@@ -2198,6 +2198,140 @@ class DescribeConsumerGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeFusionInstanceListRequest(AbstractModel):
+    """DescribeFusionInstanceList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 查询起始位置
+        :type Offset: int
+        :param _Limit: 查询结果限制数量
+        :type Limit: int
+        :param _Filters: 查询条件列表
+        :type Filters: list of Filter
+        :param _TagFilters: 标签过滤器
+        :type TagFilters: list of TagFilter
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+        self._TagFilters = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def TagFilters(self):
+        return self._TagFilters
+
+    @TagFilters.setter
+    def TagFilters(self, TagFilters):
+        self._TagFilters = TagFilters
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("TagFilters") is not None:
+            self._TagFilters = []
+            for item in params.get("TagFilters"):
+                obj = TagFilter()
+                obj._deserialize(item)
+                self._TagFilters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFusionInstanceListResponse(AbstractModel):
+    """DescribeFusionInstanceList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 查询总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _Data: 实例列表
+        :type Data: list of FusionInstanceItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = FusionInstanceItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeInstanceListRequest(AbstractModel):
     """DescribeInstanceList请求参数结构体
 
@@ -5059,6 +5193,312 @@ class Filter(AbstractModel):
         
 
 
+class FusionInstanceItem(AbstractModel):
+    """实例列表页中的实例信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _InstanceName: 实例名称
+        :type InstanceName: str
+        :param _Version: 实例版本
+        :type Version: str
+        :param _InstanceType: 实例类型，
+EXPERIMENT，体验版
+BASIC，基础版
+PRO，专业版
+PLATINUM，铂金版
+        :type InstanceType: str
+        :param _InstanceStatus: 实例状态，
+RUNNING, 运行中
+MAINTAINING，维护中
+ABNORMAL，异常
+OVERDUE，欠费
+DESTROYED，已删除
+CREATING，创建中
+MODIFYING，变配中
+CREATE_FAILURE，创建失败
+MODIFY_FAILURE，变配失败
+DELETING，删除中
+        :type InstanceStatus: str
+        :param _TopicNumLimit: 实例主题数上限
+        :type TopicNumLimit: int
+        :param _GroupNumLimit: 实例消费组数量上限
+        :type GroupNumLimit: int
+        :param _PayMode: 计费模式，
+POSTPAID，按量计费
+PREPAID，包年包月
+        :type PayMode: str
+        :param _ExpiryTime: 到期时间，秒为单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpiryTime: int
+        :param _Remark: 备注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param _TopicNum: 主题数量
+        :type TopicNum: int
+        :param _GroupNum: 消费组数量
+        :type GroupNum: int
+        :param _TagList: 标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagList: list of Tag
+        :param _SkuCode: 商品规格
+        :type SkuCode: str
+        :param _TpsLimit: TPS限流值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TpsLimit: int
+        :param _ScaledTpsLimit: 弹性TPS限流值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScaledTpsLimit: int
+        :param _MessageRetention: 消息保留时间，小时为单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessageRetention: int
+        :param _MaxMessageDelay: 延迟消息最大时长，小时为单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxMessageDelay: int
+        :param _RenewFlag: 是否自动续费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RenewFlag: int
+        :param _InstanceItemExtraInfo: 4.x独有数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceItemExtraInfo: :class:`tencentcloud.trocket.v20230308.models.InstanceItemExtraInfo`
+        :param _DestroyTime: 预销毁时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DestroyTime: int
+        """
+        self._InstanceId = None
+        self._InstanceName = None
+        self._Version = None
+        self._InstanceType = None
+        self._InstanceStatus = None
+        self._TopicNumLimit = None
+        self._GroupNumLimit = None
+        self._PayMode = None
+        self._ExpiryTime = None
+        self._Remark = None
+        self._TopicNum = None
+        self._GroupNum = None
+        self._TagList = None
+        self._SkuCode = None
+        self._TpsLimit = None
+        self._ScaledTpsLimit = None
+        self._MessageRetention = None
+        self._MaxMessageDelay = None
+        self._RenewFlag = None
+        self._InstanceItemExtraInfo = None
+        self._DestroyTime = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceStatus(self):
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
+    @property
+    def TopicNumLimit(self):
+        return self._TopicNumLimit
+
+    @TopicNumLimit.setter
+    def TopicNumLimit(self, TopicNumLimit):
+        self._TopicNumLimit = TopicNumLimit
+
+    @property
+    def GroupNumLimit(self):
+        return self._GroupNumLimit
+
+    @GroupNumLimit.setter
+    def GroupNumLimit(self, GroupNumLimit):
+        self._GroupNumLimit = GroupNumLimit
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def ExpiryTime(self):
+        return self._ExpiryTime
+
+    @ExpiryTime.setter
+    def ExpiryTime(self, ExpiryTime):
+        self._ExpiryTime = ExpiryTime
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def TopicNum(self):
+        return self._TopicNum
+
+    @TopicNum.setter
+    def TopicNum(self, TopicNum):
+        self._TopicNum = TopicNum
+
+    @property
+    def GroupNum(self):
+        return self._GroupNum
+
+    @GroupNum.setter
+    def GroupNum(self, GroupNum):
+        self._GroupNum = GroupNum
+
+    @property
+    def TagList(self):
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
+    @property
+    def SkuCode(self):
+        return self._SkuCode
+
+    @SkuCode.setter
+    def SkuCode(self, SkuCode):
+        self._SkuCode = SkuCode
+
+    @property
+    def TpsLimit(self):
+        return self._TpsLimit
+
+    @TpsLimit.setter
+    def TpsLimit(self, TpsLimit):
+        self._TpsLimit = TpsLimit
+
+    @property
+    def ScaledTpsLimit(self):
+        return self._ScaledTpsLimit
+
+    @ScaledTpsLimit.setter
+    def ScaledTpsLimit(self, ScaledTpsLimit):
+        self._ScaledTpsLimit = ScaledTpsLimit
+
+    @property
+    def MessageRetention(self):
+        return self._MessageRetention
+
+    @MessageRetention.setter
+    def MessageRetention(self, MessageRetention):
+        self._MessageRetention = MessageRetention
+
+    @property
+    def MaxMessageDelay(self):
+        return self._MaxMessageDelay
+
+    @MaxMessageDelay.setter
+    def MaxMessageDelay(self, MaxMessageDelay):
+        self._MaxMessageDelay = MaxMessageDelay
+
+    @property
+    def RenewFlag(self):
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def InstanceItemExtraInfo(self):
+        return self._InstanceItemExtraInfo
+
+    @InstanceItemExtraInfo.setter
+    def InstanceItemExtraInfo(self, InstanceItemExtraInfo):
+        self._InstanceItemExtraInfo = InstanceItemExtraInfo
+
+    @property
+    def DestroyTime(self):
+        return self._DestroyTime
+
+    @DestroyTime.setter
+    def DestroyTime(self, DestroyTime):
+        self._DestroyTime = DestroyTime
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._Version = params.get("Version")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceStatus = params.get("InstanceStatus")
+        self._TopicNumLimit = params.get("TopicNumLimit")
+        self._GroupNumLimit = params.get("GroupNumLimit")
+        self._PayMode = params.get("PayMode")
+        self._ExpiryTime = params.get("ExpiryTime")
+        self._Remark = params.get("Remark")
+        self._TopicNum = params.get("TopicNum")
+        self._GroupNum = params.get("GroupNum")
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TagList.append(obj)
+        self._SkuCode = params.get("SkuCode")
+        self._TpsLimit = params.get("TpsLimit")
+        self._ScaledTpsLimit = params.get("ScaledTpsLimit")
+        self._MessageRetention = params.get("MessageRetention")
+        self._MaxMessageDelay = params.get("MaxMessageDelay")
+        self._RenewFlag = params.get("RenewFlag")
+        if params.get("InstanceItemExtraInfo") is not None:
+            self._InstanceItemExtraInfo = InstanceItemExtraInfo()
+            self._InstanceItemExtraInfo._deserialize(params.get("InstanceItemExtraInfo"))
+        self._DestroyTime = params.get("DestroyTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImportSourceClusterConsumerGroupsRequest(AbstractModel):
     """ImportSourceClusterConsumerGroups请求参数结构体
 
@@ -5464,6 +5904,144 @@ PREPAID，包年包月
         self._ScaledTpsLimit = params.get("ScaledTpsLimit")
         self._MessageRetention = params.get("MessageRetention")
         self._MaxMessageDelay = params.get("MaxMessageDelay")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceItemExtraInfo(AbstractModel):
+    """4.x集群和5.0集群列表统一显示 4.x特殊数据承载接口
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsVip: 是否vip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsVip: bool
+        :param _VipInstanceStatus: 4.x专享集群状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VipInstanceStatus: int
+        :param _MaxBandWidth: 专享集群峰值带宽
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxBandWidth: int
+        :param _SpecName: 专享集群规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpecName: str
+        :param _NodeCount: 专享集群节点数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeCount: int
+        :param _MaxStorage: 专享集群最大存储
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxStorage: int
+        :param _MaxRetention: 专享集群最大保留时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxRetention: int
+        :param _MinRetention: 专项集群最大保留时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinRetention: int
+        :param _InstanceStatus: 4.0共享集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceStatus: int
+        """
+        self._IsVip = None
+        self._VipInstanceStatus = None
+        self._MaxBandWidth = None
+        self._SpecName = None
+        self._NodeCount = None
+        self._MaxStorage = None
+        self._MaxRetention = None
+        self._MinRetention = None
+        self._InstanceStatus = None
+
+    @property
+    def IsVip(self):
+        return self._IsVip
+
+    @IsVip.setter
+    def IsVip(self, IsVip):
+        self._IsVip = IsVip
+
+    @property
+    def VipInstanceStatus(self):
+        return self._VipInstanceStatus
+
+    @VipInstanceStatus.setter
+    def VipInstanceStatus(self, VipInstanceStatus):
+        self._VipInstanceStatus = VipInstanceStatus
+
+    @property
+    def MaxBandWidth(self):
+        return self._MaxBandWidth
+
+    @MaxBandWidth.setter
+    def MaxBandWidth(self, MaxBandWidth):
+        self._MaxBandWidth = MaxBandWidth
+
+    @property
+    def SpecName(self):
+        return self._SpecName
+
+    @SpecName.setter
+    def SpecName(self, SpecName):
+        self._SpecName = SpecName
+
+    @property
+    def NodeCount(self):
+        return self._NodeCount
+
+    @NodeCount.setter
+    def NodeCount(self, NodeCount):
+        self._NodeCount = NodeCount
+
+    @property
+    def MaxStorage(self):
+        return self._MaxStorage
+
+    @MaxStorage.setter
+    def MaxStorage(self, MaxStorage):
+        self._MaxStorage = MaxStorage
+
+    @property
+    def MaxRetention(self):
+        return self._MaxRetention
+
+    @MaxRetention.setter
+    def MaxRetention(self, MaxRetention):
+        self._MaxRetention = MaxRetention
+
+    @property
+    def MinRetention(self):
+        return self._MinRetention
+
+    @MinRetention.setter
+    def MinRetention(self, MinRetention):
+        self._MinRetention = MinRetention
+
+    @property
+    def InstanceStatus(self):
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
+
+    def _deserialize(self, params):
+        self._IsVip = params.get("IsVip")
+        self._VipInstanceStatus = params.get("VipInstanceStatus")
+        self._MaxBandWidth = params.get("MaxBandWidth")
+        self._SpecName = params.get("SpecName")
+        self._NodeCount = params.get("NodeCount")
+        self._MaxStorage = params.get("MaxStorage")
+        self._MaxRetention = params.get("MaxRetention")
+        self._MinRetention = params.get("MinRetention")
+        self._InstanceStatus = params.get("InstanceStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
