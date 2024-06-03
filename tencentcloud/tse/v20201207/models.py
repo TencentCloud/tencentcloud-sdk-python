@@ -18407,6 +18407,12 @@ class KongUpstreamInfo(AbstractModel):
         :param _ScfCamAuthEnable: 云函数是否开启CAM鉴权，不填时默认为开启(true)
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScfCamAuthEnable: bool
+        :param _ScfIsBase64Encoded: 云函数是否开启Base64编码，默认为false
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScfIsBase64Encoded: bool
+        :param _ScfIsIntegratedResponse: 云函数是否开启响应集成，默认为false
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScfIsIntegratedResponse: bool
         """
         self._Host = None
         self._Port = None
@@ -18429,6 +18435,8 @@ class KongUpstreamInfo(AbstractModel):
         self._RealSourceType = None
         self._HealthStatus = None
         self._ScfCamAuthEnable = None
+        self._ScfIsBase64Encoded = None
+        self._ScfIsIntegratedResponse = None
 
     @property
     def Host(self):
@@ -18598,6 +18606,22 @@ class KongUpstreamInfo(AbstractModel):
     def ScfCamAuthEnable(self, ScfCamAuthEnable):
         self._ScfCamAuthEnable = ScfCamAuthEnable
 
+    @property
+    def ScfIsBase64Encoded(self):
+        return self._ScfIsBase64Encoded
+
+    @ScfIsBase64Encoded.setter
+    def ScfIsBase64Encoded(self, ScfIsBase64Encoded):
+        self._ScfIsBase64Encoded = ScfIsBase64Encoded
+
+    @property
+    def ScfIsIntegratedResponse(self):
+        return self._ScfIsIntegratedResponse
+
+    @ScfIsIntegratedResponse.setter
+    def ScfIsIntegratedResponse(self, ScfIsIntegratedResponse):
+        self._ScfIsIntegratedResponse = ScfIsIntegratedResponse
+
 
     def _deserialize(self, params):
         self._Host = params.get("Host")
@@ -18626,6 +18650,8 @@ class KongUpstreamInfo(AbstractModel):
         self._RealSourceType = params.get("RealSourceType")
         self._HealthStatus = params.get("HealthStatus")
         self._ScfCamAuthEnable = params.get("ScfCamAuthEnable")
+        self._ScfIsBase64Encoded = params.get("ScfIsBase64Encoded")
+        self._ScfIsIntegratedResponse = params.get("ScfIsIntegratedResponse")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

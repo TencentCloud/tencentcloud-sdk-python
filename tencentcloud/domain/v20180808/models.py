@@ -7228,9 +7228,15 @@ class ReservedPreDomainsRequest(AbstractModel):
         :type DomainList: list of str
         :param _TemplateId: 模板ID
         :type TemplateId: str
+        :param _IsAutoPay: 结束后是否自动支付尾款，默认开启 传入1关闭
+        :type IsAutoPay: int
+        :param _IsBidAutoPay: 结束后是否自动进行梯度保证金扣除，默认开启 传入1关闭
+        :type IsBidAutoPay: int
         """
         self._DomainList = None
         self._TemplateId = None
+        self._IsAutoPay = None
+        self._IsBidAutoPay = None
 
     @property
     def DomainList(self):
@@ -7248,10 +7254,28 @@ class ReservedPreDomainsRequest(AbstractModel):
     def TemplateId(self, TemplateId):
         self._TemplateId = TemplateId
 
+    @property
+    def IsAutoPay(self):
+        return self._IsAutoPay
+
+    @IsAutoPay.setter
+    def IsAutoPay(self, IsAutoPay):
+        self._IsAutoPay = IsAutoPay
+
+    @property
+    def IsBidAutoPay(self):
+        return self._IsBidAutoPay
+
+    @IsBidAutoPay.setter
+    def IsBidAutoPay(self, IsBidAutoPay):
+        self._IsBidAutoPay = IsBidAutoPay
+
 
     def _deserialize(self, params):
         self._DomainList = params.get("DomainList")
         self._TemplateId = params.get("TemplateId")
+        self._IsAutoPay = params.get("IsAutoPay")
+        self._IsBidAutoPay = params.get("IsBidAutoPay")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

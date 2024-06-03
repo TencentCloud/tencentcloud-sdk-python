@@ -58321,9 +58321,12 @@ class UploadContentRequest(AbstractModel):
         :type ScriptRequestInfo: :class:`tencentcloud.wedata.v20210820.models.ScriptRequestInfo`
         :param _RequestFromSource: 请求来源，WEB 前端；CLIENT 客户端
         :type RequestFromSource: str
+        :param _ProjectId: 项目id
+        :type ProjectId: str
         """
         self._ScriptRequestInfo = None
         self._RequestFromSource = None
+        self._ProjectId = None
 
     @property
     def ScriptRequestInfo(self):
@@ -58341,12 +58344,21 @@ class UploadContentRequest(AbstractModel):
     def RequestFromSource(self, RequestFromSource):
         self._RequestFromSource = RequestFromSource
 
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
 
     def _deserialize(self, params):
         if params.get("ScriptRequestInfo") is not None:
             self._ScriptRequestInfo = ScriptRequestInfo()
             self._ScriptRequestInfo._deserialize(params.get("ScriptRequestInfo"))
         self._RequestFromSource = params.get("RequestFromSource")
+        self._ProjectId = params.get("ProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

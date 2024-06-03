@@ -2181,7 +2181,7 @@ class LighthouseClient(AbstractClient):
 
 
     def RemoveDockerContainers(self, request):
-        """删除实例内的Docker容器，之后可以通过返回的ActivityId调用DescribeDockerActivities接口查询删除情况。
+        """删除实例内的Docker容器，之后可以通过返回的ActivityId调用[DescribeDockerActivities](https://cloud.tencent.com/document/product/1207/95476)接口查询删除情况。
 
         :param request: Request instance for RemoveDockerContainers.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.RemoveDockerContainersRequest`
@@ -2204,7 +2204,7 @@ class LighthouseClient(AbstractClient):
 
 
     def RenameDockerContainer(self, request):
-        """重命名实例内的Docker容器，之后可以通过返回的ActivityId调用DescribeDockerActivities接口查询重命名情况。
+        """重命名实例内的Docker容器，之后可以通过返回的ActivityId调用[DescribeDockerActivities](https://cloud.tencent.com/document/product/1207/95476)接口查询重命名情况。
 
         :param request: Request instance for RenameDockerContainer.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.RenameDockerContainerRequest`
@@ -2451,7 +2451,7 @@ class LighthouseClient(AbstractClient):
 
 
     def RestartDockerContainers(self, request):
-        """重启实例内的Docker容器，之后可以通过返回的ActivityId调用DescribeDockerActivities接口查询重启情况。
+        """重启实例内的Docker容器，之后可以通过返回的ActivityId调用[DescribeDockerActivities](https://cloud.tencent.com/document/product/1207/95476)接口查询重启情况。
 
         :param request: Request instance for RestartDockerContainers.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.RestartDockerContainersRequest`
@@ -2522,7 +2522,7 @@ class LighthouseClient(AbstractClient):
 
 
     def StartDockerContainers(self, request):
-        """启动实例内的Docker容器，之后可以通过返回的ActivityId调用DescribeDockerActivities接口查询启动情况。
+        """启动实例内的Docker容器，之后可以通过返回的ActivityId调用[DescribeDockerActivities](https://cloud.tencent.com/document/product/1207/95476)接口查询启动情况。
 
         :param request: Request instance for StartDockerContainers.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.StartDockerContainersRequest`
@@ -2573,7 +2573,7 @@ class LighthouseClient(AbstractClient):
 
 
     def StopDockerContainers(self, request):
-        """停止实例内的Docker容器，之后可以通过返回的ActivityId调用DescribeDockerActivities接口查询停止情况。
+        """停止实例内的Docker容器，之后可以通过返回的ActivityId调用[DescribeDockerActivities](https://cloud.tencent.com/document/product/1207/95476)接口查询停止情况。
 
         :param request: Request instance for StopDockerContainers.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.StopDockerContainersRequest`

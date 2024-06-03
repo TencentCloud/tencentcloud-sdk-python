@@ -1432,6 +1432,9 @@ class BGPInstance(AbstractModel):
         :param _SuperPackFlag: 是否为超级高防包
 注意：此字段可能返回 null，表示取不到有效值。
         :type SuperPackFlag: int
+        :param _ZoneId: 所属ZoneId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneId: int
         """
         self._InstanceDetail = None
         self._SpecificationLimit = None
@@ -1458,6 +1461,7 @@ class BGPInstance(AbstractModel):
         self._PlanCntFlag = None
         self._TransRegionFlag = None
         self._SuperPackFlag = None
+        self._ZoneId = None
 
     @property
     def InstanceDetail(self):
@@ -1659,6 +1663,14 @@ class BGPInstance(AbstractModel):
     def SuperPackFlag(self, SuperPackFlag):
         self._SuperPackFlag = SuperPackFlag
 
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
 
     def _deserialize(self, params):
         if params.get("InstanceDetail") is not None:
@@ -1706,6 +1718,7 @@ class BGPInstance(AbstractModel):
         self._PlanCntFlag = params.get("PlanCntFlag")
         self._TransRegionFlag = params.get("TransRegionFlag")
         self._SuperPackFlag = params.get("SuperPackFlag")
+        self._ZoneId = params.get("ZoneId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10019,6 +10032,8 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         :type FilterPlanCntFlag: int
         :param _FilterTransRegionFlag: 是否跨区域产品 0: 不包含跨区域产品 1: 中国大陆跨区域产品 2: 非中国大陆跨区域产品 3: 包含全部
         :type FilterTransRegionFlag: int
+        :param _FilterZoneIdList: zoenid列表
+        :type FilterZoneIdList: list of int
         """
         self._Offset = None
         self._Limit = None
@@ -10041,6 +10056,7 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         self._FilterBasicPlusFlag = None
         self._FilterPlanCntFlag = None
         self._FilterTransRegionFlag = None
+        self._FilterZoneIdList = None
 
     @property
     def Offset(self):
@@ -10210,6 +10226,14 @@ class DescribeListBGPInstancesRequest(AbstractModel):
     def FilterTransRegionFlag(self, FilterTransRegionFlag):
         self._FilterTransRegionFlag = FilterTransRegionFlag
 
+    @property
+    def FilterZoneIdList(self):
+        return self._FilterZoneIdList
+
+    @FilterZoneIdList.setter
+    def FilterZoneIdList(self, FilterZoneIdList):
+        self._FilterZoneIdList = FilterZoneIdList
+
 
     def _deserialize(self, params):
         self._Offset = params.get("Offset")
@@ -10235,6 +10259,7 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         self._FilterBasicPlusFlag = params.get("FilterBasicPlusFlag")
         self._FilterPlanCntFlag = params.get("FilterPlanCntFlag")
         self._FilterTransRegionFlag = params.get("FilterTransRegionFlag")
+        self._FilterZoneIdList = params.get("FilterZoneIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

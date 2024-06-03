@@ -456,9 +456,14 @@ class AdjustCdbProxyAddressRequest(AbstractModel):
         :param _TransSplit: 是否开启事务分离，取值："true" | "false"
         :type TransSplit: bool
         :param _ConnectionPool: 是否开启连接池
+注意：如需使用数据库代理连接池能力，MySQL 8.0 主实例的内核小版本要大于等于 MySQL 8.0 20230630。
         :type ConnectionPool: bool
         :param _ProxyAllocation: 读写权重分配。如果 WeightMode 传的是 system ，则传入的权重不生效，由系统分配默认权重。
         :type ProxyAllocation: list of ProxyAllocation
+        :param _AutoLoadBalance: 是否开启自适应负载均衡
+        :type AutoLoadBalance: bool
+        :param _AccessMode: 访问模式：就近访问，均衡分配
+        :type AccessMode: str
         """
         self._ProxyGroupId = None
         self._WeightMode = None
@@ -472,6 +477,8 @@ class AdjustCdbProxyAddressRequest(AbstractModel):
         self._TransSplit = None
         self._ConnectionPool = None
         self._ProxyAllocation = None
+        self._AutoLoadBalance = None
+        self._AccessMode = None
 
     @property
     def ProxyGroupId(self):
@@ -569,6 +576,22 @@ class AdjustCdbProxyAddressRequest(AbstractModel):
     def ProxyAllocation(self, ProxyAllocation):
         self._ProxyAllocation = ProxyAllocation
 
+    @property
+    def AutoLoadBalance(self):
+        return self._AutoLoadBalance
+
+    @AutoLoadBalance.setter
+    def AutoLoadBalance(self, AutoLoadBalance):
+        self._AutoLoadBalance = AutoLoadBalance
+
+    @property
+    def AccessMode(self):
+        return self._AccessMode
+
+    @AccessMode.setter
+    def AccessMode(self, AccessMode):
+        self._AccessMode = AccessMode
+
 
     def _deserialize(self, params):
         self._ProxyGroupId = params.get("ProxyGroupId")
@@ -588,6 +611,8 @@ class AdjustCdbProxyAddressRequest(AbstractModel):
                 obj = ProxyAllocation()
                 obj._deserialize(item)
                 self._ProxyAllocation.append(obj)
+        self._AutoLoadBalance = params.get("AutoLoadBalance")
+        self._AccessMode = params.get("AccessMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5553,6 +5578,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
         :param _UniqSubnetId: 私有子网ID
         :type UniqSubnetId: str
         :param _ConnectionPool: 是否开启连接池
+注意：如需使用数据库代理连接池能力，MySQL 8.0 主实例的内核小版本要大于等于 MySQL 8.0 20230630。
         :type ConnectionPool: bool
         :param _Desc: 描述
         :type Desc: str
@@ -5564,6 +5590,10 @@ class CreateCdbProxyAddressRequest(AbstractModel):
         :type SecurityGroup: list of str
         :param _ConnectionPoolType: 连接池类型。可选值 transaction（事务级别连接池），connection（会话级别连接池），ConnectionPool为true时生效。
         :type ConnectionPoolType: str
+        :param _AutoLoadBalance: 是否自适应负载均衡
+        :type AutoLoadBalance: bool
+        :param _AccessMode: 接入模式
+        :type AccessMode: str
         """
         self._ProxyGroupId = None
         self._WeightMode = None
@@ -5583,6 +5613,8 @@ class CreateCdbProxyAddressRequest(AbstractModel):
         self._VPort = None
         self._SecurityGroup = None
         self._ConnectionPoolType = None
+        self._AutoLoadBalance = None
+        self._AccessMode = None
 
     @property
     def ProxyGroupId(self):
@@ -5728,6 +5760,22 @@ class CreateCdbProxyAddressRequest(AbstractModel):
     def ConnectionPoolType(self, ConnectionPoolType):
         self._ConnectionPoolType = ConnectionPoolType
 
+    @property
+    def AutoLoadBalance(self):
+        return self._AutoLoadBalance
+
+    @AutoLoadBalance.setter
+    def AutoLoadBalance(self, AutoLoadBalance):
+        self._AutoLoadBalance = AutoLoadBalance
+
+    @property
+    def AccessMode(self):
+        return self._AccessMode
+
+    @AccessMode.setter
+    def AccessMode(self, AccessMode):
+        self._AccessMode = AccessMode
+
 
     def _deserialize(self, params):
         self._ProxyGroupId = params.get("ProxyGroupId")
@@ -5753,6 +5801,8 @@ class CreateCdbProxyAddressRequest(AbstractModel):
         self._VPort = params.get("VPort")
         self._SecurityGroup = params.get("SecurityGroup")
         self._ConnectionPoolType = params.get("ConnectionPoolType")
+        self._AutoLoadBalance = params.get("AutoLoadBalance")
+        self._AccessMode = params.get("AccessMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15793,6 +15843,12 @@ class DescribeProxySupportParamResponse(AbstractModel):
         :param _SupportReadOnly: 是否支持设置只读
 注意：此字段可能返回 null，表示取不到有效值。
         :type SupportReadOnly: bool
+        :param _SupportAutoLoadBalance: 是否自动均衡负载
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportAutoLoadBalance: bool
+        :param _SupportAccessMode: 是否支持接入模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportAccessMode: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -15804,6 +15860,8 @@ class DescribeProxySupportParamResponse(AbstractModel):
         self._SupportPoolMinVersion = None
         self._SupportTransSplitMinVersion = None
         self._SupportReadOnly = None
+        self._SupportAutoLoadBalance = None
+        self._SupportAccessMode = None
         self._RequestId = None
 
     @property
@@ -15871,6 +15929,22 @@ class DescribeProxySupportParamResponse(AbstractModel):
         self._SupportReadOnly = SupportReadOnly
 
     @property
+    def SupportAutoLoadBalance(self):
+        return self._SupportAutoLoadBalance
+
+    @SupportAutoLoadBalance.setter
+    def SupportAutoLoadBalance(self, SupportAutoLoadBalance):
+        self._SupportAutoLoadBalance = SupportAutoLoadBalance
+
+    @property
+    def SupportAccessMode(self):
+        return self._SupportAccessMode
+
+    @SupportAccessMode.setter
+    def SupportAccessMode(self, SupportAccessMode):
+        self._SupportAccessMode = SupportAccessMode
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -15888,6 +15962,8 @@ class DescribeProxySupportParamResponse(AbstractModel):
         self._SupportPoolMinVersion = params.get("SupportPoolMinVersion")
         self._SupportTransSplitMinVersion = params.get("SupportTransSplitMinVersion")
         self._SupportReadOnly = params.get("SupportReadOnly")
+        self._SupportAutoLoadBalance = params.get("SupportAutoLoadBalance")
+        self._SupportAccessMode = params.get("SupportAccessMode")
         self._RequestId = params.get("RequestId")
 
 
@@ -24712,6 +24788,12 @@ class ProxyAddress(AbstractModel):
         :param _ProxyAllocation: 实例读权重分配
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyAllocation: list of ProxyAllocation
+        :param _AccessMode: 接入模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessMode: str
+        :param _AutoLoadBalance: 是否开启自动负载均衡
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoLoadBalance: bool
         """
         self._ProxyAddressId = None
         self._UniqVpcId = None
@@ -24729,6 +24811,8 @@ class ProxyAddress(AbstractModel):
         self._ConnectionPool = None
         self._Desc = None
         self._ProxyAllocation = None
+        self._AccessMode = None
+        self._AutoLoadBalance = None
 
     @property
     def ProxyAddressId(self):
@@ -24858,6 +24942,22 @@ class ProxyAddress(AbstractModel):
     def ProxyAllocation(self, ProxyAllocation):
         self._ProxyAllocation = ProxyAllocation
 
+    @property
+    def AccessMode(self):
+        return self._AccessMode
+
+    @AccessMode.setter
+    def AccessMode(self, AccessMode):
+        self._AccessMode = AccessMode
+
+    @property
+    def AutoLoadBalance(self):
+        return self._AutoLoadBalance
+
+    @AutoLoadBalance.setter
+    def AutoLoadBalance(self, AutoLoadBalance):
+        self._AutoLoadBalance = AutoLoadBalance
+
 
     def _deserialize(self, params):
         self._ProxyAddressId = params.get("ProxyAddressId")
@@ -24881,6 +24981,8 @@ class ProxyAddress(AbstractModel):
                 obj = ProxyAllocation()
                 obj._deserialize(item)
                 self._ProxyAllocation.append(obj)
+        self._AccessMode = params.get("AccessMode")
+        self._AutoLoadBalance = params.get("AutoLoadBalance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25141,6 +25243,12 @@ class ProxyInst(AbstractModel):
         :param _Zone: 实例所属可用区
 注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: str
+        :param _InstNodeId: 实例节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstNodeId: str
+        :param _InstNodeRole: 节点角色
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstNodeRole: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -25149,6 +25257,8 @@ class ProxyInst(AbstractModel):
         self._Weight = None
         self._Region = None
         self._Zone = None
+        self._InstNodeId = None
+        self._InstNodeRole = None
 
     @property
     def InstanceId(self):
@@ -25206,6 +25316,22 @@ class ProxyInst(AbstractModel):
     def Zone(self, Zone):
         self._Zone = Zone
 
+    @property
+    def InstNodeId(self):
+        return self._InstNodeId
+
+    @InstNodeId.setter
+    def InstNodeId(self, InstNodeId):
+        self._InstNodeId = InstNodeId
+
+    @property
+    def InstNodeRole(self):
+        return self._InstNodeRole
+
+    @InstNodeRole.setter
+    def InstNodeRole(self, InstNodeRole):
+        self._InstNodeRole = InstNodeRole
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -25215,6 +25341,8 @@ class ProxyInst(AbstractModel):
         self._Weight = params.get("Weight")
         self._Region = params.get("Region")
         self._Zone = params.get("Zone")
+        self._InstNodeId = params.get("InstNodeId")
+        self._InstNodeRole = params.get("InstNodeRole")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

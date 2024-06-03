@@ -2278,6 +2278,63 @@ class ApiPkg(AbstractModel):
         
 
 
+class ApiSecKey(AbstractModel):
+    """api列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApiName: api名称
+        :type ApiName: str
+        :param _Domain: 域名
+        :type Domain: str
+        :param _Method: 请求方法
+        :type Method: str
+        """
+        self._ApiName = None
+        self._Domain = None
+        self._Method = None
+
+    @property
+    def ApiName(self):
+        return self._ApiName
+
+    @ApiName.setter
+    def ApiName(self, ApiName):
+        self._ApiName = ApiName
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Method(self):
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+
+    def _deserialize(self, params):
+        self._ApiName = params.get("ApiName")
+        self._Domain = params.get("Domain")
+        self._Method = params.get("Method")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AttackLogInfo(AbstractModel):
     """攻击日志详情
 
@@ -20415,6 +20472,141 @@ class ModifyApiAnalyzeStatusResponse(AbstractModel):
         self._Count = params.get("Count")
         self._UnSupportedList = params.get("UnSupportedList")
         self._FailDomainList = params.get("FailDomainList")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyApiSecEventChangeRequest(AbstractModel):
+    """ModifyApiSecEventChange请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mode: 变更状态，1:新发现，2，确认中，3，已确认，4，已下线，5，已忽略
+        :type Mode: str
+        :param _UserName: 处理人
+        :type UserName: str
+        :param _Remark: 备注，有长度显示1k
+        :type Remark: str
+        :param _EventIdList: 批量操作的事件列表
+        :type EventIdList: list of str
+        :param _ApiNameList: 批量操作的api列表
+        :type ApiNameList: list of ApiSecKey
+        :param _IsDelete: 判断是否删除，包括删除事件和删除资产
+        :type IsDelete: bool
+        :param _UpdateApiRemark: 判断是否是更新api的备注，更新api备注的时候，为true
+        :type UpdateApiRemark: bool
+        """
+        self._Mode = None
+        self._UserName = None
+        self._Remark = None
+        self._EventIdList = None
+        self._ApiNameList = None
+        self._IsDelete = None
+        self._UpdateApiRemark = None
+
+    @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def EventIdList(self):
+        return self._EventIdList
+
+    @EventIdList.setter
+    def EventIdList(self, EventIdList):
+        self._EventIdList = EventIdList
+
+    @property
+    def ApiNameList(self):
+        return self._ApiNameList
+
+    @ApiNameList.setter
+    def ApiNameList(self, ApiNameList):
+        self._ApiNameList = ApiNameList
+
+    @property
+    def IsDelete(self):
+        return self._IsDelete
+
+    @IsDelete.setter
+    def IsDelete(self, IsDelete):
+        self._IsDelete = IsDelete
+
+    @property
+    def UpdateApiRemark(self):
+        return self._UpdateApiRemark
+
+    @UpdateApiRemark.setter
+    def UpdateApiRemark(self, UpdateApiRemark):
+        self._UpdateApiRemark = UpdateApiRemark
+
+
+    def _deserialize(self, params):
+        self._Mode = params.get("Mode")
+        self._UserName = params.get("UserName")
+        self._Remark = params.get("Remark")
+        self._EventIdList = params.get("EventIdList")
+        if params.get("ApiNameList") is not None:
+            self._ApiNameList = []
+            for item in params.get("ApiNameList"):
+                obj = ApiSecKey()
+                obj._deserialize(item)
+                self._ApiNameList.append(obj)
+        self._IsDelete = params.get("IsDelete")
+        self._UpdateApiRemark = params.get("UpdateApiRemark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyApiSecEventChangeResponse(AbstractModel):
+    """ModifyApiSecEventChange返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

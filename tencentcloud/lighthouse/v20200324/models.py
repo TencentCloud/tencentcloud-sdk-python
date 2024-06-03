@@ -95,9 +95,9 @@ class ApplyFirewallTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 模板ID。
+        :param _TemplateId: 防火墙模板ID。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。
         :type TemplateId: str
-        :param _ApplyInstances: 应用防火墙模板的实例列表。
+        :param _ApplyInstances: 应用防火墙模板的实例列表。列表长度最大值是100。
         :type ApplyInstances: list of InstanceIdentifier
         """
         self._TemplateId = None
@@ -1599,9 +1599,9 @@ class CreateDiskBackupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskId: 云硬盘 ID。当前只支持数据盘创建备份点。
+        :param _DiskId: 云硬盘ID，可通过 [DescribeDisks](https://cloud.tencent.com/document/api/1207/66093) 接口返回值中的 DiskId 获取。 
         :type DiskId: str
-        :param _DiskBackupName: 云硬盘备份点名称，最大长度90。
+        :param _DiskBackupName: 云硬盘备份点名称，最大长度为 90 。
         :type DiskBackupName: str
         """
         self._DiskId = None
@@ -1853,7 +1853,7 @@ class CreateFirewallRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。
+        :param _InstanceId: 实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/1207/47573) 接口返回值中的 InstanceId 获取。
         :type InstanceId: str
         :param _FirewallRules: 防火墙规则列表。
         :type FirewallRules: list of FirewallRule
@@ -2027,7 +2027,7 @@ class CreateFirewallTemplateRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 防火墙模板ID。
+        :param _TemplateId: 防火墙模板ID。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。
         :type TemplateId: str
         :param _TemplateRules: 防火墙模板规则列表。
         :type TemplateRules: list of FirewallRule
@@ -2731,7 +2731,7 @@ class DeleteFirewallRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。
+        :param _InstanceId: 实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/1207/47573) 接口返回值中的 InstanceId 获取。
         :type InstanceId: str
         :param _FirewallRules: 防火墙规则列表。
         :type FirewallRules: list of FirewallRule
@@ -2818,7 +2818,7 @@ class DeleteFirewallTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 防火墙模板ID。
+        :param _TemplateId: 防火墙模板ID。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。
         :type TemplateId: str
         """
         self._TemplateId = None
@@ -2876,9 +2876,10 @@ class DeleteFirewallTemplateRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 防火墙模板ID。
+        :param _TemplateId: 防火墙模板ID。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。
         :type TemplateId: str
-        :param _TemplateRuleIds: 防火墙模板规则ID列表。
+        :param _TemplateRuleIds: 防火墙模板规则ID列表。可通过[DescribeFirewallTemplateRules](https://cloud.tencent.com/document/product/1207/96875)接口返回值字段TemplateRuleSet获取。
+
         :type TemplateRuleIds: list of str
         """
         self._TemplateId = None
@@ -3119,7 +3120,7 @@ class DescribeAllScenesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SceneIds: 使用场景ID列表。
+        :param _SceneIds: 使用场景ID列表。可通过[DescribeAllScenes](https://cloud.tencent.com/document/product/1207/83513)接口返回值中的SceneId获取。
         :type SceneIds: list of str
         :param _Offset: 偏移量，默认为 0。
         :type Offset: int
@@ -3834,7 +3835,7 @@ class DescribeDiskBackupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskBackupIds: 要查询云硬盘备份点的ID列表。参数不支持同时指定 DiskBackupIds 和 Filters。
+        :param _DiskBackupIds: 查询的云硬盘备份点ID列表。最大支持 100 个。参数不支持同时指定 DiskBackupIds 和 Filters。
         :type DiskBackupIds: list of str
         :param _Filters: 过滤器列表。
 <li>disk-backup-id</li>按照【云硬盘备份点 ID】进行过滤。
@@ -3846,16 +3847,17 @@ class DescribeDiskBackupsRequest(AbstractModel):
 <li>disk-backup-state</li>按照【云硬盘备份点状态】进行过滤。
 类型：String
 必选：否
-取值：参考数据结构[DiskBackup](https://cloud.tencent.com/document/product/1207/47576#DiskBackup)下的DiskBackupState取值。
+取值：参考数据结构 
+<a href="https://cloud.tencent.com/document/product/1207/47576#DiskBackup">DescribeSnapshots</a> 下的DiskBackupState取值。
 <li>disk-usage</li>按照【云硬盘类型】进行过滤。
 类型：String
 必选：否
 取值：SYSTEM_DISK或DATA_DISK
 每次请求的 Filters 的上限为 10，Filter.Values 的上限为5。参数不支持同时指定DiskBackupIds 和 Filters。
         :type Filters: list of Filter
-        :param _Offset: 偏移量，默认为 0。
+        :param _Offset: 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
         :type Offset: int
-        :param _Limit: 返回数量，默认为 20，最大值为 100。
+        :param _Limit: 返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
         :type Limit: int
         """
         self._DiskBackupIds = None
@@ -4996,11 +4998,11 @@ class DescribeFirewallRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。
+        :param _InstanceId: 实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/1207/47573) 接口返回值中的 InstanceId 获取。
         :type InstanceId: str
-        :param _Offset: 偏移量，默认为 0。
+        :param _Offset: 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
         :type Offset: int
-        :param _Limit: 返回数量，默认为 20，最大值为 100。
+        :param _Limit: 返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
         :type Limit: int
         """
         self._InstanceId = None
@@ -5179,9 +5181,9 @@ class DescribeFirewallTemplateApplyRecordsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 防火墙模板ID。
+        :param _TemplateId: 防火墙模板ID。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。
         :type TemplateId: str
-        :param _TaskIds: 应用任务ID列表。
+        :param _TaskIds: 应用防火墙模版任务ID列表。可通过[ApplyFirewallTemplate](https://cloud.tencent.com/document/product/1207/96883)接口返回值TaskId字段获取。
         :type TaskIds: list of str
         """
         self._TemplateId = None
@@ -5321,7 +5323,7 @@ class DescribeFirewallTemplateRuleQuotaRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 防火墙模板ID。
+        :param _TemplateId: 防火墙模板ID。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。
         :type TemplateId: str
         """
         self._TemplateId = None
@@ -5526,7 +5528,7 @@ class DescribeFirewallTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateIds: 防火墙模板ID列表。
+        :param _TemplateIds: 防火墙模板ID列表。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。列表长度最大值为100。
         :type TemplateIds: list of str
         :param _Filters: 过滤器列表。
 <li>template-id</li>按照【防火墙模板所属的ID】进行过滤。
@@ -6918,7 +6920,7 @@ class DescribeScenesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SceneIds: 使用场景ID列表。
+        :param _SceneIds: 使用场景ID列表。可通过[DescribeScenes](https://cloud.tencent.com/document/product/1207/83512)接口返回值中的SceneId获取。
         :type SceneIds: list of str
         :param _Offset: 偏移量，默认为 0。
         :type Offset: int
@@ -9981,7 +9983,7 @@ class InquirePriceCreateInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BundleId: 实例的套餐 ID。
+        :param _BundleId: 实例的套餐 ID。可以通过调用[DescribeBundles](https://cloud.tencent.com/document/api/1207/47575)接口获取。
         :type BundleId: str
         :param _InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
         :type InstanceChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
@@ -11683,9 +11685,9 @@ class ModifyDiskBackupsAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskBackupIds: 云硬盘备份点ID列表。
+        :param _DiskBackupIds: 云硬盘备份点ID，可通过 [DescribeDiskBackups](https://cloud.tencent.com/document/api/1207/84379) 接口返回值中的 DiskBackupId 获取。
         :type DiskBackupIds: list of str
-        :param _DiskBackupName: 云硬盘备份点名称，最大长度90。
+        :param _DiskBackupName: 云硬盘备份点名称，最大长度 90 。
         :type DiskBackupName: str
         """
         self._DiskBackupIds = None
@@ -12132,7 +12134,7 @@ class ModifyFirewallRuleDescriptionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。
+        :param _InstanceId: 实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/1207/47573) 接口返回值中的 InstanceId 获取。
         :type InstanceId: str
         :param _FirewallRule: 防火墙规则。
         :type FirewallRule: :class:`tencentcloud.lighthouse.v20200324.models.FirewallRule`
@@ -12216,9 +12218,9 @@ class ModifyFirewallRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。
+        :param _InstanceId: 实例 ID。实例的ID可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
         :type InstanceId: str
-        :param _FirewallRules: 防火墙规则列表。
+        :param _FirewallRules: 防火墙规则列表。列表长度最大值是100。
         :type FirewallRules: list of FirewallRule
         :param _FirewallVersion: 防火墙当前版本。用户每次更新防火墙规则时版本会自动加1，防止规则已过期，不填不考虑冲突。
         :type FirewallVersion: int
@@ -12303,9 +12305,9 @@ class ModifyFirewallTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 防火墙模板ID。
+        :param _TemplateId: 防火墙模板ID。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。
         :type TemplateId: str
-        :param _TemplateName: 模板名称。
+        :param _TemplateName: 防火墙模板名称。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。
         :type TemplateName: str
         """
         self._TemplateId = None
@@ -12990,9 +12992,9 @@ class RemoveDockerContainersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
         :type InstanceId: str
-        :param _ContainerIds: 容器ID列表。
+        :param _ContainerIds: 容器ID列表。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
         :type ContainerIds: list of str
         """
         self._InstanceId = None
@@ -13072,9 +13074,9 @@ class RenameDockerContainerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
         :type InstanceId: str
-        :param _ContainerId: 容器ID。
+        :param _ContainerId: 容器ID。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
         :type ContainerId: str
         :param _ContainerName: 容器新的名称。
         :type ContainerName: str
@@ -14058,9 +14060,9 @@ class RestartDockerContainersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
         :type InstanceId: str
-        :param _ContainerIds: 容器ID列表。
+        :param _ContainerIds: 容器ID列表。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
         :type ContainerIds: list of str
         """
         self._InstanceId = None
@@ -14769,9 +14771,9 @@ class StartDockerContainersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
         :type InstanceId: str
-        :param _ContainerIds: 容器ID列表。
+        :param _ContainerIds: 容器ID列表。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
         :type ContainerIds: list of str
         """
         self._InstanceId = None
@@ -14909,9 +14911,9 @@ class StopDockerContainersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
         :type InstanceId: str
-        :param _ContainerIds: 容器ID列表。
+        :param _ContainerIds: 容器ID列表。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
         :type ContainerIds: list of str
         """
         self._InstanceId = None
@@ -15154,7 +15156,7 @@ class TerminateDisksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskIds: 云硬盘ID列表。
+        :param _DiskIds: 云硬盘ID列表。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
         :type DiskIds: list of str
         """
         self._DiskIds = None

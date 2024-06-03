@@ -1425,6 +1425,30 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateUserMobileChangeUrl(self, request):
+        """该接口会生成一个手机号变更的链接，用户可以通过该链接进入电子签系统进行手机号的变更。
+        该接口支持员工和个人端手机号的变更。
+
+        :param request: Request instance for CreateUserMobileChangeUrl.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateUserMobileChangeUrlRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateUserMobileChangeUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateUserMobileChangeUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateUserMobileChangeUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateUserVerifyUrl(self, request):
         """客户可以主动调用生成实名链接去做C端用户实名，会对实名的用户进行打标记为调用链接客户的用户
         使用场景：

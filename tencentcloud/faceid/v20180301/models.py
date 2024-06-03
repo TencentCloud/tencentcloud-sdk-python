@@ -3677,7 +3677,7 @@ class GetEidTokenConfig(AbstractModel):
         :type IntentionQuestions: list of IntentionQuestion
         :param _IntentionActions: 意愿核身（点头确认模式）使用的文案，若未使用意愿核身（点头确认模式），则该字段无需传入。默认为空，最长可接受150的字符串长度。
         :type IntentionActions: list of IntentionActionConfig
-        :param _IntentionRecognition: 意愿核身过程中识别用户的回答意图，开启后除了IntentionQuestions的Answers列表中的标准回答会通过，近似意图的回答也会通过，默认不开启。
+        :param _IntentionRecognition: 意愿核身过程中识别用户的回答意图，开启后除了IntentionQuestions的Answers列表中的标准回答会通过，近似意图的回答也会通过，默认开启。
         :type IntentionRecognition: bool
         :param _IsSupportHMTResidentPermitOCR: 是否支持港澳台居住证识别
         :type IsSupportHMTResidentPermitOCR: bool
@@ -7862,7 +7862,7 @@ class RuleIdConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IntentionRecognition: 意愿核身过程中识别用户的回答意图，开启后除了IntentionQuestions的Answers列表中的标准回答会通过，近似意图的回答也会通过，默认不开启。
+        :param _IntentionRecognition: 意愿核身过程中识别用户的回答意图，开启后除了IntentionQuestions的Answers列表中的标准回答会通过，近似意图的回答也会通过，默认开启。
         :type IntentionRecognition: bool
         :param _IntentionType: 意愿核身类型，默认为0：
 0：问答模式，DetectAuth接口需要传入IntentionQuestions字段；

@@ -2240,6 +2240,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyApiSecEventChange(self, request):
+        """api安全状态变更接口
+
+        :param request: Request instance for ModifyApiSecEventChange.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyApiSecEventChangeRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyApiSecEventChangeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyApiSecEventChange", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyApiSecEventChangeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyAreaBanStatus(self, request):
         """修改防护域名的地域封禁状态
 

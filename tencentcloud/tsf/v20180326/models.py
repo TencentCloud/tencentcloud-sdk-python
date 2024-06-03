@@ -4402,6 +4402,11 @@ class ConfigRelease(AbstractModel):
         :param _ConfigCenters: 配置中心发布情况
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigCenters: list of TsfConfigCenter
+        :param _DaulStatus: DUAL_STATUS_WRITE_REGISTRATION_ON 双写&&双注册开启
+
+DUAL_STATUS_WRITE_REGISTRATION_OFF 双写&&双注册关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DaulStatus: str
         """
         self._ConfigReleaseId = None
         self._ConfigId = None
@@ -4417,6 +4422,7 @@ class ConfigRelease(AbstractModel):
         self._ReleaseDesc = None
         self._ApplicationId = None
         self._ConfigCenters = None
+        self._DaulStatus = None
 
     @property
     def ConfigReleaseId(self):
@@ -4530,6 +4536,14 @@ class ConfigRelease(AbstractModel):
     def ConfigCenters(self, ConfigCenters):
         self._ConfigCenters = ConfigCenters
 
+    @property
+    def DaulStatus(self):
+        return self._DaulStatus
+
+    @DaulStatus.setter
+    def DaulStatus(self, DaulStatus):
+        self._DaulStatus = DaulStatus
+
 
     def _deserialize(self, params):
         self._ConfigReleaseId = params.get("ConfigReleaseId")
@@ -4551,6 +4565,7 @@ class ConfigRelease(AbstractModel):
                 obj = TsfConfigCenter()
                 obj._deserialize(item)
                 self._ConfigCenters.append(obj)
+        self._DaulStatus = params.get("DaulStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11531,8 +11546,11 @@ class DeleteApplicationRequest(AbstractModel):
         r"""
         :param _ApplicationId: 应用ID
         :type ApplicationId: str
+        :param _SyncDeleteImageRepository: 是否删除镜像仓库
+        :type SyncDeleteImageRepository: bool
         """
         self._ApplicationId = None
+        self._SyncDeleteImageRepository = None
 
     @property
     def ApplicationId(self):
@@ -11542,9 +11560,18 @@ class DeleteApplicationRequest(AbstractModel):
     def ApplicationId(self, ApplicationId):
         self._ApplicationId = ApplicationId
 
+    @property
+    def SyncDeleteImageRepository(self):
+        return self._SyncDeleteImageRepository
+
+    @SyncDeleteImageRepository.setter
+    def SyncDeleteImageRepository(self, SyncDeleteImageRepository):
+        self._SyncDeleteImageRepository = SyncDeleteImageRepository
+
 
     def _deserialize(self, params):
         self._ApplicationId = params.get("ApplicationId")
+        self._SyncDeleteImageRepository = params.get("SyncDeleteImageRepository")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21185,6 +21212,8 @@ class DescribeMicroservicesRequest(AbstractModel):
         :type MicroserviceIdList: list of str
         :param _MicroserviceNameList: 搜索的服务名列表
         :type MicroserviceNameList: list of str
+        :param _ConfigCenterInstanceId: 注册中心实例id
+        :type ConfigCenterInstanceId: str
         """
         self._NamespaceId = None
         self._SearchWord = None
@@ -21195,6 +21224,7 @@ class DescribeMicroservicesRequest(AbstractModel):
         self._Status = None
         self._MicroserviceIdList = None
         self._MicroserviceNameList = None
+        self._ConfigCenterInstanceId = None
 
     @property
     def NamespaceId(self):
@@ -21268,6 +21298,14 @@ class DescribeMicroservicesRequest(AbstractModel):
     def MicroserviceNameList(self, MicroserviceNameList):
         self._MicroserviceNameList = MicroserviceNameList
 
+    @property
+    def ConfigCenterInstanceId(self):
+        return self._ConfigCenterInstanceId
+
+    @ConfigCenterInstanceId.setter
+    def ConfigCenterInstanceId(self, ConfigCenterInstanceId):
+        self._ConfigCenterInstanceId = ConfigCenterInstanceId
+
 
     def _deserialize(self, params):
         self._NamespaceId = params.get("NamespaceId")
@@ -21279,6 +21317,7 @@ class DescribeMicroservicesRequest(AbstractModel):
         self._Status = params.get("Status")
         self._MicroserviceIdList = params.get("MicroserviceIdList")
         self._MicroserviceNameList = params.get("MicroserviceNameList")
+        self._ConfigCenterInstanceId = params.get("ConfigCenterInstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23817,15 +23856,15 @@ class DescribeStatisticsRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 单页请求配置数量，取值范围[1, 50]，默认值为10
         :type Limit: int
-        :param _NamespaceId: 命名空间Id
+        :param _NamespaceId: 命名空间Id,此字段，和 NamespaceIdList 或者 MetricDimensionValues 字段包含 namespaceId 维度信息。三者选其一。
         :type NamespaceId: str
         :param _OrderBy: 排序字段:AvgTimeConsuming[默认]、RequestCount、ErrorRate。实例监控还支持 CpuPercent
         :type OrderBy: str
         :param _OrderType: 排序方式：ASC:0、DESC:1
         :type OrderType: int
-        :param _EndTime: 开始时间：年月日 时分秒2020-05-12 14:43:12
+        :param _EndTime: 开始时间：年月日 时分秒2020-05-12 14:43:12， 不能为空
         :type EndTime: str
-        :param _StartTime: 开始时间：年月日 时分秒2020-05-12 14:43:12
+        :param _StartTime: 开始时间：年月日 时分秒2020-05-12 14:43:12， 不能为空
         :type StartTime: str
         :param _ServiceName: 服务名称
         :type ServiceName: str
@@ -23839,6 +23878,8 @@ class DescribeStatisticsRequest(AbstractModel):
         :type DbName: str
         :param _NamespaceIdList: 命名空间id数组
         :type NamespaceIdList: list of str
+        :param _ConfigCenterInstanceId: 独占配置中心的ID
+        :type ConfigCenterInstanceId: str
         """
         self._Type = None
         self._TimeStep = None
@@ -23855,6 +23896,7 @@ class DescribeStatisticsRequest(AbstractModel):
         self._BucketKey = None
         self._DbName = None
         self._NamespaceIdList = None
+        self._ConfigCenterInstanceId = None
 
     @property
     def Type(self):
@@ -23976,6 +24018,14 @@ class DescribeStatisticsRequest(AbstractModel):
     def NamespaceIdList(self, NamespaceIdList):
         self._NamespaceIdList = NamespaceIdList
 
+    @property
+    def ConfigCenterInstanceId(self):
+        return self._ConfigCenterInstanceId
+
+    @ConfigCenterInstanceId.setter
+    def ConfigCenterInstanceId(self, ConfigCenterInstanceId):
+        self._ConfigCenterInstanceId = ConfigCenterInstanceId
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -23998,6 +24048,7 @@ class DescribeStatisticsRequest(AbstractModel):
         self._BucketKey = params.get("BucketKey")
         self._DbName = params.get("DbName")
         self._NamespaceIdList = params.get("NamespaceIdList")
+        self._ConfigCenterInstanceId = params.get("ConfigCenterInstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41240,12 +41291,20 @@ class TsfConfigCenter(AbstractModel):
         :param _NamespaceId: 命名空间id
 注意：此字段可能返回 null，表示取不到有效值。
         :type NamespaceId: str
+        :param _CurrentVersion: 当前版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentVersion: str
+        :param _TargetVersion: 需要升级的版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetVersion: str
         """
         self._ConfigType = None
         self._ConfigCenterInstanceId = None
         self._ConfigCenterInstanceName = None
         self._RegionId = None
         self._NamespaceId = None
+        self._CurrentVersion = None
+        self._TargetVersion = None
 
     @property
     def ConfigType(self):
@@ -41287,6 +41346,22 @@ class TsfConfigCenter(AbstractModel):
     def NamespaceId(self, NamespaceId):
         self._NamespaceId = NamespaceId
 
+    @property
+    def CurrentVersion(self):
+        return self._CurrentVersion
+
+    @CurrentVersion.setter
+    def CurrentVersion(self, CurrentVersion):
+        self._CurrentVersion = CurrentVersion
+
+    @property
+    def TargetVersion(self):
+        return self._TargetVersion
+
+    @TargetVersion.setter
+    def TargetVersion(self, TargetVersion):
+        self._TargetVersion = TargetVersion
+
 
     def _deserialize(self, params):
         self._ConfigType = params.get("ConfigType")
@@ -41294,6 +41369,8 @@ class TsfConfigCenter(AbstractModel):
         self._ConfigCenterInstanceName = params.get("ConfigCenterInstanceName")
         self._RegionId = params.get("RegionId")
         self._NamespaceId = params.get("NamespaceId")
+        self._CurrentVersion = params.get("CurrentVersion")
+        self._TargetVersion = params.get("TargetVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
