@@ -1759,7 +1759,7 @@ class CreateInstancesRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _TypeId: 实例类型。
-<ul><li>2：Redis 2.8 内存版（标准架构）。</li><li>3：CKV 3.2 内存版（标准架构）。</li><li>4：CKV 3.2 内存版（集群架构）。</li><li>6：Redis 4.0 内存版（标准架构）。</li><li>7：Redis 4.0 内存版（集群架构）。</li><li>8：Redis 5.0 内存版（标准架构）。</li><li>9：Redis 5.0 内存版（集群架构）。</li><li>15：Redis 6.2 内存版（标准架构）。</li><li>16：Redis 6.2 内存版（集群架构）。</li></ul>
+<ul><li>2：Redis 2.8 内存版（标准架构）。</li><li>3：CKV 3.2 内存版（标准架构）。</li><li>4：CKV 3.2 内存版（集群架构）。</li><li>6：Redis 4.0 内存版（标准架构）。</li><li>7：Redis 4.0 内存版（集群架构）。</li><li>8：Redis 5.0 内存版（标准架构）。</li><li>9：Redis 5.0 内存版（集群架构）。</li><li>15：Redis 6.2 内存版（标准架构）。</li><li>16：Redis 6.2 内存版（集群架构）。</li><li>17：Redis 7.0 内存版（标准架构）。</li><li>18：Redis 7.0 内存版（集群架构）。</li></ul>
         :type TypeId: int
         :param _MemSize: 内存容量，单位为MB， 数值需为1024的整数倍。具体规格，请通过 [DescribeProductInfo](https://cloud.tencent.com/document/api/239/30600) 接口查询全地域的售卖规格。
 - **TypeId**为标准架构时，**MemSize**是实例总内存容量；
@@ -2187,7 +2187,16 @@ class CreateParamTemplateRequest(AbstractModel):
         :type Name: str
         :param _Description: 参数模板描述。
         :type Description: str
-        :param _ProductType: 产品类型：1 – Redis2.8内存版（集群架构），2 – Redis2.8内存版（标准架构），3 – CKV 3.2内存版(标准架构)，4 – CKV 3.2内存版(集群架构)，5 – Redis2.8内存版（单机），6 – Redis4.0内存版（标准架构），7 – Redis4.0内存版（集群架构），8 – Redis5.0内存版（标准架构），9 – Redis5.0内存版（集群架构）。创建模板时必填，从源模板复制则不需要传入该参数。
+        :param _ProductType: 产品类型。
+- 2：Redis 2.8 内存版（标准架构）。
+- 6：Redis 4.0 内存版（标准架构）。
+- 7：Redis 4.0 内存版（集群架构）。
+- 8：Redis 5.0 内存版（标准架构）。
+- 9：Redis 5.0 内存版（集群架构）。
+- 15：Redis 6.2 内存版（标准架构）。
+- 16：Redis 6.2 内存版（集群架构）。
+- 17：Redis 7.0 内存版（标准架构）。
+- 18：Redis 7.0 内存版（集群架构）。
         :type ProductType: int
         :param _TemplateId: 源参数模板 ID。
         :type TemplateId: str
@@ -10192,16 +10201,18 @@ class InstanceSet(AbstractModel):
         :param _SizeUsed: 该字段已废弃。请使用腾讯云可观测平台API 接口 [GetMonitorData](https://cloud.tencent.com/document/product/248/31014) 获取实例已使用的内存容量。
         :type SizeUsed: float
         :param _Type: 实例类型。
-- 2：Redis 2.8内存版（标准架构）。
-- 3：CKV 3.2内存版（标准架构）。
-- 4：CKV 3.2内存版（集群架构）。
-- 5：Redis 2.8内存版（单机）。
-- 6：Redis 4.0内存版（标准架构）。
-- 7：Redis 4.0内存版（集群架构）。
-- 8：Redis 5.0内存版（标准架构）。
-- 9：Redis 5.0内存版（集群架构）。
-- 15：Redis 6.2内存版（标准架构）。
-- 16：Redis 6.2内存版（集群架构）。
+- 2：Redis 2.8 内存版（标准架构）。
+- 3：CKV 3.2 内存版（标准架构）。
+- 4：CKV 3.2 内存版（集群架构）。
+- 5：Redis 2.8 内存版（单机）。
+- 6：Redis 4.0 内存版（标准架构）。
+- 7：Redis 4.0 内存版（集群架构）。
+- 8：Redis 5.0 内存版（标准架构）。
+- 9：Redis 5.0 内存版（集群架构）。
+- 15：Redis 6.2 内存版（标准架构）。
+- 16：Redis 6.2 内存版（集群架构）。
+- 17：Redis 7.0 内存版（标准架构）。
+- 18：Redis 7.0 内存版（集群架构）。
         :type Type: int
         :param _AutoRenewFlag: 实例是否设置自动续费标识。<ul><li>1：设置自动续费。</li><li>0：未设置自动续费。</li></ul>
         :type AutoRenewFlag: int

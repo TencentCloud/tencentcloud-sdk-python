@@ -3823,7 +3823,7 @@ class DescribePreReleaseListRequest(AbstractModel):
         :type LengthEnd: int
         :param _PageNumber: 页码
         :type PageNumber: int
-        :param _PageSize: 没页显示数
+        :param _PageSize: 每页显示数
         :type PageSize: int
         :param _Suffix: 后缀
         :type Suffix: list of int

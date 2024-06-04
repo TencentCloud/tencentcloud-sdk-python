@@ -47,6 +47,9 @@ FAILEDOPERATION_DESCRIBEBUNDLEDISCOUNTFAILED = 'FailedOperation.DescribeBundleDi
 # 查询套餐失败
 FAILEDOPERATION_DESCRIBEBUNDLESFAILED = 'FailedOperation.DescribeBundlesFailed'
 
+# 查询云硬盘是否可以退还操作失败。
+FAILEDOPERATION_DESCRIBEDISKSRETURNABLEERROR = 'FailedOperation.DescribeDisksReturnableError'
+
 # 查询实例状态错误。
 FAILEDOPERATION_DESCRIBEINSTANCESTATUS = 'FailedOperation.DescribeInstanceStatus'
 
@@ -130,9 +133,6 @@ FAILEDOPERATION_UNABLETOCREATEINSTANCES = 'FailedOperation.UnableToCreateInstanc
 
 # 内部错误。
 INTERNALERROR = 'InternalError'
-
-# 查询磁盘返回了不合法内容。
-INTERNALERROR_DESCRIBEDISKSRETURNABLEERROR = 'InternalError.DescribeDisksReturnableError'
 
 # 查询实例状态失败，请稍后重试。
 INTERNALERROR_DESCRIBEINSTANCESTATUS = 'InternalError.DescribeInstanceStatus'

@@ -860,10 +860,13 @@ class DescribeKTVMusicAccompanySegmentUrlVipRequest(AbstractModel):
         :type UserId: str
         :param _MusicId: 歌曲 Id 
         :type MusicId: str
+        :param _RoomId: 房间Id
+        :type RoomId: str
         """
         self._AppName = None
         self._UserId = None
         self._MusicId = None
+        self._RoomId = None
 
     @property
     def AppName(self):
@@ -889,11 +892,20 @@ class DescribeKTVMusicAccompanySegmentUrlVipRequest(AbstractModel):
     def MusicId(self, MusicId):
         self._MusicId = MusicId
 
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
 
     def _deserialize(self, params):
         self._AppName = params.get("AppName")
         self._UserId = params.get("UserId")
         self._MusicId = params.get("MusicId")
+        self._RoomId = params.get("RoomId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4024,6 +4036,7 @@ class SetAudioParamCommandInput(AbstractModel):
         :param _Type: 音频类型，取值有：
 <li>Original：原唱</li>
 <li>Accompaniment：伴奏</li>
+注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         """
         self._Type = None
@@ -4109,6 +4122,7 @@ class SetPlayModeCommandInput(AbstractModel):
 <li>Order：顺序播放</li>
 <li>RepeatSingle：单曲循环</li>
 <li>Shuffle：随机播放</li>
+注意：此字段可能返回 null，表示取不到有效值。
         :type PlayMode: str
         """
         self._PlayMode = None

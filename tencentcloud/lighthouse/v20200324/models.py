@@ -4538,9 +4538,9 @@ class DescribeDockerActivitiesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
         :type InstanceId: str
-        :param _ActivityIds: Docker活动ID列表。
+        :param _ActivityIds: Docker活动ID列表。可通过[DescribeDockerActivities](https://cloud.tencent.com/document/product/1207/95476)接口返回值中的ActivityId获取。
         :type ActivityIds: list of str
         :param _Offset: 偏移量，默认为 0。
         :type Offset: int
@@ -4769,9 +4769,9 @@ class DescribeDockerContainerDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
         :type InstanceId: str
-        :param _ContainerId: 容器ID。
+        :param _ContainerId: 容器ID。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
         :type ContainerId: str
         """
         self._InstanceId = None
@@ -4851,9 +4851,9 @@ class DescribeDockerContainersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
         :type InstanceId: str
-        :param _ContainerIds: 容器ID列表。
+        :param _ContainerIds: 容器ID列表。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
         :type ContainerIds: list of str
         :param _Limit: 返回数量，默认为 20，最大值为 100。
         :type Limit: int

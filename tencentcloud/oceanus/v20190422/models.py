@@ -377,6 +377,9 @@ class Cluster(AbstractModel):
         :param _AgentSerialId: 上级集群
 注意：此字段可能返回 null，表示取不到有效值。
         :type AgentSerialId: str
+        :param _ResourceType: 资源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceType: int
         """
         self._ClusterId = None
         self._Name = None
@@ -422,6 +425,7 @@ class Cluster(AbstractModel):
         self._Type = None
         self._SubEks = None
         self._AgentSerialId = None
+        self._ResourceType = None
 
     @property
     def ClusterId(self):
@@ -775,6 +779,14 @@ class Cluster(AbstractModel):
     def AgentSerialId(self, AgentSerialId):
         self._AgentSerialId = AgentSerialId
 
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -855,6 +867,7 @@ class Cluster(AbstractModel):
             self._SubEks = SubEks()
             self._SubEks._deserialize(params.get("SubEks"))
         self._AgentSerialId = params.get("AgentSerialId")
+        self._ResourceType = params.get("ResourceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -612,7 +612,7 @@ class InstanceInfo(AbstractModel):
 
 
 class Network(AbstractModel):
-    """网路信息
+    """网络信息
 
     """
 

@@ -11048,6 +11048,9 @@ class FirmwareInfo(AbstractModel):
         :param _CreatorNickName: 创建者昵称
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatorNickName: str
+        :param _UserDefined: 固件用户自定义配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserDefined: str
         """
         self._Version = None
         self._Md5sum = None
@@ -11059,6 +11062,7 @@ class FirmwareInfo(AbstractModel):
         self._FwType = None
         self._CreateUserId = None
         self._CreatorNickName = None
+        self._UserDefined = None
 
     @property
     def Version(self):
@@ -11140,6 +11144,14 @@ class FirmwareInfo(AbstractModel):
     def CreatorNickName(self, CreatorNickName):
         self._CreatorNickName = CreatorNickName
 
+    @property
+    def UserDefined(self):
+        return self._UserDefined
+
+    @UserDefined.setter
+    def UserDefined(self, UserDefined):
+        self._UserDefined = UserDefined
+
 
     def _deserialize(self, params):
         self._Version = params.get("Version")
@@ -11152,6 +11164,7 @@ class FirmwareInfo(AbstractModel):
         self._FwType = params.get("FwType")
         self._CreateUserId = params.get("CreateUserId")
         self._CreatorNickName = params.get("CreatorNickName")
+        self._UserDefined = params.get("UserDefined")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

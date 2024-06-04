@@ -3220,6 +3220,9 @@ class DescribeFirmwareResponse(AbstractModel):
         :type ProductName: str
         :param _FwType: 固件类型。选项：mcu、module
         :type FwType: str
+        :param _UserDefined: 固件用户自定义配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserDefined: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3231,6 +3234,7 @@ class DescribeFirmwareResponse(AbstractModel):
         self._Createtime = None
         self._ProductName = None
         self._FwType = None
+        self._UserDefined = None
         self._RequestId = None
 
     @property
@@ -3298,6 +3302,14 @@ class DescribeFirmwareResponse(AbstractModel):
         self._FwType = FwType
 
     @property
+    def UserDefined(self):
+        return self._UserDefined
+
+    @UserDefined.setter
+    def UserDefined(self, UserDefined):
+        self._UserDefined = UserDefined
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -3315,6 +3327,7 @@ class DescribeFirmwareResponse(AbstractModel):
         self._Createtime = params.get("Createtime")
         self._ProductName = params.get("ProductName")
         self._FwType = params.get("FwType")
+        self._UserDefined = params.get("UserDefined")
         self._RequestId = params.get("RequestId")
 
 
@@ -6381,6 +6394,9 @@ class FirmwareInfo(AbstractModel):
         :param _CreateUserId: 创建者 Uin
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateUserId: int
+        :param _UserDefined: 固件用户自定义配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserDefined: str
         """
         self._Version = None
         self._Md5sum = None
@@ -6391,6 +6407,7 @@ class FirmwareInfo(AbstractModel):
         self._ProductId = None
         self._FwType = None
         self._CreateUserId = None
+        self._UserDefined = None
 
     @property
     def Version(self):
@@ -6464,6 +6481,14 @@ class FirmwareInfo(AbstractModel):
     def CreateUserId(self, CreateUserId):
         self._CreateUserId = CreateUserId
 
+    @property
+    def UserDefined(self):
+        return self._UserDefined
+
+    @UserDefined.setter
+    def UserDefined(self, UserDefined):
+        self._UserDefined = UserDefined
+
 
     def _deserialize(self, params):
         self._Version = params.get("Version")
@@ -6475,6 +6500,7 @@ class FirmwareInfo(AbstractModel):
         self._ProductId = params.get("ProductId")
         self._FwType = params.get("FwType")
         self._CreateUserId = params.get("CreateUserId")
+        self._UserDefined = params.get("UserDefined")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
