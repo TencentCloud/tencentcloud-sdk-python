@@ -461,6 +461,189 @@ class FuseFaceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class FuseFaceUltraRequest(AbstractModel):
+    """FuseFaceUltra请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RspImgType: 返回融合结果图片方式（url 或 base64) ，二选一。url有效期为1天。
+        :type RspImgType: str
+        :param _MergeInfos: 用户人脸图片、素材模板图的人脸位置信息。主要用于素材模版中人脸以及用作融合的用户人脸相关信息，两种人脸都需要提供人脸图片，可选择提供人脸框位置，具体见MergeInfo说明 
+目前最多支持融合模板图片中的6张人脸。
+        :type MergeInfos: list of MergeInfo
+        :param _ModelUrl: 素材模版图片的url地址。
+●base64 和 url 必须提供一个，如果都提供以 base64 为准。
+●素材图片限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64，小于8000 * 8000（单边限制）。图片url或者图片 base64 数据，base64 编码后大小不可超过10M（图片编码之后可能会大30%左右，建议合理控制图片大小）
+●图片格式：支持jpg或png
+        :type ModelUrl: str
+        :param _ModelImage: 素材模版图片base64数据。
+●base64 和 url 必须提供一个，如果都提供以 base64 为准。
+●素材图片限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64，小于8000*8000（单边限制）。图片url或者图片 base64 数据，base64 编码后大小不可超过10M（图片编码之后可能会大30%左右，建议合理控制图片大小）
+●支持图片格式：支持jpg或png
+        :type ModelImage: str
+        :param _FusionUltraParam: 图片人脸融合（专业版）效果参数。
+可用于设置拉脸、人脸增强、磨皮、牙齿增强等融合效果参数，生成理想的融合效果。不传默认使用接口推荐值。具体见FusionUltraParam说明
+
+        :type FusionUltraParam: :class:`tencentcloud.facefusion.v20220927.models.FusionUltraParam`
+        :param _LogoAdd: 为融合结果图添加合成标识的开关，默认为1。
+1：添加标识。
+0：不添加标识。
+其他数值：默认按1处理。
+建议您使用显著标识来提示结果图使用了人脸融合技术，是AI合成的图片。
+        :type LogoAdd: int
+        :param _LogoParam: 标识内容设置。
+默认在融合结果图右下角添加“本图片为AI合成图片”字样，您可根据自身需要替换为其他的Logo图片。
+        :type LogoParam: :class:`tencentcloud.facefusion.v20220927.models.LogoParam`
+        :param _SwapModelType: 融合模型类型参数：默认为1。
+图片人脸融合（专业版）针对不同场景，提供多种模型供选择。如您的产品是泛娱乐场景，推荐使用1；如您主要用于影像场景，推荐使用5。其他模型类型也可以结合您的产品使用场景进行选择，也许会有意想不到的效果
+1：默认泛娱乐场景，画面偏锐。
+2：影视级场景，画面偏自然。
+3：影视级场景，高分辨率，画面偏自然。
+4：影视级场景，高分辨率，画面偏自然。
+5：影视级场景，高分辨率，对闭眼和遮挡更友好。
+        :type SwapModelType: int
+        """
+        self._RspImgType = None
+        self._MergeInfos = None
+        self._ModelUrl = None
+        self._ModelImage = None
+        self._FusionUltraParam = None
+        self._LogoAdd = None
+        self._LogoParam = None
+        self._SwapModelType = None
+
+    @property
+    def RspImgType(self):
+        return self._RspImgType
+
+    @RspImgType.setter
+    def RspImgType(self, RspImgType):
+        self._RspImgType = RspImgType
+
+    @property
+    def MergeInfos(self):
+        return self._MergeInfos
+
+    @MergeInfos.setter
+    def MergeInfos(self, MergeInfos):
+        self._MergeInfos = MergeInfos
+
+    @property
+    def ModelUrl(self):
+        return self._ModelUrl
+
+    @ModelUrl.setter
+    def ModelUrl(self, ModelUrl):
+        self._ModelUrl = ModelUrl
+
+    @property
+    def ModelImage(self):
+        return self._ModelImage
+
+    @ModelImage.setter
+    def ModelImage(self, ModelImage):
+        self._ModelImage = ModelImage
+
+    @property
+    def FusionUltraParam(self):
+        return self._FusionUltraParam
+
+    @FusionUltraParam.setter
+    def FusionUltraParam(self, FusionUltraParam):
+        self._FusionUltraParam = FusionUltraParam
+
+    @property
+    def LogoAdd(self):
+        return self._LogoAdd
+
+    @LogoAdd.setter
+    def LogoAdd(self, LogoAdd):
+        self._LogoAdd = LogoAdd
+
+    @property
+    def LogoParam(self):
+        return self._LogoParam
+
+    @LogoParam.setter
+    def LogoParam(self, LogoParam):
+        self._LogoParam = LogoParam
+
+    @property
+    def SwapModelType(self):
+        return self._SwapModelType
+
+    @SwapModelType.setter
+    def SwapModelType(self, SwapModelType):
+        self._SwapModelType = SwapModelType
+
+
+    def _deserialize(self, params):
+        self._RspImgType = params.get("RspImgType")
+        if params.get("MergeInfos") is not None:
+            self._MergeInfos = []
+            for item in params.get("MergeInfos"):
+                obj = MergeInfo()
+                obj._deserialize(item)
+                self._MergeInfos.append(obj)
+        self._ModelUrl = params.get("ModelUrl")
+        self._ModelImage = params.get("ModelImage")
+        if params.get("FusionUltraParam") is not None:
+            self._FusionUltraParam = FusionUltraParam()
+            self._FusionUltraParam._deserialize(params.get("FusionUltraParam"))
+        self._LogoAdd = params.get("LogoAdd")
+        if params.get("LogoParam") is not None:
+            self._LogoParam = LogoParam()
+            self._LogoParam._deserialize(params.get("LogoParam"))
+        self._SwapModelType = params.get("SwapModelType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FuseFaceUltraResponse(AbstractModel):
+    """FuseFaceUltra返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FusedImage: RspImgType 为 url 时，返回结果的 url， RspImgType 为 base64 时返回 base64 数据。url有效期为1天。
+        :type FusedImage: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FusedImage = None
+        self._RequestId = None
+
+    @property
+    def FusedImage(self):
+        return self._FusedImage
+
+    @FusedImage.setter
+    def FusedImage(self, FusedImage):
+        self._FusedImage = FusedImage
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FusedImage = params.get("FusedImage")
+        self._RequestId = params.get("RequestId")
+
+
 class FuseParam(AbstractModel):
     """融合参数
 
@@ -486,6 +669,99 @@ class FuseParam(AbstractModel):
         if params.get("ImageCodecParam") is not None:
             self._ImageCodecParam = ImageCodecParam()
             self._ImageCodecParam._deserialize(params.get("ImageCodecParam"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FusionUltraParam(AbstractModel):
+    """高精度融合参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WarpRadio: 拉脸强度。主要用于调整生成结果人脸脸型更像素材模板还是用户人脸。取值越大越像用户人脸。
+取值范围：0-1之间。默认取值0.7。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WarpRadio: float
+        :param _EnhanceRadio: 人脸增强强度。对整个人脸进行增强，增加清晰度，改善质量。当生成的人脸不够清晰，质感不够好的时候可以设置。取值越大增强强度越大。
+取值范围：0-1之间。默认取值1。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnhanceRadio: float
+        :param _MpRadio: 磨皮强度。当生成脸的图像面部显脏时，可进行设置。
+取值范围：0-1之间。默认取值1。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MpRadio: float
+        :param _BlurRadio: 人脸模糊开关（暂不支持）
+当生成人脸比较清晰时，将人脸模糊到接近模板的清晰度的程度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlurRadio: float
+        :param _TeethEnhanceRadio: 牙齿增强开关，默认取值为1
+牙齿增强，修复牙齿。当生成牙齿不好（如牙齿裂开）可以打开此开关
+0：牙齿增强关闭
+1：牙齿增强打开
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TeethEnhanceRadio: float
+        """
+        self._WarpRadio = None
+        self._EnhanceRadio = None
+        self._MpRadio = None
+        self._BlurRadio = None
+        self._TeethEnhanceRadio = None
+
+    @property
+    def WarpRadio(self):
+        return self._WarpRadio
+
+    @WarpRadio.setter
+    def WarpRadio(self, WarpRadio):
+        self._WarpRadio = WarpRadio
+
+    @property
+    def EnhanceRadio(self):
+        return self._EnhanceRadio
+
+    @EnhanceRadio.setter
+    def EnhanceRadio(self, EnhanceRadio):
+        self._EnhanceRadio = EnhanceRadio
+
+    @property
+    def MpRadio(self):
+        return self._MpRadio
+
+    @MpRadio.setter
+    def MpRadio(self, MpRadio):
+        self._MpRadio = MpRadio
+
+    @property
+    def BlurRadio(self):
+        return self._BlurRadio
+
+    @BlurRadio.setter
+    def BlurRadio(self, BlurRadio):
+        self._BlurRadio = BlurRadio
+
+    @property
+    def TeethEnhanceRadio(self):
+        return self._TeethEnhanceRadio
+
+    @TeethEnhanceRadio.setter
+    def TeethEnhanceRadio(self, TeethEnhanceRadio):
+        self._TeethEnhanceRadio = TeethEnhanceRadio
+
+
+    def _deserialize(self, params):
+        self._WarpRadio = params.get("WarpRadio")
+        self._EnhanceRadio = params.get("EnhanceRadio")
+        self._MpRadio = params.get("MpRadio")
+        self._BlurRadio = params.get("BlurRadio")
+        self._TeethEnhanceRadio = params.get("TeethEnhanceRadio")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

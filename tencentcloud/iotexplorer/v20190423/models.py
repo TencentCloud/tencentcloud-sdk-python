@@ -13271,6 +13271,115 @@ class GetTopicRuleListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetWechatDeviceTicketRequest(AbstractModel):
+    """GetWechatDeviceTicket请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _DeviceName: 产品名称
+        :type DeviceName: str
+        :param _IsThirdApp: 是否第三方小程序
+        :type IsThirdApp: int
+        :param _ModelId: 模板ID
+        :type ModelId: str
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._IsThirdApp = None
+        self._ModelId = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def IsThirdApp(self):
+        return self._IsThirdApp
+
+    @IsThirdApp.setter
+    def IsThirdApp(self, IsThirdApp):
+        self._IsThirdApp = IsThirdApp
+
+    @property
+    def ModelId(self):
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._IsThirdApp = params.get("IsThirdApp")
+        self._ModelId = params.get("ModelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetWechatDeviceTicketResponse(AbstractModel):
+    """GetWechatDeviceTicket返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WXDeviceInfo: 微信设备信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WXDeviceInfo: :class:`tencentcloud.iotexplorer.v20190423.models.WXDeviceInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._WXDeviceInfo = None
+        self._RequestId = None
+
+    @property
+    def WXDeviceInfo(self):
+        return self._WXDeviceInfo
+
+    @WXDeviceInfo.setter
+    def WXDeviceInfo(self, WXDeviceInfo):
+        self._WXDeviceInfo = WXDeviceInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("WXDeviceInfo") is not None:
+            self._WXDeviceInfo = WXDeviceInfo()
+            self._WXDeviceInfo._deserialize(params.get("WXDeviceInfo"))
+        self._RequestId = params.get("RequestId")
+
+
 class InheritCloudStorageUserRequest(AbstractModel):
     """InheritCloudStorageUser请求参数结构体
 
@@ -19611,6 +19720,115 @@ class UploadFirmwareResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class WXDeviceInfo(AbstractModel):
+    """微信硬件设备信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceId: 设备ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceId: str
+        :param _WXIoTDeviceInfo: 设备信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WXIoTDeviceInfo: :class:`tencentcloud.iotexplorer.v20190423.models.WXIoTDeviceInfo`
+        """
+        self._DeviceId = None
+        self._WXIoTDeviceInfo = None
+
+    @property
+    def DeviceId(self):
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def WXIoTDeviceInfo(self):
+        return self._WXIoTDeviceInfo
+
+    @WXIoTDeviceInfo.setter
+    def WXIoTDeviceInfo(self, WXIoTDeviceInfo):
+        self._WXIoTDeviceInfo = WXIoTDeviceInfo
+
+
+    def _deserialize(self, params):
+        self._DeviceId = params.get("DeviceId")
+        if params.get("WXIoTDeviceInfo") is not None:
+            self._WXIoTDeviceInfo = WXIoTDeviceInfo()
+            self._WXIoTDeviceInfo._deserialize(params.get("WXIoTDeviceInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WXIoTDeviceInfo(AbstractModel):
+    """微信物联网硬件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SN: sn信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SN: str
+        :param _SNTicket: 票据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SNTicket: str
+        :param _ModelId: 模版ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelId: str
+        """
+        self._SN = None
+        self._SNTicket = None
+        self._ModelId = None
+
+    @property
+    def SN(self):
+        return self._SN
+
+    @SN.setter
+    def SN(self, SN):
+        self._SN = SN
+
+    @property
+    def SNTicket(self):
+        return self._SNTicket
+
+    @SNTicket.setter
+    def SNTicket(self, SNTicket):
+        self._SNTicket = SNTicket
+
+    @property
+    def ModelId(self):
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+
+    def _deserialize(self, params):
+        self._SN = params.get("SN")
+        self._SNTicket = params.get("SNTicket")
+        self._ModelId = params.get("ModelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class WifiInfo(AbstractModel):

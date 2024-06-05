@@ -7135,14 +7135,25 @@ class DescribeAntiFakeRulesResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Total: 总数
+        :type Total: int
         :param _Data: 返回值
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of CacheUrlItems
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Total = None
         self._Data = None
         self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
 
     @property
     def Data(self):
@@ -7162,6 +7173,7 @@ class DescribeAntiFakeRulesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Total = params.get("Total")
         if params.get("Data") is not None:
             self._Data = []
             for item in params.get("Data"):

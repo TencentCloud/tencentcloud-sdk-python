@@ -33,12 +33,14 @@ class AccountCreateInfo(AbstractModel):
         :type DBPrivileges: list of DBPrivilege
         :param _Remark: 账号备注信息
         :type Remark: str
-        :param _IsAdmin: 是否为管理员账户，当值为true 等价于基础版AccountType=L0，高可用AccountType=L1，当值为false，等价于AccountType=L3
+        :param _IsAdmin: 是否为管理员账户，当值为true 等价于单节点AccountType=L0，双节点AccountType=L1，当值为false，等价于AccountType=L3
         :type IsAdmin: bool
         :param _Authentication: win-windows鉴权,sql-sqlserver鉴权，不填默认值为sql-sqlserver鉴权
         :type Authentication: str
         :param _AccountType: 账号类型，IsAdmin的扩展字段。 L0-超级权限(基础版独有),L1-高级权限,L2-特殊权限,L3-普通权限，默认L3
         :type AccountType: str
+        :param _IsCam: 是否开启CAM验证
+        :type IsCam: bool
         """
         self._UserName = None
         self._Password = None
@@ -47,6 +49,7 @@ class AccountCreateInfo(AbstractModel):
         self._IsAdmin = None
         self._Authentication = None
         self._AccountType = None
+        self._IsCam = None
 
     @property
     def UserName(self):
@@ -104,6 +107,14 @@ class AccountCreateInfo(AbstractModel):
     def AccountType(self, AccountType):
         self._AccountType = AccountType
 
+    @property
+    def IsCam(self):
+        return self._IsCam
+
+    @IsCam.setter
+    def IsCam(self, IsCam):
+        self._IsCam = IsCam
+
 
     def _deserialize(self, params):
         self._UserName = params.get("UserName")
@@ -118,6 +129,7 @@ class AccountCreateInfo(AbstractModel):
         self._IsAdmin = params.get("IsAdmin")
         self._Authentication = params.get("Authentication")
         self._AccountType = params.get("AccountType")
+        self._IsCam = params.get("IsCam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -129,7 +141,7 @@ class AccountCreateInfo(AbstractModel):
 
 
 class AccountDetail(AbstractModel):
-    """账户信息详情
+    """账号信息详情
 
     """
 
@@ -153,6 +165,8 @@ class AccountDetail(AbstractModel):
         :type Dbs: list of DBPrivilege
         :param _IsAdmin: 是否为管理员账户
         :type IsAdmin: bool
+        :param _IsCam: 是否为cam托管账户
+        :type IsCam: bool
         :param _Authentication: win-windows鉴权,sql-sqlserver鉴权
         :type Authentication: str
         :param _Host: win-windows鉴权账户需要host
@@ -169,6 +183,7 @@ class AccountDetail(AbstractModel):
         self._InternalStatus = None
         self._Dbs = None
         self._IsAdmin = None
+        self._IsCam = None
         self._Authentication = None
         self._Host = None
         self._AccountType = None
@@ -246,6 +261,14 @@ class AccountDetail(AbstractModel):
         self._IsAdmin = IsAdmin
 
     @property
+    def IsCam(self):
+        return self._IsCam
+
+    @IsCam.setter
+    def IsCam(self, IsCam):
+        self._IsCam = IsCam
+
+    @property
     def Authentication(self):
         return self._Authentication
 
@@ -285,6 +308,7 @@ class AccountDetail(AbstractModel):
                 obj._deserialize(item)
                 self._Dbs.append(obj)
         self._IsAdmin = params.get("IsAdmin")
+        self._IsCam = params.get("IsCam")
         self._Authentication = params.get("Authentication")
         self._Host = params.get("Host")
         self._AccountType = params.get("AccountType")

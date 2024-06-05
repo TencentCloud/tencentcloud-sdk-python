@@ -2333,6 +2333,141 @@ class CreateExtensionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateIVRSessionRequest(AbstractModel):
+    """CreateIVRSession请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param _Callee: 被叫
+        :type Callee: str
+        :param _IVRId: 指定的 IVR Id，目前支持呼入和自动外呼两种类型
+        :type IVRId: int
+        :param _Callers: 主叫号码列表
+        :type Callers: list of str
+        :param _Variables: 自定义变量
+        :type Variables: list of Variable
+        :param _UUI: 用户数据
+        :type UUI: str
+        """
+        self._SdkAppId = None
+        self._Callee = None
+        self._IVRId = None
+        self._Callers = None
+        self._Variables = None
+        self._UUI = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def Callee(self):
+        return self._Callee
+
+    @Callee.setter
+    def Callee(self, Callee):
+        self._Callee = Callee
+
+    @property
+    def IVRId(self):
+        return self._IVRId
+
+    @IVRId.setter
+    def IVRId(self, IVRId):
+        self._IVRId = IVRId
+
+    @property
+    def Callers(self):
+        return self._Callers
+
+    @Callers.setter
+    def Callers(self, Callers):
+        self._Callers = Callers
+
+    @property
+    def Variables(self):
+        return self._Variables
+
+    @Variables.setter
+    def Variables(self, Variables):
+        self._Variables = Variables
+
+    @property
+    def UUI(self):
+        return self._UUI
+
+    @UUI.setter
+    def UUI(self, UUI):
+        self._UUI = UUI
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._Callee = params.get("Callee")
+        self._IVRId = params.get("IVRId")
+        self._Callers = params.get("Callers")
+        if params.get("Variables") is not None:
+            self._Variables = []
+            for item in params.get("Variables"):
+                obj = Variable()
+                obj._deserialize(item)
+                self._Variables.append(obj)
+        self._UUI = params.get("UUI")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateIVRSessionResponse(AbstractModel):
+    """CreateIVRSession返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SessionId: 新创建的会话 ID
+        :type SessionId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SessionId = None
+        self._RequestId = None
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SessionId = params.get("SessionId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreatePredictiveDialingCampaignRequest(AbstractModel):
     """CreatePredictiveDialingCampaign请求参数结构体
 

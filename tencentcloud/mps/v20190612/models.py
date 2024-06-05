@@ -20771,11 +20771,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskType: 任务类型，目前取值有：
-<li>WorkflowTask：视频工作流处理任务。</li>
-<li>EditMediaTask：视频编辑任务。</li>
-<li>LiveStreamProcessTask：直播流处理任务。</li>
-<li>ScheduleTask：编排处理任务。</li>
+        :param _TaskType: 任务类型，目前取值有：<li>WorkflowTask：视频工作流处理任务。</li><li>EditMediaTask：视频编辑任务。</li><li>LiveStreamProcessTask：直播流处理任务。</li><li>ScheduleTask：编排处理任务。</li><li>EvaluationTask：评测任务。</li>
         :type TaskType: str
         :param _Status: 任务状态，取值：
 <li>WAITING：等待中；</li>
@@ -42093,8 +42089,8 @@ class VideoTemplateInfo(AbstractModel):
 注意：目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。
 注意：av1 编码容器目前只支持 mp4 。
         :type Codec: str
-        :param _Fps: 视频帧率，取值范围：[0, 120]，单位：Hz。
-当取值为 0，表示帧率和原始视频保持一致。
+        :param _Fps: 视频帧率，取值范围：[0, 120]，单位：Hz。 
+当取值为 0，表示帧率和原始视频保持一致。 
 注意：自适应码率时取值范围是 [0, 60]
         :type Fps: int
         :param _Bitrate: 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。

@@ -8737,7 +8737,7 @@ class ModifyProjectLimitRequest(AbstractModel):
         r"""
         :param _ProjectID: 项目ID
         :type ProjectID: int
-        :param _ProjectInterface: 项目接口
+        :param _ProjectInterface: 取值为[log speed performance webvitals pv event custom miniProgramData]其中之一
         :type ProjectInterface: str
         :param _ReportRate: 上报比例   10代表10%
         :type ReportRate: int

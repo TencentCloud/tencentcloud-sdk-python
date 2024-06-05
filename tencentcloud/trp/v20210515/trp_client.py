@@ -49,6 +49,29 @@ class TrpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateChainBatch(self, request):
+        """批量上链接口
+
+        :param request: Request instance for CreateChainBatch.
+        :type request: :class:`tencentcloud.trp.v20210515.models.CreateChainBatchRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.CreateChainBatchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateChainBatch", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateChainBatchResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCodeBatch(self, request):
         """新增批次
 

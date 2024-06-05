@@ -23227,6 +23227,9 @@ class ParamDetail(AbstractModel):
         :param _ModifiableInfo: 参数是否可修改
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModifiableInfo: :class:`tencentcloud.cynosdb.v20190107.models.ModifiableInfo`
+        :param _FuncPattern: 支持公式的参数的默认公式样式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FuncPattern: str
         """
         self._ParamName = None
         self._ParamType = None
@@ -23244,6 +23247,7 @@ class ParamDetail(AbstractModel):
         self._IsFunc = None
         self._Func = None
         self._ModifiableInfo = None
+        self._FuncPattern = None
 
     @property
     def ParamName(self):
@@ -23373,6 +23377,14 @@ class ParamDetail(AbstractModel):
     def ModifiableInfo(self, ModifiableInfo):
         self._ModifiableInfo = ModifiableInfo
 
+    @property
+    def FuncPattern(self):
+        return self._FuncPattern
+
+    @FuncPattern.setter
+    def FuncPattern(self, FuncPattern):
+        self._FuncPattern = FuncPattern
+
 
     def _deserialize(self, params):
         self._ParamName = params.get("ParamName")
@@ -23393,6 +23405,7 @@ class ParamDetail(AbstractModel):
         if params.get("ModifiableInfo") is not None:
             self._ModifiableInfo = ModifiableInfo()
             self._ModifiableInfo._deserialize(params.get("ModifiableInfo"))
+        self._FuncPattern = params.get("FuncPattern")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23701,6 +23714,9 @@ class ParamItemDetail(AbstractModel):
         :param _Func: 参数配置公式
 注意：此字段可能返回 null，表示取不到有效值。
         :type Func: str
+        :param _FuncPattern: 支持公式的参数的默认公式样式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FuncPattern: str
         """
         self._CurrentValue = None
         self._Default = None
@@ -23714,6 +23730,7 @@ class ParamItemDetail(AbstractModel):
         self._Description = None
         self._IsFunc = None
         self._Func = None
+        self._FuncPattern = None
 
     @property
     def CurrentValue(self):
@@ -23811,6 +23828,14 @@ class ParamItemDetail(AbstractModel):
     def Func(self, Func):
         self._Func = Func
 
+    @property
+    def FuncPattern(self):
+        return self._FuncPattern
+
+    @FuncPattern.setter
+    def FuncPattern(self, FuncPattern):
+        self._FuncPattern = FuncPattern
+
 
     def _deserialize(self, params):
         self._CurrentValue = params.get("CurrentValue")
@@ -23825,6 +23850,7 @@ class ParamItemDetail(AbstractModel):
         self._Description = params.get("Description")
         self._IsFunc = params.get("IsFunc")
         self._Func = params.get("Func")
+        self._FuncPattern = params.get("FuncPattern")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

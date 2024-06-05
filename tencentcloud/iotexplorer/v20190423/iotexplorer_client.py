@@ -2349,6 +2349,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetWechatDeviceTicket(self, request):
+        """查询微信设备授权票据
+
+        :param request: Request instance for GetWechatDeviceTicket.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetWechatDeviceTicketRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.GetWechatDeviceTicketResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetWechatDeviceTicket", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetWechatDeviceTicketResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def InheritCloudStorageUser(self, request):
         """继承云存用户
 

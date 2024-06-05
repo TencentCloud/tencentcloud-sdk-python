@@ -694,7 +694,9 @@ class CfwClient(AbstractClient):
 
 
     def DeleteVpcInstance(self, request):
-        """删除防火墙实例
+        """接口废弃
+
+        删除防火墙实例
 
         :param request: Request instance for DeleteVpcInstance.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DeleteVpcInstanceRequest`
@@ -1407,7 +1409,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeSourceAsset(self, request):
-        """DescribeSourceAsset-查询资产组全部资产信息
+        """DescribeSourceAsset-查询全部资产信息
 
         :param request: Request instance for DescribeSourceAsset.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeSourceAssetRequest`

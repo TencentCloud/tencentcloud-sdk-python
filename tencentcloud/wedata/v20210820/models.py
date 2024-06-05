@@ -28268,6 +28268,9 @@ class DimensionScoreInfo(AbstractModel):
         :type JoinTableNumber: int
         :param _Score: 评分
         :type Score: float
+        :param _UserIdStr: 设置人idStr
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserIdStr: str
         """
         self._Name = None
         self._Weight = None
@@ -28276,6 +28279,7 @@ class DimensionScoreInfo(AbstractModel):
         self._UpdateTime = None
         self._JoinTableNumber = None
         self._Score = None
+        self._UserIdStr = None
 
     @property
     def Name(self):
@@ -28333,6 +28337,14 @@ class DimensionScoreInfo(AbstractModel):
     def Score(self, Score):
         self._Score = Score
 
+    @property
+    def UserIdStr(self):
+        return self._UserIdStr
+
+    @UserIdStr.setter
+    def UserIdStr(self, UserIdStr):
+        self._UserIdStr = UserIdStr
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -28342,6 +28354,7 @@ class DimensionScoreInfo(AbstractModel):
         self._UpdateTime = params.get("UpdateTime")
         self._JoinTableNumber = params.get("JoinTableNumber")
         self._Score = params.get("Score")
+        self._UserIdStr = params.get("UserIdStr")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -48032,6 +48045,9 @@ class RuleTemplate(AbstractModel):
         :param _DatasourceTypes: 支持的数据源类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatasourceTypes: list of int
+        :param _UserIdStr: 创建人IdStr
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserIdStr: str
         """
         self._RuleTemplateId = None
         self._Name = None
@@ -48053,6 +48069,7 @@ class RuleTemplate(AbstractModel):
         self._SubQualityDim = None
         self._ResolvedSqlExpression = None
         self._DatasourceTypes = None
+        self._UserIdStr = None
 
     @property
     def RuleTemplateId(self):
@@ -48214,6 +48231,14 @@ class RuleTemplate(AbstractModel):
     def DatasourceTypes(self, DatasourceTypes):
         self._DatasourceTypes = DatasourceTypes
 
+    @property
+    def UserIdStr(self):
+        return self._UserIdStr
+
+    @UserIdStr.setter
+    def UserIdStr(self, UserIdStr):
+        self._UserIdStr = UserIdStr
+
 
     def _deserialize(self, params):
         self._RuleTemplateId = params.get("RuleTemplateId")
@@ -48238,6 +48263,7 @@ class RuleTemplate(AbstractModel):
             self._ResolvedSqlExpression = SqlExpression()
             self._ResolvedSqlExpression._deserialize(params.get("ResolvedSqlExpression"))
         self._DatasourceTypes = params.get("DatasourceTypes")
+        self._UserIdStr = params.get("UserIdStr")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -52471,9 +52497,13 @@ class SubscribeReceiver(AbstractModel):
         :param _ReceiverName: 接收人名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReceiverName: str
+        :param _ReceiverUserIdStr: 接收人Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiverUserIdStr: str
         """
         self._ReceiverUserId = None
         self._ReceiverName = None
+        self._ReceiverUserIdStr = None
 
     @property
     def ReceiverUserId(self):
@@ -52491,10 +52521,19 @@ class SubscribeReceiver(AbstractModel):
     def ReceiverName(self, ReceiverName):
         self._ReceiverName = ReceiverName
 
+    @property
+    def ReceiverUserIdStr(self):
+        return self._ReceiverUserIdStr
+
+    @ReceiverUserIdStr.setter
+    def ReceiverUserIdStr(self, ReceiverUserIdStr):
+        self._ReceiverUserIdStr = ReceiverUserIdStr
+
 
     def _deserialize(self, params):
         self._ReceiverUserId = params.get("ReceiverUserId")
         self._ReceiverName = params.get("ReceiverName")
+        self._ReceiverUserIdStr = params.get("ReceiverUserIdStr")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

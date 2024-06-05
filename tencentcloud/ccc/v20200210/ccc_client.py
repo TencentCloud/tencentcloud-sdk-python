@@ -256,6 +256,29 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateIVRSession(self, request):
+        """创建关联 IVR 的会话，仅高级版支持，目前支持呼入和自动外呼两种 IVR 类型。收到请求后 TCCC 会先尝试呼通被叫，然后进入 IVR 流程。
+
+        :param request: Request instance for CreateIVRSession.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.CreateIVRSessionRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.CreateIVRSessionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateIVRSession", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateIVRSessionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreatePredictiveDialingCampaign(self, request):
         """创建预测式外呼任务
 

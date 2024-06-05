@@ -224,6 +224,58 @@ class AuthorizedTransferResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class Chain(AbstractModel):
+    """上链数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Code: 码url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Code: str
+        :param _Data: 上链数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of ChainValue
+        """
+        self._Code = None
+        self._Data = None
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+
+    def _deserialize(self, params):
+        self._Code = params.get("Code")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = ChainValue()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ChainData(AbstractModel):
     """上链数据
 
@@ -274,6 +326,66 @@ class ChainData(AbstractModel):
         self._BlockHash = params.get("BlockHash")
         self._BlockHeight = params.get("BlockHeight")
         self._BlockTime = params.get("BlockTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChainValue(AbstractModel):
+    """上链数据 key-value
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Label: 标题名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Label: str
+        :param _Type: 类型，文字："text"，图片："image"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Value: 值，文字类型："abc"，图片类型：""/images/img.png"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Label = None
+        self._Type = None
+        self._Value = None
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Label = params.get("Label")
+        self._Type = params.get("Type")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1169,6 +1281,81 @@ class CorpQuota(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateChainBatchRequest(AbstractModel):
+    """CreateChainBatch请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CorpId: 企业ID
+        :type CorpId: int
+        :param _ChainList: 溯源ID
+        :type ChainList: list of Chain
+        """
+        self._CorpId = None
+        self._ChainList = None
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def ChainList(self):
+        return self._ChainList
+
+    @ChainList.setter
+    def ChainList(self, ChainList):
+        self._ChainList = ChainList
+
+
+    def _deserialize(self, params):
+        self._CorpId = params.get("CorpId")
+        if params.get("ChainList") is not None:
+            self._ChainList = []
+            for item in params.get("ChainList"):
+                obj = Chain()
+                obj._deserialize(item)
+                self._ChainList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateChainBatchResponse(AbstractModel):
+    """CreateChainBatch返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class CreateCodeBatchRequest(AbstractModel):

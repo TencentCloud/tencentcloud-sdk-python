@@ -6579,6 +6579,8 @@ class DescribeSubscribeJobsRequest(AbstractModel):
         :type SubscribeName: str
         :param _InstanceId: 订阅的云上数据库实例的 ID，精确匹配
         :type InstanceId: str
+        :param _Topic: 订阅的topicName
+        :type Topic: str
         :param _PayType: 计费模式筛选，可能的值：0-包年包月，1-按量计费
         :type PayType: int
         :param _Product: 订阅的数据库产品，目前支持 cynosdbmysql,mariadb,mongodb,mysql,percona,tdpg,tdsqlpercona(tdsqlmysql)
@@ -6599,6 +6601,7 @@ class DescribeSubscribeJobsRequest(AbstractModel):
         self._SubscribeId = None
         self._SubscribeName = None
         self._InstanceId = None
+        self._Topic = None
         self._PayType = None
         self._Product = None
         self._Status = None
@@ -6631,6 +6634,14 @@ class DescribeSubscribeJobsRequest(AbstractModel):
     @InstanceId.setter
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
+
+    @property
+    def Topic(self):
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
 
     @property
     def PayType(self):
@@ -6701,6 +6712,7 @@ class DescribeSubscribeJobsRequest(AbstractModel):
         self._SubscribeId = params.get("SubscribeId")
         self._SubscribeName = params.get("SubscribeName")
         self._InstanceId = params.get("InstanceId")
+        self._Topic = params.get("Topic")
         self._PayType = params.get("PayType")
         self._Product = params.get("Product")
         self._Status = params.get("Status")

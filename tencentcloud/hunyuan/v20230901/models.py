@@ -835,13 +835,13 @@ class EmbeddingData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Embedding: embedding 信息。
+        :param _Embedding: Embedding 信息，目前为 1024 维浮点数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Embedding: list of float
-        :param _Index: 下标。
+        :param _Index: 下标，目前不支持批量，因此固定为 0。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Index: int
-        :param _Object: embedding
+        :param _Object: 目前固定为 "embedding"。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Object: str
         """

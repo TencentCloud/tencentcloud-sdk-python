@@ -74,3 +74,27 @@ class FacefusionClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def FuseFaceUltra(self, request):
+        """图片人脸融合（专业版）为同步接口，支持自定义美颜、人脸增强、牙齿增强、拉脸等参数，最高支持8K分辨率，有多个模型类型供选择。查看 <a href="https://cloud.tencent.com/document/product/670/38247" target="_blank">融合接入指引</a>。
+        请求频率限制为2次/秒。
+
+        :param request: Request instance for FuseFaceUltra.
+        :type request: :class:`tencentcloud.facefusion.v20220927.models.FuseFaceUltraRequest`
+        :rtype: :class:`tencentcloud.facefusion.v20220927.models.FuseFaceUltraResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("FuseFaceUltra", params, headers=headers)
+            response = json.loads(body)
+            model = models.FuseFaceUltraResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))

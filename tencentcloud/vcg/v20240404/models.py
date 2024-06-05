@@ -64,8 +64,8 @@ class DescribeVideoStylizationJobResponse(AbstractModel):
 JobInit:  "初始化中"
 JobModerationFailed: "审核失败",
 JobRunning: "处理中",
-JobFailed: "处理完成",
-JobSuccess: "处理失败"。
+JobFailed: "处理失败",
+JobSuccess: "处理完成"。
         :type StatusCode: str
         :param _StatusMsg: 任务状态描述。
         :type StatusMsg: str
