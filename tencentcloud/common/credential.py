@@ -464,7 +464,7 @@ class OIDCRoleArnCredential(object):
             raise EnvironmentError("TKE_WEB_IDENTITY_TOKEN_FILE not exist")
 
         with open(token_file) as f:
-            self.web_identity_token = f.read()
+            self._web_identity_token = f.read()
 
         self._role_arn = os.getenv('TKE_ROLE_ARN')
         if not self._role_arn:
