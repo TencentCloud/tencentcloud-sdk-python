@@ -3731,6 +3731,9 @@ class SubscribeInfo(AbstractModel):
         :type OfflineTime: str
         :param _ConsumeStartTime: 最近一次修改的消费时间起点，如果从未修改则为零值
         :type ConsumeStartTime: str
+        :param _AutoRenewFlag: 自动续费标识。0-不自动续费，1-自动续费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoRenewFlag: int
         :param _Region: 数据订阅实例所属地域
         :type Region: str
         :param _PayType: 计费方式，0 - 包年包月，1 - 按量计费
@@ -3750,9 +3753,6 @@ class SubscribeInfo(AbstractModel):
         :param _Tags: 标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of TagItem
-        :param _AutoRenewFlag: 自动续费标识。0-不自动续费，1-自动续费
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AutoRenewFlag: int
         :param _SubscribeVersion: 订阅实例版本；txdts-旧版数据订阅,kafka-kafka版本数据订阅
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubscribeVersion: str
@@ -3770,6 +3770,7 @@ class SubscribeInfo(AbstractModel):
         self._ExpireTime = None
         self._OfflineTime = None
         self._ConsumeStartTime = None
+        self._AutoRenewFlag = None
         self._Region = None
         self._PayType = None
         self._Vip = None
@@ -3779,7 +3780,6 @@ class SubscribeInfo(AbstractModel):
         self._Status = None
         self._SdkConsumedTime = None
         self._Tags = None
-        self._AutoRenewFlag = None
         self._SubscribeVersion = None
 
     @property
@@ -3887,6 +3887,14 @@ class SubscribeInfo(AbstractModel):
         self._ConsumeStartTime = ConsumeStartTime
 
     @property
+    def AutoRenewFlag(self):
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
     def Region(self):
         return self._Region
 
@@ -3959,14 +3967,6 @@ class SubscribeInfo(AbstractModel):
         self._Tags = Tags
 
     @property
-    def AutoRenewFlag(self):
-        return self._AutoRenewFlag
-
-    @AutoRenewFlag.setter
-    def AutoRenewFlag(self, AutoRenewFlag):
-        self._AutoRenewFlag = AutoRenewFlag
-
-    @property
     def SubscribeVersion(self):
         return self._SubscribeVersion
 
@@ -3989,6 +3989,7 @@ class SubscribeInfo(AbstractModel):
         self._ExpireTime = params.get("ExpireTime")
         self._OfflineTime = params.get("OfflineTime")
         self._ConsumeStartTime = params.get("ConsumeStartTime")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
         self._Region = params.get("Region")
         self._PayType = params.get("PayType")
         self._Vip = params.get("Vip")
@@ -4003,7 +4004,6 @@ class SubscribeInfo(AbstractModel):
                 obj = TagItem()
                 obj._deserialize(item)
                 self._Tags.append(obj)
-        self._AutoRenewFlag = params.get("AutoRenewFlag")
         self._SubscribeVersion = params.get("SubscribeVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

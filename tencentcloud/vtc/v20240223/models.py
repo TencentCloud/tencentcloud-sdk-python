@@ -186,12 +186,18 @@ class ConfirmVideoTranslateJobResponse(AbstractModel):
         :type TaskId: str
         :param _SessionId: 音频翻译结果确认 session
         :type SessionId: str
+        :param _Status: 视频转译任务状态
+        :type Status: int
+        :param _Message: 视频转译任务信息
+        :type Message: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._JobId = None
         self._TaskId = None
         self._SessionId = None
+        self._Status = None
+        self._Message = None
         self._RequestId = None
 
     @property
@@ -219,6 +225,22 @@ class ConfirmVideoTranslateJobResponse(AbstractModel):
         self._SessionId = SessionId
 
     @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -231,6 +253,8 @@ class ConfirmVideoTranslateJobResponse(AbstractModel):
         self._JobId = params.get("JobId")
         self._TaskId = params.get("TaskId")
         self._SessionId = params.get("SessionId")
+        self._Status = params.get("Status")
+        self._Message = params.get("Message")
         self._RequestId = params.get("RequestId")
 
 

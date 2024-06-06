@@ -1836,16 +1836,22 @@ class ESTargetParams(AbstractModel):
     def __init__(self):
         r"""
         :param _NetMode: 网络连接类型
+注意：此字段可能返回 null，表示取不到有效值。
         :type NetMode: str
         :param _IndexPrefix: 索引前缀
+注意：此字段可能返回 null，表示取不到有效值。
         :type IndexPrefix: str
         :param _RotationInterval: es日志轮换粒度
+注意：此字段可能返回 null，表示取不到有效值。
         :type RotationInterval: str
         :param _OutputMode: DTS事件配置
+注意：此字段可能返回 null，表示取不到有效值。
         :type OutputMode: str
         :param _IndexSuffixMode: DTS索引配置
+注意：此字段可能返回 null，表示取不到有效值。
         :type IndexSuffixMode: str
         :param _IndexTemplateType: es模版类型
+注意：此字段可能返回 null，表示取不到有效值。
         :type IndexTemplateType: str
         """
         self._NetMode = None
@@ -3385,7 +3391,7 @@ class ListRulesRequest(AbstractModel):
         r"""
         :param _EventBusId: 事件集ID
         :type EventBusId: str
-        :param _OrderBy: 根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）
+        :param _OrderBy: 根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）,name（规则名称）
         :type OrderBy: str
         :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
@@ -4352,10 +4358,13 @@ class SCFParams(AbstractModel):
     def __init__(self):
         r"""
         :param _BatchTimeout: 批量投递最长等待时间
+注意：此字段可能返回 null，表示取不到有效值。
         :type BatchTimeout: int
         :param _BatchEventCount: 批量投递最大事件条数
+注意：此字段可能返回 null，表示取不到有效值。
         :type BatchEventCount: int
         :param _EnableBatchDelivery: 开启批量投递使能
+注意：此字段可能返回 null，表示取不到有效值。
         :type EnableBatchDelivery: bool
         """
         self._BatchTimeout = None

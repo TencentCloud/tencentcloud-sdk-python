@@ -4890,6 +4890,9 @@ class DescribeModelServiceCallInfoResponse(AbstractModel):
         :param _IntranetCallInfo: 内网调用信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntranetCallInfo: :class:`tencentcloud.tione.v20211111.models.IntranetCallInfo`
+        :param _ServiceCallInfoV2: 基于新网关的服务调用信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceCallInfoV2: :class:`tencentcloud.tione.v20211111.models.ServiceCallInfoV2`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4898,6 +4901,7 @@ class DescribeModelServiceCallInfoResponse(AbstractModel):
         self._DefaultNginxGatewayCallInfo = None
         self._TJCallInfo = None
         self._IntranetCallInfo = None
+        self._ServiceCallInfoV2 = None
         self._RequestId = None
 
     @property
@@ -4941,6 +4945,14 @@ class DescribeModelServiceCallInfoResponse(AbstractModel):
         self._IntranetCallInfo = IntranetCallInfo
 
     @property
+    def ServiceCallInfoV2(self):
+        return self._ServiceCallInfoV2
+
+    @ServiceCallInfoV2.setter
+    def ServiceCallInfoV2(self, ServiceCallInfoV2):
+        self._ServiceCallInfoV2 = ServiceCallInfoV2
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -4965,6 +4977,9 @@ class DescribeModelServiceCallInfoResponse(AbstractModel):
         if params.get("IntranetCallInfo") is not None:
             self._IntranetCallInfo = IntranetCallInfo()
             self._IntranetCallInfo._deserialize(params.get("IntranetCallInfo"))
+        if params.get("ServiceCallInfoV2") is not None:
+            self._ServiceCallInfoV2 = ServiceCallInfoV2()
+            self._ServiceCallInfoV2._deserialize(params.get("ServiceCallInfoV2"))
         self._RequestId = params.get("RequestId")
 
 
@@ -7525,17 +7540,21 @@ class IntranetCallInfo(AbstractModel):
         :param _ServiceEIPInfo: 共享弹性网卡信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceEIPInfo: list of ServiceEIPInfo
-        :param _PrivateLinkInfos: 私有连接信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PrivateLinkInfos: list of PrivateLinkInfo
         :param _DefaultInnerCallInfos: 默认内网调用信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultInnerCallInfos: list of DefaultInnerCallInfo
+        :param _PrivateLinkInfos: 私有连接信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivateLinkInfos: list of PrivateLinkInfo
+        :param _PrivateLinkInfosV2: 基于新网关的私有连接信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivateLinkInfosV2: list of PrivateLinkInfo
         """
         self._IngressPrivateLinkInfo = None
         self._ServiceEIPInfo = None
-        self._PrivateLinkInfos = None
         self._DefaultInnerCallInfos = None
+        self._PrivateLinkInfos = None
+        self._PrivateLinkInfosV2 = None
 
     @property
     def IngressPrivateLinkInfo(self):
@@ -7554,6 +7573,14 @@ class IntranetCallInfo(AbstractModel):
         self._ServiceEIPInfo = ServiceEIPInfo
 
     @property
+    def DefaultInnerCallInfos(self):
+        return self._DefaultInnerCallInfos
+
+    @DefaultInnerCallInfos.setter
+    def DefaultInnerCallInfos(self, DefaultInnerCallInfos):
+        self._DefaultInnerCallInfos = DefaultInnerCallInfos
+
+    @property
     def PrivateLinkInfos(self):
         return self._PrivateLinkInfos
 
@@ -7562,12 +7589,12 @@ class IntranetCallInfo(AbstractModel):
         self._PrivateLinkInfos = PrivateLinkInfos
 
     @property
-    def DefaultInnerCallInfos(self):
-        return self._DefaultInnerCallInfos
+    def PrivateLinkInfosV2(self):
+        return self._PrivateLinkInfosV2
 
-    @DefaultInnerCallInfos.setter
-    def DefaultInnerCallInfos(self, DefaultInnerCallInfos):
-        self._DefaultInnerCallInfos = DefaultInnerCallInfos
+    @PrivateLinkInfosV2.setter
+    def PrivateLinkInfosV2(self, PrivateLinkInfosV2):
+        self._PrivateLinkInfosV2 = PrivateLinkInfosV2
 
 
     def _deserialize(self, params):
@@ -7580,18 +7607,24 @@ class IntranetCallInfo(AbstractModel):
                 obj = ServiceEIPInfo()
                 obj._deserialize(item)
                 self._ServiceEIPInfo.append(obj)
-        if params.get("PrivateLinkInfos") is not None:
-            self._PrivateLinkInfos = []
-            for item in params.get("PrivateLinkInfos"):
-                obj = PrivateLinkInfo()
-                obj._deserialize(item)
-                self._PrivateLinkInfos.append(obj)
         if params.get("DefaultInnerCallInfos") is not None:
             self._DefaultInnerCallInfos = []
             for item in params.get("DefaultInnerCallInfos"):
                 obj = DefaultInnerCallInfo()
                 obj._deserialize(item)
                 self._DefaultInnerCallInfos.append(obj)
+        if params.get("PrivateLinkInfos") is not None:
+            self._PrivateLinkInfos = []
+            for item in params.get("PrivateLinkInfos"):
+                obj = PrivateLinkInfo()
+                obj._deserialize(item)
+                self._PrivateLinkInfos.append(obj)
+        if params.get("PrivateLinkInfosV2") is not None:
+            self._PrivateLinkInfosV2 = []
+            for item in params.get("PrivateLinkInfosV2"):
+                obj = PrivateLinkInfo()
+                obj._deserialize(item)
+                self._PrivateLinkInfosV2.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12104,6 +12137,79 @@ class ServiceCallInfo(AbstractModel):
         self._AppKey = params.get("AppKey")
         self._AppSecret = params.get("AppSecret")
         self._AuthorizationEnable = params.get("AuthorizationEnable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServiceCallInfoV2(AbstractModel):
+    """V2版本的服务调用信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceGroupId: 服务组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceGroupId: str
+        :param _InternetEndpoint: 服务的公网调用地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InternetEndpoint: str
+        :param _AuthorizationEnable: 鉴权是否开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthorizationEnable: bool
+        :param _AuthToken: 鉴权token，仅当AuthorizationEnable为true时有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthToken: str
+        """
+        self._ServiceGroupId = None
+        self._InternetEndpoint = None
+        self._AuthorizationEnable = None
+        self._AuthToken = None
+
+    @property
+    def ServiceGroupId(self):
+        return self._ServiceGroupId
+
+    @ServiceGroupId.setter
+    def ServiceGroupId(self, ServiceGroupId):
+        self._ServiceGroupId = ServiceGroupId
+
+    @property
+    def InternetEndpoint(self):
+        return self._InternetEndpoint
+
+    @InternetEndpoint.setter
+    def InternetEndpoint(self, InternetEndpoint):
+        self._InternetEndpoint = InternetEndpoint
+
+    @property
+    def AuthorizationEnable(self):
+        return self._AuthorizationEnable
+
+    @AuthorizationEnable.setter
+    def AuthorizationEnable(self, AuthorizationEnable):
+        self._AuthorizationEnable = AuthorizationEnable
+
+    @property
+    def AuthToken(self):
+        return self._AuthToken
+
+    @AuthToken.setter
+    def AuthToken(self, AuthToken):
+        self._AuthToken = AuthToken
+
+
+    def _deserialize(self, params):
+        self._ServiceGroupId = params.get("ServiceGroupId")
+        self._InternetEndpoint = params.get("InternetEndpoint")
+        self._AuthorizationEnable = params.get("AuthorizationEnable")
+        self._AuthToken = params.get("AuthToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

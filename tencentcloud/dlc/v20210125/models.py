@@ -1275,6 +1275,98 @@ class BindWorkGroupsToUserResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CHDFSProductVpcInfo(AbstractModel):
+    """chdfs产品vpc信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: vpc id
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param _VpcName: vpc名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcName: str
+        :param _VpcCidrBlock: vpc子网信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcCidrBlock: list of VpcCidrBlock
+        :param _RuleId: 规则Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleId: int
+        :param _AccessGroupId: 权限组Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessGroupId: str
+        """
+        self._VpcId = None
+        self._VpcName = None
+        self._VpcCidrBlock = None
+        self._RuleId = None
+        self._AccessGroupId = None
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def VpcName(self):
+        return self._VpcName
+
+    @VpcName.setter
+    def VpcName(self, VpcName):
+        self._VpcName = VpcName
+
+    @property
+    def VpcCidrBlock(self):
+        return self._VpcCidrBlock
+
+    @VpcCidrBlock.setter
+    def VpcCidrBlock(self, VpcCidrBlock):
+        self._VpcCidrBlock = VpcCidrBlock
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def AccessGroupId(self):
+        return self._AccessGroupId
+
+    @AccessGroupId.setter
+    def AccessGroupId(self, AccessGroupId):
+        self._AccessGroupId = AccessGroupId
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._VpcName = params.get("VpcName")
+        if params.get("VpcCidrBlock") is not None:
+            self._VpcCidrBlock = []
+            for item in params.get("VpcCidrBlock"):
+                obj = VpcCidrBlock()
+                obj._deserialize(item)
+                self._VpcCidrBlock.append(obj)
+        self._RuleId = params.get("RuleId")
+        self._AccessGroupId = params.get("AccessGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CSV(AbstractModel):
     """CSV类型数据格式
 
@@ -2436,6 +2528,135 @@ class CosPermission(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateCHDFSBindingProductRequest(AbstractModel):
+    """CreateCHDFSBindingProduct请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MountPoint: 需要绑定的元数据加速桶名
+        :type MountPoint: str
+        :param _BucketType: 桶的类型，分为cos和lakefs
+        :type BucketType: str
+        :param _ProductName: 产品名称
+        :type ProductName: str
+        :param _EngineName: 引擎名称，ProductName选择DLC产品时，必传此参数。其他产品可不传
+        :type EngineName: str
+        :param _VpcInfo: vpc信息，产品名称为other时必传此参数
+        :type VpcInfo: list of VpcInfo
+        """
+        self._MountPoint = None
+        self._BucketType = None
+        self._ProductName = None
+        self._EngineName = None
+        self._VpcInfo = None
+
+    @property
+    def MountPoint(self):
+        return self._MountPoint
+
+    @MountPoint.setter
+    def MountPoint(self, MountPoint):
+        self._MountPoint = MountPoint
+
+    @property
+    def BucketType(self):
+        return self._BucketType
+
+    @BucketType.setter
+    def BucketType(self, BucketType):
+        self._BucketType = BucketType
+
+    @property
+    def ProductName(self):
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
+
+    @property
+    def EngineName(self):
+        return self._EngineName
+
+    @EngineName.setter
+    def EngineName(self, EngineName):
+        self._EngineName = EngineName
+
+    @property
+    def VpcInfo(self):
+        return self._VpcInfo
+
+    @VpcInfo.setter
+    def VpcInfo(self, VpcInfo):
+        self._VpcInfo = VpcInfo
+
+
+    def _deserialize(self, params):
+        self._MountPoint = params.get("MountPoint")
+        self._BucketType = params.get("BucketType")
+        self._ProductName = params.get("ProductName")
+        self._EngineName = params.get("EngineName")
+        if params.get("VpcInfo") is not None:
+            self._VpcInfo = []
+            for item in params.get("VpcInfo"):
+                obj = VpcInfo()
+                obj._deserialize(item)
+                self._VpcInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCHDFSBindingProductResponse(AbstractModel):
+    """CreateCHDFSBindingProduct返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MountPointAssociates: 绑定信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MountPointAssociates: list of MountPointAssociates
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MountPointAssociates = None
+        self._RequestId = None
+
+    @property
+    def MountPointAssociates(self):
+        return self._MountPointAssociates
+
+    @MountPointAssociates.setter
+    def MountPointAssociates(self, MountPointAssociates):
+        self._MountPointAssociates = MountPointAssociates
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("MountPointAssociates") is not None:
+            self._MountPointAssociates = []
+            for item in params.get("MountPointAssociates"):
+                obj = MountPointAssociates()
+                obj._deserialize(item)
+                self._MountPointAssociates.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class CreateDMSDatabaseRequest(AbstractModel):
@@ -5894,6 +6115,79 @@ class CrontabResumeSuspendStrategy(AbstractModel):
         
 
 
+class DLCCatalogAccess(AbstractModel):
+    """DLC 数据目录访问权限
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: VPCID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param _Product: 产品类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Product: str
+        :param _Description: 描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        """
+        self._VpcId = None
+        self._Product = None
+        self._Description = None
+        self._CreateTime = None
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._Product = params.get("Product")
+        self._Description = params.get("Description")
+        self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DMSColumn(AbstractModel):
     """迁移列对象
 
@@ -8816,6 +9110,117 @@ class DatasourceConnectionLocation(AbstractModel):
         
 
 
+class DeleteCHDFSBindingProductRequest(AbstractModel):
+    """DeleteCHDFSBindingProduct请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MountPoint: 需要解绑的元数据加速桶名
+        :type MountPoint: str
+        :param _BucketType: 桶的类型，分为cos和lakefs
+        :type BucketType: str
+        :param _ProductName: 产品名称
+        :type ProductName: str
+        :param _EngineName: 引擎名称，ProductName选择DLC产品时，必传此参数。其他产品可不传
+        :type EngineName: str
+        :param _VpcInfo: vpc信息，ProductName选择other时，必传此参数
+        :type VpcInfo: list of VpcInfo
+        """
+        self._MountPoint = None
+        self._BucketType = None
+        self._ProductName = None
+        self._EngineName = None
+        self._VpcInfo = None
+
+    @property
+    def MountPoint(self):
+        return self._MountPoint
+
+    @MountPoint.setter
+    def MountPoint(self, MountPoint):
+        self._MountPoint = MountPoint
+
+    @property
+    def BucketType(self):
+        return self._BucketType
+
+    @BucketType.setter
+    def BucketType(self, BucketType):
+        self._BucketType = BucketType
+
+    @property
+    def ProductName(self):
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
+
+    @property
+    def EngineName(self):
+        return self._EngineName
+
+    @EngineName.setter
+    def EngineName(self, EngineName):
+        self._EngineName = EngineName
+
+    @property
+    def VpcInfo(self):
+        return self._VpcInfo
+
+    @VpcInfo.setter
+    def VpcInfo(self, VpcInfo):
+        self._VpcInfo = VpcInfo
+
+
+    def _deserialize(self, params):
+        self._MountPoint = params.get("MountPoint")
+        self._BucketType = params.get("BucketType")
+        self._ProductName = params.get("ProductName")
+        self._EngineName = params.get("EngineName")
+        if params.get("VpcInfo") is not None:
+            self._VpcInfo = []
+            for item in params.get("VpcInfo"):
+                obj = VpcInfo()
+                obj._deserialize(item)
+                self._VpcInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCHDFSBindingProductResponse(AbstractModel):
+    """DeleteCHDFSBindingProduct返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteDataEngineRequest(AbstractModel):
     """DeleteDataEngine请求参数结构体
 
@@ -9037,6 +9442,37 @@ class DeleteSparkAppRequest(AbstractModel):
 
 class DeleteSparkAppResponse(AbstractModel):
     """DeleteSparkApp返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteThirdPartyAccessUserRequest(AbstractModel):
+    """DeleteThirdPartyAccessUser请求参数结构体
+
+    """
+
+
+class DeleteThirdPartyAccessUserResponse(AbstractModel):
+    """DeleteThirdPartyAccessUser返回参数结构体
 
     """
 
@@ -9313,6 +9749,119 @@ class DescribeAdvancedStoreLocationResponse(AbstractModel):
         self._StoreLocation = params.get("StoreLocation")
         self._HasLakeFs = params.get("HasLakeFs")
         self._LakeFsStatus = params.get("LakeFsStatus")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDLCCatalogAccessRequest(AbstractModel):
+    """DescribeDLCCatalogAccess请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 显示条数
+        :type Limit: int
+        :param _Offset: 记录数量
+        :type Offset: int
+        :param _Filter: 过滤条件
+        :type Filter: :class:`tencentcloud.dlc.v20210125.models.Filter`
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Filter = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filter(self):
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDLCCatalogAccessResponse(AbstractModel):
+    """DescribeDLCCatalogAccess返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _Rows: DLCCatalog授权列表
+        :type Rows: list of DLCCatalogAccess
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Rows = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Rows(self):
+        return self._Rows
+
+    @Rows.setter
+    def Rows(self, Rows):
+        self._Rows = Rows
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Rows") is not None:
+            self._Rows = []
+            for item in params.get("Rows"):
+                obj = DLCCatalogAccess()
+                obj._deserialize(item)
+                self._Rows.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -12289,6 +12838,93 @@ class DescribeNotebookSessionsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeOtherCHDFSBindingListRequest(AbstractModel):
+    """DescribeOtherCHDFSBindingList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BucketId: 桶名
+        :type BucketId: str
+        """
+        self._BucketId = None
+
+    @property
+    def BucketId(self):
+        return self._BucketId
+
+    @BucketId.setter
+    def BucketId(self, BucketId):
+        self._BucketId = BucketId
+
+
+    def _deserialize(self, params):
+        self._BucketId = params.get("BucketId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOtherCHDFSBindingListResponse(AbstractModel):
+    """DescribeOtherCHDFSBindingList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OtherCHDFSBindingList: 非DLC 产品绑定列表
+        :type OtherCHDFSBindingList: list of OtherCHDFSBinding
+        :param _Total: 总记录数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._OtherCHDFSBindingList = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def OtherCHDFSBindingList(self):
+        return self._OtherCHDFSBindingList
+
+    @OtherCHDFSBindingList.setter
+    def OtherCHDFSBindingList(self, OtherCHDFSBindingList):
+        self._OtherCHDFSBindingList = OtherCHDFSBindingList
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("OtherCHDFSBindingList") is not None:
+            self._OtherCHDFSBindingList = []
+            for item in params.get("OtherCHDFSBindingList"):
+                obj = OtherCHDFSBinding()
+                obj._deserialize(item)
+                self._OtherCHDFSBindingList.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeResultDownloadRequest(AbstractModel):
     """DescribeResultDownload请求参数结构体
 
@@ -13261,6 +13897,49 @@ class DescribeStoreLocationResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._StoreLocation = params.get("StoreLocation")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSubUserAccessPolicyRequest(AbstractModel):
+    """DescribeSubUserAccessPolicy请求参数结构体
+
+    """
+
+
+class DescribeSubUserAccessPolicyResponse(AbstractModel):
+    """DescribeSubUserAccessPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyDocument: 子用户访问策略
+        :type PolicyDocument: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PolicyDocument = None
+        self._RequestId = None
+
+    @property
+    def PolicyDocument(self):
+        return self._PolicyDocument
+
+    @PolicyDocument.setter
+    def PolicyDocument(self, PolicyDocument):
+        self._PolicyDocument = PolicyDocument
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PolicyDocument = params.get("PolicyDocument")
         self._RequestId = params.get("RequestId")
 
 
@@ -14454,6 +15133,51 @@ class DescribeTasksResponse(AbstractModel):
         if params.get("TasksOverview") is not None:
             self._TasksOverview = TasksOverview()
             self._TasksOverview._deserialize(params.get("TasksOverview"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeThirdPartyAccessUserRequest(AbstractModel):
+    """DescribeThirdPartyAccessUser请求参数结构体
+
+    """
+
+
+class DescribeThirdPartyAccessUserResponse(AbstractModel):
+    """DescribeThirdPartyAccessUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserInfo: 用户信息
+        :type UserInfo: :class:`tencentcloud.dlc.v20210125.models.OpendThirdAccessUserInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._UserInfo = None
+        self._RequestId = None
+
+    @property
+    def UserInfo(self):
+        return self._UserInfo
+
+    @UserInfo.setter
+    def UserInfo(self, UserInfo):
+        self._UserInfo = UserInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("UserInfo") is not None:
+            self._UserInfo = OpendThirdAccessUserInfo()
+            self._UserInfo._deserialize(params.get("UserInfo"))
         self._RequestId = params.get("RequestId")
 
 
@@ -16674,6 +17398,112 @@ class GetOptimizerPolicyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GrantDLCCatalogAccessRequest(AbstractModel):
+    """GrantDLCCatalogAccess请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: 授权VpcId
+        :type VpcId: str
+        :param _Product: 产品(EMR|DLC|Doris|Inlong|Wedata)
+        :type Product: str
+        :param _Description: 描述
+        :type Description: str
+        :param _VpcUin: VPC所属账号UIN
+        :type VpcUin: str
+        :param _VpcAppId: VPC所属账号AppId
+        :type VpcAppId: int
+        """
+        self._VpcId = None
+        self._Product = None
+        self._Description = None
+        self._VpcUin = None
+        self._VpcAppId = None
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def VpcUin(self):
+        return self._VpcUin
+
+    @VpcUin.setter
+    def VpcUin(self, VpcUin):
+        self._VpcUin = VpcUin
+
+    @property
+    def VpcAppId(self):
+        return self._VpcAppId
+
+    @VpcAppId.setter
+    def VpcAppId(self, VpcAppId):
+        self._VpcAppId = VpcAppId
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._Product = params.get("Product")
+        self._Description = params.get("Description")
+        self._VpcUin = params.get("VpcUin")
+        self._VpcAppId = params.get("VpcAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GrantDLCCatalogAccessResponse(AbstractModel):
+    """GrantDLCCatalogAccess返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class HiveInfo(AbstractModel):
     """hive类型数据源的信息
 
@@ -18812,6 +19642,92 @@ class ModifyWorkGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class MountPointAssociates(AbstractModel):
+    """绑定融合桶信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BucketId: 桶Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BucketId: str
+        :param _VpcId: vpcId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param _VpcCidrBlock: 子网地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcCidrBlock: str
+        :param _AccessGroupId: 权限组Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessGroupId: str
+        :param _AccessRuleId: 权限规则Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessRuleId: int
+        """
+        self._BucketId = None
+        self._VpcId = None
+        self._VpcCidrBlock = None
+        self._AccessGroupId = None
+        self._AccessRuleId = None
+
+    @property
+    def BucketId(self):
+        return self._BucketId
+
+    @BucketId.setter
+    def BucketId(self, BucketId):
+        self._BucketId = BucketId
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def VpcCidrBlock(self):
+        return self._VpcCidrBlock
+
+    @VpcCidrBlock.setter
+    def VpcCidrBlock(self, VpcCidrBlock):
+        self._VpcCidrBlock = VpcCidrBlock
+
+    @property
+    def AccessGroupId(self):
+        return self._AccessGroupId
+
+    @AccessGroupId.setter
+    def AccessGroupId(self, AccessGroupId):
+        self._AccessGroupId = AccessGroupId
+
+    @property
+    def AccessRuleId(self):
+        return self._AccessRuleId
+
+    @AccessRuleId.setter
+    def AccessRuleId(self, AccessRuleId):
+        self._AccessRuleId = AccessRuleId
+
+
+    def _deserialize(self, params):
+        self._BucketId = params.get("BucketId")
+        self._VpcId = params.get("VpcId")
+        self._VpcCidrBlock = params.get("VpcCidrBlock")
+        self._AccessGroupId = params.get("AccessGroupId")
+        self._AccessRuleId = params.get("AccessRuleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MysqlInfo(AbstractModel):
     """Mysql类型数据源信息
 
@@ -19834,6 +20750,79 @@ class NotebookSessions(AbstractModel):
         
 
 
+class OpendThirdAccessUserInfo(AbstractModel):
+    """开通了第三方访问的用户信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: id信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param _Uin: 用户主UIN
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param _AppId: 用户AppId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: str
+        :param _CreateTime: 开通时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        """
+        self._Id = None
+        self._Uin = None
+        self._AppId = None
+        self._CreateTime = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Uin = params.get("Uin")
+        self._AppId = params.get("AppId")
+        self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Other(AbstractModel):
     """数据格式其它类型。
 
@@ -19857,6 +20846,84 @@ class Other(AbstractModel):
 
     def _deserialize(self, params):
         self._Format = params.get("Format")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OtherCHDFSBinding(AbstractModel):
+    """非DLC产品CHDFS绑定
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductName: 产品名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductName: str
+        :param _SuperUser: 用户名称（该字段已废弃）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuperUser: list of str
+        :param _VpcInfo: vpc配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcInfo: list of CHDFSProductVpcInfo
+        :param _IsBind: 是否与该桶绑定（该字段已废弃）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsBind: bool
+        """
+        self._ProductName = None
+        self._SuperUser = None
+        self._VpcInfo = None
+        self._IsBind = None
+
+    @property
+    def ProductName(self):
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
+
+    @property
+    def SuperUser(self):
+        return self._SuperUser
+
+    @SuperUser.setter
+    def SuperUser(self, SuperUser):
+        self._SuperUser = SuperUser
+
+    @property
+    def VpcInfo(self):
+        return self._VpcInfo
+
+    @VpcInfo.setter
+    def VpcInfo(self, VpcInfo):
+        self._VpcInfo = VpcInfo
+
+    @property
+    def IsBind(self):
+        return self._IsBind
+
+    @IsBind.setter
+    def IsBind(self, IsBind):
+        self._IsBind = IsBind
+
+
+    def _deserialize(self, params):
+        self._ProductName = params.get("ProductName")
+        self._SuperUser = params.get("SuperUser")
+        if params.get("VpcInfo") is not None:
+            self._VpcInfo = []
+            for item in params.get("VpcInfo"):
+                obj = CHDFSProductVpcInfo()
+                obj._deserialize(item)
+                self._VpcInfo.append(obj)
+        self._IsBind = params.get("IsBind")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20750,6 +21817,37 @@ class QueryTaskCostDetailResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RegisterThirdPartyAccessUserRequest(AbstractModel):
+    """RegisterThirdPartyAccessUser请求参数结构体
+
+    """
+
+
+class RegisterThirdPartyAccessUserResponse(AbstractModel):
+    """RegisterThirdPartyAccessUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class RenewDataEngineRequest(AbstractModel):
     """RenewDataEngine请求参数结构体
 
@@ -21089,6 +22187,64 @@ class RestartDataEngineRequest(AbstractModel):
 
 class RestartDataEngineResponse(AbstractModel):
     """RestartDataEngine返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class RevokeDLCCatalogAccessRequest(AbstractModel):
+    """RevokeDLCCatalogAccess请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: VpcID
+        :type VpcId: str
+        """
+        self._VpcId = None
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RevokeDLCCatalogAccessResponse(AbstractModel):
+    """RevokeDLCCatalogAccess返回参数结构体
 
     """
 
@@ -26289,6 +27445,126 @@ class ViewResponseInfo(AbstractModel):
                 self._Properties.append(obj)
         self._CreateTime = params.get("CreateTime")
         self._ModifiedTime = params.get("ModifiedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VpcCidrBlock(AbstractModel):
+    """VPC子网信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CidrId: 子网Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CidrId: str
+        :param _CidrAddr: 子网网段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CidrAddr: str
+        """
+        self._CidrId = None
+        self._CidrAddr = None
+
+    @property
+    def CidrId(self):
+        return self._CidrId
+
+    @CidrId.setter
+    def CidrId(self, CidrId):
+        self._CidrId = CidrId
+
+    @property
+    def CidrAddr(self):
+        return self._CidrAddr
+
+    @CidrAddr.setter
+    def CidrAddr(self, CidrAddr):
+        self._CidrAddr = CidrAddr
+
+
+    def _deserialize(self, params):
+        self._CidrId = params.get("CidrId")
+        self._CidrAddr = params.get("CidrAddr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VpcInfo(AbstractModel):
+    """vpc信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: vpc Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param _VpcCidrBlock: vpc子网
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcCidrBlock: str
+        :param _RuleId: 规则Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleId: int
+        :param _AccessGroupId: 权限组Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessGroupId: str
+        """
+        self._VpcId = None
+        self._VpcCidrBlock = None
+        self._RuleId = None
+        self._AccessGroupId = None
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def VpcCidrBlock(self):
+        return self._VpcCidrBlock
+
+    @VpcCidrBlock.setter
+    def VpcCidrBlock(self, VpcCidrBlock):
+        self._VpcCidrBlock = VpcCidrBlock
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def AccessGroupId(self):
+        return self._AccessGroupId
+
+    @AccessGroupId.setter
+    def AccessGroupId(self, AccessGroupId):
+        self._AccessGroupId = AccessGroupId
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._VpcCidrBlock = params.get("VpcCidrBlock")
+        self._RuleId = params.get("RuleId")
+        self._AccessGroupId = params.get("AccessGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

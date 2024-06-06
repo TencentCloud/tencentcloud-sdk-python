@@ -3415,7 +3415,7 @@ class DescribeInstanceParamsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 指定待查询参数列表的实例ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+        :param _InstanceId: 指定待查询参数列表的实例 ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :type InstanceId: str
         """
         self._InstanceId = None
@@ -3448,15 +3448,15 @@ class DescribeInstanceParamsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceEnumParam: 参数值为枚举类型参数集合。
+        :param _InstanceEnumParam: 参数值为枚举类型的参数集合。
         :type InstanceEnumParam: list of InstanceEnumParam
-        :param _InstanceIntegerParam: 参数值为 Integer 类型参数集合。
+        :param _InstanceIntegerParam: 参数值为 Integer 类型的参数集合。
         :type InstanceIntegerParam: list of InstanceIntegerParam
         :param _InstanceTextParam: 参数值为 Text 类型的参数集合。
         :type InstanceTextParam: list of InstanceTextParam
         :param _InstanceMultiParam: 参数值为混合类型的参数集合。
         :type InstanceMultiParam: list of InstanceMultiParam
-        :param _TotalCount: 当前实例支持修改的参数个数统计 如0
+        :param _TotalCount: 当前实例支持修改的参数数量。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

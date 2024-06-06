@@ -42501,6 +42501,12 @@ class OrganizationalFunction(AbstractModel):
         :param _Tag: 函数tag
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tag: str
+        :param _OperatorUserIdsStr: 操作人 ID 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperatorUserIdsStr: list of str
+        :param _OwnerUserIdsStr: 公有云 Owner ID 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerUserIdsStr: list of str
         """
         self._Name = None
         self._DisplayName = None
@@ -42528,6 +42534,8 @@ class OrganizationalFunction(AbstractModel):
         self._OwnerName = None
         self._SubmitTimestamp = None
         self._Tag = None
+        self._OperatorUserIdsStr = None
+        self._OwnerUserIdsStr = None
 
     @property
     def Name(self):
@@ -42737,6 +42745,22 @@ class OrganizationalFunction(AbstractModel):
     def Tag(self, Tag):
         self._Tag = Tag
 
+    @property
+    def OperatorUserIdsStr(self):
+        return self._OperatorUserIdsStr
+
+    @OperatorUserIdsStr.setter
+    def OperatorUserIdsStr(self, OperatorUserIdsStr):
+        self._OperatorUserIdsStr = OperatorUserIdsStr
+
+    @property
+    def OwnerUserIdsStr(self):
+        return self._OwnerUserIdsStr
+
+    @OwnerUserIdsStr.setter
+    def OwnerUserIdsStr(self, OwnerUserIdsStr):
+        self._OwnerUserIdsStr = OwnerUserIdsStr
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -42770,6 +42794,8 @@ class OrganizationalFunction(AbstractModel):
         self._OwnerName = params.get("OwnerName")
         self._SubmitTimestamp = params.get("SubmitTimestamp")
         self._Tag = params.get("Tag")
+        self._OperatorUserIdsStr = params.get("OperatorUserIdsStr")
+        self._OwnerUserIdsStr = params.get("OwnerUserIdsStr")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

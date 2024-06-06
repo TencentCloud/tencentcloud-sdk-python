@@ -440,6 +440,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCHDFSBindingProduct(self, request):
+        """此接口（CreateCHDFSBindingProduct）用于创建元数据加速桶和产品绑定关系
+
+        :param request: Request instance for CreateCHDFSBindingProduct.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateCHDFSBindingProductRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateCHDFSBindingProductResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCHDFSBindingProduct", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCHDFSBindingProductResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDMSDatabase(self, request):
         """DMS元数据创建库
 
@@ -946,6 +969,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteCHDFSBindingProduct(self, request):
+        """此接口（DeleteCHDFSBindingProduct）用于删除元数据加速桶和产品绑定关系
+
+        :param request: Request instance for DeleteCHDFSBindingProduct.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteCHDFSBindingProductRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DeleteCHDFSBindingProductResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCHDFSBindingProduct", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCHDFSBindingProductResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteDataEngine(self, request):
         """删除数据引擎
 
@@ -1038,6 +1084,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteThirdPartyAccessUser(self, request):
+        """本接口（RegisterThirdPartyAccessUser）用于移除第三方平台访问
+
+        :param request: Request instance for DeleteThirdPartyAccessUser.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteThirdPartyAccessUserRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DeleteThirdPartyAccessUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteThirdPartyAccessUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteThirdPartyAccessUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteUser(self, request):
         """删除用户
 
@@ -1121,6 +1190,29 @@ class DlcClient(AbstractClient):
             body = self.call("DescribeAdvancedStoreLocation", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAdvancedStoreLocationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDLCCatalogAccess(self, request):
+        """查询DLC Catalog授权列表
+
+        :param request: Request instance for DescribeDLCCatalogAccess.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDLCCatalogAccessRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeDLCCatalogAccessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDLCCatalogAccess", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDLCCatalogAccessResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1636,6 +1728,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeOtherCHDFSBindingList(self, request):
+        """此接口（DescribeOtherCHDFSBindingList）用于查询其他产品元数据加速桶绑定列表
+
+        :param request: Request instance for DescribeOtherCHDFSBindingList.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeOtherCHDFSBindingListRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeOtherCHDFSBindingListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOtherCHDFSBindingList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOtherCHDFSBindingListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeResultDownload(self, request):
         """查询结果下载任务
 
@@ -1820,6 +1935,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSubUserAccessPolicy(self, request):
+        """本接口（DescribeSubUserAccessPolicy）用于开通了第三方平台访问的用户，查询其子用户的访问策略
+
+        :param request: Request instance for DescribeSubUserAccessPolicy.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeSubUserAccessPolicyRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeSubUserAccessPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSubUserAccessPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSubUserAccessPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTable(self, request):
         """本接口（DescribeTable），用于查询单个表的详细信息。
 
@@ -1972,6 +2110,29 @@ class DlcClient(AbstractClient):
             body = self.call("DescribeTasksCostInfo", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTasksCostInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeThirdPartyAccessUser(self, request):
+        """本接口（RegisterThirdPartyAccessUser）查询开通第三方平台访问的用户信息
+
+        :param request: Request instance for DescribeThirdPartyAccessUser.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeThirdPartyAccessUserRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeThirdPartyAccessUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeThirdPartyAccessUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeThirdPartyAccessUserResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2349,6 +2510,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GrantDLCCatalogAccess(self, request):
+        """授权访问DLC Catalog
+
+        :param request: Request instance for GrantDLCCatalogAccess.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GrantDLCCatalogAccessRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GrantDLCCatalogAccessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GrantDLCCatalogAccess", params, headers=headers)
+            response = json.loads(body)
+            model = models.GrantDLCCatalogAccessResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListTaskJobLogDetail(self, request):
         """本接口（ListTaskJobLogDetail）用于获取spark 作业任务日志详情
 
@@ -2648,6 +2832,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RegisterThirdPartyAccessUser(self, request):
+        """本接口（RegisterThirdPartyAccessUser）用于开通第三方平台访问
+
+        :param request: Request instance for RegisterThirdPartyAccessUser.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.RegisterThirdPartyAccessUserRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.RegisterThirdPartyAccessUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RegisterThirdPartyAccessUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.RegisterThirdPartyAccessUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RenewDataEngine(self, request):
         """续费数据引擎
 
@@ -2708,6 +2915,29 @@ class DlcClient(AbstractClient):
             body = self.call("RestartDataEngine", params, headers=headers)
             response = json.loads(body)
             model = models.RestartDataEngineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RevokeDLCCatalogAccess(self, request):
+        """撤销DLC Catalog访问权限
+
+        :param request: Request instance for RevokeDLCCatalogAccess.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.RevokeDLCCatalogAccessRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.RevokeDLCCatalogAccessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RevokeDLCCatalogAccess", params, headers=headers)
+            response = json.loads(body)
+            model = models.RevokeDLCCatalogAccessResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
