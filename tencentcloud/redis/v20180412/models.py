@@ -2817,6 +2817,232 @@ class DescribeAutoBackupConfigResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeBackupDetailRequest(AbstractModel):
+    """DescribeBackupDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID。
+        :type InstanceId: str
+        :param _BackupId: 备份 ID，可通过接口 [DescribeInstanceBackups](https://cloud.tencent.com/document/product/239/20011) 返回的参数 **RedisBackupSet** 获取。
+        :type BackupId: str
+        """
+        self._InstanceId = None
+        self._BackupId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def BackupId(self):
+        return self._BackupId
+
+    @BackupId.setter
+    def BackupId(self, BackupId):
+        self._BackupId = BackupId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._BackupId = params.get("BackupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupDetailResponse(AbstractModel):
+    """DescribeBackupDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupId: 备份 ID。
+        :type BackupId: str
+        :param _StartTime: 备份开始时间。
+        :type StartTime: str
+        :param _EndTime: 备份结束时间。
+        :type EndTime: str
+        :param _BackupType: 备份方式。 
+
+- 1：手动备份。
+-  0：自动备份。
+        :type BackupType: str
+        :param _Status: 备份状态。 
+
+- 1：备份被其它流程锁定。
+- 2：备份正常，没有被任何流程锁定。
+- -1：备份已过期。
+- 3：备份正在被导出。
+- 4：备份导出成功。
+        :type Status: int
+        :param _Remark: 备份的备注信息。
+        :type Remark: str
+        :param _Locked: 备份是否被锁定。
+
+- 0：未被锁定。
+- 1：已被锁定。
+        :type Locked: int
+        :param _BackupSize: 备份文件大小。单位：Byte。
+        :type BackupSize: int
+        :param _InstanceType: 实例类型。
+        :type InstanceType: int
+        :param _MemSize: 单分片内存规格大小，单位：MB。
+        :type MemSize: int
+        :param _ShardNum: 分片数量。
+        :type ShardNum: int
+        :param _ReplicasNum: 副本数量。
+        :type ReplicasNum: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BackupId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._BackupType = None
+        self._Status = None
+        self._Remark = None
+        self._Locked = None
+        self._BackupSize = None
+        self._InstanceType = None
+        self._MemSize = None
+        self._ShardNum = None
+        self._ReplicasNum = None
+        self._RequestId = None
+
+    @property
+    def BackupId(self):
+        return self._BackupId
+
+    @BackupId.setter
+    def BackupId(self, BackupId):
+        self._BackupId = BackupId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def BackupType(self):
+        return self._BackupType
+
+    @BackupType.setter
+    def BackupType(self, BackupType):
+        self._BackupType = BackupType
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Locked(self):
+        return self._Locked
+
+    @Locked.setter
+    def Locked(self, Locked):
+        self._Locked = Locked
+
+    @property
+    def BackupSize(self):
+        return self._BackupSize
+
+    @BackupSize.setter
+    def BackupSize(self, BackupSize):
+        self._BackupSize = BackupSize
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def MemSize(self):
+        return self._MemSize
+
+    @MemSize.setter
+    def MemSize(self, MemSize):
+        self._MemSize = MemSize
+
+    @property
+    def ShardNum(self):
+        return self._ShardNum
+
+    @ShardNum.setter
+    def ShardNum(self, ShardNum):
+        self._ShardNum = ShardNum
+
+    @property
+    def ReplicasNum(self):
+        return self._ReplicasNum
+
+    @ReplicasNum.setter
+    def ReplicasNum(self, ReplicasNum):
+        self._ReplicasNum = ReplicasNum
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._BackupId = params.get("BackupId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._BackupType = params.get("BackupType")
+        self._Status = params.get("Status")
+        self._Remark = params.get("Remark")
+        self._Locked = params.get("Locked")
+        self._BackupSize = params.get("BackupSize")
+        self._InstanceType = params.get("InstanceType")
+        self._MemSize = params.get("MemSize")
+        self._ShardNum = params.get("ShardNum")
+        self._ReplicasNum = params.get("ReplicasNum")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeBackupDownloadRestrictionRequest(AbstractModel):
     """DescribeBackupDownloadRestriction请求参数结构体
 

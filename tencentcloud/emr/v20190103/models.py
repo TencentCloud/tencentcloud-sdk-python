@@ -15357,12 +15357,16 @@ class ScaleOutClusterResponse(AbstractModel):
         :param _FlowId: 扩容流程ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowId: int
+        :param _TraceId: 查询流程状态，流程额外信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TraceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._InstanceId = None
         self._ClientToken = None
         self._FlowId = None
+        self._TraceId = None
         self._RequestId = None
 
     @property
@@ -15390,6 +15394,14 @@ class ScaleOutClusterResponse(AbstractModel):
         self._FlowId = FlowId
 
     @property
+    def TraceId(self):
+        return self._TraceId
+
+    @TraceId.setter
+    def TraceId(self, TraceId):
+        self._TraceId = TraceId
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -15402,6 +15414,7 @@ class ScaleOutClusterResponse(AbstractModel):
         self._InstanceId = params.get("InstanceId")
         self._ClientToken = params.get("ClientToken")
         self._FlowId = params.get("FlowId")
+        self._TraceId = params.get("TraceId")
         self._RequestId = params.get("RequestId")
 
 
@@ -15808,6 +15821,9 @@ class ScaleOutInstanceResponse(AbstractModel):
         :param _BillId: 大订单号。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BillId: str
+        :param _TraceId: 扩容TraceId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TraceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -15816,6 +15832,7 @@ class ScaleOutInstanceResponse(AbstractModel):
         self._ClientToken = None
         self._FlowId = None
         self._BillId = None
+        self._TraceId = None
         self._RequestId = None
 
     @property
@@ -15859,6 +15876,14 @@ class ScaleOutInstanceResponse(AbstractModel):
         self._BillId = BillId
 
     @property
+    def TraceId(self):
+        return self._TraceId
+
+    @TraceId.setter
+    def TraceId(self, TraceId):
+        self._TraceId = TraceId
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -15873,6 +15898,7 @@ class ScaleOutInstanceResponse(AbstractModel):
         self._ClientToken = params.get("ClientToken")
         self._FlowId = params.get("FlowId")
         self._BillId = params.get("BillId")
+        self._TraceId = params.get("TraceId")
         self._RequestId = params.get("RequestId")
 
 

@@ -463,6 +463,29 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBackupDetail(self, request):
+        """本接口（DescribeBackupDetail）用于查询实例的备份信息详情。
+
+        :param request: Request instance for DescribeBackupDetail.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeBackupDetailRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeBackupDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackupDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackupDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBackupDownloadRestriction(self, request):
         """本接口（DescribeBackupDownloadRestriction）用于查询当前地域数据库备份文件的下载地址。
 

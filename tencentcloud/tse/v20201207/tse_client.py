@@ -1751,6 +1751,29 @@ class TseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePublicAddressConfig(self, request):
+        """查询公网地址信息
+
+        :param request: Request instance for DescribePublicAddressConfig.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DescribePublicAddressConfigRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribePublicAddressConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePublicAddressConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePublicAddressConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePublicNetwork(self, request):
         """查询云原生API网关实例公网详情
 

@@ -455,6 +455,118 @@ class BidPreDomainsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class BiddingAppointResult(AbstractModel):
+    """我预定的域名结构体。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BusinessID: business_id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessID: str
+        :param _Domain: 域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domain: str
+        :param _AppointPrice: 预定价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppointPrice: int
+        :param _AppointBondPrice: 预约保证金
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppointBondPrice: int
+        :param _AppointEndTime: 预约结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppointEndTime: str
+        :param _AppointNum: 预约人数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppointNum: int
+        :param _Status:  1 已预约，2 竞价中，3 等待出价 4 等待支付 5 失败 6 转移中，7 转移成功 8 持有者索回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        """
+        self._BusinessID = None
+        self._Domain = None
+        self._AppointPrice = None
+        self._AppointBondPrice = None
+        self._AppointEndTime = None
+        self._AppointNum = None
+        self._Status = None
+
+    @property
+    def BusinessID(self):
+        return self._BusinessID
+
+    @BusinessID.setter
+    def BusinessID(self, BusinessID):
+        self._BusinessID = BusinessID
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def AppointPrice(self):
+        return self._AppointPrice
+
+    @AppointPrice.setter
+    def AppointPrice(self, AppointPrice):
+        self._AppointPrice = AppointPrice
+
+    @property
+    def AppointBondPrice(self):
+        return self._AppointBondPrice
+
+    @AppointBondPrice.setter
+    def AppointBondPrice(self, AppointBondPrice):
+        self._AppointBondPrice = AppointBondPrice
+
+    @property
+    def AppointEndTime(self):
+        return self._AppointEndTime
+
+    @AppointEndTime.setter
+    def AppointEndTime(self, AppointEndTime):
+        self._AppointEndTime = AppointEndTime
+
+    @property
+    def AppointNum(self):
+        return self._AppointNum
+
+    @AppointNum.setter
+    def AppointNum(self, AppointNum):
+        self._AppointNum = AppointNum
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._BusinessID = params.get("BusinessID")
+        self._Domain = params.get("Domain")
+        self._AppointPrice = params.get("AppointPrice")
+        self._AppointBondPrice = params.get("AppointBondPrice")
+        self._AppointEndTime = params.get("AppointEndTime")
+        self._AppointNum = params.get("AppointNum")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BiddingPreReleaseRequest(AbstractModel):
     """BiddingPreRelease请求参数结构体
 
@@ -547,6 +659,191 @@ class BiddingPreReleaseResponse(AbstractModel):
         self._IsNeedPay = params.get("IsNeedPay")
         self._BillingParam = params.get("BillingParam")
         self._RequestId = params.get("RequestId")
+
+
+class BiddingResult(AbstractModel):
+    """我竞价的域名结构体。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BusinessID: business_id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessID: str
+        :param _Domain: 域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domain: str
+        :param _CurrentPrice: 当前价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentPrice: int
+        :param _CurrentNickname: 当前用户昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentNickname: str
+        :param _BiddingPrice: 我的出价
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BiddingPrice: int
+        :param _BiddingBondPrice: 竞价保证金
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BiddingBondPrice: int
+        :param _BiddingEndTime: 竞价结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BiddingEndTime: str
+        :param _BiddingFlag: 竞价标识，1 领先，2 落后
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BiddingFlag: int
+        :param _BiddingNum: 出价次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BiddingNum: int
+        :param _Status: 1 已预约，2 竞价中，3 支付尾款 4 交割 5 交易失败 6 交易成功，7 已过期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        """
+        self._BusinessID = None
+        self._Domain = None
+        self._CurrentPrice = None
+        self._CurrentNickname = None
+        self._BiddingPrice = None
+        self._BiddingBondPrice = None
+        self._BiddingEndTime = None
+        self._BiddingFlag = None
+        self._BiddingNum = None
+        self._Status = None
+
+    @property
+    def BusinessID(self):
+        return self._BusinessID
+
+    @BusinessID.setter
+    def BusinessID(self, BusinessID):
+        self._BusinessID = BusinessID
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def CurrentPrice(self):
+        return self._CurrentPrice
+
+    @CurrentPrice.setter
+    def CurrentPrice(self, CurrentPrice):
+        self._CurrentPrice = CurrentPrice
+
+    @property
+    def CurrentNickname(self):
+        return self._CurrentNickname
+
+    @CurrentNickname.setter
+    def CurrentNickname(self, CurrentNickname):
+        self._CurrentNickname = CurrentNickname
+
+    @property
+    def BiddingPrice(self):
+        return self._BiddingPrice
+
+    @BiddingPrice.setter
+    def BiddingPrice(self, BiddingPrice):
+        self._BiddingPrice = BiddingPrice
+
+    @property
+    def BiddingBondPrice(self):
+        return self._BiddingBondPrice
+
+    @BiddingBondPrice.setter
+    def BiddingBondPrice(self, BiddingBondPrice):
+        self._BiddingBondPrice = BiddingBondPrice
+
+    @property
+    def BiddingEndTime(self):
+        return self._BiddingEndTime
+
+    @BiddingEndTime.setter
+    def BiddingEndTime(self, BiddingEndTime):
+        self._BiddingEndTime = BiddingEndTime
+
+    @property
+    def BiddingFlag(self):
+        return self._BiddingFlag
+
+    @BiddingFlag.setter
+    def BiddingFlag(self, BiddingFlag):
+        self._BiddingFlag = BiddingFlag
+
+    @property
+    def BiddingNum(self):
+        return self._BiddingNum
+
+    @BiddingNum.setter
+    def BiddingNum(self, BiddingNum):
+        self._BiddingNum = BiddingNum
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._BusinessID = params.get("BusinessID")
+        self._Domain = params.get("Domain")
+        self._CurrentPrice = params.get("CurrentPrice")
+        self._CurrentNickname = params.get("CurrentNickname")
+        self._BiddingPrice = params.get("BiddingPrice")
+        self._BiddingBondPrice = params.get("BiddingBondPrice")
+        self._BiddingEndTime = params.get("BiddingEndTime")
+        self._BiddingFlag = params.get("BiddingFlag")
+        self._BiddingNum = params.get("BiddingNum")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BiddingSuccessfulResult(AbstractModel):
+    """我得标的域名结构体。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PayEndTime: 支付结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayEndTime: str
+        """
+        self._PayEndTime = None
+
+    @property
+    def PayEndTime(self):
+        return self._PayEndTime
+
+    @PayEndTime.setter
+    def PayEndTime(self, PayEndTime):
+        self._PayEndTime = PayEndTime
+
+
+    def _deserialize(self, params):
+        self._PayEndTime = params.get("PayEndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CertificateInfo(AbstractModel):
@@ -1797,6 +2094,33 @@ class DeleteBiddingRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _BusinessID: business_id
+        :type BusinessID: str
+        """
+        self._BusinessID = None
+
+    @property
+    def BusinessID(self):
+        return self._BusinessID
+
+    @BusinessID.setter
+    def BusinessID(self, BusinessID):
+        self._BusinessID = BusinessID
+
+
+    def _deserialize(self, params):
+        self._BusinessID = params.get("BusinessID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DeleteBiddingResponse(AbstractModel):
     """DeleteBidding返回参数结构体
@@ -2421,6 +2745,33 @@ class DescribeBiddingAppointDetailRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _BusinessID: business_id
+        :type BusinessID: str
+        """
+        self._BusinessID = None
+
+    @property
+    def BusinessID(self):
+        return self._BusinessID
+
+    @BusinessID.setter
+    def BusinessID(self, BusinessID):
+        self._BusinessID = BusinessID
+
+
+    def _deserialize(self, params):
+        self._BusinessID = params.get("BusinessID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeBiddingAppointDetailResponse(AbstractModel):
     """DescribeBiddingAppointDetail返回参数结构体
@@ -2429,6 +2780,24 @@ class DescribeBiddingAppointDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _AppointNum: 预约人数
+        :type AppointNum: int
+        :param _AppointStartTime: 预约开始时间
+        :type AppointStartTime: str
+        :param _AppointEndTime: 预约结束时间
+        :type AppointEndTime: str
+        :param _RegTime:  注册时间
+        :type RegTime: str
+        :param _ExpireTime: 过期时间
+        :type ExpireTime: str
+        :param _DeleteTime: 删除时间
+        :type DeleteTime: str
+        :param _AppointPrice: 当前价格
+        :type AppointPrice: int
+        :param _AppointBondPrice: 预约保证金
+        :type AppointBondPrice: int
         :param _Status:  1 已预约，2 竞价中，3 等待出价 4 等待支付 5 失败 6 转移中，7 转移成功 8 持有者索回
         :type Status: int
         :param _BiddingBondRefund: 预约保证金是否已经退回
@@ -2437,9 +2806,90 @@ yes：退回 no: 未退回
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Domain = None
+        self._AppointNum = None
+        self._AppointStartTime = None
+        self._AppointEndTime = None
+        self._RegTime = None
+        self._ExpireTime = None
+        self._DeleteTime = None
+        self._AppointPrice = None
+        self._AppointBondPrice = None
         self._Status = None
         self._BiddingBondRefund = None
         self._RequestId = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def AppointNum(self):
+        return self._AppointNum
+
+    @AppointNum.setter
+    def AppointNum(self, AppointNum):
+        self._AppointNum = AppointNum
+
+    @property
+    def AppointStartTime(self):
+        return self._AppointStartTime
+
+    @AppointStartTime.setter
+    def AppointStartTime(self, AppointStartTime):
+        self._AppointStartTime = AppointStartTime
+
+    @property
+    def AppointEndTime(self):
+        return self._AppointEndTime
+
+    @AppointEndTime.setter
+    def AppointEndTime(self, AppointEndTime):
+        self._AppointEndTime = AppointEndTime
+
+    @property
+    def RegTime(self):
+        return self._RegTime
+
+    @RegTime.setter
+    def RegTime(self, RegTime):
+        self._RegTime = RegTime
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def DeleteTime(self):
+        return self._DeleteTime
+
+    @DeleteTime.setter
+    def DeleteTime(self, DeleteTime):
+        self._DeleteTime = DeleteTime
+
+    @property
+    def AppointPrice(self):
+        return self._AppointPrice
+
+    @AppointPrice.setter
+    def AppointPrice(self, AppointPrice):
+        self._AppointPrice = AppointPrice
+
+    @property
+    def AppointBondPrice(self):
+        return self._AppointBondPrice
+
+    @AppointBondPrice.setter
+    def AppointBondPrice(self, AppointBondPrice):
+        self._AppointBondPrice = AppointBondPrice
 
     @property
     def Status(self):
@@ -2467,6 +2917,15 @@ yes：退回 no: 未退回
 
 
     def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._AppointNum = params.get("AppointNum")
+        self._AppointStartTime = params.get("AppointStartTime")
+        self._AppointEndTime = params.get("AppointEndTime")
+        self._RegTime = params.get("RegTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._DeleteTime = params.get("DeleteTime")
+        self._AppointPrice = params.get("AppointPrice")
+        self._AppointBondPrice = params.get("AppointBondPrice")
         self._Status = params.get("Status")
         self._BiddingBondRefund = params.get("BiddingBondRefund")
         self._RequestId = params.get("RequestId")
@@ -2479,8 +2938,12 @@ class DescribeBiddingAppointListRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _PageNumber: 页码
+        :type PageNumber: int
         :param _PageSize: 每页数量
         :type PageSize: int
+        :param _Domain: 域名
+        :type Domain: str
         :param _Status: 状态： 1 已预约 9 预约持有者索回
         :type Status: list of int non-negative
         :param _SortField: 排序字段：AppointEndTime 预约结束时间
@@ -2488,10 +2951,20 @@ class DescribeBiddingAppointListRequest(AbstractModel):
         :param _SortOrder: 排序规则：asc升序，desc降序
         :type SortOrder: str
         """
+        self._PageNumber = None
         self._PageSize = None
+        self._Domain = None
         self._Status = None
         self._SortField = None
         self._SortOrder = None
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
 
     @property
     def PageSize(self):
@@ -2500,6 +2973,14 @@ class DescribeBiddingAppointListRequest(AbstractModel):
     @PageSize.setter
     def PageSize(self, PageSize):
         self._PageSize = PageSize
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
 
     @property
     def Status(self):
@@ -2527,7 +3008,9 @@ class DescribeBiddingAppointListRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
         self._PageSize = params.get("PageSize")
+        self._Domain = params.get("Domain")
         self._Status = params.get("Status")
         self._SortField = params.get("SortField")
         self._SortOrder = params.get("SortOrder")
@@ -2548,10 +3031,32 @@ class DescribeBiddingAppointListResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Total: 搜索结果条数
+        :type Total: int
+        :param _AppointList: 预约列表
+        :type AppointList: list of BiddingAppointResult
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Total = None
+        self._AppointList = None
         self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def AppointList(self):
+        return self._AppointList
+
+    @AppointList.setter
+    def AppointList(self, AppointList):
+        self._AppointList = AppointList
 
     @property
     def RequestId(self):
@@ -2563,6 +3068,13 @@ class DescribeBiddingAppointListResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("AppointList") is not None:
+            self._AppointList = []
+            for item in params.get("AppointList"):
+                obj = BiddingAppointResult()
+                obj._deserialize(item)
+                self._AppointList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -2570,6 +3082,33 @@ class DescribeBiddingDetailRequest(AbstractModel):
     """DescribeBiddingDetail请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _BusinessID: business_id
+        :type BusinessID: str
+        """
+        self._BusinessID = None
+
+    @property
+    def BusinessID(self):
+        return self._BusinessID
+
+    @BusinessID.setter
+    def BusinessID(self, BusinessID):
+        self._BusinessID = BusinessID
+
+
+    def _deserialize(self, params):
+        self._BusinessID = params.get("BusinessID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeBiddingDetailResponse(AbstractModel):
@@ -2579,10 +3118,164 @@ class DescribeBiddingDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _BiddingNum: 出价次数
+        :type BiddingNum: int
+        :param _BiddingStartTime: 竞价开始时间
+        :type BiddingStartTime: str
+        :param _BiddingEndTime: 竞价结束时间
+        :type BiddingEndTime: str
+        :param _RegTime:  注册时间
+        :type RegTime: str
+        :param _ExpireTime: 过期时间
+        :type ExpireTime: str
+        :param _DeleteTime: 删除时间
+        :type DeleteTime: str
+        :param _CurrentPrice: 当前价格
+        :type CurrentPrice: int
+        :param _CurrentNickname: 当前用户昵称
+        :type CurrentNickname: str
+        :param _BiddingBondPrice: 竞价保证金
+        :type BiddingBondPrice: int
+        :param _Status: 1 已预约，2 竞价中，3 支付尾款 4 交割 5 交易失败 6 交易成功，7 已过期
+        :type Status: int
+        :param _BiddingFlag: 竞价标识，1 领先，2 落后
+        :type BiddingFlag: int
+        :param _BiddingBondRefund: 是否退款，yes表示退款，no表示不退款
+        :type BiddingBondRefund: str
+        :param _BiddingPrice: 我的出价
+        :type BiddingPrice: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Domain = None
+        self._BiddingNum = None
+        self._BiddingStartTime = None
+        self._BiddingEndTime = None
+        self._RegTime = None
+        self._ExpireTime = None
+        self._DeleteTime = None
+        self._CurrentPrice = None
+        self._CurrentNickname = None
+        self._BiddingBondPrice = None
+        self._Status = None
+        self._BiddingFlag = None
+        self._BiddingBondRefund = None
+        self._BiddingPrice = None
         self._RequestId = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def BiddingNum(self):
+        return self._BiddingNum
+
+    @BiddingNum.setter
+    def BiddingNum(self, BiddingNum):
+        self._BiddingNum = BiddingNum
+
+    @property
+    def BiddingStartTime(self):
+        return self._BiddingStartTime
+
+    @BiddingStartTime.setter
+    def BiddingStartTime(self, BiddingStartTime):
+        self._BiddingStartTime = BiddingStartTime
+
+    @property
+    def BiddingEndTime(self):
+        return self._BiddingEndTime
+
+    @BiddingEndTime.setter
+    def BiddingEndTime(self, BiddingEndTime):
+        self._BiddingEndTime = BiddingEndTime
+
+    @property
+    def RegTime(self):
+        return self._RegTime
+
+    @RegTime.setter
+    def RegTime(self, RegTime):
+        self._RegTime = RegTime
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def DeleteTime(self):
+        return self._DeleteTime
+
+    @DeleteTime.setter
+    def DeleteTime(self, DeleteTime):
+        self._DeleteTime = DeleteTime
+
+    @property
+    def CurrentPrice(self):
+        return self._CurrentPrice
+
+    @CurrentPrice.setter
+    def CurrentPrice(self, CurrentPrice):
+        self._CurrentPrice = CurrentPrice
+
+    @property
+    def CurrentNickname(self):
+        return self._CurrentNickname
+
+    @CurrentNickname.setter
+    def CurrentNickname(self, CurrentNickname):
+        self._CurrentNickname = CurrentNickname
+
+    @property
+    def BiddingBondPrice(self):
+        return self._BiddingBondPrice
+
+    @BiddingBondPrice.setter
+    def BiddingBondPrice(self, BiddingBondPrice):
+        self._BiddingBondPrice = BiddingBondPrice
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def BiddingFlag(self):
+        return self._BiddingFlag
+
+    @BiddingFlag.setter
+    def BiddingFlag(self, BiddingFlag):
+        self._BiddingFlag = BiddingFlag
+
+    @property
+    def BiddingBondRefund(self):
+        return self._BiddingBondRefund
+
+    @BiddingBondRefund.setter
+    def BiddingBondRefund(self, BiddingBondRefund):
+        self._BiddingBondRefund = BiddingBondRefund
+
+    @property
+    def BiddingPrice(self):
+        return self._BiddingPrice
+
+    @BiddingPrice.setter
+    def BiddingPrice(self, BiddingPrice):
+        self._BiddingPrice = BiddingPrice
 
     @property
     def RequestId(self):
@@ -2594,6 +3287,20 @@ class DescribeBiddingDetailResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._BiddingNum = params.get("BiddingNum")
+        self._BiddingStartTime = params.get("BiddingStartTime")
+        self._BiddingEndTime = params.get("BiddingEndTime")
+        self._RegTime = params.get("RegTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._DeleteTime = params.get("DeleteTime")
+        self._CurrentPrice = params.get("CurrentPrice")
+        self._CurrentNickname = params.get("CurrentNickname")
+        self._BiddingBondPrice = params.get("BiddingBondPrice")
+        self._Status = params.get("Status")
+        self._BiddingFlag = params.get("BiddingFlag")
+        self._BiddingBondRefund = params.get("BiddingBondRefund")
+        self._BiddingPrice = params.get("BiddingPrice")
         self._RequestId = params.get("RequestId")
 
 
@@ -2604,8 +3311,12 @@ class DescribeBiddingListRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _PageNumber: 页码
+        :type PageNumber: int
         :param _PageSize: 每页数量
         :type PageSize: int
+        :param _Domain: 域名
+        :type Domain: str
         :param _Status: 2 竞价中  3 等待出价  4 交易失败  10 竞价阶段持有者赎回
         :type Status: list of int non-negative
         :param _SortField: 排序字段：BiddingEndTime 竞价结束时间	
@@ -2614,10 +3325,20 @@ BiddingPrice 我的价格
         :param _SortOrder: 排序规则：asc升序，desc降序
         :type SortOrder: str
         """
+        self._PageNumber = None
         self._PageSize = None
+        self._Domain = None
         self._Status = None
         self._SortField = None
         self._SortOrder = None
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
 
     @property
     def PageSize(self):
@@ -2626,6 +3347,14 @@ BiddingPrice 我的价格
     @PageSize.setter
     def PageSize(self, PageSize):
         self._PageSize = PageSize
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
 
     @property
     def Status(self):
@@ -2653,7 +3382,9 @@ BiddingPrice 我的价格
 
 
     def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
         self._PageSize = params.get("PageSize")
+        self._Domain = params.get("Domain")
         self._Status = params.get("Status")
         self._SortField = params.get("SortField")
         self._SortOrder = params.get("SortOrder")
@@ -2674,10 +3405,32 @@ class DescribeBiddingListResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Total: 搜索结果条数
+        :type Total: int
+        :param _BiddingList: 竞价列表
+        :type BiddingList: list of BiddingResult
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Total = None
+        self._BiddingList = None
         self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def BiddingList(self):
+        return self._BiddingList
+
+    @BiddingList.setter
+    def BiddingList(self, BiddingList):
+        self._BiddingList = BiddingList
 
     @property
     def RequestId(self):
@@ -2689,6 +3442,13 @@ class DescribeBiddingListResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("BiddingList") is not None:
+            self._BiddingList = []
+            for item in params.get("BiddingList"):
+                obj = BiddingResult()
+                obj._deserialize(item)
+                self._BiddingList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -2696,6 +3456,33 @@ class DescribeBiddingSuccessfulDetailRequest(AbstractModel):
     """DescribeBiddingSuccessfulDetail请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _BusinessID: business_id
+        :type BusinessID: str
+        """
+        self._BusinessID = None
+
+    @property
+    def BusinessID(self):
+        return self._BusinessID
+
+    @BusinessID.setter
+    def BusinessID(self, BusinessID):
+        self._BusinessID = BusinessID
+
+
+    def _deserialize(self, params):
+        self._BusinessID = params.get("BusinessID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeBiddingSuccessfulDetailResponse(AbstractModel):
@@ -2705,16 +3492,96 @@ class DescribeBiddingSuccessfulDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _SuccessfulTime: 得标时间
+        :type SuccessfulTime: str
+        :param _SuccessfulPrice: 得标价格
+        :type SuccessfulPrice: float
+        :param _RegTime:  注册时间
+        :type RegTime: str
+        :param _ExpireTime: 过期时间
+        :type ExpireTime: str
+        :param _DeleteTime: 删除时间
+        :type DeleteTime: str
+        :param _PayEndTime: 付款结束时间
+        :type PayEndTime: str
         :param _BiddingBondRefund: 保证金，是否退款，yes表示退款，no表示不退款
         :type BiddingBondRefund: str
+        :param _BiddingBondPrice: 保证金
+        :type BiddingBondPrice: float
         :param _Status: 状态：1 竞价中，2 待出价，3 竞价失败， 4 等待支付 5 等待转移， 6 转移中，7 交易成功，8 持有者索回，9 已违约
         :type Status: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Domain = None
+        self._SuccessfulTime = None
+        self._SuccessfulPrice = None
+        self._RegTime = None
+        self._ExpireTime = None
+        self._DeleteTime = None
+        self._PayEndTime = None
         self._BiddingBondRefund = None
+        self._BiddingBondPrice = None
         self._Status = None
         self._RequestId = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def SuccessfulTime(self):
+        return self._SuccessfulTime
+
+    @SuccessfulTime.setter
+    def SuccessfulTime(self, SuccessfulTime):
+        self._SuccessfulTime = SuccessfulTime
+
+    @property
+    def SuccessfulPrice(self):
+        return self._SuccessfulPrice
+
+    @SuccessfulPrice.setter
+    def SuccessfulPrice(self, SuccessfulPrice):
+        self._SuccessfulPrice = SuccessfulPrice
+
+    @property
+    def RegTime(self):
+        return self._RegTime
+
+    @RegTime.setter
+    def RegTime(self, RegTime):
+        self._RegTime = RegTime
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def DeleteTime(self):
+        return self._DeleteTime
+
+    @DeleteTime.setter
+    def DeleteTime(self, DeleteTime):
+        self._DeleteTime = DeleteTime
+
+    @property
+    def PayEndTime(self):
+        return self._PayEndTime
+
+    @PayEndTime.setter
+    def PayEndTime(self, PayEndTime):
+        self._PayEndTime = PayEndTime
 
     @property
     def BiddingBondRefund(self):
@@ -2723,6 +3590,14 @@ class DescribeBiddingSuccessfulDetailResponse(AbstractModel):
     @BiddingBondRefund.setter
     def BiddingBondRefund(self, BiddingBondRefund):
         self._BiddingBondRefund = BiddingBondRefund
+
+    @property
+    def BiddingBondPrice(self):
+        return self._BiddingBondPrice
+
+    @BiddingBondPrice.setter
+    def BiddingBondPrice(self, BiddingBondPrice):
+        self._BiddingBondPrice = BiddingBondPrice
 
     @property
     def Status(self):
@@ -2742,7 +3617,15 @@ class DescribeBiddingSuccessfulDetailResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._SuccessfulTime = params.get("SuccessfulTime")
+        self._SuccessfulPrice = params.get("SuccessfulPrice")
+        self._RegTime = params.get("RegTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._DeleteTime = params.get("DeleteTime")
+        self._PayEndTime = params.get("PayEndTime")
         self._BiddingBondRefund = params.get("BiddingBondRefund")
+        self._BiddingBondPrice = params.get("BiddingBondPrice")
         self._Status = params.get("Status")
         self._RequestId = params.get("RequestId")
 
@@ -2754,8 +3637,12 @@ class DescribeBiddingSuccessfulListRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _PageNumber: 页码
+        :type PageNumber: int
         :param _PageSize: 每页数量
         :type PageSize: int
+        :param _Domain: 域名
+        :type Domain: str
         :param _Status: 状态：5 等待支付 6 等待转移， 7 转移中，8 交易成功，11 尾款阶段持有者索回，12 已违约
         :type Status: list of int non-negative
         :param _SortField: 排序字段：SuccessfulTime 预约结束时间
@@ -2763,10 +3650,20 @@ class DescribeBiddingSuccessfulListRequest(AbstractModel):
         :param _SortOrder: 排序规则：asc升序，desc降序
         :type SortOrder: str
         """
+        self._PageNumber = None
         self._PageSize = None
+        self._Domain = None
         self._Status = None
         self._SortField = None
         self._SortOrder = None
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
 
     @property
     def PageSize(self):
@@ -2775,6 +3672,14 @@ class DescribeBiddingSuccessfulListRequest(AbstractModel):
     @PageSize.setter
     def PageSize(self, PageSize):
         self._PageSize = PageSize
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
 
     @property
     def Status(self):
@@ -2802,7 +3707,9 @@ class DescribeBiddingSuccessfulListRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
         self._PageSize = params.get("PageSize")
+        self._Domain = params.get("Domain")
         self._Status = params.get("Status")
         self._SortField = params.get("SortField")
         self._SortOrder = params.get("SortOrder")
@@ -2823,10 +3730,32 @@ class DescribeBiddingSuccessfulListResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Total: 搜索结果条数
+        :type Total: int
+        :param _SuccessfulList: 得标列表
+        :type SuccessfulList: list of BiddingSuccessfulResult
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Total = None
+        self._SuccessfulList = None
         self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def SuccessfulList(self):
+        return self._SuccessfulList
+
+    @SuccessfulList.setter
+    def SuccessfulList(self, SuccessfulList):
+        self._SuccessfulList = SuccessfulList
 
     @property
     def RequestId(self):
@@ -2838,6 +3767,13 @@ class DescribeBiddingSuccessfulListResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("SuccessfulList") is not None:
+            self._SuccessfulList = []
+            for item in params.get("SuccessfulList"):
+                obj = BiddingSuccessfulResult()
+                obj._deserialize(item)
+                self._SuccessfulList.append(obj)
         self._RequestId = params.get("RequestId")
 
 

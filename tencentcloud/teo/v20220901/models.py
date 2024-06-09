@@ -4756,6 +4756,124 @@ class CreateConfigGroupVersionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateCustomizeErrorPageRequest(AbstractModel):
+    """CreateCustomizeErrorPage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _Name: 自定义错误页名称，名称为 2-30 个字符。
+        :type Name: str
+        :param _ContentType: 自定义错误页面类型，取值有：<li>text/html； </li><li>application/json；</li><li>text/plain；</li><li>text/xml。</li>
+        :type ContentType: str
+        :param _Description: 自定义错误页面描述，描述不超过 60 个字符。
+        :type Description: str
+        :param _Content: 自定义错误页面内容，内容不超过 2KB。
+        :type Content: str
+        """
+        self._ZoneId = None
+        self._Name = None
+        self._ContentType = None
+        self._Description = None
+        self._Content = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ContentType(self):
+        return self._ContentType
+
+    @ContentType.setter
+    def ContentType(self, ContentType):
+        self._ContentType = ContentType
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Name = params.get("Name")
+        self._ContentType = params.get("ContentType")
+        self._Description = params.get("Description")
+        self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCustomizeErrorPageResponse(AbstractModel):
+    """CreateCustomizeErrorPage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageId: 页面 ID。
+        :type PageId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PageId = None
+        self._RequestId = None
+
+    @property
+    def PageId(self):
+        return self._PageId
+
+    @PageId.setter
+    def PageId(self, PageId):
+        self._PageId = PageId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PageId = params.get("PageId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateL4ProxyRequest(AbstractModel):
     """CreateL4Proxy请求参数结构体
 
@@ -6510,6 +6628,116 @@ class CustomEndpoint(AbstractModel):
         
 
 
+class CustomErrorPage(AbstractModel):
+    """自定义错误码页面结构体。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageId: 自定义错误页面 ID。
+        :type PageId: str
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _Name: 自定义错误页面名称。
+        :type Name: str
+        :param _ContentType: 自定义错误页面类型。
+        :type ContentType: str
+        :param _Description: 自定义错误页面描述。
+        :type Description: str
+        :param _Content: 自定义错误页面内容。
+        :type Content: str
+        :param _References: 自定义错误页面引用。
+        :type References: list of ErrorPageReference
+        """
+        self._PageId = None
+        self._ZoneId = None
+        self._Name = None
+        self._ContentType = None
+        self._Description = None
+        self._Content = None
+        self._References = None
+
+    @property
+    def PageId(self):
+        return self._PageId
+
+    @PageId.setter
+    def PageId(self, PageId):
+        self._PageId = PageId
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ContentType(self):
+        return self._ContentType
+
+    @ContentType.setter
+    def ContentType(self, ContentType):
+        self._ContentType = ContentType
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def References(self):
+        return self._References
+
+    @References.setter
+    def References(self, References):
+        self._References = References
+
+
+    def _deserialize(self, params):
+        self._PageId = params.get("PageId")
+        self._ZoneId = params.get("ZoneId")
+        self._Name = params.get("Name")
+        self._ContentType = params.get("ContentType")
+        self._Description = params.get("Description")
+        self._Content = params.get("Content")
+        if params.get("References") is not None:
+            self._References = []
+            for item in params.get("References"):
+                obj = ErrorPageReference()
+                obj._deserialize(item)
+                self._References.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CustomField(AbstractModel):
     """实时日志投递任务中的自定义日志字段。
 
@@ -7336,6 +7564,76 @@ class DeleteApplicationProxyRuleRequest(AbstractModel):
 
 class DeleteApplicationProxyRuleResponse(AbstractModel):
     """DeleteApplicationProxyRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteCustomErrorPageRequest(AbstractModel):
+    """DeleteCustomErrorPage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _PageId: 自定义页面 ID。
+        :type PageId: str
+        """
+        self._ZoneId = None
+        self._PageId = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def PageId(self):
+        return self._PageId
+
+    @PageId.setter
+    def PageId(self, PageId):
+        self._PageId = PageId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._PageId = params.get("PageId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCustomErrorPageResponse(AbstractModel):
+    """DeleteCustomErrorPage返回参数结构体
 
     """
 
@@ -9151,6 +9449,138 @@ class DescribeContentQuotaResponse(AbstractModel):
                 obj = Quota()
                 obj._deserialize(item)
                 self._PrefetchQuota.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCustomErrorPagesRequest(AbstractModel):
+    """DescribeCustomErrorPages请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _Filters: 过滤条件，Filters.Values 的上限为20，详细的过滤条件Name值如下：
+<li>page-id： 按照页面 ID 进行过滤；</li>
+<li>name： 按照页面名称进行过滤；</li>
+<li>description：按照页面描述过滤；</li>
+<li>content-type：按照页面类型过滤。</li>
+        :type Filters: list of AdvancedFilter
+        :param _Offset: 分页查询偏移量。默认值：0。
+        :type Offset: int
+        :param _Limit: 分页查询限制数目。默认值：20，最大值：1000。 
+        :type Limit: int
+        """
+        self._ZoneId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = AdvancedFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCustomErrorPagesResponse(AbstractModel):
+    """DescribeCustomErrorPages返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 自定义错误页面总数。
+        :type TotalCount: int
+        :param _ErrorPages: 自定义错误页面数据列表。
+        :type ErrorPages: list of CustomErrorPage
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ErrorPages = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ErrorPages(self):
+        return self._ErrorPages
+
+    @ErrorPages.setter
+    def ErrorPages(self, ErrorPages):
+        self._ErrorPages = ErrorPages
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ErrorPages") is not None:
+            self._ErrorPages = []
+            for item in params.get("ErrorPages"):
+                obj = CustomErrorPage()
+                obj._deserialize(item)
+                self._ErrorPages.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -14370,6 +14800,39 @@ class EnvInfo(AbstractModel):
         
 
 
+class ErrorPageReference(AbstractModel):
+    """自定义错误页面被引用的来源
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BusinessId: 引用的业务 ID，如自定义拦截规则 ID。
+        :type BusinessId: str
+        """
+        self._BusinessId = None
+
+    @property
+    def BusinessId(self):
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+
+    def _deserialize(self, params):
+        self._BusinessId = params.get("BusinessId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ExceptConfig(AbstractModel):
     """例外规则，用于配置需要跳过特定场景的规则
 
@@ -17917,6 +18380,124 @@ class ModifyApplicationProxyStatusRequest(AbstractModel):
 
 class ModifyApplicationProxyStatusResponse(AbstractModel):
     """ModifyApplicationProxyStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyCustomErrorPageRequest(AbstractModel):
+    """ModifyCustomErrorPage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageId: 自定义错误页面 ID。
+        :type PageId: str
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _Name: 自定义错误页名称，名称为2 - 60个字符。
+        :type Name: str
+        :param _Description: 自定义错误页描述，描述内容不超过60个字符。
+        :type Description: str
+        :param _ContentType: 自定义错误页面类型，取值有：<li>text/html。 </li><li>application/json。</li><li>plain/text。</li><li>text/xml。</li>
+        :type ContentType: str
+        :param _Content: 自定义错误页面内容。内容不超过 2KB。
+        :type Content: str
+        """
+        self._PageId = None
+        self._ZoneId = None
+        self._Name = None
+        self._Description = None
+        self._ContentType = None
+        self._Content = None
+
+    @property
+    def PageId(self):
+        return self._PageId
+
+    @PageId.setter
+    def PageId(self, PageId):
+        self._PageId = PageId
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ContentType(self):
+        return self._ContentType
+
+    @ContentType.setter
+    def ContentType(self, ContentType):
+        self._ContentType = ContentType
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._PageId = params.get("PageId")
+        self._ZoneId = params.get("ZoneId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._ContentType = params.get("ContentType")
+        self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCustomErrorPageResponse(AbstractModel):
+    """ModifyCustomErrorPage返回参数结构体
 
     """
 
