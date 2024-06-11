@@ -1217,6 +1217,203 @@ class AttachedUserPolicyGroupInfo(AbstractModel):
         
 
 
+class AuthToken(AbstractModel):
+    """认证凭据Token
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Token: 认证Token
+        :type Token: str
+        :param _CurrentTime: 服务器时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentTime: int
+        :param _NextRotationTime: 毫秒时间戳，根据轮转周期准确计算得到
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextRotationTime: int
+        :param _LastRotationTimeCost: 毫秒，如果轮转失败则为 -1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastRotationTimeCost: int
+        :param _RotationStatus: 成功：success
+失败：failed
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RotationStatus: str
+        :param _RotationMessage: 成功：success
+失败：失败信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RotationMessage: str
+        """
+        self._Token = None
+        self._CurrentTime = None
+        self._NextRotationTime = None
+        self._LastRotationTimeCost = None
+        self._RotationStatus = None
+        self._RotationMessage = None
+
+    @property
+    def Token(self):
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def CurrentTime(self):
+        return self._CurrentTime
+
+    @CurrentTime.setter
+    def CurrentTime(self, CurrentTime):
+        self._CurrentTime = CurrentTime
+
+    @property
+    def NextRotationTime(self):
+        return self._NextRotationTime
+
+    @NextRotationTime.setter
+    def NextRotationTime(self, NextRotationTime):
+        self._NextRotationTime = NextRotationTime
+
+    @property
+    def LastRotationTimeCost(self):
+        return self._LastRotationTimeCost
+
+    @LastRotationTimeCost.setter
+    def LastRotationTimeCost(self, LastRotationTimeCost):
+        self._LastRotationTimeCost = LastRotationTimeCost
+
+    @property
+    def RotationStatus(self):
+        return self._RotationStatus
+
+    @RotationStatus.setter
+    def RotationStatus(self, RotationStatus):
+        self._RotationStatus = RotationStatus
+
+    @property
+    def RotationMessage(self):
+        return self._RotationMessage
+
+    @RotationMessage.setter
+    def RotationMessage(self, RotationMessage):
+        self._RotationMessage = RotationMessage
+
+
+    def _deserialize(self, params):
+        self._Token = params.get("Token")
+        self._CurrentTime = params.get("CurrentTime")
+        self._NextRotationTime = params.get("NextRotationTime")
+        self._LastRotationTimeCost = params.get("LastRotationTimeCost")
+        self._RotationStatus = params.get("RotationStatus")
+        self._RotationMessage = params.get("RotationMessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BuildDataFlowAuthTokenRequest(AbstractModel):
+    """BuildDataFlowAuthToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 资源ID
+        :type ResourceId: str
+        :param _ResourceRegion: 资源地域
+        :type ResourceRegion: str
+        :param _ResourceAccount: 资源用户名
+        :type ResourceAccount: str
+        """
+        self._ResourceId = None
+        self._ResourceRegion = None
+        self._ResourceAccount = None
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceRegion(self):
+        return self._ResourceRegion
+
+    @ResourceRegion.setter
+    def ResourceRegion(self, ResourceRegion):
+        self._ResourceRegion = ResourceRegion
+
+    @property
+    def ResourceAccount(self):
+        return self._ResourceAccount
+
+    @ResourceAccount.setter
+    def ResourceAccount(self, ResourceAccount):
+        self._ResourceAccount = ResourceAccount
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceRegion = params.get("ResourceRegion")
+        self._ResourceAccount = params.get("ResourceAccount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BuildDataFlowAuthTokenResponse(AbstractModel):
+    """BuildDataFlowAuthToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Credentials: 认证凭据AuthToken信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Credentials: :class:`tencentcloud.cam.v20190116.models.AuthToken`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Credentials = None
+        self._RequestId = None
+
+    @property
+    def Credentials(self):
+        return self._Credentials
+
+    @Credentials.setter
+    def Credentials(self, Credentials):
+        self._Credentials = Credentials
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Credentials") is not None:
+            self._Credentials = AuthToken()
+            self._Credentials._deserialize(params.get("Credentials"))
+        self._RequestId = params.get("RequestId")
+
+
 class ConsumeCustomMFATokenRequest(AbstractModel):
     """ConsumeCustomMFAToken请求参数结构体
 

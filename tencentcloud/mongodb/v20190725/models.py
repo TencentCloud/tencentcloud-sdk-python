@@ -2433,6 +2433,102 @@ class DescribeBackupDownloadTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeBackupRulesRequest(AbstractModel):
+    """DescribeBackupRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 指定实例ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupRulesResponse(AbstractModel):
+    """DescribeBackupRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupSaveTime: 备份数据保留期限。单位为：天。
+        :type BackupSaveTime: int
+        :param _BackupTime: 自动备份开始时间。
+        :type BackupTime: int
+        :param _BackupMethod: 备份方式。
+- 0：逻辑备份。
+- 1：物理备份。
+        :type BackupMethod: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BackupSaveTime = None
+        self._BackupTime = None
+        self._BackupMethod = None
+        self._RequestId = None
+
+    @property
+    def BackupSaveTime(self):
+        return self._BackupSaveTime
+
+    @BackupSaveTime.setter
+    def BackupSaveTime(self, BackupSaveTime):
+        self._BackupSaveTime = BackupSaveTime
+
+    @property
+    def BackupTime(self):
+        return self._BackupTime
+
+    @BackupTime.setter
+    def BackupTime(self, BackupTime):
+        self._BackupTime = BackupTime
+
+    @property
+    def BackupMethod(self):
+        return self._BackupMethod
+
+    @BackupMethod.setter
+    def BackupMethod(self, BackupMethod):
+        self._BackupMethod = BackupMethod
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._BackupSaveTime = params.get("BackupSaveTime")
+        self._BackupTime = params.get("BackupTime")
+        self._BackupMethod = params.get("BackupMethod")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeClientConnectionsRequest(AbstractModel):
     """DescribeClientConnections请求参数结构体
 
@@ -4007,6 +4103,190 @@ class DescribeSpecInfoResponse(AbstractModel):
                 obj = SpecificationInfo()
                 obj._deserialize(item)
                 self._SpecInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTransparentDataEncryptionStatusRequest(AbstractModel):
+    """DescribeTransparentDataEncryptionStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 指定实例 ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTransparentDataEncryptionStatusResponse(AbstractModel):
+    """DescribeTransparentDataEncryptionStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TransparentDataEncryptionStatus: 表示是否开启了透明加密。 
+- close：未开启。
+- open：已开启。
+        :type TransparentDataEncryptionStatus: str
+        :param _KeyInfoList: 已绑定的密钥列表，如未绑定，返回null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyInfoList: list of KMSInfoDetail
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TransparentDataEncryptionStatus = None
+        self._KeyInfoList = None
+        self._RequestId = None
+
+    @property
+    def TransparentDataEncryptionStatus(self):
+        return self._TransparentDataEncryptionStatus
+
+    @TransparentDataEncryptionStatus.setter
+    def TransparentDataEncryptionStatus(self, TransparentDataEncryptionStatus):
+        self._TransparentDataEncryptionStatus = TransparentDataEncryptionStatus
+
+    @property
+    def KeyInfoList(self):
+        return self._KeyInfoList
+
+    @KeyInfoList.setter
+    def KeyInfoList(self, KeyInfoList):
+        self._KeyInfoList = KeyInfoList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TransparentDataEncryptionStatus = params.get("TransparentDataEncryptionStatus")
+        if params.get("KeyInfoList") is not None:
+            self._KeyInfoList = []
+            for item in params.get("KeyInfoList"):
+                obj = KMSInfoDetail()
+                obj._deserialize(item)
+                self._KeyInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class EnableTransparentDataEncryptionRequest(AbstractModel):
+    """EnableTransparentDataEncryption请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID，例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。目前支持通用版本包含：4.4、5.0，云盘版暂不支持。
+        :type InstanceId: str
+        :param _KmsRegion:  [密钥管理系统（Key Management Service，KMS）](https://cloud.tencent.com/document/product/573/18809)服务所在地域，例如 ap-shanghai。
+        :type KmsRegion: str
+        :param _KeyId: 密钥 ID。若不设置该参数，不指定具体的密钥 ID，由腾讯云自动生成密钥。
+        :type KeyId: str
+        """
+        self._InstanceId = None
+        self._KmsRegion = None
+        self._KeyId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def KmsRegion(self):
+        return self._KmsRegion
+
+    @KmsRegion.setter
+    def KmsRegion(self, KmsRegion):
+        self._KmsRegion = KmsRegion
+
+    @property
+    def KeyId(self):
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._KmsRegion = params.get("KmsRegion")
+        self._KeyId = params.get("KeyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableTransparentDataEncryptionResponse(AbstractModel):
+    """EnableTransparentDataEncryption返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 开启透明加密的异步流程id，用于查询流程状态。
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
 
 
@@ -6091,6 +6371,105 @@ class IsolateDBInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class KMSInfoDetail(AbstractModel):
+    """KMS密钥信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KeyId: 主密钥 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyId: str
+        :param _KeyName: 主密钥名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyName: str
+        :param _CreateTime: 实例与密钥绑定时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _Status: 密钥状态。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _KeyUsage: 密钥用途。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyUsage: str
+        :param _KeyOrigin: 密钥来源。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyOrigin: str
+        """
+        self._KeyId = None
+        self._KeyName = None
+        self._CreateTime = None
+        self._Status = None
+        self._KeyUsage = None
+        self._KeyOrigin = None
+
+    @property
+    def KeyId(self):
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def KeyName(self):
+        return self._KeyName
+
+    @KeyName.setter
+    def KeyName(self, KeyName):
+        self._KeyName = KeyName
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def KeyUsage(self):
+        return self._KeyUsage
+
+    @KeyUsage.setter
+    def KeyUsage(self, KeyUsage):
+        self._KeyUsage = KeyUsage
+
+    @property
+    def KeyOrigin(self):
+        return self._KeyOrigin
+
+    @KeyOrigin.setter
+    def KeyOrigin(self, KeyOrigin):
+        self._KeyOrigin = KeyOrigin
+
+
+    def _deserialize(self, params):
+        self._KeyId = params.get("KeyId")
+        self._KeyName = params.get("KeyName")
+        self._CreateTime = params.get("CreateTime")
+        self._Status = params.get("Status")
+        self._KeyUsage = params.get("KeyUsage")
+        self._KeyOrigin = params.get("KeyOrigin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class KillOpsRequest(AbstractModel):
     """KillOps请求参数结构体
 
@@ -7637,6 +8016,114 @@ class SetAccountUserPrivilegeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
+class SetBackupRulesRequest(AbstractModel):
+    """SetBackupRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID，例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+        :type InstanceId: str
+        :param _BackupMethod: 设置自动备份方式。- 0：逻辑备份。- 1：物理备份。-3：快照备份(仅云盘版支持)。
+        :type BackupMethod: int
+        :param _BackupTime: 设置自动备份开始时间。取值范围为：[0,23]，例如：该参数设置为2，表示02:00开始备份。
+        :type BackupTime: int
+        :param _Notify: 设置自动备份发生错误时，是否发送失败告警。
+- true：发送。
+- false：不发送。
+        :type Notify: bool
+        :param _BackupRetentionPeriod: 指定备份数据保存天数。默认为 7 天，支持设置为7、30、90、180、365。
+        :type BackupRetentionPeriod: int
+        """
+        self._InstanceId = None
+        self._BackupMethod = None
+        self._BackupTime = None
+        self._Notify = None
+        self._BackupRetentionPeriod = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def BackupMethod(self):
+        return self._BackupMethod
+
+    @BackupMethod.setter
+    def BackupMethod(self, BackupMethod):
+        self._BackupMethod = BackupMethod
+
+    @property
+    def BackupTime(self):
+        return self._BackupTime
+
+    @BackupTime.setter
+    def BackupTime(self, BackupTime):
+        self._BackupTime = BackupTime
+
+    @property
+    def Notify(self):
+        return self._Notify
+
+    @Notify.setter
+    def Notify(self, Notify):
+        self._Notify = Notify
+
+    @property
+    def BackupRetentionPeriod(self):
+        return self._BackupRetentionPeriod
+
+    @BackupRetentionPeriod.setter
+    def BackupRetentionPeriod(self, BackupRetentionPeriod):
+        self._BackupRetentionPeriod = BackupRetentionPeriod
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._BackupMethod = params.get("BackupMethod")
+        self._BackupTime = params.get("BackupTime")
+        self._Notify = params.get("Notify")
+        self._BackupRetentionPeriod = params.get("BackupRetentionPeriod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetBackupRulesResponse(AbstractModel):
+    """SetBackupRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

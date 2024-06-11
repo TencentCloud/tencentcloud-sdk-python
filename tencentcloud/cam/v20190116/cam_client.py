@@ -141,6 +141,29 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BuildDataFlowAuthToken(self, request):
+        """获取数据流认证Token
+
+        :param request: Request instance for BuildDataFlowAuthToken.
+        :type request: :class:`tencentcloud.cam.v20190116.models.BuildDataFlowAuthTokenRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.BuildDataFlowAuthTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BuildDataFlowAuthToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.BuildDataFlowAuthTokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ConsumeCustomMFAToken(self, request):
         """验证自定义多因子Token
 

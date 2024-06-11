@@ -5147,6 +5147,8 @@ class CreateExportRequest(AbstractModel):
         :param _SyntaxRule: 语法规则,  默认值为0。
 0：Lucene语法，1：CQL语法。
         :type SyntaxRule: int
+        :param _DerivedFields: 导出字段
+        :type DerivedFields: list of str
         """
         self._TopicId = None
         self._Count = None
@@ -5156,6 +5158,7 @@ class CreateExportRequest(AbstractModel):
         self._Order = None
         self._Format = None
         self._SyntaxRule = None
+        self._DerivedFields = None
 
     @property
     def TopicId(self):
@@ -5221,6 +5224,14 @@ class CreateExportRequest(AbstractModel):
     def SyntaxRule(self, SyntaxRule):
         self._SyntaxRule = SyntaxRule
 
+    @property
+    def DerivedFields(self):
+        return self._DerivedFields
+
+    @DerivedFields.setter
+    def DerivedFields(self, DerivedFields):
+        self._DerivedFields = DerivedFields
+
 
     def _deserialize(self, params):
         self._TopicId = params.get("TopicId")
@@ -5231,6 +5242,7 @@ class CreateExportRequest(AbstractModel):
         self._Order = params.get("Order")
         self._Format = params.get("Format")
         self._SyntaxRule = params.get("SyntaxRule")
+        self._DerivedFields = params.get("DerivedFields")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11931,6 +11943,9 @@ class ExportInfo(AbstractModel):
         :param _SyntaxRule: 语法规则。 默认值为0。
 0：Lucene语法，1：CQL语法。
         :type SyntaxRule: int
+        :param _DerivedFields: 导出字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DerivedFields: list of str
         """
         self._TopicId = None
         self._ExportId = None
@@ -11946,6 +11961,7 @@ class ExportInfo(AbstractModel):
         self._CosPath = None
         self._CreateTime = None
         self._SyntaxRule = None
+        self._DerivedFields = None
 
     @property
     def TopicId(self):
@@ -12059,6 +12075,14 @@ class ExportInfo(AbstractModel):
     def SyntaxRule(self, SyntaxRule):
         self._SyntaxRule = SyntaxRule
 
+    @property
+    def DerivedFields(self):
+        return self._DerivedFields
+
+    @DerivedFields.setter
+    def DerivedFields(self, DerivedFields):
+        self._DerivedFields = DerivedFields
+
 
     def _deserialize(self, params):
         self._TopicId = params.get("TopicId")
@@ -12075,6 +12099,7 @@ class ExportInfo(AbstractModel):
         self._CosPath = params.get("CosPath")
         self._CreateTime = params.get("CreateTime")
         self._SyntaxRule = params.get("SyntaxRule")
+        self._DerivedFields = params.get("DerivedFields")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

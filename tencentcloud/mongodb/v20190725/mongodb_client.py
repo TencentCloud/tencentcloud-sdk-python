@@ -256,6 +256,29 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBackupRules(self, request):
+        """本接口（DescribeBackupRules）用于获取实例自动备份配置信息。
+
+        :param request: Request instance for DescribeBackupRules.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeBackupRulesRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeBackupRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackupRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackupRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeClientConnections(self, request):
         """本接口（DescribeClientConnections）用于查询实例客户端连接信息，包括连接 IP 和连接数量。
 
@@ -500,6 +523,52 @@ class MongodbClient(AbstractClient):
             body = self.call("DescribeSpecInfo", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSpecInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTransparentDataEncryptionStatus(self, request):
+        """获取实例透明加密的开启状态
+
+        :param request: Request instance for DescribeTransparentDataEncryptionStatus.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeTransparentDataEncryptionStatusRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeTransparentDataEncryptionStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTransparentDataEncryptionStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTransparentDataEncryptionStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def EnableTransparentDataEncryption(self, request):
+        """本接口(EnableTransparentDataEncryption)用于开启云数据库 MongoDB 的透明加密能力。
+
+        :param request: Request instance for EnableTransparentDataEncryption.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.EnableTransparentDataEncryptionRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.EnableTransparentDataEncryptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnableTransparentDataEncryption", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnableTransparentDataEncryptionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -846,6 +915,29 @@ class MongodbClient(AbstractClient):
             body = self.call("SetAccountUserPrivilege", params, headers=headers)
             response = json.loads(body)
             model = models.SetAccountUserPrivilegeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SetBackupRules(self, request):
+        """本接口(SetBackupRules)用于设置 MongoDB 云数据库的自动备份规则。
+
+        :param request: Request instance for SetBackupRules.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.SetBackupRulesRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.SetBackupRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetBackupRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.SetBackupRulesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

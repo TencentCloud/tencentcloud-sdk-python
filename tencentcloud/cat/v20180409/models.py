@@ -2006,6 +2006,9 @@ class ProbeTask(AbstractModel):
         :param _TagInfoList: 任务当前绑定的标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagInfoList: list of KeyValuePair
+        :param _SubSyncFlag: 是否为同步账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubSyncFlag: int
         """
         self._Name = None
         self._TaskId = None
@@ -2023,6 +2026,7 @@ class ProbeTask(AbstractModel):
         self._Cron = None
         self._CronState = None
         self._TagInfoList = None
+        self._SubSyncFlag = None
 
     @property
     def Name(self):
@@ -2152,6 +2156,14 @@ class ProbeTask(AbstractModel):
     def TagInfoList(self, TagInfoList):
         self._TagInfoList = TagInfoList
 
+    @property
+    def SubSyncFlag(self):
+        return self._SubSyncFlag
+
+    @SubSyncFlag.setter
+    def SubSyncFlag(self, SubSyncFlag):
+        self._SubSyncFlag = SubSyncFlag
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -2175,6 +2187,7 @@ class ProbeTask(AbstractModel):
                 obj = KeyValuePair()
                 obj._deserialize(item)
                 self._TagInfoList.append(obj)
+        self._SubSyncFlag = params.get("SubSyncFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
