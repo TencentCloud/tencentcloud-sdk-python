@@ -814,6 +814,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAreaBanSupportAreas(self, request):
+        """获取WAF地域封禁支持的地域列表
+
+        :param request: Request instance for DescribeAreaBanSupportAreas.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAreaBanSupportAreasRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeAreaBanSupportAreasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAreaBanSupportAreas", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAreaBanSupportAreasResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAttackOverview(self, request):
         """攻击总览
 
@@ -2254,6 +2277,29 @@ class WafClient(AbstractClient):
             body = self.call("ModifyApiSecEventChange", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyApiSecEventChangeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyAreaBanAreas(self, request):
+        """修改地域封禁中的地域信息
+
+        :param request: Request instance for ModifyAreaBanAreas.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyAreaBanAreasRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyAreaBanAreasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAreaBanAreas", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAreaBanAreasResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

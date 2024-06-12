@@ -3832,6 +3832,192 @@ class DescribeAutoScaleStrategiesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeClusterFlowStatusDetailRequest(AbstractModel):
+    """DescribeClusterFlowStatusDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: EMR实例ID
+        :type InstanceId: str
+        :param _FlowParam: 流程相关参数
+        :type FlowParam: :class:`tencentcloud.emr.v20190103.models.FlowParam`
+        :param _NeedExtraDetail: 是否返回任务额外信息
+默认: false
+        :type NeedExtraDetail: bool
+        """
+        self._InstanceId = None
+        self._FlowParam = None
+        self._NeedExtraDetail = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def FlowParam(self):
+        return self._FlowParam
+
+    @FlowParam.setter
+    def FlowParam(self, FlowParam):
+        self._FlowParam = FlowParam
+
+    @property
+    def NeedExtraDetail(self):
+        return self._NeedExtraDetail
+
+    @NeedExtraDetail.setter
+    def NeedExtraDetail(self, NeedExtraDetail):
+        self._NeedExtraDetail = NeedExtraDetail
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("FlowParam") is not None:
+            self._FlowParam = FlowParam()
+            self._FlowParam._deserialize(params.get("FlowParam"))
+        self._NeedExtraDetail = params.get("NeedExtraDetail")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterFlowStatusDetailResponse(AbstractModel):
+    """DescribeClusterFlowStatusDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StageDetails: 任务步骤详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StageDetails: list of StageInfoDetail
+        :param _FlowDesc: 任务参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowDesc: list of FlowParamsDesc
+        :param _FlowName: 任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowName: str
+        :param _FlowTotalProgress: 总任务流程进度：
+例如：0.8
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowTotalProgress: float
+        :param _FlowTotalStatus: 定义流程总状态：
+0:初始化，
+1:运行中，
+2:完成，
+3:完成（存在跳过步骤），
+-1:失败，
+-3:阻塞，
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowTotalStatus: int
+        :param _FlowExtraDetail: 流程额外信息
+NeedExtraDetail为true时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowExtraDetail: list of FlowExtraDetail
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._StageDetails = None
+        self._FlowDesc = None
+        self._FlowName = None
+        self._FlowTotalProgress = None
+        self._FlowTotalStatus = None
+        self._FlowExtraDetail = None
+        self._RequestId = None
+
+    @property
+    def StageDetails(self):
+        return self._StageDetails
+
+    @StageDetails.setter
+    def StageDetails(self, StageDetails):
+        self._StageDetails = StageDetails
+
+    @property
+    def FlowDesc(self):
+        return self._FlowDesc
+
+    @FlowDesc.setter
+    def FlowDesc(self, FlowDesc):
+        self._FlowDesc = FlowDesc
+
+    @property
+    def FlowName(self):
+        return self._FlowName
+
+    @FlowName.setter
+    def FlowName(self, FlowName):
+        self._FlowName = FlowName
+
+    @property
+    def FlowTotalProgress(self):
+        return self._FlowTotalProgress
+
+    @FlowTotalProgress.setter
+    def FlowTotalProgress(self, FlowTotalProgress):
+        self._FlowTotalProgress = FlowTotalProgress
+
+    @property
+    def FlowTotalStatus(self):
+        return self._FlowTotalStatus
+
+    @FlowTotalStatus.setter
+    def FlowTotalStatus(self, FlowTotalStatus):
+        self._FlowTotalStatus = FlowTotalStatus
+
+    @property
+    def FlowExtraDetail(self):
+        return self._FlowExtraDetail
+
+    @FlowExtraDetail.setter
+    def FlowExtraDetail(self, FlowExtraDetail):
+        self._FlowExtraDetail = FlowExtraDetail
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("StageDetails") is not None:
+            self._StageDetails = []
+            for item in params.get("StageDetails"):
+                obj = StageInfoDetail()
+                obj._deserialize(item)
+                self._StageDetails.append(obj)
+        if params.get("FlowDesc") is not None:
+            self._FlowDesc = []
+            for item in params.get("FlowDesc"):
+                obj = FlowParamsDesc()
+                obj._deserialize(item)
+                self._FlowDesc.append(obj)
+        self._FlowName = params.get("FlowName")
+        self._FlowTotalProgress = params.get("FlowTotalProgress")
+        self._FlowTotalStatus = params.get("FlowTotalStatus")
+        if params.get("FlowExtraDetail") is not None:
+            self._FlowExtraDetail = []
+            for item in params.get("FlowExtraDetail"):
+                obj = FlowExtraDetail()
+                obj._deserialize(item)
+                self._FlowExtraDetail.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeClusterNodesRequest(AbstractModel):
     """DescribeClusterNodes请求参数结构体
 
@@ -7588,6 +7774,151 @@ class Filters(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowExtraDetail(AbstractModel):
+    """流程额外信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Title: 额外信息Title
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Title: str
+        :param _Detail: 额外信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Detail: list of FlowParamsDesc
+        """
+        self._Title = None
+        self._Detail = None
+
+    @property
+    def Title(self):
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Detail(self):
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+
+    def _deserialize(self, params):
+        self._Title = params.get("Title")
+        if params.get("Detail") is not None:
+            self._Detail = []
+            for item in params.get("Detail"):
+                obj = FlowParamsDesc()
+                obj._deserialize(item)
+                self._Detail.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowParam(AbstractModel):
+    """FlowParam流程参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FKey: 流程参数key
+TraceId：通过TraceId查询
+FlowId： 通过FlowId查询
+        :type FKey: str
+        :param _FValue: 参数value
+        :type FValue: str
+        """
+        self._FKey = None
+        self._FValue = None
+
+    @property
+    def FKey(self):
+        return self._FKey
+
+    @FKey.setter
+    def FKey(self, FKey):
+        self._FKey = FKey
+
+    @property
+    def FValue(self):
+        return self._FValue
+
+    @FValue.setter
+    def FValue(self, FValue):
+        self._FValue = FValue
+
+
+    def _deserialize(self, params):
+        self._FKey = params.get("FKey")
+        self._FValue = params.get("FValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowParamsDesc(AbstractModel):
+    """任务参数描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PKey: 参数key
+        :type PKey: str
+        :param _PValue: 参数value
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PValue: str
+        """
+        self._PKey = None
+        self._PValue = None
+
+    @property
+    def PKey(self):
+        return self._PKey
+
+    @PKey.setter
+    def PKey(self, PKey):
+        self._PKey = PKey
+
+    @property
+    def PValue(self):
+        return self._PValue
+
+    @PValue.setter
+    def PValue(self, PValue):
+        self._PValue = PValue
+
+
+    def _deserialize(self, params):
+        self._PKey = params.get("PKey")
+        self._PValue = params.get("PValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11489,6 +11820,9 @@ class NodeHardwareInfo(AbstractModel):
         :param _ServicesStatus: 各组件状态，Zookeeper:STARTED,ResourceManager:STARTED，STARTED已启动，STOPED已停止
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServicesStatus: str
+        :param _Remark: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
         """
         self._AppId = None
         self._SerialNo = None
@@ -11541,6 +11875,7 @@ class NodeHardwareInfo(AbstractModel):
         self._DisableApiTermination = None
         self._TradeVersion = None
         self._ServicesStatus = None
+        self._Remark = None
 
     @property
     def AppId(self):
@@ -11950,6 +12285,14 @@ class NodeHardwareInfo(AbstractModel):
     def ServicesStatus(self, ServicesStatus):
         self._ServicesStatus = ServicesStatus
 
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
 
     def _deserialize(self, params):
         self._AppId = params.get("AppId")
@@ -12017,6 +12360,7 @@ class NodeHardwareInfo(AbstractModel):
         self._DisableApiTermination = params.get("DisableApiTermination")
         self._TradeVersion = params.get("TradeVersion")
         self._ServicesStatus = params.get("ServicesStatus")
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16311,6 +16655,218 @@ class SoftDependInfo(AbstractModel):
     def _deserialize(self, params):
         self._SoftName = params.get("SoftName")
         self._Required = params.get("Required")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StageInfoDetail(AbstractModel):
+    """任务步骤详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Stage: 步骤id
+        :type Stage: str
+        :param _Name: 步骤名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _IsShow: 是否展示
+        :type IsShow: bool
+        :param _IsSubFlow: 是否子流程
+        :type IsSubFlow: bool
+        :param _SubFlowFlag: 子流程标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubFlowFlag: str
+        :param _Status: 步骤运行状态：0:未开始 1:进行中 2:已完成 3:部分完成  -1:失败
+        :type Status: int
+        :param _Desc: 步骤运行状态描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Desc: str
+        :param _Progress: 运行进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Progress: float
+        :param _Starttime: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Starttime: str
+        :param _Endtime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Endtime: str
+        :param _HadWoodDetail: 是否有详情信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HadWoodDetail: bool
+        :param _WoodJobId: Wood子流程Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WoodJobId: int
+        :param _LanguageKey: 多语言版本Key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LanguageKey: str
+        :param _FailedReason: 如果stage失败，失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedReason: str
+        :param _TimeConsuming: 步骤耗时
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeConsuming: str
+        """
+        self._Stage = None
+        self._Name = None
+        self._IsShow = None
+        self._IsSubFlow = None
+        self._SubFlowFlag = None
+        self._Status = None
+        self._Desc = None
+        self._Progress = None
+        self._Starttime = None
+        self._Endtime = None
+        self._HadWoodDetail = None
+        self._WoodJobId = None
+        self._LanguageKey = None
+        self._FailedReason = None
+        self._TimeConsuming = None
+
+    @property
+    def Stage(self):
+        return self._Stage
+
+    @Stage.setter
+    def Stage(self, Stage):
+        self._Stage = Stage
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def IsShow(self):
+        return self._IsShow
+
+    @IsShow.setter
+    def IsShow(self, IsShow):
+        self._IsShow = IsShow
+
+    @property
+    def IsSubFlow(self):
+        return self._IsSubFlow
+
+    @IsSubFlow.setter
+    def IsSubFlow(self, IsSubFlow):
+        self._IsSubFlow = IsSubFlow
+
+    @property
+    def SubFlowFlag(self):
+        return self._SubFlowFlag
+
+    @SubFlowFlag.setter
+    def SubFlowFlag(self, SubFlowFlag):
+        self._SubFlowFlag = SubFlowFlag
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Desc(self):
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def Starttime(self):
+        return self._Starttime
+
+    @Starttime.setter
+    def Starttime(self, Starttime):
+        self._Starttime = Starttime
+
+    @property
+    def Endtime(self):
+        return self._Endtime
+
+    @Endtime.setter
+    def Endtime(self, Endtime):
+        self._Endtime = Endtime
+
+    @property
+    def HadWoodDetail(self):
+        return self._HadWoodDetail
+
+    @HadWoodDetail.setter
+    def HadWoodDetail(self, HadWoodDetail):
+        self._HadWoodDetail = HadWoodDetail
+
+    @property
+    def WoodJobId(self):
+        return self._WoodJobId
+
+    @WoodJobId.setter
+    def WoodJobId(self, WoodJobId):
+        self._WoodJobId = WoodJobId
+
+    @property
+    def LanguageKey(self):
+        return self._LanguageKey
+
+    @LanguageKey.setter
+    def LanguageKey(self, LanguageKey):
+        self._LanguageKey = LanguageKey
+
+    @property
+    def FailedReason(self):
+        return self._FailedReason
+
+    @FailedReason.setter
+    def FailedReason(self, FailedReason):
+        self._FailedReason = FailedReason
+
+    @property
+    def TimeConsuming(self):
+        return self._TimeConsuming
+
+    @TimeConsuming.setter
+    def TimeConsuming(self, TimeConsuming):
+        self._TimeConsuming = TimeConsuming
+
+
+    def _deserialize(self, params):
+        self._Stage = params.get("Stage")
+        self._Name = params.get("Name")
+        self._IsShow = params.get("IsShow")
+        self._IsSubFlow = params.get("IsSubFlow")
+        self._SubFlowFlag = params.get("SubFlowFlag")
+        self._Status = params.get("Status")
+        self._Desc = params.get("Desc")
+        self._Progress = params.get("Progress")
+        self._Starttime = params.get("Starttime")
+        self._Endtime = params.get("Endtime")
+        self._HadWoodDetail = params.get("HadWoodDetail")
+        self._WoodJobId = params.get("WoodJobId")
+        self._LanguageKey = params.get("LanguageKey")
+        self._FailedReason = params.get("FailedReason")
+        self._TimeConsuming = params.get("TimeConsuming")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

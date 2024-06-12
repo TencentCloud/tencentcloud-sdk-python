@@ -293,6 +293,9 @@ RESOURCENOTFOUND_DOMAINNOTFOUND = 'ResourceNotFound.DomainNotFound'
 # 模板信息有误，请输入正确的信息。
 RESOURCENOTFOUND_TEMPLATENOTFOUND = 'ResourceNotFound.TemplateNotFound'
 
+# 模板不支持
+RESOURCENOTFOUND_TEMPLATETOBESUPPLEMENTED = 'ResourceNotFound.TemplateToBeSupplemented'
+
 # 该域名已有同类型操作未完成，无法执行该操作。
 RESOURCEUNAVAILABLE_DOMAINISMODIFYINGDNS = 'ResourceUnavailable.DomainIsModifyingDNS'
 

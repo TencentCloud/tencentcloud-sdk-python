@@ -13286,11 +13286,14 @@ class GetWechatDeviceTicketRequest(AbstractModel):
         :type IsThirdApp: int
         :param _ModelId: 模板ID
         :type ModelId: str
+        :param _MiniProgramAppId: 小程序APPID
+        :type MiniProgramAppId: str
         """
         self._ProductId = None
         self._DeviceName = None
         self._IsThirdApp = None
         self._ModelId = None
+        self._MiniProgramAppId = None
 
     @property
     def ProductId(self):
@@ -13324,12 +13327,21 @@ class GetWechatDeviceTicketRequest(AbstractModel):
     def ModelId(self, ModelId):
         self._ModelId = ModelId
 
+    @property
+    def MiniProgramAppId(self):
+        return self._MiniProgramAppId
+
+    @MiniProgramAppId.setter
+    def MiniProgramAppId(self, MiniProgramAppId):
+        self._MiniProgramAppId = MiniProgramAppId
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
         self._DeviceName = params.get("DeviceName")
         self._IsThirdApp = params.get("IsThirdApp")
         self._ModelId = params.get("ModelId")
+        self._MiniProgramAppId = params.get("MiniProgramAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

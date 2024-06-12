@@ -21510,11 +21510,14 @@ ResourceRegion 资源所在地域
 DataSourceType 数据源类型，不填默认过滤非自建的所有关系型数据源类型，填selfbuilt-db只过滤自建类型
 注意：每个name默认支持最多5个values。
         :type Filters: list of Filter
+        :param _CasbId: casbId
+        :type CasbId: str
         """
         self._DspaId = None
         self._ComplianceId = None
         self._MetaDataType = None
         self._Filters = None
+        self._CasbId = None
 
     @property
     def DspaId(self):
@@ -21548,6 +21551,14 @@ DataSourceType 数据源类型，不填默认过滤非自建的所有关系型�
     def Filters(self, Filters):
         self._Filters = Filters
 
+    @property
+    def CasbId(self):
+        return self._CasbId
+
+    @CasbId.setter
+    def CasbId(self, CasbId):
+        self._CasbId = CasbId
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
@@ -21559,6 +21570,7 @@ DataSourceType 数据源类型，不填默认过滤非自建的所有关系型�
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._CasbId = params.get("CasbId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

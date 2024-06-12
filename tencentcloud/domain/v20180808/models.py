@@ -100,7 +100,7 @@ class BatchModifyDomainInfoRequest(AbstractModel):
         r"""
         :param _Domains: 批量修改的域名。
         :type Domains: list of str
-        :param _TemplateId: 模板ID。
+        :param _TemplateId: 模板ID(可从模板列表接口获取)
         :type TemplateId: str
         :param _LockTransfer: true： 开启60天内禁止转移注册商锁定
 false：关闭60天内禁止转移注册商锁定
@@ -1885,7 +1885,7 @@ class CreatePhoneEmailRequest(AbstractModel):
         :type Code: str
         :param _Type: 1：手机   2：邮箱
         :type Type: int
-        :param _VerifyCode: 验证码
+        :param _VerifyCode: 验证码(通过SendPhoneEmailCode发送到手机或邮箱的验证码)
         :type VerifyCode: str
         """
         self._Code = None
@@ -2364,7 +2364,7 @@ class DeleteTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 模板ID
+        :param _TemplateId: 模板ID(可通过模板信息列表获取)
         :type TemplateId: str
         """
         self._TemplateId = None
@@ -3784,7 +3784,7 @@ class DescribeCustomDnsHostSetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DomainId: 域名实例ID
+        :param _DomainId: 域名实例ID(域名基本信息或我的域名列表接口可获取)
         :type DomainId: str
         :param _Limit: 返回数量，默认为20，取值范围[1,100]
         :type Limit: int
@@ -4618,9 +4618,9 @@ class DescribePreDomainListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Page: 页码
+        :param _Page: 页码，默认为1
         :type Page: int
-        :param _Size: 条数
+        :param _Size: 条数，默认为20
         :type Size: int
         :param _EndTime: 用于结束时间筛选
         :type EndTime: str

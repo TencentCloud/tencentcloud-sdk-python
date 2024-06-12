@@ -245,7 +245,9 @@ class DtsClient(AbstractClient):
 
 
     def DescribeRegionConf(self, request):
-        """本接口（DescribeRegionConf）用于查询可售卖订阅实例的地域
+        """接口不再使用
+
+        本接口（DescribeRegionConf）用于查询可售卖订阅实例的地域
 
         :param request: Request instance for DescribeRegionConf.
         :type request: :class:`tencentcloud.dts.v20180330.models.DescribeRegionConfRequest`

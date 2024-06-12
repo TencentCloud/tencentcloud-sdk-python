@@ -17528,6 +17528,8 @@ class ModifyTopicRequest(AbstractModel):
         :param _IsWebTracking: 免鉴权开关。 false：关闭； true：开启。
 开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。
         :type IsWebTracking: bool
+        :param _PartitionCount: 日志主题分区数量
+        :type PartitionCount: int
         """
         self._TopicId = None
         self._TopicName = None
@@ -17539,6 +17541,7 @@ class ModifyTopicRequest(AbstractModel):
         self._Describes = None
         self._HotPeriod = None
         self._IsWebTracking = None
+        self._PartitionCount = None
 
     @property
     def TopicId(self):
@@ -17620,6 +17623,14 @@ class ModifyTopicRequest(AbstractModel):
     def IsWebTracking(self, IsWebTracking):
         self._IsWebTracking = IsWebTracking
 
+    @property
+    def PartitionCount(self):
+        return self._PartitionCount
+
+    @PartitionCount.setter
+    def PartitionCount(self, PartitionCount):
+        self._PartitionCount = PartitionCount
+
 
     def _deserialize(self, params):
         self._TopicId = params.get("TopicId")
@@ -17637,6 +17648,7 @@ class ModifyTopicRequest(AbstractModel):
         self._Describes = params.get("Describes")
         self._HotPeriod = params.get("HotPeriod")
         self._IsWebTracking = params.get("IsWebTracking")
+        self._PartitionCount = params.get("PartitionCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

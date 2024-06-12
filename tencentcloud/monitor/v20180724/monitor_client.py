@@ -1763,7 +1763,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePluginOverviews(self, request):
-        """列出可安装的所有 Grafana 插件
+        """列出可安装的所有 Grafana 插件。
 
         :param request: Request instance for DescribePluginOverviews.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePluginOverviewsRequest`
@@ -2204,7 +2204,9 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusRecordRuleYaml(self, request):
-        """拉取Prometheus聚合规则yaml列表
+        """DescribePrometheusRecordRules 接口可完全代替该接口。近30天仅有3次调用，且都是报错请求
+
+        拉取Prometheus聚合规则yaml列表
 
         :param request: Request instance for DescribePrometheusRecordRuleYaml.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusRecordRuleYamlRequest`
@@ -2365,7 +2367,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusZones(self, request):
-        """列出 Prometheus 服务可用区
+        """列出 Prometheus 服务可用区。
 
         :param request: Request instance for DescribePrometheusZones.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusZonesRequest`

@@ -234,6 +234,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeClusterFlowStatusDetail(self, request):
+        """查询EMR任务运行详情状态
+
+        :param request: Request instance for DescribeClusterFlowStatusDetail.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeClusterFlowStatusDetailRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeClusterFlowStatusDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterFlowStatusDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterFlowStatusDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeClusterNodes(self, request):
         """查询集群节点信息
 

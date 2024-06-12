@@ -1595,7 +1595,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
         :type Description: str
         :param _NotAfter: 任务停止时间戳，Unix 秒级时间戳
         :type NotAfter: int
-        :param _Tries: 最大尝试次数
+        :param _Tries: 最大尝试次数，1-3 次
         :type Tries: int
         :param _Variables: 自定义变量（仅高级版支持）
         :type Variables: list of Variable
