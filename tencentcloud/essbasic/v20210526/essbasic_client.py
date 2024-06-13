@@ -2486,6 +2486,9 @@ class EssbasicClient(AbstractClient):
         httpProfile.setEndpoint("file.test.ess.tencent.cn");
         ```
 
+        <font color="red">相关视频指引</font> <br>
+        1. <a href="https://dyn.ess.tencent.cn/guide/apivideo/essbasic-UploadFiles.mp4" target="_blank">【上传文件代码】编写示例</a><br>
+
         :param request: Request instance for UploadFiles.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.UploadFilesRequest`
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UploadFilesResponse`

@@ -28,13 +28,14 @@ class AccountInfo(AbstractModel):
         :param _AccountType: 用户账号类型；默认开通QQOpenId、手机号MD5权限；如果需要使用微信OpenId入参，则需要"提交工单"或联系对接人进行资格审核，审核通过后方可正常使用微信开放账号。
 1：QQ开放账号
 2：微信开放账号
-10004：手机号MD5，中国大陆11位手机号进行MD5加密，取32位小写值。
+10004：手机号MD5，中国大陆11位手机号进行MD5加密，取32位小写值
+10005：手机号SHA256，中国大陆11位手机号进行SHA256加密，取64位小写值
         :type AccountType: int
         :param _QQAccount: QQ账号信息，AccountType是"1"时，该字段必填。
         :type QQAccount: :class:`tencentcloud.rce.v20201103.models.QQAccountInfo`
         :param _WeChatAccount: 微信账号信息，AccountType是"2"时，该字段必填。
         :type WeChatAccount: :class:`tencentcloud.rce.v20201103.models.WeChatAccountInfo`
-        :param _OtherAccount: 其它账号信息，AccountType是10004时，该字段必填。
+        :param _OtherAccount: 其它账号信息，AccountType是10004或10005时，该字段必填。
         :type OtherAccount: :class:`tencentcloud.rce.v20201103.models.OtherAccountInfo`
         """
         self._AccountType = None
@@ -212,7 +213,8 @@ class InputManageMarketingRisk(AbstractModel):
         :param _Account: 用户账号类型；默认开通QQOpenId、手机号MD5权限；如果需要使用微信OpenId入参，则需要"提交工单"或联系对接人进行资格审核，审核通过后方可正常使用微信开放账号。
 1：QQ开放账号
 2：微信开放账号
-10004：手机号MD5，中国大陆11位手机号进行MD5加密，取32位小写值。
+10004：手机号MD5，中国大陆11位手机号进行MD5加密，取32位小写值
+10005：手机号SHA256，中国大陆11位手机号进行SHA256加密，取64位小写值
         :type Account: :class:`tencentcloud.rce.v20201103.models.AccountInfo`
         :param _SceneCode: 场景码，用于识别和区分不同的业务场景，可在控制台上新建和管理
 控制台链接：https://console.cloud.tencent.com/rce/risk/strategy/scene-root
@@ -693,13 +695,16 @@ class OtherAccountInfo(AbstractModel):
         r"""
         :param _AccountId: 其他账号信息；
 AccountType是10004时，填入中国大陆标准11位手机号的MD5值
+AccountType是10005时，填入中国大陆标准11位手机号的SHA256值
 注释：
 MD5手机号加密方式，使用中国大陆11位手机号进行MD5加密，加密后取32位小写值。
+SHA256手机号加密方式，使用中国大陆11位手机号进行SHA256加密，加密后取64位小写值。
         :type AccountId: str
-        :param _MobilePhone: 账号绑定的MD5手机号。
-注释：只支持标准中国大陆11位手机号MD5加密后位的32位小写字符串。
+        :param _MobilePhone: 账号绑定的MD5或SHA256加密的手机号（该字段已不推荐使用）。
+注释：支持标准中国大陆11位手机号MD5加密后位的32位小写字符串；
+     支持标准中国大陆11位手机号SHA256加密后位的64位小写字符串。
         :type MobilePhone: str
-        :param _DeviceId: 用户设备号（已不推荐使用）。
+        :param _DeviceId: 用户设备号（该字段已不推荐使用）。
         :type DeviceId: str
         """
         self._AccountId = None
@@ -833,9 +838,10 @@ class OutputManageMarketingRiskValue(AbstractModel):
     def __init__(self):
         r"""
         :param _UserId: 账号ID：对应输入参数。
-当AccountType为1时，对应QQ的OpenId。
-当AccountType为2时，对应微信的OpenId/UnionId。
-当AccountType为10004时，对应手机号的MD5值。
+当AccountType为1时，对应QQ的OpenId；
+当AccountType为2时，对应微信的OpenId/UnionId；
+当AccountType为10004时，对应手机号的MD5值；
+当AccountType为10005时，对应手机号的SHA256值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserId: str
         :param _PostTime: 操作时间戳，单位秒（对应输入参数）。
@@ -987,8 +993,9 @@ class QQAccountInfo(AbstractModel):
         :type AppIdUser: str
         :param _AssociateAccount: 用于标识QQ用户登录后所关联业务自身的账号ID。
         :type AssociateAccount: str
-        :param _MobilePhone: 账号绑定的MD5手机号，
-注释：只支中国大陆11位手机号MD5加密后位的32位小写字符串。
+        :param _MobilePhone: 账号绑定的MD5或SHA256加密的手机号。
+注释：支持标准中国大陆11位手机号MD5加密后位的32位小写字符串；
+     支持标准中国大陆11位手机号SHA256加密后位的64位小写字符串。
         :type MobilePhone: str
         :param _DeviceId: 用户设备号（已不推荐使用）。
 
@@ -1158,8 +1165,9 @@ class WeChatAccountInfo(AbstractModel):
         :type WeChatAccessToken: str
         :param _AssociateAccount: 用于标识微信用户登录后所关联业务自身的账号ID。
         :type AssociateAccount: str
-        :param _MobilePhone: 账号绑定的MD5手机号，
-注释：只支持标准中国大陆11位手机号MD5加密后位的32位小写字符串。
+        :param _MobilePhone: 账号绑定的MD5或SHA256加密的手机号。
+注释：支持标准中国大陆11位手机号MD5加密后位的32位小写字符串；
+     支持标准中国大陆11位手机号SHA256加密后位的64位小写字符串。
         :type MobilePhone: str
         :param _DeviceId: 用户设备号（已不推荐使用）。
         :type DeviceId: str

@@ -786,7 +786,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceMonitorHotKey(self, request):
-        """查询实例热Key
+        """本接口（DescribeInstanceMonitorHotKey）用于查询实例热Key。
 
         :param request: Request instance for DescribeInstanceMonitorHotKey.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorHotKeyRequest`

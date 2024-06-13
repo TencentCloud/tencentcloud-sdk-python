@@ -25504,8 +25504,14 @@ class DescribeTableMetaRequest(AbstractModel):
         r"""
         :param _TableId: 表唯一id
         :type TableId: str
+        :param _TableNameFilter: 按名称查询的条件
+        :type TableNameFilter: :class:`tencentcloud.wedata.v20210820.models.TableNameFilter`
+        :param _TableFilterType: 查询条件类型0按id，1按名称，默认为0
+        :type TableFilterType: int
         """
         self._TableId = None
+        self._TableNameFilter = None
+        self._TableFilterType = None
 
     @property
     def TableId(self):
@@ -25515,9 +25521,29 @@ class DescribeTableMetaRequest(AbstractModel):
     def TableId(self, TableId):
         self._TableId = TableId
 
+    @property
+    def TableNameFilter(self):
+        return self._TableNameFilter
+
+    @TableNameFilter.setter
+    def TableNameFilter(self, TableNameFilter):
+        self._TableNameFilter = TableNameFilter
+
+    @property
+    def TableFilterType(self):
+        return self._TableFilterType
+
+    @TableFilterType.setter
+    def TableFilterType(self, TableFilterType):
+        self._TableFilterType = TableFilterType
+
 
     def _deserialize(self, params):
         self._TableId = params.get("TableId")
+        if params.get("TableNameFilter") is not None:
+            self._TableNameFilter = TableNameFilter()
+            self._TableNameFilter._deserialize(params.get("TableNameFilter"))
+        self._TableFilterType = params.get("TableFilterType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -54383,6 +54409,9 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
         :param _PartitionExpireDays: 生命周期-分区保留天数【分区保留策略时有效】
 注意：此字段可能返回 null，表示取不到有效值。
         :type PartitionExpireDays: int
+        :param _TableProperties: 表附属信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableProperties: list of TableMetaProperty
         """
         self._TableId = None
         self._TableName = None
@@ -54437,6 +54466,7 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
         self._IsPartitionTable = None
         self._PartitionColumns = None
         self._PartitionExpireDays = None
+        self._TableProperties = None
 
     @property
     def TableId(self):
@@ -54862,6 +54892,14 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
     def PartitionExpireDays(self, PartitionExpireDays):
         self._PartitionExpireDays = PartitionExpireDays
 
+    @property
+    def TableProperties(self):
+        return self._TableProperties
+
+    @TableProperties.setter
+    def TableProperties(self, TableProperties):
+        self._TableProperties = TableProperties
+
 
     def _deserialize(self, params):
         self._TableId = params.get("TableId")
@@ -54926,6 +54964,140 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
         self._IsPartitionTable = params.get("IsPartitionTable")
         self._PartitionColumns = params.get("PartitionColumns")
         self._PartitionExpireDays = params.get("PartitionExpireDays")
+        if params.get("TableProperties") is not None:
+            self._TableProperties = []
+            for item in params.get("TableProperties"):
+                obj = TableMetaProperty()
+                obj._deserialize(item)
+                self._TableProperties.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TableMetaProperty(AbstractModel):
+    """表附加信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 属性的key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: 属性的值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TableNameFilter(AbstractModel):
+    """按表名查询的查询条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MsType: 数据源类型
+        :type MsType: str
+        :param _DatasourceId: 数据源id
+        :type DatasourceId: int
+        :param _DatabaseName: 数据库名称
+        :type DatabaseName: str
+        :param _SchemaName: schema
+        :type SchemaName: str
+        :param _Name: 表名
+        :type Name: str
+        """
+        self._MsType = None
+        self._DatasourceId = None
+        self._DatabaseName = None
+        self._SchemaName = None
+        self._Name = None
+
+    @property
+    def MsType(self):
+        return self._MsType
+
+    @MsType.setter
+    def MsType(self, MsType):
+        self._MsType = MsType
+
+    @property
+    def DatasourceId(self):
+        return self._DatasourceId
+
+    @DatasourceId.setter
+    def DatasourceId(self, DatasourceId):
+        self._DatasourceId = DatasourceId
+
+    @property
+    def DatabaseName(self):
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def SchemaName(self):
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._MsType = params.get("MsType")
+        self._DatasourceId = params.get("DatasourceId")
+        self._DatabaseName = params.get("DatabaseName")
+        self._SchemaName = params.get("SchemaName")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

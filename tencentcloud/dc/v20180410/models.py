@@ -433,8 +433,10 @@ class BgpPeer(AbstractModel):
     def __init__(self):
         r"""
         :param _Asn: 用户侧BGP ASN
+注意：此字段可能返回 null，表示取不到有效值。
         :type Asn: int
         :param _AuthKey: 用户侧BGP密钥
+注意：此字段可能返回 null，表示取不到有效值。
         :type AuthKey: str
         """
         self._Asn = None
@@ -1410,15 +1412,15 @@ class DescribeDirectConnectTunnelsRequest(AbstractModel):
         r"""
         :param _Filters: 过滤条件:
 参数不支持同时指定DirectConnectTunnelIds和Filters。
-<li> direct-connect-tunnel-name, 专用通道名称。</li>
-<li> direct-connect-tunnel-id, 专用通道实例ID，如dcx-abcdefgh。</li>
-<li>direct-connect-id, 物理专线实例ID，如，dc-abcdefgh。</li>
+direct-connect-tunnel-name, 专用通道名称。
+direct-connect-tunnel-id, 专用通道实例ID，如：dcx-abcdefgh。
+direct-connect-id, 物理专线实例ID，如：dc-abcdefgh。
         :type Filters: list of Filter
-        :param _DirectConnectTunnelIds: 专用通道 ID数组
+        :param _DirectConnectTunnelIds: 专用通道ID数组。
         :type DirectConnectTunnelIds: list of str
-        :param _Offset: 偏移量，默认为0
+        :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param _Limit: 返回数量，默认为20，最大值为100
+        :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
         """
         self._Filters = None
@@ -1486,9 +1488,9 @@ class DescribeDirectConnectTunnelsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DirectConnectTunnelSet: 专用通道列表
+        :param _DirectConnectTunnelSet: 专用通道列表。
         :type DirectConnectTunnelSet: list of DirectConnectTunnel
-        :param _TotalCount: 符合专用通道数量。
+        :param _TotalCount: 专用通道总数量。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2609,6 +2611,9 @@ REJECTED:拒绝
         :param _CloudAttachId: 高速上云服务ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type CloudAttachId: str
+        :param _ShareOrNot: 是否共享通道
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShareOrNot: int
         """
         self._DirectConnectTunnelId = None
         self._DirectConnectId = None
@@ -2640,6 +2645,7 @@ REJECTED:拒绝
         self._TencentBackupAddress = None
         self._SignLaw = None
         self._CloudAttachId = None
+        self._ShareOrNot = None
 
     @property
     def DirectConnectTunnelId(self):
@@ -2881,6 +2887,14 @@ REJECTED:拒绝
     def CloudAttachId(self, CloudAttachId):
         self._CloudAttachId = CloudAttachId
 
+    @property
+    def ShareOrNot(self):
+        return self._ShareOrNot
+
+    @ShareOrNot.setter
+    def ShareOrNot(self, ShareOrNot):
+        self._ShareOrNot = ShareOrNot
+
 
     def _deserialize(self, params):
         self._DirectConnectTunnelId = params.get("DirectConnectTunnelId")
@@ -2925,6 +2939,7 @@ REJECTED:拒绝
         self._TencentBackupAddress = params.get("TencentBackupAddress")
         self._SignLaw = params.get("SignLaw")
         self._CloudAttachId = params.get("CloudAttachId")
+        self._ShareOrNot = params.get("ShareOrNot")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4774,6 +4789,7 @@ class RouteFilterPrefix(AbstractModel):
     def __init__(self):
         r"""
         :param _Cidr: 用户侧网段地址
+注意：此字段可能返回 null，表示取不到有效值。
         :type Cidr: str
         """
         self._Cidr = None

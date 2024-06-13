@@ -319,10 +319,13 @@ class AddShareUnitRequest(AbstractModel):
         :type Area: str
         :param _Description: 共享单元描述。最大128个字符。
         :type Description: str
+        :param _ShareScope: 共享范围。取值：1-仅允许集团组织内共享 2-允许共享给任意账号，默认值：1
+        :type ShareScope: int
         """
         self._Name = None
         self._Area = None
         self._Description = None
+        self._ShareScope = None
 
     @property
     def Name(self):
@@ -348,11 +351,20 @@ class AddShareUnitRequest(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def ShareScope(self):
+        return self._ShareScope
+
+    @ShareScope.setter
+    def ShareScope(self, ShareScope):
+        self._ShareScope = ShareScope
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Area = params.get("Area")
         self._Description = params.get("Description")
+        self._ShareScope = params.get("ShareScope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6164,6 +6176,9 @@ class ManagerShareUnit(AbstractModel):
         :param _ShareMemberNum: 共享单元成员数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ShareMemberNum: int
+        :param _ShareScope: 共享范围。取值：1-仅允许集团组织内共享 2-允许共享给任意账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShareScope: int
         """
         self._UnitId = None
         self._Name = None
@@ -6174,6 +6189,7 @@ class ManagerShareUnit(AbstractModel):
         self._CreateTime = None
         self._ShareResourceNum = None
         self._ShareMemberNum = None
+        self._ShareScope = None
 
     @property
     def UnitId(self):
@@ -6247,6 +6263,14 @@ class ManagerShareUnit(AbstractModel):
     def ShareMemberNum(self, ShareMemberNum):
         self._ShareMemberNum = ShareMemberNum
 
+    @property
+    def ShareScope(self):
+        return self._ShareScope
+
+    @ShareScope.setter
+    def ShareScope(self, ShareScope):
+        self._ShareScope = ShareScope
+
 
     def _deserialize(self, params):
         self._UnitId = params.get("UnitId")
@@ -6258,6 +6282,7 @@ class ManagerShareUnit(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._ShareResourceNum = params.get("ShareResourceNum")
         self._ShareMemberNum = params.get("ShareMemberNum")
+        self._ShareScope = params.get("ShareScope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8805,10 +8830,13 @@ class UpdateShareUnitRequest(AbstractModel):
         :type Name: str
         :param _Description: 共享单元描述。最大128个字符。
         :type Description: str
+        :param _ShareScope: 共享范围。取值：1-仅允许集团组织内共享 2-允许共享给任意账号，默认值：1
+        :type ShareScope: int
         """
         self._UnitId = None
         self._Name = None
         self._Description = None
+        self._ShareScope = None
 
     @property
     def UnitId(self):
@@ -8834,11 +8862,20 @@ class UpdateShareUnitRequest(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def ShareScope(self):
+        return self._ShareScope
+
+    @ShareScope.setter
+    def ShareScope(self, ShareScope):
+        self._ShareScope = ShareScope
+
 
     def _deserialize(self, params):
         self._UnitId = params.get("UnitId")
         self._Name = params.get("Name")
         self._Description = params.get("Description")
+        self._ShareScope = params.get("ShareScope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

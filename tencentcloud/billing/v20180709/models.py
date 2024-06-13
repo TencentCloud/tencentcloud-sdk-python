@@ -17163,9 +17163,9 @@ class DescribeDosageCosDetailByDateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartDate: 查询用量开始时间，例如：2020-09-01
+        :param _StartDate: 查询用量开始时间，格式为yyyy-mm-dd，例如：2020-09-01
         :type StartDate: str
-        :param _EndDate: 查询用量结束时间，例如：2020-09-30（与开始时间同月，不支持跨月查询）
+        :param _EndDate: 查询用量结束时间，格式为yyyy-mm-dd，例如：2020-09-30（与开始时间同月，不支持跨月查询）
         :type EndDate: str
         :param _BucketName: COS 存储桶名称，可通过Get Service 接口是用来获取请求者名下的所有存储空间列表（Bucket list）https://cloud.tencent.com/document/product/436/8291
         :type BucketName: str

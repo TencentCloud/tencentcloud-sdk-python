@@ -215,7 +215,7 @@ class DcClient(AbstractClient):
 
 
     def DescribeDirectConnectTunnels(self, request):
-        """用于查询专用通道列表。
+        """查询专用通道列表。
 
         :param request: Request instance for DescribeDirectConnectTunnels.
         :type request: :class:`tencentcloud.dc.v20180410.models.DescribeDirectConnectTunnelsRequest`

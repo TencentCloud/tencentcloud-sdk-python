@@ -77,6 +77,9 @@ FAILEDOPERATION_EMAILALREADYUSED = 'FailedOperation.EmailAlreadyUsed'
 # 邮箱绑定已经失效。
 FAILEDOPERATION_EMAILBINDRECORDINVALID = 'FailedOperation.EmailBindRecordInvalid'
 
+# 存在不在组织内的共享成员。
+FAILEDOPERATION_EXISTSHAREMEMBERNOTINORGANIZATION = 'FailedOperation.ExistShareMemberNotInOrganization'
+
 # 查询实名信息出错。
 FAILEDOPERATION_GETAUTHINFO = 'FailedOperation.GetAuthInfo'
 

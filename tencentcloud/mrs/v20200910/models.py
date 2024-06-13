@@ -1515,11 +1515,15 @@ class BirthCert(AbstractModel):
         :param _IssueInfo: 签发信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type IssueInfo: :class:`tencentcloud.mrs.v20200910.models.IssueInfo`
+        :param _Page: 数据在原PDF文件中的第几页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Page: int
         """
         self._NeonatalInfo = None
         self._MotherInfo = None
         self._FatherInfo = None
         self._IssueInfo = None
+        self._Page = None
 
     @property
     def NeonatalInfo(self):
@@ -1553,6 +1557,14 @@ class BirthCert(AbstractModel):
     def IssueInfo(self, IssueInfo):
         self._IssueInfo = IssueInfo
 
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
 
     def _deserialize(self, params):
         if params.get("NeonatalInfo") is not None:
@@ -1567,6 +1579,7 @@ class BirthCert(AbstractModel):
         if params.get("IssueInfo") is not None:
             self._IssueInfo = IssueInfo()
             self._IssueInfo._deserialize(params.get("IssueInfo"))
+        self._Page = params.get("Page")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2505,6 +2518,9 @@ class BloodPressureItem(AbstractModel):
         :param _Location: 左右手臂
 注意：此字段可能返回 null，表示取不到有效值。
         :type Location: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
+        :param _Page: 数据在原PDF文件中的第几页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Page: int
         """
         self._Name = None
         self._Item = None
@@ -2512,6 +2528,7 @@ class BloodPressureItem(AbstractModel):
         self._Unit = None
         self._Times = None
         self._Location = None
+        self._Page = None
 
     @property
     def Name(self):
@@ -2561,6 +2578,14 @@ class BloodPressureItem(AbstractModel):
     def Location(self, Location):
         self._Location = Location
 
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -2579,6 +2604,7 @@ class BloodPressureItem(AbstractModel):
         if params.get("Location") is not None:
             self._Location = PhysicalBaseItem()
             self._Location._deserialize(params.get("Location"))
+        self._Page = params.get("Page")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2772,10 +2798,14 @@ class Check(AbstractModel):
         :param _BlockTitle: 检查报告块标题
 注意：此字段可能返回 null，表示取不到有效值。
         :type BlockTitle: list of BlockTitle
+        :param _Page: 数据在原PDF文件中的第几页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Page: int
         """
         self._Desc = None
         self._Summary = None
         self._BlockTitle = None
+        self._Page = None
 
     @property
     def Desc(self):
@@ -2801,6 +2831,14 @@ class Check(AbstractModel):
     def BlockTitle(self, BlockTitle):
         self._BlockTitle = BlockTitle
 
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
 
     def _deserialize(self, params):
         if params.get("Desc") is not None:
@@ -2815,6 +2853,7 @@ class Check(AbstractModel):
                 obj = BlockTitle()
                 obj._deserialize(item)
                 self._BlockTitle.append(obj)
+        self._Page = params.get("Page")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4681,9 +4720,13 @@ class CovidItemsInfo(AbstractModel):
         :param _Version: 版本号
 注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
+        :param _Page: 数据在原PDF文件中的第几页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Page: int
         """
         self._CovidItems = None
         self._Version = None
+        self._Page = None
 
     @property
     def CovidItems(self):
@@ -4701,6 +4744,14 @@ class CovidItemsInfo(AbstractModel):
     def Version(self, Version):
         self._Version = Version
 
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
 
     def _deserialize(self, params):
         if params.get("CovidItems") is not None:
@@ -4710,6 +4761,7 @@ class CovidItemsInfo(AbstractModel):
                 obj._deserialize(item)
                 self._CovidItems.append(obj)
         self._Version = params.get("Version")
+        self._Page = params.get("Page")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5230,9 +5282,13 @@ class DiagCert(AbstractModel):
         :param _Diagnosis: 诊断
 注意：此字段可能返回 null，表示取不到有效值。
         :type Diagnosis: list of DiagCertItem
+        :param _Page: 数据在原PDF文件中的第几页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Page: int
         """
         self._Advice = None
         self._Diagnosis = None
+        self._Page = None
 
     @property
     def Advice(self):
@@ -5250,6 +5306,14 @@ class DiagCert(AbstractModel):
     def Diagnosis(self, Diagnosis):
         self._Diagnosis = Diagnosis
 
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
 
     def _deserialize(self, params):
         if params.get("Advice") is not None:
@@ -5261,6 +5325,7 @@ class DiagCert(AbstractModel):
                 obj = DiagCertItem()
                 obj._deserialize(item)
                 self._Diagnosis.append(obj)
+        self._Page = params.get("Page")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5593,12 +5658,16 @@ class DischargeInfoBlock(AbstractModel):
         :param _ParagraphBlock: 文本段落
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParagraphBlock: :class:`tencentcloud.mrs.v20200910.models.ParagraphBlock`
+        :param _Page: 数据在原PDF文件中的第几页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Page: int
         """
         self._DiseaseHistory = None
         self._PersonalHistory = None
         self._DrugHistory = None
         self._TreatmentRecord = None
         self._ParagraphBlock = None
+        self._Page = None
 
     @property
     def DiseaseHistory(self):
@@ -5640,6 +5709,14 @@ class DischargeInfoBlock(AbstractModel):
     def ParagraphBlock(self, ParagraphBlock):
         self._ParagraphBlock = ParagraphBlock
 
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
 
     def _deserialize(self, params):
         if params.get("DiseaseHistory") is not None:
@@ -5657,6 +5734,7 @@ class DischargeInfoBlock(AbstractModel):
         if params.get("ParagraphBlock") is not None:
             self._ParagraphBlock = ParagraphBlock()
             self._ParagraphBlock._deserialize(params.get("ParagraphBlock"))
+        self._Page = params.get("Page")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6778,9 +6856,13 @@ class Electrocardiogram(AbstractModel):
         :param _EcgDiagnosis: 心电图诊断
 注意：此字段可能返回 null，表示取不到有效值。
         :type EcgDiagnosis: :class:`tencentcloud.mrs.v20200910.models.EcgDiagnosis`
+        :param _Page: 数据在原PDF文件中的第几页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Page: int
         """
         self._EcgDescription = None
         self._EcgDiagnosis = None
+        self._Page = None
 
     @property
     def EcgDescription(self):
@@ -6798,6 +6880,14 @@ class Electrocardiogram(AbstractModel):
     def EcgDiagnosis(self, EcgDiagnosis):
         self._EcgDiagnosis = EcgDiagnosis
 
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
 
     def _deserialize(self, params):
         if params.get("EcgDescription") is not None:
@@ -6806,6 +6896,7 @@ class Electrocardiogram(AbstractModel):
         if params.get("EcgDiagnosis") is not None:
             self._EcgDiagnosis = EcgDiagnosis()
             self._EcgDiagnosis._deserialize(params.get("EcgDiagnosis"))
+        self._Page = params.get("Page")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6832,10 +6923,14 @@ class Endoscopy(AbstractModel):
         :param _Summary: 结论
 注意：此字段可能返回 null，表示取不到有效值。
         :type Summary: :class:`tencentcloud.mrs.v20200910.models.Summary`
+        :param _Page: 数据在原PDF文件中的第几页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Page: int
         """
         self._BiopsyPart = None
         self._Desc = None
         self._Summary = None
+        self._Page = None
 
     @property
     def BiopsyPart(self):
@@ -6861,6 +6956,14 @@ class Endoscopy(AbstractModel):
     def Summary(self, Summary):
         self._Summary = Summary
 
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
 
     def _deserialize(self, params):
         if params.get("BiopsyPart") is not None:
@@ -6872,6 +6975,7 @@ class Endoscopy(AbstractModel):
         if params.get("Summary") is not None:
             self._Summary = Summary()
             self._Summary._deserialize(params.get("Summary"))
+        self._Page = params.get("Page")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7289,9 +7393,13 @@ class EyeItemsInfo(AbstractModel):
         :param _Version: 版本号
 注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
+        :param _Page: 数据在原PDF文件中的第几页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Page: int
         """
         self._EyeItems = None
         self._Version = None
+        self._Page = None
 
     @property
     def EyeItems(self):
@@ -7309,12 +7417,21 @@ class EyeItemsInfo(AbstractModel):
     def Version(self, Version):
         self._Version = Version
 
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
 
     def _deserialize(self, params):
         if params.get("EyeItems") is not None:
             self._EyeItems = EyeItem()
             self._EyeItems._deserialize(params.get("EyeItems"))
         self._Version = params.get("Version")
+        self._Page = params.get("Page")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8090,12 +8207,16 @@ class FirstPage(AbstractModel):
         :param _Fp2NdItems: 病案首页第二页
 注意：此字段可能返回 null，表示取不到有效值。
         :type Fp2NdItems: list of Fp2NdItem
+        :param _Page: 数据在原PDF文件中的第几页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Page: int
         """
         self._DischargeDiagnosis = None
         self._PathologicalDiagnosis = None
         self._ClinicalDiagnosis = None
         self._DamagePoi = None
         self._Fp2NdItems = None
+        self._Page = None
 
     @property
     def DischargeDiagnosis(self):
@@ -8137,6 +8258,14 @@ class FirstPage(AbstractModel):
     def Fp2NdItems(self, Fp2NdItems):
         self._Fp2NdItems = Fp2NdItems
 
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
 
     def _deserialize(self, params):
         if params.get("DischargeDiagnosis") is not None:
@@ -8160,6 +8289,7 @@ class FirstPage(AbstractModel):
                 obj = Fp2NdItem()
                 obj._deserialize(item)
                 self._Fp2NdItems.append(obj)
+        self._Page = params.get("Page")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9926,6 +10056,9 @@ class Hospitalization(AbstractModel):
         :param _AdmissionDiagnosis: 入院诊断
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdmissionDiagnosis: str
+        :param _Page: 数据在原PDF文件中的第几页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Page: int
         """
         self._AdmissionTime = None
         self._DischargeTime = None
@@ -9936,6 +10069,7 @@ class Hospitalization(AbstractModel):
         self._DischargeDiagnosis = None
         self._DischargeInstruction = None
         self._AdmissionDiagnosis = None
+        self._Page = None
 
     @property
     def AdmissionTime(self):
@@ -10013,6 +10147,14 @@ class Hospitalization(AbstractModel):
     def AdmissionDiagnosis(self, AdmissionDiagnosis):
         self._AdmissionDiagnosis = AdmissionDiagnosis
 
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
 
     def _deserialize(self, params):
         self._AdmissionTime = params.get("AdmissionTime")
@@ -10024,6 +10166,7 @@ class Hospitalization(AbstractModel):
         self._DischargeDiagnosis = params.get("DischargeDiagnosis")
         self._DischargeInstruction = params.get("DischargeInstruction")
         self._AdmissionDiagnosis = params.get("AdmissionDiagnosis")
+        self._Page = params.get("Page")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11027,9 +11170,13 @@ class Indicator(AbstractModel):
         :param _BlockTitle: 检验报告块标题
 注意：此字段可能返回 null，表示取不到有效值。
         :type BlockTitle: list of BlockTitle
+        :param _Page: 数据在原PDF文件中的第几页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Page: int
         """
         self._Indicators = None
         self._BlockTitle = None
+        self._Page = None
 
     @property
     def Indicators(self):
@@ -11047,6 +11194,14 @@ class Indicator(AbstractModel):
     def BlockTitle(self, BlockTitle):
         self._BlockTitle = BlockTitle
 
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
 
     def _deserialize(self, params):
         if params.get("Indicators") is not None:
@@ -11061,6 +11216,7 @@ class Indicator(AbstractModel):
                 obj = BlockTitle()
                 obj._deserialize(item)
                 self._BlockTitle.append(obj)
+        self._Page = params.get("Page")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11457,10 +11613,14 @@ class IndicatorV3(AbstractModel):
         :param _TableIndicators: 检验报告V3结论
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableIndicators: list of TableIndicators
+        :param _Page: 数据在原PDF文件中的第几页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Page: int
         """
         self._TableIndictors = None
         self._Version = None
         self._TableIndicators = None
+        self._Page = None
 
     @property
     def TableIndictors(self):
@@ -11490,6 +11650,14 @@ class IndicatorV3(AbstractModel):
     def TableIndicators(self, TableIndicators):
         self._TableIndicators = TableIndicators
 
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
 
     def _deserialize(self, params):
         if params.get("TableIndictors") is not None:
@@ -11505,6 +11673,7 @@ class IndicatorV3(AbstractModel):
                 obj = TableIndicators()
                 obj._deserialize(item)
                 self._TableIndicators.append(obj)
+        self._Page = params.get("Page")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12839,10 +13008,14 @@ class KeyValueItem(AbstractModel):
         :param _Result: 结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
+        :param _Page: 数据在原PDF文件中的第几页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Page: int
         """
         self._Name = None
         self._Item = None
         self._Result = None
+        self._Page = None
 
     @property
     def Name(self):
@@ -12868,6 +13041,14 @@ class KeyValueItem(AbstractModel):
     def Result(self, Result):
         self._Result = Result
 
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -12877,6 +13058,7 @@ class KeyValueItem(AbstractModel):
         if params.get("Result") is not None:
             self._Result = PhysicalBaseItem()
             self._Result._deserialize(params.get("Result"))
+        self._Page = params.get("Page")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13442,10 +13624,14 @@ class Maternity(AbstractModel):
         :param _OcrText: 报告原文
 注意：此字段可能返回 null，表示取不到有效值。
         :type OcrText: str
+        :param _Page: 数据在原PDF文件中的第几页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Page: int
         """
         self._Desc = None
         self._Summary = None
         self._OcrText = None
+        self._Page = None
 
     @property
     def Desc(self):
@@ -13471,6 +13657,14 @@ class Maternity(AbstractModel):
     def OcrText(self, OcrText):
         self._OcrText = OcrText
 
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
 
     def _deserialize(self, params):
         if params.get("Desc") is not None:
@@ -13480,6 +13674,7 @@ class Maternity(AbstractModel):
             self._Summary = MaternitySummary()
             self._Summary._deserialize(params.get("Summary"))
         self._OcrText = params.get("OcrText")
+        self._Page = params.get("Page")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13704,6 +13899,9 @@ class MedDoc(AbstractModel):
         :type MenstrualMedicalHistory: :class:`tencentcloud.mrs.v20200910.models.MenstrualMedicalHistory`
         :param _TreatmentRecord: 诊疗记录
         :type TreatmentRecord: :class:`tencentcloud.mrs.v20200910.models.TreatmentRecord`
+        :param _Page: 数据在原PDF文件中的第几页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Page: int
         """
         self._Advice = None
         self._Diagnosis = None
@@ -13713,6 +13911,7 @@ class MedDoc(AbstractModel):
         self._FamilyMedicalHistory = None
         self._MenstrualMedicalHistory = None
         self._TreatmentRecord = None
+        self._Page = None
 
     @property
     def Advice(self):
@@ -13778,6 +13977,14 @@ class MedDoc(AbstractModel):
     def TreatmentRecord(self, TreatmentRecord):
         self._TreatmentRecord = TreatmentRecord
 
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
 
     def _deserialize(self, params):
         if params.get("Advice") is not None:
@@ -13807,6 +14014,7 @@ class MedDoc(AbstractModel):
         if params.get("TreatmentRecord") is not None:
             self._TreatmentRecord = TreatmentRecord()
             self._TreatmentRecord._deserialize(params.get("TreatmentRecord"))
+        self._Page = params.get("Page")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13848,6 +14056,9 @@ class MedicalRecordInfo(AbstractModel):
         :param _TreatmentOpinion: 治疗意见
 注意：此字段可能返回 null，表示取不到有效值。
         :type TreatmentOpinion: str
+        :param _Page: 数据在原PDF文件中的第几页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Page: int
         """
         self._DiagnosisTime = None
         self._DiagnosisDepartmentName = None
@@ -13857,6 +14068,7 @@ class MedicalRecordInfo(AbstractModel):
         self._PhysicalExamination = None
         self._InspectionFindings = None
         self._TreatmentOpinion = None
+        self._Page = None
 
     @property
     def DiagnosisTime(self):
@@ -13922,6 +14134,14 @@ class MedicalRecordInfo(AbstractModel):
     def TreatmentOpinion(self, TreatmentOpinion):
         self._TreatmentOpinion = TreatmentOpinion
 
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
 
     def _deserialize(self, params):
         self._DiagnosisTime = params.get("DiagnosisTime")
@@ -13932,6 +14152,7 @@ class MedicalRecordInfo(AbstractModel):
         self._PhysicalExamination = params.get("PhysicalExamination")
         self._InspectionFindings = params.get("InspectionFindings")
         self._TreatmentOpinion = params.get("TreatmentOpinion")
+        self._Page = params.get("Page")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18052,6 +18273,9 @@ class PathologyV2(AbstractModel):
         :param _Molecular: 分子病理
 注意：此字段可能返回 null，表示取不到有效值。
         :type Molecular: list of Molecular
+        :param _Page: 数据在原PDF文件中的第几页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Page: int
         """
         self._PathologicalReportType = None
         self._Desc = None
@@ -18067,6 +18291,7 @@ class PathologyV2(AbstractModel):
         self._SampleType = None
         self._LymphSize = None
         self._Molecular = None
+        self._Page = None
 
     @property
     def PathologicalReportType(self):
@@ -18180,6 +18405,14 @@ class PathologyV2(AbstractModel):
     def Molecular(self, Molecular):
         self._Molecular = Molecular
 
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
 
     def _deserialize(self, params):
         if params.get("PathologicalReportType") is not None:
@@ -18237,6 +18470,7 @@ class PathologyV2(AbstractModel):
                 obj = Molecular()
                 obj._deserialize(item)
                 self._Molecular.append(obj)
+        self._Page = params.get("Page")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19205,8 +19439,12 @@ class Prescription(AbstractModel):
         :param _MedicineList: 药品列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type MedicineList: list of Medicine
+        :param _Page: 数据在原PDF文件中的第几页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Page: int
         """
         self._MedicineList = None
+        self._Page = None
 
     @property
     def MedicineList(self):
@@ -19216,6 +19454,14 @@ class Prescription(AbstractModel):
     def MedicineList(self, MedicineList):
         self._MedicineList = MedicineList
 
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
 
     def _deserialize(self, params):
         if params.get("MedicineList") is not None:
@@ -19224,6 +19470,7 @@ class Prescription(AbstractModel):
                 obj = Medicine()
                 obj._deserialize(item)
                 self._MedicineList.append(obj)
+        self._Page = params.get("Page")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20169,9 +20416,13 @@ class ResultInfo(AbstractModel):
         :param _Items: 结论详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of BaseInfo
+        :param _Page: 数据在原PDF文件中的第几页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Page: int
         """
         self._Text = None
         self._Items = None
+        self._Page = None
 
     @property
     def Text(self):
@@ -20189,6 +20440,14 @@ class ResultInfo(AbstractModel):
     def Items(self, Items):
         self._Items = Items
 
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
 
     def _deserialize(self, params):
         if params.get("Text") is not None:
@@ -20200,6 +20459,7 @@ class ResultInfo(AbstractModel):
                 obj = BaseInfo()
                 obj._deserialize(item)
                 self._Items.append(obj)
+        self._Page = params.get("Page")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20803,9 +21063,13 @@ class Surgery(AbstractModel):
         :param _OtherInfo: 其他信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type OtherInfo: :class:`tencentcloud.mrs.v20200910.models.OtherInfo`
+        :param _Page: 数据在原PDF文件中的第几页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Page: int
         """
         self._SurgeryHistory = None
         self._OtherInfo = None
+        self._Page = None
 
     @property
     def SurgeryHistory(self):
@@ -20823,6 +21087,14 @@ class Surgery(AbstractModel):
     def OtherInfo(self, OtherInfo):
         self._OtherInfo = OtherInfo
 
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
 
     def _deserialize(self, params):
         if params.get("SurgeryHistory") is not None:
@@ -20831,6 +21103,7 @@ class Surgery(AbstractModel):
         if params.get("OtherInfo") is not None:
             self._OtherInfo = OtherInfo()
             self._OtherInfo._deserialize(params.get("OtherInfo"))
+        self._Page = params.get("Page")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22793,8 +23066,12 @@ class TextTypeListBlock(AbstractModel):
         :param _TextTypeList: 文本类型列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type TextTypeList: list of TextType
+        :param _Page: 数据在原PDF文件中的第几页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Page: int
         """
         self._TextTypeList = None
+        self._Page = None
 
     @property
     def TextTypeList(self):
@@ -22804,6 +23081,14 @@ class TextTypeListBlock(AbstractModel):
     def TextTypeList(self, TextTypeList):
         self._TextTypeList = TextTypeList
 
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
 
     def _deserialize(self, params):
         if params.get("TextTypeList") is not None:
@@ -22812,6 +23097,7 @@ class TextTypeListBlock(AbstractModel):
                 obj = TextType()
                 obj._deserialize(item)
                 self._TextTypeList.append(obj)
+        self._Page = params.get("Page")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23006,8 +23292,12 @@ class TimelineInformation(AbstractModel):
         :param _Timeline: 时间轴
 注意：此字段可能返回 null，表示取不到有效值。
         :type Timeline: list of TimelineEvent
+        :param _Page: 数据在原PDF文件中的第几页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Page: int
         """
         self._Timeline = None
+        self._Page = None
 
     @property
     def Timeline(self):
@@ -23017,6 +23307,14 @@ class TimelineInformation(AbstractModel):
     def Timeline(self, Timeline):
         self._Timeline = Timeline
 
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
 
     def _deserialize(self, params):
         if params.get("Timeline") is not None:
@@ -23025,6 +23323,7 @@ class TimelineInformation(AbstractModel):
                 obj = TimelineEvent()
                 obj._deserialize(item)
                 self._Timeline.append(obj)
+        self._Page = params.get("Page")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25474,8 +25773,12 @@ class VaccineCertificate(AbstractModel):
         :param _VaccineList: 免疫接种列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type VaccineList: list of Vaccination
+        :param _Page: 数据在原PDF文件中的第几页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Page: int
         """
         self._VaccineList = None
+        self._Page = None
 
     @property
     def VaccineList(self):
@@ -25485,6 +25788,14 @@ class VaccineCertificate(AbstractModel):
     def VaccineList(self, VaccineList):
         self._VaccineList = VaccineList
 
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
 
     def _deserialize(self, params):
         if params.get("VaccineList") is not None:
@@ -25493,6 +25804,7 @@ class VaccineCertificate(AbstractModel):
                 obj = Vaccination()
                 obj._deserialize(item)
                 self._VaccineList.append(obj)
+        self._Page = params.get("Page")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25642,11 +25954,15 @@ class ValueUnitItem(AbstractModel):
         :param _Unit: 单位
 注意：此字段可能返回 null，表示取不到有效值。
         :type Unit: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
+        :param _Page: 数据在原PDF文件中的第几页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Page: int
         """
         self._Name = None
         self._Item = None
         self._Result = None
         self._Unit = None
+        self._Page = None
 
     @property
     def Name(self):
@@ -25680,6 +25996,14 @@ class ValueUnitItem(AbstractModel):
     def Unit(self, Unit):
         self._Unit = Unit
 
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -25692,6 +26016,7 @@ class ValueUnitItem(AbstractModel):
         if params.get("Unit") is not None:
             self._Unit = PhysicalBaseItem()
             self._Unit._deserialize(params.get("Unit"))
+        self._Page = params.get("Page")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

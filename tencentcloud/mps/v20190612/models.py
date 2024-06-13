@@ -1391,6 +1391,9 @@ class AiAnalysisResult(AbstractModel):
         :param _DeLogoTask: 视频内容分析智能擦除任务的查询结果，当任务类型为 DeLogo 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeLogoTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDelLogoResult`
+        :param _SegmentTask: 视频内容分析拆条任务的查询结果，当任务类型为 SegmentRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SegmentTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskSegmentResult`
         :param _HeadTailTask: 视频内容分析片头片尾任务的查询结果，当任务类型为 HeadTailRecognition 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HeadTailTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHeadTailResult`
@@ -1405,6 +1408,7 @@ class AiAnalysisResult(AbstractModel):
         self._FrameTagTask = None
         self._HighlightTask = None
         self._DeLogoTask = None
+        self._SegmentTask = None
         self._HeadTailTask = None
         self._DescriptionTask = None
 
@@ -1465,6 +1469,14 @@ class AiAnalysisResult(AbstractModel):
         self._DeLogoTask = DeLogoTask
 
     @property
+    def SegmentTask(self):
+        return self._SegmentTask
+
+    @SegmentTask.setter
+    def SegmentTask(self, SegmentTask):
+        self._SegmentTask = SegmentTask
+
+    @property
     def HeadTailTask(self):
         return self._HeadTailTask
 
@@ -1501,6 +1513,9 @@ class AiAnalysisResult(AbstractModel):
         if params.get("DeLogoTask") is not None:
             self._DeLogoTask = AiAnalysisTaskDelLogoResult()
             self._DeLogoTask._deserialize(params.get("DeLogoTask"))
+        if params.get("SegmentTask") is not None:
+            self._SegmentTask = AiAnalysisTaskSegmentResult()
+            self._SegmentTask._deserialize(params.get("SegmentTask"))
         if params.get("HeadTailTask") is not None:
             self._HeadTailTask = AiAnalysisTaskHeadTailResult()
             self._HeadTailTask._deserialize(params.get("HeadTailTask"))
@@ -2736,6 +2751,163 @@ class AiAnalysisTaskInput(AbstractModel):
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
         self._ExtendedParameter = params.get("ExtendedParameter")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskSegmentInput(AbstractModel):
+    """拆条任务输入类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 拆条任务模板 ID。
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskSegmentOutput(AbstractModel):
+    """智能拆条结果信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SegmentSet: 智能拆条子片段列表。
+        :type SegmentSet: list of SegmentRecognitionItem
+        """
+        self._SegmentSet = None
+
+    @property
+    def SegmentSet(self):
+        return self._SegmentSet
+
+    @SegmentSet.setter
+    def SegmentSet(self, SegmentSet):
+        self._SegmentSet = SegmentSet
+
+
+    def _deserialize(self, params):
+        if params.get("SegmentSet") is not None:
+            self._SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = SegmentRecognitionItem()
+                obj._deserialize(item)
+                self._SegmentSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskSegmentResult(AbstractModel):
+    """拆条结果类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param _ErrCode: 错误码，0：成功，其他值：失败。
+        :type ErrCode: int
+        :param _Message: 错误信息。
+        :type Message: str
+        :param _Input: 拆条任务输入。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskSegmentInput`
+        :param _Output: 拆条任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskSegmentOutput`
+        """
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = AiAnalysisTaskSegmentInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = AiAnalysisTaskSegmentOutput()
+            self._Output._deserialize(params.get("Output"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38782,11 +38954,19 @@ class SegmentRecognitionItem(AbstractModel):
         :param _SegmentUrl: 拆条片段URL。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SegmentUrl: str
+        :param _Title: 分段标题。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Title: str
+        :param _Summary: 分段概要。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Summary: str
         """
         self._Confidence = None
         self._StartTimeOffset = None
         self._EndTimeOffset = None
         self._SegmentUrl = None
+        self._Title = None
+        self._Summary = None
 
     @property
     def Confidence(self):
@@ -38820,12 +39000,30 @@ class SegmentRecognitionItem(AbstractModel):
     def SegmentUrl(self, SegmentUrl):
         self._SegmentUrl = SegmentUrl
 
+    @property
+    def Title(self):
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Summary(self):
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
 
     def _deserialize(self, params):
         self._Confidence = params.get("Confidence")
         self._StartTimeOffset = params.get("StartTimeOffset")
         self._EndTimeOffset = params.get("EndTimeOffset")
         self._SegmentUrl = params.get("SegmentUrl")
+        self._Title = params.get("Title")
+        self._Summary = params.get("Summary")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

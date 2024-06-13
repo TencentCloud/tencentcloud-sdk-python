@@ -3038,8 +3038,10 @@ class ClusterInternalLB(AbstractModel):
     def __init__(self):
         r"""
         :param _Enabled: 是否开启内网访问LB
+注意：此字段可能返回 null，表示取不到有效值。
         :type Enabled: bool
         :param _SubnetId: 内网访问LB关联的子网Id
+注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
         """
         self._Enabled = None
@@ -3585,14 +3587,19 @@ class ClusterPublicLB(AbstractModel):
     def __init__(self):
         r"""
         :param _Enabled: 是否开启公网访问LB
+注意：此字段可能返回 null，表示取不到有效值。
         :type Enabled: bool
         :param _AllowFromCidrs: 允许访问的来源CIDR列表
+注意：此字段可能返回 null，表示取不到有效值。
         :type AllowFromCidrs: list of str
         :param _SecurityPolicies: 安全策略放通单个IP或CIDR(例如: "192.168.1.0/24",默认为拒绝所有)
+注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityPolicies: list of str
         :param _ExtraParam: 外网访问相关的扩展参数，格式为json
+注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraParam: str
         :param _SecurityGroup: 新内外网功能，需要传递安全组
+注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroup: str
         """
         self._Enabled = None
@@ -36422,9 +36429,9 @@ class SubnetInfos(AbstractModel):
         :type Name: str
         :param _SecurityGroups: 安全组id
         :type SecurityGroups: list of str
-        :param _Os: 系统
+        :param _Os: 系统，默认linux
         :type Os: str
-        :param _Arch: 硬件架构
+        :param _Arch: 硬件架构，默认amd64
         :type Arch: str
         """
         self._SubnetId = None

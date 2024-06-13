@@ -2806,6 +2806,12 @@ Modify 集群变更中；
         :param _UserNetworkInfos: 用户可用区和子网信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserNetworkInfos: str
+        :param _EnableCoolDown: 是否启用冷热分层。0：未开启 1：已开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableCoolDown: int
+        :param _CoolDownBucket: 冷热分层使用COS桶
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CoolDownBucket: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -2852,6 +2858,8 @@ Modify 集群变更中；
         self._BindSGs = None
         self._EnableMultiZones = None
         self._UserNetworkInfos = None
+        self._EnableCoolDown = None
+        self._CoolDownBucket = None
 
     @property
     def InstanceId(self):
@@ -3217,6 +3225,22 @@ Modify 集群变更中；
     def UserNetworkInfos(self, UserNetworkInfos):
         self._UserNetworkInfos = UserNetworkInfos
 
+    @property
+    def EnableCoolDown(self):
+        return self._EnableCoolDown
+
+    @EnableCoolDown.setter
+    def EnableCoolDown(self, EnableCoolDown):
+        self._EnableCoolDown = EnableCoolDown
+
+    @property
+    def CoolDownBucket(self):
+        return self._CoolDownBucket
+
+    @CoolDownBucket.setter
+    def CoolDownBucket(self, CoolDownBucket):
+        self._CoolDownBucket = CoolDownBucket
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -3273,6 +3297,8 @@ Modify 集群变更中；
         self._BindSGs = params.get("BindSGs")
         self._EnableMultiZones = params.get("EnableMultiZones")
         self._UserNetworkInfos = params.get("UserNetworkInfos")
+        self._EnableCoolDown = params.get("EnableCoolDown")
+        self._CoolDownBucket = params.get("CoolDownBucket")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

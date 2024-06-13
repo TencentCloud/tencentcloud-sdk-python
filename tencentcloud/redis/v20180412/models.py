@@ -1573,9 +1573,9 @@ class CommandTake(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Cmd: 命令
+        :param _Cmd: 命令名。
         :type Cmd: str
-        :param _Took: 耗时
+        :param _Took: 耗时时长。
         :type Took: int
         """
         self._Cmd = None
@@ -4895,9 +4895,13 @@ class DescribeInstanceMonitorHotKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例Id
+        :param _InstanceId: 指定实例 ID。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _SpanType: 时间范围：1——实时，2——近30分钟，3——近6小时，4——近24小时
+        :param _SpanType: 查询时间范围。
+- 1：实时。
+- 2：近30分钟。
+- 3：近6小时。
+- 4：近24小时。
         :type SpanType: int
         """
         self._InstanceId = None
@@ -4940,7 +4944,7 @@ class DescribeInstanceMonitorHotKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 热Key详细信息
+        :param _Data: 热 Key 详细信息。
         :type Data: list of HotKeyInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5057,11 +5061,15 @@ class DescribeInstanceMonitorTookDistRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例Id
+        :param _InstanceId: 实例 ID。
         :type InstanceId: str
-        :param _Date: 时间；例如："20190219"
+        :param _Date: 查询时间日期。
         :type Date: str
-        :param _SpanType: 时间范围：1——实时，2——近30分钟，3——近6小时，4——近24小时
+        :param _SpanType: 时间范围。
+- 1：实时。
+- 2：近30分钟。
+- 3：近6小时。
+- 4：近24小时。
         :type SpanType: int
         """
         self._InstanceId = None
@@ -5114,7 +5122,7 @@ class DescribeInstanceMonitorTookDistResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 时延分布信息
+        :param _Data: 时延分布信息。
         :type Data: list of DelayDistribution
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5243,9 +5251,13 @@ class DescribeInstanceMonitorTopNCmdTookRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 实例 ID。
         :type InstanceId: str
-        :param _SpanType: 时间范围：1——实时，2——近30分钟，3——近6小时，4——近24小时
+        :param _SpanType: 查询时间范围。
+- 1：实时。
+- 2：近30分钟。
+- 3：近6小时。
+- 4：近24小时。
         :type SpanType: int
         """
         self._InstanceId = None
@@ -15979,9 +15991,9 @@ class SourceCommand(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Cmd: 命令
+        :param _Cmd: 命令名称。
         :type Cmd: str
-        :param _Count: 执行次数
+        :param _Count: 执行次数。
         :type Count: int
         """
         self._Cmd = None

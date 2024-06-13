@@ -2635,6 +2635,8 @@ class ChannelCreateEmbedWebUrlRequest(AbstractModel):
 </li>
 </ul>
         :type UserData: str
+        :param _Option: 个性化参数，用于控制页面展示内容
+        :type Option: :class:`tencentcloud.essbasic.v20210526.models.EmbedUrlOption`
         """
         self._Agent = None
         self._EmbedType = None
@@ -2642,6 +2644,7 @@ class ChannelCreateEmbedWebUrlRequest(AbstractModel):
         self._HiddenComponents = None
         self._Operator = None
         self._UserData = None
+        self._Option = None
 
     @property
     def Agent(self):
@@ -2695,6 +2698,14 @@ class ChannelCreateEmbedWebUrlRequest(AbstractModel):
     def UserData(self, UserData):
         self._UserData = UserData
 
+    @property
+    def Option(self):
+        return self._Option
+
+    @Option.setter
+    def Option(self, Option):
+        self._Option = Option
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -2707,6 +2718,9 @@ class ChannelCreateEmbedWebUrlRequest(AbstractModel):
             self._Operator = UserInfo()
             self._Operator._deserialize(params.get("Operator"))
         self._UserData = params.get("UserData")
+        if params.get("Option") is not None:
+            self._Option = EmbedUrlOption()
+            self._Option._deserialize(params.get("Option"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6981,6 +6995,8 @@ class ChannelDescribeOrganizationSealsRequest(AbstractModel):
 
 注:  `为空时查询所有类型的印章。`
         :type SealTypes: list of str
+        :param _SealStatuses: 查询的印章状态列表。 <ul> <li>空，只查询启用状态的印章；</li> <li>ALL，查询所有状态的印章；</li> <li>CHECKING，查询待审核的印章；</li> <li>SUCCESS，查询启用状态的印章；</li> <li>FAIL，查询印章审核拒绝的印章；</li> <li>DISABLE，查询已停用的印章；</li> <li>STOPPED，查询已终止的印章；</li> <li>VOID，查询已作废的印章；</li> <li>INVALID，查询已失效的印章；</li> </ul>
+        :type SealStatuses: list of str
         """
         self._Agent = None
         self._Limit = None
@@ -6988,6 +7004,7 @@ class ChannelDescribeOrganizationSealsRequest(AbstractModel):
         self._InfoType = None
         self._SealId = None
         self._SealTypes = None
+        self._SealStatuses = None
 
     @property
     def Agent(self):
@@ -7037,6 +7054,14 @@ class ChannelDescribeOrganizationSealsRequest(AbstractModel):
     def SealTypes(self, SealTypes):
         self._SealTypes = SealTypes
 
+    @property
+    def SealStatuses(self):
+        return self._SealStatuses
+
+    @SealStatuses.setter
+    def SealStatuses(self, SealStatuses):
+        self._SealStatuses = SealStatuses
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -7047,6 +7072,7 @@ class ChannelDescribeOrganizationSealsRequest(AbstractModel):
         self._InfoType = params.get("InfoType")
         self._SealId = params.get("SealId")
         self._SealTypes = params.get("SealTypes")
+        self._SealStatuses = params.get("SealStatuses")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13328,6 +13354,57 @@ class DownloadFlowInfo(AbstractModel):
         
 
 
+class EmbedUrlOption(AbstractModel):
+    """创建嵌入式页面url个性化参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ShowFlowDetailComponent: 合同详情页面是否展示合同控件信息
+<br/>true:允许在合同详情页展示控件
+<br/>false:不允许在合同详情页展示控件
+<br/>默认false,在合同详情页不展示控件
+        :type ShowFlowDetailComponent: bool
+        :param _ShowTemplateComponent: 模版预览页面是否展示空间信息
+<br/>true:允许在模版预览页展示控件
+<br/>false:不允许在模版预览页展示控件
+<br/>默认false,在模版预览页不展示控件
+        :type ShowTemplateComponent: bool
+        """
+        self._ShowFlowDetailComponent = None
+        self._ShowTemplateComponent = None
+
+    @property
+    def ShowFlowDetailComponent(self):
+        return self._ShowFlowDetailComponent
+
+    @ShowFlowDetailComponent.setter
+    def ShowFlowDetailComponent(self, ShowFlowDetailComponent):
+        self._ShowFlowDetailComponent = ShowFlowDetailComponent
+
+    @property
+    def ShowTemplateComponent(self):
+        return self._ShowTemplateComponent
+
+    @ShowTemplateComponent.setter
+    def ShowTemplateComponent(self, ShowTemplateComponent):
+        self._ShowTemplateComponent = ShowTemplateComponent
+
+
+    def _deserialize(self, params):
+        self._ShowFlowDetailComponent = params.get("ShowFlowDetailComponent")
+        self._ShowTemplateComponent = params.get("ShowTemplateComponent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ExtentServiceAuthInfo(AbstractModel):
     """扩展服务开通和授权的详细信息
 
@@ -13993,7 +14070,7 @@ class FlowApproverInfo(AbstractModel):
 
     **各种场景传参说明**:
 
-    <table>     <thead>     <tr>         <th>场景编号</th>         <th>发起方类型</th>         <th>签署方类型</th>         <th>签署方传参说明</th>     </tr>     </thead>     <tbody>     <tr>         <td>场景一</td>         <td>第三方子企业A员工</td>         <td>第三方子企业A员工</td>         <td>             <ul>                 <li>（选填）IdCardNumber和IdCardType：证件类型和证件号</li>                 <li>（必传）Name：签署方的名字</li>                 <li>（必传）Mobile：签署方的手机号</li>                 <li>（必传）OpenId：企业员工标识</li>                 <li>（必传）OrganizationName：子企业名称</li>                 <li>（必传）OrganizationOpenId：子企业的标识</li>                 <li>（固定）ApproverType：需设置为ORGANIZATION</li>             </ul>         </td>     </tr>     <tr>         <td>场景二</td>         <td>第三方子企业A员工</td>         <td>第三方子企业B(不指定经办人走领取方式)</td>         <td>             <ul>                 <li>（必传）OrganizationName：子企业名称</li>                 <li>（必传）OrganizationOpenId：子企业的标识</li>                 <li>（固定）ApproverType：需设置为ORGANIZATION</li>                 <li>（固定）ApproverOption.FillType：需设置为1</li>             </ul>         </td>     </tr>     <tr>         <td>场景三</td>         <td>第三方子企业A员工</td>         <td>第三方子企业B员工</td>         <td>  <ul>             <li>（选填）IdCardNumber和IdCardType：证件类型和证件号</li>             <li>（必传）Name：签署方的名字</li>             <li>（必传）Mobile：签署方的手机号</li>             <li>（必传）OpenId：企业员工标识</li>             <li>（必传）OrganizationName：子企业名称</li>             <li>（必传）OrganizationOpenId：子企业的标识</li>             <li>（固定）ApproverType：需设置为ORGANIZATION</li>         </ul></td>     </tr>     <tr>         <td>场景四</td>         <td>第三方子企业A员工</td>         <td>个人/自然人</td>         <td>             <ul>                 <li>（选填）IdCardNumber和IdCardType：证件类型和证件号</li>                 <li>（必传）Name：签署方的名字</li>                 <li>（必传）Mobile：签署方的手机号</li>                 <li>（固定）ApproverType：需设置为PERSON</li>             </ul>         </td>     </tr>     <tr>         <td>场景五</td>         <td>第三方子企业A员工</td>         <td>SaaS平台企业员工</td>         <td>             <ul>                 <li>（选填）IdCardNumber和IdCardType：证件类型和证件号</li>                 <li>（必传）OrganizationName：SaaS企业的名字</li>                 <li>（必传）Name：签署方的名字</li>                 <li>（必传）Mobile：签署方的手机号</li>                 <li>（必传）OrganizationOpenId：子企业的标识</li>                 <li>（固定）ApproverType：需设置为ORGANIZATION</li>                 <li>（固定）NotChannelOrganization：需设置为True</li>             </ul>         </td>     </tr>     </tbody> </table>
+    <table>     <thead>     <tr>         <th>场景编号</th>         <th>发起方类型</th>         <th>签署方类型</th>         <th>签署方传参说明</th>     </tr>     </thead>     <tbody>     <tr>         <td>场景一</td>         <td>第三方子企业A员工</td>         <td>第三方子企业A员工</td>         <td>             <ul>                 <li>（选填）IdCardNumber和IdCardType：证件类型和证件号</li>                 <li>（必传）Name：签署方的名字</li>                 <li>（必传）Mobile：签署方的手机号</li>                 <li>（必传）OpenId：企业员工标识</li>                 <li>（必传）OrganizationName：子企业名称</li>                 <li>（必传）OrganizationOpenId：子企业的标识</li>                 <li>（固定）ApproverType：需设置为ORGANIZATION</li>             </ul>         </td>     </tr>     <tr>         <td>场景二</td>         <td>第三方子企业A员工</td>         <td>第三方子企业B(不指定经办人走领取方式)</td>         <td>             <ul>                 <li>（必传）OrganizationName：子企业名称</li>                 <li>（必传）OrganizationOpenId：子企业的标识</li>                 <li>（固定）ApproverType：需设置为ORGANIZATION</li>                 <li>（固定）ApproverOption.FillType：需设置为1</li>             </ul>         </td>     </tr>     <tr>         <td>场景三</td>         <td>第三方子企业A员工</td>         <td>第三方子企业B员工</td>         <td>  <ul>             <li>（选填）IdCardNumber和IdCardType：证件类型和证件号</li>             <li>（必传）Name：签署方的名字</li>             <li>（必传）Mobile：签署方的手机号</li>             <li>（必传）OpenId：企业员工标识</li>             <li>（必传）OrganizationName：子企业名称</li>             <li>（必传）OrganizationOpenId：子企业的标识</li>             <li>（固定）ApproverType：需设置为ORGANIZATION</li>         </ul></td>     </tr>     <tr>         <td>场景四</td>         <td>第三方子企业A员工</td>         <td>个人/自然人</td>         <td>             <ul>                 <li>（选填）IdCardNumber和IdCardType：证件类型和证件号</li>                 <li>（必传）Name：签署方的名字</li>                 <li>（必传）Mobile：签署方的手机号</li>                 <li>（固定）ApproverType：需设置为PERSON</li>             </ul>         </td>     </tr>     <tr>         <td>场景五</td>         <td>第三方子企业A员工</td>         <td>SaaS平台企业员工</td>         <td>             <ul>                 <li>（选填）IdCardNumber和IdCardType：证件类型和证件号</li>                 <li>（必传）OrganizationName：SaaS企业的名字</li>                 <li>（必传）Name：签署方的名字</li>                 <li>（必传）Mobile：签署方的手机号</li>                 <li>（不传）OrganizationOpenId：子企业的标识</li>    <li>（不传）OpenId：企业员工标识</li>               <li>（固定）ApproverType：需设置为ORGANIZATION</li>                 <li>（固定）NotChannelOrganization：需设置为True</li>             </ul>         </td>     </tr>     </tbody> </table>
 
 
     **注1**: `使用模板发起合同时，RecipientId（模板发起合同时）必传`

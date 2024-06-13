@@ -12321,6 +12321,9 @@ class ServerlessSpace(AbstractModel):
         :param _KibanaLanguage: //默认en， 可选zh-CN
 注意：此字段可能返回 null，表示取不到有效值。
         :type KibanaLanguage: str
+        :param _ClusterType: 0
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterType: int
         """
         self._SpaceId = None
         self._SpaceName = None
@@ -12340,6 +12343,7 @@ class ServerlessSpace(AbstractModel):
         self._EnableKibanaPrivateAccess = None
         self._AppId = None
         self._KibanaLanguage = None
+        self._ClusterType = None
 
     @property
     def SpaceId(self):
@@ -12485,6 +12489,14 @@ class ServerlessSpace(AbstractModel):
     def KibanaLanguage(self, KibanaLanguage):
         self._KibanaLanguage = KibanaLanguage
 
+    @property
+    def ClusterType(self):
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
 
     def _deserialize(self, params):
         self._SpaceId = params.get("SpaceId")
@@ -12514,6 +12526,7 @@ class ServerlessSpace(AbstractModel):
         self._EnableKibanaPrivateAccess = params.get("EnableKibanaPrivateAccess")
         self._AppId = params.get("AppId")
         self._KibanaLanguage = params.get("KibanaLanguage")
+        self._ClusterType = params.get("ClusterType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

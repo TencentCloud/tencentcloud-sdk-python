@@ -62,12 +62,12 @@ class ChatCompletionsRequest(AbstractModel):
         :type StreamModeration: bool
         :param _TopP: 说明：
 1. 影响输出文本的多样性，取值越大，生成文本的多样性越强。
-2. 默认 1.0，取值区间为 [0.0, 1.0]。
+2. 取值区间为 [0.0, 1.0]，未传值时使用各模型推荐值。
 3. 非必要不建议使用，不合理的取值会影响效果。
         :type TopP: float
         :param _Temperature: 说明：
 1. 较高的数值会使输出更加随机，而较低的数值会使其更加集中和确定。
-2. 默认 1.0，取值区间为 [0.0, 2.0]。
+2. 取值区间为 [0.0, 2.0]，未传值时使用各模型推荐值。
 3. 非必要不建议使用，不合理的取值会影响效果。
         :type Temperature: float
         :param _EnableEnhancement: 功能增强（如搜索）开关。
