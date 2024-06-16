@@ -22605,6 +22605,12 @@ class SREInstance(AbstractModel):
         :param _StorageOption: 存储额外配置选项
 注意：此字段可能返回 null，表示取不到有效值。
         :type StorageOption: list of StorageOption
+        :param _ZookeeperRegionInfo: Zookeeper的额外环境数据信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZookeeperRegionInfo: :class:`tencentcloud.tse.v20201207.models.ZookeeperRegionInfo`
+        :param _DeployMode: 部署架构
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeployMode: str
         """
         self._InstanceId = None
         self._Name = None
@@ -22640,6 +22646,8 @@ class SREInstance(AbstractModel):
         self._FeatureVersion = None
         self._EnableClientIntranet = None
         self._StorageOption = None
+        self._ZookeeperRegionInfo = None
+        self._DeployMode = None
 
     @property
     def InstanceId(self):
@@ -22913,6 +22921,22 @@ class SREInstance(AbstractModel):
     def StorageOption(self, StorageOption):
         self._StorageOption = StorageOption
 
+    @property
+    def ZookeeperRegionInfo(self):
+        return self._ZookeeperRegionInfo
+
+    @ZookeeperRegionInfo.setter
+    def ZookeeperRegionInfo(self, ZookeeperRegionInfo):
+        self._ZookeeperRegionInfo = ZookeeperRegionInfo
+
+    @property
+    def DeployMode(self):
+        return self._DeployMode
+
+    @DeployMode.setter
+    def DeployMode(self, DeployMode):
+        self._DeployMode = DeployMode
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -22979,6 +23003,10 @@ class SREInstance(AbstractModel):
                 obj = StorageOption()
                 obj._deserialize(item)
                 self._StorageOption.append(obj)
+        if params.get("ZookeeperRegionInfo") is not None:
+            self._ZookeeperRegionInfo = ZookeeperRegionInfo()
+            self._ZookeeperRegionInfo._deserialize(params.get("ZookeeperRegionInfo"))
+        self._DeployMode = params.get("DeployMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24070,10 +24098,14 @@ class VpcInfo(AbstractModel):
         :param _IntranetAddress: 内网访问地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntranetAddress: str
+        :param _LbSubnetId: 负载均衡均衡接入点子网ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LbSubnetId: str
         """
         self._VpcId = None
         self._SubnetId = None
         self._IntranetAddress = None
+        self._LbSubnetId = None
 
     @property
     def VpcId(self):
@@ -24099,11 +24131,151 @@ class VpcInfo(AbstractModel):
     def IntranetAddress(self, IntranetAddress):
         self._IntranetAddress = IntranetAddress
 
+    @property
+    def LbSubnetId(self):
+        return self._LbSubnetId
+
+    @LbSubnetId.setter
+    def LbSubnetId(self, LbSubnetId):
+        self._LbSubnetId = LbSubnetId
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")
         self._IntranetAddress = params.get("IntranetAddress")
+        self._LbSubnetId = params.get("LbSubnetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ZookeeperRegionInfo(AbstractModel):
+    """Zookeeper的地域额外信息记录
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeployMode: 部署架构信息
+
+- SingleRegion: 普通单地域
+- MultiRegion: 普通多地域场景
+- MasterSlave: 两地域，主备地域场景
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeployMode: str
+        :param _MainRegion: 主地域的额外信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MainRegion: :class:`tencentcloud.tse.v20201207.models.ZookeeperRegionMyIdInfo`
+        :param _OtherRegions: 其他地域的额外信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OtherRegions: list of ZookeeperRegionMyIdInfo
+        """
+        self._DeployMode = None
+        self._MainRegion = None
+        self._OtherRegions = None
+
+    @property
+    def DeployMode(self):
+        return self._DeployMode
+
+    @DeployMode.setter
+    def DeployMode(self, DeployMode):
+        self._DeployMode = DeployMode
+
+    @property
+    def MainRegion(self):
+        return self._MainRegion
+
+    @MainRegion.setter
+    def MainRegion(self, MainRegion):
+        self._MainRegion = MainRegion
+
+    @property
+    def OtherRegions(self):
+        return self._OtherRegions
+
+    @OtherRegions.setter
+    def OtherRegions(self, OtherRegions):
+        self._OtherRegions = OtherRegions
+
+
+    def _deserialize(self, params):
+        self._DeployMode = params.get("DeployMode")
+        if params.get("MainRegion") is not None:
+            self._MainRegion = ZookeeperRegionMyIdInfo()
+            self._MainRegion._deserialize(params.get("MainRegion"))
+        if params.get("OtherRegions") is not None:
+            self._OtherRegions = []
+            for item in params.get("OtherRegions"):
+                obj = ZookeeperRegionMyIdInfo()
+                obj._deserialize(item)
+                self._OtherRegions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ZookeeperRegionMyIdInfo(AbstractModel):
+    """Zookeeper的地域信息的 myid 信息记录
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: 地域信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param _MyIdStart: myid 的起始号段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MyIdStart: int
+        :param _MyIdEnd: myid 的结束号段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MyIdEnd: int
+        """
+        self._Region = None
+        self._MyIdStart = None
+        self._MyIdEnd = None
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def MyIdStart(self):
+        return self._MyIdStart
+
+    @MyIdStart.setter
+    def MyIdStart(self, MyIdStart):
+        self._MyIdStart = MyIdStart
+
+    @property
+    def MyIdEnd(self):
+        return self._MyIdEnd
+
+    @MyIdEnd.setter
+    def MyIdEnd(self, MyIdEnd):
+        self._MyIdEnd = MyIdEnd
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._MyIdStart = params.get("MyIdStart")
+        self._MyIdEnd = params.get("MyIdEnd")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

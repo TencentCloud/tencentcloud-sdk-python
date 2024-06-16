@@ -10857,11 +10857,19 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
  注：该参数需要开通“基于子客授权第三方应用可文件发起子客自动签署”，请联系运营经理开通
 
         :type PlatformAppAuthorization: bool
+        :param _SealTypes: 指定印章类型，指定后只能选择该类型的印章进行授权
+支持以下印章类型：
+- OFFICIAL : 企业公章
+- CONTRACT : 合同专用章
+- FINANCE : 财务专用章
+- PERSONNEL : 人事专用章
+        :type SealTypes: list of str
         """
         self._Agent = None
         self._AuthorizedOrganizationId = None
         self._AuthorizedOrganizationName = None
         self._PlatformAppAuthorization = None
+        self._SealTypes = None
 
     @property
     def Agent(self):
@@ -10895,6 +10903,14 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
     def PlatformAppAuthorization(self, PlatformAppAuthorization):
         self._PlatformAppAuthorization = PlatformAppAuthorization
 
+    @property
+    def SealTypes(self):
+        return self._SealTypes
+
+    @SealTypes.setter
+    def SealTypes(self, SealTypes):
+        self._SealTypes = SealTypes
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -10903,6 +10919,7 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
         self._AuthorizedOrganizationId = params.get("AuthorizedOrganizationId")
         self._AuthorizedOrganizationName = params.get("AuthorizedOrganizationName")
         self._PlatformAppAuthorization = params.get("PlatformAppAuthorization")
+        self._SealTypes = params.get("SealTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11036,8 +11053,12 @@ class CreateSealByImageRequest(AbstractModel):
 <li> **40_30**: 椭圆形印章40mm x 30mm, 当SealStyle是椭圆的时候才有效</li></ul>
         :type SealSize: str
         :param _TaxIdentifyCode: 企业税号
-注: `1.印章类型SealType是INVOICE类型时，此参数才会生效`
-`2.印章类型SealType是INVOICE类型，且该字段没有传入值或传入空时，会取该企业对应的统一社会信用代码作为默认的企业税号`
+
+注:
+<ul>
+<li>1.印章类型SealType是INVOICE类型时，此参数才会生效</li>
+<li>2.印章类型SealType是INVOICE类型，且该字段没有传入值或传入空时，会取该企业对应的统一社会信用代码作为默认的企业税号（<font color="red">如果是通过授权书授权方式认证的企业，此参数必传不能为空</font>）</li>
+</ul>
         :type TaxIdentifyCode: str
         """
         self._Agent = None

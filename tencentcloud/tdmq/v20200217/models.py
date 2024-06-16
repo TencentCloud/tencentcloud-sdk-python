@@ -20556,6 +20556,9 @@ class RabbitMQClusterInfo(AbstractModel):
         :param _ClusterVersion: 集群版本信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterVersion: str
+        :param _PayMode: 计费模式，0-后付费，1-预付费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayMode: int
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -20579,6 +20582,7 @@ class RabbitMQClusterInfo(AbstractModel):
         self._MirrorQueuePolicyFlag = None
         self._MessageConsumeRate = None
         self._ClusterVersion = None
+        self._PayMode = None
 
     @property
     def ClusterId(self):
@@ -20756,6 +20760,14 @@ class RabbitMQClusterInfo(AbstractModel):
     def ClusterVersion(self, ClusterVersion):
         self._ClusterVersion = ClusterVersion
 
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -20785,6 +20797,7 @@ class RabbitMQClusterInfo(AbstractModel):
         self._MirrorQueuePolicyFlag = params.get("MirrorQueuePolicyFlag")
         self._MessageConsumeRate = params.get("MessageConsumeRate")
         self._ClusterVersion = params.get("ClusterVersion")
+        self._PayMode = params.get("PayMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

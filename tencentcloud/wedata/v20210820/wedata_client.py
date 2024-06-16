@@ -854,6 +854,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateTaskFolder(self, request):
+        """编排空间-工作流-创建任务文件夹
+
+        :param request: Request instance for CreateTaskFolder.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.CreateTaskFolderRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.CreateTaskFolderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateTaskFolder", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateTaskFolderResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateTaskVersionDs(self, request):
         """提交任务版本
 

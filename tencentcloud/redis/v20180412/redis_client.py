@@ -601,6 +601,29 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeGlobalReplicationArea(self, request):
+        """查询全球复制支持地域信息
+
+        :param request: Request instance for DescribeGlobalReplicationArea.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeGlobalReplicationAreaRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeGlobalReplicationAreaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGlobalReplicationArea", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGlobalReplicationAreaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstanceAccount(self, request):
         """本接口（DescribeInstanceAccount）用于查看实例子账号信息。
 
@@ -1015,6 +1038,29 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInstanceSpecBandwidth(self, request):
+        """本接口（DescribeInstanceSpecBandwidth）用于查询或计算带宽规格。
+
+        :param request: Request instance for DescribeInstanceSpecBandwidth.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceSpecBandwidthRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceSpecBandwidthResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceSpecBandwidth", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceSpecBandwidthResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstanceSupportFeature(self, request):
         """本接口（DescribeInstanceSupportFeature）用于查询实例支持的功能特性。
 
@@ -1259,6 +1305,29 @@ class RedisClient(AbstractClient):
             body = self.call("DescribeReplicationGroup", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeReplicationGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeReplicationGroupInstance(self, request):
+        """查询复制组信息
+
+        :param request: Request instance for DescribeReplicationGroupInstance.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeReplicationGroupInstanceRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeReplicationGroupInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeReplicationGroupInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeReplicationGroupInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1926,6 +1995,29 @@ class RedisClient(AbstractClient):
             body = self.call("ModifyParamTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyParamTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyReplicationGroup(self, request):
+        """修改复制组信息
+
+        :param request: Request instance for ModifyReplicationGroup.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ModifyReplicationGroupRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifyReplicationGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyReplicationGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyReplicationGroupResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -478,6 +478,53 @@ class AssociateSecurityGroupsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AvailableRegion(AbstractModel):
+    """可使用的地域信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param _AvailableZones: 可用区信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AvailableZones: list of str
+        """
+        self._Region = None
+        self._AvailableZones = None
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def AvailableZones(self):
+        return self._AvailableZones
+
+    @AvailableZones.setter
+    def AvailableZones(self, AvailableZones):
+        self._AvailableZones = AvailableZones
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._AvailableZones = params.get("AvailableZones")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BackupDownloadInfo(AbstractModel):
     """备份文件下载信息
 
@@ -3792,6 +3839,54 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeGlobalReplicationAreaRequest(AbstractModel):
+    """DescribeGlobalReplicationArea请求参数结构体
+
+    """
+
+
+class DescribeGlobalReplicationAreaResponse(AbstractModel):
+    """DescribeGlobalReplicationArea返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AvailableRegions: 可用地域信息
+        :type AvailableRegions: list of AvailableRegion
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AvailableRegions = None
+        self._RequestId = None
+
+    @property
+    def AvailableRegions(self):
+        return self._AvailableRegions
+
+    @AvailableRegions.setter
+    def AvailableRegions(self, AvailableRegions):
+        self._AvailableRegions = AvailableRegions
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AvailableRegions") is not None:
+            self._AvailableRegions = []
+            for item in params.get("AvailableRegions"):
+                obj = AvailableRegion()
+                obj._deserialize(item)
+                self._AvailableRegions.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeInstanceAccountRequest(AbstractModel):
     """DescribeInstanceAccount请求参数结构体
 
@@ -5932,6 +6027,37 @@ class DescribeInstanceShardsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeInstanceSpecBandwidthRequest(AbstractModel):
+    """DescribeInstanceSpecBandwidth请求参数结构体
+
+    """
+
+
+class DescribeInstanceSpecBandwidthResponse(AbstractModel):
+    """DescribeInstanceSpecBandwidth返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeInstanceSupportFeatureRequest(AbstractModel):
     """DescribeInstanceSupportFeature请求参数结构体
 
@@ -7309,6 +7435,126 @@ class DescribeProxySlowLogResponse(AbstractModel):
                 obj = InstanceProxySlowlogDetail()
                 obj._deserialize(item)
                 self._InstanceProxySlowLogDetail.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeReplicationGroupInstanceRequest(AbstractModel):
+    """DescribeReplicationGroupInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeReplicationGroupInstanceResponse(AbstractModel):
+    """DescribeReplicationGroupInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: AppID。
+        :type AppId: int
+        :param _RegionId: 地域数字编号。
+        :type RegionId: int
+        :param _GroupId: 复制组字符串ID。
+        :type GroupId: str
+        :param _GroupName: 复制组名称。
+        :type GroupName: str
+        :param _InstanceRole: 实例复制组角色。
+- r:  备实例
+- rw: 主实例
+        :type InstanceRole: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AppId = None
+        self._RegionId = None
+        self._GroupId = None
+        self._GroupName = None
+        self._InstanceRole = None
+        self._RequestId = None
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def InstanceRole(self):
+        return self._InstanceRole
+
+    @InstanceRole.setter
+    def InstanceRole(self, InstanceRole):
+        self._InstanceRole = InstanceRole
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._RegionId = params.get("RegionId")
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._InstanceRole = params.get("InstanceRole")
         self._RequestId = params.get("RequestId")
 
 
@@ -13502,6 +13748,88 @@ class ModifyParamTemplateRequest(AbstractModel):
 
 class ModifyParamTemplateResponse(AbstractModel):
     """ModifyParamTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyReplicationGroupRequest(AbstractModel):
+    """ModifyReplicationGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: 复制组字符串ID
+        :type GroupId: str
+        :param _GroupName: 复制组名称
+        :type GroupName: str
+        :param _Remark: 备注
+        :type Remark: str
+        """
+        self._GroupId = None
+        self._GroupName = None
+        self._Remark = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyReplicationGroupResponse(AbstractModel):
+    """ModifyReplicationGroup返回参数结构体
 
     """
 

@@ -2672,7 +2672,9 @@ class TkeClient(AbstractClient):
 
 
     def DescribeExternalClusterSpec(self, request):
-        """获取导入第三方集群YAML定义
+        """tdcc接口已迁移至tdcc产品下，tke下的接口下线
+
+        获取导入第三方集群YAML定义
 
         :param request: Request instance for DescribeExternalClusterSpec.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeExternalClusterSpecRequest`

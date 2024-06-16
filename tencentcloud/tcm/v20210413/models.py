@@ -33,10 +33,14 @@ class APM(AbstractModel):
         :param _InstanceId: APM 实例，如果创建时传入的参数为空，则表示自动创建 APM 实例。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
+        :param _NeedDelete: 是否要删除APM实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NeedDelete: bool
         """
         self._Enable = None
         self._Region = None
         self._InstanceId = None
+        self._NeedDelete = None
 
     @property
     def Enable(self):
@@ -62,11 +66,20 @@ class APM(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def NeedDelete(self):
+        return self._NeedDelete
+
+    @NeedDelete.setter
+    def NeedDelete(self, NeedDelete):
+        self._NeedDelete = NeedDelete
+
 
     def _deserialize(self, params):
         self._Enable = params.get("Enable")
         self._Region = params.get("Region")
         self._InstanceId = params.get("InstanceId")
+        self._NeedDelete = params.get("NeedDelete")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -881,16 +894,22 @@ class CustomPromConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _Url: Prometheus 访问地址
+注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         :param _AuthType: 认证方式
+注意：此字段可能返回 null，表示取不到有效值。
         :type AuthType: str
         :param _IsPublicAddr: 是否公网地址，缺省为 false
+注意：此字段可能返回 null，表示取不到有效值。
         :type IsPublicAddr: bool
         :param _VpcId: 虚拟网络id
+注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _Username: Prometheus 用户名（用于 basic 认证方式）
+注意：此字段可能返回 null，表示取不到有效值。
         :type Username: str
         :param _Password: Prometheus 密码（用于 basic 认证方式）
+注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
         """
         self._Url = None
@@ -2495,6 +2514,12 @@ OPEN：公网属性， INTERNAL：内网属性。
         :param _CrossRegionConfig: 负载均衡跨地域配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type CrossRegionConfig: :class:`tencentcloud.tcm.v20210413.models.CrossRegionConfig`
+        :param _MasterZoneID: 设置跨可用区容灾时的主可用区ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MasterZoneID: str
+        :param _SlaveZoneID: 设置跨可用区容灾时的备可用区ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlaveZoneID: str
         """
         self._LoadBalancerType = None
         self._SubnetId = None
@@ -2507,6 +2532,8 @@ OPEN：公网属性， INTERNAL：内网属性。
         self._Tags = None
         self._ExtensiveClusters = None
         self._CrossRegionConfig = None
+        self._MasterZoneID = None
+        self._SlaveZoneID = None
 
     @property
     def LoadBalancerType(self):
@@ -2596,6 +2623,22 @@ OPEN：公网属性， INTERNAL：内网属性。
     def CrossRegionConfig(self, CrossRegionConfig):
         self._CrossRegionConfig = CrossRegionConfig
 
+    @property
+    def MasterZoneID(self):
+        return self._MasterZoneID
+
+    @MasterZoneID.setter
+    def MasterZoneID(self, MasterZoneID):
+        self._MasterZoneID = MasterZoneID
+
+    @property
+    def SlaveZoneID(self):
+        return self._SlaveZoneID
+
+    @SlaveZoneID.setter
+    def SlaveZoneID(self, SlaveZoneID):
+        self._SlaveZoneID = SlaveZoneID
+
 
     def _deserialize(self, params):
         self._LoadBalancerType = params.get("LoadBalancerType")
@@ -2618,6 +2661,8 @@ OPEN：公网属性， INTERNAL：内网属性。
         if params.get("CrossRegionConfig") is not None:
             self._CrossRegionConfig = CrossRegionConfig()
             self._CrossRegionConfig._deserialize(params.get("CrossRegionConfig"))
+        self._MasterZoneID = params.get("MasterZoneID")
+        self._SlaveZoneID = params.get("SlaveZoneID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -583,7 +583,7 @@ class TextToVoiceRequest(AbstractModel):
         :type EmotionCategory: str
         :param _EmotionIntensity: 控制合成音频情感程度，取值范围为[50,200],默认为100；只有EmotionCategory不为空时生效；
         :type EmotionIntensity: int
-        :param _FastVoiceType: 一句话复刻音色id，使用一句话复刻音色时需填写。若使用一句话复刻，VoiceType请填入固定值“200000000”
+        :param _FastVoiceType: 预留参数，暂未使用
         :type FastVoiceType: str
         """
         self._Text = None

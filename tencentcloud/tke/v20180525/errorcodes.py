@@ -80,6 +80,9 @@ FAILEDOPERATION_CREATECLSTOPIC = 'FailedOperation.CreateClsTopic'
 # cvm创建节点报错。
 FAILEDOPERATION_CVMCOMMON = 'FailedOperation.CvmCommon'
 
+# CVM开启销毁保护，无法移出。
+FAILEDOPERATION_CVMDELETIONPROTECTION = 'FailedOperation.CvmDeletionProtection'
+
 # 存在云服务器在CVM侧查询不到。
 FAILEDOPERATION_CVMNUMBERNOTMATCH = 'FailedOperation.CvmNumberNotMatch'
 

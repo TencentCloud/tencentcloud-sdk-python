@@ -1477,7 +1477,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribePartitions(self, request):
-        """本接口用于获取主题分区列表。
+        """该接口已废弃，如需获取分区数量，请使用DescribeTopics接口。
 
         :param request: Request instance for DescribePartitions.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribePartitionsRequest`
@@ -1615,7 +1615,7 @@ class ClsClient(AbstractClient):
 
 
     def MergePartition(self, request):
-        """本接口用于合并一个读写态的主题分区，合并时指定一个主题分区 ID，日志服务会自动合并范围右相邻的分区。
+        """该接口已废弃，如需修改分区数量，请使用ModifyTopic接口。
 
         :param request: Request instance for MergePartition.
         :type request: :class:`tencentcloud.cls.v20201016.models.MergePartitionRequest`
@@ -2216,7 +2216,7 @@ class ClsClient(AbstractClient):
 
 
     def SplitPartition(self, request):
-        """本接口用于分裂主题分区
+        """该接口已废弃，如需修改分区数量，请使用ModifyTopic接口。
 
         :param request: Request instance for SplitPartition.
         :type request: :class:`tencentcloud.cls.v20201016.models.SplitPartitionRequest`

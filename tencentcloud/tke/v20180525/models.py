@@ -9907,7 +9907,7 @@ class DeleteImageCachesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageCacheIds: 镜像缓存Id数组
+        :param _ImageCacheIds: 镜像缓存ID数组
         :type ImageCacheIds: list of str
         """
         self._ImageCacheIds = None

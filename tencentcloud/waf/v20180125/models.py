@@ -7818,6 +7818,178 @@ class DescribeAntiLeakageItem(AbstractModel):
         
 
 
+class DescribeAreaBanAreasRequest(AbstractModel):
+    """DescribeAreaBanAreas请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 需要查询的域名
+        :type Domain: str
+        """
+        self._Domain = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAreaBanAreasResponse(AbstractModel):
+    """DescribeAreaBanAreas返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 回包内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.waf.v20180125.models.DescribeAreaBanAreasRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DescribeAreaBanAreasRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAreaBanAreasRsp(AbstractModel):
+    """DescribeAreaBanAreas接口的回包
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 状态 "0"：未开启地域封禁 "1"：开启地域封禁
+        :type Status: str
+        :param _Source: 数据来源 custom-自定义(默认)、batch-批量防护
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Source: str
+        :param _Areas: 字符串数据，配置的地域列表
+        :type Areas: list of str
+        :param _JobType: 定时任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobType: str
+        :param _JobDateTime: 定时任务详细配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        :param _CronType: 周期任务配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CronType: str
+        """
+        self._Status = None
+        self._Source = None
+        self._Areas = None
+        self._JobType = None
+        self._JobDateTime = None
+        self._CronType = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Areas(self):
+        return self._Areas
+
+    @Areas.setter
+    def Areas(self, Areas):
+        self._Areas = Areas
+
+    @property
+    def JobType(self):
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def JobDateTime(self):
+        return self._JobDateTime
+
+    @JobDateTime.setter
+    def JobDateTime(self, JobDateTime):
+        self._JobDateTime = JobDateTime
+
+    @property
+    def CronType(self):
+        return self._CronType
+
+    @CronType.setter
+    def CronType(self, CronType):
+        self._CronType = CronType
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._Source = params.get("Source")
+        self._Areas = params.get("Areas")
+        self._JobType = params.get("JobType")
+        if params.get("JobDateTime") is not None:
+            self._JobDateTime = JobDateTime()
+            self._JobDateTime._deserialize(params.get("JobDateTime"))
+        self._CronType = params.get("CronType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeAreaBanSupportAreasRequest(AbstractModel):
     """DescribeAreaBanSupportAreas请求参数结构体
 

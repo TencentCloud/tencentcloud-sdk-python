@@ -814,6 +814,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAreaBanAreas(self, request):
+        """获取地域封禁配置包括地域封禁开关，设置封禁的地区信息
+
+        :param request: Request instance for DescribeAreaBanAreas.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAreaBanAreasRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeAreaBanAreasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAreaBanAreas", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAreaBanAreasResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAreaBanSupportAreas(self, request):
         """获取WAF地域封禁支持的地域列表
 

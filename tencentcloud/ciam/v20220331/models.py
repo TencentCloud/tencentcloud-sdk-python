@@ -1396,7 +1396,7 @@ class Filter(AbstractModel):
 
 class ImportUser(AbstractModel):
     """导入用户信息
-    1、UserName，PhoneNumber ，Email ，WechatOpenId ，WechatUnionId ，AlipayUserId ，QqOpenId ，QqUnionId 八个属性中，导入时必须包含其中一个属性并遵守初始化自定义属性的正则表达式规则。UserName，PhoneNumber，Email的正则表达式在控制台的自定义属性中可以查询到。
+    1、UserName，PhoneNumber ，Email ，WechatOpenId ，WechatUnionId ，AlipayUserId ，QqOpenId ，QqUnionId ，WeComUserId 九个属性中，导入时必须包含其中一个属性并遵守初始化自定义属性的正则表达式规则。UserName，PhoneNumber，Email的正则表达式在控制台的自定义属性中可以查询到。
     2、对于密码的导入，导入的密码支持明文导入，MD5密文导入，SHA1密文导入，BCRYPT密文导入 ，这个需要在PasswordEncryptTypeEnum 字段中指定。
     3、IdentityVerified，IdentityVerificationMethod 支持导入，
     IdentityVerified 为true，IdentityVerificationMethod必传；
@@ -1431,6 +1431,8 @@ class ImportUser(AbstractModel):
         :type WechatUnionId: str
         :param _AlipayUserId: 支付宝alipayUserId
         :type AlipayUserId: str
+        :param _WeComUserId: 企业微信weComUserId
+        :type WeComUserId: str
         :param _Description: 描述
         :type Description: str
         :param _Birthdate: 生日
@@ -1482,6 +1484,7 @@ class ImportUser(AbstractModel):
         self._WechatOpenId = None
         self._WechatUnionId = None
         self._AlipayUserId = None
+        self._WeComUserId = None
         self._Description = None
         self._Birthdate = None
         self._Name = None
@@ -1597,6 +1600,14 @@ class ImportUser(AbstractModel):
     @AlipayUserId.setter
     def AlipayUserId(self, AlipayUserId):
         self._AlipayUserId = AlipayUserId
+
+    @property
+    def WeComUserId(self):
+        return self._WeComUserId
+
+    @WeComUserId.setter
+    def WeComUserId(self, WeComUserId):
+        self._WeComUserId = WeComUserId
 
     @property
     def Description(self):
@@ -1764,6 +1775,7 @@ class ImportUser(AbstractModel):
         self._WechatOpenId = params.get("WechatOpenId")
         self._WechatUnionId = params.get("WechatUnionId")
         self._AlipayUserId = params.get("AlipayUserId")
+        self._WeComUserId = params.get("WeComUserId")
         self._Description = params.get("Description")
         self._Birthdate = params.get("Birthdate")
         self._Name = params.get("Name")
@@ -4060,6 +4072,9 @@ class User(AbstractModel):
         :param _AlipayUserId: 支付宝的AlipayUserId
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlipayUserId: str
+        :param _WeComUserId: 企业微信的WeComUserId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WeComUserId: str
         :param _Description: 描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
@@ -4144,6 +4159,7 @@ class User(AbstractModel):
         self._WechatOpenId = None
         self._WechatUnionId = None
         self._AlipayUserId = None
+        self._WeComUserId = None
         self._Description = None
         self._Name = None
         self._Locale = None
@@ -4325,6 +4341,14 @@ class User(AbstractModel):
     @AlipayUserId.setter
     def AlipayUserId(self, AlipayUserId):
         self._AlipayUserId = AlipayUserId
+
+    @property
+    def WeComUserId(self):
+        return self._WeComUserId
+
+    @WeComUserId.setter
+    def WeComUserId(self, WeComUserId):
+        self._WeComUserId = WeComUserId
 
     @property
     def Description(self):
@@ -4521,6 +4545,7 @@ class User(AbstractModel):
         self._WechatOpenId = params.get("WechatOpenId")
         self._WechatUnionId = params.get("WechatUnionId")
         self._AlipayUserId = params.get("AlipayUserId")
+        self._WeComUserId = params.get("WeComUserId")
         self._Description = params.get("Description")
         self._Name = params.get("Name")
         self._Locale = params.get("Locale")
