@@ -412,6 +412,13 @@ class BackupInfo(AbstractModel):
         :type Status: int
         :param _BackupMethod: 备份方法，0-逻辑备份，1-物理备份
         :type BackupMethod: int
+        :param _BackId: 备份记录id
+        :type BackId: int
+        :param _DeleteTime: 备份删除时间
+        :type DeleteTime: str
+        :param _BackupRegion: 异地备份地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupRegion: str
         """
         self._InstanceId = None
         self._BackupType = None
@@ -422,6 +429,9 @@ class BackupInfo(AbstractModel):
         self._EndTime = None
         self._Status = None
         self._BackupMethod = None
+        self._BackId = None
+        self._DeleteTime = None
+        self._BackupRegion = None
 
     @property
     def InstanceId(self):
@@ -495,6 +505,30 @@ class BackupInfo(AbstractModel):
     def BackupMethod(self, BackupMethod):
         self._BackupMethod = BackupMethod
 
+    @property
+    def BackId(self):
+        return self._BackId
+
+    @BackId.setter
+    def BackId(self, BackId):
+        self._BackId = BackId
+
+    @property
+    def DeleteTime(self):
+        return self._DeleteTime
+
+    @DeleteTime.setter
+    def DeleteTime(self, DeleteTime):
+        self._DeleteTime = DeleteTime
+
+    @property
+    def BackupRegion(self):
+        return self._BackupRegion
+
+    @BackupRegion.setter
+    def BackupRegion(self, BackupRegion):
+        self._BackupRegion = BackupRegion
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -506,6 +540,9 @@ class BackupInfo(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._Status = params.get("Status")
         self._BackupMethod = params.get("BackupMethod")
+        self._BackId = params.get("BackId")
+        self._DeleteTime = params.get("DeleteTime")
+        self._BackupRegion = params.get("BackupRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

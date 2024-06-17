@@ -596,6 +596,9 @@ RESOURCEUNAVAILABLE_DOCKERUNAVAILABLE = 'ResourceUnavailable.DockerUnavailable'
 # 防火墙模板在使用中，不支持该操作。
 RESOURCEUNAVAILABLE_FIREWALLTEMPLATEINUSE = 'ResourceUnavailable.FirewallTemplateInUse'
 
+# 当前套餐不支持通过API购买。
+RESOURCEUNAVAILABLE_INVALIDPURCHASEREQUESTSOURCE = 'ResourceUnavailable.InvalidPurchaseRequestSource'
+
 # TAT agent不可用。
 RESOURCEUNAVAILABLE_TATAGENTUNAVAILABLE = 'ResourceUnavailable.TATAgentUnavailable'
 

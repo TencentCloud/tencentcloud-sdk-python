@@ -5858,7 +5858,7 @@ class DescribeInstanceSecurityGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: 实例 ID 列表。例如;["crs-f2ho5rsz\n"]
+        :param _InstanceIds: 实例 ID 列表，数组长度限制[0,100]。例如：["crs-f2ho5rsz\n"]
         :type InstanceIds: list of str
         """
         self._InstanceIds = None
@@ -7922,7 +7922,7 @@ class DescribeSlowLogResponse(AbstractModel):
         r"""
         :param _TotalCount: 慢查询总数。
         :type TotalCount: int
-        :param _InstanceSlowlogDetail: 该参数存在命名不规范问题，建议用参数InstanceSlowLogDetail取代。慢查询详情。
+        :param _InstanceSlowlogDetail: 已废弃，该参数存在命名不规范问题，后续用参数InstanceSlowLogDetail取代。慢查询详情。
         :type InstanceSlowlogDetail: list of InstanceSlowlogDetail
         :param _InstanceSlowLogDetail: 慢查询详情。
         :type InstanceSlowLogDetail: list of InstanceSlowlogDetail
@@ -16940,9 +16940,12 @@ class TendisNodes(AbstractModel):
         :type NodeId: str
         :param _NodeRole: 节点角色
         :type NodeRole: str
+        :param _ZoneId: 可用区 ID。	
+        :type ZoneId: int
         """
         self._NodeId = None
         self._NodeRole = None
+        self._ZoneId = None
 
     @property
     def NodeId(self):
@@ -16960,10 +16963,19 @@ class TendisNodes(AbstractModel):
     def NodeRole(self, NodeRole):
         self._NodeRole = NodeRole
 
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
 
     def _deserialize(self, params):
         self._NodeId = params.get("NodeId")
         self._NodeRole = params.get("NodeRole")
+        self._ZoneId = params.get("ZoneId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

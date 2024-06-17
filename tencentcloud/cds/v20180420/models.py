@@ -340,61 +340,6 @@ class DbauditTypesInfo(AbstractModel):
         
 
 
-class DescribeDasbImageIdsRequest(AbstractModel):
-    """DescribeDasbImageIds请求参数结构体
-
-    """
-
-
-class DescribeDasbImageIdsResponse(AbstractModel):
-    """DescribeDasbImageIds返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _BaseImageId: 基础镜像ID
-        :type BaseImageId: str
-        :param _AiImageId: AI镜像ID
-        :type AiImageId: str
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._BaseImageId = None
-        self._AiImageId = None
-        self._RequestId = None
-
-    @property
-    def BaseImageId(self):
-        return self._BaseImageId
-
-    @BaseImageId.setter
-    def BaseImageId(self, BaseImageId):
-        self._BaseImageId = BaseImageId
-
-    @property
-    def AiImageId(self):
-        return self._AiImageId
-
-    @AiImageId.setter
-    def AiImageId(self, AiImageId):
-        self._AiImageId = AiImageId
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._BaseImageId = params.get("BaseImageId")
-        self._AiImageId = params.get("AiImageId")
-        self._RequestId = params.get("RequestId")
-
-
 class DescribeDbauditInstanceTypeRequest(AbstractModel):
     """DescribeDbauditInstanceType请求参数结构体
 

@@ -26781,6 +26781,9 @@ class FileConfigRelease(AbstractModel):
         :param _ClusterName: 集群名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterName: str
+        :param _ConfigCenters: 配置中心发布详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigCenters: list of TsfConfigCenter
         """
         self._ConfigReleaseId = None
         self._ConfigId = None
@@ -26794,6 +26797,7 @@ class FileConfigRelease(AbstractModel):
         self._NamespaceName = None
         self._ClusterId = None
         self._ClusterName = None
+        self._ConfigCenters = None
 
     @property
     def ConfigReleaseId(self):
@@ -26891,6 +26895,14 @@ class FileConfigRelease(AbstractModel):
     def ClusterName(self, ClusterName):
         self._ClusterName = ClusterName
 
+    @property
+    def ConfigCenters(self):
+        return self._ConfigCenters
+
+    @ConfigCenters.setter
+    def ConfigCenters(self, ConfigCenters):
+        self._ConfigCenters = ConfigCenters
+
 
     def _deserialize(self, params):
         self._ConfigReleaseId = params.get("ConfigReleaseId")
@@ -26905,6 +26917,12 @@ class FileConfigRelease(AbstractModel):
         self._NamespaceName = params.get("NamespaceName")
         self._ClusterId = params.get("ClusterId")
         self._ClusterName = params.get("ClusterName")
+        if params.get("ConfigCenters") is not None:
+            self._ConfigCenters = []
+            for item in params.get("ConfigCenters"):
+                obj = TsfConfigCenter()
+                obj._deserialize(item)
+                self._ConfigCenters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

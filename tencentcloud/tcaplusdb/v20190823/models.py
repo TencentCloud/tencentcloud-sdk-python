@@ -1312,20 +1312,28 @@ class CompareTablesInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _SrcTableClusterId: 源表格的集群id
+注意：此字段可能返回 null，表示取不到有效值。
         :type SrcTableClusterId: str
         :param _SrcTableGroupId: 源表格的表格组id
+注意：此字段可能返回 null，表示取不到有效值。
         :type SrcTableGroupId: str
         :param _SrcTableName: 源表格的表名
+注意：此字段可能返回 null，表示取不到有效值。
         :type SrcTableName: str
         :param _DstTableClusterId: 目标表格的集群id
+注意：此字段可能返回 null，表示取不到有效值。
         :type DstTableClusterId: str
         :param _DstTableGroupId: 目标表格的表格组id
+注意：此字段可能返回 null，表示取不到有效值。
         :type DstTableGroupId: str
         :param _DstTableName: 目标表格的表名
+注意：此字段可能返回 null，表示取不到有效值。
         :type DstTableName: str
         :param _SrcTableInstanceId: 源表格的实例id
+注意：此字段可能返回 null，表示取不到有效值。
         :type SrcTableInstanceId: str
         :param _DstTableInstanceId: 目标表格的实例id
+注意：此字段可能返回 null，表示取不到有效值。
         :type DstTableInstanceId: str
         """
         self._SrcTableClusterId = None
@@ -5321,16 +5329,22 @@ class KafkaInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Address: Kafka address
+注意：此字段可能返回 null，表示取不到有效值。
         :type Address: str
         :param _Topic: Kafka topic
+注意：此字段可能返回 null，表示取不到有效值。
         :type Topic: str
         :param _User: kafka username
+注意：此字段可能返回 null，表示取不到有效值。
         :type User: str
         :param _Password: kafka password
+注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
         :param _Instance: ckafka实例
+注意：此字段可能返回 null，表示取不到有效值。
         :type Instance: str
         :param _IsVpc: 是否走VPC
+注意：此字段可能返回 null，表示取不到有效值。
         :type IsVpc: int
         """
         self._Address = None
@@ -8768,6 +8782,9 @@ class SnapshotResult(AbstractModel):
         :param _SnapshotStatus: 快照状态，0 生成中 1 正常 2 删除中 3 已失效 4 回档使用中
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotStatus: int
+        :param _ApplicationId: 申请单ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationId: str
         """
         self._TableGroupId = None
         self._TableName = None
@@ -8779,6 +8796,7 @@ class SnapshotResult(AbstractModel):
         self._SnapshotCreateTime = None
         self._SnapshotSize = None
         self._SnapshotStatus = None
+        self._ApplicationId = None
 
     @property
     def TableGroupId(self):
@@ -8860,6 +8878,14 @@ class SnapshotResult(AbstractModel):
     def SnapshotStatus(self, SnapshotStatus):
         self._SnapshotStatus = SnapshotStatus
 
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
 
     def _deserialize(self, params):
         self._TableGroupId = params.get("TableGroupId")
@@ -8874,6 +8900,7 @@ class SnapshotResult(AbstractModel):
         self._SnapshotCreateTime = params.get("SnapshotCreateTime")
         self._SnapshotSize = params.get("SnapshotSize")
         self._SnapshotStatus = params.get("SnapshotStatus")
+        self._ApplicationId = params.get("ApplicationId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10250,6 +10277,15 @@ class TaskInfoNew(AbstractModel):
         :type Operator: str
         :param _Content: 任务详情
         :type Content: str
+        :param _TableGroupId: 表格组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableGroupId: str
+        :param _TableGroupName: 表格组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableGroupName: str
+        :param _TableName: 表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
         """
         self._TaskId = None
         self._TaskType = None
@@ -10261,6 +10297,9 @@ class TaskInfoNew(AbstractModel):
         self._UpdateTime = None
         self._Operator = None
         self._Content = None
+        self._TableGroupId = None
+        self._TableGroupName = None
+        self._TableName = None
 
     @property
     def TaskId(self):
@@ -10342,6 +10381,30 @@ class TaskInfoNew(AbstractModel):
     def Content(self, Content):
         self._Content = Content
 
+    @property
+    def TableGroupId(self):
+        return self._TableGroupId
+
+    @TableGroupId.setter
+    def TableGroupId(self, TableGroupId):
+        self._TableGroupId = TableGroupId
+
+    @property
+    def TableGroupName(self):
+        return self._TableGroupName
+
+    @TableGroupName.setter
+    def TableGroupName(self, TableGroupName):
+        self._TableGroupName = TableGroupName
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -10354,6 +10417,9 @@ class TaskInfoNew(AbstractModel):
         self._UpdateTime = params.get("UpdateTime")
         self._Operator = params.get("Operator")
         self._Content = params.get("Content")
+        self._TableGroupId = params.get("TableGroupId")
+        self._TableGroupName = params.get("TableGroupName")
+        self._TableName = params.get("TableName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

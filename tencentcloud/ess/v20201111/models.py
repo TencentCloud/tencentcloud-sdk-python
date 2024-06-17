@@ -14898,14 +14898,14 @@ class EmbedUrlOption(AbstractModel):
     def __init__(self):
         r"""
         :param _ShowFlowDetailComponent: 合同详情预览，允许展示控件信息
-<br/>true：允许在合同详情页展示控件
-<br/>false：不允许在合同详情页展示控件
-<br/>默认false，合同详情页不展示控件
+<ul>
+<li><b>true</b>：允许在合同详情页展示控件</li>
+<li><b>false</b>：（默认）不允许在合同详情页展示控件</li>
+</ul>
         :type ShowFlowDetailComponent: bool
         :param _ShowTemplateComponent: 模板预览，允许展示模板控件信息
-<br/>true：允许在模板预览页展示控件
-<br/>false：不允许在模板预览页展示控件
-<br/>默认false，模板预览页不展示控件
+<ul><li> <b>true</b> :允许在模板预览页展示控件</li>
+<li> <b>false</b> :（默认）不允许在模板预览页展示控件</li></ul>
         :type ShowTemplateComponent: bool
         """
         self._ShowFlowDetailComponent = None

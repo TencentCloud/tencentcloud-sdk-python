@@ -1706,7 +1706,9 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeRollbackTimeValidity(self, request):
-        """指定时间和集群查询是否可回滚
+        """历史废弃接口，从云API下线
+
+        指定时间和集群查询是否可回滚
 
         :param request: Request instance for DescribeRollbackTimeValidity.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeRollbackTimeValidityRequest`

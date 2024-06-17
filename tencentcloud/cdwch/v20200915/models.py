@@ -3476,6 +3476,15 @@ Modify 集群变更中；
         :param _HasEsIndex: true
 注意：此字段可能返回 null，表示取不到有效值。
         :type HasEsIndex: bool
+        :param _IsSecondaryZone: true
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsSecondaryZone: bool
+        :param _SecondaryZoneInfo: desc
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecondaryZoneInfo: str
+        :param _ClickHouseKeeper: 是否clickhouse-keeper
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClickHouseKeeper: bool
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -3523,6 +3532,9 @@ Modify 集群变更中；
         self._EsIndexUsername = None
         self._EsIndexPassword = None
         self._HasEsIndex = None
+        self._IsSecondaryZone = None
+        self._SecondaryZoneInfo = None
+        self._ClickHouseKeeper = None
 
     @property
     def InstanceId(self):
@@ -3892,6 +3904,30 @@ Modify 集群变更中；
     def HasEsIndex(self, HasEsIndex):
         self._HasEsIndex = HasEsIndex
 
+    @property
+    def IsSecondaryZone(self):
+        return self._IsSecondaryZone
+
+    @IsSecondaryZone.setter
+    def IsSecondaryZone(self, IsSecondaryZone):
+        self._IsSecondaryZone = IsSecondaryZone
+
+    @property
+    def SecondaryZoneInfo(self):
+        return self._SecondaryZoneInfo
+
+    @SecondaryZoneInfo.setter
+    def SecondaryZoneInfo(self, SecondaryZoneInfo):
+        self._SecondaryZoneInfo = SecondaryZoneInfo
+
+    @property
+    def ClickHouseKeeper(self):
+        return self._ClickHouseKeeper
+
+    @ClickHouseKeeper.setter
+    def ClickHouseKeeper(self, ClickHouseKeeper):
+        self._ClickHouseKeeper = ClickHouseKeeper
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -3956,6 +3992,9 @@ Modify 集群变更中；
         self._EsIndexUsername = params.get("EsIndexUsername")
         self._EsIndexPassword = params.get("EsIndexPassword")
         self._HasEsIndex = params.get("HasEsIndex")
+        self._IsSecondaryZone = params.get("IsSecondaryZone")
+        self._SecondaryZoneInfo = params.get("SecondaryZoneInfo")
+        self._ClickHouseKeeper = params.get("ClickHouseKeeper")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

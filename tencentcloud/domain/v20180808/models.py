@@ -480,7 +480,7 @@ class BiddingAppointResult(AbstractModel):
         :param _AppointNum: 预约人数
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppointNum: int
-        :param _Status:  1 已预约，2 竞价中，3 等待出价 4 等待支付 5 失败 6 转移中，7 转移成功 8 持有者索回
+        :param _Status: 1 已预约，2 竞价中，3 等待出价 4 竞价失败 5 等待支付 6 等待转移，7 转移中 8 交易成功 9 预约持有者赎回 10 竞价持有者赎回 11 其他阶段持有者赎回 12 违约
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         """
@@ -695,7 +695,7 @@ class BiddingResult(AbstractModel):
         :param _BiddingNum: 出价次数
 注意：此字段可能返回 null，表示取不到有效值。
         :type BiddingNum: int
-        :param _Status: 1 已预约，2 竞价中，3 支付尾款 4 交割 5 交易失败 6 交易成功，7 已过期
+        :param _Status: 2 竞价中  3 等待出价 4 竞价失败 10 竞价持有者赎回
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         """
@@ -2798,7 +2798,7 @@ class DescribeBiddingAppointDetailResponse(AbstractModel):
         :type AppointPrice: int
         :param _AppointBondPrice: 预约保证金
         :type AppointBondPrice: int
-        :param _Status:  1 已预约，2 竞价中，3 等待出价 4 等待支付 5 失败 6 转移中，7 转移成功 8 持有者索回
+        :param _Status: 1 已预约，2 竞价中，3 等待出价 4 竞价失败 5 等待支付 6 等待转移，7 转移中 8 交易成功 9 预约持有者赎回 10 竞价持有者赎回 11 其他阶段持有者赎回 12 违约
         :type Status: int
         :param _BiddingBondRefund: 预约保证金是否已经退回
 yes：退回 no: 未退回
@@ -3138,7 +3138,7 @@ class DescribeBiddingDetailResponse(AbstractModel):
         :type CurrentNickname: str
         :param _BiddingBondPrice: 竞价保证金
         :type BiddingBondPrice: int
-        :param _Status: 1 已预约，2 竞价中，3 支付尾款 4 交割 5 交易失败 6 交易成功，7 已过期
+        :param _Status: 2 竞价中  3 等待出价 4 竞价失败 10 竞价持有者赎回
         :type Status: int
         :param _BiddingFlag: 竞价标识，1 领先，2 落后
         :type BiddingFlag: int
@@ -3317,7 +3317,7 @@ class DescribeBiddingListRequest(AbstractModel):
         :type PageSize: int
         :param _Domain: 域名
         :type Domain: str
-        :param _Status: 2 竞价中  3 等待出价  4 交易失败  10 竞价阶段持有者赎回
+        :param _Status: 2 竞价中  3 等待出价 4 竞价失败 10 竞价持有者赎回
         :type Status: list of int non-negative
         :param _SortField: 排序字段：BiddingEndTime 竞价结束时间	
 BiddingPrice 我的价格
@@ -3510,7 +3510,7 @@ class DescribeBiddingSuccessfulDetailResponse(AbstractModel):
         :type BiddingBondRefund: str
         :param _BiddingBondPrice: 保证金
         :type BiddingBondPrice: float
-        :param _Status: 状态：1 竞价中，2 待出价，3 竞价失败， 4 等待支付 5 等待转移， 6 转移中，7 交易成功，8 持有者索回，9 已违约
+        :param _Status: 状态：5 等待支付 6 等待转移， 7 转移中，8 交易成功，11 尾款阶段持有者索回，12 已违约
         :type Status: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

@@ -26366,6 +26366,16 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         :type DealMode: int
         :param _PayMode: 计算节点付费模式：0-按量计费，1-预付费
         :type PayMode: int
+        :param _TimeSpan: 时间
+        :type TimeSpan: int
+        :param _TimeUnit: 单位
+        :type TimeUnit: str
+        :param _RollbackDatabases: 回档库信息
+        :type RollbackDatabases: list of RollbackDatabase
+        :param _RollbackTables: 回档表信息
+        :type RollbackTables: list of RollbackTable
+        :param _OriginalROInstanceList: 原ro实例信息
+        :type OriginalROInstanceList: list of str
         """
         self._Zone = None
         self._OriginalClusterId = None
@@ -26388,6 +26398,11 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         self._InstanceInitInfos = None
         self._DealMode = None
         self._PayMode = None
+        self._TimeSpan = None
+        self._TimeUnit = None
+        self._RollbackDatabases = None
+        self._RollbackTables = None
+        self._OriginalROInstanceList = None
 
     @property
     def Zone(self):
@@ -26557,6 +26572,46 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
     def PayMode(self, PayMode):
         self._PayMode = PayMode
 
+    @property
+    def TimeSpan(self):
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def TimeUnit(self):
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def RollbackDatabases(self):
+        return self._RollbackDatabases
+
+    @RollbackDatabases.setter
+    def RollbackDatabases(self, RollbackDatabases):
+        self._RollbackDatabases = RollbackDatabases
+
+    @property
+    def RollbackTables(self):
+        return self._RollbackTables
+
+    @RollbackTables.setter
+    def RollbackTables(self, RollbackTables):
+        self._RollbackTables = RollbackTables
+
+    @property
+    def OriginalROInstanceList(self):
+        return self._OriginalROInstanceList
+
+    @OriginalROInstanceList.setter
+    def OriginalROInstanceList(self, OriginalROInstanceList):
+        self._OriginalROInstanceList = OriginalROInstanceList
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -26595,6 +26650,21 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
                 self._InstanceInitInfos.append(obj)
         self._DealMode = params.get("DealMode")
         self._PayMode = params.get("PayMode")
+        self._TimeSpan = params.get("TimeSpan")
+        self._TimeUnit = params.get("TimeUnit")
+        if params.get("RollbackDatabases") is not None:
+            self._RollbackDatabases = []
+            for item in params.get("RollbackDatabases"):
+                obj = RollbackDatabase()
+                obj._deserialize(item)
+                self._RollbackDatabases.append(obj)
+        if params.get("RollbackTables") is not None:
+            self._RollbackTables = []
+            for item in params.get("RollbackTables"):
+                obj = RollbackTable()
+                obj._deserialize(item)
+                self._RollbackTables.append(obj)
+        self._OriginalROInstanceList = params.get("OriginalROInstanceList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

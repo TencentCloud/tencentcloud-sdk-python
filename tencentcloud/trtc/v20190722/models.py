@@ -10238,18 +10238,26 @@ https://cloud.tencent.com/document/product/269/31999#app-.E7.AE.A1.E7.90.86.E5.9
 
     @property
     def IMAdminUserId(self):
+        warnings.warn("parameter `IMAdminUserId` is deprecated", DeprecationWarning) 
+
         return self._IMAdminUserId
 
     @IMAdminUserId.setter
     def IMAdminUserId(self, IMAdminUserId):
+        warnings.warn("parameter `IMAdminUserId` is deprecated", DeprecationWarning) 
+
         self._IMAdminUserId = IMAdminUserId
 
     @property
     def IMAdminUserSig(self):
+        warnings.warn("parameter `IMAdminUserSig` is deprecated", DeprecationWarning) 
+
         return self._IMAdminUserSig
 
     @IMAdminUserSig.setter
     def IMAdminUserSig(self, IMAdminUserSig):
+        warnings.warn("parameter `IMAdminUserSig` is deprecated", DeprecationWarning) 
+
         self._IMAdminUserSig = IMAdminUserSig
 
     @property

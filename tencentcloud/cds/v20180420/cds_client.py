@@ -26,31 +26,6 @@ class CdsClient(AbstractClient):
     _service = 'cds'
 
 
-    def DescribeDasbImageIds(self, request):
-        """这些接口是传统版堡垒机接口.数审未用到，堡垒机的已全部迁移到dasb下，cds这边预下线
-
-        获取镜像列表
-
-        :param request: Request instance for DescribeDasbImageIds.
-        :type request: :class:`tencentcloud.cds.v20180420.models.DescribeDasbImageIdsRequest`
-        :rtype: :class:`tencentcloud.cds.v20180420.models.DescribeDasbImageIdsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeDasbImageIds", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeDasbImageIdsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeDbauditInstanceType(self, request):
         """本接口 (DescribeDbauditInstanceType) 用于查询可售卖的产品规格列表。
 

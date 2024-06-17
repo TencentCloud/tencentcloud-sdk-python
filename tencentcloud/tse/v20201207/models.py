@@ -13338,10 +13338,21 @@ class DescribePublicAddressConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Result: 公网地址信息
+        :type Result: :class:`tencentcloud.tse.v20201207.models.DescribePublicAddressConfigResult`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Result = None
         self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
 
     @property
     def RequestId(self):
@@ -13353,7 +13364,75 @@ class DescribePublicAddressConfigResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = DescribePublicAddressConfigResult()
+            self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
+
+
+class DescribePublicAddressConfigResult(AbstractModel):
+    """获取云原生api网关公网地址信息响应结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayId: str
+        :param _ConfigList: 公网地址信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigList: list of PublicAddressConfig
+        :param _TotalCount: 总个数	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        """
+        self._GatewayId = None
+        self._ConfigList = None
+        self._TotalCount = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def ConfigList(self):
+        return self._ConfigList
+
+    @ConfigList.setter
+    def ConfigList(self, ConfigList):
+        self._ConfigList = ConfigList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        if params.get("ConfigList") is not None:
+            self._ConfigList = []
+            for item in params.get("ConfigList"):
+                obj = PublicAddressConfig()
+                obj._deserialize(item)
+                self._ConfigList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribePublicNetworkRequest(AbstractModel):
@@ -21994,6 +22073,92 @@ class PolarisLimiterAddress(AbstractModel):
 
     def _deserialize(self, params):
         self._IntranetAddress = params.get("IntranetAddress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PublicAddressConfig(AbstractModel):
+    """公网地址信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Vip: 公网 ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vip: str
+        :param _InternetMaxBandwidthOut: 公网最大带宽
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InternetMaxBandwidthOut: int
+        :param _GroupId: 公网所属分组 id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param _GroupName: 公网所属分组名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param _NetworkId: 公网负载均衡 id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetworkId: str
+        """
+        self._Vip = None
+        self._InternetMaxBandwidthOut = None
+        self._GroupId = None
+        self._GroupName = None
+        self._NetworkId = None
+
+    @property
+    def Vip(self):
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def InternetMaxBandwidthOut(self):
+        return self._InternetMaxBandwidthOut
+
+    @InternetMaxBandwidthOut.setter
+    def InternetMaxBandwidthOut(self, InternetMaxBandwidthOut):
+        self._InternetMaxBandwidthOut = InternetMaxBandwidthOut
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def NetworkId(self):
+        return self._NetworkId
+
+    @NetworkId.setter
+    def NetworkId(self, NetworkId):
+        self._NetworkId = NetworkId
+
+
+    def _deserialize(self, params):
+        self._Vip = params.get("Vip")
+        self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._NetworkId = params.get("NetworkId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
