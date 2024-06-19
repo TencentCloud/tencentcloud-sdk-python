@@ -2143,6 +2143,10 @@ class DescribeSlowQueryRecordsDownloadRequest(AbstractModel):
         :type MemoryUsage: str
         :param _IsQuery: IsQuery条件
         :type IsQuery: int
+        :param _DbName: 数据库名称
+        :type DbName: list of str
+        :param _CatalogName: catalog名称
+        :type CatalogName: list of str
         """
         self._InstanceId = None
         self._QueryDurationMs = None
@@ -2154,6 +2158,8 @@ class DescribeSlowQueryRecordsDownloadRequest(AbstractModel):
         self._ResultBytes = None
         self._MemoryUsage = None
         self._IsQuery = None
+        self._DbName = None
+        self._CatalogName = None
 
     @property
     def InstanceId(self):
@@ -2235,6 +2241,22 @@ class DescribeSlowQueryRecordsDownloadRequest(AbstractModel):
     def IsQuery(self, IsQuery):
         self._IsQuery = IsQuery
 
+    @property
+    def DbName(self):
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def CatalogName(self):
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -2247,6 +2269,8 @@ class DescribeSlowQueryRecordsDownloadRequest(AbstractModel):
         self._ResultBytes = params.get("ResultBytes")
         self._MemoryUsage = params.get("MemoryUsage")
         self._IsQuery = params.get("IsQuery")
+        self._DbName = params.get("DbName")
+        self._CatalogName = params.get("CatalogName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

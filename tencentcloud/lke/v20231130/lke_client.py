@@ -187,6 +187,29 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateReconstructDocumentFlow(self, request):
+        """文档解析，异步接口。
+
+        :param request: Request instance for CreateReconstructDocumentFlow.
+        :type request: :class:`tencentcloud.lke.v20231130.models.CreateReconstructDocumentFlowRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.CreateReconstructDocumentFlowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateReconstructDocumentFlow", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateReconstructDocumentFlowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateRejectedQuestion(self, request):
         """创建拒答问题
 
@@ -823,6 +846,29 @@ class LkeClient(AbstractClient):
             body = self.call("GetMsgRecord", params, headers=headers)
             response = json.loads(body)
             model = models.GetMsgRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetReconstructDocumentResult(self, request):
+        """获取文档解析任务执行结果
+
+        :param request: Request instance for GetReconstructDocumentResult.
+        :type request: :class:`tencentcloud.lke.v20231130.models.GetReconstructDocumentResultRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.GetReconstructDocumentResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetReconstructDocumentResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetReconstructDocumentResultResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1560,6 +1606,29 @@ class LkeClient(AbstractClient):
             body = self.call("RateMsgRecord", params, headers=headers)
             response = json.loads(body)
             model = models.RateMsgRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ReconstructDocument(self, request):
+        """支持将图片或PDF文件转换成Markdown格式文件，可解析包括表格、公式、图片、标题、段落、页眉、页脚等内容元素，并将内容智能转换成阅读顺序。
+
+        :param request: Request instance for ReconstructDocument.
+        :type request: :class:`tencentcloud.lke.v20231130.models.ReconstructDocumentRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.ReconstructDocumentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReconstructDocument", params, headers=headers)
+            response = json.loads(body)
+            model = models.ReconstructDocumentResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

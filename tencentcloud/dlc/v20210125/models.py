@@ -14928,6 +14928,51 @@ class DescribeTasksCostInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTasksOverviewRequest(AbstractModel):
+    """DescribeTasksOverview请求参数结构体
+
+    """
+
+
+class DescribeTasksOverviewResponse(AbstractModel):
+    """DescribeTasksOverview返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TasksOverview: 各类任务个数大于0
+        :type TasksOverview: :class:`tencentcloud.dlc.v20210125.models.TasksOverview`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TasksOverview = None
+        self._RequestId = None
+
+    @property
+    def TasksOverview(self):
+        return self._TasksOverview
+
+    @TasksOverview.setter
+    def TasksOverview(self, TasksOverview):
+        self._TasksOverview = TasksOverview
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TasksOverview") is not None:
+            self._TasksOverview = TasksOverview()
+            self._TasksOverview._deserialize(params.get("TasksOverview"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTasksRequest(AbstractModel):
     """DescribeTasks请求参数结构体
 

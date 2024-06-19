@@ -27,7 +27,9 @@ class IecpClient(AbstractClient):
 
 
     def ApplyMarketComponent(self, request):
-        """从组件市场选中组件并添加到应用模板列表
+        """产品停售，预下线
+
+        从组件市场选中组件并添加到应用模板列表
 
         :param request: Request instance for ApplyMarketComponent.
         :type request: :class:`tencentcloud.iecp.v20210914.models.ApplyMarketComponentRequest`
@@ -73,7 +75,9 @@ class IecpClient(AbstractClient):
 
 
     def CreateApplicationVisualization(self, request):
-        """创建可视化创建应用模板
+        """产品停售，预下线
+
+        创建可视化创建应用模板
 
         :param request: Request instance for CreateApplicationVisualization.
         :type request: :class:`tencentcloud.iecp.v20210914.models.CreateApplicationVisualizationRequest`
@@ -211,7 +215,9 @@ class IecpClient(AbstractClient):
 
 
     def CreateEdgeUnitApplicationVisualization(self, request):
-        """可视化创建应用
+        """产品停售，预下线
+
+        可视化创建应用
 
         :param request: Request instance for CreateEdgeUnitApplicationVisualization.
         :type request: :class:`tencentcloud.iecp.v20210914.models.CreateEdgeUnitApplicationVisualizationRequest`
@@ -234,7 +240,9 @@ class IecpClient(AbstractClient):
 
 
     def CreateEdgeUnitApplicationYaml(self, request):
-        """yaml方式创建应用
+        """产品停售，预下线
+
+        yaml方式创建应用
 
         :param request: Request instance for CreateEdgeUnitApplicationYaml.
         :type request: :class:`tencentcloud.iecp.v20210914.models.CreateEdgeUnitApplicationYamlRequest`
@@ -441,7 +449,9 @@ class IecpClient(AbstractClient):
 
 
     def DeleteApplications(self, request):
-        """删除应用模板
+        """产品停售，预下线
+
+        删除应用模板
 
         :param request: Request instance for DeleteApplications.
         :type request: :class:`tencentcloud.iecp.v20210914.models.DeleteApplicationsRequest`
@@ -556,7 +566,9 @@ class IecpClient(AbstractClient):
 
 
     def DeleteEdgeUnitApplications(self, request):
-        """删除应用列表
+        """产品停售，预下线
+
+        删除应用列表
 
         :param request: Request instance for DeleteEdgeUnitApplications.
         :type request: :class:`tencentcloud.iecp.v20210914.models.DeleteEdgeUnitApplicationsRequest`
@@ -809,7 +821,9 @@ class IecpClient(AbstractClient):
 
 
     def DescribeApplicationVisualization(self, request):
-        """获取应用模板可视化配置信息
+        """产品停售，预下线
+
+        获取应用模板可视化配置信息
 
         :param request: Request instance for DescribeApplicationVisualization.
         :type request: :class:`tencentcloud.iecp.v20210914.models.DescribeApplicationVisualizationRequest`
@@ -832,7 +846,9 @@ class IecpClient(AbstractClient):
 
 
     def DescribeApplicationYaml(self, request):
-        """查询应用模板Yaml
+        """产品停售，预下线
+
+        查询应用模板Yaml
 
         :param request: Request instance for DescribeApplicationYaml.
         :type request: :class:`tencentcloud.iecp.v20210914.models.DescribeApplicationYamlRequest`
@@ -855,7 +871,9 @@ class IecpClient(AbstractClient):
 
 
     def DescribeApplicationYamlError(self, request):
-        """检查应用模板的Yaml配置
+        """产品停售，预下线
+
+        检查应用模板的Yaml配置
 
         :param request: Request instance for DescribeApplicationYamlError.
         :type request: :class:`tencentcloud.iecp.v20210914.models.DescribeApplicationYamlErrorRequest`
@@ -878,7 +896,9 @@ class IecpClient(AbstractClient):
 
 
     def DescribeApplications(self, request):
-        """获取应用模板列表
+        """产品停售，预下线
+
+        获取应用模板列表
 
         :param request: Request instance for DescribeApplications.
         :type request: :class:`tencentcloud.iecp.v20210914.models.DescribeApplicationsRequest`
@@ -1223,7 +1243,9 @@ class IecpClient(AbstractClient):
 
 
     def DescribeEdgeUnitApplicationEvents(self, request):
-        """获取应用事件列表
+        """产品停售，预下线
+
+        获取应用事件列表
 
         :param request: Request instance for DescribeEdgeUnitApplicationEvents.
         :type request: :class:`tencentcloud.iecp.v20210914.models.DescribeEdgeUnitApplicationEventsRequest`
@@ -1246,7 +1268,9 @@ class IecpClient(AbstractClient):
 
 
     def DescribeEdgeUnitApplicationLogs(self, request):
-        """获取应用日志
+        """产品停售，预下线
+
+        获取应用日志
 
         :param request: Request instance for DescribeEdgeUnitApplicationLogs.
         :type request: :class:`tencentcloud.iecp.v20210914.models.DescribeEdgeUnitApplicationLogsRequest`
@@ -1269,7 +1293,9 @@ class IecpClient(AbstractClient):
 
 
     def DescribeEdgeUnitApplicationPodContainers(self, request):
-        """获取应用容器状态
+        """产品停售，预下线
+
+        获取应用容器状态
 
         :param request: Request instance for DescribeEdgeUnitApplicationPodContainers.
         :type request: :class:`tencentcloud.iecp.v20210914.models.DescribeEdgeUnitApplicationPodContainersRequest`
@@ -1292,7 +1318,9 @@ class IecpClient(AbstractClient):
 
 
     def DescribeEdgeUnitApplicationPods(self, request):
-        """获取应用下Pod状态
+        """产品停售，预下线
+
+        获取应用下Pod状态
 
         :param request: Request instance for DescribeEdgeUnitApplicationPods.
         :type request: :class:`tencentcloud.iecp.v20210914.models.DescribeEdgeUnitApplicationPodsRequest`
@@ -1315,7 +1343,9 @@ class IecpClient(AbstractClient):
 
 
     def DescribeEdgeUnitApplicationVisualization(self, request):
-        """获取单元可视化配置信息
+        """产品停售，预下线
+
+        获取单元可视化配置信息
 
         :param request: Request instance for DescribeEdgeUnitApplicationVisualization.
         :type request: :class:`tencentcloud.iecp.v20210914.models.DescribeEdgeUnitApplicationVisualizationRequest`
@@ -1338,7 +1368,9 @@ class IecpClient(AbstractClient):
 
 
     def DescribeEdgeUnitApplicationYaml(self, request):
-        """获取应用的Yaml配置
+        """产品停售，预下线
+
+        获取应用的Yaml配置
 
         :param request: Request instance for DescribeEdgeUnitApplicationYaml.
         :type request: :class:`tencentcloud.iecp.v20210914.models.DescribeEdgeUnitApplicationYamlRequest`
@@ -1361,7 +1393,9 @@ class IecpClient(AbstractClient):
 
 
     def DescribeEdgeUnitApplicationYamlError(self, request):
-        """检查单元应用的Yaml配置
+        """产品停售，预下线
+
+        检查单元应用的Yaml配置
 
         :param request: Request instance for DescribeEdgeUnitApplicationYamlError.
         :type request: :class:`tencentcloud.iecp.v20210914.models.DescribeEdgeUnitApplicationYamlErrorRequest`
@@ -1407,7 +1441,9 @@ class IecpClient(AbstractClient):
 
 
     def DescribeEdgeUnitCloud(self, request):
-        """查询边缘集群详情
+        """产品停售，预下线
+
+        查询边缘集群详情
 
         :param request: Request instance for DescribeEdgeUnitCloud.
         :type request: :class:`tencentcloud.iecp.v20210914.models.DescribeEdgeUnitCloudRequest`
@@ -2005,7 +2041,9 @@ class IecpClient(AbstractClient):
 
 
     def ModifyApplicationBasicInfo(self, request):
-        """修改应用模板基本信息
+        """产品停售，预下线
+
+        修改应用模板基本信息
 
         :param request: Request instance for ModifyApplicationBasicInfo.
         :type request: :class:`tencentcloud.iecp.v20210914.models.ModifyApplicationBasicInfoRequest`
@@ -2028,7 +2066,9 @@ class IecpClient(AbstractClient):
 
 
     def ModifyApplicationVisualization(self, request):
-        """修改应用模板配置
+        """产品停售，预下线
+
+        修改应用模板配置
 
         :param request: Request instance for ModifyApplicationVisualization.
         :type request: :class:`tencentcloud.iecp.v20210914.models.ModifyApplicationVisualizationRequest`

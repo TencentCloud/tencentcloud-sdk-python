@@ -20234,10 +20234,10 @@ class ModifyTopicAttributesRequest(AbstractModel):
         :type UncleanLeaderElectionEnable: int
         :param _RetentionMs: 消息保留时间，单位：ms，当前最小值为60000ms。
         :type RetentionMs: int
-        :param _SegmentMs: Segment 分片滚动的时长，单位：ms，当前最小为86400000ms。
-        :type SegmentMs: int
         :param _MaxMessageBytes: 主题消息最大值，单位为 Byte，最大值为12582912Byte（即12MB）。
         :type MaxMessageBytes: int
+        :param _SegmentMs: Segment 分片滚动的时长，单位：ms，当前最小为300000ms。
+        :type SegmentMs: int
         :param _CleanUpPolicy: 消息删除策略，可以选择delete 或者compact
         :type CleanUpPolicy: str
         :param _IpWhiteList: Ip白名单列表，配额限制，enableWhileList=1时必选
@@ -20264,8 +20264,8 @@ class ModifyTopicAttributesRequest(AbstractModel):
         self._MinInsyncReplicas = None
         self._UncleanLeaderElectionEnable = None
         self._RetentionMs = None
-        self._SegmentMs = None
         self._MaxMessageBytes = None
+        self._SegmentMs = None
         self._CleanUpPolicy = None
         self._IpWhiteList = None
         self._EnableAclRule = None
@@ -20333,20 +20333,20 @@ class ModifyTopicAttributesRequest(AbstractModel):
         self._RetentionMs = RetentionMs
 
     @property
-    def SegmentMs(self):
-        return self._SegmentMs
-
-    @SegmentMs.setter
-    def SegmentMs(self, SegmentMs):
-        self._SegmentMs = SegmentMs
-
-    @property
     def MaxMessageBytes(self):
         return self._MaxMessageBytes
 
     @MaxMessageBytes.setter
     def MaxMessageBytes(self, MaxMessageBytes):
         self._MaxMessageBytes = MaxMessageBytes
+
+    @property
+    def SegmentMs(self):
+        return self._SegmentMs
+
+    @SegmentMs.setter
+    def SegmentMs(self, SegmentMs):
+        self._SegmentMs = SegmentMs
 
     @property
     def CleanUpPolicy(self):
@@ -20429,8 +20429,8 @@ class ModifyTopicAttributesRequest(AbstractModel):
         self._MinInsyncReplicas = params.get("MinInsyncReplicas")
         self._UncleanLeaderElectionEnable = params.get("UncleanLeaderElectionEnable")
         self._RetentionMs = params.get("RetentionMs")
-        self._SegmentMs = params.get("SegmentMs")
         self._MaxMessageBytes = params.get("MaxMessageBytes")
+        self._SegmentMs = params.get("SegmentMs")
         self._CleanUpPolicy = params.get("CleanUpPolicy")
         self._IpWhiteList = params.get("IpWhiteList")
         self._EnableAclRule = params.get("EnableAclRule")
@@ -26940,6 +26940,21 @@ class ZoneResponse(AbstractModel):
         :param _PublicNetworkLimit: 公网带宽配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type PublicNetworkLimit: str
+        :param _RequestId: 请求ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestId: str
+        :param _Version: 版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        :param _Offset: 分页offset
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Offset: int
+        :param _Limit: 分页limit
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Limit: int
+        :param _ForceCheckTag: 是否必须录入tag
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ForceCheckTag: bool
         """
         self._ZoneList = None
         self._MaxBuyInstanceNum = None
@@ -26953,6 +26968,11 @@ class ZoneResponse(AbstractModel):
         self._Physical = None
         self._PublicNetwork = None
         self._PublicNetworkLimit = None
+        self._RequestId = None
+        self._Version = None
+        self._Offset = None
+        self._Limit = None
+        self._ForceCheckTag = None
 
     @property
     def ZoneList(self):
@@ -27050,6 +27070,46 @@ class ZoneResponse(AbstractModel):
     def PublicNetworkLimit(self, PublicNetworkLimit):
         self._PublicNetworkLimit = PublicNetworkLimit
 
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def ForceCheckTag(self):
+        return self._ForceCheckTag
+
+    @ForceCheckTag.setter
+    def ForceCheckTag(self, ForceCheckTag):
+        self._ForceCheckTag = ForceCheckTag
+
 
     def _deserialize(self, params):
         if params.get("ZoneList") is not None:
@@ -27078,6 +27138,11 @@ class ZoneResponse(AbstractModel):
         self._Physical = params.get("Physical")
         self._PublicNetwork = params.get("PublicNetwork")
         self._PublicNetworkLimit = params.get("PublicNetworkLimit")
+        self._RequestId = params.get("RequestId")
+        self._Version = params.get("Version")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._ForceCheckTag = params.get("ForceCheckTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

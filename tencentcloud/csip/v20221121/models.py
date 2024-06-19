@@ -3351,6 +3351,12 @@ class AssetViewVULRiskData(AbstractModel):
         :param _VulRiskId: 新的漏洞风险id(同全网漏洞表的riskid)
 注意：此字段可能返回 null，表示取不到有效值。
         :type VulRiskId: str
+        :param _TvdID: 新版漏洞id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TvdID: str
+        :param _IsOneClick: 是否可以一键体检，1-可以，0-不可以
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsOneClick: int
         """
         self._AffectAsset = None
         self._Level = None
@@ -3390,6 +3396,8 @@ class AssetViewVULRiskData(AbstractModel):
         self._HandleTaskId = None
         self._EngineSource = None
         self._VulRiskId = None
+        self._TvdID = None
+        self._IsOneClick = None
 
     @property
     def AffectAsset(self):
@@ -3695,6 +3703,22 @@ class AssetViewVULRiskData(AbstractModel):
     def VulRiskId(self, VulRiskId):
         self._VulRiskId = VulRiskId
 
+    @property
+    def TvdID(self):
+        return self._TvdID
+
+    @TvdID.setter
+    def TvdID(self, TvdID):
+        self._TvdID = TvdID
+
+    @property
+    def IsOneClick(self):
+        return self._IsOneClick
+
+    @IsOneClick.setter
+    def IsOneClick(self, IsOneClick):
+        self._IsOneClick = IsOneClick
+
 
     def _deserialize(self, params):
         self._AffectAsset = params.get("AffectAsset")
@@ -3735,6 +3759,8 @@ class AssetViewVULRiskData(AbstractModel):
         self._HandleTaskId = params.get("HandleTaskId")
         self._EngineSource = params.get("EngineSource")
         self._VulRiskId = params.get("VulRiskId")
+        self._TvdID = params.get("TvdID")
+        self._IsOneClick = params.get("IsOneClick")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4497,6 +4523,12 @@ class CVMAssetVO(AbstractModel):
         :param _AgentCpuPer: CPU使用率百分比
 注意：此字段可能返回 null，表示取不到有效值。
         :type AgentCpuPer: float
+        :param _RealAppid: cvm真正所属的appid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealAppid: int
+        :param _CloudType: 云资产类型：0：腾讯云，1：aws，2：azure
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CloudType: int
         """
         self._AssetId = None
         self._AssetName = None
@@ -4561,6 +4593,8 @@ class CVMAssetVO(AbstractModel):
         self._SecurityGroupIds = None
         self._AgentMemRss = None
         self._AgentCpuPer = None
+        self._RealAppid = None
+        self._CloudType = None
 
     @property
     def AssetId(self):
@@ -5066,6 +5100,22 @@ class CVMAssetVO(AbstractModel):
     def AgentCpuPer(self, AgentCpuPer):
         self._AgentCpuPer = AgentCpuPer
 
+    @property
+    def RealAppid(self):
+        return self._RealAppid
+
+    @RealAppid.setter
+    def RealAppid(self, RealAppid):
+        self._RealAppid = RealAppid
+
+    @property
+    def CloudType(self):
+        return self._CloudType
+
+    @CloudType.setter
+    def CloudType(self, CloudType):
+        self._CloudType = CloudType
+
 
     def _deserialize(self, params):
         self._AssetId = params.get("AssetId")
@@ -5146,6 +5196,8 @@ class CVMAssetVO(AbstractModel):
         self._SecurityGroupIds = params.get("SecurityGroupIds")
         self._AgentMemRss = params.get("AgentMemRss")
         self._AgentCpuPer = params.get("AgentCpuPer")
+        self._RealAppid = params.get("RealAppid")
+        self._CloudType = params.get("CloudType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5355,10 +5407,13 @@ class CreateDomainAndIpRequest(AbstractModel):
         r"""
         :param _Content: 公网IP/域名
         :type Content: list of str
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
         :param _Tags: 资产标签
         :type Tags: list of AssetTag
         """
         self._Content = None
+        self._MemberId = None
         self._Tags = None
 
     @property
@@ -5368,6 +5423,14 @@ class CreateDomainAndIpRequest(AbstractModel):
     @Content.setter
     def Content(self, Content):
         self._Content = Content
+
+    @property
+    def MemberId(self):
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
 
     @property
     def Tags(self):
@@ -5380,6 +5443,7 @@ class CreateDomainAndIpRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._Content = params.get("Content")
+        self._MemberId = params.get("MemberId")
         if params.get("Tags") is not None:
             self._Tags = []
             for item in params.get("Tags"):
@@ -5464,6 +5528,8 @@ class CreateRiskCenterScanTaskRequest(AbstractModel):
         :type TaskMode: int
         :param _Tags: 资产标签
         :type Tags: :class:`tencentcloud.csip.v20221121.models.AssetTag`
+        :param _FinishWebHook: 任务完成回调webhook地址
+        :type FinishWebHook: str
         """
         self._TaskName = None
         self._ScanAssetType = None
@@ -5477,6 +5543,7 @@ class CreateRiskCenterScanTaskRequest(AbstractModel):
         self._TaskAdvanceCFG = None
         self._TaskMode = None
         self._Tags = None
+        self._FinishWebHook = None
 
     @property
     def TaskName(self):
@@ -5574,6 +5641,14 @@ class CreateRiskCenterScanTaskRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def FinishWebHook(self):
+        return self._FinishWebHook
+
+    @FinishWebHook.setter
+    def FinishWebHook(self, FinishWebHook):
+        self._FinishWebHook = FinishWebHook
+
 
     def _deserialize(self, params):
         self._TaskName = params.get("TaskName")
@@ -5597,6 +5672,7 @@ class CreateRiskCenterScanTaskRequest(AbstractModel):
         if params.get("Tags") is not None:
             self._Tags = AssetTag()
             self._Tags._deserialize(params.get("Tags"))
+        self._FinishWebHook = params.get("FinishWebHook")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6303,6 +6379,8 @@ class DeleteDomainAndIpRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
         :param _Content: -
         :type Content: list of PublicIpDomainListKey
         :param _RetainPath: 是否保留路径配置，1：保留，其他：不保留，默认不传为不保留
@@ -6314,11 +6392,20 @@ class DeleteDomainAndIpRequest(AbstractModel):
         :param _Type: 删除类型，取值： ALL， 删除全部，将直接忽略Content的内容；                                           其他值 ,非全部，则Centent必填，  默认为其他值。
         :type Type: str
         """
+        self._MemberId = None
         self._Content = None
         self._RetainPath = None
         self._IgnoreAsset = None
         self._Tags = None
         self._Type = None
+
+    @property
+    def MemberId(self):
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
 
     @property
     def Content(self):
@@ -6362,6 +6449,7 @@ class DeleteDomainAndIpRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
         if params.get("Content") is not None:
             self._Content = []
             for item in params.get("Content"):
@@ -13538,6 +13626,8 @@ class ModifyRiskCenterScanTaskRequest(AbstractModel):
         :type TaskAdvanceCFG: :class:`tencentcloud.csip.v20221121.models.TaskAdvanceCFG`
         :param _TaskMode: 体检模式，0-标准模式，1-快速模式，2-高级模式，默认标准模式
         :type TaskMode: int
+        :param _FinishWebHook: 任务完成回调webhook地址
+        :type FinishWebHook: str
         """
         self._TaskName = None
         self._ScanAssetType = None
@@ -13550,6 +13640,7 @@ class ModifyRiskCenterScanTaskRequest(AbstractModel):
         self._SelfDefiningAssets = None
         self._TaskAdvanceCFG = None
         self._TaskMode = None
+        self._FinishWebHook = None
 
     @property
     def TaskName(self):
@@ -13639,6 +13730,14 @@ class ModifyRiskCenterScanTaskRequest(AbstractModel):
     def TaskMode(self, TaskMode):
         self._TaskMode = TaskMode
 
+    @property
+    def FinishWebHook(self):
+        return self._FinishWebHook
+
+    @FinishWebHook.setter
+    def FinishWebHook(self, FinishWebHook):
+        self._FinishWebHook = FinishWebHook
+
 
     def _deserialize(self, params):
         self._TaskName = params.get("TaskName")
@@ -13659,6 +13758,7 @@ class ModifyRiskCenterScanTaskRequest(AbstractModel):
             self._TaskAdvanceCFG = TaskAdvanceCFG()
             self._TaskAdvanceCFG._deserialize(params.get("TaskAdvanceCFG"))
         self._TaskMode = params.get("TaskMode")
+        self._FinishWebHook = params.get("FinishWebHook")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18498,7 +18598,7 @@ class VULViewVULRiskData(AbstractModel):
         :param _AttackHeat: 攻击热度
 注意：此字段可能返回 null，表示取不到有效值。
         :type AttackHeat: int
-        :param _IsSuggest: 是否必修漏洞1是，0不是
+        :param _IsSuggest: 是否必修漏洞，1-是，0-不是
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsSuggest: int
         :param _HandleTaskId: 处置任务id
@@ -18510,6 +18610,12 @@ class VULViewVULRiskData(AbstractModel):
         :param _VulRiskId: 新的漏洞风险id
 注意：此字段可能返回 null，表示取不到有效值。
         :type VulRiskId: str
+        :param _TvdID: 新版漏洞id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TvdID: str
+        :param _IsOneClick: 是否可以一键体检，1-可以，0-不可以
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsOneClick: int
         """
         self._Port = None
         self._NoHandleCount = None
@@ -18541,6 +18647,8 @@ class VULViewVULRiskData(AbstractModel):
         self._HandleTaskId = None
         self._EngineSource = None
         self._VulRiskId = None
+        self._TvdID = None
+        self._IsOneClick = None
 
     @property
     def Port(self):
@@ -18782,6 +18890,22 @@ class VULViewVULRiskData(AbstractModel):
     def VulRiskId(self, VulRiskId):
         self._VulRiskId = VulRiskId
 
+    @property
+    def TvdID(self):
+        return self._TvdID
+
+    @TvdID.setter
+    def TvdID(self, TvdID):
+        self._TvdID = TvdID
+
+    @property
+    def IsOneClick(self):
+        return self._IsOneClick
+
+    @IsOneClick.setter
+    def IsOneClick(self, IsOneClick):
+        self._IsOneClick = IsOneClick
+
 
     def _deserialize(self, params):
         self._Port = params.get("Port")
@@ -18814,6 +18938,8 @@ class VULViewVULRiskData(AbstractModel):
         self._HandleTaskId = params.get("HandleTaskId")
         self._EngineSource = params.get("EngineSource")
         self._VulRiskId = params.get("VulRiskId")
+        self._TvdID = params.get("TvdID")
+        self._IsOneClick = params.get("IsOneClick")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

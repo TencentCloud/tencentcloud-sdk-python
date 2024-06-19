@@ -1781,6 +1781,10 @@ class EssbasicClient(AbstractClient):
 
         5.  <font color="red">在下一步创建签署链接前，建议等待DocumentFill </font> <a href="https://qian.tencent.com/developers/partner/callback_types_file_resources">PDF合成完成的回调</a>或者睡眠几秒，尤其是当模板中存在动态表格等复杂填写控件时，因为合成过程可能会耗费秒级别的时间。
 
+
+        <font color="red">相关视频指引</font> <br>
+        1. <a href="https://dyn.ess.tencent.cn/guide/apivideo/essbasic-CreateTemplates.mp4" target="_blank">创建模板&设置成本企业自动签署</a><br>
+
         :param request: Request instance for CreateFlowsByTemplates.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.CreateFlowsByTemplatesRequest`
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.CreateFlowsByTemplatesResponse`
@@ -2188,6 +2192,9 @@ class EssbasicClient(AbstractClient):
 
         >1. 查询条件TemplateId、TemplateName与ChannelTemplateId可同时存在，即可查询同时满足这些条件的模板。
         >2. TemplateId 和TemplateIds互为独立，若两个参数都传入，则以TemplateId为准
+
+        <font color="red">相关视频指引</font> <br>
+        1. <a href="https://dyn.ess.tencent.cn/guide/apivideo/essbasic-CreateTemplates.mp4" target="_blank">创建模板&设置成本企业自动签署</a><br>
 
         :param request: Request instance for DescribeTemplates.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.DescribeTemplatesRequest`

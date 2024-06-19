@@ -2192,6 +2192,9 @@ class BizTaskInfo(AbstractModel):
         :type AppId: int
         :param _ClusterId: 集群id
         :type ClusterId: str
+        :param _Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
         :param _CreateTime: 任务创建时间
         :type CreateTime: str
         :param _DelayTime: 延迟执行时间
@@ -2266,10 +2269,15 @@ class BizTaskInfo(AbstractModel):
         :param _TaskMaintainInfo: 维护时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskMaintainInfo: :class:`tencentcloud.cynosdb.v20190107.models.TaskMaintainInfo`
+        :param _InstanceCLSDeliveryInfos: 实例日志投递信息
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceCLSDeliveryInfos: list of InstanceCLSDeliveryInfo
         """
         self._ID = None
         self._AppId = None
         self._ClusterId = None
+        self._Region = None
         self._CreateTime = None
         self._DelayTime = None
         self._ErrMsg = None
@@ -2301,6 +2309,7 @@ class BizTaskInfo(AbstractModel):
         self._SwitchClusterLogBin = None
         self._ModifyInstanceParamsData = None
         self._TaskMaintainInfo = None
+        self._InstanceCLSDeliveryInfos = None
 
     @property
     def ID(self):
@@ -2325,6 +2334,14 @@ class BizTaskInfo(AbstractModel):
     @ClusterId.setter
     def ClusterId(self, ClusterId):
         self._ClusterId = ClusterId
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
 
     @property
     def CreateTime(self):
@@ -2578,11 +2595,20 @@ class BizTaskInfo(AbstractModel):
     def TaskMaintainInfo(self, TaskMaintainInfo):
         self._TaskMaintainInfo = TaskMaintainInfo
 
+    @property
+    def InstanceCLSDeliveryInfos(self):
+        return self._InstanceCLSDeliveryInfos
+
+    @InstanceCLSDeliveryInfos.setter
+    def InstanceCLSDeliveryInfos(self, InstanceCLSDeliveryInfos):
+        self._InstanceCLSDeliveryInfos = InstanceCLSDeliveryInfos
+
 
     def _deserialize(self, params):
         self._ID = params.get("ID")
         self._AppId = params.get("AppId")
         self._ClusterId = params.get("ClusterId")
+        self._Region = params.get("Region")
         self._CreateTime = params.get("CreateTime")
         self._DelayTime = params.get("DelayTime")
         self._ErrMsg = params.get("ErrMsg")
@@ -2637,6 +2663,12 @@ class BizTaskInfo(AbstractModel):
         if params.get("TaskMaintainInfo") is not None:
             self._TaskMaintainInfo = TaskMaintainInfo()
             self._TaskMaintainInfo._deserialize(params.get("TaskMaintainInfo"))
+        if params.get("InstanceCLSDeliveryInfos") is not None:
+            self._InstanceCLSDeliveryInfos = []
+            for item in params.get("InstanceCLSDeliveryInfos"):
+                obj = InstanceCLSDeliveryInfo()
+                obj._deserialize(item)
+                self._InstanceCLSDeliveryInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16231,6 +16263,108 @@ class ErrorLogItemExport(AbstractModel):
         
 
 
+class ExchangeInstanceInfo(AbstractModel):
+    """交换实例信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SrcInstanceInfo: 源实例信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SrcInstanceInfo: :class:`tencentcloud.cynosdb.v20190107.models.RollbackInstanceInfo`
+        :param _DstInstanceInfo: 目标实例信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DstInstanceInfo: :class:`tencentcloud.cynosdb.v20190107.models.RollbackInstanceInfo`
+        """
+        self._SrcInstanceInfo = None
+        self._DstInstanceInfo = None
+
+    @property
+    def SrcInstanceInfo(self):
+        return self._SrcInstanceInfo
+
+    @SrcInstanceInfo.setter
+    def SrcInstanceInfo(self, SrcInstanceInfo):
+        self._SrcInstanceInfo = SrcInstanceInfo
+
+    @property
+    def DstInstanceInfo(self):
+        return self._DstInstanceInfo
+
+    @DstInstanceInfo.setter
+    def DstInstanceInfo(self, DstInstanceInfo):
+        self._DstInstanceInfo = DstInstanceInfo
+
+
+    def _deserialize(self, params):
+        if params.get("SrcInstanceInfo") is not None:
+            self._SrcInstanceInfo = RollbackInstanceInfo()
+            self._SrcInstanceInfo._deserialize(params.get("SrcInstanceInfo"))
+        if params.get("DstInstanceInfo") is not None:
+            self._DstInstanceInfo = RollbackInstanceInfo()
+            self._DstInstanceInfo._deserialize(params.get("DstInstanceInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExchangeRoGroupInfo(AbstractModel):
+    """交换RO组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SrcRoGroupInfo: 源RO组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SrcRoGroupInfo: :class:`tencentcloud.cynosdb.v20190107.models.RollbackRoGroupInfo`
+        :param _DstRoGroupInfo: 目标RO组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DstRoGroupInfo: :class:`tencentcloud.cynosdb.v20190107.models.RollbackRoGroupInfo`
+        """
+        self._SrcRoGroupInfo = None
+        self._DstRoGroupInfo = None
+
+    @property
+    def SrcRoGroupInfo(self):
+        return self._SrcRoGroupInfo
+
+    @SrcRoGroupInfo.setter
+    def SrcRoGroupInfo(self, SrcRoGroupInfo):
+        self._SrcRoGroupInfo = SrcRoGroupInfo
+
+    @property
+    def DstRoGroupInfo(self):
+        return self._DstRoGroupInfo
+
+    @DstRoGroupInfo.setter
+    def DstRoGroupInfo(self, DstRoGroupInfo):
+        self._DstRoGroupInfo = DstRoGroupInfo
+
+
+    def _deserialize(self, params):
+        if params.get("SrcRoGroupInfo") is not None:
+            self._SrcRoGroupInfo = RollbackRoGroupInfo()
+            self._SrcRoGroupInfo._deserialize(params.get("SrcRoGroupInfo"))
+        if params.get("DstRoGroupInfo") is not None:
+            self._DstRoGroupInfo = RollbackRoGroupInfo()
+            self._DstRoGroupInfo._deserialize(params.get("DstRoGroupInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ExportInstanceErrorLogsRequest(AbstractModel):
     """ExportInstanceErrorLogs请求参数结构体
 
@@ -25967,6 +26101,9 @@ class RollbackData(AbstractModel):
         :param _BackupFileName: 备份文件名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type BackupFileName: str
+        :param _RollbackProcess: 回档进程
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RollbackProcess: :class:`tencentcloud.cynosdb.v20190107.models.RollbackProcessInfo`
         """
         self._Cpu = None
         self._Memory = None
@@ -25981,6 +26118,7 @@ class RollbackData(AbstractModel):
         self._RollbackDatabases = None
         self._RollbackTables = None
         self._BackupFileName = None
+        self._RollbackProcess = None
 
     @property
     def Cpu(self):
@@ -26086,6 +26224,14 @@ class RollbackData(AbstractModel):
     def BackupFileName(self, BackupFileName):
         self._BackupFileName = BackupFileName
 
+    @property
+    def RollbackProcess(self):
+        return self._RollbackProcess
+
+    @RollbackProcess.setter
+    def RollbackProcess(self, RollbackProcess):
+        self._RollbackProcess = RollbackProcess
+
 
     def _deserialize(self, params):
         self._Cpu = params.get("Cpu")
@@ -26111,6 +26257,9 @@ class RollbackData(AbstractModel):
                 obj._deserialize(item)
                 self._RollbackTables.append(obj)
         self._BackupFileName = params.get("BackupFileName")
+        if params.get("RollbackProcess") is not None:
+            self._RollbackProcess = RollbackProcessInfo()
+            self._RollbackProcess._deserialize(params.get("RollbackProcess"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26156,6 +26305,391 @@ class RollbackDatabase(AbstractModel):
     def _deserialize(self, params):
         self._OldDatabase = params.get("OldDatabase")
         self._NewDatabase = params.get("NewDatabase")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RollbackInstanceInfo(AbstractModel):
+    """回档实例信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param _ClusterName: 集群名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterName: str
+        :param _UniqVpcId: vpc信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqVpcId: str
+        :param _UniqSubnetId: 子网信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqSubnetId: str
+        :param _Vip: vip信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vip: str
+        :param _Vport: vport信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vport: int
+        :param _InstanceId: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _InstanceName: 实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param _Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _Cpu: cpu大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cpu: int
+        :param _Mem: 内存大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mem: int
+        :param _StorageLimit: 存储大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageLimit: int
+        """
+        self._ClusterId = None
+        self._ClusterName = None
+        self._UniqVpcId = None
+        self._UniqSubnetId = None
+        self._Vip = None
+        self._Vport = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._Status = None
+        self._Cpu = None
+        self._Mem = None
+        self._StorageLimit = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def UniqVpcId(self):
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def UniqSubnetId(self):
+        return self._UniqSubnetId
+
+    @UniqSubnetId.setter
+    def UniqSubnetId(self, UniqSubnetId):
+        self._UniqSubnetId = UniqSubnetId
+
+    @property
+    def Vip(self):
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Mem(self):
+        return self._Mem
+
+    @Mem.setter
+    def Mem(self, Mem):
+        self._Mem = Mem
+
+    @property
+    def StorageLimit(self):
+        return self._StorageLimit
+
+    @StorageLimit.setter
+    def StorageLimit(self, StorageLimit):
+        self._StorageLimit = StorageLimit
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._UniqSubnetId = params.get("UniqSubnetId")
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._Status = params.get("Status")
+        self._Cpu = params.get("Cpu")
+        self._Mem = params.get("Mem")
+        self._StorageLimit = params.get("StorageLimit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RollbackProcessInfo(AbstractModel):
+    """回档进度详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsVipSwitchable: 是否可以交换vip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsVipSwitchable: bool
+        :param _VipSwitchableTime: vip可交换时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VipSwitchableTime: str
+        :param _ExchangeInstanceInfoList: 交换实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExchangeInstanceInfoList: list of ExchangeInstanceInfo
+        :param _ExchangeRoGroupInfoList: 交换RO组列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExchangeRoGroupInfoList: list of ExchangeRoGroupInfo
+        :param _CurrentStep: 当前步骤
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentStep: str
+        :param _CurrentStepProgress: 当前步骤进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentStepProgress: int
+        :param _CurrentStepRemainingTime: 当前步骤剩余时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentStepRemainingTime: str
+        """
+        self._IsVipSwitchable = None
+        self._VipSwitchableTime = None
+        self._ExchangeInstanceInfoList = None
+        self._ExchangeRoGroupInfoList = None
+        self._CurrentStep = None
+        self._CurrentStepProgress = None
+        self._CurrentStepRemainingTime = None
+
+    @property
+    def IsVipSwitchable(self):
+        return self._IsVipSwitchable
+
+    @IsVipSwitchable.setter
+    def IsVipSwitchable(self, IsVipSwitchable):
+        self._IsVipSwitchable = IsVipSwitchable
+
+    @property
+    def VipSwitchableTime(self):
+        return self._VipSwitchableTime
+
+    @VipSwitchableTime.setter
+    def VipSwitchableTime(self, VipSwitchableTime):
+        self._VipSwitchableTime = VipSwitchableTime
+
+    @property
+    def ExchangeInstanceInfoList(self):
+        return self._ExchangeInstanceInfoList
+
+    @ExchangeInstanceInfoList.setter
+    def ExchangeInstanceInfoList(self, ExchangeInstanceInfoList):
+        self._ExchangeInstanceInfoList = ExchangeInstanceInfoList
+
+    @property
+    def ExchangeRoGroupInfoList(self):
+        return self._ExchangeRoGroupInfoList
+
+    @ExchangeRoGroupInfoList.setter
+    def ExchangeRoGroupInfoList(self, ExchangeRoGroupInfoList):
+        self._ExchangeRoGroupInfoList = ExchangeRoGroupInfoList
+
+    @property
+    def CurrentStep(self):
+        return self._CurrentStep
+
+    @CurrentStep.setter
+    def CurrentStep(self, CurrentStep):
+        self._CurrentStep = CurrentStep
+
+    @property
+    def CurrentStepProgress(self):
+        return self._CurrentStepProgress
+
+    @CurrentStepProgress.setter
+    def CurrentStepProgress(self, CurrentStepProgress):
+        self._CurrentStepProgress = CurrentStepProgress
+
+    @property
+    def CurrentStepRemainingTime(self):
+        return self._CurrentStepRemainingTime
+
+    @CurrentStepRemainingTime.setter
+    def CurrentStepRemainingTime(self, CurrentStepRemainingTime):
+        self._CurrentStepRemainingTime = CurrentStepRemainingTime
+
+
+    def _deserialize(self, params):
+        self._IsVipSwitchable = params.get("IsVipSwitchable")
+        self._VipSwitchableTime = params.get("VipSwitchableTime")
+        if params.get("ExchangeInstanceInfoList") is not None:
+            self._ExchangeInstanceInfoList = []
+            for item in params.get("ExchangeInstanceInfoList"):
+                obj = ExchangeInstanceInfo()
+                obj._deserialize(item)
+                self._ExchangeInstanceInfoList.append(obj)
+        if params.get("ExchangeRoGroupInfoList") is not None:
+            self._ExchangeRoGroupInfoList = []
+            for item in params.get("ExchangeRoGroupInfoList"):
+                obj = ExchangeRoGroupInfo()
+                obj._deserialize(item)
+                self._ExchangeRoGroupInfoList.append(obj)
+        self._CurrentStep = params.get("CurrentStep")
+        self._CurrentStepProgress = params.get("CurrentStepProgress")
+        self._CurrentStepRemainingTime = params.get("CurrentStepRemainingTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RollbackRoGroupInfo(AbstractModel):
+    """回档RO组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceGroupId: 实例组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceGroupId: str
+        :param _UniqVpcId: vpc信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqVpcId: str
+        :param _UniqSubnetId: 子网信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqSubnetId: str
+        :param _Vip: vip信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vip: str
+        :param _Vport: vport信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vport: int
+        """
+        self._InstanceGroupId = None
+        self._UniqVpcId = None
+        self._UniqSubnetId = None
+        self._Vip = None
+        self._Vport = None
+
+    @property
+    def InstanceGroupId(self):
+        return self._InstanceGroupId
+
+    @InstanceGroupId.setter
+    def InstanceGroupId(self, InstanceGroupId):
+        self._InstanceGroupId = InstanceGroupId
+
+    @property
+    def UniqVpcId(self):
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def UniqSubnetId(self):
+        return self._UniqSubnetId
+
+    @UniqSubnetId.setter
+    def UniqSubnetId(self, UniqSubnetId):
+        self._UniqSubnetId = UniqSubnetId
+
+    @property
+    def Vip(self):
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+
+    def _deserialize(self, params):
+        self._InstanceGroupId = params.get("InstanceGroupId")
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._UniqSubnetId = params.get("UniqSubnetId")
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

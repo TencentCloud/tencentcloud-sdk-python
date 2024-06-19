@@ -6248,9 +6248,12 @@ class DeleteAlarmPolicyRequest(AbstractModel):
         :type Module: str
         :param _PolicyIds: 告警策略 ID 列表
         :type PolicyIds: list of str
+        :param _PromInsIds: prom的实例id
+        :type PromInsIds: list of str
         """
         self._Module = None
         self._PolicyIds = None
+        self._PromInsIds = None
 
     @property
     def Module(self):
@@ -6268,10 +6271,19 @@ class DeleteAlarmPolicyRequest(AbstractModel):
     def PolicyIds(self, PolicyIds):
         self._PolicyIds = PolicyIds
 
+    @property
+    def PromInsIds(self):
+        return self._PromInsIds
+
+    @PromInsIds.setter
+    def PromInsIds(self, PromInsIds):
+        self._PromInsIds = PromInsIds
+
 
     def _deserialize(self, params):
         self._Module = params.get("Module")
         self._PolicyIds = params.get("PolicyIds")
+        self._PromInsIds = params.get("PromInsIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

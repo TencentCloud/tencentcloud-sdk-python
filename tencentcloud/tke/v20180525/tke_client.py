@@ -2811,6 +2811,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePodChargeInfo(self, request):
+        """查询正在运行中Pod的计费信息。可以通过 Namespace 和 Name 来查询某个 Pod 的信息，也可以通过 Pod 的 Uid 批量查询。
+
+        :param request: Request instance for DescribePodChargeInfo.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribePodChargeInfoRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribePodChargeInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePodChargeInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePodChargeInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePodDeductionRate(self, request):
         """查询各个规格的 Pod 的抵扣率
 

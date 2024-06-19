@@ -18,6 +18,63 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AccessFieldValueRatioInfo(AbstractModel):
+    """DescribeAccessFastAnalysis接口的出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Count: 日志条数
+        :type Count: int
+        :param _Ratio: 对应的Value值的百分比
+        :type Ratio: float
+        :param _Value: 字段对应的值
+        :type Value: str
+        """
+        self._Count = None
+        self._Ratio = None
+        self._Value = None
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def Ratio(self):
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Count = params.get("Count")
+        self._Ratio = params.get("Ratio")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AccessFullTextInfo(AbstractModel):
     """DescribeAccessIndex
 
@@ -6688,8 +6745,6 @@ class DescribeAccessFastAnalysisRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 客户要查询的日志主题ID，每个客户都有对应的一个主题
-        :type TopicId: str
         :param _From: 要查询的日志的起始时间，Unix时间戳，单位ms
         :type From: int
         :param _To: 要查询的日志的结束时间，Unix时间戳，单位ms
@@ -6698,26 +6753,20 @@ class DescribeAccessFastAnalysisRequest(AbstractModel):
         :type Query: str
         :param _FieldName: 需要分析统计的字段名
         :type FieldName: str
+        :param _TopicId: 客户要查询的日志主题ID，每个客户都有对应的一个主题
+        :type TopicId: str
         :param _Sort: 排序字段,升序asc,降序desc，默认降序desc 
         :type Sort: str
         :param _Count: 返回的top数，默认返回top5
         :type Count: int
         """
-        self._TopicId = None
         self._From = None
         self._To = None
         self._Query = None
         self._FieldName = None
+        self._TopicId = None
         self._Sort = None
         self._Count = None
-
-    @property
-    def TopicId(self):
-        return self._TopicId
-
-    @TopicId.setter
-    def TopicId(self, TopicId):
-        self._TopicId = TopicId
 
     @property
     def From(self):
@@ -6752,6 +6801,18 @@ class DescribeAccessFastAnalysisRequest(AbstractModel):
         self._FieldName = FieldName
 
     @property
+    def TopicId(self):
+        warnings.warn("parameter `TopicId` is deprecated", DeprecationWarning) 
+
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        warnings.warn("parameter `TopicId` is deprecated", DeprecationWarning) 
+
+        self._TopicId = TopicId
+
+    @property
     def Sort(self):
         return self._Sort
 
@@ -6769,11 +6830,11 @@ class DescribeAccessFastAnalysisRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._TopicId = params.get("TopicId")
         self._From = params.get("From")
         self._To = params.get("To")
         self._Query = params.get("Query")
         self._FieldName = params.get("FieldName")
+        self._TopicId = params.get("TopicId")
         self._Sort = params.get("Sort")
         self._Count = params.get("Count")
         memeber_set = set(params.keys())
@@ -6793,10 +6854,33 @@ class DescribeAccessFastAnalysisResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _FieldValueRatioInfos: 注意：此字段可能返回 null，表示取不到有效值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FieldValueRatioInfos: list of AccessFieldValueRatioInfo
+        :param _TotalCount: 日志条数
+        :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._FieldValueRatioInfos = None
+        self._TotalCount = None
         self._RequestId = None
+
+    @property
+    def FieldValueRatioInfos(self):
+        return self._FieldValueRatioInfos
+
+    @FieldValueRatioInfos.setter
+    def FieldValueRatioInfos(self, FieldValueRatioInfos):
+        self._FieldValueRatioInfos = FieldValueRatioInfos
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
     @property
     def RequestId(self):
@@ -6808,6 +6892,13 @@ class DescribeAccessFastAnalysisResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("FieldValueRatioInfos") is not None:
+            self._FieldValueRatioInfos = []
+            for item in params.get("FieldValueRatioInfos"):
+                obj = AccessFieldValueRatioInfo()
+                obj._deserialize(item)
+                self._FieldValueRatioInfos.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 

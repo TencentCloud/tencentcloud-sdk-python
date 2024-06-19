@@ -27943,6 +27943,10 @@ class DiagnoseProRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _SearchCondition: 查询条件（当前接口TaskId和CurRunDate需要填充在该字段方可诊断）
+        :type SearchCondition: :class:`tencentcloud.wedata.v20210820.models.InstanceApiOpsRequest`
+        :param _ProjectId: 项目id
+        :type ProjectId: str
         :param _Instances: 实例列表
         :type Instances: list of InstanceOpsDto
         :param _CheckFather: 检查父任务类型, true: 检查父任务; false: 不检查父任务 
@@ -27955,16 +27959,12 @@ class DiagnoseProRequest(AbstractModel):
         :type SkipEventListening: bool
         :param _SonInstanceType: 下游实例范围 1: 所在工作流 2: 所在项目 3: 所有跨工作流依赖的项目
         :type SonInstanceType: str
-        :param _SearchCondition: 查询条件（当前接口TaskId和CurRunDate需要填充在该字段方可诊断）
-        :type SearchCondition: :class:`tencentcloud.wedata.v20210820.models.InstanceApiOpsRequest`
         :param _OptType: 访问类型
         :type OptType: str
         :param _OperatorName: 操作者名称
         :type OperatorName: str
         :param _OperatorId: 操作者id
         :type OperatorId: str
-        :param _ProjectId: 项目id
-        :type ProjectId: str
         :param _ProjectIdent: 项目标志
         :type ProjectIdent: str
         :param _ProjectName: 项目名称
@@ -27980,17 +27980,17 @@ class DiagnoseProRequest(AbstractModel):
         :param _IsCount: 是否计算总数
         :type IsCount: bool
         """
+        self._SearchCondition = None
+        self._ProjectId = None
         self._Instances = None
         self._CheckFather = None
         self._RerunType = None
         self._DependentWay = None
         self._SkipEventListening = None
         self._SonInstanceType = None
-        self._SearchCondition = None
         self._OptType = None
         self._OperatorName = None
         self._OperatorId = None
-        self._ProjectId = None
         self._ProjectIdent = None
         self._ProjectName = None
         self._PageIndex = None
@@ -27998,6 +27998,22 @@ class DiagnoseProRequest(AbstractModel):
         self._Count = None
         self._RequestBaseInfo = None
         self._IsCount = None
+
+    @property
+    def SearchCondition(self):
+        return self._SearchCondition
+
+    @SearchCondition.setter
+    def SearchCondition(self, SearchCondition):
+        self._SearchCondition = SearchCondition
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
 
     @property
     def Instances(self):
@@ -28048,14 +28064,6 @@ class DiagnoseProRequest(AbstractModel):
         self._SonInstanceType = SonInstanceType
 
     @property
-    def SearchCondition(self):
-        return self._SearchCondition
-
-    @SearchCondition.setter
-    def SearchCondition(self, SearchCondition):
-        self._SearchCondition = SearchCondition
-
-    @property
     def OptType(self):
         return self._OptType
 
@@ -28078,14 +28086,6 @@ class DiagnoseProRequest(AbstractModel):
     @OperatorId.setter
     def OperatorId(self, OperatorId):
         self._OperatorId = OperatorId
-
-    @property
-    def ProjectId(self):
-        return self._ProjectId
-
-    @ProjectId.setter
-    def ProjectId(self, ProjectId):
-        self._ProjectId = ProjectId
 
     @property
     def ProjectIdent(self):
@@ -28145,6 +28145,10 @@ class DiagnoseProRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("SearchCondition") is not None:
+            self._SearchCondition = InstanceApiOpsRequest()
+            self._SearchCondition._deserialize(params.get("SearchCondition"))
+        self._ProjectId = params.get("ProjectId")
         if params.get("Instances") is not None:
             self._Instances = []
             for item in params.get("Instances"):
@@ -28156,13 +28160,9 @@ class DiagnoseProRequest(AbstractModel):
         self._DependentWay = params.get("DependentWay")
         self._SkipEventListening = params.get("SkipEventListening")
         self._SonInstanceType = params.get("SonInstanceType")
-        if params.get("SearchCondition") is not None:
-            self._SearchCondition = InstanceApiOpsRequest()
-            self._SearchCondition._deserialize(params.get("SearchCondition"))
         self._OptType = params.get("OptType")
         self._OperatorName = params.get("OperatorName")
         self._OperatorId = params.get("OperatorId")
-        self._ProjectId = params.get("ProjectId")
         self._ProjectIdent = params.get("ProjectIdent")
         self._ProjectName = params.get("ProjectName")
         self._PageIndex = params.get("PageIndex")
@@ -55812,6 +55812,9 @@ class TaskAlarmInfo(AbstractModel):
         :param _LarkWebHooks: 飞书群Hook地址，多个hook地址使用,隔开
 注意：此字段可能返回 null，表示取不到有效值。
         :type LarkWebHooks: str
+        :param _DingDingWebHooks: 钉钉群Hook地址，多个hook地址使用,隔开
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DingDingWebHooks: str
         """
         self._TaskId = None
         self._RegularName = None
@@ -55845,6 +55848,7 @@ class TaskAlarmInfo(AbstractModel):
         self._LatestAlarmTime = None
         self._Description = None
         self._LarkWebHooks = None
+        self._DingDingWebHooks = None
 
     @property
     def TaskId(self):
@@ -56102,6 +56106,14 @@ class TaskAlarmInfo(AbstractModel):
     def LarkWebHooks(self, LarkWebHooks):
         self._LarkWebHooks = LarkWebHooks
 
+    @property
+    def DingDingWebHooks(self):
+        return self._DingDingWebHooks
+
+    @DingDingWebHooks.setter
+    def DingDingWebHooks(self, DingDingWebHooks):
+        self._DingDingWebHooks = DingDingWebHooks
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -56146,6 +56158,7 @@ class TaskAlarmInfo(AbstractModel):
         self._LatestAlarmTime = params.get("LatestAlarmTime")
         self._Description = params.get("Description")
         self._LarkWebHooks = params.get("LarkWebHooks")
+        self._DingDingWebHooks = params.get("DingDingWebHooks")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

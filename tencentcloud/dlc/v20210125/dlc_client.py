@@ -2119,6 +2119,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTasksOverview(self, request):
+        """查看任务概览页
+
+        :param request: Request instance for DescribeTasksOverview.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeTasksOverviewRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeTasksOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTasksOverview", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTasksOverviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeThirdPartyAccessUser(self, request):
         """本接口（RegisterThirdPartyAccessUser）查询开通第三方平台访问的用户信息
 

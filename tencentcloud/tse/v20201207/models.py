@@ -24128,9 +24128,12 @@ class UpstreamHealthCheckConfig(AbstractModel):
         :param _UnhealthyHttpStatuses: 异常HTTP状态码
 注意：此字段可能返回 null，表示取不到有效值。
         :type UnhealthyHttpStatuses: list of int non-negative
-        :param _IgnoreZeroWeightNodes: 健康检查屏蔽权重为0的节点
+        :param _IgnoreZeroWeightNodes: 健康检查监控上报的数据屏蔽权重为0的节点
 注意：此字段可能返回 null，表示取不到有效值。
         :type IgnoreZeroWeightNodes: bool
+        :param _ZeroWeightHeathCheck: 健康检查支持权重为0节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZeroWeightHeathCheck: bool
         """
         self._EnableActiveHealthCheck = None
         self._ActiveHealthCheck = None
@@ -24142,6 +24145,7 @@ class UpstreamHealthCheckConfig(AbstractModel):
         self._HealthyHttpStatuses = None
         self._UnhealthyHttpStatuses = None
         self._IgnoreZeroWeightNodes = None
+        self._ZeroWeightHeathCheck = None
 
     @property
     def EnableActiveHealthCheck(self):
@@ -24217,11 +24221,23 @@ class UpstreamHealthCheckConfig(AbstractModel):
 
     @property
     def IgnoreZeroWeightNodes(self):
+        warnings.warn("parameter `IgnoreZeroWeightNodes` is deprecated", DeprecationWarning) 
+
         return self._IgnoreZeroWeightNodes
 
     @IgnoreZeroWeightNodes.setter
     def IgnoreZeroWeightNodes(self, IgnoreZeroWeightNodes):
+        warnings.warn("parameter `IgnoreZeroWeightNodes` is deprecated", DeprecationWarning) 
+
         self._IgnoreZeroWeightNodes = IgnoreZeroWeightNodes
+
+    @property
+    def ZeroWeightHeathCheck(self):
+        return self._ZeroWeightHeathCheck
+
+    @ZeroWeightHeathCheck.setter
+    def ZeroWeightHeathCheck(self, ZeroWeightHeathCheck):
+        self._ZeroWeightHeathCheck = ZeroWeightHeathCheck
 
 
     def _deserialize(self, params):
@@ -24239,6 +24255,7 @@ class UpstreamHealthCheckConfig(AbstractModel):
         self._HealthyHttpStatuses = params.get("HealthyHttpStatuses")
         self._UnhealthyHttpStatuses = params.get("UnhealthyHttpStatuses")
         self._IgnoreZeroWeightNodes = params.get("IgnoreZeroWeightNodes")
+        self._ZeroWeightHeathCheck = params.get("ZeroWeightHeathCheck")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

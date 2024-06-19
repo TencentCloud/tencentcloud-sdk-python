@@ -7023,13 +7023,13 @@ class CreateImageCacheRequest(AbstractModel):
         r"""
         :param _Images: 用于制作镜像缓存的容器镜像列表
         :type Images: list of str
-        :param _SubnetId: 实例所属子网Id
+        :param _SubnetId: 实例所属子网 ID
         :type SubnetId: str
-        :param _VpcId: 实例所属VPC Id
+        :param _VpcId: 实例所属 VPC ID
         :type VpcId: str
         :param _ImageCacheName: 镜像缓存名称
         :type ImageCacheName: str
-        :param _SecurityGroupIds: 安全组Id
+        :param _SecurityGroupIds: 安全组 ID
         :type SecurityGroupIds: list of str
         :param _ImageRegistryCredentials: 镜像仓库凭证数组
         :type ImageRegistryCredentials: list of ImageRegistryCredential
@@ -16381,6 +16381,9 @@ class DescribeIPAMDResponse(AbstractModel):
         :param _ClaimExpiredDuration: 固定ip回收时间，已安装eniipamd组件才会有值
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClaimExpiredDuration: str
+        :param _EnableTrunkingENI: 是否开启了中继网卡模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableTrunkingENI: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -16391,6 +16394,7 @@ class DescribeIPAMDResponse(AbstractModel):
         self._Reason = None
         self._SubnetIds = None
         self._ClaimExpiredDuration = None
+        self._EnableTrunkingENI = None
         self._RequestId = None
 
     @property
@@ -16450,6 +16454,14 @@ class DescribeIPAMDResponse(AbstractModel):
         self._ClaimExpiredDuration = ClaimExpiredDuration
 
     @property
+    def EnableTrunkingENI(self):
+        return self._EnableTrunkingENI
+
+    @EnableTrunkingENI.setter
+    def EnableTrunkingENI(self, EnableTrunkingENI):
+        self._EnableTrunkingENI = EnableTrunkingENI
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -16466,6 +16478,7 @@ class DescribeIPAMDResponse(AbstractModel):
         self._Reason = params.get("Reason")
         self._SubnetIds = params.get("SubnetIds")
         self._ClaimExpiredDuration = params.get("ClaimExpiredDuration")
+        self._EnableTrunkingENI = params.get("EnableTrunkingENI")
         self._RequestId = params.get("RequestId")
 
 
@@ -16759,6 +16772,117 @@ class DescribeLogSwitchesResponse(AbstractModel):
                 obj = Switch()
                 obj._deserialize(item)
                 self._SwitchSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePodChargeInfoRequest(AbstractModel):
+    """DescribePodChargeInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _Namespace: 命名空间
+        :type Namespace: str
+        :param _Name: Pod名称
+        :type Name: str
+        :param _Uids: Pod的Uid
+        :type Uids: list of str
+        """
+        self._ClusterId = None
+        self._Namespace = None
+        self._Name = None
+        self._Uids = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Uids(self):
+        return self._Uids
+
+    @Uids.setter
+    def Uids(self, Uids):
+        self._Uids = Uids
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._Namespace = params.get("Namespace")
+        self._Name = params.get("Name")
+        self._Uids = params.get("Uids")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePodChargeInfoResponse(AbstractModel):
+    """DescribePodChargeInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChargeInfoSet: Pod计费信息
+        :type ChargeInfoSet: list of PodChargeInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ChargeInfoSet = None
+        self._RequestId = None
+
+    @property
+    def ChargeInfoSet(self):
+        return self._ChargeInfoSet
+
+    @ChargeInfoSet.setter
+    def ChargeInfoSet(self, ChargeInfoSet):
+        self._ChargeInfoSet = ChargeInfoSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ChargeInfoSet") is not None:
+            self._ChargeInfoSet = []
+            for item in params.get("ChargeInfoSet"):
+                obj = PodChargeInfo()
+                obj._deserialize(item)
+                self._ChargeInfoSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -30418,6 +30542,141 @@ class PendingRelease(AbstractModel):
         
 
 
+class PodChargeInfo(AbstractModel):
+    """Pod计费信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: Pod计费开始时间
+        :type StartTime: str
+        :param _Uid: Pod的Uid
+        :type Uid: str
+        :param _Cpu: Pod的CPU
+        :type Cpu: float
+        :param _Memory: Pod的内存
+        :type Memory: float
+        :param _Type: Pod类型：intel、amd、v100、t4、a10\*gnv4、a10\*gnv4v等。
+        :type Type: str
+        :param _Gpu: Pod是GPU时，表示GPU卡数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Gpu: str
+        :param _ChargeType: 计费类型
+PREPAID：Pod调度到包月超级节点
+POSTPAID_BY_HOUR：按量计费
+RESERVED_INSTANCE：上个周期被预留券抵扣
+SPOT：竞价实例
+TPOD：特惠实例
+        :type ChargeType: str
+        :param _Namespace: 命名空间
+        :type Namespace: str
+        :param _Name: Pod名称
+        :type Name: str
+        """
+        self._StartTime = None
+        self._Uid = None
+        self._Cpu = None
+        self._Memory = None
+        self._Type = None
+        self._Gpu = None
+        self._ChargeType = None
+        self._Namespace = None
+        self._Name = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Uid(self):
+        return self._Uid
+
+    @Uid.setter
+    def Uid(self, Uid):
+        self._Uid = Uid
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Gpu(self):
+        return self._Gpu
+
+    @Gpu.setter
+    def Gpu(self, Gpu):
+        self._Gpu = Gpu
+
+    @property
+    def ChargeType(self):
+        return self._ChargeType
+
+    @ChargeType.setter
+    def ChargeType(self, ChargeType):
+        self._ChargeType = ChargeType
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._Uid = params.get("Uid")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._Type = params.get("Type")
+        self._Gpu = params.get("Gpu")
+        self._ChargeType = params.get("ChargeType")
+        self._Namespace = params.get("Namespace")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PodDeductionRate(AbstractModel):
     """可被预留券抵扣的 Pod 某种规格的抵扣率
 
@@ -38275,7 +38534,7 @@ class UpdateImageCacheRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageCacheId: 镜像缓存Id
+        :param _ImageCacheId: 镜像缓存ID
         :type ImageCacheId: str
         :param _ImageCacheName: 镜像缓存名称
         :type ImageCacheName: str

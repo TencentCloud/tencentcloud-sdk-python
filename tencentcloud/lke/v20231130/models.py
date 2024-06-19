@@ -1179,6 +1179,51 @@ class Context(AbstractModel):
         
 
 
+class Coord(AbstractModel):
+    """坐标
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _X: 横坐标
+        :type X: int
+        :param _Y: 纵坐标
+        :type Y: int
+        """
+        self._X = None
+        self._Y = None
+
+    @property
+    def X(self):
+        return self._X
+
+    @X.setter
+    def X(self, X):
+        self._X = X
+
+    @property
+    def Y(self):
+        return self._Y
+
+    @Y.setter
+    def Y(self, Y):
+        self._Y = Y
+
+
+    def _deserialize(self, params):
+        self._X = params.get("X")
+        self._Y = params.get("Y")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateAppRequest(AbstractModel):
     """CreateApp请求参数结构体
 
@@ -1806,6 +1851,162 @@ class CreateQAResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._QaBizId = params.get("QaBizId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateReconstructDocumentFlowConfig(AbstractModel):
+    """创建智能文档解析任务的配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableResultType: Markdown文件中表格返回的形式
+0，表格以MD形式返回
+1，表格以HTML形式返回
+默认为1
+        :type TableResultType: str
+        """
+        self._TableResultType = None
+
+    @property
+    def TableResultType(self):
+        return self._TableResultType
+
+    @TableResultType.setter
+    def TableResultType(self, TableResultType):
+        self._TableResultType = TableResultType
+
+
+    def _deserialize(self, params):
+        self._TableResultType = params.get("TableResultType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateReconstructDocumentFlowRequest(AbstractModel):
+    """CreateReconstructDocumentFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileBase64: 图片的 Base64 值。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经Base64编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type FileBase64: str
+        :param _FileUrl: 图片的 Url 地址。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经 Base64 编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type FileUrl: str
+        :param _FileStartPageNumber: 当传入文件是PDF类型（IsPdf=true）时，用来指定pdf识别的起始页码，识别的页码包含当前值。
+        :type FileStartPageNumber: int
+        :param _FileEndPageNumber: 当传入文件是PDF类型（IsPdf=true）时，用来指定pdf识别的结束页码，识别的页码包含当前值。
+        :type FileEndPageNumber: int
+        :param _Config: 创建智能文档识别任务配置信息
+        :type Config: :class:`tencentcloud.lke.v20231130.models.CreateReconstructDocumentFlowConfig`
+        """
+        self._FileBase64 = None
+        self._FileUrl = None
+        self._FileStartPageNumber = None
+        self._FileEndPageNumber = None
+        self._Config = None
+
+    @property
+    def FileBase64(self):
+        return self._FileBase64
+
+    @FileBase64.setter
+    def FileBase64(self, FileBase64):
+        self._FileBase64 = FileBase64
+
+    @property
+    def FileUrl(self):
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
+
+    @property
+    def FileStartPageNumber(self):
+        return self._FileStartPageNumber
+
+    @FileStartPageNumber.setter
+    def FileStartPageNumber(self, FileStartPageNumber):
+        self._FileStartPageNumber = FileStartPageNumber
+
+    @property
+    def FileEndPageNumber(self):
+        return self._FileEndPageNumber
+
+    @FileEndPageNumber.setter
+    def FileEndPageNumber(self, FileEndPageNumber):
+        self._FileEndPageNumber = FileEndPageNumber
+
+    @property
+    def Config(self):
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+
+    def _deserialize(self, params):
+        self._FileBase64 = params.get("FileBase64")
+        self._FileUrl = params.get("FileUrl")
+        self._FileStartPageNumber = params.get("FileStartPageNumber")
+        self._FileEndPageNumber = params.get("FileEndPageNumber")
+        if params.get("Config") is not None:
+            self._Config = CreateReconstructDocumentFlowConfig()
+            self._Config._deserialize(params.get("Config"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateReconstructDocumentFlowResponse(AbstractModel):
+    """CreateReconstructDocumentFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务唯一id
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -4468,6 +4669,260 @@ class DescribeUnsatisfiedReplyContextResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DocumentElement(AbstractModel):
+    """文档元素字段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Index: 文档元素索引
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Index: int
+        :param _Type: 元素类型，包括paragraph、table、formula、figure、title、header、footer、figure_text
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Text: 元素内容，当type为figure或formula(公式识别关闭)时该字段内容为图片的位置
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        :param _Polygon: 元素坐标，左上角(x1, y1)，右上角(x2, y2)，右下角(x3, y3)，左下角(x4, y4)
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Polygon: :class:`tencentcloud.lke.v20231130.models.Polygon`
+        :param _Level: 元素层级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Level: int
+        :param _InsetImageName: 入参开启EnableInsetImage后返回，表示在InsetImagePackage中的内嵌图片名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InsetImageName: str
+        :param _Elements: 嵌套的文档元素信息，一般包含的是文档内嵌入图片的文字识别结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Elements: list of DocumentElement
+        """
+        self._Index = None
+        self._Type = None
+        self._Text = None
+        self._Polygon = None
+        self._Level = None
+        self._InsetImageName = None
+        self._Elements = None
+
+    @property
+    def Index(self):
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Polygon(self):
+        return self._Polygon
+
+    @Polygon.setter
+    def Polygon(self, Polygon):
+        self._Polygon = Polygon
+
+    @property
+    def Level(self):
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def InsetImageName(self):
+        return self._InsetImageName
+
+    @InsetImageName.setter
+    def InsetImageName(self, InsetImageName):
+        self._InsetImageName = InsetImageName
+
+    @property
+    def Elements(self):
+        return self._Elements
+
+    @Elements.setter
+    def Elements(self, Elements):
+        self._Elements = Elements
+
+
+    def _deserialize(self, params):
+        self._Index = params.get("Index")
+        self._Type = params.get("Type")
+        self._Text = params.get("Text")
+        if params.get("Polygon") is not None:
+            self._Polygon = Polygon()
+            self._Polygon._deserialize(params.get("Polygon"))
+        self._Level = params.get("Level")
+        self._InsetImageName = params.get("InsetImageName")
+        if params.get("Elements") is not None:
+            self._Elements = []
+            for item in params.get("Elements"):
+                obj = DocumentElement()
+                obj._deserialize(item)
+                self._Elements.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DocumentRecognizeInfo(AbstractModel):
+    """单页文档识别的内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: 输入PDF文件的页码，从1开始。输入图片的话值始终为1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageNumber: int
+        :param _Angle: 旋转角度
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Angle: int
+        :param _Height: AI算法识别处理后的图片高度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Height: int
+        :param _Width: AI算法识别处理后的图片宽度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Width: int
+        :param _OriginHeight: 图片的原始高度，输入PDF文件则表示单页PDF转图片之后的图片高度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginHeight: int
+        :param _OriginWidth: 图片的原始宽度，输入PDF文件则表示单页PDF转图片之后的图片宽度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginWidth: int
+        :param _Elements: 文档元素信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Elements: list of DocumentElement
+        :param _RotatedAngle: 旋转角度
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RotatedAngle: float
+        """
+        self._PageNumber = None
+        self._Angle = None
+        self._Height = None
+        self._Width = None
+        self._OriginHeight = None
+        self._OriginWidth = None
+        self._Elements = None
+        self._RotatedAngle = None
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def Angle(self):
+        return self._Angle
+
+    @Angle.setter
+    def Angle(self, Angle):
+        self._Angle = Angle
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def OriginHeight(self):
+        return self._OriginHeight
+
+    @OriginHeight.setter
+    def OriginHeight(self, OriginHeight):
+        self._OriginHeight = OriginHeight
+
+    @property
+    def OriginWidth(self):
+        return self._OriginWidth
+
+    @OriginWidth.setter
+    def OriginWidth(self, OriginWidth):
+        self._OriginWidth = OriginWidth
+
+    @property
+    def Elements(self):
+        return self._Elements
+
+    @Elements.setter
+    def Elements(self, Elements):
+        self._Elements = Elements
+
+    @property
+    def RotatedAngle(self):
+        return self._RotatedAngle
+
+    @RotatedAngle.setter
+    def RotatedAngle(self, RotatedAngle):
+        self._RotatedAngle = RotatedAngle
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._Angle = params.get("Angle")
+        self._Height = params.get("Height")
+        self._Width = params.get("Width")
+        self._OriginHeight = params.get("OriginHeight")
+        self._OriginWidth = params.get("OriginWidth")
+        if params.get("Elements") is not None:
+            self._Elements = []
+            for item in params.get("Elements"):
+                obj = DocumentElement()
+                obj._deserialize(item)
+                self._Elements.append(obj)
+        self._RotatedAngle = params.get("RotatedAngle")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EmbeddingObject(AbstractModel):
     """向量
 
@@ -5534,6 +5989,105 @@ class GetMsgRecordResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Records.append(obj)
         self._SessionDisassociatedTimestamp = params.get("SessionDisassociatedTimestamp")
+        self._RequestId = params.get("RequestId")
+
+
+class GetReconstructDocumentResultRequest(AbstractModel):
+    """GetReconstructDocumentResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务唯一id
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetReconstructDocumentResultResponse(AbstractModel):
+    """GetReconstructDocumentResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务状态: Success->执行完成；Processing->执行中；Failed->执行失败；WaitExecute->等待执行；
+        :type Status: str
+        :param _DocumentRecognizeResultUrl: 输入文件中嵌入的图片中文字内容的识别结果，存储在腾讯云cos的下载地址
+        :type DocumentRecognizeResultUrl: str
+        :param _FailedPages: 还原失败的页
+        :type FailedPages: list of ReconstructDocumentFailedPage
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._DocumentRecognizeResultUrl = None
+        self._FailedPages = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def DocumentRecognizeResultUrl(self):
+        return self._DocumentRecognizeResultUrl
+
+    @DocumentRecognizeResultUrl.setter
+    def DocumentRecognizeResultUrl(self, DocumentRecognizeResultUrl):
+        self._DocumentRecognizeResultUrl = DocumentRecognizeResultUrl
+
+    @property
+    def FailedPages(self):
+        return self._FailedPages
+
+    @FailedPages.setter
+    def FailedPages(self, FailedPages):
+        self._FailedPages = FailedPages
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._DocumentRecognizeResultUrl = params.get("DocumentRecognizeResultUrl")
+        if params.get("FailedPages") is not None:
+            self._FailedPages = []
+            for item in params.get("FailedPages"):
+                obj = ReconstructDocumentFailedPage()
+                obj._deserialize(item)
+                self._FailedPages.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -11085,6 +11639,84 @@ class ParseDocResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class Polygon(AbstractModel):
+    """文本的坐标，以四个顶点坐标表示
+    注意：此字段可能返回 null，表示取不到有效值
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LeftTop: 左上顶点坐标
+        :type LeftTop: :class:`tencentcloud.lke.v20231130.models.Coord`
+        :param _RightTop: 右上顶点坐标
+        :type RightTop: :class:`tencentcloud.lke.v20231130.models.Coord`
+        :param _RightBottom: 右下顶点坐标
+        :type RightBottom: :class:`tencentcloud.lke.v20231130.models.Coord`
+        :param _LeftBottom: 左下顶点坐标
+        :type LeftBottom: :class:`tencentcloud.lke.v20231130.models.Coord`
+        """
+        self._LeftTop = None
+        self._RightTop = None
+        self._RightBottom = None
+        self._LeftBottom = None
+
+    @property
+    def LeftTop(self):
+        return self._LeftTop
+
+    @LeftTop.setter
+    def LeftTop(self, LeftTop):
+        self._LeftTop = LeftTop
+
+    @property
+    def RightTop(self):
+        return self._RightTop
+
+    @RightTop.setter
+    def RightTop(self, RightTop):
+        self._RightTop = RightTop
+
+    @property
+    def RightBottom(self):
+        return self._RightBottom
+
+    @RightBottom.setter
+    def RightBottom(self, RightBottom):
+        self._RightBottom = RightBottom
+
+    @property
+    def LeftBottom(self):
+        return self._LeftBottom
+
+    @LeftBottom.setter
+    def LeftBottom(self, LeftBottom):
+        self._LeftBottom = LeftBottom
+
+
+    def _deserialize(self, params):
+        if params.get("LeftTop") is not None:
+            self._LeftTop = Coord()
+            self._LeftTop._deserialize(params.get("LeftTop"))
+        if params.get("RightTop") is not None:
+            self._RightTop = Coord()
+            self._RightTop._deserialize(params.get("RightTop"))
+        if params.get("RightBottom") is not None:
+            self._RightBottom = Coord()
+            self._RightBottom._deserialize(params.get("RightBottom"))
+        if params.get("LeftBottom") is not None:
+            self._LeftBottom = Coord()
+            self._LeftBottom._deserialize(params.get("LeftBottom"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Procedure(AbstractModel):
     """执行过程信息记录
 
@@ -11849,6 +12481,226 @@ class RateMsgRecordResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ReconstructDocumentConfig(AbstractModel):
+    """ReconstructDocument配置选项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnableInsetImage: 生成的Markdown中是否嵌入图片
+        :type EnableInsetImage: bool
+        """
+        self._EnableInsetImage = None
+
+    @property
+    def EnableInsetImage(self):
+        return self._EnableInsetImage
+
+    @EnableInsetImage.setter
+    def EnableInsetImage(self, EnableInsetImage):
+        self._EnableInsetImage = EnableInsetImage
+
+
+    def _deserialize(self, params):
+        self._EnableInsetImage = params.get("EnableInsetImage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReconstructDocumentFailedPage(AbstractModel):
+    """文档解析失败记录
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: 失败页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageNumber: int
+        """
+        self._PageNumber = None
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReconstructDocumentRequest(AbstractModel):
+    """ReconstructDocument请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileBase64: 图片的 Base64 值。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经Base64编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type FileBase64: str
+        :param _FileUrl: 图片的 Url 地址。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经 Base64 编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type FileUrl: str
+        :param _FileStartPageNumber: 当传入文件是PDF类型（IsPdf=true）时，用来指定pdf识别的起始页码，识别的页码包含当前值。
+        :type FileStartPageNumber: int
+        :param _FileEndPageNumber: 当传入文件是PDF类型（IsPdf=true）时，用来指定pdf识别的结束页码，识别的页码包含当前值。
+单次调用，最多支持10页pdf的智能识别。
+        :type FileEndPageNumber: int
+        :param _Config: 配置选项，支持配置是否在生成的Markdown中是否嵌入图片
+        :type Config: :class:`tencentcloud.lke.v20231130.models.ReconstructDocumentConfig`
+        """
+        self._FileBase64 = None
+        self._FileUrl = None
+        self._FileStartPageNumber = None
+        self._FileEndPageNumber = None
+        self._Config = None
+
+    @property
+    def FileBase64(self):
+        return self._FileBase64
+
+    @FileBase64.setter
+    def FileBase64(self, FileBase64):
+        self._FileBase64 = FileBase64
+
+    @property
+    def FileUrl(self):
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
+
+    @property
+    def FileStartPageNumber(self):
+        return self._FileStartPageNumber
+
+    @FileStartPageNumber.setter
+    def FileStartPageNumber(self, FileStartPageNumber):
+        self._FileStartPageNumber = FileStartPageNumber
+
+    @property
+    def FileEndPageNumber(self):
+        return self._FileEndPageNumber
+
+    @FileEndPageNumber.setter
+    def FileEndPageNumber(self, FileEndPageNumber):
+        self._FileEndPageNumber = FileEndPageNumber
+
+    @property
+    def Config(self):
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+
+    def _deserialize(self, params):
+        self._FileBase64 = params.get("FileBase64")
+        self._FileUrl = params.get("FileUrl")
+        self._FileStartPageNumber = params.get("FileStartPageNumber")
+        self._FileEndPageNumber = params.get("FileEndPageNumber")
+        if params.get("Config") is not None:
+            self._Config = ReconstructDocumentConfig()
+            self._Config._deserialize(params.get("Config"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReconstructDocumentResponse(AbstractModel):
+    """ReconstructDocument返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MarkdownBase64: 识别生成的Markdown文件base64编码的字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MarkdownBase64: str
+        :param _InsetImagePackage: 输入文件中嵌入的图片放在一个文件夹中打包为.zip压缩文件，识别生成的Markdown文件通过路径关联插入本文件夹中的图片。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InsetImagePackage: str
+        :param _DocumentRecognizeInfo: 输入文件中嵌入的图片中文字内容的识别结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DocumentRecognizeInfo: list of DocumentRecognizeInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MarkdownBase64 = None
+        self._InsetImagePackage = None
+        self._DocumentRecognizeInfo = None
+        self._RequestId = None
+
+    @property
+    def MarkdownBase64(self):
+        return self._MarkdownBase64
+
+    @MarkdownBase64.setter
+    def MarkdownBase64(self, MarkdownBase64):
+        self._MarkdownBase64 = MarkdownBase64
+
+    @property
+    def InsetImagePackage(self):
+        return self._InsetImagePackage
+
+    @InsetImagePackage.setter
+    def InsetImagePackage(self, InsetImagePackage):
+        self._InsetImagePackage = InsetImagePackage
+
+    @property
+    def DocumentRecognizeInfo(self):
+        return self._DocumentRecognizeInfo
+
+    @DocumentRecognizeInfo.setter
+    def DocumentRecognizeInfo(self, DocumentRecognizeInfo):
+        self._DocumentRecognizeInfo = DocumentRecognizeInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._MarkdownBase64 = params.get("MarkdownBase64")
+        self._InsetImagePackage = params.get("InsetImagePackage")
+        if params.get("DocumentRecognizeInfo") is not None:
+            self._DocumentRecognizeInfo = []
+            for item in params.get("DocumentRecognizeInfo"):
+                obj = DocumentRecognizeInfo()
+                obj._deserialize(item)
+                self._DocumentRecognizeInfo.append(obj)
         self._RequestId = params.get("RequestId")
 
 

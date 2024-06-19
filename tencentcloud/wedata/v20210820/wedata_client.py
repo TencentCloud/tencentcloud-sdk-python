@@ -3848,7 +3848,7 @@ class WedataClient(AbstractClient):
 
 
     def DiagnosePro(self, request):
-        """实例诊断
+        """实例诊断，用于诊断 INITIAL、DEPENDENCE、ALLOCATED、LAUNCHED、EVENT_LISTENING、BEFORE_ASPECT、EXPIRED、FAILED状态的实例
 
         :param request: Request instance for DiagnosePro.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DiagnoseProRequest`
