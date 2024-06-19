@@ -11214,6 +11214,160 @@ class DescribeVULRiskAdvanceCFGListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeVULRiskDetailRequest(AbstractModel):
+    """DescribeVULRiskDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _RiskId: 风险id
+        :type RiskId: str
+        :param _PCMGRId: pcMgrId
+        :type PCMGRId: str
+        """
+        self._MemberId = None
+        self._RiskId = None
+        self._PCMGRId = None
+
+    @property
+    def MemberId(self):
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def RiskId(self):
+        return self._RiskId
+
+    @RiskId.setter
+    def RiskId(self, RiskId):
+        self._RiskId = RiskId
+
+    @property
+    def PCMGRId(self):
+        return self._PCMGRId
+
+    @PCMGRId.setter
+    def PCMGRId(self, PCMGRId):
+        self._PCMGRId = PCMGRId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._RiskId = params.get("RiskId")
+        self._PCMGRId = params.get("PCMGRId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVULRiskDetailResponse(AbstractModel):
+    """DescribeVULRiskDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceSupport: 安全产品支持情况
+        :type ServiceSupport: list of ServiceSupport
+        :param _VulTrend: 漏洞趋势
+        :type VulTrend: list of VulTrend
+        :param _VulData: 漏洞补充信息
+        :type VulData: :class:`tencentcloud.csip.v20221121.models.VULRiskInfo`
+        :param _QuestionId: 小助手问答id
+        :type QuestionId: str
+        :param _SessionId: 会话id
+        :type SessionId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ServiceSupport = None
+        self._VulTrend = None
+        self._VulData = None
+        self._QuestionId = None
+        self._SessionId = None
+        self._RequestId = None
+
+    @property
+    def ServiceSupport(self):
+        return self._ServiceSupport
+
+    @ServiceSupport.setter
+    def ServiceSupport(self, ServiceSupport):
+        self._ServiceSupport = ServiceSupport
+
+    @property
+    def VulTrend(self):
+        return self._VulTrend
+
+    @VulTrend.setter
+    def VulTrend(self, VulTrend):
+        self._VulTrend = VulTrend
+
+    @property
+    def VulData(self):
+        return self._VulData
+
+    @VulData.setter
+    def VulData(self, VulData):
+        self._VulData = VulData
+
+    @property
+    def QuestionId(self):
+        return self._QuestionId
+
+    @QuestionId.setter
+    def QuestionId(self, QuestionId):
+        self._QuestionId = QuestionId
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ServiceSupport") is not None:
+            self._ServiceSupport = []
+            for item in params.get("ServiceSupport"):
+                obj = ServiceSupport()
+                obj._deserialize(item)
+                self._ServiceSupport.append(obj)
+        if params.get("VulTrend") is not None:
+            self._VulTrend = []
+            for item in params.get("VulTrend"):
+                obj = VulTrend()
+                obj._deserialize(item)
+                self._VulTrend.append(obj)
+        if params.get("VulData") is not None:
+            self._VulData = VULRiskInfo()
+            self._VulData._deserialize(params.get("VulData"))
+        self._QuestionId = params.get("QuestionId")
+        self._SessionId = params.get("SessionId")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeVpcAssetsRequest(AbstractModel):
     """DescribeVpcAssets请求参数结构体
 
@@ -11351,6 +11505,194 @@ class DescribeVpcAssetsResponse(AbstractModel):
                 obj = FilterDataObject()
                 obj._deserialize(item)
                 self._AppIdList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVulViewVulRiskListRequest(AbstractModel):
+    """DescribeVulViewVulRiskList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: 过滤内容
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        :param _Tags: 资产标签
+        :type Tags: list of AssetTag
+        """
+        self._MemberId = None
+        self._Filter = None
+        self._Tags = None
+
+    @property
+    def MemberId(self):
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = AssetTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulViewVulRiskListResponse(AbstractModel):
+    """DescribeVulViewVulRiskList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总条数
+        :type TotalCount: int
+        :param _Data: 漏洞产视角的漏洞风险列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of VULViewVULRiskData
+        :param _LevelLists: 危险等级列表
+        :type LevelLists: list of FilterDataObject
+        :param _FromLists: 来源列表
+        :type FromLists: list of FilterDataObject
+        :param _VULTypeLists: 漏洞类型列表
+        :type VULTypeLists: list of FilterDataObject
+        :param _Tags: tag枚举
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of FilterDataObject
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._LevelLists = None
+        self._FromLists = None
+        self._VULTypeLists = None
+        self._Tags = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def LevelLists(self):
+        return self._LevelLists
+
+    @LevelLists.setter
+    def LevelLists(self, LevelLists):
+        self._LevelLists = LevelLists
+
+    @property
+    def FromLists(self):
+        return self._FromLists
+
+    @FromLists.setter
+    def FromLists(self, FromLists):
+        self._FromLists = FromLists
+
+    @property
+    def VULTypeLists(self):
+        return self._VULTypeLists
+
+    @VULTypeLists.setter
+    def VULTypeLists(self, VULTypeLists):
+        self._VULTypeLists = VULTypeLists
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = VULViewVULRiskData()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        if params.get("LevelLists") is not None:
+            self._LevelLists = []
+            for item in params.get("LevelLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._LevelLists.append(obj)
+        if params.get("FromLists") is not None:
+            self._FromLists = []
+            for item in params.get("FromLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._FromLists.append(obj)
+        if params.get("VULTypeLists") is not None:
+            self._VULTypeLists = []
+            for item in params.get("VULTypeLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._VULTypeLists.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -17698,6 +18040,84 @@ class VULRiskAdvanceCFGList(AbstractModel):
         
 
 
+class VULRiskInfo(AbstractModel):
+    """漏洞风险信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Fix: 修复建议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Fix: str
+        :param _References: 技术参考/参考链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type References: str
+        :param _Describe: 漏洞描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Describe: str
+        :param _ImpactComponent: 受影响组件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImpactComponent: list of VulImpactComponentInfo
+        """
+        self._Fix = None
+        self._References = None
+        self._Describe = None
+        self._ImpactComponent = None
+
+    @property
+    def Fix(self):
+        return self._Fix
+
+    @Fix.setter
+    def Fix(self, Fix):
+        self._Fix = Fix
+
+    @property
+    def References(self):
+        return self._References
+
+    @References.setter
+    def References(self, References):
+        self._References = References
+
+    @property
+    def Describe(self):
+        return self._Describe
+
+    @Describe.setter
+    def Describe(self, Describe):
+        self._Describe = Describe
+
+    @property
+    def ImpactComponent(self):
+        return self._ImpactComponent
+
+    @ImpactComponent.setter
+    def ImpactComponent(self, ImpactComponent):
+        self._ImpactComponent = ImpactComponent
+
+
+    def _deserialize(self, params):
+        self._Fix = params.get("Fix")
+        self._References = params.get("References")
+        self._Describe = params.get("Describe")
+        if params.get("ImpactComponent") is not None:
+            self._ImpactComponent = []
+            for item in params.get("ImpactComponent"):
+                obj = VulImpactComponentInfo()
+                obj._deserialize(item)
+                self._ImpactComponent.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class VULViewVULRisk(AbstractModel):
     """漏洞视角的漏洞风险对象
 
@@ -18011,6 +18431,399 @@ class VULViewVULRisk(AbstractModel):
         
 
 
+class VULViewVULRiskData(AbstractModel):
+    """漏洞视角的漏洞风险对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Port: 端口
+        :type Port: str
+        :param _NoHandleCount: 影响资产
+        :type NoHandleCount: int
+        :param _Level: 风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
+        :type Level: str
+        :param _Component: 组件
+        :type Component: str
+        :param _RecentTime: 最近识别时间
+        :type RecentTime: str
+        :param _FirstTime: 首次识别时间
+        :type FirstTime: str
+        :param _AffectAssetCount: 影响资产数量
+        :type AffectAssetCount: int
+        :param _RiskId: 风险ID
+        :type RiskId: str
+        :param _From: 扫描来源，具体看接口返回枚举类型
+        :type From: str
+        :param _Index: 前端索引
+        :type Index: str
+        :param _VULType: 漏洞类型
+        :type VULType: str
+        :param _VULName: 漏洞名
+        :type VULName: str
+        :param _CVE: cve
+        :type CVE: str
+        :param _Payload: 漏洞payload
+        :type Payload: str
+        :param _AppName: 漏洞影响组件
+        :type AppName: str
+        :param _AppVersion: 漏洞影响版本
+        :type AppVersion: str
+        :param _VULURL: 风险点
+        :type VULURL: str
+        :param _Nick: 用户昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Nick: str
+        :param _AppId: 用户appid
+        :type AppId: str
+        :param _Uin: 用户uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param _EMGCVulType: 应急漏洞类型，1-应急漏洞，0-非应急漏洞
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EMGCVulType: int
+        :param _CVSS: CVSS评分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CVSS: float
+        :param _PCMGRId: PCMGRId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PCMGRId: str
+        :param _VulTag: 漏洞标签。搜索时应急 必修传参VulTag=SuggestRepair/EMGCVul
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VulTag: list of str
+        :param _DisclosureTime: 漏洞披露时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisclosureTime: str
+        :param _AttackHeat: 攻击热度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttackHeat: int
+        :param _IsSuggest: 是否必修漏洞1是，0不是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsSuggest: int
+        :param _HandleTaskId: 处置任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HandleTaskId: str
+        :param _EngineSource: 引擎来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineSource: str
+        :param _VulRiskId: 新的漏洞风险id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VulRiskId: str
+        """
+        self._Port = None
+        self._NoHandleCount = None
+        self._Level = None
+        self._Component = None
+        self._RecentTime = None
+        self._FirstTime = None
+        self._AffectAssetCount = None
+        self._RiskId = None
+        self._From = None
+        self._Index = None
+        self._VULType = None
+        self._VULName = None
+        self._CVE = None
+        self._Payload = None
+        self._AppName = None
+        self._AppVersion = None
+        self._VULURL = None
+        self._Nick = None
+        self._AppId = None
+        self._Uin = None
+        self._EMGCVulType = None
+        self._CVSS = None
+        self._PCMGRId = None
+        self._VulTag = None
+        self._DisclosureTime = None
+        self._AttackHeat = None
+        self._IsSuggest = None
+        self._HandleTaskId = None
+        self._EngineSource = None
+        self._VulRiskId = None
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def NoHandleCount(self):
+        return self._NoHandleCount
+
+    @NoHandleCount.setter
+    def NoHandleCount(self, NoHandleCount):
+        self._NoHandleCount = NoHandleCount
+
+    @property
+    def Level(self):
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Component(self):
+        return self._Component
+
+    @Component.setter
+    def Component(self, Component):
+        self._Component = Component
+
+    @property
+    def RecentTime(self):
+        return self._RecentTime
+
+    @RecentTime.setter
+    def RecentTime(self, RecentTime):
+        self._RecentTime = RecentTime
+
+    @property
+    def FirstTime(self):
+        return self._FirstTime
+
+    @FirstTime.setter
+    def FirstTime(self, FirstTime):
+        self._FirstTime = FirstTime
+
+    @property
+    def AffectAssetCount(self):
+        return self._AffectAssetCount
+
+    @AffectAssetCount.setter
+    def AffectAssetCount(self, AffectAssetCount):
+        self._AffectAssetCount = AffectAssetCount
+
+    @property
+    def RiskId(self):
+        return self._RiskId
+
+    @RiskId.setter
+    def RiskId(self, RiskId):
+        self._RiskId = RiskId
+
+    @property
+    def From(self):
+        return self._From
+
+    @From.setter
+    def From(self, From):
+        self._From = From
+
+    @property
+    def Index(self):
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def VULType(self):
+        return self._VULType
+
+    @VULType.setter
+    def VULType(self, VULType):
+        self._VULType = VULType
+
+    @property
+    def VULName(self):
+        return self._VULName
+
+    @VULName.setter
+    def VULName(self, VULName):
+        self._VULName = VULName
+
+    @property
+    def CVE(self):
+        return self._CVE
+
+    @CVE.setter
+    def CVE(self, CVE):
+        self._CVE = CVE
+
+    @property
+    def Payload(self):
+        return self._Payload
+
+    @Payload.setter
+    def Payload(self, Payload):
+        self._Payload = Payload
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def AppVersion(self):
+        return self._AppVersion
+
+    @AppVersion.setter
+    def AppVersion(self, AppVersion):
+        self._AppVersion = AppVersion
+
+    @property
+    def VULURL(self):
+        return self._VULURL
+
+    @VULURL.setter
+    def VULURL(self, VULURL):
+        self._VULURL = VULURL
+
+    @property
+    def Nick(self):
+        return self._Nick
+
+    @Nick.setter
+    def Nick(self, Nick):
+        self._Nick = Nick
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def EMGCVulType(self):
+        return self._EMGCVulType
+
+    @EMGCVulType.setter
+    def EMGCVulType(self, EMGCVulType):
+        self._EMGCVulType = EMGCVulType
+
+    @property
+    def CVSS(self):
+        return self._CVSS
+
+    @CVSS.setter
+    def CVSS(self, CVSS):
+        self._CVSS = CVSS
+
+    @property
+    def PCMGRId(self):
+        return self._PCMGRId
+
+    @PCMGRId.setter
+    def PCMGRId(self, PCMGRId):
+        self._PCMGRId = PCMGRId
+
+    @property
+    def VulTag(self):
+        return self._VulTag
+
+    @VulTag.setter
+    def VulTag(self, VulTag):
+        self._VulTag = VulTag
+
+    @property
+    def DisclosureTime(self):
+        return self._DisclosureTime
+
+    @DisclosureTime.setter
+    def DisclosureTime(self, DisclosureTime):
+        self._DisclosureTime = DisclosureTime
+
+    @property
+    def AttackHeat(self):
+        return self._AttackHeat
+
+    @AttackHeat.setter
+    def AttackHeat(self, AttackHeat):
+        self._AttackHeat = AttackHeat
+
+    @property
+    def IsSuggest(self):
+        return self._IsSuggest
+
+    @IsSuggest.setter
+    def IsSuggest(self, IsSuggest):
+        self._IsSuggest = IsSuggest
+
+    @property
+    def HandleTaskId(self):
+        return self._HandleTaskId
+
+    @HandleTaskId.setter
+    def HandleTaskId(self, HandleTaskId):
+        self._HandleTaskId = HandleTaskId
+
+    @property
+    def EngineSource(self):
+        return self._EngineSource
+
+    @EngineSource.setter
+    def EngineSource(self, EngineSource):
+        self._EngineSource = EngineSource
+
+    @property
+    def VulRiskId(self):
+        return self._VulRiskId
+
+    @VulRiskId.setter
+    def VulRiskId(self, VulRiskId):
+        self._VulRiskId = VulRiskId
+
+
+    def _deserialize(self, params):
+        self._Port = params.get("Port")
+        self._NoHandleCount = params.get("NoHandleCount")
+        self._Level = params.get("Level")
+        self._Component = params.get("Component")
+        self._RecentTime = params.get("RecentTime")
+        self._FirstTime = params.get("FirstTime")
+        self._AffectAssetCount = params.get("AffectAssetCount")
+        self._RiskId = params.get("RiskId")
+        self._From = params.get("From")
+        self._Index = params.get("Index")
+        self._VULType = params.get("VULType")
+        self._VULName = params.get("VULName")
+        self._CVE = params.get("CVE")
+        self._Payload = params.get("Payload")
+        self._AppName = params.get("AppName")
+        self._AppVersion = params.get("AppVersion")
+        self._VULURL = params.get("VULURL")
+        self._Nick = params.get("Nick")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._EMGCVulType = params.get("EMGCVulType")
+        self._CVSS = params.get("CVSS")
+        self._PCMGRId = params.get("PCMGRId")
+        self._VulTag = params.get("VulTag")
+        self._DisclosureTime = params.get("DisclosureTime")
+        self._AttackHeat = params.get("AttackHeat")
+        self._IsSuggest = params.get("IsSuggest")
+        self._HandleTaskId = params.get("HandleTaskId")
+        self._EngineSource = params.get("EngineSource")
+        self._VulRiskId = params.get("VulRiskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Vpc(AbstractModel):
     """vpc列表数据
 
@@ -18211,6 +19024,126 @@ class Vpc(AbstractModel):
         self._Nick = params.get("Nick")
         self._IsNewAsset = params.get("IsNewAsset")
         self._IsCore = params.get("IsCore")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulImpactComponentInfo(AbstractModel):
+    """漏洞影响组件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Component: 组件名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Component: str
+        :param _Version: 版本名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        """
+        self._Component = None
+        self._Version = None
+
+    @property
+    def Component(self):
+        return self._Component
+
+    @Component.setter
+    def Component(self, Component):
+        self._Component = Component
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+
+    def _deserialize(self, params):
+        self._Component = params.get("Component")
+        self._Version = params.get("Version")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulTrend(AbstractModel):
+    """漏洞趋势-攻击趋势、影响用户、影响资产
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AffectAssetCount: 影响的资产数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AffectAssetCount: int
+        :param _AffectUserCount: 影响的用户数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AffectUserCount: int
+        :param _AttackCount: 攻击数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttackCount: int
+        :param _Date: 时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Date: str
+        """
+        self._AffectAssetCount = None
+        self._AffectUserCount = None
+        self._AttackCount = None
+        self._Date = None
+
+    @property
+    def AffectAssetCount(self):
+        return self._AffectAssetCount
+
+    @AffectAssetCount.setter
+    def AffectAssetCount(self, AffectAssetCount):
+        self._AffectAssetCount = AffectAssetCount
+
+    @property
+    def AffectUserCount(self):
+        return self._AffectUserCount
+
+    @AffectUserCount.setter
+    def AffectUserCount(self, AffectUserCount):
+        self._AffectUserCount = AffectUserCount
+
+    @property
+    def AttackCount(self):
+        return self._AttackCount
+
+    @AttackCount.setter
+    def AttackCount(self, AttackCount):
+        self._AttackCount = AttackCount
+
+    @property
+    def Date(self):
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+
+    def _deserialize(self, params):
+        self._AffectAssetCount = params.get("AffectAssetCount")
+        self._AffectUserCount = params.get("AffectUserCount")
+        self._AttackCount = params.get("AttackCount")
+        self._Date = params.get("Date")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

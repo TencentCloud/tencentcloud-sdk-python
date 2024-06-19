@@ -10248,6 +10248,12 @@ class DomainRuleSet(AbstractModel):
         :param _IsDefaultServer: 是否为默认域名
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsDefaultServer: bool
+        :param _TLSCiphers: TLS套件包
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TLSCiphers: str
+        :param _TLSSupportVersion: TLS版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TLSSupportVersion: list of str
         """
         self._Domain = None
         self._RuleSet = None
@@ -10271,6 +10277,8 @@ class DomainRuleSet(AbstractModel):
         self._BanStatus = None
         self._Http3Supported = None
         self._IsDefaultServer = None
+        self._TLSCiphers = None
+        self._TLSSupportVersion = None
 
     @property
     def Domain(self):
@@ -10448,6 +10456,22 @@ class DomainRuleSet(AbstractModel):
     def IsDefaultServer(self, IsDefaultServer):
         self._IsDefaultServer = IsDefaultServer
 
+    @property
+    def TLSCiphers(self):
+        return self._TLSCiphers
+
+    @TLSCiphers.setter
+    def TLSCiphers(self, TLSCiphers):
+        self._TLSCiphers = TLSCiphers
+
+    @property
+    def TLSSupportVersion(self):
+        return self._TLSSupportVersion
+
+    @TLSSupportVersion.setter
+    def TLSSupportVersion(self, TLSSupportVersion):
+        self._TLSSupportVersion = TLSSupportVersion
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -10487,6 +10511,8 @@ class DomainRuleSet(AbstractModel):
         self._BanStatus = params.get("BanStatus")
         self._Http3Supported = params.get("Http3Supported")
         self._IsDefaultServer = params.get("IsDefaultServer")
+        self._TLSCiphers = params.get("TLSCiphers")
+        self._TLSSupportVersion = params.get("TLSSupportVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

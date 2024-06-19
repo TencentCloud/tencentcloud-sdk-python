@@ -808,6 +808,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeVULRiskDetail(self, request):
+        """获取漏洞展开详情
+
+        :param request: Request instance for DescribeVULRiskDetail.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeVULRiskDetailRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeVULRiskDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVULRiskDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVULRiskDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeVpcAssets(self, request):
         """获取vpc列表
 
@@ -822,6 +845,29 @@ class CsipClient(AbstractClient):
             body = self.call("DescribeVpcAssets", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeVpcAssetsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVulViewVulRiskList(self, request):
+        """获取漏洞视角的漏洞风险列表
+
+        :param request: Request instance for DescribeVulViewVulRiskList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeVulViewVulRiskListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeVulViewVulRiskListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulViewVulRiskList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVulViewVulRiskListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -4563,6 +4563,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def MoveTasksToFolder(self, request):
+        """编排空间-工作流-移动任务到工作流文件夹
+
+        :param request: Request instance for MoveTasksToFolder.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.MoveTasksToFolderRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.MoveTasksToFolderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("MoveTasksToFolder", params, headers=headers)
+            response = json.loads(body)
+            model = models.MoveTasksToFolderResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RegisterEvent(self, request):
         """<p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
         注册事件

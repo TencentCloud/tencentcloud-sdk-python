@@ -41172,6 +41172,125 @@ class ModifyWorkflowScheduleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class MoveTasksToFolderRequest(AbstractModel):
+    """MoveTasksToFolder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目Id
+        :type ProjectId: str
+        :param _WorkflowId: 工作流ID
+        :type WorkflowId: str
+        :param _TaskFolderId: 任务文件夹ID
+        :type TaskFolderId: str
+        :param _TaskIds: 任务ID
+        :type TaskIds: list of str
+        :param _VirtualTaskIds: 虚拟任务ID
+        :type VirtualTaskIds: list of str
+        """
+        self._ProjectId = None
+        self._WorkflowId = None
+        self._TaskFolderId = None
+        self._TaskIds = None
+        self._VirtualTaskIds = None
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def WorkflowId(self):
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def TaskFolderId(self):
+        return self._TaskFolderId
+
+    @TaskFolderId.setter
+    def TaskFolderId(self, TaskFolderId):
+        self._TaskFolderId = TaskFolderId
+
+    @property
+    def TaskIds(self):
+        return self._TaskIds
+
+    @TaskIds.setter
+    def TaskIds(self, TaskIds):
+        self._TaskIds = TaskIds
+
+    @property
+    def VirtualTaskIds(self):
+        return self._VirtualTaskIds
+
+    @VirtualTaskIds.setter
+    def VirtualTaskIds(self, VirtualTaskIds):
+        self._VirtualTaskIds = VirtualTaskIds
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._WorkflowId = params.get("WorkflowId")
+        self._TaskFolderId = params.get("TaskFolderId")
+        self._TaskIds = params.get("TaskIds")
+        self._VirtualTaskIds = params.get("VirtualTaskIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MoveTasksToFolderResponse(AbstractModel):
+    """MoveTasksToFolder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: true代表成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
 class OfflineInstance(AbstractModel):
     """离线实例
 
@@ -42226,7 +42345,7 @@ class OpsTaskCanvasInfoList(AbstractModel):
         :type LinksList: list of OpsTaskLinkInfoDto
         :param _CirculateTaskList: 画布循环依赖任务信息
 注意：此字段可能返回 null，表示取不到有效值。
-        :type CirculateTaskList: :class:`tencentcloud.wedata.v20210820.models.OpsTaskCanvasDto`
+        :type CirculateTaskList: list of OpsTaskCanvasDto
         """
         self._TasksList = None
         self._LinksList = None
@@ -42271,8 +42390,11 @@ class OpsTaskCanvasInfoList(AbstractModel):
                 obj._deserialize(item)
                 self._LinksList.append(obj)
         if params.get("CirculateTaskList") is not None:
-            self._CirculateTaskList = OpsTaskCanvasDto()
-            self._CirculateTaskList._deserialize(params.get("CirculateTaskList"))
+            self._CirculateTaskList = []
+            for item in params.get("CirculateTaskList"):
+                obj = OpsTaskCanvasDto()
+                obj._deserialize(item)
+                self._CirculateTaskList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
