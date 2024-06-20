@@ -6562,7 +6562,7 @@ class EmrListInstance(AbstractModel):
         r"""
         :param _ClusterId: 集群ID
         :type ClusterId: str
-        :param _StatusDesc: 状态描述
+        :param _StatusDesc: 常见状态描述：集群生产中,集群运行中,集群创建中,集群已关闭,集群已删除
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatusDesc: str
         :param _ClusterName: 集群名字
@@ -6601,7 +6601,7 @@ class EmrListInstance(AbstractModel):
         :param _Zone: 地区
 注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: str
-        :param _Status: 状态码
+        :param _Status: 状态码, 取值为-2(集群已删除), -1(集群已关闭), 0(集群生产中), 2(集群运行中), 3(集群创建中)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _Tags: 实例标签

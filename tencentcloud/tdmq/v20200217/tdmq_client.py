@@ -348,6 +348,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateRocketMQEnvironmentRole(self, request):
+        """创建环境角色授权
+
+        :param request: Request instance for CreateRocketMQEnvironmentRole.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQEnvironmentRoleRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQEnvironmentRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRocketMQEnvironmentRole", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRocketMQEnvironmentRoleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateRocketMQGroup(self, request):
         """创建RocketMQ消费组
 
@@ -385,6 +408,29 @@ class TdmqClient(AbstractClient):
             body = self.call("CreateRocketMQNamespace", params, headers=headers)
             response = json.loads(body)
             model = models.CreateRocketMQNamespaceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateRocketMQRole(self, request):
+        """创建角色
+
+        :param request: Request instance for CreateRocketMQRole.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQRoleRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRocketMQRole", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRocketMQRoleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -762,6 +808,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteRocketMQEnvironmentRoles(self, request):
+        """删除环境角色授权。
+
+        :param request: Request instance for DeleteRocketMQEnvironmentRoles.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQEnvironmentRolesRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQEnvironmentRolesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRocketMQEnvironmentRoles", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRocketMQEnvironmentRolesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteRocketMQGroup(self, request):
         """删除RocketMQ消费组
 
@@ -799,6 +868,29 @@ class TdmqClient(AbstractClient):
             body = self.call("DeleteRocketMQNamespace", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteRocketMQNamespaceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteRocketMQRoles(self, request):
+        """删除角色，支持批量。
+
+        :param request: Request instance for DeleteRocketMQRoles.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQRolesRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQRolesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRocketMQRoles", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRocketMQRolesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1776,6 +1868,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRocketMQEnvironmentRoles(self, request):
+        """获取命名空间角色列表
+
+        :param request: Request instance for DescribeRocketMQEnvironmentRoles.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQEnvironmentRolesRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQEnvironmentRolesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRocketMQEnvironmentRoles", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRocketMQEnvironmentRolesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRocketMQGroups(self, request):
         """获取RocketMQ消费组列表
 
@@ -1928,6 +2043,29 @@ class TdmqClient(AbstractClient):
             body = self.call("DescribeRocketMQPublicAccessPoint", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRocketMQPublicAccessPointResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRocketMQRoles(self, request):
+        """获取角色列表
+
+        :param request: Request instance for DescribeRocketMQRoles.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQRolesRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQRolesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRocketMQRoles", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRocketMQRolesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2581,6 +2719,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyRocketMQEnvironmentRole(self, request):
+        """修改环境角色授权。
+
+        :param request: Request instance for ModifyRocketMQEnvironmentRole.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQEnvironmentRoleRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQEnvironmentRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRocketMQEnvironmentRole", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRocketMQEnvironmentRoleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyRocketMQGroup(self, request):
         """更新RocketMQ消费组信息
 
@@ -2641,6 +2802,29 @@ class TdmqClient(AbstractClient):
             body = self.call("ModifyRocketMQNamespace", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyRocketMQNamespaceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyRocketMQRole(self, request):
+        """角色修改
+
+        :param request: Request instance for ModifyRocketMQRole.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQRoleRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRocketMQRole", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRocketMQRoleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

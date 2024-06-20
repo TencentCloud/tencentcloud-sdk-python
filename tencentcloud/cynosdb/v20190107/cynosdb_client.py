@@ -2834,6 +2834,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RenewClusters(self, request):
+        """续费集群
+
+        :param request: Request instance for RenewClusters.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.RenewClustersRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.RenewClustersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RenewClusters", params, headers=headers)
+            response = json.loads(body)
+            model = models.RenewClustersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ResetAccountPassword(self, request):
         """本接口(ResetAccountPassword)用于修改数据库账号密码
 

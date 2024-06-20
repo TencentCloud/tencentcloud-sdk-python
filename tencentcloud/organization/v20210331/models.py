@@ -18,6 +18,64 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AcceptJoinShareUnitInvitationRequest(AbstractModel):
+    """AcceptJoinShareUnitInvitation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UnitId: 共享单元ID。
+        :type UnitId: str
+        """
+        self._UnitId = None
+
+    @property
+    def UnitId(self):
+        return self._UnitId
+
+    @UnitId.setter
+    def UnitId(self, UnitId):
+        self._UnitId = UnitId
+
+
+    def _deserialize(self, params):
+        self._UnitId = params.get("UnitId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AcceptJoinShareUnitInvitationResponse(AbstractModel):
+    """AcceptJoinShareUnitInvitation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class AddOrganizationMemberEmailRequest(AbstractModel):
     """AddOrganizationMemberEmail请求参数结构体
 
@@ -7812,6 +7870,64 @@ class QuitOrganizationRequest(AbstractModel):
 
 class QuitOrganizationResponse(AbstractModel):
     """QuitOrganization返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class RejectJoinShareUnitInvitationRequest(AbstractModel):
+    """RejectJoinShareUnitInvitation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UnitId: 共享单元ID。
+        :type UnitId: str
+        """
+        self._UnitId = None
+
+    @property
+    def UnitId(self):
+        return self._UnitId
+
+    @UnitId.setter
+    def UnitId(self, UnitId):
+        self._UnitId = UnitId
+
+
+    def _deserialize(self, params):
+        self._UnitId = params.get("UnitId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RejectJoinShareUnitInvitationResponse(AbstractModel):
+    """RejectJoinShareUnitInvitation返回参数结构体
 
     """
 

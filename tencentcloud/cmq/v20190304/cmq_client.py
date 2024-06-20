@@ -234,7 +234,7 @@ class CmqClient(AbstractClient):
 
 
     def DescribeQueueDetail(self, request):
-        """枚举队列
+        """枚举队列列表
 
         :param request: Request instance for DescribeQueueDetail.
         :type request: :class:`tencentcloud.cmq.v20190304.models.DescribeQueueDetailRequest`

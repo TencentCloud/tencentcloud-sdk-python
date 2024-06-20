@@ -6432,6 +6432,521 @@ class FinanBillSliceOCRResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class FinancialBill(AbstractModel):
+    """财务票据查验返回结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Code: 票据代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Code: str
+        :param _Number: 票据号码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Number: str
+        :param _BuyerTaxID: 缴款人纳税识别号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BuyerTaxID: str
+        :param _CheckCode: 校验码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckCode: str
+        :param _Buyer: 缴款人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Buyer: str
+        :param _Date: 开票日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Date: str
+        :param _SellerCompany: 收款单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SellerCompany: str
+        :param _Reviewer: 复核人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reviewer: str
+        :param _Seller: 收款人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Seller: str
+        :param _Title: 票据名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Title: str
+        :param _Total: 金额合计
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: str
+        :param _TotalCn: 金额合计中文大写
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCn: str
+        :param _RushRedStateCode: 冲红
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RushRedStateCode: str
+        :param _RushRedDate: 冲红日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RushRedDate: str
+        :param _RushRedTime: 冲红时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RushRedTime: str
+        :param _RushRedReason: 冲红原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RushRedReason: str
+        :param _FinancialBillItems: 项目明细
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FinancialBillItems: list of FinancialBillItem
+        :param _FinancialBillItemDetails: 项目清单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FinancialBillItemDetails: list of FinancialBillItemDetails
+        """
+        self._Code = None
+        self._Number = None
+        self._BuyerTaxID = None
+        self._CheckCode = None
+        self._Buyer = None
+        self._Date = None
+        self._SellerCompany = None
+        self._Reviewer = None
+        self._Seller = None
+        self._Title = None
+        self._Total = None
+        self._TotalCn = None
+        self._RushRedStateCode = None
+        self._RushRedDate = None
+        self._RushRedTime = None
+        self._RushRedReason = None
+        self._FinancialBillItems = None
+        self._FinancialBillItemDetails = None
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Number(self):
+        return self._Number
+
+    @Number.setter
+    def Number(self, Number):
+        self._Number = Number
+
+    @property
+    def BuyerTaxID(self):
+        return self._BuyerTaxID
+
+    @BuyerTaxID.setter
+    def BuyerTaxID(self, BuyerTaxID):
+        self._BuyerTaxID = BuyerTaxID
+
+    @property
+    def CheckCode(self):
+        return self._CheckCode
+
+    @CheckCode.setter
+    def CheckCode(self, CheckCode):
+        self._CheckCode = CheckCode
+
+    @property
+    def Buyer(self):
+        return self._Buyer
+
+    @Buyer.setter
+    def Buyer(self, Buyer):
+        self._Buyer = Buyer
+
+    @property
+    def Date(self):
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+    @property
+    def SellerCompany(self):
+        return self._SellerCompany
+
+    @SellerCompany.setter
+    def SellerCompany(self, SellerCompany):
+        self._SellerCompany = SellerCompany
+
+    @property
+    def Reviewer(self):
+        return self._Reviewer
+
+    @Reviewer.setter
+    def Reviewer(self, Reviewer):
+        self._Reviewer = Reviewer
+
+    @property
+    def Seller(self):
+        return self._Seller
+
+    @Seller.setter
+    def Seller(self, Seller):
+        self._Seller = Seller
+
+    @property
+    def Title(self):
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def TotalCn(self):
+        return self._TotalCn
+
+    @TotalCn.setter
+    def TotalCn(self, TotalCn):
+        self._TotalCn = TotalCn
+
+    @property
+    def RushRedStateCode(self):
+        return self._RushRedStateCode
+
+    @RushRedStateCode.setter
+    def RushRedStateCode(self, RushRedStateCode):
+        self._RushRedStateCode = RushRedStateCode
+
+    @property
+    def RushRedDate(self):
+        return self._RushRedDate
+
+    @RushRedDate.setter
+    def RushRedDate(self, RushRedDate):
+        self._RushRedDate = RushRedDate
+
+    @property
+    def RushRedTime(self):
+        return self._RushRedTime
+
+    @RushRedTime.setter
+    def RushRedTime(self, RushRedTime):
+        self._RushRedTime = RushRedTime
+
+    @property
+    def RushRedReason(self):
+        return self._RushRedReason
+
+    @RushRedReason.setter
+    def RushRedReason(self, RushRedReason):
+        self._RushRedReason = RushRedReason
+
+    @property
+    def FinancialBillItems(self):
+        return self._FinancialBillItems
+
+    @FinancialBillItems.setter
+    def FinancialBillItems(self, FinancialBillItems):
+        self._FinancialBillItems = FinancialBillItems
+
+    @property
+    def FinancialBillItemDetails(self):
+        return self._FinancialBillItemDetails
+
+    @FinancialBillItemDetails.setter
+    def FinancialBillItemDetails(self, FinancialBillItemDetails):
+        self._FinancialBillItemDetails = FinancialBillItemDetails
+
+
+    def _deserialize(self, params):
+        self._Code = params.get("Code")
+        self._Number = params.get("Number")
+        self._BuyerTaxID = params.get("BuyerTaxID")
+        self._CheckCode = params.get("CheckCode")
+        self._Buyer = params.get("Buyer")
+        self._Date = params.get("Date")
+        self._SellerCompany = params.get("SellerCompany")
+        self._Reviewer = params.get("Reviewer")
+        self._Seller = params.get("Seller")
+        self._Title = params.get("Title")
+        self._Total = params.get("Total")
+        self._TotalCn = params.get("TotalCn")
+        self._RushRedStateCode = params.get("RushRedStateCode")
+        self._RushRedDate = params.get("RushRedDate")
+        self._RushRedTime = params.get("RushRedTime")
+        self._RushRedReason = params.get("RushRedReason")
+        if params.get("FinancialBillItems") is not None:
+            self._FinancialBillItems = []
+            for item in params.get("FinancialBillItems"):
+                obj = FinancialBillItem()
+                obj._deserialize(item)
+                self._FinancialBillItems.append(obj)
+        if params.get("FinancialBillItemDetails") is not None:
+            self._FinancialBillItemDetails = []
+            for item in params.get("FinancialBillItemDetails"):
+                obj = FinancialBillItemDetails()
+                obj._deserialize(item)
+                self._FinancialBillItemDetails.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FinancialBillItem(AbstractModel):
+    """财务票据查验返回结果-项目明细
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ItemID: 项目编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ItemID: str
+        :param _Name: 项目名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Unit: 单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Unit: str
+        :param _Quantity: 数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Quantity: str
+        :param _Standard: 规格标准
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Standard: str
+        :param _Total: 金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: str
+        :param _SerialNumber: 项目序号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SerialNumber: str
+        :param _Remark: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        """
+        self._ItemID = None
+        self._Name = None
+        self._Unit = None
+        self._Quantity = None
+        self._Standard = None
+        self._Total = None
+        self._SerialNumber = None
+        self._Remark = None
+
+    @property
+    def ItemID(self):
+        return self._ItemID
+
+    @ItemID.setter
+    def ItemID(self, ItemID):
+        self._ItemID = ItemID
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Unit(self):
+        return self._Unit
+
+    @Unit.setter
+    def Unit(self, Unit):
+        self._Unit = Unit
+
+    @property
+    def Quantity(self):
+        return self._Quantity
+
+    @Quantity.setter
+    def Quantity(self, Quantity):
+        self._Quantity = Quantity
+
+    @property
+    def Standard(self):
+        return self._Standard
+
+    @Standard.setter
+    def Standard(self, Standard):
+        self._Standard = Standard
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def SerialNumber(self):
+        return self._SerialNumber
+
+    @SerialNumber.setter
+    def SerialNumber(self, SerialNumber):
+        self._SerialNumber = SerialNumber
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._ItemID = params.get("ItemID")
+        self._Name = params.get("Name")
+        self._Unit = params.get("Unit")
+        self._Quantity = params.get("Quantity")
+        self._Standard = params.get("Standard")
+        self._Total = params.get("Total")
+        self._SerialNumber = params.get("SerialNumber")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FinancialBillItemDetails(AbstractModel):
+    """财务票据查验返回结果-项目清单
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ItemID: 项目编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ItemID: str
+        :param _Name: 项目名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Unit: 单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Unit: str
+        :param _Quantity: 数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Quantity: str
+        :param _Standard: 规格标准
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Standard: str
+        :param _Total: 金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: str
+        :param _SerialNumber: 项目序号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SerialNumber: str
+        :param _Remark: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        """
+        self._ItemID = None
+        self._Name = None
+        self._Unit = None
+        self._Quantity = None
+        self._Standard = None
+        self._Total = None
+        self._SerialNumber = None
+        self._Remark = None
+
+    @property
+    def ItemID(self):
+        return self._ItemID
+
+    @ItemID.setter
+    def ItemID(self, ItemID):
+        self._ItemID = ItemID
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Unit(self):
+        return self._Unit
+
+    @Unit.setter
+    def Unit(self, Unit):
+        self._Unit = Unit
+
+    @property
+    def Quantity(self):
+        return self._Quantity
+
+    @Quantity.setter
+    def Quantity(self, Quantity):
+        self._Quantity = Quantity
+
+    @property
+    def Standard(self):
+        return self._Standard
+
+    @Standard.setter
+    def Standard(self, Standard):
+        self._Standard = Standard
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def SerialNumber(self):
+        return self._SerialNumber
+
+    @SerialNumber.setter
+    def SerialNumber(self, SerialNumber):
+        self._SerialNumber = SerialNumber
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._ItemID = params.get("ItemID")
+        self._Name = params.get("Name")
+        self._Unit = params.get("Unit")
+        self._Quantity = params.get("Quantity")
+        self._Standard = params.get("Standard")
+        self._Total = params.get("Total")
+        self._SerialNumber = params.get("SerialNumber")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FlightInvoiceInfo(AbstractModel):
     """机票行程单识别结果
 
@@ -28666,12 +29181,12 @@ class VatInvoiceVerifyNewRequest(AbstractModel):
         :type InvoiceDate: str
         :param _InvoiceCode: 发票代码（10或12 位），全电发票为空。查验未成功超过5次后当日无法再查。
         :type InvoiceCode: str
-        :param _InvoiceKind: 票种类型 01:增值税专用发票， 02:货运运输业增值税专用发 票， 03:机动车销售统一发票， 04:增值税普通发票， 08:增值税电子专用发票(含全电)， 10:增值税电子普通发票(含全电)， 11:增值税普通发票(卷式)， 14:增值税电子(通行费)发 票， 15:二手车销售统一发票， 32:深圳区块链发票(云南区块链因业务调整现已下线)。
+        :param _InvoiceKind: 票种类型 01:增值税专用发票， 02:货运运输业增值税专用发 票， 03:机动车销售统一发票， 04:增值税普通发票， 08:增值税电子专用发票(含全电)， 10:增值税电子普通发票(含全电)， 11:增值税普通发票(卷式)， 14:增值税电子(通行费)发 票， 15:二手车销售统一发票，16:财务发票， 32:深圳区块链发票(云南区块链因业务调整现已下线)。
         :type InvoiceKind: str
-        :param _CheckCode: 校验码后 6 位，增值税普通发票、增值税电子普通发票、增值税普通发票(卷式)、增值税电子普通发票(通行费)、全电纸质发票（增值税普通发票）时必填;
+        :param _CheckCode: 校验码后 6 位，增值税普通发票、增值税电子普通发票、增值税普通发票(卷式)、增值税电子普通发票(通行费)、全电纸质发票（增值税普通发票）、财政票据时必填;
 区块链为 5 位
         :type CheckCode: str
-        :param _Amount: 不含税金额，增值税专用发票、增值税电子专用发票、机动车销售统一发票、二手车销售统一发票、区块链发票时必填; 全电发票为价税合计(含税金额)
+        :param _Amount: 不含税金额，增值税专用发票、增值税电子专用发票、机动车销售统一发票、二手车销售统一发票、区块链发票、财政发票时必填; 全电发票为价税合计(含税金额)
         :type Amount: str
         :param _RegionCode: 地区编码，通用机打电子发票时必填。
 广东:4400，浙江:3300
@@ -28818,6 +29333,8 @@ class VatInvoiceVerifyNewResponse(AbstractModel):
         :type ElectronicTrainTicket: :class:`tencentcloud.ocr.v20181119.models.ElectronicTrainTicket`
         :param _ElectronicAirTransport: 全电发票（航空运输电子客票行程单）详细字段信息。
         :type ElectronicAirTransport: :class:`tencentcloud.ocr.v20181119.models.ElectronicAirTransport`
+        :param _FinancialBill: 财政发票详细字段信息
+        :type FinancialBill: :class:`tencentcloud.ocr.v20181119.models.FinancialBill`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -28827,6 +29344,7 @@ class VatInvoiceVerifyNewResponse(AbstractModel):
         self._PassInvoiceInfoList = None
         self._ElectronicTrainTicket = None
         self._ElectronicAirTransport = None
+        self._FinancialBill = None
         self._RequestId = None
 
     @property
@@ -28878,6 +29396,14 @@ class VatInvoiceVerifyNewResponse(AbstractModel):
         self._ElectronicAirTransport = ElectronicAirTransport
 
     @property
+    def FinancialBill(self):
+        return self._FinancialBill
+
+    @FinancialBill.setter
+    def FinancialBill(self, FinancialBill):
+        self._FinancialBill = FinancialBill
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -28908,6 +29434,9 @@ class VatInvoiceVerifyNewResponse(AbstractModel):
         if params.get("ElectronicAirTransport") is not None:
             self._ElectronicAirTransport = ElectronicAirTransport()
             self._ElectronicAirTransport._deserialize(params.get("ElectronicAirTransport"))
+        if params.get("FinancialBill") is not None:
+            self._FinancialBill = FinancialBill()
+            self._FinancialBill._deserialize(params.get("FinancialBill"))
         self._RequestId = params.get("RequestId")
 
 

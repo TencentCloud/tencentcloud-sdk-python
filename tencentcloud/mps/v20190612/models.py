@@ -1099,6 +1099,18 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
         :param _PureAudio: 是否为纯音频，0表示视频，1表示纯音频
 注意：此字段可能返回 null，表示取不到有效值。
         :type PureAudio: int
+        :param _SegmentType: hls 分片类型，可选值：
+<li>ts-segment：HLS+TS 切片</li>
+<li>ts-byterange：HLS+TS byte range</li>
+<li>mp4-segment：HLS+MP4 切片</li>
+<li>mp4-byterange：HLS+MP4 byte range</li>
+<li>ts-packed-audio：TS+Packed Audio</li>
+<li>mp4-packed-audio：MP4+Packed Audio</li>
+默认值：ts-segment
+
+注：自适应码流的hls分片格式已此字段为准
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SegmentType: str
         """
         self._Definition = None
         self._Type = None
@@ -1111,6 +1123,7 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
         self._CreateTime = None
         self._UpdateTime = None
         self._PureAudio = None
+        self._SegmentType = None
 
     @property
     def Definition(self):
@@ -1200,6 +1213,14 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
     def PureAudio(self, PureAudio):
         self._PureAudio = PureAudio
 
+    @property
+    def SegmentType(self):
+        return self._SegmentType
+
+    @SegmentType.setter
+    def SegmentType(self, SegmentType):
+        self._SegmentType = SegmentType
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -1218,6 +1239,7 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._PureAudio = params.get("PureAudio")
+        self._SegmentType = params.get("SegmentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9018,6 +9040,7 @@ class AudioTemplateInfo(AbstractModel):
 <li>aac；</li>
 <li>mp3；</li>
 <li>ac3。</li>
+<li>eac3。</li>
 当外层参数 Container 为 mp4 或 flv 时，可选值为：
 <li>aac：更适合 mp4；</li>
 <li>mp3：更适合 flv；</li>
@@ -9114,6 +9137,7 @@ class AudioTemplateInfoForUpdate(AbstractModel):
 <li>aac；</li>
 <li>mp3；</li>
 <li>ac3。</li>
+<li>eac3。</li>
 当外层参数 Container 为 mp4 或 flv 时，可选值为：
 <li>aac：更适合 mp4；</li>
 <li>mp3：更适合 flv；</li>
@@ -12086,6 +12110,9 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 1. StreamInfos.N.Video.Codec不能为copy
 2. StreamInfos.N.Video.Fps不能为null
         :type PureAudio: int
+        :param _SegmentType: hls 分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS+MP4 byte range</li> <li>ts-packed-audio：TS+Packed Audio</li> <li>mp4-packed-audio：MP4+Packed Audio</li> 默认值：ts-segment 
+注：自适应码流的hls分片格式已此字段为准
+        :type SegmentType: str
         """
         self._Format = None
         self._StreamInfos = None
@@ -12094,6 +12121,7 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         self._DisableHigherVideoResolution = None
         self._Comment = None
         self._PureAudio = None
+        self._SegmentType = None
 
     @property
     def Format(self):
@@ -12151,6 +12179,14 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
     def PureAudio(self, PureAudio):
         self._PureAudio = PureAudio
 
+    @property
+    def SegmentType(self):
+        return self._SegmentType
+
+    @SegmentType.setter
+    def SegmentType(self, SegmentType):
+        self._SegmentType = SegmentType
+
 
     def _deserialize(self, params):
         self._Format = params.get("Format")
@@ -12165,6 +12201,7 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         self._DisableHigherVideoResolution = params.get("DisableHigherVideoResolution")
         self._Comment = params.get("Comment")
         self._PureAudio = params.get("PureAudio")
+        self._SegmentType = params.get("SegmentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14767,7 +14804,7 @@ class CreateTranscodeTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Container: 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
+        :param _Container: 封装格式，可选值：mp4、flv、hls、ts、webm、mkv、mxf、mov、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
         :type Container: str
         :param _Name: 转码模板名称，长度限制：64 个字符。
         :type Name: str
@@ -31238,6 +31275,9 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 1. StreamInfos.N.Video.Codec不能为copy
 2. StreamInfos.N.Video.Fps不能为null
         :type PureAudio: int
+        :param _SegmentType: hls 分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS+MP4 byte range</li> <li>ts-packed-audio：TS+Packed Audio</li> <li>mp4-packed-audio：MP4+Packed Audio</li> 默认值：ts-segment 
+注：自适应码流的hls分片格式已此字段为准
+        :type SegmentType: str
         """
         self._Definition = None
         self._Name = None
@@ -31247,6 +31287,7 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         self._StreamInfos = None
         self._Comment = None
         self._PureAudio = None
+        self._SegmentType = None
 
     @property
     def Definition(self):
@@ -31312,6 +31353,14 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
     def PureAudio(self, PureAudio):
         self._PureAudio = PureAudio
 
+    @property
+    def SegmentType(self):
+        return self._SegmentType
+
+    @SegmentType.setter
+    def SegmentType(self, SegmentType):
+        self._SegmentType = SegmentType
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -31327,6 +31376,7 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
                 self._StreamInfos.append(obj)
         self._Comment = params.get("Comment")
         self._PureAudio = params.get("PureAudio")
+        self._SegmentType = params.get("SegmentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -42280,15 +42330,22 @@ class VideoTemplateInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Codec: 视频流的编码格式，可选值：
-<li>copy：纯音频模版</li>
 <li>h264：H.264 编码</li>
 <li>h265：H.265 编码</li>
+<li>h266：H.266 编码</li>
 <li>av1：AOMedia Video 1 编码</li>
+<li>vp8：VP8 编码</li>
+<li>vp9：VP9 编码</li>
+<li>mpeg2：MPEG2 编码</li>
+<li>dnxhd：DNxHD 编码</li>
 注意：目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。
-注意：av1 编码容器目前只支持 mp4 。
+
+注意：av1 编码容器目前只支持 mp4 ，webm，mkv，mov。
+注意：H.266 编码容器目前只支持 mp4 ，hls，ts，mov。
+注意：VP8、VP9编码容器目前只支持webm，mkv。
+注意：MPEG2、dnxhd 编码容器目前只支持mxf。
         :type Codec: str
-        :param _Fps: 视频帧率，取值范围：[0, 120]，单位：Hz。 
-当取值为 0，表示帧率和原始视频保持一致。 
+        :param _Fps: 视频帧率，取值范围：[0, 120]，单位：Hz。 当取值为 0，表示帧率和原始视频保持一致。
 注意：自适应码率时取值范围是 [0, 60]
         :type Fps: int
         :param _Bitrate: 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
@@ -42329,6 +42386,14 @@ class VideoTemplateInfo(AbstractModel):
 如果指定该参数，将使用 CRF 的码率控制方式做转码（视频码率将不再生效）。
 如果没有特殊需求，不建议指定该参数。
         :type Vcrf: int
+        :param _SegmentType: hls 分片类型，可选值 ：
+<li>6：HLS+TS 切片</li>
+<li>2：HLS+TS byte range</li>
+<li>7：HLS+MP4 切片</li>
+<li>5：HLS+MP4 byte range</li>
+默认值：6
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SegmentType: int
         """
         self._Codec = None
         self._Fps = None
@@ -42339,6 +42404,7 @@ class VideoTemplateInfo(AbstractModel):
         self._Gop = None
         self._FillType = None
         self._Vcrf = None
+        self._SegmentType = None
 
     @property
     def Codec(self):
@@ -42412,6 +42478,14 @@ class VideoTemplateInfo(AbstractModel):
     def Vcrf(self, Vcrf):
         self._Vcrf = Vcrf
 
+    @property
+    def SegmentType(self):
+        return self._SegmentType
+
+    @SegmentType.setter
+    def SegmentType(self, SegmentType):
+        self._SegmentType = SegmentType
+
 
     def _deserialize(self, params):
         self._Codec = params.get("Codec")
@@ -42423,6 +42497,7 @@ class VideoTemplateInfo(AbstractModel):
         self._Gop = params.get("Gop")
         self._FillType = params.get("FillType")
         self._Vcrf = params.get("Vcrf")
+        self._SegmentType = params.get("SegmentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -42443,13 +42518,21 @@ class VideoTemplateInfoForUpdate(AbstractModel):
         :param _Codec: 视频流的编码格式，可选值：
 <li>h264：H.264 编码</li>
 <li>h265：H.265 编码</li>
+<li>h266：H.266 编码</li>
 <li>av1：AOMedia Video 1 编码</li>
+<li>vp8：VP8 编码</li>
+<li>vp9：VP9 编码</li>
+<li>mpeg2：MPEG2 编码</li>
+<li>dnxhd：DNxHD 编码</li>
 注意：目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。
-注意：av1 编码容器目前只支持 mp4 。
+
+注意：av1 编码容器目前只支持 mp4 ，webm，mkv，mov。
+注意：H.266 编码容器目前只支持 mp4 ，hls，ts，mov。
+注意：VP8、VP9编码容器目前只支持webm，mkv。
+注意：MPEG2、dnxhd 编码容器目前只支持mxf。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Codec: str
-        :param _Fps: 视频帧率，取值范围：[0, 120]，单位：Hz。
-当取值为 0，表示帧率和原始视频保持一致。
+        :param _Fps: 视频帧率，取值范围：[0, 120]，单位：Hz。 当取值为 0，表示帧率和原始视频保持一致。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Fps: int
         :param _Bitrate: 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
@@ -42492,6 +42575,14 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 默认值: 0.   当开启该参数时，将会自适应生成多个不同分辨率，不同码率的码流， 其中VideoTemplate的宽和高为多个码流中的最大分辨率，VideoTemplate中的码率为多个码流中的最高码率， VideoTemplate中的vcrf为多个码流中的最高质量。 当不设置分辨率、码率和vcrf时， ContentAdaptStream 参数生成的最高分辨率为视频源的分辨率，视频质量为接近vmaf95分。 若要开启该参数或了解计费细节, 请联系您的腾讯云商务。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ContentAdaptStream: int
+        :param _SegmentType: hls 分片类型，可选值：
+<li>6：HLS+TS 切片</li>
+<li>2：HLS+TS byte range</li>
+<li>7：HLS+MP4 切片</li>
+<li>5：HLS+MP4 byte range</li>
+默认值：6
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SegmentType: int
         """
         self._Codec = None
         self._Fps = None
@@ -42503,6 +42594,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
         self._FillType = None
         self._Vcrf = None
         self._ContentAdaptStream = None
+        self._SegmentType = None
 
     @property
     def Codec(self):
@@ -42584,6 +42676,14 @@ class VideoTemplateInfoForUpdate(AbstractModel):
     def ContentAdaptStream(self, ContentAdaptStream):
         self._ContentAdaptStream = ContentAdaptStream
 
+    @property
+    def SegmentType(self):
+        return self._SegmentType
+
+    @SegmentType.setter
+    def SegmentType(self, SegmentType):
+        self._SegmentType = SegmentType
+
 
     def _deserialize(self, params):
         self._Codec = params.get("Codec")
@@ -42596,6 +42696,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
         self._FillType = params.get("FillType")
         self._Vcrf = params.get("Vcrf")
         self._ContentAdaptStream = params.get("ContentAdaptStream")
+        self._SegmentType = params.get("SegmentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

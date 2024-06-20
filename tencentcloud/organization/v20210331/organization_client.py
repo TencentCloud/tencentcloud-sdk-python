@@ -26,6 +26,29 @@ class OrganizationClient(AbstractClient):
     _service = 'organization'
 
 
+    def AcceptJoinShareUnitInvitation(self, request):
+        """接受加入共享单元邀请。
+
+        :param request: Request instance for AcceptJoinShareUnitInvitation.
+        :type request: :class:`tencentcloud.organization.v20210331.models.AcceptJoinShareUnitInvitationRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.AcceptJoinShareUnitInvitationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AcceptJoinShareUnitInvitation", params, headers=headers)
+            response = json.loads(body)
+            model = models.AcceptJoinShareUnitInvitationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AddOrganizationMemberEmail(self, request):
         """添加组织成员邮箱
 
@@ -1282,6 +1305,29 @@ class OrganizationClient(AbstractClient):
             body = self.call("QuitOrganization", params, headers=headers)
             response = json.loads(body)
             model = models.QuitOrganizationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RejectJoinShareUnitInvitation(self, request):
+        """拒绝加入共享单元邀请。
+
+        :param request: Request instance for RejectJoinShareUnitInvitation.
+        :type request: :class:`tencentcloud.organization.v20210331.models.RejectJoinShareUnitInvitationRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.RejectJoinShareUnitInvitationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RejectJoinShareUnitInvitation", params, headers=headers)
+            response = json.loads(body)
+            model = models.RejectJoinShareUnitInvitationResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

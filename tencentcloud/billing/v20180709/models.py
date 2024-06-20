@@ -9068,6 +9068,9 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
         :param _ComponentConfig: 配置描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type ComponentConfig: str
+        :param _Tags: 标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: str
         """
         self._ResourceId = None
         self._ResourceName = None
@@ -9108,6 +9111,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
         self._PayTime = None
         self._ZoneName = None
         self._ComponentConfig = None
+        self._Tags = None
 
     @property
     def ResourceId(self):
@@ -9421,6 +9425,14 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
     def ComponentConfig(self, ComponentConfig):
         self._ComponentConfig = ComponentConfig
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
@@ -9462,6 +9474,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
         self._PayTime = params.get("PayTime")
         self._ZoneName = params.get("ZoneName")
         self._ComponentConfig = params.get("ComponentConfig")
+        self._Tags = params.get("Tags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

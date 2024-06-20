@@ -244,31 +244,6 @@ class DtsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeRegionConf(self, request):
-        """接口不再使用
-
-        本接口（DescribeRegionConf）用于查询可售卖订阅实例的地域
-
-        :param request: Request instance for DescribeRegionConf.
-        :type request: :class:`tencentcloud.dts.v20180330.models.DescribeRegionConfRequest`
-        :rtype: :class:`tencentcloud.dts.v20180330.models.DescribeRegionConfResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeRegionConf", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeRegionConfResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeSubscribeConf(self, request):
         """本接口（DescribeSubscribeConf）用于查询订阅实例配置
 

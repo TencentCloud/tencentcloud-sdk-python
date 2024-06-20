@@ -10338,6 +10338,114 @@ class CreateConsoleLoginUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateFlowBlockchainEvidenceUrlRequest(AbstractModel):
+    """CreateFlowBlockchainEvidenceUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。  此接口下面信息必填。 <ul> <li>渠道应用标识:  Agent.AppId</li> <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li> <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li> </ul>
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _FlowId: 合同流程ID，为32位字符串。建议开发者妥善保存此流程ID，以便于顺利进行后续操作。可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
+        :type FlowId: str
+        """
+        self._Agent = None
+        self._FlowId = None
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._FlowId = params.get("FlowId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateFlowBlockchainEvidenceUrlResponse(AbstractModel):
+    """CreateFlowBlockchainEvidenceUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QrCode: 二维码图片下载链接，下载链接有效时间5分钟，请尽快下载保存。
+        :type QrCode: str
+        :param _Url: 查看短链，可直接点击短链查看报告。
+        :type Url: str
+        :param _ExpiredOn: 二维码和短链的过期时间戳，过期时间默认为生成链接后7天。
+        :type ExpiredOn: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._QrCode = None
+        self._Url = None
+        self._ExpiredOn = None
+        self._RequestId = None
+
+    @property
+    def QrCode(self):
+        return self._QrCode
+
+    @QrCode.setter
+    def QrCode(self, QrCode):
+        self._QrCode = QrCode
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def ExpiredOn(self):
+        return self._ExpiredOn
+
+    @ExpiredOn.setter
+    def ExpiredOn(self, ExpiredOn):
+        self._ExpiredOn = ExpiredOn
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._QrCode = params.get("QrCode")
+        self._Url = params.get("Url")
+        self._ExpiredOn = params.get("ExpiredOn")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateFlowGroupSignReviewRequest(AbstractModel):
     """CreateFlowGroupSignReview请求参数结构体
 
@@ -10826,6 +10934,115 @@ class CreateFlowsByTemplatesResponse(AbstractModel):
                 obj = FlowApproverItem()
                 obj._deserialize(item)
                 self._FlowApprovers.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class CreateLegalSealQrCodeRequest(AbstractModel):
+    """CreateLegalSealQrCode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容
+此接口下面信息必填。
+<ul>
+<li>渠道应用标识:  Agent.AppId</li>
+<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+<li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
+</ul>注:
+`1. 企业激活时， 此时的Agent.ProxyOrganizationOpenId将会是企业激活后企业的唯一标识，建议开发者保存企业ProxyOrganizationOpenId，后续各项接口调用皆需要此参数。 `
+`2. 员工认证时， 此时的Agent.ProxyOperator.OpenId将会是员工认证加入企业后的唯一标识，建议开发者保存此员工的OpenId，后续各项接口调用皆需要此参数。 `
+`3. 同渠道应用(Agent.AppId)下，企业唯一标识ProxyOrganizationOpenId需要保持唯一，员工唯一标识OpenId也要保持唯一 (而不是企业下唯一)。 `
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _Operator: 操作人信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param _Organization: 企业信息
+        :type Organization: :class:`tencentcloud.essbasic.v20210526.models.OrganizationInfo`
+        """
+        self._Agent = None
+        self._Operator = None
+        self._Organization = None
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Organization(self):
+        return self._Organization
+
+    @Organization.setter
+    def Organization(self, Organization):
+        self._Organization = Organization
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        if params.get("Organization") is not None:
+            self._Organization = OrganizationInfo()
+            self._Organization._deserialize(params.get("Organization"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLegalSealQrCodeResponse(AbstractModel):
+    """CreateLegalSealQrCode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QrcodeBase64: 二维码图片base64值
+        :type QrcodeBase64: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._QrcodeBase64 = None
+        self._RequestId = None
+
+    @property
+    def QrcodeBase64(self):
+        return self._QrcodeBase64
+
+    @QrcodeBase64.setter
+    def QrcodeBase64(self, QrcodeBase64):
+        self._QrcodeBase64 = QrcodeBase64
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._QrcodeBase64 = params.get("QrcodeBase64")
         self._RequestId = params.get("RequestId")
 
 
@@ -13383,15 +13600,15 @@ class EmbedUrlOption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ShowFlowDetailComponent: 合同详情页面是否展示合同控件信息
-<br/>true:允许在合同详情页展示控件
-<br/>false:不允许在合同详情页展示控件
-<br/>默认false,在合同详情页不展示控件
+        :param _ShowFlowDetailComponent: 合同详情预览，允许展示控件信息
+<ul>
+<li><b>true</b>：允许在合同详情页展示控件</li>
+<li><b>false</b>：（默认）不允许在合同详情页展示控件</li>
+</ul>
         :type ShowFlowDetailComponent: bool
-        :param _ShowTemplateComponent: 模版预览页面是否展示空间信息
-<br/>true:允许在模版预览页展示控件
-<br/>false:不允许在模版预览页展示控件
-<br/>默认false,在模版预览页不展示控件
+        :param _ShowTemplateComponent: 模板预览，允许展示模板控件信息
+<ul><li> <b>true</b> :允许在模板预览页展示控件</li>
+<li> <b>false</b> :（默认）不允许在模板预览页展示控件</li></ul>
         :type ShowTemplateComponent: bool
         """
         self._ShowFlowDetailComponent = None

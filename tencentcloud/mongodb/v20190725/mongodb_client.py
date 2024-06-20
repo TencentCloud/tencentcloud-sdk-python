@@ -809,6 +809,29 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyInstanceParams(self, request):
+        """本接口（ModifyInstanceParams）用于修改mongoDB实例的参数配置。
+
+        :param request: Request instance for ModifyInstanceParams.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.ModifyInstanceParamsRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.ModifyInstanceParamsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceParams", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceParamsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def OfflineIsolatedDBInstance(self, request):
         """本接口(OfflineIsolatedDBInstance)用于立即下线隔离状态的云数据库实例。进行操作的实例状态必须为隔离状态。
 

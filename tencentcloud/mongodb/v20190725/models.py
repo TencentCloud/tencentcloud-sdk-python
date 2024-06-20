@@ -6964,6 +6964,168 @@ class ModifyDBInstanceSpecResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyInstanceParamsRequest(AbstractModel):
+    """ModifyInstanceParams请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 指定实例 ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+
+        :type InstanceId: str
+        :param _InstanceParams: 指定需修改的参数名及值。当前所支持的参数名及对应取值范围，请通过 [DescribeInstanceParams ](https://cloud.tencent.com/document/product/240/65903)获取。
+        :type InstanceParams: list of ModifyMongoDBParamType
+        :param _ModifyType: 操作类型，包括：
+- IMMEDIATELY：立即调整。
+- DELAY：延迟调整。可选字段，不配置该参数则默认为立即调整。
+        :type ModifyType: str
+        """
+        self._InstanceId = None
+        self._InstanceParams = None
+        self._ModifyType = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceParams(self):
+        return self._InstanceParams
+
+    @InstanceParams.setter
+    def InstanceParams(self, InstanceParams):
+        self._InstanceParams = InstanceParams
+
+    @property
+    def ModifyType(self):
+        return self._ModifyType
+
+    @ModifyType.setter
+    def ModifyType(self, ModifyType):
+        self._ModifyType = ModifyType
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("InstanceParams") is not None:
+            self._InstanceParams = []
+            for item in params.get("InstanceParams"):
+                obj = ModifyMongoDBParamType()
+                obj._deserialize(item)
+                self._InstanceParams.append(obj)
+        self._ModifyType = params.get("ModifyType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceParamsResponse(AbstractModel):
+    """ModifyInstanceParams返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Changed: 修改参数配置是否生效。
+- true：参数修改后的值已生效。
+- false：执行失败。
+
+        :type Changed: bool
+        :param _TaskId: 该参数暂时无意义(兼容前端保留)。
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Changed = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def Changed(self):
+        return self._Changed
+
+    @Changed.setter
+    def Changed(self, Changed):
+        self._Changed = Changed
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Changed = params.get("Changed")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyMongoDBParamType(AbstractModel):
+    """修改mongoDB实例，请求参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 需要修改的参数名称，请严格参考通过 DescribeInstanceParams 获取的当前实例支持的参数名。
+        :type Key: str
+        :param _Value: 需要修改的参数名称对应的值，请严格参考通过 DescribeInstanceParams 获取的参数对应的值的范围。
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyNetworkAddress(AbstractModel):
     """修改数据库地址
 

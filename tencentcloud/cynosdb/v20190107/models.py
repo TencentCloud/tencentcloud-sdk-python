@@ -25500,6 +25500,165 @@ class RemoveClusterSlaveZoneResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RenewClustersRequest(AbstractModel):
+    """RenewClusters请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _TimeSpan: 续费时长
+        :type TimeSpan: float
+        :param _TimeUnit: 时间单位 y,m,d,h,i,s
+        :type TimeUnit: str
+        :param _DealMode: 交易模式 0-下单并支付 1-下单
+        :type DealMode: int
+        """
+        self._ClusterId = None
+        self._TimeSpan = None
+        self._TimeUnit = None
+        self._DealMode = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def TimeSpan(self):
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def TimeUnit(self):
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def DealMode(self):
+        return self._DealMode
+
+    @DealMode.setter
+    def DealMode(self, DealMode):
+        self._DealMode = DealMode
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._TimeSpan = params.get("TimeSpan")
+        self._TimeUnit = params.get("TimeUnit")
+        self._DealMode = params.get("DealMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenewClustersResponse(AbstractModel):
+    """RenewClusters返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BigDealIds: 预付费总订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BigDealIds: list of str
+        :param _DealNames: 退款订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DealNames: list of str
+        :param _TranId: 冻结流水，一次开通一个冻结流水
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TranId: str
+        :param _ResourceIds: 每个订单号对应的发货资源id列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceIds: list of str
+        :param _ClusterIds: 集群id列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterIds: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BigDealIds = None
+        self._DealNames = None
+        self._TranId = None
+        self._ResourceIds = None
+        self._ClusterIds = None
+        self._RequestId = None
+
+    @property
+    def BigDealIds(self):
+        return self._BigDealIds
+
+    @BigDealIds.setter
+    def BigDealIds(self, BigDealIds):
+        self._BigDealIds = BigDealIds
+
+    @property
+    def DealNames(self):
+        return self._DealNames
+
+    @DealNames.setter
+    def DealNames(self, DealNames):
+        self._DealNames = DealNames
+
+    @property
+    def TranId(self):
+        return self._TranId
+
+    @TranId.setter
+    def TranId(self, TranId):
+        self._TranId = TranId
+
+    @property
+    def ResourceIds(self):
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def ClusterIds(self):
+        return self._ClusterIds
+
+    @ClusterIds.setter
+    def ClusterIds(self, ClusterIds):
+        self._ClusterIds = ClusterIds
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._BigDealIds = params.get("BigDealIds")
+        self._DealNames = params.get("DealNames")
+        self._TranId = params.get("TranId")
+        self._ResourceIds = params.get("ResourceIds")
+        self._ClusterIds = params.get("ClusterIds")
+        self._RequestId = params.get("RequestId")
+
+
 class ResetAccountPasswordRequest(AbstractModel):
     """ResetAccountPassword请求参数结构体
 

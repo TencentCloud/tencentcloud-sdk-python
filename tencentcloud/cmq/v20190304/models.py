@@ -1110,46 +1110,22 @@ class DescribeQueueDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 分页时本页获取队列列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0
-        :type Offset: int
-        :param _Limit: 分页时本页获取队列的个数，如果不传递该参数，则该参数默认为20，最大值为50。
-        :type Limit: int
-        :param _Filters: 筛选参数，目前支持QueueName筛选，且仅支持一个关键字
-        :type Filters: list of Filter
         :param _TagKey: 标签搜索
         :type TagKey: str
+        :param _Limit: 分页时本页获取队列的个数，如果不传递该参数，则该参数默认为20，最大值为50。
+        :type Limit: int
         :param _QueueName: 精确匹配QueueName
         :type QueueName: str
+        :param _Filters: 筛选参数，目前支持QueueName筛选，且仅支持一个关键字
+        :type Filters: list of Filter
+        :param _Offset: 分页时本页获取队列列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0
+        :type Offset: int
         """
-        self._Offset = None
-        self._Limit = None
-        self._Filters = None
         self._TagKey = None
+        self._Limit = None
         self._QueueName = None
-
-    @property
-    def Offset(self):
-        return self._Offset
-
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
-
-    @property
-    def Limit(self):
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
-
-    @property
-    def Filters(self):
-        return self._Filters
-
-    @Filters.setter
-    def Filters(self, Filters):
-        self._Filters = Filters
+        self._Filters = None
+        self._Offset = None
 
     @property
     def TagKey(self):
@@ -1160,6 +1136,14 @@ class DescribeQueueDetailRequest(AbstractModel):
         self._TagKey = TagKey
 
     @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
     def QueueName(self):
         return self._QueueName
 
@@ -1167,18 +1151,34 @@ class DescribeQueueDetailRequest(AbstractModel):
     def QueueName(self, QueueName):
         self._QueueName = QueueName
 
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
 
     def _deserialize(self, params):
-        self._Offset = params.get("Offset")
+        self._TagKey = params.get("TagKey")
         self._Limit = params.get("Limit")
+        self._QueueName = params.get("QueueName")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
-        self._TagKey = params.get("TagKey")
-        self._QueueName = params.get("QueueName")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1379,46 +1379,22 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 分页时本页获取队列列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0。
-        :type Offset: int
-        :param _Limit: 分页时本页获取队列的个数，如果不传递该参数，则该参数默认为20，最大值为50。
-        :type Limit: int
-        :param _Filters: 目前只支持过滤TopicName ， 且只能填一个过滤值。
-        :type Filters: list of Filter
         :param _TagKey: 标签匹配。
         :type TagKey: str
+        :param _Limit: 分页时本页获取队列的个数，如果不传递该参数，则该参数默认为20，最大值为50。
+        :type Limit: int
         :param _TopicName: 精确匹配TopicName。
         :type TopicName: str
+        :param _Filters: 目前只支持过滤TopicName ， 且只能填一个过滤值。
+        :type Filters: list of Filter
+        :param _Offset: 分页时本页获取队列列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0。
+        :type Offset: int
         """
-        self._Offset = None
-        self._Limit = None
-        self._Filters = None
         self._TagKey = None
+        self._Limit = None
         self._TopicName = None
-
-    @property
-    def Offset(self):
-        return self._Offset
-
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
-
-    @property
-    def Limit(self):
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
-
-    @property
-    def Filters(self):
-        return self._Filters
-
-    @Filters.setter
-    def Filters(self, Filters):
-        self._Filters = Filters
+        self._Filters = None
+        self._Offset = None
 
     @property
     def TagKey(self):
@@ -1429,6 +1405,14 @@ class DescribeTopicDetailRequest(AbstractModel):
         self._TagKey = TagKey
 
     @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
     def TopicName(self):
         return self._TopicName
 
@@ -1436,18 +1420,34 @@ class DescribeTopicDetailRequest(AbstractModel):
     def TopicName(self, TopicName):
         self._TopicName = TopicName
 
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
 
     def _deserialize(self, params):
-        self._Offset = params.get("Offset")
+        self._TagKey = params.get("TagKey")
         self._Limit = params.get("Limit")
+        self._TopicName = params.get("TopicName")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
-        self._TagKey = params.get("TagKey")
-        self._TopicName = params.get("TopicName")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

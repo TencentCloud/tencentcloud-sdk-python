@@ -31,10 +31,14 @@ class AccessKey(AbstractModel):
         :type Status: str
         :param _CreateTime: 创建时间
         :type CreateTime: str
+        :param _Description: 密钥描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
         """
         self._AccessKeyId = None
         self._Status = None
         self._CreateTime = None
+        self._Description = None
 
     @property
     def AccessKeyId(self):
@@ -60,11 +64,20 @@ class AccessKey(AbstractModel):
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
 
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
 
     def _deserialize(self, params):
         self._AccessKeyId = params.get("AccessKeyId")
         self._Status = params.get("Status")
         self._CreateTime = params.get("CreateTime")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -90,11 +103,15 @@ class AccessKeyDetail(AbstractModel):
         :type Status: str
         :param _CreateTime: 创建时间
         :type CreateTime: str
+        :param _Description: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
         """
         self._AccessKeyId = None
         self._SecretAccessKey = None
         self._Status = None
         self._CreateTime = None
+        self._Description = None
 
     @property
     def AccessKeyId(self):
@@ -128,12 +145,21 @@ class AccessKeyDetail(AbstractModel):
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
 
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
 
     def _deserialize(self, params):
         self._AccessKeyId = params.get("AccessKeyId")
         self._SecretAccessKey = params.get("SecretAccessKey")
         self._Status = params.get("Status")
         self._CreateTime = params.get("CreateTime")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1481,8 +1507,11 @@ class CreateAccessKeyRequest(AbstractModel):
         r"""
         :param _TargetUin: 指定用户Uin，不填默认为当前用户创建访问密钥
         :type TargetUin: int
+        :param _Description: 密钥描述，长度在1到1024之间，可包含大小写字符，数字以及特殊字符：=,.@:/-。 正则为：[\w+=,.@:/-]*。
+        :type Description: str
         """
         self._TargetUin = None
+        self._Description = None
 
     @property
     def TargetUin(self):
@@ -1492,9 +1521,18 @@ class CreateAccessKeyRequest(AbstractModel):
     def TargetUin(self, TargetUin):
         self._TargetUin = TargetUin
 
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
 
     def _deserialize(self, params):
         self._TargetUin = params.get("TargetUin")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1236,7 +1236,7 @@ class DescribeProjectInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 目标项目ID
+        :param _ProjectId: 目标项目ID，必填参数
         :type ProjectId: str
         """
         self._ProjectId = None

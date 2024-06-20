@@ -4186,6 +4186,100 @@ class CreateRocketMQClusterResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateRocketMQEnvironmentRoleRequest(AbstractModel):
+    """CreateRocketMQEnvironmentRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvironmentId: 环境（命名空间）名称。
+        :type EnvironmentId: str
+        :param _RoleName: 角色名称。
+        :type RoleName: str
+        :param _Permissions: 授权项，最多只能包含produce、consume两项的非空字符串数组。
+        :type Permissions: list of str
+        :param _ClusterId: 必填字段，集群的ID
+        :type ClusterId: str
+        """
+        self._EnvironmentId = None
+        self._RoleName = None
+        self._Permissions = None
+        self._ClusterId = None
+
+    @property
+    def EnvironmentId(self):
+        return self._EnvironmentId
+
+    @EnvironmentId.setter
+    def EnvironmentId(self, EnvironmentId):
+        self._EnvironmentId = EnvironmentId
+
+    @property
+    def RoleName(self):
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def Permissions(self):
+        return self._Permissions
+
+    @Permissions.setter
+    def Permissions(self, Permissions):
+        self._Permissions = Permissions
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._EnvironmentId = params.get("EnvironmentId")
+        self._RoleName = params.get("RoleName")
+        self._Permissions = params.get("Permissions")
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRocketMQEnvironmentRoleResponse(AbstractModel):
+    """CreateRocketMQEnvironmentRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateRocketMQGroupRequest(AbstractModel):
     """CreateRocketMQGroup请求参数结构体
 
@@ -4431,6 +4525,125 @@ class CreateRocketMQNamespaceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateRocketMQRoleRequest(AbstractModel):
+    """CreateRocketMQRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleName: 角色名称，不支持中字以及除了短线和下划线外的特殊字符且长度必须大于0且小等于32。
+        :type RoleName: str
+        :param _ClusterId: 必填字段，集群Id
+        :type ClusterId: str
+        :param _Remark: 备注说明，长度必须大等于0且小等于128。
+        :type Remark: str
+        """
+        self._RoleName = None
+        self._ClusterId = None
+        self._Remark = None
+
+    @property
+    def RoleName(self):
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._RoleName = params.get("RoleName")
+        self._ClusterId = params.get("ClusterId")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRocketMQRoleResponse(AbstractModel):
+    """CreateRocketMQRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleName: 角色名称
+        :type RoleName: str
+        :param _Token: 角色token
+        :type Token: str
+        :param _Remark: 备注说明
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RoleName = None
+        self._Token = None
+        self._Remark = None
+        self._RequestId = None
+
+    @property
+    def RoleName(self):
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def Token(self):
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RoleName = params.get("RoleName")
+        self._Token = params.get("Token")
+        self._Remark = params.get("Remark")
         self._RequestId = params.get("RequestId")
 
 
@@ -6046,6 +6259,88 @@ class DeleteRocketMQClusterResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteRocketMQEnvironmentRolesRequest(AbstractModel):
+    """DeleteRocketMQEnvironmentRoles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvironmentId: 环境（命名空间）名称。
+        :type EnvironmentId: str
+        :param _RoleNames: 角色名称数组。
+        :type RoleNames: list of str
+        :param _ClusterId: 必填字段，集群的ID
+        :type ClusterId: str
+        """
+        self._EnvironmentId = None
+        self._RoleNames = None
+        self._ClusterId = None
+
+    @property
+    def EnvironmentId(self):
+        return self._EnvironmentId
+
+    @EnvironmentId.setter
+    def EnvironmentId(self, EnvironmentId):
+        self._EnvironmentId = EnvironmentId
+
+    @property
+    def RoleNames(self):
+        return self._RoleNames
+
+    @RoleNames.setter
+    def RoleNames(self, RoleNames):
+        self._RoleNames = RoleNames
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._EnvironmentId = params.get("EnvironmentId")
+        self._RoleNames = params.get("RoleNames")
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRocketMQEnvironmentRolesResponse(AbstractModel):
+    """DeleteRocketMQEnvironmentRoles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteRocketMQGroupRequest(AbstractModel):
     """DeleteRocketMQGroup请求参数结构体
 
@@ -6195,6 +6490,88 @@ class DeleteRocketMQNamespaceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteRocketMQRolesRequest(AbstractModel):
+    """DeleteRocketMQRoles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleNames: 角色名称数组。
+        :type RoleNames: list of str
+        :param _ClusterId: 必填字段，集群Id
+        :type ClusterId: str
+        """
+        self._RoleNames = None
+        self._ClusterId = None
+
+    @property
+    def RoleNames(self):
+        return self._RoleNames
+
+    @RoleNames.setter
+    def RoleNames(self, RoleNames):
+        self._RoleNames = RoleNames
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._RoleNames = params.get("RoleNames")
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRocketMQRolesResponse(AbstractModel):
+    """DeleteRocketMQRoles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleNames: 成功删除的角色名称数组。
+        :type RoleNames: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RoleNames = None
+        self._RequestId = None
+
+    @property
+    def RoleNames(self):
+        return self._RoleNames
+
+    @RoleNames.setter
+    def RoleNames(self, RoleNames):
+        self._RoleNames = RoleNames
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RoleNames = params.get("RoleNames")
         self._RequestId = params.get("RequestId")
 
 
@@ -12085,6 +12462,161 @@ class DescribeRocketMQConsumerConnectionsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRocketMQEnvironmentRolesRequest(AbstractModel):
+    """DescribeRocketMQEnvironmentRoles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 必填字段，RocketMQ集群的ID
+        :type ClusterId: str
+        :param _EnvironmentId: 环境（命名空间）名称。
+        :type EnvironmentId: str
+        :param _Offset: 起始下标，不填默认为0。
+        :type Offset: int
+        :param _Limit: 返回数量，不填则默认为10，最大值为20。
+        :type Limit: int
+        :param _RoleName: 角色名称
+        :type RoleName: str
+        :param _Filters: * RoleName
+按照角色名进行过滤，精确查询。
+类型：String
+必选：否
+        :type Filters: list of Filter
+        """
+        self._ClusterId = None
+        self._EnvironmentId = None
+        self._Offset = None
+        self._Limit = None
+        self._RoleName = None
+        self._Filters = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def EnvironmentId(self):
+        return self._EnvironmentId
+
+    @EnvironmentId.setter
+    def EnvironmentId(self, EnvironmentId):
+        self._EnvironmentId = EnvironmentId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def RoleName(self):
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._EnvironmentId = params.get("EnvironmentId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._RoleName = params.get("RoleName")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRocketMQEnvironmentRolesResponse(AbstractModel):
+    """DescribeRocketMQEnvironmentRoles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 记录数。
+        :type TotalCount: int
+        :param _EnvironmentRoleSets: 命名空间角色集合。
+        :type EnvironmentRoleSets: list of EnvironmentRole
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._EnvironmentRoleSets = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def EnvironmentRoleSets(self):
+        return self._EnvironmentRoleSets
+
+    @EnvironmentRoleSets.setter
+    def EnvironmentRoleSets(self, EnvironmentRoleSets):
+        self._EnvironmentRoleSets = EnvironmentRoleSets
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("EnvironmentRoleSets") is not None:
+            self._EnvironmentRoleSets = []
+            for item in params.get("EnvironmentRoleSets"):
+                obj = EnvironmentRole()
+                obj._deserialize(item)
+                self._EnvironmentRoleSets.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRocketMQGroupsRequest(AbstractModel):
     """DescribeRocketMQGroups请求参数结构体
 
@@ -13341,6 +13873,149 @@ class DescribeRocketMQPublicAccessPointResponse(AbstractModel):
                 self._Rules.append(obj)
         self._Bandwidth = params.get("Bandwidth")
         self._PayMode = params.get("PayMode")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRocketMQRolesRequest(AbstractModel):
+    """DescribeRocketMQRoles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 起始下标，不填默认为0。
+        :type Offset: int
+        :param _Limit: 返回数量，不填则默认为10，最大值为20。
+        :type Limit: int
+        :param _ClusterId: 必填字段，集群Id
+        :type ClusterId: str
+        :param _RoleName: 角色名称，模糊查询
+        :type RoleName: str
+        :param _Filters: * RoleName
+按照角色名进行过滤，精确查询。
+类型：String
+必选：否
+        :type Filters: list of Filter
+        """
+        self._Offset = None
+        self._Limit = None
+        self._ClusterId = None
+        self._RoleName = None
+        self._Filters = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def RoleName(self):
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._ClusterId = params.get("ClusterId")
+        self._RoleName = params.get("RoleName")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRocketMQRolesResponse(AbstractModel):
+    """DescribeRocketMQRoles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 记录数。
+        :type TotalCount: int
+        :param _RoleSets: 角色数组。
+        :type RoleSets: list of Role
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._RoleSets = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RoleSets(self):
+        return self._RoleSets
+
+    @RoleSets.setter
+    def RoleSets(self, RoleSets):
+        self._RoleSets = RoleSets
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("RoleSets") is not None:
+            self._RoleSets = []
+            for item in params.get("RoleSets"):
+                obj = Role()
+                obj._deserialize(item)
+                self._RoleSets.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -18173,6 +18848,100 @@ class ModifyRocketMQClusterResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyRocketMQEnvironmentRoleRequest(AbstractModel):
+    """ModifyRocketMQEnvironmentRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvironmentId: 环境（命名空间）名称。
+        :type EnvironmentId: str
+        :param _RoleName: 角色名称。
+        :type RoleName: str
+        :param _Permissions: 授权项，最多只能包含produce、consume两项的非空字符串数组。
+        :type Permissions: list of str
+        :param _ClusterId: 必填字段，集群的ID
+        :type ClusterId: str
+        """
+        self._EnvironmentId = None
+        self._RoleName = None
+        self._Permissions = None
+        self._ClusterId = None
+
+    @property
+    def EnvironmentId(self):
+        return self._EnvironmentId
+
+    @EnvironmentId.setter
+    def EnvironmentId(self, EnvironmentId):
+        self._EnvironmentId = EnvironmentId
+
+    @property
+    def RoleName(self):
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def Permissions(self):
+        return self._Permissions
+
+    @Permissions.setter
+    def Permissions(self, Permissions):
+        self._Permissions = Permissions
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._EnvironmentId = params.get("EnvironmentId")
+        self._RoleName = params.get("RoleName")
+        self._Permissions = params.get("Permissions")
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRocketMQEnvironmentRoleResponse(AbstractModel):
+    """ModifyRocketMQEnvironmentRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyRocketMQGroupRequest(AbstractModel):
     """ModifyRocketMQGroup请求参数结构体
 
@@ -18529,6 +19298,112 @@ class ModifyRocketMQNamespaceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyRocketMQRoleRequest(AbstractModel):
+    """ModifyRocketMQRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleName: 角色名称，不支持中字以及除了短线和下划线外的特殊字符且长度必须大于0且小等于32。
+        :type RoleName: str
+        :param _ClusterId: 必填字段，集群Id
+        :type ClusterId: str
+        :param _Remark: 备注说明，长度必须大等于0且小等于128。
+        :type Remark: str
+        """
+        self._RoleName = None
+        self._ClusterId = None
+        self._Remark = None
+
+    @property
+    def RoleName(self):
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._RoleName = params.get("RoleName")
+        self._ClusterId = params.get("ClusterId")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRocketMQRoleResponse(AbstractModel):
+    """ModifyRocketMQRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleName: 角色名称
+        :type RoleName: str
+        :param _Remark: 备注说明
+        :type Remark: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RoleName = None
+        self._Remark = None
+        self._RequestId = None
+
+    @property
+    def RoleName(self):
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RoleName = params.get("RoleName")
+        self._Remark = params.get("Remark")
         self._RequestId = params.get("RequestId")
 
 

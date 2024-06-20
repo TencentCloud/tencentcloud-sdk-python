@@ -1155,6 +1155,105 @@ class AttachWorkGroupPolicyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class BatchSQLCostInfo(AbstractModel):
+    """spark session batch SQL的消耗信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BatchId: 任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BatchId: str
+        :param _DataEngineName: 引擎名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataEngineName: str
+        :param _DataEngineId: 引擎id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataEngineId: str
+        :param _Cost: 本次消耗，单位cu
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cost: float
+        :param _TimeCost: 时间开销，秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeCost: int
+        :param _Operator: 操作者
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operator: str
+        """
+        self._BatchId = None
+        self._DataEngineName = None
+        self._DataEngineId = None
+        self._Cost = None
+        self._TimeCost = None
+        self._Operator = None
+
+    @property
+    def BatchId(self):
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
+
+    @property
+    def DataEngineName(self):
+        return self._DataEngineName
+
+    @DataEngineName.setter
+    def DataEngineName(self, DataEngineName):
+        self._DataEngineName = DataEngineName
+
+    @property
+    def DataEngineId(self):
+        return self._DataEngineId
+
+    @DataEngineId.setter
+    def DataEngineId(self, DataEngineId):
+        self._DataEngineId = DataEngineId
+
+    @property
+    def Cost(self):
+        return self._Cost
+
+    @Cost.setter
+    def Cost(self, Cost):
+        self._Cost = Cost
+
+    @property
+    def TimeCost(self):
+        return self._TimeCost
+
+    @TimeCost.setter
+    def TimeCost(self, TimeCost):
+        self._TimeCost = TimeCost
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+
+    def _deserialize(self, params):
+        self._BatchId = params.get("BatchId")
+        self._DataEngineName = params.get("DataEngineName")
+        self._DataEngineId = params.get("DataEngineId")
+        self._Cost = params.get("Cost")
+        self._TimeCost = params.get("TimeCost")
+        self._Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BatchSqlTask(AbstractModel):
     """SparkSQL批任务信息
 
@@ -13644,6 +13743,82 @@ class DescribeSparkAppTasksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSparkSessionBatchSQLCostRequest(AbstractModel):
+    """DescribeSparkSessionBatchSQLCost请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BatchIds: SparkSQL唯一标识
+        :type BatchIds: list of str
+        """
+        self._BatchIds = None
+
+    @property
+    def BatchIds(self):
+        return self._BatchIds
+
+    @BatchIds.setter
+    def BatchIds(self, BatchIds):
+        self._BatchIds = BatchIds
+
+
+    def _deserialize(self, params):
+        self._BatchIds = params.get("BatchIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSparkSessionBatchSQLCostResponse(AbstractModel):
+    """DescribeSparkSessionBatchSQLCost返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CostInfo: 任务消耗
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CostInfo: list of BatchSQLCostInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CostInfo = None
+        self._RequestId = None
+
+    @property
+    def CostInfo(self):
+        return self._CostInfo
+
+    @CostInfo.setter
+    def CostInfo(self, CostInfo):
+        self._CostInfo = CostInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CostInfo") is not None:
+            self._CostInfo = []
+            for item in params.get("CostInfo"):
+                obj = BatchSQLCostInfo()
+                obj._deserialize(item)
+                self._CostInfo.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSparkSessionBatchSQLRequest(AbstractModel):
     """DescribeSparkSessionBatchSQL请求参数结构体
 
@@ -14932,6 +15107,74 @@ class DescribeTasksOverviewRequest(AbstractModel):
     """DescribeTasksOverview请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 开始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _Filters: 筛选条件
+        :type Filters: list of Filter
+        :param _DataEngineName: 引擎名
+        :type DataEngineName: str
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._Filters = None
+        self._DataEngineName = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def DataEngineName(self):
+        return self._DataEngineName
+
+    @DataEngineName.setter
+    def DataEngineName(self, DataEngineName):
+        self._DataEngineName = DataEngineName
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._DataEngineName = params.get("DataEngineName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeTasksOverviewResponse(AbstractModel):

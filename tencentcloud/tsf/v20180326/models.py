@@ -34247,6 +34247,9 @@ class MsInstance(AbstractModel):
         :param _HiddenStatus: 屏蔽状态，hidden 为屏蔽，unhidden 为未屏蔽
 注意：此字段可能返回 null，表示取不到有效值。
         :type HiddenStatus: str
+        :param _MetaJson: json格式的 meta 信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetaJson: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -34273,6 +34276,7 @@ class MsInstance(AbstractModel):
         self._LastHeartbeatTime = None
         self._RegistrationId = None
         self._HiddenStatus = None
+        self._MetaJson = None
 
     @property
     def InstanceId(self):
@@ -34474,6 +34478,14 @@ class MsInstance(AbstractModel):
     def HiddenStatus(self, HiddenStatus):
         self._HiddenStatus = HiddenStatus
 
+    @property
+    def MetaJson(self):
+        return self._MetaJson
+
+    @MetaJson.setter
+    def MetaJson(self, MetaJson):
+        self._MetaJson = MetaJson
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -34501,6 +34513,7 @@ class MsInstance(AbstractModel):
         self._LastHeartbeatTime = params.get("LastHeartbeatTime")
         self._RegistrationId = params.get("RegistrationId")
         self._HiddenStatus = params.get("HiddenStatus")
+        self._MetaJson = params.get("MetaJson")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

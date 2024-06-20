@@ -11401,7 +11401,7 @@ class WebRecordVideoParams(AbstractModel):
         :type Width: int
         :param _Height: 录制画面高度，默认为720，取值范围[0, 1080]
         :type Height: int
-        :param _Format: 指定输出格式，可选hls,mp4
+        :param _Format: 指定输出格式，可选hls,mp4。存储到云点播VOD时此参数无效，存储到VOD时请通过TencentVod（https://cloud.tencent.com/document/api/647/44055#TencentVod）内的MediaType设置。
 
         :type Format: str
         :param _MaxMediaFileDuration: 如果是aac或者mp4文件格式，超过长度限制后，系统会自动拆分视频文件。单位：分钟。默认为1440min（24h），取值范围为1-1440。【单文件限制最大为2G，满足文件大小 >2G 或录制时长度 > 24h任意一个条件，文件都会自动切分】

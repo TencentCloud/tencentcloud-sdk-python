@@ -1889,6 +1889,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSparkSessionBatchSQLCost(self, request):
+        """本接口（DescribeSparkSessionBatchSQLCost）用于查询Spark SQL批任务消耗
+
+        :param request: Request instance for DescribeSparkSessionBatchSQLCost.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeSparkSessionBatchSQLCostRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeSparkSessionBatchSQLCostResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSparkSessionBatchSQLCost", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSparkSessionBatchSQLCostResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSparkSessionBatchSqlLog(self, request):
         """本接口（DescribeSparkSessionBatchSqlLog）用于查询Spark SQL批任务日志
 
