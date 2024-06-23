@@ -4600,6 +4600,58 @@ class ClusterNodeInfo(AbstractModel):
         
 
 
+class ClusterTopology(AbstractModel):
+    """集群版的节点拓扑配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReadWriteNode: RW 节点拓扑。
+        :type ReadWriteNode: :class:`tencentcloud.cdb.v20170320.models.ReadWriteNode`
+        :param _ReadOnlyNodes: RO 节点拓扑。
+        :type ReadOnlyNodes: list of ReadonlyNode
+        """
+        self._ReadWriteNode = None
+        self._ReadOnlyNodes = None
+
+    @property
+    def ReadWriteNode(self):
+        return self._ReadWriteNode
+
+    @ReadWriteNode.setter
+    def ReadWriteNode(self, ReadWriteNode):
+        self._ReadWriteNode = ReadWriteNode
+
+    @property
+    def ReadOnlyNodes(self):
+        return self._ReadOnlyNodes
+
+    @ReadOnlyNodes.setter
+    def ReadOnlyNodes(self, ReadOnlyNodes):
+        self._ReadOnlyNodes = ReadOnlyNodes
+
+
+    def _deserialize(self, params):
+        if params.get("ReadWriteNode") is not None:
+            self._ReadWriteNode = ReadWriteNode()
+            self._ReadWriteNode._deserialize(params.get("ReadWriteNode"))
+        if params.get("ReadOnlyNodes") is not None:
+            self._ReadOnlyNodes = []
+            for item in params.get("ReadOnlyNodes"):
+                obj = ReadonlyNode()
+                obj._deserialize(item)
+                self._ReadOnlyNodes.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ColumnPrivilege(AbstractModel):
     """列权限信息
 
@@ -15200,6 +15252,236 @@ class DescribeInstanceParamsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeInstanceUpgradeTypeRequest(AbstractModel):
+    """DescribeInstanceUpgradeType请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _DstCpu: 目标实例cpu
+        :type DstCpu: float
+        :param _DstMemory: 目标实例内存
+        :type DstMemory: int
+        :param _DstDisk: 目标实例磁盘
+        :type DstDisk: int
+        :param _DstVersion: 目标实例版本
+        :type DstVersion: str
+        :param _DstDeployMode: 目标实例部署模型
+        :type DstDeployMode: int
+        :param _DstProtectMode: 目标实例复制类型
+        :type DstProtectMode: int
+        :param _DstSlaveZone: 目标实例备机1可用区
+        :type DstSlaveZone: int
+        :param _DstBackupZone: 目标实例备机2可用区
+        :type DstBackupZone: int
+        :param _DstCdbType: 目标实例类型
+        :type DstCdbType: str
+        :param _DstZoneId: 目标实例主可用区
+        :type DstZoneId: int
+        :param _NodeDistribution: 独享集群CDB实例的节点分布情况
+        :type NodeDistribution: :class:`tencentcloud.cdb.v20170320.models.NodeDistribution`
+        :param _ClusterTopology: 集群版的节点拓扑配置
+        :type ClusterTopology: :class:`tencentcloud.cdb.v20170320.models.ClusterTopology`
+        """
+        self._InstanceId = None
+        self._DstCpu = None
+        self._DstMemory = None
+        self._DstDisk = None
+        self._DstVersion = None
+        self._DstDeployMode = None
+        self._DstProtectMode = None
+        self._DstSlaveZone = None
+        self._DstBackupZone = None
+        self._DstCdbType = None
+        self._DstZoneId = None
+        self._NodeDistribution = None
+        self._ClusterTopology = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DstCpu(self):
+        return self._DstCpu
+
+    @DstCpu.setter
+    def DstCpu(self, DstCpu):
+        self._DstCpu = DstCpu
+
+    @property
+    def DstMemory(self):
+        return self._DstMemory
+
+    @DstMemory.setter
+    def DstMemory(self, DstMemory):
+        self._DstMemory = DstMemory
+
+    @property
+    def DstDisk(self):
+        return self._DstDisk
+
+    @DstDisk.setter
+    def DstDisk(self, DstDisk):
+        self._DstDisk = DstDisk
+
+    @property
+    def DstVersion(self):
+        return self._DstVersion
+
+    @DstVersion.setter
+    def DstVersion(self, DstVersion):
+        self._DstVersion = DstVersion
+
+    @property
+    def DstDeployMode(self):
+        return self._DstDeployMode
+
+    @DstDeployMode.setter
+    def DstDeployMode(self, DstDeployMode):
+        self._DstDeployMode = DstDeployMode
+
+    @property
+    def DstProtectMode(self):
+        return self._DstProtectMode
+
+    @DstProtectMode.setter
+    def DstProtectMode(self, DstProtectMode):
+        self._DstProtectMode = DstProtectMode
+
+    @property
+    def DstSlaveZone(self):
+        return self._DstSlaveZone
+
+    @DstSlaveZone.setter
+    def DstSlaveZone(self, DstSlaveZone):
+        self._DstSlaveZone = DstSlaveZone
+
+    @property
+    def DstBackupZone(self):
+        return self._DstBackupZone
+
+    @DstBackupZone.setter
+    def DstBackupZone(self, DstBackupZone):
+        self._DstBackupZone = DstBackupZone
+
+    @property
+    def DstCdbType(self):
+        return self._DstCdbType
+
+    @DstCdbType.setter
+    def DstCdbType(self, DstCdbType):
+        self._DstCdbType = DstCdbType
+
+    @property
+    def DstZoneId(self):
+        return self._DstZoneId
+
+    @DstZoneId.setter
+    def DstZoneId(self, DstZoneId):
+        self._DstZoneId = DstZoneId
+
+    @property
+    def NodeDistribution(self):
+        return self._NodeDistribution
+
+    @NodeDistribution.setter
+    def NodeDistribution(self, NodeDistribution):
+        self._NodeDistribution = NodeDistribution
+
+    @property
+    def ClusterTopology(self):
+        return self._ClusterTopology
+
+    @ClusterTopology.setter
+    def ClusterTopology(self, ClusterTopology):
+        self._ClusterTopology = ClusterTopology
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DstCpu = params.get("DstCpu")
+        self._DstMemory = params.get("DstMemory")
+        self._DstDisk = params.get("DstDisk")
+        self._DstVersion = params.get("DstVersion")
+        self._DstDeployMode = params.get("DstDeployMode")
+        self._DstProtectMode = params.get("DstProtectMode")
+        self._DstSlaveZone = params.get("DstSlaveZone")
+        self._DstBackupZone = params.get("DstBackupZone")
+        self._DstCdbType = params.get("DstCdbType")
+        self._DstZoneId = params.get("DstZoneId")
+        if params.get("NodeDistribution") is not None:
+            self._NodeDistribution = NodeDistribution()
+            self._NodeDistribution._deserialize(params.get("NodeDistribution"))
+        if params.get("ClusterTopology") is not None:
+            self._ClusterTopology = ClusterTopology()
+            self._ClusterTopology._deserialize(params.get("ClusterTopology"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceUpgradeTypeResponse(AbstractModel):
+    """DescribeInstanceUpgradeType返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _UpgradeType: 实例升级类型
+        :type UpgradeType: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._UpgradeType = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def UpgradeType(self):
+        return self._UpgradeType
+
+    @UpgradeType.setter
+    def UpgradeType(self, UpgradeType):
+        self._UpgradeType = UpgradeType
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._UpgradeType = params.get("UpgradeType")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeLocalBinlogConfigRequest(AbstractModel):
     """DescribeLocalBinlogConfig请求参数结构体
 
@@ -23681,6 +23963,63 @@ class ModifyTimeWindowResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class NodeDistribution(AbstractModel):
+    """独享集群CDB实例的节点分布情况
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Node: 主实例Master节点所在主机ID或者只读实例所在主机ID
+        :type Node: str
+        :param _SlaveNodeOne: 主实例第一Slave节点所在主机ID
+        :type SlaveNodeOne: str
+        :param _SlaveNodeTwo: 主实例第二Slave节点所在主机ID
+        :type SlaveNodeTwo: str
+        """
+        self._Node = None
+        self._SlaveNodeOne = None
+        self._SlaveNodeTwo = None
+
+    @property
+    def Node(self):
+        return self._Node
+
+    @Node.setter
+    def Node(self, Node):
+        self._Node = Node
+
+    @property
+    def SlaveNodeOne(self):
+        return self._SlaveNodeOne
+
+    @SlaveNodeOne.setter
+    def SlaveNodeOne(self, SlaveNodeOne):
+        self._SlaveNodeOne = SlaveNodeOne
+
+    @property
+    def SlaveNodeTwo(self):
+        return self._SlaveNodeTwo
+
+    @SlaveNodeTwo.setter
+    def SlaveNodeTwo(self, SlaveNodeTwo):
+        self._SlaveNodeTwo = SlaveNodeTwo
+
+
+    def _deserialize(self, params):
+        self._Node = params.get("Node")
+        self._SlaveNodeOne = params.get("SlaveNodeOne")
+        self._SlaveNodeTwo = params.get("SlaveNodeTwo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OfflineIsolatedInstancesRequest(AbstractModel):
     """OfflineIsolatedInstances请求参数结构体
 
@@ -25537,6 +25876,96 @@ class ProxyNodeCustom(AbstractModel):
         self._Cpu = params.get("Cpu")
         self._Mem = params.get("Mem")
         self._Region = params.get("Region")
+        self._Zone = params.get("Zone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReadWriteNode(AbstractModel):
+    """集群版 RW 节点的配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Zone: RW 节点所在可用区。
+        :type Zone: str
+        :param _NodeId: 升级集群版实例时，如果要调整只读节点可用区，需要指定节点id。
+        :type NodeId: str
+        """
+        self._Zone = None
+        self._NodeId = None
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def NodeId(self):
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+
+    def _deserialize(self, params):
+        self._Zone = params.get("Zone")
+        self._NodeId = params.get("NodeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReadonlyNode(AbstractModel):
+    """集群版的 RO 节点配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsRandomZone: 是否分布在随机可用区。传入YES表示随机可用区。否则使用Zone指定的可用区。
+        :type IsRandomZone: str
+        :param _Zone: 指定该节点分布在哪个可用区。
+        :type Zone: str
+        """
+        self._IsRandomZone = None
+        self._Zone = None
+
+    @property
+    def IsRandomZone(self):
+        return self._IsRandomZone
+
+    @IsRandomZone.setter
+    def IsRandomZone(self, IsRandomZone):
+        self._IsRandomZone = IsRandomZone
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+
+    def _deserialize(self, params):
+        self._IsRandomZone = params.get("IsRandomZone")
         self._Zone = params.get("Zone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

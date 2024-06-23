@@ -280,11 +280,15 @@ class AppModel(AbstractModel):
         :param _AliasName: 模型别名
 注意：此字段可能返回 null，表示取不到有效值。
         :type AliasName: str
+        :param _TokenBalance: token余量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TokenBalance: float
         """
         self._Name = None
         self._Desc = None
         self._ContextLimit = None
         self._AliasName = None
+        self._TokenBalance = None
 
     @property
     def Name(self):
@@ -318,12 +322,21 @@ class AppModel(AbstractModel):
     def AliasName(self, AliasName):
         self._AliasName = AliasName
 
+    @property
+    def TokenBalance(self):
+        return self._TokenBalance
+
+    @TokenBalance.setter
+    def TokenBalance(self, TokenBalance):
+        self._TokenBalance = TokenBalance
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Desc = params.get("Desc")
         self._ContextLimit = params.get("ContextLimit")
         self._AliasName = params.get("AliasName")
+        self._TokenBalance = params.get("TokenBalance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -725,7 +738,7 @@ class CheckAttributeLabelExistRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _LabelName: 属性名称
         :type LabelName: str
@@ -855,7 +868,7 @@ class CheckAttributeLabelReferRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _LoginUin: 登录用户主账号(集成商模式必填)
         :type LoginUin: str
@@ -1115,12 +1128,16 @@ class Context(AbstractModel):
         :param _Content: 消息内容
 注意：此字段可能返回 null，表示取不到有效值。
         :type Content: str
+        :param _FileInfos: 文档信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileInfos: list of MsgFileInfo
         """
         self._RecordBizId = None
         self._IsVisitor = None
         self._NickName = None
         self._Avatar = None
         self._Content = None
+        self._FileInfos = None
 
     @property
     def RecordBizId(self):
@@ -1162,6 +1179,14 @@ class Context(AbstractModel):
     def Content(self, Content):
         self._Content = Content
 
+    @property
+    def FileInfos(self):
+        return self._FileInfos
+
+    @FileInfos.setter
+    def FileInfos(self, FileInfos):
+        self._FileInfos = FileInfos
+
 
     def _deserialize(self, params):
         self._RecordBizId = params.get("RecordBizId")
@@ -1169,6 +1194,12 @@ class Context(AbstractModel):
         self._NickName = params.get("NickName")
         self._Avatar = params.get("Avatar")
         self._Content = params.get("Content")
+        if params.get("FileInfos") is not None:
+            self._FileInfos = []
+            for item in params.get("FileInfos"):
+                obj = MsgFileInfo()
+                obj._deserialize(item)
+                self._FileInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1316,7 +1347,7 @@ class CreateAttributeLabelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _AttrKey: 属性标识
         :type AttrKey: str
@@ -1545,7 +1576,7 @@ class CreateQACateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _ParentBizId: 父级业务ID
         :type ParentBizId: str
@@ -1678,7 +1709,7 @@ class CreateQARequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _Question: 问题
         :type Question: str
@@ -1897,15 +1928,15 @@ class CreateReconstructDocumentFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileBase64: 图片的 Base64 值。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经Base64编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :param _FileBase64: 文件的 Base64 值。 支持的文件格式：PNG、JPG、JPEG、PDF。 支持的文件大小：所下载文件经Base64编码后不超过 8M。文件下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
         :type FileBase64: str
-        :param _FileUrl: 图片的 Url 地址。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经 Base64 编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :param _FileUrl: 文件的 Url 地址。 支持的文件格式：PNG、JPG、JPEG、PDF。 支持的文件大小：所下载文件经 Base64 编码后不超过 100M。文件下载时间不超过 15 秒。 支持的图片像素：单边介于20-10000px之间。 文件存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type FileUrl: str
-        :param _FileStartPageNumber: 当传入文件是PDF类型（IsPdf=true）时，用来指定pdf识别的起始页码，识别的页码包含当前值。
+        :param _FileStartPageNumber: 当传入文件是PDF类型时，用来指定pdf识别的起始页码，识别的页码包含当前值。
         :type FileStartPageNumber: int
-        :param _FileEndPageNumber: 当传入文件是PDF类型（IsPdf=true）时，用来指定pdf识别的结束页码，识别的页码包含当前值。
+        :param _FileEndPageNumber: 当传入文件是PDF类型时，用来指定pdf识别的结束页码，识别的页码包含当前值。
         :type FileEndPageNumber: int
-        :param _Config: 创建智能文档识别任务配置信息
+        :param _Config: 创建文档解析任务配置信息
         :type Config: :class:`tencentcloud.lke.v20231130.models.CreateReconstructDocumentFlowConfig`
         """
         self._FileBase64 = None
@@ -2017,7 +2048,7 @@ class CreateRejectedQuestionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _Question: 拒答问题
 
@@ -2329,7 +2360,7 @@ class DeleteAttributeLabelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _AttributeBizIds: 属性ID
         :type AttributeBizIds: list of str
@@ -2425,7 +2456,7 @@ class DeleteDocRequest(AbstractModel):
         r"""
         :param _DocBizIds: 文档业务ID列表
         :type DocBizIds: list of str
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         """
         self._DocBizIds = None
@@ -2493,7 +2524,7 @@ class DeleteQACateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _CateBizId: 分类业务ID
         :type CateBizId: str
@@ -2563,7 +2594,7 @@ class DeleteQARequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _QaBizIds: 问答ID
         :type QaBizIds: list of str
@@ -2633,7 +2664,7 @@ class DeleteRejectedQuestionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _RejectedBizIds: 拒答问题来源的数据源唯一id
 
@@ -2948,7 +2979,7 @@ class DescribeAttributeLabelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _AttributeBizId: 属性ID
         :type AttributeBizId: str
@@ -3213,7 +3244,7 @@ class DescribeDocRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _DocBizId: 文档ID
         :type DocBizId: str
@@ -3568,8 +3599,7 @@ class DescribeQARequest(AbstractModel):
         :param _QaBizId: QA业务ID
 
         :type QaBizId: str
-        :param _BotBizId: 机器人ID
-
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         """
         self._QaBizId = None
@@ -3953,7 +3983,7 @@ class DescribeReferRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _ReferBizIds: 引用ID
         :type ReferBizIds: list of str
@@ -4290,7 +4320,7 @@ class DescribeRobotBizIDByAppKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppKey: 机器人appkey
+        :param _AppKey: 应用appkey
         :type AppKey: str
         """
         self._AppKey = None
@@ -4323,7 +4353,7 @@ class DescribeRobotBizIDByAppKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人业务ID
+        :param _BotBizId: 应用业务ID
         :type BotBizId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4360,16 +4390,19 @@ class DescribeStorageCredentialRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
-        :param _FileType: 文件类型
+        :param _FileType: 文件类型,正常的文件名类型后缀，例如 xlsx、pdf、 docx、png 等
         :type FileType: str
-        :param _IsPublic: 权限场景，是否公有权限
+        :param _IsPublic: IsPublic为空用于上传文件时选择场景，当上传为图片文件是IsPublic为true，上传文档文件时场景IsPublic为false
         :type IsPublic: bool
+        :param _TypeKey: 存储类型: offline:离线文件，realtime:实时文件；为空默认为offline
+        :type TypeKey: str
         """
         self._BotBizId = None
         self._FileType = None
         self._IsPublic = None
+        self._TypeKey = None
 
     @property
     def BotBizId(self):
@@ -4395,11 +4428,20 @@ class DescribeStorageCredentialRequest(AbstractModel):
     def IsPublic(self, IsPublic):
         self._IsPublic = IsPublic
 
+    @property
+    def TypeKey(self):
+        return self._TypeKey
+
+    @TypeKey.setter
+    def TypeKey(self, TypeKey):
+        self._TypeKey = TypeKey
+
 
     def _deserialize(self, params):
         self._BotBizId = params.get("BotBizId")
         self._FileType = params.get("FileType")
         self._IsPublic = params.get("IsPublic")
+        self._TypeKey = params.get("TypeKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4435,7 +4477,7 @@ class DescribeStorageCredentialResponse(AbstractModel):
         :type CorpUin: str
         :param _ImagePath: 图片存储目录
         :type ImagePath: str
-        :param _UploadPath: 上传存储目录
+        :param _UploadPath: 上传存储路径，到具体文件
         :type UploadPath: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4564,7 +4606,7 @@ class DescribeUnsatisfiedReplyContextRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _ReplyBizId: 回复ID
         :type ReplyBizId: str
@@ -4963,7 +5005,7 @@ class ExportAttributeLabelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _LoginUin: 登录用户主账号(集成商模式必填)
         :type LoginUin: str
@@ -5083,7 +5125,7 @@ class ExportQAListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _QaBizIds: QA业务ID
         :type QaBizIds: list of str
@@ -5167,7 +5209,7 @@ class ExportUnsatisfiedReplyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _ReplyBizIds: 勾选导出ID列表
         :type ReplyBizIds: list of str
@@ -5268,6 +5310,92 @@ class ExportUnsatisfiedReplyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class FileInfo(AbstractModel):
+    """实时上传的文件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileName: 文件名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileName: str
+        :param _FileSize: 文件大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileSize: str
+        :param _FileUrl: 文件的URL地址，COS地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileUrl: str
+        :param _FileType: 文件类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileType: str
+        :param _DocId: 解析后返回的DocID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DocId: str
+        """
+        self._FileName = None
+        self._FileSize = None
+        self._FileUrl = None
+        self._FileType = None
+        self._DocId = None
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileSize(self):
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
+    @property
+    def FileUrl(self):
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
+
+    @property
+    def FileType(self):
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def DocId(self):
+        return self._DocId
+
+    @DocId.setter
+    def DocId(self, DocId):
+        self._DocId = DocId
+
+
+    def _deserialize(self, params):
+        self._FileName = params.get("FileName")
+        self._FileSize = params.get("FileSize")
+        self._FileUrl = params.get("FileUrl")
+        self._FileType = params.get("FileType")
+        self._DocId = params.get("DocId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Filters(AbstractModel):
     """不满意回复检索过滤
 
@@ -5321,7 +5449,7 @@ class GenerateQARequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _DocBizIds: 文档ID
         :type DocBizIds: list of str
@@ -5606,11 +5734,14 @@ class GetDocPreviewRequest(AbstractModel):
         r"""
         :param _DocBizId: 文档业务ID
         :type DocBizId: str
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
+        :param _TypeKey: 存储类型: offline:离线文件，realtime:实时文件；为空默认为offline
+        :type TypeKey: str
         """
         self._DocBizId = None
         self._BotBizId = None
+        self._TypeKey = None
 
     @property
     def DocBizId(self):
@@ -5628,10 +5759,19 @@ class GetDocPreviewRequest(AbstractModel):
     def BotBizId(self, BotBizId):
         self._BotBizId = BotBizId
 
+    @property
+    def TypeKey(self):
+        return self._TypeKey
+
+    @TypeKey.setter
+    def TypeKey(self, TypeKey):
+        self._TypeKey = TypeKey
+
 
     def _deserialize(self, params):
         self._DocBizId = params.get("DocBizId")
         self._BotBizId = params.get("BotBizId")
+        self._TypeKey = params.get("TypeKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5859,7 +5999,7 @@ class GetMsgRecordRequest(AbstractModel):
         :type SessionId: str
         :param _LastRecordId: 最后一条记录ID
         :type LastRecordId: str
-        :param _BotAppKey: 机器人AppKey
+        :param _BotAppKey: 应用AppKey
         :type BotAppKey: str
         :param _Scene: 场景, 体验: 1; 正式: 2
         :type Scene: int
@@ -6036,7 +6176,7 @@ class GetReconstructDocumentResultResponse(AbstractModel):
         :type Status: str
         :param _DocumentRecognizeResultUrl: 输入文件中嵌入的图片中文字内容的识别结果，存储在腾讯云cos的下载地址
         :type DocumentRecognizeResultUrl: str
-        :param _FailedPages: 还原失败的页
+        :param _FailedPages: 文档解析失败的页码
         :type FailedPages: list of ReconstructDocumentFailedPage
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6102,7 +6242,7 @@ class GetTaskStatusRequest(AbstractModel):
         :type TaskId: str
         :param _TaskType: 任务类型
         :type TaskType: str
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         """
         self._TaskId = None
@@ -6292,7 +6432,7 @@ class GetWsTokenRequest(AbstractModel):
         r"""
         :param _Type: 接入类型
         :type Type: int
-        :param _BotAppKey: 机器人AppKey
+        :param _BotAppKey: 应用AppKey
         :type BotAppKey: str
         :param _VisitorBizId: 坐席ID
         :type VisitorBizId: str
@@ -6366,10 +6506,17 @@ class GetWsTokenResponse(AbstractModel):
         r"""
         :param _Token: token值
         :type Token: str
+        :param _Balance: 余额; 余额大于 0 时表示有效.
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Balance: float
+        :param _InputLenLimit: 对话窗输入字符限制
+        :type InputLenLimit: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Token = None
+        self._Balance = None
+        self._InputLenLimit = None
         self._RequestId = None
 
     @property
@@ -6379,6 +6526,22 @@ class GetWsTokenResponse(AbstractModel):
     @Token.setter
     def Token(self, Token):
         self._Token = Token
+
+    @property
+    def Balance(self):
+        return self._Balance
+
+    @Balance.setter
+    def Balance(self, Balance):
+        self._Balance = Balance
+
+    @property
+    def InputLenLimit(self):
+        return self._InputLenLimit
+
+    @InputLenLimit.setter
+    def InputLenLimit(self, InputLenLimit):
+        self._InputLenLimit = InputLenLimit
 
     @property
     def RequestId(self):
@@ -6391,6 +6554,8 @@ class GetWsTokenResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Token = params.get("Token")
+        self._Balance = params.get("Balance")
+        self._InputLenLimit = params.get("InputLenLimit")
         self._RequestId = params.get("RequestId")
 
 
@@ -6401,7 +6566,7 @@ class GroupQARequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _QaBizIds: QA业务ID列表
         :type QaBizIds: list of str
@@ -6483,7 +6648,7 @@ class Highlight(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartPos: 高亮启始位置
+        :param _StartPos: 高亮起始位置
 
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartPos: str
@@ -6546,7 +6711,7 @@ class IgnoreUnsatisfiedReplyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _ReplyBizIds: 不满意回复ID
         :type ReplyBizIds: list of str
@@ -6642,7 +6807,7 @@ class IsTransferIntentRequest(AbstractModel):
         r"""
         :param _Content: 内容
         :type Content: str
-        :param _BotAppKey: 机器人appKey
+        :param _BotAppKey: 应用appKey
         :type BotAppKey: str
         """
         self._Content = None
@@ -6937,6 +7102,9 @@ class KnowledgeQaSearch(AbstractModel):
         :param _DocTopN: 文档最大召回数量, 默认3，限制5
 注意：此字段可能返回 null，表示取不到有效值。
         :type DocTopN: int
+        :param _Confidence: 检索置信度，针对文档和问答有效，最小0.01，最大0.99
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Confidence: float
         """
         self._Type = None
         self._ReplyFlexibility = None
@@ -6945,6 +7113,7 @@ class KnowledgeQaSearch(AbstractModel):
         self._IsEnabled = None
         self._QaTopN = None
         self._DocTopN = None
+        self._Confidence = None
 
     @property
     def Type(self):
@@ -7002,6 +7171,14 @@ class KnowledgeQaSearch(AbstractModel):
     def DocTopN(self, DocTopN):
         self._DocTopN = DocTopN
 
+    @property
+    def Confidence(self):
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -7011,6 +7188,7 @@ class KnowledgeQaSearch(AbstractModel):
         self._IsEnabled = params.get("IsEnabled")
         self._QaTopN = params.get("QaTopN")
         self._DocTopN = params.get("DocTopN")
+        self._Confidence = params.get("Confidence")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7319,7 +7497,7 @@ class ListAttributeLabelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _PageNumber: 页码
         :type PageNumber: int
@@ -8078,7 +8256,7 @@ class ListQACateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         """
         self._BotBizId = None
@@ -8609,7 +8787,7 @@ class ListRejectedQuestionPreviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _PageNumber: 页码
         :type PageNumber: int
@@ -8780,7 +8958,7 @@ class ListRejectedQuestionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _PageNumber: 页码
 
@@ -9089,7 +9267,7 @@ class ListReleaseDocPreviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _PageNumber: 页码
         :type PageNumber: int
@@ -9389,7 +9567,7 @@ class ListReleaseQAPreviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _PageNumber: 页码
         :type PageNumber: int
@@ -9683,7 +9861,7 @@ class ListSelectDocRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _FileName: 文档名称
 
@@ -9783,7 +9961,7 @@ class ListUnsatisfiedReplyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _PageNumber: 页码
         :type PageNumber: int
@@ -10188,7 +10366,7 @@ class ModifyAttributeLabelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _AttributeBizId: 属性ID
         :type AttributeBizId: str
@@ -10347,7 +10525,7 @@ class ModifyDocAttrRangeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _DocBizIds: 文档ID
         :type DocBizIds: list of str
@@ -10446,7 +10624,7 @@ class ModifyDocRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _DocBizId: 文档ID
         :type DocBizId: str
@@ -10630,7 +10808,7 @@ class ModifyQAAttrRangeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _QaBizIds: 问答ID
         :type QaBizIds: list of str
@@ -10729,7 +10907,7 @@ class ModifyQACateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _Name: 分类名称
 
@@ -10812,7 +10990,7 @@ class ModifyQARequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _QaBizId: 问答ID
         :type QaBizId: str
@@ -10995,7 +11173,7 @@ class ModifyRejectedQuestionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _Question: 拒答问题
 
@@ -11075,6 +11253,92 @@ class ModifyRejectedQuestionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class MsgFileInfo(AbstractModel):
+    """文档信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileName: 文档名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileName: str
+        :param _FileSize: 文档大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileSize: str
+        :param _FileUrl: 文档URL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileUrl: str
+        :param _FileType: 文档类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileType: str
+        :param _DocId: 文档ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DocId: str
+        """
+        self._FileName = None
+        self._FileSize = None
+        self._FileUrl = None
+        self._FileType = None
+        self._DocId = None
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileSize(self):
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
+    @property
+    def FileUrl(self):
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
+
+    @property
+    def FileType(self):
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def DocId(self):
+        return self._DocId
+
+    @DocId.setter
+    def DocId(self, DocId):
+        self._DocId = DocId
+
+
+    def _deserialize(self, params):
+        self._FileName = params.get("FileName")
+        self._FileSize = params.get("FileSize")
+        self._FileUrl = params.get("FileUrl")
+        self._FileType = params.get("FileType")
+        self._DocId = params.get("DocId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MsgRecord(AbstractModel):
     """消息详情
 
@@ -11122,6 +11386,20 @@ class MsgRecord(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type TokenStat: :class:`tencentcloud.lke.v20231130.models.TokenStat`
         :param _ReplyMethod: 回复方式
+1:大模型直接回复;
+2:保守回复, 未知问题回复;
+3:拒答问题回复;
+4:敏感回复;
+5:问答对直接回复, 已采纳问答对优先回复;
+6:欢迎语回复;
+7:并发超限回复;
+8:全局干预知识;
+9:任务流程过程回复, 当历史记录中 task_flow.type = 0 时, 为大模型回复;
+10:任务流程答案回复;
+11:搜索引擎回复;
+12:知识润色后回复;
+13:图片理解回复;
+14:实时文档回复;
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReplyMethod: int
         :param _OptionCards: 选项卡, 用于多轮对话
@@ -11130,6 +11408,9 @@ class MsgRecord(AbstractModel):
         :param _TaskFlow: 任务信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskFlow: :class:`tencentcloud.lke.v20231130.models.TaskFlowInfo`
+        :param _FileInfos: 用户传入的文件信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileInfos: list of FileInfo
         """
         self._Content = None
         self._SessionId = None
@@ -11152,6 +11433,7 @@ class MsgRecord(AbstractModel):
         self._ReplyMethod = None
         self._OptionCards = None
         self._TaskFlow = None
+        self._FileInfos = None
 
     @property
     def Content(self):
@@ -11321,6 +11603,14 @@ class MsgRecord(AbstractModel):
     def TaskFlow(self, TaskFlow):
         self._TaskFlow = TaskFlow
 
+    @property
+    def FileInfos(self):
+        return self._FileInfos
+
+    @FileInfos.setter
+    def FileInfos(self, FileInfos):
+        self._FileInfos = FileInfos
+
 
     def _deserialize(self, params):
         self._Content = params.get("Content")
@@ -11353,6 +11643,12 @@ class MsgRecord(AbstractModel):
         if params.get("TaskFlow") is not None:
             self._TaskFlow = TaskFlowInfo()
             self._TaskFlow._deserialize(params.get("TaskFlow"))
+        if params.get("FileInfos") is not None:
+            self._FileInfos = []
+            for item in params.get("FileInfos"):
+                obj = FileInfo()
+                obj._deserialize(item)
+                self._FileInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12007,7 +12303,7 @@ class QAQuery(AbstractModel):
         :param _PageSize: 每页数量
 
         :type PageSize: int
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _Query: 查询内容
 
@@ -12397,7 +12693,7 @@ class RateMsgRecordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotAppKey: 机器人appKey
+        :param _BotAppKey: 应用appKey
         :type BotAppKey: str
         :param _RecordId: 消息ID
         :type RecordId: str
@@ -12558,14 +12854,13 @@ class ReconstructDocumentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileBase64: 图片的 Base64 值。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经Base64编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :param _FileBase64: 文件的 Base64 值。 支持的文件格式：PNG、JPG、JPEG、PDF。 支持的文件大小：所下载文件经Base64编码后不超过 8M。文件下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
         :type FileBase64: str
-        :param _FileUrl: 图片的 Url 地址。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经 Base64 编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :param _FileUrl: 文件的 Url 地址。 支持的文件格式：PNG、JPG、JPEG、PDF。 支持的文件大小：所下载文件经 Base64 编码后不超过 8M。文件下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 文件存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type FileUrl: str
-        :param _FileStartPageNumber: 当传入文件是PDF类型（IsPdf=true）时，用来指定pdf识别的起始页码，识别的页码包含当前值。
+        :param _FileStartPageNumber: 当传入文件是PDF类型时，用来指定pdf识别的起始页码，识别的页码包含当前值。
         :type FileStartPageNumber: int
-        :param _FileEndPageNumber: 当传入文件是PDF类型（IsPdf=true）时，用来指定pdf识别的结束页码，识别的页码包含当前值。
-单次调用，最多支持10页pdf的智能识别。
+        :param _FileEndPageNumber: 当传入文件是PDF类型时，用来指定pdf识别的结束页码，识别的页码包含当前值。单次调用，最多支持10页pdf的文档解析。
         :type FileEndPageNumber: int
         :param _Config: 配置选项，支持配置是否在生成的Markdown中是否嵌入图片
         :type Config: :class:`tencentcloud.lke.v20231130.models.ReconstructDocumentConfig`
@@ -13523,7 +13818,7 @@ class RetryDocAuditRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _DocBizId: 文档ID
         :type DocBizId: str
@@ -13593,7 +13888,7 @@ class RetryDocParseRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _DocBizId: 文档ID
         :type DocBizId: str
@@ -14025,7 +14320,7 @@ class StopDocParseRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _DocBizId: 文档ID
         :type DocBizId: str
@@ -14521,7 +14816,7 @@ class UnsatisfiedReply(AbstractModel):
         :param _Question: 用户问题
 注意：此字段可能返回 null，表示取不到有效值。
         :type Question: str
-        :param _Answer: 机器人回复
+        :param _Answer: 应用回复
 注意：此字段可能返回 null，表示取不到有效值。
         :type Answer: str
         :param _Reasons: 错误类型
@@ -14598,7 +14893,7 @@ class UploadAttributeLabelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _FileName: 文件名
         :type FileName: str
@@ -14835,7 +15130,7 @@ class VerifyQARequest(AbstractModel):
         r"""
         :param _List: 问答列表
         :type List: list of QAList
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _LoginUin: 登录用户主账号(集成商模式必填)
         :type LoginUin: str

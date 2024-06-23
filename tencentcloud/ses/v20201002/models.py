@@ -2809,6 +2809,10 @@ class SendEmailRequest(AbstractModel):
         :type Unsubscribe: str
         :param _TriggerType: 邮件触发类型 0:非触发类，默认类型，营销类邮件、非即时类邮件等选择此类型  1:触发类，验证码等即时发送类邮件，若邮件超过一定大小，系统会自动选择非触发类型通道
         :type TriggerType: int
+        :param _SmtpMessageId: smtp头中的Message-Id字段
+        :type SmtpMessageId: str
+        :param _SmtpHeaders: smtp头中可以设置的其它字段
+        :type SmtpHeaders: str
         """
         self._FromEmailAddress = None
         self._Destination = None
@@ -2821,6 +2825,8 @@ class SendEmailRequest(AbstractModel):
         self._Attachments = None
         self._Unsubscribe = None
         self._TriggerType = None
+        self._SmtpMessageId = None
+        self._SmtpHeaders = None
 
     @property
     def FromEmailAddress(self):
@@ -2910,6 +2916,22 @@ class SendEmailRequest(AbstractModel):
     def TriggerType(self, TriggerType):
         self._TriggerType = TriggerType
 
+    @property
+    def SmtpMessageId(self):
+        return self._SmtpMessageId
+
+    @SmtpMessageId.setter
+    def SmtpMessageId(self, SmtpMessageId):
+        self._SmtpMessageId = SmtpMessageId
+
+    @property
+    def SmtpHeaders(self):
+        return self._SmtpHeaders
+
+    @SmtpHeaders.setter
+    def SmtpHeaders(self, SmtpHeaders):
+        self._SmtpHeaders = SmtpHeaders
+
 
     def _deserialize(self, params):
         self._FromEmailAddress = params.get("FromEmailAddress")
@@ -2932,6 +2954,8 @@ class SendEmailRequest(AbstractModel):
                 self._Attachments.append(obj)
         self._Unsubscribe = params.get("Unsubscribe")
         self._TriggerType = params.get("TriggerType")
+        self._SmtpMessageId = params.get("SmtpMessageId")
+        self._SmtpHeaders = params.get("SmtpHeaders")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

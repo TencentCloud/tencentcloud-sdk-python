@@ -1980,6 +1980,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInstanceUpgradeType(self, request):
+        """本接口(DescribeInstanceUpgradeType)用于查询数据库实例升级类型。
+
+        :param request: Request instance for DescribeInstanceUpgradeType.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeInstanceUpgradeTypeRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeInstanceUpgradeTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceUpgradeType", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceUpgradeTypeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeLocalBinlogConfig(self, request):
         """该接口用于查询实例本地binlog保留策略。
 

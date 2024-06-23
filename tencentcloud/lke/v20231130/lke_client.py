@@ -188,7 +188,10 @@ class LkeClient(AbstractClient):
 
 
     def CreateReconstructDocumentFlow(self, request):
-        """文档解析，异步接口。
+        """本接口为异步接口的发起请求接口，用于发起文档解析任务。
+        文档解析支持将图片或PDF文件转换成Markdown格式文件，可解析包括表格、公式、图片、标题、段落、页眉、页脚等内容元素，并将内容智能转换成阅读顺序。
+
+        体验期间单账号限制qps仅为1，若有正式接入需要请与产研团队沟通开放。
 
         :param request: Request instance for CreateReconstructDocumentFlow.
         :type request: :class:`tencentcloud.lke.v20231130.models.CreateReconstructDocumentFlowRequest`
@@ -303,7 +306,7 @@ class LkeClient(AbstractClient):
 
 
     def DeleteDoc(self, request):
-        """创建企业
+        """删除文档
 
         :param request: Request instance for DeleteDoc.
         :type request: :class:`tencentcloud.lke.v20231130.models.DeleteDocRequest`
@@ -579,7 +582,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeRobotBizIDByAppKey(self, request):
-        """通过appKey获取机器人业务ID
+        """通过appKey获取应用业务ID
 
         :param request: Request instance for DescribeRobotBizIDByAppKey.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeRobotBizIDByAppKeyRequest`
@@ -856,7 +859,7 @@ class LkeClient(AbstractClient):
 
 
     def GetReconstructDocumentResult(self, request):
-        """获取文档解析任务执行结果
+        """本接口为异步接口的查询结果接口，用于获取文档解析处理结果。
 
         :param request: Request instance for GetReconstructDocumentResult.
         :type request: :class:`tencentcloud.lke.v20231130.models.GetReconstructDocumentResultRequest`
@@ -1523,7 +1526,8 @@ class LkeClient(AbstractClient):
 
 
     def ParseDoc(self, request):
-        """解析拆分文档。该接口需开通文档解析原子能力后调用。文档解析原子能力内测中，如有需要请联系架构师或 [联系客服](https://cloud.tencent.com/act/event/Online_service)  。
+        """接口即将下线，请切换使用新接口：[文档解析](https://cloud.tencent.com/document/product/1759/107504)
+        解析拆分文档。该接口需开通文档解析原子能力后调用。文档解析原子能力内测中，如有需要请联系架构师或 [联系客服](https://cloud.tencent.com/act/event/Online_service)  。
 
         :param request: Request instance for ParseDoc.
         :type request: :class:`tencentcloud.lke.v20231130.models.ParseDocRequest`
@@ -1617,6 +1621,8 @@ class LkeClient(AbstractClient):
 
     def ReconstructDocument(self, request):
         """支持将图片或PDF文件转换成Markdown格式文件，可解析包括表格、公式、图片、标题、段落、页眉、页脚等内容元素，并将内容智能转换成阅读顺序。
+
+        体验期间单账号限制qps仅为1，若有正式接入需要请与产研团队沟通开放。
 
         :param request: Request instance for ReconstructDocument.
         :type request: :class:`tencentcloud.lke.v20231130.models.ReconstructDocumentRequest`

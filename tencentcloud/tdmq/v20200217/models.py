@@ -23772,6 +23772,12 @@ class RocketMQClusterInfo(AbstractModel):
         :param _InstanceStatus: 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败，6 - 变配中，7 - 变配失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceStatus: int
+        :param _ZoneId: 集群所属可用区，表明集群归属的可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneId: int
+        :param _ZoneIds: 集群节点所在的可用区，若该集群为跨可用区集群，则包含该集群节点所在的多个可用区。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneIds: list of int
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -23796,6 +23802,8 @@ class RocketMQClusterInfo(AbstractModel):
         self._VpcId = None
         self._SupportMigration = None
         self._InstanceStatus = None
+        self._ZoneId = None
+        self._ZoneIds = None
 
     @property
     def ClusterId(self):
@@ -23981,6 +23989,22 @@ class RocketMQClusterInfo(AbstractModel):
     def InstanceStatus(self, InstanceStatus):
         self._InstanceStatus = InstanceStatus
 
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ZoneIds(self):
+        return self._ZoneIds
+
+    @ZoneIds.setter
+    def ZoneIds(self, ZoneIds):
+        self._ZoneIds = ZoneIds
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -24011,6 +24035,8 @@ class RocketMQClusterInfo(AbstractModel):
         self._VpcId = params.get("VpcId")
         self._SupportMigration = params.get("SupportMigration")
         self._InstanceStatus = params.get("InstanceStatus")
+        self._ZoneId = params.get("ZoneId")
+        self._ZoneIds = params.get("ZoneIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

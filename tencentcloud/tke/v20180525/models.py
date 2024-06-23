@@ -39117,7 +39117,7 @@ class UpgradeClusterReleaseRequest(AbstractModel):
         :type Chart: str
         :param _Values: 自定义参数，覆盖chart 中values.yaml 中的参数
         :type Values: :class:`tencentcloud.tke.v20180525.models.ReleaseValues`
-        :param _ChartFrom: 制品来源，范围：tke-market 或 other
+        :param _ChartFrom: 制品来源，范围：tke-market 或 other默认值：tke-market。
         :type ChartFrom: str
         :param _ChartVersion: 制品版本( 从第三方安装时，不传这个参数）
         :type ChartVersion: str

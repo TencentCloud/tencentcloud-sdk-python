@@ -9004,26 +9004,38 @@ class StartStreamIngestRequest(AbstractModel):
 
     @property
     def VideoEncodeParams(self):
+        warnings.warn("parameter `VideoEncodeParams` is deprecated", DeprecationWarning) 
+
         return self._VideoEncodeParams
 
     @VideoEncodeParams.setter
     def VideoEncodeParams(self, VideoEncodeParams):
+        warnings.warn("parameter `VideoEncodeParams` is deprecated", DeprecationWarning) 
+
         self._VideoEncodeParams = VideoEncodeParams
 
     @property
     def AudioEncodeParams(self):
+        warnings.warn("parameter `AudioEncodeParams` is deprecated", DeprecationWarning) 
+
         return self._AudioEncodeParams
 
     @AudioEncodeParams.setter
     def AudioEncodeParams(self, AudioEncodeParams):
+        warnings.warn("parameter `AudioEncodeParams` is deprecated", DeprecationWarning) 
+
         self._AudioEncodeParams = AudioEncodeParams
 
     @property
     def SourceUrl(self):
+        warnings.warn("parameter `SourceUrl` is deprecated", DeprecationWarning) 
+
         return self._SourceUrl
 
     @SourceUrl.setter
     def SourceUrl(self, SourceUrl):
+        warnings.warn("parameter `SourceUrl` is deprecated", DeprecationWarning) 
+
         self._SourceUrl = SourceUrl
 
     @property
