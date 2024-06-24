@@ -1210,6 +1210,119 @@ class Context(AbstractModel):
         
 
 
+class ConvertDocumentRequest(AbstractModel):
+    """ConvertDocument请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileUrl: 图片的 Url 地址。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经 Base64 编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type FileUrl: str
+        :param _FileBase64: 图片的 Base64 值。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经Base64编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type FileBase64: str
+        :param _FileStartPageNumber: 当传入文件是PDF类型（FileType=PDF）时，用来指定pdf识别的起始页码，识别的页码包含当前值。
+        :type FileStartPageNumber: int
+        :param _FileEndPageNumber: 当传入文件是PDF类型（FileType=PDF）时，用来指定pdf识别的结束页码，识别的页码包含当前值。
+建议一次请求的页面不超过3页。
+        :type FileEndPageNumber: int
+        """
+        self._FileUrl = None
+        self._FileBase64 = None
+        self._FileStartPageNumber = None
+        self._FileEndPageNumber = None
+
+    @property
+    def FileUrl(self):
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
+
+    @property
+    def FileBase64(self):
+        return self._FileBase64
+
+    @FileBase64.setter
+    def FileBase64(self, FileBase64):
+        self._FileBase64 = FileBase64
+
+    @property
+    def FileStartPageNumber(self):
+        return self._FileStartPageNumber
+
+    @FileStartPageNumber.setter
+    def FileStartPageNumber(self, FileStartPageNumber):
+        self._FileStartPageNumber = FileStartPageNumber
+
+    @property
+    def FileEndPageNumber(self):
+        return self._FileEndPageNumber
+
+    @FileEndPageNumber.setter
+    def FileEndPageNumber(self, FileEndPageNumber):
+        self._FileEndPageNumber = FileEndPageNumber
+
+
+    def _deserialize(self, params):
+        self._FileUrl = params.get("FileUrl")
+        self._FileBase64 = params.get("FileBase64")
+        self._FileStartPageNumber = params.get("FileStartPageNumber")
+        self._FileEndPageNumber = params.get("FileEndPageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConvertDocumentResponse(AbstractModel):
+    """ConvertDocument返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WordRecognizeInfo: 识别生成的word文件base64编码的字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WordRecognizeInfo: list of WordRecognizeInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._WordRecognizeInfo = None
+        self._RequestId = None
+
+    @property
+    def WordRecognizeInfo(self):
+        return self._WordRecognizeInfo
+
+    @WordRecognizeInfo.setter
+    def WordRecognizeInfo(self, WordRecognizeInfo):
+        self._WordRecognizeInfo = WordRecognizeInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("WordRecognizeInfo") is not None:
+            self._WordRecognizeInfo = []
+            for item in params.get("WordRecognizeInfo"):
+                obj = WordRecognizeInfo()
+                obj._deserialize(item)
+                self._WordRecognizeInfo.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class Coord(AbstractModel):
     """坐标
 
@@ -1932,9 +2045,9 @@ class CreateReconstructDocumentFlowRequest(AbstractModel):
         :type FileBase64: str
         :param _FileUrl: 文件的 Url 地址。 支持的文件格式：PNG、JPG、JPEG、PDF。 支持的文件大小：所下载文件经 Base64 编码后不超过 100M。文件下载时间不超过 15 秒。 支持的图片像素：单边介于20-10000px之间。 文件存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type FileUrl: str
-        :param _FileStartPageNumber: 当传入文件是PDF类型时，用来指定pdf识别的起始页码，识别的页码包含当前值。
+        :param _FileStartPageNumber: 当传入文件是PDF类型时，用来指定pdf识别的起始页码，识别的页码包含当前值。默认为1，表示从pdf文件的第1页开始识别。
         :type FileStartPageNumber: int
-        :param _FileEndPageNumber: 当传入文件是PDF类型时，用来指定pdf识别的结束页码，识别的页码包含当前值。
+        :param _FileEndPageNumber: 当传入文件是PDF类型时，用来指定pdf识别的结束页码，识别的页码包含当前值。默认为100，表示识别到pdf文件的第100页。单次调用最多支持识别100页内容，即FileEndPageNumber-FileStartPageNumber需要不大于100。
         :type FileEndPageNumber: int
         :param _Config: 创建文档解析任务配置信息
         :type Config: :class:`tencentcloud.lke.v20231130.models.CreateReconstructDocumentFlowConfig`
@@ -5512,6 +5625,244 @@ class GenerateQAResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetAnswerTypeDataCountRequest(AbstractModel):
+    """GetAnswerTypeDataCount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 开始日期
+        :type StartTime: int
+        :param _EndTime: 结束日期
+        :type EndTime: int
+        :param _AppBizId: 应用id
+        :type AppBizId: list of str
+        :param _Type: 消息来源(1、分享用户端  2、对话API  3、对话测试  4、应用评测)
+        :type Type: int
+        :param _LoginUin: 登录用户主账号(集成商模式必填)
+        :type LoginUin: str
+        :param _LoginSubAccountUin: 登录用户子账号(集成商模式必填)	
+        :type LoginSubAccountUin: str
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._AppBizId = None
+        self._Type = None
+        self._LoginUin = None
+        self._LoginSubAccountUin = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def AppBizId(self):
+        return self._AppBizId
+
+    @AppBizId.setter
+    def AppBizId(self, AppBizId):
+        self._AppBizId = AppBizId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def LoginUin(self):
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+    @property
+    def LoginSubAccountUin(self):
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._AppBizId = params.get("AppBizId")
+        self._Type = params.get("Type")
+        self._LoginUin = params.get("LoginUin")
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetAnswerTypeDataCountResponse(AbstractModel):
+    """GetAnswerTypeDataCount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总消息数
+        :type Total: int
+        :param _ModelReplyCount: 大模型直接回复总数
+        :type ModelReplyCount: int
+        :param _KnowledgeCount: 知识型回复总数
+        :type KnowledgeCount: int
+        :param _TaskFlowCount: 任务流回复总数
+        :type TaskFlowCount: int
+        :param _SearchEngineCount: 搜索引擎回复总数
+        :type SearchEngineCount: int
+        :param _ImageUnderstandingCount: 图片理解回复总数
+        :type ImageUnderstandingCount: int
+        :param _RejectCount: 拒答回复总数
+        :type RejectCount: int
+        :param _SensitiveCount: 敏感回复总数
+        :type SensitiveCount: int
+        :param _ConcurrentLimitCount: 并发超限回复总数
+        :type ConcurrentLimitCount: int
+        :param _UnknownIssuesCount: 未知问题回复总数
+        :type UnknownIssuesCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._ModelReplyCount = None
+        self._KnowledgeCount = None
+        self._TaskFlowCount = None
+        self._SearchEngineCount = None
+        self._ImageUnderstandingCount = None
+        self._RejectCount = None
+        self._SensitiveCount = None
+        self._ConcurrentLimitCount = None
+        self._UnknownIssuesCount = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def ModelReplyCount(self):
+        return self._ModelReplyCount
+
+    @ModelReplyCount.setter
+    def ModelReplyCount(self, ModelReplyCount):
+        self._ModelReplyCount = ModelReplyCount
+
+    @property
+    def KnowledgeCount(self):
+        return self._KnowledgeCount
+
+    @KnowledgeCount.setter
+    def KnowledgeCount(self, KnowledgeCount):
+        self._KnowledgeCount = KnowledgeCount
+
+    @property
+    def TaskFlowCount(self):
+        return self._TaskFlowCount
+
+    @TaskFlowCount.setter
+    def TaskFlowCount(self, TaskFlowCount):
+        self._TaskFlowCount = TaskFlowCount
+
+    @property
+    def SearchEngineCount(self):
+        return self._SearchEngineCount
+
+    @SearchEngineCount.setter
+    def SearchEngineCount(self, SearchEngineCount):
+        self._SearchEngineCount = SearchEngineCount
+
+    @property
+    def ImageUnderstandingCount(self):
+        return self._ImageUnderstandingCount
+
+    @ImageUnderstandingCount.setter
+    def ImageUnderstandingCount(self, ImageUnderstandingCount):
+        self._ImageUnderstandingCount = ImageUnderstandingCount
+
+    @property
+    def RejectCount(self):
+        return self._RejectCount
+
+    @RejectCount.setter
+    def RejectCount(self, RejectCount):
+        self._RejectCount = RejectCount
+
+    @property
+    def SensitiveCount(self):
+        return self._SensitiveCount
+
+    @SensitiveCount.setter
+    def SensitiveCount(self, SensitiveCount):
+        self._SensitiveCount = SensitiveCount
+
+    @property
+    def ConcurrentLimitCount(self):
+        return self._ConcurrentLimitCount
+
+    @ConcurrentLimitCount.setter
+    def ConcurrentLimitCount(self, ConcurrentLimitCount):
+        self._ConcurrentLimitCount = ConcurrentLimitCount
+
+    @property
+    def UnknownIssuesCount(self):
+        return self._UnknownIssuesCount
+
+    @UnknownIssuesCount.setter
+    def UnknownIssuesCount(self, UnknownIssuesCount):
+        self._UnknownIssuesCount = UnknownIssuesCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._ModelReplyCount = params.get("ModelReplyCount")
+        self._KnowledgeCount = params.get("KnowledgeCount")
+        self._TaskFlowCount = params.get("TaskFlowCount")
+        self._SearchEngineCount = params.get("SearchEngineCount")
+        self._ImageUnderstandingCount = params.get("ImageUnderstandingCount")
+        self._RejectCount = params.get("RejectCount")
+        self._SensitiveCount = params.get("SensitiveCount")
+        self._ConcurrentLimitCount = params.get("ConcurrentLimitCount")
+        self._UnknownIssuesCount = params.get("UnknownIssuesCount")
+        self._RequestId = params.get("RequestId")
+
+
 class GetAppKnowledgeCountRequest(AbstractModel):
     """GetAppKnowledgeCount请求参数结构体
 
@@ -5981,6 +6332,208 @@ class GetEmbeddingResponse(AbstractModel):
         if params.get("Usage") is not None:
             self._Usage = Usage()
             self._Usage._deserialize(params.get("Usage"))
+        self._RequestId = params.get("RequestId")
+
+
+class GetLikeDataCountRequest(AbstractModel):
+    """GetLikeDataCount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 开始日期
+        :type StartTime: int
+        :param _EndTime: 结束日期
+        :type EndTime: int
+        :param _AppBizId: 应用id
+        :type AppBizId: list of str
+        :param _Type: 消息来源(1、分享用户端  2、对话API)
+        :type Type: int
+        :param _LoginUin: 登录用户主账号(集成商模式必填)
+        :type LoginUin: str
+        :param _LoginSubAccountUin: 登录用户子账号(集成商模式必填)	
+        :type LoginSubAccountUin: str
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._AppBizId = None
+        self._Type = None
+        self._LoginUin = None
+        self._LoginSubAccountUin = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def AppBizId(self):
+        return self._AppBizId
+
+    @AppBizId.setter
+    def AppBizId(self, AppBizId):
+        self._AppBizId = AppBizId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def LoginUin(self):
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+    @property
+    def LoginSubAccountUin(self):
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._AppBizId = params.get("AppBizId")
+        self._Type = params.get("Type")
+        self._LoginUin = params.get("LoginUin")
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetLikeDataCountResponse(AbstractModel):
+    """GetLikeDataCount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 可评价消息数
+        :type Total: int
+        :param _AppraisalTotal: 评价数
+        :type AppraisalTotal: int
+        :param _ParticipationRate: 参评率
+        :type ParticipationRate: float
+        :param _LikeTotal: 点赞数
+        :type LikeTotal: int
+        :param _LikeRate: 点赞率
+        :type LikeRate: float
+        :param _DislikeTotal: 点踩数
+        :type DislikeTotal: int
+        :param _DislikeRate: 点踩率
+        :type DislikeRate: float
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._AppraisalTotal = None
+        self._ParticipationRate = None
+        self._LikeTotal = None
+        self._LikeRate = None
+        self._DislikeTotal = None
+        self._DislikeRate = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def AppraisalTotal(self):
+        return self._AppraisalTotal
+
+    @AppraisalTotal.setter
+    def AppraisalTotal(self, AppraisalTotal):
+        self._AppraisalTotal = AppraisalTotal
+
+    @property
+    def ParticipationRate(self):
+        return self._ParticipationRate
+
+    @ParticipationRate.setter
+    def ParticipationRate(self, ParticipationRate):
+        self._ParticipationRate = ParticipationRate
+
+    @property
+    def LikeTotal(self):
+        return self._LikeTotal
+
+    @LikeTotal.setter
+    def LikeTotal(self, LikeTotal):
+        self._LikeTotal = LikeTotal
+
+    @property
+    def LikeRate(self):
+        return self._LikeRate
+
+    @LikeRate.setter
+    def LikeRate(self, LikeRate):
+        self._LikeRate = LikeRate
+
+    @property
+    def DislikeTotal(self):
+        return self._DislikeTotal
+
+    @DislikeTotal.setter
+    def DislikeTotal(self, DislikeTotal):
+        self._DislikeTotal = DislikeTotal
+
+    @property
+    def DislikeRate(self):
+        return self._DislikeRate
+
+    @DislikeRate.setter
+    def DislikeRate(self, DislikeRate):
+        self._DislikeRate = DislikeRate
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._AppraisalTotal = params.get("AppraisalTotal")
+        self._ParticipationRate = params.get("ParticipationRate")
+        self._LikeTotal = params.get("LikeTotal")
+        self._LikeRate = params.get("LikeRate")
+        self._DislikeTotal = params.get("DislikeTotal")
+        self._DislikeRate = params.get("DislikeRate")
         self._RequestId = params.get("RequestId")
 
 
@@ -12858,9 +13411,9 @@ class ReconstructDocumentRequest(AbstractModel):
         :type FileBase64: str
         :param _FileUrl: 文件的 Url 地址。 支持的文件格式：PNG、JPG、JPEG、PDF。 支持的文件大小：所下载文件经 Base64 编码后不超过 8M。文件下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 文件存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type FileUrl: str
-        :param _FileStartPageNumber: 当传入文件是PDF类型时，用来指定pdf识别的起始页码，识别的页码包含当前值。
+        :param _FileStartPageNumber: 当传入文件是PDF类型时，用来指定pdf识别的起始页码，识别的页码包含当前值。默认为1，表示从pdf文件的第1页开始识别。
         :type FileStartPageNumber: int
-        :param _FileEndPageNumber: 当传入文件是PDF类型时，用来指定pdf识别的结束页码，识别的页码包含当前值。单次调用，最多支持10页pdf的文档解析。
+        :param _FileEndPageNumber: 当传入文件是PDF类型时，用来指定pdf识别的结束页码，识别的页码包含当前值。默认为10，表示识别到pdf文件的第10页。单次调用最多支持识别10页内容，即FileEndPageNumber-FileStartPageNumber需要不大于10。
         :type FileEndPageNumber: int
         :param _Config: 配置选项，支持配置是否在生成的Markdown中是否嵌入图片
         :type Config: :class:`tencentcloud.lke.v20231130.models.ReconstructDocumentConfig`
@@ -15218,3 +15771,50 @@ class VerifyQAResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class WordRecognizeInfo(AbstractModel):
+    """解析为 word 文档的结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: 输入文件的页码数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageNumber: int
+        :param _WordBase64: word的base64
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WordBase64: str
+        """
+        self._PageNumber = None
+        self._WordBase64 = None
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def WordBase64(self):
+        return self._WordBase64
+
+    @WordBase64.setter
+    def WordBase64(self, WordBase64):
+        self._WordBase64 = WordBase64
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._WordBase64 = params.get("WordBase64")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        

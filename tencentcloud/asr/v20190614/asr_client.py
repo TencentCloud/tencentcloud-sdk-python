@@ -613,6 +613,29 @@ class AsrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def VoicePrintGroupVerify(self, request):
+        """说话人验证1:N接口，可以通过传入一段说话人音频，并且指定已存在的groupId, 和返回topN,  接口返回groupId内所有声纹和传入音频声纹比对打分TopN的结果。
+
+        :param request: Request instance for VoicePrintGroupVerify.
+        :type request: :class:`tencentcloud.asr.v20190614.models.VoicePrintGroupVerifyRequest`
+        :rtype: :class:`tencentcloud.asr.v20190614.models.VoicePrintGroupVerifyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("VoicePrintGroupVerify", params, headers=headers)
+            response = json.loads(body)
+            model = models.VoicePrintGroupVerifyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def VoicePrintUpdate(self, request):
         """本接口用于更新和覆盖已注册的音频数据和说话人昵称，更新后原有的音频数据将失效。
 

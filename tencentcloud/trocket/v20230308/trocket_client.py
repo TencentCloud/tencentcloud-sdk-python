@@ -810,6 +810,29 @@ class TrocketClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeProductSKUs(self, request):
+        """查询产品售卖规格，针对 RocketMQ 5.x 集群。
+
+        :param request: Request instance for DescribeProductSKUs.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeProductSKUsRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DescribeProductSKUsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeProductSKUs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeProductSKUsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRoleList(self, request):
         """查询角色列表，Filter参数使用说明如下：
 

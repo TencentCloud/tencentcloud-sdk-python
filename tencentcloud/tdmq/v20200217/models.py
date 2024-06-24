@@ -10245,6 +10245,206 @@ class DescribePulsarProInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRabbitMQExchangesRequest(AbstractModel):
+    """DescribeRabbitMQExchanges请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 id
+        :type InstanceId: str
+        :param _VirtualHost: vhost 参数
+        :type VirtualHost: str
+        :param _Offset: 分页 offset
+        :type Offset: int
+        :param _Limit: 分页 limit
+        :type Limit: int
+        :param _SearchWord: 搜索关键词, 支持模糊匹配 
+        :type SearchWord: str
+        :param _ExchangeTypeFilters: 筛选 exchange 类型, 数组中每个元素为选中的过滤类型
+        :type ExchangeTypeFilters: list of str
+        :param _ExchangeCreatorFilters: 筛选 exchange 创建来源,  "system":"系统创建", "user":"用户创建"
+        :type ExchangeCreatorFilters: list of str
+        :param _ExchangeName: exchange 名称，用于精确匹配
+        :type ExchangeName: str
+        :param _SortElement: 排序依据的字段：
+MessageRateInOut - 生产消费速率之和；
+MessageRateIn - 生产速率；
+MessageRateOut - 消费速率；
+        :type SortElement: str
+        :param _SortOrder: 排序顺序，ascend 或 descend
+        :type SortOrder: str
+        """
+        self._InstanceId = None
+        self._VirtualHost = None
+        self._Offset = None
+        self._Limit = None
+        self._SearchWord = None
+        self._ExchangeTypeFilters = None
+        self._ExchangeCreatorFilters = None
+        self._ExchangeName = None
+        self._SortElement = None
+        self._SortOrder = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def VirtualHost(self):
+        return self._VirtualHost
+
+    @VirtualHost.setter
+    def VirtualHost(self, VirtualHost):
+        self._VirtualHost = VirtualHost
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SearchWord(self):
+        return self._SearchWord
+
+    @SearchWord.setter
+    def SearchWord(self, SearchWord):
+        self._SearchWord = SearchWord
+
+    @property
+    def ExchangeTypeFilters(self):
+        return self._ExchangeTypeFilters
+
+    @ExchangeTypeFilters.setter
+    def ExchangeTypeFilters(self, ExchangeTypeFilters):
+        self._ExchangeTypeFilters = ExchangeTypeFilters
+
+    @property
+    def ExchangeCreatorFilters(self):
+        return self._ExchangeCreatorFilters
+
+    @ExchangeCreatorFilters.setter
+    def ExchangeCreatorFilters(self, ExchangeCreatorFilters):
+        self._ExchangeCreatorFilters = ExchangeCreatorFilters
+
+    @property
+    def ExchangeName(self):
+        return self._ExchangeName
+
+    @ExchangeName.setter
+    def ExchangeName(self, ExchangeName):
+        self._ExchangeName = ExchangeName
+
+    @property
+    def SortElement(self):
+        return self._SortElement
+
+    @SortElement.setter
+    def SortElement(self, SortElement):
+        self._SortElement = SortElement
+
+    @property
+    def SortOrder(self):
+        return self._SortOrder
+
+    @SortOrder.setter
+    def SortOrder(self, SortOrder):
+        self._SortOrder = SortOrder
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._VirtualHost = params.get("VirtualHost")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SearchWord = params.get("SearchWord")
+        self._ExchangeTypeFilters = params.get("ExchangeTypeFilters")
+        self._ExchangeCreatorFilters = params.get("ExchangeCreatorFilters")
+        self._ExchangeName = params.get("ExchangeName")
+        self._SortElement = params.get("SortElement")
+        self._SortOrder = params.get("SortOrder")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRabbitMQExchangesResponse(AbstractModel):
+    """DescribeRabbitMQExchanges返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExchangeInfoList: 策略列表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExchangeInfoList: list of RabbitMQExchangeListInfo
+        :param _TotalCount: 策略结果总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ExchangeInfoList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ExchangeInfoList(self):
+        return self._ExchangeInfoList
+
+    @ExchangeInfoList.setter
+    def ExchangeInfoList(self, ExchangeInfoList):
+        self._ExchangeInfoList = ExchangeInfoList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ExchangeInfoList") is not None:
+            self._ExchangeInfoList = []
+            for item in params.get("ExchangeInfoList"):
+                obj = RabbitMQExchangeListInfo()
+                obj._deserialize(item)
+                self._ExchangeInfoList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRabbitMQNodeListRequest(AbstractModel):
     """DescribeRabbitMQNodeList请求参数结构体
 
@@ -21852,6 +22052,233 @@ class RabbitMQClusterWhiteListInfo(AbstractModel):
         self._PublicDataStreamWhiteList = params.get("PublicDataStreamWhiteList")
         self._PublicControlConsoleWhiteListStatus = params.get("PublicControlConsoleWhiteListStatus")
         self._PublicDataStreamWhiteListStatus = params.get("PublicDataStreamWhiteListStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RabbitMQExchangeListInfo(AbstractModel):
+    """RabbitMQ exchange列表成员信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExchangeName: exchange 名
+        :type ExchangeName: str
+        :param _Remark: 备注说明
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param _ExchangeType: exchange 类型, 支持 "fanout","direct","topic","headers"
+        :type ExchangeType: str
+        :param _VirtualHost: VHost参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirtualHost: str
+        :param _ExchangeCreator: exchange 创建者, "system":"系统创建", "user":"用户创建"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExchangeCreator: str
+        :param _CreateTimeStamp: exchange 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTimeStamp: str
+        :param _ModTimeStamp: exchange 修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModTimeStamp: str
+        :param _MessageRateIn: 输入消息速率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessageRateIn: float
+        :param _MessageRateOut: 输出消息速率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessageRateOut: float
+        :param _Durable: 是否为持久化交换机，true 为持久化，false 为非持久化
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Durable: bool
+        :param _AutoDelete: 是否为自动删除交换机，true 为自动删除，false 为非自动删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoDelete: bool
+        :param _Internal: 是否为内部交换机，true 为内部交换机
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Internal: bool
+        :param _InstanceId: 交换机所属实例 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _Policy: 生效的策略名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Policy: str
+        :param _Arguments: 扩展参数 key-value 对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Arguments: str
+        :param _MessagesDelayed: 未调度的延时消息数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessagesDelayed: int
+        """
+        self._ExchangeName = None
+        self._Remark = None
+        self._ExchangeType = None
+        self._VirtualHost = None
+        self._ExchangeCreator = None
+        self._CreateTimeStamp = None
+        self._ModTimeStamp = None
+        self._MessageRateIn = None
+        self._MessageRateOut = None
+        self._Durable = None
+        self._AutoDelete = None
+        self._Internal = None
+        self._InstanceId = None
+        self._Policy = None
+        self._Arguments = None
+        self._MessagesDelayed = None
+
+    @property
+    def ExchangeName(self):
+        return self._ExchangeName
+
+    @ExchangeName.setter
+    def ExchangeName(self, ExchangeName):
+        self._ExchangeName = ExchangeName
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def ExchangeType(self):
+        return self._ExchangeType
+
+    @ExchangeType.setter
+    def ExchangeType(self, ExchangeType):
+        self._ExchangeType = ExchangeType
+
+    @property
+    def VirtualHost(self):
+        return self._VirtualHost
+
+    @VirtualHost.setter
+    def VirtualHost(self, VirtualHost):
+        self._VirtualHost = VirtualHost
+
+    @property
+    def ExchangeCreator(self):
+        return self._ExchangeCreator
+
+    @ExchangeCreator.setter
+    def ExchangeCreator(self, ExchangeCreator):
+        self._ExchangeCreator = ExchangeCreator
+
+    @property
+    def CreateTimeStamp(self):
+        return self._CreateTimeStamp
+
+    @CreateTimeStamp.setter
+    def CreateTimeStamp(self, CreateTimeStamp):
+        self._CreateTimeStamp = CreateTimeStamp
+
+    @property
+    def ModTimeStamp(self):
+        return self._ModTimeStamp
+
+    @ModTimeStamp.setter
+    def ModTimeStamp(self, ModTimeStamp):
+        self._ModTimeStamp = ModTimeStamp
+
+    @property
+    def MessageRateIn(self):
+        return self._MessageRateIn
+
+    @MessageRateIn.setter
+    def MessageRateIn(self, MessageRateIn):
+        self._MessageRateIn = MessageRateIn
+
+    @property
+    def MessageRateOut(self):
+        return self._MessageRateOut
+
+    @MessageRateOut.setter
+    def MessageRateOut(self, MessageRateOut):
+        self._MessageRateOut = MessageRateOut
+
+    @property
+    def Durable(self):
+        return self._Durable
+
+    @Durable.setter
+    def Durable(self, Durable):
+        self._Durable = Durable
+
+    @property
+    def AutoDelete(self):
+        return self._AutoDelete
+
+    @AutoDelete.setter
+    def AutoDelete(self, AutoDelete):
+        self._AutoDelete = AutoDelete
+
+    @property
+    def Internal(self):
+        return self._Internal
+
+    @Internal.setter
+    def Internal(self, Internal):
+        self._Internal = Internal
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Policy(self):
+        return self._Policy
+
+    @Policy.setter
+    def Policy(self, Policy):
+        self._Policy = Policy
+
+    @property
+    def Arguments(self):
+        return self._Arguments
+
+    @Arguments.setter
+    def Arguments(self, Arguments):
+        self._Arguments = Arguments
+
+    @property
+    def MessagesDelayed(self):
+        return self._MessagesDelayed
+
+    @MessagesDelayed.setter
+    def MessagesDelayed(self, MessagesDelayed):
+        self._MessagesDelayed = MessagesDelayed
+
+
+    def _deserialize(self, params):
+        self._ExchangeName = params.get("ExchangeName")
+        self._Remark = params.get("Remark")
+        self._ExchangeType = params.get("ExchangeType")
+        self._VirtualHost = params.get("VirtualHost")
+        self._ExchangeCreator = params.get("ExchangeCreator")
+        self._CreateTimeStamp = params.get("CreateTimeStamp")
+        self._ModTimeStamp = params.get("ModTimeStamp")
+        self._MessageRateIn = params.get("MessageRateIn")
+        self._MessageRateOut = params.get("MessageRateOut")
+        self._Durable = params.get("Durable")
+        self._AutoDelete = params.get("AutoDelete")
+        self._Internal = params.get("Internal")
+        self._InstanceId = params.get("InstanceId")
+        self._Policy = params.get("Policy")
+        self._Arguments = params.get("Arguments")
+        self._MessagesDelayed = params.get("MessagesDelayed")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

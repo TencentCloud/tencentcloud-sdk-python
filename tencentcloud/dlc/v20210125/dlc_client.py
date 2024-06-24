@@ -1429,6 +1429,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDataEnginesScaleDetail(self, request):
+        """查询引擎规格详情
+
+        :param request: Request instance for DescribeDataEnginesScaleDetail.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDataEnginesScaleDetailRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeDataEnginesScaleDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataEnginesScaleDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataEnginesScaleDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDatabases(self, request):
         """本接口（DescribeDatabases）用于查询数据库列表。
 

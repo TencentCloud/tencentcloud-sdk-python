@@ -72,6 +72,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AddAreaBanAreas(self, request):
+        """添加地域封禁中的地域信息
+
+        :param request: Request instance for AddAreaBanAreas.
+        :type request: :class:`tencentcloud.waf.v20180125.models.AddAreaBanAreasRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.AddAreaBanAreasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddAreaBanAreas", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddAreaBanAreasResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AddAttackWhiteRule(self, request):
         """供用户控制台调用，增加Tiga规则引擎白名单。
 

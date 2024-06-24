@@ -1569,6 +1569,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRabbitMQExchanges(self, request):
+        """查询RabbitMQ exchange 列表
+
+        :param request: Request instance for DescribeRabbitMQExchanges.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQExchangesRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQExchangesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRabbitMQExchanges", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRabbitMQExchangesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRabbitMQNodeList(self, request):
         """RabbitMQ专享版查询节点列表
 

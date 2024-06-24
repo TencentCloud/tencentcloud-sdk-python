@@ -3238,6 +3238,105 @@ class UpdateAsrVocabResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class VerifyTop(AbstractModel):
+    """声纹组对比结果top数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Score: 相似度打分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Score: str
+        :param _VoicePrintId: 说话人id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VoicePrintId: str
+        :param _SpeakerId: 说话人昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpeakerId: str
+        """
+        self._Score = None
+        self._VoicePrintId = None
+        self._SpeakerId = None
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def VoicePrintId(self):
+        return self._VoicePrintId
+
+    @VoicePrintId.setter
+    def VoicePrintId(self, VoicePrintId):
+        self._VoicePrintId = VoicePrintId
+
+    @property
+    def SpeakerId(self):
+        return self._SpeakerId
+
+    @SpeakerId.setter
+    def SpeakerId(self, SpeakerId):
+        self._SpeakerId = SpeakerId
+
+
+    def _deserialize(self, params):
+        self._Score = params.get("Score")
+        self._VoicePrintId = params.get("VoicePrintId")
+        self._SpeakerId = params.get("SpeakerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VerifyTopResult(AbstractModel):
+    """说话人验证1:N返回结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VerifyTops: 对比打分结果，按照打分降序排列返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VerifyTops: list of VerifyTop
+        """
+        self._VerifyTops = None
+
+    @property
+    def VerifyTops(self):
+        return self._VerifyTops
+
+    @VerifyTops.setter
+    def VerifyTops(self, VerifyTops):
+        self._VerifyTops = VerifyTops
+
+
+    def _deserialize(self, params):
+        if params.get("VerifyTops") is not None:
+            self._VerifyTops = []
+            for item in params.get("VerifyTops"):
+                obj = VerifyTop()
+                obj._deserialize(item)
+                self._VerifyTops.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Vocab(AbstractModel):
     """[词表内容](https://cloud.tencent.com/document/product/1093/41484#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0)
 
@@ -3573,8 +3672,12 @@ class VoicePrintCountData(AbstractModel):
         :param _Total: 总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
+        :param _VoicePrintList: 说话人id列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VoicePrintList: list of VoicePrintBaseData
         """
         self._Total = None
+        self._VoicePrintList = None
 
     @property
     def Total(self):
@@ -3584,9 +3687,23 @@ class VoicePrintCountData(AbstractModel):
     def Total(self, Total):
         self._Total = Total
 
+    @property
+    def VoicePrintList(self):
+        return self._VoicePrintList
+
+    @VoicePrintList.setter
+    def VoicePrintList(self, VoicePrintList):
+        self._VoicePrintList = VoicePrintList
+
 
     def _deserialize(self, params):
         self._Total = params.get("Total")
+        if params.get("VoicePrintList") is not None:
+            self._VoicePrintList = []
+            for item in params.get("VoicePrintList"):
+                obj = VoicePrintBaseData()
+                obj._deserialize(item)
+                self._VoicePrintList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3601,6 +3718,47 @@ class VoicePrintCountRequest(AbstractModel):
     """VoicePrintCount请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: 分组ID,仅支持大小写字母和下划线的组合，不超过128个字符
+        :type GroupId: str
+        :param _CountMod: 统计模式
+0: 统计所有声纹数量
+1: 统计指定分组下的声纹数量
+        :type CountMod: int
+        """
+        self._GroupId = None
+        self._CountMod = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def CountMod(self):
+        return self._CountMod
+
+    @CountMod.setter
+    def CountMod(self, CountMod):
+        self._CountMod = CountMod
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._CountMod = params.get("CountMod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class VoicePrintCountResponse(AbstractModel):
@@ -3651,8 +3809,17 @@ class VoicePrintDeleteRequest(AbstractModel):
         r"""
         :param _VoicePrintId: 说话人id，说话人唯一标识
         :type VoicePrintId: str
+        :param _GroupId: 说话人分组ID,仅支持大小写字母和下划线的组合，不超过128个字符
+        :type GroupId: str
+        :param _DelMod: 删除模式: 
+0.默认值，删除该条声纹
+1.从分组中删除该条声纹，声纹本身不删除
+2.从声纹库中删除分组，仅删除分组信息，不会真正删除分组中的声纹
+        :type DelMod: int
         """
         self._VoicePrintId = None
+        self._GroupId = None
+        self._DelMod = None
 
     @property
     def VoicePrintId(self):
@@ -3662,9 +3829,27 @@ class VoicePrintDeleteRequest(AbstractModel):
     def VoicePrintId(self, VoicePrintId):
         self._VoicePrintId = VoicePrintId
 
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def DelMod(self):
+        return self._DelMod
+
+    @DelMod.setter
+    def DelMod(self, DelMod):
+        self._DelMod = DelMod
+
 
     def _deserialize(self, params):
         self._VoicePrintId = params.get("VoicePrintId")
+        self._GroupId = params.get("GroupId")
+        self._DelMod = params.get("DelMod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3729,11 +3914,14 @@ class VoicePrintEnrollRequest(AbstractModel):
         :type Data: str
         :param _SpeakerNick: 说话人昵称  不超过32字节
         :type SpeakerNick: str
+        :param _GroupId: 分组id, 仅支持大小写字母和下划线的组合，不超过128个字符
+        :type GroupId: str
         """
         self._VoiceFormat = None
         self._SampleRate = None
         self._Data = None
         self._SpeakerNick = None
+        self._GroupId = None
 
     @property
     def VoiceFormat(self):
@@ -3767,12 +3955,21 @@ class VoicePrintEnrollRequest(AbstractModel):
     def SpeakerNick(self, SpeakerNick):
         self._SpeakerNick = SpeakerNick
 
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
 
     def _deserialize(self, params):
         self._VoiceFormat = params.get("VoiceFormat")
         self._SampleRate = params.get("SampleRate")
         self._Data = params.get("Data")
         self._SpeakerNick = params.get("SpeakerNick")
+        self._GroupId = params.get("GroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3818,6 +4015,126 @@ class VoicePrintEnrollResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Data") is not None:
             self._Data = VoicePrintBaseData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class VoicePrintGroupVerifyRequest(AbstractModel):
+    """VoicePrintGroupVerify请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoiceFormat: 音频格式 0: pcm, 1: wav
+        :type VoiceFormat: int
+        :param _SampleRate: 音频采样率，目前支持16000，单位：Hz，必填
+        :type SampleRate: int
+        :param _Data: 音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M
+        :type Data: str
+        :param _GroupId: 分组id, 支持数字，字母，下划线，长度不超过128
+        :type GroupId: str
+        :param _TopN: 返回打分结果降序排列topN, TopN大于0， 小于可创建声纹最大数量
+        :type TopN: int
+        """
+        self._VoiceFormat = None
+        self._SampleRate = None
+        self._Data = None
+        self._GroupId = None
+        self._TopN = None
+
+    @property
+    def VoiceFormat(self):
+        return self._VoiceFormat
+
+    @VoiceFormat.setter
+    def VoiceFormat(self, VoiceFormat):
+        self._VoiceFormat = VoiceFormat
+
+    @property
+    def SampleRate(self):
+        return self._SampleRate
+
+    @SampleRate.setter
+    def SampleRate(self, SampleRate):
+        self._SampleRate = SampleRate
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def TopN(self):
+        return self._TopN
+
+    @TopN.setter
+    def TopN(self, TopN):
+        self._TopN = TopN
+
+
+    def _deserialize(self, params):
+        self._VoiceFormat = params.get("VoiceFormat")
+        self._SampleRate = params.get("SampleRate")
+        self._Data = params.get("Data")
+        self._GroupId = params.get("GroupId")
+        self._TopN = params.get("TopN")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoicePrintGroupVerifyResponse(AbstractModel):
+    """VoicePrintGroupVerify返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: TopN 返回结果;系统建议打分70分以上为同一个人音色，评分也取决于音频质量、长度等其他原因影响，您可以按照业务需求适当提高或降低分数要求
+        :type Data: :class:`tencentcloud.asr.v20190614.models.VerifyTopResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = VerifyTopResult()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 

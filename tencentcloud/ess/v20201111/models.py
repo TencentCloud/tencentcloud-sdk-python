@@ -7069,10 +7069,14 @@ class CreateLegalSealQrCodeRequest(AbstractModel):
 
     @property
     def Organization(self):
+        warnings.warn("parameter `Organization` is deprecated", DeprecationWarning) 
+
         return self._Organization
 
     @Organization.setter
     def Organization(self, Organization):
+        warnings.warn("parameter `Organization` is deprecated", DeprecationWarning) 
+
         self._Organization = Organization
 
 

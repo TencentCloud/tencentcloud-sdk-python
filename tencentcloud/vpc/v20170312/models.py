@@ -17703,7 +17703,7 @@ class DescribeGatewayFlowMonitorDetailRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
-        :param _OrderField: 排序字段。支持 `InPkg` `OutPkg` `InTraffic` `OutTraffic`。默认值`OutTraffic`。
+        :param _OrderField: 排序字段。支持 `InPkg` `OutPkg` `InTraffic` `OutTraffic`，标准型nat额外支持 并发连接数`ConcurrentConnectionCount` 、新建连接速率`NewConnectionRate`。默认值`OutTraffic`。
         :type OrderField: str
         :param _OrderDirection: 排序方法。顺序：`ASC`，倒序：`DESC`。默认值`DESC`。
         :type OrderDirection: str
@@ -22880,7 +22880,7 @@ class DescribeVpcEndPointServiceRequest(AbstractModel):
         :type Limit: int
         :param _EndPointServiceIds: 终端节点服务ID。不支持同时传入参数 EndPointServiceIds and Filters。
         :type EndPointServiceIds: list of str
-        :param _IsListAuthorizedEndPointService: <li>不支持同时传入参数 Filters 。</li> <li>列出授权给当前账号的终端节点服务信息。可以配合EndPointServiceIds参数进行过滤，那些终端节点服务授权了该账户。</li>
+        :param _IsListAuthorizedEndPointService: <li>不支持同时传入参数 Filters 。</li> <li>列出授权给当前账号的终端节点服务信息。可以配合EndPointServiceIds参数进行过滤，哪些终端节点服务授权了该账户。</li>
         :type IsListAuthorizedEndPointService: bool
         """
         self._Filters = None
@@ -28176,12 +28176,18 @@ class GatewayFlowMonitorDetail(AbstractModel):
         :type InTraffic: int
         :param _OutTraffic: 出流量，单位：`Byte`。
         :type OutTraffic: int
+        :param _ConcurrentConnectionCount: 并发连接数。仅标准型nat支持此参数。
+        :type ConcurrentConnectionCount: int
+        :param _NewConnectionRate: 新建连接速率。仅标准型nat支持此参数。
+        :type NewConnectionRate: int
         """
         self._PrivateIpAddress = None
         self._InPkg = None
         self._OutPkg = None
         self._InTraffic = None
         self._OutTraffic = None
+        self._ConcurrentConnectionCount = None
+        self._NewConnectionRate = None
 
     @property
     def PrivateIpAddress(self):
@@ -28223,6 +28229,22 @@ class GatewayFlowMonitorDetail(AbstractModel):
     def OutTraffic(self, OutTraffic):
         self._OutTraffic = OutTraffic
 
+    @property
+    def ConcurrentConnectionCount(self):
+        return self._ConcurrentConnectionCount
+
+    @ConcurrentConnectionCount.setter
+    def ConcurrentConnectionCount(self, ConcurrentConnectionCount):
+        self._ConcurrentConnectionCount = ConcurrentConnectionCount
+
+    @property
+    def NewConnectionRate(self):
+        return self._NewConnectionRate
+
+    @NewConnectionRate.setter
+    def NewConnectionRate(self, NewConnectionRate):
+        self._NewConnectionRate = NewConnectionRate
+
 
     def _deserialize(self, params):
         self._PrivateIpAddress = params.get("PrivateIpAddress")
@@ -28230,6 +28252,8 @@ class GatewayFlowMonitorDetail(AbstractModel):
         self._OutPkg = params.get("OutPkg")
         self._InTraffic = params.get("InTraffic")
         self._OutTraffic = params.get("OutTraffic")
+        self._ConcurrentConnectionCount = params.get("ConcurrentConnectionCount")
+        self._NewConnectionRate = params.get("NewConnectionRate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

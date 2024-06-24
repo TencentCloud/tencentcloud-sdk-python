@@ -1475,6 +1475,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeFirmware(self, request):
+        """查询固件信息
+
+        :param request: Request instance for DescribeFirmware.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeFirmwareRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeFirmwareResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFirmware", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFirmwareResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeFirmwareTask(self, request):
         """查询固件升级任务列表
 

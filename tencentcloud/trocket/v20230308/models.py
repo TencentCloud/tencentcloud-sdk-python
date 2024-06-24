@@ -4525,6 +4525,55 @@ class DescribeMQTTUserListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeProductSKUsRequest(AbstractModel):
+    """DescribeProductSKUs请求参数结构体
+
+    """
+
+
+class DescribeProductSKUsResponse(AbstractModel):
+    """DescribeProductSKUs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 商品配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of ProductSKU
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = ProductSKU()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRoleListRequest(AbstractModel):
     """DescribeRoleList请求参数结构体
 
@@ -7877,6 +7926,247 @@ class PacketStatistics(AbstractModel):
         self._MessageType = params.get("MessageType")
         self._Qos = params.get("Qos")
         self._Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PriceTag(AbstractModel):
+    """价格标签信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 计价名称
+        :type Name: str
+        :param _Step: 步长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Step: int
+        """
+        self._Name = None
+        self._Step = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Step(self):
+        return self._Step
+
+    @Step.setter
+    def Step(self, Step):
+        self._Step = Step
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Step = params.get("Step")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProductSKU(AbstractModel):
+    """商品售卖信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceType: 产品类型，
+EXPERIMENT，体验版
+BASIC，基础版
+PRO，专业版
+PLATINUM，铂金版
+        :type InstanceType: str
+        :param _SkuCode: 规格代码
+        :type SkuCode: str
+        :param _TpsLimit: TPS上限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TpsLimit: int
+        :param _ScaledTpsLimit: 弹性TPS上限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScaledTpsLimit: int
+        :param _TopicNumLimit: 主题数量上限默认值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicNumLimit: int
+        :param _GroupNumLimit: 消费组数量上限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupNumLimit: int
+        :param _DefaultRetention: 默认消息保留时间，小时为单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultRetention: int
+        :param _RetentionUpperLimit: 可调整消息保留时间上限，小时为单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetentionUpperLimit: int
+        :param _RetentionLowerLimit: 可调整消息保留时间下限，小时为单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetentionLowerLimit: int
+        :param _MaxMessageDelay: 延时消息最大时长，小时为单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxMessageDelay: int
+        :param _OnSale: 是否可购买
+        :type OnSale: bool
+        :param _PriceTags: 计费项信息
+        :type PriceTags: list of PriceTag
+        :param _TopicNumUpperLimit: 主题数量上限默认最大值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicNumUpperLimit: int
+        """
+        self._InstanceType = None
+        self._SkuCode = None
+        self._TpsLimit = None
+        self._ScaledTpsLimit = None
+        self._TopicNumLimit = None
+        self._GroupNumLimit = None
+        self._DefaultRetention = None
+        self._RetentionUpperLimit = None
+        self._RetentionLowerLimit = None
+        self._MaxMessageDelay = None
+        self._OnSale = None
+        self._PriceTags = None
+        self._TopicNumUpperLimit = None
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def SkuCode(self):
+        return self._SkuCode
+
+    @SkuCode.setter
+    def SkuCode(self, SkuCode):
+        self._SkuCode = SkuCode
+
+    @property
+    def TpsLimit(self):
+        return self._TpsLimit
+
+    @TpsLimit.setter
+    def TpsLimit(self, TpsLimit):
+        self._TpsLimit = TpsLimit
+
+    @property
+    def ScaledTpsLimit(self):
+        return self._ScaledTpsLimit
+
+    @ScaledTpsLimit.setter
+    def ScaledTpsLimit(self, ScaledTpsLimit):
+        self._ScaledTpsLimit = ScaledTpsLimit
+
+    @property
+    def TopicNumLimit(self):
+        return self._TopicNumLimit
+
+    @TopicNumLimit.setter
+    def TopicNumLimit(self, TopicNumLimit):
+        self._TopicNumLimit = TopicNumLimit
+
+    @property
+    def GroupNumLimit(self):
+        return self._GroupNumLimit
+
+    @GroupNumLimit.setter
+    def GroupNumLimit(self, GroupNumLimit):
+        self._GroupNumLimit = GroupNumLimit
+
+    @property
+    def DefaultRetention(self):
+        return self._DefaultRetention
+
+    @DefaultRetention.setter
+    def DefaultRetention(self, DefaultRetention):
+        self._DefaultRetention = DefaultRetention
+
+    @property
+    def RetentionUpperLimit(self):
+        return self._RetentionUpperLimit
+
+    @RetentionUpperLimit.setter
+    def RetentionUpperLimit(self, RetentionUpperLimit):
+        self._RetentionUpperLimit = RetentionUpperLimit
+
+    @property
+    def RetentionLowerLimit(self):
+        return self._RetentionLowerLimit
+
+    @RetentionLowerLimit.setter
+    def RetentionLowerLimit(self, RetentionLowerLimit):
+        self._RetentionLowerLimit = RetentionLowerLimit
+
+    @property
+    def MaxMessageDelay(self):
+        return self._MaxMessageDelay
+
+    @MaxMessageDelay.setter
+    def MaxMessageDelay(self, MaxMessageDelay):
+        self._MaxMessageDelay = MaxMessageDelay
+
+    @property
+    def OnSale(self):
+        return self._OnSale
+
+    @OnSale.setter
+    def OnSale(self, OnSale):
+        self._OnSale = OnSale
+
+    @property
+    def PriceTags(self):
+        return self._PriceTags
+
+    @PriceTags.setter
+    def PriceTags(self, PriceTags):
+        self._PriceTags = PriceTags
+
+    @property
+    def TopicNumUpperLimit(self):
+        return self._TopicNumUpperLimit
+
+    @TopicNumUpperLimit.setter
+    def TopicNumUpperLimit(self, TopicNumUpperLimit):
+        self._TopicNumUpperLimit = TopicNumUpperLimit
+
+
+    def _deserialize(self, params):
+        self._InstanceType = params.get("InstanceType")
+        self._SkuCode = params.get("SkuCode")
+        self._TpsLimit = params.get("TpsLimit")
+        self._ScaledTpsLimit = params.get("ScaledTpsLimit")
+        self._TopicNumLimit = params.get("TopicNumLimit")
+        self._GroupNumLimit = params.get("GroupNumLimit")
+        self._DefaultRetention = params.get("DefaultRetention")
+        self._RetentionUpperLimit = params.get("RetentionUpperLimit")
+        self._RetentionLowerLimit = params.get("RetentionLowerLimit")
+        self._MaxMessageDelay = params.get("MaxMessageDelay")
+        self._OnSale = params.get("OnSale")
+        if params.get("PriceTags") is not None:
+            self._PriceTags = []
+            for item in params.get("PriceTags"):
+                obj = PriceTag()
+                obj._deserialize(item)
+                self._PriceTags.append(obj)
+        self._TopicNumUpperLimit = params.get("TopicNumUpperLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

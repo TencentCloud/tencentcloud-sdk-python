@@ -1294,6 +1294,11 @@ def test_import_tsf():
     from tencentcloud.tsf.v20180326 import models
 
 
+def test_import_tsi():
+    from tencentcloud.tsi.v20210325 import tsi_client
+    from tencentcloud.tsi.v20210325 import models
+
+
 def test_import_tsw():
     from tencentcloud.tsw.v20200924 import tsw_client
     from tencentcloud.tsw.v20200924 import models

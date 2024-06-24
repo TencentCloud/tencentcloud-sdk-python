@@ -8235,6 +8235,131 @@ class DataEngineInfo(AbstractModel):
         
 
 
+class DataEngineScaleInfo(AbstractModel):
+    """引擎规格详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataEngineId: 引擎ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataEngineId: str
+        :param _DataEngineName: 引擎名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataEngineName: str
+        :param _ScaleDetail: 引擎规格详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScaleDetail: list of DataEngineScaleInfoDetail
+        """
+        self._DataEngineId = None
+        self._DataEngineName = None
+        self._ScaleDetail = None
+
+    @property
+    def DataEngineId(self):
+        return self._DataEngineId
+
+    @DataEngineId.setter
+    def DataEngineId(self, DataEngineId):
+        self._DataEngineId = DataEngineId
+
+    @property
+    def DataEngineName(self):
+        return self._DataEngineName
+
+    @DataEngineName.setter
+    def DataEngineName(self, DataEngineName):
+        self._DataEngineName = DataEngineName
+
+    @property
+    def ScaleDetail(self):
+        return self._ScaleDetail
+
+    @ScaleDetail.setter
+    def ScaleDetail(self, ScaleDetail):
+        self._ScaleDetail = ScaleDetail
+
+
+    def _deserialize(self, params):
+        self._DataEngineId = params.get("DataEngineId")
+        self._DataEngineName = params.get("DataEngineName")
+        if params.get("ScaleDetail") is not None:
+            self._ScaleDetail = []
+            for item in params.get("ScaleDetail"):
+                obj = DataEngineScaleInfoDetail()
+                obj._deserialize(item)
+                self._ScaleDetail.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DataEngineScaleInfoDetail(AbstractModel):
+    """引擎规格详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 统计开始时间，格式为：yyyy-MM-dd HH:mm:ss
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _EndTime: 统计结束时间，格式为：yyyy-MM-dd HH:mm:ss
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _CU: 当前统计时间段，引擎规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CU: int
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._CU = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def CU(self):
+        return self._CU
+
+    @CU.setter
+    def CU(self, CU):
+        self._CU = CU
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._CU = params.get("CU")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DataFormat(AbstractModel):
     """数据表数据格式。
 
@@ -11556,6 +11681,106 @@ class DescribeDataEnginesResponse(AbstractModel):
                 obj._deserialize(item)
                 self._DataEngines.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDataEnginesScaleDetailRequest(AbstractModel):
+    """DescribeDataEnginesScaleDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataEngineNames: 引擎名称列表
+        :type DataEngineNames: list of str
+        :param _StartTime: 开始时间，时间格式：yyyy-MM-dd HH:mm:ss，最长查询一个月内的记录
+        :type StartTime: str
+        :param _EndTime: 结束时间，时间格式：yyyy-MM-dd HH:mm:ss，最长查询一个月内的记录
+        :type EndTime: str
+        """
+        self._DataEngineNames = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def DataEngineNames(self):
+        return self._DataEngineNames
+
+    @DataEngineNames.setter
+    def DataEngineNames(self, DataEngineNames):
+        self._DataEngineNames = DataEngineNames
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._DataEngineNames = params.get("DataEngineNames")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataEnginesScaleDetailResponse(AbstractModel):
+    """DescribeDataEnginesScaleDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Scales: 引擎规格统计详细信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Scales: list of DataEngineScaleInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Scales = None
+        self._RequestId = None
+
+    @property
+    def Scales(self):
+        return self._Scales
+
+    @Scales.setter
+    def Scales(self, Scales):
+        self._Scales = Scales
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Scales") is not None:
+            self._Scales = []
+            for item in params.get("Scales"):
+                obj = DataEngineScaleInfo()
+                obj._deserialize(item)
+                self._Scales.append(obj)
         self._RequestId = params.get("RequestId")
 
 

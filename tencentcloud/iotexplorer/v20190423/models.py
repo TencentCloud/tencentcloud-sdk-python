@@ -7812,6 +7812,190 @@ class DescribeFenceEventListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeFirmwareRequest(AbstractModel):
+    """DescribeFirmware请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductID: 产品ID
+        :type ProductID: str
+        :param _FirmwareVersion: 固件版本号
+        :type FirmwareVersion: str
+        """
+        self._ProductID = None
+        self._FirmwareVersion = None
+
+    @property
+    def ProductID(self):
+        return self._ProductID
+
+    @ProductID.setter
+    def ProductID(self, ProductID):
+        self._ProductID = ProductID
+
+    @property
+    def FirmwareVersion(self):
+        return self._FirmwareVersion
+
+    @FirmwareVersion.setter
+    def FirmwareVersion(self, FirmwareVersion):
+        self._FirmwareVersion = FirmwareVersion
+
+
+    def _deserialize(self, params):
+        self._ProductID = params.get("ProductID")
+        self._FirmwareVersion = params.get("FirmwareVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFirmwareResponse(AbstractModel):
+    """DescribeFirmware返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Version: 固件版本号
+        :type Version: str
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _Name: 固件名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Description: 固件描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _Md5sum: 固件Md5值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Md5sum: str
+        :param _Createtime: 固件上传的秒级时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Createtime: int
+        :param _ProductName: 产品名称
+        :type ProductName: str
+        :param _FwType: 固件升级模块
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FwType: str
+        :param _UserDefined: 固件用户自定义配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserDefined: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Version = None
+        self._ProductId = None
+        self._Name = None
+        self._Description = None
+        self._Md5sum = None
+        self._Createtime = None
+        self._ProductName = None
+        self._FwType = None
+        self._UserDefined = None
+        self._RequestId = None
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Md5sum(self):
+        return self._Md5sum
+
+    @Md5sum.setter
+    def Md5sum(self, Md5sum):
+        self._Md5sum = Md5sum
+
+    @property
+    def Createtime(self):
+        return self._Createtime
+
+    @Createtime.setter
+    def Createtime(self, Createtime):
+        self._Createtime = Createtime
+
+    @property
+    def ProductName(self):
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
+
+    @property
+    def FwType(self):
+        return self._FwType
+
+    @FwType.setter
+    def FwType(self, FwType):
+        self._FwType = FwType
+
+    @property
+    def UserDefined(self):
+        return self._UserDefined
+
+    @UserDefined.setter
+    def UserDefined(self, UserDefined):
+        self._UserDefined = UserDefined
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Version = params.get("Version")
+        self._ProductId = params.get("ProductId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Md5sum = params.get("Md5sum")
+        self._Createtime = params.get("Createtime")
+        self._ProductName = params.get("ProductName")
+        self._FwType = params.get("FwType")
+        self._UserDefined = params.get("UserDefined")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeFirmwareTaskRequest(AbstractModel):
     """DescribeFirmwareTask请求参数结构体
 

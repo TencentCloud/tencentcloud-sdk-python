@@ -72,6 +72,29 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ConvertDocument(self, request):
+        """接口支持图片和PDF转可编辑word格式文件，将文件中的图片、文本、表格等元素识别，并根据位置进行还原。
+
+        :param request: Request instance for ConvertDocument.
+        :type request: :class:`tencentcloud.lke.v20231130.models.ConvertDocumentRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.ConvertDocumentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ConvertDocument", params, headers=headers)
+            response = json.loads(body)
+            model = models.ConvertDocumentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateApp(self, request):
         """创建知识引擎应用。
 
@@ -742,6 +765,29 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetAnswerTypeDataCount(self, request):
+        """回答类型数据统计
+
+        :param request: Request instance for GetAnswerTypeDataCount.
+        :type request: :class:`tencentcloud.lke.v20231130.models.GetAnswerTypeDataCountRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.GetAnswerTypeDataCountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetAnswerTypeDataCount", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetAnswerTypeDataCountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetAppKnowledgeCount(self, request):
         """获取模型列表
 
@@ -826,6 +872,29 @@ class LkeClient(AbstractClient):
             body = self.call("GetEmbedding", params, headers=headers)
             response = json.loads(body)
             model = models.GetEmbeddingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetLikeDataCount(self, request):
+        """点赞点踩数据统计
+
+        :param request: Request instance for GetLikeDataCount.
+        :type request: :class:`tencentcloud.lke.v20231130.models.GetLikeDataCountRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.GetLikeDataCountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetLikeDataCount", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetLikeDataCountResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
