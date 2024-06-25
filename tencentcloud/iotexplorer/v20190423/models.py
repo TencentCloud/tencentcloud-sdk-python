@@ -1242,6 +1242,102 @@ class CancelAssignTWeCallLicenseResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CheckFirmwareUpdateRequest(AbstractModel):
+    """CheckFirmwareUpdate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID。
+        :type ProductId: str
+        :param _DeviceName: 设备名称。
+        :type DeviceName: str
+        """
+        self._ProductId = None
+        self._DeviceName = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckFirmwareUpdateResponse(AbstractModel):
+    """CheckFirmwareUpdate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CurrentVersion: 设备当前固件版本。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentVersion: str
+        :param _DstVersion: 固件可升级版本。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DstVersion: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CurrentVersion = None
+        self._DstVersion = None
+        self._RequestId = None
+
+    @property
+    def CurrentVersion(self):
+        return self._CurrentVersion
+
+    @CurrentVersion.setter
+    def CurrentVersion(self, CurrentVersion):
+        self._CurrentVersion = CurrentVersion
+
+    @property
+    def DstVersion(self):
+        return self._DstVersion
+
+    @DstVersion.setter
+    def DstVersion(self, DstVersion):
+        self._DstVersion = DstVersion
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CurrentVersion = params.get("CurrentVersion")
+        self._DstVersion = params.get("DstVersion")
+        self._RequestId = params.get("RequestId")
+
+
 class CloudStorageAIServiceTask(AbstractModel):
     """云存 AI 服务任务信息
 
@@ -8205,6 +8301,139 @@ class DescribeFirmwareTaskResponse(AbstractModel):
         self._OriginalVersion = params.get("OriginalVersion")
         self._CreateUserId = params.get("CreateUserId")
         self._CreatorNickName = params.get("CreatorNickName")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFirmwareUpdateStatusRequest(AbstractModel):
+    """DescribeFirmwareUpdateStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品 ID。
+        :type ProductId: str
+        :param _DeviceName: 设备名。
+        :type DeviceName: str
+        """
+        self._ProductId = None
+        self._DeviceName = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFirmwareUpdateStatusResponse(AbstractModel):
+    """DescribeFirmwareUpdateStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OriVersion: 升级任务源版本。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriVersion: str
+        :param _DstVersion: 升级任务目标版本。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DstVersion: str
+        :param _Status: 升级状态：
+
+- 0：设备离线。
+- 1：待处理。
+- 2：消息下发成功。
+- 3：下载中。
+- 4：烧录中。
+- 5：失败。
+- 6：升级完成。
+- 7：正在处理中。
+- 8：等待用户确认。
+- 20：下载完成。
+
+        :type Status: int
+        :param _Percent: 进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Percent: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._OriVersion = None
+        self._DstVersion = None
+        self._Status = None
+        self._Percent = None
+        self._RequestId = None
+
+    @property
+    def OriVersion(self):
+        return self._OriVersion
+
+    @OriVersion.setter
+    def OriVersion(self, OriVersion):
+        self._OriVersion = OriVersion
+
+    @property
+    def DstVersion(self):
+        return self._DstVersion
+
+    @DstVersion.setter
+    def DstVersion(self, DstVersion):
+        self._DstVersion = DstVersion
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Percent(self):
+        return self._Percent
+
+    @Percent.setter
+    def Percent(self, Percent):
+        self._Percent = Percent
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._OriVersion = params.get("OriVersion")
+        self._DstVersion = params.get("DstVersion")
+        self._Status = params.get("Status")
+        self._Percent = params.get("Percent")
         self._RequestId = params.get("RequestId")
 
 
@@ -17569,6 +17798,89 @@ class PublishBroadcastMessageResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class PublishFirmwareUpdateMessageRequest(AbstractModel):
+    """PublishFirmwareUpdateMessage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductID: 产品 ID。
+        :type ProductID: str
+        :param _DeviceName: 设备名称。
+        :type DeviceName: str
+        """
+        self._ProductID = None
+        self._DeviceName = None
+
+    @property
+    def ProductID(self):
+        return self._ProductID
+
+    @ProductID.setter
+    def ProductID(self, ProductID):
+        self._ProductID = ProductID
+
+    @property
+    def DeviceName(self):
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+
+    def _deserialize(self, params):
+        self._ProductID = params.get("ProductID")
+        self._DeviceName = params.get("DeviceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PublishFirmwareUpdateMessageResponse(AbstractModel):
+    """PublishFirmwareUpdateMessage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 请求状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
         self._RequestId = params.get("RequestId")
 
 

@@ -60,6 +60,9 @@ class AgentAuditedClient(AbstractModel):
         :param _Mail: 代客邮箱
 注意：此字段可能返回 null，表示取不到有效值。
         :type Mail: str
+        :param _TransactionType: 交易类型:交易类型 1-原类型 2-代理型  3-代采型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransactionType: str
         """
         self._Uin = None
         self._ClientUin = None
@@ -77,6 +80,7 @@ class AgentAuditedClient(AbstractModel):
         self._SalesUin = None
         self._SalesName = None
         self._Mail = None
+        self._TransactionType = None
 
     @property
     def Uin(self):
@@ -206,6 +210,14 @@ class AgentAuditedClient(AbstractModel):
     def Mail(self, Mail):
         self._Mail = Mail
 
+    @property
+    def TransactionType(self):
+        return self._TransactionType
+
+    @TransactionType.setter
+    def TransactionType(self, TransactionType):
+        self._TransactionType = TransactionType
+
 
     def _deserialize(self, params):
         self._Uin = params.get("Uin")
@@ -224,6 +236,7 @@ class AgentAuditedClient(AbstractModel):
         self._SalesUin = params.get("SalesUin")
         self._SalesName = params.get("SalesName")
         self._Mail = params.get("Mail")
+        self._TransactionType = params.get("TransactionType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

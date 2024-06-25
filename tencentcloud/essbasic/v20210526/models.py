@@ -3796,8 +3796,10 @@ class ChannelCreateFlowSignReviewRequest(AbstractModel):
 <li>当ReviewType 是拒绝（REJECT） 时此字段必填。</li>
 <li>当ReviewType 是拒绝（SIGN_REJECT） 时此字段必填。</li></ul>
         :type ReviewMessage: str
-        :param _RecipientId: 审核节点的签署人标志，用于指定当前审核的签署方
-<ul><li>**如果签署审核节点是个人， 此参数必填**。</li></ul>
+        :param _RecipientId: 审核节点的签署人标志，用于指定当前审核的签署方。
+<font color= "red">注意：以下情况必须传递RecipientId</font>
+<ul><li> **发起签署流程时，指定签署人需要审批（即签署人需要审批
+<a href="https://qian.tencent.com/developers/partnerApis/dataTypes#flowapproverinfo" target="_blank">ApproverNeedSignReview</a>为true），则必须指定RecipientId**</li><li>**如果签署审核节点是个人， 此参数必填**。</li></ul>
         :type RecipientId: str
         :param _OperateType: 流程审核操作类型，取值如下：
 <ul><li>**SignReview**：（默认）签署审核</li>
@@ -10022,7 +10024,7 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
 `3. 同渠道应用(Agent.AppId)下，企业唯一标识ProxyOrganizationOpenId需要保持唯一，员工唯一标识OpenId也要保持唯一 (而不是企业下唯一)。 `
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param _ProxyOrganizationName: 第三方平台子客的企业名称，请确认该企业名称与企业营业执照中注册的名称完全一致。
-在测试环境联调的过程中，企业名称请统一加上“测试”二字，如：典子谦示例企业测试，否则将无法审核通过。
+<font color="red">在测试环境联调的过程中，企业名称请统一加上“测试”二字，如：典子谦示例企业测试，否则将无法审核通过。</font>
 
 注:
  `1. 如果名称中包含英文括号()，请使用中文括号（）代替。`

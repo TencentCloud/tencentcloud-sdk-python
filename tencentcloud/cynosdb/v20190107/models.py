@@ -1034,6 +1034,9 @@ class AuditLog(AbstractModel):
         :param _TemplateInfo: 日志命中规则模板的基本信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateInfo: list of LogRuleTemplateInfo
+        :param _TrxId: 事务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrxId: int
         """
         self._AffectRows = None
         self._ErrCode = None
@@ -1056,6 +1059,7 @@ class AuditLog(AbstractModel):
         self._TrxLivingTime = None
         self._NsTime = None
         self._TemplateInfo = None
+        self._TrxId = None
 
     @property
     def AffectRows(self):
@@ -1225,6 +1229,14 @@ class AuditLog(AbstractModel):
     def TemplateInfo(self, TemplateInfo):
         self._TemplateInfo = TemplateInfo
 
+    @property
+    def TrxId(self):
+        return self._TrxId
+
+    @TrxId.setter
+    def TrxId(self, TrxId):
+        self._TrxId = TrxId
+
 
     def _deserialize(self, params):
         self._AffectRows = params.get("AffectRows")
@@ -1253,6 +1265,7 @@ class AuditLog(AbstractModel):
                 obj = LogRuleTemplateInfo()
                 obj._deserialize(item)
                 self._TemplateInfo.append(obj)
+        self._TrxId = params.get("TrxId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

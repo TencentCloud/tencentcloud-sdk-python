@@ -27,7 +27,7 @@ class CreateTtsTaskRequest(AbstractModel):
         r"""
         :param _Text: 合成语音的源文本，按UTF-8编码统一计算，最多支持10万字符
         :type Text: str
-        :param _Volume: 音量大小，范围：[0，10]，分别对应11个等级的音量，默认为0，代表正常音量。没有静音选项。
+        :param _Volume: 音量大小，范围：[-10，10]，分别对应11个等级的音量，默认为0，代表正常音量。没有静音选项。
         :type Volume: float
         :param _Speed: 语速，范围：[-2，2]，分别对应不同语速：<li>-2代表0.6倍</li><li>-1代表0.8倍</li><li>0代表1.0倍（默认）</li><li>1代表1.2倍</li><li>2代表1.5倍</li>如果需要更细化的语速，可以保留小数点后 2 位，例如0.5/1.25/2.81等。<br>参数值与实际语速转换，可参考[代码示例](https://sdk-1300466766.cos.ap-shanghai.myqcloud.com/sample/speed_sample.tar.gz)
         :type Speed: float
@@ -555,7 +555,7 @@ class TextToVoiceRequest(AbstractModel):
         :type Text: str
         :param _SessionId: 一次请求对应一个SessionId，会原样返回，建议传入类似于uuid的字符串防止重复。
         :type SessionId: str
-        :param _Volume: 音量大小，范围[0，10]，对应音量大小。默认为0，代表正常音量，值越大音量越高。
+        :param _Volume: 音量大小，范围[-10，10]，对应音量大小。默认为0，代表正常音量，值越大音量越高。
         :type Volume: float
         :param _Speed: 语速，范围：[-2，6]，分别对应不同语速：<li>-2代表0.6倍</li><li>-1代表0.8倍</li><li>0代表1.0倍（默认）</li><li>1代表1.2倍</li><li>2代表1.5倍</li><li>6代表2.5倍</li>如果需要更细化的语速，可以保留小数点后 2 位，例如0.5/1.25/2.81等。<br>参数值与实际语速转换，可参考[代码示例](https://sdk-1300466766.cos.ap-shanghai.myqcloud.com/sample/speed_sample.tar.gz)
         :type Speed: float

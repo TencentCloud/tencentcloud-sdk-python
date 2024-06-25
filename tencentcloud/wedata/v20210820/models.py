@@ -58888,6 +58888,545 @@ class UploadContentResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class UploadResourceRequest(AbstractModel):
+    """UploadResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UploadResourceRequestInfo: 资源上传请求信息
+        :type UploadResourceRequestInfo: :class:`tencentcloud.wedata.v20210820.models.UploadResourceRequestInfo`
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        """
+        self._UploadResourceRequestInfo = None
+        self._ProjectId = None
+
+    @property
+    def UploadResourceRequestInfo(self):
+        return self._UploadResourceRequestInfo
+
+    @UploadResourceRequestInfo.setter
+    def UploadResourceRequestInfo(self, UploadResourceRequestInfo):
+        self._UploadResourceRequestInfo = UploadResourceRequestInfo
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+
+    def _deserialize(self, params):
+        if params.get("UploadResourceRequestInfo") is not None:
+            self._UploadResourceRequestInfo = UploadResourceRequestInfo()
+            self._UploadResourceRequestInfo._deserialize(params.get("UploadResourceRequestInfo"))
+        self._ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UploadResourceRequestInfo(AbstractModel):
+    """资管管理-上传资源请求
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _FilePath: 资源路径
+        :type FilePath: str
+        :param _BucketName: 桶名称
+        :type BucketName: str
+        :param _Region: 所属地区
+        :type Region: str
+        :param _NewFile: 是否为新资源
+        :type NewFile: bool
+        :param _FileList: 资源列表
+        :type FileList: list of str
+        :param _FileSizeList: 资源大小列表
+        :type FileSizeList: list of str
+        :param _FileMd5: File Md5（适配私有化，公有云可以不传）
+        :type FileMd5: str
+        """
+        self._ProjectId = None
+        self._FilePath = None
+        self._BucketName = None
+        self._Region = None
+        self._NewFile = None
+        self._FileList = None
+        self._FileSizeList = None
+        self._FileMd5 = None
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def FilePath(self):
+        return self._FilePath
+
+    @FilePath.setter
+    def FilePath(self, FilePath):
+        self._FilePath = FilePath
+
+    @property
+    def BucketName(self):
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def NewFile(self):
+        return self._NewFile
+
+    @NewFile.setter
+    def NewFile(self, NewFile):
+        self._NewFile = NewFile
+
+    @property
+    def FileList(self):
+        return self._FileList
+
+    @FileList.setter
+    def FileList(self, FileList):
+        self._FileList = FileList
+
+    @property
+    def FileSizeList(self):
+        return self._FileSizeList
+
+    @FileSizeList.setter
+    def FileSizeList(self, FileSizeList):
+        self._FileSizeList = FileSizeList
+
+    @property
+    def FileMd5(self):
+        return self._FileMd5
+
+    @FileMd5.setter
+    def FileMd5(self, FileMd5):
+        self._FileMd5 = FileMd5
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._FilePath = params.get("FilePath")
+        self._BucketName = params.get("BucketName")
+        self._Region = params.get("Region")
+        self._NewFile = params.get("NewFile")
+        self._FileList = params.get("FileList")
+        self._FileSizeList = params.get("FileSizeList")
+        self._FileMd5 = params.get("FileMd5")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UploadResourceResponse(AbstractModel):
+    """UploadResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 资源文件信息列表
+        :type Data: list of UserFileDTONew
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = UserFileDTONew()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class UserFileDTONew(AbstractModel):
+    """用户文件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 资源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: str
+        :param _FileName: 文件名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileName: str
+        :param _FileExtensionType: 文件类型，如 jar zip 等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileExtensionType: str
+        :param _Type: 文件上传类型，资源管理为 resource
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Md5Value: 文件MD5值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Md5Value: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _Size: 文件大小，单位为字节
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Size: int
+        :param _LocalPath: 本地路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocalPath: str
+        :param _LocalTempPath: 本地临时路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocalTempPath: str
+        :param _RemotePath: 远程路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemotePath: str
+        :param _OwnerName: 文件拥有者名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerName: str
+        :param _Owner: 文件拥有者uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Owner: str
+        :param _PathDepth: 文件深度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PathDepth: str
+        :param _ProjectId: 项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param _ExtraInfo: 附加信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtraInfo: str
+        :param _ZipPath: 本地临时压缩文件绝对路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZipPath: str
+        :param _Bucket: 文件所属存储桶
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Bucket: str
+        :param _Region: 文件所属存储桶的地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param _DeleteName: 删除用户名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeleteName: str
+        :param _DeleteOwner: 删除用户id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeleteOwner: str
+        :param _Operator: 操作者id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operator: str
+        :param _OperatorName: 操作者名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperatorName: str
+        :param _FullPath: 全路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FullPath: str
+        """
+        self._ResourceId = None
+        self._FileName = None
+        self._FileExtensionType = None
+        self._Type = None
+        self._Md5Value = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Size = None
+        self._LocalPath = None
+        self._LocalTempPath = None
+        self._RemotePath = None
+        self._OwnerName = None
+        self._Owner = None
+        self._PathDepth = None
+        self._ProjectId = None
+        self._ExtraInfo = None
+        self._ZipPath = None
+        self._Bucket = None
+        self._Region = None
+        self._DeleteName = None
+        self._DeleteOwner = None
+        self._Operator = None
+        self._OperatorName = None
+        self._FullPath = None
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileExtensionType(self):
+        return self._FileExtensionType
+
+    @FileExtensionType.setter
+    def FileExtensionType(self, FileExtensionType):
+        self._FileExtensionType = FileExtensionType
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Md5Value(self):
+        return self._Md5Value
+
+    @Md5Value.setter
+    def Md5Value(self, Md5Value):
+        self._Md5Value = Md5Value
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Size(self):
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def LocalPath(self):
+        return self._LocalPath
+
+    @LocalPath.setter
+    def LocalPath(self, LocalPath):
+        self._LocalPath = LocalPath
+
+    @property
+    def LocalTempPath(self):
+        return self._LocalTempPath
+
+    @LocalTempPath.setter
+    def LocalTempPath(self, LocalTempPath):
+        self._LocalTempPath = LocalTempPath
+
+    @property
+    def RemotePath(self):
+        return self._RemotePath
+
+    @RemotePath.setter
+    def RemotePath(self, RemotePath):
+        self._RemotePath = RemotePath
+
+    @property
+    def OwnerName(self):
+        return self._OwnerName
+
+    @OwnerName.setter
+    def OwnerName(self, OwnerName):
+        self._OwnerName = OwnerName
+
+    @property
+    def Owner(self):
+        return self._Owner
+
+    @Owner.setter
+    def Owner(self, Owner):
+        self._Owner = Owner
+
+    @property
+    def PathDepth(self):
+        return self._PathDepth
+
+    @PathDepth.setter
+    def PathDepth(self, PathDepth):
+        self._PathDepth = PathDepth
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ExtraInfo(self):
+        return self._ExtraInfo
+
+    @ExtraInfo.setter
+    def ExtraInfo(self, ExtraInfo):
+        self._ExtraInfo = ExtraInfo
+
+    @property
+    def ZipPath(self):
+        return self._ZipPath
+
+    @ZipPath.setter
+    def ZipPath(self, ZipPath):
+        self._ZipPath = ZipPath
+
+    @property
+    def Bucket(self):
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def DeleteName(self):
+        return self._DeleteName
+
+    @DeleteName.setter
+    def DeleteName(self, DeleteName):
+        self._DeleteName = DeleteName
+
+    @property
+    def DeleteOwner(self):
+        return self._DeleteOwner
+
+    @DeleteOwner.setter
+    def DeleteOwner(self, DeleteOwner):
+        self._DeleteOwner = DeleteOwner
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def OperatorName(self):
+        return self._OperatorName
+
+    @OperatorName.setter
+    def OperatorName(self, OperatorName):
+        self._OperatorName = OperatorName
+
+    @property
+    def FullPath(self):
+        return self._FullPath
+
+    @FullPath.setter
+    def FullPath(self, FullPath):
+        self._FullPath = FullPath
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._FileName = params.get("FileName")
+        self._FileExtensionType = params.get("FileExtensionType")
+        self._Type = params.get("Type")
+        self._Md5Value = params.get("Md5Value")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Size = params.get("Size")
+        self._LocalPath = params.get("LocalPath")
+        self._LocalTempPath = params.get("LocalTempPath")
+        self._RemotePath = params.get("RemotePath")
+        self._OwnerName = params.get("OwnerName")
+        self._Owner = params.get("Owner")
+        self._PathDepth = params.get("PathDepth")
+        self._ProjectId = params.get("ProjectId")
+        self._ExtraInfo = params.get("ExtraInfo")
+        self._ZipPath = params.get("ZipPath")
+        self._Bucket = params.get("Bucket")
+        self._Region = params.get("Region")
+        self._DeleteName = params.get("DeleteName")
+        self._DeleteOwner = params.get("DeleteOwner")
+        self._Operator = params.get("Operator")
+        self._OperatorName = params.get("OperatorName")
+        self._FullPath = params.get("FullPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UserFileInfo(AbstractModel):
     """开发空间-获取数据开发脚本信息响应体
 

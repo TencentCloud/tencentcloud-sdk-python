@@ -31110,10 +31110,13 @@ class PrometheusAgentInfo(AbstractModel):
         :type ClusterId: str
         :param _Describe: 备注
         :type Describe: str
+        :param _Region: 集群所在地域
+        :type Region: str
         """
         self._ClusterType = None
         self._ClusterId = None
         self._Describe = None
+        self._Region = None
 
     @property
     def ClusterType(self):
@@ -31139,11 +31142,20 @@ class PrometheusAgentInfo(AbstractModel):
     def Describe(self, Describe):
         self._Describe = Describe
 
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
 
     def _deserialize(self, params):
         self._ClusterType = params.get("ClusterType")
         self._ClusterId = params.get("ClusterId")
         self._Describe = params.get("Describe")
+        self._Region = params.get("Region")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

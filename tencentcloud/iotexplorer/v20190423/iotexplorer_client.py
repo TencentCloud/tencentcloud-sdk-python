@@ -210,6 +210,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CheckFirmwareUpdate(self, request):
+        """本接口（CheckFirmwareUpdate）用于查询设备可升级固件版本
+
+        :param request: Request instance for CheckFirmwareUpdate.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CheckFirmwareUpdateRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.CheckFirmwareUpdateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckFirmwareUpdate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckFirmwareUpdateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ControlDeviceData(self, request):
         """根据设备产品ID、设备名称，设置控制设备的属性数据。
 
@@ -1521,6 +1544,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeFirmwareUpdateStatus(self, request):
+        """本接口（DescribeFirmwareUpdateStatus）用于查询设备固件升级状态及进度。
+
+        :param request: Request instance for DescribeFirmwareUpdateStatus.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeFirmwareUpdateStatusRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeFirmwareUpdateStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFirmwareUpdateStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFirmwareUpdateStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeGatewayBindDevices(self, request):
         """获取网关绑定的子设备列表
 
@@ -2823,6 +2869,29 @@ class IotexplorerClient(AbstractClient):
             body = self.call("PublishBroadcastMessage", params, headers=headers)
             response = json.loads(body)
             model = models.PublishBroadcastMessageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def PublishFirmwareUpdateMessage(self, request):
+        """本接口（PublishFirmwareUpdateMessage）用于用户确认升级后，云端向设备发起固件升级请求。
+
+        :param request: Request instance for PublishFirmwareUpdateMessage.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.PublishFirmwareUpdateMessageRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.PublishFirmwareUpdateMessageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("PublishFirmwareUpdateMessage", params, headers=headers)
+            response = json.loads(body)
+            model = models.PublishFirmwareUpdateMessageResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

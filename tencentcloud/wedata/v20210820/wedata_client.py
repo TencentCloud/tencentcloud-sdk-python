@@ -5141,3 +5141,26 @@ class WedataClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UploadResource(self, request):
+        """资源管理-上传资源
+
+        :param request: Request instance for UploadResource.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.UploadResourceRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.UploadResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UploadResource", params, headers=headers)
+            response = json.loads(body)
+            model = models.UploadResourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))

@@ -5354,7 +5354,7 @@ class ClusterInfoItem(AbstractModel):
         :type ClusterNodeNum: int
         :param _Region: 集群区域
         :type Region: str
-        :param _DefenderStatus: 监控组件的状态，为Defender_Uninstall、Defender_Normal、Defender_Error、Defender_Installing
+        :param _DefenderStatus: 防护状态: 已防护: Defended 未防护: UnDefended
         :type DefenderStatus: str
         :param _ClusterStatus: 集群状态
         :type ClusterStatus: str
@@ -5403,9 +5403,13 @@ class ClusterInfoItem(AbstractModel):
         :param _UnInstallAgentNodeCount: 未安装agent节点数
 注意：此字段可能返回 null，表示取不到有效值。
         :type UnInstallAgentNodeCount: int
-        :param _ChargeCoresCnt: 计费核数
+        :param _ChargeCoresCnt: 计费核数(弹性计费核数+普通计费核数)
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChargeCoresCnt: int
+        :param _MasterAddresses: master 地址列表
+        :type MasterAddresses: list of str
+        :param _CoresCnt: 核数
+        :type CoresCnt: int
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -5433,6 +5437,8 @@ class ClusterInfoItem(AbstractModel):
         self._OffLineNodeCount = None
         self._UnInstallAgentNodeCount = None
         self._ChargeCoresCnt = None
+        self._MasterAddresses = None
+        self._CoresCnt = None
 
     @property
     def ClusterId(self):
@@ -5642,6 +5648,22 @@ class ClusterInfoItem(AbstractModel):
     def ChargeCoresCnt(self, ChargeCoresCnt):
         self._ChargeCoresCnt = ChargeCoresCnt
 
+    @property
+    def MasterAddresses(self):
+        return self._MasterAddresses
+
+    @MasterAddresses.setter
+    def MasterAddresses(self, MasterAddresses):
+        self._MasterAddresses = MasterAddresses
+
+    @property
+    def CoresCnt(self):
+        return self._CoresCnt
+
+    @CoresCnt.setter
+    def CoresCnt(self, CoresCnt):
+        self._CoresCnt = CoresCnt
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -5670,6 +5692,8 @@ class ClusterInfoItem(AbstractModel):
         self._OffLineNodeCount = params.get("OffLineNodeCount")
         self._UnInstallAgentNodeCount = params.get("UnInstallAgentNodeCount")
         self._ChargeCoresCnt = params.get("ChargeCoresCnt")
+        self._MasterAddresses = params.get("MasterAddresses")
+        self._CoresCnt = params.get("CoresCnt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19400,17 +19424,7 @@ class DescribeAssetHostListRequest(AbstractModel):
         :type Limit: int
         :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param _Filters: 过滤条件。
-<li>Status - String - 是否必填：否 - agent状态筛选，"ALL":"全部"(或不传该字段),"UNINSTALL"："未安装","OFFLINE"："离线", "ONLINE"："防护中"</li>
-<li>HostName - String - 是否必填：否 - 主机名筛选</li>
-<li>Group- String - 是否必填：否 - 主机群组搜索</li>
-<li>HostIP- string - 是否必填：否 - 主机ip搜索</li>
-<li>HostID- string - 是否必填：否 - 主机id搜索</li>
-<li>DockerVersion- string - 是否必填：否 - docker版本搜索</li>
-<li>MachineType- string - 是否必填：否 - 主机来源MachineType搜索，"ALL":"全部"(或不传该字段),主机来源：["CVM", "ECM", "LH", "BM"]  中的之一为腾讯云服务器；["Other"]之一非腾讯云服务器；</li>
-<li>DockerStatus- string - 是否必填：否 - docker安装状态，"ALL":"全部"(或不传该字段),"INSTALL":"已安装","UNINSTALL":"未安装"</li>
-<li>ProjectID- string - 是否必填：否 - 所属项目id搜索</li>
-<li>Tag:xxx(tag:key)- string- 是否必填：否 - 标签键值搜索 示例Filters":[{"Name":"tag:tke-kind","Values":["service"]}]</li>
+        :param _Filters: 过滤条件。 <li>Status - String - 是否必填：否 - agent状态筛选，"ALL":"全部"(或不传该字段),"UNINSTALL"："未安装","OFFLINE"："离线", "ONLINE"："防护中"</li> <li>HostName - String - 是否必填：否 - 主机名筛选</li> <li>Group- String - 是否必填：否 - 主机群组搜索</li> <li>HostIP- string - 是否必填：否 - 主机ip搜索</li> <li>HostID- string - 是否必填：否 - 主机id搜索</li> <li>DockerVersion- string - 是否必填：否 - docker版本搜索</li> <li>MachineType- string - 是否必填：否 - 主机来源MachineType搜索，"ALL":"全部"(或不传该字段),主机来源：["CVM", "ECM", "LH", "BM"]  中的之一为腾讯云服务器；["Other"]之一非腾讯云服务器；</li> <li>DockerStatus- string - 是否必填：否 - docker安装状态，"ALL":"全部"(或不传该字段),"INSTALL":"已安装","UNINSTALL":"未安装"</li> <li>ProjectID- string - 是否必填：否 - 所属项目id搜索</li> <li>Tag:xxx(tag:key)- string- 是否必填：否 - 标签键值搜索 示例Filters":[{"Name":"tag:tke-kind","Values":["service"]}]</li> <li>NonClusterNode: 是否查询非集群节点(true: 是,false: 否)</li>
         :type Filters: list of AssetFilters
         :param _By: 排序字段
         :type By: str
@@ -33357,24 +33371,33 @@ class DescribePurchaseStateInfoResponse(AbstractModel):
         r"""
         :param _State: 0：可申请试用可购买；1：只可购买(含试用审核不通过和试用过期)；2：试用生效中；3：专业版生效中；4：专业版过期
         :type State: int
-        :param _CoresCnt: 总核数
+        :param _AllCoresCnt: 总资源核数 = 总防护核数 + 未防护核数
+        :type AllCoresCnt: int
+        :param _CoresCnt: 总防护核数 =已购核数+ 试用赠送核数 +弹性计费核数
 注意：此字段可能返回 null，表示取不到有效值。
         :type CoresCnt: int
+        :param _UndefendCoresCnt: 未防护核数(未开启防护资源核数)
+        :type UndefendCoresCnt: int
         :param _AuthorizedCoresCnt: 已购买核数
 注意：此字段可能返回 null，表示取不到有效值。
         :type AuthorizedCoresCnt: int
+        :param _GivenAuthorizedCoresCnt: 试用赠送专业版核心数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GivenAuthorizedCoresCnt: int
+        :param _CurrentFlexibleCoresCnt: 当前弹性计费核数数量
+        :type CurrentFlexibleCoresCnt: int
         :param _ImageCnt: 镜像数
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageCnt: int
         :param _AuthorizedImageCnt: 已授权镜像数
 注意：此字段可能返回 null，表示取不到有效值。
         :type AuthorizedImageCnt: int
-        :param _PurchasedAuthorizedCnt: 已购买镜像授权数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PurchasedAuthorizedCnt: int
         :param _ExpirationTime: 过期时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpirationTime: str
+        :param _PurchasedAuthorizedCnt: 已购买镜像授权数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PurchasedAuthorizedCnt: int
         :param _AutomaticRenewal: 0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutomaticRenewal: int
@@ -33391,21 +33414,37 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
         :param _InquireKey: 计费key
 注意：此字段可能返回 null，表示取不到有效值。
         :type InquireKey: str
+        :param _DefendPolicy: 防护策略
+        :type DefendPolicy: str
+        :param _FlexibleCoresLimit: 弹性计费核数上限
+        :type FlexibleCoresLimit: int
+        :param _DefendClusterCoresCnt: 已防护集群核数
+        :type DefendClusterCoresCnt: int
+        :param _DefendHostCoresCnt: 已防护主机核数
+        :type DefendHostCoresCnt: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._State = None
+        self._AllCoresCnt = None
         self._CoresCnt = None
+        self._UndefendCoresCnt = None
         self._AuthorizedCoresCnt = None
+        self._GivenAuthorizedCoresCnt = None
+        self._CurrentFlexibleCoresCnt = None
         self._ImageCnt = None
         self._AuthorizedImageCnt = None
-        self._PurchasedAuthorizedCnt = None
         self._ExpirationTime = None
+        self._PurchasedAuthorizedCnt = None
         self._AutomaticRenewal = None
         self._GivenAuthorizedCnt = None
         self._BeginTime = None
         self._SubState = None
         self._InquireKey = None
+        self._DefendPolicy = None
+        self._FlexibleCoresLimit = None
+        self._DefendClusterCoresCnt = None
+        self._DefendHostCoresCnt = None
         self._RequestId = None
 
     @property
@@ -33417,6 +33456,14 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
         self._State = State
 
     @property
+    def AllCoresCnt(self):
+        return self._AllCoresCnt
+
+    @AllCoresCnt.setter
+    def AllCoresCnt(self, AllCoresCnt):
+        self._AllCoresCnt = AllCoresCnt
+
+    @property
     def CoresCnt(self):
         return self._CoresCnt
 
@@ -33425,12 +33472,36 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
         self._CoresCnt = CoresCnt
 
     @property
+    def UndefendCoresCnt(self):
+        return self._UndefendCoresCnt
+
+    @UndefendCoresCnt.setter
+    def UndefendCoresCnt(self, UndefendCoresCnt):
+        self._UndefendCoresCnt = UndefendCoresCnt
+
+    @property
     def AuthorizedCoresCnt(self):
         return self._AuthorizedCoresCnt
 
     @AuthorizedCoresCnt.setter
     def AuthorizedCoresCnt(self, AuthorizedCoresCnt):
         self._AuthorizedCoresCnt = AuthorizedCoresCnt
+
+    @property
+    def GivenAuthorizedCoresCnt(self):
+        return self._GivenAuthorizedCoresCnt
+
+    @GivenAuthorizedCoresCnt.setter
+    def GivenAuthorizedCoresCnt(self, GivenAuthorizedCoresCnt):
+        self._GivenAuthorizedCoresCnt = GivenAuthorizedCoresCnt
+
+    @property
+    def CurrentFlexibleCoresCnt(self):
+        return self._CurrentFlexibleCoresCnt
+
+    @CurrentFlexibleCoresCnt.setter
+    def CurrentFlexibleCoresCnt(self, CurrentFlexibleCoresCnt):
+        self._CurrentFlexibleCoresCnt = CurrentFlexibleCoresCnt
 
     @property
     def ImageCnt(self):
@@ -33449,20 +33520,20 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
         self._AuthorizedImageCnt = AuthorizedImageCnt
 
     @property
-    def PurchasedAuthorizedCnt(self):
-        return self._PurchasedAuthorizedCnt
-
-    @PurchasedAuthorizedCnt.setter
-    def PurchasedAuthorizedCnt(self, PurchasedAuthorizedCnt):
-        self._PurchasedAuthorizedCnt = PurchasedAuthorizedCnt
-
-    @property
     def ExpirationTime(self):
         return self._ExpirationTime
 
     @ExpirationTime.setter
     def ExpirationTime(self, ExpirationTime):
         self._ExpirationTime = ExpirationTime
+
+    @property
+    def PurchasedAuthorizedCnt(self):
+        return self._PurchasedAuthorizedCnt
+
+    @PurchasedAuthorizedCnt.setter
+    def PurchasedAuthorizedCnt(self, PurchasedAuthorizedCnt):
+        self._PurchasedAuthorizedCnt = PurchasedAuthorizedCnt
 
     @property
     def AutomaticRenewal(self):
@@ -33505,6 +33576,38 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
         self._InquireKey = InquireKey
 
     @property
+    def DefendPolicy(self):
+        return self._DefendPolicy
+
+    @DefendPolicy.setter
+    def DefendPolicy(self, DefendPolicy):
+        self._DefendPolicy = DefendPolicy
+
+    @property
+    def FlexibleCoresLimit(self):
+        return self._FlexibleCoresLimit
+
+    @FlexibleCoresLimit.setter
+    def FlexibleCoresLimit(self, FlexibleCoresLimit):
+        self._FlexibleCoresLimit = FlexibleCoresLimit
+
+    @property
+    def DefendClusterCoresCnt(self):
+        return self._DefendClusterCoresCnt
+
+    @DefendClusterCoresCnt.setter
+    def DefendClusterCoresCnt(self, DefendClusterCoresCnt):
+        self._DefendClusterCoresCnt = DefendClusterCoresCnt
+
+    @property
+    def DefendHostCoresCnt(self):
+        return self._DefendHostCoresCnt
+
+    @DefendHostCoresCnt.setter
+    def DefendHostCoresCnt(self, DefendHostCoresCnt):
+        self._DefendHostCoresCnt = DefendHostCoresCnt
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -33515,17 +33618,25 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
 
     def _deserialize(self, params):
         self._State = params.get("State")
+        self._AllCoresCnt = params.get("AllCoresCnt")
         self._CoresCnt = params.get("CoresCnt")
+        self._UndefendCoresCnt = params.get("UndefendCoresCnt")
         self._AuthorizedCoresCnt = params.get("AuthorizedCoresCnt")
+        self._GivenAuthorizedCoresCnt = params.get("GivenAuthorizedCoresCnt")
+        self._CurrentFlexibleCoresCnt = params.get("CurrentFlexibleCoresCnt")
         self._ImageCnt = params.get("ImageCnt")
         self._AuthorizedImageCnt = params.get("AuthorizedImageCnt")
-        self._PurchasedAuthorizedCnt = params.get("PurchasedAuthorizedCnt")
         self._ExpirationTime = params.get("ExpirationTime")
+        self._PurchasedAuthorizedCnt = params.get("PurchasedAuthorizedCnt")
         self._AutomaticRenewal = params.get("AutomaticRenewal")
         self._GivenAuthorizedCnt = params.get("GivenAuthorizedCnt")
         self._BeginTime = params.get("BeginTime")
         self._SubState = params.get("SubState")
         self._InquireKey = params.get("InquireKey")
+        self._DefendPolicy = params.get("DefendPolicy")
+        self._FlexibleCoresLimit = params.get("FlexibleCoresLimit")
+        self._DefendClusterCoresCnt = params.get("DefendClusterCoresCnt")
+        self._DefendHostCoresCnt = params.get("DefendHostCoresCnt")
         self._RequestId = params.get("RequestId")
 
 
@@ -45738,6 +45849,8 @@ class HostInfo(AbstractModel):
 已防护: Defended
 未防护: UnDefended
         :type DefendStatus: str
+        :param _CoresCnt: 核数
+        :type CoresCnt: int
         """
         self._HostID = None
         self._HostIP = None
@@ -45761,6 +45874,7 @@ class HostInfo(AbstractModel):
         self._ClusterAccessedStatus = None
         self._ChargeCoresCnt = None
         self._DefendStatus = None
+        self._CoresCnt = None
 
     @property
     def HostID(self):
@@ -45938,6 +46052,14 @@ class HostInfo(AbstractModel):
     def DefendStatus(self, DefendStatus):
         self._DefendStatus = DefendStatus
 
+    @property
+    def CoresCnt(self):
+        return self._CoresCnt
+
+    @CoresCnt.setter
+    def CoresCnt(self, CoresCnt):
+        self._CoresCnt = CoresCnt
+
 
     def _deserialize(self, params):
         self._HostID = params.get("HostID")
@@ -45969,6 +46091,7 @@ class HostInfo(AbstractModel):
         self._ClusterAccessedStatus = params.get("ClusterAccessedStatus")
         self._ChargeCoresCnt = params.get("ChargeCoresCnt")
         self._DefendStatus = params.get("DefendStatus")
+        self._CoresCnt = params.get("CoresCnt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

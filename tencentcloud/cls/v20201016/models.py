@@ -1403,6 +1403,56 @@ class AnalysisDimensional(AbstractModel):
         
 
 
+class AnonymousInfo(AbstractModel):
+    """免鉴权信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operations: 操作列表，支持trackLog(JS/HTTP上传日志  )和realtimeProducer(kafka协议上传日志)
+        :type Operations: list of str
+        :param _Conditions: 条件列表
+        :type Conditions: list of ConditionInfo
+        """
+        self._Operations = None
+        self._Conditions = None
+
+    @property
+    def Operations(self):
+        return self._Operations
+
+    @Operations.setter
+    def Operations(self, Operations):
+        self._Operations = Operations
+
+    @property
+    def Conditions(self):
+        return self._Conditions
+
+    @Conditions.setter
+    def Conditions(self, Conditions):
+        self._Conditions = Conditions
+
+
+    def _deserialize(self, params):
+        self._Operations = params.get("Operations")
+        if params.get("Conditions") is not None:
+            self._Conditions = []
+            for item in params.get("Conditions"):
+                obj = ConditionInfo()
+                obj._deserialize(item)
+                self._Conditions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApplyConfigToMachineGroupRequest(AbstractModel):
     """ApplyConfigToMachineGroup请求参数结构体
 
@@ -2081,6 +2131,63 @@ class CompressInfo(AbstractModel):
 
     def _deserialize(self, params):
         self._Format = params.get("Format")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConditionInfo(AbstractModel):
+    """免鉴权条件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Attributes: 条件属性，目前只支持VpcID
+        :type Attributes: str
+        :param _Rule: 条件规则，1:等于，2:不等于
+        :type Rule: int
+        :param _ConditionValue: 对应条件属性的值
+        :type ConditionValue: str
+        """
+        self._Attributes = None
+        self._Rule = None
+        self._ConditionValue = None
+
+    @property
+    def Attributes(self):
+        return self._Attributes
+
+    @Attributes.setter
+    def Attributes(self, Attributes):
+        self._Attributes = Attributes
+
+    @property
+    def Rule(self):
+        return self._Rule
+
+    @Rule.setter
+    def Rule(self, Rule):
+        self._Rule = Rule
+
+    @property
+    def ConditionValue(self):
+        return self._ConditionValue
+
+    @ConditionValue.setter
+    def ConditionValue(self, ConditionValue):
+        self._ConditionValue = ConditionValue
+
+
+    def _deserialize(self, params):
+        self._Attributes = params.get("Attributes")
+        self._Rule = params.get("Rule")
+        self._ConditionValue = params.get("ConditionValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6375,6 +6482,8 @@ class CreateTopicRequest(AbstractModel):
         :param _IsWebTracking: 免鉴权开关。 false：关闭； true：开启。默认为false。
 开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。
         :type IsWebTracking: bool
+        :param _Extends: 日志主题扩展信息
+        :type Extends: :class:`tencentcloud.cls.v20201016.models.TopicExtendInfo`
         """
         self._LogsetId = None
         self._TopicName = None
@@ -6387,6 +6496,7 @@ class CreateTopicRequest(AbstractModel):
         self._Describes = None
         self._HotPeriod = None
         self._IsWebTracking = None
+        self._Extends = None
 
     @property
     def LogsetId(self):
@@ -6476,6 +6586,14 @@ class CreateTopicRequest(AbstractModel):
     def IsWebTracking(self, IsWebTracking):
         self._IsWebTracking = IsWebTracking
 
+    @property
+    def Extends(self):
+        return self._Extends
+
+    @Extends.setter
+    def Extends(self, Extends):
+        self._Extends = Extends
+
 
     def _deserialize(self, params):
         self._LogsetId = params.get("LogsetId")
@@ -6494,6 +6612,9 @@ class CreateTopicRequest(AbstractModel):
         self._Describes = params.get("Describes")
         self._HotPeriod = params.get("HotPeriod")
         self._IsWebTracking = params.get("IsWebTracking")
+        if params.get("Extends") is not None:
+            self._Extends = TopicExtendInfo()
+            self._Extends._deserialize(params.get("Extends"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20900,6 +21021,42 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TopicExtendInfo(AbstractModel):
+    """日志主题扩展信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AnonymousAccess: 日志主题免鉴权配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnonymousAccess: :class:`tencentcloud.cls.v20201016.models.AnonymousInfo`
+        """
+        self._AnonymousAccess = None
+
+    @property
+    def AnonymousAccess(self):
+        return self._AnonymousAccess
+
+    @AnonymousAccess.setter
+    def AnonymousAccess(self, AnonymousAccess):
+        self._AnonymousAccess = AnonymousAccess
+
+
+    def _deserialize(self, params):
+        if params.get("AnonymousAccess") is not None:
+            self._AnonymousAccess = AnonymousInfo()
+            self._AnonymousAccess._deserialize(params.get("AnonymousAccess"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

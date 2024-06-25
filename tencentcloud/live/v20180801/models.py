@@ -1737,10 +1737,14 @@ class CommonMixControlParams(AbstractModel):
         :param _PassInputSei: 取值范围[0,1]
 填1时，透传原始流的sei
         :type PassInputSei: int
+        :param _UsePictureTransparent: 取值范围[0,1]
+填1时，图片输入中的透明通道生效。
+        :type UsePictureTransparent: int
         """
         self._UseMixCropCenter = None
         self._AllowCopy = None
         self._PassInputSei = None
+        self._UsePictureTransparent = None
 
     @property
     def UseMixCropCenter(self):
@@ -1766,11 +1770,20 @@ class CommonMixControlParams(AbstractModel):
     def PassInputSei(self, PassInputSei):
         self._PassInputSei = PassInputSei
 
+    @property
+    def UsePictureTransparent(self):
+        return self._UsePictureTransparent
+
+    @UsePictureTransparent.setter
+    def UsePictureTransparent(self, UsePictureTransparent):
+        self._UsePictureTransparent = UsePictureTransparent
+
 
     def _deserialize(self, params):
         self._UseMixCropCenter = params.get("UseMixCropCenter")
         self._AllowCopy = params.get("AllowCopy")
         self._PassInputSei = params.get("PassInputSei")
+        self._UsePictureTransparent = params.get("UsePictureTransparent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

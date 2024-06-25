@@ -2863,7 +2863,7 @@ class CreateDMSTableRequest(AbstractModel):
         r"""
         :param _Asset: 基础对象
         :type Asset: :class:`tencentcloud.dlc.v20210125.models.Asset`
-        :param _Type: 表类型
+        :param _Type: 表类型：EXTERNAL_TABLE, VIRTUAL_VIEW, MATERIALIZED_VIEW
         :type Type: str
         :param _DbName: 数据库名称
         :type DbName: str

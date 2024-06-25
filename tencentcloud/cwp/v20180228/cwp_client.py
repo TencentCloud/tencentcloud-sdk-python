@@ -696,31 +696,6 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DeleteAttackLogs(self, request):
-        """ModifyEventAttackStatus 接口替代
-
-        删除网络攻击日志
-
-        :param request: Request instance for DeleteAttackLogs.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteAttackLogsRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.DeleteAttackLogsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteAttackLogs", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteAttackLogsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DeleteBanWhiteList(self, request):
         """删除阻断白名单列表
 
