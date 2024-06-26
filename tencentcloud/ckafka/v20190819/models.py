@@ -4293,7 +4293,7 @@ class CreateDatahubTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 名称，是一个不超过 128 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+        :param _Name: 名称，是一个不超过 128 个字符的字符串，必须以“AppId-”为首字符，剩余部分可以包含字母、数字和横划线(-)
         :type Name: str
         :param _PartitionNum: Partition个数，大于0
         :type PartitionNum: int
@@ -5774,7 +5774,7 @@ class CreateRouteRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例唯一id
         :type InstanceId: str
-        :param _VipType: 路由网络类型(3:vpc路由;4:标准版支撑路由;7:专业版支撑路由)
+        :param _VipType: 路由网络类型(3:vpc路由;7:内部支撑路由)
         :type VipType: int
         :param _VpcId: vpc网络Id
         :type VpcId: str

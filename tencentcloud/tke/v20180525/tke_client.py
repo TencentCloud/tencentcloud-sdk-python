@@ -717,7 +717,7 @@ class TkeClient(AbstractClient):
 
 
     def CreatePrometheusConfig(self, request):
-        """创建prometheus配置
+        """创建集群采集配置
 
         :param request: Request instance for CreatePrometheusConfig.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreatePrometheusConfigRequest`
@@ -786,7 +786,7 @@ class TkeClient(AbstractClient):
 
 
     def CreatePrometheusRecordRuleYaml(self, request):
-        """以Yaml的方式创建聚合规则
+        """创建聚合规则yaml方式
 
         :param request: Request instance for CreatePrometheusRecordRuleYaml.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreatePrometheusRecordRuleYamlRequest`
@@ -1384,7 +1384,7 @@ class TkeClient(AbstractClient):
 
 
     def DeletePrometheusConfig(self, request):
-        """删除Prometheus配置，如果目标不存在，将返回成功
+        """删除集群采集配置
 
         :param request: Request instance for DeletePrometheusConfig.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeletePrometheusConfigRequest`
@@ -1407,7 +1407,7 @@ class TkeClient(AbstractClient):
 
 
     def DeletePrometheusRecordRuleYaml(self, request):
-        """删除聚合实例
+        """删除聚合规则
 
         :param request: Request instance for DeletePrometheusRecordRuleYaml.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeletePrometheusRecordRuleYamlRequest`
@@ -3042,7 +3042,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribePrometheusConfig(self, request):
-        """拉取Prometheus配置
+        """获取集群采集配置
 
         :param request: Request instance for DescribePrometheusConfig.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusConfigRequest`
@@ -4445,7 +4445,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyPrometheusConfig(self, request):
-        """修改prometheus配置，如果配置项不存在，则会新增
+        """修改集群采集配置
 
         :param request: Request instance for ModifyPrometheusConfig.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyPrometheusConfigRequest`
@@ -4491,7 +4491,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyPrometheusRecordRuleYaml(self, request):
-        """通过yaml的方式修改Prometheus聚合实例
+        """修改聚合规则yaml方式
 
         :param request: Request instance for ModifyPrometheusRecordRuleYaml.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyPrometheusRecordRuleYamlRequest`

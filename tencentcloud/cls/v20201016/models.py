@@ -3652,7 +3652,7 @@ class CreateAlarmRequest(AbstractModel):
         :type AlarmTargets: list of AlarmTarget
         :param _MonitorTime: 监控任务运行时间点。
         :type MonitorTime: :class:`tencentcloud.cls.v20201016.models.MonitorTime`
-        :param _TriggerCount: 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。
+        :param _TriggerCount: 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为2000。
         :type TriggerCount: int
         :param _AlarmPeriod: 告警重复的周期，单位是分钟。取值范围是0~1440。
         :type AlarmPeriod: int
@@ -15181,7 +15181,7 @@ class ModifyAlarmRequest(AbstractModel):
 注意:  
 - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
         :type MultiConditions: list of MultiCondition
-        :param _TriggerCount: 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。
+        :param _TriggerCount: 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为2000。
         :type TriggerCount: int
         :param _AlarmPeriod: 告警重复的周期。单位是分钟。取值范围是0~1440。
         :type AlarmPeriod: int
@@ -17655,6 +17655,8 @@ class ModifyTopicRequest(AbstractModel):
         :param _IsWebTracking: 免鉴权开关。 false：关闭； true：开启。
 开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。
         :type IsWebTracking: bool
+        :param _Extends: 日志主题扩展信息
+        :type Extends: :class:`tencentcloud.cls.v20201016.models.TopicExtendInfo`
         :param _PartitionCount: 日志主题分区数量
         :type PartitionCount: int
         """
@@ -17668,6 +17670,7 @@ class ModifyTopicRequest(AbstractModel):
         self._Describes = None
         self._HotPeriod = None
         self._IsWebTracking = None
+        self._Extends = None
         self._PartitionCount = None
 
     @property
@@ -17751,6 +17754,14 @@ class ModifyTopicRequest(AbstractModel):
         self._IsWebTracking = IsWebTracking
 
     @property
+    def Extends(self):
+        return self._Extends
+
+    @Extends.setter
+    def Extends(self, Extends):
+        self._Extends = Extends
+
+    @property
     def PartitionCount(self):
         return self._PartitionCount
 
@@ -17775,6 +17786,9 @@ class ModifyTopicRequest(AbstractModel):
         self._Describes = params.get("Describes")
         self._HotPeriod = params.get("HotPeriod")
         self._IsWebTracking = params.get("IsWebTracking")
+        if params.get("Extends") is not None:
+            self._Extends = TopicExtendInfo()
+            self._Extends._deserialize(params.get("Extends"))
         self._PartitionCount = params.get("PartitionCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -17818,12 +17832,13 @@ class MonitorTime(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 执行周期， 可选值：Period；Fixed。
+        :param _Type: 执行周期， 可选值：`Period`、`Fixed`。
 
 - Period：固定频率
 - Fixed：固定时间
         :type Type: str
         :param _Time: 执行的周期，或者定制执行的时间节点。单位为分钟，取值范围为1~1440。
+当type为`Period`,`Fixed`时，time字段生效。
         :type Time: int
         """
         self._Type = None
@@ -21196,6 +21211,9 @@ HotPeriod=0为没有开启日志沉降。
 开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsWebTracking: bool
+        :param _Extends: 日志主题扩展信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extends: :class:`tencentcloud.cls.v20201016.models.TopicExtendInfo`
         """
         self._LogsetId = None
         self._TopicId = None
@@ -21215,6 +21233,7 @@ HotPeriod=0为没有开启日志沉降。
         self._HotPeriod = None
         self._BizType = None
         self._IsWebTracking = None
+        self._Extends = None
 
     @property
     def LogsetId(self):
@@ -21360,6 +21379,14 @@ HotPeriod=0为没有开启日志沉降。
     def IsWebTracking(self, IsWebTracking):
         self._IsWebTracking = IsWebTracking
 
+    @property
+    def Extends(self):
+        return self._Extends
+
+    @Extends.setter
+    def Extends(self, Extends):
+        self._Extends = Extends
+
 
     def _deserialize(self, params):
         self._LogsetId = params.get("LogsetId")
@@ -21385,6 +21412,9 @@ HotPeriod=0为没有开启日志沉降。
         self._HotPeriod = params.get("HotPeriod")
         self._BizType = params.get("BizType")
         self._IsWebTracking = params.get("IsWebTracking")
+        if params.get("Extends") is not None:
+            self._Extends = TopicExtendInfo()
+            self._Extends._deserialize(params.get("Extends"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

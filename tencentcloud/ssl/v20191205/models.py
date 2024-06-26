@@ -114,10 +114,14 @@ class ApiGatewayInstanceList(AbstractModel):
         :type InstanceList: list of ApiGatewayInstanceDetail
         :param _TotalCount: 该地域下apigateway实例总数	
         :type TotalCount: int
+        :param _Error: 是否查询异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Error: str
         """
         self._Region = None
         self._InstanceList = None
         self._TotalCount = None
+        self._Error = None
 
     @property
     def Region(self):
@@ -143,6 +147,14 @@ class ApiGatewayInstanceList(AbstractModel):
     def TotalCount(self, TotalCount):
         self._TotalCount = TotalCount
 
+    @property
+    def Error(self):
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
 
     def _deserialize(self, params):
         self._Region = params.get("Region")
@@ -153,6 +165,7 @@ class ApiGatewayInstanceList(AbstractModel):
                 obj._deserialize(item)
                 self._InstanceList.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._Error = params.get("Error")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -497,6 +510,84 @@ class BindResourceResult(AbstractModel):
         
 
 
+class COSInstanceList(AbstractModel):
+    """cos实例详情 - 异步关联云资源数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param _InstanceList: 实例详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceList: list of CosInstanceDetail
+        :param _TotalCount: 地域下总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _Error: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Error: str
+        """
+        self._Region = None
+        self._InstanceList = None
+        self._TotalCount = None
+        self._Error = None
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def InstanceList(self):
+        return self._InstanceList
+
+    @InstanceList.setter
+    def InstanceList(self, InstanceList):
+        self._InstanceList = InstanceList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Error(self):
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        if params.get("InstanceList") is not None:
+            self._InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = CosInstanceDetail()
+                obj._deserialize(item)
+                self._InstanceList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._Error = params.get("Error")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CancelAuditCertificateRequest(AbstractModel):
     """CancelAuditCertificate请求参数结构体
 
@@ -718,9 +809,13 @@ class CdnInstanceList(AbstractModel):
         :param _InstanceList: cdn域名详情	
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceList: list of CdnInstanceDetail
+        :param _Error: 是否查询异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Error: str
         """
         self._TotalCount = None
         self._InstanceList = None
+        self._Error = None
 
     @property
     def TotalCount(self):
@@ -738,6 +833,14 @@ class CdnInstanceList(AbstractModel):
     def InstanceList(self, InstanceList):
         self._InstanceList = InstanceList
 
+    @property
+    def Error(self):
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
 
     def _deserialize(self, params):
         self._TotalCount = params.get("TotalCount")
@@ -747,6 +850,7 @@ class CdnInstanceList(AbstractModel):
                 obj = CdnInstanceDetail()
                 obj._deserialize(item)
                 self._InstanceList.append(obj)
+        self._Error = params.get("Error")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1880,10 +1984,14 @@ class ClbInstanceList(AbstractModel):
         :type InstanceList: list of ClbInstanceDetail
         :param _TotalCount: 该地域下Clb实例总数
         :type TotalCount: int
+        :param _Error: 是否查询异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Error: str
         """
         self._Region = None
         self._InstanceList = None
         self._TotalCount = None
+        self._Error = None
 
     @property
     def Region(self):
@@ -1909,6 +2017,14 @@ class ClbInstanceList(AbstractModel):
     def TotalCount(self, TotalCount):
         self._TotalCount = TotalCount
 
+    @property
+    def Error(self):
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
 
     def _deserialize(self, params):
         self._Region = params.get("Region")
@@ -1919,6 +2035,7 @@ class ClbInstanceList(AbstractModel):
                 obj._deserialize(item)
                 self._InstanceList.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._Error = params.get("Error")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3075,9 +3192,13 @@ class DdosInstanceList(AbstractModel):
         :param _InstanceList: ddos实例详情	
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceList: list of DdosInstanceDetail
+        :param _Error: 是否查询异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Error: str
         """
         self._TotalCount = None
         self._InstanceList = None
+        self._Error = None
 
     @property
     def TotalCount(self):
@@ -3095,6 +3216,14 @@ class DdosInstanceList(AbstractModel):
     def InstanceList(self, InstanceList):
         self._InstanceList = InstanceList
 
+    @property
+    def Error(self):
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
 
     def _deserialize(self, params):
         self._TotalCount = params.get("TotalCount")
@@ -3104,6 +3233,7 @@ class DdosInstanceList(AbstractModel):
                 obj = DdosInstanceDetail()
                 obj._deserialize(item)
                 self._InstanceList.append(obj)
+        self._Error = params.get("Error")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4247,6 +4377,9 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
         :param _TSE: 关联tse资源详情	
 注意：此字段可能返回 null，表示取不到有效值。
         :type TSE: list of TSEInstanceList
+        :param _COS: 关联的COS资源详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type COS: list of COSInstanceList
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4263,6 +4396,7 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
         self._Status = None
         self._CacheTime = None
         self._TSE = None
+        self._COS = None
         self._RequestId = None
 
     @property
@@ -4370,6 +4504,14 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
         self._TSE = TSE
 
     @property
+    def COS(self):
+        return self._COS
+
+    @COS.setter
+    def COS(self, COS):
+        self._COS = COS
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -4447,6 +4589,12 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
                 obj = TSEInstanceList()
                 obj._deserialize(item)
                 self._TSE.append(obj)
+        if params.get("COS") is not None:
+            self._COS = []
+            for item in params.get("COS"):
+                obj = COSInstanceList()
+                obj._deserialize(item)
+                self._COS.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -10092,9 +10240,13 @@ class LiveInstanceList(AbstractModel):
         :param _InstanceList: live实例详情	
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceList: list of LiveInstanceDetail
+        :param _Error: 是否查询异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Error: str
         """
         self._TotalCount = None
         self._InstanceList = None
+        self._Error = None
 
     @property
     def TotalCount(self):
@@ -10112,6 +10264,14 @@ class LiveInstanceList(AbstractModel):
     def InstanceList(self, InstanceList):
         self._InstanceList = InstanceList
 
+    @property
+    def Error(self):
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
 
     def _deserialize(self, params):
         self._TotalCount = params.get("TotalCount")
@@ -10121,6 +10281,7 @@ class LiveInstanceList(AbstractModel):
                 obj = LiveInstanceDetail()
                 obj._deserialize(item)
                 self._InstanceList.append(obj)
+        self._Error = params.get("Error")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13070,9 +13231,13 @@ class TCBInstanceList(AbstractModel):
         :param _Environments: tcb环境实例详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type Environments: list of TCBEnvironments
+        :param _Error: 是否查询异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Error: str
         """
         self._Region = None
         self._Environments = None
+        self._Error = None
 
     @property
     def Region(self):
@@ -13090,6 +13255,14 @@ class TCBInstanceList(AbstractModel):
     def Environments(self, Environments):
         self._Environments = Environments
 
+    @property
+    def Error(self):
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
 
     def _deserialize(self, params):
         self._Region = params.get("Region")
@@ -13099,6 +13272,7 @@ class TCBInstanceList(AbstractModel):
                 obj = TCBEnvironments()
                 obj._deserialize(item)
                 self._Environments.append(obj)
+        self._Error = params.get("Error")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13188,10 +13362,14 @@ class TSEInstanceList(AbstractModel):
         :type TotalCount: int
         :param _Region: 地域	
         :type Region: str
+        :param _Error: 是否查询异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Error: str
         """
         self._InstanceList = None
         self._TotalCount = None
         self._Region = None
+        self._Error = None
 
     @property
     def InstanceList(self):
@@ -13217,6 +13395,14 @@ class TSEInstanceList(AbstractModel):
     def Region(self, Region):
         self._Region = Region
 
+    @property
+    def Error(self):
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
 
     def _deserialize(self, params):
         if params.get("InstanceList") is not None:
@@ -13227,6 +13413,7 @@ class TSEInstanceList(AbstractModel):
                 self._InstanceList.append(obj)
         self._TotalCount = params.get("TotalCount")
         self._Region = params.get("Region")
+        self._Error = params.get("Error")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13364,9 +13551,13 @@ class TeoInstanceList(AbstractModel):
         :type InstanceList: list of TeoInstanceDetail
         :param _TotalCount: edgeone实例总数	
         :type TotalCount: int
+        :param _Error: 是否查询异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Error: str
         """
         self._InstanceList = None
         self._TotalCount = None
+        self._Error = None
 
     @property
     def InstanceList(self):
@@ -13384,6 +13575,14 @@ class TeoInstanceList(AbstractModel):
     def TotalCount(self, TotalCount):
         self._TotalCount = TotalCount
 
+    @property
+    def Error(self):
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
 
     def _deserialize(self, params):
         if params.get("InstanceList") is not None:
@@ -13393,6 +13592,7 @@ class TeoInstanceList(AbstractModel):
                 obj._deserialize(item)
                 self._InstanceList.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._Error = params.get("Error")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13560,10 +13760,14 @@ class TkeInstanceList(AbstractModel):
         :type InstanceList: list of TkeInstanceDetail
         :param _TotalCount: 该地域下tke实例总数	
         :type TotalCount: int
+        :param _Error: 是否查询异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Error: str
         """
         self._Region = None
         self._InstanceList = None
         self._TotalCount = None
+        self._Error = None
 
     @property
     def Region(self):
@@ -13589,6 +13793,14 @@ class TkeInstanceList(AbstractModel):
     def TotalCount(self, TotalCount):
         self._TotalCount = TotalCount
 
+    @property
+    def Error(self):
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
 
     def _deserialize(self, params):
         self._Region = params.get("Region")
@@ -13599,6 +13811,7 @@ class TkeInstanceList(AbstractModel):
                 obj._deserialize(item)
                 self._InstanceList.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._Error = params.get("Error")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15111,9 +15324,13 @@ class VODInstanceList(AbstractModel):
         :type InstanceList: list of VodInstanceDetail
         :param _TotalCount: 该地域下vod实例总数	
         :type TotalCount: int
+        :param _Error: 是否查询异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Error: str
         """
         self._InstanceList = None
         self._TotalCount = None
+        self._Error = None
 
     @property
     def InstanceList(self):
@@ -15131,6 +15348,14 @@ class VODInstanceList(AbstractModel):
     def TotalCount(self, TotalCount):
         self._TotalCount = TotalCount
 
+    @property
+    def Error(self):
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
 
     def _deserialize(self, params):
         if params.get("InstanceList") is not None:
@@ -15140,6 +15365,7 @@ class VODInstanceList(AbstractModel):
                 obj._deserialize(item)
                 self._InstanceList.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._Error = params.get("Error")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15338,10 +15564,14 @@ class WafInstanceList(AbstractModel):
         :type InstanceList: list of WafInstanceDetail
         :param _TotalCount: 该地域下waf实例总数	
         :type TotalCount: int
+        :param _Error: 是否查询异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Error: str
         """
         self._Region = None
         self._InstanceList = None
         self._TotalCount = None
+        self._Error = None
 
     @property
     def Region(self):
@@ -15367,6 +15597,14 @@ class WafInstanceList(AbstractModel):
     def TotalCount(self, TotalCount):
         self._TotalCount = TotalCount
 
+    @property
+    def Error(self):
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
 
     def _deserialize(self, params):
         self._Region = params.get("Region")
@@ -15377,6 +15615,7 @@ class WafInstanceList(AbstractModel):
                 obj._deserialize(item)
                 self._InstanceList.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._Error = params.get("Error")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

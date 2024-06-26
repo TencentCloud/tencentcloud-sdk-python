@@ -303,7 +303,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreateDatahubTopic(self, request):
-        """创建Datahub主题
+        """创建DIP主题
 
         :param request: Request instance for CreateDatahubTopic.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateDatahubTopicRequest`
@@ -625,7 +625,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DeleteDatahubTask(self, request):
-        """删除Datahub任务
+        """删除Dip任务
 
         :param request: Request instance for DeleteDatahubTask.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteDatahubTaskRequest`
@@ -1085,7 +1085,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeDatahubTopic(self, request):
-        """获取Datahub主题属性
+        """获取DIP主题属性
 
         :param request: Request instance for DescribeDatahubTopic.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTopicRequest`
@@ -1753,7 +1753,7 @@ class CkafkaClient(AbstractClient):
 
 
     def ModifyDatahubTopic(self, request):
-        """修改Datahub主题属性
+        """修改DIP主题属性
 
         :param request: Request instance for ModifyDatahubTopic.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.ModifyDatahubTopicRequest`

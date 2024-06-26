@@ -4225,7 +4225,7 @@ class CreateFlowBlockchainEvidenceUrlResponse(AbstractModel):
         r"""
         :param _QrCode: 二维码图片下载链接，下载链接有效时间5分钟，请尽快下载保存。
         :type QrCode: str
-        :param _Url: 查看短链，可直接点击短链查看报告。
+        :param _Url: 查看短链，可直接点击短链查看证书。
         :type Url: str
         :param _ExpiredOn: 二维码和短链的过期时间戳，过期时间默认为生成链接后7天。
         :type ExpiredOn: int

@@ -7511,6 +7511,8 @@ class CreatePrometheusConfigRequest(AbstractModel):
         :type PodMonitors: list of PrometheusConfigItem
         :param _RawJobs: prometheus原生Job配置
         :type RawJobs: list of PrometheusConfigItem
+        :param _Probes: Probe 配置
+        :type Probes: list of PrometheusConfigItem
         """
         self._InstanceId = None
         self._ClusterType = None
@@ -7518,6 +7520,7 @@ class CreatePrometheusConfigRequest(AbstractModel):
         self._ServiceMonitors = None
         self._PodMonitors = None
         self._RawJobs = None
+        self._Probes = None
 
     @property
     def InstanceId(self):
@@ -7567,6 +7570,14 @@ class CreatePrometheusConfigRequest(AbstractModel):
     def RawJobs(self, RawJobs):
         self._RawJobs = RawJobs
 
+    @property
+    def Probes(self):
+        return self._Probes
+
+    @Probes.setter
+    def Probes(self, Probes):
+        self._Probes = Probes
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -7590,6 +7601,12 @@ class CreatePrometheusConfigRequest(AbstractModel):
                 obj = PrometheusConfigItem()
                 obj._deserialize(item)
                 self._RawJobs.append(obj)
+        if params.get("Probes") is not None:
+            self._Probes = []
+            for item in params.get("Probes"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self._Probes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10121,9 +10138,12 @@ class DeletePrometheusClusterAgentRequest(AbstractModel):
         :type Agents: list of PrometheusAgentInfo
         :param _InstanceId: 实例id
         :type InstanceId: str
+        :param _Force: 在7天可回收期间，强制解除绑定
+        :type Force: bool
         """
         self._Agents = None
         self._InstanceId = None
+        self._Force = None
 
     @property
     def Agents(self):
@@ -10141,6 +10161,14 @@ class DeletePrometheusClusterAgentRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def Force(self):
+        return self._Force
+
+    @Force.setter
+    def Force(self, Force):
+        self._Force = Force
+
 
     def _deserialize(self, params):
         if params.get("Agents") is not None:
@@ -10150,6 +10178,7 @@ class DeletePrometheusClusterAgentRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Agents.append(obj)
         self._InstanceId = params.get("InstanceId")
+        self._Force = params.get("Force")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10204,6 +10233,8 @@ class DeletePrometheusConfigRequest(AbstractModel):
         :type PodMonitors: list of str
         :param _RawJobs: 要删除的RawJobs名字列表
         :type RawJobs: list of str
+        :param _Probes: 要删除的Probe名字列表
+        :type Probes: list of str
         """
         self._InstanceId = None
         self._ClusterType = None
@@ -10211,6 +10242,7 @@ class DeletePrometheusConfigRequest(AbstractModel):
         self._ServiceMonitors = None
         self._PodMonitors = None
         self._RawJobs = None
+        self._Probes = None
 
     @property
     def InstanceId(self):
@@ -10260,6 +10292,14 @@ class DeletePrometheusConfigRequest(AbstractModel):
     def RawJobs(self, RawJobs):
         self._RawJobs = RawJobs
 
+    @property
+    def Probes(self):
+        return self._Probes
+
+    @Probes.setter
+    def Probes(self, Probes):
+        self._Probes = Probes
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -10268,6 +10308,7 @@ class DeletePrometheusConfigRequest(AbstractModel):
         self._ServiceMonitors = params.get("ServiceMonitors")
         self._PodMonitors = params.get("PodMonitors")
         self._RawJobs = params.get("RawJobs")
+        self._Probes = params.get("Probes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18072,6 +18113,8 @@ class DescribePrometheusConfigResponse(AbstractModel):
         :type PodMonitors: list of PrometheusConfigItem
         :param _RawJobs: 原生Job
         :type RawJobs: list of PrometheusConfigItem
+        :param _Probes: Probe配置
+        :type Probes: list of PrometheusConfigItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -18079,6 +18122,7 @@ class DescribePrometheusConfigResponse(AbstractModel):
         self._ServiceMonitors = None
         self._PodMonitors = None
         self._RawJobs = None
+        self._Probes = None
         self._RequestId = None
 
     @property
@@ -18114,6 +18158,14 @@ class DescribePrometheusConfigResponse(AbstractModel):
         self._RawJobs = RawJobs
 
     @property
+    def Probes(self):
+        return self._Probes
+
+    @Probes.setter
+    def Probes(self, Probes):
+        self._Probes = Probes
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -18142,6 +18194,12 @@ class DescribePrometheusConfigResponse(AbstractModel):
                 obj = PrometheusConfigItem()
                 obj._deserialize(item)
                 self._RawJobs.append(obj)
+        if params.get("Probes") is not None:
+            self._Probes = []
+            for item in params.get("Probes"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self._Probes.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -29168,6 +29226,8 @@ class ModifyPrometheusConfigRequest(AbstractModel):
         :type PodMonitors: list of PrometheusConfigItem
         :param _RawJobs: prometheus原生Job配置
         :type RawJobs: list of PrometheusConfigItem
+        :param _Probes: Probes 配置
+        :type Probes: list of PrometheusConfigItem
         """
         self._InstanceId = None
         self._ClusterType = None
@@ -29175,6 +29235,7 @@ class ModifyPrometheusConfigRequest(AbstractModel):
         self._ServiceMonitors = None
         self._PodMonitors = None
         self._RawJobs = None
+        self._Probes = None
 
     @property
     def InstanceId(self):
@@ -29224,6 +29285,14 @@ class ModifyPrometheusConfigRequest(AbstractModel):
     def RawJobs(self, RawJobs):
         self._RawJobs = RawJobs
 
+    @property
+    def Probes(self):
+        return self._Probes
+
+    @Probes.setter
+    def Probes(self, Probes):
+        self._Probes = Probes
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -29247,6 +29316,12 @@ class ModifyPrometheusConfigRequest(AbstractModel):
                 obj = PrometheusConfigItem()
                 obj._deserialize(item)
                 self._RawJobs.append(obj)
+        if params.get("Probes") is not None:
+            self._Probes = []
+            for item in params.get("Probes"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self._Probes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

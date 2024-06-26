@@ -9143,7 +9143,7 @@ class StartWebRecordRequest(AbstractModel):
         :param _MaxDurationLimit: 录制最大时长限制， 单位 s, 合法取值范围[1800, 36000], 默认 36000s(10 小时)
 
         :type MaxDurationLimit: int
-        :param _StorageParams: 【必填】云存储相关的参数，目前支持腾讯云对象存储以及腾讯云云点播VOD，不支持第三方云存储
+        :param _StorageParams: 【必填】云存储相关的参数，目前支持腾讯云对象存储以及腾讯云云点播VOD，不支持第三方云存储；输出文件的存储格式仅支持hls或mp4
         :type StorageParams: :class:`tencentcloud.trtc.v20190722.models.StorageParams`
         :param _WebRecordVideoParams: 页面录制视频参数
         :type WebRecordVideoParams: :class:`tencentcloud.trtc.v20190722.models.WebRecordVideoParams`

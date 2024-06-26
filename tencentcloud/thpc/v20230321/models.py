@@ -814,7 +814,7 @@ class ClusterOverview(AbstractModel):
         r"""
         :param _ClusterId: 集群ID。
         :type ClusterId: str
-        :param _ClusterStatus: 集群状态。取值范围：<br><li>PENDING：创建中<br><li>INITING：初始化中<br><li>INIT_FAILED：初始化失败<br><li>RUNNING：运行中<br><li>TERMINATING：销毁中
+        :param _ClusterStatus: 集群状态。取值范围：<li>PENDING：创建中</li><li>INITING：初始化中</li><li>INIT_FAILED：初始化失败</li><li>RUNNING：运行中</li><li>TERMINATING：销毁中</li>
         :type ClusterStatus: str
         :param _ClusterName: 集群名称。
         :type ClusterName: str
@@ -824,6 +824,9 @@ class ClusterOverview(AbstractModel):
         :type CreateTime: str
         :param _SchedulerType: 集群调度器。
         :type SchedulerType: str
+        :param _SchedulerVersion: 集群调度器版本。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchedulerVersion: str
         :param _ComputeNodeCount: 计算节点数量。
         :type ComputeNodeCount: int
         :param _ComputeNodeSet: 计算节点概览。
@@ -836,7 +839,7 @@ class ClusterOverview(AbstractModel):
         :type LoginNodeSet: list of LoginNodeOverview
         :param _LoginNodeCount: 登录节点数量。
         :type LoginNodeCount: int
-        :param _AutoScalingType: 弹性伸缩类型。<br><li>THPC_AS：集群自动扩缩容由THPC产品内部实现。<br><li>AS：集群自动扩缩容由[弹性伸缩](https://cloud.tencent.com/document/product/377/3154)产品实现。
+        :param _AutoScalingType: 弹性伸缩类型。取值范围：<li>THPC_AS：集群自动扩缩容由THPC产品内部实现。</li><li>AS：集群自动扩缩容由[弹性伸缩](https://cloud.tencent.com/document/product/377/3154)产品实现。</li>
         :type AutoScalingType: str
         :param _VpcId: 集群所属私有网络ID。
         :type VpcId: str
@@ -847,6 +850,7 @@ class ClusterOverview(AbstractModel):
         self._Placement = None
         self._CreateTime = None
         self._SchedulerType = None
+        self._SchedulerVersion = None
         self._ComputeNodeCount = None
         self._ComputeNodeSet = None
         self._ManagerNodeCount = None
@@ -903,6 +907,14 @@ class ClusterOverview(AbstractModel):
     @SchedulerType.setter
     def SchedulerType(self, SchedulerType):
         self._SchedulerType = SchedulerType
+
+    @property
+    def SchedulerVersion(self):
+        return self._SchedulerVersion
+
+    @SchedulerVersion.setter
+    def SchedulerVersion(self, SchedulerVersion):
+        self._SchedulerVersion = SchedulerVersion
 
     @property
     def ComputeNodeCount(self):
@@ -978,6 +990,7 @@ class ClusterOverview(AbstractModel):
             self._Placement._deserialize(params.get("Placement"))
         self._CreateTime = params.get("CreateTime")
         self._SchedulerType = params.get("SchedulerType")
+        self._SchedulerVersion = params.get("SchedulerVersion")
         self._ComputeNodeCount = params.get("ComputeNodeCount")
         if params.get("ComputeNodeSet") is not None:
             self._ComputeNodeSet = []
@@ -1193,8 +1206,13 @@ class CreateClusterRequest(AbstractModel):
         :type ComputeNode: :class:`tencentcloud.thpc.v20230321.models.ComputeNode`
         :param _ComputeNodeCount: 指定计算节点的数量。默认取值：0。
         :type ComputeNodeCount: int
-        :param _SchedulerType: 调度器类型。默认取值：SLURM。<br><li>SGE：SGE调度器。<br><li>SLURM：SLURM调度器。
+        :param _SchedulerType: 调度器类型。默认取值：SLURM。<li>SGE：SGE调度器。</li><li>SLURM：SLURM调度器。</li>
         :type SchedulerType: str
+        :param _SchedulerVersion: 创建调度器的版本号，可填写版本号为“latest” 和 各调度器支持的版本号；如果是"latest", 则代表创建的是平台当前支持的该类型调度器最新版本。如果不填写，默认创建的是“latest”版本调度器
+各调度器支持的集群版本：
+<li>SLURM：21.08.8、23.11.7</li>
+<li>SGE：     8.1.9</li>
+        :type SchedulerVersion: str
         :param _ImageId: 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前支持部分公有镜像和自定义镜像。
         :type ImageId: str
         :param _VirtualPrivateCloud: 私有网络相关信息配置。
@@ -1212,7 +1230,7 @@ true：发送检查请求，不会创建实例。检查项包括是否填写了�
 false（默认）：发送正常请求，通过检查后直接创建实例
         :type DryRun: bool
         :param _AccountType: 域名字服务类型。默认取值：NIS。
-<li>NIS：NIS域名字服务。
+<li>NIS：NIS域名字服务。</li>
         :type AccountType: str
         :param _ClusterName: 集群显示名称。
         :type ClusterName: str
@@ -1224,7 +1242,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         :type LoginNodeCount: int
         :param _Tags: 创建集群时同时绑定的标签对说明。
         :type Tags: list of Tag
-        :param _AutoScalingType: 弹性伸缩类型。默认值：THPC_AS<br><li>THPC_AS：集群自动扩缩容由THPC产品内部实现。<br><li>AS：集群自动扩缩容由[弹性伸缩](https://cloud.tencent.com/document/product/377/3154)产品实现。
+        :param _AutoScalingType: 弹性伸缩类型。默认值：THPC_AS<li>THPC_AS：集群自动扩缩容由THPC产品内部实现。</li><li>AS：集群自动扩缩容由[弹性伸缩](https://cloud.tencent.com/document/product/377/3154)产品实现。</li>
         :type AutoScalingType: str
         :param _InitNodeScripts: 节点初始化脚本信息列表。
         :type InitNodeScripts: list of NodeScript
@@ -1237,6 +1255,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         self._ComputeNode = None
         self._ComputeNodeCount = None
         self._SchedulerType = None
+        self._SchedulerVersion = None
         self._ImageId = None
         self._VirtualPrivateCloud = None
         self._LoginSettings = None
@@ -1300,6 +1319,14 @@ false（默认）：发送正常请求，通过检查后直接创建实例
     @SchedulerType.setter
     def SchedulerType(self, SchedulerType):
         self._SchedulerType = SchedulerType
+
+    @property
+    def SchedulerVersion(self):
+        return self._SchedulerVersion
+
+    @SchedulerVersion.setter
+    def SchedulerVersion(self, SchedulerVersion):
+        self._SchedulerVersion = SchedulerVersion
 
     @property
     def ImageId(self):
@@ -1435,6 +1462,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
             self._ComputeNode._deserialize(params.get("ComputeNode"))
         self._ComputeNodeCount = params.get("ComputeNodeCount")
         self._SchedulerType = params.get("SchedulerType")
+        self._SchedulerVersion = params.get("SchedulerVersion")
         self._ImageId = params.get("ImageId")
         if params.get("VirtualPrivateCloud") is not None:
             self._VirtualPrivateCloud = VirtualPrivateCloud()
