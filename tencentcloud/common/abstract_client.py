@@ -454,6 +454,7 @@ class AbstractClient(object):
                 self.circuit_breaker.after_requests(generation, True)
             else:
                 self.circuit_breaker.after_requests(generation, False)
+            raise e
 
     def call_with_region_breaker(self, action, params, options=None, headers=None):
         resp = self._call_with_region_breaker(action, params, options, headers)
