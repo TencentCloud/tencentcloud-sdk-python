@@ -256,6 +256,29 @@ class SslClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteCertificates(self, request):
+        """批量删除证书，删除证书前支持查询证书是否关联了腾讯云云资源 （需自定义配置参数，参数名称：IsSync）
+
+        :param request: Request instance for DeleteCertificates.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DeleteCertificatesRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DeleteCertificatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCertificates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCertificatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteManager(self, request):
         """删除管理人
 

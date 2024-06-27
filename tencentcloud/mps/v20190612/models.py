@@ -409,6 +409,7 @@ class Activity(AbstractModel):
 <li>action-image-sprite：雪碧图</li>
 <li>action-snapshotByTimeOffset: 时间点截图</li>
 <li>action-adaptive-substream：自适应码流</li>
+<li>action-AIQualityControl：媒体质检</li>
 
 
 
@@ -795,6 +796,7 @@ class ActivityResult(AbstractModel):
 <li>AiContentReview：内容审核。</li>
 <li>AIRecognition：智能识别。</li>
 <li>AIAnalysis：智能分析。</li>
+<li>AiQualityControl：媒体质检。</li>
         :type ActivityType: str
         :param _ActivityResItem: 原子任务输出。
         :type ActivityResItem: :class:`tencentcloud.mps.v20190612.models.ActivityResItem`
@@ -3426,7 +3428,7 @@ class AiQualityControlTaskInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 视频质检模板 ID 。暂时可以直接使用 预设模板ID 10，后面控制台支持用户配置自定义模板。
+        :param _Definition: 媒体质检模板 ID 。暂时可以直接使用 预设模板ID 10，后面控制台支持用户配置自定义模板。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Definition: int
         :param _ChannelExtPara: 渠道扩展参数json序列化字符串。
@@ -9038,9 +9040,7 @@ class AudioTemplateInfo(AbstractModel):
 <li>flac。</li>
 当外层参数 Container 为 m4a 时，可选值为：
 <li>aac；</li>
-<li>mp3；</li>
 <li>ac3。</li>
-<li>eac3。</li>
 当外层参数 Container 为 mp4 或 flv 时，可选值为：
 <li>aac：更适合 mp4；</li>
 <li>mp3：更适合 flv；</li>
@@ -9135,9 +9135,7 @@ class AudioTemplateInfoForUpdate(AbstractModel):
 <li>flac。</li>
 当外层参数 Container 为 m4a 时，可选值为：
 <li>aac；</li>
-<li>mp3；</li>
 <li>ac3。</li>
-<li>eac3。</li>
 当外层参数 Container 为 mp4 或 flv 时，可选值为：
 <li>aac：更适合 mp4；</li>
 <li>mp3：更适合 flv；</li>
@@ -12812,6 +12810,8 @@ class CreateInput(AbstractModel):
         :type ResilientStream: :class:`tencentcloud.mps.v20190612.models.ResilientStreamConf`
         :param _SecurityGroupIds: 绑定的输入安全组 ID。 
         :type SecurityGroupIds: list of str
+        :param _Zones: 可用区，非必填，如果开启容灾必须输入两个不同的可用区，否则最多只允许输入一个可用区。	
+        :type Zones: list of str
         """
         self._InputName = None
         self._Protocol = None
@@ -12825,6 +12825,7 @@ class CreateInput(AbstractModel):
         self._HLSPullSettings = None
         self._ResilientStream = None
         self._SecurityGroupIds = None
+        self._Zones = None
 
     @property
     def InputName(self):
@@ -12922,6 +12923,14 @@ class CreateInput(AbstractModel):
     def SecurityGroupIds(self, SecurityGroupIds):
         self._SecurityGroupIds = SecurityGroupIds
 
+    @property
+    def Zones(self):
+        return self._Zones
+
+    @Zones.setter
+    def Zones(self, Zones):
+        self._Zones = Zones
+
 
     def _deserialize(self, params):
         self._InputName = params.get("InputName")
@@ -12948,6 +12957,7 @@ class CreateInput(AbstractModel):
             self._ResilientStream = ResilientStreamConf()
             self._ResilientStream._deserialize(params.get("ResilientStream"))
         self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._Zones = params.get("Zones")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13279,6 +13289,8 @@ class CreateOutputInfo(AbstractModel):
         :type MaxConcurrent: int
         :param _SecurityGroupIds: 绑定的输入安全组 ID。 
         :type SecurityGroupIds: list of str
+        :param _Zones: 可用区，output最多只支持输入一个可用区。	
+        :type Zones: list of str
         """
         self._OutputName = None
         self._Description = None
@@ -13290,6 +13302,7 @@ class CreateOutputInfo(AbstractModel):
         self._AllowIpList = None
         self._MaxConcurrent = None
         self._SecurityGroupIds = None
+        self._Zones = None
 
     @property
     def OutputName(self):
@@ -13371,6 +13384,14 @@ class CreateOutputInfo(AbstractModel):
     def SecurityGroupIds(self, SecurityGroupIds):
         self._SecurityGroupIds = SecurityGroupIds
 
+    @property
+    def Zones(self):
+        return self._Zones
+
+    @Zones.setter
+    def Zones(self, Zones):
+        self._Zones = Zones
+
 
     def _deserialize(self, params):
         self._OutputName = params.get("OutputName")
@@ -13389,6 +13410,7 @@ class CreateOutputInfo(AbstractModel):
         self._AllowIpList = params.get("AllowIpList")
         self._MaxConcurrent = params.get("MaxConcurrent")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._Zones = params.get("Zones")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17567,6 +17589,8 @@ class DescribeInput(AbstractModel):
         :param _SecurityGroupIds: 绑定的输入安全组 ID。	
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroupIds: list of str
+        :param _Zones: 可用区配置，开启容灾情况下最多有两个，顺序和pipeline 0、1对应，否则最多只有一个可用区。	
+        :type Zones: list of str
         """
         self._InputId = None
         self._InputName = None
@@ -17584,6 +17608,7 @@ class DescribeInput(AbstractModel):
         self._HLSPullSettings = None
         self._ResilientStream = None
         self._SecurityGroupIds = None
+        self._Zones = None
 
     @property
     def InputId(self):
@@ -17713,6 +17738,14 @@ class DescribeInput(AbstractModel):
     def SecurityGroupIds(self, SecurityGroupIds):
         self._SecurityGroupIds = SecurityGroupIds
 
+    @property
+    def Zones(self):
+        return self._Zones
+
+    @Zones.setter
+    def Zones(self, Zones):
+        self._Zones = Zones
+
 
     def _deserialize(self, params):
         self._InputId = params.get("InputId")
@@ -17750,6 +17783,7 @@ class DescribeInput(AbstractModel):
             self._ResilientStream = ResilientStreamConf()
             self._ResilientStream._deserialize(params.get("ResilientStream"))
         self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._Zones = params.get("Zones")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18226,6 +18260,8 @@ class DescribeOutput(AbstractModel):
         :param _SecurityGroupIds: 绑定的安全组 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroupIds: list of str
+        :param _Zones: 可用区，output目前最多只支持一个。	
+        :type Zones: list of str
         """
         self._OutputId = None
         self._OutputName = None
@@ -18243,6 +18279,7 @@ class DescribeOutput(AbstractModel):
         self._HLSPullSettings = None
         self._MaxConcurrent = None
         self._SecurityGroupIds = None
+        self._Zones = None
 
     @property
     def OutputId(self):
@@ -18372,6 +18409,14 @@ class DescribeOutput(AbstractModel):
     def SecurityGroupIds(self, SecurityGroupIds):
         self._SecurityGroupIds = SecurityGroupIds
 
+    @property
+    def Zones(self):
+        return self._Zones
+
+    @Zones.setter
+    def Zones(self, Zones):
+        self._Zones = Zones
+
 
     def _deserialize(self, params):
         self._OutputId = params.get("OutputId")
@@ -18407,6 +18452,7 @@ class DescribeOutput(AbstractModel):
             self._HLSPullSettings._deserialize(params.get("HLSPullSettings"))
         self._MaxConcurrent = params.get("MaxConcurrent")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._Zones = params.get("Zones")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25336,8 +25382,12 @@ class LiveActivityResItem(AbstractModel):
         :param _LiveRecordTask: 直播录制任务输出
 注意：此字段可能返回 null，表示取不到有效值。
         :type LiveRecordTask: :class:`tencentcloud.mps.v20190612.models.LiveScheduleLiveRecordTaskResult`
+        :param _LiveQualityControlTask: 媒体质检任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LiveQualityControlTask: :class:`tencentcloud.mps.v20190612.models.ScheduleQualityControlTaskResult`
         """
         self._LiveRecordTask = None
+        self._LiveQualityControlTask = None
 
     @property
     def LiveRecordTask(self):
@@ -25347,11 +25397,22 @@ class LiveActivityResItem(AbstractModel):
     def LiveRecordTask(self, LiveRecordTask):
         self._LiveRecordTask = LiveRecordTask
 
+    @property
+    def LiveQualityControlTask(self):
+        return self._LiveQualityControlTask
+
+    @LiveQualityControlTask.setter
+    def LiveQualityControlTask(self, LiveQualityControlTask):
+        self._LiveQualityControlTask = LiveQualityControlTask
+
 
     def _deserialize(self, params):
         if params.get("LiveRecordTask") is not None:
             self._LiveRecordTask = LiveScheduleLiveRecordTaskResult()
             self._LiveRecordTask._deserialize(params.get("LiveRecordTask"))
+        if params.get("LiveQualityControlTask") is not None:
+            self._LiveQualityControlTask = ScheduleQualityControlTaskResult()
+            self._LiveQualityControlTask._deserialize(params.get("LiveQualityControlTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25371,6 +25432,7 @@ class LiveActivityResult(AbstractModel):
         r"""
         :param _ActivityType: 原子任务类型。
 <li>LiveRecord：直播录制。</li>
+<li>AiQualityControl：媒体质检。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActivityType: str
         :param _LiveActivityResItem: 原子任务输出。
@@ -31980,6 +32042,8 @@ class ModifyInput(AbstractModel):
         :type ResilientStream: :class:`tencentcloud.mps.v20190612.models.ResilientStreamConf`
         :param _SecurityGroupIds: 绑定的输入安全组 ID。 仅支持关联一组安全组。
         :type SecurityGroupIds: list of str
+        :param _Zones: 可用区，非必填，最多支持输入两个可用区，对于需改接口，只要第二个可用区会参与到资源分配。如果input开启容灾或者涉及RTSP_PULL协议切换时有效(会重新分配地址)。	
+        :type Zones: list of str
         """
         self._InputId = None
         self._InputName = None
@@ -31994,6 +32058,7 @@ class ModifyInput(AbstractModel):
         self._HLSPullSettings = None
         self._ResilientStream = None
         self._SecurityGroupIds = None
+        self._Zones = None
 
     @property
     def InputId(self):
@@ -32099,6 +32164,14 @@ class ModifyInput(AbstractModel):
     def SecurityGroupIds(self, SecurityGroupIds):
         self._SecurityGroupIds = SecurityGroupIds
 
+    @property
+    def Zones(self):
+        return self._Zones
+
+    @Zones.setter
+    def Zones(self, Zones):
+        self._Zones = Zones
+
 
     def _deserialize(self, params):
         self._InputId = params.get("InputId")
@@ -32126,6 +32199,7 @@ class ModifyInput(AbstractModel):
             self._ResilientStream = ResilientStreamConf()
             self._ResilientStream._deserialize(params.get("ResilientStream"))
         self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._Zones = params.get("Zones")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35748,7 +35822,7 @@ class ProcessLiveStreamRequest(AbstractModel):
         :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
         :param _AiAnalysisTask: 视频内容分析类型任务参数。
         :type AiAnalysisTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
-        :param _AiQualityControlTask: 视频内容质检类型任务参数。
+        :param _AiQualityControlTask: 媒体质检类型任务参数。
         :type AiQualityControlTask: :class:`tencentcloud.mps.v20190612.models.AiQualityControlTaskInput`
         :param _SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
@@ -35964,13 +36038,13 @@ class ProcessMediaRequest(AbstractModel):
         :type AiAnalysisTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
         :param _AiRecognitionTask: 视频内容识别类型任务参数。
         :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
-        :param _AiQualityControlTask: 视频质检类型任务参数。
+        :param _AiQualityControlTask: 媒体质检类型任务参数。
         :type AiQualityControlTask: :class:`tencentcloud.mps.v20190612.models.AiQualityControlTaskInput`
         :param _TaskNotifyConfig: 任务的事件通知信息，不填代表不获取事件通知。
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
         :param _TasksPriority: 任务流的优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。
         :type TasksPriority: int
-        :param _SessionId: 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :param _SessionId: 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不传该参数或者参数为空字符串则本次请求不做去重操作。
         :type SessionId: str
         :param _SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
         :type SessionContext: str
@@ -36522,7 +36596,7 @@ class ProhibitedOcrReviewTemplateInfoForUpdate(AbstractModel):
 
 
 class QualityControlData(AbstractModel):
-    """质检结果输出。
+    """媒体质检结果输出。
 
     """
 
@@ -36537,7 +36611,7 @@ class QualityControlData(AbstractModel):
         :param _QualityEvaluationScore: 视频无参考质量打分，百分制。
 注意：此字段可能返回 null，表示取不到有效值。
         :type QualityEvaluationScore: int
-        :param _QualityControlResultSet: 质检检出异常项。
+        :param _QualityControlResultSet: 内容质检检出异常项。
 注意：此字段可能返回 null，表示取不到有效值。
         :type QualityControlResultSet: list of QualityControlResult
         """
@@ -38277,7 +38351,7 @@ class ScheduleAnalysisTaskResult(AbstractModel):
 
 
 class ScheduleQualityControlTaskResult(AbstractModel):
-    """质检任务结果类型
+    """媒体质检任务结果类型
 
     """
 
@@ -38291,9 +38365,9 @@ class ScheduleQualityControlTaskResult(AbstractModel):
         :type ErrCode: int
         :param _Message: 错误信息。
         :type Message: str
-        :param _Input: 质检任务的输入。
+        :param _Input: 媒体质检任务的输入。
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiQualityControlTaskInput`
-        :param _Output: 质检任务的输出。
+        :param _Output: 媒体质检任务的输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.mps.v20190612.models.QualityControlData`
         """
@@ -40530,7 +40604,6 @@ class TerrorismImgReviewTemplateInfo(AbstractModel):
 <li>militant：武装分子；</li>
 <li>explosion：爆炸火灾；</li>
 <li>terrorists：涉敏人物；</li>
-<li>scenario：涉敏画面。</li>
         :type LabelSet: list of str
         :param _BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。
         :type BlockConfidence: int
@@ -40610,7 +40683,6 @@ class TerrorismImgReviewTemplateInfoForUpdate(AbstractModel):
 <li>militant：武装分子；</li>
 <li>explosion：爆炸火灾；</li>
 <li>terrorists：涉敏人物；</li>
-<li>scenario：涉敏画面。</li>
         :type LabelSet: list of str
         :param _BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
         :type BlockConfidence: int
@@ -42340,13 +42412,12 @@ class VideoTemplateInfo(AbstractModel):
 <li>dnxhd：DNxHD 编码</li>
 注意：目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。
 
-注意：av1 编码容器目前只支持 mp4 ，webm，mkv，mov。
+注意：av1 编码容器目前只支持 mp4 ，webm，mkv。
 注意：H.266 编码容器目前只支持 mp4 ，hls，ts，mov。
 注意：VP8、VP9编码容器目前只支持webm，mkv。
 注意：MPEG2、dnxhd 编码容器目前只支持mxf。
         :type Codec: str
-        :param _Fps: 视频帧率，取值范围：[0, 120]，单位：Hz。 当取值为 0，表示帧率和原始视频保持一致。
-注意：自适应码率时取值范围是 [0, 60]
+        :param _Fps: 视频帧率，取值范围：[0, 120]，单位：Hz。 当取值为 0，表示帧率和原始视频保持一致。 注意：自适应码率时取值范围是 [0, 60]
         :type Fps: int
         :param _Bitrate: 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
 当取值为 0，表示视频码率和原始视频保持一致。
@@ -42387,11 +42458,11 @@ class VideoTemplateInfo(AbstractModel):
 如果没有特殊需求，不建议指定该参数。
         :type Vcrf: int
         :param _SegmentType: hls 分片类型，可选值 ：
-<li>6：HLS+TS 切片</li>
+<li>0：HLS+TS 切片</li>
 <li>2：HLS+TS byte range</li>
 <li>7：HLS+MP4 切片</li>
 <li>5：HLS+MP4 byte range</li>
-默认值：6
+默认值：0
 注意：此字段可能返回 null，表示取不到有效值。
         :type SegmentType: int
         """
@@ -42526,13 +42597,13 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 <li>dnxhd：DNxHD 编码</li>
 注意：目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。
 
-注意：av1 编码容器目前只支持 mp4 ，webm，mkv，mov。
+注意：av1 编码容器目前只支持 mp4 ，webm，mkv。
 注意：H.266 编码容器目前只支持 mp4 ，hls，ts，mov。
 注意：VP8、VP9编码容器目前只支持webm，mkv。
 注意：MPEG2、dnxhd 编码容器目前只支持mxf。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Codec: str
-        :param _Fps: 视频帧率，取值范围：[0, 120]，单位：Hz。 当取值为 0，表示帧率和原始视频保持一致。
+        :param _Fps: 视频帧率，取值范围：[0, 120]，单位：Hz。 当取值为 0，表示帧率和原始视频保持一致。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Fps: int
         :param _Bitrate: 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
@@ -42576,11 +42647,11 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type ContentAdaptStream: int
         :param _SegmentType: hls 分片类型，可选值：
-<li>6：HLS+TS 切片</li>
+<li>0：HLS+TS 切片</li>
 <li>2：HLS+TS byte range</li>
 <li>7：HLS+MP4 切片</li>
 <li>5：HLS+MP4 byte range</li>
-默认值：6
+默认值：0
 注意：此字段可能返回 null，表示取不到有效值。
         :type SegmentType: int
         """
@@ -43390,7 +43461,7 @@ class WorkflowTask(AbstractModel):
         :type AiAnalysisResultSet: list of AiAnalysisResult
         :param _AiRecognitionResultSet: 视频内容识别任务的执行状态与结果。
         :type AiRecognitionResultSet: list of AiRecognitionResult
-        :param _AiQualityControlTaskResult: 视频质检任务的执行状态与结果。
+        :param _AiQualityControlTaskResult: 媒体质检任务的执行状态与结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AiQualityControlTaskResult: :class:`tencentcloud.mps.v20190612.models.ScheduleQualityControlTaskResult`
         """

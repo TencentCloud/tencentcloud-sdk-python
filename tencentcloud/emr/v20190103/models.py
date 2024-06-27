@@ -27,13 +27,16 @@ class AddMetricScaleStrategyRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例ID。
         :type InstanceId: str
-        :param _StrategyType: 1表示按负载规则扩容，2表示按时间规则扩容。
+        :param _StrategyType: 1表示按负载规则扩容，2表示按时间规则扩容。必须填写，并且和下面的规则策略匹配
         :type StrategyType: int
+        :param _LoadAutoScaleStrategy: 按负载扩容的规则。
+        :type LoadAutoScaleStrategy: :class:`tencentcloud.emr.v20190103.models.LoadAutoScaleStrategy`
         :param _TimeAutoScaleStrategy: 按时间扩缩容的规则。
         :type TimeAutoScaleStrategy: :class:`tencentcloud.emr.v20190103.models.TimeAutoScaleStrategy`
         """
         self._InstanceId = None
         self._StrategyType = None
+        self._LoadAutoScaleStrategy = None
         self._TimeAutoScaleStrategy = None
 
     @property
@@ -53,6 +56,14 @@ class AddMetricScaleStrategyRequest(AbstractModel):
         self._StrategyType = StrategyType
 
     @property
+    def LoadAutoScaleStrategy(self):
+        return self._LoadAutoScaleStrategy
+
+    @LoadAutoScaleStrategy.setter
+    def LoadAutoScaleStrategy(self, LoadAutoScaleStrategy):
+        self._LoadAutoScaleStrategy = LoadAutoScaleStrategy
+
+    @property
     def TimeAutoScaleStrategy(self):
         return self._TimeAutoScaleStrategy
 
@@ -64,6 +75,9 @@ class AddMetricScaleStrategyRequest(AbstractModel):
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._StrategyType = params.get("StrategyType")
+        if params.get("LoadAutoScaleStrategy") is not None:
+            self._LoadAutoScaleStrategy = LoadAutoScaleStrategy()
+            self._LoadAutoScaleStrategy._deserialize(params.get("LoadAutoScaleStrategy"))
         if params.get("TimeAutoScaleStrategy") is not None:
             self._TimeAutoScaleStrategy = TimeAutoScaleStrategy()
             self._TimeAutoScaleStrategy._deserialize(params.get("TimeAutoScaleStrategy"))
@@ -537,6 +551,12 @@ class AutoScaleRecord(AbstractModel):
         :param _RetryInfo: 重试信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type RetryInfo: str
+        :param _RetryEnReason: 重试英文描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetryEnReason: str
+        :param _RetryReason: 重试描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetryReason: str
         """
         self._StrategyName = None
         self._ScaleAction = None
@@ -551,6 +571,8 @@ class AutoScaleRecord(AbstractModel):
         self._CompensateCount = None
         self._RetryCount = None
         self._RetryInfo = None
+        self._RetryEnReason = None
+        self._RetryReason = None
 
     @property
     def StrategyName(self):
@@ -656,6 +678,22 @@ class AutoScaleRecord(AbstractModel):
     def RetryInfo(self, RetryInfo):
         self._RetryInfo = RetryInfo
 
+    @property
+    def RetryEnReason(self):
+        return self._RetryEnReason
+
+    @RetryEnReason.setter
+    def RetryEnReason(self, RetryEnReason):
+        self._RetryEnReason = RetryEnReason
+
+    @property
+    def RetryReason(self):
+        return self._RetryReason
+
+    @RetryReason.setter
+    def RetryReason(self, RetryReason):
+        self._RetryReason = RetryReason
+
 
     def _deserialize(self, params):
         self._StrategyName = params.get("StrategyName")
@@ -671,6 +709,8 @@ class AutoScaleRecord(AbstractModel):
         self._CompensateCount = params.get("CompensateCount")
         self._RetryCount = params.get("RetryCount")
         self._RetryInfo = params.get("RetryInfo")
+        self._RetryEnReason = params.get("RetryEnReason")
+        self._RetryReason = params.get("RetryReason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -705,6 +745,33 @@ class AutoScaleResourceConf(AbstractModel):
         :param _GraceDownFlag: 优雅缩容开关
 注意：此字段可能返回 null，表示取不到有效值。
         :type GraceDownFlag: bool
+        :param _HardwareType: "CVM"表示规格全部使用CVM相关类型，"POD"表示规格使用容器相关类型,默认为"CVM"。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HardwareType: str
+        :param _PayMode: "POSTPAY"表示只使用按量计费，"SPOT_FIRST"表示竞价实例优先，只有HardwareType为"HOST"时支持竞价实例优先，"POD"只支持纯按量计费。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayMode: str
+        :param _PostPayPercentMin: 竞价实例优先的场景下，按量计费资源数量的最低百分比，整数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PostPayPercentMin: int
+        :param _ChangeToPod: 预设资源类型为HOST时，支持勾选“资源不足时切换POD”；支持取消勾选；默认不勾选（0），勾选（1)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChangeToPod: int
+        :param _GroupName: 伸缩组名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param _YarnNodeLabel: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type YarnNodeLabel: str
+        :param _GroupStatus: 伸缩组状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupStatus: int
+        :param _Parallel: 并行伸缩 0关闭；1开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Parallel: int
+        :param _EnableMNode: 是否支持MNode
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableMNode: int
         """
         self._Id = None
         self._ClusterId = None
@@ -713,6 +780,15 @@ class AutoScaleResourceConf(AbstractModel):
         self._StrategyType = None
         self._NextTimeCanScale = None
         self._GraceDownFlag = None
+        self._HardwareType = None
+        self._PayMode = None
+        self._PostPayPercentMin = None
+        self._ChangeToPod = None
+        self._GroupName = None
+        self._YarnNodeLabel = None
+        self._GroupStatus = None
+        self._Parallel = None
+        self._EnableMNode = None
 
     @property
     def Id(self):
@@ -770,6 +846,78 @@ class AutoScaleResourceConf(AbstractModel):
     def GraceDownFlag(self, GraceDownFlag):
         self._GraceDownFlag = GraceDownFlag
 
+    @property
+    def HardwareType(self):
+        return self._HardwareType
+
+    @HardwareType.setter
+    def HardwareType(self, HardwareType):
+        self._HardwareType = HardwareType
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def PostPayPercentMin(self):
+        return self._PostPayPercentMin
+
+    @PostPayPercentMin.setter
+    def PostPayPercentMin(self, PostPayPercentMin):
+        self._PostPayPercentMin = PostPayPercentMin
+
+    @property
+    def ChangeToPod(self):
+        return self._ChangeToPod
+
+    @ChangeToPod.setter
+    def ChangeToPod(self, ChangeToPod):
+        self._ChangeToPod = ChangeToPod
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def YarnNodeLabel(self):
+        return self._YarnNodeLabel
+
+    @YarnNodeLabel.setter
+    def YarnNodeLabel(self, YarnNodeLabel):
+        self._YarnNodeLabel = YarnNodeLabel
+
+    @property
+    def GroupStatus(self):
+        return self._GroupStatus
+
+    @GroupStatus.setter
+    def GroupStatus(self, GroupStatus):
+        self._GroupStatus = GroupStatus
+
+    @property
+    def Parallel(self):
+        return self._Parallel
+
+    @Parallel.setter
+    def Parallel(self, Parallel):
+        self._Parallel = Parallel
+
+    @property
+    def EnableMNode(self):
+        return self._EnableMNode
+
+    @EnableMNode.setter
+    def EnableMNode(self, EnableMNode):
+        self._EnableMNode = EnableMNode
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -779,6 +927,15 @@ class AutoScaleResourceConf(AbstractModel):
         self._StrategyType = params.get("StrategyType")
         self._NextTimeCanScale = params.get("NextTimeCanScale")
         self._GraceDownFlag = params.get("GraceDownFlag")
+        self._HardwareType = params.get("HardwareType")
+        self._PayMode = params.get("PayMode")
+        self._PostPayPercentMin = params.get("PostPayPercentMin")
+        self._ChangeToPod = params.get("ChangeToPod")
+        self._GroupName = params.get("GroupName")
+        self._YarnNodeLabel = params.get("YarnNodeLabel")
+        self._GroupStatus = params.get("GroupStatus")
+        self._Parallel = params.get("Parallel")
+        self._EnableMNode = params.get("EnableMNode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3631,11 +3788,14 @@ class DescribeAutoScaleRecordsRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 分页参数。最大支持100
         :type Limit: int
+        :param _RecordSource: 表示是自动(0)还是托管伸缩(1)
+        :type RecordSource: int
         """
         self._InstanceId = None
         self._Filters = None
         self._Offset = None
         self._Limit = None
+        self._RecordSource = None
 
     @property
     def InstanceId(self):
@@ -3669,6 +3829,14 @@ class DescribeAutoScaleRecordsRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def RecordSource(self):
+        return self._RecordSource
+
+    @RecordSource.setter
+    def RecordSource(self, RecordSource):
+        self._RecordSource = RecordSource
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -3680,6 +3848,7 @@ class DescribeAutoScaleRecordsRequest(AbstractModel):
                 self._Filters.append(obj)
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._RecordSource = params.get("RecordSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3796,14 +3965,26 @@ class DescribeAutoScaleStrategiesResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _LoadAutoScaleStrategies: 按负载伸缩规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadAutoScaleStrategies: list of LoadAutoScaleStrategy
         :param _TimeBasedAutoScaleStrategies: 按时间伸缩规则
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeBasedAutoScaleStrategies: list of TimeAutoScaleStrategy
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._LoadAutoScaleStrategies = None
         self._TimeBasedAutoScaleStrategies = None
         self._RequestId = None
+
+    @property
+    def LoadAutoScaleStrategies(self):
+        return self._LoadAutoScaleStrategies
+
+    @LoadAutoScaleStrategies.setter
+    def LoadAutoScaleStrategies(self, LoadAutoScaleStrategies):
+        self._LoadAutoScaleStrategies = LoadAutoScaleStrategies
 
     @property
     def TimeBasedAutoScaleStrategies(self):
@@ -3823,6 +4004,12 @@ class DescribeAutoScaleStrategiesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("LoadAutoScaleStrategies") is not None:
+            self._LoadAutoScaleStrategies = []
+            for item in params.get("LoadAutoScaleStrategies"):
+                obj = LoadAutoScaleStrategy()
+                obj._deserialize(item)
+                self._LoadAutoScaleStrategies.append(obj)
         if params.get("TimeBasedAutoScaleStrategies") is not None:
             self._TimeBasedAutoScaleStrategies = []
             for item in params.get("TimeBasedAutoScaleStrategies"):
@@ -10342,6 +10529,439 @@ class KeyValue(AbstractModel):
         
 
 
+class LoadAutoScaleStrategy(AbstractModel):
+    """自动扩缩容基于负载指标的规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StrategyId: 规则ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrategyId: int
+        :param _StrategyName: 规则名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrategyName: str
+        :param _CalmDownTime: 规则生效冷却时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CalmDownTime: int
+        :param _ScaleAction: 扩缩容动作，1表示扩容，2表示缩容。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScaleAction: int
+        :param _ScaleNum: 每次规则生效时的扩缩容数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScaleNum: int
+        :param _LoadMetrics: 扩缩容负载指标。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadMetrics: str
+        :param _MetricId: 规则元数据记录ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricId: int
+        :param _StatisticPeriod: 规则统计周期，提供300s,600s,900s
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatisticPeriod: int
+        :param _ProcessMethod: 指标处理方法，1表示MAX，2表示MIN，3表示AVG。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessMethod: int
+        :param _TriggerThreshold: 触发次数，当连续触发超过TriggerThreshold次后才开始扩缩容。
+        :type TriggerThreshold: int
+        :param _TriggerConditions: 条件触发数组。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerConditions: :class:`tencentcloud.emr.v20190103.models.TriggerConditions`
+        :param _Priority: 规则优先级，添加时无效，默认为自增。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Priority: int
+        :param _StrategyStatus: 规则状态，1表示启动，3表示禁用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrategyStatus: int
+        :param _YarnNodeLabel: 规则扩容指定 yarn node label
+注意：此字段可能返回 null，表示取不到有效值。
+        :type YarnNodeLabel: str
+        :param _PeriodValid: 规则生效的有效时间
+        :type PeriodValid: str
+        :param _GraceDownFlag: 优雅缩容开关
+        :type GraceDownFlag: bool
+        :param _GraceDownTime: 优雅缩容等待时间
+        :type GraceDownTime: int
+        :param _Tags: 绑定标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param _ConfigGroupAssigned: 预设配置组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigGroupAssigned: str
+        :param _MeasureMethod: 扩容资源计算方法，"DEFAULT","INSTANCE", "CPU", "MEMORYGB"。
+"DEFAULT"表示默认方式，与"INSTANCE"意义相同。
+"INSTANCE"表示按照节点计算，默认方式。
+"CPU"表示按照机器的核数计算。
+"MEMORYGB"表示按照机器内存数计算。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MeasureMethod: str
+        :param _LoadMetricsConditions: 多指标触发条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadMetricsConditions: :class:`tencentcloud.emr.v20190103.models.LoadMetricsConditions`
+        """
+        self._StrategyId = None
+        self._StrategyName = None
+        self._CalmDownTime = None
+        self._ScaleAction = None
+        self._ScaleNum = None
+        self._LoadMetrics = None
+        self._MetricId = None
+        self._StatisticPeriod = None
+        self._ProcessMethod = None
+        self._TriggerThreshold = None
+        self._TriggerConditions = None
+        self._Priority = None
+        self._StrategyStatus = None
+        self._YarnNodeLabel = None
+        self._PeriodValid = None
+        self._GraceDownFlag = None
+        self._GraceDownTime = None
+        self._Tags = None
+        self._ConfigGroupAssigned = None
+        self._MeasureMethod = None
+        self._LoadMetricsConditions = None
+
+    @property
+    def StrategyId(self):
+        return self._StrategyId
+
+    @StrategyId.setter
+    def StrategyId(self, StrategyId):
+        self._StrategyId = StrategyId
+
+    @property
+    def StrategyName(self):
+        return self._StrategyName
+
+    @StrategyName.setter
+    def StrategyName(self, StrategyName):
+        self._StrategyName = StrategyName
+
+    @property
+    def CalmDownTime(self):
+        return self._CalmDownTime
+
+    @CalmDownTime.setter
+    def CalmDownTime(self, CalmDownTime):
+        self._CalmDownTime = CalmDownTime
+
+    @property
+    def ScaleAction(self):
+        return self._ScaleAction
+
+    @ScaleAction.setter
+    def ScaleAction(self, ScaleAction):
+        self._ScaleAction = ScaleAction
+
+    @property
+    def ScaleNum(self):
+        return self._ScaleNum
+
+    @ScaleNum.setter
+    def ScaleNum(self, ScaleNum):
+        self._ScaleNum = ScaleNum
+
+    @property
+    def LoadMetrics(self):
+        return self._LoadMetrics
+
+    @LoadMetrics.setter
+    def LoadMetrics(self, LoadMetrics):
+        self._LoadMetrics = LoadMetrics
+
+    @property
+    def MetricId(self):
+        return self._MetricId
+
+    @MetricId.setter
+    def MetricId(self, MetricId):
+        self._MetricId = MetricId
+
+    @property
+    def StatisticPeriod(self):
+        return self._StatisticPeriod
+
+    @StatisticPeriod.setter
+    def StatisticPeriod(self, StatisticPeriod):
+        self._StatisticPeriod = StatisticPeriod
+
+    @property
+    def ProcessMethod(self):
+        return self._ProcessMethod
+
+    @ProcessMethod.setter
+    def ProcessMethod(self, ProcessMethod):
+        self._ProcessMethod = ProcessMethod
+
+    @property
+    def TriggerThreshold(self):
+        return self._TriggerThreshold
+
+    @TriggerThreshold.setter
+    def TriggerThreshold(self, TriggerThreshold):
+        self._TriggerThreshold = TriggerThreshold
+
+    @property
+    def TriggerConditions(self):
+        return self._TriggerConditions
+
+    @TriggerConditions.setter
+    def TriggerConditions(self, TriggerConditions):
+        self._TriggerConditions = TriggerConditions
+
+    @property
+    def Priority(self):
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def StrategyStatus(self):
+        return self._StrategyStatus
+
+    @StrategyStatus.setter
+    def StrategyStatus(self, StrategyStatus):
+        self._StrategyStatus = StrategyStatus
+
+    @property
+    def YarnNodeLabel(self):
+        return self._YarnNodeLabel
+
+    @YarnNodeLabel.setter
+    def YarnNodeLabel(self, YarnNodeLabel):
+        self._YarnNodeLabel = YarnNodeLabel
+
+    @property
+    def PeriodValid(self):
+        return self._PeriodValid
+
+    @PeriodValid.setter
+    def PeriodValid(self, PeriodValid):
+        self._PeriodValid = PeriodValid
+
+    @property
+    def GraceDownFlag(self):
+        return self._GraceDownFlag
+
+    @GraceDownFlag.setter
+    def GraceDownFlag(self, GraceDownFlag):
+        self._GraceDownFlag = GraceDownFlag
+
+    @property
+    def GraceDownTime(self):
+        return self._GraceDownTime
+
+    @GraceDownTime.setter
+    def GraceDownTime(self, GraceDownTime):
+        self._GraceDownTime = GraceDownTime
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def ConfigGroupAssigned(self):
+        return self._ConfigGroupAssigned
+
+    @ConfigGroupAssigned.setter
+    def ConfigGroupAssigned(self, ConfigGroupAssigned):
+        self._ConfigGroupAssigned = ConfigGroupAssigned
+
+    @property
+    def MeasureMethod(self):
+        return self._MeasureMethod
+
+    @MeasureMethod.setter
+    def MeasureMethod(self, MeasureMethod):
+        self._MeasureMethod = MeasureMethod
+
+    @property
+    def LoadMetricsConditions(self):
+        return self._LoadMetricsConditions
+
+    @LoadMetricsConditions.setter
+    def LoadMetricsConditions(self, LoadMetricsConditions):
+        self._LoadMetricsConditions = LoadMetricsConditions
+
+
+    def _deserialize(self, params):
+        self._StrategyId = params.get("StrategyId")
+        self._StrategyName = params.get("StrategyName")
+        self._CalmDownTime = params.get("CalmDownTime")
+        self._ScaleAction = params.get("ScaleAction")
+        self._ScaleNum = params.get("ScaleNum")
+        self._LoadMetrics = params.get("LoadMetrics")
+        self._MetricId = params.get("MetricId")
+        self._StatisticPeriod = params.get("StatisticPeriod")
+        self._ProcessMethod = params.get("ProcessMethod")
+        self._TriggerThreshold = params.get("TriggerThreshold")
+        if params.get("TriggerConditions") is not None:
+            self._TriggerConditions = TriggerConditions()
+            self._TriggerConditions._deserialize(params.get("TriggerConditions"))
+        self._Priority = params.get("Priority")
+        self._StrategyStatus = params.get("StrategyStatus")
+        self._YarnNodeLabel = params.get("YarnNodeLabel")
+        self._PeriodValid = params.get("PeriodValid")
+        self._GraceDownFlag = params.get("GraceDownFlag")
+        self._GraceDownTime = params.get("GraceDownTime")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._ConfigGroupAssigned = params.get("ConfigGroupAssigned")
+        self._MeasureMethod = params.get("MeasureMethod")
+        if params.get("LoadMetricsConditions") is not None:
+            self._LoadMetricsConditions = LoadMetricsConditions()
+            self._LoadMetricsConditions._deserialize(params.get("LoadMetricsConditions"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LoadMetricsCondition(AbstractModel):
+    """负载指标条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StatisticPeriod: 规则统计周期，提供1min,3min,5min。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatisticPeriod: int
+        :param _TriggerThreshold: 触发次数，当连续触发超过TriggerThreshold次后才开始扩缩容。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerThreshold: int
+        :param _LoadMetrics: 扩缩容负载指标。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadMetrics: str
+        :param _MetricId: 规则元数据记录ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricId: int
+        :param _Conditions: 触发条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Conditions: list of TriggerCondition
+        """
+        self._StatisticPeriod = None
+        self._TriggerThreshold = None
+        self._LoadMetrics = None
+        self._MetricId = None
+        self._Conditions = None
+
+    @property
+    def StatisticPeriod(self):
+        return self._StatisticPeriod
+
+    @StatisticPeriod.setter
+    def StatisticPeriod(self, StatisticPeriod):
+        self._StatisticPeriod = StatisticPeriod
+
+    @property
+    def TriggerThreshold(self):
+        return self._TriggerThreshold
+
+    @TriggerThreshold.setter
+    def TriggerThreshold(self, TriggerThreshold):
+        self._TriggerThreshold = TriggerThreshold
+
+    @property
+    def LoadMetrics(self):
+        return self._LoadMetrics
+
+    @LoadMetrics.setter
+    def LoadMetrics(self, LoadMetrics):
+        self._LoadMetrics = LoadMetrics
+
+    @property
+    def MetricId(self):
+        return self._MetricId
+
+    @MetricId.setter
+    def MetricId(self, MetricId):
+        self._MetricId = MetricId
+
+    @property
+    def Conditions(self):
+        return self._Conditions
+
+    @Conditions.setter
+    def Conditions(self, Conditions):
+        self._Conditions = Conditions
+
+
+    def _deserialize(self, params):
+        self._StatisticPeriod = params.get("StatisticPeriod")
+        self._TriggerThreshold = params.get("TriggerThreshold")
+        self._LoadMetrics = params.get("LoadMetrics")
+        self._MetricId = params.get("MetricId")
+        if params.get("Conditions") is not None:
+            self._Conditions = []
+            for item in params.get("Conditions"):
+                obj = TriggerCondition()
+                obj._deserialize(item)
+                self._Conditions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LoadMetricsConditions(AbstractModel):
+    """负载指标
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LoadMetrics: 触发规则条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadMetrics: list of LoadMetricsCondition
+        """
+        self._LoadMetrics = None
+
+    @property
+    def LoadMetrics(self):
+        return self._LoadMetrics
+
+    @LoadMetrics.setter
+    def LoadMetrics(self, LoadMetrics):
+        self._LoadMetrics = LoadMetrics
+
+
+    def _deserialize(self, params):
+        if params.get("LoadMetrics") is not None:
+            self._LoadMetrics = []
+            for item in params.get("LoadMetrics"):
+                obj = LoadMetricsCondition()
+                obj._deserialize(item)
+                self._LoadMetrics.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LoginSettings(AbstractModel):
     """登录设置
 
@@ -10504,6 +11124,8 @@ class ModifyAutoScaleStrategyRequest(AbstractModel):
         :type InstanceId: str
         :param _StrategyType: 自动扩缩容规则类型，1表示按负载指标扩缩容，2表示按时间扩缩容。
         :type StrategyType: int
+        :param _LoadAutoScaleStrategies: 按负载扩缩容的指标。
+        :type LoadAutoScaleStrategies: list of LoadAutoScaleStrategy
         :param _TimeAutoScaleStrategies: 按时间扩缩容的规则。
         :type TimeAutoScaleStrategies: list of TimeAutoScaleStrategy
         :param _GroupId: 伸缩组Id
@@ -10511,6 +11133,7 @@ class ModifyAutoScaleStrategyRequest(AbstractModel):
         """
         self._InstanceId = None
         self._StrategyType = None
+        self._LoadAutoScaleStrategies = None
         self._TimeAutoScaleStrategies = None
         self._GroupId = None
 
@@ -10529,6 +11152,14 @@ class ModifyAutoScaleStrategyRequest(AbstractModel):
     @StrategyType.setter
     def StrategyType(self, StrategyType):
         self._StrategyType = StrategyType
+
+    @property
+    def LoadAutoScaleStrategies(self):
+        return self._LoadAutoScaleStrategies
+
+    @LoadAutoScaleStrategies.setter
+    def LoadAutoScaleStrategies(self, LoadAutoScaleStrategies):
+        self._LoadAutoScaleStrategies = LoadAutoScaleStrategies
 
     @property
     def TimeAutoScaleStrategies(self):
@@ -10550,6 +11181,12 @@ class ModifyAutoScaleStrategyRequest(AbstractModel):
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._StrategyType = params.get("StrategyType")
+        if params.get("LoadAutoScaleStrategies") is not None:
+            self._LoadAutoScaleStrategies = []
+            for item in params.get("LoadAutoScaleStrategies"):
+                obj = LoadAutoScaleStrategy()
+                obj._deserialize(item)
+                self._LoadAutoScaleStrategies.append(obj)
         if params.get("TimeAutoScaleStrategies") is not None:
             self._TimeAutoScaleStrategies = []
             for item in params.get("TimeAutoScaleStrategies"):
@@ -14713,7 +15350,7 @@ class RepeatStrategy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RepeatType: 取值范围"DAY","DOW","DOM","NONE"，分别表示按天重复、按周重复、按月重复和一次执行。
+        :param _RepeatType: 取值范围"DAY","DOW","DOM","NONE"，分别表示按天重复、按周重复、按月重复和一次执行。必须填写
         :type RepeatType: str
         :param _DayRepeat: 按天重复规则，当RepeatType为"DAY"时有效
 注意：此字段可能返回 null，表示取不到有效值。
@@ -14727,7 +15364,7 @@ class RepeatStrategy(AbstractModel):
         :param _NotRepeat: 一次执行规则，当RepeatType为"NONE"时有效
 注意：此字段可能返回 null，表示取不到有效值。
         :type NotRepeat: :class:`tencentcloud.emr.v20190103.models.NotRepeatStrategy`
-        :param _Expire: 规则过期时间，超过该时间后，规则将自动置为暂停状态，形式为"2020-07-23 00:00:00"。
+        :param _Expire: 规则过期时间，超过该时间后，规则将自动置为暂停状态，形式为"2020-07-23 00:00:00"。必须填写
 注意：此字段可能返回 null，表示取不到有效值。
         :type Expire: str
         """
@@ -17760,7 +18397,7 @@ class TimeAutoScaleStrategy(AbstractModel):
         :param _ScaleNum: 扩缩容数量。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScaleNum: int
-        :param _StrategyStatus: 规则状态，1表示有效，2表示无效，3表示暂停。
+        :param _StrategyStatus: 规则状态，1表示有效，2表示无效，3表示暂停。必须填写
 注意：此字段可能返回 null，表示取不到有效值。
         :type StrategyStatus: int
         :param _Priority: 规则优先级，越小越高。
@@ -17800,7 +18437,7 @@ class TimeAutoScaleStrategy(AbstractModel):
         :param _MaxUse: 最长使用时间， 秒数，最短1小时，最长24小时
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxUse: int
-        :param _SoftDeployInfo: 节点部署服务列表。
+        :param _SoftDeployInfo: 节点部署服务列表。部署服务仅填写HDFS、YARN。[组件名对应的映射关系表](https://cloud.tencent.com/document/product/589/98760)
 注意：此字段可能返回 null，表示取不到有效值。
         :type SoftDeployInfo: list of int
         :param _ServiceNodeInfo: 启动进程列表。
@@ -18106,6 +18743,91 @@ class TopologyInfo(AbstractModel):
                 obj = ShortNodeInfo()
                 obj._deserialize(item)
                 self._NodeInfoList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TriggerCondition(AbstractModel):
+    """规则触发条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CompareMethod: 条件比较方法，1表示大于，2表示小于，3表示大于等于，4表示小于等于。
+        :type CompareMethod: int
+        :param _Threshold: 条件阈值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Threshold: float
+        """
+        self._CompareMethod = None
+        self._Threshold = None
+
+    @property
+    def CompareMethod(self):
+        return self._CompareMethod
+
+    @CompareMethod.setter
+    def CompareMethod(self, CompareMethod):
+        self._CompareMethod = CompareMethod
+
+    @property
+    def Threshold(self):
+        return self._Threshold
+
+    @Threshold.setter
+    def Threshold(self, Threshold):
+        self._Threshold = Threshold
+
+
+    def _deserialize(self, params):
+        self._CompareMethod = params.get("CompareMethod")
+        self._Threshold = params.get("Threshold")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TriggerConditions(AbstractModel):
+    """规则触发条件数组
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Conditions: 规则触发条件数组。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Conditions: list of TriggerCondition
+        """
+        self._Conditions = None
+
+    @property
+    def Conditions(self):
+        return self._Conditions
+
+    @Conditions.setter
+    def Conditions(self, Conditions):
+        self._Conditions = Conditions
+
+
+    def _deserialize(self, params):
+        if params.get("Conditions") is not None:
+            self._Conditions = []
+            for item in params.get("Conditions"):
+                obj = TriggerCondition()
+                obj._deserialize(item)
+                self._Conditions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

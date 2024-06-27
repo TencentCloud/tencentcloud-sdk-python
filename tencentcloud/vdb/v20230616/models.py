@@ -337,6 +337,12 @@ class InstanceInfo(AbstractModel):
         :param _WanAddress: 外网地址。
 注意：此字段可能返回 null，表示取不到有效值。
         :type WanAddress: str
+        :param _IsolateAt: 隔离时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsolateAt: str
+        :param _AutoRenew: 是否自动续费。0: 不自动续费(可以支持特权不停服)；1:自动续费；2:到期不续费.
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoRenew: int
         """
         self._InstanceId = None
         self._Name = None
@@ -363,6 +369,8 @@ class InstanceInfo(AbstractModel):
         self._ExpiredAt = None
         self._IsNoExpired = None
         self._WanAddress = None
+        self._IsolateAt = None
+        self._AutoRenew = None
 
     @property
     def InstanceId(self):
@@ -564,6 +572,22 @@ class InstanceInfo(AbstractModel):
     def WanAddress(self, WanAddress):
         self._WanAddress = WanAddress
 
+    @property
+    def IsolateAt(self):
+        return self._IsolateAt
+
+    @IsolateAt.setter
+    def IsolateAt(self, IsolateAt):
+        self._IsolateAt = IsolateAt
+
+    @property
+    def AutoRenew(self):
+        return self._AutoRenew
+
+    @AutoRenew.setter
+    def AutoRenew(self, AutoRenew):
+        self._AutoRenew = AutoRenew
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -601,6 +625,8 @@ class InstanceInfo(AbstractModel):
         self._ExpiredAt = params.get("ExpiredAt")
         self._IsNoExpired = params.get("IsNoExpired")
         self._WanAddress = params.get("WanAddress")
+        self._IsolateAt = params.get("IsolateAt")
+        self._AutoRenew = params.get("AutoRenew")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

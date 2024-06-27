@@ -919,6 +919,15 @@ class AlarmTargetInfo(AbstractModel):
         :type StartTimeOffset: int
         :param _EndTimeOffset: 查询范围终止时间相对于告警执行时间的偏移，单位为分钟，取值为非正，须大于StartTimeOffset，最大值为0，最小值为-1440。
         :type EndTimeOffset: int
+        :param _SyntaxRule: 检索语法规则，默认值为0。
+0：Lucene语法，1：CQL语法。
+详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SyntaxRule: int
+        :param _BizType: 主题类型。
+0: 日志主题，1: 指标主题
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BizType: int
         """
         self._LogsetId = None
         self._LogsetName = None
@@ -928,6 +937,8 @@ class AlarmTargetInfo(AbstractModel):
         self._Number = None
         self._StartTimeOffset = None
         self._EndTimeOffset = None
+        self._SyntaxRule = None
+        self._BizType = None
 
     @property
     def LogsetId(self):
@@ -993,6 +1004,22 @@ class AlarmTargetInfo(AbstractModel):
     def EndTimeOffset(self, EndTimeOffset):
         self._EndTimeOffset = EndTimeOffset
 
+    @property
+    def SyntaxRule(self):
+        return self._SyntaxRule
+
+    @SyntaxRule.setter
+    def SyntaxRule(self, SyntaxRule):
+        self._SyntaxRule = SyntaxRule
+
+    @property
+    def BizType(self):
+        return self._BizType
+
+    @BizType.setter
+    def BizType(self, BizType):
+        self._BizType = BizType
+
 
     def _deserialize(self, params):
         self._LogsetId = params.get("LogsetId")
@@ -1003,6 +1030,8 @@ class AlarmTargetInfo(AbstractModel):
         self._Number = params.get("Number")
         self._StartTimeOffset = params.get("StartTimeOffset")
         self._EndTimeOffset = params.get("EndTimeOffset")
+        self._SyntaxRule = params.get("SyntaxRule")
+        self._BizType = params.get("BizType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1469,10 +1469,13 @@ class BizLicenseOCRRequest(AbstractModel):
         :type ImageUrl: str
         :param _EnableCopyWarn: 是否返回告警码，默认为false
         :type EnableCopyWarn: bool
+        :param _EnablePeriodComplete: 是否返回自动拼接的有效期，默认为true
+        :type EnablePeriodComplete: bool
         """
         self._ImageBase64 = None
         self._ImageUrl = None
         self._EnableCopyWarn = None
+        self._EnablePeriodComplete = None
 
     @property
     def ImageBase64(self):
@@ -1498,11 +1501,20 @@ class BizLicenseOCRRequest(AbstractModel):
     def EnableCopyWarn(self, EnableCopyWarn):
         self._EnableCopyWarn = EnableCopyWarn
 
+    @property
+    def EnablePeriodComplete(self):
+        return self._EnablePeriodComplete
+
+    @EnablePeriodComplete.setter
+    def EnablePeriodComplete(self, EnablePeriodComplete):
+        self._EnablePeriodComplete = EnablePeriodComplete
+
 
     def _deserialize(self, params):
         self._ImageBase64 = params.get("ImageBase64")
         self._ImageUrl = params.get("ImageUrl")
         self._EnableCopyWarn = params.get("EnableCopyWarn")
+        self._EnablePeriodComplete = params.get("EnablePeriodComplete")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25199,6 +25211,8 @@ class TrainTicket(AbstractModel):
         :type ReimburseOnlyMark: int
         :param _RefundMark: 是否有退票费标识（0：没有，1：有）
         :type RefundMark: int
+        :param _TicketChangeMark: 是否有改签费标识（0：没有，1：有）
+        :type TicketChangeMark: int
         """
         self._Title = None
         self._Number = None
@@ -25225,6 +25239,7 @@ class TrainTicket(AbstractModel):
         self._QRCodeMark = None
         self._ReimburseOnlyMark = None
         self._RefundMark = None
+        self._TicketChangeMark = None
 
     @property
     def Title(self):
@@ -25426,6 +25441,14 @@ class TrainTicket(AbstractModel):
     def RefundMark(self, RefundMark):
         self._RefundMark = RefundMark
 
+    @property
+    def TicketChangeMark(self):
+        return self._TicketChangeMark
+
+    @TicketChangeMark.setter
+    def TicketChangeMark(self, TicketChangeMark):
+        self._TicketChangeMark = TicketChangeMark
+
 
     def _deserialize(self, params):
         self._Title = params.get("Title")
@@ -25453,6 +25476,7 @@ class TrainTicket(AbstractModel):
         self._QRCodeMark = params.get("QRCodeMark")
         self._ReimburseOnlyMark = params.get("ReimburseOnlyMark")
         self._RefundMark = params.get("RefundMark")
+        self._TicketChangeMark = params.get("TicketChangeMark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

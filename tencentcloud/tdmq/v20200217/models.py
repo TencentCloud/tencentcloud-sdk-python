@@ -3817,10 +3817,20 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
         :type StorageSize: int
         :param _EnableCreateDefaultHaMirrorQueue: 镜像队列,不传默认为false
         :type EnableCreateDefaultHaMirrorQueue: bool
-        :param _AutoRenewFlag: 自动续费,不传默认为true
+        :param _AutoRenewFlag: 预付费使用。自动续费,不传默认为true
         :type AutoRenewFlag: bool
         :param _TimeSpan: 购买时长,不传默认为1(月)
         :type TimeSpan: int
+        :param _PayMode: 付费方式，0 为后付费，即按量计费；1 为预付费，即包年包月。默认包年包月
+        :type PayMode: int
+        :param _ClusterVersion: 集群版本，不传默认为 3.8.30，可选值为 3.8.30 和 3.11.8
+        :type ClusterVersion: str
+        :param _IsIntl: 是否国际站请求，默认 false
+        :type IsIntl: bool
+        :param _ResourceTags: 资源标签列表
+        :type ResourceTags: list of Tag
+        :param _Bandwidth: 公网带宽大小，单位 M
+        :type Bandwidth: int
         """
         self._ZoneIds = None
         self._VpcId = None
@@ -3832,6 +3842,11 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
         self._EnableCreateDefaultHaMirrorQueue = None
         self._AutoRenewFlag = None
         self._TimeSpan = None
+        self._PayMode = None
+        self._ClusterVersion = None
+        self._IsIntl = None
+        self._ResourceTags = None
+        self._Bandwidth = None
 
     @property
     def ZoneIds(self):
@@ -3913,6 +3928,46 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
     def TimeSpan(self, TimeSpan):
         self._TimeSpan = TimeSpan
 
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def ClusterVersion(self):
+        return self._ClusterVersion
+
+    @ClusterVersion.setter
+    def ClusterVersion(self, ClusterVersion):
+        self._ClusterVersion = ClusterVersion
+
+    @property
+    def IsIntl(self):
+        return self._IsIntl
+
+    @IsIntl.setter
+    def IsIntl(self, IsIntl):
+        self._IsIntl = IsIntl
+
+    @property
+    def ResourceTags(self):
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
+
+    @property
+    def Bandwidth(self):
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
 
     def _deserialize(self, params):
         self._ZoneIds = params.get("ZoneIds")
@@ -3925,6 +3980,16 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
         self._EnableCreateDefaultHaMirrorQueue = params.get("EnableCreateDefaultHaMirrorQueue")
         self._AutoRenewFlag = params.get("AutoRenewFlag")
         self._TimeSpan = params.get("TimeSpan")
+        self._PayMode = params.get("PayMode")
+        self._ClusterVersion = params.get("ClusterVersion")
+        self._IsIntl = params.get("IsIntl")
+        if params.get("ResourceTags") is not None:
+            self._ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._ResourceTags.append(obj)
+        self._Bandwidth = params.get("Bandwidth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6056,8 +6121,11 @@ class DeleteRabbitMQVipInstanceRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例Id
         :type InstanceId: str
+        :param _IsIntl: 是否国际站请求，默认 false
+        :type IsIntl: bool
         """
         self._InstanceId = None
+        self._IsIntl = None
 
     @property
     def InstanceId(self):
@@ -6067,9 +6135,18 @@ class DeleteRabbitMQVipInstanceRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def IsIntl(self):
+        return self._IsIntl
+
+    @IsIntl.setter
+    def IsIntl(self, IsIntl):
+        self._IsIntl = IsIntl
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
+        self._IsIntl = params.get("IsIntl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22737,6 +22814,12 @@ class RabbitMQUser(AbstractModel):
         :type ModifyTime: str
         :param _Type: 用户类型，System：系统创建，User：用户创建
         :type Type: str
+        :param _MaxConnections: 单个用户最大可用连接数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxConnections: int
+        :param _MaxChannels: 单个用户最大可用通道数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxChannels: int
         """
         self._InstanceId = None
         self._User = None
@@ -22746,6 +22829,8 @@ class RabbitMQUser(AbstractModel):
         self._CreateTime = None
         self._ModifyTime = None
         self._Type = None
+        self._MaxConnections = None
+        self._MaxChannels = None
 
     @property
     def InstanceId(self):
@@ -22811,6 +22896,22 @@ class RabbitMQUser(AbstractModel):
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def MaxConnections(self):
+        return self._MaxConnections
+
+    @MaxConnections.setter
+    def MaxConnections(self, MaxConnections):
+        self._MaxConnections = MaxConnections
+
+    @property
+    def MaxChannels(self):
+        return self._MaxChannels
+
+    @MaxChannels.setter
+    def MaxChannels(self, MaxChannels):
+        self._MaxChannels = MaxChannels
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -22821,6 +22922,8 @@ class RabbitMQUser(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._ModifyTime = params.get("ModifyTime")
         self._Type = params.get("Type")
+        self._MaxConnections = params.get("MaxConnections")
+        self._MaxChannels = params.get("MaxChannels")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22880,6 +22983,9 @@ class RabbitMQVipInstance(AbstractModel):
         :param _Vpcs: VPC 接入点列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Vpcs: list of VpcEndpointInfo
+        :param _CreateTime: 创建时间，毫秒为单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -22899,6 +23005,7 @@ class RabbitMQVipInstance(AbstractModel):
         self._ClusterStatus = None
         self._PublicAccessEndpoint = None
         self._Vpcs = None
+        self._CreateTime = None
 
     @property
     def InstanceId(self):
@@ -23044,6 +23151,14 @@ class RabbitMQVipInstance(AbstractModel):
     def Vpcs(self, Vpcs):
         self._Vpcs = Vpcs
 
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -23069,6 +23184,7 @@ class RabbitMQVipInstance(AbstractModel):
                 obj = VpcEndpointInfo()
                 obj._deserialize(item)
                 self._Vpcs.append(obj)
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25171,6 +25287,21 @@ class RocketMQInstanceConfig(AbstractModel):
         :param _MaxQueuesPerTopic: 每个主题最大队列数
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxQueuesPerTopic: int
+        :param _MaxRetention: 最大可设置消息保留时间，小时为单位	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxRetention: int
+        :param _MinRetention: 最小可设置消息保留时间，小时为单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinRetention: int
+        :param _Retention: 实例消息保留时间，小时为单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Retention: int
+        :param _TopicNumLowerLimit: Topic个数最小配额，即免费额度，默认为集群规格单节点最小配额*节点个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicNumLowerLimit: int
+        :param _TopicNumUpperLimit: Topic个数最大配额，默认为集群规格单节点最大配额*节点个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicNumUpperLimit: int
         """
         self._MaxTpsPerNamespace = None
         self._MaxNamespaceNum = None
@@ -25184,6 +25315,11 @@ class RocketMQInstanceConfig(AbstractModel):
         self._NodeDistribution = None
         self._TopicDistribution = None
         self._MaxQueuesPerTopic = None
+        self._MaxRetention = None
+        self._MinRetention = None
+        self._Retention = None
+        self._TopicNumLowerLimit = None
+        self._TopicNumUpperLimit = None
 
     @property
     def MaxTpsPerNamespace(self):
@@ -25281,6 +25417,46 @@ class RocketMQInstanceConfig(AbstractModel):
     def MaxQueuesPerTopic(self, MaxQueuesPerTopic):
         self._MaxQueuesPerTopic = MaxQueuesPerTopic
 
+    @property
+    def MaxRetention(self):
+        return self._MaxRetention
+
+    @MaxRetention.setter
+    def MaxRetention(self, MaxRetention):
+        self._MaxRetention = MaxRetention
+
+    @property
+    def MinRetention(self):
+        return self._MinRetention
+
+    @MinRetention.setter
+    def MinRetention(self, MinRetention):
+        self._MinRetention = MinRetention
+
+    @property
+    def Retention(self):
+        return self._Retention
+
+    @Retention.setter
+    def Retention(self, Retention):
+        self._Retention = Retention
+
+    @property
+    def TopicNumLowerLimit(self):
+        return self._TopicNumLowerLimit
+
+    @TopicNumLowerLimit.setter
+    def TopicNumLowerLimit(self, TopicNumLowerLimit):
+        self._TopicNumLowerLimit = TopicNumLowerLimit
+
+    @property
+    def TopicNumUpperLimit(self):
+        return self._TopicNumUpperLimit
+
+    @TopicNumUpperLimit.setter
+    def TopicNumUpperLimit(self, TopicNumUpperLimit):
+        self._TopicNumUpperLimit = TopicNumUpperLimit
+
 
     def _deserialize(self, params):
         self._MaxTpsPerNamespace = params.get("MaxTpsPerNamespace")
@@ -25305,6 +25481,11 @@ class RocketMQInstanceConfig(AbstractModel):
                 obj._deserialize(item)
                 self._TopicDistribution.append(obj)
         self._MaxQueuesPerTopic = params.get("MaxQueuesPerTopic")
+        self._MaxRetention = params.get("MaxRetention")
+        self._MinRetention = params.get("MinRetention")
+        self._Retention = params.get("Retention")
+        self._TopicNumLowerLimit = params.get("TopicNumLowerLimit")
+        self._TopicNumUpperLimit = params.get("TopicNumUpperLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

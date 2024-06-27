@@ -414,6 +414,53 @@ class ApplyCertificateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class BatchDeleteFail(AbstractModel):
+    """批量删除失败的项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertId: 失败的证书ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertId: str
+        :param _Msg: 失败的原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        """
+        self._CertId = None
+        self._Msg = None
+
+    @property
+    def CertId(self):
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def Msg(self):
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+
+    def _deserialize(self, params):
+        self._CertId = params.get("CertId")
+        self._Msg = params.get("Msg")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BindResourceRegionResult(AbstractModel):
     """绑定资源地域结果
 
@@ -3336,6 +3383,83 @@ class DeleteCertificateResponse(AbstractModel):
     def _deserialize(self, params):
         self._DeleteResult = params.get("DeleteResult")
         self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteCertificatesRequest(AbstractModel):
+    """DeleteCertificates请求参数结构体
+
+    """
+
+
+class DeleteCertificatesResponse(AbstractModel):
+    """DeleteCertificates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Success: 成功的ID
+        :type Success: list of str
+        :param _Fail: 失败的ID和原因
+        :type Fail: list of BatchDeleteFail
+        :param _CertTaskIds: 证书ID和异步任务的ID
+        :type CertTaskIds: list of CertTaskId
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Success = None
+        self._Fail = None
+        self._CertTaskIds = None
+        self._RequestId = None
+
+    @property
+    def Success(self):
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
+
+    @property
+    def Fail(self):
+        return self._Fail
+
+    @Fail.setter
+    def Fail(self, Fail):
+        self._Fail = Fail
+
+    @property
+    def CertTaskIds(self):
+        return self._CertTaskIds
+
+    @CertTaskIds.setter
+    def CertTaskIds(self, CertTaskIds):
+        self._CertTaskIds = CertTaskIds
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Success = params.get("Success")
+        if params.get("Fail") is not None:
+            self._Fail = []
+            for item in params.get("Fail"):
+                obj = BatchDeleteFail()
+                obj._deserialize(item)
+                self._Fail.append(obj)
+        if params.get("CertTaskIds") is not None:
+            self._CertTaskIds = []
+            for item in params.get("CertTaskIds"):
+                obj = CertTaskId()
+                obj._deserialize(item)
+                self._CertTaskIds.append(obj)
         self._RequestId = params.get("RequestId")
 
 

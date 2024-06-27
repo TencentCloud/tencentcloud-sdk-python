@@ -1324,6 +1324,11 @@ def test_import_vcg():
     from tencentcloud.vcg.v20240404 import models
 
 
+def test_import_vclm():
+    from tencentcloud.vclm.v20240523 import vclm_client
+    from tencentcloud.vclm.v20240523 import models
+
+
 def test_import_vdb():
     from tencentcloud.vdb.v20230616 import vdb_client
     from tencentcloud.vdb.v20230616 import models

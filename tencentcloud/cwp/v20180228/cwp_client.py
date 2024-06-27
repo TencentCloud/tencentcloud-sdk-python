@@ -8838,31 +8838,6 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def ExportAttackLogs(self, request):
-        """ExportAttackEvents接口替代
-
-        导出网络攻击日志
-
-        :param request: Request instance for ExportAttackLogs.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAttackLogsRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.ExportAttackLogsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ExportAttackLogs", params, headers=headers)
-            response = json.loads(body)
-            model = models.ExportAttackLogsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def ExportBaselineEffectHostList(self, request):
         """导出基线影响主机列表
 

@@ -122,101 +122,101 @@ class Condition(AbstractModel):
 
 
 class DescribeAccountGroupsData(AbstractModel):
-    """账户分响应对象集合
+    """分组名称
 
     """
 
     def __init__(self):
         r"""
-        :param _Itime: 创建时间
+        :param _NamePath: 名称path
 注意：此字段可能返回 null，表示取不到有效值。
-        :type Itime: str
-        :param _Name: 账户组名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Name: str
-        :param _IdPathArr: id patch数组
+        :type NamePath: str
+        :param _IdPathArr: id patch数组(只支持32位)
 注意：此字段可能返回 null，表示取不到有效值。
         :type IdPathArr: list of int
-        :param _UserTotal: 该分组下用户总数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UserTotal: int
         :param _ExtraInfo: 扩展信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraInfo: str
-        :param _ImportType: 导入类型
+        :param _Utime: 最后更新时间
 注意：此字段可能返回 null，表示取不到有效值。
-        :type ImportType: str
+        :type Utime: str
+        :param _ParentId: 父id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentId: int
+        :param _OrgId: 组织id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrgId: str
+        :param _Name: 账户组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Id: id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
         :param _Description: 描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _Source: 同步数据源
 注意：此字段可能返回 null，表示取不到有效值。
         :type Source: int
-        :param _MiniIamId: miniIAM id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MiniIamId: str
-        :param _OrgId: 组织id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OrgId: str
-        :param _ReadOnly: 是否该账户的直接权限
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ReadOnly: bool
-        :param _ParentId: 父id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ParentId: int
-        :param _NamePath: 名称path
-注意：此字段可能返回 null，表示取不到有效值。
-        :type NamePath: str
-        :param _ParentOrgId: 父组织id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ParentOrgId: str
         :param _IdPath: id path
 注意：此字段可能返回 null，表示取不到有效值。
         :type IdPath: str
-        :param _Id: 自增id
+        :param _Itime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
-        :type Id: int
+        :type Itime: str
+        :param _ParentOrgId: 父组织id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentOrgId: str
+        :param _ImportType: 导入类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImportType: str
+        :param _MiniIamId: miniIAM id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MiniIamId: str
+        :param _UserTotal: 该分组下用户总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserTotal: int
         :param _IsLeaf: 是否叶子节点
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsLeaf: bool
-        :param _Utime: 最后更新时间
+        :param _ReadOnly: 是否该账户的直接权限
 注意：此字段可能返回 null，表示取不到有效值。
-        :type Utime: str
+        :type ReadOnly: bool
+        :param _LatestSyncResult: 最新一次同步任务的结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LatestSyncResult: str
+        :param _LatestSyncTime: 最新一次同步任务的结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LatestSyncTime: str
         """
-        self._Itime = None
-        self._Name = None
+        self._NamePath = None
         self._IdPathArr = None
-        self._UserTotal = None
         self._ExtraInfo = None
-        self._ImportType = None
+        self._Utime = None
+        self._ParentId = None
+        self._OrgId = None
+        self._Name = None
+        self._Id = None
         self._Description = None
         self._Source = None
-        self._MiniIamId = None
-        self._OrgId = None
-        self._ReadOnly = None
-        self._ParentId = None
-        self._NamePath = None
-        self._ParentOrgId = None
         self._IdPath = None
-        self._Id = None
+        self._Itime = None
+        self._ParentOrgId = None
+        self._ImportType = None
+        self._MiniIamId = None
+        self._UserTotal = None
         self._IsLeaf = None
-        self._Utime = None
+        self._ReadOnly = None
+        self._LatestSyncResult = None
+        self._LatestSyncTime = None
 
     @property
-    def Itime(self):
-        return self._Itime
+    def NamePath(self):
+        return self._NamePath
 
-    @Itime.setter
-    def Itime(self, Itime):
-        self._Itime = Itime
-
-    @property
-    def Name(self):
-        return self._Name
-
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
+    @NamePath.setter
+    def NamePath(self, NamePath):
+        self._NamePath = NamePath
 
     @property
     def IdPathArr(self):
@@ -227,14 +227,6 @@ class DescribeAccountGroupsData(AbstractModel):
         self._IdPathArr = IdPathArr
 
     @property
-    def UserTotal(self):
-        return self._UserTotal
-
-    @UserTotal.setter
-    def UserTotal(self, UserTotal):
-        self._UserTotal = UserTotal
-
-    @property
     def ExtraInfo(self):
         return self._ExtraInfo
 
@@ -243,12 +235,44 @@ class DescribeAccountGroupsData(AbstractModel):
         self._ExtraInfo = ExtraInfo
 
     @property
-    def ImportType(self):
-        return self._ImportType
+    def Utime(self):
+        return self._Utime
 
-    @ImportType.setter
-    def ImportType(self, ImportType):
-        self._ImportType = ImportType
+    @Utime.setter
+    def Utime(self, Utime):
+        self._Utime = Utime
+
+    @property
+    def ParentId(self):
+        return self._ParentId
+
+    @ParentId.setter
+    def ParentId(self, ParentId):
+        self._ParentId = ParentId
+
+    @property
+    def OrgId(self):
+        return self._OrgId
+
+    @OrgId.setter
+    def OrgId(self, OrgId):
+        self._OrgId = OrgId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
 
     @property
     def Description(self):
@@ -267,44 +291,20 @@ class DescribeAccountGroupsData(AbstractModel):
         self._Source = Source
 
     @property
-    def MiniIamId(self):
-        return self._MiniIamId
+    def IdPath(self):
+        return self._IdPath
 
-    @MiniIamId.setter
-    def MiniIamId(self, MiniIamId):
-        self._MiniIamId = MiniIamId
-
-    @property
-    def OrgId(self):
-        return self._OrgId
-
-    @OrgId.setter
-    def OrgId(self, OrgId):
-        self._OrgId = OrgId
+    @IdPath.setter
+    def IdPath(self, IdPath):
+        self._IdPath = IdPath
 
     @property
-    def ReadOnly(self):
-        return self._ReadOnly
+    def Itime(self):
+        return self._Itime
 
-    @ReadOnly.setter
-    def ReadOnly(self, ReadOnly):
-        self._ReadOnly = ReadOnly
-
-    @property
-    def ParentId(self):
-        return self._ParentId
-
-    @ParentId.setter
-    def ParentId(self, ParentId):
-        self._ParentId = ParentId
-
-    @property
-    def NamePath(self):
-        return self._NamePath
-
-    @NamePath.setter
-    def NamePath(self, NamePath):
-        self._NamePath = NamePath
+    @Itime.setter
+    def Itime(self, Itime):
+        self._Itime = Itime
 
     @property
     def ParentOrgId(self):
@@ -315,20 +315,28 @@ class DescribeAccountGroupsData(AbstractModel):
         self._ParentOrgId = ParentOrgId
 
     @property
-    def IdPath(self):
-        return self._IdPath
+    def ImportType(self):
+        return self._ImportType
 
-    @IdPath.setter
-    def IdPath(self, IdPath):
-        self._IdPath = IdPath
+    @ImportType.setter
+    def ImportType(self, ImportType):
+        self._ImportType = ImportType
 
     @property
-    def Id(self):
-        return self._Id
+    def MiniIamId(self):
+        return self._MiniIamId
 
-    @Id.setter
-    def Id(self, Id):
-        self._Id = Id
+    @MiniIamId.setter
+    def MiniIamId(self, MiniIamId):
+        self._MiniIamId = MiniIamId
+
+    @property
+    def UserTotal(self):
+        return self._UserTotal
+
+    @UserTotal.setter
+    def UserTotal(self, UserTotal):
+        self._UserTotal = UserTotal
 
     @property
     def IsLeaf(self):
@@ -339,33 +347,51 @@ class DescribeAccountGroupsData(AbstractModel):
         self._IsLeaf = IsLeaf
 
     @property
-    def Utime(self):
-        return self._Utime
+    def ReadOnly(self):
+        return self._ReadOnly
 
-    @Utime.setter
-    def Utime(self, Utime):
-        self._Utime = Utime
+    @ReadOnly.setter
+    def ReadOnly(self, ReadOnly):
+        self._ReadOnly = ReadOnly
+
+    @property
+    def LatestSyncResult(self):
+        return self._LatestSyncResult
+
+    @LatestSyncResult.setter
+    def LatestSyncResult(self, LatestSyncResult):
+        self._LatestSyncResult = LatestSyncResult
+
+    @property
+    def LatestSyncTime(self):
+        return self._LatestSyncTime
+
+    @LatestSyncTime.setter
+    def LatestSyncTime(self, LatestSyncTime):
+        self._LatestSyncTime = LatestSyncTime
 
 
     def _deserialize(self, params):
-        self._Itime = params.get("Itime")
-        self._Name = params.get("Name")
+        self._NamePath = params.get("NamePath")
         self._IdPathArr = params.get("IdPathArr")
-        self._UserTotal = params.get("UserTotal")
         self._ExtraInfo = params.get("ExtraInfo")
-        self._ImportType = params.get("ImportType")
+        self._Utime = params.get("Utime")
+        self._ParentId = params.get("ParentId")
+        self._OrgId = params.get("OrgId")
+        self._Name = params.get("Name")
+        self._Id = params.get("Id")
         self._Description = params.get("Description")
         self._Source = params.get("Source")
-        self._MiniIamId = params.get("MiniIamId")
-        self._OrgId = params.get("OrgId")
-        self._ReadOnly = params.get("ReadOnly")
-        self._ParentId = params.get("ParentId")
-        self._NamePath = params.get("NamePath")
-        self._ParentOrgId = params.get("ParentOrgId")
         self._IdPath = params.get("IdPath")
-        self._Id = params.get("Id")
+        self._Itime = params.get("Itime")
+        self._ParentOrgId = params.get("ParentOrgId")
+        self._ImportType = params.get("ImportType")
+        self._MiniIamId = params.get("MiniIamId")
+        self._UserTotal = params.get("UserTotal")
         self._IsLeaf = params.get("IsLeaf")
-        self._Utime = params.get("Utime")
+        self._ReadOnly = params.get("ReadOnly")
+        self._LatestSyncResult = params.get("LatestSyncResult")
+        self._LatestSyncTime = params.get("LatestSyncTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1313,25 +1339,25 @@ class DeviceDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 设备ID(只支持32位)
+        :param _Id: 设备ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
-        :param _Mid: 设备唯一标识符
+        :param _Mid: 设备唯一标识码，在ioa中每个设备有唯一标识码
 注意：此字段可能返回 null，表示取不到有效值。
         :type Mid: str
         :param _Name: 终端名（设备名）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _GroupId: 设备所在分组ID(只支持32位)
+        :param _GroupId: 设备所在分组ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupId: int
-        :param _OsType: OS平台(只支持32位)
+        :param _OsType: OS平台，0：Windows 、1： Linux、 2：macOS 、4： Android、 5: iOS。默认是0
 注意：此字段可能返回 null，表示取不到有效值。
         :type OsType: int
         :param _Ip: 设备IP地址（出口IP）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ip: str
-        :param _OnlineStatus: 在线状态 2 在线 0，1 离线(只支持32位)
+        :param _OnlineStatus: 在线状态，2：在线、0或者1:离线
 注意：此字段可能返回 null，表示取不到有效值。
         :type OnlineStatus: int
         :param _Version: 客户端版本号-大整数
@@ -1346,7 +1372,7 @@ class DeviceDetail(AbstractModel):
         :param _ConnActiveTime: 最后一次在线时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConnActiveTime: str
-        :param _Locked: 设备是否加锁 1 锁定 0 2 非锁定(只支持32位)
+        :param _Locked: 设备是否加锁 ，1：锁定 0或者2：未锁定。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Locked: int
         :param _LocalIpList: 设备本地IP列表, 包括IP
@@ -1364,7 +1390,7 @@ class DeviceDetail(AbstractModel):
         :param _CriticalVulListCount: 未修复高危漏洞数(只支持32位)
 注意：此字段可能返回 null，表示取不到有效值。
         :type CriticalVulListCount: int
-        :param _ComputerName: 设备名 和Name相同，保留参数
+        :param _ComputerName: 设备名，和Name相同
 注意：此字段可能返回 null，表示取不到有效值。
         :type ComputerName: str
         :param _DomainName: 登录域名
@@ -1373,10 +1399,10 @@ class DeviceDetail(AbstractModel):
         :param _MacAddr: MAC地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type MacAddr: str
-        :param _VulCount: 漏洞数(只支持32位)
+        :param _VulCount: 漏洞数
 注意：此字段可能返回 null，表示取不到有效值。
         :type VulCount: int
-        :param _RiskCount: 病毒风险数(只支持32位)
+        :param _RiskCount: 病毒风险数
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskCount: int
         :param _VirusVer: 病毒库版本
@@ -1397,7 +1423,7 @@ class DeviceDetail(AbstractModel):
         :param _UserName: 终端用户名
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserName: str
-        :param _FirewallStatus: 防火墙状态(只支持32位)
+        :param _FirewallStatus: 防火墙状态，不等于0表示开启
 注意：此字段可能返回 null，表示取不到有效值。
         :type FirewallStatus: int
         :param _SerialNum: SN序列号
@@ -1409,7 +1435,7 @@ class DeviceDetail(AbstractModel):
         :param _NGNStrategyVer: NGN策略版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type NGNStrategyVer: str
-        :param _IOAUserName: 最近登录账号
+        :param _IOAUserName: 最近登录账户的账号
 注意：此字段可能返回 null，表示取不到有效值。
         :type IOAUserName: str
         :param _DeviceNewStrategyVer: 设备管控新策略
@@ -1436,7 +1462,7 @@ class DeviceDetail(AbstractModel):
         :param _AccountGroupName: 最近登录账号部门
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountGroupName: str
-        :param _AccountName: 登录账号姓名
+        :param _AccountName: 最近登录账户的姓名
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountName: str
         :param _AccountGroupId: 账号组id

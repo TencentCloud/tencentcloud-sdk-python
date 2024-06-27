@@ -88,6 +88,169 @@ class Filter(AbstractModel):
         
 
 
+class GenerateAvatarRequest(AbstractModel):
+    """GenerateAvatar请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Style: 头像风格。
+请在  [百变头像风格列表](https://cloud.tencent.com/document/product/1668/107741) 中选择期望的风格，必须传入风格编号。
+        :type Style: str
+        :param _InputImage: 输入图 Base64 数据。
+算法将根据输入的图片，结合文本描述智能生成与之相关的图像。
+Base64 和 Url 必须提供一个，如果都提供以 Base64 为准。
+图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+        :type InputImage: str
+        :param _InputUrl: 输入图 Url。
+算法将根据输入的图片，结合文本描述智能生成与之相关的图像。
+Base64 和 Url 必须提供一个，如果都提供以 Base64 为准。
+图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+        :type InputUrl: str
+        :param _Filter: 输入图像质量检测开关，默认开启。
+1：开启
+0：关闭
+建议开启检测，可提升生成效果，关闭检测可能因输入图像质量较差导致生成效果受损。
+开启后，将增强对输入图像的质量要求，如果输入图像单边分辨率<500、图像中人脸占比较小、存在多人、没有检测到人脸、人脸不完整、人脸遮挡等，将被拦截。
+关闭后，将降低对输入图像的质量要求，如果图像中没有检测到人脸或人脸占比过小等，将被拦截。
+        :type Filter: int
+        :param _LogoAdd: 为生成结果图添加标识的开关，默认为1。
+1：添加标识。
+0：不添加标识。
+其他数值：默认按1处理。
+建议您使用显著标识来提示结果图是 AI 生成的图片。
+        :type LogoAdd: int
+        :param _LogoParam: 标识内容设置。
+默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        :type LogoParam: :class:`tencentcloud.aiart.v20221229.models.LogoParam`
+        :param _RspImgType: 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
+        :type RspImgType: str
+        """
+        self._Style = None
+        self._InputImage = None
+        self._InputUrl = None
+        self._Filter = None
+        self._LogoAdd = None
+        self._LogoParam = None
+        self._RspImgType = None
+
+    @property
+    def Style(self):
+        return self._Style
+
+    @Style.setter
+    def Style(self, Style):
+        self._Style = Style
+
+    @property
+    def InputImage(self):
+        return self._InputImage
+
+    @InputImage.setter
+    def InputImage(self, InputImage):
+        self._InputImage = InputImage
+
+    @property
+    def InputUrl(self):
+        return self._InputUrl
+
+    @InputUrl.setter
+    def InputUrl(self, InputUrl):
+        self._InputUrl = InputUrl
+
+    @property
+    def Filter(self):
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def LogoAdd(self):
+        return self._LogoAdd
+
+    @LogoAdd.setter
+    def LogoAdd(self, LogoAdd):
+        self._LogoAdd = LogoAdd
+
+    @property
+    def LogoParam(self):
+        return self._LogoParam
+
+    @LogoParam.setter
+    def LogoParam(self, LogoParam):
+        self._LogoParam = LogoParam
+
+    @property
+    def RspImgType(self):
+        return self._RspImgType
+
+    @RspImgType.setter
+    def RspImgType(self, RspImgType):
+        self._RspImgType = RspImgType
+
+
+    def _deserialize(self, params):
+        self._Style = params.get("Style")
+        self._InputImage = params.get("InputImage")
+        self._InputUrl = params.get("InputUrl")
+        self._Filter = params.get("Filter")
+        self._LogoAdd = params.get("LogoAdd")
+        if params.get("LogoParam") is not None:
+            self._LogoParam = LogoParam()
+            self._LogoParam._deserialize(params.get("LogoParam"))
+        self._RspImgType = params.get("RspImgType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GenerateAvatarResponse(AbstractModel):
+    """GenerateAvatar返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResultImage: 根据入参 RspImgType 填入不同，返回不同的内容。
+如果传入 base64 则返回生成图 Base64 编码。
+如果传入 url 则返回的生成图 URL , 有效期1小时，请及时保存。
+        :type ResultImage: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ResultImage = None
+        self._RequestId = None
+
+    @property
+    def ResultImage(self):
+        return self._ResultImage
+
+    @ResultImage.setter
+    def ResultImage(self, ResultImage):
+        self._ResultImage = ResultImage
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ResultImage = params.get("ResultImage")
+        self._RequestId = params.get("RequestId")
+
+
 class ImageToImageRequest(AbstractModel):
     """ImageToImage请求参数结构体
 

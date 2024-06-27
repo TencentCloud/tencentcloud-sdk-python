@@ -10024,7 +10024,8 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
 `3. 同渠道应用(Agent.AppId)下，企业唯一标识ProxyOrganizationOpenId需要保持唯一，员工唯一标识OpenId也要保持唯一 (而不是企业下唯一)。 `
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param _ProxyOrganizationName: 第三方平台子客的企业名称，请确认该企业名称与企业营业执照中注册的名称完全一致。
-<font color="red">在测试环境联调的过程中，企业名称请统一加上“测试”二字，如：典子谦示例企业测试，否则将无法审核通过。</font>
+<font color="red">在测试环境联调的过程中，企业名称请使用以下名称 
+**子客测试专用企业1 - 子客测试专用企业9**</font>
 
 注:
  `1. 如果名称中包含英文括号()，请使用中文括号（）代替。`
