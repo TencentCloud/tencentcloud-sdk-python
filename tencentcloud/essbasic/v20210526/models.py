@@ -6974,22 +6974,20 @@ class ChannelDescribeOrganizationSealsRequest(AbstractModel):
 </ul>
 第三方平台子客企业和员工必须已经经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _Limit: 返回最大数量，最大为100
+        :param _Limit: 指定分页每页返回的数据条数，单页最大支持 100。
         :type Limit: int
         :param _Offset: 分页查询偏移量，默认为0，最大为20000
         :type Offset: int
-        :param _InfoType: 查询信息类型
-支持的值如下：
-<ul><li>0-默认，不返回授权用户信息</li>
-<li>1-返回授权用户信息</li>
-</ul>
+        :param _InfoType: 查询授权用户信息类型，取值如下：
+
+<ul> <li><b>0</b>：（默认）不返回授权用户信息</li> <li><b>1</b>：返回授权用户的信息</li> </ul>
         :type InfoType: int
-        :param _SealId: 印章id（没有输入返回所有）
+        :param _SealId: 印章id，是否查询特定的印章（没有输入返回所有）
 
 注:  `没有输入返回所有记录，最大返回100条。`
         :type SealId: str
         :param _SealTypes: 电子印章类型 , 可选类型如下: 
-<ul><li>**OFFICIAL**: (默认)公章</li>
+<ul><li>**OFFICIAL**: 公章</li>
 <li>**CONTRACT**: 合同专用章;</li>
 <li>**FINANCE**: 财务专用章;</li>
 <li>**PERSONNEL**: 人事专用章</li>
@@ -6998,7 +6996,10 @@ class ChannelDescribeOrganizationSealsRequest(AbstractModel):
 
 注:  `为空时查询所有类型的印章。`
         :type SealTypes: list of str
-        :param _SealStatuses: 查询的印章状态列表。 <ul> <li>空，只查询启用状态的印章；</li> <li>ALL，查询所有状态的印章；</li> <li>CHECKING，查询待审核的印章；</li> <li>SUCCESS，查询启用状态的印章；</li> <li>FAIL，查询印章审核拒绝的印章；</li> <li>DISABLE，查询已停用的印章；</li> <li>STOPPED，查询已终止的印章；</li> <li>VOID，查询已作废的印章；</li> <li>INVALID，查询已失效的印章；</li> </ul>
+        :param _SealStatuses: 
+需查询的印章状态列表。
+
+<ul> <li>空，()仅查询启用状态的印章；</li> <li><strong>ALL</strong>，查询所有状态的印章；</li> <li><strong>CHECKING</strong>，查询待审核的印章；</li> <li><strong>SUCCESS</strong>，查询启用状态的印章；</li> <li><strong>FAIL</strong>，查询印章审核拒绝的印章；</li> <li><strong>DISABLE</strong>，查询已停用的印章；</li> <li><strong>STOPPED</strong>，查询已终止的印章；</li> <li><strong>VOID</strong>，查询已作废的印章；</li> <li><strong>INVALID</strong>，查询已失效的印章。</li> </ul>
         :type SealStatuses: list of str
         """
         self._Agent = None
@@ -7093,7 +7094,7 @@ class ChannelDescribeOrganizationSealsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 在设置了SealId时返回0或1，没有设置时返回公司的总印章数量，可能比返回的印章数组数量多
+        :param _TotalCount: 在设定了SealId时，返回值为0或1；若未设定SealId，则返回公司的总印章数量
         :type TotalCount: int
         :param _Seals: 查询到的印章结果数组
         :type Seals: list of OccupiedSeal
@@ -9028,8 +9029,6 @@ class Component(AbstractModel):
     1. 绝对定位方式 （可以通过 [PDF坐标计算助手](https://qian.tencent.com/developers/tools/template-editor)计算控件的坐标）
     2. 表单域(FIELD)定位方式
     3. 关键字(KEYWORD)定位方式，使用关键字定位时，请确保PDF原始文件内是关键字以文字形式保存在PDF文件中，不支持对图片内文字进行关键字查找
-    可以参考官网说明
-    https://cloud.tencent.com/document/product/1323/78346#component-.E4.B8.89.E7.A7.8D.E5.AE.9A.E4.BD.8D.E6.96.B9.E5.BC.8F.E8.AF.B4.E6.98.8E
 
     """
 
@@ -11027,7 +11026,10 @@ class CreateLegalSealQrCodeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _QrcodeBase64: 二维码图片base64值
+        :param _QrcodeBase64: 二维码图片base64值，二维码有效期7天（604800秒）
+
+二维码图片的样式如下图：
+![image](https://qcloudimg.tencent-cloud.cn/raw/7ec2478761158a35a9c623882839a5df.png)
         :type QrcodeBase64: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

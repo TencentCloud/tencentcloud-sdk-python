@@ -6887,6 +6887,10 @@ class DescribeNamespacesRequest(AbstractModel):
         :param _All: 列出所有命名空间
         :type All: bool
         :param _Filters: 过滤条件
+- 按照【标签】过滤
+   Name: Tags
+   Value:   tagKey:tagVal
+
         :type Filters: list of Filter
         :param _KmsSignPolicy: 仅查询启用了 KMS 镜像签名的空间
         :type KmsSignPolicy: bool

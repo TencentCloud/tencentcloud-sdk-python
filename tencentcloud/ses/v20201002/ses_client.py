@@ -49,6 +49,29 @@ class SesClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCustomBlacklist(self, request):
+        """添加自定义黑名单
+
+        :param request: Request instance for CreateCustomBlacklist.
+        :type request: :class:`tencentcloud.ses.v20201002.models.CreateCustomBlacklistRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.CreateCustomBlacklistResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCustomBlacklist", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCustomBlacklistResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateEmailAddress(self, request):
         """在验证了发信域名之后，您需要一个发信地址来发送邮件。例如发信域名是mail.qcloud.com，那么发信地址可以为 service@mail.qcloud.com。如果您想要收件人在收件箱列表中显示您的别名，例如"腾讯云邮件通知"。那么发信地址为： 别名 空格 尖括号 邮箱地址。请注意中间需要有空格
 
@@ -202,6 +225,29 @@ class SesClient(AbstractClient):
             body = self.call("DeleteBlackList", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteBlackListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCustomBlackList(self, request):
+        """删除自定义黑名单邮箱地址
+
+        :param request: Request instance for DeleteCustomBlackList.
+        :type request: :class:`tencentcloud.ses.v20201002.models.DeleteCustomBlackListRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.DeleteCustomBlackListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCustomBlackList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCustomBlackListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -418,6 +464,29 @@ class SesClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListCustomBlacklist(self, request):
+        """获取自定义黑名单列表
+
+        :param request: Request instance for ListCustomBlacklist.
+        :type request: :class:`tencentcloud.ses.v20201002.models.ListCustomBlacklistRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.ListCustomBlacklistResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListCustomBlacklist", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListCustomBlacklistResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListEmailAddress(self, request):
         """获取发信地址列表
 
@@ -570,6 +639,29 @@ class SesClient(AbstractClient):
             body = self.call("SendEmail", params, headers=headers)
             response = json.loads(body)
             model = models.SendEmailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateCustomBlackList(self, request):
+        """更新自定义黑名单
+
+        :param request: Request instance for UpdateCustomBlackList.
+        :type request: :class:`tencentcloud.ses.v20201002.models.UpdateCustomBlackListRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.UpdateCustomBlackListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateCustomBlackList", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateCustomBlackListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -17536,12 +17536,15 @@ class StartStopServiceOrMonitorRequest(AbstractModel):
         :type StrategyConfig: :class:`tencentcloud.emr.v20190103.models.StrategyConfig`
         :param _StopParams: 暂停服务时用的参数
         :type StopParams: :class:`tencentcloud.emr.v20190103.models.StopParams`
+        :param _KeepMonitorButNotRecoverProcess: 当OpType为<li>StopMonitor</li>才有用，true表示进入维护模式但是仍然监控进程但是不拉起进程
+        :type KeepMonitorButNotRecoverProcess: bool
         """
         self._InstanceId = None
         self._OpType = None
         self._OpScope = None
         self._StrategyConfig = None
         self._StopParams = None
+        self._KeepMonitorButNotRecoverProcess = None
 
     @property
     def InstanceId(self):
@@ -17583,6 +17586,14 @@ class StartStopServiceOrMonitorRequest(AbstractModel):
     def StopParams(self, StopParams):
         self._StopParams = StopParams
 
+    @property
+    def KeepMonitorButNotRecoverProcess(self):
+        return self._KeepMonitorButNotRecoverProcess
+
+    @KeepMonitorButNotRecoverProcess.setter
+    def KeepMonitorButNotRecoverProcess(self, KeepMonitorButNotRecoverProcess):
+        self._KeepMonitorButNotRecoverProcess = KeepMonitorButNotRecoverProcess
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -17596,6 +17607,7 @@ class StartStopServiceOrMonitorRequest(AbstractModel):
         if params.get("StopParams") is not None:
             self._StopParams = StopParams()
             self._StopParams._deserialize(params.get("StopParams"))
+        self._KeepMonitorButNotRecoverProcess = params.get("KeepMonitorButNotRecoverProcess")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

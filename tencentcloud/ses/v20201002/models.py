@@ -282,6 +282,92 @@ class BatchSendEmailResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class BlackAddressDetail(AbstractModel):
+    """黑名单详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 黑名单地址id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param _Email: 邮箱地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Email: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _ExpireDate: 过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireDate: str
+        :param _Status: 黑名单状态，0:已过期，1:生效中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        """
+        self._Id = None
+        self._Email = None
+        self._CreateTime = None
+        self._ExpireDate = None
+        self._Status = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ExpireDate(self):
+        return self._ExpireDate
+
+    @ExpireDate.setter
+    def ExpireDate(self, ExpireDate):
+        self._ExpireDate = ExpireDate
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Email = params.get("Email")
+        self._CreateTime = params.get("CreateTime")
+        self._ExpireDate = params.get("ExpireDate")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BlackEmailAddress(AbstractModel):
     """邮箱黑名单结构，包含被拉黑的邮箱地址和被拉黑时间，以及被拉黑的理由
 
@@ -338,6 +424,76 @@ class BlackEmailAddress(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateCustomBlacklistRequest(AbstractModel):
+    """CreateCustomBlacklist请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Emails: 添加到黑名单的邮件地址
+        :type Emails: list of str
+        :param _ExpireDate: 过期日期
+        :type ExpireDate: str
+        """
+        self._Emails = None
+        self._ExpireDate = None
+
+    @property
+    def Emails(self):
+        return self._Emails
+
+    @Emails.setter
+    def Emails(self, Emails):
+        self._Emails = Emails
+
+    @property
+    def ExpireDate(self):
+        return self._ExpireDate
+
+    @ExpireDate.setter
+    def ExpireDate(self, ExpireDate):
+        self._ExpireDate = ExpireDate
+
+
+    def _deserialize(self, params):
+        self._Emails = params.get("Emails")
+        self._ExpireDate = params.get("ExpireDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCustomBlacklistResponse(AbstractModel):
+    """CreateCustomBlacklist返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class CreateEmailAddressRequest(AbstractModel):
@@ -993,6 +1149,64 @@ class DeleteBlackListRequest(AbstractModel):
 
 class DeleteBlackListResponse(AbstractModel):
     """DeleteBlackList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteCustomBlackListRequest(AbstractModel):
+    """DeleteCustomBlackList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Emails: 需要删除的邮箱地址
+        :type Emails: list of str
+        """
+        self._Emails = None
+
+    @property
+    def Emails(self):
+        return self._Emails
+
+    @Emails.setter
+    def Emails(self, Emails):
+        self._Emails = Emails
+
+
+    def _deserialize(self, params):
+        self._Emails = params.get("Emails")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCustomBlackListResponse(AbstractModel):
+    """DeleteCustomBlackList返回参数结构体
 
     """
 
@@ -1975,6 +2189,129 @@ class ListBlackEmailAddressResponse(AbstractModel):
                 obj._deserialize(item)
                 self._BlackList.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class ListCustomBlacklistRequest(AbstractModel):
+    """ListCustomBlacklist请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 偏移量，整型，从0开始
+        :type Offset: int
+        :param _Limit: 限制数目，整型,不超过100
+        :type Limit: int
+        :param _Status: 筛选黑名单的状态，0:已过期，1:生效中, 2:全部
+        :type Status: int
+        :param _Email: 黑名单中的邮箱地址
+        :type Email: str
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Status = None
+        self._Email = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Status = params.get("Status")
+        self._Email = params.get("Email")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListCustomBlacklistResponse(AbstractModel):
+    """ListCustomBlacklist返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 列表总数
+        :type TotalCount: int
+        :param _Data: 黑名单列表详情
+        :type Data: list of BlackAddressDetail
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = BlackAddressDetail()
+                obj._deserialize(item)
+                self._Data.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -3669,6 +4006,88 @@ class TimedEmailParam(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateCustomBlackListRequest(AbstractModel):
+    """UpdateCustomBlackList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 需要更改的黑名单id
+        :type Id: int
+        :param _Email: 修改后的邮件地址
+        :type Email: str
+        :param _ExpireDate: 过期时间，为空则表示永久有效
+        :type ExpireDate: str
+        """
+        self._Id = None
+        self._Email = None
+        self._ExpireDate = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def ExpireDate(self):
+        return self._ExpireDate
+
+    @ExpireDate.setter
+    def ExpireDate(self, ExpireDate):
+        self._ExpireDate = ExpireDate
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Email = params.get("Email")
+        self._ExpireDate = params.get("ExpireDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateCustomBlackListResponse(AbstractModel):
+    """UpdateCustomBlackList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateEmailIdentityRequest(AbstractModel):

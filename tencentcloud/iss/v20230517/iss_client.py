@@ -1617,6 +1617,29 @@ class IssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def QueryForbidPlayChannelList(self, request):
+        """查询禁播通道列表
+
+        :param request: Request instance for QueryForbidPlayChannelList.
+        :type request: :class:`tencentcloud.iss.v20230517.models.QueryForbidPlayChannelListRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.QueryForbidPlayChannelListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryForbidPlayChannelList", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryForbidPlayChannelListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RefreshDeviceChannel(self, request):
         """用于刷新国标设备的通道（接口调用后，触发向设备请求通道列表，新增的通道入库，设备上已删除的通道需自行删除、后台不自动删除）。
 
@@ -1631,6 +1654,29 @@ class IssClient(AbstractClient):
             body = self.call("RefreshDeviceChannel", params, headers=headers)
             response = json.loads(body)
             model = models.RefreshDeviceChannelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SetForbidPlayChannels(self, request):
+        """禁止主、子账号对视频通道的实况预览
+
+        :param request: Request instance for SetForbidPlayChannels.
+        :type request: :class:`tencentcloud.iss.v20230517.models.SetForbidPlayChannelsRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.SetForbidPlayChannelsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetForbidPlayChannels", params, headers=headers)
+            response = json.loads(body)
+            model = models.SetForbidPlayChannelsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

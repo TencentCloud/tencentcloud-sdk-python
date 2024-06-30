@@ -473,9 +473,13 @@ class BindResourceRegionResult(AbstractModel):
         :type Region: str
         :param _TotalCount: 关联资源总数
         :type TotalCount: int
+        :param _Error: 是否查询异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Error: str
         """
         self._Region = None
         self._TotalCount = None
+        self._Error = None
 
     @property
     def Region(self):
@@ -493,10 +497,19 @@ class BindResourceRegionResult(AbstractModel):
     def TotalCount(self, TotalCount):
         self._TotalCount = TotalCount
 
+    @property
+    def Error(self):
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
 
     def _deserialize(self, params):
         self._Region = params.get("Region")
         self._TotalCount = params.get("TotalCount")
+        self._Error = params.get("Error")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14080,7 +14093,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
         r"""
         :param _OldCertificateId: 一键更新原证书ID， 查询绑定该证书的云资源然后进行证书更新
         :type OldCertificateId: str
-        :param _ResourceTypes: 需要部署的资源类型，参数值可选（小写）：clb、cdn、waf、live、ddos、teo、apigateway、vod、tke、tcb、tse
+        :param _ResourceTypes: 需要部署的资源类型，参数值可选（小写）：clb、cdn、waf、live、ddos、teo、apigateway、vod、tke、tcb、tse、cos
         :type ResourceTypes: list of str
         :param _CertificateId: 一键更新新证书ID，不传该则证书公钥和私钥必传
         :type CertificateId: str

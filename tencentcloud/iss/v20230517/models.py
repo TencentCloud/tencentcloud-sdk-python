@@ -3036,6 +3036,77 @@ class CarAIResultInfo(AbstractModel):
         
 
 
+class ChannelAttrInfo(AbstractModel):
+    """通道属性信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceId: 设备通道所属的设备ID
+        :type DeviceId: str
+        :param _DeviceName: 设备通道所属的设备名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceName: str
+        :param _ChannelId: 设备通道ID
+        :type ChannelId: str
+        :param _ChannelName: 设备通道名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelName: str
+        """
+        self._DeviceId = None
+        self._DeviceName = None
+        self._ChannelId = None
+        self._ChannelName = None
+
+    @property
+    def DeviceId(self):
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def DeviceName(self):
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def ChannelId(self):
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def ChannelName(self):
+        return self._ChannelName
+
+    @ChannelName.setter
+    def ChannelName(self, ChannelName):
+        self._ChannelName = ChannelName
+
+
+    def _deserialize(self, params):
+        self._DeviceId = params.get("DeviceId")
+        self._DeviceName = params.get("DeviceName")
+        self._ChannelId = params.get("ChannelId")
+        self._ChannelName = params.get("ChannelName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ChannelInfo(AbstractModel):
     """通道及通道所属设备信息
 
@@ -9531,6 +9602,81 @@ class ListDevicesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ListForbidplayChannelsData(AbstractModel):
+    """用户禁止播流的通道列表返回数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: 第几页
+        :type PageNumber: int
+        :param _PageSize: 当前页的设备数量
+        :type PageSize: int
+        :param _TotalCount: 本次查询的设备通道总数
+        :type TotalCount: int
+        :param _List: 设备通道信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of ChannelAttrInfo
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._TotalCount = None
+        self._List = None
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = ChannelAttrInfo()
+                obj._deserialize(item)
+                self._List.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ListGatewayDevicesData(AbstractModel):
     """查询网关设备列表返回数据
 
@@ -12063,6 +12209,103 @@ class PlayRecordResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class QueryForbidPlayChannelListRequest(AbstractModel):
+    """QueryForbidPlayChannelList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: 子用户uin，也可以是主用户的uin
+        :type UserId: str
+        :param _PageSize: 每页最大数量，最大为200，超过按照200返回
+        :type PageSize: int
+        :param _PageNumber: 第几页
+        :type PageNumber: int
+        """
+        self._UserId = None
+        self._PageSize = None
+        self._PageNumber = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryForbidPlayChannelListResponse(AbstractModel):
+    """QueryForbidPlayChannelList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.iss.v20230517.models.ListForbidplayChannelsData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ListForbidplayChannelsData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class RecordPlanBaseInfo(AbstractModel):
     """实时上云计划基础信息
 
@@ -12891,6 +13134,126 @@ class RefreshDeviceChannelResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class SetForbidPlayChannelsRequest(AbstractModel):
+    """SetForbidPlayChannels请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Channels: 要禁播的通道参数，一次最多可以设置200个通道
+        :type Channels: list of SetForbidplayChannelParam
+        :param _UserId: 用户uin，可以是子用户的也可以是主用户的uin
+        :type UserId: str
+        """
+        self._Channels = None
+        self._UserId = None
+
+    @property
+    def Channels(self):
+        return self._Channels
+
+    @Channels.setter
+    def Channels(self, Channels):
+        self._Channels = Channels
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+
+    def _deserialize(self, params):
+        if params.get("Channels") is not None:
+            self._Channels = []
+            for item in params.get("Channels"):
+                obj = SetForbidplayChannelParam()
+                obj._deserialize(item)
+                self._Channels.append(obj)
+        self._UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetForbidPlayChannelsResponse(AbstractModel):
+    """SetForbidPlayChannels返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class SetForbidplayChannelParam(AbstractModel):
+    """设置通道禁止播流，有通道Id和使能enable字段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelId: 通道Id
+        :type ChannelId: str
+        :param _Enable: 是否禁止通道播流
+        :type Enable: bool
+        """
+        self._ChannelId = None
+        self._Enable = None
+
+    @property
+    def ChannelId(self):
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+
+    def _deserialize(self, params):
+        self._ChannelId = params.get("ChannelId")
+        self._Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SmokingAIResultInfo(AbstractModel):
