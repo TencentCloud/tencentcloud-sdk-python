@@ -9143,18 +9143,26 @@ class DescribeManagerDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
+        warnings.warn("parameter `Limit` is deprecated", DeprecationWarning) 
+
         return self._Limit
 
     @Limit.setter
     def Limit(self, Limit):
+        warnings.warn("parameter `Limit` is deprecated", DeprecationWarning) 
+
         self._Limit = Limit
 
     @property
     def Offset(self):
+        warnings.warn("parameter `Offset` is deprecated", DeprecationWarning) 
+
         return self._Offset
 
     @Offset.setter
     def Offset(self, Offset):
+        warnings.warn("parameter `Offset` is deprecated", DeprecationWarning) 
+
         self._Offset = Offset
 
 
@@ -10644,6 +10652,73 @@ class ManagerStatusInfo(AbstractModel):
     """管理人的四种审核状态
 
     """
+
+    def __init__(self):
+        r"""
+        :param _Type: 审核类型，枚举值：ov,ev,cs,ev_cs
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Status: 审核状态，枚举值：pending,completed,invalid,submitted,expiring,expired
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _ExpireTime: 过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: str
+        """
+        self._Type = None
+        self._Status = None
+        self._CreateTime = None
+        self._ExpireTime = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ModifyCertificateAliasRequest(AbstractModel):

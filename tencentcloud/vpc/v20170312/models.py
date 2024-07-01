@@ -8457,6 +8457,455 @@ class CreateNetworkInterfaceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreatePrivateNatGatewayDestinationIpPortTranslationNatRuleRequest(AbstractModel):
+    """CreatePrivateNatGatewayDestinationIpPortTranslationNatRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NatGatewayId: 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+        :type NatGatewayId: str
+        :param _LocalDestinationIpPortTranslationNatRules: 目的端口转换规则列表。
+        :type LocalDestinationIpPortTranslationNatRules: list of LocalDestinationIpPortTranslationNatRule
+        """
+        self._NatGatewayId = None
+        self._LocalDestinationIpPortTranslationNatRules = None
+
+    @property
+    def NatGatewayId(self):
+        return self._NatGatewayId
+
+    @NatGatewayId.setter
+    def NatGatewayId(self, NatGatewayId):
+        self._NatGatewayId = NatGatewayId
+
+    @property
+    def LocalDestinationIpPortTranslationNatRules(self):
+        return self._LocalDestinationIpPortTranslationNatRules
+
+    @LocalDestinationIpPortTranslationNatRules.setter
+    def LocalDestinationIpPortTranslationNatRules(self, LocalDestinationIpPortTranslationNatRules):
+        self._LocalDestinationIpPortTranslationNatRules = LocalDestinationIpPortTranslationNatRules
+
+
+    def _deserialize(self, params):
+        self._NatGatewayId = params.get("NatGatewayId")
+        if params.get("LocalDestinationIpPortTranslationNatRules") is not None:
+            self._LocalDestinationIpPortTranslationNatRules = []
+            for item in params.get("LocalDestinationIpPortTranslationNatRules"):
+                obj = LocalDestinationIpPortTranslationNatRule()
+                obj._deserialize(item)
+                self._LocalDestinationIpPortTranslationNatRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePrivateNatGatewayDestinationIpPortTranslationNatRuleResponse(AbstractModel):
+    """CreatePrivateNatGatewayDestinationIpPortTranslationNatRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreatePrivateNatGatewayRequest(AbstractModel):
+    """CreatePrivateNatGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NatGatewayName: 私网网关名称
+        :type NatGatewayName: str
+        :param _VpcId: 私有网络实例ID。当创建VPC类型私网NAT网关或者专线网关类型私网NAT网关时，此参数必填。
+        :type VpcId: str
+        :param _CrossDomain: 跨域参数。仅当取值为True时，才会支持跨域绑定VPC。
+        :type CrossDomain: bool
+        :param _Tags: 实例标签
+        :type Tags: list of Tag
+        :param _VpcType: VPC类型私网NAT网关。仅当取值为True时，才会创建VPC类型私网NAT网关。
+        :type VpcType: bool
+        :param _CcnId: 云联网类型私网NAT网关需要绑定的云联网实例ID。
+        :type CcnId: str
+        """
+        self._NatGatewayName = None
+        self._VpcId = None
+        self._CrossDomain = None
+        self._Tags = None
+        self._VpcType = None
+        self._CcnId = None
+
+    @property
+    def NatGatewayName(self):
+        return self._NatGatewayName
+
+    @NatGatewayName.setter
+    def NatGatewayName(self, NatGatewayName):
+        self._NatGatewayName = NatGatewayName
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def CrossDomain(self):
+        return self._CrossDomain
+
+    @CrossDomain.setter
+    def CrossDomain(self, CrossDomain):
+        self._CrossDomain = CrossDomain
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def VpcType(self):
+        return self._VpcType
+
+    @VpcType.setter
+    def VpcType(self, VpcType):
+        self._VpcType = VpcType
+
+    @property
+    def CcnId(self):
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+
+    def _deserialize(self, params):
+        self._NatGatewayName = params.get("NatGatewayName")
+        self._VpcId = params.get("VpcId")
+        self._CrossDomain = params.get("CrossDomain")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._VpcType = params.get("VpcType")
+        self._CcnId = params.get("CcnId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePrivateNatGatewayResponse(AbstractModel):
+    """CreatePrivateNatGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PrivateNatGatewaySet: 私网网关对象。
+        :type PrivateNatGatewaySet: list of PrivateNatGateway
+        :param _TotalCount: 创建实例个数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PrivateNatGatewaySet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def PrivateNatGatewaySet(self):
+        return self._PrivateNatGatewaySet
+
+    @PrivateNatGatewaySet.setter
+    def PrivateNatGatewaySet(self, PrivateNatGatewaySet):
+        self._PrivateNatGatewaySet = PrivateNatGatewaySet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("PrivateNatGatewaySet") is not None:
+            self._PrivateNatGatewaySet = []
+            for item in params.get("PrivateNatGatewaySet"):
+                obj = PrivateNatGateway()
+                obj._deserialize(item)
+                self._PrivateNatGatewaySet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class CreatePrivateNatGatewayTranslationAclRuleRequest(AbstractModel):
+    """CreatePrivateNatGatewayTranslationAclRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NatGatewayId: 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+        :type NatGatewayId: str
+        :param _TranslationDirection: 转换规则目标，可选值"LOCAL"。
+        :type TranslationDirection: str
+        :param _TranslationType: 转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+        :type TranslationType: str
+        :param _TranslationIp: 转换`IP`,当转换规则类型为四层时为`IP`池。
+        :type TranslationIp: str
+        :param _TranslationAclRules: 访问控制列表。
+        :type TranslationAclRules: list of TranslationAclRule
+        :param _OriginalIp: 源`IP`,当转换规则类型为三层时有效。
+        :type OriginalIp: str
+        """
+        self._NatGatewayId = None
+        self._TranslationDirection = None
+        self._TranslationType = None
+        self._TranslationIp = None
+        self._TranslationAclRules = None
+        self._OriginalIp = None
+
+    @property
+    def NatGatewayId(self):
+        return self._NatGatewayId
+
+    @NatGatewayId.setter
+    def NatGatewayId(self, NatGatewayId):
+        self._NatGatewayId = NatGatewayId
+
+    @property
+    def TranslationDirection(self):
+        return self._TranslationDirection
+
+    @TranslationDirection.setter
+    def TranslationDirection(self, TranslationDirection):
+        self._TranslationDirection = TranslationDirection
+
+    @property
+    def TranslationType(self):
+        return self._TranslationType
+
+    @TranslationType.setter
+    def TranslationType(self, TranslationType):
+        self._TranslationType = TranslationType
+
+    @property
+    def TranslationIp(self):
+        return self._TranslationIp
+
+    @TranslationIp.setter
+    def TranslationIp(self, TranslationIp):
+        self._TranslationIp = TranslationIp
+
+    @property
+    def TranslationAclRules(self):
+        return self._TranslationAclRules
+
+    @TranslationAclRules.setter
+    def TranslationAclRules(self, TranslationAclRules):
+        self._TranslationAclRules = TranslationAclRules
+
+    @property
+    def OriginalIp(self):
+        return self._OriginalIp
+
+    @OriginalIp.setter
+    def OriginalIp(self, OriginalIp):
+        self._OriginalIp = OriginalIp
+
+
+    def _deserialize(self, params):
+        self._NatGatewayId = params.get("NatGatewayId")
+        self._TranslationDirection = params.get("TranslationDirection")
+        self._TranslationType = params.get("TranslationType")
+        self._TranslationIp = params.get("TranslationIp")
+        if params.get("TranslationAclRules") is not None:
+            self._TranslationAclRules = []
+            for item in params.get("TranslationAclRules"):
+                obj = TranslationAclRule()
+                obj._deserialize(item)
+                self._TranslationAclRules.append(obj)
+        self._OriginalIp = params.get("OriginalIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePrivateNatGatewayTranslationAclRuleResponse(AbstractModel):
+    """CreatePrivateNatGatewayTranslationAclRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreatePrivateNatGatewayTranslationNatRuleRequest(AbstractModel):
+    """CreatePrivateNatGatewayTranslationNatRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NatGatewayId: 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+        :type NatGatewayId: str
+        :param _TranslationNatRules: 转换规则对象数组。
+        :type TranslationNatRules: list of TranslationNatRuleInput
+        :param _CrossDomain: 跨域参数，当VPC为跨域时填写为True。
+        :type CrossDomain: bool
+        """
+        self._NatGatewayId = None
+        self._TranslationNatRules = None
+        self._CrossDomain = None
+
+    @property
+    def NatGatewayId(self):
+        return self._NatGatewayId
+
+    @NatGatewayId.setter
+    def NatGatewayId(self, NatGatewayId):
+        self._NatGatewayId = NatGatewayId
+
+    @property
+    def TranslationNatRules(self):
+        return self._TranslationNatRules
+
+    @TranslationNatRules.setter
+    def TranslationNatRules(self, TranslationNatRules):
+        self._TranslationNatRules = TranslationNatRules
+
+    @property
+    def CrossDomain(self):
+        return self._CrossDomain
+
+    @CrossDomain.setter
+    def CrossDomain(self, CrossDomain):
+        self._CrossDomain = CrossDomain
+
+
+    def _deserialize(self, params):
+        self._NatGatewayId = params.get("NatGatewayId")
+        if params.get("TranslationNatRules") is not None:
+            self._TranslationNatRules = []
+            for item in params.get("TranslationNatRules"):
+                obj = TranslationNatRuleInput()
+                obj._deserialize(item)
+                self._TranslationNatRules.append(obj)
+        self._CrossDomain = params.get("CrossDomain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePrivateNatGatewayTranslationNatRuleResponse(AbstractModel):
+    """CreatePrivateNatGatewayTranslationNatRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NatGatewayId: 私网网关唯一`ID`。
+        :type NatGatewayId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._NatGatewayId = None
+        self._RequestId = None
+
+    @property
+    def NatGatewayId(self):
+        return self._NatGatewayId
+
+    @NatGatewayId.setter
+    def NatGatewayId(self, NatGatewayId):
+        self._NatGatewayId = NatGatewayId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._NatGatewayId = params.get("NatGatewayId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateRouteTableRequest(AbstractModel):
     """CreateRouteTable请求参数结构体
 
@@ -13247,6 +13696,356 @@ class DeleteNetworkInterfaceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeletePrivateNatGatewayDestinationIpPortTranslationNatRuleRequest(AbstractModel):
+    """DeletePrivateNatGatewayDestinationIpPortTranslationNatRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NatGatewayId: 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+        :type NatGatewayId: str
+        :param _LocalDestinationIpPortTranslationNatRules: 目的端口转换规则数组。
+        :type LocalDestinationIpPortTranslationNatRules: list of LocalDestinationIpPortTranslationNatRule
+        """
+        self._NatGatewayId = None
+        self._LocalDestinationIpPortTranslationNatRules = None
+
+    @property
+    def NatGatewayId(self):
+        return self._NatGatewayId
+
+    @NatGatewayId.setter
+    def NatGatewayId(self, NatGatewayId):
+        self._NatGatewayId = NatGatewayId
+
+    @property
+    def LocalDestinationIpPortTranslationNatRules(self):
+        return self._LocalDestinationIpPortTranslationNatRules
+
+    @LocalDestinationIpPortTranslationNatRules.setter
+    def LocalDestinationIpPortTranslationNatRules(self, LocalDestinationIpPortTranslationNatRules):
+        self._LocalDestinationIpPortTranslationNatRules = LocalDestinationIpPortTranslationNatRules
+
+
+    def _deserialize(self, params):
+        self._NatGatewayId = params.get("NatGatewayId")
+        if params.get("LocalDestinationIpPortTranslationNatRules") is not None:
+            self._LocalDestinationIpPortTranslationNatRules = []
+            for item in params.get("LocalDestinationIpPortTranslationNatRules"):
+                obj = LocalDestinationIpPortTranslationNatRule()
+                obj._deserialize(item)
+                self._LocalDestinationIpPortTranslationNatRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeletePrivateNatGatewayDestinationIpPortTranslationNatRuleResponse(AbstractModel):
+    """DeletePrivateNatGatewayDestinationIpPortTranslationNatRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeletePrivateNatGatewayRequest(AbstractModel):
+    """DeletePrivateNatGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NatGatewayId: 私网网关唯一`ID`，形如"intranat-xxxxxxxx"。
+        :type NatGatewayId: str
+        """
+        self._NatGatewayId = None
+
+    @property
+    def NatGatewayId(self):
+        return self._NatGatewayId
+
+    @NatGatewayId.setter
+    def NatGatewayId(self, NatGatewayId):
+        self._NatGatewayId = NatGatewayId
+
+
+    def _deserialize(self, params):
+        self._NatGatewayId = params.get("NatGatewayId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeletePrivateNatGatewayResponse(AbstractModel):
+    """DeletePrivateNatGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeletePrivateNatGatewayTranslationAclRuleRequest(AbstractModel):
+    """DeletePrivateNatGatewayTranslationAclRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NatGatewayId: 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+        :type NatGatewayId: str
+        :param _TranslationDirection: 转换规则目标，可选值"LOCAL"。
+        :type TranslationDirection: str
+        :param _TranslationType: 转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+        :type TranslationType: str
+        :param _TranslationIp: 转换`IP`,当转换规则类型为四层时为`IP`池
+        :type TranslationIp: str
+        :param _AclRuleIds: 访问控制规则对应`ID`
+        :type AclRuleIds: list of int non-negative
+        :param _OriginalIp: 源`IP`,当转换规则类型为三层时有效
+        :type OriginalIp: str
+        """
+        self._NatGatewayId = None
+        self._TranslationDirection = None
+        self._TranslationType = None
+        self._TranslationIp = None
+        self._AclRuleIds = None
+        self._OriginalIp = None
+
+    @property
+    def NatGatewayId(self):
+        return self._NatGatewayId
+
+    @NatGatewayId.setter
+    def NatGatewayId(self, NatGatewayId):
+        self._NatGatewayId = NatGatewayId
+
+    @property
+    def TranslationDirection(self):
+        return self._TranslationDirection
+
+    @TranslationDirection.setter
+    def TranslationDirection(self, TranslationDirection):
+        self._TranslationDirection = TranslationDirection
+
+    @property
+    def TranslationType(self):
+        return self._TranslationType
+
+    @TranslationType.setter
+    def TranslationType(self, TranslationType):
+        self._TranslationType = TranslationType
+
+    @property
+    def TranslationIp(self):
+        return self._TranslationIp
+
+    @TranslationIp.setter
+    def TranslationIp(self, TranslationIp):
+        self._TranslationIp = TranslationIp
+
+    @property
+    def AclRuleIds(self):
+        return self._AclRuleIds
+
+    @AclRuleIds.setter
+    def AclRuleIds(self, AclRuleIds):
+        self._AclRuleIds = AclRuleIds
+
+    @property
+    def OriginalIp(self):
+        return self._OriginalIp
+
+    @OriginalIp.setter
+    def OriginalIp(self, OriginalIp):
+        self._OriginalIp = OriginalIp
+
+
+    def _deserialize(self, params):
+        self._NatGatewayId = params.get("NatGatewayId")
+        self._TranslationDirection = params.get("TranslationDirection")
+        self._TranslationType = params.get("TranslationType")
+        self._TranslationIp = params.get("TranslationIp")
+        self._AclRuleIds = params.get("AclRuleIds")
+        self._OriginalIp = params.get("OriginalIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeletePrivateNatGatewayTranslationAclRuleResponse(AbstractModel):
+    """DeletePrivateNatGatewayTranslationAclRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeletePrivateNatGatewayTranslationNatRuleRequest(AbstractModel):
+    """DeletePrivateNatGatewayTranslationNatRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NatGatewayId: 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+        :type NatGatewayId: str
+        :param _TranslationNatRules: 转换规则对象数组。
+        :type TranslationNatRules: list of TranslationNatRule
+        :param _CrossDomain: 跨域参数，当VPC为跨域时填写为True。
+        :type CrossDomain: bool
+        """
+        self._NatGatewayId = None
+        self._TranslationNatRules = None
+        self._CrossDomain = None
+
+    @property
+    def NatGatewayId(self):
+        return self._NatGatewayId
+
+    @NatGatewayId.setter
+    def NatGatewayId(self, NatGatewayId):
+        self._NatGatewayId = NatGatewayId
+
+    @property
+    def TranslationNatRules(self):
+        return self._TranslationNatRules
+
+    @TranslationNatRules.setter
+    def TranslationNatRules(self, TranslationNatRules):
+        self._TranslationNatRules = TranslationNatRules
+
+    @property
+    def CrossDomain(self):
+        return self._CrossDomain
+
+    @CrossDomain.setter
+    def CrossDomain(self, CrossDomain):
+        self._CrossDomain = CrossDomain
+
+
+    def _deserialize(self, params):
+        self._NatGatewayId = params.get("NatGatewayId")
+        if params.get("TranslationNatRules") is not None:
+            self._TranslationNatRules = []
+            for item in params.get("TranslationNatRules"):
+                obj = TranslationNatRule()
+                obj._deserialize(item)
+                self._TranslationNatRules.append(obj)
+        self._CrossDomain = params.get("CrossDomain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeletePrivateNatGatewayTranslationNatRuleResponse(AbstractModel):
+    """DeletePrivateNatGatewayTranslationNatRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NatGatewayId: 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+        :type NatGatewayId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._NatGatewayId = None
+        self._RequestId = None
+
+    @property
+    def NatGatewayId(self):
+        return self._NatGatewayId
+
+    @NatGatewayId.setter
+    def NatGatewayId(self, NatGatewayId):
+        self._NatGatewayId = NatGatewayId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._NatGatewayId = params.get("NatGatewayId")
         self._RequestId = params.get("RequestId")
 
 
@@ -20176,6 +20975,758 @@ class DescribeNetworkInterfacesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePrivateNatGatewayDestinationIpPortTranslationNatRulesRequest(AbstractModel):
+    """DescribePrivateNatGatewayDestinationIpPortTranslationNatRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NatGatewayId: 私网网关唯一`ID`，形如"intranat-xxxxxxxx)
+        :type NatGatewayId: str
+        :param _Filters: 过滤条件，Name可选值"OriginalIp",  "TranslationIp", "OriginalPort","TranslationPort",  "Protocol", "Description"
+        :type Filters: list of Filter
+        :param _Offset: 偏移量，默认值为0。
+        :type Offset: int
+        :param _Limit: 返回数目，默认值为20。
+        :type Limit: int
+        """
+        self._NatGatewayId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def NatGatewayId(self):
+        return self._NatGatewayId
+
+    @NatGatewayId.setter
+    def NatGatewayId(self, NatGatewayId):
+        self._NatGatewayId = NatGatewayId
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._NatGatewayId = params.get("NatGatewayId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrivateNatGatewayDestinationIpPortTranslationNatRulesResponse(AbstractModel):
+    """DescribePrivateNatGatewayDestinationIpPortTranslationNatRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总规则数目。
+        :type TotalCount: int
+        :param _LocalDestinationIpPortTranslationNatRuleSet: 目的端口转换规则数组。
+        :type LocalDestinationIpPortTranslationNatRuleSet: list of PrivateNatDestinationIpPortTranslationNatRule
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._LocalDestinationIpPortTranslationNatRuleSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def LocalDestinationIpPortTranslationNatRuleSet(self):
+        return self._LocalDestinationIpPortTranslationNatRuleSet
+
+    @LocalDestinationIpPortTranslationNatRuleSet.setter
+    def LocalDestinationIpPortTranslationNatRuleSet(self, LocalDestinationIpPortTranslationNatRuleSet):
+        self._LocalDestinationIpPortTranslationNatRuleSet = LocalDestinationIpPortTranslationNatRuleSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("LocalDestinationIpPortTranslationNatRuleSet") is not None:
+            self._LocalDestinationIpPortTranslationNatRuleSet = []
+            for item in params.get("LocalDestinationIpPortTranslationNatRuleSet"):
+                obj = PrivateNatDestinationIpPortTranslationNatRule()
+                obj._deserialize(item)
+                self._LocalDestinationIpPortTranslationNatRuleSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePrivateNatGatewayLimitsRequest(AbstractModel):
+    """DescribePrivateNatGatewayLimits请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 查询VPC下可创建的私网网关配额数量，可选值：
+<li>VpcId - String - 所在VpcId</li>
+        :type Filters: list of Filter
+        :param _Offset: 偏移量，默认值为0。
+        :type Offset: int
+        :param _Limit: 返回数目，默认值为20。
+        :type Limit: int
+        """
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrivateNatGatewayLimitsResponse(AbstractModel):
+    """DescribePrivateNatGatewayLimits返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 查询返回结果个数。
+        :type TotalCount: int
+        :param _PrivateNatGatewayLimitSet: 私网网关配额。
+        :type PrivateNatGatewayLimitSet: list of PrivateNatGatewayLimit
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._PrivateNatGatewayLimitSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def PrivateNatGatewayLimitSet(self):
+        return self._PrivateNatGatewayLimitSet
+
+    @PrivateNatGatewayLimitSet.setter
+    def PrivateNatGatewayLimitSet(self, PrivateNatGatewayLimitSet):
+        self._PrivateNatGatewayLimitSet = PrivateNatGatewayLimitSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("PrivateNatGatewayLimitSet") is not None:
+            self._PrivateNatGatewayLimitSet = []
+            for item in params.get("PrivateNatGatewayLimitSet"):
+                obj = PrivateNatGatewayLimit()
+                obj._deserialize(item)
+                self._PrivateNatGatewayLimitSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePrivateNatGatewayRegionsRequest(AbstractModel):
+    """DescribePrivateNatGatewayRegions请求参数结构体
+
+    """
+
+
+class DescribePrivateNatGatewayRegionsResponse(AbstractModel):
+    """DescribePrivateNatGatewayRegions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegionSet: 地域对象
+        :type RegionSet: list of NatRegionInfoWithArea
+        :param _TotalCount: 返回可支持地域总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RegionSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def RegionSet(self):
+        return self._RegionSet
+
+    @RegionSet.setter
+    def RegionSet(self, RegionSet):
+        self._RegionSet = RegionSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RegionSet") is not None:
+            self._RegionSet = []
+            for item in params.get("RegionSet"):
+                obj = NatRegionInfoWithArea()
+                obj._deserialize(item)
+                self._RegionSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePrivateNatGatewayTranslationAclRulesRequest(AbstractModel):
+    """DescribePrivateNatGatewayTranslationAclRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NatGatewayId: 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+        :type NatGatewayId: str
+        :param _TranslationDirection: 转换规则目标，可选值"LOCAL"。
+        :type TranslationDirection: str
+        :param _TranslationType: 转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+        :type TranslationType: str
+        :param _TranslationIp: 转换`IP`,当转换规则类型为四层时为`IP`池。
+        :type TranslationIp: str
+        :param _OriginalIp: 源`IP`,当转换规则类型为三层时有效。
+        :type OriginalIp: str
+        :param _Offset: 偏移量。默认值为0。
+        :type Offset: int
+        :param _Limit: 返回数目，默认值为20。
+        :type Limit: int
+        """
+        self._NatGatewayId = None
+        self._TranslationDirection = None
+        self._TranslationType = None
+        self._TranslationIp = None
+        self._OriginalIp = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def NatGatewayId(self):
+        return self._NatGatewayId
+
+    @NatGatewayId.setter
+    def NatGatewayId(self, NatGatewayId):
+        self._NatGatewayId = NatGatewayId
+
+    @property
+    def TranslationDirection(self):
+        return self._TranslationDirection
+
+    @TranslationDirection.setter
+    def TranslationDirection(self, TranslationDirection):
+        self._TranslationDirection = TranslationDirection
+
+    @property
+    def TranslationType(self):
+        return self._TranslationType
+
+    @TranslationType.setter
+    def TranslationType(self, TranslationType):
+        self._TranslationType = TranslationType
+
+    @property
+    def TranslationIp(self):
+        return self._TranslationIp
+
+    @TranslationIp.setter
+    def TranslationIp(self, TranslationIp):
+        self._TranslationIp = TranslationIp
+
+    @property
+    def OriginalIp(self):
+        return self._OriginalIp
+
+    @OriginalIp.setter
+    def OriginalIp(self, OriginalIp):
+        self._OriginalIp = OriginalIp
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._NatGatewayId = params.get("NatGatewayId")
+        self._TranslationDirection = params.get("TranslationDirection")
+        self._TranslationType = params.get("TranslationType")
+        self._TranslationIp = params.get("TranslationIp")
+        self._OriginalIp = params.get("OriginalIp")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrivateNatGatewayTranslationAclRulesResponse(AbstractModel):
+    """DescribePrivateNatGatewayTranslationAclRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 返回个数。
+        :type TotalCount: int
+        :param _TranslationAclRuleSet: 访问控制规则列表。
+        :type TranslationAclRuleSet: list of TranslationAclRule
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._TranslationAclRuleSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TranslationAclRuleSet(self):
+        return self._TranslationAclRuleSet
+
+    @TranslationAclRuleSet.setter
+    def TranslationAclRuleSet(self, TranslationAclRuleSet):
+        self._TranslationAclRuleSet = TranslationAclRuleSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("TranslationAclRuleSet") is not None:
+            self._TranslationAclRuleSet = []
+            for item in params.get("TranslationAclRuleSet"):
+                obj = TranslationAclRule()
+                obj._deserialize(item)
+                self._TranslationAclRuleSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePrivateNatGatewayTranslationNatRulesRequest(AbstractModel):
+    """DescribePrivateNatGatewayTranslationNatRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NatGatewayId: 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+        :type NatGatewayId: str
+        :param _Filters: 过滤条件。
+<li>OriginalIp - String - 转换规则源`IP`。</li>
+<li>TranslationIp - String - 转换`IP`。</li>
+<li>VpcId - String - 私网网关所在`VpcId`。</li>
+<li>Description - String - 转换规则描述</li>
+        :type Filters: list of Filter
+        :param _Offset: 偏移量。默认值为0。
+        :type Offset: int
+        :param _Limit: 返回数量。默认值为20。
+        :type Limit: int
+        """
+        self._NatGatewayId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def NatGatewayId(self):
+        return self._NatGatewayId
+
+    @NatGatewayId.setter
+    def NatGatewayId(self, NatGatewayId):
+        self._NatGatewayId = NatGatewayId
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._NatGatewayId = params.get("NatGatewayId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrivateNatGatewayTranslationNatRulesResponse(AbstractModel):
+    """DescribePrivateNatGatewayTranslationNatRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 对象数目。
+        :type TotalCount: int
+        :param _TranslationNatRuleSet: 转换规则详情数组。
+        :type TranslationNatRuleSet: list of TranslationNatRule
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._TranslationNatRuleSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TranslationNatRuleSet(self):
+        return self._TranslationNatRuleSet
+
+    @TranslationNatRuleSet.setter
+    def TranslationNatRuleSet(self, TranslationNatRuleSet):
+        self._TranslationNatRuleSet = TranslationNatRuleSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("TranslationNatRuleSet") is not None:
+            self._TranslationNatRuleSet = []
+            for item in params.get("TranslationNatRuleSet"):
+                obj = TranslationNatRule()
+                obj._deserialize(item)
+                self._TranslationNatRuleSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePrivateNatGatewaysRequest(AbstractModel):
+    """DescribePrivateNatGateways请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NatGatewayIds: 私网网关唯一`ID`，形如：`intranat-0g3blj80`。
+        :type NatGatewayIds: list of str
+        :param _Filters: 过滤条件。
+<li>NatGatewayId - String - 私网网关唯一`ID`，形如：`intranat-0g3blj80`。</li>
+<li>NatGatewayName - String - 专线网关名称，默认模糊查询。</li>
+<li>VpcId - String - 私网网关所在`VpcId`。</li>
+<li>TagKey - Tag数组 - 私网网关标签键值对数组</li>
+        :type Filters: list of Filter
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _Limit: 返回数量，默认为20。
+        :type Limit: int
+        :param _OrderField: 排序字段。可选值："NatGatewayId"、"NatGatewayName"、"CreatedTime"
+        :type OrderField: str
+        :param _OrderDirection: 排序方式。可选值："ASC"、"DESC"。
+        :type OrderDirection: str
+        """
+        self._NatGatewayIds = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+        self._OrderField = None
+        self._OrderDirection = None
+
+    @property
+    def NatGatewayIds(self):
+        return self._NatGatewayIds
+
+    @NatGatewayIds.setter
+    def NatGatewayIds(self, NatGatewayIds):
+        self._NatGatewayIds = NatGatewayIds
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OrderField(self):
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def OrderDirection(self):
+        return self._OrderDirection
+
+    @OrderDirection.setter
+    def OrderDirection(self, OrderDirection):
+        self._OrderDirection = OrderDirection
+
+
+    def _deserialize(self, params):
+        self._NatGatewayIds = params.get("NatGatewayIds")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._OrderField = params.get("OrderField")
+        self._OrderDirection = params.get("OrderDirection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrivateNatGatewaysResponse(AbstractModel):
+    """DescribePrivateNatGateways返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合条件的对象数。
+        :type TotalCount: int
+        :param _PrivateNatGatewaySet: 私网网关对象数组。
+        :type PrivateNatGatewaySet: list of PrivateNatGateway
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._PrivateNatGatewaySet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def PrivateNatGatewaySet(self):
+        return self._PrivateNatGatewaySet
+
+    @PrivateNatGatewaySet.setter
+    def PrivateNatGatewaySet(self, PrivateNatGatewaySet):
+        self._PrivateNatGatewaySet = PrivateNatGatewaySet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("PrivateNatGatewaySet") is not None:
+            self._PrivateNatGatewaySet = []
+            for item in params.get("PrivateNatGatewaySet"):
+                obj = PrivateNatGateway()
+                obj._deserialize(item)
+                self._PrivateNatGatewaySet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeProductQuotaRequest(AbstractModel):
     """DescribeProductQuota请求参数结构体
 
@@ -24905,6 +26456,159 @@ class DestinationIpPortTranslationNatRule(AbstractModel):
         self._PublicPort = params.get("PublicPort")
         self._PrivateIpAddress = params.get("PrivateIpAddress")
         self._PrivatePort = params.get("PrivatePort")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DestinationIpPortTranslationNatRuleDiff(AbstractModel):
+    """本端目的IP端口转换复杂结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Protocol: 协议
+        :type Protocol: str
+        :param _OriginalPort: 源端口
+        :type OriginalPort: int
+        :param _OriginalIp: 源IP
+        :type OriginalIp: str
+        :param _TranslationPort: 目的端口
+        :type TranslationPort: int
+        :param _TranslationIp: 目的IP
+        :type TranslationIp: str
+        :param _OldProtocol: 旧协议。
+        :type OldProtocol: str
+        :param _OldOriginalPort: 旧源端口
+        :type OldOriginalPort: int
+        :param _OldOriginalIp: 旧源IP
+        :type OldOriginalIp: str
+        :param _OldTranslationPort: 旧目的端口
+        :type OldTranslationPort: int
+        :param _OldTranslationIp: 旧目的IP
+        :type OldTranslationIp: str
+        :param _Description: 描述
+        :type Description: str
+        """
+        self._Protocol = None
+        self._OriginalPort = None
+        self._OriginalIp = None
+        self._TranslationPort = None
+        self._TranslationIp = None
+        self._OldProtocol = None
+        self._OldOriginalPort = None
+        self._OldOriginalIp = None
+        self._OldTranslationPort = None
+        self._OldTranslationIp = None
+        self._Description = None
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def OriginalPort(self):
+        return self._OriginalPort
+
+    @OriginalPort.setter
+    def OriginalPort(self, OriginalPort):
+        self._OriginalPort = OriginalPort
+
+    @property
+    def OriginalIp(self):
+        return self._OriginalIp
+
+    @OriginalIp.setter
+    def OriginalIp(self, OriginalIp):
+        self._OriginalIp = OriginalIp
+
+    @property
+    def TranslationPort(self):
+        return self._TranslationPort
+
+    @TranslationPort.setter
+    def TranslationPort(self, TranslationPort):
+        self._TranslationPort = TranslationPort
+
+    @property
+    def TranslationIp(self):
+        return self._TranslationIp
+
+    @TranslationIp.setter
+    def TranslationIp(self, TranslationIp):
+        self._TranslationIp = TranslationIp
+
+    @property
+    def OldProtocol(self):
+        return self._OldProtocol
+
+    @OldProtocol.setter
+    def OldProtocol(self, OldProtocol):
+        self._OldProtocol = OldProtocol
+
+    @property
+    def OldOriginalPort(self):
+        return self._OldOriginalPort
+
+    @OldOriginalPort.setter
+    def OldOriginalPort(self, OldOriginalPort):
+        self._OldOriginalPort = OldOriginalPort
+
+    @property
+    def OldOriginalIp(self):
+        return self._OldOriginalIp
+
+    @OldOriginalIp.setter
+    def OldOriginalIp(self, OldOriginalIp):
+        self._OldOriginalIp = OldOriginalIp
+
+    @property
+    def OldTranslationPort(self):
+        return self._OldTranslationPort
+
+    @OldTranslationPort.setter
+    def OldTranslationPort(self, OldTranslationPort):
+        self._OldTranslationPort = OldTranslationPort
+
+    @property
+    def OldTranslationIp(self):
+        return self._OldTranslationIp
+
+    @OldTranslationIp.setter
+    def OldTranslationIp(self, OldTranslationIp):
+        self._OldTranslationIp = OldTranslationIp
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._Protocol = params.get("Protocol")
+        self._OriginalPort = params.get("OriginalPort")
+        self._OriginalIp = params.get("OriginalIp")
+        self._TranslationPort = params.get("TranslationPort")
+        self._TranslationIp = params.get("TranslationIp")
+        self._OldProtocol = params.get("OldProtocol")
+        self._OldOriginalPort = params.get("OldOriginalPort")
+        self._OldOriginalIp = params.get("OldOriginalIp")
+        self._OldTranslationPort = params.get("OldTranslationPort")
+        self._OldTranslationIp = params.get("OldTranslationIp")
         self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -30440,6 +32144,99 @@ class ItemPrice(AbstractModel):
         
 
 
+class LocalDestinationIpPortTranslationNatRule(AbstractModel):
+    """本端目的IP端口转换复杂结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Protocol: 协议
+        :type Protocol: str
+        :param _OriginalPort: 源端口
+        :type OriginalPort: int
+        :param _OriginalIp: 源IP
+        :type OriginalIp: str
+        :param _TranslationPort: 目的端口
+        :type TranslationPort: int
+        :param _TranslationIp: 目的IP
+        :type TranslationIp: str
+        :param _Description: 描述
+        :type Description: str
+        """
+        self._Protocol = None
+        self._OriginalPort = None
+        self._OriginalIp = None
+        self._TranslationPort = None
+        self._TranslationIp = None
+        self._Description = None
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def OriginalPort(self):
+        return self._OriginalPort
+
+    @OriginalPort.setter
+    def OriginalPort(self, OriginalPort):
+        self._OriginalPort = OriginalPort
+
+    @property
+    def OriginalIp(self):
+        return self._OriginalIp
+
+    @OriginalIp.setter
+    def OriginalIp(self, OriginalIp):
+        self._OriginalIp = OriginalIp
+
+    @property
+    def TranslationPort(self):
+        return self._TranslationPort
+
+    @TranslationPort.setter
+    def TranslationPort(self, TranslationPort):
+        self._TranslationPort = TranslationPort
+
+    @property
+    def TranslationIp(self):
+        return self._TranslationIp
+
+    @TranslationIp.setter
+    def TranslationIp(self, TranslationIp):
+        self._TranslationIp = TranslationIp
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._Protocol = params.get("Protocol")
+        self._OriginalPort = params.get("OriginalPort")
+        self._OriginalIp = params.get("OriginalIp")
+        self._TranslationPort = params.get("TranslationPort")
+        self._TranslationIp = params.get("TranslationIp")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LocalGateway(AbstractModel):
     """本地网关信息
 
@@ -33580,6 +35377,361 @@ class ModifyPrivateIpAddressesAttributeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyPrivateNatGatewayAttributeRequest(AbstractModel):
+    """ModifyPrivateNatGatewayAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NatGatewayId: 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+        :type NatGatewayId: str
+        :param _NatGatewayName: 私网网关名称，可任意命名，但不得超过60个字符。
+        :type NatGatewayName: str
+        """
+        self._NatGatewayId = None
+        self._NatGatewayName = None
+
+    @property
+    def NatGatewayId(self):
+        return self._NatGatewayId
+
+    @NatGatewayId.setter
+    def NatGatewayId(self, NatGatewayId):
+        self._NatGatewayId = NatGatewayId
+
+    @property
+    def NatGatewayName(self):
+        return self._NatGatewayName
+
+    @NatGatewayName.setter
+    def NatGatewayName(self, NatGatewayName):
+        self._NatGatewayName = NatGatewayName
+
+
+    def _deserialize(self, params):
+        self._NatGatewayId = params.get("NatGatewayId")
+        self._NatGatewayName = params.get("NatGatewayName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPrivateNatGatewayAttributeResponse(AbstractModel):
+    """ModifyPrivateNatGatewayAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyPrivateNatGatewayDestinationIpPortTranslationNatRuleRequest(AbstractModel):
+    """ModifyPrivateNatGatewayDestinationIpPortTranslationNatRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NatGatewayId: 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+        :type NatGatewayId: str
+        :param _LocalDestinationIpPortTranslationNatRules: 目的端口转换规则列表。
+        :type LocalDestinationIpPortTranslationNatRules: list of DestinationIpPortTranslationNatRuleDiff
+        """
+        self._NatGatewayId = None
+        self._LocalDestinationIpPortTranslationNatRules = None
+
+    @property
+    def NatGatewayId(self):
+        return self._NatGatewayId
+
+    @NatGatewayId.setter
+    def NatGatewayId(self, NatGatewayId):
+        self._NatGatewayId = NatGatewayId
+
+    @property
+    def LocalDestinationIpPortTranslationNatRules(self):
+        return self._LocalDestinationIpPortTranslationNatRules
+
+    @LocalDestinationIpPortTranslationNatRules.setter
+    def LocalDestinationIpPortTranslationNatRules(self, LocalDestinationIpPortTranslationNatRules):
+        self._LocalDestinationIpPortTranslationNatRules = LocalDestinationIpPortTranslationNatRules
+
+
+    def _deserialize(self, params):
+        self._NatGatewayId = params.get("NatGatewayId")
+        if params.get("LocalDestinationIpPortTranslationNatRules") is not None:
+            self._LocalDestinationIpPortTranslationNatRules = []
+            for item in params.get("LocalDestinationIpPortTranslationNatRules"):
+                obj = DestinationIpPortTranslationNatRuleDiff()
+                obj._deserialize(item)
+                self._LocalDestinationIpPortTranslationNatRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPrivateNatGatewayDestinationIpPortTranslationNatRuleResponse(AbstractModel):
+    """ModifyPrivateNatGatewayDestinationIpPortTranslationNatRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyPrivateNatGatewayTranslationAclRuleRequest(AbstractModel):
+    """ModifyPrivateNatGatewayTranslationAclRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NatGatewayId: 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+        :type NatGatewayId: str
+        :param _TranslationDirection: 转换规则目标，可选值"LOCAL"。
+        :type TranslationDirection: str
+        :param _TranslationType: 转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+        :type TranslationType: str
+        :param _TranslationIp: 转换`IP`,当转换规则类型为四层时为`IP`池
+        :type TranslationIp: str
+        :param _TranslationAclRules: 访问控制列表，需要附带AclRuleId参数。
+        :type TranslationAclRules: list of TranslationAclRule
+        :param _OriginalIp: 源`IP`,当转换规则类型为三层时有效
+        :type OriginalIp: str
+        """
+        self._NatGatewayId = None
+        self._TranslationDirection = None
+        self._TranslationType = None
+        self._TranslationIp = None
+        self._TranslationAclRules = None
+        self._OriginalIp = None
+
+    @property
+    def NatGatewayId(self):
+        return self._NatGatewayId
+
+    @NatGatewayId.setter
+    def NatGatewayId(self, NatGatewayId):
+        self._NatGatewayId = NatGatewayId
+
+    @property
+    def TranslationDirection(self):
+        return self._TranslationDirection
+
+    @TranslationDirection.setter
+    def TranslationDirection(self, TranslationDirection):
+        self._TranslationDirection = TranslationDirection
+
+    @property
+    def TranslationType(self):
+        return self._TranslationType
+
+    @TranslationType.setter
+    def TranslationType(self, TranslationType):
+        self._TranslationType = TranslationType
+
+    @property
+    def TranslationIp(self):
+        return self._TranslationIp
+
+    @TranslationIp.setter
+    def TranslationIp(self, TranslationIp):
+        self._TranslationIp = TranslationIp
+
+    @property
+    def TranslationAclRules(self):
+        return self._TranslationAclRules
+
+    @TranslationAclRules.setter
+    def TranslationAclRules(self, TranslationAclRules):
+        self._TranslationAclRules = TranslationAclRules
+
+    @property
+    def OriginalIp(self):
+        return self._OriginalIp
+
+    @OriginalIp.setter
+    def OriginalIp(self, OriginalIp):
+        self._OriginalIp = OriginalIp
+
+
+    def _deserialize(self, params):
+        self._NatGatewayId = params.get("NatGatewayId")
+        self._TranslationDirection = params.get("TranslationDirection")
+        self._TranslationType = params.get("TranslationType")
+        self._TranslationIp = params.get("TranslationIp")
+        if params.get("TranslationAclRules") is not None:
+            self._TranslationAclRules = []
+            for item in params.get("TranslationAclRules"):
+                obj = TranslationAclRule()
+                obj._deserialize(item)
+                self._TranslationAclRules.append(obj)
+        self._OriginalIp = params.get("OriginalIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPrivateNatGatewayTranslationAclRuleResponse(AbstractModel):
+    """ModifyPrivateNatGatewayTranslationAclRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyPrivateNatGatewayTranslationNatRuleRequest(AbstractModel):
+    """ModifyPrivateNatGatewayTranslationNatRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NatGatewayId: 私网网关唯一`ID`，形如：`intranat-xxxxxxxx`。
+        :type NatGatewayId: str
+        :param _TranslationNatRules: 转换规则对象数组。仅支持修改单个转换规则
+        :type TranslationNatRules: list of TranslationNatRuleDiff
+        :param _CrossDomain: 跨域参数，当VPC为跨域时填写为True。
+        :type CrossDomain: bool
+        """
+        self._NatGatewayId = None
+        self._TranslationNatRules = None
+        self._CrossDomain = None
+
+    @property
+    def NatGatewayId(self):
+        return self._NatGatewayId
+
+    @NatGatewayId.setter
+    def NatGatewayId(self, NatGatewayId):
+        self._NatGatewayId = NatGatewayId
+
+    @property
+    def TranslationNatRules(self):
+        return self._TranslationNatRules
+
+    @TranslationNatRules.setter
+    def TranslationNatRules(self, TranslationNatRules):
+        self._TranslationNatRules = TranslationNatRules
+
+    @property
+    def CrossDomain(self):
+        return self._CrossDomain
+
+    @CrossDomain.setter
+    def CrossDomain(self, CrossDomain):
+        self._CrossDomain = CrossDomain
+
+
+    def _deserialize(self, params):
+        self._NatGatewayId = params.get("NatGatewayId")
+        if params.get("TranslationNatRules") is not None:
+            self._TranslationNatRules = []
+            for item in params.get("TranslationNatRules"):
+                obj = TranslationNatRuleDiff()
+                obj._deserialize(item)
+                self._TranslationNatRules.append(obj)
+        self._CrossDomain = params.get("CrossDomain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPrivateNatGatewayTranslationNatRuleResponse(AbstractModel):
+    """ModifyPrivateNatGatewayTranslationNatRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyRouteTableAttributeRequest(AbstractModel):
     """ModifyRouteTableAttribute请求参数结构体
 
@@ -35991,6 +38143,12 @@ class NatGatewayDestinationIpPortTranslationNatRule(AbstractModel):
         
 
 
+class NatRegionInfoWithArea(AbstractModel):
+    """NAT地域地区对象
+
+    """
+
+
 class NetDetect(AbstractModel):
     """网络探测对象。
 
@@ -37712,6 +39870,292 @@ AVAILABLE：可用的
         self._IsWanIpBlocked = params.get("IsWanIpBlocked")
         self._State = params.get("State")
         self._QosLevel = params.get("QosLevel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrivateNatDestinationIpPortTranslationNatRule(AbstractModel):
+    """本端目的IP端口转换复杂结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Protocol: 协议
+        :type Protocol: str
+        :param _OriginalPort: 原端口
+        :type OriginalPort: int
+        :param _OriginalIp: 原IP
+        :type OriginalIp: str
+        :param _TranslationPort: 映射端口
+        :type TranslationPort: int
+        :param _TranslationIp: 映射IP
+        :type TranslationIp: str
+        :param _Description: 描述
+        :type Description: str
+        :param _CreateTime: 创建时间。
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间。
+        :type UpdateTime: str
+        """
+        self._Protocol = None
+        self._OriginalPort = None
+        self._OriginalIp = None
+        self._TranslationPort = None
+        self._TranslationIp = None
+        self._Description = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def OriginalPort(self):
+        return self._OriginalPort
+
+    @OriginalPort.setter
+    def OriginalPort(self, OriginalPort):
+        self._OriginalPort = OriginalPort
+
+    @property
+    def OriginalIp(self):
+        return self._OriginalIp
+
+    @OriginalIp.setter
+    def OriginalIp(self, OriginalIp):
+        self._OriginalIp = OriginalIp
+
+    @property
+    def TranslationPort(self):
+        return self._TranslationPort
+
+    @TranslationPort.setter
+    def TranslationPort(self, TranslationPort):
+        self._TranslationPort = TranslationPort
+
+    @property
+    def TranslationIp(self):
+        return self._TranslationIp
+
+    @TranslationIp.setter
+    def TranslationIp(self, TranslationIp):
+        self._TranslationIp = TranslationIp
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._Protocol = params.get("Protocol")
+        self._OriginalPort = params.get("OriginalPort")
+        self._OriginalIp = params.get("OriginalIp")
+        self._TranslationPort = params.get("TranslationPort")
+        self._TranslationIp = params.get("TranslationIp")
+        self._Description = params.get("Description")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrivateNatGateway(AbstractModel):
+    """私网网关对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NatGatewayId: 私网网关`ID`。
+        :type NatGatewayId: str
+        :param _NatGatewayName: 私网网关名称。
+        :type NatGatewayName: str
+        :param _VpcId: 私网网关关联`VPC`实例`ID`。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param _Status: 私网网关当前状态。
+        :type Status: str
+        :param _CrossDomain: 私网网关跨域标志。
+        :type CrossDomain: bool
+        :param _CreatedTime: 创建时间
+        :type CreatedTime: str
+        :param _TagSet: 标签键值对。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagSet: list of Tag
+        """
+        self._NatGatewayId = None
+        self._NatGatewayName = None
+        self._VpcId = None
+        self._Status = None
+        self._CrossDomain = None
+        self._CreatedTime = None
+        self._TagSet = None
+
+    @property
+    def NatGatewayId(self):
+        return self._NatGatewayId
+
+    @NatGatewayId.setter
+    def NatGatewayId(self, NatGatewayId):
+        self._NatGatewayId = NatGatewayId
+
+    @property
+    def NatGatewayName(self):
+        return self._NatGatewayName
+
+    @NatGatewayName.setter
+    def NatGatewayName(self, NatGatewayName):
+        self._NatGatewayName = NatGatewayName
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CrossDomain(self):
+        return self._CrossDomain
+
+    @CrossDomain.setter
+    def CrossDomain(self, CrossDomain):
+        self._CrossDomain = CrossDomain
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def TagSet(self):
+        return self._TagSet
+
+    @TagSet.setter
+    def TagSet(self, TagSet):
+        self._TagSet = TagSet
+
+
+    def _deserialize(self, params):
+        self._NatGatewayId = params.get("NatGatewayId")
+        self._NatGatewayName = params.get("NatGatewayName")
+        self._VpcId = params.get("VpcId")
+        self._Status = params.get("Status")
+        self._CrossDomain = params.get("CrossDomain")
+        self._CreatedTime = params.get("CreatedTime")
+        if params.get("TagSet") is not None:
+            self._TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TagSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrivateNatGatewayLimit(AbstractModel):
+    """可创建的私网网关配额数量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UniqVpcId: 私有网络唯一`ID`。
+        :type UniqVpcId: str
+        :param _TotalLimit: Vpc下总计可创建私网网关数量。
+        :type TotalLimit: int
+        :param _Available: 可创建私网网关数量。
+        :type Available: int
+        """
+        self._UniqVpcId = None
+        self._TotalLimit = None
+        self._Available = None
+
+    @property
+    def UniqVpcId(self):
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def TotalLimit(self):
+        return self._TotalLimit
+
+    @TotalLimit.setter
+    def TotalLimit(self, TotalLimit):
+        self._TotalLimit = TotalLimit
+
+    @property
+    def Available(self):
+        return self._Available
+
+    @Available.setter
+    def Available(self, Available):
+        self._Available = Available
+
+
+    def _deserialize(self, params):
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._TotalLimit = params.get("TotalLimit")
+        self._Available = params.get("Available")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43394,6 +45838,404 @@ class TransformAddressResponse(AbstractModel):
         self._TaskId = params.get("TaskId")
         self._AddressId = params.get("AddressId")
         self._RequestId = params.get("RequestId")
+
+
+class TranslationAclRule(AbstractModel):
+    """私网网关转发规则匹配ACL
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Protocol: ACL协议类型，可选值:"ALL","TCP","UDP"
+        :type Protocol: str
+        :param _SourcePort: 源端口。
+        :type SourcePort: str
+        :param _SourceCidr: 源地址。支持`ip`或`cidr`格式"xxx.xxx.xxx.000/xx"
+        :type SourceCidr: str
+        :param _DestinationPort: 目的端口。
+        :type DestinationPort: str
+        :param _DestinationCidr: 目的地址。
+        :type DestinationCidr: str
+        :param _AclRuleId: ACL规则`ID`。
+        :type AclRuleId: int
+        :param _Action: 是否匹配。
+        :type Action: int
+        """
+        self._Protocol = None
+        self._SourcePort = None
+        self._SourceCidr = None
+        self._DestinationPort = None
+        self._DestinationCidr = None
+        self._AclRuleId = None
+        self._Action = None
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def SourcePort(self):
+        return self._SourcePort
+
+    @SourcePort.setter
+    def SourcePort(self, SourcePort):
+        self._SourcePort = SourcePort
+
+    @property
+    def SourceCidr(self):
+        return self._SourceCidr
+
+    @SourceCidr.setter
+    def SourceCidr(self, SourceCidr):
+        self._SourceCidr = SourceCidr
+
+    @property
+    def DestinationPort(self):
+        return self._DestinationPort
+
+    @DestinationPort.setter
+    def DestinationPort(self, DestinationPort):
+        self._DestinationPort = DestinationPort
+
+    @property
+    def DestinationCidr(self):
+        return self._DestinationCidr
+
+    @DestinationCidr.setter
+    def DestinationCidr(self, DestinationCidr):
+        self._DestinationCidr = DestinationCidr
+
+    @property
+    def AclRuleId(self):
+        return self._AclRuleId
+
+    @AclRuleId.setter
+    def AclRuleId(self, AclRuleId):
+        self._AclRuleId = AclRuleId
+
+    @property
+    def Action(self):
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+
+    def _deserialize(self, params):
+        self._Protocol = params.get("Protocol")
+        self._SourcePort = params.get("SourcePort")
+        self._SourceCidr = params.get("SourceCidr")
+        self._DestinationPort = params.get("DestinationPort")
+        self._DestinationCidr = params.get("DestinationCidr")
+        self._AclRuleId = params.get("AclRuleId")
+        self._Action = params.get("Action")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TranslationNatRule(AbstractModel):
+    """私网网关Snat转发规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TranslationDirection: 转换规则目标，可选值"LOCAL","PEER"。
+        :type TranslationDirection: str
+        :param _TranslationType: 转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+        :type TranslationType: str
+        :param _TranslationIp: 转换`IP`,当转换规则类型为四层时为`IP`池。
+        :type TranslationIp: str
+        :param _Description: 转换规则描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _OriginalIp: 源`IP`,当转换规则类型为三层时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalIp: str
+        :param _CreateTime: 创建时间。
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间。
+        :type UpdateTime: str
+        """
+        self._TranslationDirection = None
+        self._TranslationType = None
+        self._TranslationIp = None
+        self._Description = None
+        self._OriginalIp = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def TranslationDirection(self):
+        return self._TranslationDirection
+
+    @TranslationDirection.setter
+    def TranslationDirection(self, TranslationDirection):
+        self._TranslationDirection = TranslationDirection
+
+    @property
+    def TranslationType(self):
+        return self._TranslationType
+
+    @TranslationType.setter
+    def TranslationType(self, TranslationType):
+        self._TranslationType = TranslationType
+
+    @property
+    def TranslationIp(self):
+        return self._TranslationIp
+
+    @TranslationIp.setter
+    def TranslationIp(self, TranslationIp):
+        self._TranslationIp = TranslationIp
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def OriginalIp(self):
+        return self._OriginalIp
+
+    @OriginalIp.setter
+    def OriginalIp(self, OriginalIp):
+        self._OriginalIp = OriginalIp
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._TranslationDirection = params.get("TranslationDirection")
+        self._TranslationType = params.get("TranslationType")
+        self._TranslationIp = params.get("TranslationIp")
+        self._Description = params.get("Description")
+        self._OriginalIp = params.get("OriginalIp")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TranslationNatRuleDiff(AbstractModel):
+    """私网网关Snat转发规则修改
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TranslationDirection: 转发规则目标，可选值"LOCAL","PEER"。
+        :type TranslationDirection: str
+        :param _TranslationType: 转发规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+        :type TranslationType: str
+        :param _TranslationIp: 转发规则映射`IP`,当转发规则类型为四层时为`IP`池
+        :type TranslationIp: str
+        :param _Description: 转发规则描述。
+        :type Description: str
+        :param _OldTranslationIp: 旧转发规则映射`IP`,当转发规则类型为四层时为`IP`池
+        :type OldTranslationIp: str
+        :param _OriginalIp: 新转发规则源`IP`,当转发规则类型为三层时有效
+        :type OriginalIp: str
+        :param _OldOriginalIp: 旧转发规则源`IP`,当转发规则类型为三层时有效
+        :type OldOriginalIp: str
+        """
+        self._TranslationDirection = None
+        self._TranslationType = None
+        self._TranslationIp = None
+        self._Description = None
+        self._OldTranslationIp = None
+        self._OriginalIp = None
+        self._OldOriginalIp = None
+
+    @property
+    def TranslationDirection(self):
+        return self._TranslationDirection
+
+    @TranslationDirection.setter
+    def TranslationDirection(self, TranslationDirection):
+        self._TranslationDirection = TranslationDirection
+
+    @property
+    def TranslationType(self):
+        return self._TranslationType
+
+    @TranslationType.setter
+    def TranslationType(self, TranslationType):
+        self._TranslationType = TranslationType
+
+    @property
+    def TranslationIp(self):
+        return self._TranslationIp
+
+    @TranslationIp.setter
+    def TranslationIp(self, TranslationIp):
+        self._TranslationIp = TranslationIp
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def OldTranslationIp(self):
+        return self._OldTranslationIp
+
+    @OldTranslationIp.setter
+    def OldTranslationIp(self, OldTranslationIp):
+        self._OldTranslationIp = OldTranslationIp
+
+    @property
+    def OriginalIp(self):
+        return self._OriginalIp
+
+    @OriginalIp.setter
+    def OriginalIp(self, OriginalIp):
+        self._OriginalIp = OriginalIp
+
+    @property
+    def OldOriginalIp(self):
+        return self._OldOriginalIp
+
+    @OldOriginalIp.setter
+    def OldOriginalIp(self, OldOriginalIp):
+        self._OldOriginalIp = OldOriginalIp
+
+
+    def _deserialize(self, params):
+        self._TranslationDirection = params.get("TranslationDirection")
+        self._TranslationType = params.get("TranslationType")
+        self._TranslationIp = params.get("TranslationIp")
+        self._Description = params.get("Description")
+        self._OldTranslationIp = params.get("OldTranslationIp")
+        self._OriginalIp = params.get("OriginalIp")
+        self._OldOriginalIp = params.get("OldOriginalIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TranslationNatRuleInput(AbstractModel):
+    """私网网关Snat转发规则入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TranslationDirection: 转换规则目标，可选值"LOCAL","PEER"。
+        :type TranslationDirection: str
+        :param _TranslationType: 转换规则类型，可选值"NETWORK_LAYER","TRANSPORT_LAYER"。
+        :type TranslationType: str
+        :param _TranslationIp: 转换`IP`,当转换规则类型为四层时为`IP`池。
+        :type TranslationIp: str
+        :param _Description: 转换规则描述。
+        :type Description: str
+        :param _OriginalIp: 源`IP`,当转换规则类型为三层时有效。
+        :type OriginalIp: str
+        """
+        self._TranslationDirection = None
+        self._TranslationType = None
+        self._TranslationIp = None
+        self._Description = None
+        self._OriginalIp = None
+
+    @property
+    def TranslationDirection(self):
+        return self._TranslationDirection
+
+    @TranslationDirection.setter
+    def TranslationDirection(self, TranslationDirection):
+        self._TranslationDirection = TranslationDirection
+
+    @property
+    def TranslationType(self):
+        return self._TranslationType
+
+    @TranslationType.setter
+    def TranslationType(self, TranslationType):
+        self._TranslationType = TranslationType
+
+    @property
+    def TranslationIp(self):
+        return self._TranslationIp
+
+    @TranslationIp.setter
+    def TranslationIp(self, TranslationIp):
+        self._TranslationIp = TranslationIp
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def OriginalIp(self):
+        return self._OriginalIp
+
+    @OriginalIp.setter
+    def OriginalIp(self, OriginalIp):
+        self._OriginalIp = OriginalIp
+
+
+    def _deserialize(self, params):
+        self._TranslationDirection = params.get("TranslationDirection")
+        self._TranslationType = params.get("TranslationType")
+        self._TranslationIp = params.get("TranslationIp")
+        self._Description = params.get("Description")
+        self._OriginalIp = params.get("OriginalIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class UnassignIpv6AddressesRequest(AbstractModel):

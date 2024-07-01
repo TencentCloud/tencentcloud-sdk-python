@@ -16649,6 +16649,206 @@ class DescribeDsParentFolderTreeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDutyScheduleDetailsRequest(AbstractModel):
+    """DescribeDutyScheduleDetails请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 值班表id
+        :type Id: int
+        :param _QueryDate: 查询时间
+        :type QueryDate: str
+        :param _Filters: 扩展字段
+        :type Filters: list of Filter
+        """
+        self._Id = None
+        self._QueryDate = None
+        self._Filters = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def QueryDate(self):
+        return self._QueryDate
+
+    @QueryDate.setter
+    def QueryDate(self, QueryDate):
+        self._QueryDate = QueryDate
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._QueryDate = params.get("QueryDate")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDutyScheduleDetailsResponse(AbstractModel):
+    """DescribeDutyScheduleDetails返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 值班日历信息
+        :type Data: list of DutyScheduleDetailsInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = DutyScheduleDetailsInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDutyScheduleListRequest(AbstractModel):
+    """DescribeDutyScheduleList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: 页码，默认1
+        :type PageNumber: int
+        :param _PageSize: 页大小，默认10
+        :type PageSize: int
+        :param _Name: 值班表名称
+        :type Name: str
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._Name = None
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDutyScheduleListResponse(AbstractModel):
+    """DescribeDutyScheduleList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 无
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.DutySchedule`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DutySchedule()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeEventCasesRequest(AbstractModel):
     """DescribeEventCases请求参数结构体
 
@@ -29395,6 +29595,378 @@ class DryRunDIOfflineTaskResponse(AbstractModel):
         self._TaskId = params.get("TaskId")
         self._TaskInstanceKey = params.get("TaskInstanceKey")
         self._RequestId = params.get("RequestId")
+
+
+class Duty(AbstractModel):
+    """值班信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DutyScheduleId: 值班Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DutyScheduleId: int
+        :param _StartTime: 值班开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _EndTime: 值班结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _DutyPersons: 值班人员
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DutyPersons: list of DutyPerson
+        """
+        self._DutyScheduleId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._DutyPersons = None
+
+    @property
+    def DutyScheduleId(self):
+        return self._DutyScheduleId
+
+    @DutyScheduleId.setter
+    def DutyScheduleId(self, DutyScheduleId):
+        self._DutyScheduleId = DutyScheduleId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def DutyPersons(self):
+        return self._DutyPersons
+
+    @DutyPersons.setter
+    def DutyPersons(self, DutyPersons):
+        self._DutyPersons = DutyPersons
+
+
+    def _deserialize(self, params):
+        self._DutyScheduleId = params.get("DutyScheduleId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        if params.get("DutyPersons") is not None:
+            self._DutyPersons = []
+            for item in params.get("DutyPersons"):
+                obj = DutyPerson()
+                obj._deserialize(item)
+                self._DutyPersons.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DutyPerson(AbstractModel):
+    """值班人员
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: 值班人子账号id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: str
+        :param _UserName: 值班人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param _OwnerUserId: 值班人员主账号用户id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerUserId: str
+        :param _TenantId: 值班人tenantId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TenantId: int
+        :param _AddTime: 2023-11-02 08:00:00
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AddTime: str
+        :param _Params: 扩展字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Params: str
+        """
+        self._UserId = None
+        self._UserName = None
+        self._OwnerUserId = None
+        self._TenantId = None
+        self._AddTime = None
+        self._Params = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def OwnerUserId(self):
+        return self._OwnerUserId
+
+    @OwnerUserId.setter
+    def OwnerUserId(self, OwnerUserId):
+        self._OwnerUserId = OwnerUserId
+
+    @property
+    def TenantId(self):
+        return self._TenantId
+
+    @TenantId.setter
+    def TenantId(self, TenantId):
+        self._TenantId = TenantId
+
+    @property
+    def AddTime(self):
+        return self._AddTime
+
+    @AddTime.setter
+    def AddTime(self, AddTime):
+        self._AddTime = AddTime
+
+    @property
+    def Params(self):
+        return self._Params
+
+    @Params.setter
+    def Params(self, Params):
+        self._Params = Params
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        self._UserName = params.get("UserName")
+        self._OwnerUserId = params.get("OwnerUserId")
+        self._TenantId = params.get("TenantId")
+        self._AddTime = params.get("AddTime")
+        self._Params = params.get("Params")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DutySchedule(AbstractModel):
+    """值班表列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Rows: 值班表列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rows: list of DutyScheduleData
+        :param _TotalCount: 总条数
+        :type TotalCount: int
+        :param _PageNumber: 页号
+        :type PageNumber: int
+        :param _PageSize: 页大小
+        :type PageSize: int
+        :param _TotalPageNumber: 总页数
+        :type TotalPageNumber: int
+        """
+        self._Rows = None
+        self._TotalCount = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._TotalPageNumber = None
+
+    @property
+    def Rows(self):
+        return self._Rows
+
+    @Rows.setter
+    def Rows(self, Rows):
+        self._Rows = Rows
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalPageNumber(self):
+        return self._TotalPageNumber
+
+    @TotalPageNumber.setter
+    def TotalPageNumber(self, TotalPageNumber):
+        self._TotalPageNumber = TotalPageNumber
+
+
+    def _deserialize(self, params):
+        if params.get("Rows") is not None:
+            self._Rows = []
+            for item in params.get("Rows"):
+                obj = DutyScheduleData()
+                obj._deserialize(item)
+                self._Rows.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._TotalPageNumber = params.get("TotalPageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DutyScheduleData(AbstractModel):
+    """值班表列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 值班表Id
+        :type Id: int
+        :param _Name: 值班表名称
+        :type Name: str
+        :param _Creator: 创建人
+        :type Creator: str
+        """
+        self._Id = None
+        self._Name = None
+        self._Creator = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Creator(self):
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Creator = params.get("Creator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DutyScheduleDetailsInfo(AbstractModel):
+    """值班信息表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Day: 值班日期
+        :type Day: str
+        :param _Duty: 值班信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Duty: list of Duty
+        """
+        self._Day = None
+        self._Duty = None
+
+    @property
+    def Day(self):
+        return self._Day
+
+    @Day.setter
+    def Day(self, Day):
+        self._Day = Day
+
+    @property
+    def Duty(self):
+        return self._Duty
+
+    @Duty.setter
+    def Duty(self, Duty):
+        self._Duty = Duty
+
+
+    def _deserialize(self, params):
+        self._Day = params.get("Day")
+        if params.get("Duty") is not None:
+            self._Duty = []
+            for item in params.get("Duty"):
+                obj = Duty()
+                obj._deserialize(item)
+                self._Duty.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class EventBatchCaseDTO(AbstractModel):

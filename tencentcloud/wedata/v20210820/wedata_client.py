@@ -1820,6 +1820,52 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDutyScheduleDetails(self, request):
+        """获取值班日历
+
+        :param request: Request instance for DescribeDutyScheduleDetails.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDutyScheduleDetailsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeDutyScheduleDetailsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDutyScheduleDetails", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDutyScheduleDetailsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDutyScheduleList(self, request):
+        """获取值班表列表
+
+        :param request: Request instance for DescribeDutyScheduleList.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDutyScheduleListRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeDutyScheduleListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDutyScheduleList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDutyScheduleListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeEvent(self, request):
         """根据项目ID和事件名称查看事件详情
 

@@ -38,12 +38,20 @@ class Ability(AbstractModel):
         :param _IsSupportManualSnapshot: 是否支持手动发起快照备份
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsSupportManualSnapshot: str
+        :param _IsSupportTransparentDataEncryption: 是否支持透明数据加密
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsSupportTransparentDataEncryption: str
+        :param _NoSupportTransparentDataEncryptionReason: 不支持透明数据加密原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoSupportTransparentDataEncryptionReason: str
         """
         self._IsSupportSlaveZone = None
         self._NonsupportSlaveZoneReason = None
         self._IsSupportRo = None
         self._NonsupportRoReason = None
         self._IsSupportManualSnapshot = None
+        self._IsSupportTransparentDataEncryption = None
+        self._NoSupportTransparentDataEncryptionReason = None
 
     @property
     def IsSupportSlaveZone(self):
@@ -85,6 +93,22 @@ class Ability(AbstractModel):
     def IsSupportManualSnapshot(self, IsSupportManualSnapshot):
         self._IsSupportManualSnapshot = IsSupportManualSnapshot
 
+    @property
+    def IsSupportTransparentDataEncryption(self):
+        return self._IsSupportTransparentDataEncryption
+
+    @IsSupportTransparentDataEncryption.setter
+    def IsSupportTransparentDataEncryption(self, IsSupportTransparentDataEncryption):
+        self._IsSupportTransparentDataEncryption = IsSupportTransparentDataEncryption
+
+    @property
+    def NoSupportTransparentDataEncryptionReason(self):
+        return self._NoSupportTransparentDataEncryptionReason
+
+    @NoSupportTransparentDataEncryptionReason.setter
+    def NoSupportTransparentDataEncryptionReason(self, NoSupportTransparentDataEncryptionReason):
+        self._NoSupportTransparentDataEncryptionReason = NoSupportTransparentDataEncryptionReason
+
 
     def _deserialize(self, params):
         self._IsSupportSlaveZone = params.get("IsSupportSlaveZone")
@@ -92,6 +116,8 @@ class Ability(AbstractModel):
         self._IsSupportRo = params.get("IsSupportRo")
         self._NonsupportRoReason = params.get("NonsupportRoReason")
         self._IsSupportManualSnapshot = params.get("IsSupportManualSnapshot")
+        self._IsSupportTransparentDataEncryption = params.get("IsSupportTransparentDataEncryption")
+        self._NoSupportTransparentDataEncryptionReason = params.get("NoSupportTransparentDataEncryptionReason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8094,6 +8120,10 @@ class CynosdbInstanceDetail(AbstractModel):
         :type Status: str
         :param _StatusDesc: 实例状态中文描述
         :type StatusDesc: str
+        :param _ServerlessStatus: serverless实例状态, 可能值：
+resume
+pause
+        :type ServerlessStatus: str
         :param _DbType: 数据库类型
         :type DbType: str
         :param _DbVersion: 数据库版本
@@ -8138,10 +8168,6 @@ class CynosdbInstanceDetail(AbstractModel):
         :type MinCpu: float
         :param _MaxCpu: serverless实例cpu上限
         :type MaxCpu: float
-        :param _ServerlessStatus: serverless实例状态, 可能值：
-resume
-pause
-        :type ServerlessStatus: str
         """
         self._Uin = None
         self._AppId = None
@@ -8154,6 +8180,7 @@ pause
         self._Zone = None
         self._Status = None
         self._StatusDesc = None
+        self._ServerlessStatus = None
         self._DbType = None
         self._DbVersion = None
         self._Cpu = None
@@ -8176,7 +8203,6 @@ pause
         self._RenewFlag = None
         self._MinCpu = None
         self._MaxCpu = None
-        self._ServerlessStatus = None
 
     @property
     def Uin(self):
@@ -8265,6 +8291,14 @@ pause
     @StatusDesc.setter
     def StatusDesc(self, StatusDesc):
         self._StatusDesc = StatusDesc
+
+    @property
+    def ServerlessStatus(self):
+        return self._ServerlessStatus
+
+    @ServerlessStatus.setter
+    def ServerlessStatus(self, ServerlessStatus):
+        self._ServerlessStatus = ServerlessStatus
 
     @property
     def DbType(self):
@@ -8442,14 +8476,6 @@ pause
     def MaxCpu(self, MaxCpu):
         self._MaxCpu = MaxCpu
 
-    @property
-    def ServerlessStatus(self):
-        return self._ServerlessStatus
-
-    @ServerlessStatus.setter
-    def ServerlessStatus(self, ServerlessStatus):
-        self._ServerlessStatus = ServerlessStatus
-
 
     def _deserialize(self, params):
         self._Uin = params.get("Uin")
@@ -8463,6 +8489,7 @@ pause
         self._Zone = params.get("Zone")
         self._Status = params.get("Status")
         self._StatusDesc = params.get("StatusDesc")
+        self._ServerlessStatus = params.get("ServerlessStatus")
         self._DbType = params.get("DbType")
         self._DbVersion = params.get("DbVersion")
         self._Cpu = params.get("Cpu")
@@ -8485,7 +8512,6 @@ pause
         self._RenewFlag = params.get("RenewFlag")
         self._MinCpu = params.get("MinCpu")
         self._MaxCpu = params.get("MaxCpu")
-        self._ServerlessStatus = params.get("ServerlessStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23605,6 +23631,9 @@ class ParamInfo(AbstractModel):
         :param _Func: 函数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Func: str
+        :param _FuncPattern: 支持公式的参数的默认公式样式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FuncPattern: str
         """
         self._CurrentValue = None
         self._Default = None
@@ -23621,6 +23650,7 @@ class ParamInfo(AbstractModel):
         self._ModifiableInfo = None
         self._IsFunc = None
         self._Func = None
+        self._FuncPattern = None
 
     @property
     def CurrentValue(self):
@@ -23742,6 +23772,14 @@ class ParamInfo(AbstractModel):
     def Func(self, Func):
         self._Func = Func
 
+    @property
+    def FuncPattern(self):
+        return self._FuncPattern
+
+    @FuncPattern.setter
+    def FuncPattern(self, FuncPattern):
+        self._FuncPattern = FuncPattern
+
 
     def _deserialize(self, params):
         self._CurrentValue = params.get("CurrentValue")
@@ -23761,6 +23799,7 @@ class ParamInfo(AbstractModel):
             self._ModifiableInfo._deserialize(params.get("ModifiableInfo"))
         self._IsFunc = params.get("IsFunc")
         self._Func = params.get("Func")
+        self._FuncPattern = params.get("FuncPattern")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

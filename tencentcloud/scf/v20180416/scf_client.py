@@ -586,7 +586,7 @@ class ScfClient(AbstractClient):
 
 
     def InvokeFunction(self, request):
-        """SCF同步调用函数接口
+        """SCF同步调用函数接口。
 
         :param request: Request instance for InvokeFunction.
         :type request: :class:`tencentcloud.scf.v20180416.models.InvokeFunctionRequest`
