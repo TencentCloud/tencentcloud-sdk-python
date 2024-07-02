@@ -2396,3 +2396,26 @@ class GaapClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SetTlsVersion(self, request):
+        """设置监听器TLS配置
+
+        :param request: Request instance for SetTlsVersion.
+        :type request: :class:`tencentcloud.gaap.v20180529.models.SetTlsVersionRequest`
+        :rtype: :class:`tencentcloud.gaap.v20180529.models.SetTlsVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetTlsVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.SetTlsVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))

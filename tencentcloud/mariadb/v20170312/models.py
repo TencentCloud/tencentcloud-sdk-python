@@ -8435,6 +8435,8 @@ class InstanceBackupFileItem(AbstractModel):
         :type StartTime: str
         :param _EndTime: 备份结束时间
         :type EndTime: str
+        :param _StorageClass: 对象的存储类型，枚举值：STANDARD（标准存储）、ARCHIVE（归档存储）。
+        :type StorageClass: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -8447,6 +8449,7 @@ class InstanceBackupFileItem(AbstractModel):
         self._ManualBackup = None
         self._StartTime = None
         self._EndTime = None
+        self._StorageClass = None
 
     @property
     def InstanceId(self):
@@ -8536,6 +8539,14 @@ class InstanceBackupFileItem(AbstractModel):
     def EndTime(self, EndTime):
         self._EndTime = EndTime
 
+    @property
+    def StorageClass(self):
+        return self._StorageClass
+
+    @StorageClass.setter
+    def StorageClass(self, StorageClass):
+        self._StorageClass = StorageClass
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -8549,6 +8560,7 @@ class InstanceBackupFileItem(AbstractModel):
         self._ManualBackup = params.get("ManualBackup")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
+        self._StorageClass = params.get("StorageClass")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

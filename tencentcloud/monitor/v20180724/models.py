@@ -8138,6 +8138,8 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
         :type PolicyIds: list of str
         :param _AlarmLevels: 告警等级,取值范围：Remind、Serious、Warn
         :type AlarmLevels: list of str
+        :param _ConvergenceHistoryIDs: 收敛历史的唯一id
+        :type ConvergenceHistoryIDs: list of str
         """
         self._Module = None
         self._PageNumber = None
@@ -8158,6 +8160,7 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
         self._ReceiverGroups = None
         self._PolicyIds = None
         self._AlarmLevels = None
+        self._ConvergenceHistoryIDs = None
 
     @property
     def Module(self):
@@ -8311,6 +8314,14 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
     def AlarmLevels(self, AlarmLevels):
         self._AlarmLevels = AlarmLevels
 
+    @property
+    def ConvergenceHistoryIDs(self):
+        return self._ConvergenceHistoryIDs
+
+    @ConvergenceHistoryIDs.setter
+    def ConvergenceHistoryIDs(self, ConvergenceHistoryIDs):
+        self._ConvergenceHistoryIDs = ConvergenceHistoryIDs
+
 
     def _deserialize(self, params):
         self._Module = params.get("Module")
@@ -8337,6 +8348,7 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
         self._ReceiverGroups = params.get("ReceiverGroups")
         self._PolicyIds = params.get("PolicyIds")
         self._AlarmLevels = params.get("AlarmLevels")
+        self._ConvergenceHistoryIDs = params.get("ConvergenceHistoryIDs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

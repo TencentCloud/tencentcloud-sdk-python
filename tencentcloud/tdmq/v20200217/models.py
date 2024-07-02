@@ -3831,6 +3831,8 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
         :type ResourceTags: list of Tag
         :param _Bandwidth: 公网带宽大小，单位 M
         :type Bandwidth: int
+        :param _EnablePublicAccess: 是否打开公网接入，不传默认为false
+        :type EnablePublicAccess: bool
         """
         self._ZoneIds = None
         self._VpcId = None
@@ -3847,6 +3849,7 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
         self._IsIntl = None
         self._ResourceTags = None
         self._Bandwidth = None
+        self._EnablePublicAccess = None
 
     @property
     def ZoneIds(self):
@@ -3968,6 +3971,14 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
     def Bandwidth(self, Bandwidth):
         self._Bandwidth = Bandwidth
 
+    @property
+    def EnablePublicAccess(self):
+        return self._EnablePublicAccess
+
+    @EnablePublicAccess.setter
+    def EnablePublicAccess(self, EnablePublicAccess):
+        self._EnablePublicAccess = EnablePublicAccess
+
 
     def _deserialize(self, params):
         self._ZoneIds = params.get("ZoneIds")
@@ -3990,6 +4001,7 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
                 obj._deserialize(item)
                 self._ResourceTags.append(obj)
         self._Bandwidth = params.get("Bandwidth")
+        self._EnablePublicAccess = params.get("EnablePublicAccess")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23221,6 +23233,9 @@ class RabbitMQVirtualHostInfo(AbstractModel):
         :param _VirtualHostStatistics: vhost概览统计信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type VirtualHostStatistics: :class:`tencentcloud.tdmq.v20200217.models.RabbitMQVirtualHostStatistics`
+        :param _TraceFlag: 消息轨迹开关,true打开,false关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TraceFlag: bool
         :param _Status: vhost状态，与原生控制台对应，有running、partial、stopped、unknown
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
@@ -23244,6 +23259,7 @@ class RabbitMQVirtualHostInfo(AbstractModel):
         self._CreateTime = None
         self._ModifyTime = None
         self._VirtualHostStatistics = None
+        self._TraceFlag = None
         self._Status = None
         self._MessageHeapCount = None
         self._MessageRateIn = None
@@ -23307,6 +23323,14 @@ class RabbitMQVirtualHostInfo(AbstractModel):
         self._VirtualHostStatistics = VirtualHostStatistics
 
     @property
+    def TraceFlag(self):
+        return self._TraceFlag
+
+    @TraceFlag.setter
+    def TraceFlag(self, TraceFlag):
+        self._TraceFlag = TraceFlag
+
+    @property
     def Status(self):
         return self._Status
 
@@ -23357,6 +23381,7 @@ class RabbitMQVirtualHostInfo(AbstractModel):
         if params.get("VirtualHostStatistics") is not None:
             self._VirtualHostStatistics = RabbitMQVirtualHostStatistics()
             self._VirtualHostStatistics._deserialize(params.get("VirtualHostStatistics"))
+        self._TraceFlag = params.get("TraceFlag")
         self._Status = params.get("Status")
         self._MessageHeapCount = params.get("MessageHeapCount")
         self._MessageRateIn = params.get("MessageRateIn")

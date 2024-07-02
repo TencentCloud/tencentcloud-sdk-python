@@ -16441,6 +16441,88 @@ class SetAuthenticationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class SetTlsVersionRequest(AbstractModel):
+    """SetTlsVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ListenerId: 监听器ID
+        :type ListenerId: str
+        :param _TLSSupportVersion: TLS版本
+        :type TLSSupportVersion: list of str
+        :param _TLSCiphers: 密码套件包
+        :type TLSCiphers: str
+        """
+        self._ListenerId = None
+        self._TLSSupportVersion = None
+        self._TLSCiphers = None
+
+    @property
+    def ListenerId(self):
+        return self._ListenerId
+
+    @ListenerId.setter
+    def ListenerId(self, ListenerId):
+        self._ListenerId = ListenerId
+
+    @property
+    def TLSSupportVersion(self):
+        return self._TLSSupportVersion
+
+    @TLSSupportVersion.setter
+    def TLSSupportVersion(self, TLSSupportVersion):
+        self._TLSSupportVersion = TLSSupportVersion
+
+    @property
+    def TLSCiphers(self):
+        return self._TLSCiphers
+
+    @TLSCiphers.setter
+    def TLSCiphers(self, TLSCiphers):
+        self._TLSCiphers = TLSCiphers
+
+
+    def _deserialize(self, params):
+        self._ListenerId = params.get("ListenerId")
+        self._TLSSupportVersion = params.get("TLSSupportVersion")
+        self._TLSCiphers = params.get("TLSCiphers")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetTlsVersionResponse(AbstractModel):
+    """SetTlsVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class SrcAddressInfo(AbstractModel):
     """网络加速的原地址信息
 

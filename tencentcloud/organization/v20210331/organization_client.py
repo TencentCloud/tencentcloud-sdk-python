@@ -510,7 +510,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DeleteOrganizationMembers(self, request):
-        """批量删除企业组织成员
+        """从组织中移除成员账号，不会删除账号。
 
         :param request: Request instance for DeleteOrganizationMembers.
         :type request: :class:`tencentcloud.organization.v20210331.models.DeleteOrganizationMembersRequest`

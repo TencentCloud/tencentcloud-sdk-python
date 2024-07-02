@@ -10766,6 +10766,8 @@ CCN VPN 形的通道 可以不传VPCID
         :type Route: :class:`tencentcloud.vpc.v20170312.models.CreateVpnConnRoute`
         :param _BgpConfig: BGP配置。
         :type BgpConfig: :class:`tencentcloud.vpc.v20170312.models.BgpConfig`
+        :param _HealthCheckConfig: 健康检查NQA配置。
+        :type HealthCheckConfig: :class:`tencentcloud.vpc.v20170312.models.HealthCheckConfig`
         """
         self._VpnGatewayId = None
         self._CustomerGatewayId = None
@@ -10786,6 +10788,7 @@ CCN VPN 形的通道 可以不传VPCID
         self._DpdAction = None
         self._Route = None
         self._BgpConfig = None
+        self._HealthCheckConfig = None
 
     @property
     def VpnGatewayId(self):
@@ -10939,6 +10942,14 @@ CCN VPN 形的通道 可以不传VPCID
     def BgpConfig(self, BgpConfig):
         self._BgpConfig = BgpConfig
 
+    @property
+    def HealthCheckConfig(self):
+        return self._HealthCheckConfig
+
+    @HealthCheckConfig.setter
+    def HealthCheckConfig(self, HealthCheckConfig):
+        self._HealthCheckConfig = HealthCheckConfig
+
 
     def _deserialize(self, params):
         self._VpnGatewayId = params.get("VpnGatewayId")
@@ -10978,6 +10989,9 @@ CCN VPN 形的通道 可以不传VPCID
         if params.get("BgpConfig") is not None:
             self._BgpConfig = BgpConfig()
             self._BgpConfig._deserialize(params.get("BgpConfig"))
+        if params.get("HealthCheckConfig") is not None:
+            self._HealthCheckConfig = HealthCheckConfig()
+            self._HealthCheckConfig._deserialize(params.get("HealthCheckConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30558,6 +30572,79 @@ class HaVipDisassociateAddressIpResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class HealthCheckConfig(AbstractModel):
+    """VPN通道健康检查配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProbeType: 探测模式，默认值NQA，不可修改。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProbeType: str
+        :param _ProbeInterval: 探测间隔，腾讯云两次健康检查间隔时间，范围【1000-5000】，单位ms。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProbeInterval: int
+        :param _ProbeThreshold: 探测次数，连续N次健康检查失败后执行路由切换，范围【3-8】，单位次。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProbeThreshold: int
+        :param _ProbeTimeout: 探测超时时间，范围【10-5000】，单位ms。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProbeTimeout: int
+        """
+        self._ProbeType = None
+        self._ProbeInterval = None
+        self._ProbeThreshold = None
+        self._ProbeTimeout = None
+
+    @property
+    def ProbeType(self):
+        return self._ProbeType
+
+    @ProbeType.setter
+    def ProbeType(self, ProbeType):
+        self._ProbeType = ProbeType
+
+    @property
+    def ProbeInterval(self):
+        return self._ProbeInterval
+
+    @ProbeInterval.setter
+    def ProbeInterval(self, ProbeInterval):
+        self._ProbeInterval = ProbeInterval
+
+    @property
+    def ProbeThreshold(self):
+        return self._ProbeThreshold
+
+    @ProbeThreshold.setter
+    def ProbeThreshold(self, ProbeThreshold):
+        self._ProbeThreshold = ProbeThreshold
+
+    @property
+    def ProbeTimeout(self):
+        return self._ProbeTimeout
+
+    @ProbeTimeout.setter
+    def ProbeTimeout(self, ProbeTimeout):
+        self._ProbeTimeout = ProbeTimeout
+
+
+    def _deserialize(self, params):
+        self._ProbeType = params.get("ProbeType")
+        self._ProbeInterval = params.get("ProbeInterval")
+        self._ProbeThreshold = params.get("ProbeThreshold")
+        self._ProbeTimeout = params.get("ProbeTimeout")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IKEOptionsSpecification(AbstractModel):
     """IKE配置（Internet Key Exchange，因特网密钥交换），IKE具有一套自我保护机制，用户配置网络安全协议
 
@@ -36903,6 +36990,8 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
         :type DpdAction: str
         :param _CustomerGatewayId: 对端网关ID，4.0及以上网关下的通道支持更新。
         :type CustomerGatewayId: str
+        :param _HealthCheckConfig: 健康检查配置
+        :type HealthCheckConfig: :class:`tencentcloud.vpc.v20170312.models.HealthCheckConfig`
         """
         self._VpnConnectionId = None
         self._VpnConnectionName = None
@@ -36918,6 +37007,7 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
         self._DpdTimeout = None
         self._DpdAction = None
         self._CustomerGatewayId = None
+        self._HealthCheckConfig = None
 
     @property
     def VpnConnectionId(self):
@@ -37031,6 +37121,14 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
     def CustomerGatewayId(self, CustomerGatewayId):
         self._CustomerGatewayId = CustomerGatewayId
 
+    @property
+    def HealthCheckConfig(self):
+        return self._HealthCheckConfig
+
+    @HealthCheckConfig.setter
+    def HealthCheckConfig(self, HealthCheckConfig):
+        self._HealthCheckConfig = HealthCheckConfig
+
 
     def _deserialize(self, params):
         self._VpnConnectionId = params.get("VpnConnectionId")
@@ -37056,6 +37154,9 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
         self._DpdTimeout = params.get("DpdTimeout")
         self._DpdAction = params.get("DpdAction")
         self._CustomerGatewayId = params.get("CustomerGatewayId")
+        if params.get("HealthCheckConfig") is not None:
+            self._HealthCheckConfig = HealthCheckConfig()
+            self._HealthCheckConfig._deserialize(params.get("HealthCheckConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -47348,6 +47449,9 @@ class VpnConnection(AbstractModel):
         :param _BgpConfig: Bgp配置信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type BgpConfig: :class:`tencentcloud.vpc.v20170312.models.BgpConfigAndAsn`
+        :param _HealthCheckConfig: Nqa配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthCheckConfig: :class:`tencentcloud.vpc.v20170312.models.HealthCheckConfig`
         """
         self._VpnConnectionId = None
         self._VpnConnectionName = None
@@ -47374,6 +47478,7 @@ class VpnConnection(AbstractModel):
         self._TagSet = None
         self._NegotiationType = None
         self._BgpConfig = None
+        self._HealthCheckConfig = None
 
     @property
     def VpnConnectionId(self):
@@ -47575,6 +47680,14 @@ class VpnConnection(AbstractModel):
     def BgpConfig(self, BgpConfig):
         self._BgpConfig = BgpConfig
 
+    @property
+    def HealthCheckConfig(self):
+        return self._HealthCheckConfig
+
+    @HealthCheckConfig.setter
+    def HealthCheckConfig(self, HealthCheckConfig):
+        self._HealthCheckConfig = HealthCheckConfig
+
 
     def _deserialize(self, params):
         self._VpnConnectionId = params.get("VpnConnectionId")
@@ -47618,6 +47731,9 @@ class VpnConnection(AbstractModel):
         if params.get("BgpConfig") is not None:
             self._BgpConfig = BgpConfigAndAsn()
             self._BgpConfig._deserialize(params.get("BgpConfig"))
+        if params.get("HealthCheckConfig") is not None:
+            self._HealthCheckConfig = HealthCheckConfig()
+            self._HealthCheckConfig._deserialize(params.get("HealthCheckConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

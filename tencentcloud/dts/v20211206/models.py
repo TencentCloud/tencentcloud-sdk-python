@@ -8104,6 +8104,9 @@ class Endpoint(AbstractModel):
         :param _ChildInstanceType: 数据库为cynos、且是cynos集群内的一个子数据库实例时、该参数为该子实例的类型、例如：只读实例传ro、读写实例传rw
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChildInstanceType: str
+        :param _SetId: tdsql的分片id。如节点类型为set必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SetId: str
         """
         self._Region = None
         self._Role = None
@@ -8134,6 +8137,7 @@ class Endpoint(AbstractModel):
         self._CcnOwnerUin = None
         self._ChildInstanceId = None
         self._ChildInstanceType = None
+        self._SetId = None
 
     @property
     def Region(self):
@@ -8367,6 +8371,14 @@ class Endpoint(AbstractModel):
     def ChildInstanceType(self, ChildInstanceType):
         self._ChildInstanceType = ChildInstanceType
 
+    @property
+    def SetId(self):
+        return self._SetId
+
+    @SetId.setter
+    def SetId(self, SetId):
+        self._SetId = SetId
+
 
     def _deserialize(self, params):
         self._Region = params.get("Region")
@@ -8398,6 +8410,7 @@ class Endpoint(AbstractModel):
         self._CcnOwnerUin = params.get("CcnOwnerUin")
         self._ChildInstanceId = params.get("ChildInstanceId")
         self._ChildInstanceType = params.get("ChildInstanceType")
+        self._SetId = params.get("SetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

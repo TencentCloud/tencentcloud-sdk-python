@@ -2349,7 +2349,7 @@ class AssetViewCFGRisk(AbstractModel):
         :type From: str
         :param _Status: 状态
         :type Status: int
-        :param _CFGSTD: -
+        :param _CFGSTD: 相关规范
         :type CFGSTD: str
         :param _CFGDescribe: 配置详情
         :type CFGDescribe: str
@@ -3794,7 +3794,7 @@ class AssetViewWeakPassRisk(AbstractModel):
         :type FirstTime: str
         :param _Status: 状态，0未处理、1已处置、2已忽略
         :type Status: int
-        :param _Id: 资产唯一id
+        :param _Id: ID，处理风险使用
         :type Id: str
         :param _Index: 前端索引
         :type Index: str
@@ -3820,7 +3820,7 @@ class AssetViewWeakPassRisk(AbstractModel):
         :type VULURL: str
         :param _Fix: 修复建议
         :type Fix: str
-        :param _Payload: 负载
+        :param _Payload: 证明
         :type Payload: str
         """
         self._AffectAsset = None
@@ -6381,7 +6381,7 @@ class DeleteDomainAndIpRequest(AbstractModel):
         r"""
         :param _MemberId: 集团账号的成员id
         :type MemberId: list of str
-        :param _Content: -
+        :param _Content: 资产
         :type Content: list of PublicIpDomainListKey
         :param _RetainPath: 是否保留路径配置，1：保留，其他：不保留，默认不传为不保留
         :type RetainPath: int
@@ -14687,7 +14687,7 @@ class PortViewPortRisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NoHandleCount: 影响资产
+        :param _NoHandleCount: 未处理数量
         :type NoHandleCount: int
         :param _Level: 风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
         :type Level: str
@@ -14703,11 +14703,11 @@ class PortViewPortRisk(AbstractModel):
         :type FirstTime: str
         :param _Suggestion: 处置建议,0保持现状、1限制访问、2封禁端口
         :type Suggestion: int
-        :param _AffectAssetCount: 状态，0未处理、1已处置、2已忽略
+        :param _AffectAssetCount: 影响资产数量
         :type AffectAssetCount: str
-        :param _Id: 资产唯一id
+        :param _Id: ID
         :type Id: str
-        :param _From: 资产子类型
+        :param _From: 识别来源
         :type From: str
         :param _Index: 前端索引
         :type Index: str
@@ -19297,7 +19297,7 @@ class WebsiteRisk(AbstractModel):
         :type FirstTime: str
         :param _Status: 状态，0未处理、1已处置、2已忽略
         :type Status: int
-        :param _Id: 资产唯一id
+        :param _Id: ID,处理风险使用
         :type Id: str
         :param _Index: 前端索引
         :type Index: str

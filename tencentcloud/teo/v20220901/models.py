@@ -311,12 +311,15 @@ class AccelerationDomainCertificate(AbstractModel):
         r"""
         :param _Mode: 配置证书的模式，取值有： <li>disable：不配置证书；</li> <li>eofreecert：配置 EdgeOne 免费证书；</li> <li>sslcert：配置 SSL 证书。</li>
         :type Mode: str
-        :param _List: 证书列表。
+        :param _List: 服务端证书列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of CertificateInfo
+        :param _ClientCertInfo: 边缘双向认证配置。
+        :type ClientCertInfo: :class:`tencentcloud.teo.v20220901.models.MutualTLS`
         """
         self._Mode = None
         self._List = None
+        self._ClientCertInfo = None
 
     @property
     def Mode(self):
@@ -334,6 +337,14 @@ class AccelerationDomainCertificate(AbstractModel):
     def List(self, List):
         self._List = List
 
+    @property
+    def ClientCertInfo(self):
+        return self._ClientCertInfo
+
+    @ClientCertInfo.setter
+    def ClientCertInfo(self, ClientCertInfo):
+        self._ClientCertInfo = ClientCertInfo
+
 
     def _deserialize(self, params):
         self._Mode = params.get("Mode")
@@ -343,6 +354,9 @@ class AccelerationDomainCertificate(AbstractModel):
                 obj = CertificateInfo()
                 obj._deserialize(item)
                 self._List.append(obj)
+        if params.get("ClientCertInfo") is not None:
+            self._ClientCertInfo = MutualTLS()
+            self._ClientCertInfo._deserialize(params.get("ClientCertInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3345,13 +3359,13 @@ class CacheTag(AbstractModel):
 
 
 class CertificateInfo(AbstractModel):
-    """https 服务端证书配置
+    """https 证书配置。
 
     """
 
     def __init__(self):
         r"""
-        :param _CertId: 服务器证书 ID。
+        :param _CertId: 证书 ID。
         :type CertId: str
         :param _Alias: 证书备注名。
         :type Alias: str
@@ -18532,24 +18546,29 @@ class ModifyHostsCertificateRequest(AbstractModel):
         :type ZoneId: str
         :param _Hosts: 需要修改证书配置的加速域名。
         :type Hosts: list of str
-        :param _Mode: 配置证书的模式，取值有：
-<li>disable：不配置证书；</li>
-<li>eofreecert：配置 EdgeOne 免费证书；</li>
-<li>sslcert：配置 SSL 证书。</li>不填时默认取值为 disable。
+        :param _Mode: 配置服务端证书的模式，取值有：
+<li>disable：不配置服务端证书；</li>
+<li>eofreecert：配置 EdgeOne 免费服务端证书；</li>
+<li>sslcert：配置 SSL 托管服务端证书；</li>
+不填写表示服务端证书保持原有配置。
         :type Mode: str
-        :param _ServerCertInfo: SSL 证书配置，本参数仅在 mode = sslcert 时生效，传入对应证书的 CertId 即可。您可以前往 [SSL 证书列表](https://console.cloud.tencent.com/certoverview) 查看 CertId。
+        :param _ServerCertInfo: SSL 证书配置，本参数仅在 mode 为 sslcert 时生效，传入对应证书的 CertId 即可。您可以前往 [SSL 证书列表](https://console.cloud.tencent.com/certoverview) 查看 CertId。
         :type ServerCertInfo: list of ServerCertInfo
         :param _ApplyType: 托管类型，取值有：
 <li>none：不托管EO；</li>
 <li>apply：托管EO</li>
 不填，默认取值为none。
         :type ApplyType: str
+        :param _ClientCertInfo: 边缘双向认证配置。
+不填写表示边缘双向认证保持原有配置。
+        :type ClientCertInfo: :class:`tencentcloud.teo.v20220901.models.MutualTLS`
         """
         self._ZoneId = None
         self._Hosts = None
         self._Mode = None
         self._ServerCertInfo = None
         self._ApplyType = None
+        self._ClientCertInfo = None
 
     @property
     def ZoneId(self):
@@ -18595,6 +18614,14 @@ class ModifyHostsCertificateRequest(AbstractModel):
 
         self._ApplyType = ApplyType
 
+    @property
+    def ClientCertInfo(self):
+        return self._ClientCertInfo
+
+    @ClientCertInfo.setter
+    def ClientCertInfo(self, ClientCertInfo):
+        self._ClientCertInfo = ClientCertInfo
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -18607,6 +18634,9 @@ class ModifyHostsCertificateRequest(AbstractModel):
                 obj._deserialize(item)
                 self._ServerCertInfo.append(obj)
         self._ApplyType = params.get("ApplyType")
+        if params.get("ClientCertInfo") is not None:
+            self._ClientCertInfo = MutualTLS()
+            self._ClientCertInfo._deserialize(params.get("ClientCertInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20295,6 +20325,59 @@ class ModifyZoneStatusResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class MutualTLS(AbstractModel):
+    """HTTPS 双向认证。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 双向认证配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :type Switch: str
+        :param _CertInfos: 双向认证证书列表。
+注意：MutualTLS 在 ModifyHostsCertificate 作为入参使用时，该参数传入对应证书的 CertId 即可。您可以前往 [SSL 证书列表](https://console.cloud.tencent.com/certoverview) 查看 CertId。
+        :type CertInfos: list of CertificateInfo
+        """
+        self._Switch = None
+        self._CertInfos = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def CertInfos(self):
+        return self._CertInfos
+
+    @CertInfos.setter
+    def CertInfos(self, CertInfos):
+        self._CertInfos = CertInfos
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        if params.get("CertInfos") is not None:
+            self._CertInfos = []
+            for item in params.get("CertInfos"):
+                obj = CertificateInfo()
+                obj._deserialize(item)
+                self._CertInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class NoCache(AbstractModel):

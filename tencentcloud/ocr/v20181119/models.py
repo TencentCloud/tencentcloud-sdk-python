@@ -76,10 +76,13 @@ class AdvertiseOCRResponse(AbstractModel):
         r"""
         :param _TextDetections: 检测到的文本信息，包括文本行内容、置信度、文本行坐标以及文本行旋转纠正后的坐标，具体内容请点击左侧链接。
         :type TextDetections: list of AdvertiseTextDetection
+        :param _ImageSize: 图片分辨率信息，单位 px
+        :type ImageSize: :class:`tencentcloud.ocr.v20181119.models.ImageSize`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TextDetections = None
+        self._ImageSize = None
         self._RequestId = None
 
     @property
@@ -89,6 +92,14 @@ class AdvertiseOCRResponse(AbstractModel):
     @TextDetections.setter
     def TextDetections(self, TextDetections):
         self._TextDetections = TextDetections
+
+    @property
+    def ImageSize(self):
+        return self._ImageSize
+
+    @ImageSize.setter
+    def ImageSize(self, ImageSize):
+        self._ImageSize = ImageSize
 
     @property
     def RequestId(self):
@@ -106,6 +117,9 @@ class AdvertiseOCRResponse(AbstractModel):
                 obj = AdvertiseTextDetection()
                 obj._deserialize(item)
                 self._TextDetections.append(obj)
+        if params.get("ImageSize") is not None:
+            self._ImageSize = ImageSize()
+            self._ImageSize._deserialize(params.get("ImageSize"))
         self._RequestId = params.get("RequestId")
 
 
@@ -9558,6 +9572,53 @@ class ImageEnhancementResponse(AbstractModel):
         self._ImageTag = params.get("ImageTag")
         self._Image = params.get("Image")
         self._RequestId = params.get("RequestId")
+
+
+class ImageSize(AbstractModel):
+    """图片分辨率信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Width: 图片的宽，单位像素
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Width: int
+        :param _Height: 图片的高，单位像素
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Height: int
+        """
+        self._Width = None
+        self._Height = None
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+
+    def _deserialize(self, params):
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class InstitutionOCRRequest(AbstractModel):
