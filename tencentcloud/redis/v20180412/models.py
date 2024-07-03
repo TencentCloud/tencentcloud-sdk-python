@@ -1622,7 +1622,7 @@ class CommandTake(AbstractModel):
         r"""
         :param _Cmd: 命令名。
         :type Cmd: str
-        :param _Took: 耗时时长。
+        :param _Took: 耗时时长。单位：ms。
         :type Took: int
         """
         self._Cmd = None
@@ -5259,9 +5259,13 @@ class DescribeInstanceMonitorTopNCmdRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例Id
+        :param _InstanceId: 实例 ID。
         :type InstanceId: str
-        :param _SpanType: 时间范围：1——实时，2——近30分钟，3——近6小时，4——近24小时
+        :param _SpanType: 时间范围。
+- 1：实时。
+- 2：近30分钟。
+- 3：近6小时。
+- 4：近24小时。
         :type SpanType: int
         """
         self._InstanceId = None
@@ -9655,7 +9659,7 @@ class InstanceClusterNode(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 节点名称。
+        :param _Name: 节点组名称。
         :type Name: str
         :param _RunId: 实例运行时节点 ID。
         :type RunId: str
@@ -17783,13 +17787,15 @@ class ZoneCapacityConf(AbstractModel):
         r"""
         :param _ZoneId: 可用区ID：如ap-guangzhou-3
         :type ZoneId: str
-        :param _ZoneName: 可用区名称
+        :param _ZoneName: 可用区名称。
         :type ZoneName: str
-        :param _IsSaleout: 可用区是否售罄
+        :param _IsSaleout: 可用区是否售罄。
         :type IsSaleout: bool
-        :param _IsDefault: 是否为默认可用区
+        :param _IsDefault: 是否为默认可用区。
         :type IsDefault: bool
-        :param _NetWorkType: 网络类型：basenet -- 基础网络；vpcnet -- VPC网络
+        :param _NetWorkType: 网络类型。
+- basenet：基础网络。
+- vpcnet -- VPC网络。
         :type NetWorkType: list of str
         :param _ProductSet: 可用区内产品规格等信息
         :type ProductSet: list of ProductConf

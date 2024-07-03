@@ -972,6 +972,177 @@ INIT: 初始化、WAIT：等待中、RUN：运行中、FAIL：处理失败、DON
         self._RequestId = params.get("RequestId")
 
 
+class ReplaceBackgroundRequest(AbstractModel):
+    """ReplaceBackground请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductUrl: 商品原图 Url。
+图片限制：单边分辨率小于4000，长宽比在2:5 ~ 5:2之间，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+        :type ProductUrl: str
+        :param _MaskUrl: 商品 Mask 图 Url，要求背景透明，保留商品主体。
+如果不传，将自动使用内置的商品分割算法得到 Mask。
+支持自定义上传 Mask，如果该参数不为空，则以实际上传的数据为准。
+图片限制：Mask 图必须和商品原图分辨率一致，转成 Base64 字符串后小于 6MB，格式仅支持 png。
+        :type MaskUrl: str
+        :param _Prompt: 对新背景的文本描述。
+最多支持256个 utf-8 字符，支持中、英文。
+        :type Prompt: str
+        :param _Resolution: 替换背景后生成的商品图分辨率。
+支持生成单边分辨率大于500且小于4000、长宽比在2:5 ~ 5:2之间的图片，不传默认生成1280:1280。
+建议图片比例为1:1、9:16、16:9，生成效果更佳，使用其他比例的生成效果可能不如建议比例。
+        :type Resolution: str
+        :param _LogoAdd: 为生成结果图添加标识的开关，默认为1。
+1：添加标识。
+0：不添加标识。
+其他数值：默认按1处理。
+建议您使用显著标识来提示结果图是 AI 生成的图片。
+        :type LogoAdd: int
+        :param _LogoParam: 标识内容设置。
+默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        :type LogoParam: :class:`tencentcloud.aiart.v20221229.models.LogoParam`
+        :param _RspImgType: 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
+生成图分辨率较大时建议选择 url，使用 base64 可能因图片过大导致返回失败。
+        :type RspImgType: str
+        """
+        self._ProductUrl = None
+        self._MaskUrl = None
+        self._Prompt = None
+        self._Resolution = None
+        self._LogoAdd = None
+        self._LogoParam = None
+        self._RspImgType = None
+
+    @property
+    def ProductUrl(self):
+        return self._ProductUrl
+
+    @ProductUrl.setter
+    def ProductUrl(self, ProductUrl):
+        self._ProductUrl = ProductUrl
+
+    @property
+    def MaskUrl(self):
+        return self._MaskUrl
+
+    @MaskUrl.setter
+    def MaskUrl(self, MaskUrl):
+        self._MaskUrl = MaskUrl
+
+    @property
+    def Prompt(self):
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def Resolution(self):
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def LogoAdd(self):
+        return self._LogoAdd
+
+    @LogoAdd.setter
+    def LogoAdd(self, LogoAdd):
+        self._LogoAdd = LogoAdd
+
+    @property
+    def LogoParam(self):
+        return self._LogoParam
+
+    @LogoParam.setter
+    def LogoParam(self, LogoParam):
+        self._LogoParam = LogoParam
+
+    @property
+    def RspImgType(self):
+        return self._RspImgType
+
+    @RspImgType.setter
+    def RspImgType(self, RspImgType):
+        self._RspImgType = RspImgType
+
+
+    def _deserialize(self, params):
+        self._ProductUrl = params.get("ProductUrl")
+        self._MaskUrl = params.get("MaskUrl")
+        self._Prompt = params.get("Prompt")
+        self._Resolution = params.get("Resolution")
+        self._LogoAdd = params.get("LogoAdd")
+        if params.get("LogoParam") is not None:
+            self._LogoParam = LogoParam()
+            self._LogoParam._deserialize(params.get("LogoParam"))
+        self._RspImgType = params.get("RspImgType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReplaceBackgroundResponse(AbstractModel):
+    """ReplaceBackground返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResultImage: 根据入参 RspImgType 填入不同，返回不同的内容。
+如果传入 base64 则返回生成图 Base64 编码。
+如果传入 url 则返回的生成图 URL , 有效期1小时，请及时保存。
+        :type ResultImage: str
+        :param _MaskImage: 如果 MaskUrl 未传，则返回使用内置商品分割算法得到的 Mask 结果。
+        :type MaskImage: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ResultImage = None
+        self._MaskImage = None
+        self._RequestId = None
+
+    @property
+    def ResultImage(self):
+        return self._ResultImage
+
+    @ResultImage.setter
+    def ResultImage(self, ResultImage):
+        self._ResultImage = ResultImage
+
+    @property
+    def MaskImage(self):
+        return self._MaskImage
+
+    @MaskImage.setter
+    def MaskImage(self, MaskImage):
+        self._MaskImage = MaskImage
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ResultImage = params.get("ResultImage")
+        self._MaskImage = params.get("MaskImage")
+        self._RequestId = params.get("RequestId")
+
+
 class ResultConfig(AbstractModel):
     """返回结果配置
 

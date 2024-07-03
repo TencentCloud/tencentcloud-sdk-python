@@ -1565,7 +1565,7 @@ class ClassicalListener(AbstractModel):
         :type HealthNum: int
         :param _UnhealthNum: 不健康阈值
         :type UnhealthNum: int
-        :param _HttpHash: 传统型公网负载均衡的 HTTP、HTTPS 监听器的请求均衡方法。wrr 表示按权重轮询，ip_hash 表示根据访问的源 IP 进行一致性哈希方式来分发
+        :param _HttpHash: 传统型公网负载均衡 监听器的请求均衡方法。空字符串或wrr 表示按权重轮询，ip_hash 表示根据访问的源 IP 进行一致性哈希方式来分发，least_conn表示按最小连接数。
         :type HttpHash: str
         :param _HttpCode: 传统型公网负载均衡的 HTTP、HTTPS 监听器的健康检查返回码。具体可参考创建监听器中对该字段的解释
         :type HttpCode: int

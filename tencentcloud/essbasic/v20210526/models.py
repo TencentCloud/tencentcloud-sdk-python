@@ -20389,7 +20389,7 @@ class UploadFile(AbstractModel):
         r"""
         :param _FileBody: Base64编码后的文件内容
         :type FileBody: str
-        :param _FileName: 文件名
+        :param _FileName: 文件名，最大长度不超过200字符
         :type FileName: str
         """
         self._FileBody = None

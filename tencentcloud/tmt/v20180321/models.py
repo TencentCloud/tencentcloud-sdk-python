@@ -1113,11 +1113,17 @@ hi：印地语
         :type ProjectId: int
         :param _SourceTextList: 待翻译的文本列表，批量接口可以以数组方式在一次请求中填写多个待翻译文本。文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本可能会翻译失败。单次请求的文本长度总和需要低于6000字符。
         :type SourceTextList: list of str
+        :param _TermRepoIDList: 需要使用的术语库列表
+        :type TermRepoIDList: list of str
+        :param _SentRepoIDList: 需要使用的例句库列表
+        :type SentRepoIDList: list of str
         """
         self._Source = None
         self._Target = None
         self._ProjectId = None
         self._SourceTextList = None
+        self._TermRepoIDList = None
+        self._SentRepoIDList = None
 
     @property
     def Source(self):
@@ -1151,12 +1157,30 @@ hi：印地语
     def SourceTextList(self, SourceTextList):
         self._SourceTextList = SourceTextList
 
+    @property
+    def TermRepoIDList(self):
+        return self._TermRepoIDList
+
+    @TermRepoIDList.setter
+    def TermRepoIDList(self, TermRepoIDList):
+        self._TermRepoIDList = TermRepoIDList
+
+    @property
+    def SentRepoIDList(self):
+        return self._SentRepoIDList
+
+    @SentRepoIDList.setter
+    def SentRepoIDList(self, SentRepoIDList):
+        self._SentRepoIDList = SentRepoIDList
+
 
     def _deserialize(self, params):
         self._Source = params.get("Source")
         self._Target = params.get("Target")
         self._ProjectId = params.get("ProjectId")
         self._SourceTextList = params.get("SourceTextList")
+        self._TermRepoIDList = params.get("TermRepoIDList")
+        self._SentRepoIDList = params.get("SentRepoIDList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1283,12 +1307,18 @@ hi：印地语
         :type ProjectId: int
         :param _UntranslatedText: 用来标记不希望被翻译的文本内容，如句子中的特殊符号、人名、地名等；每次请求只支持配置一个不被翻译的单词；仅支持配置人名、地名等名词，不要配置动词或短语，否则会影响翻译结果。
         :type UntranslatedText: str
+        :param _TermRepoIDList: 需要使用的术语库列表
+        :type TermRepoIDList: list of str
+        :param _SentRepoIDList: 需要使用的例句库列表
+        :type SentRepoIDList: list of str
         """
         self._SourceText = None
         self._Source = None
         self._Target = None
         self._ProjectId = None
         self._UntranslatedText = None
+        self._TermRepoIDList = None
+        self._SentRepoIDList = None
 
     @property
     def SourceText(self):
@@ -1330,6 +1360,22 @@ hi：印地语
     def UntranslatedText(self, UntranslatedText):
         self._UntranslatedText = UntranslatedText
 
+    @property
+    def TermRepoIDList(self):
+        return self._TermRepoIDList
+
+    @TermRepoIDList.setter
+    def TermRepoIDList(self, TermRepoIDList):
+        self._TermRepoIDList = TermRepoIDList
+
+    @property
+    def SentRepoIDList(self):
+        return self._SentRepoIDList
+
+    @SentRepoIDList.setter
+    def SentRepoIDList(self, SentRepoIDList):
+        self._SentRepoIDList = SentRepoIDList
+
 
     def _deserialize(self, params):
         self._SourceText = params.get("SourceText")
@@ -1337,6 +1383,8 @@ hi：印地语
         self._Target = params.get("Target")
         self._ProjectId = params.get("ProjectId")
         self._UntranslatedText = params.get("UntranslatedText")
+        self._TermRepoIDList = params.get("TermRepoIDList")
+        self._SentRepoIDList = params.get("SentRepoIDList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

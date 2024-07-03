@@ -4244,6 +4244,21 @@ class ClbObject(AbstractModel):
         :param _Region: 对象地域
 注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
+        :param _Proxy: 代理状态: 0:不开启,1:以XFF的第一个IP地址作为客户端IP,2:以remote_addr作为客户端IP,3:从指定的头部字段获取客户端IP，字段通过IpHeaders字段给出
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Proxy: int
+        :param _IpHeaders: 指定获取客户端IP的头部字段列表。IsCdn为3时有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpHeaders: list of str
+        :param _BotStatus: bot防护开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BotStatus: int
+        :param _ApiStatus: api防护开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiStatus: int
+        :param _ObjectFlowMode: 对象接入模式，0表示镜像模式，1表示清洗模式，2表示体检模式，默认为清洗模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ObjectFlowMode: int
         """
         self._ObjectId = None
         self._InstanceId = None
@@ -4262,6 +4277,11 @@ class ClbObject(AbstractModel):
         self._PostCKafkaStatus = None
         self._Type = None
         self._Region = None
+        self._Proxy = None
+        self._IpHeaders = None
+        self._BotStatus = None
+        self._ApiStatus = None
+        self._ObjectFlowMode = None
 
     @property
     def ObjectId(self):
@@ -4399,6 +4419,46 @@ class ClbObject(AbstractModel):
     def Region(self, Region):
         self._Region = Region
 
+    @property
+    def Proxy(self):
+        return self._Proxy
+
+    @Proxy.setter
+    def Proxy(self, Proxy):
+        self._Proxy = Proxy
+
+    @property
+    def IpHeaders(self):
+        return self._IpHeaders
+
+    @IpHeaders.setter
+    def IpHeaders(self, IpHeaders):
+        self._IpHeaders = IpHeaders
+
+    @property
+    def BotStatus(self):
+        return self._BotStatus
+
+    @BotStatus.setter
+    def BotStatus(self, BotStatus):
+        self._BotStatus = BotStatus
+
+    @property
+    def ApiStatus(self):
+        return self._ApiStatus
+
+    @ApiStatus.setter
+    def ApiStatus(self, ApiStatus):
+        self._ApiStatus = ApiStatus
+
+    @property
+    def ObjectFlowMode(self):
+        return self._ObjectFlowMode
+
+    @ObjectFlowMode.setter
+    def ObjectFlowMode(self, ObjectFlowMode):
+        self._ObjectFlowMode = ObjectFlowMode
+
 
     def _deserialize(self, params):
         self._ObjectId = params.get("ObjectId")
@@ -4418,6 +4478,11 @@ class ClbObject(AbstractModel):
         self._PostCKafkaStatus = params.get("PostCKafkaStatus")
         self._Type = params.get("Type")
         self._Region = params.get("Region")
+        self._Proxy = params.get("Proxy")
+        self._IpHeaders = params.get("IpHeaders")
+        self._BotStatus = params.get("BotStatus")
+        self._ApiStatus = params.get("ApiStatus")
+        self._ObjectFlowMode = params.get("ObjectFlowMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
