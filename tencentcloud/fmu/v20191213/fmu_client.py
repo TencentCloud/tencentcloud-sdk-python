@@ -50,7 +50,9 @@ class FmuClient(AbstractClient):
 
 
     def BeautifyVideo(self, request):
-        """视频美颜(此接口目前已下线)
+        """产品不再维护，准备下线。
+
+        视频美颜(此接口目前已下线)
 
         :param request: Request instance for BeautifyVideo.
         :type request: :class:`tencentcloud.fmu.v20191213.models.BeautifyVideoRequest`
@@ -73,7 +75,9 @@ class FmuClient(AbstractClient):
 
 
     def CancelBeautifyVideoJob(self, request):
-        """撤销视频美颜任务请求
+        """产品不再维护，准备下线。
+
+        撤销视频美颜任务请求
 
         :param request: Request instance for CancelBeautifyVideoJob.
         :type request: :class:`tencentcloud.fmu.v20191213.models.CancelBeautifyVideoJobRequest`
@@ -167,7 +171,9 @@ class FmuClient(AbstractClient):
 
 
     def QueryBeautifyVideoJob(self, request):
-        """查询视频美颜处理进度
+        """产品不再维护，准备下线。
+
+        查询视频美颜处理进度
 
         :param request: Request instance for QueryBeautifyVideoJob.
         :type request: :class:`tencentcloud.fmu.v20191213.models.QueryBeautifyVideoJobRequest`

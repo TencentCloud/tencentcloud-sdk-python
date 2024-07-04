@@ -25,7 +25,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Model: 模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-pro。
+        :param _Model: 模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-pro、 hunyuan-code、 hunyuan-role、 hunyuan-functioncall、 hunyuan-vision。
 各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。
 
 注意：
@@ -34,8 +34,8 @@ class ChatCompletionsRequest(AbstractModel):
         :param _Messages: 聊天上下文信息。
 说明：
 1. 长度最多为 40，按对话时间从旧到新在数组中排列。
-2. Message.Role 可选值：system、user、assistant。
-其中，system 角色可选，如存在则必须位于列表的最开始。user 和 assistant 需交替出现（一问一答），以 user 提问开始和结束，且 Content 不能为空。Role 的顺序示例：[system（可选） user assistant user assistant user ...]。
+2. Message.Role 可选值：system、user、assistant、 tool。
+其中，system 角色可选，如存在则必须位于列表的最开始。user（tool） 和 assistant 需交替出现（一问一答），以 user 提问开始，user（tool）提问结束，且 Content 不能为空。Role 的顺序示例：[system（可选） user assistant user assistant user ...]。
 3. Messages 中 Content 总长度不能超过模型输入长度上限（可参考 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 文档），超过则会截断最前面的内容，只保留尾部内容。
         :type Messages: list of Message
         :param _Stream: 流式调用开关。
@@ -77,6 +77,16 @@ class ChatCompletionsRequest(AbstractModel):
 3. 关闭时将直接由主模型生成回复内容，可以降低响应时延（对于流式输出时的首字时延尤为明显）。但在少数场景里，回复效果可能会下降。
 4. 安全审核能力不属于功能增强范围，不受此字段影响。
         :type EnableEnhancement: bool
+        :param _Tools: 可调用的工具列表，仅对 hunyuan-functioncall 模型生效。
+        :type Tools: list of Tool
+        :param _ToolChoice: 工具使用选项，可选值包括 none、auto、custom。
+说明：
+1. 仅对 hunyuan-functioncall 模型生效。
+2. none：不调用工具；auto：模型自行选择生成回复或调用工具；custom：强制模型调用指定的工具。
+3. 未设置时，默认值为auto
+        :type ToolChoice: str
+        :param _CustomTool: 强制模型调用指定的工具，当参数ToolChoice为custom时，此参数为必填
+        :type CustomTool: :class:`tencentcloud.hunyuan.v20230901.models.Tool`
         """
         self._Model = None
         self._Messages = None
@@ -85,6 +95,9 @@ class ChatCompletionsRequest(AbstractModel):
         self._TopP = None
         self._Temperature = None
         self._EnableEnhancement = None
+        self._Tools = None
+        self._ToolChoice = None
+        self._CustomTool = None
 
     @property
     def Model(self):
@@ -142,6 +155,30 @@ class ChatCompletionsRequest(AbstractModel):
     def EnableEnhancement(self, EnableEnhancement):
         self._EnableEnhancement = EnableEnhancement
 
+    @property
+    def Tools(self):
+        return self._Tools
+
+    @Tools.setter
+    def Tools(self, Tools):
+        self._Tools = Tools
+
+    @property
+    def ToolChoice(self):
+        return self._ToolChoice
+
+    @ToolChoice.setter
+    def ToolChoice(self, ToolChoice):
+        self._ToolChoice = ToolChoice
+
+    @property
+    def CustomTool(self):
+        return self._CustomTool
+
+    @CustomTool.setter
+    def CustomTool(self, CustomTool):
+        self._CustomTool = CustomTool
+
 
     def _deserialize(self, params):
         self._Model = params.get("Model")
@@ -156,6 +193,16 @@ class ChatCompletionsRequest(AbstractModel):
         self._TopP = params.get("TopP")
         self._Temperature = params.get("Temperature")
         self._EnableEnhancement = params.get("EnableEnhancement")
+        if params.get("Tools") is not None:
+            self._Tools = []
+            for item in params.get("Tools"):
+                obj = Tool()
+                obj._deserialize(item)
+                self._Tools.append(obj)
+        self._ToolChoice = params.get("ToolChoice")
+        if params.get("CustomTool") is not None:
+            self._CustomTool = Tool()
+            self._CustomTool._deserialize(params.get("CustomTool"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -339,6 +386,70 @@ stop 表示输出正常结束，sensitive 只在开启流式输出审核时会�
         
 
 
+class Content(AbstractModel):
+    """可以传入多种类型的内容，如图片或文本。当前只支持传入单张图片，传入多张图片时，以第一个图片为准。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 内容类型
+注意：
+当前只支持传入单张图片，传入多张图片时，以第一个图片为准。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Text: 当 Type 为 text 时使用，表示具体的文本内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        :param _ImageUrl: 当 Type 为 image_url 时使用，表示具体的图片内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageUrl: :class:`tencentcloud.hunyuan.v20230901.models.ImageUrl`
+        """
+        self._Type = None
+        self._Text = None
+        self._ImageUrl = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Text = params.get("Text")
+        if params.get("ImageUrl") is not None:
+            self._ImageUrl = ImageUrl()
+            self._ImageUrl._deserialize(params.get("ImageUrl"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Delta(AbstractModel):
     """返回的内容（流式返回）
 
@@ -350,9 +461,16 @@ class Delta(AbstractModel):
         :type Role: str
         :param _Content: 内容详情。
         :type Content: str
+        :param _ToolCalls: 模型生成的工具调用，仅 hunyuan-functioncall 模型支持
+说明：
+对于每一次的输出值应该以Id为标识对Type、Name、Arguments字段进行合并。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ToolCalls: list of ToolCall
         """
         self._Role = None
         self._Content = None
+        self._ToolCalls = None
 
     @property
     def Role(self):
@@ -370,10 +488,24 @@ class Delta(AbstractModel):
     def Content(self, Content):
         self._Content = Content
 
+    @property
+    def ToolCalls(self):
+        return self._ToolCalls
+
+    @ToolCalls.setter
+    def ToolCalls(self, ToolCalls):
+        self._ToolCalls = ToolCalls
+
 
     def _deserialize(self, params):
         self._Role = params.get("Role")
         self._Content = params.get("Content")
+        if params.get("ToolCalls") is not None:
+            self._ToolCalls = []
+            for item in params.get("ToolCalls"):
+                obj = ToolCall()
+                obj._deserialize(item)
+                self._ToolCalls.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -720,6 +852,40 @@ class GetTokenCountResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ImageUrl(AbstractModel):
+    """具体的图片内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: 图片的 Url（以 http:// 或 https:// 开头）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        """
+        self._Url = None
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Message(AbstractModel):
     """会话内容
 
@@ -727,13 +893,25 @@ class Message(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Role: 角色，可选值包括 system、user、assistant。
+        :param _Role: 角色，可选值包括 system、user、assistant、 tool。
         :type Role: str
         :param _Content: 文本内容
         :type Content: str
+        :param _Contents: 多种类型内容（目前支持图片和文本），仅 hunyuan-vision 模型支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Contents: list of Content
+        :param _ToolCallId: 当role为tool时传入，标识具体的函数调用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ToolCallId: str
+        :param _ToolCalls: 模型生成的工具调用，仅 hunyuan-functioncall 模型支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ToolCalls: list of ToolCall
         """
         self._Role = None
         self._Content = None
+        self._Contents = None
+        self._ToolCallId = None
+        self._ToolCalls = None
 
     @property
     def Role(self):
@@ -751,10 +929,47 @@ class Message(AbstractModel):
     def Content(self, Content):
         self._Content = Content
 
+    @property
+    def Contents(self):
+        return self._Contents
+
+    @Contents.setter
+    def Contents(self, Contents):
+        self._Contents = Contents
+
+    @property
+    def ToolCallId(self):
+        return self._ToolCallId
+
+    @ToolCallId.setter
+    def ToolCallId(self, ToolCallId):
+        self._ToolCallId = ToolCallId
+
+    @property
+    def ToolCalls(self):
+        return self._ToolCalls
+
+    @ToolCalls.setter
+    def ToolCalls(self, ToolCalls):
+        self._ToolCalls = ToolCalls
+
 
     def _deserialize(self, params):
         self._Role = params.get("Role")
         self._Content = params.get("Content")
+        if params.get("Contents") is not None:
+            self._Contents = []
+            for item in params.get("Contents"):
+                obj = Content()
+                obj._deserialize(item)
+                self._Contents.append(obj)
+        self._ToolCallId = params.get("ToolCallId")
+        if params.get("ToolCalls") is not None:
+            self._ToolCalls = []
+            for item in params.get("ToolCalls"):
+                obj = ToolCall()
+                obj._deserialize(item)
+                self._ToolCalls.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1039,6 +1254,214 @@ class SubmitHunyuanImageJobResponse(AbstractModel):
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
         self._RequestId = params.get("RequestId")
+
+
+class Tool(AbstractModel):
+    """用户指定模型使用的工具
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 工具类型，当前只支持function
+        :type Type: str
+        :param _Function: 具体要调用的function
+        :type Function: :class:`tencentcloud.hunyuan.v20230901.models.ToolFunction`
+        """
+        self._Type = None
+        self._Function = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Function(self):
+        return self._Function
+
+    @Function.setter
+    def Function(self, Function):
+        self._Function = Function
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("Function") is not None:
+            self._Function = ToolFunction()
+            self._Function._deserialize(params.get("Function"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ToolCall(AbstractModel):
+    """模型生成的工具调用
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 工具调用id
+        :type Id: str
+        :param _Type: 工具调用类型，当前只支持function
+        :type Type: str
+        :param _Function: 具体的function调用
+        :type Function: :class:`tencentcloud.hunyuan.v20230901.models.ToolCallFunction`
+        """
+        self._Id = None
+        self._Type = None
+        self._Function = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Function(self):
+        return self._Function
+
+    @Function.setter
+    def Function(self, Function):
+        self._Function = Function
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Type = params.get("Type")
+        if params.get("Function") is not None:
+            self._Function = ToolCallFunction()
+            self._Function._deserialize(params.get("Function"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ToolCallFunction(AbstractModel):
+    """具体的function调用
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: function名称
+        :type Name: str
+        :param _Arguments: function参数，一般为json字符串
+        :type Arguments: str
+        """
+        self._Name = None
+        self._Arguments = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Arguments(self):
+        return self._Arguments
+
+    @Arguments.setter
+    def Arguments(self, Arguments):
+        self._Arguments = Arguments
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Arguments = params.get("Arguments")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ToolFunction(AbstractModel):
+    """function定义
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: function名称，只能包含a-z，A-Z，0-9，\_或-
+        :type Name: str
+        :param _Parameters: function参数，一般为json字符串
+        :type Parameters: str
+        :param _Description: function的简单描述
+        :type Description: str
+        """
+        self._Name = None
+        self._Parameters = None
+        self._Description = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Parameters(self):
+        return self._Parameters
+
+    @Parameters.setter
+    def Parameters(self, Parameters):
+        self._Parameters = Parameters
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Parameters = params.get("Parameters")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Usage(AbstractModel):

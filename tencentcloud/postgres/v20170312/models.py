@@ -27,16 +27,18 @@ class AccountInfo(AbstractModel):
         r"""
         :param _DBInstanceId: 实例ID，形如postgres-lnp6j617
         :type DBInstanceId: str
-        :param _UserName: 帐号
+        :param _UserName: 账号
         :type UserName: str
-        :param _Remark: 帐号备注
+        :param _Remark: 账号备注
         :type Remark: str
-        :param _Status: 帐号状态。 1-创建中，2-正常，3-修改中，4-密码重置中，-1-删除中
+        :param _Status: 账号状态。 1-创建中，2-正常，3-修改中，4-密码重置中，5-锁定中，-1-删除中
         :type Status: int
-        :param _CreateTime: 帐号创建时间
+        :param _CreateTime: 账号创建时间
         :type CreateTime: str
-        :param _UpdateTime: 帐号最后一次更新时间
+        :param _UpdateTime: 账号最后一次更新时间
         :type UpdateTime: str
+        :param _UserType: 账号类型
+        :type UserType: str
         """
         self._DBInstanceId = None
         self._UserName = None
@@ -44,6 +46,7 @@ class AccountInfo(AbstractModel):
         self._Status = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._UserType = None
 
     @property
     def DBInstanceId(self):
@@ -93,6 +96,14 @@ class AccountInfo(AbstractModel):
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def UserType(self):
+        return self._UserType
+
+    @UserType.setter
+    def UserType(self, UserType):
+        self._UserType = UserType
+
 
     def _deserialize(self, params):
         self._DBInstanceId = params.get("DBInstanceId")
@@ -101,6 +112,7 @@ class AccountInfo(AbstractModel):
         self._Status = params.get("Status")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._UserType = params.get("UserType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4777,11 +4789,11 @@ class DescribeAccountsRequest(AbstractModel):
         r"""
         :param _DBInstanceId: 实例ID，形如postgres-6fego161
         :type DBInstanceId: str
-        :param _Limit: 分页返回，每页最大返回数目，默认10，取值范围为1-100
+        :param _Limit: 分页返回，每页最大返回数目，默认20，取值范围为1-100
         :type Limit: int
         :param _Offset: 数据偏移量，从0开始。
         :type Offset: int
-        :param _OrderBy: 返回数据按照创建时间或者用户名排序。取值只能为createTime或者name。createTime-按照创建时间排序；name-按照用户名排序
+        :param _OrderBy: 返回数据按照创建时间或者用户名排序。取值支持createTime、name、updateTime。createTime-按照创建时间排序；name-按照用户名排序; updateTime-按照更新时间排序。
         :type OrderBy: str
         :param _OrderByType: 返回结果是升序还是降序。取值只能为desc或者asc。desc-降序；asc-升序
         :type OrderByType: str
@@ -4858,7 +4870,7 @@ class DescribeAccountsResponse(AbstractModel):
         r"""
         :param _TotalCount: 本次调用接口共返回了多少条数据。
         :type TotalCount: int
-        :param _Details: 账号列表详细信息。
+        :param _Details: 账号列表详细信息。当CreateTime项为0000-00-00 00:00:00时，意味着对应账号是直连数据库创建的，并非通过CreateAccount接口创建。
         :type Details: list of AccountInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

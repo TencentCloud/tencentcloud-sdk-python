@@ -25,7 +25,7 @@ class ActivateTWeCallLicenseRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PkgType: TWecall类型： 1-家庭安防场景； 2-穿戴类场景； 3-生活娱乐场景； 4-对讲及其它场景
+        :param _PkgType: TWecall类型： 0-测试激活码； 1-家庭安防场景； 2-穿戴类场景； 3-生活娱乐场景； 4-对讲及其它场景
         :type PkgType: int
         :param _MiniProgramAppId: appId
         :type MiniProgramAppId: str
@@ -87,10 +87,22 @@ class ActivateTWeCallLicenseResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _DeviceList: 设备激活返回数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceList: list of DeviceActiveResult
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._DeviceList = None
         self._RequestId = None
+
+    @property
+    def DeviceList(self):
+        return self._DeviceList
+
+    @DeviceList.setter
+    def DeviceList(self, DeviceList):
+        self._DeviceList = DeviceList
 
     @property
     def RequestId(self):
@@ -102,6 +114,12 @@ class ActivateTWeCallLicenseResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("DeviceList") is not None:
+            self._DeviceList = []
+            for item in params.get("DeviceList"):
+                obj = DeviceActiveResult()
+                obj._deserialize(item)
+                self._DeviceList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -9932,6 +9950,66 @@ class DescribeTopicRuleResponse(AbstractModel):
             self._Rule = TopicRule()
             self._Rule._deserialize(params.get("Rule"))
         self._RequestId = params.get("RequestId")
+
+
+class DeviceActiveResult(AbstractModel):
+    """设备激活结果数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelId: 模版ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelId: str
+        :param _Sn: SN信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sn: str
+        :param _ErrCode: 设备激活状态，0：激活成功；9800020：设备数超出限制；9800040：资源包类型和设备类型不匹配；9800039：资源包余额不足；9800037：激活码序号已使用；9800038：设备有效期超出限制；
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrCode: int
+        """
+        self._ModelId = None
+        self._Sn = None
+        self._ErrCode = None
+
+    @property
+    def ModelId(self):
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+    @property
+    def Sn(self):
+        return self._Sn
+
+    @Sn.setter
+    def Sn(self, Sn):
+        self._Sn = Sn
+
+    @property
+    def ErrCode(self):
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+
+    def _deserialize(self, params):
+        self._ModelId = params.get("ModelId")
+        self._Sn = params.get("Sn")
+        self._ErrCode = params.get("ErrCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DeviceData(AbstractModel):

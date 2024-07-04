@@ -144,12 +144,28 @@ class ApproveUser(AbstractModel):
         :param _Scf: 动态获取Scf
 注意：此字段可能返回 null，表示取不到有效值。
         :type Scf: :class:`tencentcloud.bpaas.v20181217.models.Scf`
+        :param _ApproveStatus: 审批状态 （取值范围 0:待审批  1:审批通过  2:拒绝  6:其他人已审批）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApproveStatus: int
+        :param _ApproveMsg: 审批意见
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApproveMsg: str
+        :param _ApproveTime: 审批时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApproveTime: str
+        :param _ApproveGroup: 审批组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApproveGroup: str
         """
         self._Uin = None
         self._Type = None
         self._Desc = None
         self._Nick = None
         self._Scf = None
+        self._ApproveStatus = None
+        self._ApproveMsg = None
+        self._ApproveTime = None
+        self._ApproveGroup = None
 
     @property
     def Uin(self):
@@ -191,6 +207,38 @@ class ApproveUser(AbstractModel):
     def Scf(self, Scf):
         self._Scf = Scf
 
+    @property
+    def ApproveStatus(self):
+        return self._ApproveStatus
+
+    @ApproveStatus.setter
+    def ApproveStatus(self, ApproveStatus):
+        self._ApproveStatus = ApproveStatus
+
+    @property
+    def ApproveMsg(self):
+        return self._ApproveMsg
+
+    @ApproveMsg.setter
+    def ApproveMsg(self, ApproveMsg):
+        self._ApproveMsg = ApproveMsg
+
+    @property
+    def ApproveTime(self):
+        return self._ApproveTime
+
+    @ApproveTime.setter
+    def ApproveTime(self, ApproveTime):
+        self._ApproveTime = ApproveTime
+
+    @property
+    def ApproveGroup(self):
+        return self._ApproveGroup
+
+    @ApproveGroup.setter
+    def ApproveGroup(self, ApproveGroup):
+        self._ApproveGroup = ApproveGroup
+
 
     def _deserialize(self, params):
         self._Uin = params.get("Uin")
@@ -200,6 +248,10 @@ class ApproveUser(AbstractModel):
         if params.get("Scf") is not None:
             self._Scf = Scf()
             self._Scf._deserialize(params.get("Scf"))
+        self._ApproveStatus = params.get("ApproveStatus")
+        self._ApproveMsg = params.get("ApproveMsg")
+        self._ApproveTime = params.get("ApproveTime")
+        self._ApproveGroup = params.get("ApproveGroup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

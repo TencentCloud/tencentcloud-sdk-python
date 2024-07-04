@@ -11189,8 +11189,44 @@ class DescribeMachinesRequest(AbstractModel):
         r"""
         :param _GroupId: 查询的机器组ID
         :type GroupId: str
+        :param _Filters: ip
+- 按照【ip】进行过滤。
+- 类型：String
+- 必选：否
+
+instance
+- 按照【instance】进行过滤。
+- 类型：String
+- 必选：否
+
+version
+- 按照【LogListener版本】进行过滤。
+- 类型：String
+- 必选：否
+
+status
+- 按照【状态】进行过滤。
+- 类型：String
+- 必选：否
+- 可选值：0：离线，1：正常
+
+offlineTime
+- 按照【机器离线时间】进行过滤。
+- 类型：String
+- 必选：否
+- - 可选值：0：无离线时间，12：12小时内，24：一天内，48：两天内，99：两天前
+
+每次请求的Filters的上限为10，Filter.Values的上限为100。
+        :type Filters: list of Filter
+        :param _Offset: 分页的偏移量。
+        :type Offset: int
+        :param _Limit: 分页单页限制数目。最大支持100
+        :type Limit: int
         """
         self._GroupId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
 
     @property
     def GroupId(self):
@@ -11200,9 +11236,41 @@ class DescribeMachinesRequest(AbstractModel):
     def GroupId(self, GroupId):
         self._GroupId = GroupId
 
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
 
     def _deserialize(self, params):
         self._GroupId = params.get("GroupId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11232,6 +11300,9 @@ class DescribeMachinesResponse(AbstractModel):
         :type LatestAgentVersion: str
         :param _ServiceLogging: 是否开启服务日志
         :type ServiceLogging: bool
+        :param _TotalCount: 总数目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -11241,6 +11312,7 @@ class DescribeMachinesResponse(AbstractModel):
         self._UpdateEndTime = None
         self._LatestAgentVersion = None
         self._ServiceLogging = None
+        self._TotalCount = None
         self._RequestId = None
 
     @property
@@ -11292,6 +11364,14 @@ class DescribeMachinesResponse(AbstractModel):
         self._ServiceLogging = ServiceLogging
 
     @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -11312,6 +11392,7 @@ class DescribeMachinesResponse(AbstractModel):
         self._UpdateEndTime = params.get("UpdateEndTime")
         self._LatestAgentVersion = params.get("LatestAgentVersion")
         self._ServiceLogging = params.get("ServiceLogging")
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 

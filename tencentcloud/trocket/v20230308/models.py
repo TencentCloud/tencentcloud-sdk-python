@@ -2339,35 +2339,19 @@ class DescribeInstanceListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 查询起始位置
-        :type Offset: int
-        :param _Limit: 查询结果限制数量
-        :type Limit: int
         :param _Filters: 查询条件列表
         :type Filters: list of Filter
         :param _TagFilters: 标签过滤器
         :type TagFilters: list of TagFilter
+        :param _Offset: 查询起始位置
+        :type Offset: int
+        :param _Limit: 查询结果限制数量
+        :type Limit: int
         """
-        self._Offset = None
-        self._Limit = None
         self._Filters = None
         self._TagFilters = None
-
-    @property
-    def Offset(self):
-        return self._Offset
-
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
-
-    @property
-    def Limit(self):
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
+        self._Offset = None
+        self._Limit = None
 
     @property
     def Filters(self):
@@ -2385,10 +2369,24 @@ class DescribeInstanceListRequest(AbstractModel):
     def TagFilters(self, TagFilters):
         self._TagFilters = TagFilters
 
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
 
     def _deserialize(self, params):
-        self._Offset = params.get("Offset")
-        self._Limit = params.get("Limit")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
@@ -2401,6 +2399,8 @@ class DescribeInstanceListRequest(AbstractModel):
                 obj = TagFilter()
                 obj._deserialize(item)
                 self._TagFilters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5764,6 +5764,9 @@ PREPAID，包年包月
         :param _MaxMessageDelay: 延迟消息最大时长，小时为单位
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxMessageDelay: int
+        :param _RenewFlag: 是否自动续费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RenewFlag: int
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -5783,6 +5786,7 @@ PREPAID，包年包月
         self._ScaledTpsLimit = None
         self._MessageRetention = None
         self._MaxMessageDelay = None
+        self._RenewFlag = None
 
     @property
     def InstanceId(self):
@@ -5928,6 +5932,14 @@ PREPAID，包年包月
     def MaxMessageDelay(self, MaxMessageDelay):
         self._MaxMessageDelay = MaxMessageDelay
 
+    @property
+    def RenewFlag(self):
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -5953,6 +5965,7 @@ PREPAID，包年包月
         self._ScaledTpsLimit = params.get("ScaledTpsLimit")
         self._MessageRetention = params.get("MessageRetention")
         self._MaxMessageDelay = params.get("MaxMessageDelay")
+        self._RenewFlag = params.get("RenewFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

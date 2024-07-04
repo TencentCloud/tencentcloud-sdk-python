@@ -2240,12 +2240,16 @@ class ClbListenerRule(AbstractModel):
         :param _NoMatchDomains: 不匹配域名列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type NoMatchDomains: list of str
+        :param _Url: 规则绑定的路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
         """
         self._LocationId = None
         self._Domain = None
         self._IsMatch = None
         self._Certificate = None
         self._NoMatchDomains = None
+        self._Url = None
 
     @property
     def LocationId(self):
@@ -2287,6 +2291,14 @@ class ClbListenerRule(AbstractModel):
     def NoMatchDomains(self, NoMatchDomains):
         self._NoMatchDomains = NoMatchDomains
 
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
 
     def _deserialize(self, params):
         self._LocationId = params.get("LocationId")
@@ -2296,6 +2308,7 @@ class ClbListenerRule(AbstractModel):
             self._Certificate = Certificate()
             self._Certificate._deserialize(params.get("Certificate"))
         self._NoMatchDomains = params.get("NoMatchDomains")
+        self._Url = params.get("Url")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3977,6 +3990,9 @@ class DeployRecordDetail(AbstractModel):
         :param _Region: 部署的TCB地域
 注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
+        :param _Url: 部署CLB监听器的Url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: list of str
         """
         self._Id = None
         self._CertId = None
@@ -3999,6 +4015,7 @@ class DeployRecordDetail(AbstractModel):
         self._EnvId = None
         self._TCBType = None
         self._Region = None
+        self._Url = None
 
     @property
     def Id(self):
@@ -4168,6 +4185,14 @@ class DeployRecordDetail(AbstractModel):
     def Region(self, Region):
         self._Region = Region
 
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -4191,6 +4216,7 @@ class DeployRecordDetail(AbstractModel):
         self._EnvId = params.get("EnvId")
         self._TCBType = params.get("TCBType")
         self._Region = params.get("Region")
+        self._Url = params.get("Url")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14612,6 +14638,9 @@ class UpdateRecordDetail(AbstractModel):
         :param _TCBType: TCB部署类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type TCBType: str
+        :param _Url: 监听器Url(clb专属)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
         """
         self._Id = None
         self._CertId = None
@@ -14635,6 +14664,7 @@ class UpdateRecordDetail(AbstractModel):
         self._SecretName = None
         self._EnvId = None
         self._TCBType = None
+        self._Url = None
 
     @property
     def Id(self):
@@ -14812,6 +14842,14 @@ class UpdateRecordDetail(AbstractModel):
     def TCBType(self, TCBType):
         self._TCBType = TCBType
 
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -14836,6 +14874,7 @@ class UpdateRecordDetail(AbstractModel):
         self._SecretName = params.get("SecretName")
         self._EnvId = params.get("EnvId")
         self._TCBType = params.get("TCBType")
+        self._Url = params.get("Url")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

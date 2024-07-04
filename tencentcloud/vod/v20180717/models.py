@@ -53309,7 +53309,7 @@ class SimpleHlsClipRequest(AbstractModel):
         :type IsPersistence: int
         :param _ExpireTime: 剪辑固化后的视频存储过期时间。格式参照 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。填“9999-12-31T23:59:59Z”表示永不过期。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。仅 IsPersistence 为 1 时有效，默认剪辑固化的视频永不过期。
         :type ExpireTime: str
-        :param _Procedure: 剪辑固化后的视频点播任务流处理，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。仅 IsPersistence 为 1 时有效。
+        :param _Procedure: 剪辑固化后的视频点播任务流处理，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。仅 IsPersistence 为 1 且 Precision 为 Rough 时有效。
         :type Procedure: str
         :param _ClassId: 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
 <li>默认值：0，表示其他分类。</li>
@@ -53319,6 +53319,10 @@ class SimpleHlsClipRequest(AbstractModel):
         :type SourceContext: str
         :param _SessionContext: 会话上下文，用于透传用户请求信息，当指定 Procedure 参数后，[任务流状态变更回调](/document/product/266/9636) 将返回该字段值，最长 1000 个字符。仅 IsPersistence 为 1 时有效。
         :type SessionContext: str
+        :param _Precision: 裁剪精度，取值有：<li>Rough: 粗略裁剪，最小剪辑精度是单个 ts 分片；</li><li>Precise: 精确裁剪，做到按照剪辑时间点的毫秒级精确剪辑。</li> 默认取值 Rough。
+        :type Precision: str
+        :param _OutputMediaType: 输出视频类型，取值有：<li>hls: 输出 hls 文件；</li><li>mp4：输出 mp4 文件，MP4 文件的大小不超过5G，时长小于2小时。仅当 Precision 选择 Precise 且 IsPersistence  选择0时有效，即只有非固化的精确剪辑时支持输出 MP4。</li>默认取值 hls。
+        :type OutputMediaType: str
         :param _ExtInfo: 保留字段，特殊用途时使用。 示例值：""
         :type ExtInfo: str
         """
@@ -53332,6 +53336,8 @@ class SimpleHlsClipRequest(AbstractModel):
         self._ClassId = None
         self._SourceContext = None
         self._SessionContext = None
+        self._Precision = None
+        self._OutputMediaType = None
         self._ExtInfo = None
 
     @property
@@ -53415,6 +53421,22 @@ class SimpleHlsClipRequest(AbstractModel):
         self._SessionContext = SessionContext
 
     @property
+    def Precision(self):
+        return self._Precision
+
+    @Precision.setter
+    def Precision(self, Precision):
+        self._Precision = Precision
+
+    @property
+    def OutputMediaType(self):
+        return self._OutputMediaType
+
+    @OutputMediaType.setter
+    def OutputMediaType(self, OutputMediaType):
+        self._OutputMediaType = OutputMediaType
+
+    @property
     def ExtInfo(self):
         return self._ExtInfo
 
@@ -53434,6 +53456,8 @@ class SimpleHlsClipRequest(AbstractModel):
         self._ClassId = params.get("ClassId")
         self._SourceContext = params.get("SourceContext")
         self._SessionContext = params.get("SessionContext")
+        self._Precision = params.get("Precision")
+        self._OutputMediaType = params.get("OutputMediaType")
         self._ExtInfo = params.get("ExtInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

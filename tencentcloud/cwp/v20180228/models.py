@@ -18966,13 +18966,13 @@ class DeliverTypeDetails(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecurityType: 安全模块类型 1: 入侵检测 2: 漏洞管理 3: 基线管理 4: 高级防御 5:客户端相关 6: 资产指纹
+        :param _SecurityType: 安全模块类型 1: 入侵检测 2: 漏洞管理 3: 基线管理 4: 高级防御 5:客户端相关 6: 资产指纹 7 主机列表 8 客户端上报
         :type SecurityType: int
-        :param _LogType: 安全模块下的日志类型，http://tapd.woa.com/Teneyes/markdown_wikis/show/#1210131751002328905
+        :param _LogType: 安全模块下的日志类型
         :type LogType: list of int
-        :param _TopicId: kafka topic id
+        :param _TopicId: 主题ID
         :type TopicId: str
-        :param _TopicName: kafka topic name
+        :param _TopicName: 主题名
         :type TopicName: str
         :param _Switch: 投递开关 0关闭 1开启
         :type Switch: int
@@ -18980,8 +18980,14 @@ class DeliverTypeDetails(AbstractModel):
         :type Status: int
         :param _ErrInfo: 错误信息
         :type ErrInfo: str
-        :param _StatusTime: 最近一次状态上报时间戳，s
+        :param _StatusTime: 最近一次状态上报时间戳
         :type StatusTime: int
+        :param _LogName: 日志集名
+        :type LogName: str
+        :param _LogSetId: 日志集ID
+        :type LogSetId: str
+        :param _Region: 日志集所在地域
+        :type Region: str
         """
         self._SecurityType = None
         self._LogType = None
@@ -18991,6 +18997,9 @@ class DeliverTypeDetails(AbstractModel):
         self._Status = None
         self._ErrInfo = None
         self._StatusTime = None
+        self._LogName = None
+        self._LogSetId = None
+        self._Region = None
 
     @property
     def SecurityType(self):
@@ -19056,6 +19065,30 @@ class DeliverTypeDetails(AbstractModel):
     def StatusTime(self, StatusTime):
         self._StatusTime = StatusTime
 
+    @property
+    def LogName(self):
+        return self._LogName
+
+    @LogName.setter
+    def LogName(self, LogName):
+        self._LogName = LogName
+
+    @property
+    def LogSetId(self):
+        return self._LogSetId
+
+    @LogSetId.setter
+    def LogSetId(self, LogSetId):
+        self._LogSetId = LogSetId
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
 
     def _deserialize(self, params):
         self._SecurityType = params.get("SecurityType")
@@ -19066,6 +19099,9 @@ class DeliverTypeDetails(AbstractModel):
         self._Status = params.get("Status")
         self._ErrInfo = params.get("ErrInfo")
         self._StatusTime = params.get("StatusTime")
+        self._LogName = params.get("LogName")
+        self._LogSetId = params.get("LogSetId")
+        self._Region = params.get("Region")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -56950,17 +56986,16 @@ class ExportBaselineHostDetectListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: <li>HostTag - string - 是否必填：否 - 主机标签</i>
-<li>ItemId - int64 - 是否必填：否 - 项Id</i>
-<li>RuleId - int64 - 是否必填：否 - 规则Id</li>
-<li>IsPassed - int - 是否必填：否 - 是否通过</li>
-<li>RiskTier - int - 是否必填：否 - 风险等级</li>
+        :param _Filters: <li>HostTag - string - 是否必填：否 - 主机标签</li><li>ItemId - int64 - 是否必填：否 - 项Id</li><li>RuleId - int64 - 是否必填：否 - 规则Id</li><li>IsPassed - int - 是否必填：否 - 是否通过</li><li>RiskTier - int - 是否必填：否 - 风险等级</li>
         :type Filters: list of Filter
         :param _ExportAll: 0:过滤的结果导出；1:全部导出
         :type ExportAll: int
+        :param _IsExportDetail: 0:导出界面展示；1:导出全部结果事件
+        :type IsExportDetail: int
         """
         self._Filters = None
         self._ExportAll = None
+        self._IsExportDetail = None
 
     @property
     def Filters(self):
@@ -56978,6 +57013,14 @@ class ExportBaselineHostDetectListRequest(AbstractModel):
     def ExportAll(self, ExportAll):
         self._ExportAll = ExportAll
 
+    @property
+    def IsExportDetail(self):
+        return self._IsExportDetail
+
+    @IsExportDetail.setter
+    def IsExportDetail(self, IsExportDetail):
+        self._IsExportDetail = IsExportDetail
+
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
@@ -56987,6 +57030,7 @@ class ExportBaselineHostDetectListRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Filters.append(obj)
         self._ExportAll = params.get("ExportAll")
+        self._IsExportDetail = params.get("IsExportDetail")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -57029,16 +57073,16 @@ class ExportBaselineItemDetectListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: <li>HostId - string - 是否必填：否 - 主机Id</i>
-<li>RuleId - int64 - 是否必填：否 - 规则Id</i>
-<li>IsPassed - int - 是否必填：否 - 是否通过</li>
-<li>RiskTier - int - 是否必填：否 - 风险等级</li>
+        :param _Filters: <li>HostId - string - 是否必填：否 - 主机Id</li><li>RuleId - int64 - 是否必填：否 - 规则Id</li><li>IsPassed - int - 是否必填：否 - 是否通过</li><li>RiskTier - int - 是否必填：否 - 风险等级</li>
         :type Filters: list of Filter
         :param _ExportAll: 0:过滤的结果导出；1:全部导出
         :type ExportAll: int
+        :param _IsExportDetail: 0:导出界面展示；1:导出全部结果事件
+        :type IsExportDetail: int
         """
         self._Filters = None
         self._ExportAll = None
+        self._IsExportDetail = None
 
     @property
     def Filters(self):
@@ -57056,6 +57100,14 @@ class ExportBaselineItemDetectListRequest(AbstractModel):
     def ExportAll(self, ExportAll):
         self._ExportAll = ExportAll
 
+    @property
+    def IsExportDetail(self):
+        return self._IsExportDetail
+
+    @IsExportDetail.setter
+    def IsExportDetail(self, IsExportDetail):
+        self._IsExportDetail = IsExportDetail
+
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
@@ -57065,6 +57117,7 @@ class ExportBaselineItemDetectListRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Filters.append(obj)
         self._ExportAll = params.get("ExportAll")
+        self._IsExportDetail = params.get("IsExportDetail")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -57297,15 +57350,16 @@ class ExportBaselineRuleDetectListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: <li>RuleName - string - 是否必填：否 - 规则名称</i>
-<li>IsPassed - int - 是否必填：否 - 是否通过</li>
-<li>RiskTier - int - 是否必填：否 - 风险等级</li>
+        :param _Filters: <li>RuleName - string - 是否必填：否 - 规则名称</li><li>IsPassed - int - 是否必填：否 - 是否通过</li><li>RiskTier - int - 是否必填：否 - 风险等级</li>
         :type Filters: list of Filter
         :param _ExportAll: 0:过滤的结果导出；1:全部导出
         :type ExportAll: int
+        :param _IsExportDetail: 0:导出界面展示；1:导出全部结果事件
+        :type IsExportDetail: int
         """
         self._Filters = None
         self._ExportAll = None
+        self._IsExportDetail = None
 
     @property
     def Filters(self):
@@ -57323,6 +57377,14 @@ class ExportBaselineRuleDetectListRequest(AbstractModel):
     def ExportAll(self, ExportAll):
         self._ExportAll = ExportAll
 
+    @property
+    def IsExportDetail(self):
+        return self._IsExportDetail
+
+    @IsExportDetail.setter
+    def IsExportDetail(self, IsExportDetail):
+        self._IsExportDetail = IsExportDetail
+
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
@@ -57332,6 +57394,7 @@ class ExportBaselineRuleDetectListRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Filters.append(obj)
         self._ExportAll = params.get("ExportAll")
+        self._IsExportDetail = params.get("IsExportDetail")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
