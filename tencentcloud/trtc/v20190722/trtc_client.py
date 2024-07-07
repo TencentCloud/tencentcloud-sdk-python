@@ -1424,7 +1424,9 @@ class TrtcClient(AbstractClient):
 
 
     def SummarizeTranscription(self, request):
-        """对转录的文本进行总结。
+        """接口不再支持
+
+        对转录的文本进行总结。
 
         :param request: Request instance for SummarizeTranscription.
         :type request: :class:`tencentcloud.trtc.v20190722.models.SummarizeTranscriptionRequest`

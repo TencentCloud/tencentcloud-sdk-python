@@ -27,7 +27,9 @@ class SmpnClient(AbstractClient):
 
 
     def CreateSmpnEpa(self, request):
-        """企业号码认证
+        """不在使用的API
+
+        企业号码认证
 
         :param request: Request instance for CreateSmpnEpa.
         :type request: :class:`tencentcloud.smpn.v20190822.models.CreateSmpnEpaRequest`
@@ -50,7 +52,9 @@ class SmpnClient(AbstractClient):
 
 
     def DescribeSmpnChp(self, request):
-        """查询号码的标记和标记次数
+        """不在使用的API
+
+        查询号码的标记和标记次数
 
         :param request: Request instance for DescribeSmpnChp.
         :type request: :class:`tencentcloud.smpn.v20190822.models.DescribeSmpnChpRequest`
@@ -73,7 +77,9 @@ class SmpnClient(AbstractClient):
 
 
     def DescribeSmpnFnr(self, request):
-        """虚假号码识别
+        """不在使用的API
+
+        虚假号码识别
 
         :param request: Request instance for DescribeSmpnFnr.
         :type request: :class:`tencentcloud.smpn.v20190822.models.DescribeSmpnFnrRequest`
@@ -96,7 +102,9 @@ class SmpnClient(AbstractClient):
 
 
     def DescribeSmpnMhm(self, request):
-        """号码营销监控
+        """不在使用的API
+
+        号码营销监控
 
         :param request: Request instance for DescribeSmpnMhm.
         :type request: :class:`tencentcloud.smpn.v20190822.models.DescribeSmpnMhmRequest`
@@ -119,7 +127,9 @@ class SmpnClient(AbstractClient):
 
 
     def DescribeSmpnMrl(self, request):
-        """查询号码恶意标记等级
+        """不在使用的API
+
+        查询号码恶意标记等级
 
         :param request: Request instance for DescribeSmpnMrl.
         :type request: :class:`tencentcloud.smpn.v20190822.models.DescribeSmpnMrlRequest`

@@ -113,6 +113,9 @@ INVALIDPARAMETER_INVALIDPARAMETER = 'InvalidParameter.InvalidParameter'
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
+# 不支持的视频宽高比。
+INVALIDPARAMETERVALUE_INVALIDVIDEOASPECTRATIO = 'InvalidParameterValue.InvalidVideoAspectRatio'
+
 # 视频时长超过限制。
 INVALIDPARAMETERVALUE_INVALIDVIDEODURATION = 'InvalidParameterValue.InvalidVideoDuration'
 

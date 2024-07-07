@@ -601,6 +601,29 @@ class EsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeServerlessMetrics(self, request):
+        """获取serverless实例对应指标，获取space维度时不需要传入indexid，获取index时不需要传入spaceid
+
+        :param request: Request instance for DescribeServerlessMetrics.
+        :type request: :class:`tencentcloud.es.v20180416.models.DescribeServerlessMetricsRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DescribeServerlessMetricsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeServerlessMetrics", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeServerlessMetricsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeServerlessSpaceUser(self, request):
         """查看Serverless空间子用户
 

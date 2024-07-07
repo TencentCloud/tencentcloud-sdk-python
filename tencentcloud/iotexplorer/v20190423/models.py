@@ -1542,12 +1542,16 @@ class CloudStorageEvent(AbstractModel):
         :param _UploadStatus: 事件录像上传状态，Finished: 全部上传成功 Partial: 部分上传成功 Failed: 上传失败	
 注意：此字段可能返回 null，表示取不到有效值。
         :type UploadStatus: str
+        :param _Data: 事件自定义数据	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: str
         """
         self._StartTime = None
         self._EndTime = None
         self._Thumbnail = None
         self._EventId = None
         self._UploadStatus = None
+        self._Data = None
 
     @property
     def StartTime(self):
@@ -1589,6 +1593,14 @@ class CloudStorageEvent(AbstractModel):
     def UploadStatus(self, UploadStatus):
         self._UploadStatus = UploadStatus
 
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
 
     def _deserialize(self, params):
         self._StartTime = params.get("StartTime")
@@ -1596,6 +1608,7 @@ class CloudStorageEvent(AbstractModel):
         self._Thumbnail = params.get("Thumbnail")
         self._EventId = params.get("EventId")
         self._UploadStatus = params.get("UploadStatus")
+        self._Data = params.get("Data")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

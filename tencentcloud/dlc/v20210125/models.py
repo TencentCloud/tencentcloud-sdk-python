@@ -18,6 +18,53 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AccessInfo(AbstractModel):
+    """引擎的访问信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccessType: 访问引擎的方法
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessType: str
+        :param _AccessConnectionInfos: 访问引擎的url，内部的部分参数需要根据实际情况替换
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessConnectionInfos: list of str
+        """
+        self._AccessType = None
+        self._AccessConnectionInfos = None
+
+    @property
+    def AccessType(self):
+        return self._AccessType
+
+    @AccessType.setter
+    def AccessType(self, AccessType):
+        self._AccessType = AccessType
+
+    @property
+    def AccessConnectionInfos(self):
+        return self._AccessConnectionInfos
+
+    @AccessConnectionInfos.setter
+    def AccessConnectionInfos(self, AccessConnectionInfos):
+        self._AccessConnectionInfos = AccessConnectionInfos
+
+
+    def _deserialize(self, params):
+        self._AccessType = params.get("AccessType")
+        self._AccessConnectionInfos = params.get("AccessConnectionInfos")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AddDMSPartitionsRequest(AbstractModel):
     """AddDMSPartitions请求参数结构体
 
@@ -7697,6 +7744,12 @@ class DataEngineInfo(AbstractModel):
         :param _EngineResourceUsedCU: 引擎当前使用量（Cu）
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineResourceUsedCU: int
+        :param _AccessInfos: 引擎的访问信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessInfos: list of AccessInfo
+        :param _EngineNetworkName: 引擎所在网络名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineNetworkName: str
         """
         self._DataEngineName = None
         self._EngineType = None
@@ -7749,6 +7802,8 @@ class DataEngineInfo(AbstractModel):
         self._EngineNetworkId = None
         self._EngineResourceGroupCount = None
         self._EngineResourceUsedCU = None
+        self._AccessInfos = None
+        self._EngineNetworkName = None
 
     @property
     def DataEngineName(self):
@@ -8158,6 +8213,22 @@ class DataEngineInfo(AbstractModel):
     def EngineResourceUsedCU(self, EngineResourceUsedCU):
         self._EngineResourceUsedCU = EngineResourceUsedCU
 
+    @property
+    def AccessInfos(self):
+        return self._AccessInfos
+
+    @AccessInfos.setter
+    def AccessInfos(self, AccessInfos):
+        self._AccessInfos = AccessInfos
+
+    @property
+    def EngineNetworkName(self):
+        return self._EngineNetworkName
+
+    @EngineNetworkName.setter
+    def EngineNetworkName(self, EngineNetworkName):
+        self._EngineNetworkName = EngineNetworkName
+
 
     def _deserialize(self, params):
         self._DataEngineName = params.get("DataEngineName")
@@ -8225,6 +8296,13 @@ class DataEngineInfo(AbstractModel):
         self._EngineNetworkId = params.get("EngineNetworkId")
         self._EngineResourceGroupCount = params.get("EngineResourceGroupCount")
         self._EngineResourceUsedCU = params.get("EngineResourceUsedCU")
+        if params.get("AccessInfos") is not None:
+            self._AccessInfos = []
+            for item in params.get("AccessInfos"):
+                obj = AccessInfo()
+                obj._deserialize(item)
+                self._AccessInfos.append(obj)
+        self._EngineNetworkName = params.get("EngineNetworkName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

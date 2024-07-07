@@ -501,6 +501,9 @@ class ActivityPara(AbstractModel):
         :param _AiRecognitionTask: 视频内容识别类型任务
 注意：此字段可能返回 null，表示取不到有效值。
         :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
+        :param _QualityControlTask: 媒体质检任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QualityControlTask: :class:`tencentcloud.mps.v20190612.models.AiQualityControlTaskInput`
         """
         self._TranscodeTask = None
         self._AnimatedGraphicTask = None
@@ -511,6 +514,7 @@ class ActivityPara(AbstractModel):
         self._AiContentReviewTask = None
         self._AiAnalysisTask = None
         self._AiRecognitionTask = None
+        self._QualityControlTask = None
 
     @property
     def TranscodeTask(self):
@@ -584,6 +588,14 @@ class ActivityPara(AbstractModel):
     def AiRecognitionTask(self, AiRecognitionTask):
         self._AiRecognitionTask = AiRecognitionTask
 
+    @property
+    def QualityControlTask(self):
+        return self._QualityControlTask
+
+    @QualityControlTask.setter
+    def QualityControlTask(self, QualityControlTask):
+        self._QualityControlTask = QualityControlTask
+
 
     def _deserialize(self, params):
         if params.get("TranscodeTask") is not None:
@@ -613,6 +625,9 @@ class ActivityPara(AbstractModel):
         if params.get("AiRecognitionTask") is not None:
             self._AiRecognitionTask = AiRecognitionTaskInput()
             self._AiRecognitionTask._deserialize(params.get("AiRecognitionTask"))
+        if params.get("QualityControlTask") is not None:
+            self._QualityControlTask = AiQualityControlTaskInput()
+            self._QualityControlTask._deserialize(params.get("QualityControlTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -657,6 +672,9 @@ class ActivityResItem(AbstractModel):
         :param _AnalysisTask: 分析任务输出
 注意：此字段可能返回 null，表示取不到有效值。
         :type AnalysisTask: :class:`tencentcloud.mps.v20190612.models.ScheduleAnalysisTaskResult`
+        :param _QualityControlTask: 媒体质检任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QualityControlTask: :class:`tencentcloud.mps.v20190612.models.ScheduleQualityControlTaskResult`
         """
         self._TranscodeTask = None
         self._AnimatedGraphicTask = None
@@ -667,6 +685,7 @@ class ActivityResItem(AbstractModel):
         self._RecognitionTask = None
         self._ReviewTask = None
         self._AnalysisTask = None
+        self._QualityControlTask = None
 
     @property
     def TranscodeTask(self):
@@ -740,6 +759,14 @@ class ActivityResItem(AbstractModel):
     def AnalysisTask(self, AnalysisTask):
         self._AnalysisTask = AnalysisTask
 
+    @property
+    def QualityControlTask(self):
+        return self._QualityControlTask
+
+    @QualityControlTask.setter
+    def QualityControlTask(self, QualityControlTask):
+        self._QualityControlTask = QualityControlTask
+
 
     def _deserialize(self, params):
         if params.get("TranscodeTask") is not None:
@@ -769,6 +796,9 @@ class ActivityResItem(AbstractModel):
         if params.get("AnalysisTask") is not None:
             self._AnalysisTask = ScheduleAnalysisTaskResult()
             self._AnalysisTask._deserialize(params.get("AnalysisTask"))
+        if params.get("QualityControlTask") is not None:
+            self._QualityControlTask = ScheduleQualityControlTaskResult()
+            self._QualityControlTask._deserialize(params.get("QualityControlTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11351,6 +11381,152 @@ class ComposeVideoStream(AbstractModel):
         
 
 
+class ContainerDiagnoseResultItem(AbstractModel):
+    """容器格式诊断结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Category: 诊断出的异常类别，取值范围：
+DecodeParamException：解码参数异常
+TimeStampException：时间戳异常
+FrameException： 帧率异常
+StreamStatusException：流状态异常
+StreamInfo：流信息异常
+StreamAbnormalCharacteristics：流特征异常
+DecodeException：解码异常
+HLSRequirements：HLS 格式异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Category: str
+        :param _Type: 诊断出的具体异常类型，取值如下：
+
+VideoResolutionChanged：视频分辨率变化
+AudioSampleRateChanged：音频采样率变化
+AudioChannelsChanged：音频通道数变化
+ParameterSetsChanged：流参数集信息发生变化
+DarOrSarInvalid：视频的宽高比异常
+TimestampFallback：DTS时间戳回退
+DtsJitter：DTS抖动过大
+PtsJitter：PTS抖动过大
+AACDurationDeviation：AAC帧时间戳间隔不合理
+AudioDroppingFrames：音频丢帧
+VideoDroppingFrames：视频丢帧
+AVTimestampInterleave：音视频交织不合理
+PtsLessThanDts：媒体流的 pts 小于 dts
+ReceiveFpsJitter：网络接收帧率抖动过大
+ReceiveFpsTooSmall：网络接收视频帧率过小
+FpsJitter：通过PTS计算得到的流帧率抖动过大
+StreamOpenFailed：流打开失败
+StreamEnd：流结束
+StreamParseFailed：流解析失败
+VideoFirstFrameNotIdr：首帧不是IDR帧
+StreamNALUError：NALU起始码错误
+TsStreamNoAud：mpegts的H26x流缺失 AUD NALU
+AudioStreamLack：无音频流
+VideoStreamLack：无视频流
+LackAudioRecover：缺失音频流恢复
+LackVideoRecover：缺失视频流恢复
+VideoBitrateOutofRange：视频流码率(kbps)超出范围
+AudioBitrateOutofRange：音频流码率(kbps)超出范围
+VideoDecodeFailed：视频解码错误
+AudioDecodeFailed：音频解码错误
+AudioOutOfPhase：双通道音频相位相反
+VideoDuplicatedFrame：视频流中存在重复帧
+AudioDuplicatedFrame：音频流中存在重复帧
+VideoRotation：视频画面旋转
+TsMultiPrograms：MPEG2-TS流有多个program
+Mp4InvalidCodecFourcc：MP4中codec fourcc不符合Apple HLS要求
+HLSBadM3u8Format：无效的m3u8文件
+HLSInvalidMasterM3u8：无效的main m3u8文件
+HLSInvalidMediaM3u8：无效的media m3u8文件
+HLSMasterM3u8Recommended：main m3u8缺少标准推荐的参数
+HLSMediaM3u8Recommended：media m3u8缺少标准推荐的参数
+HLSMediaM3u8DiscontinuityExist：media m3u8存在EXT-X-DISCONTINUITY
+HLSMediaSegmentsStreamNumChange：切片的流数目发生变化
+HLSMediaSegmentsPTSJitterDeviation：切片间PTS跳变且没有EXT-X-DISCONTINUITY
+HLSMediaSegmentsDTSJitterDeviation：切片间DTS跳变且没有EXT-X-DISCONTINUITY
+TimecodeTrackExist：MP4存在tmcd轨道
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _SeverityLevel: 诊断出的异常级别，取值范围：
+Fatal：影响后续播放和解析，
+Error： 可能会影响播放，
+Warning： 可能会有潜在风险，但不一定会影响播放，
+Notice：比较重要的流信息，
+Info：一般性的流信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SeverityLevel: str
+        :param _DateTimeSet: 警告出现的时间点，形式如 “2022-12-25T13:14:16Z”
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DateTimeSet: list of str
+        :param _TimestampSet: 时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimestampSet: list of float
+        """
+        self._Category = None
+        self._Type = None
+        self._SeverityLevel = None
+        self._DateTimeSet = None
+        self._TimestampSet = None
+
+    @property
+    def Category(self):
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def SeverityLevel(self):
+        return self._SeverityLevel
+
+    @SeverityLevel.setter
+    def SeverityLevel(self, SeverityLevel):
+        self._SeverityLevel = SeverityLevel
+
+    @property
+    def DateTimeSet(self):
+        return self._DateTimeSet
+
+    @DateTimeSet.setter
+    def DateTimeSet(self, DateTimeSet):
+        self._DateTimeSet = DateTimeSet
+
+    @property
+    def TimestampSet(self):
+        return self._TimestampSet
+
+    @TimestampSet.setter
+    def TimestampSet(self, TimestampSet):
+        self._TimestampSet = TimestampSet
+
+
+    def _deserialize(self, params):
+        self._Category = params.get("Category")
+        self._Type = params.get("Type")
+        self._SeverityLevel = params.get("SeverityLevel")
+        self._DateTimeSet = params.get("DateTimeSet")
+        self._TimestampSet = params.get("TimestampSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ContentReviewTemplateItem(AbstractModel):
     """内容审核模板详情
 
@@ -13945,6 +14121,105 @@ class CreatePersonSampleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateQualityControlTemplateRequest(AbstractModel):
+    """CreateQualityControlTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 媒体质检模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param _QualityControlItemSet: 媒体质检控制参数。
+        :type QualityControlItemSet: list of QualityControlItemConfig
+        :param _Comment: 媒体质检模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        """
+        self._Name = None
+        self._QualityControlItemSet = None
+        self._Comment = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def QualityControlItemSet(self):
+        return self._QualityControlItemSet
+
+    @QualityControlItemSet.setter
+    def QualityControlItemSet(self, QualityControlItemSet):
+        self._QualityControlItemSet = QualityControlItemSet
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        if params.get("QualityControlItemSet") is not None:
+            self._QualityControlItemSet = []
+            for item in params.get("QualityControlItemSet"):
+                obj = QualityControlItemConfig()
+                obj._deserialize(item)
+                self._QualityControlItemSet.append(obj)
+        self._Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateQualityControlTemplateResponse(AbstractModel):
+    """CreateQualityControlTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 媒体质检模板唯一标识。
+        :type Definition: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Definition = None
+        self._RequestId = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateSampleSnapshotTemplateRequest(AbstractModel):
     """CreateSampleSnapshotTemplate请求参数结构体
 
@@ -15856,6 +16131,64 @@ class DeletePersonSampleRequest(AbstractModel):
 
 class DeletePersonSampleResponse(AbstractModel):
     """DeletePersonSample返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteQualityControlTemplateRequest(AbstractModel):
+    """DeleteQualityControlTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 媒体质检模板唯一标识。
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteQualityControlTemplateResponse(AbstractModel):
+    """DeleteQualityControlTemplate返回参数结构体
 
     """
 
@@ -19131,6 +19464,132 @@ class DescribePersonSamplesResponse(AbstractModel):
                 obj = AiSamplePerson()
                 obj._deserialize(item)
                 self._PersonSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeQualityControlTemplatesRequest(AbstractModel):
+    """DescribeQualityControlTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definitions: 媒体质检模板唯一标识过滤条件，数组长度限制：100。
+        :type Definitions: list of int
+        :param _Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param _Limit: 返回记录条数
+<li>默认值：10；</li>
+<li>最大值：100。</li>
+        :type Limit: int
+        :param _Type: "Preset"：预设，Custom":客户魔板
+        :type Type: str
+        """
+        self._Definitions = None
+        self._Offset = None
+        self._Limit = None
+        self._Type = None
+
+    @property
+    def Definitions(self):
+        return self._Definitions
+
+    @Definitions.setter
+    def Definitions(self, Definitions):
+        self._Definitions = Definitions
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Definitions = params.get("Definitions")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeQualityControlTemplatesResponse(AbstractModel):
+    """DescribeQualityControlTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
+        :param _QualityControlTemplateSet: 媒体质检模板详情列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QualityControlTemplateSet: list of QualityControlTemplate
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._QualityControlTemplateSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def QualityControlTemplateSet(self):
+        return self._QualityControlTemplateSet
+
+    @QualityControlTemplateSet.setter
+    def QualityControlTemplateSet(self, QualityControlTemplateSet):
+        self._QualityControlTemplateSet = QualityControlTemplateSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("QualityControlTemplateSet") is not None:
+            self._QualityControlTemplateSet = []
+            for item in params.get("QualityControlTemplateSet"):
+                obj = QualityControlTemplate()
+                obj._deserialize(item)
+                self._QualityControlTemplateSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -32515,6 +32974,105 @@ class ModifyPersonSampleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyQualityControlTemplateRequest(AbstractModel):
+    """ModifyQualityControlTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 媒体质检模板唯一标识。
+        :type Definition: int
+        :param _Name: 媒体质检模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param _Comment: 模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        :param _QualityControlItemSet: 媒体质检配置参数。
+        :type QualityControlItemSet: list of QualityControlItemConfig
+        """
+        self._Definition = None
+        self._Name = None
+        self._Comment = None
+        self._QualityControlItemSet = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def QualityControlItemSet(self):
+        return self._QualityControlItemSet
+
+    @QualityControlItemSet.setter
+    def QualityControlItemSet(self, QualityControlItemSet):
+        self._QualityControlItemSet = QualityControlItemSet
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        if params.get("QualityControlItemSet") is not None:
+            self._QualityControlItemSet = []
+            for item in params.get("QualityControlItemSet"):
+                obj = QualityControlItemConfig()
+                obj._deserialize(item)
+                self._QualityControlItemSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyQualityControlTemplateResponse(AbstractModel):
+    """ModifyQualityControlTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifySampleSnapshotTemplateRequest(AbstractModel):
     """ModifySampleSnapshotTemplate请求参数结构体
 
@@ -36614,11 +37172,15 @@ class QualityControlData(AbstractModel):
         :param _QualityControlResultSet: 内容质检检出异常项。
 注意：此字段可能返回 null，表示取不到有效值。
         :type QualityControlResultSet: list of QualityControlResult
+        :param _ContainerDiagnoseResultSet: 格式诊断检出异常项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerDiagnoseResultSet: list of ContainerDiagnoseResultItem
         """
         self._NoAudio = None
         self._NoVideo = None
         self._QualityEvaluationScore = None
         self._QualityControlResultSet = None
+        self._ContainerDiagnoseResultSet = None
 
     @property
     def NoAudio(self):
@@ -36652,6 +37214,14 @@ class QualityControlData(AbstractModel):
     def QualityControlResultSet(self, QualityControlResultSet):
         self._QualityControlResultSet = QualityControlResultSet
 
+    @property
+    def ContainerDiagnoseResultSet(self):
+        return self._ContainerDiagnoseResultSet
+
+    @ContainerDiagnoseResultSet.setter
+    def ContainerDiagnoseResultSet(self, ContainerDiagnoseResultSet):
+        self._ContainerDiagnoseResultSet = ContainerDiagnoseResultSet
+
 
     def _deserialize(self, params):
         self._NoAudio = params.get("NoAudio")
@@ -36663,6 +37233,12 @@ class QualityControlData(AbstractModel):
                 obj = QualityControlResult()
                 obj._deserialize(item)
                 self._QualityControlResultSet.append(obj)
+        if params.get("ContainerDiagnoseResultSet") is not None:
+            self._ContainerDiagnoseResultSet = []
+            for item in params.get("ContainerDiagnoseResultSet"):
+                obj = ContainerDiagnoseResultItem()
+                obj._deserialize(item)
+                self._ContainerDiagnoseResultSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -36744,6 +37320,110 @@ class QualityControlItem(AbstractModel):
         
 
 
+class QualityControlItemConfig(AbstractModel):
+    """质检项配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 质检项名称。
+        :type Type: str
+        :param _Switch: 能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        :param _Sampling: 采样方式，取值范围：
+- Time：根据时间间隔采样。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sampling: str
+        :param _IntervalTime: 采样间隔时间，取值范围：[0, 60000]，单位：ms。
+默认值 0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntervalTime: int
+        :param _Duration: 异常持续时间，取值范围：[0, 60000]，单位：ms。
+默认值 0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Duration: int
+        :param _Threshold: 检测分值的阈值，使用数学区间格式，当检测值超出区间范围会触发回调。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Threshold: str
+        """
+        self._Type = None
+        self._Switch = None
+        self._Sampling = None
+        self._IntervalTime = None
+        self._Duration = None
+        self._Threshold = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Sampling(self):
+        return self._Sampling
+
+    @Sampling.setter
+    def Sampling(self, Sampling):
+        self._Sampling = Sampling
+
+    @property
+    def IntervalTime(self):
+        return self._IntervalTime
+
+    @IntervalTime.setter
+    def IntervalTime(self, IntervalTime):
+        self._IntervalTime = IntervalTime
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def Threshold(self):
+        return self._Threshold
+
+    @Threshold.setter
+    def Threshold(self, Threshold):
+        self._Threshold = Threshold
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Switch = params.get("Switch")
+        self._Sampling = params.get("Sampling")
+        self._IntervalTime = params.get("IntervalTime")
+        self._Duration = params.get("Duration")
+        self._Threshold = params.get("Threshold")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QualityControlResult(AbstractModel):
     """质检异常项。
 
@@ -36800,6 +37480,124 @@ LowEvaluation：无参考打分低于阈值。
                 obj = QualityControlItem()
                 obj._deserialize(item)
                 self._QualityControlItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityControlTemplate(AbstractModel):
+    """媒体质检模板详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 媒体质检模板唯一标识。
+        :type Definition: int
+        :param _Name: 媒体质检模板名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Comment: 模板描述信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Comment: str
+        :param _Type: 模板类型，取值：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _QualityControlItemSet: 媒体质检配置参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QualityControlItemSet: list of QualityControlItemConfig
+        :param _CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self._Definition = None
+        self._Name = None
+        self._Comment = None
+        self._Type = None
+        self._QualityControlItemSet = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def QualityControlItemSet(self):
+        return self._QualityControlItemSet
+
+    @QualityControlItemSet.setter
+    def QualityControlItemSet(self, QualityControlItemSet):
+        self._QualityControlItemSet = QualityControlItemSet
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        self._Type = params.get("Type")
+        if params.get("QualityControlItemSet") is not None:
+            self._QualityControlItemSet = []
+            for item in params.get("QualityControlItemSet"):
+                obj = QualityControlItemConfig()
+                obj._deserialize(item)
+                self._QualityControlItemSet.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -42603,7 +43401,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 注意：MPEG2、dnxhd 编码容器目前只支持mxf。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Codec: str
-        :param _Fps: 视频帧率，取值范围：[0, 120]，单位：Hz。 当取值为 0，表示帧率和原始视频保持一致。
+        :param _Fps: 视频帧率，取值范围：[0, 120]，单位：Hz。 当取值为 0，表示帧率和原始视频保持一致。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Fps: int
         :param _Bitrate: 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。

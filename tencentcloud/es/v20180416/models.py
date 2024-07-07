@@ -1116,6 +1116,8 @@ class CreateInstanceRequest(AbstractModel):
         :type EnableDiagnose: bool
         :param _CdcId: cdcId，使用cdc子网时传递
         :type CdcId: str
+        :param _DisasterRecoverGroupAffinity: 置放群组亲和度，范围[0,10]，0表示不开启
+        :type DisasterRecoverGroupAffinity: int
         """
         self._Zone = None
         self._EsVersion = None
@@ -1152,6 +1154,7 @@ class CreateInstanceRequest(AbstractModel):
         self._DiskEnhance = None
         self._EnableDiagnose = None
         self._CdcId = None
+        self._DisasterRecoverGroupAffinity = None
 
     @property
     def Zone(self):
@@ -1433,6 +1436,14 @@ class CreateInstanceRequest(AbstractModel):
     def CdcId(self, CdcId):
         self._CdcId = CdcId
 
+    @property
+    def DisasterRecoverGroupAffinity(self):
+        return self._DisasterRecoverGroupAffinity
+
+    @DisasterRecoverGroupAffinity.setter
+    def DisasterRecoverGroupAffinity(self, DisasterRecoverGroupAffinity):
+        self._DisasterRecoverGroupAffinity = DisasterRecoverGroupAffinity
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -1489,6 +1500,7 @@ class CreateInstanceRequest(AbstractModel):
         self._DiskEnhance = params.get("DiskEnhance")
         self._EnableDiagnose = params.get("EnableDiagnose")
         self._CdcId = params.get("CdcId")
+        self._DisasterRecoverGroupAffinity = params.get("DisasterRecoverGroupAffinity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4659,6 +4671,100 @@ class DescribeServerlessInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeServerlessMetricsRequest(AbstractModel):
+    """DescribeServerlessMetrics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: space空间id
+        :type SpaceId: str
+        :param _IndexId: index索引id
+        :type IndexId: str
+        :param _MetricType: 指标类型，暂时只支持Storage
+        :type MetricType: list of str
+        """
+        self._SpaceId = None
+        self._IndexId = None
+        self._MetricType = None
+
+    @property
+    def SpaceId(self):
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def IndexId(self):
+        return self._IndexId
+
+    @IndexId.setter
+    def IndexId(self, IndexId):
+        self._IndexId = IndexId
+
+    @property
+    def MetricType(self):
+        return self._MetricType
+
+    @MetricType.setter
+    def MetricType(self, MetricType):
+        self._MetricType = MetricType
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        self._IndexId = params.get("IndexId")
+        self._MetricType = params.get("MetricType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeServerlessMetricsResponse(AbstractModel):
+    """DescribeServerlessMetrics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Storage: storage指标值，单位byte
+        :type Storage: float
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Storage = None
+        self._RequestId = None
+
+    @property
+    def Storage(self):
+        return self._Storage
+
+    @Storage.setter
+    def Storage(self, Storage):
+        self._Storage = Storage
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Storage = params.get("Storage")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeServerlessSpaceUserRequest(AbstractModel):
     """DescribeServerlessSpaceUser请求参数结构体
 
@@ -7738,6 +7844,9 @@ RENEW_FLAG_DEFAULT：不自动续费
         :param _NetConnectScheme: 网络连接方案
 注意：此字段可能返回 null，表示取不到有效值。
         :type NetConnectScheme: str
+        :param _DisasterRecoverGroupAffinity: 置放群组相关参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisasterRecoverGroupAffinity: int
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -7826,6 +7935,7 @@ RENEW_FLAG_DEFAULT：不自动续费
         self._CustomKibanaPrivateUrl = None
         self._OutboundPublicAcls = None
         self._NetConnectScheme = None
+        self._DisasterRecoverGroupAffinity = None
 
     @property
     def InstanceId(self):
@@ -8523,6 +8633,14 @@ RENEW_FLAG_DEFAULT：不自动续费
     def NetConnectScheme(self, NetConnectScheme):
         self._NetConnectScheme = NetConnectScheme
 
+    @property
+    def DisasterRecoverGroupAffinity(self):
+        return self._DisasterRecoverGroupAffinity
+
+    @DisasterRecoverGroupAffinity.setter
+    def DisasterRecoverGroupAffinity(self, DisasterRecoverGroupAffinity):
+        self._DisasterRecoverGroupAffinity = DisasterRecoverGroupAffinity
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -8658,6 +8776,7 @@ RENEW_FLAG_DEFAULT：不自动续费
                 obj._deserialize(item)
                 self._OutboundPublicAcls.append(obj)
         self._NetConnectScheme = params.get("NetConnectScheme")
+        self._DisasterRecoverGroupAffinity = params.get("DisasterRecoverGroupAffinity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

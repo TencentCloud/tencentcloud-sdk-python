@@ -689,6 +689,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateRotationPassword(self, request):
+        """开启密码轮转
+
+        :param request: Request instance for CreateRotationPassword.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.CreateRotationPasswordRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.CreateRotationPasswordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRotationPassword", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRotationPasswordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteAccounts(self, request):
         """本接口(DeleteAccounts)用于删除云数据库的账户。
 
@@ -887,6 +910,29 @@ class CdbClient(AbstractClient):
             body = self.call("DeleteParamTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteParamTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteRotationPassword(self, request):
+        """关闭实例账户密码轮转
+
+        :param request: Request instance for DeleteRotationPassword.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteRotationPasswordRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DeleteRotationPasswordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRotationPassword", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRotationPasswordResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3465,6 +3511,29 @@ class CdbClient(AbstractClient):
             body = self.call("RenewDBInstance", params, headers=headers)
             response = json.loads(body)
             model = models.RenewDBInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ResetPassword(self, request):
+        """手动刷新轮转密码
+
+        :param request: Request instance for ResetPassword.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ResetPasswordRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ResetPasswordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResetPassword", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResetPasswordResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

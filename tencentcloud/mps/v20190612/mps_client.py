@@ -256,6 +256,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateQualityControlTemplate(self, request):
+        """创建媒体质检模板，数量上限：50。
+
+        :param request: Request instance for CreateQualityControlTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateQualityControlTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateQualityControlTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateQualityControlTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateQualityControlTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateSampleSnapshotTemplate(self, request):
         """创建用户自定义采样截图模板，数量上限：16。
 
@@ -694,6 +717,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteQualityControlTemplate(self, request):
+        """删除媒体质检模板
+
+        :param request: Request instance for DeleteQualityControlTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteQualityControlTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteQualityControlTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteQualityControlTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteQualityControlTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteSampleSnapshotTemplate(self, request):
         """删除用户自定义采样截图模板。
 
@@ -1099,6 +1145,29 @@ class MpsClient(AbstractClient):
             body = self.call("DescribePersonSamples", params, headers=headers)
             response = json.loads(body)
             model = models.DescribePersonSamplesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeQualityControlTemplates(self, request):
+        """查询用户自定义媒体质检模板，支持根据条件，分页查询。
+
+        :param request: Request instance for DescribeQualityControlTemplates.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeQualityControlTemplatesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeQualityControlTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeQualityControlTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeQualityControlTemplatesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1920,6 +1989,29 @@ class MpsClient(AbstractClient):
             body = self.call("ModifyPersonSample", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyPersonSampleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyQualityControlTemplate(self, request):
+        """修改媒体质检模板。
+
+        :param request: Request instance for ModifyQualityControlTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyQualityControlTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyQualityControlTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyQualityControlTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyQualityControlTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
