@@ -30490,9 +30490,12 @@ class VerifyOfdVatInvoiceOCRRequest(AbstractModel):
         :param _OfdFileBase64: OFD文件的 Base64 值。
 OfdFileUrl 和 OfdFileBase64 必传其一，若两者都传，只解析OfdFileBase64。
         :type OfdFileBase64: str
+        :param _OfdPageNumber: 需要识别的OFD发票页面的对应页码，默认值为1。 示例值：1
+        :type OfdPageNumber: int
         """
         self._OfdFileUrl = None
         self._OfdFileBase64 = None
+        self._OfdPageNumber = None
 
     @property
     def OfdFileUrl(self):
@@ -30510,10 +30513,19 @@ OfdFileUrl 和 OfdFileBase64 必传其一，若两者都传，只解析OfdFileBa
     def OfdFileBase64(self, OfdFileBase64):
         self._OfdFileBase64 = OfdFileBase64
 
+    @property
+    def OfdPageNumber(self):
+        return self._OfdPageNumber
+
+    @OfdPageNumber.setter
+    def OfdPageNumber(self, OfdPageNumber):
+        self._OfdPageNumber = OfdPageNumber
+
 
     def _deserialize(self, params):
         self._OfdFileUrl = params.get("OfdFileUrl")
         self._OfdFileBase64 = params.get("OfdFileBase64")
+        self._OfdPageNumber = params.get("OfdPageNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

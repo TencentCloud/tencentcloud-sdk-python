@@ -4175,10 +4175,14 @@ class CreateFlowBlockchainEvidenceUrlRequest(AbstractModel):
         :param _Agent: 代理企业和员工的信息。
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _ExpiredOn: 链接/二维码的有效截止时间，格式为unix时间戳。最长不超过 2099年12月31日（4102415999）。
+默认值为有效期为当前时间后7天。
+        :type ExpiredOn: int
         """
         self._Operator = None
         self._FlowId = None
         self._Agent = None
+        self._ExpiredOn = None
 
     @property
     def Operator(self):
@@ -4204,6 +4208,14 @@ class CreateFlowBlockchainEvidenceUrlRequest(AbstractModel):
     def Agent(self, Agent):
         self._Agent = Agent
 
+    @property
+    def ExpiredOn(self):
+        return self._ExpiredOn
+
+    @ExpiredOn.setter
+    def ExpiredOn(self, ExpiredOn):
+        self._ExpiredOn = ExpiredOn
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -4213,6 +4225,7 @@ class CreateFlowBlockchainEvidenceUrlRequest(AbstractModel):
         if params.get("Agent") is not None:
             self._Agent = Agent()
             self._Agent._deserialize(params.get("Agent"))
+        self._ExpiredOn = params.get("ExpiredOn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

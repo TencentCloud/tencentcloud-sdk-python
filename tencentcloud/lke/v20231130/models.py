@@ -8279,6 +8279,9 @@ class ListDocItem(AbstractModel):
         :param _ExpireEnd: 有效结束时间，unix时间戳，0代表永久有效
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireEnd: str
+        :param _IsAllowRetry: 是否允许重试，0：否，1：是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsAllowRetry: bool
         """
         self._DocBizId = None
         self._FileName = None
@@ -8307,6 +8310,7 @@ class ListDocItem(AbstractModel):
         self._WebUrl = None
         self._ExpireStart = None
         self._ExpireEnd = None
+        self._IsAllowRetry = None
 
     @property
     def DocBizId(self):
@@ -8524,6 +8528,14 @@ class ListDocItem(AbstractModel):
     def ExpireEnd(self, ExpireEnd):
         self._ExpireEnd = ExpireEnd
 
+    @property
+    def IsAllowRetry(self):
+        return self._IsAllowRetry
+
+    @IsAllowRetry.setter
+    def IsAllowRetry(self, IsAllowRetry):
+        self._IsAllowRetry = IsAllowRetry
+
 
     def _deserialize(self, params):
         self._DocBizId = params.get("DocBizId")
@@ -8558,6 +8570,7 @@ class ListDocItem(AbstractModel):
         self._WebUrl = params.get("WebUrl")
         self._ExpireStart = params.get("ExpireStart")
         self._ExpireEnd = params.get("ExpireEnd")
+        self._IsAllowRetry = params.get("IsAllowRetry")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

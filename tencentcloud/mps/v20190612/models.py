@@ -1982,9 +1982,17 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
         :type Path: str
         :param _OutputStorage: 擦除后文件的存储位置。
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param _OriginSubtitlePath: 基于画面提取的字幕文件路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginSubtitlePath: str
+        :param _TranslateSubtitlePath: 基于画面提取的字幕翻译文件路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TranslateSubtitlePath: str
         """
         self._Path = None
         self._OutputStorage = None
+        self._OriginSubtitlePath = None
+        self._TranslateSubtitlePath = None
 
     @property
     def Path(self):
@@ -2002,12 +2010,30 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
     def OutputStorage(self, OutputStorage):
         self._OutputStorage = OutputStorage
 
+    @property
+    def OriginSubtitlePath(self):
+        return self._OriginSubtitlePath
+
+    @OriginSubtitlePath.setter
+    def OriginSubtitlePath(self, OriginSubtitlePath):
+        self._OriginSubtitlePath = OriginSubtitlePath
+
+    @property
+    def TranslateSubtitlePath(self):
+        return self._TranslateSubtitlePath
+
+    @TranslateSubtitlePath.setter
+    def TranslateSubtitlePath(self, TranslateSubtitlePath):
+        self._TranslateSubtitlePath = TranslateSubtitlePath
+
 
     def _deserialize(self, params):
         self._Path = params.get("Path")
         if params.get("OutputStorage") is not None:
             self._OutputStorage = TaskOutputStorage()
             self._OutputStorage._deserialize(params.get("OutputStorage"))
+        self._OriginSubtitlePath = params.get("OriginSubtitlePath")
+        self._TranslateSubtitlePath = params.get("TranslateSubtitlePath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

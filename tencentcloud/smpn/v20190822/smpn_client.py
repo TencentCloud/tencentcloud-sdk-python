@@ -26,31 +26,6 @@ class SmpnClient(AbstractClient):
     _service = 'smpn'
 
 
-    def CreateSmpnEpa(self, request):
-        """不在使用的API
-
-        企业号码认证
-
-        :param request: Request instance for CreateSmpnEpa.
-        :type request: :class:`tencentcloud.smpn.v20190822.models.CreateSmpnEpaRequest`
-        :rtype: :class:`tencentcloud.smpn.v20190822.models.CreateSmpnEpaResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateSmpnEpa", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateSmpnEpaResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeSmpnChp(self, request):
         """不在使用的API
 
@@ -92,56 +67,6 @@ class SmpnClient(AbstractClient):
             body = self.call("DescribeSmpnFnr", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSmpnFnrResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeSmpnMhm(self, request):
-        """不在使用的API
-
-        号码营销监控
-
-        :param request: Request instance for DescribeSmpnMhm.
-        :type request: :class:`tencentcloud.smpn.v20190822.models.DescribeSmpnMhmRequest`
-        :rtype: :class:`tencentcloud.smpn.v20190822.models.DescribeSmpnMhmResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeSmpnMhm", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeSmpnMhmResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeSmpnMrl(self, request):
-        """不在使用的API
-
-        查询号码恶意标记等级
-
-        :param request: Request instance for DescribeSmpnMrl.
-        :type request: :class:`tencentcloud.smpn.v20190822.models.DescribeSmpnMrlRequest`
-        :rtype: :class:`tencentcloud.smpn.v20190822.models.DescribeSmpnMrlResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeSmpnMrl", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeSmpnMrlResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

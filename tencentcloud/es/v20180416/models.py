@@ -12303,9 +12303,13 @@ class ServerlessIndexOptionsField(AbstractModel):
         :param _TimestampField: 时间分区字段
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimestampField: str
+        :param _SinkCycleAge: 标准存储时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SinkCycleAge: str
         """
         self._ExpireMaxAge = None
         self._TimestampField = None
+        self._SinkCycleAge = None
 
     @property
     def ExpireMaxAge(self):
@@ -12323,10 +12327,19 @@ class ServerlessIndexOptionsField(AbstractModel):
     def TimestampField(self, TimestampField):
         self._TimestampField = TimestampField
 
+    @property
+    def SinkCycleAge(self):
+        return self._SinkCycleAge
+
+    @SinkCycleAge.setter
+    def SinkCycleAge(self, SinkCycleAge):
+        self._SinkCycleAge = SinkCycleAge
+
 
     def _deserialize(self, params):
         self._ExpireMaxAge = params.get("ExpireMaxAge")
         self._TimestampField = params.get("TimestampField")
+        self._SinkCycleAge = params.get("SinkCycleAge")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
