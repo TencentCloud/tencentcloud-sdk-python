@@ -8406,19 +8406,7 @@ class DescribeFirmwareUpdateStatusResponse(AbstractModel):
         :param _DstVersion: 升级任务目标版本。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DstVersion: str
-        :param _Status: 升级状态：
-
-- 0：设备离线。
-- 1：待处理。
-- 2：消息下发成功。
-- 3：下载中。
-- 4：烧录中。
-- 5：失败。
-- 6：升级完成。
-- 7：正在处理中。
-- 8：等待用户确认。
-- 20：下载完成。
-
+        :param _Status: 升级状态：- 0：设备离线。- 1：待处理。- 2：消息下发成功。- 3：下载中。- 4：烧录中。- 5：失败。- 6：升级完成。- 7：正在处理中。- 8：等待用户确认。- 10：升级超时。- 20：下载完成。
         :type Status: int
         :param _Percent: 进度
 注意：此字段可能返回 null，表示取不到有效值。

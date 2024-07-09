@@ -259,6 +259,63 @@ class AppearInfo(AbstractModel):
         
 
 
+class AsrResult(AbstractModel):
+    """一条 asr 语音结果的结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: ASR提取的文字信息
+        :type Content: str
+        :param _StartTimeStamp: ASR起始时间戳，从0开始
+        :type StartTimeStamp: float
+        :param _EndTimeStamp: ASR结束时间戳，从0开始
+        :type EndTimeStamp: float
+        """
+        self._Content = None
+        self._StartTimeStamp = None
+        self._EndTimeStamp = None
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def StartTimeStamp(self):
+        return self._StartTimeStamp
+
+    @StartTimeStamp.setter
+    def StartTimeStamp(self, StartTimeStamp):
+        self._StartTimeStamp = StartTimeStamp
+
+    @property
+    def EndTimeStamp(self):
+        return self._EndTimeStamp
+
+    @EndTimeStamp.setter
+    def EndTimeStamp(self, EndTimeStamp):
+        self._EndTimeStamp = EndTimeStamp
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        self._StartTimeStamp = params.get("StartTimeStamp")
+        self._EndTimeStamp = params.get("EndTimeStamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AudioData(AbstractModel):
     """音频文件分析结果数据
 
@@ -938,6 +995,223 @@ class CreateTaskResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskId: 智能标签视频分析任务ID
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateVideoSummaryTaskRequest(AbstractModel):
+    """CreateVideoSummaryTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SummaryType: 目前只支持 1，表示新闻缩编。
+        :type SummaryType: int
+        :param _VideoURL: 待处理的视频的URL，目前只支持*不带签名的*COS地址，长度最长1KB
+        :type VideoURL: str
+        :param _CallbackURL: 任务处理完成的回调地址。
+        :type CallbackURL: str
+        :param _WriteBackCosPath: 如果需要你输出 TTS 或者视频，该字段为转存的cos桶地址且不可为空; 示例：https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${PathPrefix}/  (注意，cos路径需要以/分隔符结尾)。
+
+        :type WriteBackCosPath: str
+        :param _ActiveVideoGenerate: 是否开启结果视频生成功能，如果开启，需要指定WriteBackCosPath 参数
+        :type ActiveVideoGenerate: bool
+        :param _VideoRotationMode: 生成结果视频的时候，控制生成的结果视频的横转竖参数。如果 ActiveVideoGenerate 为 false, 该参数无效。
+        :type VideoRotationMode: :class:`tencentcloud.ivld.v20210903.models.VideoRotationMode`
+        :param _TTSMode: 语音合成相关的控制参数
+        :type TTSMode: :class:`tencentcloud.ivld.v20210903.models.TTSMode`
+        :param _ActiveTTSOutput: 是否输出合成好的语音列表。
+        :type ActiveTTSOutput: bool
+        :param _ExactAsrSet: 用户指定的精确的 asr 结果列表 
+        :type ExactAsrSet: list of AsrResult
+        :param _ExactTextSummary: 用户指定的精确的文本摘要
+        :type ExactTextSummary: str
+        :param _ExactTextSegSet: 用户指定的精确的文本摘要分割结果
+        :type ExactTextSegSet: list of str
+        :param _ExactShotSegSet: 用户指定的精确的镜头分割结果
+        :type ExactShotSegSet: list of ShotInfo
+        """
+        self._SummaryType = None
+        self._VideoURL = None
+        self._CallbackURL = None
+        self._WriteBackCosPath = None
+        self._ActiveVideoGenerate = None
+        self._VideoRotationMode = None
+        self._TTSMode = None
+        self._ActiveTTSOutput = None
+        self._ExactAsrSet = None
+        self._ExactTextSummary = None
+        self._ExactTextSegSet = None
+        self._ExactShotSegSet = None
+
+    @property
+    def SummaryType(self):
+        return self._SummaryType
+
+    @SummaryType.setter
+    def SummaryType(self, SummaryType):
+        self._SummaryType = SummaryType
+
+    @property
+    def VideoURL(self):
+        return self._VideoURL
+
+    @VideoURL.setter
+    def VideoURL(self, VideoURL):
+        self._VideoURL = VideoURL
+
+    @property
+    def CallbackURL(self):
+        return self._CallbackURL
+
+    @CallbackURL.setter
+    def CallbackURL(self, CallbackURL):
+        self._CallbackURL = CallbackURL
+
+    @property
+    def WriteBackCosPath(self):
+        return self._WriteBackCosPath
+
+    @WriteBackCosPath.setter
+    def WriteBackCosPath(self, WriteBackCosPath):
+        self._WriteBackCosPath = WriteBackCosPath
+
+    @property
+    def ActiveVideoGenerate(self):
+        return self._ActiveVideoGenerate
+
+    @ActiveVideoGenerate.setter
+    def ActiveVideoGenerate(self, ActiveVideoGenerate):
+        self._ActiveVideoGenerate = ActiveVideoGenerate
+
+    @property
+    def VideoRotationMode(self):
+        return self._VideoRotationMode
+
+    @VideoRotationMode.setter
+    def VideoRotationMode(self, VideoRotationMode):
+        self._VideoRotationMode = VideoRotationMode
+
+    @property
+    def TTSMode(self):
+        return self._TTSMode
+
+    @TTSMode.setter
+    def TTSMode(self, TTSMode):
+        self._TTSMode = TTSMode
+
+    @property
+    def ActiveTTSOutput(self):
+        return self._ActiveTTSOutput
+
+    @ActiveTTSOutput.setter
+    def ActiveTTSOutput(self, ActiveTTSOutput):
+        self._ActiveTTSOutput = ActiveTTSOutput
+
+    @property
+    def ExactAsrSet(self):
+        return self._ExactAsrSet
+
+    @ExactAsrSet.setter
+    def ExactAsrSet(self, ExactAsrSet):
+        self._ExactAsrSet = ExactAsrSet
+
+    @property
+    def ExactTextSummary(self):
+        return self._ExactTextSummary
+
+    @ExactTextSummary.setter
+    def ExactTextSummary(self, ExactTextSummary):
+        self._ExactTextSummary = ExactTextSummary
+
+    @property
+    def ExactTextSegSet(self):
+        return self._ExactTextSegSet
+
+    @ExactTextSegSet.setter
+    def ExactTextSegSet(self, ExactTextSegSet):
+        self._ExactTextSegSet = ExactTextSegSet
+
+    @property
+    def ExactShotSegSet(self):
+        return self._ExactShotSegSet
+
+    @ExactShotSegSet.setter
+    def ExactShotSegSet(self, ExactShotSegSet):
+        self._ExactShotSegSet = ExactShotSegSet
+
+
+    def _deserialize(self, params):
+        self._SummaryType = params.get("SummaryType")
+        self._VideoURL = params.get("VideoURL")
+        self._CallbackURL = params.get("CallbackURL")
+        self._WriteBackCosPath = params.get("WriteBackCosPath")
+        self._ActiveVideoGenerate = params.get("ActiveVideoGenerate")
+        if params.get("VideoRotationMode") is not None:
+            self._VideoRotationMode = VideoRotationMode()
+            self._VideoRotationMode._deserialize(params.get("VideoRotationMode"))
+        if params.get("TTSMode") is not None:
+            self._TTSMode = TTSMode()
+            self._TTSMode._deserialize(params.get("TTSMode"))
+        self._ActiveTTSOutput = params.get("ActiveTTSOutput")
+        if params.get("ExactAsrSet") is not None:
+            self._ExactAsrSet = []
+            for item in params.get("ExactAsrSet"):
+                obj = AsrResult()
+                obj._deserialize(item)
+                self._ExactAsrSet.append(obj)
+        self._ExactTextSummary = params.get("ExactTextSummary")
+        self._ExactTextSegSet = params.get("ExactTextSegSet")
+        if params.get("ExactShotSegSet") is not None:
+            self._ExactShotSegSet = []
+            for item in params.get("ExactShotSegSet"):
+                obj = ShotInfo()
+                obj._deserialize(item)
+                self._ExactShotSegSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVideoSummaryTaskResponse(AbstractModel):
+    """CreateVideoSummaryTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 返回的任务 id
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2436,6 +2710,258 @@ class DescribeTasksResponse(AbstractModel):
                 obj = TaskInfo()
                 obj._deserialize(item)
                 self._TaskInfoSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeUsageAmountRequest(AbstractModel):
+    """DescribeUsageAmount请求参数结构体
+
+    """
+
+
+class DescribeUsageAmountResponse(AbstractModel):
+    """DescribeUsageAmount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UsedHours: 资源使用小时数
+        :type UsedHours: float
+        :param _TotalHours: 资源包总量小时数
+        :type TotalHours: float
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._UsedHours = None
+        self._TotalHours = None
+        self._RequestId = None
+
+    @property
+    def UsedHours(self):
+        return self._UsedHours
+
+    @UsedHours.setter
+    def UsedHours(self, UsedHours):
+        self._UsedHours = UsedHours
+
+    @property
+    def TotalHours(self):
+        return self._TotalHours
+
+    @TotalHours.setter
+    def TotalHours(self, TotalHours):
+        self._TotalHours = TotalHours
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._UsedHours = params.get("UsedHours")
+        self._TotalHours = params.get("TotalHours")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVideoSummaryDetailRequest(AbstractModel):
+    """DescribeVideoSummaryDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 要查询的任务Id
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVideoSummaryDetailResponse(AbstractModel):
+    """DescribeVideoSummaryDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务的状态
+1: 等待处理中
+2: 处理中
+3: 处理成功
+4: 处理失败
+        :type Status: int
+        :param _FailedReason: 如果处理失败，返回失败的原因
+        :type FailedReason: str
+        :param _AsrSet: 提取出的视频的 Asr 结果
+        :type AsrSet: list of AsrResult
+        :param _TextSummary: 文本摘要结果
+        :type TextSummary: str
+        :param _TextSegSet: 文本摘要分割结果
+        :type TextSegSet: list of str
+        :param _ShotSegSet: 镜头分割结果
+        :type ShotSegSet: list of ShotInfo
+        :param _TextSegMatchShotScoreSet: 数组第 i 个结构 TextSegMatchShotConfidenceSet[i] 表示第 i 个文本摘要分割结果和所有镜头的匹配度。
+        :type TextSegMatchShotScoreSet: list of TextSegMatchShotScore
+        :param _TTSResultURLSet: TTS 输出音频下载地址列表
+        :type TTSResultURLSet: list of str
+        :param _VideoResultURL: 合成视频输出下载地址
+        :type VideoResultURL: str
+        :param _VideoRotateResultURL: 合成后的视频横竖屏转换后的视频下载地址
+        :type VideoRotateResultURL: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._FailedReason = None
+        self._AsrSet = None
+        self._TextSummary = None
+        self._TextSegSet = None
+        self._ShotSegSet = None
+        self._TextSegMatchShotScoreSet = None
+        self._TTSResultURLSet = None
+        self._VideoResultURL = None
+        self._VideoRotateResultURL = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def FailedReason(self):
+        return self._FailedReason
+
+    @FailedReason.setter
+    def FailedReason(self, FailedReason):
+        self._FailedReason = FailedReason
+
+    @property
+    def AsrSet(self):
+        return self._AsrSet
+
+    @AsrSet.setter
+    def AsrSet(self, AsrSet):
+        self._AsrSet = AsrSet
+
+    @property
+    def TextSummary(self):
+        return self._TextSummary
+
+    @TextSummary.setter
+    def TextSummary(self, TextSummary):
+        self._TextSummary = TextSummary
+
+    @property
+    def TextSegSet(self):
+        return self._TextSegSet
+
+    @TextSegSet.setter
+    def TextSegSet(self, TextSegSet):
+        self._TextSegSet = TextSegSet
+
+    @property
+    def ShotSegSet(self):
+        return self._ShotSegSet
+
+    @ShotSegSet.setter
+    def ShotSegSet(self, ShotSegSet):
+        self._ShotSegSet = ShotSegSet
+
+    @property
+    def TextSegMatchShotScoreSet(self):
+        return self._TextSegMatchShotScoreSet
+
+    @TextSegMatchShotScoreSet.setter
+    def TextSegMatchShotScoreSet(self, TextSegMatchShotScoreSet):
+        self._TextSegMatchShotScoreSet = TextSegMatchShotScoreSet
+
+    @property
+    def TTSResultURLSet(self):
+        return self._TTSResultURLSet
+
+    @TTSResultURLSet.setter
+    def TTSResultURLSet(self, TTSResultURLSet):
+        self._TTSResultURLSet = TTSResultURLSet
+
+    @property
+    def VideoResultURL(self):
+        return self._VideoResultURL
+
+    @VideoResultURL.setter
+    def VideoResultURL(self, VideoResultURL):
+        self._VideoResultURL = VideoResultURL
+
+    @property
+    def VideoRotateResultURL(self):
+        return self._VideoRotateResultURL
+
+    @VideoRotateResultURL.setter
+    def VideoRotateResultURL(self, VideoRotateResultURL):
+        self._VideoRotateResultURL = VideoRotateResultURL
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._FailedReason = params.get("FailedReason")
+        if params.get("AsrSet") is not None:
+            self._AsrSet = []
+            for item in params.get("AsrSet"):
+                obj = AsrResult()
+                obj._deserialize(item)
+                self._AsrSet.append(obj)
+        self._TextSummary = params.get("TextSummary")
+        self._TextSegSet = params.get("TextSegSet")
+        if params.get("ShotSegSet") is not None:
+            self._ShotSegSet = []
+            for item in params.get("ShotSegSet"):
+                obj = ShotInfo()
+                obj._deserialize(item)
+                self._ShotSegSet.append(obj)
+        if params.get("TextSegMatchShotScoreSet") is not None:
+            self._TextSegMatchShotScoreSet = []
+            for item in params.get("TextSegMatchShotScoreSet"):
+                obj = TextSegMatchShotScore()
+                obj._deserialize(item)
+                self._TextSegMatchShotScoreSet.append(obj)
+        self._TTSResultURLSet = params.get("TTSResultURLSet")
+        self._VideoResultURL = params.get("VideoResultURL")
+        self._VideoRotateResultURL = params.get("VideoRotateResultURL")
         self._RequestId = params.get("RequestId")
 
 
@@ -4107,6 +4633,53 @@ class Rectf(AbstractModel):
         
 
 
+class ShotInfo(AbstractModel):
+    """输入的镜头信息的描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTimeStamp: 镜头开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTimeStamp: float
+        :param _EndTimeStamp: 镜头结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTimeStamp: float
+        """
+        self._StartTimeStamp = None
+        self._EndTimeStamp = None
+
+    @property
+    def StartTimeStamp(self):
+        return self._StartTimeStamp
+
+    @StartTimeStamp.setter
+    def StartTimeStamp(self, StartTimeStamp):
+        self._StartTimeStamp = StartTimeStamp
+
+    @property
+    def EndTimeStamp(self):
+        return self._EndTimeStamp
+
+    @EndTimeStamp.setter
+    def EndTimeStamp(self, EndTimeStamp):
+        self._EndTimeStamp = EndTimeStamp
+
+
+    def _deserialize(self, params):
+        self._StartTimeStamp = params.get("StartTimeStamp")
+        self._EndTimeStamp = params.get("EndTimeStamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ShowInfo(AbstractModel):
     """视频结构化结果
 
@@ -4413,6 +4986,75 @@ class SortBy(AbstractModel):
     def _deserialize(self, params):
         self._By = params.get("By")
         self._Descend = params.get("Descend")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TTSMode(AbstractModel):
+    """TTS 的参数模式
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Speed: 语速，范围：[-2，2]，分别对应不同语速：
+-2代表0.6倍
+-1代表0.8倍
+0代表1.0倍（默认）
+1代表1.2倍
+2代表1.5倍
+如果需要更细化的语速，可以保留小数点后 2 位，例如0.5/1.25/2.81等。
+        :type Speed: float
+        :param _VoiceType: 音色 ID，[音色体验地址](https://cloud.tencent.com/product/tts)。
+
+
+|音乐ID|音色名称|推荐场景|
+|--|--|--|
+|1001|智瑜|情感女声|
+|1002|智聆|通用女声|
+|1003|智美|客服女声|
+|1004|智云|通用男声|
+|1005|智莉|通用女声|
+|1007|智娜|客服女声|
+|1008|智琪|客服女声|
+|1009|智芸|知性女声|
+|1010|智华|通用男声|
+|1017|智蓉|情感女声|
+|1018|智靖|情感男声|
+
+
+
+        :type VoiceType: int
+        """
+        self._Speed = None
+        self._VoiceType = None
+
+    @property
+    def Speed(self):
+        return self._Speed
+
+    @Speed.setter
+    def Speed(self, Speed):
+        self._Speed = Speed
+
+    @property
+    def VoiceType(self):
+        return self._VoiceType
+
+    @VoiceType.setter
+    def VoiceType(self, VoiceType):
+        self._VoiceType = VoiceType
+
+
+    def _deserialize(self, params):
+        self._Speed = params.get("Speed")
+        self._VoiceType = params.get("VoiceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5065,6 +5707,40 @@ class TextMetadata(AbstractModel):
         
 
 
+class TextSegMatchShotScore(AbstractModel):
+    """单个文本摘要分割结果和所有镜头的匹配度信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ScoreSet: 数组第 i 个值表示该文本摘要和第 i 个镜头的匹配度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScoreSet: list of float
+        """
+        self._ScoreSet = None
+
+    @property
+    def ScoreSet(self):
+        return self._ScoreSet
+
+    @ScoreSet.setter
+    def ScoreSet(self, ScoreSet):
+        self._ScoreSet = ScoreSet
+
+
+    def _deserialize(self, params):
+        self._ScoreSet = params.get("ScoreSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UnknownPerson(AbstractModel):
     """未知人物信息
 
@@ -5365,6 +6041,39 @@ class VideoAppearInfo(AbstractModel):
         self._StartTimeStamp = params.get("StartTimeStamp")
         self._EndTimeStamp = params.get("EndTimeStamp")
         self._ImageURL = params.get("ImageURL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoRotationMode(AbstractModel):
+    """视频横转竖的控制参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActiveVideoRotation: 生成的视频是否需要横屏转竖屏。
+        :type ActiveVideoRotation: bool
+        """
+        self._ActiveVideoRotation = None
+
+    @property
+    def ActiveVideoRotation(self):
+        return self._ActiveVideoRotation
+
+    @ActiveVideoRotation.setter
+    def ActiveVideoRotation(self, ActiveVideoRotation):
+        self._ActiveVideoRotation = ActiveVideoRotation
+
+
+    def _deserialize(self, params):
+        self._ActiveVideoRotation = params.get("ActiveVideoRotation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

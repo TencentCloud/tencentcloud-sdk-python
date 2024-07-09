@@ -7134,9 +7134,12 @@ class DescribeReleaseFileSignRequest(AbstractModel):
         :type Timeout: int
         :param _FileType: bucket类型，不填默认1:web，2:app
         :type FileType: int
+        :param _Site: 获取临时签名的bucket是国内站还是国际站（1表示国际站，其它表示国内站）
+        :type Site: int
         """
         self._Timeout = None
         self._FileType = None
+        self._Site = None
 
     @property
     def Timeout(self):
@@ -7154,10 +7157,19 @@ class DescribeReleaseFileSignRequest(AbstractModel):
     def FileType(self, FileType):
         self._FileType = FileType
 
+    @property
+    def Site(self):
+        return self._Site
+
+    @Site.setter
+    def Site(self, Site):
+        self._Site = Site
+
 
     def _deserialize(self, params):
         self._Timeout = params.get("Timeout")
         self._FileType = params.get("FileType")
+        self._Site = params.get("Site")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

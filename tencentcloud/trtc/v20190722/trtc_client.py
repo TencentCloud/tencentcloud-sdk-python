@@ -129,6 +129,29 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAIConversation(self, request):
+        """查询AI对话任务状态。
+
+        :param request: Request instance for DescribeAIConversation.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeAIConversationRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeAIConversationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAIConversation", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAIConversationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAITranscription(self, request):
         """查询AI转录任务状态。
 
@@ -968,6 +991,29 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def StartAIConversation(self, request):
+        """启动一个任务，机器人将进入TRTC房间，与指定成员进行AI对话
+
+        :param request: Request instance for StartAIConversation.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.StartAIConversationRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.StartAIConversationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartAIConversation", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartAIConversationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StartAITranscription(self, request):
         """这个接口调用后，后台会启动转录机器人，实时进行语音识别并下发字幕和转录消息。
         转录机器人支持两种拉流方式，通过TranscriptionMode字段控制：
@@ -1276,6 +1322,29 @@ class TrtcClient(AbstractClient):
             body = self.call("StartWebRecord", params, headers=headers)
             response = json.loads(body)
             model = models.StartWebRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopAIConversation(self, request):
+        """停止AI对话任务
+
+        :param request: Request instance for StopAIConversation.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.StopAIConversationRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.StopAIConversationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopAIConversation", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopAIConversationResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

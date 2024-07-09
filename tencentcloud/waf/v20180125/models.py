@@ -11276,7 +11276,7 @@ class DescribeHistogramRequest(AbstractModel):
         :type FromTime: str
         :param _ToTime: 结束时间
         :type ToTime: str
-        :param _QueryField: 聚类字段，ip为ip聚合，art为响应耗时聚合，url为url聚合，local为ip转化的城市聚合
+        :param _QueryField: 聚类字段，ip为ip聚合，art为响应耗时聚合，url为url聚合，local为ip转化的城市聚合,qps为每秒请求数峰值的聚合，up为上行带宽峰值聚合，down为下行带峰值聚合
         :type QueryField: str
         :param _Source: 条件，access为访问日志，attack为攻击日志
         :type Source: str

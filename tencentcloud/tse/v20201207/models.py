@@ -4505,6 +4505,8 @@ class CreateCloudNativeAPIGatewayRequest(AbstractModel):
         :type TradeType: int
         :param _InternetConfig: 公网相关配置
         :type InternetConfig: :class:`tencentcloud.tse.v20201207.models.InternetConfig`
+        :param _PromId: 关联的prometheus ID
+        :type PromId: str
         """
         self._Name = None
         self._Type = None
@@ -4520,6 +4522,7 @@ class CreateCloudNativeAPIGatewayRequest(AbstractModel):
         self._IngressClassName = None
         self._TradeType = None
         self._InternetConfig = None
+        self._PromId = None
 
     @property
     def Name(self):
@@ -4633,6 +4636,14 @@ class CreateCloudNativeAPIGatewayRequest(AbstractModel):
     def InternetConfig(self, InternetConfig):
         self._InternetConfig = InternetConfig
 
+    @property
+    def PromId(self):
+        return self._PromId
+
+    @PromId.setter
+    def PromId(self, PromId):
+        self._PromId = PromId
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -4660,6 +4671,7 @@ class CreateCloudNativeAPIGatewayRequest(AbstractModel):
         if params.get("InternetConfig") is not None:
             self._InternetConfig = InternetConfig()
             self._InternetConfig._deserialize(params.get("InternetConfig"))
+        self._PromId = params.get("PromId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22105,12 +22117,16 @@ class PublicAddressConfig(AbstractModel):
         :param _NetworkId: 公网负载均衡 id
 注意：此字段可能返回 null，表示取不到有效值。
         :type NetworkId: str
+        :param _Description: 公网负载均衡描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
         """
         self._Vip = None
         self._InternetMaxBandwidthOut = None
         self._GroupId = None
         self._GroupName = None
         self._NetworkId = None
+        self._Description = None
 
     @property
     def Vip(self):
@@ -22152,6 +22168,14 @@ class PublicAddressConfig(AbstractModel):
     def NetworkId(self, NetworkId):
         self._NetworkId = NetworkId
 
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
 
     def _deserialize(self, params):
         self._Vip = params.get("Vip")
@@ -22159,6 +22183,7 @@ class PublicAddressConfig(AbstractModel):
         self._GroupId = params.get("GroupId")
         self._GroupName = params.get("GroupName")
         self._NetworkId = params.get("NetworkId")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

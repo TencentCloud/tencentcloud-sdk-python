@@ -26,8 +26,10 @@ class Account(AbstractModel):
     def __init__(self):
         r"""
         :param _User: 新账户的名称
+注意：此字段可能返回 null，表示取不到有效值。
         :type User: str
         :param _Host: 新账户的域名
+注意：此字段可能返回 null，表示取不到有效值。
         :type Host: str
         """
         self._User = None

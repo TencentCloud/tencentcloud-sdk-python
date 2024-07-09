@@ -185,6 +185,53 @@ class IvldClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateVideoSummaryTask(self, request):
+        """创建一个视频缩编任务。
+
+        ### 回调事件消息通知协议
+
+        #### 网络协议
+        - 回调接口协议目前仅支持http/https协议；
+        - 请求：HTTP POST 请求，包体内容为 JSON，每一种消息的具体包体内容参见后文。
+        - 应答：HTTP STATUS CODE = 200，服务端忽略应答包具体内容，为了协议友好，建议客户应答内容携带 JSON： `{"code":0}`
+
+        #### 通知可靠性
+
+        事件通知服务具备重试能力，事件通知失败后会总计重试3次；
+        为了避免重试对您的服务器以及网络带宽造成冲击，请保持正常回包。触发重试条件如下：
+        - 长时间（5 秒）未回包应答。
+        - 应答 HTTP STATUS 不为200。
+
+
+        #### 回调接口协议
+
+        ##### 分析任务完成消息回调
+        | 参数名称 | 必选 | 类型 | 描述 |
+        |---------|---------|---------|---------|
+        | TaskId | 是 | String | 任务ID |
+        | TaskStatus | 是 | Integer | 任务执行状态 |
+        | FailedReason | 是 | String | 若任务失败，该字段为失败原因 |
+
+        :param request: Request instance for CreateVideoSummaryTask.
+        :type request: :class:`tencentcloud.ivld.v20210903.models.CreateVideoSummaryTaskRequest`
+        :rtype: :class:`tencentcloud.ivld.v20210903.models.CreateVideoSummaryTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateVideoSummaryTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateVideoSummaryTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteCustomCategory(self, request):
         """删除自定义分类信息
 
@@ -516,6 +563,52 @@ class IvldClient(AbstractClient):
             body = self.call("DescribeTasks", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeUsageAmount(self, request):
+        """获取用户资源使用量
+
+        :param request: Request instance for DescribeUsageAmount.
+        :type request: :class:`tencentcloud.ivld.v20210903.models.DescribeUsageAmountRequest`
+        :rtype: :class:`tencentcloud.ivld.v20210903.models.DescribeUsageAmountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUsageAmount", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUsageAmountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVideoSummaryDetail(self, request):
+        """描述任务信息，如果任务成功完成，还将返回任务结果
+
+        :param request: Request instance for DescribeVideoSummaryDetail.
+        :type request: :class:`tencentcloud.ivld.v20210903.models.DescribeVideoSummaryDetailRequest`
+        :rtype: :class:`tencentcloud.ivld.v20210903.models.DescribeVideoSummaryDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVideoSummaryDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVideoSummaryDetailResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

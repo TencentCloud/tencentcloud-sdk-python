@@ -336,6 +336,79 @@ class BatchDeleteClientNodesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ChargeAttribute(AbstractModel):
+    """付费信息详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CurDeadline: 到期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurDeadline: str
+        :param _PayMode: 付费方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayMode: str
+        :param _AutoRenewFlag: 自动付费标识：0:默认未设置 1:自动续费 2 不自动续费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoRenewFlag: int
+        :param _ResourceId: 资源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: str
+        """
+        self._CurDeadline = None
+        self._PayMode = None
+        self._AutoRenewFlag = None
+        self._ResourceId = None
+
+    @property
+    def CurDeadline(self):
+        return self._CurDeadline
+
+    @CurDeadline.setter
+    def CurDeadline(self, CurDeadline):
+        self._CurDeadline = CurDeadline
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def AutoRenewFlag(self):
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+
+    def _deserialize(self, params):
+        self._CurDeadline = params.get("CurDeadline")
+        self._PayMode = params.get("PayMode")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClientClusterManagerNodeInfo(AbstractModel):
     """客户侧集群管理节点信息
 
@@ -1722,9 +1795,12 @@ class ExpandCapacityRequest(AbstractModel):
         :type FileSystemId: str
         :param _ExpandedCapacity: 新增扩容的系统容量
         :type ExpandedCapacity: int
+        :param _ModifyType: 容量修改类型：add/sub
+        :type ModifyType: str
         """
         self._FileSystemId = None
         self._ExpandedCapacity = None
+        self._ModifyType = None
 
     @property
     def FileSystemId(self):
@@ -1742,10 +1818,19 @@ class ExpandCapacityRequest(AbstractModel):
     def ExpandedCapacity(self, ExpandedCapacity):
         self._ExpandedCapacity = ExpandedCapacity
 
+    @property
+    def ModifyType(self):
+        return self._ModifyType
+
+    @ModifyType.setter
+    def ModifyType(self, ModifyType):
+        self._ModifyType = ModifyType
+
 
     def _deserialize(self, params):
         self._FileSystemId = params.get("FileSystemId")
         self._ExpandedCapacity = params.get("ExpandedCapacity")
+        self._ModifyType = params.get("ModifyType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1814,6 +1899,9 @@ class FSAttribute(AbstractModel):
         :type Tag: list of Tag
         :param _ModifyTime: 更新属性时间
         :type ModifyTime: str
+        :param _ChargeAttribute: 文件系统付费信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChargeAttribute: :class:`tencentcloud.goosefs.v20220519.models.ChargeAttribute`
         """
         self._Type = None
         self._FileSystemId = None
@@ -1827,6 +1915,7 @@ class FSAttribute(AbstractModel):
         self._Zone = None
         self._Tag = None
         self._ModifyTime = None
+        self._ChargeAttribute = None
 
     @property
     def Type(self):
@@ -1924,6 +2013,14 @@ class FSAttribute(AbstractModel):
     def ModifyTime(self, ModifyTime):
         self._ModifyTime = ModifyTime
 
+    @property
+    def ChargeAttribute(self):
+        return self._ChargeAttribute
+
+    @ChargeAttribute.setter
+    def ChargeAttribute(self, ChargeAttribute):
+        self._ChargeAttribute = ChargeAttribute
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -1945,6 +2042,9 @@ class FSAttribute(AbstractModel):
                 obj._deserialize(item)
                 self._Tag.append(obj)
         self._ModifyTime = params.get("ModifyTime")
+        if params.get("ChargeAttribute") is not None:
+            self._ChargeAttribute = ChargeAttribute()
+            self._ChargeAttribute._deserialize(params.get("ChargeAttribute"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2200,6 +2300,9 @@ class MappedBucket(AbstractModel):
         :param _BucketRegion: 桶所在的园区
 注意：此字段可能返回 null，表示取不到有效值。
         :type BucketRegion: str
+        :param _Endpoint: 自定义Endpoint
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Endpoint: str
         """
         self._BucketName = None
         self._FileSystemPath = None
@@ -2209,6 +2312,7 @@ class MappedBucket(AbstractModel):
         self._Status = None
         self._AccelerateFlag = None
         self._BucketRegion = None
+        self._Endpoint = None
 
     @property
     def BucketName(self):
@@ -2274,6 +2378,14 @@ class MappedBucket(AbstractModel):
     def BucketRegion(self, BucketRegion):
         self._BucketRegion = BucketRegion
 
+    @property
+    def Endpoint(self):
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
 
     def _deserialize(self, params):
         self._BucketName = params.get("BucketName")
@@ -2284,6 +2396,7 @@ class MappedBucket(AbstractModel):
         self._Status = params.get("Status")
         self._AccelerateFlag = params.get("AccelerateFlag")
         self._BucketRegion = params.get("BucketRegion")
+        self._Endpoint = params.get("Endpoint")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

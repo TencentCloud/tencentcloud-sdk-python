@@ -22190,7 +22190,7 @@ class DescribeSecurityGroupPoliciesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecurityGroupId: 安全组实例ID，例如：sg-33ocnj9n，可通过DescribeSecurityGroups获取。
+        :param _SecurityGroupId: 安全组实例ID，例如：sg-33ocnj9n，可通过<a href="https://cloud.tencent.com/document/product/215/15808">DescribeSecurityGroups</a>获取。
         :type SecurityGroupId: str
         :param _Filters: 过滤条件。
 <li>security-group-id - String - 规则中的安全组ID。</li>
@@ -37454,6 +37454,76 @@ class ModifyVpnGatewayRoutesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyVpnGatewaySslClientCertRequest(AbstractModel):
+    """ModifyVpnGatewaySslClientCert请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SslVpnClientIds: SSL-VPN-CLIENT 实例ID列表。
+        :type SslVpnClientIds: list of str
+        """
+        self._SslVpnClientIds = None
+
+    @property
+    def SslVpnClientIds(self):
+        return self._SslVpnClientIds
+
+    @SslVpnClientIds.setter
+    def SslVpnClientIds(self, SslVpnClientIds):
+        self._SslVpnClientIds = SslVpnClientIds
+
+
+    def _deserialize(self, params):
+        self._SslVpnClientIds = params.get("SslVpnClientIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyVpnGatewaySslClientCertResponse(AbstractModel):
+    """ModifyVpnGatewaySslClientCert返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 异步任务ID。
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyVpnGatewaySslServerRequest(AbstractModel):
     """ModifyVpnGatewaySslServer请求参数结构体
 
@@ -39801,6 +39871,79 @@ class PeerConnection(AbstractModel):
                 self._TagSet.append(obj)
         self._QosLevel = params.get("QosLevel")
         self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PolicyStatistics(AbstractModel):
+    """安全组策略统计
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IngressIPv4TotalCount: 入站IPv4总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IngressIPv4TotalCount: int
+        :param _IngressIPv6TotalCount: 入站IPv6总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IngressIPv6TotalCount: int
+        :param _EgressIPv4TotalCount: 出站IPv4总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EgressIPv4TotalCount: int
+        :param _EgressIPv6TotalCount: 出站IPv6总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EgressIPv6TotalCount: int
+        """
+        self._IngressIPv4TotalCount = None
+        self._IngressIPv6TotalCount = None
+        self._EgressIPv4TotalCount = None
+        self._EgressIPv6TotalCount = None
+
+    @property
+    def IngressIPv4TotalCount(self):
+        return self._IngressIPv4TotalCount
+
+    @IngressIPv4TotalCount.setter
+    def IngressIPv4TotalCount(self, IngressIPv4TotalCount):
+        self._IngressIPv4TotalCount = IngressIPv4TotalCount
+
+    @property
+    def IngressIPv6TotalCount(self):
+        return self._IngressIPv6TotalCount
+
+    @IngressIPv6TotalCount.setter
+    def IngressIPv6TotalCount(self, IngressIPv6TotalCount):
+        self._IngressIPv6TotalCount = IngressIPv6TotalCount
+
+    @property
+    def EgressIPv4TotalCount(self):
+        return self._EgressIPv4TotalCount
+
+    @EgressIPv4TotalCount.setter
+    def EgressIPv4TotalCount(self, EgressIPv4TotalCount):
+        self._EgressIPv4TotalCount = EgressIPv4TotalCount
+
+    @property
+    def EgressIPv6TotalCount(self):
+        return self._EgressIPv6TotalCount
+
+    @EgressIPv6TotalCount.setter
+    def EgressIPv6TotalCount(self, EgressIPv6TotalCount):
+        self._EgressIPv6TotalCount = EgressIPv6TotalCount
+
+
+    def _deserialize(self, params):
+        self._IngressIPv4TotalCount = params.get("IngressIPv4TotalCount")
+        self._IngressIPv6TotalCount = params.get("IngressIPv6TotalCount")
+        self._EgressIPv4TotalCount = params.get("EgressIPv4TotalCount")
+        self._EgressIPv6TotalCount = params.get("EgressIPv6TotalCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43604,27 +43747,38 @@ class SecurityGroupPolicy(AbstractModel):
     def __init__(self):
         r"""
         :param _PolicyIndex: 安全组规则索引号，值会随着安全组规则的变更动态变化。使用PolicyIndex时，请先调用`DescribeSecurityGroupPolicies`获取到规则的PolicyIndex，并且结合返回值中的Version一起使用处理规则。
+注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyIndex: int
         :param _Protocol: 协议, 取值: TCP,UDP,ICMP,ICMPv6,ALL。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Protocol: str
         :param _Port: 端口(all, 离散port,  range)。
 说明：如果Protocol设置为ALL，则Port也需要设置为all。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Port: str
         :param _ServiceTemplate: 协议端口ID或者协议端口组ID。ServiceTemplate和Protocol+Port互斥。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceTemplate: :class:`tencentcloud.vpc.v20170312.models.ServiceTemplateSpecification`
         :param _CidrBlock: 网段或IP(互斥)，特殊说明：0.0.0.0/n 都会映射为0.0.0.0/0。
+注意：此字段可能返回 null，表示取不到有效值。
         :type CidrBlock: str
         :param _Ipv6CidrBlock: 网段或IPv6(互斥)。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Ipv6CidrBlock: str
         :param _SecurityGroupId: 安全组实例ID，例如：sg-ohuuioma。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroupId: str
         :param _AddressTemplate: IP地址ID或者IP地址组ID。
+注意：此字段可能返回 null，表示取不到有效值。
         :type AddressTemplate: :class:`tencentcloud.vpc.v20170312.models.AddressTemplateSpecification`
         :param _Action: ACCEPT 或 DROP。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Action: str
         :param _PolicyDescription: 安全组规则描述。
+注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyDescription: str
         :param _ModifyTime: 安全组最近修改时间。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyTime: str
         """
         self._PolicyIndex = None
@@ -43770,10 +43924,14 @@ class SecurityGroupPolicySet(AbstractModel):
         :param _Ingress: 入站规则。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ingress: list of SecurityGroupPolicy
+        :param _PolicyStatistics: 安全组策略条目统计。只用于出参。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyStatistics: :class:`tencentcloud.vpc.v20170312.models.PolicyStatistics`
         """
         self._Version = None
         self._Egress = None
         self._Ingress = None
+        self._PolicyStatistics = None
 
     @property
     def Version(self):
@@ -43799,6 +43957,14 @@ class SecurityGroupPolicySet(AbstractModel):
     def Ingress(self, Ingress):
         self._Ingress = Ingress
 
+    @property
+    def PolicyStatistics(self):
+        return self._PolicyStatistics
+
+    @PolicyStatistics.setter
+    def PolicyStatistics(self, PolicyStatistics):
+        self._PolicyStatistics = PolicyStatistics
+
 
     def _deserialize(self, params):
         self._Version = params.get("Version")
@@ -43814,6 +43980,9 @@ class SecurityGroupPolicySet(AbstractModel):
                 obj = SecurityGroupPolicy()
                 obj._deserialize(item)
                 self._Ingress.append(obj)
+        if params.get("PolicyStatistics") is not None:
+            self._PolicyStatistics = PolicyStatistics()
+            self._PolicyStatistics._deserialize(params.get("PolicyStatistics"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

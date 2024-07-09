@@ -20084,7 +20084,7 @@ IPv6 功能目前尚未全量，需要先申请试用
         :param _OriginPullProtocol: 回源协议配置
 http：强制 http 回源
 follow：协议跟随回源
-https：强制 https 回源，https 回源时仅支持源站 443 端口
+https：强制 https 回源
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginPullProtocol: str
         :param _BackupOrigins: 备源站列表

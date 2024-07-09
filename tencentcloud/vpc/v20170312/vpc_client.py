@@ -7204,6 +7204,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyVpnGatewaySslClientCert(self, request):
+        """更新SslVpnClient证书
+
+        :param request: Request instance for ModifyVpnGatewaySslClientCert.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyVpnGatewaySslClientCertRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyVpnGatewaySslClientCertResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyVpnGatewaySslClientCert", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyVpnGatewaySslClientCertResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyVpnGatewaySslServer(self, request):
         """本接口用于修改 SSL-VPN 服务端属性
 
