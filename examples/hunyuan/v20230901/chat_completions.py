@@ -19,6 +19,7 @@ try:
     client = hunyuan_client.HunyuanClient(cred, "ap-guangzhou", cpf)
 
     req = models.ChatCompletionsRequest()
+    req.Model = "hunyuan-lite"
     msg = models.Message()
     msg.Role = "user"
     msg.Content = "你好，可以讲个笑话吗"
