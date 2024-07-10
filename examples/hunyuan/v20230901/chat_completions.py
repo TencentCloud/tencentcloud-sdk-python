@@ -25,7 +25,7 @@ try:
     msg.Content = "你好，可以讲个笑话吗"
     req.Messages = [msg]
 
-    # hunyuan ChatCompletions/ChatPro 同时支持 stream 和非 stream 的情况
+    # hunyuan ChatCompletions 同时支持 stream 和非 stream 的情况
     req.Stream = True
     resp = client.ChatCompletions(req)
 
