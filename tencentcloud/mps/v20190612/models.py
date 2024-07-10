@@ -27657,12 +27657,16 @@ class LiveStreamObjectRecognitionResult(AbstractModel):
         :type Confidence: float
         :param _AreaCoordSet: 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
         :type AreaCoordSet: list of int
+        :param _Url: 截图链接。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
         """
         self._Name = None
         self._StartPtsOffset = None
         self._EndPtsOffset = None
         self._Confidence = None
         self._AreaCoordSet = None
+        self._Url = None
 
     @property
     def Name(self):
@@ -27704,6 +27708,14 @@ class LiveStreamObjectRecognitionResult(AbstractModel):
     def AreaCoordSet(self, AreaCoordSet):
         self._AreaCoordSet = AreaCoordSet
 
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -27711,6 +27723,7 @@ class LiveStreamObjectRecognitionResult(AbstractModel):
         self._EndPtsOffset = params.get("EndPtsOffset")
         self._Confidence = params.get("Confidence")
         self._AreaCoordSet = params.get("AreaCoordSet")
+        self._Url = params.get("Url")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28157,6 +28170,9 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
         :type TopicName: str
         :param _NotifyUrl: HTTP回调地址，NotifyType为URL时必填。
         :type NotifyUrl: str
+        :param _NotifyKey: 用于生成回调签名的 Key。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotifyKey: str
         """
         self._NotifyType = None
         self._CmqModel = None
@@ -28164,6 +28180,7 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
         self._QueueName = None
         self._TopicName = None
         self._NotifyUrl = None
+        self._NotifyKey = None
 
     @property
     def NotifyType(self):
@@ -28213,6 +28230,14 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
     def NotifyUrl(self, NotifyUrl):
         self._NotifyUrl = NotifyUrl
 
+    @property
+    def NotifyKey(self):
+        return self._NotifyKey
+
+    @NotifyKey.setter
+    def NotifyKey(self, NotifyKey):
+        self._NotifyKey = NotifyKey
+
 
     def _deserialize(self, params):
         self._NotifyType = params.get("NotifyType")
@@ -28221,6 +28246,7 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
         self._QueueName = params.get("QueueName")
         self._TopicName = params.get("TopicName")
         self._NotifyUrl = params.get("NotifyUrl")
+        self._NotifyKey = params.get("NotifyKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

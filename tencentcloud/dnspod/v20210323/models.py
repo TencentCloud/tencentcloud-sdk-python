@@ -2087,6 +2087,8 @@ class CreateRecordRequest(AbstractModel):
         :type Remark: str
         :param _DnssecConflictMode: 开启DNSSEC时，强制添加CNAME/URL记录
         :type DnssecConflictMode: str
+        :param _GroupId: 记录分组 Id。可以通过接口 DescribeRecordGroupList 接口 GroupId 字段获取。
+        :type GroupId: int
         """
         self._Domain = None
         self._RecordType = None
@@ -2101,6 +2103,7 @@ class CreateRecordRequest(AbstractModel):
         self._Status = None
         self._Remark = None
         self._DnssecConflictMode = None
+        self._GroupId = None
 
     @property
     def Domain(self):
@@ -2206,6 +2209,14 @@ class CreateRecordRequest(AbstractModel):
     def DnssecConflictMode(self, DnssecConflictMode):
         self._DnssecConflictMode = DnssecConflictMode
 
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -2221,6 +2232,7 @@ class CreateRecordRequest(AbstractModel):
         self._Status = params.get("Status")
         self._Remark = params.get("Remark")
         self._DnssecConflictMode = params.get("DnssecConflictMode")
+        self._GroupId = params.get("GroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

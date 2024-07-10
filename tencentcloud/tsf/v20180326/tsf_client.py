@@ -716,6 +716,29 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateProgram(self, request):
+        """创建数据集
+
+        :param request: Request instance for CreateProgram.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.CreateProgramRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.CreateProgramResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateProgram", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateProgramResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreatePublicConfig(self, request):
         """创建公共配置项
 
@@ -4208,6 +4231,29 @@ class TsfClient(AbstractClient):
             body = self.call("ModifyPathRewrite", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyPathRewriteResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyProgram(self, request):
+        """更新数据集
+
+        :param request: Request instance for ModifyProgram.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.ModifyProgramRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ModifyProgramResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyProgram", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyProgramResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

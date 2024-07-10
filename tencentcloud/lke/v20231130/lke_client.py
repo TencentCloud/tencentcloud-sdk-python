@@ -627,6 +627,29 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSegments(self, request):
+        """获取片段详情
+
+        :param request: Request instance for DescribeSegments.
+        :type request: :class:`tencentcloud.lke.v20231130.models.DescribeSegmentsRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.DescribeSegmentsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSegments", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSegmentsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeStorageCredential(self, request):
         """获取文件上传临时密钥
 

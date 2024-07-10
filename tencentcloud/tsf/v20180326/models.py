@@ -10221,6 +10221,105 @@ class CreatePathRewritesWithDetailRespResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateProgramRequest(AbstractModel):
+    """CreateProgram请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProgramName: 数据集名称
+        :type ProgramName: str
+        :param _ProgramDesc: 数据集描述
+        :type ProgramDesc: str
+        :param _ProgramItemList: 数据项列表，传入null或空数组时不新增
+        :type ProgramItemList: list of ProgramItem
+        """
+        self._ProgramName = None
+        self._ProgramDesc = None
+        self._ProgramItemList = None
+
+    @property
+    def ProgramName(self):
+        return self._ProgramName
+
+    @ProgramName.setter
+    def ProgramName(self, ProgramName):
+        self._ProgramName = ProgramName
+
+    @property
+    def ProgramDesc(self):
+        return self._ProgramDesc
+
+    @ProgramDesc.setter
+    def ProgramDesc(self, ProgramDesc):
+        self._ProgramDesc = ProgramDesc
+
+    @property
+    def ProgramItemList(self):
+        return self._ProgramItemList
+
+    @ProgramItemList.setter
+    def ProgramItemList(self, ProgramItemList):
+        self._ProgramItemList = ProgramItemList
+
+
+    def _deserialize(self, params):
+        self._ProgramName = params.get("ProgramName")
+        self._ProgramDesc = params.get("ProgramDesc")
+        if params.get("ProgramItemList") is not None:
+            self._ProgramItemList = []
+            for item in params.get("ProgramItemList"):
+                obj = ProgramItem()
+                obj._deserialize(item)
+                self._ProgramItemList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateProgramResponse(AbstractModel):
+    """CreateProgram返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: true: 创建成功；false: 创建失败
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class CreatePublicConfigRequest(AbstractModel):
     """CreatePublicConfig请求参数结构体
 
@@ -33564,6 +33663,129 @@ class ModifyPathRewriteResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: true/false
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyProgramRequest(AbstractModel):
+    """ModifyProgram请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProgramId: 数据集ID
+        :type ProgramId: str
+        :param _ProgramName: 数据集名称，不传入时不更新
+        :type ProgramName: str
+        :param _ProgramDesc: 数据集描述，不传入时不更新
+        :type ProgramDesc: str
+        :param _ProgramItemList: 数据项列表，传入null不更新，传入空数组全量删除
+        :type ProgramItemList: list of ProgramItem
+        :param _EmptyProgramItemList: ProgramItemList是否是空数组
+        :type EmptyProgramItemList: bool
+        """
+        self._ProgramId = None
+        self._ProgramName = None
+        self._ProgramDesc = None
+        self._ProgramItemList = None
+        self._EmptyProgramItemList = None
+
+    @property
+    def ProgramId(self):
+        return self._ProgramId
+
+    @ProgramId.setter
+    def ProgramId(self, ProgramId):
+        self._ProgramId = ProgramId
+
+    @property
+    def ProgramName(self):
+        return self._ProgramName
+
+    @ProgramName.setter
+    def ProgramName(self, ProgramName):
+        self._ProgramName = ProgramName
+
+    @property
+    def ProgramDesc(self):
+        return self._ProgramDesc
+
+    @ProgramDesc.setter
+    def ProgramDesc(self, ProgramDesc):
+        self._ProgramDesc = ProgramDesc
+
+    @property
+    def ProgramItemList(self):
+        return self._ProgramItemList
+
+    @ProgramItemList.setter
+    def ProgramItemList(self, ProgramItemList):
+        self._ProgramItemList = ProgramItemList
+
+    @property
+    def EmptyProgramItemList(self):
+        return self._EmptyProgramItemList
+
+    @EmptyProgramItemList.setter
+    def EmptyProgramItemList(self, EmptyProgramItemList):
+        self._EmptyProgramItemList = EmptyProgramItemList
+
+
+    def _deserialize(self, params):
+        self._ProgramId = params.get("ProgramId")
+        self._ProgramName = params.get("ProgramName")
+        self._ProgramDesc = params.get("ProgramDesc")
+        if params.get("ProgramItemList") is not None:
+            self._ProgramItemList = []
+            for item in params.get("ProgramItemList"):
+                obj = ProgramItem()
+                obj._deserialize(item)
+                self._ProgramItemList.append(obj)
+        self._EmptyProgramItemList = params.get("EmptyProgramItemList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyProgramResponse(AbstractModel):
+    """ModifyProgram返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: true: 更新成功；false: 更新失败
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

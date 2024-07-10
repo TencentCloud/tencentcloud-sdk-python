@@ -72,6 +72,29 @@ class MnaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AddGroup(self, request):
+        """新建分组
+
+        :param request: Request instance for AddGroup.
+        :type request: :class:`tencentcloud.mna.v20210119.models.AddGroupRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.AddGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AddHardware(self, request):
         """添加硬件设备，生成未激活的硬件设备，可支持批量添加
 
@@ -155,6 +178,29 @@ class MnaClient(AbstractClient):
             body = self.call("DeleteDevice", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteDeviceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteGroup(self, request):
+        """删除分组
+
+        :param request: Request instance for DeleteGroup.
+        :type request: :class:`tencentcloud.mna.v20210119.models.DeleteGroupRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.DeleteGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteGroupResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -371,6 +417,75 @@ class MnaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetFlowStatisticByRegion(self, request):
+        """获取指定区域，指定时间点数据流量使用情况
+
+        :param request: Request instance for GetFlowStatisticByRegion.
+        :type request: :class:`tencentcloud.mna.v20210119.models.GetFlowStatisticByRegionRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.GetFlowStatisticByRegionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetFlowStatisticByRegion", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetFlowStatisticByRegionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetGroupDetail(self, request):
+        """查看分组详细信息
+
+        :param request: Request instance for GetGroupDetail.
+        :type request: :class:`tencentcloud.mna.v20210119.models.GetGroupDetailRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.GetGroupDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetGroupDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetGroupDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetGroupList(self, request):
+        """获取分组列表
+
+        :param request: Request instance for GetGroupList.
+        :type request: :class:`tencentcloud.mna.v20210119.models.GetGroupListRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.GetGroupListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetGroupList", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetGroupListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetHardwareList(self, request):
         """获取厂商硬件列表
 
@@ -509,6 +624,52 @@ class MnaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GroupAddDevice(self, request):
+        """向已存在分组中添加设备
+
+        :param request: Request instance for GroupAddDevice.
+        :type request: :class:`tencentcloud.mna.v20210119.models.GroupAddDeviceRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.GroupAddDeviceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GroupAddDevice", params, headers=headers)
+            response = json.loads(body)
+            model = models.GroupAddDeviceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GroupDeleteDevice(self, request):
+        """删除分组中的设备
+
+        :param request: Request instance for GroupDeleteDevice.
+        :type request: :class:`tencentcloud.mna.v20210119.models.GroupDeleteDeviceRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.GroupDeleteDeviceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GroupDeleteDevice", params, headers=headers)
+            response = json.loads(body)
+            model = models.GroupDeleteDeviceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyPackageRenewFlag(self, request):
         """可开启/关闭流量包自动续费，不影响当前周期正在生效的流量包。
 
@@ -555,6 +716,29 @@ class MnaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SetNotifyUrl(self, request):
+        """设置用户流量告警信息接口，通过该接口设置流量包告警阈值以及告警时回调的url和key
+
+        :param request: Request instance for SetNotifyUrl.
+        :type request: :class:`tencentcloud.mna.v20210119.models.SetNotifyUrlRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.SetNotifyUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetNotifyUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.SetNotifyUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def UpdateDevice(self, request):
         """更新设备信息
 
@@ -569,6 +753,29 @@ class MnaClient(AbstractClient):
             body = self.call("UpdateDevice", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateDeviceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateGroup(self, request):
+        """更新分组备注
+
+        :param request: Request instance for UpdateGroup.
+        :type request: :class:`tencentcloud.mna.v20210119.models.UpdateGroupRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.UpdateGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateGroupResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

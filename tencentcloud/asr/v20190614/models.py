@@ -4361,15 +4361,15 @@ class VoicePrintVerifyRequest(AbstractModel):
         :type VoiceFormat: int
         :param _SampleRate: 音频采样率，目前支持16000，单位：Hz，必填
         :type SampleRate: int
-        :param _VoicePrintId: 说话人id, 说话人唯一标识
-        :type VoicePrintId: str
         :param _Data: 音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M	
         :type Data: str
+        :param _VoicePrintId: 说话人id, 说话人唯一标识
+        :type VoicePrintId: str
         """
         self._VoiceFormat = None
         self._SampleRate = None
-        self._VoicePrintId = None
         self._Data = None
+        self._VoicePrintId = None
 
     @property
     def VoiceFormat(self):
@@ -4388,14 +4388,6 @@ class VoicePrintVerifyRequest(AbstractModel):
         self._SampleRate = SampleRate
 
     @property
-    def VoicePrintId(self):
-        return self._VoicePrintId
-
-    @VoicePrintId.setter
-    def VoicePrintId(self, VoicePrintId):
-        self._VoicePrintId = VoicePrintId
-
-    @property
     def Data(self):
         return self._Data
 
@@ -4403,12 +4395,20 @@ class VoicePrintVerifyRequest(AbstractModel):
     def Data(self, Data):
         self._Data = Data
 
+    @property
+    def VoicePrintId(self):
+        return self._VoicePrintId
+
+    @VoicePrintId.setter
+    def VoicePrintId(self, VoicePrintId):
+        self._VoicePrintId = VoicePrintId
+
 
     def _deserialize(self, params):
         self._VoiceFormat = params.get("VoiceFormat")
         self._SampleRate = params.get("SampleRate")
-        self._VoicePrintId = params.get("VoicePrintId")
         self._Data = params.get("Data")
+        self._VoicePrintId = params.get("VoicePrintId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

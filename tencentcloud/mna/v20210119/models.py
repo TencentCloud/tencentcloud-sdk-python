@@ -54,6 +54,12 @@ class ActivateHardware(AbstractModel):
         :param _GroupName: 设备分组名称，预留参数，需要分组时传入GroupId
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
+        :param _FlowTrunc: 设备无流量包处理方式，0: 按量付费，1: 截断加速
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowTrunc: int
+        :param _DeviceId: 激活后的设备ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceId: str
         """
         self._Vendor = None
         self._SN = None
@@ -64,6 +70,8 @@ class ActivateHardware(AbstractModel):
         self._LicensePayMode = None
         self._GroupId = None
         self._GroupName = None
+        self._FlowTrunc = None
+        self._DeviceId = None
 
     @property
     def Vendor(self):
@@ -137,6 +145,22 @@ class ActivateHardware(AbstractModel):
     def GroupName(self, GroupName):
         self._GroupName = GroupName
 
+    @property
+    def FlowTrunc(self):
+        return self._FlowTrunc
+
+    @FlowTrunc.setter
+    def FlowTrunc(self, FlowTrunc):
+        self._FlowTrunc = FlowTrunc
+
+    @property
+    def DeviceId(self):
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
 
     def _deserialize(self, params):
         self._Vendor = params.get("Vendor")
@@ -148,6 +172,8 @@ class ActivateHardware(AbstractModel):
         self._LicensePayMode = params.get("LicensePayMode")
         self._GroupId = params.get("GroupId")
         self._GroupName = params.get("GroupName")
+        self._FlowTrunc = params.get("FlowTrunc")
+        self._DeviceId = params.get("DeviceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -269,6 +295,8 @@ class AddDeviceRequest(AbstractModel):
         :type GroupName: str
         :param _GroupId: 设备分组ID，非必选，如果不填写则默认设备无分组
         :type GroupId: str
+        :param _FlowTrunc: 设备无流量包处理方式，0: 按量付费，1: 截断加速
+        :type FlowTrunc: int
         """
         self._DeviceName = None
         self._Remark = None
@@ -278,6 +306,7 @@ class AddDeviceRequest(AbstractModel):
         self._LicensePayMode = None
         self._GroupName = None
         self._GroupId = None
+        self._FlowTrunc = None
 
     @property
     def DeviceName(self):
@@ -343,6 +372,14 @@ class AddDeviceRequest(AbstractModel):
     def GroupId(self, GroupId):
         self._GroupId = GroupId
 
+    @property
+    def FlowTrunc(self):
+        return self._FlowTrunc
+
+    @FlowTrunc.setter
+    def FlowTrunc(self, FlowTrunc):
+        self._FlowTrunc = FlowTrunc
+
 
     def _deserialize(self, params):
         self._DeviceName = params.get("DeviceName")
@@ -353,6 +390,7 @@ class AddDeviceRequest(AbstractModel):
         self._LicensePayMode = params.get("LicensePayMode")
         self._GroupName = params.get("GroupName")
         self._GroupId = params.get("GroupId")
+        self._FlowTrunc = params.get("FlowTrunc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -422,6 +460,88 @@ class AddDeviceResponse(AbstractModel):
         self._DataKey = params.get("DataKey")
         self._DeviceId = params.get("DeviceId")
         self._Signature = params.get("Signature")
+        self._RequestId = params.get("RequestId")
+
+
+class AddGroupRequest(AbstractModel):
+    """AddGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupName: 分组的名称
+        :type GroupName: str
+        :param _Description: 分组的描述
+        :type Description: str
+        """
+        self._GroupName = None
+        self._Description = None
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._GroupName = params.get("GroupName")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddGroupResponse(AbstractModel):
+    """AddGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: 分组的唯一ID，仅做分组唯一区分
+        :type GroupId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GroupId = None
+        self._RequestId = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
         self._RequestId = params.get("RequestId")
 
 
@@ -926,6 +1046,64 @@ class DeleteDeviceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteGroupRequest(AbstractModel):
+    """DeleteGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: 删除指定分组
+        :type GroupId: str
+        """
+        self._GroupId = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteGroupResponse(AbstractModel):
+    """DeleteGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteQosRequest(AbstractModel):
     """DeleteQos请求参数结构体
 
@@ -1195,6 +1373,9 @@ class DeviceBaseInfo(AbstractModel):
         :param _GroupName: 设备分组名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
+        :param _FlowTrunc: 设备无流量包处理方式，0: 按量付费，1: 截断加速
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowTrunc: int
         """
         self._DeviceId = None
         self._DeviceName = None
@@ -1206,6 +1387,7 @@ class DeviceBaseInfo(AbstractModel):
         self._Payer = None
         self._GroupId = None
         self._GroupName = None
+        self._FlowTrunc = None
 
     @property
     def DeviceId(self):
@@ -1287,6 +1469,14 @@ class DeviceBaseInfo(AbstractModel):
     def GroupName(self, GroupName):
         self._GroupName = GroupName
 
+    @property
+    def FlowTrunc(self):
+        return self._FlowTrunc
+
+    @FlowTrunc.setter
+    def FlowTrunc(self, FlowTrunc):
+        self._FlowTrunc = FlowTrunc
+
 
     def _deserialize(self, params):
         self._DeviceId = params.get("DeviceId")
@@ -1299,6 +1489,7 @@ class DeviceBaseInfo(AbstractModel):
         self._Payer = params.get("Payer")
         self._GroupId = params.get("GroupId")
         self._GroupName = params.get("GroupName")
+        self._FlowTrunc = params.get("FlowTrunc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2805,6 +2996,177 @@ class GetFlowStatisticByGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetFlowStatisticByRegionRequest(AbstractModel):
+    """GetFlowStatisticByRegion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BeginTime: 开始查找时间
+        :type BeginTime: int
+        :param _EndTime: 截止时间
+        :type EndTime: int
+        :param _Type: 流量种类（1：上行流量，2：下行流量， 3: 上下行总和）
+        :type Type: int
+        :param _TimeGranularity: 时间粒度（1：按小时统计，2：按天统计）
+        :type TimeGranularity: int
+        :param _GatewayType: 网关类型。0：公有云网关；1：自有网关。 
+        :type GatewayType: int
+        :param _AccessRegion: 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+        :type AccessRegion: str
+        """
+        self._BeginTime = None
+        self._EndTime = None
+        self._Type = None
+        self._TimeGranularity = None
+        self._GatewayType = None
+        self._AccessRegion = None
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def TimeGranularity(self):
+        return self._TimeGranularity
+
+    @TimeGranularity.setter
+    def TimeGranularity(self, TimeGranularity):
+        self._TimeGranularity = TimeGranularity
+
+    @property
+    def GatewayType(self):
+        return self._GatewayType
+
+    @GatewayType.setter
+    def GatewayType(self, GatewayType):
+        self._GatewayType = GatewayType
+
+    @property
+    def AccessRegion(self):
+        return self._AccessRegion
+
+    @AccessRegion.setter
+    def AccessRegion(self, AccessRegion):
+        self._AccessRegion = AccessRegion
+
+
+    def _deserialize(self, params):
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._Type = params.get("Type")
+        self._TimeGranularity = params.get("TimeGranularity")
+        self._GatewayType = params.get("GatewayType")
+        self._AccessRegion = params.get("AccessRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetFlowStatisticByRegionResponse(AbstractModel):
+    """GetFlowStatisticByRegion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NetDetails: 流量详细信息
+        :type NetDetails: list of NetDetails
+        :param _MaxValue: 查找时间段流量使用最大值（单位：byte）
+        :type MaxValue: float
+        :param _AvgValue: 查找时间段流量使用平均值（单位：byte）
+        :type AvgValue: float
+        :param _TotalValue: 查找时间段流量使用总量（单位：byte）
+        :type TotalValue: float
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._NetDetails = None
+        self._MaxValue = None
+        self._AvgValue = None
+        self._TotalValue = None
+        self._RequestId = None
+
+    @property
+    def NetDetails(self):
+        return self._NetDetails
+
+    @NetDetails.setter
+    def NetDetails(self, NetDetails):
+        self._NetDetails = NetDetails
+
+    @property
+    def MaxValue(self):
+        return self._MaxValue
+
+    @MaxValue.setter
+    def MaxValue(self, MaxValue):
+        self._MaxValue = MaxValue
+
+    @property
+    def AvgValue(self):
+        return self._AvgValue
+
+    @AvgValue.setter
+    def AvgValue(self, AvgValue):
+        self._AvgValue = AvgValue
+
+    @property
+    def TotalValue(self):
+        return self._TotalValue
+
+    @TotalValue.setter
+    def TotalValue(self, TotalValue):
+        self._TotalValue = TotalValue
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("NetDetails") is not None:
+            self._NetDetails = []
+            for item in params.get("NetDetails"):
+                obj = NetDetails()
+                obj._deserialize(item)
+                self._NetDetails.append(obj)
+        self._MaxValue = params.get("MaxValue")
+        self._AvgValue = params.get("AvgValue")
+        self._TotalValue = params.get("TotalValue")
+        self._RequestId = params.get("RequestId")
+
+
 class GetFlowStatisticRequest(AbstractModel):
     """GetFlowStatistic请求参数结构体
 
@@ -2997,6 +3359,278 @@ class GetFlowStatisticResponse(AbstractModel):
         self._MaxValue = params.get("MaxValue")
         self._AvgValue = params.get("AvgValue")
         self._TotalValue = params.get("TotalValue")
+        self._RequestId = params.get("RequestId")
+
+
+class GetGroupDetailRequest(AbstractModel):
+    """GetGroupDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: 分组ID
+        :type GroupId: str
+        :param _PageSize: 每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备	
+        :type PageSize: int
+        :param _PageNumber: 每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备	
+        :type PageNumber: int
+        :param _KeyWord: 搜索关键字
+        :type KeyWord: str
+        """
+        self._GroupId = None
+        self._PageSize = None
+        self._PageNumber = None
+        self._KeyWord = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def KeyWord(self):
+        return self._KeyWord
+
+    @KeyWord.setter
+    def KeyWord(self, KeyWord):
+        self._KeyWord = KeyWord
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        self._KeyWord = params.get("KeyWord")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetGroupDetailResponse(AbstractModel):
+    """GetGroupDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupInfo: 分组基本信息
+        :type GroupInfo: :class:`tencentcloud.mna.v20210119.models.GroupInfo`
+        :param _DeviceInfos: 分组中设备列表
+        :type DeviceInfos: list of DeviceBaseInfo
+        :param _Length: 设备总记录条数
+        :type Length: int
+        :param _TotalPage: 总页数
+        :type TotalPage: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GroupInfo = None
+        self._DeviceInfos = None
+        self._Length = None
+        self._TotalPage = None
+        self._RequestId = None
+
+    @property
+    def GroupInfo(self):
+        return self._GroupInfo
+
+    @GroupInfo.setter
+    def GroupInfo(self, GroupInfo):
+        self._GroupInfo = GroupInfo
+
+    @property
+    def DeviceInfos(self):
+        return self._DeviceInfos
+
+    @DeviceInfos.setter
+    def DeviceInfos(self, DeviceInfos):
+        self._DeviceInfos = DeviceInfos
+
+    @property
+    def Length(self):
+        return self._Length
+
+    @Length.setter
+    def Length(self, Length):
+        self._Length = Length
+
+    @property
+    def TotalPage(self):
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("GroupInfo") is not None:
+            self._GroupInfo = GroupInfo()
+            self._GroupInfo._deserialize(params.get("GroupInfo"))
+        if params.get("DeviceInfos") is not None:
+            self._DeviceInfos = []
+            for item in params.get("DeviceInfos"):
+                obj = DeviceBaseInfo()
+                obj._deserialize(item)
+                self._DeviceInfos.append(obj)
+        self._Length = params.get("Length")
+        self._TotalPage = params.get("TotalPage")
+        self._RequestId = params.get("RequestId")
+
+
+class GetGroupListRequest(AbstractModel):
+    """GetGroupList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageSize: 每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
+        :type PageSize: int
+        :param _PageNumber: 当前查看页码，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
+        :type PageNumber: int
+        :param _Keyword: 搜索分组的关键字，为空时匹配所有分组
+        :type Keyword: str
+        """
+        self._PageSize = None
+        self._PageNumber = None
+        self._Keyword = None
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+
+    def _deserialize(self, params):
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        self._Keyword = params.get("Keyword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetGroupListResponse(AbstractModel):
+    """GetGroupList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupInfos: 设备信息列表
+        :type GroupInfos: list of GroupInfo
+        :param _Length: 设备总记录条数
+        :type Length: int
+        :param _TotalPage: 总页数
+        :type TotalPage: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GroupInfos = None
+        self._Length = None
+        self._TotalPage = None
+        self._RequestId = None
+
+    @property
+    def GroupInfos(self):
+        return self._GroupInfos
+
+    @GroupInfos.setter
+    def GroupInfos(self, GroupInfos):
+        self._GroupInfos = GroupInfos
+
+    @property
+    def Length(self):
+        return self._Length
+
+    @Length.setter
+    def Length(self, Length):
+        self._Length = Length
+
+    @property
+    def TotalPage(self):
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("GroupInfos") is not None:
+            self._GroupInfos = []
+            for item in params.get("GroupInfos"):
+                obj = GroupInfo()
+                obj._deserialize(item)
+                self._GroupInfos.append(obj)
+        self._Length = params.get("Length")
+        self._TotalPage = params.get("TotalPage")
         self._RequestId = params.get("RequestId")
 
 
@@ -3747,6 +4381,264 @@ class GetVendorHardwareResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GroupAddDeviceRequest(AbstractModel):
+    """GroupAddDevice请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: 分组ID
+        :type GroupId: str
+        :param _DeviceList: 待添加的设备列表
+        :type DeviceList: list of str
+        """
+        self._GroupId = None
+        self._DeviceList = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def DeviceList(self):
+        return self._DeviceList
+
+    @DeviceList.setter
+    def DeviceList(self, DeviceList):
+        self._DeviceList = DeviceList
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._DeviceList = params.get("DeviceList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GroupAddDeviceResponse(AbstractModel):
+    """GroupAddDevice返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceNum: 分组中的设备数量
+        :type DeviceNum: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DeviceNum = None
+        self._RequestId = None
+
+    @property
+    def DeviceNum(self):
+        return self._DeviceNum
+
+    @DeviceNum.setter
+    def DeviceNum(self, DeviceNum):
+        self._DeviceNum = DeviceNum
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DeviceNum = params.get("DeviceNum")
+        self._RequestId = params.get("RequestId")
+
+
+class GroupDeleteDeviceRequest(AbstractModel):
+    """GroupDeleteDevice请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: 分组ID
+        :type GroupId: str
+        :param _DeviceList: 待删除的设备列表
+        :type DeviceList: list of str
+        """
+        self._GroupId = None
+        self._DeviceList = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def DeviceList(self):
+        return self._DeviceList
+
+    @DeviceList.setter
+    def DeviceList(self, DeviceList):
+        self._DeviceList = DeviceList
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._DeviceList = params.get("DeviceList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GroupDeleteDeviceResponse(AbstractModel):
+    """GroupDeleteDevice返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceNum: 分组中的设备数量
+        :type DeviceNum: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DeviceNum = None
+        self._RequestId = None
+
+    @property
+    def DeviceNum(self):
+        return self._DeviceNum
+
+    @DeviceNum.setter
+    def DeviceNum(self, DeviceNum):
+        self._DeviceNum = DeviceNum
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DeviceNum = params.get("DeviceNum")
+        self._RequestId = params.get("RequestId")
+
+
+class GroupInfo(AbstractModel):
+    """分组的基本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: 分组ID
+        :type GroupId: str
+        :param _GroupName: 分组名
+        :type GroupName: str
+        :param _CreateTime: 分组创建的时间，单位：ms	
+        :type CreateTime: str
+        :param _UpdateTime: 分组更新的时间，单位：ms	
+        :type UpdateTime: str
+        :param _Description: 分组描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _DeviceNum: 分组中的设备数量
+        :type DeviceNum: int
+        """
+        self._GroupId = None
+        self._GroupName = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Description = None
+        self._DeviceNum = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def DeviceNum(self):
+        return self._DeviceNum
+
+    @DeviceNum.setter
+    def DeviceNum(self, DeviceNum):
+        self._DeviceNum = DeviceNum
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Description = params.get("Description")
+        self._DeviceNum = params.get("DeviceNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Hardware(AbstractModel):
     """新建Hardware入参
 
@@ -3874,6 +4766,9 @@ class HardwareInfo(AbstractModel):
         :param _GroupName: 设备分组名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
+        :param _FlowTrunc: 设备无流量包处理方式，0: 按量付费，1: 截断加速	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowTrunc: int
         """
         self._DeviceId = None
         self._DeviceName = None
@@ -3888,6 +4783,7 @@ class HardwareInfo(AbstractModel):
         self._Payer = None
         self._GroupId = None
         self._GroupName = None
+        self._FlowTrunc = None
 
     @property
     def DeviceId(self):
@@ -3993,6 +4889,14 @@ class HardwareInfo(AbstractModel):
     def GroupName(self, GroupName):
         self._GroupName = GroupName
 
+    @property
+    def FlowTrunc(self):
+        return self._FlowTrunc
+
+    @FlowTrunc.setter
+    def FlowTrunc(self, FlowTrunc):
+        self._FlowTrunc = FlowTrunc
+
 
     def _deserialize(self, params):
         self._DeviceId = params.get("DeviceId")
@@ -4008,6 +4912,7 @@ class HardwareInfo(AbstractModel):
         self._Payer = params.get("Payer")
         self._GroupId = params.get("GroupId")
         self._GroupName = params.get("GroupName")
+        self._FlowTrunc = params.get("FlowTrunc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4422,6 +5327,88 @@ class OrderFlowPackageResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class SetNotifyUrlRequest(AbstractModel):
+    """SetNotifyUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NotifyUrl: 告警通知回调url
+        :type NotifyUrl: str
+        :param _CallbackKey: 告警通知回调key
+        :type CallbackKey: str
+        :param _AlarmValue: 流量包的告警阈值
+        :type AlarmValue: int
+        """
+        self._NotifyUrl = None
+        self._CallbackKey = None
+        self._AlarmValue = None
+
+    @property
+    def NotifyUrl(self):
+        return self._NotifyUrl
+
+    @NotifyUrl.setter
+    def NotifyUrl(self, NotifyUrl):
+        self._NotifyUrl = NotifyUrl
+
+    @property
+    def CallbackKey(self):
+        return self._CallbackKey
+
+    @CallbackKey.setter
+    def CallbackKey(self, CallbackKey):
+        self._CallbackKey = CallbackKey
+
+    @property
+    def AlarmValue(self):
+        return self._AlarmValue
+
+    @AlarmValue.setter
+    def AlarmValue(self, AlarmValue):
+        self._AlarmValue = AlarmValue
+
+
+    def _deserialize(self, params):
+        self._NotifyUrl = params.get("NotifyUrl")
+        self._CallbackKey = params.get("CallbackKey")
+        self._AlarmValue = params.get("AlarmValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetNotifyUrlResponse(AbstractModel):
+    """SetNotifyUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class SlotNetInfo(AbstractModel):
     """网卡流量指标数据
 
@@ -4554,11 +5541,14 @@ class UpdateDeviceRequest(AbstractModel):
         :type Remark: str
         :param _UpdateNetInfo: 更新设备网络信息
         :type UpdateNetInfo: list of UpdateNetInfo
+        :param _FlowTrunc: 设备无流量包处理方式，0: 按量付费，1: 截断加速
+        :type FlowTrunc: int
         """
         self._DeviceId = None
         self._DeviceName = None
         self._Remark = None
         self._UpdateNetInfo = None
+        self._FlowTrunc = None
 
     @property
     def DeviceId(self):
@@ -4592,6 +5582,14 @@ class UpdateDeviceRequest(AbstractModel):
     def UpdateNetInfo(self, UpdateNetInfo):
         self._UpdateNetInfo = UpdateNetInfo
 
+    @property
+    def FlowTrunc(self):
+        return self._FlowTrunc
+
+    @FlowTrunc.setter
+    def FlowTrunc(self, FlowTrunc):
+        self._FlowTrunc = FlowTrunc
+
 
     def _deserialize(self, params):
         self._DeviceId = params.get("DeviceId")
@@ -4603,6 +5601,7 @@ class UpdateDeviceRequest(AbstractModel):
                 obj = UpdateNetInfo()
                 obj._deserialize(item)
                 self._UpdateNetInfo.append(obj)
+        self._FlowTrunc = params.get("FlowTrunc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4615,6 +5614,76 @@ class UpdateDeviceRequest(AbstractModel):
 
 class UpdateDeviceResponse(AbstractModel):
     """UpdateDevice返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateGroupRequest(AbstractModel):
+    """UpdateGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: 分组ID
+        :type GroupId: str
+        :param _Description: 分组备注
+        :type Description: str
+        """
+        self._GroupId = None
+        self._Description = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateGroupResponse(AbstractModel):
+    """UpdateGroup返回参数结构体
 
     """
 

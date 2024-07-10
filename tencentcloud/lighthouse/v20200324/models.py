@@ -3231,7 +3231,7 @@ class DescribeBlueprintInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: 实例 ID 列表，当前最多支持 1 个。
+        :param _InstanceIds: 实例 ID 列表。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。 当前最多支持1个。
         :type InstanceIds: list of str
         """
         self._InstanceIds = None

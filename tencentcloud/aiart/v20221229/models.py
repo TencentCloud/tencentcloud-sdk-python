@@ -18,6 +18,144 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ChangeClothesRequest(AbstractModel):
+    """ChangeClothes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelUrl: 模特图片 Url。
+图片限制：单边分辨率小于3000，且大于512，转成 Base64 字符串后小于 8MB。
+输入要求：
+1、建议上传正面模特图片，至少完整露出应穿着输入指定服装的身体部位（全身、上半身或下半身），无大角度身体偏转或异常姿势。
+2、建议上传3:4比例的图片，生成效果更佳。
+3、建议模特图片中的原始服装和更换后的服装类别一致，或原始服装在身体上的覆盖范围小于等于更换后的服装（例如需要给模特换上短裤，则原始模特图片中也建议穿短裤，不建议穿长裤），否则会影响人像生成效果。
+
+        :type ModelUrl: str
+        :param _ClothesUrl: 服装图片 Url。
+图片限制：单边分辨率小于3000，大于512，转成 Base64 字符串后小于 8MB。
+输入要求：
+建议上传服装完整的正面平铺图片，仅包含1个服装主体，服装类型支持上衣、下装、连衣裙，三选一。算法将根据输入的图片，结合服装图片给模特换装。
+        :type ClothesUrl: str
+        :param _ClothesType: 服装类型，需要和服装图片保持一致。
+取值：
+Upper-body：上衣
+Lower-body：下装
+Dress：连衣裙
+        :type ClothesType: str
+        :param _LogoAdd: 为生成结果图添加标识的开关，默认为1。
+1：添加标识。
+0：不添加标识。
+其他数值：默认按1处理。
+建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
+        :type LogoAdd: int
+        :param _RspImgType: 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
+生成图分辨率较大时建议选择 url，使用 base64 可能因图片过大导致返回失败。
+        :type RspImgType: str
+        """
+        self._ModelUrl = None
+        self._ClothesUrl = None
+        self._ClothesType = None
+        self._LogoAdd = None
+        self._RspImgType = None
+
+    @property
+    def ModelUrl(self):
+        return self._ModelUrl
+
+    @ModelUrl.setter
+    def ModelUrl(self, ModelUrl):
+        self._ModelUrl = ModelUrl
+
+    @property
+    def ClothesUrl(self):
+        return self._ClothesUrl
+
+    @ClothesUrl.setter
+    def ClothesUrl(self, ClothesUrl):
+        self._ClothesUrl = ClothesUrl
+
+    @property
+    def ClothesType(self):
+        return self._ClothesType
+
+    @ClothesType.setter
+    def ClothesType(self, ClothesType):
+        self._ClothesType = ClothesType
+
+    @property
+    def LogoAdd(self):
+        return self._LogoAdd
+
+    @LogoAdd.setter
+    def LogoAdd(self, LogoAdd):
+        self._LogoAdd = LogoAdd
+
+    @property
+    def RspImgType(self):
+        return self._RspImgType
+
+    @RspImgType.setter
+    def RspImgType(self, RspImgType):
+        self._RspImgType = RspImgType
+
+
+    def _deserialize(self, params):
+        self._ModelUrl = params.get("ModelUrl")
+        self._ClothesUrl = params.get("ClothesUrl")
+        self._ClothesType = params.get("ClothesType")
+        self._LogoAdd = params.get("LogoAdd")
+        self._RspImgType = params.get("RspImgType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChangeClothesResponse(AbstractModel):
+    """ChangeClothes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResultImage: 根据入参 RspImgType 填入不同，返回不同的内容。
+如果传入 base64 则返回生成图 Base64 编码。
+如果传入 url 则返回的生成图 URL , 有效期1小时，请及时保存。
+        :type ResultImage: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ResultImage = None
+        self._RequestId = None
+
+    @property
+    def ResultImage(self):
+        return self._ResultImage
+
+    @ResultImage.setter
+    def ResultImage(self, ResultImage):
+        self._ResultImage = ResultImage
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ResultImage = params.get("ResultImage")
+        self._RequestId = params.get("RequestId")
+
+
 class Filter(AbstractModel):
     """训练图像质量过滤开关配置。
     支持开启或关闭对训练图像分辨率下限、脸部区域大小、脸部遮挡、脸部角度的过滤，默认开启以上过滤。

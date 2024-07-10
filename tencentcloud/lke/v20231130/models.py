@@ -4496,6 +4496,94 @@ class DescribeRobotBizIDByAppKeyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSegmentsRequest(AbstractModel):
+    """DescribeSegments请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BotBizId: 应用ID
+        :type BotBizId: str
+        :param _SegBizId: 文档ID
+        :type SegBizId: list of str
+        """
+        self._BotBizId = None
+        self._SegBizId = None
+
+    @property
+    def BotBizId(self):
+        return self._BotBizId
+
+    @BotBizId.setter
+    def BotBizId(self, BotBizId):
+        self._BotBizId = BotBizId
+
+    @property
+    def SegBizId(self):
+        return self._SegBizId
+
+    @SegBizId.setter
+    def SegBizId(self, SegBizId):
+        self._SegBizId = SegBizId
+
+
+    def _deserialize(self, params):
+        self._BotBizId = params.get("BotBizId")
+        self._SegBizId = params.get("SegBizId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSegmentsResponse(AbstractModel):
+    """DescribeSegments返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: 片段列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of DocSegment
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = DocSegment()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeStorageCredentialRequest(AbstractModel):
     """DescribeStorageCredential请求参数结构体
 
@@ -4822,6 +4910,157 @@ class DescribeUnsatisfiedReplyContextResponse(AbstractModel):
                 obj._deserialize(item)
                 self._List.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class DocSegment(AbstractModel):
+    """文档片段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 片段ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param _BusinessId: 业务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessId: str
+        :param _FileType: 文件类型(markdown,word,txt)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileType: str
+        :param _SegmentType: 文档切片类型(segment-文档切片 table-表格)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SegmentType: str
+        :param _Title: 标题
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Title: str
+        :param _PageContent: 段落内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageContent: str
+        :param _OrgData: 段落原文
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrgData: str
+        :param _DocId: 文章ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DocId: str
+        :param _DocBizId: 文档业务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DocBizId: str
+        :param _DocUrl: 文档链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DocUrl: str
+        """
+        self._Id = None
+        self._BusinessId = None
+        self._FileType = None
+        self._SegmentType = None
+        self._Title = None
+        self._PageContent = None
+        self._OrgData = None
+        self._DocId = None
+        self._DocBizId = None
+        self._DocUrl = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def BusinessId(self):
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+    @property
+    def FileType(self):
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def SegmentType(self):
+        return self._SegmentType
+
+    @SegmentType.setter
+    def SegmentType(self, SegmentType):
+        self._SegmentType = SegmentType
+
+    @property
+    def Title(self):
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def PageContent(self):
+        return self._PageContent
+
+    @PageContent.setter
+    def PageContent(self, PageContent):
+        self._PageContent = PageContent
+
+    @property
+    def OrgData(self):
+        return self._OrgData
+
+    @OrgData.setter
+    def OrgData(self, OrgData):
+        self._OrgData = OrgData
+
+    @property
+    def DocId(self):
+        return self._DocId
+
+    @DocId.setter
+    def DocId(self, DocId):
+        self._DocId = DocId
+
+    @property
+    def DocBizId(self):
+        return self._DocBizId
+
+    @DocBizId.setter
+    def DocBizId(self, DocBizId):
+        self._DocBizId = DocBizId
+
+    @property
+    def DocUrl(self):
+        return self._DocUrl
+
+    @DocUrl.setter
+    def DocUrl(self, DocUrl):
+        self._DocUrl = DocUrl
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._BusinessId = params.get("BusinessId")
+        self._FileType = params.get("FileType")
+        self._SegmentType = params.get("SegmentType")
+        self._Title = params.get("Title")
+        self._PageContent = params.get("PageContent")
+        self._OrgData = params.get("OrgData")
+        self._DocId = params.get("DocId")
+        self._DocBizId = params.get("DocBizId")
+        self._DocUrl = params.get("DocUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DocumentElement(AbstractModel):
@@ -14625,7 +14864,7 @@ class SaveDocRequest(AbstractModel):
         :type ExpireEnd: str
         :param _IsRefer: 是否引用链接
         :type IsRefer: bool
-        :param _Opt: 文档操作类型：1：批量导入；2:文档导入
+        :param _Opt: 文档操作类型：1：批量导入（批量导入问答对）；2:文档导入（正常导入单个文档）
         :type Opt: int
         """
         self._BotBizId = None
