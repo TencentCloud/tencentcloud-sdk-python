@@ -6986,15 +6986,7 @@ class ChannelDescribeOrganizationSealsRequest(AbstractModel):
 
 注:  `没有输入返回所有记录，最大返回100条。`
         :type SealId: str
-        :param _SealTypes: 电子印章类型 , 可选类型如下: 
-<ul><li>**OFFICIAL**: 公章</li>
-<li>**CONTRACT**: 合同专用章;</li>
-<li>**FINANCE**: 财务专用章;</li>
-<li>**PERSONNEL**: 人事专用章</li>
-<li>**INVOICE**: 发票专用章</li>
-</ul>
-
-注:  `为空时查询所有类型的印章。`
+        :param _SealTypes: 电子印章类型 , 可选类型如下: <ul><li>**OFFICIAL**: 公章</li><li>**CONTRACT**: 合同专用章;</li><li>**FINANCE**: 财务专用章;</li><li>**PERSONNEL**: 人事专用章</li><li>**INVOICE**: 发票专用章</li><<li>**EMPLOYEE_QUALIFICATION_SEAL**: 员工执业章</li></ul>注:  `为空时查询所有类型的印章。`
         :type SealTypes: list of str
         :param _SealStatuses: 
 需查询的印章状态列表。
@@ -10023,7 +10015,9 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
 `3. 同渠道应用(Agent.AppId)下，企业唯一标识ProxyOrganizationOpenId需要保持唯一，员工唯一标识OpenId也要保持唯一 (而不是企业下唯一)。 `
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param _ProxyOrganizationName: 第三方平台子客的企业名称，请确认该企业名称与企业营业执照中注册的名称完全一致。
-<font color="red">在测试环境联调的过程中，企业名称请使用以下名称 
+<font color="red">
+在测试环境联调的过程中，企业名称请统一加上“测试”二字，如：典子谦示例企业测试，否则将无法审核通过。
+企业名称请使用以下名称, 以下名称可以不用走收录。
 **子客测试专用企业1 - 子客测试专用企业9**</font>
 
 注:
@@ -10337,6 +10331,90 @@ class CreateConsoleLoginUrlResponse(AbstractModel):
         self._ConsoleUrl = params.get("ConsoleUrl")
         self._IsActivated = params.get("IsActivated")
         self._ProxyOperatorIsVerified = params.get("ProxyOperatorIsVerified")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateEmployeeQualificationSealQrCodeRequest(AbstractModel):
+    """CreateEmployeeQualificationSealQrCode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。此接口下面信息必填。<ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _HintText: 提示信息，扫码后此信息会展示给扫描用户，用来提示用户授权操作的目的
+        :type HintText: str
+        """
+        self._Agent = None
+        self._HintText = None
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def HintText(self):
+        return self._HintText
+
+    @HintText.setter
+    def HintText(self, HintText):
+        self._HintText = HintText
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._HintText = params.get("HintText")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateEmployeeQualificationSealQrCodeResponse(AbstractModel):
+    """CreateEmployeeQualificationSealQrCode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QrcodeBase64: 二维码图片的Base64  注:  `此二维码的有效时间为7天，过期后需要重新生成新的二维码图片`
+        :type QrcodeBase64: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._QrcodeBase64 = None
+        self._RequestId = None
+
+    @property
+    def QrcodeBase64(self):
+        return self._QrcodeBase64
+
+    @QrcodeBase64.setter
+    def QrcodeBase64(self, QrcodeBase64):
+        self._QrcodeBase64 = QrcodeBase64
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._QrcodeBase64 = params.get("QrcodeBase64")
         self._RequestId = params.get("RequestId")
 
 
@@ -13682,7 +13760,6 @@ class ExtentServiceAuthInfo(AbstractModel):
 <li>AUTO_SIGN             企业自动签（自动签署）</li>
 <li>  OVERSEA_SIGN          企业与港澳台居民签署合同</li>
 <li>  MOBILE_CHECK_APPROVER 使用手机号验证签署方身份</li>
-<li> PAGING_SEAL           骑缝章</li>
 <li> DOWNLOAD_FLOW         授权渠道下载合同 </li>
 <li>AGE_LIMIT_EXPANSION 拓宽签署方年龄限制</li>
 <li>HIDE_OPERATOR_DISPLAY 隐藏合同经办人姓名</li>

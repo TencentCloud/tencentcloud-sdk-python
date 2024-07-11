@@ -3773,7 +3773,7 @@ class DescribeTrtcUsageResponse(AbstractModel):
         r"""
         :param _UsageKey: 用量类型，与UsageValue中各个位置的值对应。
         :type UsageKey: list of str
-        :param _UsageList: 各个时间点用量明细。
+        :param _UsageList: 各个时间点用量明细，单位:分钟
         :type UsageList: list of TrtcUsage
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10833,10 +10833,13 @@ class TrtcUsage(AbstractModel):
         r"""
         :param _TimeKey: 时间点，格式为YYYY-MM-DD HH:mm:ss。多天查询时，HH:mm:ss为00:00:00。
         :type TimeKey: str
-        :param _UsageValue: 用量数组。每个数值含义与UsageKey对应。单位：分钟。
+        :param _TimeStampKey: 时间点时间戳
+        :type TimeStampKey: int
+        :param _UsageValue: 用量数组。每个数值含义与UsageKey对应。单位:分钟。
         :type UsageValue: list of float
         """
         self._TimeKey = None
+        self._TimeStampKey = None
         self._UsageValue = None
 
     @property
@@ -10846,6 +10849,14 @@ class TrtcUsage(AbstractModel):
     @TimeKey.setter
     def TimeKey(self, TimeKey):
         self._TimeKey = TimeKey
+
+    @property
+    def TimeStampKey(self):
+        return self._TimeStampKey
+
+    @TimeStampKey.setter
+    def TimeStampKey(self, TimeStampKey):
+        self._TimeStampKey = TimeStampKey
 
     @property
     def UsageValue(self):
@@ -10858,6 +10869,7 @@ class TrtcUsage(AbstractModel):
 
     def _deserialize(self, params):
         self._TimeKey = params.get("TimeKey")
+        self._TimeStampKey = params.get("TimeStampKey")
         self._UsageValue = params.get("UsageValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

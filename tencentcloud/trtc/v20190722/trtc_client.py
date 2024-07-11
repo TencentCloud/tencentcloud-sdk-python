@@ -728,7 +728,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeTrtcUsage(self, request):
-        """获取TRTC音视频互动的用量明细。
+        """获取TRTC音视频互动的用量明细，单位:分钟。
         - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
         - 单次查询统计区间最多不能超过31天。
         - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。

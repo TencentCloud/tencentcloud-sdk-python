@@ -1776,6 +1776,29 @@ class GaapClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTaskStatus(self, request):
+        """查询异步任务执行状态
+
+        :param request: Request instance for DescribeTaskStatus.
+        :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeTaskStatusRequest`
+        :rtype: :class:`tencentcloud.gaap.v20180529.models.DescribeTaskStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTaskStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTaskStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeUDPListeners(self, request):
         """该接口（DescribeUDPListeners）用于查询单通道或者通道组下的UDP监听器信息
 

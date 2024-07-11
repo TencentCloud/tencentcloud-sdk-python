@@ -6495,6 +6495,9 @@ class JobConfig(AbstractModel):
         :param _WorkspaceName: es空间中文
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkspaceName: str
+        :param _FlinkVersion: flink 版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlinkVersion: str
         """
         self._JobId = None
         self._EntrypointClass = None
@@ -6528,6 +6531,7 @@ class JobConfig(AbstractModel):
         self._EsServerlessSpace = None
         self._IndexName = None
         self._WorkspaceName = None
+        self._FlinkVersion = None
 
     @property
     def JobId(self):
@@ -6785,6 +6789,14 @@ class JobConfig(AbstractModel):
     def WorkspaceName(self, WorkspaceName):
         self._WorkspaceName = WorkspaceName
 
+    @property
+    def FlinkVersion(self):
+        return self._FlinkVersion
+
+    @FlinkVersion.setter
+    def FlinkVersion(self, FlinkVersion):
+        self._FlinkVersion = FlinkVersion
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -6840,6 +6852,7 @@ class JobConfig(AbstractModel):
         self._EsServerlessSpace = params.get("EsServerlessSpace")
         self._IndexName = params.get("IndexName")
         self._WorkspaceName = params.get("WorkspaceName")
+        self._FlinkVersion = params.get("FlinkVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9963,10 +9976,14 @@ class SlotSharingGroup(AbstractModel):
         :param _Description: SlotSharingGroup的描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
+        :param _Configuration: SlotSharingGroup的配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Configuration: list of Property
         """
         self._Name = None
         self._Spec = None
         self._Description = None
+        self._Configuration = None
 
     @property
     def Name(self):
@@ -9992,6 +10009,14 @@ class SlotSharingGroup(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def Configuration(self):
+        return self._Configuration
+
+    @Configuration.setter
+    def Configuration(self, Configuration):
+        self._Configuration = Configuration
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -9999,6 +10024,12 @@ class SlotSharingGroup(AbstractModel):
             self._Spec = SlotSharingGroupSpec()
             self._Spec._deserialize(params.get("Spec"))
         self._Description = params.get("Description")
+        if params.get("Configuration") is not None:
+            self._Configuration = []
+            for item in params.get("Configuration"):
+                obj = Property()
+                obj._deserialize(item)
+                self._Configuration.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

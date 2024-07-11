@@ -12661,6 +12661,136 @@ class UpgradeDedicatedDBInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class UpgradeHourDBInstanceRequest(AbstractModel):
+    """UpgradeHourDBInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Memory: 内存大小，单位：GB
+        :type Memory: int
+        :param _Storage: 存储大小，单位：GB
+        :type Storage: int
+        :param _SwitchStartTime: 切换开始时间，格式如: "2019-12-12 07:00:00"。开始时间必须在当前时间一个小时以后，3天以内。
+        :type SwitchStartTime: str
+        :param _SwitchEndTime: 切换结束时间,  格式如: "2019-12-12 07:15:00"，结束时间必须大于开始时间。
+        :type SwitchEndTime: str
+        :param _SwitchAutoRetry: 是否自动重试。 0：不自动重试  1：自动重试
+        :type SwitchAutoRetry: int
+        :param _Zones: 变更部署时指定的新可用区列表，第1个为主可用区，其余为从可用区
+        :type Zones: list of str
+        """
+        self._InstanceId = None
+        self._Memory = None
+        self._Storage = None
+        self._SwitchStartTime = None
+        self._SwitchEndTime = None
+        self._SwitchAutoRetry = None
+        self._Zones = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Storage(self):
+        return self._Storage
+
+    @Storage.setter
+    def Storage(self, Storage):
+        self._Storage = Storage
+
+    @property
+    def SwitchStartTime(self):
+        return self._SwitchStartTime
+
+    @SwitchStartTime.setter
+    def SwitchStartTime(self, SwitchStartTime):
+        self._SwitchStartTime = SwitchStartTime
+
+    @property
+    def SwitchEndTime(self):
+        return self._SwitchEndTime
+
+    @SwitchEndTime.setter
+    def SwitchEndTime(self, SwitchEndTime):
+        self._SwitchEndTime = SwitchEndTime
+
+    @property
+    def SwitchAutoRetry(self):
+        return self._SwitchAutoRetry
+
+    @SwitchAutoRetry.setter
+    def SwitchAutoRetry(self, SwitchAutoRetry):
+        self._SwitchAutoRetry = SwitchAutoRetry
+
+    @property
+    def Zones(self):
+        return self._Zones
+
+    @Zones.setter
+    def Zones(self, Zones):
+        self._Zones = Zones
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Memory = params.get("Memory")
+        self._Storage = params.get("Storage")
+        self._SwitchStartTime = params.get("SwitchStartTime")
+        self._SwitchEndTime = params.get("SwitchEndTime")
+        self._SwitchAutoRetry = params.get("SwitchAutoRetry")
+        self._Zones = params.get("Zones")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpgradeHourDBInstanceResponse(AbstractModel):
+    """UpgradeHourDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ViewPrivileges(AbstractModel):
     """视图权限信息
 

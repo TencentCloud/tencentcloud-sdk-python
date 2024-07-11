@@ -7276,9 +7276,12 @@ class DescribeReleaseFilesRequest(AbstractModel):
         :type ProjectID: int
         :param _FileVersion: 文件版本
         :type FileVersion: str
+        :param _FileName: 查询过滤条件（根据sourcemap的文件名模糊匹配）
+        :type FileName: str
         """
         self._ProjectID = None
         self._FileVersion = None
+        self._FileName = None
 
     @property
     def ProjectID(self):
@@ -7296,10 +7299,19 @@ class DescribeReleaseFilesRequest(AbstractModel):
     def FileVersion(self, FileVersion):
         self._FileVersion = FileVersion
 
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
 
     def _deserialize(self, params):
         self._ProjectID = params.get("ProjectID")
         self._FileVersion = params.get("FileVersion")
+        self._FileName = params.get("FileName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

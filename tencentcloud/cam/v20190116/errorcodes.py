@@ -26,6 +26,9 @@ FAILEDOPERATION_ACCESSKEY = 'FailedOperation.Accesskey'
 # 生成AuthToken异常。
 FAILEDOPERATION_BUILDAUTHTOKEN = 'FailedOperation.BuildAuthToken'
 
+# CIC的身份提供商禁止操作
+FAILEDOPERATION_CICIDENTITYFORBIDDEN = 'FailedOperation.CICIdentityForbidden'
+
 # 凭据操作失败。
 FAILEDOPERATION_FLOWAUTHILLEGAL = 'FailedOperation.FlowAuthIllegal'
 
@@ -49,6 +52,9 @@ FAILEDOPERATION_TAGRESOURCEFAILED = 'FailedOperation.TagResourceFailed'
 
 # 解绑标签失败。
 FAILEDOPERATION_UNTAGRESOURCEFAILED = 'FailedOperation.UnTagResourceFailed'
+
+# 禁止变更
+FAILEDOPERATION_UNMODIFIABLE = 'FailedOperation.Unmodifiable'
 
 # 用户未绑定手机。
 FAILEDOPERATION_USERNOTBINDPHONE = 'FailedOperation.UserNotBindPhone'

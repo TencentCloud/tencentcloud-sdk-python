@@ -40170,6 +40170,10 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
         :type EnableInspiredEngine: int
         :param _EnableMemShellScan: 是否开启恶意进程查杀[0:未开启,1:开启]
         :type EnableMemShellScan: int
+        :param _ProtectMode: 防护模式 0 标准 1 重保
+        :type ProtectMode: int
+        :param _ProtectFileScope: 查杀范围 0 脚本类之外的恶意文件，1全部恶意文件
+        :type ProtectFileScope: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -40189,6 +40193,8 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
         self._EngineType = None
         self._EnableInspiredEngine = None
         self._EnableMemShellScan = None
+        self._ProtectMode = None
+        self._ProtectFileScope = None
         self._RequestId = None
 
     @property
@@ -40320,6 +40326,22 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
         self._EnableMemShellScan = EnableMemShellScan
 
     @property
+    def ProtectMode(self):
+        return self._ProtectMode
+
+    @ProtectMode.setter
+    def ProtectMode(self, ProtectMode):
+        self._ProtectMode = ProtectMode
+
+    @property
+    def ProtectFileScope(self):
+        return self._ProtectFileScope
+
+    @ProtectFileScope.setter
+    def ProtectFileScope(self, ProtectFileScope):
+        self._ProtectFileScope = ProtectFileScope
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -40345,6 +40367,8 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
         self._EngineType = params.get("EngineType")
         self._EnableInspiredEngine = params.get("EnableInspiredEngine")
         self._EnableMemShellScan = params.get("EnableMemShellScan")
+        self._ProtectMode = params.get("ProtectMode")
+        self._ProtectFileScope = params.get("ProtectFileScope")
         self._RequestId = params.get("RequestId")
 
 
@@ -71254,12 +71278,19 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
         :type AutoIsolation: int
         :param _KillProcess: 是否杀掉进程 1杀掉 0不杀掉
         :type KillProcess: int
+        :param _DoClean: 1 清理, 0 不清理
+<li>本操作会修复被篡改的系统命令，计划任务等系统文件，操作中请确保yum/apt 可用</li>
+        :type DoClean: int
         :param _EngineType: 1标准模式（只报严重、高危）、2增强模式（报严重、高危、中危）、3严格模式（报严重、高、中、低、提示）
         :type EngineType: int
         :param _EnableInspiredEngine: 启发引擎开关 0 关闭 1开启
         :type EnableInspiredEngine: int
         :param _EnableMemShellScan: 是否开启恶意进程查杀[0:未开启,1:开启]
         :type EnableMemShellScan: int
+        :param _ProtectMode: 防护模式 0 标准 1重保
+        :type ProtectMode: int
+        :param _ProtectFileScope: 查杀范围 0 脚本类之外的恶意文件，1全部恶意文件
+        :type ProtectFileScope: int
         """
         self._CheckPattern = None
         self._StartTime = None
@@ -71272,9 +71303,12 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
         self._QuuidList = None
         self._AutoIsolation = None
         self._KillProcess = None
+        self._DoClean = None
         self._EngineType = None
         self._EnableInspiredEngine = None
         self._EnableMemShellScan = None
+        self._ProtectMode = None
+        self._ProtectFileScope = None
 
     @property
     def CheckPattern(self):
@@ -71365,6 +71399,14 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
         self._KillProcess = KillProcess
 
     @property
+    def DoClean(self):
+        return self._DoClean
+
+    @DoClean.setter
+    def DoClean(self, DoClean):
+        self._DoClean = DoClean
+
+    @property
     def EngineType(self):
         return self._EngineType
 
@@ -71388,6 +71430,22 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
     def EnableMemShellScan(self, EnableMemShellScan):
         self._EnableMemShellScan = EnableMemShellScan
 
+    @property
+    def ProtectMode(self):
+        return self._ProtectMode
+
+    @ProtectMode.setter
+    def ProtectMode(self, ProtectMode):
+        self._ProtectMode = ProtectMode
+
+    @property
+    def ProtectFileScope(self):
+        return self._ProtectFileScope
+
+    @ProtectFileScope.setter
+    def ProtectFileScope(self, ProtectFileScope):
+        self._ProtectFileScope = ProtectFileScope
+
 
     def _deserialize(self, params):
         self._CheckPattern = params.get("CheckPattern")
@@ -71401,9 +71459,12 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
         self._QuuidList = params.get("QuuidList")
         self._AutoIsolation = params.get("AutoIsolation")
         self._KillProcess = params.get("KillProcess")
+        self._DoClean = params.get("DoClean")
         self._EngineType = params.get("EngineType")
         self._EnableInspiredEngine = params.get("EnableInspiredEngine")
         self._EnableMemShellScan = params.get("EnableMemShellScan")
+        self._ProtectMode = params.get("ProtectMode")
+        self._ProtectFileScope = params.get("ProtectFileScope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

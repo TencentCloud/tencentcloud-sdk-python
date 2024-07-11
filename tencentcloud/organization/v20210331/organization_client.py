@@ -96,7 +96,7 @@ class OrganizationClient(AbstractClient):
 
 
     def AddShareUnit(self, request):
-        """创建共享单元，只有企业组织管理员可创建。
+        """创建共享单元。
 
         :param request: Request instance for AddShareUnit.
         :type request: :class:`tencentcloud.organization.v20210331.models.AddShareUnitRequest`

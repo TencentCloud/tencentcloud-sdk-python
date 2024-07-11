@@ -1696,3 +1696,26 @@ class MariadbClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpgradeHourDBInstance(self, request):
+        """升级MariaDB按量计费实例
+
+        :param request: Request instance for UpgradeHourDBInstance.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.UpgradeHourDBInstanceRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.UpgradeHourDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpgradeHourDBInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpgradeHourDBInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
