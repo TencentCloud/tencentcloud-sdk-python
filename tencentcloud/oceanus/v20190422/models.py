@@ -1939,6 +1939,8 @@ class CreateJobConfigRequest(AbstractModel):
         :type EsServerlessIndex: str
         :param _EsServerlessSpace: es索引空间
         :type EsServerlessSpace: str
+        :param _FlinkVersion: flink版本
+        :type FlinkVersion: str
         """
         self._JobId = None
         self._EntrypointClass = None
@@ -1968,6 +1970,7 @@ class CreateJobConfigRequest(AbstractModel):
         self._JobGraph = None
         self._EsServerlessIndex = None
         self._EsServerlessSpace = None
+        self._FlinkVersion = None
 
     @property
     def JobId(self):
@@ -2193,6 +2196,14 @@ class CreateJobConfigRequest(AbstractModel):
     def EsServerlessSpace(self, EsServerlessSpace):
         self._EsServerlessSpace = EsServerlessSpace
 
+    @property
+    def FlinkVersion(self):
+        return self._FlinkVersion
+
+    @FlinkVersion.setter
+    def FlinkVersion(self, FlinkVersion):
+        self._FlinkVersion = FlinkVersion
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -2244,6 +2255,7 @@ class CreateJobConfigRequest(AbstractModel):
             self._JobGraph._deserialize(params.get("JobGraph"))
         self._EsServerlessIndex = params.get("EsServerlessIndex")
         self._EsServerlessSpace = params.get("EsServerlessSpace")
+        self._FlinkVersion = params.get("FlinkVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

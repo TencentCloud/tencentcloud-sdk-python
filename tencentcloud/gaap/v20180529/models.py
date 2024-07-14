@@ -9274,6 +9274,33 @@ class DescribeTaskStatusRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID，值为异步接口返回的RequestId
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeTaskStatusResponse(AbstractModel):
     """DescribeTaskStatus返回参数结构体

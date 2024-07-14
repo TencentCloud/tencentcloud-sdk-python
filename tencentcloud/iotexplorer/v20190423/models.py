@@ -1202,6 +1202,53 @@ class CallDeviceActionSyncResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CamTag(AbstractModel):
+    """标签数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: 标签键
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagKey: str
+        :param _TagValue: 标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagValue: str
+        """
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CancelAssignTWeCallLicenseRequest(AbstractModel):
     """CancelAssignTWeCallLicense请求参数结构体
 
@@ -9923,10 +9970,14 @@ class DescribeTopicRuleResponse(AbstractModel):
         :param _Rule: 规则描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Rule: :class:`tencentcloud.iotexplorer.v20190423.models.TopicRule`
+        :param _CamTag: 规则绑定的标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CamTag: list of CamTag
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Rule = None
+        self._CamTag = None
         self._RequestId = None
 
     @property
@@ -9936,6 +9987,14 @@ class DescribeTopicRuleResponse(AbstractModel):
     @Rule.setter
     def Rule(self, Rule):
         self._Rule = Rule
+
+    @property
+    def CamTag(self):
+        return self._CamTag
+
+    @CamTag.setter
+    def CamTag(self, CamTag):
+        self._CamTag = CamTag
 
     @property
     def RequestId(self):
@@ -9950,6 +10009,12 @@ class DescribeTopicRuleResponse(AbstractModel):
         if params.get("Rule") is not None:
             self._Rule = TopicRule()
             self._Rule._deserialize(params.get("Rule"))
+        if params.get("CamTag") is not None:
+            self._CamTag = []
+            for item in params.get("CamTag"):
+                obj = CamTag()
+                obj._deserialize(item)
+                self._CamTag.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -11519,6 +11584,55 @@ class FenceEventItem(AbstractModel):
         
 
 
+class Filter(AbstractModel):
+    """描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
+
+    - 若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
+
+    - 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 需要过滤的字段
+        :type Name: str
+        :param _Values: 字段的过滤的一个或多个值
+        :type Values: list of str
+        """
+        self._Name = None
+        self._Values = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FirmwareInfo(AbstractModel):
     """设备固件详细信息
 
@@ -12312,6 +12426,8 @@ class GetDeviceListRequest(AbstractModel):
         :type DeviceName: str
         :param _ProjectId: 项目ID。产品 ID 为 -1 时，该参数必填
         :type ProjectId: str
+        :param _Filters: 每次请求的Filters的上限为10，Filter.Values的上限为1。
+        :type Filters: list of Filter
         """
         self._ProductId = None
         self._Offset = None
@@ -12319,6 +12435,7 @@ class GetDeviceListRequest(AbstractModel):
         self._FirmwareVersion = None
         self._DeviceName = None
         self._ProjectId = None
+        self._Filters = None
 
     @property
     def ProductId(self):
@@ -12368,6 +12485,14 @@ class GetDeviceListRequest(AbstractModel):
     def ProjectId(self, ProjectId):
         self._ProjectId = ProjectId
 
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
@@ -12376,6 +12501,12 @@ class GetDeviceListRequest(AbstractModel):
         self._FirmwareVersion = params.get("FirmwareVersion")
         self._DeviceName = params.get("DeviceName")
         self._ProjectId = params.get("ProjectId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18737,6 +18868,8 @@ class SearchStudioProductRequest(AbstractModel):
         :type DevStatus: str
         :param _ProductId: 产品ID
         :type ProductId: str
+        :param _Filters: 每次请求的Filters的上限为10，Filter.Values的上限为1。
+        :type Filters: list of Filter
         """
         self._ProjectId = None
         self._ProductName = None
@@ -18744,6 +18877,7 @@ class SearchStudioProductRequest(AbstractModel):
         self._Offset = None
         self._DevStatus = None
         self._ProductId = None
+        self._Filters = None
 
     @property
     def ProjectId(self):
@@ -18793,6 +18927,14 @@ class SearchStudioProductRequest(AbstractModel):
     def ProductId(self, ProductId):
         self._ProductId = ProductId
 
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -18801,6 +18943,12 @@ class SearchStudioProductRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._DevStatus = params.get("DevStatus")
         self._ProductId = params.get("ProductId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
