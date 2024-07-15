@@ -510,6 +510,29 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSnapshotOverview(self, request):
+        """该接口用于查询用户快照使用概览，包括快照总容量、计费容量等信息。
+
+        :param request: Request instance for DescribeSnapshotOverview.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.DescribeSnapshotOverviewRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.DescribeSnapshotOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSnapshotOverview", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSnapshotOverviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSnapshotSharePermission(self, request):
         """本接口（DescribeSnapshotSharePermission）用于查询快照的分享信息。
 

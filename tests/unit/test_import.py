@@ -264,6 +264,11 @@ def test_import_cdwpg():
     from tencentcloud.cdwpg.v20201230 import models
 
 
+def test_import_cdz():
+    from tencentcloud.cdz.v20221123 import cdz_client
+    from tencentcloud.cdz.v20221123 import models
+
+
 def test_import_cfg():
     from tencentcloud.cfg.v20210820 import cfg_client
     from tencentcloud.cfg.v20210820 import models

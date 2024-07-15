@@ -2555,6 +2555,93 @@ class AssociateDirectConnectGatewayNatGatewayResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AssociateInstancesToCcnRouteTableRequest(AbstractModel):
+    """AssociateInstancesToCcnRouteTable请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CcnId: 云联网ID。
+        :type CcnId: str
+        :param _RouteTableId: 路由表ID。
+        :type RouteTableId: str
+        :param _Instances: 实例列表。
+        :type Instances: list of CcnInstanceWithoutRegion
+        """
+        self._CcnId = None
+        self._RouteTableId = None
+        self._Instances = None
+
+    @property
+    def CcnId(self):
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+    @property
+    def RouteTableId(self):
+        return self._RouteTableId
+
+    @RouteTableId.setter
+    def RouteTableId(self, RouteTableId):
+        self._RouteTableId = RouteTableId
+
+    @property
+    def Instances(self):
+        return self._Instances
+
+    @Instances.setter
+    def Instances(self, Instances):
+        self._Instances = Instances
+
+
+    def _deserialize(self, params):
+        self._CcnId = params.get("CcnId")
+        self._RouteTableId = params.get("RouteTableId")
+        if params.get("Instances") is not None:
+            self._Instances = []
+            for item in params.get("Instances"):
+                obj = CcnInstanceWithoutRegion()
+                obj._deserialize(item)
+                self._Instances.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssociateInstancesToCcnRouteTableResponse(AbstractModel):
+    """AssociateInstancesToCcnRouteTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class AssociateNatGatewayAddressRequest(AbstractModel):
     """AssociateNatGatewayAddress请求参数结构体
 
@@ -4402,6 +4489,63 @@ class CcnBandwidthInfo(AbstractModel):
         
 
 
+class CcnBatchRouteTable(AbstractModel):
+    """云联网路由表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CcnId: 云联网ID。
+        :type CcnId: str
+        :param _Name: 云联网路由表名称。
+        :type Name: str
+        :param _Description: 云联网路由表描述。
+        :type Description: str
+        """
+        self._CcnId = None
+        self._Name = None
+        self._Description = None
+
+    @property
+    def CcnId(self):
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._CcnId = params.get("CcnId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CcnFlowLock(AbstractModel):
     """云联网限速实例锁对象，该对象特用于运营端使用，用于封禁实例流量。
 
@@ -4549,6 +4693,58 @@ class CcnInstanceInfo(AbstractModel):
     """云联网实例对象，该对象特用于运营端使用，不建议给租户的接口中提供该复杂类型。
 
     """
+
+
+class CcnInstanceWithoutRegion(AbstractModel):
+    """ccn实例信息（不带地域属性）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceType: 云联网支持的实例类型：
+`VPC`
+`DIRECTCONNECT`
+`BMVPC` 
+`EDGE`
+`EDGE_TUNNEL`
+`EDGE_VPNGW`
+`VPNGW`
+        :type InstanceType: str
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        """
+        self._InstanceType = None
+        self._InstanceId = None
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CcnRegionBandwidthLimit(AbstractModel):
@@ -4860,6 +5056,512 @@ class CcnRoute(AbstractModel):
         self._IsBgp = params.get("IsBgp")
         self._RoutePriority = params.get("RoutePriority")
         self._InstanceExtraName = params.get("InstanceExtraName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CcnRouteBroadcastPolicyRouteCondition(AbstractModel):
+    """云联网路由传播策略之路由条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 条件类型
+        :type Name: str
+        :param _Values: 条件值列表
+        :type Values: list of str
+        :param _MatchPattern: 匹配模式，`1` 精确匹配，`0` 模糊匹配
+        :type MatchPattern: int
+        """
+        self._Name = None
+        self._Values = None
+        self._MatchPattern = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+    @property
+    def MatchPattern(self):
+        return self._MatchPattern
+
+    @MatchPattern.setter
+    def MatchPattern(self, MatchPattern):
+        self._MatchPattern = MatchPattern
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
+        self._MatchPattern = params.get("MatchPattern")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CcnRouteTable(AbstractModel):
+    """云联网路由表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CcnId: 云联网ID。
+        :type CcnId: str
+        :param _CcnRouteTableId: 云联网路由表ID。
+        :type CcnRouteTableId: str
+        :param _RouteTableName: 云联网路由表名称。
+        :type RouteTableName: str
+        :param _RouteTableDescription: 云联网路由表描述。
+        :type RouteTableDescription: str
+        :param _IsDefaultTable: True：是默认路由表 False：非默认路由表。
+        :type IsDefaultTable: bool
+        :param _CreateTime: 创建时间。
+        :type CreateTime: str
+        """
+        self._CcnId = None
+        self._CcnRouteTableId = None
+        self._RouteTableName = None
+        self._RouteTableDescription = None
+        self._IsDefaultTable = None
+        self._CreateTime = None
+
+    @property
+    def CcnId(self):
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+    @property
+    def CcnRouteTableId(self):
+        return self._CcnRouteTableId
+
+    @CcnRouteTableId.setter
+    def CcnRouteTableId(self, CcnRouteTableId):
+        self._CcnRouteTableId = CcnRouteTableId
+
+    @property
+    def RouteTableName(self):
+        return self._RouteTableName
+
+    @RouteTableName.setter
+    def RouteTableName(self, RouteTableName):
+        self._RouteTableName = RouteTableName
+
+    @property
+    def RouteTableDescription(self):
+        return self._RouteTableDescription
+
+    @RouteTableDescription.setter
+    def RouteTableDescription(self, RouteTableDescription):
+        self._RouteTableDescription = RouteTableDescription
+
+    @property
+    def IsDefaultTable(self):
+        return self._IsDefaultTable
+
+    @IsDefaultTable.setter
+    def IsDefaultTable(self, IsDefaultTable):
+        self._IsDefaultTable = IsDefaultTable
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._CcnId = params.get("CcnId")
+        self._CcnRouteTableId = params.get("CcnRouteTableId")
+        self._RouteTableName = params.get("RouteTableName")
+        self._RouteTableDescription = params.get("RouteTableDescription")
+        self._IsDefaultTable = params.get("IsDefaultTable")
+        self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CcnRouteTableBroadcastPolicy(AbstractModel):
+    """云联网路由传播策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RouteConditions: 路由条件
+        :type RouteConditions: list of CcnRouteBroadcastPolicyRouteCondition
+        :param _BroadcastConditions: 传播条件
+        :type BroadcastConditions: list of CcnRouteBroadcastPolicyRouteCondition
+        :param _Action: 路由行为，`accept` 允许，`drop` 拒绝
+        :type Action: str
+        :param _Description: 策略描述
+        :type Description: str
+        """
+        self._RouteConditions = None
+        self._BroadcastConditions = None
+        self._Action = None
+        self._Description = None
+
+    @property
+    def RouteConditions(self):
+        return self._RouteConditions
+
+    @RouteConditions.setter
+    def RouteConditions(self, RouteConditions):
+        self._RouteConditions = RouteConditions
+
+    @property
+    def BroadcastConditions(self):
+        return self._BroadcastConditions
+
+    @BroadcastConditions.setter
+    def BroadcastConditions(self, BroadcastConditions):
+        self._BroadcastConditions = BroadcastConditions
+
+    @property
+    def Action(self):
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        if params.get("RouteConditions") is not None:
+            self._RouteConditions = []
+            for item in params.get("RouteConditions"):
+                obj = CcnRouteBroadcastPolicyRouteCondition()
+                obj._deserialize(item)
+                self._RouteConditions.append(obj)
+        if params.get("BroadcastConditions") is not None:
+            self._BroadcastConditions = []
+            for item in params.get("BroadcastConditions"):
+                obj = CcnRouteBroadcastPolicyRouteCondition()
+                obj._deserialize(item)
+                self._BroadcastConditions.append(obj)
+        self._Action = params.get("Action")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CcnRouteTableBroadcastPolicys(AbstractModel):
+    """云联网路由传播策略列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Policys: 策略列表
+        :type Policys: list of CcnRouteTableBroadcastPolicy
+        :param _PolicyVersion: 版本号
+        :type PolicyVersion: int
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        """
+        self._Policys = None
+        self._PolicyVersion = None
+        self._CreateTime = None
+
+    @property
+    def Policys(self):
+        return self._Policys
+
+    @Policys.setter
+    def Policys(self, Policys):
+        self._Policys = Policys
+
+    @property
+    def PolicyVersion(self):
+        return self._PolicyVersion
+
+    @PolicyVersion.setter
+    def PolicyVersion(self, PolicyVersion):
+        self._PolicyVersion = PolicyVersion
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        if params.get("Policys") is not None:
+            self._Policys = []
+            for item in params.get("Policys"):
+                obj = CcnRouteTableBroadcastPolicy()
+                obj._deserialize(item)
+                self._Policys.append(obj)
+        self._PolicyVersion = params.get("PolicyVersion")
+        self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CcnRouteTableInputPolicy(AbstractModel):
+    """云联网路由接收策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RouteConditions: 路由条件。
+        :type RouteConditions: list of CcnRouteBroadcastPolicyRouteCondition
+        :param _Action: 路由行为，`accept` 允许，`drop` 拒绝。
+        :type Action: str
+        :param _Description: 策略描述。
+        :type Description: str
+        """
+        self._RouteConditions = None
+        self._Action = None
+        self._Description = None
+
+    @property
+    def RouteConditions(self):
+        return self._RouteConditions
+
+    @RouteConditions.setter
+    def RouteConditions(self, RouteConditions):
+        self._RouteConditions = RouteConditions
+
+    @property
+    def Action(self):
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        if params.get("RouteConditions") is not None:
+            self._RouteConditions = []
+            for item in params.get("RouteConditions"):
+                obj = CcnRouteBroadcastPolicyRouteCondition()
+                obj._deserialize(item)
+                self._RouteConditions.append(obj)
+        self._Action = params.get("Action")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CcnRouteTableInputPolicys(AbstractModel):
+    """云联网路由接收策略列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Policys: 策略列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Policys: list of CcnRouteTableInputPolicy
+        :param _PolicyVersion: 版本号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyVersion: int
+        :param _CreateTime: 创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        """
+        self._Policys = None
+        self._PolicyVersion = None
+        self._CreateTime = None
+
+    @property
+    def Policys(self):
+        return self._Policys
+
+    @Policys.setter
+    def Policys(self, Policys):
+        self._Policys = Policys
+
+    @property
+    def PolicyVersion(self):
+        return self._PolicyVersion
+
+    @PolicyVersion.setter
+    def PolicyVersion(self, PolicyVersion):
+        self._PolicyVersion = PolicyVersion
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        if params.get("Policys") is not None:
+            self._Policys = []
+            for item in params.get("Policys"):
+                obj = CcnRouteTableInputPolicy()
+                obj._deserialize(item)
+                self._Policys.append(obj)
+        self._PolicyVersion = params.get("PolicyVersion")
+        self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CcnRouteTableSelectPolicy(AbstractModel):
+    """路由表选择策略信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceType: 实例类型：
+私有网络: `VPC`
+专线网关: `DIRECTCONNECT`
+黑石私有网络: `BMVPC`
+EDGE设备: `EDGE`
+EDGE隧道: `EDGE_TUNNEL`
+EDGE网关: `EDGE_VPNGW`
+VPN网关：`VPNGW`
+        :type InstanceType: str
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        :param _SourceCidrBlock: 源端CIDR。
+        :type SourceCidrBlock: str
+        :param _RouteTableId: 路由表ID。
+        :type RouteTableId: str
+        :param _Description: 路由表备注。
+        :type Description: str
+        """
+        self._InstanceType = None
+        self._InstanceId = None
+        self._SourceCidrBlock = None
+        self._RouteTableId = None
+        self._Description = None
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def SourceCidrBlock(self):
+        return self._SourceCidrBlock
+
+    @SourceCidrBlock.setter
+    def SourceCidrBlock(self, SourceCidrBlock):
+        self._SourceCidrBlock = SourceCidrBlock
+
+    @property
+    def RouteTableId(self):
+        return self._RouteTableId
+
+    @RouteTableId.setter
+    def RouteTableId(self, RouteTableId):
+        self._RouteTableId = RouteTableId
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceId = params.get("InstanceId")
+        self._SourceCidrBlock = params.get("SourceCidrBlock")
+        self._RouteTableId = params.get("RouteTableId")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5290,6 +5992,64 @@ class ClassicLinkInstance(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ClearRouteTableSelectionPoliciesRequest(AbstractModel):
+    """ClearRouteTableSelectionPolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CcnId: 云联网ID。
+        :type CcnId: str
+        """
+        self._CcnId = None
+
+    @property
+    def CcnId(self):
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+
+    def _deserialize(self, params):
+        self._CcnId = params.get("CcnId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClearRouteTableSelectionPoliciesResponse(AbstractModel):
+    """ClearRouteTableSelectionPolicies返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class CloneSecurityGroupRequest(AbstractModel):
@@ -6335,6 +7095,86 @@ class CreateCcnResponse(AbstractModel):
         if params.get("Ccn") is not None:
             self._Ccn = CCN()
             self._Ccn._deserialize(params.get("Ccn"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCcnRouteTablesRequest(AbstractModel):
+    """CreateCcnRouteTables请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RouteTable: 需要创建的路由表列表。
+        :type RouteTable: list of CcnBatchRouteTable
+        """
+        self._RouteTable = None
+
+    @property
+    def RouteTable(self):
+        return self._RouteTable
+
+    @RouteTable.setter
+    def RouteTable(self, RouteTable):
+        self._RouteTable = RouteTable
+
+
+    def _deserialize(self, params):
+        if params.get("RouteTable") is not None:
+            self._RouteTable = []
+            for item in params.get("RouteTable"):
+                obj = CcnBatchRouteTable()
+                obj._deserialize(item)
+                self._RouteTable.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCcnRouteTablesResponse(AbstractModel):
+    """CreateCcnRouteTables返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CcnRouteTableSet: 路由表信息列表。
+        :type CcnRouteTableSet: list of CcnRouteTable
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CcnRouteTableSet = None
+        self._RequestId = None
+
+    @property
+    def CcnRouteTableSet(self):
+        return self._CcnRouteTableSet
+
+    @CcnRouteTableSet.setter
+    def CcnRouteTableSet(self, CcnRouteTableSet):
+        self._CcnRouteTableSet = CcnRouteTableSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CcnRouteTableSet") is not None:
+            self._CcnRouteTableSet = []
+            for item in params.get("CcnRouteTableSet"):
+                obj = CcnRouteTable()
+                obj._deserialize(item)
+                self._CcnRouteTableSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -12680,6 +13520,64 @@ class DeleteCcnResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteCcnRouteTablesRequest(AbstractModel):
+    """DeleteCcnRouteTables请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RouteTableId: 需要删除的路由表列表。
+        :type RouteTableId: list of str
+        """
+        self._RouteTableId = None
+
+    @property
+    def RouteTableId(self):
+        return self._RouteTableId
+
+    @RouteTableId.setter
+    def RouteTableId(self, RouteTableId):
+        self._RouteTableId = RouteTableId
+
+
+    def _deserialize(self, params):
+        self._RouteTableId = params.get("RouteTableId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCcnRouteTablesResponse(AbstractModel):
+    """DeleteCcnRouteTables返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteCustomerGatewayRequest(AbstractModel):
     """DeleteCustomerGateway请求参数结构体
 
@@ -16608,6 +17506,348 @@ class DescribeCcnRegionBandwidthLimitsResponse(AbstractModel):
                 obj = CcnRegionBandwidthLimit()
                 obj._deserialize(item)
                 self._CcnRegionBandwidthLimitSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCcnRouteTableBroadcastPolicysRequest(AbstractModel):
+    """DescribeCcnRouteTableBroadcastPolicys请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CcnId: 云联网ID
+        :type CcnId: str
+        :param _RouteTableId: 云联网路由表ID
+        :type RouteTableId: str
+        :param _PolicyVersion: 路由传播策略版本号
+        :type PolicyVersion: int
+        """
+        self._CcnId = None
+        self._RouteTableId = None
+        self._PolicyVersion = None
+
+    @property
+    def CcnId(self):
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+    @property
+    def RouteTableId(self):
+        return self._RouteTableId
+
+    @RouteTableId.setter
+    def RouteTableId(self, RouteTableId):
+        self._RouteTableId = RouteTableId
+
+    @property
+    def PolicyVersion(self):
+        return self._PolicyVersion
+
+    @PolicyVersion.setter
+    def PolicyVersion(self, PolicyVersion):
+        self._PolicyVersion = PolicyVersion
+
+
+    def _deserialize(self, params):
+        self._CcnId = params.get("CcnId")
+        self._RouteTableId = params.get("RouteTableId")
+        self._PolicyVersion = params.get("PolicyVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCcnRouteTableBroadcastPolicysResponse(AbstractModel):
+    """DescribeCcnRouteTableBroadcastPolicys返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicySet: 路由表传播策略。
+        :type PolicySet: list of CcnRouteTableBroadcastPolicys
+        :param _TotalCount: 符合条件的对象数。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PolicySet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def PolicySet(self):
+        return self._PolicySet
+
+    @PolicySet.setter
+    def PolicySet(self, PolicySet):
+        self._PolicySet = PolicySet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("PolicySet") is not None:
+            self._PolicySet = []
+            for item in params.get("PolicySet"):
+                obj = CcnRouteTableBroadcastPolicys()
+                obj._deserialize(item)
+                self._PolicySet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCcnRouteTableInputPolicysRequest(AbstractModel):
+    """DescribeCcnRouteTableInputPolicys请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CcnId: 云联网ID。
+        :type CcnId: str
+        :param _RouteTableId: 云联网路由表ID。
+        :type RouteTableId: str
+        :param _PolicyVersion: 路由接收策略版本号。
+        :type PolicyVersion: int
+        """
+        self._CcnId = None
+        self._RouteTableId = None
+        self._PolicyVersion = None
+
+    @property
+    def CcnId(self):
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+    @property
+    def RouteTableId(self):
+        return self._RouteTableId
+
+    @RouteTableId.setter
+    def RouteTableId(self, RouteTableId):
+        self._RouteTableId = RouteTableId
+
+    @property
+    def PolicyVersion(self):
+        return self._PolicyVersion
+
+    @PolicyVersion.setter
+    def PolicyVersion(self, PolicyVersion):
+        self._PolicyVersion = PolicyVersion
+
+
+    def _deserialize(self, params):
+        self._CcnId = params.get("CcnId")
+        self._RouteTableId = params.get("RouteTableId")
+        self._PolicyVersion = params.get("PolicyVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCcnRouteTableInputPolicysResponse(AbstractModel):
+    """DescribeCcnRouteTableInputPolicys返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicySet: 路由表接收策略。
+        :type PolicySet: list of CcnRouteTableInputPolicys
+        :param _TotalCount: 符合条件的对象数。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PolicySet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def PolicySet(self):
+        return self._PolicySet
+
+    @PolicySet.setter
+    def PolicySet(self, PolicySet):
+        self._PolicySet = PolicySet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("PolicySet") is not None:
+            self._PolicySet = []
+            for item in params.get("PolicySet"):
+                obj = CcnRouteTableInputPolicys()
+                obj._deserialize(item)
+                self._PolicySet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCcnRouteTablesRequest(AbstractModel):
+    """DescribeCcnRouteTables请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 过滤条件：
+<li>ccn-id - String -（过滤条件）CCN实例ID。</li>
+<li>route-table-id - String -（过滤条件）路由表ID。</li>
+<li>route-table-name - String -（过滤条件）路由表名称。</li>
+<li>route-table-description- String -（过滤条件）路由表备注。</li>
+        :type Filters: list of Filter
+        :param _Offset: 偏移量。
+        :type Offset: int
+        :param _Limit: 一次查询最大返回的数量。
+        :type Limit: int
+        """
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCcnRouteTablesResponse(AbstractModel):
+    """DescribeCcnRouteTables返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CcnRouteTableSet: 路由表信息列表。
+        :type CcnRouteTableSet: list of CcnRouteTable
+        :param _TotalCount: 查询到的路由表数量。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CcnRouteTableSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def CcnRouteTableSet(self):
+        return self._CcnRouteTableSet
+
+    @CcnRouteTableSet.setter
+    def CcnRouteTableSet(self, CcnRouteTableSet):
+        self._CcnRouteTableSet = CcnRouteTableSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CcnRouteTableSet") is not None:
+            self._CcnRouteTableSet = []
+            for item in params.get("CcnRouteTableSet"):
+                obj = CcnRouteTable()
+                obj._deserialize(item)
+                self._CcnRouteTableSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -21912,6 +23152,261 @@ class DescribeRouteConflictsResponse(AbstractModel):
                 obj = RouteConflict()
                 obj._deserialize(item)
                 self._RouteConflictSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRouteTableAssociatedInstancesRequest(AbstractModel):
+    """DescribeRouteTableAssociatedInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 过滤条件：
+<li>ccn-id - String -（过滤条件）CCN实例ID。</li>
+<li>ccn-route-table-id - String -（过滤条件）路由表ID。</li>
+<li>instance-type - String -（过滤条件）实例类型：
+私有网络: `VPC`
+专线网关: `DIRECTCONNECT`
+黑石私有网络: `BMVPC`
+EDGE设备: `EDGE`
+EDGE隧道: `EDGE_TUNNEL`
+EDGE网关: `EDGE_VPNGW`
+VPN网关：`VPNGW`</li>
+<li>instance-id- String -（过滤条件）实例ID。</li>
+        :type Filters: list of Filter
+        :param _Offset: 偏移量。
+        :type Offset: int
+        :param _Limit: 一次查询最大返回的数量。
+        :type Limit: int
+        """
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRouteTableAssociatedInstancesResponse(AbstractModel):
+    """DescribeRouteTableAssociatedInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 查询到的绑定路由表的实例数量。
+        :type TotalCount: int
+        :param _InstanceBindSet: 绑定信息。
+        :type InstanceBindSet: list of InstanceBind
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._InstanceBindSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def InstanceBindSet(self):
+        return self._InstanceBindSet
+
+    @InstanceBindSet.setter
+    def InstanceBindSet(self, InstanceBindSet):
+        self._InstanceBindSet = InstanceBindSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("InstanceBindSet") is not None:
+            self._InstanceBindSet = []
+            for item in params.get("InstanceBindSet"):
+                obj = InstanceBind()
+                obj._deserialize(item)
+                self._InstanceBindSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRouteTableSelectionPoliciesRequest(AbstractModel):
+    """DescribeRouteTableSelectionPolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _Limit: 返回数量
+        :type Limit: int
+        :param _Filters: 过滤条件：
+<li>ccn-id - String -（过滤条件）CCN实例ID。</li>
+<li>instance-type - String -（过滤条件）关联实例类型:
+私有网络: `VPC`
+专线网关: `DIRECTCONNECT`
+黑石私有网络: `BMVPC`
+EDGE设备: `EDGE`
+EDGE隧道: `EDGE_TUNNEL`
+EDGE网关: `EDGE_VPNGW`
+VPN网关：`VPNGW`</li>
+<li>ccn-route-table-id - String -（过滤条件）路由表ID。</li>
+<li>instance-id - String -（过滤条件）关联的实例ID。</li>
+<li>route-table-name - String -（过滤条件）路由表名称。</li>
+        :type Filters: list of Filter
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRouteTableSelectionPoliciesResponse(AbstractModel):
+    """DescribeRouteTableSelectionPolicies返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合条件的对象数。
+        :type TotalCount: int
+        :param _RouteSelectionPolicySet: 路由表选择策略信息集合。
+        :type RouteSelectionPolicySet: list of RouteSelectionPolicy
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._RouteSelectionPolicySet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RouteSelectionPolicySet(self):
+        return self._RouteSelectionPolicySet
+
+    @RouteSelectionPolicySet.setter
+    def RouteSelectionPolicySet(self, RouteSelectionPolicySet):
+        self._RouteSelectionPolicySet = RouteSelectionPolicySet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("RouteSelectionPolicySet") is not None:
+            self._RouteSelectionPolicySet = []
+            for item in params.get("RouteSelectionPolicySet"):
+                obj = RouteSelectionPolicy()
+                obj._deserialize(item)
+                self._RouteSelectionPolicySet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -31274,6 +32769,144 @@ class InquiryPriceResetVpnGatewayInternetMaxBandwidthResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class InstanceBind(AbstractModel):
+    """云联网实例绑定路由表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CcnId: 云联网ID。
+        :type CcnId: str
+        :param _InstanceType: 实例类型：VPC，DIRECTCONNECT，BMVPC，EDGE，EDGE_TUNNEL，EDGE_VPNGW，VPNGW。
+        :type InstanceType: str
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        :param _InstanceBindTime: 实例绑定路由表的时间。
+        :type InstanceBindTime: str
+        :param _RouteTableId: 路由表ID。
+        :type RouteTableId: str
+        :param _InstanceName: 实例名称。
+        :type InstanceName: str
+        :param _InstanceRegion: 实例所在地域。
+        :type InstanceRegion: list of str
+        :param _InstanceUin: 实例所属的账户uin。
+        :type InstanceUin: str
+        :param _State: 关联实例状态：
+<li>`PENDING`：申请中</li>
+<li>`ACTIVE`：已连接</li>
+<li>`EXPIRED`：已过期</li>
+<li>`REJECTED`：已拒绝</li>
+<li>`DELETED`：已删除</li>
+<li>`FAILED`：失败的（2小时后将异步强制解关联）</li>
+<li>`ATTACHING`：关联中</li>
+<li>`DETACHING`：解关联中</li>
+<li>`DETACHFAILED`：解关联失败（2小时后将异步强制解关联）</li>
+        :type State: str
+        """
+        self._CcnId = None
+        self._InstanceType = None
+        self._InstanceId = None
+        self._InstanceBindTime = None
+        self._RouteTableId = None
+        self._InstanceName = None
+        self._InstanceRegion = None
+        self._InstanceUin = None
+        self._State = None
+
+    @property
+    def CcnId(self):
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceBindTime(self):
+        return self._InstanceBindTime
+
+    @InstanceBindTime.setter
+    def InstanceBindTime(self, InstanceBindTime):
+        self._InstanceBindTime = InstanceBindTime
+
+    @property
+    def RouteTableId(self):
+        return self._RouteTableId
+
+    @RouteTableId.setter
+    def RouteTableId(self, RouteTableId):
+        self._RouteTableId = RouteTableId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def InstanceRegion(self):
+        return self._InstanceRegion
+
+    @InstanceRegion.setter
+    def InstanceRegion(self, InstanceRegion):
+        self._InstanceRegion = InstanceRegion
+
+    @property
+    def InstanceUin(self):
+        return self._InstanceUin
+
+    @InstanceUin.setter
+    def InstanceUin(self, InstanceUin):
+        self._InstanceUin = InstanceUin
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+
+    def _deserialize(self, params):
+        self._CcnId = params.get("CcnId")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceBindTime = params.get("InstanceBindTime")
+        self._RouteTableId = params.get("RouteTableId")
+        self._InstanceName = params.get("InstanceName")
+        self._InstanceRegion = params.get("InstanceRegion")
+        self._InstanceUin = params.get("InstanceUin")
+        self._State = params.get("State")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceChargePrepaid(AbstractModel):
     """预付费（包年包月）计费对象。
 
@@ -33631,6 +35264,69 @@ class ModifyCcnRegionBandwidthLimitsTypeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyCcnRouteTablesRequest(AbstractModel):
+    """ModifyCcnRouteTables请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RouteTableInfo: 需要修改的路由表列表。
+        :type RouteTableInfo: list of ModifyRouteTableInfo
+        """
+        self._RouteTableInfo = None
+
+    @property
+    def RouteTableInfo(self):
+        return self._RouteTableInfo
+
+    @RouteTableInfo.setter
+    def RouteTableInfo(self, RouteTableInfo):
+        self._RouteTableInfo = RouteTableInfo
+
+
+    def _deserialize(self, params):
+        if params.get("RouteTableInfo") is not None:
+            self._RouteTableInfo = []
+            for item in params.get("RouteTableInfo"):
+                obj = ModifyRouteTableInfo()
+                obj._deserialize(item)
+                self._RouteTableInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCcnRouteTablesResponse(AbstractModel):
+    """ModifyCcnRouteTables返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyCustomerGatewayAttributeRequest(AbstractModel):
     """ModifyCustomerGatewayAttribute请求参数结构体
 
@@ -35866,6 +37562,138 @@ class ModifyRouteTableAttributeRequest(AbstractModel):
 
 class ModifyRouteTableAttributeResponse(AbstractModel):
     """ModifyRouteTableAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyRouteTableInfo(AbstractModel):
+    """云联网路由表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RouteTableId: 云联网路由表id。
+        :type RouteTableId: str
+        :param _Name: 云联网路由表名称。
+        :type Name: str
+        :param _Description: 云联网路由表描述。
+        :type Description: str
+        """
+        self._RouteTableId = None
+        self._Name = None
+        self._Description = None
+
+    @property
+    def RouteTableId(self):
+        return self._RouteTableId
+
+    @RouteTableId.setter
+    def RouteTableId(self, RouteTableId):
+        self._RouteTableId = RouteTableId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._RouteTableId = params.get("RouteTableId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRouteTableSelectionPoliciesRequest(AbstractModel):
+    """ModifyRouteTableSelectionPolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CcnId: 云联网ID。
+        :type CcnId: str
+        :param _SelectionPolicies: 选择策略信息集合，表示需要按照当前的策略来修改。
+        :type SelectionPolicies: list of CcnRouteTableSelectPolicy
+        """
+        self._CcnId = None
+        self._SelectionPolicies = None
+
+    @property
+    def CcnId(self):
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+    @property
+    def SelectionPolicies(self):
+        return self._SelectionPolicies
+
+    @SelectionPolicies.setter
+    def SelectionPolicies(self, SelectionPolicies):
+        self._SelectionPolicies = SelectionPolicies
+
+
+    def _deserialize(self, params):
+        self._CcnId = params.get("CcnId")
+        if params.get("SelectionPolicies") is not None:
+            self._SelectionPolicies = []
+            for item in params.get("SelectionPolicies"):
+                obj = CcnRouteTableSelectPolicy()
+                obj._deserialize(item)
+                self._SelectionPolicies.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRouteTableSelectionPoliciesResponse(AbstractModel):
+    """ModifyRouteTableSelectionPolicies返回参数结构体
 
     """
 
@@ -41273,6 +43101,180 @@ class RenewVpnGatewayResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ReplaceCcnRouteTableBroadcastPolicysRequest(AbstractModel):
+    """ReplaceCcnRouteTableBroadcastPolicys请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CcnId: 云联网ID
+        :type CcnId: str
+        :param _RouteTableId: 云联网路由表ID
+        :type RouteTableId: str
+        :param _Policys: 新的路由传播策略
+        :type Policys: list of CcnRouteTableBroadcastPolicy
+        """
+        self._CcnId = None
+        self._RouteTableId = None
+        self._Policys = None
+
+    @property
+    def CcnId(self):
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+    @property
+    def RouteTableId(self):
+        return self._RouteTableId
+
+    @RouteTableId.setter
+    def RouteTableId(self, RouteTableId):
+        self._RouteTableId = RouteTableId
+
+    @property
+    def Policys(self):
+        return self._Policys
+
+    @Policys.setter
+    def Policys(self, Policys):
+        self._Policys = Policys
+
+
+    def _deserialize(self, params):
+        self._CcnId = params.get("CcnId")
+        self._RouteTableId = params.get("RouteTableId")
+        if params.get("Policys") is not None:
+            self._Policys = []
+            for item in params.get("Policys"):
+                obj = CcnRouteTableBroadcastPolicy()
+                obj._deserialize(item)
+                self._Policys.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReplaceCcnRouteTableBroadcastPolicysResponse(AbstractModel):
+    """ReplaceCcnRouteTableBroadcastPolicys返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ReplaceCcnRouteTableInputPolicysRequest(AbstractModel):
+    """ReplaceCcnRouteTableInputPolicys请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CcnId: 云联网ID。
+        :type CcnId: str
+        :param _RouteTableId: 云联网路由表ID。
+        :type RouteTableId: str
+        :param _Policys: 新的路由接收策略。
+        :type Policys: list of CcnRouteTableInputPolicy
+        """
+        self._CcnId = None
+        self._RouteTableId = None
+        self._Policys = None
+
+    @property
+    def CcnId(self):
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+    @property
+    def RouteTableId(self):
+        return self._RouteTableId
+
+    @RouteTableId.setter
+    def RouteTableId(self, RouteTableId):
+        self._RouteTableId = RouteTableId
+
+    @property
+    def Policys(self):
+        return self._Policys
+
+    @Policys.setter
+    def Policys(self, Policys):
+        self._Policys = Policys
+
+
+    def _deserialize(self, params):
+        self._CcnId = params.get("CcnId")
+        self._RouteTableId = params.get("RouteTableId")
+        if params.get("Policys") is not None:
+            self._Policys = []
+            for item in params.get("Policys"):
+                obj = CcnRouteTableInputPolicy()
+                obj._deserialize(item)
+                self._Policys.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReplaceCcnRouteTableInputPolicysResponse(AbstractModel):
+    """ReplaceCcnRouteTableInputPolicys返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ReplaceDirectConnectGatewayCcnRoutesRequest(AbstractModel):
     """ReplaceDirectConnectGatewayCcnRoutes请求参数结构体
 
@@ -43172,6 +45174,136 @@ class RouteConflict(AbstractModel):
                 obj = Route()
                 obj._deserialize(item)
                 self._ConflictSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RouteSelectionPolicy(AbstractModel):
+    """路由表选择策略信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CcnId: 云联网ID。
+        :type CcnId: str
+        :param _RouteTableId: 路由表ID。
+        :type RouteTableId: str
+        :param _RouteTableName: 路由表名称。
+        :type RouteTableName: str
+        :param _InstanceType: 实例类型。如VPC
+        :type InstanceType: str
+        :param _InstanceName: 实例名称。
+        :type InstanceName: str
+        :param _SourceCidrBlock: 源端cidr。
+        :type SourceCidrBlock: str
+        :param _Description: 路由表描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        :param _InstanceUin: 关联实例所属UIN（根账号）。
+        :type InstanceUin: str
+        """
+        self._CcnId = None
+        self._RouteTableId = None
+        self._RouteTableName = None
+        self._InstanceType = None
+        self._InstanceName = None
+        self._SourceCidrBlock = None
+        self._Description = None
+        self._InstanceId = None
+        self._InstanceUin = None
+
+    @property
+    def CcnId(self):
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+    @property
+    def RouteTableId(self):
+        return self._RouteTableId
+
+    @RouteTableId.setter
+    def RouteTableId(self, RouteTableId):
+        self._RouteTableId = RouteTableId
+
+    @property
+    def RouteTableName(self):
+        return self._RouteTableName
+
+    @RouteTableName.setter
+    def RouteTableName(self, RouteTableName):
+        self._RouteTableName = RouteTableName
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def SourceCidrBlock(self):
+        return self._SourceCidrBlock
+
+    @SourceCidrBlock.setter
+    def SourceCidrBlock(self, SourceCidrBlock):
+        self._SourceCidrBlock = SourceCidrBlock
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceUin(self):
+        return self._InstanceUin
+
+    @InstanceUin.setter
+    def InstanceUin(self, InstanceUin):
+        self._InstanceUin = InstanceUin
+
+
+    def _deserialize(self, params):
+        self._CcnId = params.get("CcnId")
+        self._RouteTableId = params.get("RouteTableId")
+        self._RouteTableName = params.get("RouteTableName")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceName = params.get("InstanceName")
+        self._SourceCidrBlock = params.get("SourceCidrBlock")
+        self._Description = params.get("Description")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceUin = params.get("InstanceUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

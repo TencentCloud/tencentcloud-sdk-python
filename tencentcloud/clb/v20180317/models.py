@@ -3378,6 +3378,8 @@ OPEN：公网属性， INTERNAL：内网属性。
         :type DynamicVip: bool
         :param _Egress: 网络出口
         :type Egress: str
+        :param _LBChargePrepaid: 负载均衡实例的预付费相关属性
+        :type LBChargePrepaid: :class:`tencentcloud.clb.v20180317.models.LBChargePrepaid`
         """
         self._LoadBalancerType = None
         self._Forward = None
@@ -3406,6 +3408,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         self._LoadBalancerPassToTarget = None
         self._DynamicVip = None
         self._Egress = None
+        self._LBChargePrepaid = None
 
     @property
     def LoadBalancerType(self):
@@ -3623,6 +3626,14 @@ OPEN：公网属性， INTERNAL：内网属性。
     def Egress(self, Egress):
         self._Egress = Egress
 
+    @property
+    def LBChargePrepaid(self):
+        return self._LBChargePrepaid
+
+    @LBChargePrepaid.setter
+    def LBChargePrepaid(self, LBChargePrepaid):
+        self._LBChargePrepaid = LBChargePrepaid
+
 
     def _deserialize(self, params):
         self._LoadBalancerType = params.get("LoadBalancerType")
@@ -3666,6 +3677,9 @@ OPEN：公网属性， INTERNAL：内网属性。
         self._LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
         self._DynamicVip = params.get("DynamicVip")
         self._Egress = params.get("Egress")
+        if params.get("LBChargePrepaid") is not None:
+            self._LBChargePrepaid = LBChargePrepaid()
+            self._LBChargePrepaid._deserialize(params.get("LBChargePrepaid"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -3037,7 +3037,7 @@ class CreateUserRequest(AbstractModel):
         :type UserName: str
         :param _RealName: 用户姓名，最大长度20个字符，不能包含空白字符
         :type RealName: str
-        :param _Phone: 大陆手机号直接填写，如果是其他国家、地区号码， 按照"国家地区代码|手机号"的格式输入。如: "+852|xxxxxxxx"
+        :param _Phone: 按照"国家地区代码|手机号"的格式输入。如: "+86|xxxxxxxx"
         :type Phone: str
         :param _Email: 电子邮件
         :type Email: str
@@ -8569,7 +8569,7 @@ class ModifyUserRequest(AbstractModel):
         :type Id: int
         :param _RealName: 用户姓名，最大长度20个字符，不能包含空格
         :type RealName: str
-        :param _Phone: 大陆手机号直接填写，如果是其他国家、地区号码,按照"国家地区代码|手机号"的格式输入。如: "+852|xxxxxxxx"
+        :param _Phone: 按照"国家地区代码|手机号"的格式输入。如: "+86|xxxxxxxx"
         :type Phone: str
         :param _Email: 电子邮件
         :type Email: str

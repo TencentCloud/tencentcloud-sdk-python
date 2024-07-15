@@ -452,7 +452,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateTranscodeTemplate(self, request):
-        """创建用户自定义转码模板，数量上限：1000。
+        """创建用户自定义转码模板，数量上限：1000
 
         :param request: Request instance for CreateTranscodeTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateTranscodeTemplateRequest`

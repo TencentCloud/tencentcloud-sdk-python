@@ -145,3 +145,27 @@ class HunyuanClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def TextToImageLite(self, request):
+        """文生图轻量版接口根据输入的文本描述，智能生成与之相关的结果图。
+        文生图轻量版默认提供3个并发任务数，代表最多能同时处理3个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
+
+        :param request: Request instance for TextToImageLite.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.TextToImageLiteRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.TextToImageLiteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TextToImageLite", params, headers=headers)
+            response = json.loads(body)
+            model = models.TextToImageLiteResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))

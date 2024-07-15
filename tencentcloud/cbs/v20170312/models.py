@@ -2842,6 +2842,85 @@ class DescribeInstancesDiskNumResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSnapshotOverviewRequest(AbstractModel):
+    """DescribeSnapshotOverview请求参数结构体
+
+    """
+
+
+class DescribeSnapshotOverviewResponse(AbstractModel):
+    """DescribeSnapshotOverview返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalNums: 当前总有效快照数量
+        :type TotalNums: int
+        :param _TotalSize: 已使用快照总容量大小，容量单位为GiB
+        :type TotalSize: float
+        :param _FreeQuota: 快照免费额度大小，额度单位为GiB
+        :type FreeQuota: float
+        :param _RealTradeSize: 快照真实产生计费的总容量大小，单位为GiB
+        :type RealTradeSize: float
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalNums = None
+        self._TotalSize = None
+        self._FreeQuota = None
+        self._RealTradeSize = None
+        self._RequestId = None
+
+    @property
+    def TotalNums(self):
+        return self._TotalNums
+
+    @TotalNums.setter
+    def TotalNums(self, TotalNums):
+        self._TotalNums = TotalNums
+
+    @property
+    def TotalSize(self):
+        return self._TotalSize
+
+    @TotalSize.setter
+    def TotalSize(self, TotalSize):
+        self._TotalSize = TotalSize
+
+    @property
+    def FreeQuota(self):
+        return self._FreeQuota
+
+    @FreeQuota.setter
+    def FreeQuota(self, FreeQuota):
+        self._FreeQuota = FreeQuota
+
+    @property
+    def RealTradeSize(self):
+        return self._RealTradeSize
+
+    @RealTradeSize.setter
+    def RealTradeSize(self, RealTradeSize):
+        self._RealTradeSize = RealTradeSize
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalNums = params.get("TotalNums")
+        self._TotalSize = params.get("TotalSize")
+        self._FreeQuota = params.get("FreeQuota")
+        self._RealTradeSize = params.get("RealTradeSize")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSnapshotSharePermissionRequest(AbstractModel):
     """DescribeSnapshotSharePermission请求参数结构体
 

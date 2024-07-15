@@ -399,6 +399,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AssociateInstancesToCcnRouteTable(self, request):
+        """本接口（AssociateInstancesToCcnRouteTable）用于将指定的云联网实例关联到指定的云联网路由表。
+
+        :param request: Request instance for AssociateInstancesToCcnRouteTable.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.AssociateInstancesToCcnRouteTableRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AssociateInstancesToCcnRouteTableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AssociateInstancesToCcnRouteTable", params, headers=headers)
+            response = json.loads(body)
+            model = models.AssociateInstancesToCcnRouteTableResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AssociateNatGatewayAddress(self, request):
         """本接口(AssociateNatGatewayAddress)用于NAT网关绑定弹性IP（EIP）。
 
@@ -669,6 +692,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ClearRouteTableSelectionPolicies(self, request):
+        """本接口（ClearRouteTableSelectionPolicies）用于清空指定云联网的路由表选择策略。
+
+        :param request: Request instance for ClearRouteTableSelectionPolicies.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ClearRouteTableSelectionPoliciesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ClearRouteTableSelectionPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ClearRouteTableSelectionPolicies", params, headers=headers)
+            response = json.loads(body)
+            model = models.ClearRouteTableSelectionPoliciesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CloneSecurityGroup(self, request):
         """本接口（CloneSecurityGroup）用于根据存量的安全组，克隆创建出同样规则配置的安全组。仅克隆安全组及其规则信息，不会克隆安全组标签信息。
 
@@ -830,6 +876,29 @@ class VpcClient(AbstractClient):
             body = self.call("CreateCcn", params, headers=headers)
             response = json.loads(body)
             model = models.CreateCcnResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateCcnRouteTables(self, request):
+        """本接口（CreateCcnRouteTables）用于给指定的云联网实例新建路由表。
+
+        :param request: Request instance for CreateCcnRouteTables.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateCcnRouteTablesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateCcnRouteTablesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCcnRouteTables", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCcnRouteTablesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2012,6 +2081,29 @@ class VpcClient(AbstractClient):
             body = self.call("DeleteCcn", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteCcnResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCcnRouteTables(self, request):
+        """本接口（DeleteCcnRouteTables）用于删除云联网路由表。
+
+        :param request: Request instance for DeleteCcnRouteTables.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteCcnRouteTablesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteCcnRouteTablesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCcnRouteTables", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCcnRouteTablesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3243,6 +3335,75 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCcnRouteTableBroadcastPolicys(self, request):
+        """本接口(DescribeCcnRouteTableBroadcastPolicys)用于查询指定云联网路由表的路由传播策略。
+
+        :param request: Request instance for DescribeCcnRouteTableBroadcastPolicys.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeCcnRouteTableBroadcastPolicysRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeCcnRouteTableBroadcastPolicysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCcnRouteTableBroadcastPolicys", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCcnRouteTableBroadcastPolicysResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCcnRouteTableInputPolicys(self, request):
+        """本接口(DescribeCcnRouteTableInputPolicys)用于查询指定云联网路由表的路由接收策略。
+
+        :param request: Request instance for DescribeCcnRouteTableInputPolicys.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeCcnRouteTableInputPolicysRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeCcnRouteTableInputPolicysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCcnRouteTableInputPolicys", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCcnRouteTableInputPolicysResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCcnRouteTables(self, request):
+        """该接口用于查询指定的云联网实例的路由表信息。
+
+        :param request: Request instance for DescribeCcnRouteTables.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeCcnRouteTablesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeCcnRouteTablesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCcnRouteTables", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCcnRouteTablesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCcnRoutes(self, request):
         """本接口（DescribeCcnRoutes）用于查询已加入云联网（CCN）的路由。
 
@@ -4185,6 +4346,52 @@ class VpcClient(AbstractClient):
             body = self.call("DescribeRouteConflicts", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRouteConflictsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRouteTableAssociatedInstances(self, request):
+        """本接口（DescribeRouteTableAssociatedInstances）用于查询指定的云联网关联的实例所绑定的路由表信息。
+
+        :param request: Request instance for DescribeRouteTableAssociatedInstances.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeRouteTableAssociatedInstancesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeRouteTableAssociatedInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRouteTableAssociatedInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRouteTableAssociatedInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRouteTableSelectionPolicies(self, request):
+        """本接口（DescribeRouteTableSelectionPolicies）用于查询云联网路由表选择策略。
+
+        :param request: Request instance for DescribeRouteTableSelectionPolicies.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeRouteTableSelectionPoliciesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeRouteTableSelectionPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRouteTableSelectionPolicies", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRouteTableSelectionPoliciesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -6216,6 +6423,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyCcnRouteTables(self, request):
+        """该接口用于修改云联网路由表名称和备注。
+
+        :param request: Request instance for ModifyCcnRouteTables.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyCcnRouteTablesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyCcnRouteTablesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCcnRouteTables", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCcnRouteTablesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyCustomerGatewayAttribute(self, request):
         """本接口（ModifyCustomerGatewayAttribute）用于修改对端网关信息。
 
@@ -6807,6 +7037,29 @@ class VpcClient(AbstractClient):
             body = self.call("ModifyRouteTableAttribute", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyRouteTableAttributeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyRouteTableSelectionPolicies(self, request):
+        """该接口用于编辑云联网路由表选择策略
+
+        :param request: Request instance for ModifyRouteTableSelectionPolicies.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyRouteTableSelectionPoliciesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyRouteTableSelectionPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRouteTableSelectionPolicies", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRouteTableSelectionPoliciesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -7474,6 +7727,87 @@ class VpcClient(AbstractClient):
             body = self.call("RenewVpnGateway", params, headers=headers)
             response = json.loads(body)
             model = models.RenewVpnGatewayResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ReplaceCcnRouteTableBroadcastPolicys(self, request):
+        """本接口(ReplaceCcnRouteTableBroadcastPolicys)用于替换云联网路由表路由传播策略。
+        > 特别注意：是全量覆盖，非增量添加
+
+        **路由条件支持以下四种：**
+
+        - 实例类型: `instance-type`，可选值：私有网络 `VPC`、专线网关 `DIRECTCONNECT`、专线网关 `VPNGW`
+        - 实例ID: `instance-id`，例如：`dcg-8zljkrft`、`vpc-jdevjrup`，暂不支持 `Edge` 实例
+        - 实例地域: `instance-region`，例如：`ap-guangzhou`<br />产品支持的所有地域列表可通过接口 [DescribeRegions](https://cloud.tencent.com/document/product/1596/77930) 查询，其中参数 `Product` 设置为 `ccn`
+        - 路由前缀: `cidr-block`，例如：`10.1.0.0/16`
+
+
+        **传播条件支持以下三种：**
+
+        - 实例类型: `instance-type`，格式同路由条件
+        - 实例ID: `instance-id`，格式同路由条件
+        - 实例地域: `instance-region`，格式同路由条件
+
+
+        **使用限制：**
+        - 一条策略内的单个条件类型，最大支持设置 `25` 个条件值
+        - 一张路由表，最大支持 `100` 条路由传播策略
+        - 路由条件类型中，只有 `cidr-block` 类型支持模糊匹配和精确匹配两种，其它类型只支持精确匹配一种模式
+
+        :param request: Request instance for ReplaceCcnRouteTableBroadcastPolicys.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ReplaceCcnRouteTableBroadcastPolicysRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ReplaceCcnRouteTableBroadcastPolicysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReplaceCcnRouteTableBroadcastPolicys", params, headers=headers)
+            response = json.loads(body)
+            model = models.ReplaceCcnRouteTableBroadcastPolicysResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ReplaceCcnRouteTableInputPolicys(self, request):
+        """本接口(ReplaceRouteTableInputPolicys)用于替换云联网路由表路由接收策略。
+        > 特别注意：是全量覆盖，非增量添加
+
+        **路由条件支持以下四种：**
+
+        - 实例类型: `instance-type`，可选值：私有网络 `VPC`、专线网关 `DIRECTCONNECT`、专线网关 `VPNGW`
+        - 实例ID: `instance-id`，例如：`dcg-8zljkrft`、`vpc-jdevjrup`，暂不支持 `Edge` 实例
+        - 实例地域: `instance-region`，例如：`ap-guangzhou`<br />产品支持的所有地域列表可通过接口 [DescribeRegions](https://cloud.tencent.com/document/product/1596/77930) 查询，其中参数 `Product` 设置为 `ccn`
+        - 路由前缀: `cidr-block`，例如：`10.1.0.0/16`
+
+
+        **使用限制：**
+        - 一条策略内的单个条件类型，最大支持设置 `25` 个条件值
+        - 一张路由表，最大支持 `100` 条路由接收策略
+        - 路由条件类型中，只有 `cidr-block` 类型支持模糊匹配和精确匹配两种，其它类型只支持精确匹配一种模式
+
+        :param request: Request instance for ReplaceCcnRouteTableInputPolicys.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ReplaceCcnRouteTableInputPolicysRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ReplaceCcnRouteTableInputPolicysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReplaceCcnRouteTableInputPolicys", params, headers=headers)
+            response = json.loads(body)
+            model = models.ReplaceCcnRouteTableInputPolicysResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

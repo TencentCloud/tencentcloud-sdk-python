@@ -1256,6 +1256,147 @@ class SubmitHunyuanImageJobResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class TextToImageLiteRequest(AbstractModel):
+    """TextToImageLite请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Prompt: 文本描述。
+算法将根据输入的文本智能生成与之相关的图像。建议详细描述画面主体、细节、场景等，文本描述越丰富，生成效果越精美。
+不能为空，推荐使用中文。最多可传256个 utf-8 字符。
+        :type Prompt: str
+        :param _NegativePrompt: 反向文本描述。
+用于一定程度上从反面引导模型生成的走向，减少生成结果中出现描述内容的可能，但不能完全杜绝。
+推荐使用中文。最多可传256个 utf-8 字符。
+        :type NegativePrompt: str
+        :param _Style: 绘画风格。
+请在 [智能文生图风格列表](https://cloud.tencent.com/document/product/1668/86249) 中选择期望的风格，传入风格编号。
+推荐使用且只使用一种风格。不传默认使用201（日系动漫风格）。
+        :type Style: str
+        :param _Resolution: 生成图分辨率。
+支持生成以下分辨率的图片：768:768（1:1）、768:1024（3:4）、1024:768（4:3）、1024:1024（1:1）、720:1280（9:16）、1280:720（16:9）、768:1280（3:5）、1280:768（5:3）、1080:1920（9:16）、1920:1080（16:9），不传默认使用768:768。
+        :type Resolution: str
+        :param _LogoAdd: 为生成结果图添加标识的开关，默认为1。
+1：添加标识。
+0：不添加标识。
+其他数值：默认按0处理。
+建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
+        :type LogoAdd: int
+        :param _RspImgType: 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
+        :type RspImgType: str
+        """
+        self._Prompt = None
+        self._NegativePrompt = None
+        self._Style = None
+        self._Resolution = None
+        self._LogoAdd = None
+        self._RspImgType = None
+
+    @property
+    def Prompt(self):
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def NegativePrompt(self):
+        return self._NegativePrompt
+
+    @NegativePrompt.setter
+    def NegativePrompt(self, NegativePrompt):
+        self._NegativePrompt = NegativePrompt
+
+    @property
+    def Style(self):
+        return self._Style
+
+    @Style.setter
+    def Style(self, Style):
+        self._Style = Style
+
+    @property
+    def Resolution(self):
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def LogoAdd(self):
+        return self._LogoAdd
+
+    @LogoAdd.setter
+    def LogoAdd(self, LogoAdd):
+        self._LogoAdd = LogoAdd
+
+    @property
+    def RspImgType(self):
+        return self._RspImgType
+
+    @RspImgType.setter
+    def RspImgType(self, RspImgType):
+        self._RspImgType = RspImgType
+
+
+    def _deserialize(self, params):
+        self._Prompt = params.get("Prompt")
+        self._NegativePrompt = params.get("NegativePrompt")
+        self._Style = params.get("Style")
+        self._Resolution = params.get("Resolution")
+        self._LogoAdd = params.get("LogoAdd")
+        self._RspImgType = params.get("RspImgType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextToImageLiteResponse(AbstractModel):
+    """TextToImageLite返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResultImage: 根据入参 RspImgType 填入不同，返回不同的内容。如果传入 base64 则返回生成图 Base64 编码。如果传入 url 则返回的生成图 URL , 有效期1小时，请及时保存。
+        :type ResultImage: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ResultImage = None
+        self._RequestId = None
+
+    @property
+    def ResultImage(self):
+        return self._ResultImage
+
+    @ResultImage.setter
+    def ResultImage(self, ResultImage):
+        self._ResultImage = ResultImage
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ResultImage = params.get("ResultImage")
+        self._RequestId = params.get("RequestId")
+
+
 class Tool(AbstractModel):
     """用户指定模型使用的工具
 
