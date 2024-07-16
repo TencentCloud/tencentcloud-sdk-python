@@ -1116,6 +1116,27 @@ class DedicatedClusterOrder(AbstractModel):
         :param _OrderType: 订单类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrderType: str
+        :param _CheckStatus: 验收状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckStatus: str
+        :param _DeliverExpectTime: 交付预期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeliverExpectTime: str
+        :param _DeliverFinishTime: 交付实际完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeliverFinishTime: str
+        :param _CheckExpectTime: 验收预期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckExpectTime: str
+        :param _CheckFinishTime: 验收实际完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckFinishTime: str
+        :param _OrderSLA: 订单SLA
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderSLA: str
+        :param _OrderPayPlan: 订单支付计划
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderPayPlan: str
         """
         self._DedicatedClusterId = None
         self._DedicatedClusterTypeId = None
@@ -1137,6 +1158,13 @@ class DedicatedClusterOrder(AbstractModel):
         self._TimeUnit = None
         self._TimeSpan = None
         self._OrderType = None
+        self._CheckStatus = None
+        self._DeliverExpectTime = None
+        self._DeliverFinishTime = None
+        self._CheckExpectTime = None
+        self._CheckFinishTime = None
+        self._OrderSLA = None
+        self._OrderPayPlan = None
 
     @property
     def DedicatedClusterId(self):
@@ -1298,6 +1326,62 @@ class DedicatedClusterOrder(AbstractModel):
     def OrderType(self, OrderType):
         self._OrderType = OrderType
 
+    @property
+    def CheckStatus(self):
+        return self._CheckStatus
+
+    @CheckStatus.setter
+    def CheckStatus(self, CheckStatus):
+        self._CheckStatus = CheckStatus
+
+    @property
+    def DeliverExpectTime(self):
+        return self._DeliverExpectTime
+
+    @DeliverExpectTime.setter
+    def DeliverExpectTime(self, DeliverExpectTime):
+        self._DeliverExpectTime = DeliverExpectTime
+
+    @property
+    def DeliverFinishTime(self):
+        return self._DeliverFinishTime
+
+    @DeliverFinishTime.setter
+    def DeliverFinishTime(self, DeliverFinishTime):
+        self._DeliverFinishTime = DeliverFinishTime
+
+    @property
+    def CheckExpectTime(self):
+        return self._CheckExpectTime
+
+    @CheckExpectTime.setter
+    def CheckExpectTime(self, CheckExpectTime):
+        self._CheckExpectTime = CheckExpectTime
+
+    @property
+    def CheckFinishTime(self):
+        return self._CheckFinishTime
+
+    @CheckFinishTime.setter
+    def CheckFinishTime(self, CheckFinishTime):
+        self._CheckFinishTime = CheckFinishTime
+
+    @property
+    def OrderSLA(self):
+        return self._OrderSLA
+
+    @OrderSLA.setter
+    def OrderSLA(self, OrderSLA):
+        self._OrderSLA = OrderSLA
+
+    @property
+    def OrderPayPlan(self):
+        return self._OrderPayPlan
+
+    @OrderPayPlan.setter
+    def OrderPayPlan(self, OrderPayPlan):
+        self._OrderPayPlan = OrderPayPlan
+
 
     def _deserialize(self, params):
         self._DedicatedClusterId = params.get("DedicatedClusterId")
@@ -1325,6 +1409,13 @@ class DedicatedClusterOrder(AbstractModel):
         self._TimeUnit = params.get("TimeUnit")
         self._TimeSpan = params.get("TimeSpan")
         self._OrderType = params.get("OrderType")
+        self._CheckStatus = params.get("CheckStatus")
+        self._DeliverExpectTime = params.get("DeliverExpectTime")
+        self._DeliverFinishTime = params.get("DeliverFinishTime")
+        self._CheckExpectTime = params.get("CheckExpectTime")
+        self._CheckFinishTime = params.get("CheckFinishTime")
+        self._OrderSLA = params.get("OrderSLA")
+        self._OrderPayPlan = params.get("OrderPayPlan")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2452,6 +2543,8 @@ class DescribeDedicatedClusterOrdersRequest(AbstractModel):
         :type Status: str
         :param _ActionType: 订单类型为过滤条件：CREATE  EXTEND
         :type ActionType: str
+        :param _OrderTypes: 订单类型列表
+        :type OrderTypes: list of str
         """
         self._DedicatedClusterIds = None
         self._DedicatedClusterOrderIds = None
@@ -2459,6 +2552,7 @@ class DescribeDedicatedClusterOrdersRequest(AbstractModel):
         self._Limit = None
         self._Status = None
         self._ActionType = None
+        self._OrderTypes = None
 
     @property
     def DedicatedClusterIds(self):
@@ -2508,6 +2602,14 @@ class DescribeDedicatedClusterOrdersRequest(AbstractModel):
     def ActionType(self, ActionType):
         self._ActionType = ActionType
 
+    @property
+    def OrderTypes(self):
+        return self._OrderTypes
+
+    @OrderTypes.setter
+    def OrderTypes(self, OrderTypes):
+        self._OrderTypes = OrderTypes
+
 
     def _deserialize(self, params):
         self._DedicatedClusterIds = params.get("DedicatedClusterIds")
@@ -2516,6 +2618,7 @@ class DescribeDedicatedClusterOrdersRequest(AbstractModel):
         self._Limit = params.get("Limit")
         self._Status = params.get("Status")
         self._ActionType = params.get("ActionType")
+        self._OrderTypes = params.get("OrderTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

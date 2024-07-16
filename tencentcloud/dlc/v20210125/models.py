@@ -11297,10 +11297,16 @@ class DescribeDataEngineImageVersionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EngineType: 引擎类型：SQL、SparkBatch、StandardSpark、StandardPresto
+        :param _EngineType: 引擎类型：SparkSQL、PrestoSQL、SparkBatch、StandardSpark、StandardPresto
         :type EngineType: str
+        :param _Sort: 排序字段: InsertTime（插入时间，默认），UpdateTime（更新时间）
+        :type Sort: str
+        :param _Asc: 排序方式：false（降序，默认），true（升序）
+        :type Asc: bool
         """
         self._EngineType = None
+        self._Sort = None
+        self._Asc = None
 
     @property
     def EngineType(self):
@@ -11310,9 +11316,27 @@ class DescribeDataEngineImageVersionsRequest(AbstractModel):
     def EngineType(self, EngineType):
         self._EngineType = EngineType
 
+    @property
+    def Sort(self):
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def Asc(self):
+        return self._Asc
+
+    @Asc.setter
+    def Asc(self, Asc):
+        self._Asc = Asc
+
 
     def _deserialize(self, params):
         self._EngineType = params.get("EngineType")
+        self._Sort = params.get("Sort")
+        self._Asc = params.get("Asc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

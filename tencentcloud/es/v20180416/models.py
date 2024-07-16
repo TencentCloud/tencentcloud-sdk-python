@@ -3525,7 +3525,7 @@ class DescribeInstancePluginListRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 分页大小，默认值10
         :type Limit: int
-        :param _OrderBy: 排序字段<li>1：插件名 pluginName
+        :param _OrderBy: 排序字段<li>1：插件名 pluginName</li>
         :type OrderBy: str
         :param _OrderByType: 排序方式<li>0：升序 asc</li><li>1：降序 desc</li>
         :type OrderByType: str
@@ -13675,6 +13675,10 @@ CLOSE 关闭
         :type OutboundPublicAccess: str
         :param _CvmDelayOnlineTime: cvm延迟上架参数
         :type CvmDelayOnlineTime: int
+        :param _ShardAllocationConcurrents: 分片迁移并发数
+        :type ShardAllocationConcurrents: int
+        :param _ShardAllocationBytes: 分片迁移并发速度
+        :type ShardAllocationBytes: int
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -13714,6 +13718,8 @@ CLOSE 关闭
         self._OutboundPublicAcls = None
         self._OutboundPublicAccess = None
         self._CvmDelayOnlineTime = None
+        self._ShardAllocationConcurrents = None
+        self._ShardAllocationBytes = None
 
     @property
     def InstanceId(self):
@@ -14019,6 +14025,22 @@ CLOSE 关闭
     def CvmDelayOnlineTime(self, CvmDelayOnlineTime):
         self._CvmDelayOnlineTime = CvmDelayOnlineTime
 
+    @property
+    def ShardAllocationConcurrents(self):
+        return self._ShardAllocationConcurrents
+
+    @ShardAllocationConcurrents.setter
+    def ShardAllocationConcurrents(self, ShardAllocationConcurrents):
+        self._ShardAllocationConcurrents = ShardAllocationConcurrents
+
+    @property
+    def ShardAllocationBytes(self):
+        return self._ShardAllocationBytes
+
+    @ShardAllocationBytes.setter
+    def ShardAllocationBytes(self, ShardAllocationBytes):
+        self._ShardAllocationBytes = ShardAllocationBytes
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -14086,6 +14108,8 @@ CLOSE 关闭
                 self._OutboundPublicAcls.append(obj)
         self._OutboundPublicAccess = params.get("OutboundPublicAccess")
         self._CvmDelayOnlineTime = params.get("CvmDelayOnlineTime")
+        self._ShardAllocationConcurrents = params.get("ShardAllocationConcurrents")
+        self._ShardAllocationBytes = params.get("ShardAllocationBytes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

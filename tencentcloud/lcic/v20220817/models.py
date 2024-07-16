@@ -1911,6 +1911,8 @@ video 纯视频
         :type RecordScene: str
         :param _RecordLang: 录制自定义语言，仅recordlayout=9的时候此参数有效
         :type RecordLang: str
+        :param _RecordStream: 录制类型 0 仅录制混流（默认） ;1 录制混流+单流，该模式下除混流录制基础上，分别录制老师、台上学生的音视频流，每路录制都会产生相应的录制费用 。示例：0
+        :type RecordStream: int
         """
         self._Name = None
         self._StartTime = None
@@ -1941,6 +1943,7 @@ video 纯视频
         self._RecordBackground = None
         self._RecordScene = None
         self._RecordLang = None
+        self._RecordStream = None
 
     @property
     def Name(self):
@@ -2178,6 +2181,14 @@ video 纯视频
 
         self._RecordLang = RecordLang
 
+    @property
+    def RecordStream(self):
+        return self._RecordStream
+
+    @RecordStream.setter
+    def RecordStream(self, RecordStream):
+        self._RecordStream = RecordStream
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -2209,6 +2220,7 @@ video 纯视频
         self._RecordBackground = params.get("RecordBackground")
         self._RecordScene = params.get("RecordScene")
         self._RecordLang = params.get("RecordLang")
+        self._RecordStream = params.get("RecordStream")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4610,7 +4622,7 @@ video 纯视频
         :type VideoDuration: int
         :param _EndDelayTime: 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
         :type EndDelayTime: int
-        :param _LiveType: 直播类型：0 常规（默认）1 伪直播
+        :param _LiveType: 直播类型：0 常规（默认）1 伪直播 2 RTMP推流直播
         :type LiveType: int
         :param _RecordLiveUrl: 伪直播链接
         :type RecordLiveUrl: str
@@ -8859,6 +8871,8 @@ class RoomInfo(AbstractModel):
         :type RecordScene: str
         :param _RecordLang: 录制自定义语言，仅recordlayout=9的时候此参数有效
         :type RecordLang: str
+        :param _RecordStream: 录制类型 0 仅录制混流（默认） ;1 录制混流+单流，该模式下除混流录制基础上，分别录制老师、台上学生的音视频流，每路录制都会产生相应的录制费用 。示例：0
+        :type RecordStream: int
         """
         self._Name = None
         self._StartTime = None
@@ -8888,6 +8902,7 @@ class RoomInfo(AbstractModel):
         self._RecordBackground = None
         self._RecordScene = None
         self._RecordLang = None
+        self._RecordStream = None
 
     @property
     def Name(self):
@@ -9117,6 +9132,14 @@ class RoomInfo(AbstractModel):
 
         self._RecordLang = RecordLang
 
+    @property
+    def RecordStream(self):
+        return self._RecordStream
+
+    @RecordStream.setter
+    def RecordStream(self, RecordStream):
+        self._RecordStream = RecordStream
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -9147,6 +9170,7 @@ class RoomInfo(AbstractModel):
         self._RecordBackground = params.get("RecordBackground")
         self._RecordScene = params.get("RecordScene")
         self._RecordLang = params.get("RecordLang")
+        self._RecordStream = params.get("RecordStream")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -4625,12 +4625,16 @@ class CcnInstance(AbstractModel):
         :param _RouteTableId: 实例关联的路由表ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RouteTableId: str
+        :param _OrderType: 实例付费方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderType: str
         """
         self._InstanceId = None
         self._InstanceRegion = None
         self._InstanceType = None
         self._Description = None
         self._RouteTableId = None
+        self._OrderType = None
 
     @property
     def InstanceId(self):
@@ -4672,6 +4676,14 @@ class CcnInstance(AbstractModel):
     def RouteTableId(self, RouteTableId):
         self._RouteTableId = RouteTableId
 
+    @property
+    def OrderType(self):
+        return self._OrderType
+
+    @OrderType.setter
+    def OrderType(self, OrderType):
+        self._OrderType = OrderType
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -4679,6 +4691,7 @@ class CcnInstance(AbstractModel):
         self._InstanceType = params.get("InstanceType")
         self._Description = params.get("Description")
         self._RouteTableId = params.get("RouteTableId")
+        self._OrderType = params.get("OrderType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7993,20 +8006,23 @@ class CreateHaVipRequest(AbstractModel):
         r"""
         :param _VpcId: `HAVIP`所在私有网络`ID`。
         :type VpcId: str
-        :param _SubnetId: `HAVIP`所在子网`ID`。
-        :type SubnetId: str
         :param _HaVipName: `HAVIP`名称。
         :type HaVipName: str
+        :param _SubnetId: `HAVIP`所在子网`ID`。
+        :type SubnetId: str
         :param _Vip: 指定虚拟IP地址，必须在`VPC`网段内且未被占用。不指定则自动分配。
         :type Vip: str
         :param _NetworkInterfaceId: `HAVIP`所在弹性网卡`ID`。
         :type NetworkInterfaceId: str
+        :param _CheckAssociate: 是否开启`HAVIP`漂移时子机或网卡范围的校验。默认不开启。
+        :type CheckAssociate: bool
         """
         self._VpcId = None
-        self._SubnetId = None
         self._HaVipName = None
+        self._SubnetId = None
         self._Vip = None
         self._NetworkInterfaceId = None
+        self._CheckAssociate = None
 
     @property
     def VpcId(self):
@@ -8017,20 +8033,20 @@ class CreateHaVipRequest(AbstractModel):
         self._VpcId = VpcId
 
     @property
-    def SubnetId(self):
-        return self._SubnetId
-
-    @SubnetId.setter
-    def SubnetId(self, SubnetId):
-        self._SubnetId = SubnetId
-
-    @property
     def HaVipName(self):
         return self._HaVipName
 
     @HaVipName.setter
     def HaVipName(self, HaVipName):
         self._HaVipName = HaVipName
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
 
     @property
     def Vip(self):
@@ -8048,13 +8064,22 @@ class CreateHaVipRequest(AbstractModel):
     def NetworkInterfaceId(self, NetworkInterfaceId):
         self._NetworkInterfaceId = NetworkInterfaceId
 
+    @property
+    def CheckAssociate(self):
+        return self._CheckAssociate
+
+    @CheckAssociate.setter
+    def CheckAssociate(self, CheckAssociate):
+        self._CheckAssociate = CheckAssociate
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
-        self._SubnetId = params.get("SubnetId")
         self._HaVipName = params.get("HaVipName")
+        self._SubnetId = params.get("SubnetId")
         self._Vip = params.get("Vip")
         self._NetworkInterfaceId = params.get("NetworkInterfaceId")
+        self._CheckAssociate = params.get("CheckAssociate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12531,6 +12556,12 @@ class CrossBorderCompliance(AbstractModel):
         :type State: str
         :param _CreatedTime: 审批单创建时间。
         :type CreatedTime: str
+        :param _LegalPersonId: 法定代表人身份证号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LegalPersonId: str
+        :param _LegalPersonIdCard: 法定代表人身份证。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LegalPersonIdCard: str
         """
         self._ServiceProvider = None
         self._ComplianceId = None
@@ -12554,6 +12585,8 @@ class CrossBorderCompliance(AbstractModel):
         self._ServiceEndDate = None
         self._State = None
         self._CreatedTime = None
+        self._LegalPersonId = None
+        self._LegalPersonIdCard = None
 
     @property
     def ServiceProvider(self):
@@ -12731,6 +12764,22 @@ class CrossBorderCompliance(AbstractModel):
     def CreatedTime(self, CreatedTime):
         self._CreatedTime = CreatedTime
 
+    @property
+    def LegalPersonId(self):
+        return self._LegalPersonId
+
+    @LegalPersonId.setter
+    def LegalPersonId(self, LegalPersonId):
+        self._LegalPersonId = LegalPersonId
+
+    @property
+    def LegalPersonIdCard(self):
+        return self._LegalPersonIdCard
+
+    @LegalPersonIdCard.setter
+    def LegalPersonIdCard(self, LegalPersonIdCard):
+        self._LegalPersonIdCard = LegalPersonIdCard
+
 
     def _deserialize(self, params):
         self._ServiceProvider = params.get("ServiceProvider")
@@ -12755,6 +12804,8 @@ class CrossBorderCompliance(AbstractModel):
         self._ServiceEndDate = params.get("ServiceEndDate")
         self._State = params.get("State")
         self._CreatedTime = params.get("CreatedTime")
+        self._LegalPersonId = params.get("LegalPersonId")
+        self._LegalPersonIdCard = params.get("LegalPersonIdCard")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20065,13 +20116,7 @@ class DescribeHaVipsRequest(AbstractModel):
         r"""
         :param _HaVipIds: `HAVIP`唯一`ID`，形如：`havip-9o233uri`。
         :type HaVipIds: list of str
-        :param _Filters: 过滤条件，参数不支持同时指定`HaVipIds`和`Filters`。
-<li>havip-id - String - `HAVIP`唯一`ID`，形如：`havip-9o233uri`。</li>
-<li>havip-name - String - `HAVIP`名称。</li>
-<li>vpc-id - String - `HAVIP`所在私有网络`ID`。</li>
-<li>subnet-id - String - `HAVIP`所在子网`ID`。</li>
-<li>vip - String - `HAVIP`的地址`VIP`。</li>
-<li>address-ip - String - `HAVIP`绑定的弹性公网`IP`。</li>
+        :param _Filters: 过滤条件，参数不支持同时指定`HaVipIds`和`Filters`。<li>havip-id - String - `HAVIP`唯一`ID`，形如：`havip-9o233uri`。</li><li>havip-name - String - `HAVIP`名称。</li><li>vpc-id - String - `HAVIP`所在私有网络`ID`。</li><li>subnet-id - String - `HAVIP`所在子网`ID`。</li><li>vip - String - `HAVIP`的地址`VIP`。</li><li>address-ip - String - `HAVIP`绑定的弹性公网`IP`。</li><li>havip-association.instance-id - String - `HAVIP`绑定的子机或网卡。</li><li>havip-association.instance-type - String - `HAVIP`绑定的类型，取值:CVM, ENI。</li><li>check-associate - Bool - 是否开启HaVip飘移时校验绑定的子机或网卡。</li><li>cdc-id - String - CDC实例ID。</li>
         :type Filters: list of Filter
         :param _Offset: 偏移量，默认为0。
 
@@ -31815,6 +31860,15 @@ class HaVip(AbstractModel):
         :type CreatedTime: str
         :param _Business: 使用havip的业务标识。
         :type Business: str
+        :param _HaVipAssociationSet: `HAVIP`的飘移范围。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HaVipAssociationSet: list of HaVipAssociation
+        :param _CheckAssociate: 是否开启`HAVIP`的飘移范围校验。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckAssociate: bool
+        :param _FlushedTime: HAVIP 刷新时间。该参数只作为出参数。以下场景会触发 FlushTime 被刷新：1）子机发出免费 ARP 触发 HAVIP 漂移；2）手动HAVIP解绑网卡; 没有更新时默认值：0000-00-00 00:00:00
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlushedTime: str
         """
         self._HaVipId = None
         self._HaVipName = None
@@ -31827,6 +31881,9 @@ class HaVip(AbstractModel):
         self._State = None
         self._CreatedTime = None
         self._Business = None
+        self._HaVipAssociationSet = None
+        self._CheckAssociate = None
+        self._FlushedTime = None
 
     @property
     def HaVipId(self):
@@ -31916,6 +31973,30 @@ class HaVip(AbstractModel):
     def Business(self, Business):
         self._Business = Business
 
+    @property
+    def HaVipAssociationSet(self):
+        return self._HaVipAssociationSet
+
+    @HaVipAssociationSet.setter
+    def HaVipAssociationSet(self, HaVipAssociationSet):
+        self._HaVipAssociationSet = HaVipAssociationSet
+
+    @property
+    def CheckAssociate(self):
+        return self._CheckAssociate
+
+    @CheckAssociate.setter
+    def CheckAssociate(self, CheckAssociate):
+        self._CheckAssociate = CheckAssociate
+
+    @property
+    def FlushedTime(self):
+        return self._FlushedTime
+
+    @FlushedTime.setter
+    def FlushedTime(self, FlushedTime):
+        self._FlushedTime = FlushedTime
+
 
     def _deserialize(self, params):
         self._HaVipId = params.get("HaVipId")
@@ -31929,6 +32010,14 @@ class HaVip(AbstractModel):
         self._State = params.get("State")
         self._CreatedTime = params.get("CreatedTime")
         self._Business = params.get("Business")
+        if params.get("HaVipAssociationSet") is not None:
+            self._HaVipAssociationSet = []
+            for item in params.get("HaVipAssociationSet"):
+                obj = HaVipAssociation()
+                obj._deserialize(item)
+                self._HaVipAssociationSet.append(obj)
+        self._CheckAssociate = params.get("CheckAssociate")
+        self._FlushedTime = params.get("FlushedTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32007,6 +32096,66 @@ class HaVipAssociateAddressIpResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class HaVipAssociation(AbstractModel):
+    """HaVip绑定的子机/网卡（用于限制HaVip飘移的范围，并不是真正的飘移动作）。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HaVipId: HaVip实例唯一ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HaVipId: str
+        :param _InstanceId: HaVip绑定的子机或网卡唯一ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _InstanceType: HaVip绑定的类型。取值:CVM, ENI。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: str
+        """
+        self._HaVipId = None
+        self._InstanceId = None
+        self._InstanceType = None
+
+    @property
+    def HaVipId(self):
+        return self._HaVipId
+
+    @HaVipId.setter
+    def HaVipId(self, HaVipId):
+        self._HaVipId = HaVipId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+
+    def _deserialize(self, params):
+        self._HaVipId = params.get("HaVipId")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceType = params.get("InstanceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class HaVipDisassociateAddressIpRequest(AbstractModel):

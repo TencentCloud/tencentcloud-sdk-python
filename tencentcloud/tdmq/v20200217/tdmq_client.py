@@ -2236,6 +2236,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRocketMQTopicStats(self, request):
+        """获取Topic生产详情列表
+
+        :param request: Request instance for DescribeRocketMQTopicStats.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQTopicStatsRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQTopicStatsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRocketMQTopicStats", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRocketMQTopicStatsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRocketMQTopics(self, request):
         """获取RocketMQ主题列表
 
@@ -2250,6 +2273,29 @@ class TdmqClient(AbstractClient):
             body = self.call("DescribeRocketMQTopics", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRocketMQTopicsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRocketMQTopicsByGroup(self, request):
+        """获取指定消费组下订阅的主题列表
+
+        :param request: Request instance for DescribeRocketMQTopicsByGroup.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQTopicsByGroupRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQTopicsByGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRocketMQTopicsByGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRocketMQTopicsByGroupResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2779,6 +2825,29 @@ class TdmqClient(AbstractClient):
             body = self.call("ModifyRocketMQGroup", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyRocketMQGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyRocketMQInstance(self, request):
+        """修改RocketMQ专享实例
+
+        :param request: Request instance for ModifyRocketMQInstance.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQInstanceRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRocketMQInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRocketMQInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

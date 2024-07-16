@@ -9309,10 +9309,33 @@ class DescribeTaskStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Status: 任务状态：RUNNING，FAIL，SUCCESS
+        :type Status: str
+        :param _TaskId: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Status = None
+        self._TaskId = None
         self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -9324,6 +9347,8 @@ class DescribeTaskStatusResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 

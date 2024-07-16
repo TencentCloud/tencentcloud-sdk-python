@@ -928,7 +928,7 @@ class LkeClient(AbstractClient):
 
 
     def GetMsgRecord(self, request):
-        """获取推荐问题
+        """获取聊天历史请求
 
         :param request: Request instance for GetMsgRecord.
         :type request: :class:`tencentcloud.lke.v20231130.models.GetMsgRecordRequest`
