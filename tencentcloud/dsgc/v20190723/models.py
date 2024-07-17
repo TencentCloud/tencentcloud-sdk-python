@@ -4452,6 +4452,12 @@ selfbuilt-db 表示自建数据库
         :param _TimingStartTime: 任务定时启动时间，格式如：2006-01-02 15:04:05
 当执行计划（Plan字段）为”立即“时，定时启动时间不会生效，此场景下给该字段传值不会被保存。
         :type TimingStartTime: str
+        :param _Order: random-随机，asc生序，desc降序
+        :type Order: str
+        :param _Rows: 抽样的条数，范围30-1000
+        :type Rows: int
+        :param _GlobalOrderField: 抽样的排序字段
+        :type GlobalOrderField: str
         """
         self._DspaId = None
         self._Name = None
@@ -4466,6 +4472,9 @@ selfbuilt-db 表示自建数据库
         self._Condition = None
         self._ComplianceGroupIds = None
         self._TimingStartTime = None
+        self._Order = None
+        self._Rows = None
+        self._GlobalOrderField = None
 
     @property
     def DspaId(self):
@@ -4571,6 +4580,30 @@ selfbuilt-db 表示自建数据库
     def TimingStartTime(self, TimingStartTime):
         self._TimingStartTime = TimingStartTime
 
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def Rows(self):
+        return self._Rows
+
+    @Rows.setter
+    def Rows(self, Rows):
+        self._Rows = Rows
+
+    @property
+    def GlobalOrderField(self):
+        return self._GlobalOrderField
+
+    @GlobalOrderField.setter
+    def GlobalOrderField(self, GlobalOrderField):
+        self._GlobalOrderField = GlobalOrderField
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
@@ -4586,6 +4619,9 @@ selfbuilt-db 表示自建数据库
         self._Condition = params.get("Condition")
         self._ComplianceGroupIds = params.get("ComplianceGroupIds")
         self._TimingStartTime = params.get("TimingStartTime")
+        self._Order = params.get("Order")
+        self._Rows = params.get("Rows")
+        self._GlobalOrderField = params.get("GlobalOrderField")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13877,9 +13913,15 @@ class DescribeDSPAESDataSampleRequest(AbstractModel):
         :type DspaId: str
         :param _FieldResultId: 字段扫描结果ID
         :type FieldResultId: int
+        :param _Order: 排序方式
+        :type Order: str
+        :param _OrderField: 排序字段
+        :type OrderField: str
         """
         self._DspaId = None
         self._FieldResultId = None
+        self._Order = None
+        self._OrderField = None
 
     @property
     def DspaId(self):
@@ -13897,10 +13939,28 @@ class DescribeDSPAESDataSampleRequest(AbstractModel):
     def FieldResultId(self, FieldResultId):
         self._FieldResultId = FieldResultId
 
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def OrderField(self):
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
         self._FieldResultId = params.get("FieldResultId")
+        self._Order = params.get("Order")
+        self._OrderField = params.get("OrderField")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14654,9 +14714,15 @@ class DescribeDSPATaskResultDataSampleRequest(AbstractModel):
         :type DspaId: str
         :param _FieldResultId: 字段扫描结果ID
         :type FieldResultId: int
+        :param _Order: 排序方式
+        :type Order: str
+        :param _OrderField: 排序字段
+        :type OrderField: str
         """
         self._DspaId = None
         self._FieldResultId = None
+        self._Order = None
+        self._OrderField = None
 
     @property
     def DspaId(self):
@@ -14674,10 +14740,28 @@ class DescribeDSPATaskResultDataSampleRequest(AbstractModel):
     def FieldResultId(self, FieldResultId):
         self._FieldResultId = FieldResultId
 
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def OrderField(self):
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
         self._FieldResultId = params.get("FieldResultId")
+        self._Order = params.get("Order")
+        self._OrderField = params.get("OrderField")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

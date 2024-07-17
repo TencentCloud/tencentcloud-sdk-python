@@ -9804,7 +9804,7 @@ class CreateSealRequest(AbstractModel):
 <li><strong>SealGenerateSourceSystem</strong>: 系统生成印章, 无需上传SealImage图片</li>
 </ul>
         :type GenerateSource: str
-        :param _SealType: 电子印章类型 , 可选类型如下: <ul><li>**OFFICIAL**: (默认)公章</li><li>**CONTRACT**: 合同专用章;</li><li>**FINANCE**: 财务专用章;</li><li>**PERSONNEL**: 人事专用章</li><li>**INVOICE**: 发票专用章</li></ul>注: `同企业下只能有<font color="red">一个</font>公章, 重复创建会报错`
+        :param _SealType: 电子印章类型 , 可选类型如下: <ul><li>**OFFICIAL**: (默认)公章</li><li>**CONTRACT**: 合同专用章;</li><li>**FINANCE**: 财务专用章;</li><li>**PERSONNEL**: 人事专用章</li><li>**INVOICE**: 发票专用章</li><li>**OTHER**: 其他</li></ul>注: 同企业下只能有<font color="red">一个</font>公章, 重复创建会报错
         :type SealType: str
         :param _FileName: 电子印章图片文件名称，1-50个中文字符。
         :type FileName: str

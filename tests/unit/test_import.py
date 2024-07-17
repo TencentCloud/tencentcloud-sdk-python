@@ -329,6 +329,11 @@ def test_import_clb():
     from tencentcloud.clb.v20180317 import models
 
 
+def test_import_cloudapp():
+    from tencentcloud.cloudapp.v20220530 import cloudapp_client
+    from tencentcloud.cloudapp.v20220530 import models
+
+
 def test_import_cloudaudit():
     from tencentcloud.cloudaudit.v20190319 import cloudaudit_client
     from tencentcloud.cloudaudit.v20190319 import models

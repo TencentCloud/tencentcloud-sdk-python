@@ -7260,13 +7260,13 @@ class DescribeZonesRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _OrderField: 可用区列表排序的依据字段。取值范围：
-<li>ZONE：依据可用区排序。
+<li>ZONE：依据可用区排序。</li>
 <li>INSTANCE_DISPLAY_LABEL：依据可用区展示标签排序，可用区展示标签包括：HIDDEN（隐藏）、NORMAL（普通）、SELECTED（默认选中），默认采用的升序排列为：['HIDDEN', 'NORMAL', 'SELECTED']。
-默认按可用区排序。
+默认按可用区排序。</li>
         :type OrderField: str
         :param _Order: 输出可用区列表的排列顺序。取值范围：
-<li>ASC：升序排列。 
-<li>DESC：降序排列。
+<li>ASC：升序排列。 </li>
+<li>DESC：降序排列。</li>
 默认按升序排列。
         :type Order: str
         """

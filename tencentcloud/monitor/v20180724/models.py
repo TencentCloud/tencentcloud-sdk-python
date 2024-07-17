@@ -5944,38 +5944,7 @@ class CreateServiceDiscoveryRequest(AbstractModel):
 <li> 2 = PodMonitor</li>
 <li> 3 = JobMonitor</li>
         :type Type: int
-        :param _Yaml: 服务发现配置信息，YAML 格式
-
-示例值：
-
-```
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  name: go-demo    # 填写一个唯一名称
-  namespace: cm-prometheus  # namespace固定，不要修改
-spec:
-  endpoints:
-  - interval: 30s
-    # 填写service yaml中Prometheus Exporter对应的Port的Name
-    port: 2112
-    # 填写Prometheus Exporter对应的Path的值，不填默认/metrics
-    path: /metrics
-    relabelings:
-    # ** 必须要有一个 label 为 application，这里假设 k8s 有一个 label 为 app，
-    # 我们通过 relabel 的 replace 动作把它替换成了 application
-    - action: replace
-      sourceLabels:  [__meta_kubernetes_pod_label_app]
-      targetLabel: application
-  # 选择要监控service所在的namespace
-  namespaceSelector:
-    matchNames:
-    - golang-demo
-    # 填写要监控service的Label值，以定位目标service
-  selector:
-    matchLabels:
-      app: golang-app-demo
-```
+        :param _Yaml: 服务发现配置信息，YAML 格式，[具体YAML参数内容请参考](https://cloud.tencent.com/document/product/1416/55995#service-monitor)
         :type Yaml: str
         """
         self._InstanceId = None
@@ -7586,38 +7555,7 @@ class DeleteServiceDiscoveryRequest(AbstractModel):
 <li> 2 = PodMonitor</li>
 <li> 3 = PodMonitor</li>
         :type Type: int
-        :param _Yaml: 服务发现配置信息，YAML 格式
-
-示例值：
-
-```
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  name: go-demo    # 填写一个唯一名称
-  namespace: cm-prometheus  # namespace固定，不要修改
-spec:
-  endpoints:
-  - interval: 30s
-    # 填写service yaml中Prometheus Exporter对应的Port的Name
-    port: 2112
-    # 填写Prometheus Exporter对应的Path的值，不填默认/metrics
-    path: /metrics
-    relabelings:
-    # ** 必须要有一个 label 为 application，这里假设 k8s 有一个 label 为 app，
-    # 我们通过 relabel 的 replace 动作把它替换成了 application
-    - action: replace
-      sourceLabels:  [__meta_kubernetes_pod_label_app]
-      targetLabel: application
-  # 选择要监控service所在的namespace
-  namespaceSelector:
-    matchNames:
-    - golang-demo
-    # 填写要监控service的Label值，以定位目标service
-  selector:
-    matchLabels:
-      app: golang-app-demo
-```
+        :param _Yaml: 服务发现配置信息，YAML 格式，[具体YAML参数内容请参考](https://cloud.tencent.com/document/product/1416/55995#service-monitor)
         :type Yaml: str
         """
         self._InstanceId = None
@@ -16526,9 +16464,9 @@ class DescribePrometheusClusterAgentsRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例id
         :type InstanceId: str
-        :param _Offset: 用于分页
+        :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param _Limit: 用于分页
+        :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
         :param _ClusterIds: 用于通过集群id过滤被绑定集群
         :type ClusterIds: list of str
@@ -17559,9 +17497,9 @@ class DescribePrometheusInstancesOverviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 用于分页
+        :param _Offset: 分页偏移量，默认为0
         :type Offset: int
-        :param _Limit: 用于分页
+        :param _Limit: 返回数量，默认为20，最大值为100
         :type Limit: int
         :param _Filters: 过滤实例，目前支持：
 ID: 通过实例ID来过滤 
@@ -18340,7 +18278,7 @@ class DescribePrometheusTargetsTMPRequest(AbstractModel):
         :type ClusterType: str
         :param _Filters: 过滤条件，支持Name=ServiceMonitor/PodMonitor/Probe/RawJob/Job, Value为采集配置名称；Name=Health, Value=up, down, unknown；Name=EndPoint, Value为EndPoint地址
         :type Filters: list of Filter
-        :param _Offset: targets偏移量，默认为0
+        :param _Offset: targets分页偏移量，默认为0
         :type Offset: int
         :param _Limit: targets返回数量，默认为20，最大值200
         :type Limit: int
@@ -18478,7 +18416,7 @@ Name 按名称过滤
 Describe 按描述过滤
 ID 按templateId过滤
         :type Filters: list of Filter
-        :param _Offset: 分页偏移
+        :param _Offset: 分页偏移量，默认为0
         :type Offset: int
         :param _Limit: 总数限制
         :type Limit: int
@@ -31294,11 +31232,9 @@ class UpdatePrometheusAgentStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Prometheus 实例 ID，例如：prom-abcd1234
+        :param _InstanceId: Prometheus 实例 ID
         :type InstanceId: str
         :param _AgentIds: Agent ID 列表，例如：agent-abcd1234，可在控制台 Agent 管理中获取
-
-示例值：["agent-abcd1234"]
         :type AgentIds: list of str
         :param _Status: 要更新的状态
 <li> 1= 开启 </li>
@@ -31956,38 +31892,7 @@ class UpdateServiceDiscoveryRequest(AbstractModel):
 <li> 2 = PodMonitor</li>
 <li> 3 = JobMonitor</li>
         :type Type: int
-        :param _Yaml: 服务发现配置信息，YAML 格式
-
-示例值：
-
-```
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  name: go-demo    # 填写一个唯一名称
-  namespace: cm-prometheus  # namespace固定，不要修改
-spec:
-  endpoints:
-  - interval: 30s
-    # 填写service yaml中Prometheus Exporter对应的Port的Name
-    port: 2112
-    # 填写Prometheus Exporter对应的Path的值，不填默认/metrics
-    path: /metrics
-    relabelings:
-    # ** 必须要有一个 label 为 application，这里假设 k8s 有一个 label 为 app，
-    # 我们通过 relabel 的 replace 动作把它替换成了 application
-    - action: replace
-      sourceLabels:  [__meta_kubernetes_pod_label_app]
-      targetLabel: application
-  # 选择要监控service所在的namespace
-  namespaceSelector:
-    matchNames:
-    - golang-demo
-    # 填写要监控service的Label值，以定位目标service
-  selector:
-    matchLabels:
-      app: golang-app-demo
-```
+        :param _Yaml: 服务发现配置信息，YAML 格式，[具体YAML参数内容请参考](https://cloud.tencent.com/document/product/1416/55995#service-monitor)
         :type Yaml: str
         """
         self._InstanceId = None

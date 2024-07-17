@@ -2909,7 +2909,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyPrometheusConfig(self, request):
-        """修改prometheus配置，如果配置项不存在，则会新增
+        """修改prometheus采集配置
 
         :param request: Request instance for ModifyPrometheusConfig.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyPrometheusConfigRequest`
