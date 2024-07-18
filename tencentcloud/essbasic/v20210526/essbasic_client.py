@@ -1652,7 +1652,7 @@ class EssbasicClient(AbstractClient):
         <tr>
         <td>企业已激活</td>
         <td>员工未认证</td>
-        <td>进入员认证并加入企业流程</td>
+        <td>进入员工认证并加入企业流程</td>
         </tr>
         <tr>
         <td>企业已激活</td>

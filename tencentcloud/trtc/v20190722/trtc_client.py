@@ -1283,9 +1283,8 @@ class TrtcClient(AbstractClient):
 
 
     def StartStreamIngest(self, request):
-        """将一个在线媒体流推到TRTC房间。
-        使用此接口的前提条件：需要购买 [尊享版或旗舰版套餐包](https://cloud.tencent.com/document/product/647/85386
-        )
+        """将一个在线媒体流推到TRTC房间，更多功能说明见[输入媒体流进房](https://cloud.tencent.com/document/product/647/102957#50940aad-d90f-4473-9f46-d5dd46917653)。
+        使用输入在线媒体流功能需先订阅 [尊享版或旗舰版套餐包](https://cloud.tencent.com/document/product/647/85386) 解锁能力位。
 
         :param request: Request instance for StartStreamIngest.
         :type request: :class:`tencentcloud.trtc.v20190722.models.StartStreamIngestRequest`

@@ -50,7 +50,7 @@ class HunyuanClient(AbstractClient):
 
 
     def GetEmbedding(self, request):
-        """腾讯混元 Embedding 接口，可以将文本转化为高质量的向量数据。
+        """腾讯混元 Embedding 接口，可以将文本转化为高质量的向量数据。向量维度为1024维。
 
         :param request: Request instance for GetEmbedding.
         :type request: :class:`tencentcloud.hunyuan.v20230901.models.GetEmbeddingRequest`

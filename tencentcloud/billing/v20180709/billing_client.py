@@ -631,6 +631,9 @@ class BillingClient(AbstractClient):
     def DescribeCostDetail(self, request):
         """查询消耗明细
 
+        注意事项：
+        1. 对于消耗明细数据量级很大（例如每月消耗明细量级超过100w）的客户，通过 API 调用明细数据会有超时风险，建议您开通消耗账单数据存储功能，通过存储桶中获取账单文件进行分析。[账单存储至COS桶](https://cloud.tencent.com/document/product/555/61275)
+
         :param request: Request instance for DescribeCostDetail.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeCostDetailRequest`
         :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeCostDetailResponse`

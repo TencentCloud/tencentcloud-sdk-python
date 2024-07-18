@@ -380,6 +380,9 @@ class Cluster(AbstractModel):
         :param _ResourceType: 资源类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceType: int
+        :param _BillingResourceMode: 集群类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillingResourceMode: str
         """
         self._ClusterId = None
         self._Name = None
@@ -426,6 +429,7 @@ class Cluster(AbstractModel):
         self._SubEks = None
         self._AgentSerialId = None
         self._ResourceType = None
+        self._BillingResourceMode = None
 
     @property
     def ClusterId(self):
@@ -787,6 +791,14 @@ class Cluster(AbstractModel):
     def ResourceType(self, ResourceType):
         self._ResourceType = ResourceType
 
+    @property
+    def BillingResourceMode(self):
+        return self._BillingResourceMode
+
+    @BillingResourceMode.setter
+    def BillingResourceMode(self, BillingResourceMode):
+        self._BillingResourceMode = BillingResourceMode
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -868,6 +880,7 @@ class Cluster(AbstractModel):
             self._SubEks._deserialize(params.get("SubEks"))
         self._AgentSerialId = params.get("AgentSerialId")
         self._ResourceType = params.get("ResourceType")
+        self._BillingResourceMode = params.get("BillingResourceMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -926,6 +939,9 @@ class ClusterGroupSetItem(AbstractModel):
         :param _SubEks: 弹性
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubEks: :class:`tencentcloud.oceanus.v20190422.models.SubEks`
+        :param _BillingResourceMode: 默认 "" 包销模式 "exclusiveSale"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillingResourceMode: str
         """
         self._ClusterId = None
         self._Name = None
@@ -947,6 +963,7 @@ class ClusterGroupSetItem(AbstractModel):
         self._RunningCu = None
         self._PayMode = None
         self._SubEks = None
+        self._BillingResourceMode = None
 
     @property
     def ClusterId(self):
@@ -1108,6 +1125,14 @@ class ClusterGroupSetItem(AbstractModel):
     def SubEks(self, SubEks):
         self._SubEks = SubEks
 
+    @property
+    def BillingResourceMode(self):
+        return self._BillingResourceMode
+
+    @BillingResourceMode.setter
+    def BillingResourceMode(self, BillingResourceMode):
+        self._BillingResourceMode = BillingResourceMode
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -1132,6 +1157,7 @@ class ClusterGroupSetItem(AbstractModel):
         if params.get("SubEks") is not None:
             self._SubEks = SubEks()
             self._SubEks._deserialize(params.get("SubEks"))
+        self._BillingResourceMode = params.get("BillingResourceMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
