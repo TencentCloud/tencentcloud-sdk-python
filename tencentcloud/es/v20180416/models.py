@@ -11695,6 +11695,10 @@ class RestartNodesRequest(AbstractModel):
         :type IsOffline: bool
         :param _CvmDelayOnlineTime: cvm延迟上架时间
         :type CvmDelayOnlineTime: int
+        :param _ShardAllocationConcurrents: 分片迁移并发数
+        :type ShardAllocationConcurrents: int
+        :param _ShardAllocationBytes: 分片迁移并发速度
+        :type ShardAllocationBytes: int
         """
         self._InstanceId = None
         self._NodeNames = None
@@ -11702,6 +11706,8 @@ class RestartNodesRequest(AbstractModel):
         self._RestartMode = None
         self._IsOffline = None
         self._CvmDelayOnlineTime = None
+        self._ShardAllocationConcurrents = None
+        self._ShardAllocationBytes = None
 
     @property
     def InstanceId(self):
@@ -11751,6 +11757,22 @@ class RestartNodesRequest(AbstractModel):
     def CvmDelayOnlineTime(self, CvmDelayOnlineTime):
         self._CvmDelayOnlineTime = CvmDelayOnlineTime
 
+    @property
+    def ShardAllocationConcurrents(self):
+        return self._ShardAllocationConcurrents
+
+    @ShardAllocationConcurrents.setter
+    def ShardAllocationConcurrents(self, ShardAllocationConcurrents):
+        self._ShardAllocationConcurrents = ShardAllocationConcurrents
+
+    @property
+    def ShardAllocationBytes(self):
+        return self._ShardAllocationBytes
+
+    @ShardAllocationBytes.setter
+    def ShardAllocationBytes(self, ShardAllocationBytes):
+        self._ShardAllocationBytes = ShardAllocationBytes
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -11759,6 +11781,8 @@ class RestartNodesRequest(AbstractModel):
         self._RestartMode = params.get("RestartMode")
         self._IsOffline = params.get("IsOffline")
         self._CvmDelayOnlineTime = params.get("CvmDelayOnlineTime")
+        self._ShardAllocationConcurrents = params.get("ShardAllocationConcurrents")
+        self._ShardAllocationBytes = params.get("ShardAllocationBytes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14938,6 +14962,10 @@ class UpgradeInstanceRequest(AbstractModel):
         :type SkipCheckForceRestart: bool
         :param _CvmDelayOnlineTime: cvm延迟上架参数
         :type CvmDelayOnlineTime: int
+        :param _ShardAllocationConcurrents: 分片迁移并发数
+        :type ShardAllocationConcurrents: int
+        :param _ShardAllocationBytes: 分片迁移并发速度
+        :type ShardAllocationBytes: int
         """
         self._InstanceId = None
         self._EsVersion = None
@@ -14948,6 +14976,8 @@ class UpgradeInstanceRequest(AbstractModel):
         self._CosBackup = None
         self._SkipCheckForceRestart = None
         self._CvmDelayOnlineTime = None
+        self._ShardAllocationConcurrents = None
+        self._ShardAllocationBytes = None
 
     @property
     def InstanceId(self):
@@ -15021,6 +15051,22 @@ class UpgradeInstanceRequest(AbstractModel):
     def CvmDelayOnlineTime(self, CvmDelayOnlineTime):
         self._CvmDelayOnlineTime = CvmDelayOnlineTime
 
+    @property
+    def ShardAllocationConcurrents(self):
+        return self._ShardAllocationConcurrents
+
+    @ShardAllocationConcurrents.setter
+    def ShardAllocationConcurrents(self, ShardAllocationConcurrents):
+        self._ShardAllocationConcurrents = ShardAllocationConcurrents
+
+    @property
+    def ShardAllocationBytes(self):
+        return self._ShardAllocationBytes
+
+    @ShardAllocationBytes.setter
+    def ShardAllocationBytes(self, ShardAllocationBytes):
+        self._ShardAllocationBytes = ShardAllocationBytes
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -15032,6 +15078,8 @@ class UpgradeInstanceRequest(AbstractModel):
         self._CosBackup = params.get("CosBackup")
         self._SkipCheckForceRestart = params.get("SkipCheckForceRestart")
         self._CvmDelayOnlineTime = params.get("CvmDelayOnlineTime")
+        self._ShardAllocationConcurrents = params.get("ShardAllocationConcurrents")
+        self._ShardAllocationBytes = params.get("ShardAllocationBytes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

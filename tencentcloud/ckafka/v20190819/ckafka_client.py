@@ -1867,6 +1867,29 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyRoutineMaintenanceTask(self, request):
+        """设置自动化运维属性
+
+        :param request: Request instance for ModifyRoutineMaintenanceTask.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.ModifyRoutineMaintenanceTaskRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.ModifyRoutineMaintenanceTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRoutineMaintenanceTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRoutineMaintenanceTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyTopicAttributes(self, request):
         """本接口用于修改主题属性。
 

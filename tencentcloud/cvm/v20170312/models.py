@@ -6985,6 +6985,158 @@ class EnhancedService(AbstractModel):
         
 
 
+class EnterRescueModeRequest(AbstractModel):
+    """EnterRescueMode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 需要进入救援模式的实例id
+        :type InstanceId: str
+        :param _Password: 救援模式下系统密码
+        :type Password: str
+        :param _Username: 救援模式下系统用户名
+        :type Username: str
+        :param _ForceStop: 是否强制关机
+        :type ForceStop: bool
+        """
+        self._InstanceId = None
+        self._Password = None
+        self._Username = None
+        self._ForceStop = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def Username(self):
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def ForceStop(self):
+        return self._ForceStop
+
+    @ForceStop.setter
+    def ForceStop(self, ForceStop):
+        self._ForceStop = ForceStop
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Password = params.get("Password")
+        self._Username = params.get("Username")
+        self._ForceStop = params.get("ForceStop")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnterRescueModeResponse(AbstractModel):
+    """EnterRescueMode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ExitRescueModeRequest(AbstractModel):
+    """ExitRescueMode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 退出救援模式的实例id
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExitRescueModeResponse(AbstractModel):
+    """ExitRescueMode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ExportImagesRequest(AbstractModel):
     """ExportImages请求参数结构体
 

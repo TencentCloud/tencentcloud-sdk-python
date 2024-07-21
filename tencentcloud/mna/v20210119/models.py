@@ -625,6 +625,124 @@ class AddHardwareResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AddL3ConnRequest(AbstractModel):
+    """AddL3Conn请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Cidr1: 设置互通网段CIDR1，支持： 10.0.0.0 - 10.255.255.255，172.16.0.0 - 172.31.255.255，192.168.0.0 - 192.168.255.255
+        :type Cidr1: str
+        :param _Cidr2: 设置互通网段CIDR2，支持： 10.0.0.0 - 10.255.255.255，172.16.0.0 - 172.31.255.255，192.168.0.0 - 192.168.255.255
+        :type Cidr2: str
+        :param _DeviceId1: CIDR1对应的设备ID
+        :type DeviceId1: str
+        :param _DeviceId2: CIDR2对应的设备ID
+        :type DeviceId2: str
+        :param _Description: 规则描述
+        :type Description: str
+        """
+        self._Cidr1 = None
+        self._Cidr2 = None
+        self._DeviceId1 = None
+        self._DeviceId2 = None
+        self._Description = None
+
+    @property
+    def Cidr1(self):
+        return self._Cidr1
+
+    @Cidr1.setter
+    def Cidr1(self, Cidr1):
+        self._Cidr1 = Cidr1
+
+    @property
+    def Cidr2(self):
+        return self._Cidr2
+
+    @Cidr2.setter
+    def Cidr2(self, Cidr2):
+        self._Cidr2 = Cidr2
+
+    @property
+    def DeviceId1(self):
+        return self._DeviceId1
+
+    @DeviceId1.setter
+    def DeviceId1(self, DeviceId1):
+        self._DeviceId1 = DeviceId1
+
+    @property
+    def DeviceId2(self):
+        return self._DeviceId2
+
+    @DeviceId2.setter
+    def DeviceId2(self, DeviceId2):
+        self._DeviceId2 = DeviceId2
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._Cidr1 = params.get("Cidr1")
+        self._Cidr2 = params.get("Cidr2")
+        self._DeviceId1 = params.get("DeviceId1")
+        self._DeviceId2 = params.get("DeviceId2")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddL3ConnResponse(AbstractModel):
+    """AddL3Conn返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _L3ConnId: 互通规则ID
+        :type L3ConnId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._L3ConnId = None
+        self._RequestId = None
+
+    @property
+    def L3ConnId(self):
+        return self._L3ConnId
+
+    @L3ConnId.setter
+    def L3ConnId(self, L3ConnId):
+        self._L3ConnId = L3ConnId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._L3ConnId = params.get("L3ConnId")
+        self._RequestId = params.get("RequestId")
+
+
 class Capacity(AbstractModel):
     """接口能力扩展，用于填充电信的加速Token，并为未来参数提供兼容空间
 
@@ -1081,6 +1199,64 @@ class DeleteGroupRequest(AbstractModel):
 
 class DeleteGroupResponse(AbstractModel):
     """DeleteGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteL3ConnRequest(AbstractModel):
+    """DeleteL3Conn请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _L3ConnIdList: 互通规则ID列表
+        :type L3ConnIdList: list of str
+        """
+        self._L3ConnIdList = None
+
+    @property
+    def L3ConnIdList(self):
+        return self._L3ConnIdList
+
+    @L3ConnIdList.setter
+    def L3ConnIdList(self, L3ConnIdList):
+        self._L3ConnIdList = L3ConnIdList
+
+
+    def _deserialize(self, params):
+        self._L3ConnIdList = params.get("L3ConnIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteL3ConnResponse(AbstractModel):
+    """DeleteL3Conn返回参数结构体
 
     """
 
@@ -3757,6 +3933,129 @@ class GetHardwareListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetL3ConnListRequest(AbstractModel):
+    """GetL3ConnList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageSize: 每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
+        :type PageSize: int
+        :param _PageNumber: 当前查看页码，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
+        :type PageNumber: int
+        :param _DeviceId: 搜索分组的DeviceId，为空时匹配所有分组
+        :type DeviceId: str
+        """
+        self._PageSize = None
+        self._PageNumber = None
+        self._DeviceId = None
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def DeviceId(self):
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+
+    def _deserialize(self, params):
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        self._DeviceId = params.get("DeviceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetL3ConnListResponse(AbstractModel):
+    """GetL3ConnList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _L3ConnList: 互通规则列表
+        :type L3ConnList: list of L3ConnInfo
+        :param _Length: 设备总记录条数
+        :type Length: int
+        :param _TotalPage: 总页数
+        :type TotalPage: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._L3ConnList = None
+        self._Length = None
+        self._TotalPage = None
+        self._RequestId = None
+
+    @property
+    def L3ConnList(self):
+        return self._L3ConnList
+
+    @L3ConnList.setter
+    def L3ConnList(self, L3ConnList):
+        self._L3ConnList = L3ConnList
+
+    @property
+    def Length(self):
+        return self._Length
+
+    @Length.setter
+    def Length(self, Length):
+        self._Length = Length
+
+    @property
+    def TotalPage(self):
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("L3ConnList") is not None:
+            self._L3ConnList = []
+            for item in params.get("L3ConnList"):
+                obj = L3ConnInfo()
+                obj._deserialize(item)
+                self._L3ConnList.append(obj)
+        self._Length = params.get("Length")
+        self._TotalPage = params.get("TotalPage")
+        self._RequestId = params.get("RequestId")
+
+
 class GetMultiFlowStatisticRequest(AbstractModel):
     """GetMultiFlowStatistic请求参数结构体
 
@@ -4923,6 +5222,112 @@ class HardwareInfo(AbstractModel):
         
 
 
+class L3ConnInfo(AbstractModel):
+    """三层互通规则信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _L3ConnId: 互通规则ID
+        :type L3ConnId: str
+        :param _DeviceId1: 互通设备ID
+        :type DeviceId1: str
+        :param _Cidr1: 互通规则CIDR
+        :type Cidr1: str
+        :param _DeviceId2: 互通设备ID
+        :type DeviceId2: str
+        :param _Cidr2: 互通规则CIDR
+        :type Cidr2: str
+        :param _Enable: 互通规则启用状态
+        :type Enable: bool
+        :param _Description: 互通规则描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        """
+        self._L3ConnId = None
+        self._DeviceId1 = None
+        self._Cidr1 = None
+        self._DeviceId2 = None
+        self._Cidr2 = None
+        self._Enable = None
+        self._Description = None
+
+    @property
+    def L3ConnId(self):
+        return self._L3ConnId
+
+    @L3ConnId.setter
+    def L3ConnId(self, L3ConnId):
+        self._L3ConnId = L3ConnId
+
+    @property
+    def DeviceId1(self):
+        return self._DeviceId1
+
+    @DeviceId1.setter
+    def DeviceId1(self, DeviceId1):
+        self._DeviceId1 = DeviceId1
+
+    @property
+    def Cidr1(self):
+        return self._Cidr1
+
+    @Cidr1.setter
+    def Cidr1(self, Cidr1):
+        self._Cidr1 = Cidr1
+
+    @property
+    def DeviceId2(self):
+        return self._DeviceId2
+
+    @DeviceId2.setter
+    def DeviceId2(self, DeviceId2):
+        self._DeviceId2 = DeviceId2
+
+    @property
+    def Cidr2(self):
+        return self._Cidr2
+
+    @Cidr2.setter
+    def Cidr2(self, Cidr2):
+        self._Cidr2 = Cidr2
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._L3ConnId = params.get("L3ConnId")
+        self._DeviceId1 = params.get("DeviceId1")
+        self._Cidr1 = params.get("Cidr1")
+        self._DeviceId2 = params.get("DeviceId2")
+        self._Cidr2 = params.get("Cidr2")
+        self._Enable = params.get("Enable")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyPackageRenewFlagRequest(AbstractModel):
     """ModifyPackageRenewFlag请求参数结构体
 
@@ -5766,6 +6171,252 @@ class UpdateHardwareRequest(AbstractModel):
 
 class UpdateHardwareResponse(AbstractModel):
     """UpdateHardware返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateL3CidrRequest(AbstractModel):
+    """UpdateL3Cidr请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _L3ConnId: 互通规则ID
+        :type L3ConnId: str
+        :param _Cidr1: 互通规则CIDR
+        :type Cidr1: str
+        :param _DeviceId1: 互通设备ID
+        :type DeviceId1: str
+        :param _DeviceId2: 互通设备ID
+        :type DeviceId2: str
+        :param _Cidr2: 互通规则CIDR
+        :type Cidr2: str
+        """
+        self._L3ConnId = None
+        self._Cidr1 = None
+        self._DeviceId1 = None
+        self._DeviceId2 = None
+        self._Cidr2 = None
+
+    @property
+    def L3ConnId(self):
+        return self._L3ConnId
+
+    @L3ConnId.setter
+    def L3ConnId(self, L3ConnId):
+        self._L3ConnId = L3ConnId
+
+    @property
+    def Cidr1(self):
+        return self._Cidr1
+
+    @Cidr1.setter
+    def Cidr1(self, Cidr1):
+        self._Cidr1 = Cidr1
+
+    @property
+    def DeviceId1(self):
+        return self._DeviceId1
+
+    @DeviceId1.setter
+    def DeviceId1(self, DeviceId1):
+        self._DeviceId1 = DeviceId1
+
+    @property
+    def DeviceId2(self):
+        return self._DeviceId2
+
+    @DeviceId2.setter
+    def DeviceId2(self, DeviceId2):
+        self._DeviceId2 = DeviceId2
+
+    @property
+    def Cidr2(self):
+        return self._Cidr2
+
+    @Cidr2.setter
+    def Cidr2(self, Cidr2):
+        self._Cidr2 = Cidr2
+
+
+    def _deserialize(self, params):
+        self._L3ConnId = params.get("L3ConnId")
+        self._Cidr1 = params.get("Cidr1")
+        self._DeviceId1 = params.get("DeviceId1")
+        self._DeviceId2 = params.get("DeviceId2")
+        self._Cidr2 = params.get("Cidr2")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateL3CidrResponse(AbstractModel):
+    """UpdateL3Cidr返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateL3ConnRequest(AbstractModel):
+    """UpdateL3Conn请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _L3ConnId: 互通规则ID
+        :type L3ConnId: str
+        :param _Description: 互通规则备注
+        :type Description: str
+        """
+        self._L3ConnId = None
+        self._Description = None
+
+    @property
+    def L3ConnId(self):
+        return self._L3ConnId
+
+    @L3ConnId.setter
+    def L3ConnId(self, L3ConnId):
+        self._L3ConnId = L3ConnId
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._L3ConnId = params.get("L3ConnId")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateL3ConnResponse(AbstractModel):
+    """UpdateL3Conn返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateL3SwitchRequest(AbstractModel):
+    """UpdateL3Switch请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _L3ConnId: 互通规则ID
+        :type L3ConnId: str
+        :param _Enable: 互通规则开关
+        :type Enable: bool
+        """
+        self._L3ConnId = None
+        self._Enable = None
+
+    @property
+    def L3ConnId(self):
+        return self._L3ConnId
+
+    @L3ConnId.setter
+    def L3ConnId(self, L3ConnId):
+        self._L3ConnId = L3ConnId
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+
+    def _deserialize(self, params):
+        self._L3ConnId = params.get("L3ConnId")
+        self._Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateL3SwitchResponse(AbstractModel):
+    """UpdateL3Switch返回参数结构体
 
     """
 

@@ -87,6 +87,8 @@ class ChatCompletionsRequest(AbstractModel):
         :type ToolChoice: str
         :param _CustomTool: 强制模型调用指定的工具，当参数ToolChoice为custom时，此参数为必填
         :type CustomTool: :class:`tencentcloud.hunyuan.v20230901.models.Tool`
+        :param _SearchInfo: 默认是false，在值为true且命中搜索时，接口会返回SearchInfo
+        :type SearchInfo: bool
         """
         self._Model = None
         self._Messages = None
@@ -98,6 +100,7 @@ class ChatCompletionsRequest(AbstractModel):
         self._Tools = None
         self._ToolChoice = None
         self._CustomTool = None
+        self._SearchInfo = None
 
     @property
     def Model(self):
@@ -179,6 +182,14 @@ class ChatCompletionsRequest(AbstractModel):
     def CustomTool(self, CustomTool):
         self._CustomTool = CustomTool
 
+    @property
+    def SearchInfo(self):
+        return self._SearchInfo
+
+    @SearchInfo.setter
+    def SearchInfo(self, SearchInfo):
+        self._SearchInfo = SearchInfo
+
 
     def _deserialize(self, params):
         self._Model = params.get("Model")
@@ -203,6 +214,7 @@ class ChatCompletionsRequest(AbstractModel):
         if params.get("CustomTool") is not None:
             self._CustomTool = Tool()
             self._CustomTool._deserialize(params.get("CustomTool"))
+        self._SearchInfo = params.get("SearchInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -237,6 +249,8 @@ class ChatCompletionsResponse(AbstractModel):
         :type ErrorMsg: :class:`tencentcloud.hunyuan.v20230901.models.ErrorMsg`
         :param _ModerationLevel: 多轮会话风险审核，值为1时，表明存在信息安全风险，建议终止客户多轮会话。
         :type ModerationLevel: str
+        :param _SearchInfo: 搜索结果信息
+        :type SearchInfo: :class:`tencentcloud.hunyuan.v20230901.models.SearchInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
         :type RequestId: str
         """
@@ -247,6 +261,7 @@ class ChatCompletionsResponse(AbstractModel):
         self._Choices = None
         self._ErrorMsg = None
         self._ModerationLevel = None
+        self._SearchInfo = None
         self._RequestId = None
 
     @property
@@ -306,6 +321,14 @@ class ChatCompletionsResponse(AbstractModel):
         self._ModerationLevel = ModerationLevel
 
     @property
+    def SearchInfo(self):
+        return self._SearchInfo
+
+    @SearchInfo.setter
+    def SearchInfo(self, SearchInfo):
+        self._SearchInfo = SearchInfo
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -331,6 +354,9 @@ class ChatCompletionsResponse(AbstractModel):
             self._ErrorMsg = ErrorMsg()
             self._ErrorMsg._deserialize(params.get("ErrorMsg"))
         self._ModerationLevel = params.get("ModerationLevel")
+        if params.get("SearchInfo") is not None:
+            self._SearchInfo = SearchInfo()
+            self._SearchInfo._deserialize(params.get("SearchInfo"))
         self._RequestId = params.get("RequestId")
 
 
@@ -1140,6 +1166,105 @@ class QueryHunyuanImageJobResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class SearchInfo(AbstractModel):
+    """搜索结果信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SearchResults: 搜索引文信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SearchResults: list of SearchResult
+        """
+        self._SearchResults = None
+
+    @property
+    def SearchResults(self):
+        return self._SearchResults
+
+    @SearchResults.setter
+    def SearchResults(self, SearchResults):
+        self._SearchResults = SearchResults
+
+
+    def _deserialize(self, params):
+        if params.get("SearchResults") is not None:
+            self._SearchResults = []
+            for item in params.get("SearchResults"):
+                obj = SearchResult()
+                obj._deserialize(item)
+                self._SearchResults.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchResult(AbstractModel):
+    """搜索引文信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Index: 搜索引文序号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Index: str
+        :param _Title: 搜索引文标题
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Title: str
+        :param _Url: 搜索引文链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        """
+        self._Index = None
+        self._Title = None
+        self._Url = None
+
+    @property
+    def Index(self):
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def Title(self):
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Index = params.get("Index")
+        self._Title = params.get("Title")
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SubmitHunyuanImageJobRequest(AbstractModel):
     """SubmitHunyuanImageJob请求参数结构体
 
@@ -1286,8 +1411,7 @@ class TextToImageLiteRequest(AbstractModel):
 推荐使用中文。最多可传256个 utf-8 字符。
         :type NegativePrompt: str
         :param _Style: 绘画风格。
-请在 [智能文生图风格列表](https://cloud.tencent.com/document/product/1668/86249) 中选择期望的风格，传入风格编号。
-推荐使用且只使用一种风格。不传默认使用201（日系动漫风格）。
+请在 [文生图轻量版风格列表](https://cloud.tencent.com/document/product/1729/108992) 中选择期望的风格，传入风格编号。不传默认使用201（日系动漫风格）。
         :type Style: str
         :param _Resolution: 生成图分辨率。
 支持生成以下分辨率的图片：768:768（1:1）、768:1024（3:4）、1024:768（4:3）、1024:1024（1:1）、720:1280（9:16）、1280:720（16:9）、768:1280（3:5）、1280:768（5:3）、1080:1920（9:16）、1920:1080（16:9），不传默认使用768:768。
@@ -1381,7 +1505,9 @@ class TextToImageLiteResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResultImage: 根据入参 RspImgType 填入不同，返回不同的内容。如果传入 base64 则返回生成图 Base64 编码。如果传入 url 则返回的生成图 URL , 有效期1小时，请及时保存。
+        :param _ResultImage: 根据入参 RspImgType 填入不同，返回不同的内容。
+如果传入 base64 则返回生成图 Base64 编码。
+如果传入 url 则返回的生成图 URL , 有效期1小时，请及时保存。
         :type ResultImage: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

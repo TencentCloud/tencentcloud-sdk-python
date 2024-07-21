@@ -1271,6 +1271,52 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def EnterRescueMode(self, request):
+        """进入救援模式
+
+        :param request: Request instance for EnterRescueMode.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.EnterRescueModeRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.EnterRescueModeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnterRescueMode", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnterRescueModeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ExitRescueMode(self, request):
+        """退出救援模式
+
+        :param request: Request instance for ExitRescueMode.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.ExitRescueModeRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.ExitRescueModeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExitRescueMode", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExitRescueModeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ExportImages(self, request):
         """提供导出自定义镜像到指定COS存储桶的能力
 

@@ -1868,6 +1868,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ExportResourcePackageDeductDetails(self, request):
+        """资源包使用明细导出
+
+        :param request: Request instance for ExportResourcePackageDeductDetails.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ExportResourcePackageDeductDetailsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ExportResourcePackageDeductDetailsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExportResourcePackageDeductDetails", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExportResourcePackageDeductDetailsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GrantAccountPrivileges(self, request):
         """批量授权账号权限
 
@@ -2549,6 +2572,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("ModifyResourcePackageName", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyResourcePackageNameResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyResourcePackagesDeductionPriority(self, request):
+        """修改已绑定资源包抵扣优先级
+
+        :param request: Request instance for ModifyResourcePackagesDeductionPriority.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyResourcePackagesDeductionPriorityRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyResourcePackagesDeductionPriorityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyResourcePackagesDeductionPriority", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyResourcePackagesDeductionPriorityResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

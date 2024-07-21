@@ -32938,7 +32938,7 @@ class InstanceBind(AbstractModel):
         :param _InstanceName: 实例名称。
         :type InstanceName: str
         :param _InstanceRegion: 实例所在地域。
-        :type InstanceRegion: list of str
+        :type InstanceRegion: str
         :param _InstanceUin: 实例所属的账户uin。
         :type InstanceUin: str
         :param _State: 关联实例状态：

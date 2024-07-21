@@ -16778,6 +16778,172 @@ class ExportInstanceSlowQueriesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ExportResourcePackageDeductDetailsRequest(AbstractModel):
+    """ExportResourcePackageDeductDetails请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PackageId: 需要导出的资源包ID
+        :type PackageId: str
+        :param _ClusterIds: 使用资源包容量的cynos集群ID
+        :type ClusterIds: list of str
+        :param _OrderBy: 排序字段，目前支持：createTime（资源包被抵扣时间），successDeductSpec（资源包抵扣量）
+        :type OrderBy: str
+        :param _OrderByType: 排序类型，支持ASC、DESC、asc、desc
+        :type OrderByType: str
+        :param _StartTime: 开始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _Limit: 单次最大导出数据行数，目前最大支持2000行
+        :type Limit: str
+        :param _Offset: 偏移量页数
+        :type Offset: str
+        :param _FileType: 导出数据格式，目前仅支持csv格式，留作扩展
+        :type FileType: str
+        """
+        self._PackageId = None
+        self._ClusterIds = None
+        self._OrderBy = None
+        self._OrderByType = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Limit = None
+        self._Offset = None
+        self._FileType = None
+
+    @property
+    def PackageId(self):
+        return self._PackageId
+
+    @PackageId.setter
+    def PackageId(self, PackageId):
+        self._PackageId = PackageId
+
+    @property
+    def ClusterIds(self):
+        return self._ClusterIds
+
+    @ClusterIds.setter
+    def ClusterIds(self, ClusterIds):
+        self._ClusterIds = ClusterIds
+
+    @property
+    def OrderBy(self):
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderByType(self):
+        return self._OrderByType
+
+    @OrderByType.setter
+    def OrderByType(self, OrderByType):
+        self._OrderByType = OrderByType
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def FileType(self):
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+
+    def _deserialize(self, params):
+        self._PackageId = params.get("PackageId")
+        self._ClusterIds = params.get("ClusterIds")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderByType = params.get("OrderByType")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._FileType = params.get("FileType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExportResourcePackageDeductDetailsResponse(AbstractModel):
+    """ExportResourcePackageDeductDetails返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileContent: 文件详情
+        :type FileContent: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FileContent = None
+        self._RequestId = None
+
+    @property
+    def FileContent(self):
+        return self._FileContent
+
+    @FileContent.setter
+    def FileContent(self, FileContent):
+        self._FileContent = FileContent
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FileContent = params.get("FileContent")
+        self._RequestId = params.get("RequestId")
+
+
 class GrantAccountPrivilegesRequest(AbstractModel):
     """GrantAccountPrivileges请求参数结构体
 
@@ -21765,6 +21931,93 @@ class ModifyResourcePackageNameResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyResourcePackagesDeductionPriorityRequest(AbstractModel):
+    """ModifyResourcePackagesDeductionPriority请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PackageType: 需要修改优先级的资源包类型，CCU：计算资源包，DISK：存储资源包
+        :type PackageType: str
+        :param _ClusterId: 修改后的抵扣优先级对于哪个cynos资源生效
+        :type ClusterId: str
+        :param _DeductionPriorities: 资源包抵扣优先级
+        :type DeductionPriorities: list of PackagePriority
+        """
+        self._PackageType = None
+        self._ClusterId = None
+        self._DeductionPriorities = None
+
+    @property
+    def PackageType(self):
+        return self._PackageType
+
+    @PackageType.setter
+    def PackageType(self, PackageType):
+        self._PackageType = PackageType
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def DeductionPriorities(self):
+        return self._DeductionPriorities
+
+    @DeductionPriorities.setter
+    def DeductionPriorities(self, DeductionPriorities):
+        self._DeductionPriorities = DeductionPriorities
+
+
+    def _deserialize(self, params):
+        self._PackageType = params.get("PackageType")
+        self._ClusterId = params.get("ClusterId")
+        if params.get("DeductionPriorities") is not None:
+            self._DeductionPriorities = []
+            for item in params.get("DeductionPriorities"):
+                obj = PackagePriority()
+                obj._deserialize(item)
+                self._DeductionPriorities.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyResourcePackagesDeductionPriorityResponse(AbstractModel):
+    """ModifyResourcePackagesDeductionPriority返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyVipVportRequest(AbstractModel):
     """ModifyVipVport请求参数结构体
 
@@ -23347,6 +23600,51 @@ class PackageDetail(AbstractModel):
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._ExtendInfo = params.get("ExtendInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PackagePriority(AbstractModel):
+    """资源包抵扣优先级
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PackageId: 需要自定义抵扣优先级的资源包
+        :type PackageId: str
+        :param _DeductionPriority: 自定义的抵扣优先级
+        :type DeductionPriority: int
+        """
+        self._PackageId = None
+        self._DeductionPriority = None
+
+    @property
+    def PackageId(self):
+        return self._PackageId
+
+    @PackageId.setter
+    def PackageId(self, PackageId):
+        self._PackageId = PackageId
+
+    @property
+    def DeductionPriority(self):
+        return self._DeductionPriority
+
+    @DeductionPriority.setter
+    def DeductionPriority(self, DeductionPriority):
+        self._DeductionPriority = DeductionPriority
+
+
+    def _deserialize(self, params):
+        self._PackageId = params.get("PackageId")
+        self._DeductionPriority = params.get("DeductionPriority")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

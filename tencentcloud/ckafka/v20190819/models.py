@@ -20213,6 +20213,198 @@ class ModifyPasswordResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyRoutineMaintenanceTaskRequest(AbstractModel):
+    """ModifyRoutineMaintenanceTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _MaintenanceType: 自动化运维类别
+        :type MaintenanceType: str
+        :param _MaintenanceSubtype: 自动化运维子类别
+        :type MaintenanceSubtype: str
+        :param _TopicName: 主题名称
+        :type TopicName: str
+        :param _ConfigureThreshold: 任务触发阈值
+        :type ConfigureThreshold: int
+        :param _ConfigureStepSize: 任务调整步长
+        :type ConfigureStepSize: int
+        :param _ConfigureLimit: 任务调整上限
+        :type ConfigureLimit: int
+        :param _PlannedTime: 任务预期触发时间，存储从当日 0AM 开始偏移的秒数
+        :type PlannedTime: int
+        :param _ExtraConfig: 任务额外信息
+        :type ExtraConfig: str
+        :param _Status: 任务状态
+        :type Status: int
+        :param _Week: 执行week day
+        :type Week: str
+        """
+        self._InstanceId = None
+        self._MaintenanceType = None
+        self._MaintenanceSubtype = None
+        self._TopicName = None
+        self._ConfigureThreshold = None
+        self._ConfigureStepSize = None
+        self._ConfigureLimit = None
+        self._PlannedTime = None
+        self._ExtraConfig = None
+        self._Status = None
+        self._Week = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def MaintenanceType(self):
+        return self._MaintenanceType
+
+    @MaintenanceType.setter
+    def MaintenanceType(self, MaintenanceType):
+        self._MaintenanceType = MaintenanceType
+
+    @property
+    def MaintenanceSubtype(self):
+        return self._MaintenanceSubtype
+
+    @MaintenanceSubtype.setter
+    def MaintenanceSubtype(self, MaintenanceSubtype):
+        self._MaintenanceSubtype = MaintenanceSubtype
+
+    @property
+    def TopicName(self):
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def ConfigureThreshold(self):
+        return self._ConfigureThreshold
+
+    @ConfigureThreshold.setter
+    def ConfigureThreshold(self, ConfigureThreshold):
+        self._ConfigureThreshold = ConfigureThreshold
+
+    @property
+    def ConfigureStepSize(self):
+        return self._ConfigureStepSize
+
+    @ConfigureStepSize.setter
+    def ConfigureStepSize(self, ConfigureStepSize):
+        self._ConfigureStepSize = ConfigureStepSize
+
+    @property
+    def ConfigureLimit(self):
+        return self._ConfigureLimit
+
+    @ConfigureLimit.setter
+    def ConfigureLimit(self, ConfigureLimit):
+        self._ConfigureLimit = ConfigureLimit
+
+    @property
+    def PlannedTime(self):
+        return self._PlannedTime
+
+    @PlannedTime.setter
+    def PlannedTime(self, PlannedTime):
+        self._PlannedTime = PlannedTime
+
+    @property
+    def ExtraConfig(self):
+        return self._ExtraConfig
+
+    @ExtraConfig.setter
+    def ExtraConfig(self, ExtraConfig):
+        self._ExtraConfig = ExtraConfig
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Week(self):
+        return self._Week
+
+    @Week.setter
+    def Week(self, Week):
+        self._Week = Week
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._MaintenanceType = params.get("MaintenanceType")
+        self._MaintenanceSubtype = params.get("MaintenanceSubtype")
+        self._TopicName = params.get("TopicName")
+        self._ConfigureThreshold = params.get("ConfigureThreshold")
+        self._ConfigureStepSize = params.get("ConfigureStepSize")
+        self._ConfigureLimit = params.get("ConfigureLimit")
+        self._PlannedTime = params.get("PlannedTime")
+        self._ExtraConfig = params.get("ExtraConfig")
+        self._Status = params.get("Status")
+        self._Week = params.get("Week")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRoutineMaintenanceTaskResponse(AbstractModel):
+    """ModifyRoutineMaintenanceTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 返回结果
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = JgwOperateResponse()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyTopicAttributesRequest(AbstractModel):
     """ModifyTopicAttributes请求参数结构体
 

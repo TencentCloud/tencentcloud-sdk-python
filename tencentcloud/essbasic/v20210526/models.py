@@ -9631,8 +9631,7 @@ class CreateBatchOrganizationRegistrationTasksRequest(AbstractModel):
 </ul>
 第三方平台子客企业和员工必须已经经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _RegistrationOrganizations: 当前应用下子客的组织机构注册信息。
-一次最多支持10条认证流
+        :param _RegistrationOrganizations: 当前应用下子企业的组织机构注册信息。最多支持查询10子企业。
         :type RegistrationOrganizations: list of RegistrationOrganizationInfo
         :param _Endpoint: 生成链接的类型：
 <ul><li>**PC**：(默认)web控制台链接, 需要在PC浏览器中打开</li>
@@ -9641,7 +9640,7 @@ class CreateBatchOrganizationRegistrationTasksRequest(AbstractModel):
 <li>**APP**：第三方APP或小程序跳转电子签小程序链接, 一般用于贵方小程序或者APP跳转过来,  打开后进入腾讯电子签小程序</li>
 <li>**H5**：第三方H5跳转到电子签H5长链接, 一般用于贵方H5跳转过来,  打开后进入腾讯电子签H5页面</li>
 <li>**SHORT_H5**：第三方H5跳转到电子签H5短链接, 一般用于贵方H5跳转过来,  打开后进入腾讯电子签H5页面</li></ul>
-示例值：PC
+
 
         :type Endpoint: str
         """
@@ -9702,14 +9701,15 @@ class CreateBatchOrganizationRegistrationTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 生成注册链接的任务Id，
-根据这个id， 调用DescribeBatchOrganizationRegistrationUrls 获取生成的链接，进入认证流程
-若存在其中任意一条链接错误，则返回具体的错误描述, 不会返回TaskId
+        :param _TaskId: 生成注册链接的任务ID，后序根据这个任务ID， 调用<a href="https://qian.tencent.com/developers/partnerApis/accounts/DescribeBatchOrganizationRegistrationUrls" target="_blank">查询子企业批量认证链接</a>获取生成的链接，发给对应的客户使用。
+
+注：`如果有错误，则不会返回任务ID`
         :type TaskId: str
-        :param _ErrorMessages: 批量生成企业认证链接的详细错误信息，
-顺序与输入参数保持一致。
-若企业认证均成功生成，则不返回错误信息；
-若存在任何错误，则返回具体的错误描述。
+        :param _ErrorMessages: 批量生成企业认证链接的详细错误信息，顺序与输入参数子企业列表顺序一致。
+<ul>
+<li>如果所有企业认证链接都成功生成，将不返回错误信息</li>
+<li>如果存在任何错误，将返回具体的错误描述。（没有错误的企业返回空字符串）</li>
+</ul>
         :type ErrorMessages: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12001,7 +12001,7 @@ class DescribeBatchOrganizationRegistrationUrlsRequest(AbstractModel):
 </ul>
 第三方平台子客企业和员工必须已经经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _TaskId: 通过接口CreateBatchOrganizationRegistrationTasks创建企业批量认证链接任得到的任务Id
+        :param _TaskId: 通过接口<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks" target="_blank">提交子企业批量认证链接创建任务</a>调用得到的任务ID。
         :type TaskId: str
         """
         self._Agent = None
@@ -12046,7 +12046,7 @@ class DescribeBatchOrganizationRegistrationUrlsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OrganizationAuthUrls: 企业批量注册链接信息
+        :param _OrganizationAuthUrls: 子企业注册认证的的链接列表
         :type OrganizationAuthUrls: list of OrganizationAuthUrl
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14557,7 +14557,7 @@ class FlowApproverInfo(AbstractModel):
         :param _ApproverSignTypes: 签署人签署合同时的认证方式
 <ul><li> **1** :人脸认证</li>
 <li> **2** :签署密码</li>
-<li> **3** :运营商三要素</li></ul>
+<li> **3** :运营商三要素（如果是港澳台客户，建议不要选择这个）</li></ul>
 
 默认为1(人脸认证 ),2(签署密码),3(运营商三要素)
 

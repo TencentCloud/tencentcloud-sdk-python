@@ -307,7 +307,12 @@ class AutoCalloutTaskInfo(AbstractModel):
         :type NotAfter: int
         :param _IvrId: 任务使用的IvrId
         :type IvrId: int
-        :param _State: 任务状态0初始 1运行中 2已完成 3结束中 4已结束
+        :param _State: 任务状态：
+0初始：任务创建，呼叫未开始
+1运行中
+2 已完成：任务中所有呼叫完成
+3结束中：任务到期，但仍有部分呼叫未结束
+4已结束：任务到期终止
         :type State: int
         :param _TaskId: 任务Id
         :type TaskId: int

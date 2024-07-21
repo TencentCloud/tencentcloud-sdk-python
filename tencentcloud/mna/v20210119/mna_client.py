@@ -118,6 +118,29 @@ class MnaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AddL3Conn(self, request):
+        """新建互通规则
+
+        :param request: Request instance for AddL3Conn.
+        :type request: :class:`tencentcloud.mna.v20210119.models.AddL3ConnRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.AddL3ConnResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddL3Conn", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddL3ConnResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateEncryptedKey(self, request):
         """通过此接口设置和更新预置密钥
 
@@ -201,6 +224,29 @@ class MnaClient(AbstractClient):
             body = self.call("DeleteGroup", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteL3Conn(self, request):
+        """删除互通规则
+
+        :param request: Request instance for DeleteL3Conn.
+        :type request: :class:`tencentcloud.mna.v20210119.models.DeleteL3ConnRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.DeleteL3ConnResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteL3Conn", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteL3ConnResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -509,6 +555,29 @@ class MnaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetL3ConnList(self, request):
+        """获取互通规则列表
+
+        :param request: Request instance for GetL3ConnList.
+        :type request: :class:`tencentcloud.mna.v20210119.models.GetL3ConnListRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.GetL3ConnListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetL3ConnList", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetL3ConnListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetMultiFlowStatistic(self, request):
         """批量获取设备流量统计曲线
 
@@ -799,6 +868,75 @@ class MnaClient(AbstractClient):
             body = self.call("UpdateHardware", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateHardwareResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateL3Cidr(self, request):
+        """更新互通规则CIDR
+
+        :param request: Request instance for UpdateL3Cidr.
+        :type request: :class:`tencentcloud.mna.v20210119.models.UpdateL3CidrRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.UpdateL3CidrResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateL3Cidr", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateL3CidrResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateL3Conn(self, request):
+        """更新互通规则备注
+
+        :param request: Request instance for UpdateL3Conn.
+        :type request: :class:`tencentcloud.mna.v20210119.models.UpdateL3ConnRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.UpdateL3ConnResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateL3Conn", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateL3ConnResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateL3Switch(self, request):
+        """更新互通规则开关
+
+        :param request: Request instance for UpdateL3Switch.
+        :type request: :class:`tencentcloud.mna.v20210119.models.UpdateL3SwitchRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.UpdateL3SwitchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateL3Switch", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateL3SwitchResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
