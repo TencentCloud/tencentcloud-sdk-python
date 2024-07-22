@@ -8261,6 +8261,140 @@ class CreateOrganizationInfoChangeUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
+    """CreatePartnerAutoSignAuthUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuthorizedOrganizationId: 被授企业id
+        :type AuthorizedOrganizationId: str
+        :param _SealTypes: 指定印章类型，指定后只能选择该类型的印章进行授权支持以下印章类型：- OFFICIAL : 企业公章- CONTRACT : 合同专用章- FINANCE : 财务专用章- PERSONNEL : 人事专用章
+        :type SealTypes: list of str
+        :param _Agent: 代理企业和员工的信息。<br/>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _Operator: 执行本接口操作的员工信息。<br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        self._AuthorizedOrganizationId = None
+        self._SealTypes = None
+        self._Agent = None
+        self._Operator = None
+
+    @property
+    def AuthorizedOrganizationId(self):
+        return self._AuthorizedOrganizationId
+
+    @AuthorizedOrganizationId.setter
+    def AuthorizedOrganizationId(self, AuthorizedOrganizationId):
+        self._AuthorizedOrganizationId = AuthorizedOrganizationId
+
+    @property
+    def SealTypes(self):
+        return self._SealTypes
+
+    @SealTypes.setter
+    def SealTypes(self, SealTypes):
+        self._SealTypes = SealTypes
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+
+    def _deserialize(self, params):
+        self._AuthorizedOrganizationId = params.get("AuthorizedOrganizationId")
+        self._SealTypes = params.get("SealTypes")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePartnerAutoSignAuthUrlResponse(AbstractModel):
+    """CreatePartnerAutoSignAuthUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: 授权链接，以短链形式返回，短链的有效期参考回参中的 ExpiredTime。
+        :type Url: str
+        :param _MiniAppPath: 从客户小程序或者客户APP跳转至腾讯电子签小程序进行批量签署的跳转路径
+        :type MiniAppPath: str
+        :param _ExpireTime: 链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
+        :type ExpireTime: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Url = None
+        self._MiniAppPath = None
+        self._ExpireTime = None
+        self._RequestId = None
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def MiniAppPath(self):
+        return self._MiniAppPath
+
+    @MiniAppPath.setter
+    def MiniAppPath(self, MiniAppPath):
+        self._MiniAppPath = MiniAppPath
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        self._MiniAppPath = params.get("MiniAppPath")
+        self._ExpireTime = params.get("ExpireTime")
+        self._RequestId = params.get("RequestId")
+
+
 class CreatePersonAuthCertificateImageRequest(AbstractModel):
     """CreatePersonAuthCertificateImage请求参数结构体
 

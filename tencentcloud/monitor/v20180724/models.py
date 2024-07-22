@@ -16332,14 +16332,17 @@ class DescribePrometheusAlertPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id
+        :param _InstanceId: 实例ID
         :type InstanceId: str
-        :param _Offset: 分页
+        :param _Offset: 分页偏移量，默认为0。 示例值：1
         :type Offset: int
-        :param _Limit: 分页
+        :param _Limit: 分页返回数量，默认为20，最大值为100
         :type Limit: int
-        :param _Filters: 过滤
-支持ID，Name
+        :param _Filters: 仅支持按Name, Values字段过滤:
+- Name = Name 
+  按照给定的告警规则名称列表匹配
+- Name = ID
+  按照给定的告警规则ID列表匹配
         :type Filters: list of Filter
         """
         self._InstanceId = None
@@ -17918,13 +17921,18 @@ class DescribePrometheusRecordRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id
+        :param _InstanceId: 实例ID
+
+示例值：prom-343kafd34
         :type InstanceId: str
-        :param _Offset: 分页
+        :param _Offset: 偏移量，默认为0。 示例值：1
         :type Offset: int
-        :param _Limit: 分页
+        :param _Limit: 返回数量，默认为20，最大值为100。
+示例值：1
         :type Limit: int
-        :param _Filters: 过滤
+        :param _Filters: 仅支持按Name, Values字段过滤:
+- Name = Name
+  按照给定的预聚合名称列表匹配
         :type Filters: list of Filter
         """
         self._InstanceId = None
@@ -18410,15 +18418,19 @@ class DescribePrometheusTempRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 模糊过滤条件，支持
-Level 按模板级别过滤
-Name 按名称过滤
-Describe 按描述过滤
-ID 按templateId过滤
+        :param _Filters: 仅支持按Name, Values字段过滤:
+* Name = Name
+  按照给定的模板名称列表匹配
+* Name = ID
+  按照给定的模板ID列表匹配
+* Name = Describe
+  按照给定的模板描述列表匹配
+* Name = Level
+  按照给定的模板维度(instance, cluster)列表匹配
         :type Filters: list of Filter
         :param _Offset: 分页偏移量，默认为0
         :type Offset: int
-        :param _Limit: 总数限制
+        :param _Limit: 分页返回数量，默认为20，最大值为100
         :type Limit: int
         """
         self._Filters = None
@@ -23526,9 +23538,9 @@ class ModifyPrometheusAlertPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id
+        :param _InstanceId: Prometheus 实例 ID
         :type InstanceId: str
-        :param _AlertRule: 告警配置
+        :param _AlertRule: 告警配置，[具体参考](https://cloud.tencent.com/document/api/248/30354#PrometheusAlertPolicyItem)
         :type AlertRule: :class:`tencentcloud.monitor.v20180724.models.PrometheusAlertPolicyItem`
         """
         self._InstanceId = None

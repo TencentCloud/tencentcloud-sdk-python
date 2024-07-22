@@ -3303,11 +3303,11 @@ class DescribeDBInstancesRequest(AbstractModel):
         r"""
         :param _InstanceIds: 实例 ID 列表。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :type InstanceIds: list of str
-        :param _InstanceType: 实例类型。取值范围如下：<ul><li>0：所有实例。</li><li>1：正式实例。</li><li>2：临时实例。</li><li>3：只读实例。</li><li>-1：正式实例、只读、灾备实例。</li></ul>
+        :param _InstanceType: 指定查询的实例类型。取值范围如下：<ul><li>0：所有实例。</li><li>1：正式实例。</li><li>3：只读实例。</li><li>4：灾备实例。</li></ul>
         :type InstanceType: int
-        :param _ClusterType: 集群类型，取值范围如下：<ul><li>0：副本集实例。</li><li>1：分片实例。</li><li>-1：所有实例。</li></ul>
+        :param _ClusterType: 指定所查询实例的集群类型，取值范围如下：<ul><li>0：副本集实例。</li><li>1：分片实例。</li><li>-1：副本集与分片实例。</li></ul>
         :type ClusterType: int
-        :param _Status: 实例状态，取值范围如下所示：<ul><li>0：待初始化。</li><li>1：流程执行中。</li><li>2：实例有效。</li><li>-2：已隔离（包年包月实例）。</li><li>-3：已隔离（按量计费实例）。</li></ul>
+        :param _Status: 指定所查询实例的当前状态，取值范围如下所示：<ul><li>0：待初始化。</li><li>1：流程处理中，例如：变更规格、参数修改等。</li><li>2：实例正常运行中。</li><li>-2：实例已过期。</li></ul>
         :type Status: list of int
         :param _VpcId: 私有网络的 ID。
 - 基础网络则无需配置该参数。
@@ -3317,7 +3317,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 - 基础网络则无需配置该参数。
 - 请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表中，单击私有网络名称，在**私有网络**页面获取其子网 ID。
         :type SubnetId: str
-        :param _PayMode: 付费类型，取值范围如下：<ul><li>0：查询按量计费实例。</li><li>1：查询包年包月实例。</li><li>-1：查询按量计费与包年包月实例。</li></ul>
+        :param _PayMode: 指定所查询实例的付费类型，取值范围如下：<ul><li>0：查询按量计费实例。</li><li>1：查询包年包月实例。</li><li>-1：查询按量计费与包年包月实例。</li></ul>
         :type PayMode: int
         :param _Limit: 单次请求返回的数量。默认值为20，取值范围为[1,100]。
         :type Limit: int
@@ -3331,7 +3331,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type OrderByType: str
         :param _ProjectIds: 项目 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)，在右上角的账户信息下拉菜单中，选择项目管理查询项目。
         :type ProjectIds: list of int non-negative
-        :param _SearchKey: 配置查询搜索的关键词。支持配置为实例ID、实例名称或者内网 IP 地址。
+        :param _SearchKey: 指定查询搜索的关键词。支持设置为具体的实例ID、实例名称或者内网 IP 地址。
         :type SearchKey: str
         :param _Tags: 标签信息，包含标签键与标签值。
         :type Tags: list of TagInfo
@@ -5245,7 +5245,7 @@ class InstanceDetail(AbstractModel):
         :type VpcId: str
         :param _SubnetId: 私有网络的子网ID。
         :type SubnetId: str
-        :param _Status: 实例状态，可能的返回值：0-待初始化，1-流程处理中，2-运行中，-2-实例已过期。
+        :param _Status: 实例状态，可能的返回值：0-创建中，1-流程处理中，2-运行中，-2-实例已过期。
         :type Status: int
         :param _Vip: 实例IP。
         :type Vip: str

@@ -9485,6 +9485,9 @@ class SkillGroupInfoItem(AbstractModel):
         :param _SkillGroupType: 技能组类型0-电话，1-在线，3-音频，4-视频	
 注意：此字段可能返回 null，表示取不到有效值。
         :type SkillGroupType: int
+        :param _Alias: 技能组内线号码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Alias: str
         """
         self._SkillGroupId = None
         self._SkillGroupName = None
@@ -9494,6 +9497,7 @@ class SkillGroupInfoItem(AbstractModel):
         self._MaxConcurrency = None
         self._LastModifyTimestamp = None
         self._SkillGroupType = None
+        self._Alias = None
 
     @property
     def SkillGroupId(self):
@@ -9559,6 +9563,14 @@ class SkillGroupInfoItem(AbstractModel):
     def SkillGroupType(self, SkillGroupType):
         self._SkillGroupType = SkillGroupType
 
+    @property
+    def Alias(self):
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
+
 
     def _deserialize(self, params):
         self._SkillGroupId = params.get("SkillGroupId")
@@ -9569,6 +9581,7 @@ class SkillGroupInfoItem(AbstractModel):
         self._MaxConcurrency = params.get("MaxConcurrency")
         self._LastModifyTimestamp = params.get("LastModifyTimestamp")
         self._SkillGroupType = params.get("SkillGroupType")
+        self._Alias = params.get("Alias")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

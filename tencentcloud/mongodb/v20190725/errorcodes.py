@@ -197,6 +197,9 @@ INVALIDPARAMETERVALUE_ZONECLOSED = 'InvalidParameterValue.ZoneClosed'
 # 无效的可用区。
 INVALIDPARAMETERVALUE_ZONEERROR = 'InvalidParameterValue.ZoneError'
 
+# 请求太过频繁，触发接口频限。
+LIMITEXCEEDED_TOOMANYREQUESTS = 'LimitExceeded.TooManyRequests'
+
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'
 

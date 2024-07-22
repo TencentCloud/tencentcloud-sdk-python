@@ -1214,7 +1214,7 @@ class SearchResult(AbstractModel):
         r"""
         :param _Index: 搜索引文序号
 注意：此字段可能返回 null，表示取不到有效值。
-        :type Index: str
+        :type Index: int
         :param _Title: 搜索引文标题
 注意：此字段可能返回 null，表示取不到有效值。
         :type Title: str

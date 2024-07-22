@@ -3174,17 +3174,17 @@ class DeleteImageRequest(AbstractModel):
         r"""
         :param _RegistryId: 实例Id
         :type RegistryId: str
+        :param _NamespaceName: 命名空间名称
+        :type NamespaceName: str
         :param _RepositoryName: 镜像仓库名称
         :type RepositoryName: str
         :param _ImageVersion: 镜像版本
         :type ImageVersion: str
-        :param _NamespaceName: 命名空间名称
-        :type NamespaceName: str
         """
         self._RegistryId = None
+        self._NamespaceName = None
         self._RepositoryName = None
         self._ImageVersion = None
-        self._NamespaceName = None
 
     @property
     def RegistryId(self):
@@ -3193,6 +3193,14 @@ class DeleteImageRequest(AbstractModel):
     @RegistryId.setter
     def RegistryId(self, RegistryId):
         self._RegistryId = RegistryId
+
+    @property
+    def NamespaceName(self):
+        return self._NamespaceName
+
+    @NamespaceName.setter
+    def NamespaceName(self, NamespaceName):
+        self._NamespaceName = NamespaceName
 
     @property
     def RepositoryName(self):
@@ -3210,20 +3218,12 @@ class DeleteImageRequest(AbstractModel):
     def ImageVersion(self, ImageVersion):
         self._ImageVersion = ImageVersion
 
-    @property
-    def NamespaceName(self):
-        return self._NamespaceName
-
-    @NamespaceName.setter
-    def NamespaceName(self, NamespaceName):
-        self._NamespaceName = NamespaceName
-
 
     def _deserialize(self, params):
         self._RegistryId = params.get("RegistryId")
+        self._NamespaceName = params.get("NamespaceName")
         self._RepositoryName = params.get("RepositoryName")
         self._ImageVersion = params.get("ImageVersion")
-        self._NamespaceName = params.get("NamespaceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5675,11 +5675,19 @@ class DescribeImageManifestsResponse(AbstractModel):
         :type Manifest: str
         :param _Config: 镜像的配置信息
         :type Config: str
+        :param _Labels: 镜像的Labels信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Labels: list of KeyValueString
+        :param _Size: 镜像大小，单位：byte
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Size: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Manifest = None
         self._Config = None
+        self._Labels = None
+        self._Size = None
         self._RequestId = None
 
     @property
@@ -5699,6 +5707,22 @@ class DescribeImageManifestsResponse(AbstractModel):
         self._Config = Config
 
     @property
+    def Labels(self):
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def Size(self):
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -5710,6 +5734,13 @@ class DescribeImageManifestsResponse(AbstractModel):
     def _deserialize(self, params):
         self._Manifest = params.get("Manifest")
         self._Config = params.get("Config")
+        if params.get("Labels") is not None:
+            self._Labels = []
+            for item in params.get("Labels"):
+                obj = KeyValueString()
+                obj._deserialize(item)
+                self._Labels.append(obj)
+        self._Size = params.get("Size")
         self._RequestId = params.get("RequestId")
 
 
@@ -13479,8 +13510,10 @@ class RetentionRule(AbstractModel):
     def __init__(self):
         r"""
         :param _Key: 支持的策略，可选值为latestPushedK（保留最新推送多少个版本）nDaysSinceLastPush（保留近天内推送）
+注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param _Value: 规则设置下的对应值
+注意：此字段可能返回 null，表示取不到有效值。
         :type Value: int
         """
         self._Key = None

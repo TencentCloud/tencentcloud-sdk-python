@@ -1395,6 +1395,112 @@ class CloseServerlessDBExtranetAccessResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateAccountRequest(AbstractModel):
+    """CreateAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: 实例ID。
+        :type DBInstanceId: str
+        :param _UserName: 创建的账号名称。
+        :type UserName: str
+        :param _Password: 账号对应的密码。
+        :type Password: str
+        :param _Type: 账号类型。当前支持normal、tencentDBSuper两个输入。normal指代普通用户，tencentDBSuper为拥有pg_tencentdb_superuser角色的账号。
+        :type Type: str
+        :param _Remark: 账号备注。
+        :type Remark: str
+        """
+        self._DBInstanceId = None
+        self._UserName = None
+        self._Password = None
+        self._Type = None
+        self._Remark = None
+
+    @property
+    def DBInstanceId(self):
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._UserName = params.get("UserName")
+        self._Password = params.get("Password")
+        self._Type = params.get("Type")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAccountResponse(AbstractModel):
+    """CreateAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateBaseBackupRequest(AbstractModel):
     """CreateBaseBackup请求参数结构体
 
@@ -4227,6 +4333,211 @@ Standby，代表备节点。
         
 
 
+class DatabaseObject(AbstractModel):
+    """描述数据库中某个对象所属的类型、是在哪个数据库、模式、表中的对象。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ObjectType: 支持使用的数据库对象类型有：account,database,schema,sequence,procedure,type,function,table,view,matview,column。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ObjectType: str
+        :param _ObjectName: 所描述的数据库对象名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ObjectName: str
+        :param _DatabaseName: 所要描述的数据库对象，所属的数据库名称。当描述对象类型不为database时，此参数必选。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseName: str
+        :param _SchemaName: 所要描述的数据库对象，所属的模式名称。当描述对象不为database、schema时，此参数必选。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchemaName: str
+        :param _TableName: 所要描述的数据库对象，所属的表名称。当描述的对象类型为column时，此参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        """
+        self._ObjectType = None
+        self._ObjectName = None
+        self._DatabaseName = None
+        self._SchemaName = None
+        self._TableName = None
+
+    @property
+    def ObjectType(self):
+        return self._ObjectType
+
+    @ObjectType.setter
+    def ObjectType(self, ObjectType):
+        self._ObjectType = ObjectType
+
+    @property
+    def ObjectName(self):
+        return self._ObjectName
+
+    @ObjectName.setter
+    def ObjectName(self, ObjectName):
+        self._ObjectName = ObjectName
+
+    @property
+    def DatabaseName(self):
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def SchemaName(self):
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+
+    def _deserialize(self, params):
+        self._ObjectType = params.get("ObjectType")
+        self._ObjectName = params.get("ObjectName")
+        self._DatabaseName = params.get("DatabaseName")
+        self._SchemaName = params.get("SchemaName")
+        self._TableName = params.get("TableName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DatabasePrivilege(AbstractModel):
+    """指定账号对数据库对象拥有的权限列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Object: 数据库对象，当ObjectType为database时，DataseName/SchemaName/TableName可为空；当ObjectType为schema时，SchemaName/TableName可为空；当ObjectType为column时，TableName不可为空，其余情况均可为空。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Object: :class:`tencentcloud.postgres.v20170312.models.DatabaseObject`
+        :param _PrivilegeSet: 指定账号对数据库对象拥有的权限列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivilegeSet: list of str
+        """
+        self._Object = None
+        self._PrivilegeSet = None
+
+    @property
+    def Object(self):
+        return self._Object
+
+    @Object.setter
+    def Object(self, Object):
+        self._Object = Object
+
+    @property
+    def PrivilegeSet(self):
+        return self._PrivilegeSet
+
+    @PrivilegeSet.setter
+    def PrivilegeSet(self, PrivilegeSet):
+        self._PrivilegeSet = PrivilegeSet
+
+
+    def _deserialize(self, params):
+        if params.get("Object") is not None:
+            self._Object = DatabaseObject()
+            self._Object._deserialize(params.get("Object"))
+        self._PrivilegeSet = params.get("PrivilegeSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAccountRequest(AbstractModel):
+    """DeleteAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: 实例ID。	
+        :type DBInstanceId: str
+        :param _UserName: 删除的账号名称。	
+        :type UserName: str
+        """
+        self._DBInstanceId = None
+        self._UserName = None
+
+    @property
+    def DBInstanceId(self):
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._UserName = params.get("UserName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAccountResponse(AbstractModel):
+    """DeleteAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteBaseBackupRequest(AbstractModel):
     """DeleteBaseBackup请求参数结构体
 
@@ -4777,6 +5088,110 @@ class DeleteServerlessDBInstanceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAccountPrivilegesRequest(AbstractModel):
+    """DescribeAccountPrivileges请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: 实例ID。	
+        :type DBInstanceId: str
+        :param _UserName: 查询此账号对某数据库对象所拥有的权限信息。
+        :type UserName: str
+        :param _DatabaseObjectSet: 要查询的数据库对象信息
+        :type DatabaseObjectSet: list of DatabaseObject
+        """
+        self._DBInstanceId = None
+        self._UserName = None
+        self._DatabaseObjectSet = None
+
+    @property
+    def DBInstanceId(self):
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def DatabaseObjectSet(self):
+        return self._DatabaseObjectSet
+
+    @DatabaseObjectSet.setter
+    def DatabaseObjectSet(self, DatabaseObjectSet):
+        self._DatabaseObjectSet = DatabaseObjectSet
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._UserName = params.get("UserName")
+        if params.get("DatabaseObjectSet") is not None:
+            self._DatabaseObjectSet = []
+            for item in params.get("DatabaseObjectSet"):
+                obj = DatabaseObject()
+                obj._deserialize(item)
+                self._DatabaseObjectSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAccountPrivilegesResponse(AbstractModel):
+    """DescribeAccountPrivileges返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PrivilegeSet: 用户拥有数据库user_database的CREATE、CONNECT、TEMPORARY权限
+        :type PrivilegeSet: list of DatabasePrivilege
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PrivilegeSet = None
+        self._RequestId = None
+
+    @property
+    def PrivilegeSet(self):
+        return self._PrivilegeSet
+
+    @PrivilegeSet.setter
+    def PrivilegeSet(self, PrivilegeSet):
+        self._PrivilegeSet = PrivilegeSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("PrivilegeSet") is not None:
+            self._PrivilegeSet = []
+            for item in params.get("PrivilegeSet"):
+                obj = DatabasePrivilege()
+                obj._deserialize(item)
+                self._PrivilegeSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -7135,6 +7550,162 @@ class DescribeDBXlogsResponse(AbstractModel):
                 obj = Xlog()
                 obj._deserialize(item)
                 self._XlogList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDatabaseObjectsRequest(AbstractModel):
+    """DescribeDatabaseObjects请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: 实例ID。	
+        :type DBInstanceId: str
+        :param _ObjectType: 查询的对象类型。支持查询的数据对象有：database,schema,sequence,procedure,type,function,table,view,matview,column。
+        :type ObjectType: str
+        :param _Limit: 单次显示数量，默认20。可选范围为[0,100]。
+        :type Limit: int
+        :param _Offset: 数据偏移量，从0开始。	
+        :type Offset: int
+        :param _DatabaseName: 查询对象所属的数据库。当查询对象类型不为database时，此参数必填。
+        :type DatabaseName: str
+        :param _SchemaName: 查询对象所属的模式。当查询对象类型不为database、schema时，此参数必填。
+        :type SchemaName: str
+        :param _TableName: 查询对象所属的表。当查询对象类型为column时，此参数必填。
+        :type TableName: str
+        """
+        self._DBInstanceId = None
+        self._ObjectType = None
+        self._Limit = None
+        self._Offset = None
+        self._DatabaseName = None
+        self._SchemaName = None
+        self._TableName = None
+
+    @property
+    def DBInstanceId(self):
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def ObjectType(self):
+        return self._ObjectType
+
+    @ObjectType.setter
+    def ObjectType(self, ObjectType):
+        self._ObjectType = ObjectType
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def DatabaseName(self):
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def SchemaName(self):
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._ObjectType = params.get("ObjectType")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._DatabaseName = params.get("DatabaseName")
+        self._SchemaName = params.get("SchemaName")
+        self._TableName = params.get("TableName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDatabaseObjectsResponse(AbstractModel):
+    """DescribeDatabaseObjects返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ObjectSet: 查询对象列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ObjectSet: list of str
+        :param _TotalCount: 查询对象总数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ObjectSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ObjectSet(self):
+        return self._ObjectSet
+
+    @ObjectSet.setter
+    def ObjectSet(self, ObjectSet):
+        self._ObjectSet = ObjectSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ObjectSet = params.get("ObjectSet")
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -10193,6 +10764,76 @@ class IsolateDBInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class LockAccountRequest(AbstractModel):
+    """LockAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: 实例ID。	
+        :type DBInstanceId: str
+        :param _UserName: 账号名称。
+        :type UserName: str
+        """
+        self._DBInstanceId = None
+        self._UserName = None
+
+    @property
+    def DBInstanceId(self):
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._UserName = params.get("UserName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LockAccountResponse(AbstractModel):
+    """LockAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class LogBackup(AbstractModel):
     """数据库日志备份信息
 
@@ -10332,6 +10973,93 @@ class LogBackup(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyAccountPrivilegesRequest(AbstractModel):
+    """ModifyAccountPrivileges请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: 实例ID。	
+        :type DBInstanceId: str
+        :param _UserName: 修改此账号对某数据库对象的权限。
+        :type UserName: str
+        :param _ModifyPrivilegeSet: 修改的权限信息，支持批量修改，一次最高修改50条。
+        :type ModifyPrivilegeSet: list of ModifyPrivilege
+        """
+        self._DBInstanceId = None
+        self._UserName = None
+        self._ModifyPrivilegeSet = None
+
+    @property
+    def DBInstanceId(self):
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def ModifyPrivilegeSet(self):
+        return self._ModifyPrivilegeSet
+
+    @ModifyPrivilegeSet.setter
+    def ModifyPrivilegeSet(self, ModifyPrivilegeSet):
+        self._ModifyPrivilegeSet = ModifyPrivilegeSet
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._UserName = params.get("UserName")
+        if params.get("ModifyPrivilegeSet") is not None:
+            self._ModifyPrivilegeSet = []
+            for item in params.get("ModifyPrivilegeSet"):
+                obj = ModifyPrivilege()
+                obj._deserialize(item)
+                self._ModifyPrivilegeSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAccountPrivilegesResponse(AbstractModel):
+    """ModifyAccountPrivileges返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyAccountRemarkRequest(AbstractModel):
@@ -11810,6 +12538,68 @@ class ModifyParameterTemplateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class ModifyPrivilege(AbstractModel):
+    """用于修改数据库对象的权限，其中包含了数据库对象描述的数据结构、需要修改的权限列表以及修改的类型等。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatabasePrivilege: 要修改的数据库对象及权限列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabasePrivilege: :class:`tencentcloud.postgres.v20170312.models.DatabasePrivilege`
+        :param _ModifyType: 修改的方式，当前仅支持grantObject、revokeObject、alterRole。grantObject代表授权、revokeObject代表收回权、alterRole代表修改账号类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyType: str
+        :param _IsCascade: 当ModifyType为revokeObject才需要此参数，参数为true时，撤销权限会级联撤销。默认为false。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsCascade: bool
+        """
+        self._DatabasePrivilege = None
+        self._ModifyType = None
+        self._IsCascade = None
+
+    @property
+    def DatabasePrivilege(self):
+        return self._DatabasePrivilege
+
+    @DatabasePrivilege.setter
+    def DatabasePrivilege(self, DatabasePrivilege):
+        self._DatabasePrivilege = DatabasePrivilege
+
+    @property
+    def ModifyType(self):
+        return self._ModifyType
+
+    @ModifyType.setter
+    def ModifyType(self, ModifyType):
+        self._ModifyType = ModifyType
+
+    @property
+    def IsCascade(self):
+        return self._IsCascade
+
+    @IsCascade.setter
+    def IsCascade(self, IsCascade):
+        self._IsCascade = IsCascade
+
+
+    def _deserialize(self, params):
+        if params.get("DatabasePrivilege") is not None:
+            self._DatabasePrivilege = DatabasePrivilege()
+            self._DatabasePrivilege._deserialize(params.get("DatabasePrivilege"))
+        self._ModifyType = params.get("ModifyType")
+        self._IsCascade = params.get("IsCascade")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ModifyReadOnlyGroupConfigRequest(AbstractModel):
@@ -15317,6 +16107,76 @@ class Tag(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UnlockAccountRequest(AbstractModel):
+    """UnlockAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: 实例ID。	
+        :type DBInstanceId: str
+        :param _UserName: 账号名称。
+        :type UserName: str
+        """
+        self._DBInstanceId = None
+        self._UserName = None
+
+    @property
+    def DBInstanceId(self):
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._UserName = params.get("UserName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnlockAccountResponse(AbstractModel):
+    """UnlockAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class UpgradeDBInstanceKernelVersionRequest(AbstractModel):

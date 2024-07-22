@@ -30308,12 +30308,15 @@ class UpgradeDBInstanceEngineVersionRequest(AbstractModel):
         :type UpgradeSubversion: int
         :param _MaxDelayTime: 延迟阈值。取值范围1~10
         :type MaxDelayTime: int
+        :param _ParamList: 版本升级支持指定参数
+        :type ParamList: list of UpgradeEngineVersionParams
         """
         self._InstanceId = None
         self._EngineVersion = None
         self._WaitSwitch = None
         self._UpgradeSubversion = None
         self._MaxDelayTime = None
+        self._ParamList = None
 
     @property
     def InstanceId(self):
@@ -30355,6 +30358,14 @@ class UpgradeDBInstanceEngineVersionRequest(AbstractModel):
     def MaxDelayTime(self, MaxDelayTime):
         self._MaxDelayTime = MaxDelayTime
 
+    @property
+    def ParamList(self):
+        return self._ParamList
+
+    @ParamList.setter
+    def ParamList(self, ParamList):
+        self._ParamList = ParamList
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -30362,6 +30373,12 @@ class UpgradeDBInstanceEngineVersionRequest(AbstractModel):
         self._WaitSwitch = params.get("WaitSwitch")
         self._UpgradeSubversion = params.get("UpgradeSubversion")
         self._MaxDelayTime = params.get("MaxDelayTime")
+        if params.get("ParamList") is not None:
+            self._ParamList = []
+            for item in params.get("ParamList"):
+                obj = UpgradeEngineVersionParams()
+                obj._deserialize(item)
+                self._ParamList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30684,6 +30701,53 @@ class UpgradeDBInstanceResponse(AbstractModel):
         self._DealIds = params.get("DealIds")
         self._AsyncRequestId = params.get("AsyncRequestId")
         self._RequestId = params.get("RequestId")
+
+
+class UpgradeEngineVersionParams(AbstractModel):
+    """5.7升级8.0指定参数的结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 参数名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Value: 参数值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class UploadInfo(AbstractModel):

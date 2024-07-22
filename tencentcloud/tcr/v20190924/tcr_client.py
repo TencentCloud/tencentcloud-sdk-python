@@ -1432,7 +1432,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeInstanceAllNamespaces(self, request):
-        """查询所有实例命名空间列表
+        """查询所有有实例命名空间列表
 
         :param request: Request instance for DescribeInstanceAllNamespaces.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeInstanceAllNamespacesRequest`
@@ -1915,7 +1915,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeTagRetentionRules(self, request):
-        """查询版本保留规则
+        """查询镜像版本保留规则
 
         :param request: Request instance for DescribeTagRetentionRules.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeTagRetentionRulesRequest`

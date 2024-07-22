@@ -1061,6 +1061,12 @@ class AddAttackWhiteRuleRequest(AbstractModel):
         :type SignatureId: str
         :param _SignatureIds: 加白的规则ID列表
         :type SignatureIds: list of str
+        :param _TypeIds: 加白的大类规则ID
+        :type TypeIds: list of str
+        :param _Mode: 0:按照特定规则ID加白, 1:按照规则类型加白
+        :type Mode: int
+        :param _Name: 规则名
+        :type Name: str
         """
         self._Domain = None
         self._Status = None
@@ -1068,6 +1074,9 @@ class AddAttackWhiteRuleRequest(AbstractModel):
         self._RuleId = None
         self._SignatureId = None
         self._SignatureIds = None
+        self._TypeIds = None
+        self._Mode = None
+        self._Name = None
 
     @property
     def Domain(self):
@@ -1117,6 +1126,30 @@ class AddAttackWhiteRuleRequest(AbstractModel):
     def SignatureIds(self, SignatureIds):
         self._SignatureIds = SignatureIds
 
+    @property
+    def TypeIds(self):
+        return self._TypeIds
+
+    @TypeIds.setter
+    def TypeIds(self, TypeIds):
+        self._TypeIds = TypeIds
+
+    @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -1130,6 +1163,9 @@ class AddAttackWhiteRuleRequest(AbstractModel):
         self._RuleId = params.get("RuleId")
         self._SignatureId = params.get("SignatureId")
         self._SignatureIds = params.get("SignatureIds")
+        self._TypeIds = params.get("TypeIds")
+        self._Mode = params.get("Mode")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2745,6 +2781,18 @@ class BatchIpAccessControlItem(AbstractModel):
         :param _CreateTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
+        :param _JobType: 定时任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobType: str
+        :param _CronType: 周期任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CronType: str
+        :param _JobDateTime: 定时任务配置详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        :param _ValidStatus: 生效状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValidStatus: int
         """
         self._Id = None
         self._ActionType = None
@@ -2757,6 +2805,10 @@ class BatchIpAccessControlItem(AbstractModel):
         self._RuleId = None
         self._IpList = None
         self._CreateTime = None
+        self._JobType = None
+        self._CronType = None
+        self._JobDateTime = None
+        self._ValidStatus = None
 
     @property
     def Id(self):
@@ -2846,6 +2898,38 @@ class BatchIpAccessControlItem(AbstractModel):
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
 
+    @property
+    def JobType(self):
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def CronType(self):
+        return self._CronType
+
+    @CronType.setter
+    def CronType(self, CronType):
+        self._CronType = CronType
+
+    @property
+    def JobDateTime(self):
+        return self._JobDateTime
+
+    @JobDateTime.setter
+    def JobDateTime(self, JobDateTime):
+        self._JobDateTime = JobDateTime
+
+    @property
+    def ValidStatus(self):
+        return self._ValidStatus
+
+    @ValidStatus.setter
+    def ValidStatus(self, ValidStatus):
+        self._ValidStatus = ValidStatus
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -2859,6 +2943,12 @@ class BatchIpAccessControlItem(AbstractModel):
         self._RuleId = params.get("RuleId")
         self._IpList = params.get("IpList")
         self._CreateTime = params.get("CreateTime")
+        self._JobType = params.get("JobType")
+        self._CronType = params.get("CronType")
+        if params.get("JobDateTime") is not None:
+            self._JobDateTime = JobDateTime()
+            self._JobDateTime._deserialize(params.get("JobDateTime"))
+        self._ValidStatus = params.get("ValidStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3291,6 +3381,21 @@ class CCRuleItem(AbstractModel):
         :param _OptionsArr: 高级参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type OptionsArr: str
+        :param _Length: url长度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Length: int
+        :param _RuleId: 规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleId: int
+        :param _EventId: 事件id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventId: str
+        :param _SessionApplied: 关联的Session规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionApplied: list of int
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
         """
         self._ActionType = None
         self._Advance = None
@@ -3304,6 +3409,11 @@ class CCRuleItem(AbstractModel):
         self._Url = None
         self._ValidTime = None
         self._OptionsArr = None
+        self._Length = None
+        self._RuleId = None
+        self._EventId = None
+        self._SessionApplied = None
+        self._CreateTime = None
 
     @property
     def ActionType(self):
@@ -3401,6 +3511,46 @@ class CCRuleItem(AbstractModel):
     def OptionsArr(self, OptionsArr):
         self._OptionsArr = OptionsArr
 
+    @property
+    def Length(self):
+        return self._Length
+
+    @Length.setter
+    def Length(self, Length):
+        self._Length = Length
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def EventId(self):
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def SessionApplied(self):
+        return self._SessionApplied
+
+    @SessionApplied.setter
+    def SessionApplied(self, SessionApplied):
+        self._SessionApplied = SessionApplied
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
 
     def _deserialize(self, params):
         self._ActionType = params.get("ActionType")
@@ -3415,6 +3565,11 @@ class CCRuleItem(AbstractModel):
         self._Url = params.get("Url")
         self._ValidTime = params.get("ValidTime")
         self._OptionsArr = params.get("OptionsArr")
+        self._Length = params.get("Length")
+        self._RuleId = params.get("RuleId")
+        self._EventId = params.get("EventId")
+        self._SessionApplied = params.get("SessionApplied")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5221,10 +5376,14 @@ class CreateIpAccessControlRequest(AbstractModel):
         :type InstanceId: str
         :param _Edition: WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
         :type Edition: str
-        :param _SourceType: 可选值为：batch（批量添加）、bot、cc、custom（非批量添加时的默认值）
+        :param _SourceType: 可选值为：batch（批量添加）、bot（BOT流量分析中的BOT详情列表中添加时）、cc（在攻击日志列表中对攻击类型为CC的IP添加时）、custom（非批量添加时的默认值）
         :type SourceType: str
         :param _Note: 备注
         :type Note: str
+        :param _JobType: 定时配置类型
+        :type JobType: str
+        :param _JobDateTime: 定时配置详情
+        :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
         """
         self._Domain = None
         self._IpList = None
@@ -5234,6 +5393,8 @@ class CreateIpAccessControlRequest(AbstractModel):
         self._Edition = None
         self._SourceType = None
         self._Note = None
+        self._JobType = None
+        self._JobDateTime = None
 
     @property
     def Domain(self):
@@ -5299,6 +5460,22 @@ class CreateIpAccessControlRequest(AbstractModel):
     def Note(self, Note):
         self._Note = Note
 
+    @property
+    def JobType(self):
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def JobDateTime(self):
+        return self._JobDateTime
+
+    @JobDateTime.setter
+    def JobDateTime(self, JobDateTime):
+        self._JobDateTime = JobDateTime
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -5309,6 +5486,10 @@ class CreateIpAccessControlRequest(AbstractModel):
         self._Edition = params.get("Edition")
         self._SourceType = params.get("SourceType")
         self._Note = params.get("Note")
+        self._JobType = params.get("JobType")
+        if params.get("JobDateTime") is not None:
+            self._JobDateTime = JobDateTime()
+            self._JobDateTime._deserialize(params.get("JobDateTime"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8700,7 +8881,7 @@ class DescribeAttackWhiteRuleRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 每页容量
         :type Limit: int
-        :param _By: 排序字段，支持user_id, signature_id, modify_time
+        :param _By: 排序的字段，支持user_id, signature_id, modify_time
         :type By: str
         :param _Order: 排序方式
         :type Order: str
@@ -11763,10 +11944,13 @@ class DescribeInstancesRequest(AbstractModel):
         :type Limit: int
         :param _Filters: 过滤数组
         :type Filters: list of FiltersItemNew
+        :param _FreeDelayFlag: 释放延期标识
+        :type FreeDelayFlag: int
         """
         self._Offset = None
         self._Limit = None
         self._Filters = None
+        self._FreeDelayFlag = None
 
     @property
     def Offset(self):
@@ -11792,6 +11976,14 @@ class DescribeInstancesRequest(AbstractModel):
     def Filters(self, Filters):
         self._Filters = Filters
 
+    @property
+    def FreeDelayFlag(self):
+        return self._FreeDelayFlag
+
+    @FreeDelayFlag.setter
+    def FreeDelayFlag(self, FreeDelayFlag):
+        self._FreeDelayFlag = FreeDelayFlag
+
 
     def _deserialize(self, params):
         self._Offset = params.get("Offset")
@@ -11802,6 +11994,7 @@ class DescribeInstancesRequest(AbstractModel):
                 obj = FiltersItemNew()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._FreeDelayFlag = params.get("FreeDelayFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11889,7 +12082,7 @@ class DescribeIpAccessControlRequest(AbstractModel):
         :type CtsMax: int
         :param _OffSet: 分页偏移量，取Limit整数倍。最小值为0，最大值= Total/Limit向上取整
         :type OffSet: int
-        :param _Limit: 每页返回的数量
+        :param _Limit: 每页返回的数量，默认为20
         :type Limit: int
         :param _Source: 来源
         :type Source: str
@@ -11905,6 +12098,8 @@ class DescribeIpAccessControlRequest(AbstractModel):
         :type ValidTimeStampMax: str
         :param _RuleId: 规则ID
         :type RuleId: int
+        :param _TimerType: 定时任务类型筛选0 1 2 3 4
+        :type TimerType: int
         """
         self._Domain = None
         self._Count = None
@@ -11922,6 +12117,7 @@ class DescribeIpAccessControlRequest(AbstractModel):
         self._ValidTimeStampMin = None
         self._ValidTimeStampMax = None
         self._RuleId = None
+        self._TimerType = None
 
     @property
     def Domain(self):
@@ -12059,6 +12255,14 @@ class DescribeIpAccessControlRequest(AbstractModel):
     def RuleId(self, RuleId):
         self._RuleId = RuleId
 
+    @property
+    def TimerType(self):
+        return self._TimerType
+
+    @TimerType.setter
+    def TimerType(self, TimerType):
+        self._TimerType = TimerType
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -12077,6 +12281,7 @@ class DescribeIpAccessControlRequest(AbstractModel):
         self._ValidTimeStampMin = params.get("ValidTimeStampMin")
         self._ValidTimeStampMax = params.get("ValidTimeStampMax")
         self._RuleId = params.get("RuleId")
+        self._TimerType = params.get("TimerType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12151,7 +12356,7 @@ class DescribeIpHitItemsRequest(AbstractModel):
         :type Domain: str
         :param _Count: 计数标识
         :type Count: int
-        :param _Category: 类别
+        :param _Category: 类别，ip封禁传值auto_deny
         :type Category: str
         :param _VtsMin: 有效时间最小时间戳
         :type VtsMin: int
@@ -18583,6 +18788,9 @@ class InstanceInfo(AbstractModel):
         :param _BillingItem: 计费项
 注意：此字段可能返回 null，表示取不到有效值。
         :type BillingItem: str
+        :param _FreeDelayFlag: 实例延期释放标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FreeDelayFlag: int
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -18624,6 +18832,7 @@ class InstanceInfo(AbstractModel):
         self._LastQpsExceedTime = None
         self._MiniExtendPkg = None
         self._BillingItem = None
+        self._FreeDelayFlag = None
 
     @property
     def InstanceId(self):
@@ -18945,6 +19154,14 @@ class InstanceInfo(AbstractModel):
     def BillingItem(self, BillingItem):
         self._BillingItem = BillingItem
 
+    @property
+    def FreeDelayFlag(self):
+        return self._FreeDelayFlag
+
+    @FreeDelayFlag.setter
+    def FreeDelayFlag(self, FreeDelayFlag):
+        self._FreeDelayFlag = FreeDelayFlag
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -19007,6 +19224,7 @@ class InstanceInfo(AbstractModel):
             self._MiniExtendPkg = MiniExtendPkg()
             self._MiniExtendPkg._deserialize(params.get("MiniExtendPkg"))
         self._BillingItem = params.get("BillingItem")
+        self._FreeDelayFlag = params.get("FreeDelayFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19103,6 +19321,15 @@ class IpAccessControlItem(AbstractModel):
         :param _CreateTime: 规则创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
+        :param _JobType: 定时任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobType: str
+        :param _CronType: 周期任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CronType: str
+        :param _JobDateTime: 定时任务配置详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
         """
         self._Id = None
         self._ActionType = None
@@ -19115,6 +19342,9 @@ class IpAccessControlItem(AbstractModel):
         self._RuleId = None
         self._IpList = None
         self._CreateTime = None
+        self._JobType = None
+        self._CronType = None
+        self._JobDateTime = None
 
     @property
     def Id(self):
@@ -19204,6 +19434,30 @@ class IpAccessControlItem(AbstractModel):
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
 
+    @property
+    def JobType(self):
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def CronType(self):
+        return self._CronType
+
+    @CronType.setter
+    def CronType(self, CronType):
+        self._CronType = CronType
+
+    @property
+    def JobDateTime(self):
+        return self._JobDateTime
+
+    @JobDateTime.setter
+    def JobDateTime(self, JobDateTime):
+        self._JobDateTime = JobDateTime
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -19217,6 +19471,11 @@ class IpAccessControlItem(AbstractModel):
         self._RuleId = params.get("RuleId")
         self._IpList = params.get("IpList")
         self._CreateTime = params.get("CreateTime")
+        self._JobType = params.get("JobType")
+        self._CronType = params.get("CronType")
+        if params.get("JobDateTime") is not None:
+            self._JobDateTime = JobDateTime()
+            self._JobDateTime._deserialize(params.get("JobDateTime"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21212,6 +21471,12 @@ class ModifyAttackWhiteRuleRequest(AbstractModel):
         :type SignatureId: str
         :param _SignatureIds: 编辑的加白的规则ID列表
         :type SignatureIds: list of str
+        :param _TypeIds: 加白的大类规则ID
+        :type TypeIds: list of str
+        :param _Mode: 0表示按照特定规则ID加白, 1表示按照规则类型加白
+        :type Mode: int
+        :param _Name: 规则名
+        :type Name: str
         """
         self._RuleId = None
         self._Domain = None
@@ -21219,6 +21484,9 @@ class ModifyAttackWhiteRuleRequest(AbstractModel):
         self._Rules = None
         self._SignatureId = None
         self._SignatureIds = None
+        self._TypeIds = None
+        self._Mode = None
+        self._Name = None
 
     @property
     def RuleId(self):
@@ -21268,6 +21536,30 @@ class ModifyAttackWhiteRuleRequest(AbstractModel):
     def SignatureIds(self, SignatureIds):
         self._SignatureIds = SignatureIds
 
+    @property
+    def TypeIds(self):
+        return self._TypeIds
+
+    @TypeIds.setter
+    def TypeIds(self, TypeIds):
+        self._TypeIds = TypeIds
+
+    @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
 
     def _deserialize(self, params):
         self._RuleId = params.get("RuleId")
@@ -21281,6 +21573,9 @@ class ModifyAttackWhiteRuleRequest(AbstractModel):
                 self._Rules.append(obj)
         self._SignatureId = params.get("SignatureId")
         self._SignatureIds = params.get("SignatureIds")
+        self._TypeIds = params.get("TypeIds")
+        self._Mode = params.get("Mode")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23375,6 +23670,10 @@ class ModifyIpAccessControlRequest(AbstractModel):
         :type SourceType: str
         :param _Note: 备注
         :type Note: str
+        :param _JobType: 定时配置类型
+        :type JobType: str
+        :param _JobDateTime: 定时配置详情
+        :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
         """
         self._Domain = None
         self._IpList = None
@@ -23385,6 +23684,8 @@ class ModifyIpAccessControlRequest(AbstractModel):
         self._Edition = None
         self._SourceType = None
         self._Note = None
+        self._JobType = None
+        self._JobDateTime = None
 
     @property
     def Domain(self):
@@ -23458,6 +23759,22 @@ class ModifyIpAccessControlRequest(AbstractModel):
     def Note(self, Note):
         self._Note = Note
 
+    @property
+    def JobType(self):
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def JobDateTime(self):
+        return self._JobDateTime
+
+    @JobDateTime.setter
+    def JobDateTime(self, JobDateTime):
+        self._JobDateTime = JobDateTime
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -23469,6 +23786,10 @@ class ModifyIpAccessControlRequest(AbstractModel):
         self._Edition = params.get("Edition")
         self._SourceType = params.get("SourceType")
         self._Note = params.get("Note")
+        self._JobType = params.get("JobType")
+        if params.get("JobDateTime") is not None:
+            self._JobDateTime = JobDateTime()
+            self._JobDateTime._deserialize(params.get("JobDateTime"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27680,6 +28001,8 @@ class UpsertCCRuleRequest(AbstractModel):
         :type RuleId: int
         :param _CreateTime: 规则创建时间
         :type CreateTime: int
+        :param _Length: url长度
+        :type Length: int
         """
         self._Domain = None
         self._Name = None
@@ -27699,6 +28022,7 @@ class UpsertCCRuleRequest(AbstractModel):
         self._SessionApplied = None
         self._RuleId = None
         self._CreateTime = None
+        self._Length = None
 
     @property
     def Domain(self):
@@ -27844,6 +28168,14 @@ class UpsertCCRuleRequest(AbstractModel):
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
 
+    @property
+    def Length(self):
+        return self._Length
+
+    @Length.setter
+    def Length(self, Length):
+        self._Length = Length
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -27864,6 +28196,7 @@ class UpsertCCRuleRequest(AbstractModel):
         self._SessionApplied = params.get("SessionApplied")
         self._RuleId = params.get("RuleId")
         self._CreateTime = params.get("CreateTime")
+        self._Length = params.get("Length")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28475,6 +28808,9 @@ class UserSignatureRule(AbstractModel):
         :type Description: str
         :param _Reason: 0/1
         :type Reason: int
+        :param _RiskLevel: 1: 高危 2:中危 3:低危
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskLevel: int
         """
         self._ID = None
         self._Status = None
@@ -28487,6 +28823,7 @@ class UserSignatureRule(AbstractModel):
         self._SubClassName = None
         self._Description = None
         self._Reason = None
+        self._RiskLevel = None
 
     @property
     def ID(self):
@@ -28576,6 +28913,14 @@ class UserSignatureRule(AbstractModel):
     def Reason(self, Reason):
         self._Reason = Reason
 
+    @property
+    def RiskLevel(self):
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
 
     def _deserialize(self, params):
         self._ID = params.get("ID")
@@ -28589,6 +28934,7 @@ class UserSignatureRule(AbstractModel):
         self._SubClassName = params.get("SubClassName")
         self._Description = params.get("Description")
         self._Reason = params.get("Reason")
+        self._RiskLevel = params.get("RiskLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28614,6 +28960,9 @@ class UserWhiteRule(AbstractModel):
         :type Status: int
         :param _MatchField: 匹配域
         :type MatchField: str
+        :param _MatchParams: 匹配参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MatchParams: str
         :param _MatchMethod: 匹配方法
         :type MatchMethod: str
         :param _MatchContent: 匹配内容
@@ -28622,15 +28971,44 @@ class UserWhiteRule(AbstractModel):
         :type CreateTime: str
         :param _ModifyTime: 修改时间
         :type ModifyTime: str
+        :param _SignatureIds: 规则ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SignatureIds: list of str
+        :param _TypeIds: 大类规则ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TypeIds: list of str
+        :param _TypeId: 大类规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TypeId: str
+        :param _Mode: 0:按照特定规则ID加白, 1:按照规则类型加白
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mode: int
+        :param _Name: 规则名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _MatchInfo: 匹配规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MatchInfo: list of UserWhiteRuleItem
+        :param _MatchInfoStr: MatchInfo字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MatchInfoStr: str
         """
         self._WhiteRuleId = None
         self._SignatureId = None
         self._Status = None
         self._MatchField = None
+        self._MatchParams = None
         self._MatchMethod = None
         self._MatchContent = None
         self._CreateTime = None
         self._ModifyTime = None
+        self._SignatureIds = None
+        self._TypeIds = None
+        self._TypeId = None
+        self._Mode = None
+        self._Name = None
+        self._MatchInfo = None
+        self._MatchInfoStr = None
 
     @property
     def WhiteRuleId(self):
@@ -28665,6 +29043,14 @@ class UserWhiteRule(AbstractModel):
         self._MatchField = MatchField
 
     @property
+    def MatchParams(self):
+        return self._MatchParams
+
+    @MatchParams.setter
+    def MatchParams(self, MatchParams):
+        self._MatchParams = MatchParams
+
+    @property
     def MatchMethod(self):
         return self._MatchMethod
 
@@ -28696,16 +29082,85 @@ class UserWhiteRule(AbstractModel):
     def ModifyTime(self, ModifyTime):
         self._ModifyTime = ModifyTime
 
+    @property
+    def SignatureIds(self):
+        return self._SignatureIds
+
+    @SignatureIds.setter
+    def SignatureIds(self, SignatureIds):
+        self._SignatureIds = SignatureIds
+
+    @property
+    def TypeIds(self):
+        return self._TypeIds
+
+    @TypeIds.setter
+    def TypeIds(self, TypeIds):
+        self._TypeIds = TypeIds
+
+    @property
+    def TypeId(self):
+        return self._TypeId
+
+    @TypeId.setter
+    def TypeId(self, TypeId):
+        self._TypeId = TypeId
+
+    @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def MatchInfo(self):
+        return self._MatchInfo
+
+    @MatchInfo.setter
+    def MatchInfo(self, MatchInfo):
+        self._MatchInfo = MatchInfo
+
+    @property
+    def MatchInfoStr(self):
+        return self._MatchInfoStr
+
+    @MatchInfoStr.setter
+    def MatchInfoStr(self, MatchInfoStr):
+        self._MatchInfoStr = MatchInfoStr
+
 
     def _deserialize(self, params):
         self._WhiteRuleId = params.get("WhiteRuleId")
         self._SignatureId = params.get("SignatureId")
         self._Status = params.get("Status")
         self._MatchField = params.get("MatchField")
+        self._MatchParams = params.get("MatchParams")
         self._MatchMethod = params.get("MatchMethod")
         self._MatchContent = params.get("MatchContent")
         self._CreateTime = params.get("CreateTime")
         self._ModifyTime = params.get("ModifyTime")
+        self._SignatureIds = params.get("SignatureIds")
+        self._TypeIds = params.get("TypeIds")
+        self._TypeId = params.get("TypeId")
+        self._Mode = params.get("Mode")
+        self._Name = params.get("Name")
+        if params.get("MatchInfo") is not None:
+            self._MatchInfo = []
+            for item in params.get("MatchInfo"):
+                obj = UserWhiteRuleItem()
+                obj._deserialize(item)
+                self._MatchInfo.append(obj)
+        self._MatchInfoStr = params.get("MatchInfoStr")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28729,10 +29184,14 @@ class UserWhiteRuleItem(AbstractModel):
         :type MatchMethod: str
         :param _MatchContent: 匹配内容
         :type MatchContent: str
+        :param _MatchParams: 匹配参数名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MatchParams: str
         """
         self._MatchField = None
         self._MatchMethod = None
         self._MatchContent = None
+        self._MatchParams = None
 
     @property
     def MatchField(self):
@@ -28758,11 +29217,20 @@ class UserWhiteRuleItem(AbstractModel):
     def MatchContent(self, MatchContent):
         self._MatchContent = MatchContent
 
+    @property
+    def MatchParams(self):
+        return self._MatchParams
+
+    @MatchParams.setter
+    def MatchParams(self, MatchParams):
+        self._MatchParams = MatchParams
+
 
     def _deserialize(self, params):
         self._MatchField = params.get("MatchField")
         self._MatchMethod = params.get("MatchMethod")
         self._MatchContent = params.get("MatchContent")
+        self._MatchParams = params.get("MatchParams")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

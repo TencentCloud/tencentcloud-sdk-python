@@ -3112,7 +3112,15 @@ class DataDisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskType: 数据盘类型。数据盘类型限制详见[云硬盘类型](https://cloud.tencent.com/document/product/362/2353)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><li>CLOUD_HSSD：增强型SSD云硬盘<br><li>CLOUD_TSSD：极速型SSD云硬盘<br><br>默认取值与系统盘类型（SystemDisk.DiskType）保持一致。
+        :param _DiskType: 数据盘类型。数据盘类型限制详见[云硬盘类型](https://cloud.tencent.com/document/product/362/2353)。取值范围：
+<li>LOCAL_BASIC：本地硬盘</li>
+<li>LOCAL_SSD：本地SSD硬盘</li>
+<li>CLOUD_BASIC：普通云硬盘</li>
+<li>CLOUD_PREMIUM：高性能云硬盘</li>
+<li>CLOUD_SSD：SSD云硬盘</li>
+<li>CLOUD_HSSD：增强型SSD云硬盘</li>
+<li>CLOUD_TSSD：极速型SSD云硬盘</li>
+默认取值与系统盘类型（SystemDisk.DiskType）保持一致。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiskType: str
         :param _DiskSize: 数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[CVM实例配置](https://cloud.tencent.com/document/product/213/2177)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
@@ -3121,16 +3129,25 @@ class DataDisk(AbstractModel):
         :param _SnapshotId: 数据盘快照 ID，类似 `snap-l8psqwnt`。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotId: str
-        :param _DeleteWithInstance: 数据盘是否随子机销毁。取值范围：<br><li>TRUE：子机销毁时，销毁数据盘，只支持按小时后付费云盘<br><li>FALSE：子机销毁时，保留数据盘
+        :param _DeleteWithInstance: 数据盘是否随子机销毁。取值范围：
+<li>TRUE：子机销毁时，销毁数据盘，只支持按小时后付费云盘</li>
+<li>FALSE：子机销毁时，保留数据盘</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeleteWithInstance: bool
-        :param _Encrypt: 数据盘是否加密。取值范围：<br><li>TRUE：加密<br><li>FALSE：不加密
+        :param _Encrypt: 数据盘是否加密。取值范围：
+<li>TRUE：加密</li>
+<li>FALSE：不加密</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Encrypt: bool
         :param _ThroughputPerformance: 云硬盘性能，单位：MB/s。使用此参数可给云硬盘购买额外的性能，功能介绍和类型限制详见：[增强型 SSD 云硬盘额外性能说明](https://cloud.tencent.com/document/product/362/51896#.E5.A2.9E.E5.BC.BA.E5.9E.8B-ssd-.E4.BA.91.E7.A1.AC.E7.9B.98.E9.A2.9D.E5.A4.96.E6.80.A7.E8.83.BD)。
 当前仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）且 需容量 > 460GB。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ThroughputPerformance: int
+        :param _BurstPerformance: 突发性能。是否开启突发性能，默认取值为 false。
+
+注：内测中，需提单申请后使用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BurstPerformance: bool
         """
         self._DiskType = None
         self._DiskSize = None
@@ -3138,6 +3155,7 @@ class DataDisk(AbstractModel):
         self._DeleteWithInstance = None
         self._Encrypt = None
         self._ThroughputPerformance = None
+        self._BurstPerformance = None
 
     @property
     def DiskType(self):
@@ -3187,6 +3205,14 @@ class DataDisk(AbstractModel):
     def ThroughputPerformance(self, ThroughputPerformance):
         self._ThroughputPerformance = ThroughputPerformance
 
+    @property
+    def BurstPerformance(self):
+        return self._BurstPerformance
+
+    @BurstPerformance.setter
+    def BurstPerformance(self, BurstPerformance):
+        self._BurstPerformance = BurstPerformance
+
 
     def _deserialize(self, params):
         self._DiskType = params.get("DiskType")
@@ -3195,6 +3221,7 @@ class DataDisk(AbstractModel):
         self._DeleteWithInstance = params.get("DeleteWithInstance")
         self._Encrypt = params.get("Encrypt")
         self._ThroughputPerformance = params.get("ThroughputPerformance")
+        self._BurstPerformance = params.get("BurstPerformance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6358,9 +6385,15 @@ ORIGINAL，AS 直接将入参中所填的 InstanceName 传递给 CVM，CVM 可�
 
 UNIQUE，入参所填的 InstanceName 相当于实例名前缀，AS 和 CVM 会对其进行拓展，伸缩组中实例的 InstanceName 可以保证唯一。
         :type InstanceNameStyle: str
+        :param _InstanceNameSuffix: 云服务器实例名后缀。字符长度为[1,105]，且与 InstanceName 的长度和不能超过107。
+
+假设后缀名称为 suffix，原实例名为 test.0，最终实例名为 test.0.suffix。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceNameSuffix: str
         """
         self._InstanceName = None
         self._InstanceNameStyle = None
+        self._InstanceNameSuffix = None
 
     @property
     def InstanceName(self):
@@ -6378,10 +6411,19 @@ UNIQUE，入参所填的 InstanceName 相当于实例名前缀，AS 和 CVM 会�
     def InstanceNameStyle(self, InstanceNameStyle):
         self._InstanceNameStyle = InstanceNameStyle
 
+    @property
+    def InstanceNameSuffix(self):
+        return self._InstanceNameSuffix
+
+    @InstanceNameSuffix.setter
+    def InstanceNameSuffix(self, InstanceNameSuffix):
+        self._InstanceNameSuffix = InstanceNameSuffix
+
 
     def _deserialize(self, params):
         self._InstanceName = params.get("InstanceName")
         self._InstanceNameStyle = params.get("InstanceNameStyle")
+        self._InstanceNameSuffix = params.get("InstanceNameSuffix")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

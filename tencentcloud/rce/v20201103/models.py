@@ -97,6 +97,145 @@ class AccountInfo(AbstractModel):
         
 
 
+class DataAuthorizationInfo(AbstractModel):
+    """数据授权信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataProviderName: 客户主体名称。
+
+示例值：某某有限公司。
+        :type DataProviderName: str
+        :param _DataRecipientName: 接收方主体名称。
+
+固定填：腾讯云计算（北京）有限责任公司
+
+示例值：腾讯云计算（北京）有限责任公司
+        :type DataRecipientName: str
+        :param _UserDataType: 客户请求RCE所涉及的用户敏感数据类型，支持多选。实际以接口请求传参为准。
+
+1-手机号；
+
+2-微信开放账号；
+
+3-QQ开放账号；
+
+4-IP地址；
+
+5-设备指纹；
+
+999-其它；
+
+示例值：[1, 4]
+        :type UserDataType: list of int non-negative
+        :param _IsAuthorize: 客户是否已经获取用户授权。
+
+1-已授权；其它值为未授权。
+
+示例值：1
+        :type IsAuthorize: int
+        :param _IsPersonalData: 是否是用户个人敏感数据。
+
+固定填：1。
+
+示例值：1
+        :type IsPersonalData: int
+        :param _AuthorizationTerm: 客户获得的用户授权期限时间戳（单位秒）。
+
+不填默认无固定期限。
+
+示例值：1719805604
+        :type AuthorizationTerm: int
+        :param _PrivacyPolicyLink: 客户获得用户授权所依赖的协议地址。
+
+示例值：https://www.*****.com/*****
+        :type PrivacyPolicyLink: str
+        """
+        self._DataProviderName = None
+        self._DataRecipientName = None
+        self._UserDataType = None
+        self._IsAuthorize = None
+        self._IsPersonalData = None
+        self._AuthorizationTerm = None
+        self._PrivacyPolicyLink = None
+
+    @property
+    def DataProviderName(self):
+        return self._DataProviderName
+
+    @DataProviderName.setter
+    def DataProviderName(self, DataProviderName):
+        self._DataProviderName = DataProviderName
+
+    @property
+    def DataRecipientName(self):
+        return self._DataRecipientName
+
+    @DataRecipientName.setter
+    def DataRecipientName(self, DataRecipientName):
+        self._DataRecipientName = DataRecipientName
+
+    @property
+    def UserDataType(self):
+        return self._UserDataType
+
+    @UserDataType.setter
+    def UserDataType(self, UserDataType):
+        self._UserDataType = UserDataType
+
+    @property
+    def IsAuthorize(self):
+        return self._IsAuthorize
+
+    @IsAuthorize.setter
+    def IsAuthorize(self, IsAuthorize):
+        self._IsAuthorize = IsAuthorize
+
+    @property
+    def IsPersonalData(self):
+        return self._IsPersonalData
+
+    @IsPersonalData.setter
+    def IsPersonalData(self, IsPersonalData):
+        self._IsPersonalData = IsPersonalData
+
+    @property
+    def AuthorizationTerm(self):
+        return self._AuthorizationTerm
+
+    @AuthorizationTerm.setter
+    def AuthorizationTerm(self, AuthorizationTerm):
+        self._AuthorizationTerm = AuthorizationTerm
+
+    @property
+    def PrivacyPolicyLink(self):
+        return self._PrivacyPolicyLink
+
+    @PrivacyPolicyLink.setter
+    def PrivacyPolicyLink(self, PrivacyPolicyLink):
+        self._PrivacyPolicyLink = PrivacyPolicyLink
+
+
+    def _deserialize(self, params):
+        self._DataProviderName = params.get("DataProviderName")
+        self._DataRecipientName = params.get("DataRecipientName")
+        self._UserDataType = params.get("UserDataType")
+        self._IsAuthorize = params.get("IsAuthorize")
+        self._IsPersonalData = params.get("IsPersonalData")
+        self._AuthorizationTerm = params.get("AuthorizationTerm")
+        self._PrivacyPolicyLink = params.get("PrivacyPolicyLink")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InputCryptoManageMarketingRisk(AbstractModel):
     """全栈式风控引擎入参
 
@@ -268,6 +407,8 @@ class InputManageMarketingRisk(AbstractModel):
 4：小程序
 
         :type Platform: str
+        :param _DataAuthorization: 数据授权信息。
+        :type DataAuthorization: :class:`tencentcloud.rce.v20201103.models.DataAuthorizationInfo`
         """
         self._Account = None
         self._SceneCode = None
@@ -291,6 +432,7 @@ class InputManageMarketingRisk(AbstractModel):
         self._Sponsor = None
         self._OnlineScam = None
         self._Platform = None
+        self._DataAuthorization = None
 
     @property
     def Account(self):
@@ -468,6 +610,14 @@ class InputManageMarketingRisk(AbstractModel):
     def Platform(self, Platform):
         self._Platform = Platform
 
+    @property
+    def DataAuthorization(self):
+        return self._DataAuthorization
+
+    @DataAuthorization.setter
+    def DataAuthorization(self, DataAuthorization):
+        self._DataAuthorization = DataAuthorization
+
 
     def _deserialize(self, params):
         if params.get("Account") is not None:
@@ -503,6 +653,9 @@ class InputManageMarketingRisk(AbstractModel):
             self._OnlineScam = OnlineScamInfo()
             self._OnlineScam._deserialize(params.get("OnlineScam"))
         self._Platform = params.get("Platform")
+        if params.get("DataAuthorization") is not None:
+            self._DataAuthorization = DataAuthorizationInfo()
+            self._DataAuthorization._deserialize(params.get("DataAuthorization"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -9507,6 +9507,8 @@ class RunJobDescription(AbstractModel):
         :type UseOldSystemConnector: bool
         :param _CustomTimestamp: 自定义时间戳
         :type CustomTimestamp: int
+        :param _KafkaScanMode: timestamp; latest-offset;  earliest-offset; 任选一种
+        :type KafkaScanMode: str
         """
         self._JobId = None
         self._RunType = None
@@ -9516,6 +9518,7 @@ class RunJobDescription(AbstractModel):
         self._SavepointId = None
         self._UseOldSystemConnector = None
         self._CustomTimestamp = None
+        self._KafkaScanMode = None
 
     @property
     def JobId(self):
@@ -9581,6 +9584,14 @@ class RunJobDescription(AbstractModel):
     def CustomTimestamp(self, CustomTimestamp):
         self._CustomTimestamp = CustomTimestamp
 
+    @property
+    def KafkaScanMode(self):
+        return self._KafkaScanMode
+
+    @KafkaScanMode.setter
+    def KafkaScanMode(self, KafkaScanMode):
+        self._KafkaScanMode = KafkaScanMode
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -9591,6 +9602,7 @@ class RunJobDescription(AbstractModel):
         self._SavepointId = params.get("SavepointId")
         self._UseOldSystemConnector = params.get("UseOldSystemConnector")
         self._CustomTimestamp = params.get("CustomTimestamp")
+        self._KafkaScanMode = params.get("KafkaScanMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

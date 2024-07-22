@@ -118,6 +118,29 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAccount(self, request):
+        """此接口用于创建数据账号，返回的Oid为账号唯一标识。与数据库系统表pg_roles中记录的oid一致。
+
+        :param request: Request instance for CreateAccount.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.CreateAccountRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.CreateAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAccount", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAccountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateBaseBackup(self, request):
         """本接口（CreateBaseBackup）用于创建实例的数据备份。
 
@@ -327,6 +350,29 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteAccount(self, request):
+        """此接口用于删除数据库账号，需要同时输入Oid与UserName，避免误删。
+
+        :param request: Request instance for DeleteAccount.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DeleteAccountRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DeleteAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAccount", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAccountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteBaseBackup(self, request):
         """本接口（DeleteBaseBackup）用于删除实例指定数据备份。
 
@@ -479,6 +525,29 @@ class PostgresClient(AbstractClient):
             body = self.call("DeleteServerlessDBInstance", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteServerlessDBInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAccountPrivileges(self, request):
+        """查询数据库账号对某数据库对象拥有的权限列表。
+
+        :param request: Request instance for DescribeAccountPrivileges.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeAccountPrivilegesRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeAccountPrivilegesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAccountPrivileges", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAccountPrivilegesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -941,6 +1010,29 @@ class PostgresClient(AbstractClient):
             body = self.call("DescribeDBXlogs", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDBXlogsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDatabaseObjects(self, request):
+        """本接口用于查询数据库对象列表。例如查询test数据库下的模式列表。
+
+        :param request: Request instance for DescribeDatabaseObjects.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDatabaseObjectsRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeDatabaseObjectsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDatabaseObjects", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDatabaseObjectsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1447,6 +1539,52 @@ class PostgresClient(AbstractClient):
             body = self.call("IsolateDBInstances", params, headers=headers)
             response = json.loads(body)
             model = models.IsolateDBInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def LockAccount(self, request):
+        """此接口用于锁定数据库账号，锁定后账号当前连接会断开，并且无法建立新连接。
+
+        :param request: Request instance for LockAccount.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.LockAccountRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.LockAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("LockAccount", params, headers=headers)
+            response = json.loads(body)
+            model = models.LockAccountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyAccountPrivileges(self, request):
+        """修改某账号对某数据库对象的权限、修改账号类型。
+
+        :param request: Request instance for ModifyAccountPrivileges.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyAccountPrivilegesRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.ModifyAccountPrivilegesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAccountPrivileges", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAccountPrivilegesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2050,6 +2188,29 @@ class PostgresClient(AbstractClient):
             body = self.call("SwitchDBInstancePrimary", params, headers=headers)
             response = json.loads(body)
             model = models.SwitchDBInstancePrimaryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UnlockAccount(self, request):
+        """解除数据库账号的锁定，解锁后账号可以登陆数据库。
+
+        :param request: Request instance for UnlockAccount.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.UnlockAccountRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.UnlockAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UnlockAccount", params, headers=headers)
+            response = json.loads(body)
+            model = models.UnlockAccountResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
