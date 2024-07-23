@@ -97,6 +97,29 @@ class ThpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AttachNodes(self, request):
+        """本接口 (AttachNodes) 用于绑定一个或者多个计算节点指定资源到指定集群中。
+
+        :param request: Request instance for AttachNodes.
+        :type request: :class:`tencentcloud.thpc.v20230321.models.AttachNodesRequest`
+        :rtype: :class:`tencentcloud.thpc.v20230321.models.AttachNodesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AttachNodes", params, headers=headers)
+            response = json.loads(body)
+            model = models.AttachNodesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCluster(self, request):
         """本接口 (CreateCluster) 用于创建并启动集群。
 
@@ -369,6 +392,29 @@ class ThpcClient(AbstractClient):
             body = self.call("DescribeQueues", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeQueuesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DetachNodes(self, request):
+        """本接口 (DetachNodes) 用于将一个或者多个计算节点从集群中移除，但是不销毁指定计算资源。
+
+        :param request: Request instance for DetachNodes.
+        :type request: :class:`tencentcloud.thpc.v20230321.models.DetachNodesRequest`
+        :rtype: :class:`tencentcloud.thpc.v20230321.models.DetachNodesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DetachNodes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DetachNodesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

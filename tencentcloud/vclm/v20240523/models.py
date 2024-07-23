@@ -780,9 +780,14 @@ class SubmitVideoStylizationJobRequest(AbstractModel):
 - 视频大小：不超过200M；
 - 视频FPS：15～60fps。
         :type VideoUrl: str
+        :param _StyleStrength: 风格化强度 可选参数["low","medium","high"] 
+"low":风格化强度弱,"medium":"风格化强度中等","high":"风格化强度强" 
+默认为medium
+        :type StyleStrength: str
         """
         self._StyleId = None
         self._VideoUrl = None
+        self._StyleStrength = None
 
     @property
     def StyleId(self):
@@ -800,10 +805,19 @@ class SubmitVideoStylizationJobRequest(AbstractModel):
     def VideoUrl(self, VideoUrl):
         self._VideoUrl = VideoUrl
 
+    @property
+    def StyleStrength(self):
+        return self._StyleStrength
+
+    @StyleStrength.setter
+    def StyleStrength(self, StyleStrength):
+        self._StyleStrength = StyleStrength
+
 
     def _deserialize(self, params):
         self._StyleId = params.get("StyleId")
         self._VideoUrl = params.get("VideoUrl")
+        self._StyleStrength = params.get("StyleStrength")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

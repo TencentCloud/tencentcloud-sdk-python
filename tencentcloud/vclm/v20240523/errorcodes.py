@@ -137,6 +137,9 @@ INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = 'InvalidParameterValue.ParameterValu
 # 风格不存在。
 INVALIDPARAMETERVALUE_STYLENOTEXIST = 'InvalidParameterValue.StyleNotExist'
 
+# 风格化强度参数不存在。
+INVALIDPARAMETERVALUE_STYLESTRENGTHNOTEXIST = 'InvalidParameterValue.StyleStrengthNotExist'
+
 # URL格式不合法。
 INVALIDPARAMETERVALUE_URLILLEGAL = 'InvalidParameterValue.UrlIllegal'
 

@@ -164,6 +164,30 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDBInstanceParamTpl(self, request):
+        """本接口(CreateDBInstanceParamTpl)用于创建云数据库MongoDB实例的参数模板
+        **说明：CreateDBInstanceParamTpl API正在公测中，在此期间，该接口仅对公测用户开放**
+
+        :param request: Request instance for CreateDBInstanceParamTpl.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.CreateDBInstanceParamTplRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.CreateDBInstanceParamTplResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDBInstanceParamTpl", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDBInstanceParamTplResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteAccountUser(self, request):
         """本接口（DeleteAccountUser）用于删除实例的自定义账号。
 
@@ -394,6 +418,54 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDBInstanceParamTpl(self, request):
+        """本接口(DescribeDBInstanceParamTpl )用于查询当前账号下所有MongoDB数据库参数模板
+        **说明：DescribeDBInstanceParamTpl  API正在公测中，在此期间，该接口仅对公测用户开放**
+
+        :param request: Request instance for DescribeDBInstanceParamTpl.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeDBInstanceParamTplRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeDBInstanceParamTplResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBInstanceParamTpl", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBInstanceParamTplResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDBInstanceParamTplDetail(self, request):
+        """本接口(DescribeDBInstanceParamTplDetail )用于查询MongoDB云数据库实例的参数模板详情。
+        **说明：DescribeDBInstanceParamTplDetail  API正在公测中，在此期间，该接口仅对公测用户开放**
+
+        :param request: Request instance for DescribeDBInstanceParamTplDetail.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeDBInstanceParamTplDetailRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeDBInstanceParamTplDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBInstanceParamTplDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBInstanceParamTplDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDBInstances(self, request):
         """本接口（DescribeDBInstances）用于查询云数据库实例列表，支持通过项目ID、实例ID、实例状态等过滤条件来筛选主实例、灾备实例和只读实例信息列表。
 
@@ -546,6 +618,30 @@ class MongodbClient(AbstractClient):
             body = self.call("DescribeTransparentDataEncryptionStatus", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTransparentDataEncryptionStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DropDBInstanceParamTpl(self, request):
+        """本接口(DropDBInstanceParamTpl )用于删除云数据库MongoDB实例的参数模板
+        **说明：DropDBInstanceParamTpl  API正在公测中，在此期间，该接口仅对公测用户开放**
+
+        :param request: Request instance for DropDBInstanceParamTpl.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.DropDBInstanceParamTplRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DropDBInstanceParamTplResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DropDBInstanceParamTpl", params, headers=headers)
+            response = json.loads(body)
+            model = models.DropDBInstanceParamTplResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -754,6 +850,30 @@ class MongodbClient(AbstractClient):
             body = self.call("ModifyDBInstanceNetworkAddress", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyDBInstanceNetworkAddressResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDBInstanceParamTpl(self, request):
+        """本接口(ModifyDBInstanceParamTpl )用于修改MongoDB云数据库实例的参数模板。
+        **说明：ModifyDBInstanceParamTpl  API正在公测中，在此期间，该接口仅对公测用户开放**
+
+        :param request: Request instance for ModifyDBInstanceParamTpl.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.ModifyDBInstanceParamTplRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.ModifyDBInstanceParamTplResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBInstanceParamTpl", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBInstanceParamTplResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

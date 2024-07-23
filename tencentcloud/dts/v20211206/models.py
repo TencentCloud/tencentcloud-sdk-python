@@ -13952,9 +13952,12 @@ class StopCompareRequest(AbstractModel):
         :type JobId: str
         :param _CompareTaskId: 对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9
         :type CompareTaskId: str
+        :param _ForceStop: 是否强制停止。如果填true，同步任务增量阶段会跳过一致性校验产生的binlog，达到快速恢复任务的效果
+        :type ForceStop: bool
         """
         self._JobId = None
         self._CompareTaskId = None
+        self._ForceStop = None
 
     @property
     def JobId(self):
@@ -13972,10 +13975,19 @@ class StopCompareRequest(AbstractModel):
     def CompareTaskId(self, CompareTaskId):
         self._CompareTaskId = CompareTaskId
 
+    @property
+    def ForceStop(self):
+        return self._ForceStop
+
+    @ForceStop.setter
+    def ForceStop(self, ForceStop):
+        self._ForceStop = ForceStop
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
         self._CompareTaskId = params.get("CompareTaskId")
+        self._ForceStop = params.get("ForceStop")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

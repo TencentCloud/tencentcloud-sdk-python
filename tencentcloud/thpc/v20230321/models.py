@@ -107,11 +107,11 @@ class AddNodesRequest(AbstractModel):
         :type Count: int
         :param _ImageId: 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前仅支持公有镜像和特定自定义镜像。
         :type ImageId: str
-        :param _InstanceChargeType: 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。
+        :param _InstanceChargeType: 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月</li><li>POSTPAID_BY_HOUR：按小时后付费</li><li>SPOTPAID：竞价付费</li>默认值：POSTPAID_BY_HOUR。
         :type InstanceChargeType: str
         :param _InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月节点的购买时长、是否设置自动续费等属性。若指定节点的付费模式为预付费则该参数必传。
         :type InstanceChargePrepaid: :class:`tencentcloud.thpc.v20230321.models.InstanceChargePrepaid`
-        :param _InstanceType: 节点机型。不同实例机型指定了不同的资源规格。<br><li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。
+        :param _InstanceType: 节点机型。不同实例机型指定了不同的资源规格。<br><li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。</li>
         :type InstanceType: str
         :param _SystemDisk: 节点系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
         :type SystemDisk: :class:`tencentcloud.thpc.v20230321.models.SystemDisk`
@@ -129,10 +129,10 @@ class AddNodesRequest(AbstractModel):
         :type SecurityGroupIds: list of str
         :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
         :type ClientToken: str
-        :param _QueueName: 队列名称。不指定则为默认队列。<li>SLURM默认队列为：compute。<li>SGE默认队列为：all.q。
+        :param _QueueName: 队列名称。不指定则为默认队列。<li>SLURM默认队列为：compute。</li><li>SGE默认队列为：all.q。</li>
 
         :type QueueName: str
-        :param _NodeRole: 添加节点角色。默认值：Compute<br><li>Compute：计算节点。<br><li>Login：登录节点。
+        :param _NodeRole: 添加节点角色。默认值：Compute<br><li>Compute：计算节点。</li><li>Login：登录节点。</li>
         :type NodeRole: str
         :param _DryRun: 是否只预检此次请求。
 true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制和云服务器库存。
@@ -140,10 +140,12 @@ true：发送检查请求，不会创建实例。检查项包括是否填写了�
 如果检查通过，则返回RequestId.
 false（默认）：发送正常请求，通过检查后直接创建实例
         :type DryRun: bool
-        :param _NodeType: 添加节点类型。默认取值：STATIC。<li>STATIC：静态节点，不会参与弹性伸缩流程。<li>DYNAMIC：弹性节点，会被弹性缩容的节点。管控节点和登录节点不支持此参数。
+        :param _NodeType: 添加节点类型。默认取值：STATIC。<li>STATIC：静态节点，不会参与弹性伸缩流程。</li><li>DYNAMIC：弹性节点，会被弹性缩容的节点。管控节点和登录节点不支持此参数。</li>
         :type NodeType: str
         :param _ProjectId: 实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。不填为默认项目。
         :type ProjectId: int
+        :param _ResourceType: 要新增节点的资源类型。<li>CVM：CVM实例类型资源</li><li>WORKSPACE：工作空间类型实例资源</li>默认值：CVM。
+        :type ResourceType: str
         """
         self._Placement = None
         self._ClusterId = None
@@ -165,6 +167,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         self._DryRun = None
         self._NodeType = None
         self._ProjectId = None
+        self._ResourceType = None
 
     @property
     def Placement(self):
@@ -326,6 +329,14 @@ false（默认）：发送正常请求，通过检查后直接创建实例
     def ProjectId(self, ProjectId):
         self._ProjectId = ProjectId
 
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
 
     def _deserialize(self, params):
         if params.get("Placement") is not None:
@@ -365,6 +376,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         self._DryRun = params.get("DryRun")
         self._NodeType = params.get("NodeType")
         self._ProjectId = params.get("ProjectId")
+        self._ResourceType = params.get("ResourceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -447,6 +459,114 @@ class AddQueueRequest(AbstractModel):
 
 class AddQueueResponse(AbstractModel):
     """AddQueue返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class AttachNodesRequest(AbstractModel):
+    """AttachNodes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群id
+        :type ClusterId: str
+        :param _ResourceSet: 节点的资源类型。<li>CVM：CVM实例类型资源</li><li>WORKSPACE：工作空间类型实例资源</li>默认值：CVM。
+        :type ResourceSet: list of str
+        :param _QueueName: 队列名称。不指定则为默认队列：
+SLURM默认队列为：compute。 
+SGE默认队列为：all.q。
+        :type QueueName: str
+        :param _ImageId: 指定有效的镜像ID，格式形如img-xxx。目前仅支持公有镜像和特定自定义镜像。如不指定，则该字段是默认镜像。
+        :type ImageId: str
+        :param _ResourceType: 要新增节点的资源类型。<li>CVM：CVM实例类型资源</li><li>WORKSPACE：工作空间类型实例资源</li>默认值：CVM。
+        :type ResourceType: str
+        """
+        self._ClusterId = None
+        self._ResourceSet = None
+        self._QueueName = None
+        self._ImageId = None
+        self._ResourceType = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ResourceSet(self):
+        return self._ResourceSet
+
+    @ResourceSet.setter
+    def ResourceSet(self, ResourceSet):
+        self._ResourceSet = ResourceSet
+
+    @property
+    def QueueName(self):
+        return self._QueueName
+
+    @QueueName.setter
+    def QueueName(self, QueueName):
+        self._QueueName = QueueName
+
+    @property
+    def ImageId(self):
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ResourceSet = params.get("ResourceSet")
+        self._QueueName = params.get("QueueName")
+        self._ImageId = params.get("ImageId")
+        self._ResourceType = params.get("ResourceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AttachNodesResponse(AbstractModel):
+    """AttachNodes返回参数结构体
 
     """
 
@@ -1031,12 +1151,11 @@ class ComputeNode(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceChargeType: 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。
+        :param _InstanceChargeType: 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<li>PREPAID：预付费，即包年包月</li><li>POSTPAID_BY_HOUR：按小时后付费</li><li>SPOTPAID：竞价付费</li>默认值：POSTPAID_BY_HOUR。
         :type InstanceChargeType: str
         :param _InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月节点的购买时长、是否设置自动续费等属性。若指定节点的付费模式为预付费则该参数必传。
         :type InstanceChargePrepaid: :class:`tencentcloud.thpc.v20230321.models.InstanceChargePrepaid`
-        :param _InstanceType: 节点机型。不同实例机型指定了不同的资源规格。
-<br><li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。
+        :param _InstanceType: 节点机型。不同实例机型指定了不同的资源规格。<li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。</li>
         :type InstanceType: str
         :param _SystemDisk: 节点系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
         :type SystemDisk: :class:`tencentcloud.thpc.v20230321.models.SystemDisk`
@@ -1044,12 +1163,13 @@ class ComputeNode(AbstractModel):
         :type DataDisks: list of DataDisk
         :param _InternetAccessible: 公网带宽相关信息设置。若不指定该参数，则默认公网带宽为0Mbps。
         :type InternetAccessible: :class:`tencentcloud.thpc.v20230321.models.InternetAccessible`
-        :param _InstanceName: 节点显示名称。<br><li>
-不指定节点显示名称则默认显示‘未命名’。
-最多支持60个字符。
+        :param _InstanceName: 节点显示名称。<li>不指定节点显示名称则默认显示‘未命名’。
+最多支持60个字符。</li>
         :type InstanceName: str
         :param _ProjectId: 实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。不填为默认项目。
         :type ProjectId: int
+        :param _ResourceType: 实例资源类型，默认是CVM资源
+        :type ResourceType: str
         """
         self._InstanceChargeType = None
         self._InstanceChargePrepaid = None
@@ -1059,6 +1179,7 @@ class ComputeNode(AbstractModel):
         self._InternetAccessible = None
         self._InstanceName = None
         self._ProjectId = None
+        self._ResourceType = None
 
     @property
     def InstanceChargeType(self):
@@ -1124,6 +1245,14 @@ class ComputeNode(AbstractModel):
     def ProjectId(self, ProjectId):
         self._ProjectId = ProjectId
 
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
 
     def _deserialize(self, params):
         self._InstanceChargeType = params.get("InstanceChargeType")
@@ -1145,6 +1274,7 @@ class ComputeNode(AbstractModel):
             self._InternetAccessible._deserialize(params.get("InternetAccessible"))
         self._InstanceName = params.get("InstanceName")
         self._ProjectId = params.get("ProjectId")
+        self._ResourceType = params.get("ResourceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2349,7 +2479,24 @@ class DescribeNodesRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群ID。
         :type ClusterId: str
-        :param _Filters: <li><strong>queue-name</strong></li> <p style="padding-left: 30px;">按照【<strong>队列名称</strong>】进行过滤。队列名称形如：compute。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;"><li><strong>node-role</strong></li> <p style="padding-left: 30px;">按照【<strong>节点角色</strong>】进行过滤。节点角色形如：Manager。（Manager：管控节点。Compute：计算节点。Login：登录节点。ManagerBackup：备用管控节点。）</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;"><li><strong>node-type</strong></li> <p style="padding-left: 30px;">按照【<strong>节点类型</strong>】进行过滤。节点类型形如：STATIC。(STATIC：静态节点。DYNAMIC：弹性节点。)</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。
+        :param _Filters: <ul>
+    <li><strong>queue-name</strong>
+        <p style="padding-left: 30px;">按照【<strong>队列名称</strong>】进行过滤。队列名称形如：compute。</p>
+        <p style="padding-left: 30px;">类型：String</p>
+        <p style="padding-left: 30px;">必选：否</p>
+    </li>
+    <li><strong>node-role</strong>
+        <p style="padding-left: 30px;">按照【<strong>节点角色</strong>】进行过滤。节点角色形如：Manager。（Manager：管控节点。Compute：计算节点。Login：登录节点。ManagerBackup：备用管控节点。）</p>
+        <p style="padding-left: 30px;">类型：String</p>
+        <p style="padding-left: 30px;">必选：否</p>
+    </li>
+    <li><strong>node-type</strong>
+        <p style="padding-left: 30px;">按照【<strong>节点类型</strong>】进行过滤。节点类型形如：STATIC。(STATIC：静态节点。DYNAMIC：弹性节点。)</p>
+        <p style="padding-left: 30px;">类型：String</p>
+        <p style="padding-left: 30px;">必选：否</p>
+    </li>
+</ul>
+<p style="padding-left: 30px;">每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。</p>
         :type Filters: list of Filter
         :param _Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :type Offset: int
@@ -2576,6 +2723,76 @@ class DescribeQueuesResponse(AbstractModel):
                 obj._deserialize(item)
                 self._QueueSet.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DetachNodesRequest(AbstractModel):
+    """DetachNodes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群id
+        :type ClusterId: str
+        :param _NodeIds: 集群中的节点id
+        :type NodeIds: list of str
+        """
+        self._ClusterId = None
+        self._NodeIds = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def NodeIds(self):
+        return self._NodeIds
+
+    @NodeIds.setter
+    def NodeIds(self, NodeIds):
+        self._NodeIds = NodeIds
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._NodeIds = params.get("NodeIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DetachNodesResponse(AbstractModel):
+    """DetachNodes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -3805,7 +4022,7 @@ class NodeOverview(AbstractModel):
         :param _Zone: 节点所在可用区信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: str
-        :param _NodeState: 节点状态。<br><li>SUBMITTED：已完成提交。<br><li>CREATING：创建中。<br><li>CREATED：完成创建。<br><li>INITING：初始化中。<br><li>INIT_FAILED：初始化失败。<br><li>RUNNING：运行中。<br><li>DELETING：销毁中。
+        :param _NodeState: 节点状态。<li>SUBMITTED：已完成提交。</li><li>CREATING：创建中。</li><li>CREATED：完成创建。</li><li>INITING：初始化中。</li><li>INIT_FAILED：初始化失败。</li><li>RUNNING：运行中。</li><li>DELETING：销毁中。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NodeState: str
         :param _ImageId: 镜像ID。
@@ -3814,12 +4031,15 @@ class NodeOverview(AbstractModel):
         :param _QueueName: 节点所属队列名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :type QueueName: str
-        :param _NodeRole: 节点角色。<br><li>Manager：管控节点。<br><li>Compute：计算节点。<br><li>Login：登录节点。<br><li>ManagerBackup：备用管控节点。
+        :param _NodeRole: 节点角色。<li>Manager：管控节点。</li><li>Compute：计算节点。</li><li>Login：登录节点。</li><li>ManagerBackup：备用管控节点。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NodeRole: str
-        :param _NodeType: 节点类型。<br><li>STATIC：静态节点。<br><li>DYNAMIC：弹性节点。
+        :param _NodeType: 节点类型。<li>STATIC：静态节点。</li><li>DYNAMIC：弹性节点。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NodeType: str
+        :param _NodeId: thpc集群节点id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeId: str
         """
         self._InstanceId = None
         self._Zone = None
@@ -3828,6 +4048,7 @@ class NodeOverview(AbstractModel):
         self._QueueName = None
         self._NodeRole = None
         self._NodeType = None
+        self._NodeId = None
 
     @property
     def InstanceId(self):
@@ -3885,6 +4106,14 @@ class NodeOverview(AbstractModel):
     def NodeType(self, NodeType):
         self._NodeType = NodeType
 
+    @property
+    def NodeId(self):
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -3894,6 +4123,7 @@ class NodeOverview(AbstractModel):
         self._QueueName = params.get("QueueName")
         self._NodeRole = params.get("NodeRole")
         self._NodeType = params.get("NodeType")
+        self._NodeId = params.get("NodeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -2681,6 +2681,40 @@ class DestroyInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class InstanceDetail(AbstractModel):
+    """Instance表detail字段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnableAlarmStrategy: 告警策略是否可用	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableAlarmStrategy: bool
+        """
+        self._EnableAlarmStrategy = None
+
+    @property
+    def EnableAlarmStrategy(self):
+        return self._EnableAlarmStrategy
+
+    @EnableAlarmStrategy.setter
+    def EnableAlarmStrategy(self, EnableAlarmStrategy):
+        self._EnableAlarmStrategy = EnableAlarmStrategy
+
+
+    def _deserialize(self, params):
+        self._EnableAlarmStrategy = params.get("EnableAlarmStrategy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceInfo(AbstractModel):
     """实例描述信息
 
@@ -2836,6 +2870,9 @@ Modify 集群变更中；
         :param _CoolDownBucket: 冷热分层使用COS桶
 注意：此字段可能返回 null，表示取不到有效值。
         :type CoolDownBucket: str
+        :param _Details: 实例扩展信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Details: :class:`tencentcloud.cdwdoris.v20211228.models.InstanceDetail`
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -2884,6 +2921,7 @@ Modify 集群变更中；
         self._UserNetworkInfos = None
         self._EnableCoolDown = None
         self._CoolDownBucket = None
+        self._Details = None
 
     @property
     def InstanceId(self):
@@ -3265,6 +3303,14 @@ Modify 集群变更中；
     def CoolDownBucket(self, CoolDownBucket):
         self._CoolDownBucket = CoolDownBucket
 
+    @property
+    def Details(self):
+        return self._Details
+
+    @Details.setter
+    def Details(self, Details):
+        self._Details = Details
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -3323,6 +3369,9 @@ Modify 集群变更中；
         self._UserNetworkInfos = params.get("UserNetworkInfos")
         self._EnableCoolDown = params.get("EnableCoolDown")
         self._CoolDownBucket = params.get("CoolDownBucket")
+        if params.get("Details") is not None:
+            self._Details = InstanceDetail()
+            self._Details._deserialize(params.get("Details"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -21162,12 +21162,18 @@ class DescribeOrganizationalFunctionsRequest(AbstractModel):
 简单模式：ALL
 
         :type EnvType: str
+        :param _Filters: 过滤条件
+        :type Filters: :class:`tencentcloud.wedata.v20210820.models.Filter`
+        :param _OrderFields: 排序条件
+        :type OrderFields: :class:`tencentcloud.wedata.v20210820.models.OrderField`
         """
         self._Type = None
         self._ProjectId = None
         self._Name = None
         self._DisplayName = None
         self._EnvType = None
+        self._Filters = None
+        self._OrderFields = None
 
     @property
     def Type(self):
@@ -21209,6 +21215,22 @@ class DescribeOrganizationalFunctionsRequest(AbstractModel):
     def EnvType(self, EnvType):
         self._EnvType = EnvType
 
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def OrderFields(self):
+        return self._OrderFields
+
+    @OrderFields.setter
+    def OrderFields(self, OrderFields):
+        self._OrderFields = OrderFields
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -21216,6 +21238,12 @@ class DescribeOrganizationalFunctionsRequest(AbstractModel):
         self._Name = params.get("Name")
         self._DisplayName = params.get("DisplayName")
         self._EnvType = params.get("EnvType")
+        if params.get("Filters") is not None:
+            self._Filters = Filter()
+            self._Filters._deserialize(params.get("Filters"))
+        if params.get("OrderFields") is not None:
+            self._OrderFields = OrderField()
+            self._OrderFields._deserialize(params.get("OrderFields"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26222,6 +26250,8 @@ class DescribeTableSchemaInfoRequest(AbstractModel):
         :type ConnectionType: str
         :param _SchemaName: 元数据Database下的Schema名称
         :type SchemaName: str
+        :param _ProjectId: 项目空间ID
+        :type ProjectId: str
         """
         self._Name = None
         self._DatabaseName = None
@@ -26229,6 +26259,7 @@ class DescribeTableSchemaInfoRequest(AbstractModel):
         self._DatasourceId = None
         self._ConnectionType = None
         self._SchemaName = None
+        self._ProjectId = None
 
     @property
     def Name(self):
@@ -26278,6 +26309,14 @@ class DescribeTableSchemaInfoRequest(AbstractModel):
     def SchemaName(self, SchemaName):
         self._SchemaName = SchemaName
 
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -26286,6 +26325,7 @@ class DescribeTableSchemaInfoRequest(AbstractModel):
         self._DatasourceId = params.get("DatasourceId")
         self._ConnectionType = params.get("ConnectionType")
         self._SchemaName = params.get("SchemaName")
+        self._ProjectId = params.get("ProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -48048,6 +48088,9 @@ class RuleGroupExecStrategy(AbstractModel):
         :param _TriggerTypes: 触发类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerTypes: list of str
+        :param _DlcGroupName: DLC资源组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DlcGroupName: str
         """
         self._RuleGroupId = None
         self._MonitorType = None
@@ -48066,6 +48109,7 @@ class RuleGroupExecStrategy(AbstractModel):
         self._RuleId = None
         self._RuleName = None
         self._TriggerTypes = None
+        self._DlcGroupName = None
 
     @property
     def RuleGroupId(self):
@@ -48203,6 +48247,14 @@ class RuleGroupExecStrategy(AbstractModel):
     def TriggerTypes(self, TriggerTypes):
         self._TriggerTypes = TriggerTypes
 
+    @property
+    def DlcGroupName(self):
+        return self._DlcGroupName
+
+    @DlcGroupName.setter
+    def DlcGroupName(self, DlcGroupName):
+        self._DlcGroupName = DlcGroupName
+
 
     def _deserialize(self, params):
         self._RuleGroupId = params.get("RuleGroupId")
@@ -48227,6 +48279,7 @@ class RuleGroupExecStrategy(AbstractModel):
         self._RuleId = params.get("RuleId")
         self._RuleName = params.get("RuleName")
         self._TriggerTypes = params.get("TriggerTypes")
+        self._DlcGroupName = params.get("DlcGroupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

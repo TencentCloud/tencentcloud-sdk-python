@@ -8843,6 +8843,9 @@ class RoleInfo(AbstractModel):
         :param _Tags: 标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of RoleTags
+        :param _RoleArn: 角色RoleArn信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoleArn: str
         """
         self._RoleId = None
         self._RoleName = None
@@ -8855,6 +8858,7 @@ class RoleInfo(AbstractModel):
         self._SessionDuration = None
         self._DeletionTaskId = None
         self._Tags = None
+        self._RoleArn = None
 
     @property
     def RoleId(self):
@@ -8944,6 +8948,14 @@ class RoleInfo(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def RoleArn(self):
+        return self._RoleArn
+
+    @RoleArn.setter
+    def RoleArn(self, RoleArn):
+        self._RoleArn = RoleArn
+
 
     def _deserialize(self, params):
         self._RoleId = params.get("RoleId")
@@ -8962,6 +8974,7 @@ class RoleInfo(AbstractModel):
                 obj = RoleTags()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._RoleArn = params.get("RoleArn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

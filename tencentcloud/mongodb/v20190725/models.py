@@ -1363,6 +1363,142 @@ class CreateDBInstanceHourResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateDBInstanceParamTplRequest(AbstractModel):
+    """CreateDBInstanceParamTpl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TplName: 参数模板名称。
+        :type TplName: str
+        :param _MongoVersion: 版本号，该参数模板支持的售卖版本请参照查询云数据库的售卖规格（DescribeSpecInfo）返回结果。参数与版本对应关系是：MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本，MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本，MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。当MirrorTplId为空时，该字段必填。
+        :type MongoVersion: str
+        :param _ClusterType: 实例类型，REPLSET-副本集，SHARD-分片集群，STANDALONE-单节点
+当MirrorTplId为空时，该字段必填。
+        :type ClusterType: str
+        :param _TplDesc: 模板描述信息。
+        :type TplDesc: str
+        :param _Params: 模板参数，若为空，则以系统默认模板作为新版本参数。
+        :type Params: list of ParamType
+        :param _MirrorTplId: 镜像模板ID，若该字段不为空，则以该模板为镜像，克隆出一个新的模板。注意：MirrorTplId不为空时，MongoVersion及ClusterType将以MirrorTpl模板的版本及实例类型为准。
+        :type MirrorTplId: str
+        """
+        self._TplName = None
+        self._MongoVersion = None
+        self._ClusterType = None
+        self._TplDesc = None
+        self._Params = None
+        self._MirrorTplId = None
+
+    @property
+    def TplName(self):
+        return self._TplName
+
+    @TplName.setter
+    def TplName(self, TplName):
+        self._TplName = TplName
+
+    @property
+    def MongoVersion(self):
+        return self._MongoVersion
+
+    @MongoVersion.setter
+    def MongoVersion(self, MongoVersion):
+        self._MongoVersion = MongoVersion
+
+    @property
+    def ClusterType(self):
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
+    def TplDesc(self):
+        return self._TplDesc
+
+    @TplDesc.setter
+    def TplDesc(self, TplDesc):
+        self._TplDesc = TplDesc
+
+    @property
+    def Params(self):
+        return self._Params
+
+    @Params.setter
+    def Params(self, Params):
+        self._Params = Params
+
+    @property
+    def MirrorTplId(self):
+        return self._MirrorTplId
+
+    @MirrorTplId.setter
+    def MirrorTplId(self, MirrorTplId):
+        self._MirrorTplId = MirrorTplId
+
+
+    def _deserialize(self, params):
+        self._TplName = params.get("TplName")
+        self._MongoVersion = params.get("MongoVersion")
+        self._ClusterType = params.get("ClusterType")
+        self._TplDesc = params.get("TplDesc")
+        if params.get("Params") is not None:
+            self._Params = []
+            for item in params.get("Params"):
+                obj = ParamType()
+                obj._deserialize(item)
+                self._Params.append(obj)
+        self._MirrorTplId = params.get("MirrorTplId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDBInstanceParamTplResponse(AbstractModel):
+    """CreateDBInstanceParamTpl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TplId: 模板ID
+        :type TplId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TplId = None
+        self._RequestId = None
+
+    @property
+    def TplId(self):
+        return self._TplId
+
+    @TplId.setter
+    def TplId(self, TplId):
+        self._TplId = TplId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TplId = params.get("TplId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateDBInstanceRequest(AbstractModel):
     """CreateDBInstance请求参数结构体
 
@@ -3294,6 +3430,325 @@ class DescribeDBInstanceNodePropertyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDBInstanceParamTplDetailRequest(AbstractModel):
+    """DescribeDBInstanceParamTplDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TplId: 参数模板 ID。
+        :type TplId: str
+        :param _ParamName: 参数名称，传入该值，则只会获取该字段的参数详情。为空时，返回全部参数。
+        :type ParamName: str
+        """
+        self._TplId = None
+        self._ParamName = None
+
+    @property
+    def TplId(self):
+        return self._TplId
+
+    @TplId.setter
+    def TplId(self, TplId):
+        self._TplId = TplId
+
+    @property
+    def ParamName(self):
+        return self._ParamName
+
+    @ParamName.setter
+    def ParamName(self, ParamName):
+        self._ParamName = ParamName
+
+
+    def _deserialize(self, params):
+        self._TplId = params.get("TplId")
+        self._ParamName = params.get("ParamName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBInstanceParamTplDetailResponse(AbstractModel):
+    """DescribeDBInstanceParamTplDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceEnumParams: 枚举类参数详情列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceEnumParams: list of InstanceEnumParam
+        :param _InstanceIntegerParams: 整形参数详情列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceIntegerParams: list of InstanceIntegerParam
+        :param _InstanceTextParams: 文本参数详情列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceTextParams: list of InstanceTextParam
+        :param _InstanceMultiParams: 多值参数详情列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceMultiParams: list of InstanceMultiParam
+        :param _TotalCount: 参数总个数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _MongoVersion: 模板适配实例版本。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MongoVersion: str
+        :param _ClusterType: 模板适配集群类型，副本集或分片。。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterType: str
+        :param _TplName: 参数模板名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TplName: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceEnumParams = None
+        self._InstanceIntegerParams = None
+        self._InstanceTextParams = None
+        self._InstanceMultiParams = None
+        self._TotalCount = None
+        self._MongoVersion = None
+        self._ClusterType = None
+        self._TplName = None
+        self._RequestId = None
+
+    @property
+    def InstanceEnumParams(self):
+        return self._InstanceEnumParams
+
+    @InstanceEnumParams.setter
+    def InstanceEnumParams(self, InstanceEnumParams):
+        self._InstanceEnumParams = InstanceEnumParams
+
+    @property
+    def InstanceIntegerParams(self):
+        return self._InstanceIntegerParams
+
+    @InstanceIntegerParams.setter
+    def InstanceIntegerParams(self, InstanceIntegerParams):
+        self._InstanceIntegerParams = InstanceIntegerParams
+
+    @property
+    def InstanceTextParams(self):
+        return self._InstanceTextParams
+
+    @InstanceTextParams.setter
+    def InstanceTextParams(self, InstanceTextParams):
+        self._InstanceTextParams = InstanceTextParams
+
+    @property
+    def InstanceMultiParams(self):
+        return self._InstanceMultiParams
+
+    @InstanceMultiParams.setter
+    def InstanceMultiParams(self, InstanceMultiParams):
+        self._InstanceMultiParams = InstanceMultiParams
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def MongoVersion(self):
+        return self._MongoVersion
+
+    @MongoVersion.setter
+    def MongoVersion(self, MongoVersion):
+        self._MongoVersion = MongoVersion
+
+    @property
+    def ClusterType(self):
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
+    def TplName(self):
+        return self._TplName
+
+    @TplName.setter
+    def TplName(self, TplName):
+        self._TplName = TplName
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceEnumParams") is not None:
+            self._InstanceEnumParams = []
+            for item in params.get("InstanceEnumParams"):
+                obj = InstanceEnumParam()
+                obj._deserialize(item)
+                self._InstanceEnumParams.append(obj)
+        if params.get("InstanceIntegerParams") is not None:
+            self._InstanceIntegerParams = []
+            for item in params.get("InstanceIntegerParams"):
+                obj = InstanceIntegerParam()
+                obj._deserialize(item)
+                self._InstanceIntegerParams.append(obj)
+        if params.get("InstanceTextParams") is not None:
+            self._InstanceTextParams = []
+            for item in params.get("InstanceTextParams"):
+                obj = InstanceTextParam()
+                obj._deserialize(item)
+                self._InstanceTextParams.append(obj)
+        if params.get("InstanceMultiParams") is not None:
+            self._InstanceMultiParams = []
+            for item in params.get("InstanceMultiParams"):
+                obj = InstanceMultiParam()
+                obj._deserialize(item)
+                self._InstanceMultiParams.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._MongoVersion = params.get("MongoVersion")
+        self._ClusterType = params.get("ClusterType")
+        self._TplName = params.get("TplName")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDBInstanceParamTplRequest(AbstractModel):
+    """DescribeDBInstanceParamTpl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TplIds: 参数模板 ID 查询条件。
+        :type TplIds: list of str
+        :param _TplNames: 模板名称，查询条件。
+        :type TplNames: list of str
+        :param _MongoVersion: 根据版本号插叙参数模板，具体支持的售卖版本请参照查询云数据库的售卖规格（DescribeSpecInfo）返回结果。参数与版本对应关系是：MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本，MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本，MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
+        :type MongoVersion: list of str
+        :param _TplType: 根据模板类型查询参数模板，支持DEFAULT（默认模板）和CUSTOMIZE（自定义模板）两种。
+        :type TplType: str
+        """
+        self._TplIds = None
+        self._TplNames = None
+        self._MongoVersion = None
+        self._TplType = None
+
+    @property
+    def TplIds(self):
+        return self._TplIds
+
+    @TplIds.setter
+    def TplIds(self, TplIds):
+        self._TplIds = TplIds
+
+    @property
+    def TplNames(self):
+        return self._TplNames
+
+    @TplNames.setter
+    def TplNames(self, TplNames):
+        self._TplNames = TplNames
+
+    @property
+    def MongoVersion(self):
+        return self._MongoVersion
+
+    @MongoVersion.setter
+    def MongoVersion(self, MongoVersion):
+        self._MongoVersion = MongoVersion
+
+    @property
+    def TplType(self):
+        return self._TplType
+
+    @TplType.setter
+    def TplType(self, TplType):
+        self._TplType = TplType
+
+
+    def _deserialize(self, params):
+        self._TplIds = params.get("TplIds")
+        self._TplNames = params.get("TplNames")
+        self._MongoVersion = params.get("MongoVersion")
+        self._TplType = params.get("TplType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBInstanceParamTplResponse(AbstractModel):
+    """DescribeDBInstanceParamTpl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ParamTpls: 参数模板列表信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamTpls: list of ParamTpl
+        :param _TotalCount: 参数模板总数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ParamTpls = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ParamTpls(self):
+        return self._ParamTpls
+
+    @ParamTpls.setter
+    def ParamTpls(self, ParamTpls):
+        self._ParamTpls = ParamTpls
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ParamTpls") is not None:
+            self._ParamTpls = []
+            for item in params.get("ParamTpls"):
+                obj = ParamTpl()
+                obj._deserialize(item)
+                self._ParamTpls.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDBInstancesRequest(AbstractModel):
     """DescribeDBInstances请求参数结构体
 
@@ -4237,6 +4692,64 @@ class DescribeTransparentDataEncryptionStatusResponse(AbstractModel):
                 obj = KMSInfoDetail()
                 obj._deserialize(item)
                 self._KeyInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DropDBInstanceParamTplRequest(AbstractModel):
+    """DropDBInstanceParamTpl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TplId: 参数模板 ID。
+        :type TplId: str
+        """
+        self._TplId = None
+
+    @property
+    def TplId(self):
+        return self._TplId
+
+    @TplId.setter
+    def TplId(self, TplId):
+        self._TplId = TplId
+
+
+    def _deserialize(self, params):
+        self._TplId = params.get("TplId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DropDBInstanceParamTplResponse(AbstractModel):
+    """DropDBInstanceParamTpl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -6716,6 +7229,105 @@ class ModifyDBInstanceNetworkAddressResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDBInstanceParamTplRequest(AbstractModel):
+    """ModifyDBInstanceParamTpl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TplId: 待修改的参数模板 ID，示例：tpl-jglr91vew。
+        :type TplId: str
+        :param _TplName: 待修改参数模板名称，为空时，保持原有名称。
+        :type TplName: str
+        :param _TplDesc: 待修改参数模板描述，为空时，保持原有描述。
+        :type TplDesc: str
+        :param _Params: 待修改参数名及参数值，为空时，各参数保持原有值，支持单条或批量修改。
+        :type Params: list of ParamType
+        """
+        self._TplId = None
+        self._TplName = None
+        self._TplDesc = None
+        self._Params = None
+
+    @property
+    def TplId(self):
+        return self._TplId
+
+    @TplId.setter
+    def TplId(self, TplId):
+        self._TplId = TplId
+
+    @property
+    def TplName(self):
+        return self._TplName
+
+    @TplName.setter
+    def TplName(self, TplName):
+        self._TplName = TplName
+
+    @property
+    def TplDesc(self):
+        return self._TplDesc
+
+    @TplDesc.setter
+    def TplDesc(self, TplDesc):
+        self._TplDesc = TplDesc
+
+    @property
+    def Params(self):
+        return self._Params
+
+    @Params.setter
+    def Params(self, Params):
+        self._Params = Params
+
+
+    def _deserialize(self, params):
+        self._TplId = params.get("TplId")
+        self._TplName = params.get("TplName")
+        self._TplDesc = params.get("TplDesc")
+        if params.get("Params") is not None:
+            self._Params = []
+            for item in params.get("Params"):
+                obj = ParamType()
+                obj._deserialize(item)
+                self._Params.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBInstanceParamTplResponse(AbstractModel):
+    """ModifyDBInstanceParamTpl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDBInstanceSecurityGroupRequest(AbstractModel):
     """ModifyDBInstanceSecurityGroup请求参数结构体
 
@@ -7522,6 +8134,144 @@ class Operation(AbstractModel):
         self._ReplicaSetName = params.get("ReplicaSetName")
         self._NodeName = params.get("NodeName")
         self._OpId = params.get("OpId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ParamTpl(AbstractModel):
+    """数据库参数模板
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TplName: 参数模板名称
+        :type TplName: str
+        :param _TplId: 参数模板ID
+        :type TplId: str
+        :param _MongoVersion: 适用数据库版本
+        :type MongoVersion: str
+        :param _ClusterType: 适用数据库类型
+        :type ClusterType: str
+        :param _TplDesc: 参数模板描述
+        :type TplDesc: str
+        :param _TplType: 模板类型，包括DEFAULT（默认模板）及CUSTOMIZE（定制模板）两种类型
+        :type TplType: str
+        """
+        self._TplName = None
+        self._TplId = None
+        self._MongoVersion = None
+        self._ClusterType = None
+        self._TplDesc = None
+        self._TplType = None
+
+    @property
+    def TplName(self):
+        return self._TplName
+
+    @TplName.setter
+    def TplName(self, TplName):
+        self._TplName = TplName
+
+    @property
+    def TplId(self):
+        return self._TplId
+
+    @TplId.setter
+    def TplId(self, TplId):
+        self._TplId = TplId
+
+    @property
+    def MongoVersion(self):
+        return self._MongoVersion
+
+    @MongoVersion.setter
+    def MongoVersion(self, MongoVersion):
+        self._MongoVersion = MongoVersion
+
+    @property
+    def ClusterType(self):
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
+    def TplDesc(self):
+        return self._TplDesc
+
+    @TplDesc.setter
+    def TplDesc(self, TplDesc):
+        self._TplDesc = TplDesc
+
+    @property
+    def TplType(self):
+        return self._TplType
+
+    @TplType.setter
+    def TplType(self, TplType):
+        self._TplType = TplType
+
+
+    def _deserialize(self, params):
+        self._TplName = params.get("TplName")
+        self._TplId = params.get("TplId")
+        self._MongoVersion = params.get("MongoVersion")
+        self._ClusterType = params.get("ClusterType")
+        self._TplDesc = params.get("TplDesc")
+        self._TplType = params.get("TplType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ParamType(AbstractModel):
+    """数据库参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 参数
+        :type Key: str
+        :param _Value: 参数值
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

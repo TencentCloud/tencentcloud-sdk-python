@@ -2247,7 +2247,11 @@ class DeployApplicationRequest(AbstractModel):
         :param _DeployVersion: 部署类型为 IMAGE 时，该参数表示镜像 tag。
 部署类型为 JAR/WAR 时，该参数表示包版本号。
         :type DeployVersion: str
-        :param _PkgName: 包名。使用 JAR 包或者 WAR 包部署的时候必填。
+        :param _PkgName: 传入内容为 /jar包名字 的形式。也就是在 jar包名字前增加一个/。
+
+如上传的 jar 包名字为 demo-1.0.0.jar，那么这里传入内容为：/demo-1.0.0.jar
+
+注：jar 包需要通过 tem 页面上传过，tem 后端才能拉到该 jar 包。
         :type PkgName: str
         :param _JdkVersion: JDK 版本。
 - KONA:8：使用 kona jdk 8。
@@ -2319,6 +2323,10 @@ class DeployApplicationRequest(AbstractModel):
         :type RepoServer: str
         :param _RepoType: 镜像部署时，仓库类型：0：个人仓库；1：企业版；2：公共仓库；3：tem托管仓库；4：demo仓库
         :type RepoType: int
+        :param _PostStartEncoded: 启动后执行的脚本，base64 编码
+        :type PostStartEncoded: str
+        :param _PreStopEncoded: 停止前执行的脚本，base64 编码
+        :type PreStopEncoded: str
         """
         self._ApplicationId = None
         self._InitPodNum = None
@@ -2365,6 +2373,8 @@ class DeployApplicationRequest(AbstractModel):
         self._TcrInstanceId = None
         self._RepoServer = None
         self._RepoType = None
+        self._PostStartEncoded = None
+        self._PreStopEncoded = None
 
     @property
     def ApplicationId(self):
@@ -2726,6 +2736,22 @@ class DeployApplicationRequest(AbstractModel):
     def RepoType(self, RepoType):
         self._RepoType = RepoType
 
+    @property
+    def PostStartEncoded(self):
+        return self._PostStartEncoded
+
+    @PostStartEncoded.setter
+    def PostStartEncoded(self, PostStartEncoded):
+        self._PostStartEncoded = PostStartEncoded
+
+    @property
+    def PreStopEncoded(self):
+        return self._PreStopEncoded
+
+    @PreStopEncoded.setter
+    def PreStopEncoded(self, PreStopEncoded):
+        self._PreStopEncoded = PreStopEncoded
+
 
     def _deserialize(self, params):
         self._ApplicationId = params.get("ApplicationId")
@@ -2819,6 +2845,8 @@ class DeployApplicationRequest(AbstractModel):
         self._TcrInstanceId = params.get("TcrInstanceId")
         self._RepoServer = params.get("RepoServer")
         self._RepoType = params.get("RepoType")
+        self._PostStartEncoded = params.get("PostStartEncoded")
+        self._PreStopEncoded = params.get("PreStopEncoded")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -3807,6 +3807,21 @@ class CCN(AbstractModel):
         :param _RouteBroadcastPolicyFlag: 是否开启云联网路由传播策略。`False` 未开启，`True` 开启。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RouteBroadcastPolicyFlag: bool
+        :param _RouteECMPFlag: 是否开启等价路由功能。`False` 未开启，`True` 开启。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RouteECMPFlag: bool
+        :param _RouteOverlapFlag: 是否开启路由重叠功能。`False` 未开启，`True` 开启。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RouteOverlapFlag: bool
+        :param _TrafficMarkingPolicyFlag: 是否开启QOS。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrafficMarkingPolicyFlag: bool
+        :param _RouteSelectPolicyFlag: 是否开启路由表选择策略。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RouteSelectPolicyFlag: bool
+        :param _DirectConnectAccelerateChannelFlag: 是否开启二层云联网通道。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DirectConnectAccelerateChannelFlag: bool
         """
         self._CcnId = None
         self._CcnName = None
@@ -3823,6 +3838,11 @@ class CCN(AbstractModel):
         self._RouteTableFlag = None
         self._IsSecurityLock = None
         self._RouteBroadcastPolicyFlag = None
+        self._RouteECMPFlag = None
+        self._RouteOverlapFlag = None
+        self._TrafficMarkingPolicyFlag = None
+        self._RouteSelectPolicyFlag = None
+        self._DirectConnectAccelerateChannelFlag = None
 
     @property
     def CcnId(self):
@@ -3944,6 +3964,46 @@ class CCN(AbstractModel):
     def RouteBroadcastPolicyFlag(self, RouteBroadcastPolicyFlag):
         self._RouteBroadcastPolicyFlag = RouteBroadcastPolicyFlag
 
+    @property
+    def RouteECMPFlag(self):
+        return self._RouteECMPFlag
+
+    @RouteECMPFlag.setter
+    def RouteECMPFlag(self, RouteECMPFlag):
+        self._RouteECMPFlag = RouteECMPFlag
+
+    @property
+    def RouteOverlapFlag(self):
+        return self._RouteOverlapFlag
+
+    @RouteOverlapFlag.setter
+    def RouteOverlapFlag(self, RouteOverlapFlag):
+        self._RouteOverlapFlag = RouteOverlapFlag
+
+    @property
+    def TrafficMarkingPolicyFlag(self):
+        return self._TrafficMarkingPolicyFlag
+
+    @TrafficMarkingPolicyFlag.setter
+    def TrafficMarkingPolicyFlag(self, TrafficMarkingPolicyFlag):
+        self._TrafficMarkingPolicyFlag = TrafficMarkingPolicyFlag
+
+    @property
+    def RouteSelectPolicyFlag(self):
+        return self._RouteSelectPolicyFlag
+
+    @RouteSelectPolicyFlag.setter
+    def RouteSelectPolicyFlag(self, RouteSelectPolicyFlag):
+        self._RouteSelectPolicyFlag = RouteSelectPolicyFlag
+
+    @property
+    def DirectConnectAccelerateChannelFlag(self):
+        return self._DirectConnectAccelerateChannelFlag
+
+    @DirectConnectAccelerateChannelFlag.setter
+    def DirectConnectAccelerateChannelFlag(self, DirectConnectAccelerateChannelFlag):
+        self._DirectConnectAccelerateChannelFlag = DirectConnectAccelerateChannelFlag
+
 
     def _deserialize(self, params):
         self._CcnId = params.get("CcnId")
@@ -3966,6 +4026,11 @@ class CCN(AbstractModel):
         self._RouteTableFlag = params.get("RouteTableFlag")
         self._IsSecurityLock = params.get("IsSecurityLock")
         self._RouteBroadcastPolicyFlag = params.get("RouteBroadcastPolicyFlag")
+        self._RouteECMPFlag = params.get("RouteECMPFlag")
+        self._RouteOverlapFlag = params.get("RouteOverlapFlag")
+        self._TrafficMarkingPolicyFlag = params.get("TrafficMarkingPolicyFlag")
+        self._RouteSelectPolicyFlag = params.get("RouteSelectPolicyFlag")
+        self._DirectConnectAccelerateChannelFlag = params.get("DirectConnectAccelerateChannelFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39184,11 +39249,14 @@ class ModifyVpnGatewayAttributeRequest(AbstractModel):
         :type InstanceChargeType: str
         :param _BgpAsn: BGP ASN。ASN取值范围为1- 4294967295，默认值64551，其中139341、45090和58835不可用。
         :type BgpAsn: int
+        :param _MaxConnection: 服务端最大连接数个数。
+        :type MaxConnection: int
         """
         self._VpnGatewayId = None
         self._VpnGatewayName = None
         self._InstanceChargeType = None
         self._BgpAsn = None
+        self._MaxConnection = None
 
     @property
     def VpnGatewayId(self):
@@ -39222,12 +39290,21 @@ class ModifyVpnGatewayAttributeRequest(AbstractModel):
     def BgpAsn(self, BgpAsn):
         self._BgpAsn = BgpAsn
 
+    @property
+    def MaxConnection(self):
+        return self._MaxConnection
+
+    @MaxConnection.setter
+    def MaxConnection(self, MaxConnection):
+        self._MaxConnection = MaxConnection
+
 
     def _deserialize(self, params):
         self._VpnGatewayId = params.get("VpnGatewayId")
         self._VpnGatewayName = params.get("VpnGatewayName")
         self._InstanceChargeType = params.get("InstanceChargeType")
         self._BgpAsn = params.get("BgpAsn")
+        self._MaxConnection = params.get("MaxConnection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

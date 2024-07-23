@@ -2830,6 +2830,8 @@ class NativeNodePoolInfo(AbstractModel):
         :param _Replicas: 期望节点数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Replicas: int
+        :param _ReadyReplicas: 就绪 Machine 个数
+        :type ReadyReplicas: int
         :param _InternetAccessible: 公网带宽设置
 注意：此字段可能返回 null，表示取不到有效值。
         :type InternetAccessible: :class:`tencentcloud.tke.v20220501.models.InternetAccessible`
@@ -2855,6 +2857,7 @@ class NativeNodePoolInfo(AbstractModel):
         self._EnableAutoscaling = None
         self._InstanceTypes = None
         self._Replicas = None
+        self._ReadyReplicas = None
         self._InternetAccessible = None
         self._DataDisks = None
 
@@ -3003,6 +3006,14 @@ class NativeNodePoolInfo(AbstractModel):
         self._Replicas = Replicas
 
     @property
+    def ReadyReplicas(self):
+        return self._ReadyReplicas
+
+    @ReadyReplicas.setter
+    def ReadyReplicas(self, ReadyReplicas):
+        self._ReadyReplicas = ReadyReplicas
+
+    @property
     def InternetAccessible(self):
         return self._InternetAccessible
 
@@ -3050,6 +3061,7 @@ class NativeNodePoolInfo(AbstractModel):
         self._EnableAutoscaling = params.get("EnableAutoscaling")
         self._InstanceTypes = params.get("InstanceTypes")
         self._Replicas = params.get("Replicas")
+        self._ReadyReplicas = params.get("ReadyReplicas")
         if params.get("InternetAccessible") is not None:
             self._InternetAccessible = InternetAccessible()
             self._InternetAccessible._deserialize(params.get("InternetAccessible"))
