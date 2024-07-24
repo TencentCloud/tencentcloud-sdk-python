@@ -8268,35 +8268,27 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AuthorizedOrganizationId: 被授企业id
-        :type AuthorizedOrganizationId: str
-        :param _SealTypes: 指定印章类型，指定后只能选择该类型的印章进行授权支持以下印章类型：- OFFICIAL : 企业公章- CONTRACT : 合同专用章- FINANCE : 财务专用章- PERSONNEL : 人事专用章
-        :type SealTypes: list of str
         :param _Agent: 代理企业和员工的信息。<br/>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         :param _Operator: 执行本接口操作的员工信息。<br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _AuthorizedOrganizationId: 被授企业id/授权方企业id，和AuthorizedOrganizationName二选一传入
+        :type AuthorizedOrganizationId: str
+        :param _AuthorizedOrganizationName: 被授企业名称/授权方企业名称，和AuthorizedOrganizationId二选一传入
+        :type AuthorizedOrganizationName: str
+        :param _SealTypes: 指定印章类型，指定后只能选择该类型的印章进行授权支持以下印章类型：- OFFICIAL : 企业公章- CONTRACT : 合同专用章- FINANCE : 财务专用章- PERSONNEL : 人事专用章
+        :type SealTypes: list of str
+        :param _AuthToMe: 他方授权给我方：
+- false：我方授权他方，AuthorizedOrganizationName代表【被授权方】企业名称
+- true：他方授权我方，AuthorizedOrganizationName代表【授权方】企业名称
+        :type AuthToMe: bool
         """
-        self._AuthorizedOrganizationId = None
-        self._SealTypes = None
         self._Agent = None
         self._Operator = None
-
-    @property
-    def AuthorizedOrganizationId(self):
-        return self._AuthorizedOrganizationId
-
-    @AuthorizedOrganizationId.setter
-    def AuthorizedOrganizationId(self, AuthorizedOrganizationId):
-        self._AuthorizedOrganizationId = AuthorizedOrganizationId
-
-    @property
-    def SealTypes(self):
-        return self._SealTypes
-
-    @SealTypes.setter
-    def SealTypes(self, SealTypes):
-        self._SealTypes = SealTypes
+        self._AuthorizedOrganizationId = None
+        self._AuthorizedOrganizationName = None
+        self._SealTypes = None
+        self._AuthToMe = None
 
     @property
     def Agent(self):
@@ -8314,16 +8306,50 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
     def Operator(self, Operator):
         self._Operator = Operator
 
+    @property
+    def AuthorizedOrganizationId(self):
+        return self._AuthorizedOrganizationId
+
+    @AuthorizedOrganizationId.setter
+    def AuthorizedOrganizationId(self, AuthorizedOrganizationId):
+        self._AuthorizedOrganizationId = AuthorizedOrganizationId
+
+    @property
+    def AuthorizedOrganizationName(self):
+        return self._AuthorizedOrganizationName
+
+    @AuthorizedOrganizationName.setter
+    def AuthorizedOrganizationName(self, AuthorizedOrganizationName):
+        self._AuthorizedOrganizationName = AuthorizedOrganizationName
+
+    @property
+    def SealTypes(self):
+        return self._SealTypes
+
+    @SealTypes.setter
+    def SealTypes(self, SealTypes):
+        self._SealTypes = SealTypes
+
+    @property
+    def AuthToMe(self):
+        return self._AuthToMe
+
+    @AuthToMe.setter
+    def AuthToMe(self, AuthToMe):
+        self._AuthToMe = AuthToMe
+
 
     def _deserialize(self, params):
-        self._AuthorizedOrganizationId = params.get("AuthorizedOrganizationId")
-        self._SealTypes = params.get("SealTypes")
         if params.get("Agent") is not None:
             self._Agent = Agent()
             self._Agent._deserialize(params.get("Agent"))
         if params.get("Operator") is not None:
             self._Operator = UserInfo()
             self._Operator._deserialize(params.get("Operator"))
+        self._AuthorizedOrganizationId = params.get("AuthorizedOrganizationId")
+        self._AuthorizedOrganizationName = params.get("AuthorizedOrganizationName")
+        self._SealTypes = params.get("SealTypes")
+        self._AuthToMe = params.get("AuthToMe")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

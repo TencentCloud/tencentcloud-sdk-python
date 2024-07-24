@@ -1265,7 +1265,7 @@ class EssClient(AbstractClient):
 
 
     def CreatePartnerAutoSignAuthUrl(self, request):
-        """创建他方自动签授权链接，通过该链接可进入小程序进行合作方企业的自动签授权，若当前企业未开通企业自动签，通过该链接会先引导开通本企业自动签。
+        """创建他方自动签授权链接（他方授权/我方授权），通过该链接可进入小程序进行合作方企业的自动签授权，若授权企业未开通企业自动签，通过该链接会先引导开通本企业自动签。
         该接口效果同控制台： 企业设置-> 扩展服务 -> 企业自动签署 -> 合作企业方授权
 
 
@@ -1273,6 +1273,7 @@ class EssClient(AbstractClient):
         注:
         1. <font color='red'>所在企业的超管、法人才有权限调用此接口</font>(Operator.UserId 需要传递超管或者法人的UserId)
         2. 已经在授权中或者授权成功的企业，无法重复授权
+        3. 授权企业和被授权企业必须都是已认证企业
 
         :param request: Request instance for CreatePartnerAutoSignAuthUrl.
         :type request: :class:`tencentcloud.ess.v20201111.models.CreatePartnerAutoSignAuthUrlRequest`

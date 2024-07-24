@@ -1035,6 +1035,8 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type ReadonlyNodeAvailabilityZoneList: list of str
         :param _HiddenZone: Hidden节点所属可用区。跨可用区部署实例，必须配置该参数。
         :type HiddenZone: str
+        :param _ParamTemplateId: 参数模板 ID。参数模板是一组 MongoDB 的参数并为预设置了参数值的集合，将一组有相同诉求的参数及值 存为模板，在创建实例时，可直接引用参数值到新实例。合理使用参数模板，可以提高MongoDB数据库的效率。模板列表从 DescribeDBInstanceParamTpl 接口获取，注意模板支持的版本。
+        :type ParamTemplateId: str
         """
         self._Memory = None
         self._Volume = None
@@ -1062,6 +1064,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self._ReadonlyNodeNum = None
         self._ReadonlyNodeAvailabilityZoneList = None
         self._HiddenZone = None
+        self._ParamTemplateId = None
 
     @property
     def Memory(self):
@@ -1271,6 +1274,14 @@ class CreateDBInstanceHourRequest(AbstractModel):
     def HiddenZone(self, HiddenZone):
         self._HiddenZone = HiddenZone
 
+    @property
+    def ParamTemplateId(self):
+        return self._ParamTemplateId
+
+    @ParamTemplateId.setter
+    def ParamTemplateId(self, ParamTemplateId):
+        self._ParamTemplateId = ParamTemplateId
+
 
     def _deserialize(self, params):
         self._Memory = params.get("Memory")
@@ -1304,6 +1315,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self._ReadonlyNodeNum = params.get("ReadonlyNodeNum")
         self._ReadonlyNodeAvailabilityZoneList = params.get("ReadonlyNodeAvailabilityZoneList")
         self._HiddenZone = params.get("HiddenZone")
+        self._ParamTemplateId = params.get("ParamTemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1593,6 +1605,8 @@ class CreateDBInstanceRequest(AbstractModel):
         :type ReadonlyNodeAvailabilityZoneList: list of str
         :param _HiddenZone: Hidden节点所属可用区。跨可用区部署实例，必须配置该参数。
         :type HiddenZone: str
+        :param _ParamTemplateId: 参数模板 ID。参数模板是一组 MongoDB 的参数并为预设置了参数值的集合，将一组有相同诉求的参数及值 存为模板，在创建实例时，可直接引用参数值到新实例。合理使用参数模板，可以提高MongoDB数据库的效率。模板列表从 DescribeDBInstanceParamTpl 接口获取，注意模板支持的版本及实例类型。
+        :type ParamTemplateId: str
         """
         self._NodeNum = None
         self._Memory = None
@@ -1623,6 +1637,7 @@ class CreateDBInstanceRequest(AbstractModel):
         self._ReadonlyNodeNum = None
         self._ReadonlyNodeAvailabilityZoneList = None
         self._HiddenZone = None
+        self._ParamTemplateId = None
 
     @property
     def NodeNum(self):
@@ -1856,6 +1871,14 @@ class CreateDBInstanceRequest(AbstractModel):
     def HiddenZone(self, HiddenZone):
         self._HiddenZone = HiddenZone
 
+    @property
+    def ParamTemplateId(self):
+        return self._ParamTemplateId
+
+    @ParamTemplateId.setter
+    def ParamTemplateId(self, ParamTemplateId):
+        self._ParamTemplateId = ParamTemplateId
+
 
     def _deserialize(self, params):
         self._NodeNum = params.get("NodeNum")
@@ -1892,6 +1915,7 @@ class CreateDBInstanceRequest(AbstractModel):
         self._ReadonlyNodeNum = params.get("ReadonlyNodeNum")
         self._ReadonlyNodeAvailabilityZoneList = params.get("ReadonlyNodeAvailabilityZoneList")
         self._HiddenZone = params.get("HiddenZone")
+        self._ParamTemplateId = params.get("ParamTemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8652,6 +8676,88 @@ class ResetDBInstancePasswordResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._AsyncRequestId = params.get("AsyncRequestId")
+        self._RequestId = params.get("RequestId")
+
+
+class RestartNodesRequest(AbstractModel):
+    """RestartNodes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
+        :type InstanceId: str
+        :param _NodeIds: 节点Id。
+        :type NodeIds: list of str
+        """
+        self._InstanceId = None
+        self._NodeIds = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def NodeIds(self):
+        return self._NodeIds
+
+    @NodeIds.setter
+    def NodeIds(self, NodeIds):
+        self._NodeIds = NodeIds
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._NodeIds = params.get("NodeIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RestartNodesResponse(AbstractModel):
+    """RestartNodes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 流程Id。
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
 
 

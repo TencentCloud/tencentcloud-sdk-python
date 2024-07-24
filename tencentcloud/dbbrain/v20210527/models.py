@@ -1667,6 +1667,8 @@ class CreateKillTaskRequest(AbstractModel):
         :type Command: str
         :param _Info: 任务过滤条件，支持单条件前缀匹配。
         :type Info: str
+        :param _Infos: 任务过滤条件，支持多个关键字匹配，与Info参数互斥。
+        :type Infos: list of str
         :param _User: 任务过滤条件，用户类型。
         :type User: str
         :param _Time: 任务过滤条件，会话持续时长，单位秒。
@@ -1680,6 +1682,7 @@ class CreateKillTaskRequest(AbstractModel):
         self._DB = None
         self._Command = None
         self._Info = None
+        self._Infos = None
         self._User = None
         self._Time = None
         self._Product = None
@@ -1733,6 +1736,14 @@ class CreateKillTaskRequest(AbstractModel):
         self._Info = Info
 
     @property
+    def Infos(self):
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
     def User(self):
         return self._User
 
@@ -1764,6 +1775,7 @@ class CreateKillTaskRequest(AbstractModel):
         self._DB = params.get("DB")
         self._Command = params.get("Command")
         self._Info = params.get("Info")
+        self._Infos = params.get("Infos")
         self._User = params.get("User")
         self._Time = params.get("Time")
         self._Product = params.get("Product")

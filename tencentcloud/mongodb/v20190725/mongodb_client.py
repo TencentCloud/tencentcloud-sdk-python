@@ -1044,6 +1044,29 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RestartNodes(self, request):
+        """本接口用于重启数据库节点。
+
+        :param request: Request instance for RestartNodes.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.RestartNodesRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.RestartNodesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RestartNodes", params, headers=headers)
+            response = json.loads(body)
+            model = models.RestartNodesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SetAccountUserPrivilege(self, request):
         """本接口（SetAccountUserPrivilege）用于设置实例的账号权限。
 

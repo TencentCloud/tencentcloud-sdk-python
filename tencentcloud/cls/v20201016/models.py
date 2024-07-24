@@ -21544,7 +21544,7 @@ class UploadLogRequest(AbstractModel):
         r"""
         :param _TopicId: 主题id
         :type TopicId: str
-        :param _HashKey: 根据 hashkey 写入相应范围的主题分区
+        :param _HashKey: 该参数已废弃，请勿使用
         :type HashKey: str
         :param _CompressType: 压缩方法
         :type CompressType: str
@@ -21563,10 +21563,14 @@ class UploadLogRequest(AbstractModel):
 
     @property
     def HashKey(self):
+        warnings.warn("parameter `HashKey` is deprecated", DeprecationWarning) 
+
         return self._HashKey
 
     @HashKey.setter
     def HashKey(self, HashKey):
+        warnings.warn("parameter `HashKey` is deprecated", DeprecationWarning) 
+
         self._HashKey = HashKey
 
     @property

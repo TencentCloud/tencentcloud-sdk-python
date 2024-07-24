@@ -40850,7 +40850,7 @@ class NetworkAclEntry(AbstractModel):
         r"""
         :param _Protocol: 协议, 取值: TCP,UDP, ICMP, ALL。
         :type Protocol: str
-        :param _Port: 端口(all, 单个port,  range)。当Protocol为ALL或ICMP时，不能指定Port。
+        :param _Port: 端口(all, 单个port,  range)。当Protocol为ALL或ICMP时，不能指定Port。使用-指定端口范围，如：10-20。
         :type Port: str
         :param _CidrBlock: 网段或IP(互斥)。增量创建ACL规则时，CidrBlock和Ipv6CidrBlock至少提供一个。
         :type CidrBlock: str

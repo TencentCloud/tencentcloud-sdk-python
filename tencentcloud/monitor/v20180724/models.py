@@ -17921,18 +17921,13 @@ class DescribePrometheusRecordRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
-
-示例值：prom-343kafd34
+        :param _InstanceId: Prometheus 实例 ID
         :type InstanceId: str
-        :param _Offset: 偏移量，默认为0。 示例值：1
+        :param _Offset: 偏移量，默认为0。
         :type Offset: int
         :param _Limit: 返回数量，默认为20，最大值为100。
-示例值：1
         :type Limit: int
-        :param _Filters: 仅支持按Name, Values字段过滤:
-- Name = Name
-  按照给定的预聚合名称列表匹配
+        :param _Filters: 仅支持按Name, Values字段过滤。
         :type Filters: list of Filter
         """
         self._InstanceId = None

@@ -6215,6 +6215,10 @@ class DescribeAddressTemplateListResponse(AbstractModel):
         :type DomainTemplateCount: int
         :param _PortTemplateCount: 协议端口模板数量
         :type PortTemplateCount: int
+        :param _UsedTemplateCount: 已使用的地址模版数
+        :type UsedTemplateCount: int
+        :param _TemplateQuotaCount: 地址模版配额数量
+        :type TemplateQuotaCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -6224,6 +6228,8 @@ class DescribeAddressTemplateListResponse(AbstractModel):
         self._IpTemplateCount = None
         self._DomainTemplateCount = None
         self._PortTemplateCount = None
+        self._UsedTemplateCount = None
+        self._TemplateQuotaCount = None
         self._RequestId = None
 
     @property
@@ -6275,6 +6281,22 @@ class DescribeAddressTemplateListResponse(AbstractModel):
         self._PortTemplateCount = PortTemplateCount
 
     @property
+    def UsedTemplateCount(self):
+        return self._UsedTemplateCount
+
+    @UsedTemplateCount.setter
+    def UsedTemplateCount(self, UsedTemplateCount):
+        self._UsedTemplateCount = UsedTemplateCount
+
+    @property
+    def TemplateQuotaCount(self):
+        return self._TemplateQuotaCount
+
+    @TemplateQuotaCount.setter
+    def TemplateQuotaCount(self, TemplateQuotaCount):
+        self._TemplateQuotaCount = TemplateQuotaCount
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -6295,6 +6317,8 @@ class DescribeAddressTemplateListResponse(AbstractModel):
         self._IpTemplateCount = params.get("IpTemplateCount")
         self._DomainTemplateCount = params.get("DomainTemplateCount")
         self._PortTemplateCount = params.get("PortTemplateCount")
+        self._UsedTemplateCount = params.get("UsedTemplateCount")
+        self._TemplateQuotaCount = params.get("TemplateQuotaCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -8410,6 +8434,9 @@ class DescribeLogsResponse(AbstractModel):
         :type ReturnCode: int
         :param _ReturnMsg: 返回信息  success 成功 其他 不成功
         :type ReturnMsg: str
+        :param _AppProtocolList: 七层协议，NTA日志有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppProtocolList: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -8417,6 +8444,7 @@ class DescribeLogsResponse(AbstractModel):
         self._Total = None
         self._ReturnCode = None
         self._ReturnMsg = None
+        self._AppProtocolList = None
         self._RequestId = None
 
     @property
@@ -8452,6 +8480,14 @@ class DescribeLogsResponse(AbstractModel):
         self._ReturnMsg = ReturnMsg
 
     @property
+    def AppProtocolList(self):
+        return self._AppProtocolList
+
+    @AppProtocolList.setter
+    def AppProtocolList(self, AppProtocolList):
+        self._AppProtocolList = AppProtocolList
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -8465,6 +8501,7 @@ class DescribeLogsResponse(AbstractModel):
         self._Total = params.get("Total")
         self._ReturnCode = params.get("ReturnCode")
         self._ReturnMsg = params.get("ReturnMsg")
+        self._AppProtocolList = params.get("AppProtocolList")
         self._RequestId = params.get("RequestId")
 
 

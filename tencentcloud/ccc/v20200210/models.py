@@ -3165,7 +3165,7 @@ class DeleteStaffRequest(AbstractModel):
         r"""
         :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
-        :param _StaffList: 待删除客服邮箱列表
+        :param _StaffList: 待删除客服邮箱列表，一次最大支持200个。
         :type StaffList: list of str
         """
         self._SdkAppId = None
@@ -6653,9 +6653,9 @@ class DescribeTelCdrRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTimeStamp: 起始时间戳，Unix 秒级时间戳
+        :param _StartTimeStamp: 起始时间戳，Unix 秒级时间戳，最大支持近180天。
         :type StartTimeStamp: int
-        :param _EndTimeStamp: 结束时间戳，Unix 秒级时间戳
+        :param _EndTimeStamp: 结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于90天。
         :type EndTimeStamp: int
         :param _InstanceId: 实例 ID（废弃）
         :type InstanceId: int

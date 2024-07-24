@@ -14690,9 +14690,12 @@ class PermitOCRRequest(AbstractModel):
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type ImageUrl: str
+        :param _CropPortrait: 是否返回头像照片，默认为 false
+        :type CropPortrait: bool
         """
         self._ImageBase64 = None
         self._ImageUrl = None
+        self._CropPortrait = None
 
     @property
     def ImageBase64(self):
@@ -14710,10 +14713,19 @@ class PermitOCRRequest(AbstractModel):
     def ImageUrl(self, ImageUrl):
         self._ImageUrl = ImageUrl
 
+    @property
+    def CropPortrait(self):
+        return self._CropPortrait
+
+    @CropPortrait.setter
+    def CropPortrait(self, CropPortrait):
+        self._CropPortrait = CropPortrait
+
 
     def _deserialize(self, params):
         self._ImageBase64 = params.get("ImageBase64")
         self._ImageUrl = params.get("ImageUrl")
+        self._CropPortrait = params.get("CropPortrait")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14747,6 +14759,8 @@ class PermitOCRResponse(AbstractModel):
         :type IssueAddress: str
         :param _Birthday: 出生日期
         :type Birthday: str
+        :param _PortraitImage: 头像照片的base64
+        :type PortraitImage: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -14758,6 +14772,7 @@ class PermitOCRResponse(AbstractModel):
         self._IssueAuthority = None
         self._IssueAddress = None
         self._Birthday = None
+        self._PortraitImage = None
         self._RequestId = None
 
     @property
@@ -14825,6 +14840,14 @@ class PermitOCRResponse(AbstractModel):
         self._Birthday = Birthday
 
     @property
+    def PortraitImage(self):
+        return self._PortraitImage
+
+    @PortraitImage.setter
+    def PortraitImage(self, PortraitImage):
+        self._PortraitImage = PortraitImage
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -14842,6 +14865,7 @@ class PermitOCRResponse(AbstractModel):
         self._IssueAuthority = params.get("IssueAuthority")
         self._IssueAddress = params.get("IssueAddress")
         self._Birthday = params.get("Birthday")
+        self._PortraitImage = params.get("PortraitImage")
         self._RequestId = params.get("RequestId")
 
 

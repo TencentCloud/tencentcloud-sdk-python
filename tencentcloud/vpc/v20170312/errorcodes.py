@@ -560,6 +560,9 @@ LIMITEXCEEDED_DAILYALLOCATEADDRESSQUOTALIMITEXCEEDED = 'LimitExceeded.DailyAlloc
 # 超过每日更换IP配额。
 LIMITEXCEEDED_DAILYCHANGEADDRESSQUOTA = 'LimitExceeded.DailyChangeAddressQuota'
 
+# 默认VPC数量已达到上限。
+LIMITEXCEEDED_DEFAULTVPCLIMITEXCEEDED = 'LimitExceeded.DefaultVpcLimitExceeded'
+
 # 实例绑定的弹性IP超过配额。
 LIMITEXCEEDED_INSTANCEADDRESSQUOTA = 'LimitExceeded.InstanceAddressQuota'
 

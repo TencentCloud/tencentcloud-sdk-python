@@ -43374,6 +43374,9 @@ class OrganizationalFunction(AbstractModel):
         :param _OwnerUserIdsStr: 公有云 Owner ID 列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerUserIdsStr: list of str
+        :param _EnvType: 数据库环境
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvType: str
         """
         self._Name = None
         self._DisplayName = None
@@ -43403,6 +43406,7 @@ class OrganizationalFunction(AbstractModel):
         self._Tag = None
         self._OperatorUserIdsStr = None
         self._OwnerUserIdsStr = None
+        self._EnvType = None
 
     @property
     def Name(self):
@@ -43628,6 +43632,14 @@ class OrganizationalFunction(AbstractModel):
     def OwnerUserIdsStr(self, OwnerUserIdsStr):
         self._OwnerUserIdsStr = OwnerUserIdsStr
 
+    @property
+    def EnvType(self):
+        return self._EnvType
+
+    @EnvType.setter
+    def EnvType(self, EnvType):
+        self._EnvType = EnvType
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -43663,6 +43675,7 @@ class OrganizationalFunction(AbstractModel):
         self._Tag = params.get("Tag")
         self._OperatorUserIdsStr = params.get("OperatorUserIdsStr")
         self._OwnerUserIdsStr = params.get("OwnerUserIdsStr")
+        self._EnvType = params.get("EnvType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
