@@ -5670,6 +5670,157 @@ class DescAcItem(AbstractModel):
         
 
 
+class DescNatDnatRule(AbstractModel):
+    """NAT防火墙Dnat规则列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param _IpProtocol: 网络协议，可选值：TCP、UDP。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpProtocol: str
+        :param _PublicIpAddress: 弹性IP。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicIpAddress: str
+        :param _PublicPort: 公网端口。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicPort: int
+        :param _PrivateIpAddress: 内网地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivateIpAddress: str
+        :param _PrivatePort: 内网端口。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivatePort: int
+        :param _Description: NAT防火墙转发规则描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _IsReferenced: 是否被关联引用，如被远程运维使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsReferenced: int
+        :param _FwInsId: 所属防火墙实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FwInsId: str
+        :param _NatGwId: 关联的nat网关Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NatGwId: str
+        """
+        self._Id = None
+        self._IpProtocol = None
+        self._PublicIpAddress = None
+        self._PublicPort = None
+        self._PrivateIpAddress = None
+        self._PrivatePort = None
+        self._Description = None
+        self._IsReferenced = None
+        self._FwInsId = None
+        self._NatGwId = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def IpProtocol(self):
+        return self._IpProtocol
+
+    @IpProtocol.setter
+    def IpProtocol(self, IpProtocol):
+        self._IpProtocol = IpProtocol
+
+    @property
+    def PublicIpAddress(self):
+        return self._PublicIpAddress
+
+    @PublicIpAddress.setter
+    def PublicIpAddress(self, PublicIpAddress):
+        self._PublicIpAddress = PublicIpAddress
+
+    @property
+    def PublicPort(self):
+        return self._PublicPort
+
+    @PublicPort.setter
+    def PublicPort(self, PublicPort):
+        self._PublicPort = PublicPort
+
+    @property
+    def PrivateIpAddress(self):
+        return self._PrivateIpAddress
+
+    @PrivateIpAddress.setter
+    def PrivateIpAddress(self, PrivateIpAddress):
+        self._PrivateIpAddress = PrivateIpAddress
+
+    @property
+    def PrivatePort(self):
+        return self._PrivatePort
+
+    @PrivatePort.setter
+    def PrivatePort(self, PrivatePort):
+        self._PrivatePort = PrivatePort
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def IsReferenced(self):
+        return self._IsReferenced
+
+    @IsReferenced.setter
+    def IsReferenced(self, IsReferenced):
+        self._IsReferenced = IsReferenced
+
+    @property
+    def FwInsId(self):
+        return self._FwInsId
+
+    @FwInsId.setter
+    def FwInsId(self, FwInsId):
+        self._FwInsId = FwInsId
+
+    @property
+    def NatGwId(self):
+        return self._NatGwId
+
+    @NatGwId.setter
+    def NatGwId(self, NatGwId):
+        self._NatGwId = NatGwId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._IpProtocol = params.get("IpProtocol")
+        self._PublicIpAddress = params.get("PublicIpAddress")
+        self._PublicPort = params.get("PublicPort")
+        self._PrivateIpAddress = params.get("PrivateIpAddress")
+        self._PrivatePort = params.get("PrivatePort")
+        self._Description = params.get("Description")
+        self._IsReferenced = params.get("IsReferenced")
+        self._FwInsId = params.get("FwInsId")
+        self._NatGwId = params.get("NatGwId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeAcListsRequest(AbstractModel):
     """DescribeAcLists请求参数结构体
 
@@ -8691,6 +8842,183 @@ class DescribeNatAcRuleResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Data.append(obj)
         self._AllTotal = params.get("AllTotal")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeNatFwDnatRuleRequest(AbstractModel):
+    """DescribeNatFwDnatRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Index: 需要查询的索引，特定场景使用，可不填
+        :type Index: str
+        :param _Filters: 过滤条件组合
+        :type Filters: list of CommonFilter
+        :param _Limit: 每页条数
+        :type Limit: int
+        :param _Offset: 偏移值
+        :type Offset: int
+        :param _StartTime: 检索的起始时间，可不传
+        :type StartTime: str
+        :param _EndTime: 检索的截止时间，可不传
+        :type EndTime: str
+        :param _Order: desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+        :type Order: str
+        :param _By: 排序所用到的字段
+        :type By: str
+        """
+        self._Index = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Order = None
+        self._By = None
+
+    @property
+    def Index(self):
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+
+    def _deserialize(self, params):
+        self._Index = params.get("Index")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = CommonFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNatFwDnatRuleResponse(AbstractModel):
+    """DescribeNatFwDnatRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: Dnat规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of DescNatDnatRule
+        :param _Total: 列表总数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = DescNatDnatRule()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 
@@ -20333,6 +20661,12 @@ class VpcFwGroupInfo(AbstractModel):
         :param _CrossUserMode: 跨租户模式 1管理员 2单边 0 非跨租户
 注意：此字段可能返回 null，表示取不到有效值。
         :type CrossUserMode: str
+        :param _NeedSwitchCcnOverlap: 云联网模式下，当前实例是否需要开启重叠路由开关，1：需要开启，0：不需要开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NeedSwitchCcnOverlap: int
+        :param _CcnId: 云联网模式下，实例关联的云联网id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CcnId: str
         """
         self._FwGroupId = None
         self._FwGroupName = None
@@ -20346,6 +20680,8 @@ class VpcFwGroupInfo(AbstractModel):
         self._CdcId = None
         self._CdcName = None
         self._CrossUserMode = None
+        self._NeedSwitchCcnOverlap = None
+        self._CcnId = None
 
     @property
     def FwGroupId(self):
@@ -20443,6 +20779,22 @@ class VpcFwGroupInfo(AbstractModel):
     def CrossUserMode(self, CrossUserMode):
         self._CrossUserMode = CrossUserMode
 
+    @property
+    def NeedSwitchCcnOverlap(self):
+        return self._NeedSwitchCcnOverlap
+
+    @NeedSwitchCcnOverlap.setter
+    def NeedSwitchCcnOverlap(self, NeedSwitchCcnOverlap):
+        self._NeedSwitchCcnOverlap = NeedSwitchCcnOverlap
+
+    @property
+    def CcnId(self):
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
 
     def _deserialize(self, params):
         self._FwGroupId = params.get("FwGroupId")
@@ -20462,6 +20814,8 @@ class VpcFwGroupInfo(AbstractModel):
         self._CdcId = params.get("CdcId")
         self._CdcName = params.get("CdcName")
         self._CrossUserMode = params.get("CrossUserMode")
+        self._NeedSwitchCcnOverlap = params.get("NeedSwitchCcnOverlap")
+        self._CcnId = params.get("CcnId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

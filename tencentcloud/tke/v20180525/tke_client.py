@@ -3386,6 +3386,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeReservedInstanceUtilizationRate(self, request):
+        """查询各种规格类型的预留券使用率
+
+        :param request: Request instance for DescribeReservedInstanceUtilizationRate.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeReservedInstanceUtilizationRateRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeReservedInstanceUtilizationRateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeReservedInstanceUtilizationRate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeReservedInstanceUtilizationRateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeReservedInstances(self, request):
         """查询预留实例列表
 

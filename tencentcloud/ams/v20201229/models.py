@@ -41,7 +41,7 @@ class AudioResult(AbstractModel):
         :param _Text: 该字段用于返回音频文件经ASR识别后的文本信息。最长可识别**5小时**的音频文件，若超出时长限制，接口将会报错。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
-        :param _Url: 该字段用于返回音频片段存储的链接地址，该地址有效期为1天。
+        :param _Url: 该字段用于返回审核结果的访问链接（URL）。<br>备注：链接默认有效期为12小时。如果您需要更长时效的链接，请使用[COS预签名](https://cloud.tencent.com/document/product/1265/104001)功能更新签名时效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         :param _Duration: 该字段用于返回音频文件的时长，单位为毫秒。
@@ -60,6 +60,12 @@ class AudioResult(AbstractModel):
         :param _RecognitionResults: 识别类标签结果信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecognitionResults: list of RecognitionResult
+        :param _SpeakerResults: 说话人结果
+        :type SpeakerResults: list of SpeakerResults
+        :param _LabelResults: 歌曲识别结果
+        :type LabelResults: list of LabelResults
+        :param _TravelResults: 出行结果
+        :type TravelResults: list of TravelResults
         """
         self._HitFlag = None
         self._Label = None
@@ -74,6 +80,9 @@ class AudioResult(AbstractModel):
         self._LanguageResults = None
         self._SubLabel = None
         self._RecognitionResults = None
+        self._SpeakerResults = None
+        self._LabelResults = None
+        self._TravelResults = None
 
     @property
     def HitFlag(self):
@@ -179,6 +188,30 @@ class AudioResult(AbstractModel):
     def RecognitionResults(self, RecognitionResults):
         self._RecognitionResults = RecognitionResults
 
+    @property
+    def SpeakerResults(self):
+        return self._SpeakerResults
+
+    @SpeakerResults.setter
+    def SpeakerResults(self, SpeakerResults):
+        self._SpeakerResults = SpeakerResults
+
+    @property
+    def LabelResults(self):
+        return self._LabelResults
+
+    @LabelResults.setter
+    def LabelResults(self, LabelResults):
+        self._LabelResults = LabelResults
+
+    @property
+    def TravelResults(self):
+        return self._TravelResults
+
+    @TravelResults.setter
+    def TravelResults(self, TravelResults):
+        self._TravelResults = TravelResults
+
 
     def _deserialize(self, params):
         self._HitFlag = params.get("HitFlag")
@@ -214,6 +247,24 @@ class AudioResult(AbstractModel):
                 obj = RecognitionResult()
                 obj._deserialize(item)
                 self._RecognitionResults.append(obj)
+        if params.get("SpeakerResults") is not None:
+            self._SpeakerResults = []
+            for item in params.get("SpeakerResults"):
+                obj = SpeakerResults()
+                obj._deserialize(item)
+                self._SpeakerResults.append(obj)
+        if params.get("LabelResults") is not None:
+            self._LabelResults = []
+            for item in params.get("LabelResults"):
+                obj = LabelResults()
+                obj._deserialize(item)
+                self._LabelResults.append(obj)
+        if params.get("TravelResults") is not None:
+            self._TravelResults = []
+            for item in params.get("TravelResults"):
+                obj = TravelResults()
+                obj._deserialize(item)
+                self._TravelResults.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -376,10 +427,14 @@ class AudioResultDetailMoanResult(AbstractModel):
 
     @property
     def SubLabelCode(self):
+        warnings.warn("parameter `SubLabelCode` is deprecated", DeprecationWarning) 
+
         return self._SubLabelCode
 
     @SubLabelCode.setter
     def SubLabelCode(self, SubLabelCode):
+        warnings.warn("parameter `SubLabelCode` is deprecated", DeprecationWarning) 
+
         self._SubLabelCode = SubLabelCode
 
     @property
@@ -628,9 +683,13 @@ class AudioSegments(AbstractModel):
         :param _Result: 该字段用于返回音频片段的具体审核结果，详细内容敬请参考AudioResult数据结构的描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.ams.v20201229.models.AudioResult`
+        :param _CreatedAt: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedAt: str
         """
         self._OffsetTime = None
         self._Result = None
+        self._CreatedAt = None
 
     @property
     def OffsetTime(self):
@@ -648,12 +707,21 @@ class AudioSegments(AbstractModel):
     def Result(self, Result):
         self._Result = Result
 
+    @property
+    def CreatedAt(self):
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
 
     def _deserialize(self, params):
         self._OffsetTime = params.get("OffsetTime")
         if params.get("Result") is not None:
             self._Result = AudioResult()
             self._Result._deserialize(params.get("Result"))
+        self._CreatedAt = params.get("CreatedAt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1114,9 +1182,9 @@ class CreateAudioModerationTaskRequest(AbstractModel):
         :type BizType: str
         :param _Type: 该字段表示输入的音频审核类型，取值为：**AUDIO**（点播音频）和 **LIVE_AUDIO**（直播音频），默认值为AUDIO。
         :type Type: str
-        :param _Seed: 可选参数，该字段表示回调签名的key信息，用于保证数据的安全性。 签名方法为在返回的HTTP头部添加 X-Signature 的字段，值为： seed + body 的 SHA256 编码和Hex字符串，在收到回调数据后，可以根据返回的body，用 **sha256(seed + body)**, 计算出 `X-Signature` 进行验证。<br>具体使用实例可参考 [回调签名示例](https://cloud.tencent.com/document/product/1219/53263)。
+        :param _Seed: 验证签名参数，具体可以参考[验签说明](https://cloud.tencent.com/document/product/1219/104000#42dd87d2-580f-46cf-a953-639a787d1eda)。
         :type Seed: str
-        :param _CallbackUrl: 可选参数，该字段表示接受审核信息回调的地址，格式为URL链接默认格式。配置成功后，审核过程中产生的违规音频片段将通过此接口发送。回调返回内容格式请参考 [回调签名示例](https://cloud.tencent.com/document/product/1219/53257#.E7.A4.BA.E4.BE.8B2-.E5.9B.9E.E8.B0.83.E7.AD.BE.E5.90.8D.E7.A4.BA.E4.BE.8B)
+        :param _CallbackUrl: 接收审核信息回调地址。如果设置了该字段，在审核过程中发现违规音频片段结果将发送至该接口。更多详情请参阅[回调配置说明](https://cloud.tencent.com/document/product/1219/104000)。
         :type CallbackUrl: str
         :param _User: 该字段表示待检测对象对应的用户相关信息，若填入则可甄别相应违规风险用户
         :type User: :class:`tencentcloud.ams.v20201229.models.User`
@@ -1346,6 +1414,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param _Label: 该字段用于返回检测结果所对应的标签。如果未命中恶意，返回Normal，如果命中恶意，则返回Labels中优先级最高的标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
+        :param _MediaInfo: 媒体信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MediaInfo: :class:`tencentcloud.ams.v20201229.models.MediaInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1365,6 +1436,7 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._CreatedAt = None
         self._UpdatedAt = None
         self._Label = None
+        self._MediaInfo = None
         self._RequestId = None
 
     @property
@@ -1496,6 +1568,14 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._Label = Label
 
     @property
+    def MediaInfo(self):
+        return self._MediaInfo
+
+    @MediaInfo.setter
+    def MediaInfo(self, MediaInfo):
+        self._MediaInfo = MediaInfo
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -1533,6 +1613,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._CreatedAt = params.get("CreatedAt")
         self._UpdatedAt = params.get("UpdatedAt")
         self._Label = params.get("Label")
+        if params.get("MediaInfo") is not None:
+            self._MediaInfo = MediaInfo()
+            self._MediaInfo._deserialize(params.get("MediaInfo"))
         self._RequestId = params.get("RequestId")
 
 
@@ -1740,6 +1823,118 @@ class InputInfo(AbstractModel):
         if params.get("BucketInfo") is not None:
             self._BucketInfo = BucketInfo()
             self._BucketInfo._deserialize(params.get("BucketInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LabelResults(AbstractModel):
+    """歌曲识别结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Scene: 场景
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Scene: str
+        :param _Suggestion: 建议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Suggestion: int
+        :param _Label: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Label: str
+        :param _Name: 名称：歌曲名，语种名，说话人名 等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Score: 得分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Score: int
+        :param _StartTime: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: float
+        :param _EndTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: float
+        """
+        self._Scene = None
+        self._Suggestion = None
+        self._Label = None
+        self._Name = None
+        self._Score = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def Scene(self):
+        return self._Scene
+
+    @Scene.setter
+    def Scene(self, Scene):
+        self._Scene = Scene
+
+    @property
+    def Suggestion(self):
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._Scene = params.get("Scene")
+        self._Suggestion = params.get("Suggestion")
+        self._Label = params.get("Label")
+        self._Name = params.get("Name")
+        self._Score = params.get("Score")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1981,6 +2176,79 @@ class RecognitionResult(AbstractModel):
         
 
 
+class SpeakerResults(AbstractModel):
+    """说话人结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Label: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Label: str
+        :param _Score: 得分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Score: int
+        :param _StartTime: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: float
+        :param _EndTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        """
+        self._Label = None
+        self._Score = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._Label = params.get("Label")
+        self._Score = params.get("Score")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StorageInfo(AbstractModel):
     """用于表示数据存储的相关信息
 
@@ -2153,6 +2421,9 @@ class TaskData(AbstractModel):
         :param _UpdatedAt: 该字段用于返回被查询任务最后更新时间，格式采用 ISO 8601标准。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
+        :param _InputInfo: 任务信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputInfo: :class:`tencentcloud.ams.v20201229.models.InputInfo`
         """
         self._DataId = None
         self._TaskId = None
@@ -2165,6 +2436,7 @@ class TaskData(AbstractModel):
         self._Labels = None
         self._CreatedAt = None
         self._UpdatedAt = None
+        self._InputInfo = None
 
     @property
     def DataId(self):
@@ -2254,6 +2526,14 @@ class TaskData(AbstractModel):
     def UpdatedAt(self, UpdatedAt):
         self._UpdatedAt = UpdatedAt
 
+    @property
+    def InputInfo(self):
+        return self._InputInfo
+
+    @InputInfo.setter
+    def InputInfo(self, InputInfo):
+        self._InputInfo = InputInfo
+
 
     def _deserialize(self, params):
         self._DataId = params.get("DataId")
@@ -2274,6 +2554,9 @@ class TaskData(AbstractModel):
                 self._Labels.append(obj)
         self._CreatedAt = params.get("CreatedAt")
         self._UpdatedAt = params.get("UpdatedAt")
+        if params.get("InputInfo") is not None:
+            self._InputInfo = InputInfo()
+            self._InputInfo._deserialize(params.get("InputInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2682,6 +2965,118 @@ class TextResult(AbstractModel):
         self._Suggestion = params.get("Suggestion")
         self._LibType = params.get("LibType")
         self._SubLabel = params.get("SubLabel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TravelResults(AbstractModel):
+    """出行结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Label: 一级标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Label: str
+        :param _SubLabel: 二级标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubLabel: str
+        :param _RiskLevel: 风险等级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskLevel: str
+        :param _AudioRole: 出行音频角色
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AudioRole: str
+        :param _AudioText: 出行语音文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AudioText: str
+        :param _StartTime: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: float
+        :param _EndTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: float
+        """
+        self._Label = None
+        self._SubLabel = None
+        self._RiskLevel = None
+        self._AudioRole = None
+        self._AudioText = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def SubLabel(self):
+        return self._SubLabel
+
+    @SubLabel.setter
+    def SubLabel(self, SubLabel):
+        self._SubLabel = SubLabel
+
+    @property
+    def RiskLevel(self):
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
+    @property
+    def AudioRole(self):
+        return self._AudioRole
+
+    @AudioRole.setter
+    def AudioRole(self, AudioRole):
+        self._AudioRole = AudioRole
+
+    @property
+    def AudioText(self):
+        return self._AudioText
+
+    @AudioText.setter
+    def AudioText(self, AudioText):
+        self._AudioText = AudioText
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._Label = params.get("Label")
+        self._SubLabel = params.get("SubLabel")
+        self._RiskLevel = params.get("RiskLevel")
+        self._AudioRole = params.get("AudioRole")
+        self._AudioText = params.get("AudioText")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

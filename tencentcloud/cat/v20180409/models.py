@@ -51,6 +51,8 @@ class CreateProbeTasksRequest(AbstractModel):
         :type ClientNum: str
         :param _NodeIpType: 拨测点IP类型：0-不限制IP类型，1-IPv4，2-IPv6
         :type NodeIpType: int
+        :param _SubSyncFlag: 供应商子账户同步标志
+        :type SubSyncFlag: int
         """
         self._BatchTasks = None
         self._TaskType = None
@@ -64,6 +66,7 @@ class CreateProbeTasksRequest(AbstractModel):
         self._PluginSource = None
         self._ClientNum = None
         self._NodeIpType = None
+        self._SubSyncFlag = None
 
     @property
     def BatchTasks(self):
@@ -161,6 +164,14 @@ class CreateProbeTasksRequest(AbstractModel):
     def NodeIpType(self, NodeIpType):
         self._NodeIpType = NodeIpType
 
+    @property
+    def SubSyncFlag(self):
+        return self._SubSyncFlag
+
+    @SubSyncFlag.setter
+    def SubSyncFlag(self, SubSyncFlag):
+        self._SubSyncFlag = SubSyncFlag
+
 
     def _deserialize(self, params):
         if params.get("BatchTasks") is not None:
@@ -185,6 +196,7 @@ class CreateProbeTasksRequest(AbstractModel):
         self._PluginSource = params.get("PluginSource")
         self._ClientNum = params.get("ClientNum")
         self._NodeIpType = params.get("NodeIpType")
+        self._SubSyncFlag = params.get("SubSyncFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

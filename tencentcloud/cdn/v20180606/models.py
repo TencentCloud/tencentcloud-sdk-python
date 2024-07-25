@@ -12782,6 +12782,9 @@ off：不支持
         :param _OthersPrivateAccess: 其他厂商对象存储回源鉴权
 注意：此字段可能返回 null，表示取不到有效值。
         :type OthersPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OthersPrivateAccess`
+        :param _ParamFilter: 参数黑名单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamFilter: :class:`tencentcloud.cdn.v20180606.models.ParamFilter`
         """
         self._ResourceId = None
         self._AppId = None
@@ -12849,6 +12852,7 @@ off：不支持
         self._QnPrivateAccess = None
         self._HttpsBilling = None
         self._OthersPrivateAccess = None
+        self._ParamFilter = None
 
     @property
     def ResourceId(self):
@@ -13378,6 +13382,14 @@ off：不支持
     def OthersPrivateAccess(self, OthersPrivateAccess):
         self._OthersPrivateAccess = OthersPrivateAccess
 
+    @property
+    def ParamFilter(self):
+        return self._ParamFilter
+
+    @ParamFilter.setter
+    def ParamFilter(self, ParamFilter):
+        self._ParamFilter = ParamFilter
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
@@ -13554,6 +13566,9 @@ off：不支持
         if params.get("OthersPrivateAccess") is not None:
             self._OthersPrivateAccess = OthersPrivateAccess()
             self._OthersPrivateAccess._deserialize(params.get("OthersPrivateAccess"))
+        if params.get("ParamFilter") is not None:
+            self._ParamFilter = ParamFilter()
+            self._ParamFilter._deserialize(params.get("ParamFilter"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21217,6 +21232,118 @@ class OverseaConfig(AbstractModel):
         
 
 
+class ParamFilter(AbstractModel):
+    """参数黑名单
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch:  参数黑名单开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        :param _FilterRules: 参数黑名单规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilterRules: list of ParamFilterRule
+        """
+        self._Switch = None
+        self._FilterRules = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def FilterRules(self):
+        return self._FilterRules
+
+    @FilterRules.setter
+    def FilterRules(self, FilterRules):
+        self._FilterRules = FilterRules
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        if params.get("FilterRules") is not None:
+            self._FilterRules = []
+            for item in params.get("FilterRules"):
+                obj = ParamFilterRule()
+                obj._deserialize(item)
+                self._FilterRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ParamFilterRule(AbstractModel):
+    """参数黑名单规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 参数名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Values: 参数值数组, 小于10个
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Values: list of str
+        :param _ReturnCode: http 返回码 ( 暂仅支持403)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReturnCode: str
+        """
+        self._Key = None
+        self._Values = None
+        self._ReturnCode = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+    @property
+    def ReturnCode(self):
+        return self._ReturnCode
+
+    @ReturnCode.setter
+    def ReturnCode(self, ReturnCode):
+        self._ReturnCode = ReturnCode
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Values = params.get("Values")
+        self._ReturnCode = params.get("ReturnCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PathBasedOriginRule(AbstractModel):
     """分路径回源规则
 
@@ -27392,6 +27519,8 @@ global：全球加速
         :type OthersPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OthersPrivateAccess`
         :param _HttpsBilling: HTTPS服务（收费服务，详见计费说明和产品文档）
         :type HttpsBilling: :class:`tencentcloud.cdn.v20180606.models.HttpsBilling`
+        :param _ParamFilter: 参数黑名单
+        :type ParamFilter: :class:`tencentcloud.cdn.v20180606.models.ParamFilter`
         """
         self._Domain = None
         self._ProjectId = None
@@ -27442,6 +27571,7 @@ global：全球加速
         self._QnPrivateAccess = None
         self._OthersPrivateAccess = None
         self._HttpsBilling = None
+        self._ParamFilter = None
 
     @property
     def Domain(self):
@@ -27835,6 +27965,14 @@ global：全球加速
     def HttpsBilling(self, HttpsBilling):
         self._HttpsBilling = HttpsBilling
 
+    @property
+    def ParamFilter(self):
+        return self._ParamFilter
+
+    @ParamFilter.setter
+    def ParamFilter(self, ParamFilter):
+        self._ParamFilter = ParamFilter
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -27974,6 +28112,9 @@ global：全球加速
         if params.get("HttpsBilling") is not None:
             self._HttpsBilling = HttpsBilling()
             self._HttpsBilling._deserialize(params.get("HttpsBilling"))
+        if params.get("ParamFilter") is not None:
+            self._ParamFilter = ParamFilter()
+            self._ParamFilter._deserialize(params.get("ParamFilter"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

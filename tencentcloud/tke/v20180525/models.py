@@ -19741,6 +19741,129 @@ class DescribeRegionsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeReservedInstanceUtilizationRateRequest(AbstractModel):
+    """DescribeReservedInstanceUtilizationRate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Zone: 可用区
+        :type Zone: str
+        :param _ClusterId: 集群 ID
+        :type ClusterId: str
+        :param _NodeName:  节点名称
+        :type NodeName: str
+        """
+        self._Zone = None
+        self._ClusterId = None
+        self._NodeName = None
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def NodeName(self):
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+
+    def _deserialize(self, params):
+        self._Zone = params.get("Zone")
+        self._ClusterId = params.get("ClusterId")
+        self._NodeName = params.get("NodeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeReservedInstanceUtilizationRateResponse(AbstractModel):
+    """DescribeReservedInstanceUtilizationRate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UtilizationRateSet: 预留券使用率
+        :type UtilizationRateSet: list of ReservedInstanceUtilizationRate
+        :param _PodNum: 按量计费的 Pod 总数
+        :type PodNum: int
+        :param _PodRate:  Pod 被预留券抵扣的抵扣率
+        :type PodRate: float
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._UtilizationRateSet = None
+        self._PodNum = None
+        self._PodRate = None
+        self._RequestId = None
+
+    @property
+    def UtilizationRateSet(self):
+        return self._UtilizationRateSet
+
+    @UtilizationRateSet.setter
+    def UtilizationRateSet(self, UtilizationRateSet):
+        self._UtilizationRateSet = UtilizationRateSet
+
+    @property
+    def PodNum(self):
+        return self._PodNum
+
+    @PodNum.setter
+    def PodNum(self, PodNum):
+        self._PodNum = PodNum
+
+    @property
+    def PodRate(self):
+        return self._PodRate
+
+    @PodRate.setter
+    def PodRate(self, PodRate):
+        self._PodRate = PodRate
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("UtilizationRateSet") is not None:
+            self._UtilizationRateSet = []
+            for item in params.get("UtilizationRateSet"):
+                obj = ReservedInstanceUtilizationRate()
+                obj._deserialize(item)
+                self._UtilizationRateSet.append(obj)
+        self._PodNum = params.get("PodNum")
+        self._PodRate = params.get("PodRate")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeReservedInstancesRequest(AbstractModel):
     """DescribeReservedInstances请求参数结构体
 
@@ -35378,6 +35501,157 @@ class ReservedInstanceSpec(AbstractModel):
         self._Cpu = params.get("Cpu")
         self._Memory = params.get("Memory")
         self._Gpu = params.get("Gpu")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReservedInstanceUtilizationRate(AbstractModel):
+    """预留券的使用率信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Rate: 使用率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rate: float
+        :param _Num: 预留券数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Num: int
+        :param _CPU: 核数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CPU: float
+        :param _Memory: 内存
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Memory: float
+        :param _Type:  预留券类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _GpuNum: GPU 卡数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GpuNum: str
+        :param _Zone: 可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param _ClusterId: 集群 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param _NodeName: 节点名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeName: str
+        :param _PodNum: Pod 数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodNum: int
+        """
+        self._Rate = None
+        self._Num = None
+        self._CPU = None
+        self._Memory = None
+        self._Type = None
+        self._GpuNum = None
+        self._Zone = None
+        self._ClusterId = None
+        self._NodeName = None
+        self._PodNum = None
+
+    @property
+    def Rate(self):
+        return self._Rate
+
+    @Rate.setter
+    def Rate(self, Rate):
+        self._Rate = Rate
+
+    @property
+    def Num(self):
+        return self._Num
+
+    @Num.setter
+    def Num(self, Num):
+        self._Num = Num
+
+    @property
+    def CPU(self):
+        return self._CPU
+
+    @CPU.setter
+    def CPU(self, CPU):
+        self._CPU = CPU
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def GpuNum(self):
+        return self._GpuNum
+
+    @GpuNum.setter
+    def GpuNum(self, GpuNum):
+        self._GpuNum = GpuNum
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def NodeName(self):
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def PodNum(self):
+        return self._PodNum
+
+    @PodNum.setter
+    def PodNum(self, PodNum):
+        self._PodNum = PodNum
+
+
+    def _deserialize(self, params):
+        self._Rate = params.get("Rate")
+        self._Num = params.get("Num")
+        self._CPU = params.get("CPU")
+        self._Memory = params.get("Memory")
+        self._Type = params.get("Type")
+        self._GpuNum = params.get("GpuNum")
+        self._Zone = params.get("Zone")
+        self._ClusterId = params.get("ClusterId")
+        self._NodeName = params.get("NodeName")
+        self._PodNum = params.get("PodNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1178,6 +1178,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeNatFwDnatRule(self, request):
+        """查询Nat防火墙Dnat规则
+
+        :param request: Request instance for DescribeNatFwDnatRule.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeNatFwDnatRuleRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeNatFwDnatRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNatFwDnatRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNatFwDnatRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeNatFwInfoCount(self, request):
         """获取当前用户接入nat防火墙的所有子网数及natfw实例个数
 

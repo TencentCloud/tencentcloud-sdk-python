@@ -440,7 +440,7 @@ class Content(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         :param _ImageUrl: 图片的url，当 Type 为 image_url 时使用，表示具体的图片内容
-如"https://example.com/1.png" 或 图片的base64（注意 "data:image/jpeg;base64" 为必要部分）："data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAA......"
+如"https://example.com/1.png" 或 图片的base64（注意 "data:image/jpeg;base64," 为必要部分）："data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAA......"
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageUrl: :class:`tencentcloud.hunyuan.v20230901.models.ImageUrl`
         """
@@ -925,6 +925,134 @@ class ImageUrl(AbstractModel):
         
 
 
+class LogoParam(AbstractModel):
+    """logo参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogoUrl: 水印url
+        :type LogoUrl: str
+        :param _LogoImage: 水印base64，url和base64二选一传入
+        :type LogoImage: str
+        :param _LogoRect: 水印图片位于融合结果图中的坐标，将按照坐标对标识图片进行位置和大小的拉伸匹配
+        :type LogoRect: :class:`tencentcloud.hunyuan.v20230901.models.LogoRect`
+        """
+        self._LogoUrl = None
+        self._LogoImage = None
+        self._LogoRect = None
+
+    @property
+    def LogoUrl(self):
+        return self._LogoUrl
+
+    @LogoUrl.setter
+    def LogoUrl(self, LogoUrl):
+        self._LogoUrl = LogoUrl
+
+    @property
+    def LogoImage(self):
+        return self._LogoImage
+
+    @LogoImage.setter
+    def LogoImage(self, LogoImage):
+        self._LogoImage = LogoImage
+
+    @property
+    def LogoRect(self):
+        return self._LogoRect
+
+    @LogoRect.setter
+    def LogoRect(self, LogoRect):
+        self._LogoRect = LogoRect
+
+
+    def _deserialize(self, params):
+        self._LogoUrl = params.get("LogoUrl")
+        self._LogoImage = params.get("LogoImage")
+        if params.get("LogoRect") is not None:
+            self._LogoRect = LogoRect()
+            self._LogoRect._deserialize(params.get("LogoRect"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogoRect(AbstractModel):
+    """输入框
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _X: 左上角X坐标
+        :type X: int
+        :param _Y: 左上角Y坐标
+        :type Y: int
+        :param _Width: 方框宽度
+        :type Width: int
+        :param _Height: 方框高度
+        :type Height: int
+        """
+        self._X = None
+        self._Y = None
+        self._Width = None
+        self._Height = None
+
+    @property
+    def X(self):
+        return self._X
+
+    @X.setter
+    def X(self, X):
+        self._X = X
+
+    @property
+    def Y(self):
+        return self._Y
+
+    @Y.setter
+    def Y(self, Y):
+        self._Y = Y
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+
+    def _deserialize(self, params):
+        self._X = params.get("X")
+        self._Y = params.get("Y")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Message(AbstractModel):
     """会话内容
 
@@ -1284,23 +1412,36 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
         :param _Resolution: 生成图分辨率。
 支持生成以下分辨率的图片：768:768（1:1）、768:1024（3:4）、1024:768（4:3）、1024:1024（1:1）、720:1280（9:16）、1280:720（16:9）、768:1280（3:5）、1280:768（5:3），不传默认使用1024:1024。
         :type Resolution: str
+        :param _Num: 图片生成数量。
+支持1 ~ 4张，默认生成1张。
+        :type Num: int
+        :param _Seed: 随机种子，默认随机。
+不传：随机种子生成。
+正数：固定种子生成。
+        :type Seed: int
+        :param _Revise: prompt 扩写开关。1为开启，0为关闭，不传默认开启。
+开启扩写后，将自动扩写原始输入的 prompt 并使用扩写后的 prompt 生成图片，返回生成图片结果时将一并返回扩写后的 prompt 文本。
+如果关闭扩写，将直接使用原始输入的 prompt 生成图片。
+建议开启，在多数场景下可提升生成图片效果、丰富生成图片细节。
+        :type Revise: int
         :param _LogoAdd: 为生成结果图添加显式水印标识的开关，默认为1。  
 1：添加。  
 0：不添加。  
 其他数值：默认按1处理。  
 建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
         :type LogoAdd: int
-        :param _Revise: prompt 扩写开关。1为开启，0为关闭，不传默认开启。
-开启扩写后，将自动扩写原始输入的 prompt 并使用扩写后的 prompt 生成图片，返回生成图片结果时将一并返回扩写后的 prompt 文本。
-如果关闭扩写，将直接使用原始输入的 prompt 生成图片。
-建议开启，在多数场景下可提升生成图片效果、丰富生成图片细节。
-        :type Revise: int
+        :param _LogoParam: 标识内容设置。
+默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        :type LogoParam: :class:`tencentcloud.hunyuan.v20230901.models.LogoParam`
         """
         self._Prompt = None
         self._Style = None
         self._Resolution = None
-        self._LogoAdd = None
+        self._Num = None
+        self._Seed = None
         self._Revise = None
+        self._LogoAdd = None
+        self._LogoParam = None
 
     @property
     def Prompt(self):
@@ -1327,12 +1468,20 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
         self._Resolution = Resolution
 
     @property
-    def LogoAdd(self):
-        return self._LogoAdd
+    def Num(self):
+        return self._Num
 
-    @LogoAdd.setter
-    def LogoAdd(self, LogoAdd):
-        self._LogoAdd = LogoAdd
+    @Num.setter
+    def Num(self, Num):
+        self._Num = Num
+
+    @property
+    def Seed(self):
+        return self._Seed
+
+    @Seed.setter
+    def Seed(self, Seed):
+        self._Seed = Seed
 
     @property
     def Revise(self):
@@ -1342,13 +1491,34 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
     def Revise(self, Revise):
         self._Revise = Revise
 
+    @property
+    def LogoAdd(self):
+        return self._LogoAdd
+
+    @LogoAdd.setter
+    def LogoAdd(self, LogoAdd):
+        self._LogoAdd = LogoAdd
+
+    @property
+    def LogoParam(self):
+        return self._LogoParam
+
+    @LogoParam.setter
+    def LogoParam(self, LogoParam):
+        self._LogoParam = LogoParam
+
 
     def _deserialize(self, params):
         self._Prompt = params.get("Prompt")
         self._Style = params.get("Style")
         self._Resolution = params.get("Resolution")
-        self._LogoAdd = params.get("LogoAdd")
+        self._Num = params.get("Num")
+        self._Seed = params.get("Seed")
         self._Revise = params.get("Revise")
+        self._LogoAdd = params.get("LogoAdd")
+        if params.get("LogoParam") is not None:
+            self._LogoParam = LogoParam()
+            self._LogoParam._deserialize(params.get("LogoParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1423,6 +1593,9 @@ class TextToImageLiteRequest(AbstractModel):
 其他数值：默认按0处理。
 建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
         :type LogoAdd: int
+        :param _LogoParam: 标识内容设置。
+默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        :type LogoParam: :class:`tencentcloud.hunyuan.v20230901.models.LogoParam`
         :param _RspImgType: 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
         :type RspImgType: str
         """
@@ -1431,6 +1604,7 @@ class TextToImageLiteRequest(AbstractModel):
         self._Style = None
         self._Resolution = None
         self._LogoAdd = None
+        self._LogoParam = None
         self._RspImgType = None
 
     @property
@@ -1474,6 +1648,14 @@ class TextToImageLiteRequest(AbstractModel):
         self._LogoAdd = LogoAdd
 
     @property
+    def LogoParam(self):
+        return self._LogoParam
+
+    @LogoParam.setter
+    def LogoParam(self, LogoParam):
+        self._LogoParam = LogoParam
+
+    @property
     def RspImgType(self):
         return self._RspImgType
 
@@ -1488,6 +1670,9 @@ class TextToImageLiteRequest(AbstractModel):
         self._Style = params.get("Style")
         self._Resolution = params.get("Resolution")
         self._LogoAdd = params.get("LogoAdd")
+        if params.get("LogoParam") is not None:
+            self._LogoParam = LogoParam()
+            self._LogoParam._deserialize(params.get("LogoParam"))
         self._RspImgType = params.get("RspImgType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

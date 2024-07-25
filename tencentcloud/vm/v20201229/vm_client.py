@@ -112,9 +112,7 @@ class VmClient(AbstractClient):
 
 
     def DescribeTaskDetail(self, request):
-        """通过查看任务详情 DescribeTaskDetail 接口，可主动轮询获取检测结果详情。<br>
-
-        默认接口请求频率限制：**200次/秒**。
+        """通过查看任务详情 DescribeTaskDetail 接口，可主动轮询获取检测结果详情。
 
         :param request: Request instance for DescribeTaskDetail.
         :type request: :class:`tencentcloud.vm.v20201229.models.DescribeTaskDetailRequest`

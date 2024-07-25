@@ -16562,12 +16562,18 @@ class ModifyVpcAttributeRequest(AbstractModel):
         :type Tags: list of Tag
         :param _Description: 私有网络描述
         :type Description: str
+        :param _DnsServers: DNS地址，最多支持4个，第1个默认为主，其余为备。	
+        :type DnsServers: list of str
+        :param _DomainName: 域名。
+        :type DomainName: str
         """
         self._VpcId = None
         self._EcmRegion = None
         self._VpcName = None
         self._Tags = None
         self._Description = None
+        self._DnsServers = None
+        self._DomainName = None
 
     @property
     def VpcId(self):
@@ -16609,6 +16615,22 @@ class ModifyVpcAttributeRequest(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def DnsServers(self):
+        return self._DnsServers
+
+    @DnsServers.setter
+    def DnsServers(self, DnsServers):
+        self._DnsServers = DnsServers
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -16621,6 +16643,8 @@ class ModifyVpcAttributeRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._Description = params.get("Description")
+        self._DnsServers = params.get("DnsServers")
+        self._DomainName = params.get("DomainName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

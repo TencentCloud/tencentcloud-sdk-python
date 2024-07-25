@@ -6110,7 +6110,7 @@ class CreateCloneInstanceRequest(AbstractModel):
         :type SlaveZone: str
         :param _BackupZone: 备库 2 的可用区信息，默认为空，克隆强同步主实例时可指定该参数。
         :type BackupZone: str
-        :param _DeviceType: 克隆实例类型。支持值包括： "UNIVERSAL" - 通用型实例， "EXCLUSIVE" - 独享型实例。 不指定则默认为通用型。
+        :param _DeviceType: 克隆实例类型。支持值包括："UNIVERSAL" - 通用型实例，"EXCLUSIVE" - 独享型实例，"CLOUD_NATIVE_CLUSTER" - 集群版标准型，"CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 集群版加强型。不指定则默认为通用型。
         :type DeviceType: str
         :param _InstanceNodes: 新克隆实例节点数。如果需要克隆出三节点实例， 请将该值设置为3 或指定 BackupZone 参数。如果需要克隆出两节点实例，请将该值设置为2。默认克隆出两节点实例。
         :type InstanceNodes: int
@@ -6126,6 +6126,8 @@ class CreateCloneInstanceRequest(AbstractModel):
         :type PayType: str
         :param _Period: 实例时长，PayType为PRE_PAID时必传，单位：月，可选值包括 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]。
         :type Period: int
+        :param _ClusterTopology: 集群版节点拓扑配置。
+        :type ClusterTopology: :class:`tencentcloud.cdb.v20170320.models.ClusterTopology`
         """
         self._InstanceId = None
         self._SpecifiedRollbackTime = None
@@ -6150,6 +6152,7 @@ class CreateCloneInstanceRequest(AbstractModel):
         self._ProjectId = None
         self._PayType = None
         self._Period = None
+        self._ClusterTopology = None
 
     @property
     def InstanceId(self):
@@ -6335,6 +6338,14 @@ class CreateCloneInstanceRequest(AbstractModel):
     def Period(self, Period):
         self._Period = Period
 
+    @property
+    def ClusterTopology(self):
+        return self._ClusterTopology
+
+    @ClusterTopology.setter
+    def ClusterTopology(self, ClusterTopology):
+        self._ClusterTopology = ClusterTopology
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -6365,6 +6376,9 @@ class CreateCloneInstanceRequest(AbstractModel):
         self._ProjectId = params.get("ProjectId")
         self._PayType = params.get("PayType")
         self._Period = params.get("Period")
+        if params.get("ClusterTopology") is not None:
+            self._ClusterTopology = ClusterTopology()
+            self._ClusterTopology._deserialize(params.get("ClusterTopology"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6600,7 +6614,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type DeployGroupId: str
         :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间在48小时内唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
         :type ClientToken: str
-        :param _DeviceType: 实例隔离类型。支持值包括： "UNIVERSAL" - 通用型实例， "EXCLUSIVE" - 独享型实例， "BASIC_V2" - ONTKE单节点实例。 不指定则默认为通用型实例。
+        :param _DeviceType: 实例隔离类型。支持值包括："UNIVERSAL" - 通用型实例，"EXCLUSIVE" - 独享型实例，"BASIC_V2" - ONTKE 单节点实例，"CLOUD_NATIVE_CLUSTER" - 集群版标准型，"CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 集群版加强型。不指定则默认为通用型实例。
         :type DeviceType: str
         :param _ParamTemplateId: 参数模板 id。
 备注：如您使用自定义参数模板 id，可传入自定义参数模板 id；如您计划使用默认参数模板，该参数模板 id 传入 id 无效，需设置 ParamTemplateType。
@@ -6626,6 +6640,8 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type EngineType: str
         :param _Vips: 指定实例的IP列表。仅支持主实例指定，按实例顺序，不足则按未指定处理。
         :type Vips: list of str
+        :param _ClusterTopology: 集群版节点拓扑配置。
+        :type ClusterTopology: :class:`tencentcloud.cdb.v20170320.models.ClusterTopology`
         """
         self._GoodsNum = None
         self._Memory = None
@@ -6664,6 +6680,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self._DryRun = None
         self._EngineType = None
         self._Vips = None
+        self._ClusterTopology = None
 
     @property
     def GoodsNum(self):
@@ -6961,6 +6978,14 @@ class CreateDBInstanceHourRequest(AbstractModel):
     def Vips(self, Vips):
         self._Vips = Vips
 
+    @property
+    def ClusterTopology(self):
+        return self._ClusterTopology
+
+    @ClusterTopology.setter
+    def ClusterTopology(self, ClusterTopology):
+        self._ClusterTopology = ClusterTopology
+
 
     def _deserialize(self, params):
         self._GoodsNum = params.get("GoodsNum")
@@ -7012,6 +7037,9 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self._DryRun = params.get("DryRun")
         self._EngineType = params.get("EngineType")
         self._Vips = params.get("Vips")
+        if params.get("ClusterTopology") is not None:
+            self._ClusterTopology = ClusterTopology()
+            self._ClusterTopology._deserialize(params.get("ClusterTopology"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7131,7 +7159,7 @@ class CreateDBInstanceRequest(AbstractModel):
         :type DeployGroupId: str
         :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间在48小时内唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
         :type ClientToken: str
-        :param _DeviceType: 实例隔离类型。支持值包括： "UNIVERSAL" - 通用型实例， "EXCLUSIVE" - 独享型实例， "BASIC_V2" - ONTKE单节点实例。 不指定则默认为通用型实例。
+        :param _DeviceType: 实例隔离类型。支持值包括："UNIVERSAL" - 通用型实例，"EXCLUSIVE" - 独享型实例，"BASIC_V2" - ONTKE 单节点实例，"CLOUD_NATIVE_CLUSTER" - 集群版标准型，"CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 集群版加强型。不指定则默认为通用型实例。
         :type DeviceType: str
         :param _ParamTemplateId: 参数模板 id。
 备注：如您使用自定义参数模板 id，可传入自定义参数模板 id；如您计划使用默认参数模板，该参数模板 id 传入 id 无效，需设置 ParamTemplateType。
@@ -7158,6 +7186,8 @@ class CreateDBInstanceRequest(AbstractModel):
         :type EngineType: str
         :param _Vips: 指定实例的IP列表。仅支持主实例指定，按实例顺序，不足则按未指定处理。
         :type Vips: list of str
+        :param _ClusterTopology: 集群版节点拓扑配置。
+        :type ClusterTopology: :class:`tencentcloud.cdb.v20170320.models.ClusterTopology`
         """
         self._Memory = None
         self._Volume = None
@@ -7197,6 +7227,7 @@ class CreateDBInstanceRequest(AbstractModel):
         self._DryRun = None
         self._EngineType = None
         self._Vips = None
+        self._ClusterTopology = None
 
     @property
     def Memory(self):
@@ -7502,6 +7533,14 @@ class CreateDBInstanceRequest(AbstractModel):
     def Vips(self, Vips):
         self._Vips = Vips
 
+    @property
+    def ClusterTopology(self):
+        return self._ClusterTopology
+
+    @ClusterTopology.setter
+    def ClusterTopology(self, ClusterTopology):
+        self._ClusterTopology = ClusterTopology
+
 
     def _deserialize(self, params):
         self._Memory = params.get("Memory")
@@ -7554,6 +7593,9 @@ class CreateDBInstanceRequest(AbstractModel):
         self._DryRun = params.get("DryRun")
         self._EngineType = params.get("EngineType")
         self._Vips = params.get("Vips")
+        if params.get("ClusterTopology") is not None:
+            self._ClusterTopology = ClusterTopology()
+            self._ClusterTopology._deserialize(params.get("ClusterTopology"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -4286,9 +4286,15 @@ class CreateCLSDeliveryRequest(AbstractModel):
         :type InstanceId: str
         :param _CLSInfoList: 日志投递配置
         :type CLSInfoList: list of CLSInfo
+        :param _LogType: 日志类型
+        :type LogType: str
+        :param _IsInMaintainPeriod: 是否维护时间运行
+        :type IsInMaintainPeriod: str
         """
         self._InstanceId = None
         self._CLSInfoList = None
+        self._LogType = None
+        self._IsInMaintainPeriod = None
 
     @property
     def InstanceId(self):
@@ -4306,6 +4312,22 @@ class CreateCLSDeliveryRequest(AbstractModel):
     def CLSInfoList(self, CLSInfoList):
         self._CLSInfoList = CLSInfoList
 
+    @property
+    def LogType(self):
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def IsInMaintainPeriod(self):
+        return self._IsInMaintainPeriod
+
+    @IsInMaintainPeriod.setter
+    def IsInMaintainPeriod(self, IsInMaintainPeriod):
+        self._IsInMaintainPeriod = IsInMaintainPeriod
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -4315,6 +4337,8 @@ class CreateCLSDeliveryRequest(AbstractModel):
                 obj = CLSInfo()
                 obj._deserialize(item)
                 self._CLSInfoList.append(obj)
+        self._LogType = params.get("LogType")
+        self._IsInMaintainPeriod = params.get("IsInMaintainPeriod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9711,9 +9735,15 @@ class DeleteCLSDeliveryRequest(AbstractModel):
         :type InstanceId: str
         :param _CLSTopicIds: 日志主题id
         :type CLSTopicIds: list of str
+        :param _LogType: 日志类型
+        :type LogType: str
+        :param _IsInMaintainPeriod: 是否维护时间运行
+        :type IsInMaintainPeriod: str
         """
         self._InstanceId = None
         self._CLSTopicIds = None
+        self._LogType = None
+        self._IsInMaintainPeriod = None
 
     @property
     def InstanceId(self):
@@ -9731,10 +9761,28 @@ class DeleteCLSDeliveryRequest(AbstractModel):
     def CLSTopicIds(self, CLSTopicIds):
         self._CLSTopicIds = CLSTopicIds
 
+    @property
+    def LogType(self):
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def IsInMaintainPeriod(self):
+        return self._IsInMaintainPeriod
+
+    @IsInMaintainPeriod.setter
+    def IsInMaintainPeriod(self, IsInMaintainPeriod):
+        self._IsInMaintainPeriod = IsInMaintainPeriod
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._CLSTopicIds = params.get("CLSTopicIds")
+        self._LogType = params.get("LogType")
+        self._IsInMaintainPeriod = params.get("IsInMaintainPeriod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13157,8 +13205,11 @@ class DescribeInstanceCLSLogDeliveryRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例id
         :type InstanceId: str
+        :param _LogType: 日志类型
+        :type LogType: str
         """
         self._InstanceId = None
+        self._LogType = None
 
     @property
     def InstanceId(self):
@@ -13168,9 +13219,18 @@ class DescribeInstanceCLSLogDeliveryRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def LogType(self):
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
+        self._LogType = params.get("LogType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17884,6 +17944,9 @@ class InstanceCLSDeliveryInfo(AbstractModel):
 
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
+        :param _LogType: 日志类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogType: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -17893,6 +17956,7 @@ class InstanceCLSDeliveryInfo(AbstractModel):
         self._GroupName = None
         self._Region = None
         self._Status = None
+        self._LogType = None
 
     @property
     def InstanceId(self):
@@ -17958,6 +18022,14 @@ class InstanceCLSDeliveryInfo(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def LogType(self):
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -17968,6 +18040,7 @@ class InstanceCLSDeliveryInfo(AbstractModel):
         self._GroupName = params.get("GroupName")
         self._Region = params.get("Region")
         self._Status = params.get("Status")
+        self._LogType = params.get("LogType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29074,9 +29147,15 @@ class StartCLSDeliveryRequest(AbstractModel):
         :type InstanceId: str
         :param _CLSTopicIds: 开通的日志主题id
         :type CLSTopicIds: list of str
+        :param _LogType: 日志类型
+        :type LogType: str
+        :param _IsInMaintainPeriod: 是否维护时间运行
+        :type IsInMaintainPeriod: str
         """
         self._InstanceId = None
         self._CLSTopicIds = None
+        self._LogType = None
+        self._IsInMaintainPeriod = None
 
     @property
     def InstanceId(self):
@@ -29094,10 +29173,28 @@ class StartCLSDeliveryRequest(AbstractModel):
     def CLSTopicIds(self, CLSTopicIds):
         self._CLSTopicIds = CLSTopicIds
 
+    @property
+    def LogType(self):
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def IsInMaintainPeriod(self):
+        return self._IsInMaintainPeriod
+
+    @IsInMaintainPeriod.setter
+    def IsInMaintainPeriod(self, IsInMaintainPeriod):
+        self._IsInMaintainPeriod = IsInMaintainPeriod
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._CLSTopicIds = params.get("CLSTopicIds")
+        self._LogType = params.get("LogType")
+        self._IsInMaintainPeriod = params.get("IsInMaintainPeriod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29156,9 +29253,15 @@ class StopCLSDeliveryRequest(AbstractModel):
         :type InstanceId: str
         :param _CLSTopicIds: 日志主题id
         :type CLSTopicIds: list of str
+        :param _LogType: 日志类型
+        :type LogType: str
+        :param _IsInMaintainPeriod: 是否维护时间运行
+        :type IsInMaintainPeriod: str
         """
         self._InstanceId = None
         self._CLSTopicIds = None
+        self._LogType = None
+        self._IsInMaintainPeriod = None
 
     @property
     def InstanceId(self):
@@ -29176,10 +29279,28 @@ class StopCLSDeliveryRequest(AbstractModel):
     def CLSTopicIds(self, CLSTopicIds):
         self._CLSTopicIds = CLSTopicIds
 
+    @property
+    def LogType(self):
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def IsInMaintainPeriod(self):
+        return self._IsInMaintainPeriod
+
+    @IsInMaintainPeriod.setter
+    def IsInMaintainPeriod(self, IsInMaintainPeriod):
+        self._IsInMaintainPeriod = IsInMaintainPeriod
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._CLSTopicIds = params.get("CLSTopicIds")
+        self._LogType = params.get("LogType")
+        self._IsInMaintainPeriod = params.get("IsInMaintainPeriod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -41,7 +41,7 @@ class AudioResult(AbstractModel):
         :param _Text: 该字段用于返回音频文件经ASR识别后的文本信息。最长可识别**5小时**的音频文件，若超出时长限制，接口将会报错。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
-        :param _Url: 该字段用于返回音频片段存储的链接地址，该地址有效期为1天。
+        :param _Url: 该字段用于返回审核结果的访问链接（URL）。<br>备注：链接默认有效期为12小时。如果您需要更长时效的链接，请使用[COS预签名](https://cloud.tencent.com/document/product/1265/104001)功能更新签名时效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         :param _Duration: 该字段用于返回音频文件的时长，单位为毫秒。
@@ -944,10 +944,10 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param _UpdatedAt: 该字段用于返回被查询任务最后更新时间，格式采用 ISO 8601标准。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
-        :param _ImageSegments: 该字段用于返回视频中截帧审核的结果，详细返回内容敬请参考ImageSegments数据结构的描述。<br>备注：数据有效期为24小时，如需要延长存储时间，请在已配置的COS储存桶中设置。
+        :param _ImageSegments: 该字段用于返回视频中截帧审核的结果，详细返回内容敬请参考ImageSegments数据结构的描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageSegments: list of ImageSegments
-        :param _AudioSegments: 该字段用于返回视频中音频审核的结果，详细返回内容敬请参考AudioSegments数据结构的描述。<br>备注：数据有效期为24小时，如需要延长存储时间，请在已配置的COS储存桶中设置。
+        :param _AudioSegments: 该字段用于返回视频中音频审核的结果，详细返回内容敬请参考AudioSegments数据结构的描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AudioSegments: list of AudioSegments
         :param _ErrorType: 当任务状态为Error时，返回对应错误的类型，取值：**DECODE_ERROR**: 解码失败。（输入资源中可能包含无法解码的视频）
@@ -961,6 +961,18 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param _Label: 该字段用于返回检测结果所对应的标签。如果未命中恶意，返回Normal，如果命中恶意，则返回Labels中优先级最高的标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
+        :param _SegmentCosUrlList: 该字段用于返回检测结果明细数据相关的cos url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SegmentCosUrlList: :class:`tencentcloud.vm.v20201229.models.SegmentCosUrlList`
+        :param _AudioText: 该字段用于返回音频审核的ASR识别结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AudioText: str
+        :param _TryInSeconds: 在秒后重试
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TryInSeconds: int
+        :param _Asrs: 该字段用于返回音频文件识别出的对应文本内容。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Asrs: list of RcbAsr
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -981,6 +993,10 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._ErrorType = None
         self._ErrorDescription = None
         self._Label = None
+        self._SegmentCosUrlList = None
+        self._AudioText = None
+        self._TryInSeconds = None
+        self._Asrs = None
         self._RequestId = None
 
     @property
@@ -1120,6 +1136,38 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._Label = Label
 
     @property
+    def SegmentCosUrlList(self):
+        return self._SegmentCosUrlList
+
+    @SegmentCosUrlList.setter
+    def SegmentCosUrlList(self, SegmentCosUrlList):
+        self._SegmentCosUrlList = SegmentCosUrlList
+
+    @property
+    def AudioText(self):
+        return self._AudioText
+
+    @AudioText.setter
+    def AudioText(self, AudioText):
+        self._AudioText = AudioText
+
+    @property
+    def TryInSeconds(self):
+        return self._TryInSeconds
+
+    @TryInSeconds.setter
+    def TryInSeconds(self, TryInSeconds):
+        self._TryInSeconds = TryInSeconds
+
+    @property
+    def Asrs(self):
+        return self._Asrs
+
+    @Asrs.setter
+    def Asrs(self, Asrs):
+        self._Asrs = Asrs
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -1165,6 +1213,17 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._ErrorType = params.get("ErrorType")
         self._ErrorDescription = params.get("ErrorDescription")
         self._Label = params.get("Label")
+        if params.get("SegmentCosUrlList") is not None:
+            self._SegmentCosUrlList = SegmentCosUrlList()
+            self._SegmentCosUrlList._deserialize(params.get("SegmentCosUrlList"))
+        self._AudioText = params.get("AudioText")
+        self._TryInSeconds = params.get("TryInSeconds")
+        if params.get("Asrs") is not None:
+            self._Asrs = []
+            for item in params.get("Asrs"):
+                obj = RcbAsr()
+                obj._deserialize(item)
+                self._Asrs.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -1343,7 +1402,7 @@ class ImageResult(AbstractModel):
         :param _Results: 该字段用于返回图像审核结果的子结果，详细内容敬请参考ImageResultResult数据结构的描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Results: list of ImageResultResult
-        :param _Url: 该字段用于返回审核结果的访问链接（URL），图片支持PNG、JPG、JPEG、BMP、GIF、WEBP格式。<br>备注：数据**默认有效期为12小时**。如您需要更长时间的保存，请在数据储存的COS桶中配置对应的储存时长。
+        :param _Url: 该字段用于返回审核结果的访问链接（URL）。<br>备注：链接默认有效期为12小时。如果您需要更长时效的链接，请使用[COS预签名](https://cloud.tencent.com/document/product/1265/104001)功能更新签名时效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         :param _Extra: 该字段用于返回输入参数中的额外附加信息（Extra），如未配置则默认返回值为空。<br>备注：不同客户或Biztype下返回信息不同，如需配置该字段请提交工单咨询或联系售后专员处理。
@@ -1352,6 +1411,9 @@ class ImageResult(AbstractModel):
         :param _SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubLabel: str
+        :param _RecognitionResults: 该字段用于返回仅识别图片元素的模型结果；包括：场景模型命中的标签、置信度和位置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecognitionResults: list of RecognitionResult
         """
         self._HitFlag = None
         self._Label = None
@@ -1361,6 +1423,7 @@ class ImageResult(AbstractModel):
         self._Url = None
         self._Extra = None
         self._SubLabel = None
+        self._RecognitionResults = None
 
     @property
     def HitFlag(self):
@@ -1426,6 +1489,14 @@ class ImageResult(AbstractModel):
     def SubLabel(self, SubLabel):
         self._SubLabel = SubLabel
 
+    @property
+    def RecognitionResults(self):
+        return self._RecognitionResults
+
+    @RecognitionResults.setter
+    def RecognitionResults(self, RecognitionResults):
+        self._RecognitionResults = RecognitionResults
+
 
     def _deserialize(self, params):
         self._HitFlag = params.get("HitFlag")
@@ -1441,6 +1512,12 @@ class ImageResult(AbstractModel):
         self._Url = params.get("Url")
         self._Extra = params.get("Extra")
         self._SubLabel = params.get("SubLabel")
+        if params.get("RecognitionResults") is not None:
+            self._RecognitionResults = []
+            for item in params.get("RecognitionResults"):
+                obj = RecognitionResult()
+                obj._deserialize(item)
+                self._RecognitionResults.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1633,6 +1710,9 @@ class ImageResultsResultDetail(AbstractModel):
         :param _SubLabelCode: 该字段用于返回恶意标签下对应的子标签的检测结果，如：*Porn-SexBehavior*等子标签。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubLabelCode: str
+        :param _SubLabel: 该字段用于返回恶意标签下对应的子标签的检测结果，如：*Porn-SexBehavior*等子标签。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubLabel: str
         """
         self._Name = None
         self._Text = None
@@ -1644,6 +1724,7 @@ class ImageResultsResultDetail(AbstractModel):
         self._Suggestion = None
         self._Score = None
         self._SubLabelCode = None
+        self._SubLabel = None
 
     @property
     def Name(self):
@@ -1725,6 +1806,14 @@ class ImageResultsResultDetail(AbstractModel):
     def SubLabelCode(self, SubLabelCode):
         self._SubLabelCode = SubLabelCode
 
+    @property
+    def SubLabel(self):
+        return self._SubLabel
+
+    @SubLabel.setter
+    def SubLabel(self, SubLabel):
+        self._SubLabel = SubLabel
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -1739,6 +1828,7 @@ class ImageResultsResultDetail(AbstractModel):
         self._Suggestion = params.get("Suggestion")
         self._Score = params.get("Score")
         self._SubLabelCode = params.get("SubLabelCode")
+        self._SubLabel = params.get("SubLabel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1846,9 +1936,17 @@ class ImageSegments(AbstractModel):
         :type OffsetTime: str
         :param _Result: 该字段用于返回视频片段的具体截帧审核结果，详细内容敬请参考ImageResult数据结构的描述。
         :type Result: :class:`tencentcloud.vm.v20201229.models.ImageResult`
+        :param _CreatedAt: 该字段用于返回视频片段的具体截帧审核时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedAt: str
+        :param _OffsetusTime: 该字段用于返回视频片段的截帧时间，单位为豪秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OffsetusTime: str
         """
         self._OffsetTime = None
         self._Result = None
+        self._CreatedAt = None
+        self._OffsetusTime = None
 
     @property
     def OffsetTime(self):
@@ -1866,12 +1964,30 @@ class ImageSegments(AbstractModel):
     def Result(self, Result):
         self._Result = Result
 
+    @property
+    def CreatedAt(self):
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def OffsetusTime(self):
+        return self._OffsetusTime
+
+    @OffsetusTime.setter
+    def OffsetusTime(self, OffsetusTime):
+        self._OffsetusTime = OffsetusTime
+
 
     def _deserialize(self, params):
         self._OffsetTime = params.get("OffsetTime")
         if params.get("Result") is not None:
             self._Result = ImageResult()
             self._Result._deserialize(params.get("Result"))
+        self._CreatedAt = params.get("CreatedAt")
+        self._OffsetusTime = params.get("OffsetusTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1975,6 +2091,53 @@ class MediaInfo(AbstractModel):
         
 
 
+class RcbAsr(AbstractModel):
+    """审核切片asr文本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 该字段用于返回音频文件识别出的对应文本内容，最大支持前1000个字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        :param _CreatedAt: 该字段用于返回被查询任务创建的时间，格式采用 ISO 8601标准。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedAt: str
+        """
+        self._Text = None
+        self._CreatedAt = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def CreatedAt(self):
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        self._CreatedAt = params.get("CreatedAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RecognitionResult(AbstractModel):
     """识别类标签结果信息
 
@@ -2017,6 +2180,92 @@ class RecognitionResult(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SegmentCosUrlList(AbstractModel):
+    """明细数据相关的cos url
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageAllUrl: 全量图片片段的cos url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageAllUrl: str
+        :param _AudioAllUrl: 全量音频片段的cos url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AudioAllUrl: str
+        :param _ImageBlockUrl: 违规图片片段的cos url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageBlockUrl: str
+        :param _AudioBlockUrl: 违规音频片段的cos url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AudioBlockUrl: str
+        :param _AsrUrl: 全量音频识别文本的cos url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsrUrl: str
+        """
+        self._ImageAllUrl = None
+        self._AudioAllUrl = None
+        self._ImageBlockUrl = None
+        self._AudioBlockUrl = None
+        self._AsrUrl = None
+
+    @property
+    def ImageAllUrl(self):
+        return self._ImageAllUrl
+
+    @ImageAllUrl.setter
+    def ImageAllUrl(self, ImageAllUrl):
+        self._ImageAllUrl = ImageAllUrl
+
+    @property
+    def AudioAllUrl(self):
+        return self._AudioAllUrl
+
+    @AudioAllUrl.setter
+    def AudioAllUrl(self, AudioAllUrl):
+        self._AudioAllUrl = AudioAllUrl
+
+    @property
+    def ImageBlockUrl(self):
+        return self._ImageBlockUrl
+
+    @ImageBlockUrl.setter
+    def ImageBlockUrl(self, ImageBlockUrl):
+        self._ImageBlockUrl = ImageBlockUrl
+
+    @property
+    def AudioBlockUrl(self):
+        return self._AudioBlockUrl
+
+    @AudioBlockUrl.setter
+    def AudioBlockUrl(self, AudioBlockUrl):
+        self._AudioBlockUrl = AudioBlockUrl
+
+    @property
+    def AsrUrl(self):
+        return self._AsrUrl
+
+    @AsrUrl.setter
+    def AsrUrl(self, AsrUrl):
+        self._AsrUrl = AsrUrl
+
+
+    def _deserialize(self, params):
+        self._ImageAllUrl = params.get("ImageAllUrl")
+        self._AudioAllUrl = params.get("AudioAllUrl")
+        self._ImageBlockUrl = params.get("ImageBlockUrl")
+        self._AudioBlockUrl = params.get("AudioBlockUrl")
+        self._AsrUrl = params.get("AsrUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

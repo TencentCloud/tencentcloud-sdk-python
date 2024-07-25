@@ -6224,6 +6224,142 @@ class DescribeResourceScheduleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTrinoQueryInfoRequest(AbstractModel):
+    """DescribeTrinoQueryInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群ID
+        :type InstanceId: str
+        :param _StartTime: 获取查询信息开始时间 (s)
+        :type StartTime: int
+        :param _EndTime: 获取查询信息结束时间 (s)
+        :type EndTime: int
+        :param _PageSize: 分页查询时的分页大小，最小1，最大100
+        :type PageSize: int
+        :param _Page: 分页查询时的页号，从1开始
+        :type Page: int
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._PageSize = None
+        self._Page = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._PageSize = params.get("PageSize")
+        self._Page = params.get("Page")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTrinoQueryInfoResponse(AbstractModel):
+    """DescribeTrinoQueryInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数，分页查询时使用
+        :type TotalCount: int
+        :param _QueryInfoList: 查询结果数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueryInfoList: list of TrinoQueryInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._QueryInfoList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def QueryInfoList(self):
+        return self._QueryInfoList
+
+    @QueryInfoList.setter
+    def QueryInfoList(self, QueryInfoList):
+        self._QueryInfoList = QueryInfoList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("QueryInfoList") is not None:
+            self._QueryInfoList = []
+            for item in params.get("QueryInfoList"):
+                obj = TrinoQueryInfo()
+                obj._deserialize(item)
+                self._QueryInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeUsersForUserManagerRequest(AbstractModel):
     """DescribeUsersForUserManager请求参数结构体
 
@@ -9277,8 +9413,6 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
         :type TimeSpan: int
         :param _ResourceIds: 待续费节点的资源ID列表。资源ID形如：emr-vm-xxxxxxxx。有效的资源ID可通过登录[控制台](https://console.cloud.tencent.com/emr)查询。
         :type ResourceIds: list of str
-        :param _Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
-        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
         :param _PayMode: 实例计费模式。此处只支持取值为1，表示包年包月。
         :type PayMode: int
         :param _TimeUnit: 实例续费的时间单位。取值范围：
@@ -9287,15 +9421,17 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
         :param _Currency: 货币种类。取值范围：
 <li>CNY：表示人民币。</li>
         :type Currency: str
+        :param _Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
+        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
         :param _ModifyPayMode: 是否按量转包年包月。0：否，1：是。
         :type ModifyPayMode: int
         """
         self._TimeSpan = None
         self._ResourceIds = None
-        self._Placement = None
         self._PayMode = None
         self._TimeUnit = None
         self._Currency = None
+        self._Placement = None
         self._ModifyPayMode = None
 
     @property
@@ -9313,14 +9449,6 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
     @ResourceIds.setter
     def ResourceIds(self, ResourceIds):
         self._ResourceIds = ResourceIds
-
-    @property
-    def Placement(self):
-        return self._Placement
-
-    @Placement.setter
-    def Placement(self, Placement):
-        self._Placement = Placement
 
     @property
     def PayMode(self):
@@ -9347,6 +9475,14 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
         self._Currency = Currency
 
     @property
+    def Placement(self):
+        return self._Placement
+
+    @Placement.setter
+    def Placement(self, Placement):
+        self._Placement = Placement
+
+    @property
     def ModifyPayMode(self):
         return self._ModifyPayMode
 
@@ -9358,12 +9494,12 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
     def _deserialize(self, params):
         self._TimeSpan = params.get("TimeSpan")
         self._ResourceIds = params.get("ResourceIds")
-        if params.get("Placement") is not None:
-            self._Placement = Placement()
-            self._Placement._deserialize(params.get("Placement"))
         self._PayMode = params.get("PayMode")
         self._TimeUnit = params.get("TimeUnit")
         self._Currency = params.get("Currency")
+        if params.get("Placement") is not None:
+            self._Placement = Placement()
+            self._Placement._deserialize(params.get("Placement"))
         self._ModifyPayMode = params.get("ModifyPayMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -9739,12 +9875,12 @@ class InquiryPriceUpdateInstanceRequest(AbstractModel):
 <li>TimeUnit为s时，该参数只能填写3600，表示按量计费实例。</li>
 <li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>
         :type TimeSpan: int
-        :param _UpdateSpec: 节点变配的目标配置。
-        :type UpdateSpec: :class:`tencentcloud.emr.v20190103.models.UpdateInstanceSettings`
         :param _PayMode: 实例计费模式。取值范围：
 <li>0：表示按量计费。</li>
 <li>1：表示包年包月。</li>
         :type PayMode: int
+        :param _UpdateSpec: 节点变配的目标配置。
+        :type UpdateSpec: :class:`tencentcloud.emr.v20190103.models.UpdateInstanceSettings`
         :param _Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
         :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
         :param _Currency: 货币种类。取值范围：
@@ -9755,8 +9891,8 @@ class InquiryPriceUpdateInstanceRequest(AbstractModel):
         """
         self._TimeUnit = None
         self._TimeSpan = None
-        self._UpdateSpec = None
         self._PayMode = None
+        self._UpdateSpec = None
         self._Placement = None
         self._Currency = None
         self._ResourceIdList = None
@@ -9778,20 +9914,20 @@ class InquiryPriceUpdateInstanceRequest(AbstractModel):
         self._TimeSpan = TimeSpan
 
     @property
-    def UpdateSpec(self):
-        return self._UpdateSpec
-
-    @UpdateSpec.setter
-    def UpdateSpec(self, UpdateSpec):
-        self._UpdateSpec = UpdateSpec
-
-    @property
     def PayMode(self):
         return self._PayMode
 
     @PayMode.setter
     def PayMode(self, PayMode):
         self._PayMode = PayMode
+
+    @property
+    def UpdateSpec(self):
+        return self._UpdateSpec
+
+    @UpdateSpec.setter
+    def UpdateSpec(self, UpdateSpec):
+        self._UpdateSpec = UpdateSpec
 
     @property
     def Placement(self):
@@ -9821,10 +9957,10 @@ class InquiryPriceUpdateInstanceRequest(AbstractModel):
     def _deserialize(self, params):
         self._TimeUnit = params.get("TimeUnit")
         self._TimeSpan = params.get("TimeSpan")
+        self._PayMode = params.get("PayMode")
         if params.get("UpdateSpec") is not None:
             self._UpdateSpec = UpdateInstanceSettings()
             self._UpdateSpec._deserialize(params.get("UpdateSpec"))
-        self._PayMode = params.get("PayMode")
         if params.get("Placement") is not None:
             self._Placement = Placement()
             self._Placement._deserialize(params.get("Placement"))
@@ -9864,6 +10000,9 @@ class InquiryPriceUpdateInstanceResponse(AbstractModel):
         :param _PriceDetail: 价格详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type PriceDetail: list of PriceDetail
+        :param _NewConfigPrice: 新配置价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NewConfigPrice: :class:`tencentcloud.emr.v20190103.models.PriceResult`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -9872,6 +10011,7 @@ class InquiryPriceUpdateInstanceResponse(AbstractModel):
         self._TimeUnit = None
         self._TimeSpan = None
         self._PriceDetail = None
+        self._NewConfigPrice = None
         self._RequestId = None
 
     @property
@@ -9915,6 +10055,14 @@ class InquiryPriceUpdateInstanceResponse(AbstractModel):
         self._PriceDetail = PriceDetail
 
     @property
+    def NewConfigPrice(self):
+        return self._NewConfigPrice
+
+    @NewConfigPrice.setter
+    def NewConfigPrice(self, NewConfigPrice):
+        self._NewConfigPrice = NewConfigPrice
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -9934,6 +10082,9 @@ class InquiryPriceUpdateInstanceResponse(AbstractModel):
                 obj = PriceDetail()
                 obj._deserialize(item)
                 self._PriceDetail.append(obj)
+        if params.get("NewConfigPrice") is not None:
+            self._NewConfigPrice = PriceResult()
+            self._NewConfigPrice._deserialize(params.get("NewConfigPrice"))
         self._RequestId = params.get("RequestId")
 
 
@@ -10543,23 +10694,9 @@ class LoadAutoScaleStrategy(AbstractModel):
         :param _ScaleNum: 每次规则生效时的扩缩容数量。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScaleNum: int
-        :param _LoadMetrics: 扩缩容负载指标。注:不推荐使用此属性，和LoadMetricsConditions属性配置互斥，配置了LoadMetricsConditions，这个属性不生效。请优先使用LoadMetricsConditions属性支持多指标。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LoadMetrics: str
-        :param _MetricId: 规则元数据记录ID。注:不推荐使用此属性，和LoadMetricsConditions属性配置互斥，配置了LoadMetricsConditions，这个属性不生效。请优先使用LoadMetricsConditions属性支持多指标。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MetricId: int
-        :param _StatisticPeriod: 规则统计周期，提供300s,600s,900s。注:不推荐使用此属性，和LoadMetricsConditions属性配置互斥，配置了LoadMetricsConditions，这个属性不生效。请优先使用LoadMetricsConditions属性支持多指标。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StatisticPeriod: int
         :param _ProcessMethod: 指标处理方法，1表示MAX，2表示MIN，3表示AVG。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProcessMethod: int
-        :param _TriggerThreshold: 触发次数，当连续触发超过TriggerThreshold次后才开始扩缩容。注:不推荐使用此属性，和LoadMetricsConditions属性配置互斥，配置了LoadMetricsConditions，这个属性不生效。请优先使用LoadMetricsConditions属性支持多指标。
-        :type TriggerThreshold: int
-        :param _TriggerConditions: 条件触发数组。注:不推荐使用此属性，和LoadMetricsConditions属性配置互斥，配置了LoadMetricsConditions，这个属性不生效。请优先使用LoadMetricsConditions属性支持多指标。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TriggerConditions: :class:`tencentcloud.emr.v20190103.models.TriggerConditions`
         :param _Priority: 规则优先级，添加时无效，默认为自增。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Priority: int
@@ -10597,12 +10734,7 @@ class LoadAutoScaleStrategy(AbstractModel):
         self._CalmDownTime = None
         self._ScaleAction = None
         self._ScaleNum = None
-        self._LoadMetrics = None
-        self._MetricId = None
-        self._StatisticPeriod = None
         self._ProcessMethod = None
-        self._TriggerThreshold = None
-        self._TriggerConditions = None
         self._Priority = None
         self._StrategyStatus = None
         self._YarnNodeLabel = None
@@ -10655,52 +10787,12 @@ class LoadAutoScaleStrategy(AbstractModel):
         self._ScaleNum = ScaleNum
 
     @property
-    def LoadMetrics(self):
-        return self._LoadMetrics
-
-    @LoadMetrics.setter
-    def LoadMetrics(self, LoadMetrics):
-        self._LoadMetrics = LoadMetrics
-
-    @property
-    def MetricId(self):
-        return self._MetricId
-
-    @MetricId.setter
-    def MetricId(self, MetricId):
-        self._MetricId = MetricId
-
-    @property
-    def StatisticPeriod(self):
-        return self._StatisticPeriod
-
-    @StatisticPeriod.setter
-    def StatisticPeriod(self, StatisticPeriod):
-        self._StatisticPeriod = StatisticPeriod
-
-    @property
     def ProcessMethod(self):
         return self._ProcessMethod
 
     @ProcessMethod.setter
     def ProcessMethod(self, ProcessMethod):
         self._ProcessMethod = ProcessMethod
-
-    @property
-    def TriggerThreshold(self):
-        return self._TriggerThreshold
-
-    @TriggerThreshold.setter
-    def TriggerThreshold(self, TriggerThreshold):
-        self._TriggerThreshold = TriggerThreshold
-
-    @property
-    def TriggerConditions(self):
-        return self._TriggerConditions
-
-    @TriggerConditions.setter
-    def TriggerConditions(self, TriggerConditions):
-        self._TriggerConditions = TriggerConditions
 
     @property
     def Priority(self):
@@ -10789,14 +10881,7 @@ class LoadAutoScaleStrategy(AbstractModel):
         self._CalmDownTime = params.get("CalmDownTime")
         self._ScaleAction = params.get("ScaleAction")
         self._ScaleNum = params.get("ScaleNum")
-        self._LoadMetrics = params.get("LoadMetrics")
-        self._MetricId = params.get("MetricId")
-        self._StatisticPeriod = params.get("StatisticPeriod")
         self._ProcessMethod = params.get("ProcessMethod")
-        self._TriggerThreshold = params.get("TriggerThreshold")
-        if params.get("TriggerConditions") is not None:
-            self._TriggerConditions = TriggerConditions()
-            self._TriggerConditions._deserialize(params.get("TriggerConditions"))
         self._Priority = params.get("Priority")
         self._StrategyStatus = params.get("StrategyStatus")
         self._YarnNodeLabel = params.get("YarnNodeLabel")
@@ -15132,6 +15217,53 @@ class PriceResource(AbstractModel):
         
 
 
+class PriceResult(AbstractModel):
+    """询价结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OriginalCost: 原价
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalCost: float
+        :param _DiscountCost: 折扣价
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountCost: float
+        """
+        self._OriginalCost = None
+        self._DiscountCost = None
+
+    @property
+    def OriginalCost(self):
+        return self._OriginalCost
+
+    @OriginalCost.setter
+    def OriginalCost(self, OriginalCost):
+        self._OriginalCost = OriginalCost
+
+    @property
+    def DiscountCost(self):
+        return self._DiscountCost
+
+    @DiscountCost.setter
+    def DiscountCost(self, DiscountCost):
+        self._DiscountCost = DiscountCost
+
+
+    def _deserialize(self, params):
+        self._OriginalCost = params.get("OriginalCost")
+        self._DiscountCost = params.get("DiscountCost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QuotaEntity(AbstractModel):
     """获取CVM配额
 
@@ -18803,35 +18935,264 @@ class TriggerCondition(AbstractModel):
         
 
 
-class TriggerConditions(AbstractModel):
-    """规则触发条件数组
+class TrinoQueryInfo(AbstractModel):
+    """trino 查询信息
 
     """
 
     def __init__(self):
         r"""
-        :param _Conditions: 规则触发条件数组。
+        :param _Catalog: catalog
 注意：此字段可能返回 null，表示取不到有效值。
-        :type Conditions: list of TriggerCondition
+        :type Catalog: str
+        :param _ClientIpAddr: 提交IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientIpAddr: str
+        :param _CompletedSplits: 切片数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompletedSplits: str
+        :param _CpuTime: CPU时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CpuTime: int
+        :param _CumulativeMemory: 累计内存
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CumulativeMemory: int
+        :param _DurationMillis: 执行时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DurationMillis: int
+        :param _EndTime: 结束时间 (s)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: int
+        :param _Id: 查询ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param _InternalNetworkBytes: 内部传输量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InternalNetworkBytes: int
+        :param _OutputBytes: 输出字节数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputBytes: int
+        :param _PeakUserMemoryBytes: 峰值内存量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PeakUserMemoryBytes: int
+        :param _PhysicalInputBytes: 物理输入量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PhysicalInputBytes: int
+        :param _ProcessedInputBytes: 处理输入量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessedInputBytes: int
+        :param _SqlCompileTime: 编译时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SqlCompileTime: int
+        :param _StartTime: 开始时间 (s)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: int
+        :param _State: 执行状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: str
+        :param _Statement: 执行语句
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Statement: str
+        :param _User: 提交用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :type User: str
+        :param _WrittenBytes: 写入字节数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WrittenBytes: int
         """
-        self._Conditions = None
+        self._Catalog = None
+        self._ClientIpAddr = None
+        self._CompletedSplits = None
+        self._CpuTime = None
+        self._CumulativeMemory = None
+        self._DurationMillis = None
+        self._EndTime = None
+        self._Id = None
+        self._InternalNetworkBytes = None
+        self._OutputBytes = None
+        self._PeakUserMemoryBytes = None
+        self._PhysicalInputBytes = None
+        self._ProcessedInputBytes = None
+        self._SqlCompileTime = None
+        self._StartTime = None
+        self._State = None
+        self._Statement = None
+        self._User = None
+        self._WrittenBytes = None
 
     @property
-    def Conditions(self):
-        return self._Conditions
+    def Catalog(self):
+        return self._Catalog
 
-    @Conditions.setter
-    def Conditions(self, Conditions):
-        self._Conditions = Conditions
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def ClientIpAddr(self):
+        return self._ClientIpAddr
+
+    @ClientIpAddr.setter
+    def ClientIpAddr(self, ClientIpAddr):
+        self._ClientIpAddr = ClientIpAddr
+
+    @property
+    def CompletedSplits(self):
+        return self._CompletedSplits
+
+    @CompletedSplits.setter
+    def CompletedSplits(self, CompletedSplits):
+        self._CompletedSplits = CompletedSplits
+
+    @property
+    def CpuTime(self):
+        return self._CpuTime
+
+    @CpuTime.setter
+    def CpuTime(self, CpuTime):
+        self._CpuTime = CpuTime
+
+    @property
+    def CumulativeMemory(self):
+        return self._CumulativeMemory
+
+    @CumulativeMemory.setter
+    def CumulativeMemory(self, CumulativeMemory):
+        self._CumulativeMemory = CumulativeMemory
+
+    @property
+    def DurationMillis(self):
+        return self._DurationMillis
+
+    @DurationMillis.setter
+    def DurationMillis(self, DurationMillis):
+        self._DurationMillis = DurationMillis
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def InternalNetworkBytes(self):
+        return self._InternalNetworkBytes
+
+    @InternalNetworkBytes.setter
+    def InternalNetworkBytes(self, InternalNetworkBytes):
+        self._InternalNetworkBytes = InternalNetworkBytes
+
+    @property
+    def OutputBytes(self):
+        return self._OutputBytes
+
+    @OutputBytes.setter
+    def OutputBytes(self, OutputBytes):
+        self._OutputBytes = OutputBytes
+
+    @property
+    def PeakUserMemoryBytes(self):
+        return self._PeakUserMemoryBytes
+
+    @PeakUserMemoryBytes.setter
+    def PeakUserMemoryBytes(self, PeakUserMemoryBytes):
+        self._PeakUserMemoryBytes = PeakUserMemoryBytes
+
+    @property
+    def PhysicalInputBytes(self):
+        return self._PhysicalInputBytes
+
+    @PhysicalInputBytes.setter
+    def PhysicalInputBytes(self, PhysicalInputBytes):
+        self._PhysicalInputBytes = PhysicalInputBytes
+
+    @property
+    def ProcessedInputBytes(self):
+        return self._ProcessedInputBytes
+
+    @ProcessedInputBytes.setter
+    def ProcessedInputBytes(self, ProcessedInputBytes):
+        self._ProcessedInputBytes = ProcessedInputBytes
+
+    @property
+    def SqlCompileTime(self):
+        return self._SqlCompileTime
+
+    @SqlCompileTime.setter
+    def SqlCompileTime(self, SqlCompileTime):
+        self._SqlCompileTime = SqlCompileTime
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def Statement(self):
+        return self._Statement
+
+    @Statement.setter
+    def Statement(self, Statement):
+        self._Statement = Statement
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def WrittenBytes(self):
+        return self._WrittenBytes
+
+    @WrittenBytes.setter
+    def WrittenBytes(self, WrittenBytes):
+        self._WrittenBytes = WrittenBytes
 
 
     def _deserialize(self, params):
-        if params.get("Conditions") is not None:
-            self._Conditions = []
-            for item in params.get("Conditions"):
-                obj = TriggerCondition()
-                obj._deserialize(item)
-                self._Conditions.append(obj)
+        self._Catalog = params.get("Catalog")
+        self._ClientIpAddr = params.get("ClientIpAddr")
+        self._CompletedSplits = params.get("CompletedSplits")
+        self._CpuTime = params.get("CpuTime")
+        self._CumulativeMemory = params.get("CumulativeMemory")
+        self._DurationMillis = params.get("DurationMillis")
+        self._EndTime = params.get("EndTime")
+        self._Id = params.get("Id")
+        self._InternalNetworkBytes = params.get("InternalNetworkBytes")
+        self._OutputBytes = params.get("OutputBytes")
+        self._PeakUserMemoryBytes = params.get("PeakUserMemoryBytes")
+        self._PhysicalInputBytes = params.get("PhysicalInputBytes")
+        self._ProcessedInputBytes = params.get("ProcessedInputBytes")
+        self._SqlCompileTime = params.get("SqlCompileTime")
+        self._StartTime = params.get("StartTime")
+        self._State = params.get("State")
+        self._Statement = params.get("Statement")
+        self._User = params.get("User")
+        self._WrittenBytes = params.get("WrittenBytes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

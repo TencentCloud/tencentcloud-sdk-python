@@ -1136,7 +1136,7 @@ class CreateEmbedTokenRequest(AbstractModel):
         :type ProjectId: int
         :param _PageId: 分享页面id，嵌出看板时此为空值0
         :type PageId: int
-        :param _Scope: page表示嵌出页面，panel表嵌出整个看板
+        :param _Scope: page表示嵌出页面，panel表示嵌出整个看板
         :type Scope: str
         :param _ExpireTime: 过期时间。 单位：分钟 最大值：240。即，4小时 默认值：240
         :type ExpireTime: str

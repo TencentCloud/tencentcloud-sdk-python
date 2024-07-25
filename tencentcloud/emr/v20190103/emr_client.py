@@ -556,6 +556,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTrinoQueryInfo(self, request):
+        """获取trino查询结果
+
+        :param request: Request instance for DescribeTrinoQueryInfo.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeTrinoQueryInfoRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeTrinoQueryInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTrinoQueryInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTrinoQueryInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeUsersForUserManager(self, request):
         """该接口支持安装了OpenLdap组件的集群。
         批量导出用户。对于kerberos集群，如果需要kertab文件下载地址，可以将NeedKeytabInfo设置为true；注意SupportDownLoadKeyTab为true，但是DownLoadKeyTabUrl为空字符串，表示keytab文件在后台没有准备好（正在生成）。
