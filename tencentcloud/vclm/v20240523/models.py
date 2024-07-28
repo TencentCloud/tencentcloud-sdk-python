@@ -319,6 +319,117 @@ class DescribeImageAnimateJobResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePortraitSingJobRequest(AbstractModel):
+    """DescribePortraitSingJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务ID
+        :type JobId: str
+        """
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePortraitSingJobResponse(AbstractModel):
+    """DescribePortraitSingJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务ID
+        :type JobId: str
+        :param _StatusCode: 任务状态码
+—RUN：处理中
+—FAIL：处理失败
+—STOP：处理终止
+—DONE：处理完成
+        :type StatusCode: str
+        :param _StatusMsg: 任务状态信息
+        :type StatusMsg: str
+        :param _ResultVideoUrl: 生成视频的URL地址
+有效期24小时
+        :type ResultVideoUrl: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._StatusCode = None
+        self._StatusMsg = None
+        self._ResultVideoUrl = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def StatusCode(self):
+        return self._StatusCode
+
+    @StatusCode.setter
+    def StatusCode(self, StatusCode):
+        self._StatusCode = StatusCode
+
+    @property
+    def StatusMsg(self):
+        return self._StatusMsg
+
+    @StatusMsg.setter
+    def StatusMsg(self, StatusMsg):
+        self._StatusMsg = StatusMsg
+
+    @property
+    def ResultVideoUrl(self):
+        return self._ResultVideoUrl
+
+    @ResultVideoUrl.setter
+    def ResultVideoUrl(self, ResultVideoUrl):
+        self._ResultVideoUrl = ResultVideoUrl
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._StatusCode = params.get("StatusCode")
+        self._StatusMsg = params.get("StatusMsg")
+        self._ResultVideoUrl = params.get("ResultVideoUrl")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeVideoStylizationJobRequest(AbstractModel):
     """DescribeVideoStylizationJob请求参数结构体
 
@@ -735,6 +846,107 @@ class SubmitImageAnimateJobResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _JobId: 任务ID。
+        :type JobId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
+
+
+class SubmitPortraitSingJobRequest(AbstractModel):
+    """SubmitPortraitSingJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AudioUrl: 传入音频URL地址。音频要求：
+—音频时长：不超过60秒
+—音频格式：mp3、wav、m4a
+        :type AudioUrl: str
+        :param _ImageUrl: 传入图片URL地址，图片要求：
+—图片格式：jpg、jpeg、png
+—图片分辨率：长边不超过2560
+—图片大小：不超过6M
+—图片宽高比：图片【宽：高】在1:2到2:1范围内
+        :type ImageUrl: str
+        :param _ImageBase64: 传入图片Base64编码。
+—图片Base64编码与URL地址必传其一
+        :type ImageBase64: str
+        """
+        self._AudioUrl = None
+        self._ImageUrl = None
+        self._ImageBase64 = None
+
+    @property
+    def AudioUrl(self):
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageBase64(self):
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+
+    def _deserialize(self, params):
+        self._AudioUrl = params.get("AudioUrl")
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageBase64 = params.get("ImageBase64")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubmitPortraitSingJobResponse(AbstractModel):
+    """SubmitPortraitSingJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务ID
         :type JobId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

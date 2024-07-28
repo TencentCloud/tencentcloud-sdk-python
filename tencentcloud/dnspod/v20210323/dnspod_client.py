@@ -420,6 +420,7 @@ class DnspodClient(AbstractClient):
 
     def DeleteRecordBatch(self, request):
         """批量删除解析记录
+        备注：因存储限制， 建议一次批量删除最多2000条
 
         :param request: Request instance for DeleteRecordBatch.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DeleteRecordBatchRequest`

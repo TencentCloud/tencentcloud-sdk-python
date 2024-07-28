@@ -26,6 +26,29 @@ class CfgClient(AbstractClient):
     _service = 'cfg'
 
 
+    def CreateTaskFromAction(self, request):
+        """从动作创建演练
+
+        :param request: Request instance for CreateTaskFromAction.
+        :type request: :class:`tencentcloud.cfg.v20210820.models.CreateTaskFromActionRequest`
+        :rtype: :class:`tencentcloud.cfg.v20210820.models.CreateTaskFromActionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateTaskFromAction", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateTaskFromActionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateTaskFromTemplate(self, request):
         """从经验库创建演练
 
@@ -63,6 +86,75 @@ class CfgClient(AbstractClient):
             body = self.call("DeleteTask", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeActionFieldConfigList(self, request):
+        """根据动作ID获取动作栏位动态配置参数信息，里面包含动作自有和通用两部分参数。
+
+        :param request: Request instance for DescribeActionFieldConfigList.
+        :type request: :class:`tencentcloud.cfg.v20210820.models.DescribeActionFieldConfigListRequest`
+        :rtype: :class:`tencentcloud.cfg.v20210820.models.DescribeActionFieldConfigListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeActionFieldConfigList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeActionFieldConfigListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeActionLibraryList(self, request):
+        """获取混沌演练平台的动作库列表
+
+        :param request: Request instance for DescribeActionLibraryList.
+        :type request: :class:`tencentcloud.cfg.v20210820.models.DescribeActionLibraryListRequest`
+        :rtype: :class:`tencentcloud.cfg.v20210820.models.DescribeActionLibraryListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeActionLibraryList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeActionLibraryListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeObjectTypeList(self, request):
+        """查询对象类型列表
+
+        :param request: Request instance for DescribeObjectTypeList.
+        :type request: :class:`tencentcloud.cfg.v20210820.models.DescribeObjectTypeListRequest`
+        :rtype: :class:`tencentcloud.cfg.v20210820.models.DescribeObjectTypeListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeObjectTypeList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeObjectTypeListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

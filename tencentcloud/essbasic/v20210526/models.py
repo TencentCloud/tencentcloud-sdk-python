@@ -11216,12 +11216,15 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
 - FINANCE : 财务专用章
 - PERSONNEL : 人事专用章
         :type SealTypes: list of str
+        :param _AuthToMe: 他方授权给我方：- false：我方授权他方，AuthorizedOrganizationName代表【被授权方】企业名称- true：他方授权我方，AuthorizedOrganizationName代表【授权方】企业名称
+        :type AuthToMe: bool
         """
         self._Agent = None
         self._AuthorizedOrganizationId = None
         self._AuthorizedOrganizationName = None
         self._PlatformAppAuthorization = None
         self._SealTypes = None
+        self._AuthToMe = None
 
     @property
     def Agent(self):
@@ -11263,6 +11266,14 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
     def SealTypes(self, SealTypes):
         self._SealTypes = SealTypes
 
+    @property
+    def AuthToMe(self):
+        return self._AuthToMe
+
+    @AuthToMe.setter
+    def AuthToMe(self, AuthToMe):
+        self._AuthToMe = AuthToMe
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -11272,6 +11283,7 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
         self._AuthorizedOrganizationName = params.get("AuthorizedOrganizationName")
         self._PlatformAppAuthorization = params.get("PlatformAppAuthorization")
         self._SealTypes = params.get("SealTypes")
+        self._AuthToMe = params.get("AuthToMe")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

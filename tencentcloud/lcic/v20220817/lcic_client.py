@@ -1408,3 +1408,26 @@ class LcicClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UnblockKickedUser(self, request):
+        """解禁从房间里面踢出的用户
+
+        :param request: Request instance for UnblockKickedUser.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.UnblockKickedUserRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.UnblockKickedUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UnblockKickedUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.UnblockKickedUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))

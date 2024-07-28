@@ -72,6 +72,30 @@ class VclmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePortraitSingJob(self, request):
+        """用于查询图片唱演任务。
+        支持提交音频和图片生成唱演视频，满足社交娱乐、互动营销等场景的需求。
+
+        :param request: Request instance for DescribePortraitSingJob.
+        :type request: :class:`tencentcloud.vclm.v20240523.models.DescribePortraitSingJobRequest`
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.DescribePortraitSingJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePortraitSingJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePortraitSingJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeVideoStylizationJob(self, request):
         """用于查询视频风格化任务。视频风格化支持将输入视频生成特定风格的视频。生成后的视频画面风格多样、流畅自然，能够满足社交娱乐、互动营销、视频素材制作等场景的需求。
 
@@ -132,6 +156,30 @@ class VclmClient(AbstractClient):
             body = self.call("SubmitImageAnimateJob", params, headers=headers)
             response = json.loads(body)
             model = models.SubmitImageAnimateJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitPortraitSingJob(self, request):
+        """用于提交图片唱演任务。
+        支持提交音频和图片生成唱演视频，满足社交娱乐、互动营销等场景的需求。
+
+        :param request: Request instance for SubmitPortraitSingJob.
+        :type request: :class:`tencentcloud.vclm.v20240523.models.SubmitPortraitSingJobRequest`
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.SubmitPortraitSingJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitPortraitSingJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitPortraitSingJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
