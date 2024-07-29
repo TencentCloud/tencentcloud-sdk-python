@@ -187,6 +187,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCFWAssetStatistics(self, request):
+        """云防资产中心统计数据
+
+        :param request: Request instance for DescribeCFWAssetStatistics.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCFWAssetStatisticsRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCFWAssetStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCFWAssetStatistics", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCFWAssetStatisticsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCVMAssetInfo(self, request):
         """cvm详情
 

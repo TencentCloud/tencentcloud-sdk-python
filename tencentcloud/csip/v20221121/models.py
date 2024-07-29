@@ -6951,6 +6951,169 @@ class DescribeAssetViewVulRiskListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCFWAssetStatisticsRequest(AbstractModel):
+    """DescribeCFWAssetStatistics请求参数结构体
+
+    """
+
+
+class DescribeCFWAssetStatisticsResponse(AbstractModel):
+    """DescribeCFWAssetStatistics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NetworkTotal: 网络资产总数
+        :type NetworkTotal: int
+        :param _ClbTotal: 资产clb数量
+        :type ClbTotal: int
+        :param _NatTotal: nat数量
+        :type NatTotal: int
+        :param _PublicAssetTotal: 公网ip数量
+        :type PublicAssetTotal: int
+        :param _CVMAssetTotal: 主机数量
+        :type CVMAssetTotal: int
+        :param _CFGTotal: 配置风险
+        :type CFGTotal: int
+        :param _PortTotal: 端口风险
+        :type PortTotal: int
+        :param _WebsiteTotal: 内容风险
+        :type WebsiteTotal: int
+        :param _ServerTotal: 风险服务暴露
+        :type ServerTotal: int
+        :param _WeakPasswordTotal: 弱口令风险
+        :type WeakPasswordTotal: int
+        :param _VULTotal: 漏洞风险
+        :type VULTotal: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._NetworkTotal = None
+        self._ClbTotal = None
+        self._NatTotal = None
+        self._PublicAssetTotal = None
+        self._CVMAssetTotal = None
+        self._CFGTotal = None
+        self._PortTotal = None
+        self._WebsiteTotal = None
+        self._ServerTotal = None
+        self._WeakPasswordTotal = None
+        self._VULTotal = None
+        self._RequestId = None
+
+    @property
+    def NetworkTotal(self):
+        return self._NetworkTotal
+
+    @NetworkTotal.setter
+    def NetworkTotal(self, NetworkTotal):
+        self._NetworkTotal = NetworkTotal
+
+    @property
+    def ClbTotal(self):
+        return self._ClbTotal
+
+    @ClbTotal.setter
+    def ClbTotal(self, ClbTotal):
+        self._ClbTotal = ClbTotal
+
+    @property
+    def NatTotal(self):
+        return self._NatTotal
+
+    @NatTotal.setter
+    def NatTotal(self, NatTotal):
+        self._NatTotal = NatTotal
+
+    @property
+    def PublicAssetTotal(self):
+        return self._PublicAssetTotal
+
+    @PublicAssetTotal.setter
+    def PublicAssetTotal(self, PublicAssetTotal):
+        self._PublicAssetTotal = PublicAssetTotal
+
+    @property
+    def CVMAssetTotal(self):
+        return self._CVMAssetTotal
+
+    @CVMAssetTotal.setter
+    def CVMAssetTotal(self, CVMAssetTotal):
+        self._CVMAssetTotal = CVMAssetTotal
+
+    @property
+    def CFGTotal(self):
+        return self._CFGTotal
+
+    @CFGTotal.setter
+    def CFGTotal(self, CFGTotal):
+        self._CFGTotal = CFGTotal
+
+    @property
+    def PortTotal(self):
+        return self._PortTotal
+
+    @PortTotal.setter
+    def PortTotal(self, PortTotal):
+        self._PortTotal = PortTotal
+
+    @property
+    def WebsiteTotal(self):
+        return self._WebsiteTotal
+
+    @WebsiteTotal.setter
+    def WebsiteTotal(self, WebsiteTotal):
+        self._WebsiteTotal = WebsiteTotal
+
+    @property
+    def ServerTotal(self):
+        return self._ServerTotal
+
+    @ServerTotal.setter
+    def ServerTotal(self, ServerTotal):
+        self._ServerTotal = ServerTotal
+
+    @property
+    def WeakPasswordTotal(self):
+        return self._WeakPasswordTotal
+
+    @WeakPasswordTotal.setter
+    def WeakPasswordTotal(self, WeakPasswordTotal):
+        self._WeakPasswordTotal = WeakPasswordTotal
+
+    @property
+    def VULTotal(self):
+        return self._VULTotal
+
+    @VULTotal.setter
+    def VULTotal(self, VULTotal):
+        self._VULTotal = VULTotal
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._NetworkTotal = params.get("NetworkTotal")
+        self._ClbTotal = params.get("ClbTotal")
+        self._NatTotal = params.get("NatTotal")
+        self._PublicAssetTotal = params.get("PublicAssetTotal")
+        self._CVMAssetTotal = params.get("CVMAssetTotal")
+        self._CFGTotal = params.get("CFGTotal")
+        self._PortTotal = params.get("PortTotal")
+        self._WebsiteTotal = params.get("WebsiteTotal")
+        self._ServerTotal = params.get("ServerTotal")
+        self._WeakPasswordTotal = params.get("WeakPasswordTotal")
+        self._VULTotal = params.get("VULTotal")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCVMAssetInfoRequest(AbstractModel):
     """DescribeCVMAssetInfo请求参数结构体
 

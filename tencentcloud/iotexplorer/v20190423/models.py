@@ -4718,7 +4718,7 @@ class DescribeCloudStorageAIServiceCallbackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProductId: 产品ID
+        :param _ProductId: 产品 ID
         :type ProductId: str
         """
         self._ProductId = None
@@ -4814,13 +4814,12 @@ class DescribeCloudStorageAIServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProductId: 产品ID
+        :param _ProductId: 产品 ID
         :type ProductId: str
         :param _DeviceName: 设备名称
         :type DeviceName: str
         :param _ServiceType: 云存 AI 服务类型。可选值：
-
-- `PackageDetect`：包裹检测
+- `RealtimeObjectDetect`：目标检测
 - `Highlight`：视频浓缩
         :type ServiceType: str
         """
@@ -4874,18 +4873,18 @@ class DescribeCloudStorageAIServiceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Enabled: 启用状态
+        :param _Enabled: 视频分析启用状态
         :type Enabled: bool
-        :param _ROI: 视频分析区域
-        :type ROI: str
-        :param _Config: 云存 AI 服务的配置参数
+        :param _Config: 视频分析配置参数
         :type Config: str
+        :param _ROI: 视频分析识别区域
+        :type ROI: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Enabled = None
-        self._ROI = None
         self._Config = None
+        self._ROI = None
         self._RequestId = None
 
     @property
@@ -4897,20 +4896,20 @@ class DescribeCloudStorageAIServiceResponse(AbstractModel):
         self._Enabled = Enabled
 
     @property
-    def ROI(self):
-        return self._ROI
-
-    @ROI.setter
-    def ROI(self, ROI):
-        self._ROI = ROI
-
-    @property
     def Config(self):
         return self._Config
 
     @Config.setter
     def Config(self, Config):
         self._Config = Config
+
+    @property
+    def ROI(self):
+        return self._ROI
+
+    @ROI.setter
+    def ROI(self, ROI):
+        self._ROI = ROI
 
     @property
     def RequestId(self):
@@ -4923,8 +4922,8 @@ class DescribeCloudStorageAIServiceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Enabled = params.get("Enabled")
-        self._ROI = params.get("ROI")
         self._Config = params.get("Config")
+        self._ROI = params.get("ROI")
         self._RequestId = params.get("RequestId")
 
 
@@ -5012,7 +5011,7 @@ class DescribeCloudStorageAIServiceTasksRequest(AbstractModel):
         :param _DeviceName: 设备名称
         :type DeviceName: str
         :param _ServiceType: 云存 AI 服务类型。可选值：
-- `PackageDetect`：包裹检测
+- `RealtimeObjectDetect`：目标检测
 - `Highlight`：视频浓缩
         :type ServiceType: str
         :param _Limit: 分页拉取数量
@@ -5026,9 +5025,9 @@ class DescribeCloudStorageAIServiceTasksRequest(AbstractModel):
 - `3`：成功且结果非空
 - `4`：执行中
         :type Status: int
-        :param _UserId: 用户ID
+        :param _UserId: 用户 ID
         :type UserId: str
-        :param _ChannelId: 通道ID 非NVR设备则不填 NVR设备则必填 默认为无
+        :param _ChannelId: 通道 ID
         :type ChannelId: int
         """
         self._ProductId = None
@@ -9466,7 +9465,7 @@ class DescribeProductCloudStorageAIServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProductId: 产品ID
+        :param _ProductId: 产品 ID
         :type ProductId: str
         """
         self._ProductId = None
@@ -15224,7 +15223,7 @@ class ModifyCloudStorageAIServiceCallbackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProductId: 产品ID
+        :param _ProductId: 产品 ID
         :type ProductId: str
         :param _Type: 推送类型。可选值：
 - `http`：HTTP 回调
@@ -15319,19 +15318,19 @@ class ModifyCloudStorageAIServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProductId: 产品ID
+        :param _ProductId: 产品 ID
         :type ProductId: str
         :param _DeviceName: 设备名称
         :type DeviceName: str
         :param _ServiceType: 云存 AI 服务类型。可选值：
-- `PackageDetect`：包裹检测
+- `RealtimeObjectDetect`：目标检测
 - `Highlight`：视频浓缩
         :type ServiceType: str
-        :param _Enabled: 启用状态
+        :param _Enabled: 视频分析启用状态
         :type Enabled: bool
-        :param _ROI: 视频分析区域
+        :param _ROI: 视频分析识别区域
         :type ROI: str
-        :param _Config: 云存 AI 服务的配置参数
+        :param _Config: 视频分析配置参数
         :type Config: str
         """
         self._ProductId = None
@@ -16059,7 +16058,7 @@ class ModifyProductCloudStorageAIServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProductId: 产品ID
+        :param _ProductId: 产品 ID
         :type ProductId: str
         :param _Enabled: 开通状态
         :type Enabled: bool

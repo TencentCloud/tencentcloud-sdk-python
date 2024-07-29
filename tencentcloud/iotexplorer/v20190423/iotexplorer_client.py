@@ -2534,7 +2534,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def ModifyCloudStorageAIService(self, request):
-        """修改指定设备的云存 AI 服务开通状态与参数配置
+        """修改指定设备的云存 AI 服务参数配置
 
         :param request: Request instance for ModifyCloudStorageAIService.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyCloudStorageAIServiceRequest`

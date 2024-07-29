@@ -7313,6 +7313,9 @@ class DataTransformTaskInfo(AbstractModel):
         :type DstResources: list of DataTransformResouceInfo
         :param _EtlContent: 加工逻辑函数。
         :type EtlContent: str
+        :param _DataTransformType: 数据加工类型。0：标准加工任务；1：前置加工任务。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataTransformType: int
         """
         self._Name = None
         self._TaskId = None
@@ -7327,6 +7330,7 @@ class DataTransformTaskInfo(AbstractModel):
         self._LogsetId = None
         self._DstResources = None
         self._EtlContent = None
+        self._DataTransformType = None
 
     @property
     def Name(self):
@@ -7432,6 +7436,14 @@ class DataTransformTaskInfo(AbstractModel):
     def EtlContent(self, EtlContent):
         self._EtlContent = EtlContent
 
+    @property
+    def DataTransformType(self):
+        return self._DataTransformType
+
+    @DataTransformType.setter
+    def DataTransformType(self, DataTransformType):
+        self._DataTransformType = DataTransformType
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -7452,6 +7464,7 @@ class DataTransformTaskInfo(AbstractModel):
                 obj._deserialize(item)
                 self._DstResources.append(obj)
         self._EtlContent = params.get("EtlContent")
+        self._DataTransformType = params.get("DataTransformType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9837,25 +9850,31 @@ class DescribeDataTransformInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: <br><li> taskName
-
+        :param _Filters: - taskName
 按照【加工任务名称】进行过滤。
 类型：String
-
 必选：否
 
-<br><li> taskId
-
+- taskId
 按照【加工任务id】进行过滤。
 类型：String
-
 必选：否
 
-<br><li> topicId
-
+- topicId
 按照【源topicId】进行过滤。
 类型：String
-
+必选：否
+- status
+按照【 任务运行状态】进行过滤。 1：准备中，2：运行中，3：停止中，4：已停止
+类型：String
+必选：否
+- hasServiceLog
+按照【是否开启服务日志】进行过滤。 1：未开启，2：已开启
+类型：String
+必选：否
+- dstTopicType
+按照【目标topic类型】进行过滤。  1：固定，2：动态
+类型：String
 必选：否
 
 每次请求的Filters的上限为10，Filter.Values的上限为100。

@@ -5668,7 +5668,7 @@ class DayStreamPlayInfo(AbstractModel):
         :type Flux: float
         :param _Request: 请求数。
         :type Request: int
-        :param _Online: 在线人数。
+        :param _Online: 在线人数。当前后端接口数据的统计方式与客户端侧不同，该数据仅供参考，具体数据请以业务客户端侧统计数据为准。
         :type Online: int
         """
         self._Time = None

@@ -621,6 +621,92 @@ class CloudVod(AbstractModel):
         
 
 
+class ControlAIConversationRequest(AbstractModel):
+    """ControlAIConversation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务唯一标识
+        :type TaskId: str
+        :param _Command: 控制命令，目前支持命令如下：
+
+- ServerPushText，服务端发送文本给AI机器人，AI机器人会播报该文本
+        :type Command: str
+        :param _ServerPushText: 服务端发送播报文本命令，当Command为ServerPushText时必填
+        :type ServerPushText: :class:`tencentcloud.trtc.v20190722.models.ServerPushText`
+        """
+        self._TaskId = None
+        self._Command = None
+        self._ServerPushText = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Command(self):
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+    @property
+    def ServerPushText(self):
+        return self._ServerPushText
+
+    @ServerPushText.setter
+    def ServerPushText(self, ServerPushText):
+        self._ServerPushText = ServerPushText
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Command = params.get("Command")
+        if params.get("ServerPushText") is not None:
+            self._ServerPushText = ServerPushText()
+            self._ServerPushText._deserialize(params.get("ServerPushText"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ControlAIConversationResponse(AbstractModel):
+    """ControlAIConversation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateCloudRecordingRequest(AbstractModel):
     """CreateCloudRecording请求参数结构体
 
@@ -8452,6 +8538,51 @@ class SeriesInfos(AbstractModel):
                 obj = RowValues()
                 obj._deserialize(item)
                 self._Values.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServerPushText(AbstractModel):
+    """服务端控制AI对话机器人播报指定文本
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 服务端推送播报文本
+        :type Text: str
+        :param _Interrupt: 是否允许该文本打断机器人说话
+        :type Interrupt: bool
+        """
+        self._Text = None
+        self._Interrupt = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Interrupt(self):
+        return self._Interrupt
+
+    @Interrupt.setter
+    def Interrupt(self, Interrupt):
+        self._Interrupt = Interrupt
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        self._Interrupt = params.get("Interrupt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

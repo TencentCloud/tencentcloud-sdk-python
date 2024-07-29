@@ -5341,6 +5341,9 @@ class DescAcItem(AbstractModel):
         :param _TargetName: 访问目的名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetName: str
+        :param _LastHitTime: 规则最近命中时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastHitTime: str
         """
         self._SourceContent = None
         self._TargetContent = None
@@ -5373,6 +5376,7 @@ class DescAcItem(AbstractModel):
         self._ParamTemplateId = None
         self._SourceName = None
         self._TargetName = None
+        self._LastHitTime = None
 
     @property
     def SourceContent(self):
@@ -5622,6 +5626,14 @@ class DescAcItem(AbstractModel):
     def TargetName(self, TargetName):
         self._TargetName = TargetName
 
+    @property
+    def LastHitTime(self):
+        return self._LastHitTime
+
+    @LastHitTime.setter
+    def LastHitTime(self, LastHitTime):
+        self._LastHitTime = LastHitTime
+
 
     def _deserialize(self, params):
         self._SourceContent = params.get("SourceContent")
@@ -5660,6 +5672,7 @@ class DescAcItem(AbstractModel):
         self._ParamTemplateId = params.get("ParamTemplateId")
         self._SourceName = params.get("SourceName")
         self._TargetName = params.get("TargetName")
+        self._LastHitTime = params.get("LastHitTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6366,9 +6379,9 @@ class DescribeAddressTemplateListResponse(AbstractModel):
         :type DomainTemplateCount: int
         :param _PortTemplateCount: 协议端口模板数量
         :type PortTemplateCount: int
-        :param _UsedTemplateCount: 已使用的地址模版数
+        :param _UsedTemplateCount: 已使用的地址模板数
         :type UsedTemplateCount: int
-        :param _TemplateQuotaCount: 地址模版配额数量
+        :param _TemplateQuotaCount: 地址模板配额数量
         :type TemplateQuotaCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

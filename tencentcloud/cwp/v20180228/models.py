@@ -10592,6 +10592,9 @@ class BashEvent(AbstractModel):
         :param _RegexBashCmd: 自动生成的正则表达式
 注意：此字段可能返回 null，表示取不到有效值。
         :type RegexBashCmd: str
+        :param _HostName: 主机HostName
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostName: str
         """
         self._Id = None
         self._Uuid = None
@@ -10612,6 +10615,7 @@ class BashEvent(AbstractModel):
         self._ModifyTime = None
         self._RuleCategory = None
         self._RegexBashCmd = None
+        self._HostName = None
 
     @property
     def Id(self):
@@ -10765,6 +10769,14 @@ class BashEvent(AbstractModel):
     def RegexBashCmd(self, RegexBashCmd):
         self._RegexBashCmd = RegexBashCmd
 
+    @property
+    def HostName(self):
+        return self._HostName
+
+    @HostName.setter
+    def HostName(self, HostName):
+        self._HostName = HostName
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -10786,6 +10798,7 @@ class BashEvent(AbstractModel):
         self._ModifyTime = params.get("ModifyTime")
         self._RuleCategory = params.get("RuleCategory")
         self._RegexBashCmd = params.get("RegexBashCmd")
+        self._HostName = params.get("HostName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11149,6 +11162,9 @@ class BashEventsInfo(AbstractModel):
         :param _Pid: 进程号
 注意：此字段可能返回 null，表示取不到有效值。
         :type Pid: str
+        :param _DetectBy: 数据来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DetectBy: str
         """
         self._Id = None
         self._Uuid = None
@@ -11175,6 +11191,7 @@ class BashEventsInfo(AbstractModel):
         self._MachineStatus = None
         self._User = None
         self._Pid = None
+        self._DetectBy = None
 
     @property
     def Id(self):
@@ -11376,6 +11393,14 @@ class BashEventsInfo(AbstractModel):
     def Pid(self, Pid):
         self._Pid = Pid
 
+    @property
+    def DetectBy(self):
+        return self._DetectBy
+
+    @DetectBy.setter
+    def DetectBy(self, DetectBy):
+        self._DetectBy = DetectBy
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -11403,6 +11428,7 @@ class BashEventsInfo(AbstractModel):
         self._MachineStatus = params.get("MachineStatus")
         self._User = params.get("User")
         self._Pid = params.get("Pid")
+        self._DetectBy = params.get("DetectBy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
