@@ -1969,6 +1969,8 @@ class DescribeMetricRecordsRequest(AbstractModel):
         :type PageSize: int
         :param _OrFilters: Or过滤条件
         :type OrFilters: list of Filter
+        :param _Type: 数据来源
+        :type Type: str
         """
         self._Filters = None
         self._Metrics = None
@@ -1983,6 +1985,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
         self._PageIndex = None
         self._PageSize = None
         self._OrFilters = None
+        self._Type = None
 
     @property
     def Filters(self):
@@ -2088,6 +2091,14 @@ class DescribeMetricRecordsRequest(AbstractModel):
     def OrFilters(self, OrFilters):
         self._OrFilters = OrFilters
 
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
@@ -2120,6 +2131,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self._OrFilters.append(obj)
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

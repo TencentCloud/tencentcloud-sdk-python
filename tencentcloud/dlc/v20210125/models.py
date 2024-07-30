@@ -13100,6 +13100,8 @@ class DescribeNotebookSessionsRequest(AbstractModel):
         :type Limit: int
         :param _Offset: 分页参数，默认0
         :type Offset: int
+        :param _Filters: 过滤类型，支持如下的过滤类型，传参Name应为以下其中一个, engine-generation - String（引擎时代： supersql：supersql引擎，native：标准引擎）：notebook-keyword - String（数据引擎名称或sessionid或sessionname的模糊搜索）
+        :type Filters: list of Filter
         """
         self._DataEngineName = None
         self._State = None
@@ -13107,6 +13109,7 @@ class DescribeNotebookSessionsRequest(AbstractModel):
         self._Asc = None
         self._Limit = None
         self._Offset = None
+        self._Filters = None
 
     @property
     def DataEngineName(self):
@@ -13156,6 +13159,14 @@ class DescribeNotebookSessionsRequest(AbstractModel):
     def Offset(self, Offset):
         self._Offset = Offset
 
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
 
     def _deserialize(self, params):
         self._DataEngineName = params.get("DataEngineName")
@@ -13164,6 +13175,12 @@ class DescribeNotebookSessionsRequest(AbstractModel):
         self._Asc = params.get("Asc")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15175,7 +15192,7 @@ class DescribeTaskResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务唯一ID
+        :param _TaskId: 任务唯一ID，仅支持30天内的任务
         :type TaskId: str
         :param _NextToken: 上一次请求响应返回的分页信息。第一次可以不带，从头开始返回数据，每次返回MaxResults字段设置的数据量。
         :type NextToken: str
@@ -15805,8 +15822,14 @@ class DescribeUpdatableDataEnginesRequest(AbstractModel):
         r"""
         :param _DataEngineConfigCommand: 引擎配置操作命令，UpdateSparkSQLLakefsPath 更新托管表路径，UpdateSparkSQLResultPath 更新结果桶路径
         :type DataEngineConfigCommand: str
+        :param _UseLakeFs: 是否使用托管存储作为结果存储
+        :type UseLakeFs: bool
+        :param _CustomResultPath: 用户自定义结果存储路径
+        :type CustomResultPath: str
         """
         self._DataEngineConfigCommand = None
+        self._UseLakeFs = None
+        self._CustomResultPath = None
 
     @property
     def DataEngineConfigCommand(self):
@@ -15816,9 +15839,27 @@ class DescribeUpdatableDataEnginesRequest(AbstractModel):
     def DataEngineConfigCommand(self, DataEngineConfigCommand):
         self._DataEngineConfigCommand = DataEngineConfigCommand
 
+    @property
+    def UseLakeFs(self):
+        return self._UseLakeFs
+
+    @UseLakeFs.setter
+    def UseLakeFs(self, UseLakeFs):
+        self._UseLakeFs = UseLakeFs
+
+    @property
+    def CustomResultPath(self):
+        return self._CustomResultPath
+
+    @CustomResultPath.setter
+    def CustomResultPath(self, CustomResultPath):
+        self._CustomResultPath = CustomResultPath
+
 
     def _deserialize(self, params):
         self._DataEngineConfigCommand = params.get("DataEngineConfigCommand")
+        self._UseLakeFs = params.get("UseLakeFs")
+        self._CustomResultPath = params.get("CustomResultPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -17153,10 +17153,10 @@ class DescribeContainerGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ApplicationId: 分组所属应用ID。
+        :type ApplicationId: str
         :param _SearchWord: 搜索字段，模糊搜索groupName字段
         :type SearchWord: str
-        :param _ApplicationId: 分组所属应用ID。必填
-        :type ApplicationId: str
         :param _OrderBy: 排序字段，默认为 createTime字段，支持id， name， createTime
         :type OrderBy: str
         :param _OrderType: 排序方式，默认为1：倒序排序，0：正序，1：倒序
@@ -17170,8 +17170,8 @@ class DescribeContainerGroupsRequest(AbstractModel):
         :param _NamespaceId: 命名空间 ID
         :type NamespaceId: str
         """
-        self._SearchWord = None
         self._ApplicationId = None
+        self._SearchWord = None
         self._OrderBy = None
         self._OrderType = None
         self._Offset = None
@@ -17180,20 +17180,20 @@ class DescribeContainerGroupsRequest(AbstractModel):
         self._NamespaceId = None
 
     @property
-    def SearchWord(self):
-        return self._SearchWord
-
-    @SearchWord.setter
-    def SearchWord(self, SearchWord):
-        self._SearchWord = SearchWord
-
-    @property
     def ApplicationId(self):
         return self._ApplicationId
 
     @ApplicationId.setter
     def ApplicationId(self, ApplicationId):
         self._ApplicationId = ApplicationId
+
+    @property
+    def SearchWord(self):
+        return self._SearchWord
+
+    @SearchWord.setter
+    def SearchWord(self, SearchWord):
+        self._SearchWord = SearchWord
 
     @property
     def OrderBy(self):
@@ -17245,8 +17245,8 @@ class DescribeContainerGroupsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._SearchWord = params.get("SearchWord")
         self._ApplicationId = params.get("ApplicationId")
+        self._SearchWord = params.get("SearchWord")
         self._OrderBy = params.get("OrderBy")
         self._OrderType = params.get("OrderType")
         self._Offset = params.get("Offset")

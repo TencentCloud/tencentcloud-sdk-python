@@ -682,12 +682,15 @@ class DescribeDeviceListRequest(AbstractModel):
         :type PageSize: int
         :param _PageNumber: 当前页码，不填默认为1（首页）
         :type PageNumber: int
+        :param _DeviceStatus: 设备状态筛选，不填默认为不过滤。取值：["ready","connected","online"]，online代表ready或connected
+        :type DeviceStatus: str
         """
         self._ProjectId = None
         self._DeviceType = None
         self._SearchWords = None
         self._PageSize = None
         self._PageNumber = None
+        self._DeviceStatus = None
 
     @property
     def ProjectId(self):
@@ -729,6 +732,14 @@ class DescribeDeviceListRequest(AbstractModel):
     def PageNumber(self, PageNumber):
         self._PageNumber = PageNumber
 
+    @property
+    def DeviceStatus(self):
+        return self._DeviceStatus
+
+    @DeviceStatus.setter
+    def DeviceStatus(self, DeviceStatus):
+        self._DeviceStatus = DeviceStatus
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -736,6 +747,7 @@ class DescribeDeviceListRequest(AbstractModel):
         self._SearchWords = params.get("SearchWords")
         self._PageSize = params.get("PageSize")
         self._PageNumber = params.get("PageNumber")
+        self._DeviceStatus = params.get("DeviceStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2962,6 +2974,105 @@ class ModifyProjectResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class MultiNet(AbstractModel):
+    """多网的网卡状态信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NetId: 网卡序号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetId: int
+        :param _NetIp: 网卡IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetIp: str
+        :param _Rtt: 时延，单位ms
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rtt: list of int
+        :param _Lost: 丢包率，单位%
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Lost: list of int
+        :param _SendBps: 发送bps，单位kbps
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SendBps: list of int
+        :param _RecvBps: 接收bps，单位kbps
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecvBps: list of int
+        """
+        self._NetId = None
+        self._NetIp = None
+        self._Rtt = None
+        self._Lost = None
+        self._SendBps = None
+        self._RecvBps = None
+
+    @property
+    def NetId(self):
+        return self._NetId
+
+    @NetId.setter
+    def NetId(self, NetId):
+        self._NetId = NetId
+
+    @property
+    def NetIp(self):
+        return self._NetIp
+
+    @NetIp.setter
+    def NetIp(self, NetIp):
+        self._NetIp = NetIp
+
+    @property
+    def Rtt(self):
+        return self._Rtt
+
+    @Rtt.setter
+    def Rtt(self, Rtt):
+        self._Rtt = Rtt
+
+    @property
+    def Lost(self):
+        return self._Lost
+
+    @Lost.setter
+    def Lost(self, Lost):
+        self._Lost = Lost
+
+    @property
+    def SendBps(self):
+        return self._SendBps
+
+    @SendBps.setter
+    def SendBps(self, SendBps):
+        self._SendBps = SendBps
+
+    @property
+    def RecvBps(self):
+        return self._RecvBps
+
+    @RecvBps.setter
+    def RecvBps(self, RecvBps):
+        self._RecvBps = RecvBps
+
+
+    def _deserialize(self, params):
+        self._NetId = params.get("NetId")
+        self._NetIp = params.get("NetIp")
+        self._Rtt = params.get("Rtt")
+        self._Lost = params.get("Lost")
+        self._SendBps = params.get("SendBps")
+        self._RecvBps = params.get("RecvBps")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PolicyInfo(AbstractModel):
     """权限信息
 
@@ -3237,7 +3348,7 @@ class SessionDeviceDetail(AbstractModel):
         :param _DecodeCost: 解码耗时，单位：ms
 注意：此字段可能返回 null，表示取不到有效值。
         :type DecodeCost: list of int
-        :param _RenderConst: 渲染耗时，单位：ms
+        :param _RenderConst: 【已废弃，使用RenderCost】
 注意：此字段可能返回 null，表示取不到有效值。
         :type RenderConst: list of int
         :param _K100: 卡顿k100
@@ -3264,6 +3375,36 @@ class SessionDeviceDetail(AbstractModel):
         :param _CaptureCost: 采集耗时，单位：ms
 注意：此字段可能返回 null，表示取不到有效值。
         :type CaptureCost: list of int
+        :param _RenderCost: 渲染耗时，单位：ms
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RenderCost: list of int
+        :param _ConfigWidth: 配置宽度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigWidth: int
+        :param _ConfigHeight: 配置高度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigHeight: int
+        :param _FrameDelta: 平均帧间隔
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FrameDelta: list of int
+        :param _MaxFrameDelta: 最大帧间隔
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxFrameDelta: list of int
+        :param _TotalBitrateEstimate: 总码率评估,单位：kbps
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalBitrateEstimate: list of int
+        :param _Lag100Duration: 帧间隔大于100ms的卡顿时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Lag100Duration: list of int
+        :param _Lag150Duration: 帧间隔大于150ms的卡顿时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Lag150Duration: list of int
+        :param _MultiMode: 是否开启多网：0 单网，1 多网
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MultiMode: int
+        :param _MultiNet: 多网卡信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MultiNet: list of MultiNet
         """
         self._DeviceType = None
         self._StartTime = None
@@ -3291,6 +3432,16 @@ class SessionDeviceDetail(AbstractModel):
         self._Height = None
         self._EncodeCost = None
         self._CaptureCost = None
+        self._RenderCost = None
+        self._ConfigWidth = None
+        self._ConfigHeight = None
+        self._FrameDelta = None
+        self._MaxFrameDelta = None
+        self._TotalBitrateEstimate = None
+        self._Lag100Duration = None
+        self._Lag150Duration = None
+        self._MultiMode = None
+        self._MultiNet = None
 
     @property
     def DeviceType(self):
@@ -3430,10 +3581,14 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def RenderConst(self):
+        warnings.warn("parameter `RenderConst` is deprecated", DeprecationWarning) 
+
         return self._RenderConst
 
     @RenderConst.setter
     def RenderConst(self, RenderConst):
+        warnings.warn("parameter `RenderConst` is deprecated", DeprecationWarning) 
+
         self._RenderConst = RenderConst
 
     @property
@@ -3500,6 +3655,86 @@ class SessionDeviceDetail(AbstractModel):
     def CaptureCost(self, CaptureCost):
         self._CaptureCost = CaptureCost
 
+    @property
+    def RenderCost(self):
+        return self._RenderCost
+
+    @RenderCost.setter
+    def RenderCost(self, RenderCost):
+        self._RenderCost = RenderCost
+
+    @property
+    def ConfigWidth(self):
+        return self._ConfigWidth
+
+    @ConfigWidth.setter
+    def ConfigWidth(self, ConfigWidth):
+        self._ConfigWidth = ConfigWidth
+
+    @property
+    def ConfigHeight(self):
+        return self._ConfigHeight
+
+    @ConfigHeight.setter
+    def ConfigHeight(self, ConfigHeight):
+        self._ConfigHeight = ConfigHeight
+
+    @property
+    def FrameDelta(self):
+        return self._FrameDelta
+
+    @FrameDelta.setter
+    def FrameDelta(self, FrameDelta):
+        self._FrameDelta = FrameDelta
+
+    @property
+    def MaxFrameDelta(self):
+        return self._MaxFrameDelta
+
+    @MaxFrameDelta.setter
+    def MaxFrameDelta(self, MaxFrameDelta):
+        self._MaxFrameDelta = MaxFrameDelta
+
+    @property
+    def TotalBitrateEstimate(self):
+        return self._TotalBitrateEstimate
+
+    @TotalBitrateEstimate.setter
+    def TotalBitrateEstimate(self, TotalBitrateEstimate):
+        self._TotalBitrateEstimate = TotalBitrateEstimate
+
+    @property
+    def Lag100Duration(self):
+        return self._Lag100Duration
+
+    @Lag100Duration.setter
+    def Lag100Duration(self, Lag100Duration):
+        self._Lag100Duration = Lag100Duration
+
+    @property
+    def Lag150Duration(self):
+        return self._Lag150Duration
+
+    @Lag150Duration.setter
+    def Lag150Duration(self, Lag150Duration):
+        self._Lag150Duration = Lag150Duration
+
+    @property
+    def MultiMode(self):
+        return self._MultiMode
+
+    @MultiMode.setter
+    def MultiMode(self, MultiMode):
+        self._MultiMode = MultiMode
+
+    @property
+    def MultiNet(self):
+        return self._MultiNet
+
+    @MultiNet.setter
+    def MultiNet(self, MultiNet):
+        self._MultiNet = MultiNet
+
 
     def _deserialize(self, params):
         self._DeviceType = params.get("DeviceType")
@@ -3528,6 +3763,21 @@ class SessionDeviceDetail(AbstractModel):
         self._Height = params.get("Height")
         self._EncodeCost = params.get("EncodeCost")
         self._CaptureCost = params.get("CaptureCost")
+        self._RenderCost = params.get("RenderCost")
+        self._ConfigWidth = params.get("ConfigWidth")
+        self._ConfigHeight = params.get("ConfigHeight")
+        self._FrameDelta = params.get("FrameDelta")
+        self._MaxFrameDelta = params.get("MaxFrameDelta")
+        self._TotalBitrateEstimate = params.get("TotalBitrateEstimate")
+        self._Lag100Duration = params.get("Lag100Duration")
+        self._Lag150Duration = params.get("Lag150Duration")
+        self._MultiMode = params.get("MultiMode")
+        if params.get("MultiNet") is not None:
+            self._MultiNet = []
+            for item in params.get("MultiNet"):
+                obj = MultiNet()
+                obj._deserialize(item)
+                self._MultiNet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

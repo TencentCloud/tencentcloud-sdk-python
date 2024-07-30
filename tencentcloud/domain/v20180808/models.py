@@ -2422,7 +2422,7 @@ class DescribeAuctionListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BusinessId: 业务ID
+        :param _BusinessId: 业务ID，通过接口DescribeBiddingList返回结果中获取
         :type BusinessId: str
         :param _Limit: 条数，默认10条
         :type Limit: int

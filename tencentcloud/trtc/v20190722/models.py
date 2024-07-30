@@ -11027,7 +11027,7 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
         :type SequenceNumber: int
         :param _WithTranscoding: 是否转码，0表示无需转码，1表示需要转码。
         :type WithTranscoding: int
-        :param _AudioParams: 更新相关参数，只支持更新参与混音的主播列表参数。不填表示不更新此参数。
+        :param _AudioParams: 更新相关参数，只支持更新参与混音的主播列表参数，不支持更新Codec、采样率、码率和声道数。不填表示不更新此参数。
         :type AudioParams: :class:`tencentcloud.trtc.v20190722.models.McuAudioParams`
         :param _VideoParams: 更新视频相关参数，转码时支持更新除编码类型之外的编码参数，视频布局参数，背景图片和背景颜色参数，水印参数。不填表示不更新此参数。
         :type VideoParams: :class:`tencentcloud.trtc.v20190722.models.McuVideoParams`

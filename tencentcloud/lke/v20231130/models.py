@@ -283,12 +283,24 @@ class AppModel(AbstractModel):
         :param _TokenBalance: token余量
 注意：此字段可能返回 null，表示取不到有效值。
         :type TokenBalance: float
+        :param _IsUseContext: 是否使用上下文指代轮次
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsUseContext: bool
+        :param _HistoryLimit: 上下文记忆轮数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HistoryLimit: int
+        :param _UsageType: 使用类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsageType: str
         """
         self._Name = None
         self._Desc = None
         self._ContextLimit = None
         self._AliasName = None
         self._TokenBalance = None
+        self._IsUseContext = None
+        self._HistoryLimit = None
+        self._UsageType = None
 
     @property
     def Name(self):
@@ -330,6 +342,30 @@ class AppModel(AbstractModel):
     def TokenBalance(self, TokenBalance):
         self._TokenBalance = TokenBalance
 
+    @property
+    def IsUseContext(self):
+        return self._IsUseContext
+
+    @IsUseContext.setter
+    def IsUseContext(self, IsUseContext):
+        self._IsUseContext = IsUseContext
+
+    @property
+    def HistoryLimit(self):
+        return self._HistoryLimit
+
+    @HistoryLimit.setter
+    def HistoryLimit(self, HistoryLimit):
+        self._HistoryLimit = HistoryLimit
+
+    @property
+    def UsageType(self):
+        return self._UsageType
+
+    @UsageType.setter
+    def UsageType(self, UsageType):
+        self._UsageType = UsageType
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -337,6 +373,9 @@ class AppModel(AbstractModel):
         self._ContextLimit = params.get("ContextLimit")
         self._AliasName = params.get("AliasName")
         self._TokenBalance = params.get("TokenBalance")
+        self._IsUseContext = params.get("IsUseContext")
+        self._HistoryLimit = params.get("HistoryLimit")
+        self._UsageType = params.get("UsageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -683,7 +722,10 @@ class BaseConfig(AbstractModel):
         r"""
         :param _Name: 应用名称
         :type Name: str
-        :param _Avatar: 应用头像
+        :param _Avatar: 应用头像url，在CreateApp和ModifyApp中作为入参必填。
+作为入参传入说明：
+1. 传入的url图片限制为jpeg和png，大小限制为500KB，url链接需允许head请求。
+2. 如果用户没有对象存储，可使用“获取文件上传临时密钥”(DescribeStorageCredential)接口，获取cos临时密钥和上传路径，自行上传头像至cos中并获取访问链接。
         :type Avatar: str
         :param _Desc: 应用描述
         :type Desc: str
@@ -7508,6 +7550,53 @@ class Highlight(AbstractModel):
         
 
 
+class HistorySummary(AbstractModel):
+    """多轮历史信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Assistant: 助手
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Assistant: str
+        :param _User: 用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :type User: str
+        """
+        self._Assistant = None
+        self._User = None
+
+    @property
+    def Assistant(self):
+        return self._Assistant
+
+    @Assistant.setter
+    def Assistant(self, Assistant):
+        self._Assistant = Assistant
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+
+    def _deserialize(self, params):
+        self._Assistant = params.get("Assistant")
+        self._User = params.get("User")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IgnoreUnsatisfiedReplyRequest(AbstractModel):
     """IgnoreUnsatisfiedReply请求参数结构体
 
@@ -7600,6 +7689,146 @@ class IgnoreUnsatisfiedReplyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class InvokeAPI(AbstractModel):
+    """请求的API信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Method: 请求方法，如GET/POST等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Method: str
+        :param _Url: 请求地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        :param _HeaderValues: header参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeaderValues: list of StrValue
+        :param _QueryValues: 入参Query
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueryValues: list of StrValue
+        :param _RequestPostBody: Post请求的原始数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestPostBody: str
+        :param _ResponseBody: 返回的原始数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResponseBody: str
+        :param _ResponseValues: 出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResponseValues: list of ValueInfo
+        :param _FailMessage: 异常信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailMessage: str
+        """
+        self._Method = None
+        self._Url = None
+        self._HeaderValues = None
+        self._QueryValues = None
+        self._RequestPostBody = None
+        self._ResponseBody = None
+        self._ResponseValues = None
+        self._FailMessage = None
+
+    @property
+    def Method(self):
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def HeaderValues(self):
+        return self._HeaderValues
+
+    @HeaderValues.setter
+    def HeaderValues(self, HeaderValues):
+        self._HeaderValues = HeaderValues
+
+    @property
+    def QueryValues(self):
+        return self._QueryValues
+
+    @QueryValues.setter
+    def QueryValues(self, QueryValues):
+        self._QueryValues = QueryValues
+
+    @property
+    def RequestPostBody(self):
+        return self._RequestPostBody
+
+    @RequestPostBody.setter
+    def RequestPostBody(self, RequestPostBody):
+        self._RequestPostBody = RequestPostBody
+
+    @property
+    def ResponseBody(self):
+        return self._ResponseBody
+
+    @ResponseBody.setter
+    def ResponseBody(self, ResponseBody):
+        self._ResponseBody = ResponseBody
+
+    @property
+    def ResponseValues(self):
+        return self._ResponseValues
+
+    @ResponseValues.setter
+    def ResponseValues(self, ResponseValues):
+        self._ResponseValues = ResponseValues
+
+    @property
+    def FailMessage(self):
+        return self._FailMessage
+
+    @FailMessage.setter
+    def FailMessage(self, FailMessage):
+        self._FailMessage = FailMessage
+
+
+    def _deserialize(self, params):
+        self._Method = params.get("Method")
+        self._Url = params.get("Url")
+        if params.get("HeaderValues") is not None:
+            self._HeaderValues = []
+            for item in params.get("HeaderValues"):
+                obj = StrValue()
+                obj._deserialize(item)
+                self._HeaderValues.append(obj)
+        if params.get("QueryValues") is not None:
+            self._QueryValues = []
+            for item in params.get("QueryValues"):
+                obj = StrValue()
+                obj._deserialize(item)
+                self._QueryValues.append(obj)
+        self._RequestPostBody = params.get("RequestPostBody")
+        self._ResponseBody = params.get("ResponseBody")
+        if params.get("ResponseValues") is not None:
+            self._ResponseValues = []
+            for item in params.get("ResponseValues"):
+                obj = ValueInfo()
+                obj._deserialize(item)
+                self._ResponseValues.append(obj)
+        self._FailMessage = params.get("FailMessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class IsTransferIntentRequest(AbstractModel):
@@ -7804,6 +8033,9 @@ class KnowledgeQaOutput(AbstractModel):
         :param _QuestionClarifyKeywords: 问题澄清关键词列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type QuestionClarifyKeywords: list of str
+        :param _UseRecommended: 是否打开推荐问题开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UseRecommended: bool
         """
         self._Method = None
         self._UseGeneralKnowledge = None
@@ -7811,6 +8043,7 @@ class KnowledgeQaOutput(AbstractModel):
         self._ShowQuestionClarify = None
         self._UseQuestionClarify = None
         self._QuestionClarifyKeywords = None
+        self._UseRecommended = None
 
     @property
     def Method(self):
@@ -7860,6 +8093,14 @@ class KnowledgeQaOutput(AbstractModel):
     def QuestionClarifyKeywords(self, QuestionClarifyKeywords):
         self._QuestionClarifyKeywords = QuestionClarifyKeywords
 
+    @property
+    def UseRecommended(self):
+        return self._UseRecommended
+
+    @UseRecommended.setter
+    def UseRecommended(self, UseRecommended):
+        self._UseRecommended = UseRecommended
+
 
     def _deserialize(self, params):
         self._Method = params.get("Method")
@@ -7868,6 +8109,7 @@ class KnowledgeQaOutput(AbstractModel):
         self._ShowQuestionClarify = params.get("ShowQuestionClarify")
         self._UseQuestionClarify = params.get("UseQuestionClarify")
         self._QuestionClarifyKeywords = params.get("QuestionClarifyKeywords")
+        self._UseRecommended = params.get("UseRecommended")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7909,6 +8151,9 @@ class KnowledgeQaSearch(AbstractModel):
         :param _Confidence: 检索置信度，针对文档和问答有效，最小0.01，最大0.99
 注意：此字段可能返回 null，表示取不到有效值。
         :type Confidence: float
+        :param _ResourceStatus: 资源状态 1：资源可用；2：资源已用尽
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceStatus: int
         """
         self._Type = None
         self._ReplyFlexibility = None
@@ -7918,6 +8163,7 @@ class KnowledgeQaSearch(AbstractModel):
         self._QaTopN = None
         self._DocTopN = None
         self._Confidence = None
+        self._ResourceStatus = None
 
     @property
     def Type(self):
@@ -7983,6 +8229,14 @@ class KnowledgeQaSearch(AbstractModel):
     def Confidence(self, Confidence):
         self._Confidence = Confidence
 
+    @property
+    def ResourceStatus(self):
+        return self._ResourceStatus
+
+    @ResourceStatus.setter
+    def ResourceStatus(self, ResourceStatus):
+        self._ResourceStatus = ResourceStatus
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -7993,6 +8247,54 @@ class KnowledgeQaSearch(AbstractModel):
         self._QaTopN = params.get("QaTopN")
         self._DocTopN = params.get("DocTopN")
         self._Confidence = params.get("Confidence")
+        self._ResourceStatus = params.get("ResourceStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KnowledgeSummary(AbstractModel):
+    """检索知识
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 1是问答 2是文档片段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        :param _Content: 知识内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        """
+        self._Type = None
+        self._Content = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Content = params.get("Content")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10997,10 +11299,18 @@ class ModelInfo(AbstractModel):
         :param _AliasName: 模型名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type AliasName: str
+        :param _ResourceStatus: 资源状态 1：资源可用；2：资源已用尽
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceStatus: int
+        :param _PromptWordsLimit: 提示词内容字符限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PromptWordsLimit: str
         """
         self._ModelName = None
         self._ModelDesc = None
         self._AliasName = None
+        self._ResourceStatus = None
+        self._PromptWordsLimit = None
 
     @property
     def ModelName(self):
@@ -11026,11 +11336,29 @@ class ModelInfo(AbstractModel):
     def AliasName(self, AliasName):
         self._AliasName = AliasName
 
+    @property
+    def ResourceStatus(self):
+        return self._ResourceStatus
+
+    @ResourceStatus.setter
+    def ResourceStatus(self, ResourceStatus):
+        self._ResourceStatus = ResourceStatus
+
+    @property
+    def PromptWordsLimit(self):
+        return self._PromptWordsLimit
+
+    @PromptWordsLimit.setter
+    def PromptWordsLimit(self, PromptWordsLimit):
+        self._PromptWordsLimit = PromptWordsLimit
+
 
     def _deserialize(self, params):
         self._ModelName = params.get("ModelName")
         self._ModelDesc = params.get("ModelDesc")
         self._AliasName = params.get("AliasName")
+        self._ResourceStatus = params.get("ResourceStatus")
+        self._PromptWordsLimit = params.get("PromptWordsLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12849,11 +13177,19 @@ class Procedure(AbstractModel):
         :param _Count: 消耗 token 数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Count: int
+        :param _Debugging: 调试信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Debugging: :class:`tencentcloud.lke.v20231130.models.ProcedureDebugging`
+        :param _ResourceStatus: 计费资源状态，1：可用，2：不可用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceStatus: int
         """
         self._Name = None
         self._Title = None
         self._Status = None
         self._Count = None
+        self._Debugging = None
+        self._ResourceStatus = None
 
     @property
     def Name(self):
@@ -12887,12 +13223,130 @@ class Procedure(AbstractModel):
     def Count(self, Count):
         self._Count = Count
 
+    @property
+    def Debugging(self):
+        return self._Debugging
+
+    @Debugging.setter
+    def Debugging(self, Debugging):
+        self._Debugging = Debugging
+
+    @property
+    def ResourceStatus(self):
+        return self._ResourceStatus
+
+    @ResourceStatus.setter
+    def ResourceStatus(self, ResourceStatus):
+        self._ResourceStatus = ResourceStatus
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Title = params.get("Title")
         self._Status = params.get("Status")
         self._Count = params.get("Count")
+        if params.get("Debugging") is not None:
+            self._Debugging = ProcedureDebugging()
+            self._Debugging._deserialize(params.get("Debugging"))
+        self._ResourceStatus = params.get("ResourceStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProcedureDebugging(AbstractModel):
+    """调试信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: 检索query
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        :param _System: 系统prompt
+注意：此字段可能返回 null，表示取不到有效值。
+        :type System: str
+        :param _Histories: 多轮历史信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Histories: list of HistorySummary
+        :param _Knowledge: 检索知识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Knowledge: list of KnowledgeSummary
+        :param _TaskFlow: 任务流程
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskFlow: :class:`tencentcloud.lke.v20231130.models.TaskFlowSummary`
+        """
+        self._Content = None
+        self._System = None
+        self._Histories = None
+        self._Knowledge = None
+        self._TaskFlow = None
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def System(self):
+        return self._System
+
+    @System.setter
+    def System(self, System):
+        self._System = System
+
+    @property
+    def Histories(self):
+        return self._Histories
+
+    @Histories.setter
+    def Histories(self, Histories):
+        self._Histories = Histories
+
+    @property
+    def Knowledge(self):
+        return self._Knowledge
+
+    @Knowledge.setter
+    def Knowledge(self, Knowledge):
+        self._Knowledge = Knowledge
+
+    @property
+    def TaskFlow(self):
+        return self._TaskFlow
+
+    @TaskFlow.setter
+    def TaskFlow(self, TaskFlow):
+        self._TaskFlow = TaskFlow
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        self._System = params.get("System")
+        if params.get("Histories") is not None:
+            self._Histories = []
+            for item in params.get("Histories"):
+                obj = HistorySummary()
+                obj._deserialize(item)
+                self._Histories.append(obj)
+        if params.get("Knowledge") is not None:
+            self._Knowledge = []
+            for item in params.get("Knowledge"):
+                obj = KnowledgeSummary()
+                obj._deserialize(item)
+                self._Knowledge.append(obj)
+        if params.get("TaskFlow") is not None:
+            self._TaskFlow = TaskFlowSummary()
+            self._TaskFlow._deserialize(params.get("TaskFlow"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14838,6 +15292,99 @@ class RetryReleaseResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RunNodeInfo(AbstractModel):
+    """节点信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeType: 节点类型，0:未指定，1:开始节点，2:API节点，3:询问节点，4:答案节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeType: int
+        :param _NodeId: 节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeId: str
+        :param _NodeName: 节点名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeName: str
+        :param _InvokeApi: 请求的API
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvokeApi: :class:`tencentcloud.lke.v20231130.models.InvokeAPI`
+        :param _SlotValues: 当前节点的所有槽位的值，key：SlotID。没有值的时候也要返回空。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlotValues: list of ValueInfo
+        """
+        self._NodeType = None
+        self._NodeId = None
+        self._NodeName = None
+        self._InvokeApi = None
+        self._SlotValues = None
+
+    @property
+    def NodeType(self):
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def NodeId(self):
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def NodeName(self):
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def InvokeApi(self):
+        return self._InvokeApi
+
+    @InvokeApi.setter
+    def InvokeApi(self, InvokeApi):
+        self._InvokeApi = InvokeApi
+
+    @property
+    def SlotValues(self):
+        return self._SlotValues
+
+    @SlotValues.setter
+    def SlotValues(self, SlotValues):
+        self._SlotValues = SlotValues
+
+
+    def _deserialize(self, params):
+        self._NodeType = params.get("NodeType")
+        self._NodeId = params.get("NodeId")
+        self._NodeName = params.get("NodeName")
+        if params.get("InvokeApi") is not None:
+            self._InvokeApi = InvokeAPI()
+            self._InvokeApi._deserialize(params.get("InvokeApi"))
+        if params.get("SlotValues") is not None:
+            self._SlotValues = []
+            for item in params.get("SlotValues"):
+                obj = ValueInfo()
+                obj._deserialize(item)
+                self._SlotValues.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SaveDocRequest(AbstractModel):
     """SaveDoc请求参数结构体
 
@@ -15200,6 +15747,53 @@ class StopDocParseResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class StrValue(AbstractModel):
+    """字符串KV信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Value: 值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SummaryConfig(AbstractModel):
     """知识摘要应用配置
 
@@ -15414,6 +16008,89 @@ class TaskFlowInfo(AbstractModel):
         
 
 
+class TaskFlowSummary(AbstractModel):
+    """任务流程调试信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IntentName: 任务流程名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntentName: str
+        :param _UpdatedSlotValues: 实体列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedSlotValues: list of ValueInfo
+        :param _RunNodes: 节点列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunNodes: list of RunNodeInfo
+        :param _Purposes: 意图判断
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Purposes: list of str
+        """
+        self._IntentName = None
+        self._UpdatedSlotValues = None
+        self._RunNodes = None
+        self._Purposes = None
+
+    @property
+    def IntentName(self):
+        return self._IntentName
+
+    @IntentName.setter
+    def IntentName(self, IntentName):
+        self._IntentName = IntentName
+
+    @property
+    def UpdatedSlotValues(self):
+        return self._UpdatedSlotValues
+
+    @UpdatedSlotValues.setter
+    def UpdatedSlotValues(self, UpdatedSlotValues):
+        self._UpdatedSlotValues = UpdatedSlotValues
+
+    @property
+    def RunNodes(self):
+        return self._RunNodes
+
+    @RunNodes.setter
+    def RunNodes(self, RunNodes):
+        self._RunNodes = RunNodes
+
+    @property
+    def Purposes(self):
+        return self._Purposes
+
+    @Purposes.setter
+    def Purposes(self, Purposes):
+        self._Purposes = Purposes
+
+
+    def _deserialize(self, params):
+        self._IntentName = params.get("IntentName")
+        if params.get("UpdatedSlotValues") is not None:
+            self._UpdatedSlotValues = []
+            for item in params.get("UpdatedSlotValues"):
+                obj = ValueInfo()
+                obj._deserialize(item)
+                self._UpdatedSlotValues.append(obj)
+        if params.get("RunNodes") is not None:
+            self._RunNodes = []
+            for item in params.get("RunNodes"):
+                obj = RunNodeInfo()
+                obj._deserialize(item)
+                self._RunNodes.append(obj)
+        self._Purposes = params.get("Purposes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TaskParams(AbstractModel):
     """任务参数
 
@@ -15488,6 +16165,9 @@ class TokenStat(AbstractModel):
         :param _Procedures: 执行过程信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Procedures: list of Procedure
+        :param _TraceId: 执行过程信息TraceId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TraceId: str
         """
         self._SessionId = None
         self._RequestId = None
@@ -15500,6 +16180,7 @@ class TokenStat(AbstractModel):
         self._Elapsed = None
         self._TokenCount = None
         self._Procedures = None
+        self._TraceId = None
 
     @property
     def SessionId(self):
@@ -15589,6 +16270,14 @@ class TokenStat(AbstractModel):
     def Procedures(self, Procedures):
         self._Procedures = Procedures
 
+    @property
+    def TraceId(self):
+        return self._TraceId
+
+    @TraceId.setter
+    def TraceId(self, TraceId):
+        self._TraceId = TraceId
+
 
     def _deserialize(self, params):
         self._SessionId = params.get("SessionId")
@@ -15607,6 +16296,7 @@ class TokenStat(AbstractModel):
                 obj = Procedure()
                 obj._deserialize(item)
                 self._Procedures.append(obj)
+        self._TraceId = params.get("TraceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15928,6 +16618,131 @@ class Usage(AbstractModel):
         self._InputTokens = params.get("InputTokens")
         self._OutputTokens = params.get("OutputTokens")
         self._TotalTokens = params.get("TotalTokens")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ValueInfo(AbstractModel):
+    """任务流程参数信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 值ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param _Name: 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _ValueType: 值类型：0:未知或者空, 1:string, 2:int, 3:float, 4:bool, 5:array(字符串数组), 6: object_array(结构体数组), 7: object(结构体)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValueType: int
+        :param _ValueStr: string
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValueStr: str
+        :param _ValueInt: int（避免精度丢失使用字符串返回）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValueInt: str
+        :param _ValueFloat: float
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValueFloat: float
+        :param _ValueBool: bool
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValueBool: bool
+        :param _ValueStrArray: array
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValueStrArray: list of str
+        """
+        self._Id = None
+        self._Name = None
+        self._ValueType = None
+        self._ValueStr = None
+        self._ValueInt = None
+        self._ValueFloat = None
+        self._ValueBool = None
+        self._ValueStrArray = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ValueType(self):
+        return self._ValueType
+
+    @ValueType.setter
+    def ValueType(self, ValueType):
+        self._ValueType = ValueType
+
+    @property
+    def ValueStr(self):
+        return self._ValueStr
+
+    @ValueStr.setter
+    def ValueStr(self, ValueStr):
+        self._ValueStr = ValueStr
+
+    @property
+    def ValueInt(self):
+        return self._ValueInt
+
+    @ValueInt.setter
+    def ValueInt(self, ValueInt):
+        self._ValueInt = ValueInt
+
+    @property
+    def ValueFloat(self):
+        return self._ValueFloat
+
+    @ValueFloat.setter
+    def ValueFloat(self, ValueFloat):
+        self._ValueFloat = ValueFloat
+
+    @property
+    def ValueBool(self):
+        return self._ValueBool
+
+    @ValueBool.setter
+    def ValueBool(self, ValueBool):
+        self._ValueBool = ValueBool
+
+    @property
+    def ValueStrArray(self):
+        return self._ValueStrArray
+
+    @ValueStrArray.setter
+    def ValueStrArray(self, ValueStrArray):
+        self._ValueStrArray = ValueStrArray
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._ValueType = params.get("ValueType")
+        self._ValueStr = params.get("ValueStr")
+        self._ValueInt = params.get("ValueInt")
+        self._ValueFloat = params.get("ValueFloat")
+        self._ValueBool = params.get("ValueBool")
+        self._ValueStrArray = params.get("ValueStrArray")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

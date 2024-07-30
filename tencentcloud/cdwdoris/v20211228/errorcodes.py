@@ -14,5 +14,8 @@
 # limitations under the License.
 
 
+# CAM签名/鉴权错误。
+AUTHFAILURE = 'AuthFailure'
+
 # 内部错误。
 INTERNALERROR = 'InternalError'

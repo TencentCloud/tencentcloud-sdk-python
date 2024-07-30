@@ -730,12 +730,12 @@ class BaseFlowInfo(AbstractModel):
         r"""
         :param _FlowName: 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
         :type FlowName: str
+        :param _Deadline: 合同流程的签署截止时间，格式为Unix标准时间戳（秒），如果在签署截止时间前未完成签署，则合同状态会变为已过期，导致合同作废。
+        :type Deadline: int
         :param _FlowType: 合同流程的类别分类（可自定义名称，如销售合同/入职合同等），最大长度为200个字符，仅限中文、字母、数字和下划线组成。
         :type FlowType: str
         :param _FlowDescription: 合同流程描述信息(可自定义此描述)，最大长度1000个字符。
         :type FlowDescription: str
-        :param _Deadline: 合同流程的签署截止时间，格式为Unix标准时间戳（秒），如果在签署截止时间前未完成签署，则合同状态会变为已过期，导致合同作废。
-        :type Deadline: int
         :param _Unordered: 合同流程的签署顺序类型：
 **false**：(默认)有序签署, 本合同多个参与人需要依次签署
 **true**：无序签署, 本合同多个参与人没有先后签署限制
@@ -769,9 +769,9 @@ class BaseFlowInfo(AbstractModel):
         :type Components: list of Component
         """
         self._FlowName = None
+        self._Deadline = None
         self._FlowType = None
         self._FlowDescription = None
-        self._Deadline = None
         self._Unordered = None
         self._IntelligentStatus = None
         self._FormFields = None
@@ -790,6 +790,14 @@ class BaseFlowInfo(AbstractModel):
         self._FlowName = FlowName
 
     @property
+    def Deadline(self):
+        return self._Deadline
+
+    @Deadline.setter
+    def Deadline(self, Deadline):
+        self._Deadline = Deadline
+
+    @property
     def FlowType(self):
         return self._FlowType
 
@@ -804,14 +812,6 @@ class BaseFlowInfo(AbstractModel):
     @FlowDescription.setter
     def FlowDescription(self, FlowDescription):
         self._FlowDescription = FlowDescription
-
-    @property
-    def Deadline(self):
-        return self._Deadline
-
-    @Deadline.setter
-    def Deadline(self, Deadline):
-        self._Deadline = Deadline
 
     @property
     def Unordered(self):
@@ -880,9 +880,9 @@ class BaseFlowInfo(AbstractModel):
 
     def _deserialize(self, params):
         self._FlowName = params.get("FlowName")
+        self._Deadline = params.get("Deadline")
         self._FlowType = params.get("FlowType")
         self._FlowDescription = params.get("FlowDescription")
-        self._Deadline = params.get("Deadline")
         self._Unordered = params.get("Unordered")
         self._IntelligentStatus = params.get("IntelligentStatus")
         if params.get("FormFields") is not None:
