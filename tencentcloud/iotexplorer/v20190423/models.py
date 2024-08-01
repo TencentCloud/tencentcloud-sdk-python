@@ -2106,6 +2106,137 @@ class CreateBatchProductionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateCloudStorageAIServiceRequest(AbstractModel):
+    """CreateCloudStorageAIService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品 ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _PackageId: 云存 AI 套餐 ID。可选值：
+
+- `1m_low_od`：低功耗目标检测月套餐
+- `1y_low_od`：低功耗目标检测年套餐
+- `1m_ev_od`：事件目标检测月套餐
+- `1y_ev_od`：事件目标检测年套餐
+- `1m_ft_od`：全时目标检测月套餐
+- `1y_ft_od`：全时目标检测年套餐
+- `1m_low_hl`：低功耗视频浓缩月套餐
+- `1y_low_hl`：低功耗视频浓缩年套餐
+- `1m_ev_hl`：事件视频浓缩月套餐
+- `1y_ev_hl`：事件视频浓缩年套餐
+- `1m_ft_hl`：全时视频浓缩月套餐
+- `1y_ft_hl`：全时视频浓缩年套餐
+        :type PackageId: str
+        :param _ChannelId: 通道 ID
+        :type ChannelId: int
+        :param _OrderId: 订单 ID
+        :type OrderId: str
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._PackageId = None
+        self._ChannelId = None
+        self._OrderId = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def PackageId(self):
+        return self._PackageId
+
+    @PackageId.setter
+    def PackageId(self, PackageId):
+        self._PackageId = PackageId
+
+    @property
+    def ChannelId(self):
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def OrderId(self):
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._PackageId = params.get("PackageId")
+        self._ChannelId = params.get("ChannelId")
+        self._OrderId = params.get("OrderId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCloudStorageAIServiceResponse(AbstractModel):
+    """CreateCloudStorageAIService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrderId: 订单 ID
+        :type OrderId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._OrderId = None
+        self._RequestId = None
+
+    @property
+    def OrderId(self):
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._OrderId = params.get("OrderId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateDeviceRequest(AbstractModel):
     """CreateDevice请求参数结构体
 
@@ -4873,6 +5004,25 @@ class DescribeCloudStorageAIServiceResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Type: 云存 AI 套餐类型。可能取值：
+
+- `1`：全时套餐
+- `2`：事件套餐
+- `3`：低功耗套餐
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        :param _Status: 云存 AI 套餐生效状态。可能取值：
+
+- `0`：未开通或已过期
+- `1`：生效中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _ExpireTime: 云存 AI 套餐过期时间 UNIX 时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: int
+        :param _UserId: 用户 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: str
         :param _Enabled: 视频分析启用状态
         :type Enabled: bool
         :param _Config: 视频分析配置参数
@@ -4882,10 +5032,46 @@ class DescribeCloudStorageAIServiceResponse(AbstractModel):
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Type = None
+        self._Status = None
+        self._ExpireTime = None
+        self._UserId = None
         self._Enabled = None
         self._Config = None
         self._ROI = None
         self._RequestId = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
 
     @property
     def Enabled(self):
@@ -4921,6 +5107,10 @@ class DescribeCloudStorageAIServiceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Status = params.get("Status")
+        self._ExpireTime = params.get("ExpireTime")
+        self._UserId = params.get("UserId")
         self._Enabled = params.get("Enabled")
         self._Config = params.get("Config")
         self._ROI = params.get("ROI")
@@ -18467,6 +18657,114 @@ class RemoveUserByRoomIdFromTRTCRequest(AbstractModel):
 
 class RemoveUserByRoomIdFromTRTCResponse(AbstractModel):
     """RemoveUserByRoomIdFromTRTC返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ResetCloudStorageAIServiceRequest(AbstractModel):
+    """ResetCloudStorageAIService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品 ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _ServiceType: 云存 AI 服务类型。可选值：
+- `RealtimeObjectDetect`：目标检测
+- `Highlight`：视频浓缩
+        :type ServiceType: str
+        :param _ChannelId: 通道 ID
+        :type ChannelId: int
+        :param _UserId: 用户 ID
+        :type UserId: str
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._ServiceType = None
+        self._ChannelId = None
+        self._UserId = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def ServiceType(self):
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def ChannelId(self):
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._ServiceType = params.get("ServiceType")
+        self._ChannelId = params.get("ChannelId")
+        self._UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetCloudStorageAIServiceResponse(AbstractModel):
+    """ResetCloudStorageAIService返回参数结构体
 
     """
 

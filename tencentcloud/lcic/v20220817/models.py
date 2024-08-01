@@ -4636,6 +4636,10 @@ video 纯视频
         :type RecordScene: str
         :param _RecordLang: 录制自定义语言，仅recordlayout=9的时候此参数有效
         :type RecordLang: str
+        :param _RecordStream: 录制类型 0 仅录制混流（默认） ;1 录制混流+单流，该模式下除混流录制基础上，分别录制老师、台上学生的音视频流，每路录制都会产生相应的录制费用 。示例：0
+        :type RecordStream: int
+        :param _RecordLayout: 录制模板。房间子类型为视频+白板（SubType=videodoc）时默认为3，房间子类型为纯视频（SubType=video）时默认为0。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
+        :type RecordLayout: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4669,6 +4673,8 @@ video 纯视频
         self._RTMPStreamingURL = None
         self._RecordScene = None
         self._RecordLang = None
+        self._RecordStream = None
+        self._RecordLayout = None
         self._RequestId = None
 
     @property
@@ -4912,6 +4918,22 @@ video 纯视频
         self._RecordLang = RecordLang
 
     @property
+    def RecordStream(self):
+        return self._RecordStream
+
+    @RecordStream.setter
+    def RecordStream(self, RecordStream):
+        self._RecordStream = RecordStream
+
+    @property
+    def RecordLayout(self):
+        return self._RecordLayout
+
+    @RecordLayout.setter
+    def RecordLayout(self, RecordLayout):
+        self._RecordLayout = RecordLayout
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -4951,6 +4973,8 @@ video 纯视频
         self._RTMPStreamingURL = params.get("RTMPStreamingURL")
         self._RecordScene = params.get("RecordScene")
         self._RecordLang = params.get("RecordLang")
+        self._RecordStream = params.get("RecordStream")
+        self._RecordLayout = params.get("RecordLayout")
         self._RequestId = params.get("RequestId")
 
 

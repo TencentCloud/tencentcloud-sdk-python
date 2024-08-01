@@ -87,6 +87,568 @@ class AttachCBSSpec(AbstractModel):
         
 
 
+class BackUpJobDisplay(AbstractModel):
+    """备份实例详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 备份实例id
+        :type JobId: int
+        :param _Snapshot: 备份实例名
+        :type Snapshot: str
+        :param _BackUpSize: 备份数据量
+        :type BackUpSize: int
+        :param _BackUpSingleSize: 备份单副本数据量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackUpSingleSize: int
+        :param _BackUpTime: 实例创建时间
+        :type BackUpTime: str
+        :param _ExpireTime: 实例过期时间
+        :type ExpireTime: str
+        :param _JobStatus: 实例状态
+        :type JobStatus: str
+        :param _BackupType: 0为默认。1时是对远端的doris进行备份，不周期，一次性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupType: int
+        :param _BackupTimeType: 0为默认。1时是立即备份。2时是迁移
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupTimeType: int
+        :param _DorisSourceInfo: 远端doris的连接信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DorisSourceInfo: :class:`tencentcloud.cdwdoris.v20211228.models.DorisSourceInfo`
+        :param _JobStatusNum: 实例状态对应的数值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobStatusNum: int
+        :param _BackupCosInfo: 备份实例中关于cos的信息	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupCosInfo: :class:`tencentcloud.cdwdoris.v20211228.models.BackupCosInfo`
+        """
+        self._JobId = None
+        self._Snapshot = None
+        self._BackUpSize = None
+        self._BackUpSingleSize = None
+        self._BackUpTime = None
+        self._ExpireTime = None
+        self._JobStatus = None
+        self._BackupType = None
+        self._BackupTimeType = None
+        self._DorisSourceInfo = None
+        self._JobStatusNum = None
+        self._BackupCosInfo = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def Snapshot(self):
+        return self._Snapshot
+
+    @Snapshot.setter
+    def Snapshot(self, Snapshot):
+        self._Snapshot = Snapshot
+
+    @property
+    def BackUpSize(self):
+        return self._BackUpSize
+
+    @BackUpSize.setter
+    def BackUpSize(self, BackUpSize):
+        self._BackUpSize = BackUpSize
+
+    @property
+    def BackUpSingleSize(self):
+        return self._BackUpSingleSize
+
+    @BackUpSingleSize.setter
+    def BackUpSingleSize(self, BackUpSingleSize):
+        self._BackUpSingleSize = BackUpSingleSize
+
+    @property
+    def BackUpTime(self):
+        return self._BackUpTime
+
+    @BackUpTime.setter
+    def BackUpTime(self, BackUpTime):
+        self._BackUpTime = BackUpTime
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def JobStatus(self):
+        return self._JobStatus
+
+    @JobStatus.setter
+    def JobStatus(self, JobStatus):
+        self._JobStatus = JobStatus
+
+    @property
+    def BackupType(self):
+        return self._BackupType
+
+    @BackupType.setter
+    def BackupType(self, BackupType):
+        self._BackupType = BackupType
+
+    @property
+    def BackupTimeType(self):
+        return self._BackupTimeType
+
+    @BackupTimeType.setter
+    def BackupTimeType(self, BackupTimeType):
+        self._BackupTimeType = BackupTimeType
+
+    @property
+    def DorisSourceInfo(self):
+        return self._DorisSourceInfo
+
+    @DorisSourceInfo.setter
+    def DorisSourceInfo(self, DorisSourceInfo):
+        self._DorisSourceInfo = DorisSourceInfo
+
+    @property
+    def JobStatusNum(self):
+        return self._JobStatusNum
+
+    @JobStatusNum.setter
+    def JobStatusNum(self, JobStatusNum):
+        self._JobStatusNum = JobStatusNum
+
+    @property
+    def BackupCosInfo(self):
+        return self._BackupCosInfo
+
+    @BackupCosInfo.setter
+    def BackupCosInfo(self, BackupCosInfo):
+        self._BackupCosInfo = BackupCosInfo
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._Snapshot = params.get("Snapshot")
+        self._BackUpSize = params.get("BackUpSize")
+        self._BackUpSingleSize = params.get("BackUpSingleSize")
+        self._BackUpTime = params.get("BackUpTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._JobStatus = params.get("JobStatus")
+        self._BackupType = params.get("BackupType")
+        self._BackupTimeType = params.get("BackupTimeType")
+        if params.get("DorisSourceInfo") is not None:
+            self._DorisSourceInfo = DorisSourceInfo()
+            self._DorisSourceInfo._deserialize(params.get("DorisSourceInfo"))
+        self._JobStatusNum = params.get("JobStatusNum")
+        if params.get("BackupCosInfo") is not None:
+            self._BackupCosInfo = BackupCosInfo()
+            self._BackupCosInfo._deserialize(params.get("BackupCosInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BackupCosInfo(AbstractModel):
+    """备份实例中关于cos的信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosBucket: 备份文件所在的cos桶
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CosBucket: str
+        :param _CosPath: 备份文件所在的完整cos路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CosPath: str
+        :param _SnapShotPath: 备份文件名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SnapShotPath: str
+        """
+        self._CosBucket = None
+        self._CosPath = None
+        self._SnapShotPath = None
+
+    @property
+    def CosBucket(self):
+        return self._CosBucket
+
+    @CosBucket.setter
+    def CosBucket(self, CosBucket):
+        self._CosBucket = CosBucket
+
+    @property
+    def CosPath(self):
+        return self._CosPath
+
+    @CosPath.setter
+    def CosPath(self, CosPath):
+        self._CosPath = CosPath
+
+    @property
+    def SnapShotPath(self):
+        return self._SnapShotPath
+
+    @SnapShotPath.setter
+    def SnapShotPath(self, SnapShotPath):
+        self._SnapShotPath = SnapShotPath
+
+
+    def _deserialize(self, params):
+        self._CosBucket = params.get("CosBucket")
+        self._CosPath = params.get("CosPath")
+        self._SnapShotPath = params.get("SnapShotPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BackupStatus(AbstractModel):
+    """备份任务的进度详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 备份任务id
+        :type JobId: int
+        :param _SnapshotName: 快照名称
+        :type SnapshotName: str
+        :param _DbName: 库名
+        :type DbName: str
+        :param _State: 状态
+        :type State: str
+        :param _BackupObjects: 备份对象
+        :type BackupObjects: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _SnapshotFinishedTime: 快照结束时间
+        :type SnapshotFinishedTime: str
+        :param _UploadFinishedTime: 上传结束时间
+        :type UploadFinishedTime: str
+        :param _FinishedTime: 结束时间
+        :type FinishedTime: str
+        :param _UnfinishedTasks: 未完成任务
+        :type UnfinishedTasks: str
+        :param _Progress: 进度
+        :type Progress: str
+        :param _TaskErrMsg: 错误信息
+        :type TaskErrMsg: str
+        :param _Status: 状态
+        :type Status: str
+        :param _Timeout: 超时信息
+        :type Timeout: int
+        :param _BackupJobId: 备份实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupJobId: int
+        :param _TaskId: 实例对应snapshoit的id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: int
+        """
+        self._JobId = None
+        self._SnapshotName = None
+        self._DbName = None
+        self._State = None
+        self._BackupObjects = None
+        self._CreateTime = None
+        self._SnapshotFinishedTime = None
+        self._UploadFinishedTime = None
+        self._FinishedTime = None
+        self._UnfinishedTasks = None
+        self._Progress = None
+        self._TaskErrMsg = None
+        self._Status = None
+        self._Timeout = None
+        self._BackupJobId = None
+        self._TaskId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def SnapshotName(self):
+        return self._SnapshotName
+
+    @SnapshotName.setter
+    def SnapshotName(self, SnapshotName):
+        self._SnapshotName = SnapshotName
+
+    @property
+    def DbName(self):
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def BackupObjects(self):
+        return self._BackupObjects
+
+    @BackupObjects.setter
+    def BackupObjects(self, BackupObjects):
+        self._BackupObjects = BackupObjects
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def SnapshotFinishedTime(self):
+        return self._SnapshotFinishedTime
+
+    @SnapshotFinishedTime.setter
+    def SnapshotFinishedTime(self, SnapshotFinishedTime):
+        self._SnapshotFinishedTime = SnapshotFinishedTime
+
+    @property
+    def UploadFinishedTime(self):
+        return self._UploadFinishedTime
+
+    @UploadFinishedTime.setter
+    def UploadFinishedTime(self, UploadFinishedTime):
+        self._UploadFinishedTime = UploadFinishedTime
+
+    @property
+    def FinishedTime(self):
+        return self._FinishedTime
+
+    @FinishedTime.setter
+    def FinishedTime(self, FinishedTime):
+        self._FinishedTime = FinishedTime
+
+    @property
+    def UnfinishedTasks(self):
+        return self._UnfinishedTasks
+
+    @UnfinishedTasks.setter
+    def UnfinishedTasks(self, UnfinishedTasks):
+        self._UnfinishedTasks = UnfinishedTasks
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def TaskErrMsg(self):
+        return self._TaskErrMsg
+
+    @TaskErrMsg.setter
+    def TaskErrMsg(self, TaskErrMsg):
+        self._TaskErrMsg = TaskErrMsg
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Timeout(self):
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def BackupJobId(self):
+        return self._BackupJobId
+
+    @BackupJobId.setter
+    def BackupJobId(self, BackupJobId):
+        self._BackupJobId = BackupJobId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._SnapshotName = params.get("SnapshotName")
+        self._DbName = params.get("DbName")
+        self._State = params.get("State")
+        self._BackupObjects = params.get("BackupObjects")
+        self._CreateTime = params.get("CreateTime")
+        self._SnapshotFinishedTime = params.get("SnapshotFinishedTime")
+        self._UploadFinishedTime = params.get("UploadFinishedTime")
+        self._FinishedTime = params.get("FinishedTime")
+        self._UnfinishedTasks = params.get("UnfinishedTasks")
+        self._Progress = params.get("Progress")
+        self._TaskErrMsg = params.get("TaskErrMsg")
+        self._Status = params.get("Status")
+        self._Timeout = params.get("Timeout")
+        self._BackupJobId = params.get("BackupJobId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BackupTableContent(AbstractModel):
+    """备份表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Database: 数据库
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Database: str
+        :param _Table: 表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Table: str
+        :param _TotalBytes: 表总字节数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalBytes: int
+        :param _SingleReplicaBytes: 表单个副本的大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SingleReplicaBytes: str
+        :param _BackupStatus: 备份状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupStatus: int
+        :param _BackupErrorMsg: 备份的错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupErrorMsg: str
+        :param _IsOpenCoolDown: 改库表是否绑定降冷策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsOpenCoolDown: bool
+        """
+        self._Database = None
+        self._Table = None
+        self._TotalBytes = None
+        self._SingleReplicaBytes = None
+        self._BackupStatus = None
+        self._BackupErrorMsg = None
+        self._IsOpenCoolDown = None
+
+    @property
+    def Database(self):
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+    @property
+    def Table(self):
+        return self._Table
+
+    @Table.setter
+    def Table(self, Table):
+        self._Table = Table
+
+    @property
+    def TotalBytes(self):
+        return self._TotalBytes
+
+    @TotalBytes.setter
+    def TotalBytes(self, TotalBytes):
+        self._TotalBytes = TotalBytes
+
+    @property
+    def SingleReplicaBytes(self):
+        return self._SingleReplicaBytes
+
+    @SingleReplicaBytes.setter
+    def SingleReplicaBytes(self, SingleReplicaBytes):
+        self._SingleReplicaBytes = SingleReplicaBytes
+
+    @property
+    def BackupStatus(self):
+        return self._BackupStatus
+
+    @BackupStatus.setter
+    def BackupStatus(self, BackupStatus):
+        self._BackupStatus = BackupStatus
+
+    @property
+    def BackupErrorMsg(self):
+        return self._BackupErrorMsg
+
+    @BackupErrorMsg.setter
+    def BackupErrorMsg(self, BackupErrorMsg):
+        self._BackupErrorMsg = BackupErrorMsg
+
+    @property
+    def IsOpenCoolDown(self):
+        return self._IsOpenCoolDown
+
+    @IsOpenCoolDown.setter
+    def IsOpenCoolDown(self, IsOpenCoolDown):
+        self._IsOpenCoolDown = IsOpenCoolDown
+
+
+    def _deserialize(self, params):
+        self._Database = params.get("Database")
+        self._Table = params.get("Table")
+        self._TotalBytes = params.get("TotalBytes")
+        self._SingleReplicaBytes = params.get("SingleReplicaBytes")
+        self._BackupStatus = params.get("BackupStatus")
+        self._BackupErrorMsg = params.get("BackupErrorMsg")
+        self._IsOpenCoolDown = params.get("IsOpenCoolDown")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BindUser(AbstractModel):
     """资源组绑定的用户信息，需要username和host信息进行授权
 
@@ -132,6 +694,89 @@ class BindUser(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CancelBackupJobRequest(AbstractModel):
+    """CancelBackupJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _BackUpJobId: 需要取消的备份实例id
+        :type BackUpJobId: int
+        """
+        self._InstanceId = None
+        self._BackUpJobId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def BackUpJobId(self):
+        return self._BackUpJobId
+
+    @BackUpJobId.setter
+    def BackUpJobId(self, BackUpJobId):
+        self._BackUpJobId = BackUpJobId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._BackUpJobId = params.get("BackUpJobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelBackupJobResponse(AbstractModel):
+    """CancelBackupJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
 
 
 class ChargeProperties(AbstractModel):
@@ -197,6 +842,100 @@ class ChargeProperties(AbstractModel):
         self._RenewFlag = params.get("RenewFlag")
         self._TimeSpan = params.get("TimeSpan")
         self._TimeUnit = params.get("TimeUnit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClusterConfigsHistory(AbstractModel):
+    """集群的配置文件的修改历史
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileName: 配置文件名称
+        :type FileName: str
+        :param _NewConfValue: 修改后的配置文件内容，base64编码
+        :type NewConfValue: str
+        :param _OldConfValue: 修改前的配置文件内容，base64编码
+        :type OldConfValue: str
+        :param _Remark: 修改原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param _ModifyTime: 修改时间
+        :type ModifyTime: str
+        :param _UserUin: 修改子账号id
+        :type UserUin: str
+        """
+        self._FileName = None
+        self._NewConfValue = None
+        self._OldConfValue = None
+        self._Remark = None
+        self._ModifyTime = None
+        self._UserUin = None
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def NewConfValue(self):
+        return self._NewConfValue
+
+    @NewConfValue.setter
+    def NewConfValue(self, NewConfValue):
+        self._NewConfValue = NewConfValue
+
+    @property
+    def OldConfValue(self):
+        return self._OldConfValue
+
+    @OldConfValue.setter
+    def OldConfValue(self, OldConfValue):
+        self._OldConfValue = OldConfValue
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def UserUin(self):
+        return self._UserUin
+
+    @UserUin.setter
+    def UserUin(self, UserUin):
+        self._UserUin = UserUin
+
+
+    def _deserialize(self, params):
+        self._FileName = params.get("FileName")
+        self._NewConfValue = params.get("NewConfValue")
+        self._OldConfValue = params.get("OldConfValue")
+        self._Remark = params.get("Remark")
+        self._ModifyTime = params.get("ModifyTime")
+        self._UserUin = params.get("UserUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -420,6 +1159,243 @@ class ConfigKeyValue(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CosSourceInfo(AbstractModel):
+    """客户提供cos认证信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SecretId: cos认证中的Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretId: str
+        :param _SecretKey: cos认证中的key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretKey: str
+        :param _CosPath: cos认证中的路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CosPath: str
+        """
+        self._SecretId = None
+        self._SecretKey = None
+        self._CosPath = None
+
+    @property
+    def SecretId(self):
+        return self._SecretId
+
+    @SecretId.setter
+    def SecretId(self, SecretId):
+        self._SecretId = SecretId
+
+    @property
+    def SecretKey(self):
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def CosPath(self):
+        return self._CosPath
+
+    @CosPath.setter
+    def CosPath(self, CosPath):
+        self._CosPath = CosPath
+
+
+    def _deserialize(self, params):
+        self._SecretId = params.get("SecretId")
+        self._SecretKey = params.get("SecretKey")
+        self._CosPath = params.get("CosPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBackUpScheduleRequest(AbstractModel):
+    """CreateBackUpSchedule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ScheduleId: 编辑时需要传
+        :type ScheduleId: int
+        :param _WeekDays: 选择的星期 逗号分隔
+废弃：使用ScheduleInfo
+        :type WeekDays: str
+        :param _ExecuteHour: 执行小时
+废弃：使用ScheduleInfo
+        :type ExecuteHour: int
+        :param _BackUpTables: 备份表列表
+        :type BackUpTables: list of BackupTableContent
+        :param _BackupType: 0为默认。1时是对远端的doris进行备份，不周期，一次性
+        :type BackupType: int
+        :param _DorisSourceInfo: 远端doris集群的连接信息
+        :type DorisSourceInfo: :class:`tencentcloud.cdwdoris.v20211228.models.DorisSourceInfo`
+        :param _BackupTimeType: 0为默认。1时是一次性备份。2时是远端备份
+        :type BackupTimeType: int
+        :param _RestoreType: 0为默认。1时是备份完成后立即恢复
+        :type RestoreType: int
+        :param _AuthType: 0为默认。1时是提供自定义的secret连接cos
+        :type AuthType: int
+        :param _CosSourceInfo: cos认证的信息
+        :type CosSourceInfo: :class:`tencentcloud.cdwdoris.v20211228.models.CosSourceInfo`
+        """
+        self._ScheduleId = None
+        self._WeekDays = None
+        self._ExecuteHour = None
+        self._BackUpTables = None
+        self._BackupType = None
+        self._DorisSourceInfo = None
+        self._BackupTimeType = None
+        self._RestoreType = None
+        self._AuthType = None
+        self._CosSourceInfo = None
+
+    @property
+    def ScheduleId(self):
+        return self._ScheduleId
+
+    @ScheduleId.setter
+    def ScheduleId(self, ScheduleId):
+        self._ScheduleId = ScheduleId
+
+    @property
+    def WeekDays(self):
+        return self._WeekDays
+
+    @WeekDays.setter
+    def WeekDays(self, WeekDays):
+        self._WeekDays = WeekDays
+
+    @property
+    def ExecuteHour(self):
+        return self._ExecuteHour
+
+    @ExecuteHour.setter
+    def ExecuteHour(self, ExecuteHour):
+        self._ExecuteHour = ExecuteHour
+
+    @property
+    def BackUpTables(self):
+        return self._BackUpTables
+
+    @BackUpTables.setter
+    def BackUpTables(self, BackUpTables):
+        self._BackUpTables = BackUpTables
+
+    @property
+    def BackupType(self):
+        return self._BackupType
+
+    @BackupType.setter
+    def BackupType(self, BackupType):
+        self._BackupType = BackupType
+
+    @property
+    def DorisSourceInfo(self):
+        return self._DorisSourceInfo
+
+    @DorisSourceInfo.setter
+    def DorisSourceInfo(self, DorisSourceInfo):
+        self._DorisSourceInfo = DorisSourceInfo
+
+    @property
+    def BackupTimeType(self):
+        return self._BackupTimeType
+
+    @BackupTimeType.setter
+    def BackupTimeType(self, BackupTimeType):
+        self._BackupTimeType = BackupTimeType
+
+    @property
+    def RestoreType(self):
+        return self._RestoreType
+
+    @RestoreType.setter
+    def RestoreType(self, RestoreType):
+        self._RestoreType = RestoreType
+
+    @property
+    def AuthType(self):
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        self._AuthType = AuthType
+
+    @property
+    def CosSourceInfo(self):
+        return self._CosSourceInfo
+
+    @CosSourceInfo.setter
+    def CosSourceInfo(self, CosSourceInfo):
+        self._CosSourceInfo = CosSourceInfo
+
+
+    def _deserialize(self, params):
+        self._ScheduleId = params.get("ScheduleId")
+        self._WeekDays = params.get("WeekDays")
+        self._ExecuteHour = params.get("ExecuteHour")
+        if params.get("BackUpTables") is not None:
+            self._BackUpTables = []
+            for item in params.get("BackUpTables"):
+                obj = BackupTableContent()
+                obj._deserialize(item)
+                self._BackUpTables.append(obj)
+        self._BackupType = params.get("BackupType")
+        if params.get("DorisSourceInfo") is not None:
+            self._DorisSourceInfo = DorisSourceInfo()
+            self._DorisSourceInfo._deserialize(params.get("DorisSourceInfo"))
+        self._BackupTimeType = params.get("BackupTimeType")
+        self._RestoreType = params.get("RestoreType")
+        self._AuthType = params.get("AuthType")
+        if params.get("CosSourceInfo") is not None:
+            self._CosSourceInfo = CosSourceInfo()
+            self._CosSourceInfo._deserialize(params.get("CosSourceInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBackUpScheduleResponse(AbstractModel):
+    """CreateBackUpSchedule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class CreateInstanceNewRequest(AbstractModel):
@@ -1031,6 +2007,88 @@ class DataBaseAuditRecord(AbstractModel):
         
 
 
+class DeleteBackUpDataRequest(AbstractModel):
+    """DeleteBackUpData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _BackUpJobId: 任务id
+        :type BackUpJobId: int
+        :param _IsDeleteAll: 是否删除所有数据
+        :type IsDeleteAll: bool
+        """
+        self._InstanceId = None
+        self._BackUpJobId = None
+        self._IsDeleteAll = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def BackUpJobId(self):
+        return self._BackUpJobId
+
+    @BackUpJobId.setter
+    def BackUpJobId(self, BackUpJobId):
+        self._BackUpJobId = BackUpJobId
+
+    @property
+    def IsDeleteAll(self):
+        return self._IsDeleteAll
+
+    @IsDeleteAll.setter
+    def IsDeleteAll(self, IsDeleteAll):
+        self._IsDeleteAll = IsDeleteAll
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._BackUpJobId = params.get("BackUpJobId")
+        self._IsDeleteAll = params.get("IsDeleteAll")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteBackUpDataResponse(AbstractModel):
+    """DeleteBackUpData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteWorkloadGroupRequest(AbstractModel):
     """DeleteWorkloadGroup请求参数结构体
 
@@ -1110,6 +2168,731 @@ class DeleteWorkloadGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAreaRegionRequest(AbstractModel):
+    """DescribeAreaRegion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsInternationalSite: 是否是国际站
+        :type IsInternationalSite: bool
+        """
+        self._IsInternationalSite = None
+
+    @property
+    def IsInternationalSite(self):
+        return self._IsInternationalSite
+
+    @IsInternationalSite.setter
+    def IsInternationalSite(self, IsInternationalSite):
+        self._IsInternationalSite = IsInternationalSite
+
+
+    def _deserialize(self, params):
+        self._IsInternationalSite = params.get("IsInternationalSite")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAreaRegionResponse(AbstractModel):
+    """DescribeAreaRegion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 地域列表
+        :type Items: list of RegionAreaInfo
+        :param _FrontEndRules: 前端规则描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FrontEndRules: list of FrontEndRule
+        :param _AvailableWhiteListNames: 返回可用的白名单名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AvailableWhiteListNames: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Items = None
+        self._FrontEndRules = None
+        self._AvailableWhiteListNames = None
+        self._RequestId = None
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def FrontEndRules(self):
+        return self._FrontEndRules
+
+    @FrontEndRules.setter
+    def FrontEndRules(self, FrontEndRules):
+        self._FrontEndRules = FrontEndRules
+
+    @property
+    def AvailableWhiteListNames(self):
+        return self._AvailableWhiteListNames
+
+    @AvailableWhiteListNames.setter
+    def AvailableWhiteListNames(self, AvailableWhiteListNames):
+        self._AvailableWhiteListNames = AvailableWhiteListNames
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = RegionAreaInfo()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        if params.get("FrontEndRules") is not None:
+            self._FrontEndRules = []
+            for item in params.get("FrontEndRules"):
+                obj = FrontEndRule()
+                obj._deserialize(item)
+                self._FrontEndRules.append(obj)
+        self._AvailableWhiteListNames = params.get("AvailableWhiteListNames")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBackUpJobDetailRequest(AbstractModel):
+    """DescribeBackUpJobDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _BackUpJobId: 任务id
+        :type BackUpJobId: int
+        """
+        self._InstanceId = None
+        self._BackUpJobId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def BackUpJobId(self):
+        return self._BackUpJobId
+
+    @BackUpJobId.setter
+    def BackUpJobId(self, BackUpJobId):
+        self._BackUpJobId = BackUpJobId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._BackUpJobId = params.get("BackUpJobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackUpJobDetailResponse(AbstractModel):
+    """DescribeBackUpJobDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableContents: 备份表详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableContents: list of BackupTableContent
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TableContents = None
+        self._RequestId = None
+
+    @property
+    def TableContents(self):
+        return self._TableContents
+
+    @TableContents.setter
+    def TableContents(self, TableContents):
+        self._TableContents = TableContents
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TableContents") is not None:
+            self._TableContents = []
+            for item in params.get("TableContents"):
+                obj = BackupTableContent()
+                obj._deserialize(item)
+                self._TableContents.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBackUpJobRequest(AbstractModel):
+    """DescribeBackUpJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _PageSize: 分页大小
+        :type PageSize: int
+        :param _PageNum: 页号
+        :type PageNum: int
+        :param _BeginTime: 开始时间
+        :type BeginTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _JobIdFiltersStr: jobid的string类型
+        :type JobIdFiltersStr: str
+        """
+        self._InstanceId = None
+        self._PageSize = None
+        self._PageNum = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._JobIdFiltersStr = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def JobIdFiltersStr(self):
+        return self._JobIdFiltersStr
+
+    @JobIdFiltersStr.setter
+    def JobIdFiltersStr(self, JobIdFiltersStr):
+        self._JobIdFiltersStr = JobIdFiltersStr
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._PageSize = params.get("PageSize")
+        self._PageNum = params.get("PageNum")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._JobIdFiltersStr = params.get("JobIdFiltersStr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackUpJobResponse(AbstractModel):
+    """DescribeBackUpJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackUpJobs: 任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackUpJobs: list of BackUpJobDisplay
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BackUpJobs = None
+        self._RequestId = None
+
+    @property
+    def BackUpJobs(self):
+        return self._BackUpJobs
+
+    @BackUpJobs.setter
+    def BackUpJobs(self, BackUpJobs):
+        self._BackUpJobs = BackUpJobs
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("BackUpJobs") is not None:
+            self._BackUpJobs = []
+            for item in params.get("BackUpJobs"):
+                obj = BackUpJobDisplay()
+                obj._deserialize(item)
+                self._BackUpJobs.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBackUpSchedulesRequest(AbstractModel):
+    """DescribeBackUpSchedules请求参数结构体
+
+    """
+
+
+class DescribeBackUpSchedulesResponse(AbstractModel):
+    """DescribeBackUpSchedules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBackUpTablesRequest(AbstractModel):
+    """DescribeBackUpTables请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _BackupType: 0为默认。1时是对远端的doris进行备份，不周期，一次性。2时为cos恢复，一次性
+        :type BackupType: int
+        :param _DorisSourceInfo: 远端doris集群的连接信息
+        :type DorisSourceInfo: :class:`tencentcloud.cdwdoris.v20211228.models.DorisSourceInfo`
+        :param _CosSourceInfo: cos信息
+        :type CosSourceInfo: :class:`tencentcloud.cdwdoris.v20211228.models.CosSourceInfo`
+        """
+        self._InstanceId = None
+        self._BackupType = None
+        self._DorisSourceInfo = None
+        self._CosSourceInfo = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def BackupType(self):
+        return self._BackupType
+
+    @BackupType.setter
+    def BackupType(self, BackupType):
+        self._BackupType = BackupType
+
+    @property
+    def DorisSourceInfo(self):
+        return self._DorisSourceInfo
+
+    @DorisSourceInfo.setter
+    def DorisSourceInfo(self, DorisSourceInfo):
+        self._DorisSourceInfo = DorisSourceInfo
+
+    @property
+    def CosSourceInfo(self):
+        return self._CosSourceInfo
+
+    @CosSourceInfo.setter
+    def CosSourceInfo(self, CosSourceInfo):
+        self._CosSourceInfo = CosSourceInfo
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._BackupType = params.get("BackupType")
+        if params.get("DorisSourceInfo") is not None:
+            self._DorisSourceInfo = DorisSourceInfo()
+            self._DorisSourceInfo._deserialize(params.get("DorisSourceInfo"))
+        if params.get("CosSourceInfo") is not None:
+            self._CosSourceInfo = CosSourceInfo()
+            self._CosSourceInfo._deserialize(params.get("CosSourceInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackUpTablesResponse(AbstractModel):
+    """DescribeBackUpTables返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AvailableTables: 可备份表列表
+        :type AvailableTables: list of BackupTableContent
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AvailableTables = None
+        self._RequestId = None
+
+    @property
+    def AvailableTables(self):
+        return self._AvailableTables
+
+    @AvailableTables.setter
+    def AvailableTables(self, AvailableTables):
+        self._AvailableTables = AvailableTables
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AvailableTables") is not None:
+            self._AvailableTables = []
+            for item in params.get("AvailableTables"):
+                obj = BackupTableContent()
+                obj._deserialize(item)
+                self._AvailableTables.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBackUpTaskDetailRequest(AbstractModel):
+    """DescribeBackUpTaskDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _BackUpJobId: 任务id
+        :type BackUpJobId: int
+        """
+        self._InstanceId = None
+        self._BackUpJobId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def BackUpJobId(self):
+        return self._BackUpJobId
+
+    @BackUpJobId.setter
+    def BackUpJobId(self, BackUpJobId):
+        self._BackUpJobId = BackUpJobId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._BackUpJobId = params.get("BackUpJobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackUpTaskDetailResponse(AbstractModel):
+    """DescribeBackUpTaskDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupStatus: 备份任务进度详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupStatus: list of BackupStatus
+        :param _ErrorMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BackupStatus = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def BackupStatus(self):
+        return self._BackupStatus
+
+    @BackupStatus.setter
+    def BackupStatus(self, BackupStatus):
+        self._BackupStatus = BackupStatus
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("BackupStatus") is not None:
+            self._BackupStatus = []
+            for item in params.get("BackupStatus"):
+                obj = BackupStatus()
+                obj._deserialize(item)
+                self._BackupStatus.append(obj)
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeClusterConfigsHistoryRequest(AbstractModel):
+    """DescribeClusterConfigsHistory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id名称
+        :type InstanceId: str
+        :param _Offset: 分页参数，第一页为0，第二页为10
+        :type Offset: int
+        :param _Limit: 分页参数，分页步长，默认为10
+        :type Limit: int
+        :param _StartTime: 配置修改历史的时间范围开始
+        :type StartTime: str
+        :param _EndTime: 配置修改历史的时间范围结束
+        :type EndTime: str
+        :param _ConfigFileNames: 需要查询的配置文件名称数组，如果为空则查询全部历史记录。目前支持的配置文件名称有：
+apache_hdfs_broker.conf、be.conf、fe.conf、core-site.xml、hdfs-site.xml、odbcinst.ini
+        :type ConfigFileNames: list of str
+        """
+        self._InstanceId = None
+        self._Offset = None
+        self._Limit = None
+        self._StartTime = None
+        self._EndTime = None
+        self._ConfigFileNames = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ConfigFileNames(self):
+        return self._ConfigFileNames
+
+    @ConfigFileNames.setter
+    def ConfigFileNames(self, ConfigFileNames):
+        self._ConfigFileNames = ConfigFileNames
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ConfigFileNames = params.get("ConfigFileNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterConfigsHistoryResponse(AbstractModel):
+    """DescribeClusterConfigsHistory返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 实例总数
+        :type TotalCount: int
+        :param _ClusterConfHistory: 配置文件修改历史
+        :type ClusterConfHistory: list of ClusterConfigsHistory
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ClusterConfHistory = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ClusterConfHistory(self):
+        return self._ClusterConfHistory
+
+    @ClusterConfHistory.setter
+    def ClusterConfHistory(self, ClusterConfHistory):
+        self._ClusterConfHistory = ClusterConfHistory
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ClusterConfHistory") is not None:
+            self._ClusterConfHistory = []
+            for item in params.get("ClusterConfHistory"):
+                obj = ClusterConfigsHistory()
+                obj._deserialize(item)
+                self._ClusterConfHistory.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -1714,6 +3497,369 @@ class DescribeDatabaseAuditRecordsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDatabaseAuditResourceRequest(AbstractModel):
+    """DescribeDatabaseAuditResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDatabaseAuditResourceResponse(AbstractModel):
+    """DescribeDatabaseAuditResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Databases: 数据库列表
+        :type Databases: list of str
+        :param _Users: 用户列表
+        :type Users: list of str
+        :param _SqlTypes: sql类型列表
+        :type SqlTypes: list of str
+        :param _Catalogs: catalog字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Catalogs: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Databases = None
+        self._Users = None
+        self._SqlTypes = None
+        self._Catalogs = None
+        self._RequestId = None
+
+    @property
+    def Databases(self):
+        return self._Databases
+
+    @Databases.setter
+    def Databases(self, Databases):
+        self._Databases = Databases
+
+    @property
+    def Users(self):
+        return self._Users
+
+    @Users.setter
+    def Users(self, Users):
+        self._Users = Users
+
+    @property
+    def SqlTypes(self):
+        return self._SqlTypes
+
+    @SqlTypes.setter
+    def SqlTypes(self, SqlTypes):
+        self._SqlTypes = SqlTypes
+
+    @property
+    def Catalogs(self):
+        return self._Catalogs
+
+    @Catalogs.setter
+    def Catalogs(self, Catalogs):
+        self._Catalogs = Catalogs
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Databases = params.get("Databases")
+        self._Users = params.get("Users")
+        self._SqlTypes = params.get("SqlTypes")
+        self._Catalogs = params.get("Catalogs")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDmsSqlHistoryRequest(AbstractModel):
+    """DescribeDmsSqlHistory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QueryNode: 查询节点ip
+        :type QueryNode: list of str
+        :param _QueryStatus: 运行状态
+        :type QueryStatus: list of str
+        :param _QuerySql: 模糊搜索sql
+        :type QuerySql: str
+        :param _QueryErrMsg: 根据报错原因搜索
+        :type QueryErrMsg: str
+        """
+        self._QueryNode = None
+        self._QueryStatus = None
+        self._QuerySql = None
+        self._QueryErrMsg = None
+
+    @property
+    def QueryNode(self):
+        return self._QueryNode
+
+    @QueryNode.setter
+    def QueryNode(self, QueryNode):
+        self._QueryNode = QueryNode
+
+    @property
+    def QueryStatus(self):
+        return self._QueryStatus
+
+    @QueryStatus.setter
+    def QueryStatus(self, QueryStatus):
+        self._QueryStatus = QueryStatus
+
+    @property
+    def QuerySql(self):
+        return self._QuerySql
+
+    @QuerySql.setter
+    def QuerySql(self, QuerySql):
+        self._QuerySql = QuerySql
+
+    @property
+    def QueryErrMsg(self):
+        return self._QueryErrMsg
+
+    @QueryErrMsg.setter
+    def QueryErrMsg(self, QueryErrMsg):
+        self._QueryErrMsg = QueryErrMsg
+
+
+    def _deserialize(self, params):
+        self._QueryNode = params.get("QueryNode")
+        self._QueryStatus = params.get("QueryStatus")
+        self._QuerySql = params.get("QuerySql")
+        self._QueryErrMsg = params.get("QueryErrMsg")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDmsSqlHistoryResponse(AbstractModel):
+    """DescribeDmsSqlHistory返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QueryNodeList: 集群所有的查询节点
+        :type QueryNodeList: list of str
+        :param _QueryStatusList: 集群所有的查询状态
+        :type QueryStatusList: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._QueryNodeList = None
+        self._QueryStatusList = None
+        self._RequestId = None
+
+    @property
+    def QueryNodeList(self):
+        return self._QueryNodeList
+
+    @QueryNodeList.setter
+    def QueryNodeList(self, QueryNodeList):
+        self._QueryNodeList = QueryNodeList
+
+    @property
+    def QueryStatusList(self):
+        return self._QueryStatusList
+
+    @QueryStatusList.setter
+    def QueryStatusList(self, QueryStatusList):
+        self._QueryStatusList = QueryStatusList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._QueryNodeList = params.get("QueryNodeList")
+        self._QueryStatusList = params.get("QueryStatusList")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDorisMetricFilesRequest(AbstractModel):
+    """DescribeDorisMetricFiles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApiType: 接口类型
+        :type ApiType: str
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _DescribeMetricsFileReq: 展示监控指标入参
+        :type DescribeMetricsFileReq: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeMetricsFileReq`
+        :param _ModifyMetricFileReq: 点关注功能入参
+        :type ModifyMetricFileReq: :class:`tencentcloud.cdwdoris.v20211228.models.ModifyMetricFileStruct`
+        :param _ModifyAttentionMetricFileReq: 监控指标关注功能入参
+        :type ModifyAttentionMetricFileReq: :class:`tencentcloud.cdwdoris.v20211228.models.ModifyMetricFileStructNew`
+        """
+        self._ApiType = None
+        self._InstanceId = None
+        self._DescribeMetricsFileReq = None
+        self._ModifyMetricFileReq = None
+        self._ModifyAttentionMetricFileReq = None
+
+    @property
+    def ApiType(self):
+        return self._ApiType
+
+    @ApiType.setter
+    def ApiType(self, ApiType):
+        self._ApiType = ApiType
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DescribeMetricsFileReq(self):
+        return self._DescribeMetricsFileReq
+
+    @DescribeMetricsFileReq.setter
+    def DescribeMetricsFileReq(self, DescribeMetricsFileReq):
+        self._DescribeMetricsFileReq = DescribeMetricsFileReq
+
+    @property
+    def ModifyMetricFileReq(self):
+        return self._ModifyMetricFileReq
+
+    @ModifyMetricFileReq.setter
+    def ModifyMetricFileReq(self, ModifyMetricFileReq):
+        self._ModifyMetricFileReq = ModifyMetricFileReq
+
+    @property
+    def ModifyAttentionMetricFileReq(self):
+        return self._ModifyAttentionMetricFileReq
+
+    @ModifyAttentionMetricFileReq.setter
+    def ModifyAttentionMetricFileReq(self, ModifyAttentionMetricFileReq):
+        self._ModifyAttentionMetricFileReq = ModifyAttentionMetricFileReq
+
+
+    def _deserialize(self, params):
+        self._ApiType = params.get("ApiType")
+        self._InstanceId = params.get("InstanceId")
+        if params.get("DescribeMetricsFileReq") is not None:
+            self._DescribeMetricsFileReq = DescribeMetricsFileReq()
+            self._DescribeMetricsFileReq._deserialize(params.get("DescribeMetricsFileReq"))
+        if params.get("ModifyMetricFileReq") is not None:
+            self._ModifyMetricFileReq = ModifyMetricFileStruct()
+            self._ModifyMetricFileReq._deserialize(params.get("ModifyMetricFileReq"))
+        if params.get("ModifyAttentionMetricFileReq") is not None:
+            self._ModifyAttentionMetricFileReq = ModifyMetricFileStructNew()
+            self._ModifyAttentionMetricFileReq._deserialize(params.get("ModifyAttentionMetricFileReq"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDorisMetricFilesResponse(AbstractModel):
+    """DescribeDorisMetricFiles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorMsg: ErrorMsg
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param _ReturnData: 返回数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReturnData: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorMsg = None
+        self._ReturnData = None
+        self._RequestId = None
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def ReturnData(self):
+        return self._ReturnData
+
+    @ReturnData.setter
+    def ReturnData(self, ReturnData):
+        self._ReturnData = ReturnData
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._ReturnData = params.get("ReturnData")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeFederationTokenRequest(AbstractModel):
     """DescribeFederationToken请求参数结构体
 
@@ -1722,6 +3868,136 @@ class DescribeFederationTokenRequest(AbstractModel):
 
 class DescribeFederationTokenResponse(AbstractModel):
     """DescribeFederationToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFrontEndRequest(AbstractModel):
+    """DescribeFrontEnd请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _ConfigType: 文件类型
+        :type ConfigType: str
+        :param _Param1: 参数1
+        :type Param1: str
+        :param _Param2: 参数2
+        :type Param2: str
+        :param _Param3: 参数3
+        :type Param3: str
+        :param _Param4: 参数4
+        :type Param4: str
+        :param _Param5: 参数5
+        :type Param5: str
+        """
+        self._InstanceId = None
+        self._ConfigType = None
+        self._Param1 = None
+        self._Param2 = None
+        self._Param3 = None
+        self._Param4 = None
+        self._Param5 = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ConfigType(self):
+        return self._ConfigType
+
+    @ConfigType.setter
+    def ConfigType(self, ConfigType):
+        self._ConfigType = ConfigType
+
+    @property
+    def Param1(self):
+        return self._Param1
+
+    @Param1.setter
+    def Param1(self, Param1):
+        self._Param1 = Param1
+
+    @property
+    def Param2(self):
+        return self._Param2
+
+    @Param2.setter
+    def Param2(self, Param2):
+        self._Param2 = Param2
+
+    @property
+    def Param3(self):
+        return self._Param3
+
+    @Param3.setter
+    def Param3(self, Param3):
+        self._Param3 = Param3
+
+    @property
+    def Param4(self):
+        return self._Param4
+
+    @Param4.setter
+    def Param4(self, Param4):
+        self._Param4 = Param4
+
+    @property
+    def Param5(self):
+        return self._Param5
+
+    @Param5.setter
+    def Param5(self, Param5):
+        self._Param5 = Param5
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ConfigType = params.get("ConfigType")
+        self._Param1 = params.get("Param1")
+        self._Param2 = params.get("Param2")
+        self._Param3 = params.get("Param3")
+        self._Param4 = params.get("Param4")
+        self._Param5 = params.get("Param5")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFrontEndResponse(AbstractModel):
+    """DescribeFrontEnd返回参数结构体
 
     """
 
@@ -2464,6 +4740,253 @@ class DescribeInstanceNodesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeInstanceNodesRoleRequest(AbstractModel):
+    """DescribeInstanceNodesRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _IpFilter: 过滤ip
+        :type IpFilter: str
+        """
+        self._InstanceId = None
+        self._IpFilter = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def IpFilter(self):
+        return self._IpFilter
+
+    @IpFilter.setter
+    def IpFilter(self, IpFilter):
+        self._IpFilter = IpFilter
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._IpFilter = params.get("IpFilter")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceNodesRoleResponse(AbstractModel):
+    """DescribeInstanceNodesRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorMsg: 错误码
+        :type ErrorMsg: str
+        :param _TotalCount: 节点总数
+        :type TotalCount: int
+        :param _NodeInfos: 无
+        :type NodeInfos: list of NodeInfos
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorMsg = None
+        self._TotalCount = None
+        self._NodeInfos = None
+        self._RequestId = None
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def NodeInfos(self):
+        return self._NodeInfos
+
+    @NodeInfos.setter
+    def NodeInfos(self, NodeInfos):
+        self._NodeInfos = NodeInfos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._TotalCount = params.get("TotalCount")
+        if params.get("NodeInfos") is not None:
+            self._NodeInfos = []
+            for item in params.get("NodeInfos"):
+                obj = NodeInfos()
+                obj._deserialize(item)
+                self._NodeInfos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInstanceOperationsRequest(AbstractModel):
+    """DescribeInstanceOperations请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群ID
+        :type InstanceId: str
+        :param _Offset: 分页参数，偏移量，从0开始
+        :type Offset: int
+        :param _Limit: 分页参数，每页数目，默认为10
+        :type Limit: int
+        :param _StartTime: 开始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        """
+        self._InstanceId = None
+        self._Offset = None
+        self._Limit = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceOperationsResponse(AbstractModel):
+    """DescribeInstanceOperations返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 操作记录总数
+        :type TotalCount: int
+        :param _Operations: 操作记录具体数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operations: list of InstanceOperation
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Operations = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Operations(self):
+        return self._Operations
+
+    @Operations.setter
+    def Operations(self, Operations):
+        self._Operations = Operations
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Operations") is not None:
+            self._Operations = []
+            for item in params.get("Operations"):
+                obj = InstanceOperation()
+                obj._deserialize(item)
+                self._Operations.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeInstanceRequest(AbstractModel):
     """DescribeInstance请求参数结构体
 
@@ -2755,6 +5278,93 @@ class DescribeInstanceUsedSubnetsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeInstancesHealthStateRequest(AbstractModel):
+    """DescribeInstancesHealthState请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceID: 集群Id
+        :type InstanceID: str
+        :param _Input: "" 或者  某个集群Id
+        :type Input: str
+        """
+        self._InstanceID = None
+        self._Input = None
+
+    @property
+    def InstanceID(self):
+        warnings.warn("parameter `InstanceID` is deprecated", DeprecationWarning) 
+
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        warnings.warn("parameter `InstanceID` is deprecated", DeprecationWarning) 
+
+        self._InstanceID = InstanceID
+
+    @property
+    def Input(self):
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+
+    def _deserialize(self, params):
+        self._InstanceID = params.get("InstanceID")
+        self._Input = params.get("Input")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstancesHealthStateResponse(AbstractModel):
+    """DescribeInstancesHealthState返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeInstancesRequest(AbstractModel):
     """DescribeInstances请求参数结构体
 
@@ -2893,6 +5503,63 @@ class DescribeInstancesResponse(AbstractModel):
                 obj._deserialize(item)
                 self._InstancesList.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class DescribeMetricsFileReq(AbstractModel):
+    """展示doris监控指标请求入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceType: 集群类型
+        :type InstanceType: str
+        :param _MetricType: 指标类型
+        :type MetricType: str
+        :param _IfAttention: 是否关注
+        :type IfAttention: int
+        """
+        self._InstanceType = None
+        self._MetricType = None
+        self._IfAttention = None
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def MetricType(self):
+        return self._MetricType
+
+    @MetricType.setter
+    def MetricType(self, MetricType):
+        self._MetricType = MetricType
+
+    @property
+    def IfAttention(self):
+        return self._IfAttention
+
+    @IfAttention.setter
+    def IfAttention(self, IfAttention):
+        self._IfAttention = IfAttention
+
+
+    def _deserialize(self, params):
+        self._InstanceType = params.get("InstanceType")
+        self._MetricType = params.get("MetricType")
+        self._IfAttention = params.get("IfAttention")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeRegionZoneRequest(AbstractModel):
@@ -3651,6 +6318,152 @@ class DescribeSlowQueryRecordsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSpecRequest(AbstractModel):
+    """DescribeSpec请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Zone: 地域信息，例如"ap-guangzhou-1"
+        :type Zone: str
+        :param _PayMode: 计费类型，PREPAID 包年包月，POSTPAID_BY_HOUR 按量计费
+        :type PayMode: str
+        :param _Zones: 多可用区
+        :type Zones: list of str
+        :param _SpecName: 机型名称
+        :type SpecName: str
+        """
+        self._Zone = None
+        self._PayMode = None
+        self._Zones = None
+        self._SpecName = None
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def Zones(self):
+        return self._Zones
+
+    @Zones.setter
+    def Zones(self, Zones):
+        self._Zones = Zones
+
+    @property
+    def SpecName(self):
+        return self._SpecName
+
+    @SpecName.setter
+    def SpecName(self, SpecName):
+        self._SpecName = SpecName
+
+
+    def _deserialize(self, params):
+        self._Zone = params.get("Zone")
+        self._PayMode = params.get("PayMode")
+        self._Zones = params.get("Zones")
+        self._SpecName = params.get("SpecName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSpecResponse(AbstractModel):
+    """DescribeSpec返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MasterSpec: zookeeper节点规格描述
+        :type MasterSpec: list of ResourceSpec
+        :param _CoreSpec: 数据节点规格描述
+        :type CoreSpec: list of ResourceSpec
+        :param _AttachCBSSpec: 云盘列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttachCBSSpec: list of DiskSpec
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MasterSpec = None
+        self._CoreSpec = None
+        self._AttachCBSSpec = None
+        self._RequestId = None
+
+    @property
+    def MasterSpec(self):
+        return self._MasterSpec
+
+    @MasterSpec.setter
+    def MasterSpec(self, MasterSpec):
+        self._MasterSpec = MasterSpec
+
+    @property
+    def CoreSpec(self):
+        return self._CoreSpec
+
+    @CoreSpec.setter
+    def CoreSpec(self, CoreSpec):
+        self._CoreSpec = CoreSpec
+
+    @property
+    def AttachCBSSpec(self):
+        return self._AttachCBSSpec
+
+    @AttachCBSSpec.setter
+    def AttachCBSSpec(self, AttachCBSSpec):
+        self._AttachCBSSpec = AttachCBSSpec
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("MasterSpec") is not None:
+            self._MasterSpec = []
+            for item in params.get("MasterSpec"):
+                obj = ResourceSpec()
+                obj._deserialize(item)
+                self._MasterSpec.append(obj)
+        if params.get("CoreSpec") is not None:
+            self._CoreSpec = []
+            for item in params.get("CoreSpec"):
+                obj = ResourceSpec()
+                obj._deserialize(item)
+                self._CoreSpec.append(obj)
+        if params.get("AttachCBSSpec") is not None:
+            self._AttachCBSSpec = []
+            for item in params.get("AttachCBSSpec"):
+                obj = DiskSpec()
+                obj._deserialize(item)
+                self._AttachCBSSpec.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSqlApisRequest(AbstractModel):
     """DescribeSqlApis请求参数结构体
 
@@ -4013,6 +6826,160 @@ class DestroyInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DiskSpec(AbstractModel):
+    """磁盘规格描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DiskType: 磁盘类型，例如“CLOUD_SSD", "LOCAL_SSD"等
+        :type DiskType: str
+        :param _DiskDesc: 磁盘类型说明，例如"云SSD", "本地SSD"等
+        :type DiskDesc: str
+        :param _MinDiskSize: 磁盘最小规格大小，单位G
+        :type MinDiskSize: int
+        :param _MaxDiskSize: 磁盘最大规格大小，单位G
+        :type MaxDiskSize: int
+        :param _DiskCount: 磁盘数目
+        :type DiskCount: int
+        """
+        self._DiskType = None
+        self._DiskDesc = None
+        self._MinDiskSize = None
+        self._MaxDiskSize = None
+        self._DiskCount = None
+
+    @property
+    def DiskType(self):
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def DiskDesc(self):
+        return self._DiskDesc
+
+    @DiskDesc.setter
+    def DiskDesc(self, DiskDesc):
+        self._DiskDesc = DiskDesc
+
+    @property
+    def MinDiskSize(self):
+        return self._MinDiskSize
+
+    @MinDiskSize.setter
+    def MinDiskSize(self, MinDiskSize):
+        self._MinDiskSize = MinDiskSize
+
+    @property
+    def MaxDiskSize(self):
+        return self._MaxDiskSize
+
+    @MaxDiskSize.setter
+    def MaxDiskSize(self, MaxDiskSize):
+        self._MaxDiskSize = MaxDiskSize
+
+    @property
+    def DiskCount(self):
+        return self._DiskCount
+
+    @DiskCount.setter
+    def DiskCount(self, DiskCount):
+        self._DiskCount = DiskCount
+
+
+    def _deserialize(self, params):
+        self._DiskType = params.get("DiskType")
+        self._DiskDesc = params.get("DiskDesc")
+        self._MinDiskSize = params.get("MinDiskSize")
+        self._MaxDiskSize = params.get("MaxDiskSize")
+        self._DiskCount = params.get("DiskCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DorisSourceInfo(AbstractModel):
+    """外部doris集群的连接信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Host: doris集群的fe的ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Host: str
+        :param _Port: doris集群的fe的端口号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param _User: doris集群的账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type User: str
+        :param _Password: doris集群的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        """
+        self._Host = None
+        self._Port = None
+        self._User = None
+        self._Password = None
+
+    @property
+    def Host(self):
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+
+    def _deserialize(self, params):
+        self._Host = params.get("Host")
+        self._Port = params.get("Port")
+        self._User = params.get("User")
+        self._Password = params.get("Password")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FitClsLogRequest(AbstractModel):
     """FitClsLog请求参数结构体
 
@@ -4117,6 +7084,66 @@ class FitClsLogResponse(AbstractModel):
         self._FlowId = params.get("FlowId")
         self._ErrorMsg = params.get("ErrorMsg")
         self._RequestId = params.get("RequestId")
+
+
+class FrontEndRule(AbstractModel):
+    """前端规则描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: id序列
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ID: int
+        :param _Name: 规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Rule: 详细规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rule: str
+        """
+        self._ID = None
+        self._Name = None
+        self._Rule = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Rule(self):
+        return self._Rule
+
+    @Rule.setter
+    def Rule(self, Rule):
+        self._Rule = Rule
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Name = params.get("Name")
+        self._Rule = params.get("Rule")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class InstanceConfigItem(AbstractModel):
@@ -5022,6 +8049,159 @@ class InstanceNode(AbstractModel):
         
 
 
+class InstanceOperation(AbstractModel):
+    """集群操作描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 操作名称，例如“create_instance"、“scaleout_instance”等
+        :type Name: str
+        :param _Result: 操作结果，“Success"表示成功，”Fail"表示失败
+        :type Result: str
+        :param _Desc: 操作名称描述，例如“创建”，“修改集群名称”等
+        :type Desc: str
+        :param _Level: 操作级别，例如“Critical", "Normal"等
+        :type Level: str
+        :param _LevelDesc: 操作级别描述，例如“高危”，“一般”等
+        :type LevelDesc: str
+        :param _StartTime: 操作开始时间
+        :type StartTime: str
+        :param _EndTime: 操作结束时间
+        :type EndTime: str
+        :param _ResultDesc: 操作结果描述，例如“成功”，“失败”
+        :type ResultDesc: str
+        :param _OperateUin: 操作用户ID
+        :type OperateUin: str
+        :param _JobId: 操作对应的jobid
+        :type JobId: int
+        :param _OperationDetail: 操作明细
+        :type OperationDetail: str
+        """
+        self._Name = None
+        self._Result = None
+        self._Desc = None
+        self._Level = None
+        self._LevelDesc = None
+        self._StartTime = None
+        self._EndTime = None
+        self._ResultDesc = None
+        self._OperateUin = None
+        self._JobId = None
+        self._OperationDetail = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Desc(self):
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def Level(self):
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def LevelDesc(self):
+        return self._LevelDesc
+
+    @LevelDesc.setter
+    def LevelDesc(self, LevelDesc):
+        self._LevelDesc = LevelDesc
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ResultDesc(self):
+        return self._ResultDesc
+
+    @ResultDesc.setter
+    def ResultDesc(self, ResultDesc):
+        self._ResultDesc = ResultDesc
+
+    @property
+    def OperateUin(self):
+        return self._OperateUin
+
+    @OperateUin.setter
+    def OperateUin(self, OperateUin):
+        self._OperateUin = OperateUin
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def OperationDetail(self):
+        return self._OperationDetail
+
+    @OperationDetail.setter
+    def OperationDetail(self, OperationDetail):
+        self._OperationDetail = OperationDetail
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Result = params.get("Result")
+        self._Desc = params.get("Desc")
+        self._Level = params.get("Level")
+        self._LevelDesc = params.get("LevelDesc")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ResultDesc = params.get("ResultDesc")
+        self._OperateUin = params.get("OperateUin")
+        self._JobId = params.get("JobId")
+        self._OperationDetail = params.get("OperationDetail")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyInstanceKeyValConfigsRequest(AbstractModel):
     """ModifyInstanceKeyValConfigs请求参数结构体
 
@@ -5290,6 +8470,244 @@ class ModifyInstanceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyMetricFileStruct(AbstractModel):
+    """用户是否关注监控指标入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 唯一id
+        :type Id: int
+        :param _IfAttention: 是否关注
+        :type IfAttention: str
+        """
+        self._Id = None
+        self._IfAttention = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def IfAttention(self):
+        return self._IfAttention
+
+    @IfAttention.setter
+    def IfAttention(self, IfAttention):
+        self._IfAttention = IfAttention
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._IfAttention = params.get("IfAttention")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMetricFileStructNew(AbstractModel):
+    """doris监控指标关注（取消关注）功能入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceType: 集群类型
+        :type InstanceType: str
+        :param _MetricType: 指标类型
+        :type MetricType: str
+        :param _Name: 指标英文名
+        :type Name: str
+        :param _IfAttention: 1：关注
+0：取消关注
+        :type IfAttention: int
+        """
+        self._InstanceType = None
+        self._MetricType = None
+        self._Name = None
+        self._IfAttention = None
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def MetricType(self):
+        return self._MetricType
+
+    @MetricType.setter
+    def MetricType(self, MetricType):
+        self._MetricType = MetricType
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def IfAttention(self):
+        return self._IfAttention
+
+    @IfAttention.setter
+    def IfAttention(self, IfAttention):
+        self._IfAttention = IfAttention
+
+
+    def _deserialize(self, params):
+        self._InstanceType = params.get("InstanceType")
+        self._MetricType = params.get("MetricType")
+        self._Name = params.get("Name")
+        self._IfAttention = params.get("IfAttention")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNodeStatusRequest(AbstractModel):
+    """ModifyNodeStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群ID，例如cdwch-xxxx
+        :type InstanceId: str
+        :param _NodeInfos: 节点信息
+        :type NodeInfos: list of NodeInfos
+        :param _OperationCode: 节点操作
+        :type OperationCode: str
+        :param _RestartTimeOut: 超时时间（秒）
+        :type RestartTimeOut: str
+        """
+        self._InstanceId = None
+        self._NodeInfos = None
+        self._OperationCode = None
+        self._RestartTimeOut = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def NodeInfos(self):
+        return self._NodeInfos
+
+    @NodeInfos.setter
+    def NodeInfos(self, NodeInfos):
+        self._NodeInfos = NodeInfos
+
+    @property
+    def OperationCode(self):
+        return self._OperationCode
+
+    @OperationCode.setter
+    def OperationCode(self, OperationCode):
+        self._OperationCode = OperationCode
+
+    @property
+    def RestartTimeOut(self):
+        return self._RestartTimeOut
+
+    @RestartTimeOut.setter
+    def RestartTimeOut(self, RestartTimeOut):
+        self._RestartTimeOut = RestartTimeOut
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("NodeInfos") is not None:
+            self._NodeInfos = []
+            for item in params.get("NodeInfos"):
+                obj = NodeInfos()
+                obj._deserialize(item)
+                self._NodeInfos.append(obj)
+        self._OperationCode = params.get("OperationCode")
+        self._RestartTimeOut = params.get("RestartTimeOut")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNodeStatusResponse(AbstractModel):
+    """ModifyNodeStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 流程相关信息
+        :type FlowId: int
+        :param _ErrorMsg: 错误信息
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._ErrorMsg = params.get("ErrorMsg")
         self._RequestId = params.get("RequestId")
 
 
@@ -5958,6 +9376,99 @@ class NodeInfo(AbstractModel):
         
 
 
+class NodeInfos(AbstractModel):
+    """节点信息列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeName: 节点在doris中明朝n
+        :type NodeName: str
+        :param _Status: 节点状态
+        :type Status: int
+        :param _Ip: 节点ip
+        :type Ip: str
+        :param _NodeRole: 节点角色
+        :type NodeRole: str
+        :param _ComponentName: 组件名
+        :type ComponentName: str
+        :param _LastRestartTime: 上一次重启时间
+        :type LastRestartTime: str
+        """
+        self._NodeName = None
+        self._Status = None
+        self._Ip = None
+        self._NodeRole = None
+        self._ComponentName = None
+        self._LastRestartTime = None
+
+    @property
+    def NodeName(self):
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def NodeRole(self):
+        return self._NodeRole
+
+    @NodeRole.setter
+    def NodeRole(self, NodeRole):
+        self._NodeRole = NodeRole
+
+    @property
+    def ComponentName(self):
+        return self._ComponentName
+
+    @ComponentName.setter
+    def ComponentName(self, ComponentName):
+        self._ComponentName = ComponentName
+
+    @property
+    def LastRestartTime(self):
+        return self._LastRestartTime
+
+    @LastRestartTime.setter
+    def LastRestartTime(self, LastRestartTime):
+        self._LastRestartTime = LastRestartTime
+
+
+    def _deserialize(self, params):
+        self._NodeName = params.get("NodeName")
+        self._Status = params.get("Status")
+        self._Ip = params.get("Ip")
+        self._NodeRole = params.get("NodeRole")
+        self._ComponentName = params.get("ComponentName")
+        self._LastRestartTime = params.get("LastRestartTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NodesSummary(AbstractModel):
     """节点角色描述信息
 
@@ -6154,6 +9665,283 @@ class NodesSummary(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class OpenBackUpRequest(AbstractModel):
+    """OpenBackUp请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _OperationType: 取值：
+open:打开
+close:关闭
+updateBucket:变更桶名
+        :type OperationType: str
+        :param _CosBucketName: 桶名字
+        :type CosBucketName: str
+        """
+        self._InstanceId = None
+        self._OperationType = None
+        self._CosBucketName = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def OperationType(self):
+        return self._OperationType
+
+    @OperationType.setter
+    def OperationType(self, OperationType):
+        self._OperationType = OperationType
+
+    @property
+    def CosBucketName(self):
+        return self._CosBucketName
+
+    @CosBucketName.setter
+    def CosBucketName(self, CosBucketName):
+        self._CosBucketName = CosBucketName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._OperationType = params.get("OperationType")
+        self._CosBucketName = params.get("CosBucketName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenBackUpResponse(AbstractModel):
+    """OpenBackUp返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class RecoverBackUpJobRequest(AbstractModel):
+    """RecoverBackUpJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _BackUpJobId: 任务id
+        :type BackUpJobId: int
+        :param _ReplicationNum: 恢复出来的新表副本数
+        :type ReplicationNum: int
+        :param _ReserveSourceConfig: 恢复是否保持源表中的配置，1时表示保留源表中的配置
+        :type ReserveSourceConfig: int
+        :param _RecoverType: 0默认 1cos恢复
+        :type RecoverType: int
+        :param _CosSourceInfo: CosSourceInfo对象
+        :type CosSourceInfo: :class:`tencentcloud.cdwdoris.v20211228.models.CosSourceInfo`
+        :param _ScheduleType: 0默认 1定期执行
+        :type ScheduleType: int
+        :param _NextTime: 年-月-日 时:分:秒
+        :type NextTime: str
+        :param _ScheduleName: 调度名称
+        :type ScheduleName: str
+        :param _OperationType: create update
+        :type OperationType: str
+        :param _RecoverScope: 恢复粒度：All全量、Database按库、Table按表
+        :type RecoverScope: str
+        :param _RecoverDatabase: 恢复库：如果是按库备份，则需要该字段，库之间用","分割
+        :type RecoverDatabase: str
+        """
+        self._InstanceId = None
+        self._BackUpJobId = None
+        self._ReplicationNum = None
+        self._ReserveSourceConfig = None
+        self._RecoverType = None
+        self._CosSourceInfo = None
+        self._ScheduleType = None
+        self._NextTime = None
+        self._ScheduleName = None
+        self._OperationType = None
+        self._RecoverScope = None
+        self._RecoverDatabase = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def BackUpJobId(self):
+        return self._BackUpJobId
+
+    @BackUpJobId.setter
+    def BackUpJobId(self, BackUpJobId):
+        self._BackUpJobId = BackUpJobId
+
+    @property
+    def ReplicationNum(self):
+        return self._ReplicationNum
+
+    @ReplicationNum.setter
+    def ReplicationNum(self, ReplicationNum):
+        self._ReplicationNum = ReplicationNum
+
+    @property
+    def ReserveSourceConfig(self):
+        return self._ReserveSourceConfig
+
+    @ReserveSourceConfig.setter
+    def ReserveSourceConfig(self, ReserveSourceConfig):
+        self._ReserveSourceConfig = ReserveSourceConfig
+
+    @property
+    def RecoverType(self):
+        return self._RecoverType
+
+    @RecoverType.setter
+    def RecoverType(self, RecoverType):
+        self._RecoverType = RecoverType
+
+    @property
+    def CosSourceInfo(self):
+        return self._CosSourceInfo
+
+    @CosSourceInfo.setter
+    def CosSourceInfo(self, CosSourceInfo):
+        self._CosSourceInfo = CosSourceInfo
+
+    @property
+    def ScheduleType(self):
+        return self._ScheduleType
+
+    @ScheduleType.setter
+    def ScheduleType(self, ScheduleType):
+        self._ScheduleType = ScheduleType
+
+    @property
+    def NextTime(self):
+        return self._NextTime
+
+    @NextTime.setter
+    def NextTime(self, NextTime):
+        self._NextTime = NextTime
+
+    @property
+    def ScheduleName(self):
+        return self._ScheduleName
+
+    @ScheduleName.setter
+    def ScheduleName(self, ScheduleName):
+        self._ScheduleName = ScheduleName
+
+    @property
+    def OperationType(self):
+        return self._OperationType
+
+    @OperationType.setter
+    def OperationType(self, OperationType):
+        self._OperationType = OperationType
+
+    @property
+    def RecoverScope(self):
+        return self._RecoverScope
+
+    @RecoverScope.setter
+    def RecoverScope(self, RecoverScope):
+        self._RecoverScope = RecoverScope
+
+    @property
+    def RecoverDatabase(self):
+        return self._RecoverDatabase
+
+    @RecoverDatabase.setter
+    def RecoverDatabase(self, RecoverDatabase):
+        self._RecoverDatabase = RecoverDatabase
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._BackUpJobId = params.get("BackUpJobId")
+        self._ReplicationNum = params.get("ReplicationNum")
+        self._ReserveSourceConfig = params.get("ReserveSourceConfig")
+        self._RecoverType = params.get("RecoverType")
+        if params.get("CosSourceInfo") is not None:
+            self._CosSourceInfo = CosSourceInfo()
+            self._CosSourceInfo._deserialize(params.get("CosSourceInfo"))
+        self._ScheduleType = params.get("ScheduleType")
+        self._NextTime = params.get("NextTime")
+        self._ScheduleName = params.get("ScheduleName")
+        self._OperationType = params.get("OperationType")
+        self._RecoverScope = params.get("RecoverScope")
+        self._RecoverDatabase = params.get("RecoverDatabase")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecoverBackUpJobResponse(AbstractModel):
+    """RecoverBackUpJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class ReduceInstanceRequest(AbstractModel):
@@ -6749,6 +10537,263 @@ class ResourceNodeSpec(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ResourceSpec(AbstractModel):
+    """资源规格描述信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 规格名称，例如“SCH1"
+        :type Name: str
+        :param _Cpu: cpu核数
+        :type Cpu: int
+        :param _Mem: 内存大小，单位G
+        :type Mem: int
+        :param _Type: 分类标记，STANDARD/BIGDATA/HIGHIO分别表示标准型/大数据型/高IO
+        :type Type: str
+        :param _SystemDisk: 系统盘描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SystemDisk: :class:`tencentcloud.cdwdoris.v20211228.models.DiskSpec`
+        :param _DataDisk: 数据盘描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataDisk: :class:`tencentcloud.cdwdoris.v20211228.models.DiskSpec`
+        :param _MaxNodeSize: 最大节点数目限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxNodeSize: int
+        :param _Available: 是否可用，false代表售罄
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Available: bool
+        :param _ComputeSpecDesc: 规格描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComputeSpecDesc: str
+        :param _InstanceQuota: cvm库存
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceQuota: int
+        """
+        self._Name = None
+        self._Cpu = None
+        self._Mem = None
+        self._Type = None
+        self._SystemDisk = None
+        self._DataDisk = None
+        self._MaxNodeSize = None
+        self._Available = None
+        self._ComputeSpecDesc = None
+        self._InstanceQuota = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Mem(self):
+        return self._Mem
+
+    @Mem.setter
+    def Mem(self, Mem):
+        self._Mem = Mem
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def SystemDisk(self):
+        return self._SystemDisk
+
+    @SystemDisk.setter
+    def SystemDisk(self, SystemDisk):
+        self._SystemDisk = SystemDisk
+
+    @property
+    def DataDisk(self):
+        return self._DataDisk
+
+    @DataDisk.setter
+    def DataDisk(self, DataDisk):
+        self._DataDisk = DataDisk
+
+    @property
+    def MaxNodeSize(self):
+        return self._MaxNodeSize
+
+    @MaxNodeSize.setter
+    def MaxNodeSize(self, MaxNodeSize):
+        self._MaxNodeSize = MaxNodeSize
+
+    @property
+    def Available(self):
+        return self._Available
+
+    @Available.setter
+    def Available(self, Available):
+        self._Available = Available
+
+    @property
+    def ComputeSpecDesc(self):
+        return self._ComputeSpecDesc
+
+    @ComputeSpecDesc.setter
+    def ComputeSpecDesc(self, ComputeSpecDesc):
+        self._ComputeSpecDesc = ComputeSpecDesc
+
+    @property
+    def InstanceQuota(self):
+        return self._InstanceQuota
+
+    @InstanceQuota.setter
+    def InstanceQuota(self, InstanceQuota):
+        self._InstanceQuota = InstanceQuota
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Cpu = params.get("Cpu")
+        self._Mem = params.get("Mem")
+        self._Type = params.get("Type")
+        if params.get("SystemDisk") is not None:
+            self._SystemDisk = DiskSpec()
+            self._SystemDisk._deserialize(params.get("SystemDisk"))
+        if params.get("DataDisk") is not None:
+            self._DataDisk = DiskSpec()
+            self._DataDisk._deserialize(params.get("DataDisk"))
+        self._MaxNodeSize = params.get("MaxNodeSize")
+        self._Available = params.get("Available")
+        self._ComputeSpecDesc = params.get("ComputeSpecDesc")
+        self._InstanceQuota = params.get("InstanceQuota")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RestartClusterForConfigsRequest(AbstractModel):
+    """RestartClusterForConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群ID，例如cdwch-xxxx
+        :type InstanceId: str
+        :param _ConfigName: 配置文件名称
+        :type ConfigName: str
+        :param _OperationType: grace_restart为优雅滚动重启 不填默认立刻重启
+        :type OperationType: str
+        """
+        self._InstanceId = None
+        self._ConfigName = None
+        self._OperationType = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ConfigName(self):
+        return self._ConfigName
+
+    @ConfigName.setter
+    def ConfigName(self, ConfigName):
+        self._ConfigName = ConfigName
+
+    @property
+    def OperationType(self):
+        return self._OperationType
+
+    @OperationType.setter
+    def OperationType(self, OperationType):
+        self._OperationType = OperationType
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ConfigName = params.get("ConfigName")
+        self._OperationType = params.get("OperationType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RestartClusterForConfigsResponse(AbstractModel):
+    """RestartClusterForConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 流程相关信息
+        :type FlowId: int
+        :param _ErrorMsg: 错误信息
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
 
 
 class RestartClusterForNodeRequest(AbstractModel):

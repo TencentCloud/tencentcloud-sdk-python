@@ -6671,12 +6671,18 @@ class DescribeAlertListResponse(AbstractModel):
         :type AlertTypeCount: list of TagCount
         :param _TotalCount: 告警总数
         :type TotalCount: int
+        :param _ReturnCode: 0：succeed 1：timeout
+        :type ReturnCode: int
+        :param _ReturnMsg: 返回状态信息
+        :type ReturnMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AlertList = None
         self._AlertTypeCount = None
         self._TotalCount = None
+        self._ReturnCode = None
+        self._ReturnMsg = None
         self._RequestId = None
 
     @property
@@ -6704,6 +6710,22 @@ class DescribeAlertListResponse(AbstractModel):
         self._TotalCount = TotalCount
 
     @property
+    def ReturnCode(self):
+        return self._ReturnCode
+
+    @ReturnCode.setter
+    def ReturnCode(self, ReturnCode):
+        self._ReturnCode = ReturnCode
+
+    @property
+    def ReturnMsg(self):
+        return self._ReturnMsg
+
+    @ReturnMsg.setter
+    def ReturnMsg(self, ReturnMsg):
+        self._ReturnMsg = ReturnMsg
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -6726,6 +6748,8 @@ class DescribeAlertListResponse(AbstractModel):
                 obj._deserialize(item)
                 self._AlertTypeCount.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._ReturnCode = params.get("ReturnCode")
+        self._ReturnMsg = params.get("ReturnMsg")
         self._RequestId = params.get("RequestId")
 
 

@@ -3145,7 +3145,7 @@ class CreateAlarmNoticeRequest(AbstractModel):
         :type NoticeLanguage: str
         :param _UserNotices: 用户通知 最多5个
         :type UserNotices: list of UserNotice
-        :param _URLNotices: 回调通知 最多3个
+        :param _URLNotices: 回调通知 最多6个
         :type URLNotices: list of URLNotice
         :param _CLSNotices: 推送CLS日志服务的操作 最多1个
         :type CLSNotices: list of CLSNotice
@@ -22210,7 +22210,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
         :type NoticeId: str
         :param _UserNotices: 用户通知 最多5个
         :type UserNotices: list of UserNotice
-        :param _URLNotices: 回调通知 最多3个
+        :param _URLNotices: 回调通知 最多6个
         :type URLNotices: list of URLNotice
         :param _CLSNotices: 告警通知推送到CLS服务 最多1个
         :type CLSNotices: list of CLSNotice

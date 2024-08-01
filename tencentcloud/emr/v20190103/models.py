@@ -2407,6 +2407,8 @@ class CreateClusterRequest(AbstractModel):
         :type DependService: list of DependService
         :param _ZoneResourceConfiguration: 节点资源的规格，有几个可用区，就填几个，按顺序第一个为主可用区，第二个为备可用区，第三个为仲裁可用区。如果没有开启跨AZ，则长度为1即可。
         :type ZoneResourceConfiguration: list of ZoneResourceConfiguration
+        :param _CosBucket: cos桶路径，创建StarRocks存算分离集群时用到
+        :type CosBucket: str
         """
         self._ProductVersion = None
         self._EnableSupportHAFlag = None
@@ -2428,6 +2430,7 @@ class CreateClusterRequest(AbstractModel):
         self._MetaDBInfo = None
         self._DependService = None
         self._ZoneResourceConfiguration = None
+        self._CosBucket = None
 
     @property
     def ProductVersion(self):
@@ -2589,6 +2592,14 @@ class CreateClusterRequest(AbstractModel):
     def ZoneResourceConfiguration(self, ZoneResourceConfiguration):
         self._ZoneResourceConfiguration = ZoneResourceConfiguration
 
+    @property
+    def CosBucket(self):
+        return self._CosBucket
+
+    @CosBucket.setter
+    def CosBucket(self, CosBucket):
+        self._CosBucket = CosBucket
+
 
     def _deserialize(self, params):
         self._ProductVersion = params.get("ProductVersion")
@@ -2639,6 +2650,7 @@ class CreateClusterRequest(AbstractModel):
                 obj = ZoneResourceConfiguration()
                 obj._deserialize(item)
                 self._ZoneResourceConfiguration.append(obj)
+        self._CosBucket = params.get("CosBucket")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2797,6 +2809,8 @@ Hadoop-Hbase
         :type MultiZone: bool
         :param _MultiZoneSettings: 节点资源的规格，有几个可用区，就填几个，按顺序第一个为主可用区，第二个为备可用区，第三个为仲裁可用区。如果没有开启跨AZ，则长度为1即可。
         :type MultiZoneSettings: list of MultiZoneSetting
+        :param _CosBucket: cos桶路径，创建StarRocks存算分离集群时用到
+        :type CosBucket: str
         """
         self._ProductId = None
         self._Software = None
@@ -2830,6 +2844,7 @@ Hadoop-Hbase
         self._VersionID = None
         self._MultiZone = None
         self._MultiZoneSettings = None
+        self._CosBucket = None
 
     @property
     def ProductId(self):
@@ -3087,6 +3102,14 @@ Hadoop-Hbase
     def MultiZoneSettings(self, MultiZoneSettings):
         self._MultiZoneSettings = MultiZoneSettings
 
+    @property
+    def CosBucket(self):
+        return self._CosBucket
+
+    @CosBucket.setter
+    def CosBucket(self, CosBucket):
+        self._CosBucket = CosBucket
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
@@ -3153,6 +3176,7 @@ Hadoop-Hbase
                 obj = MultiZoneSetting()
                 obj._deserialize(item)
                 self._MultiZoneSettings.append(obj)
+        self._CosBucket = params.get("CosBucket")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

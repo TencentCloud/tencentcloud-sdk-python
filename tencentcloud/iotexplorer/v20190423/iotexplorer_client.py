@@ -279,6 +279,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCloudStorageAIService(self, request):
+        """开通设备云存AI分析服务
+
+        :param request: Request instance for CreateCloudStorageAIService.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateCloudStorageAIServiceRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.CreateCloudStorageAIServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCloudStorageAIService", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCloudStorageAIServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDevice(self, request):
         """创建设备
 
@@ -3007,6 +3030,29 @@ class IotexplorerClient(AbstractClient):
             body = self.call("ResetCloudStorage", params, headers=headers)
             response = json.loads(body)
             model = models.ResetCloudStorageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ResetCloudStorageAIService(self, request):
+        """重置指定设备的云存 AI 服务
+
+        :param request: Request instance for ResetCloudStorageAIService.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ResetCloudStorageAIServiceRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.ResetCloudStorageAIServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResetCloudStorageAIService", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResetCloudStorageAIServiceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

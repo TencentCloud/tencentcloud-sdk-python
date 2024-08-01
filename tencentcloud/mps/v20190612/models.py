@@ -42313,10 +42313,15 @@ class TranslateConfigureInfo(AbstractModel):
         :type SourceLanguage: str
         :param _DestinationLanguage: 翻译目标语言。
         :type DestinationLanguage: str
+        :param _SubtitleFormat: 生成的字幕文件格式，填空字符串表示不生成字幕文件，可选值：
+<li>vtt：生成 WebVTT 字幕文件。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubtitleFormat: str
         """
         self._Switch = None
         self._SourceLanguage = None
         self._DestinationLanguage = None
+        self._SubtitleFormat = None
 
     @property
     def Switch(self):
@@ -42342,11 +42347,20 @@ class TranslateConfigureInfo(AbstractModel):
     def DestinationLanguage(self, DestinationLanguage):
         self._DestinationLanguage = DestinationLanguage
 
+    @property
+    def SubtitleFormat(self):
+        return self._SubtitleFormat
+
+    @SubtitleFormat.setter
+    def SubtitleFormat(self, SubtitleFormat):
+        self._SubtitleFormat = SubtitleFormat
+
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         self._SourceLanguage = params.get("SourceLanguage")
         self._DestinationLanguage = params.get("DestinationLanguage")
+        self._SubtitleFormat = params.get("SubtitleFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -42372,10 +42386,14 @@ class TranslateConfigureInfoForUpdate(AbstractModel):
         :type SourceLanguage: str
         :param _DestinationLanguage: 翻译目标语言。
         :type DestinationLanguage: str
+        :param _SubtitleFormat: 生成的字幕文件格式，填空字符串表示不生成字幕文件，可选值：
+<li>vtt：生成 WebVTT 字幕文件。</li>
+        :type SubtitleFormat: str
         """
         self._Switch = None
         self._SourceLanguage = None
         self._DestinationLanguage = None
+        self._SubtitleFormat = None
 
     @property
     def Switch(self):
@@ -42401,11 +42419,20 @@ class TranslateConfigureInfoForUpdate(AbstractModel):
     def DestinationLanguage(self, DestinationLanguage):
         self._DestinationLanguage = DestinationLanguage
 
+    @property
+    def SubtitleFormat(self):
+        return self._SubtitleFormat
+
+    @SubtitleFormat.setter
+    def SubtitleFormat(self, SubtitleFormat):
+        self._SubtitleFormat = SubtitleFormat
+
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         self._SourceLanguage = params.get("SourceLanguage")
         self._DestinationLanguage = params.get("DestinationLanguage")
+        self._SubtitleFormat = params.get("SubtitleFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

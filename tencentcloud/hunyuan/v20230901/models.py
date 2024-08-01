@@ -89,6 +89,12 @@ class ChatCompletionsRequest(AbstractModel):
         :type CustomTool: :class:`tencentcloud.hunyuan.v20230901.models.Tool`
         :param _SearchInfo: 默认是false，在值为true且命中搜索时，接口会返回SearchInfo
         :type SearchInfo: bool
+        :param _Citation: 搜索引文角标开关。
+说明：
+1. 配合EnableEnhancement和SearchInfo参数使用。打开后，回答中命中搜索的结果会在片段后增加角标标志，对应SearchInfo列表中的链接。
+2. false：开关关闭，true：开关打开。
+3. 未传值时默认开关关闭（false）。
+        :type Citation: bool
         """
         self._Model = None
         self._Messages = None
@@ -101,6 +107,7 @@ class ChatCompletionsRequest(AbstractModel):
         self._ToolChoice = None
         self._CustomTool = None
         self._SearchInfo = None
+        self._Citation = None
 
     @property
     def Model(self):
@@ -190,6 +197,14 @@ class ChatCompletionsRequest(AbstractModel):
     def SearchInfo(self, SearchInfo):
         self._SearchInfo = SearchInfo
 
+    @property
+    def Citation(self):
+        return self._Citation
+
+    @Citation.setter
+    def Citation(self, Citation):
+        self._Citation = Citation
+
 
     def _deserialize(self, params):
         self._Model = params.get("Model")
@@ -215,6 +230,7 @@ class ChatCompletionsRequest(AbstractModel):
             self._CustomTool = Tool()
             self._CustomTool._deserialize(params.get("CustomTool"))
         self._SearchInfo = params.get("SearchInfo")
+        self._Citation = params.get("Citation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -239,7 +255,7 @@ class ChatCompletionsResponse(AbstractModel):
         :type Usage: :class:`tencentcloud.hunyuan.v20230901.models.Usage`
         :param _Note: 免责声明。
         :type Note: str
-        :param _Id: 本轮对话的 ID。
+        :param _Id: 本次请求的 RequestId。
         :type Id: str
         :param _Choices: 回复内容。
         :type Choices: list of Choice

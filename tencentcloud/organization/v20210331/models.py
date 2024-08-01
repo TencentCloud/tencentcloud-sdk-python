@@ -5472,6 +5472,119 @@ class ListOrganizationIdentityResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ListOrganizationServiceRequest(AbstractModel):
+    """ListOrganizationService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 偏移量。取值是limit的整数倍，默认值 : 0
+        :type Offset: int
+        :param _Limit: 限制数目。取值范围：1~50，默认值：10
+        :type Limit: int
+        :param _SearchKey: 名称搜索关键字。
+        :type SearchKey: str
+        """
+        self._Offset = None
+        self._Limit = None
+        self._SearchKey = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SearchKey(self):
+        return self._SearchKey
+
+    @SearchKey.setter
+    def SearchKey(self, SearchKey):
+        self._SearchKey = SearchKey
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SearchKey = params.get("SearchKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListOrganizationServiceResponse(AbstractModel):
+    """ListOrganizationService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param _Items: 集团服务列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of OrganizationServiceAssign
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = OrganizationServiceAssign()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class ListPoliciesForTarget(AbstractModel):
     """查询目标关联的SCP策略列表
 
@@ -7776,6 +7889,197 @@ class OrgProductFinancial(AbstractModel):
         self._ProductCode = params.get("ProductCode")
         self._TotalCost = params.get("TotalCost")
         self._Ratio = params.get("Ratio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OrganizationServiceAssign(AbstractModel):
+    """集团服务设置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceId: 集团服务ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceId: int
+        :param _ProductName: 集团服务产品名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductName: str
+        :param _IsAssign: 是否支持委派。取值: 1-是  2-否
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsAssign: int
+        :param _Description: 集团服务描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _MemberNum: 当前委派管理员数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemberNum: str
+        :param _Document: 帮助文档。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Document: str
+        :param _ConsoleUrl: 集团服务产品控制台路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsoleUrl: str
+        :param _IsUsageStatus: 是否接入使用状态。取值: 1-是 
+ 2-否
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsUsageStatus: int
+        :param _CanAssignCount: 委派管理员数量限制。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CanAssignCount: int
+        :param _Product: 集团服务产品标识。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Product: str
+        :param _ServiceGrant: 是否支持集团服务授权。取值 1-是、2-否
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceGrant: int
+        :param _GrantStatus: 集团服务授权启用状态。ServiceGrant值为1时该字段有效 ，取值：Enabled-开启  Disabled-关闭 
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GrantStatus: str
+        :param _IsSetManagementScope: 是否支持设置委派管理范围。取值: 1-是  2-否
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsSetManagementScope: int
+        """
+        self._ServiceId = None
+        self._ProductName = None
+        self._IsAssign = None
+        self._Description = None
+        self._MemberNum = None
+        self._Document = None
+        self._ConsoleUrl = None
+        self._IsUsageStatus = None
+        self._CanAssignCount = None
+        self._Product = None
+        self._ServiceGrant = None
+        self._GrantStatus = None
+        self._IsSetManagementScope = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def ProductName(self):
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
+
+    @property
+    def IsAssign(self):
+        return self._IsAssign
+
+    @IsAssign.setter
+    def IsAssign(self, IsAssign):
+        self._IsAssign = IsAssign
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def MemberNum(self):
+        return self._MemberNum
+
+    @MemberNum.setter
+    def MemberNum(self, MemberNum):
+        self._MemberNum = MemberNum
+
+    @property
+    def Document(self):
+        return self._Document
+
+    @Document.setter
+    def Document(self, Document):
+        self._Document = Document
+
+    @property
+    def ConsoleUrl(self):
+        return self._ConsoleUrl
+
+    @ConsoleUrl.setter
+    def ConsoleUrl(self, ConsoleUrl):
+        self._ConsoleUrl = ConsoleUrl
+
+    @property
+    def IsUsageStatus(self):
+        return self._IsUsageStatus
+
+    @IsUsageStatus.setter
+    def IsUsageStatus(self, IsUsageStatus):
+        self._IsUsageStatus = IsUsageStatus
+
+    @property
+    def CanAssignCount(self):
+        return self._CanAssignCount
+
+    @CanAssignCount.setter
+    def CanAssignCount(self, CanAssignCount):
+        self._CanAssignCount = CanAssignCount
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def ServiceGrant(self):
+        return self._ServiceGrant
+
+    @ServiceGrant.setter
+    def ServiceGrant(self, ServiceGrant):
+        self._ServiceGrant = ServiceGrant
+
+    @property
+    def GrantStatus(self):
+        return self._GrantStatus
+
+    @GrantStatus.setter
+    def GrantStatus(self, GrantStatus):
+        self._GrantStatus = GrantStatus
+
+    @property
+    def IsSetManagementScope(self):
+        return self._IsSetManagementScope
+
+    @IsSetManagementScope.setter
+    def IsSetManagementScope(self, IsSetManagementScope):
+        self._IsSetManagementScope = IsSetManagementScope
+
+
+    def _deserialize(self, params):
+        self._ServiceId = params.get("ServiceId")
+        self._ProductName = params.get("ProductName")
+        self._IsAssign = params.get("IsAssign")
+        self._Description = params.get("Description")
+        self._MemberNum = params.get("MemberNum")
+        self._Document = params.get("Document")
+        self._ConsoleUrl = params.get("ConsoleUrl")
+        self._IsUsageStatus = params.get("IsUsageStatus")
+        self._CanAssignCount = params.get("CanAssignCount")
+        self._Product = params.get("Product")
+        self._ServiceGrant = params.get("ServiceGrant")
+        self._GrantStatus = params.get("GrantStatus")
+        self._IsSetManagementScope = params.get("IsSetManagementScope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

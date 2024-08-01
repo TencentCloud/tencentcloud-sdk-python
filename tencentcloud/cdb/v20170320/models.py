@@ -6082,9 +6082,11 @@ class CreateCloneInstanceRequest(AbstractModel):
         r"""
         :param _InstanceId: 克隆源实例Id。
         :type InstanceId: str
-        :param _SpecifiedRollbackTime: 如果需要克隆实例回档到指定时间，则指定该值。时间格式为： yyyy-mm-dd hh:mm:ss 。
+        :param _SpecifiedRollbackTime: 如果需要克隆实例回档到指定时间，则指定该值。时间格式为：yyyy-mm-dd hh:mm:ss。
+说明：此参数和 SpecifiedBackupId 参数需要2选1进行设置。
         :type SpecifiedRollbackTime: str
-        :param _SpecifiedBackupId: 如果需要克隆实例回档到指定备份的时间点，则指定该值为物理备份的Id。请使用 [查询数据备份文件列表](/document/api/236/15842) 。
+        :param _SpecifiedBackupId: 如果需要克隆实例回档到指定备份集，则指定该值为备份文件的 Id。请使用 [查询数据备份文件列表](/document/api/236/15842)。
+说明：如果是克隆双节点、三节点实例，备份文件为物理备份，如果是克隆单节点、集群版实例，备份文件为快照备份。
         :type SpecifiedBackupId: int
         :param _UniqVpcId: 私有网络 ID，如果不传则默认选择基础网络，请使用 [查询私有网络列表](/document/api/215/15778) 。
         :type UniqVpcId: str
@@ -6569,12 +6571,13 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type Memory: int
         :param _Volume: 实例硬盘大小，单位：GB，请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229) 接口获取可创建的硬盘范围。
         :type Volume: int
-        :param _EngineVersion: MySQL 版本，值包括：5.5、5.6、5.7、8.0，请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229) 接口获取可创建的实例版本。
-说明：若此参数不填，则默认值为5.6。
+        :param _EngineVersion: MySQL 版本，值包括：5.5、5.6、5.7和8.0，请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229) 接口获取可创建的实例版本。
+说明：创建非集群版实例时，请根据需要指定实例版本（推荐5.7或8.0），若此参数不填，则默认值为5.6；若创建的是集群版实例，则此参数仅能指定为5.7或8.0。
         :type EngineVersion: str
         :param _UniqVpcId: 私有网络 ID，如果不传则默认选择基础网络，请使用 [查询私有网络列表](/document/api/215/15778) 。
+说明：如果创建的是集群版实例，此参数为必填且为私有网络类型。
         :type UniqVpcId: str
-        :param _UniqSubnetId: 私有网络下的子网 ID，如果设置了 UniqVpcId，则 UniqSubnetId 必填，请使用[查询子网列表](/document/api/215/15784)。
+        :param _UniqSubnetId: 私有网络下的子网 ID，如果设置了 UniqVpcId，则 UniqSubnetId 必填，请使用 [查询子网列表](/document/api/215/15784)。
         :type UniqSubnetId: str
         :param _ProjectId: 项目 ID，不填为默认项目。
         :type ProjectId: int
@@ -6615,6 +6618,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间在48小时内唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
         :type ClientToken: str
         :param _DeviceType: 实例隔离类型。支持值包括："UNIVERSAL" - 通用型实例，"EXCLUSIVE" - 独享型实例，"BASIC_V2" - ONTKE 单节点实例，"CLOUD_NATIVE_CLUSTER" - 集群版标准型，"CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 集群版加强型。不指定则默认为通用型实例。
+说明：如果创建的是集群版实例，此参数为必填。
         :type DeviceType: str
         :param _ParamTemplateId: 参数模板 id。
 备注：如您使用自定义参数模板 id，可传入自定义参数模板 id；如您计划使用默认参数模板，该参数模板 id 传入 id 无效，需设置 ParamTemplateType。
@@ -6640,8 +6644,13 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type EngineType: str
         :param _Vips: 指定实例的IP列表。仅支持主实例指定，按实例顺序，不足则按未指定处理。
         :type Vips: list of str
+        :param _DataProtectVolume: 集群版实例的数据保护空间大小，单位 GB，设置范围1 - 10。
+        :type DataProtectVolume: int
         :param _ClusterTopology: 集群版节点拓扑配置。
+说明：若购买的是集群版实例，此参数为必填，需设置集群版实例的 RW 和 RO 节点拓扑，RO 节点范围是1 - 5个，请至少设置1个 RO 节点。
         :type ClusterTopology: :class:`tencentcloud.cdb.v20170320.models.ClusterTopology`
+        :param _DiskType: 磁盘类型，基础版或者集群版实例可以指定此参数。CLOUD_SSD 表示 SSD 云硬盘，CLOUD_HSSD 表示增强型 SSD 云硬盘。
+        :type DiskType: str
         """
         self._GoodsNum = None
         self._Memory = None
@@ -6680,7 +6689,9 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self._DryRun = None
         self._EngineType = None
         self._Vips = None
+        self._DataProtectVolume = None
         self._ClusterTopology = None
+        self._DiskType = None
 
     @property
     def GoodsNum(self):
@@ -6979,12 +6990,28 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self._Vips = Vips
 
     @property
+    def DataProtectVolume(self):
+        return self._DataProtectVolume
+
+    @DataProtectVolume.setter
+    def DataProtectVolume(self, DataProtectVolume):
+        self._DataProtectVolume = DataProtectVolume
+
+    @property
     def ClusterTopology(self):
         return self._ClusterTopology
 
     @ClusterTopology.setter
     def ClusterTopology(self, ClusterTopology):
         self._ClusterTopology = ClusterTopology
+
+    @property
+    def DiskType(self):
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
 
 
     def _deserialize(self, params):
@@ -7037,9 +7064,11 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self._DryRun = params.get("DryRun")
         self._EngineType = params.get("EngineType")
         self._Vips = params.get("Vips")
+        self._DataProtectVolume = params.get("DataProtectVolume")
         if params.get("ClusterTopology") is not None:
             self._ClusterTopology = ClusterTopology()
             self._ClusterTopology._deserialize(params.get("ClusterTopology"))
+        self._DiskType = params.get("DiskType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7116,7 +7145,8 @@ class CreateDBInstanceRequest(AbstractModel):
         :type GoodsNum: int
         :param _Zone: 可用区信息，该参数缺省时，系统会自动选择一个可用区，请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229) 接口获取可创建的可用区。
         :type Zone: str
-        :param _UniqVpcId: 私有网络 ID，如果不传则默认选择基础网络，请使用 [查询私有网络列表](/document/api/215/15778) 。
+        :param _UniqVpcId: 私有网络 ID，如果不传则默认选择基础网络，请使用 [查询私有网络列表](/document/api/215/15778)。
+说明：如果创建的是集群版实例，此参数为必填且为私有网络类型。
         :type UniqVpcId: str
         :param _UniqSubnetId: 私有网络下的子网 ID，如果设置了 UniqVpcId，则 UniqSubnetId 必填，请使用 [查询子网列表](/document/api/215/15784)。
         :type UniqSubnetId: str
@@ -7129,7 +7159,7 @@ class CreateDBInstanceRequest(AbstractModel):
         :param _MasterInstanceId: 实例 ID，购买只读实例时必填，该字段表示只读实例的主实例ID，请使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口查询云数据库实例 ID。
         :type MasterInstanceId: str
         :param _EngineVersion: MySQL 版本，值包括：5.5、5.6、5.7和8.0，请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229) 接口获取可创建的实例版本。
-说明：若此参数不填，则默认值为5.6。
+说明：创建非集群版实例时，请根据需要指定实例版本（推荐5.7或8.0），若此参数不填，则默认值为5.6；若创建的是集群版实例，则此参数仅能指定为5.7或8.0。
         :type EngineVersion: str
         :param _Password: 设置 root 账号密码，密码规则：8 - 64 个字符，至少包含字母、数字、字符（支持的字符：_+-&=!@#$%^*()）中的两种，购买主实例时可指定该参数，购买只读实例或者灾备实例时指定该参数无意义。
         :type Password: str
@@ -7160,6 +7190,7 @@ class CreateDBInstanceRequest(AbstractModel):
         :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间在48小时内唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
         :type ClientToken: str
         :param _DeviceType: 实例隔离类型。支持值包括："UNIVERSAL" - 通用型实例，"EXCLUSIVE" - 独享型实例，"BASIC_V2" - ONTKE 单节点实例，"CLOUD_NATIVE_CLUSTER" - 集群版标准型，"CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 集群版加强型。不指定则默认为通用型实例。
+说明：如果创建的是集群版实例，此参数为必填。
         :type DeviceType: str
         :param _ParamTemplateId: 参数模板 id。
 备注：如您使用自定义参数模板 id，可传入自定义参数模板 id；如您计划使用默认参数模板，该参数模板 id 传入 id 无效，需设置 ParamTemplateType。
@@ -7186,8 +7217,13 @@ class CreateDBInstanceRequest(AbstractModel):
         :type EngineType: str
         :param _Vips: 指定实例的IP列表。仅支持主实例指定，按实例顺序，不足则按未指定处理。
         :type Vips: list of str
+        :param _DataProtectVolume: 集群版实例的数据保护空间大小，单位 GB，设置范围1 - 10。
+        :type DataProtectVolume: int
         :param _ClusterTopology: 集群版节点拓扑配置。
+说明：若购买的是集群版实例，此参数为必填，需设置集群版实例的 RW 和 RO 节点拓扑，RO 节点范围是1 - 5个，请至少设置1个 RO 节点。
         :type ClusterTopology: :class:`tencentcloud.cdb.v20170320.models.ClusterTopology`
+        :param _DiskType: 磁盘类型，基础版或者集群版实例可以指定此参数。CLOUD_SSD 表示 SSD 云硬盘，CLOUD_HSSD 表示增强型 SSD 云硬盘。
+        :type DiskType: str
         """
         self._Memory = None
         self._Volume = None
@@ -7227,7 +7263,9 @@ class CreateDBInstanceRequest(AbstractModel):
         self._DryRun = None
         self._EngineType = None
         self._Vips = None
+        self._DataProtectVolume = None
         self._ClusterTopology = None
+        self._DiskType = None
 
     @property
     def Memory(self):
@@ -7534,12 +7572,28 @@ class CreateDBInstanceRequest(AbstractModel):
         self._Vips = Vips
 
     @property
+    def DataProtectVolume(self):
+        return self._DataProtectVolume
+
+    @DataProtectVolume.setter
+    def DataProtectVolume(self, DataProtectVolume):
+        self._DataProtectVolume = DataProtectVolume
+
+    @property
     def ClusterTopology(self):
         return self._ClusterTopology
 
     @ClusterTopology.setter
     def ClusterTopology(self, ClusterTopology):
         self._ClusterTopology = ClusterTopology
+
+    @property
+    def DiskType(self):
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
 
 
     def _deserialize(self, params):
@@ -7593,9 +7647,11 @@ class CreateDBInstanceRequest(AbstractModel):
         self._DryRun = params.get("DryRun")
         self._EngineType = params.get("EngineType")
         self._Vips = params.get("Vips")
+        self._DataProtectVolume = params.get("DataProtectVolume")
         if params.get("ClusterTopology") is not None:
             self._ClusterTopology = ClusterTopology()
             self._ClusterTopology._deserialize(params.get("ClusterTopology"))
+        self._DiskType = params.get("DiskType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

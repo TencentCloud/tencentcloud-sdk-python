@@ -410,7 +410,7 @@ class ImageTranslateRequest(AbstractModel):
         :type SessionUuid: str
         :param _Scene: doc:文档扫描
         :type Scene: str
-        :param _Data: 图片数据的Base64字符串，图片大小上限为4M，建议对源图片进行一定程度压缩
+        :param _Data: 图片数据的Base64字符串，经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片中包含文字需要少于6000字符。
         :type Data: str
         :param _Source: 源语言，支持语言列表：<li> auto：自动识别（识别为一种语言）</li> <li>zh：简体中文</li> <li>zh-TW：繁体中文</li> <li>en：英语</li> <li>ja：日语</li> <li>ko：韩语</li> <li>ru：俄语</li> <li>fr：法语</li> <li>de：德语</li> <li>it：意大利语</li> <li>es：西班牙语</li> <li>pt：葡萄牙语</li> <li>ms：马来西亚语</li> <li>th：泰语</li><li>vi：越南语</li>
         :type Source: str

@@ -1291,6 +1291,52 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRedisClusterOverview(self, request):
+        """查询Redis独享集群概览信息
+
+        :param request: Request instance for DescribeRedisClusterOverview.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeRedisClusterOverviewRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeRedisClusterOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRedisClusterOverview", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRedisClusterOverviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRedisClusters(self, request):
+        """查询Redis独享集群列表
+
+        :param request: Request instance for DescribeRedisClusters.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeRedisClustersRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeRedisClustersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRedisClusters", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRedisClustersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeReplicationGroup(self, request):
         """本接口（DescribeReplicationGroup）用于查询复制组。
 

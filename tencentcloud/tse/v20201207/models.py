@@ -17389,10 +17389,14 @@ class KongActiveHealthCheck(AbstractModel):
         :param _HttpPath: 在 GET HTTP 请求中使用的路径，以作为主动运行状况检查的探测器运行。默认： ”/”。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HttpPath: str
+        :param _Timeout: GET HTTP 请求的超时时间，单位：秒。默认 60。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timeout: float
         """
         self._HealthyInterval = None
         self._UnHealthyInterval = None
         self._HttpPath = None
+        self._Timeout = None
 
     @property
     def HealthyInterval(self):
@@ -17418,11 +17422,20 @@ class KongActiveHealthCheck(AbstractModel):
     def HttpPath(self, HttpPath):
         self._HttpPath = HttpPath
 
+    @property
+    def Timeout(self):
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
 
     def _deserialize(self, params):
         self._HealthyInterval = params.get("HealthyInterval")
         self._UnHealthyInterval = params.get("UnHealthyInterval")
         self._HttpPath = params.get("HttpPath")
+        self._Timeout = params.get("Timeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

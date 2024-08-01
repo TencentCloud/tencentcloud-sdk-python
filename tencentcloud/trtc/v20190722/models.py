@@ -5916,8 +5916,12 @@ class McuUserInfoParams(AbstractModel):
         r"""
         :param _UserInfo: 用户参数。
         :type UserInfo: :class:`tencentcloud.trtc.v20190722.models.MixUserInfo`
+        :param _SoundLevel: 混音的音量调整：取值范围是0到100，100为原始上行音量，不填默认为100，值越小则音量越低。
+注：该参数只在音量白名单下配置生效，其他场景配置无效。
+        :type SoundLevel: int
         """
         self._UserInfo = None
+        self._SoundLevel = None
 
     @property
     def UserInfo(self):
@@ -5927,11 +5931,20 @@ class McuUserInfoParams(AbstractModel):
     def UserInfo(self, UserInfo):
         self._UserInfo = UserInfo
 
+    @property
+    def SoundLevel(self):
+        return self._SoundLevel
+
+    @SoundLevel.setter
+    def SoundLevel(self, SoundLevel):
+        self._SoundLevel = SoundLevel
+
 
     def _deserialize(self, params):
         if params.get("UserInfo") is not None:
             self._UserInfo = MixUserInfo()
             self._UserInfo._deserialize(params.get("UserInfo"))
+        self._SoundLevel = params.get("SoundLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

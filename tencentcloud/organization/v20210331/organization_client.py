@@ -1199,6 +1199,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListOrganizationService(self, request):
+        """获取集团服务设置列表
+
+        :param request: Request instance for ListOrganizationService.
+        :type request: :class:`tencentcloud.organization.v20210331.models.ListOrganizationServiceRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.ListOrganizationServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListOrganizationService", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListOrganizationServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListPolicies(self, request):
         """本接口（ListPolicies）可用于查询查看策略列表数据
 

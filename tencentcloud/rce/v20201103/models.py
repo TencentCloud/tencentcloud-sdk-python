@@ -97,6 +97,80 @@ class AccountInfo(AbstractModel):
         
 
 
+class CreateNameListRequest(AbstractModel):
+    """CreateNameList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BusinessSecurityData: 业务入参
+        :type BusinessSecurityData: :class:`tencentcloud.rce.v20201103.models.InputCreateNameListFront`
+        """
+        self._BusinessSecurityData = None
+
+    @property
+    def BusinessSecurityData(self):
+        return self._BusinessSecurityData
+
+    @BusinessSecurityData.setter
+    def BusinessSecurityData(self, BusinessSecurityData):
+        self._BusinessSecurityData = BusinessSecurityData
+
+
+    def _deserialize(self, params):
+        if params.get("BusinessSecurityData") is not None:
+            self._BusinessSecurityData = InputCreateNameListFront()
+            self._BusinessSecurityData._deserialize(params.get("BusinessSecurityData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateNameListResponse(AbstractModel):
+    """CreateNameList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 业务出参
+        :type Data: :class:`tencentcloud.rce.v20201103.models.OutputCreateNameListFront`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = OutputCreateNameListFront()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class DataAuthorizationInfo(AbstractModel):
     """数据授权信息
 
@@ -236,6 +310,612 @@ class DataAuthorizationInfo(AbstractModel):
         
 
 
+class DataContentInfo(AbstractModel):
+    """黑白名单导入名单数据的业务入参数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataContent: 名单数据内容
+        :type DataContent: str
+        :param _DataRemark: 名单数据描述
+        :type DataRemark: str
+        :param _StartTime: 名单数据开始时间，时间格式示例"2024-05-05 12:10:15"
+        :type StartTime: str
+        :param _EndTime: 名单数据结束时间，时间格式示例"2024-05-05 12:10:15"
+        :type EndTime: str
+        """
+        self._DataContent = None
+        self._DataRemark = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def DataContent(self):
+        return self._DataContent
+
+    @DataContent.setter
+    def DataContent(self, DataContent):
+        self._DataContent = DataContent
+
+    @property
+    def DataRemark(self):
+        return self._DataRemark
+
+    @DataRemark.setter
+    def DataRemark(self, DataRemark):
+        self._DataRemark = DataRemark
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._DataContent = params.get("DataContent")
+        self._DataRemark = params.get("DataRemark")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteNameListDataRequest(AbstractModel):
+    """DeleteNameListData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BusinessSecurityData: 业务入参
+        :type BusinessSecurityData: :class:`tencentcloud.rce.v20201103.models.InputDeleteNameListData`
+        """
+        self._BusinessSecurityData = None
+
+    @property
+    def BusinessSecurityData(self):
+        return self._BusinessSecurityData
+
+    @BusinessSecurityData.setter
+    def BusinessSecurityData(self, BusinessSecurityData):
+        self._BusinessSecurityData = BusinessSecurityData
+
+
+    def _deserialize(self, params):
+        if params.get("BusinessSecurityData") is not None:
+            self._BusinessSecurityData = InputDeleteNameListData()
+            self._BusinessSecurityData._deserialize(params.get("BusinessSecurityData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteNameListDataResponse(AbstractModel):
+    """DeleteNameListData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 业务出参
+        :type Data: :class:`tencentcloud.rce.v20201103.models.OutputDeleteNameListData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = OutputDeleteNameListData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteNameListRequest(AbstractModel):
+    """DeleteNameList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BusinessSecurityData: 业务入参
+        :type BusinessSecurityData: :class:`tencentcloud.rce.v20201103.models.InputDeleteNameListFront`
+        """
+        self._BusinessSecurityData = None
+
+    @property
+    def BusinessSecurityData(self):
+        return self._BusinessSecurityData
+
+    @BusinessSecurityData.setter
+    def BusinessSecurityData(self, BusinessSecurityData):
+        self._BusinessSecurityData = BusinessSecurityData
+
+
+    def _deserialize(self, params):
+        if params.get("BusinessSecurityData") is not None:
+            self._BusinessSecurityData = InputDeleteNameListFront()
+            self._BusinessSecurityData._deserialize(params.get("BusinessSecurityData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteNameListResponse(AbstractModel):
+    """DeleteNameList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 业务出参
+        :type Data: :class:`tencentcloud.rce.v20201103.models.OutputDeleteNameListFront`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = OutputDeleteNameListFront()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeNameListDataListRequest(AbstractModel):
+    """DescribeNameListDataList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BusinessSecurityData: 业务入参
+        :type BusinessSecurityData: :class:`tencentcloud.rce.v20201103.models.InputDescribeDataListFront`
+        """
+        self._BusinessSecurityData = None
+
+    @property
+    def BusinessSecurityData(self):
+        return self._BusinessSecurityData
+
+    @BusinessSecurityData.setter
+    def BusinessSecurityData(self, BusinessSecurityData):
+        self._BusinessSecurityData = BusinessSecurityData
+
+
+    def _deserialize(self, params):
+        if params.get("BusinessSecurityData") is not None:
+            self._BusinessSecurityData = InputDescribeDataListFront()
+            self._BusinessSecurityData._deserialize(params.get("BusinessSecurityData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNameListDataListResponse(AbstractModel):
+    """DescribeNameListDataList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 业务出参
+        :type Data: :class:`tencentcloud.rce.v20201103.models.OutputDescribeDataListFrontData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = OutputDescribeDataListFrontData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeNameListDetailRequest(AbstractModel):
+    """DescribeNameListDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BusinessSecurityData: 业务入参	
+        :type BusinessSecurityData: :class:`tencentcloud.rce.v20201103.models.InputDescribeNameListDetail`
+        """
+        self._BusinessSecurityData = None
+
+    @property
+    def BusinessSecurityData(self):
+        return self._BusinessSecurityData
+
+    @BusinessSecurityData.setter
+    def BusinessSecurityData(self, BusinessSecurityData):
+        self._BusinessSecurityData = BusinessSecurityData
+
+
+    def _deserialize(self, params):
+        if params.get("BusinessSecurityData") is not None:
+            self._BusinessSecurityData = InputDescribeNameListDetail()
+            self._BusinessSecurityData._deserialize(params.get("BusinessSecurityData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNameListDetailResponse(AbstractModel):
+    """DescribeNameListDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 黑白名单列表详情业务出参
+        :type Data: :class:`tencentcloud.rce.v20201103.models.OutputDescribeNameListDetailFront`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = OutputDescribeNameListDetailFront()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeNameListRequest(AbstractModel):
+    """DescribeNameList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BusinessSecurityData: 业务入参
+        :type BusinessSecurityData: :class:`tencentcloud.rce.v20201103.models.InputDescribeNameListFront`
+        """
+        self._BusinessSecurityData = None
+
+    @property
+    def BusinessSecurityData(self):
+        return self._BusinessSecurityData
+
+    @BusinessSecurityData.setter
+    def BusinessSecurityData(self, BusinessSecurityData):
+        self._BusinessSecurityData = BusinessSecurityData
+
+
+    def _deserialize(self, params):
+        if params.get("BusinessSecurityData") is not None:
+            self._BusinessSecurityData = InputDescribeNameListFront()
+            self._BusinessSecurityData._deserialize(params.get("BusinessSecurityData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNameListResponse(AbstractModel):
+    """DescribeNameList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 业务出参
+        :type Data: :class:`tencentcloud.rce.v20201103.models.OutputDescribeNameListFrontFixListData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = OutputDescribeNameListFrontFixListData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ImportNameListDataRequest(AbstractModel):
+    """ImportNameListData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BusinessSecurityData: 业务入参
+        :type BusinessSecurityData: :class:`tencentcloud.rce.v20201103.models.InputImportNameListDataFront`
+        """
+        self._BusinessSecurityData = None
+
+    @property
+    def BusinessSecurityData(self):
+        return self._BusinessSecurityData
+
+    @BusinessSecurityData.setter
+    def BusinessSecurityData(self, BusinessSecurityData):
+        self._BusinessSecurityData = BusinessSecurityData
+
+
+    def _deserialize(self, params):
+        if params.get("BusinessSecurityData") is not None:
+            self._BusinessSecurityData = InputImportNameListDataFront()
+            self._BusinessSecurityData._deserialize(params.get("BusinessSecurityData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImportNameListDataResponse(AbstractModel):
+    """ImportNameListData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 业务出参
+        :type Data: :class:`tencentcloud.rce.v20201103.models.OutputImportNameListDataFront`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = OutputImportNameListDataFront()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class InputCreateNameListFront(AbstractModel):
+    """创建黑白名单入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ListName: 名单名称
+        :type ListName: str
+        :param _ListType: 名单类型 [1 黑名单 2白名单]
+        :type ListType: int
+        :param _DataType: 数据类型[1 手机号 2 qqOpenId 3 2echatOpenId 4 ip 6 idfa 7 imei]
+        :type DataType: int
+        :param _Remark: 描述
+        :type Remark: str
+        :param _EncryptionType: 加密类型[0 无需加密 1 MD5加密 2 SHA256加密]
+        :type EncryptionType: int
+        :param _SceneCode: 场景Code，all_scene代表全部场景
+        :type SceneCode: str
+        """
+        self._ListName = None
+        self._ListType = None
+        self._DataType = None
+        self._Remark = None
+        self._EncryptionType = None
+        self._SceneCode = None
+
+    @property
+    def ListName(self):
+        return self._ListName
+
+    @ListName.setter
+    def ListName(self, ListName):
+        self._ListName = ListName
+
+    @property
+    def ListType(self):
+        return self._ListType
+
+    @ListType.setter
+    def ListType(self, ListType):
+        self._ListType = ListType
+
+    @property
+    def DataType(self):
+        return self._DataType
+
+    @DataType.setter
+    def DataType(self, DataType):
+        self._DataType = DataType
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def EncryptionType(self):
+        return self._EncryptionType
+
+    @EncryptionType.setter
+    def EncryptionType(self, EncryptionType):
+        self._EncryptionType = EncryptionType
+
+    @property
+    def SceneCode(self):
+        return self._SceneCode
+
+    @SceneCode.setter
+    def SceneCode(self, SceneCode):
+        self._SceneCode = SceneCode
+
+
+    def _deserialize(self, params):
+        self._ListName = params.get("ListName")
+        self._ListType = params.get("ListType")
+        self._DataType = params.get("DataType")
+        self._Remark = params.get("Remark")
+        self._EncryptionType = params.get("EncryptionType")
+        self._SceneCode = params.get("SceneCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InputCryptoManageMarketingRisk(AbstractModel):
     """全栈式风控引擎入参
 
@@ -297,6 +977,279 @@ class InputCryptoManageMarketingRisk(AbstractModel):
         
 
 
+class InputDeleteNameListData(AbstractModel):
+    """删除黑白名单数据业务入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NameListDataIdList: 黑白名单数据ID集合
+        :type NameListDataIdList: list of int
+        """
+        self._NameListDataIdList = None
+
+    @property
+    def NameListDataIdList(self):
+        return self._NameListDataIdList
+
+    @NameListDataIdList.setter
+    def NameListDataIdList(self, NameListDataIdList):
+        self._NameListDataIdList = NameListDataIdList
+
+
+    def _deserialize(self, params):
+        self._NameListDataIdList = params.get("NameListDataIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InputDeleteNameListFront(AbstractModel):
+    """删除黑白名单入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NameListId: 名单ID
+        :type NameListId: int
+        """
+        self._NameListId = None
+
+    @property
+    def NameListId(self):
+        return self._NameListId
+
+    @NameListId.setter
+    def NameListId(self, NameListId):
+        self._NameListId = NameListId
+
+
+    def _deserialize(self, params):
+        self._NameListId = params.get("NameListId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InputDescribeDataListFront(AbstractModel):
+    """查询黑白名单数据入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NameListId: 名单ID
+        :type NameListId: int
+        :param _PageNumber: 当前页数
+        :type PageNumber: int
+        :param _PageSize: 每页显示条数	
+        :type PageSize: int
+        :param _KeyWord: 搜索关键字，按照名单数据名称或加密名单数据名称搜索
+        :type KeyWord: str
+        :param _Status: 黑白名单列表状态[1 启用 2 停用]
+        :type Status: int
+        """
+        self._NameListId = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._KeyWord = None
+        self._Status = None
+
+    @property
+    def NameListId(self):
+        return self._NameListId
+
+    @NameListId.setter
+    def NameListId(self, NameListId):
+        self._NameListId = NameListId
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def KeyWord(self):
+        return self._KeyWord
+
+    @KeyWord.setter
+    def KeyWord(self, KeyWord):
+        self._KeyWord = KeyWord
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._NameListId = params.get("NameListId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._KeyWord = params.get("KeyWord")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InputDescribeNameListDetail(AbstractModel):
+    """查询黑白名单详情入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NameListId: 名单ID
+        :type NameListId: int
+        """
+        self._NameListId = None
+
+    @property
+    def NameListId(self):
+        return self._NameListId
+
+    @NameListId.setter
+    def NameListId(self, NameListId):
+        self._NameListId = NameListId
+
+
+    def _deserialize(self, params):
+        self._NameListId = params.get("NameListId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InputDescribeNameListFront(AbstractModel):
+    """查询黑白名单入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: 当前页数
+        :type PageNumber: int
+        :param _PageSize: 每页显示条数
+        :type PageSize: int
+        :param _ListType: 名单类型 [1 黑名单 2 白名单]
+        :type ListType: int
+        :param _DataType: 数据类型[1 手机号 2 qqOpenId 3 wechatOpenId 4 ip 6 idfa 7 imei]
+        :type DataType: int
+        :param _KeyWord: 关键字，按照名单名称搜索
+        :type KeyWord: str
+        :param _Status: 记录状态[1 启用 2 停用]
+        :type Status: int
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._ListType = None
+        self._DataType = None
+        self._KeyWord = None
+        self._Status = None
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def ListType(self):
+        return self._ListType
+
+    @ListType.setter
+    def ListType(self, ListType):
+        self._ListType = ListType
+
+    @property
+    def DataType(self):
+        return self._DataType
+
+    @DataType.setter
+    def DataType(self, DataType):
+        self._DataType = DataType
+
+    @property
+    def KeyWord(self):
+        return self._KeyWord
+
+    @KeyWord.setter
+    def KeyWord(self, KeyWord):
+        self._KeyWord = KeyWord
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._ListType = params.get("ListType")
+        self._DataType = params.get("DataType")
+        self._KeyWord = params.get("KeyWord")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InputDetails(AbstractModel):
     """入参的详细参数信息
 
@@ -332,6 +1285,68 @@ class InputDetails(AbstractModel):
     def _deserialize(self, params):
         self._FieldName = params.get("FieldName")
         self._FieldValue = params.get("FieldValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InputImportNameListDataFront(AbstractModel):
+    """添加名单数据入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NameListId: 名单ID
+        :type NameListId: int
+        :param _DataSource: 数据来源，固定传2（手工录入）
+        :type DataSource: int
+        :param _DataContentInfo: 黑白名单数据内容
+        :type DataContentInfo: list of DataContentInfo
+        """
+        self._NameListId = None
+        self._DataSource = None
+        self._DataContentInfo = None
+
+    @property
+    def NameListId(self):
+        return self._NameListId
+
+    @NameListId.setter
+    def NameListId(self, NameListId):
+        self._NameListId = NameListId
+
+    @property
+    def DataSource(self):
+        return self._DataSource
+
+    @DataSource.setter
+    def DataSource(self, DataSource):
+        self._DataSource = DataSource
+
+    @property
+    def DataContentInfo(self):
+        return self._DataContentInfo
+
+    @DataContentInfo.setter
+    def DataContentInfo(self, DataContentInfo):
+        self._DataContentInfo = DataContentInfo
+
+
+    def _deserialize(self, params):
+        self._NameListId = params.get("NameListId")
+        self._DataSource = params.get("DataSource")
+        if params.get("DataContentInfo") is not None:
+            self._DataContentInfo = []
+            for item in params.get("DataContentInfo"):
+                obj = DataContentInfo()
+                obj._deserialize(item)
+                self._DataContentInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -666,6 +1681,206 @@ class InputManageMarketingRisk(AbstractModel):
         
 
 
+class InputModifyNameFront(AbstractModel):
+    """修改黑白名单入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NameListId: 名单ID
+        :type NameListId: int
+        :param _ListName: 名单名称
+        :type ListName: str
+        :param _Status: 名单状态 [1 启用 2 停用]
+        :type Status: int
+        :param _Remark: 描述
+        :type Remark: str
+        """
+        self._NameListId = None
+        self._ListName = None
+        self._Status = None
+        self._Remark = None
+
+    @property
+    def NameListId(self):
+        return self._NameListId
+
+    @NameListId.setter
+    def NameListId(self, NameListId):
+        self._NameListId = NameListId
+
+    @property
+    def ListName(self):
+        return self._ListName
+
+    @ListName.setter
+    def ListName(self, ListName):
+        self._ListName = ListName
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._NameListId = params.get("NameListId")
+        self._ListName = params.get("ListName")
+        self._Status = params.get("Status")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InputModifyNameListDataFront(AbstractModel):
+    """名单数据集合
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NameListDataId: 名单数据ID
+        :type NameListDataId: int
+        :param _DataContent: 名单数据内容
+        :type DataContent: str
+        :param _StartTime: 名单数据开始时间，时间格式示例"2024-05-05 12:10:15"
+        :type StartTime: str
+        :param _EndTime: 名单数据结束时间，时间格式示例"2024-05-05 12:10:15"
+        :type EndTime: str
+        :param _Status: 记录状态 [1 启用 2 停用]
+        :type Status: int
+        :param _Remark: 名单数据描述
+        :type Remark: str
+        """
+        self._NameListDataId = None
+        self._DataContent = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Status = None
+        self._Remark = None
+
+    @property
+    def NameListDataId(self):
+        return self._NameListDataId
+
+    @NameListDataId.setter
+    def NameListDataId(self, NameListDataId):
+        self._NameListDataId = NameListDataId
+
+    @property
+    def DataContent(self):
+        return self._DataContent
+
+    @DataContent.setter
+    def DataContent(self, DataContent):
+        self._DataContent = DataContent
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._NameListDataId = params.get("NameListDataId")
+        self._DataContent = params.get("DataContent")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Status = params.get("Status")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InputModifyNameListDataFrontListData(AbstractModel):
+    """修改黑白名单数据入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataList: 名单数据集合
+        :type DataList: list of InputModifyNameListDataFront
+        """
+        self._DataList = None
+
+    @property
+    def DataList(self):
+        return self._DataList
+
+    @DataList.setter
+    def DataList(self, DataList):
+        self._DataList = DataList
+
+
+    def _deserialize(self, params):
+        if params.get("DataList") is not None:
+            self._DataList = []
+            for item in params.get("DataList"):
+                obj = InputModifyNameListDataFront()
+                obj._deserialize(item)
+                self._DataList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ManageMarketingRiskRequest(AbstractModel):
     """ManageMarketingRisk请求参数结构体
 
@@ -750,6 +1965,154 @@ class ManageMarketingRiskResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Data") is not None:
             self._Data = OutputManageMarketingRisk()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyNameListDataRequest(AbstractModel):
+    """ModifyNameListData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BusinessSecurityData: 业务入参
+        :type BusinessSecurityData: :class:`tencentcloud.rce.v20201103.models.InputModifyNameListDataFrontListData`
+        """
+        self._BusinessSecurityData = None
+
+    @property
+    def BusinessSecurityData(self):
+        return self._BusinessSecurityData
+
+    @BusinessSecurityData.setter
+    def BusinessSecurityData(self, BusinessSecurityData):
+        self._BusinessSecurityData = BusinessSecurityData
+
+
+    def _deserialize(self, params):
+        if params.get("BusinessSecurityData") is not None:
+            self._BusinessSecurityData = InputModifyNameListDataFrontListData()
+            self._BusinessSecurityData._deserialize(params.get("BusinessSecurityData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNameListDataResponse(AbstractModel):
+    """ModifyNameListData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 业务出参
+        :type Data: :class:`tencentcloud.rce.v20201103.models.OutputModifyNameListFront`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = OutputModifyNameListFront()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyNameListRequest(AbstractModel):
+    """ModifyNameList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BusinessSecurityData: 业务入参
+        :type BusinessSecurityData: :class:`tencentcloud.rce.v20201103.models.InputModifyNameFront`
+        """
+        self._BusinessSecurityData = None
+
+    @property
+    def BusinessSecurityData(self):
+        return self._BusinessSecurityData
+
+    @BusinessSecurityData.setter
+    def BusinessSecurityData(self, BusinessSecurityData):
+        self._BusinessSecurityData = BusinessSecurityData
+
+
+    def _deserialize(self, params):
+        if params.get("BusinessSecurityData") is not None:
+            self._BusinessSecurityData = InputModifyNameFront()
+            self._BusinessSecurityData._deserialize(params.get("BusinessSecurityData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNameListResponse(AbstractModel):
+    """ModifyNameList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 业务出参
+        :type Data: :class:`tencentcloud.rce.v20201103.models.OutputModifyNameFront`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = OutputModifyNameFront()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
@@ -893,6 +2256,997 @@ SHA256手机号加密方式，使用中国大陆11位手机号进行SHA256加密
         self._AccountId = params.get("AccountId")
         self._MobilePhone = params.get("MobilePhone")
         self._DeviceId = params.get("DeviceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OuntputDescribeDataListInfo(AbstractModel):
+    """黑白名单数据列表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Count: 数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        :param _List: 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of OutputDescribeDataListFront
+        """
+        self._Count = None
+        self._List = None
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+
+    def _deserialize(self, params):
+        self._Count = params.get("Count")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = OutputDescribeDataListFront()
+                obj._deserialize(item)
+                self._List.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OutputCreateNameListFront(AbstractModel):
+    """创建黑白名单出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Code: 错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误
+        :type Code: int
+        :param _Message: 错误信息
+        :type Message: str
+        :param _Value: 空数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: list of str
+        """
+        self._Code = None
+        self._Message = None
+        self._Value = None
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OutputDeleteNameListData(AbstractModel):
+    """删除黑白名单出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Code: 错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Code: int
+        :param _Message: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param _Value: 空数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: list of str
+        """
+        self._Code = None
+        self._Message = None
+        self._Value = None
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OutputDeleteNameListFront(AbstractModel):
+    """删除黑白名单出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Code: 错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误
+        :type Code: int
+        :param _Message: 错误信息
+        :type Message: str
+        :param _Value: 空数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: list of str
+        """
+        self._Code = None
+        self._Message = None
+        self._Value = None
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OutputDescribeDataListFront(AbstractModel):
+    """黑白名单数据信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NameListDataId: 名单数据ID
+        :type NameListDataId: int
+        :param _NameListId: 名单ID
+        :type NameListId: int
+        :param _DataContent: 名单数据内容
+        :type DataContent: str
+        :param _DataSource: 数据来源，固定传2（手工录入）
+        :type DataSource: int
+        :param _StartTime: 名单数据开始时间，时间格式示例"2024-05-05 12:10:15"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _EndTime: 名单数据结束时间，时间格式示例"2024-05-05 12:10:15"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _Status: 名单数据状态 [1 启用 2 停用]
+        :type Status: int
+        :param _Remark: 名单数据描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param _CreateTime: 名单数据创建时间，时间格式示例"2024-05-05 12:10:15"
+        :type CreateTime: str
+        :param _UpdateTime: 名单数据更新时间，时间格式示例"2024-05-05 12:10:15"
+        :type UpdateTime: str
+        :param _EncryptDataContent: 加密名单数据内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EncryptDataContent: str
+        """
+        self._NameListDataId = None
+        self._NameListId = None
+        self._DataContent = None
+        self._DataSource = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Status = None
+        self._Remark = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._EncryptDataContent = None
+
+    @property
+    def NameListDataId(self):
+        return self._NameListDataId
+
+    @NameListDataId.setter
+    def NameListDataId(self, NameListDataId):
+        self._NameListDataId = NameListDataId
+
+    @property
+    def NameListId(self):
+        return self._NameListId
+
+    @NameListId.setter
+    def NameListId(self, NameListId):
+        self._NameListId = NameListId
+
+    @property
+    def DataContent(self):
+        return self._DataContent
+
+    @DataContent.setter
+    def DataContent(self, DataContent):
+        self._DataContent = DataContent
+
+    @property
+    def DataSource(self):
+        return self._DataSource
+
+    @DataSource.setter
+    def DataSource(self, DataSource):
+        self._DataSource = DataSource
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def EncryptDataContent(self):
+        return self._EncryptDataContent
+
+    @EncryptDataContent.setter
+    def EncryptDataContent(self, EncryptDataContent):
+        self._EncryptDataContent = EncryptDataContent
+
+
+    def _deserialize(self, params):
+        self._NameListDataId = params.get("NameListDataId")
+        self._NameListId = params.get("NameListId")
+        self._DataContent = params.get("DataContent")
+        self._DataSource = params.get("DataSource")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Status = params.get("Status")
+        self._Remark = params.get("Remark")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._EncryptDataContent = params.get("EncryptDataContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OutputDescribeDataListFrontData(AbstractModel):
+    """查询黑白名单数据出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Code: 错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Code: int
+        :param _Message: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param _Value: 黑白名单数据信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: :class:`tencentcloud.rce.v20201103.models.OuntputDescribeDataListInfo`
+        """
+        self._Code = None
+        self._Message = None
+        self._Value = None
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        if params.get("Value") is not None:
+            self._Value = OuntputDescribeDataListInfo()
+            self._Value._deserialize(params.get("Value"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OutputDescribeNameListDetail(AbstractModel):
+    """黑白名单详情出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NameListId: 名单ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NameListId: int
+        :param _ListName: 名单名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ListName: str
+        :param _ListType: 名单类型 [1 黑名单 2 白名单]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ListType: int
+        :param _DataType: 数据类型[1 手机号 2 qqOpenId 3 2echatOpenId 4 ip 6 idfa 7 imei]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataType: int
+        :param _SceneCode: 场景Code
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SceneCode: str
+        :param _Status: 名单列表状态 [1 启用 2 停用]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _Remark: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param _CreateTime: 创建时间，时间格式示例"2024-05-05 12:10:15"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间，时间格式示例"2024-05-05 12:10:15"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _EncryptionType: 加密类型 [0 无需加密，1 MD5加密，2 SHA256加密]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EncryptionType: int
+        """
+        self._NameListId = None
+        self._ListName = None
+        self._ListType = None
+        self._DataType = None
+        self._SceneCode = None
+        self._Status = None
+        self._Remark = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._EncryptionType = None
+
+    @property
+    def NameListId(self):
+        return self._NameListId
+
+    @NameListId.setter
+    def NameListId(self, NameListId):
+        self._NameListId = NameListId
+
+    @property
+    def ListName(self):
+        return self._ListName
+
+    @ListName.setter
+    def ListName(self, ListName):
+        self._ListName = ListName
+
+    @property
+    def ListType(self):
+        return self._ListType
+
+    @ListType.setter
+    def ListType(self, ListType):
+        self._ListType = ListType
+
+    @property
+    def DataType(self):
+        return self._DataType
+
+    @DataType.setter
+    def DataType(self, DataType):
+        self._DataType = DataType
+
+    @property
+    def SceneCode(self):
+        return self._SceneCode
+
+    @SceneCode.setter
+    def SceneCode(self, SceneCode):
+        self._SceneCode = SceneCode
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def EncryptionType(self):
+        return self._EncryptionType
+
+    @EncryptionType.setter
+    def EncryptionType(self, EncryptionType):
+        self._EncryptionType = EncryptionType
+
+
+    def _deserialize(self, params):
+        self._NameListId = params.get("NameListId")
+        self._ListName = params.get("ListName")
+        self._ListType = params.get("ListType")
+        self._DataType = params.get("DataType")
+        self._SceneCode = params.get("SceneCode")
+        self._Status = params.get("Status")
+        self._Remark = params.get("Remark")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._EncryptionType = params.get("EncryptionType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OutputDescribeNameListDetailFront(AbstractModel):
+    """查询列表详情出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Code: 错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Code: int
+        :param _Message: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param _Value: 列表详情信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: :class:`tencentcloud.rce.v20201103.models.OutputDescribeNameListDetail`
+        """
+        self._Code = None
+        self._Message = None
+        self._Value = None
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        if params.get("Value") is not None:
+            self._Value = OutputDescribeNameListDetail()
+            self._Value._deserialize(params.get("Value"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OutputDescribeNameListFrontFix(AbstractModel):
+    """黑白名单信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NameListId: 名单ID
+        :type NameListId: int
+        :param _ListName: 名单名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ListName: str
+        :param _ListType: 名单类型 [1 黑名单 2 白名单]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ListType: int
+        :param _DataType: 数据类型[1 手机号 2 qqOpenId 3 2echatOpenId 4 ip 6 idfa 7 imei]
+        :type DataType: int
+        :param _Status: 记录状态 [1 启用 2 停用]
+        :type Status: int
+        :param _Remark: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param _CreateTime: 创建时间，时间格式示例"2024-05-05 12:10:15"
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间，时间格式示例"2024-05-05 12:10:15"
+        :type UpdateTime: str
+        :param _EffectCount: 有效数据/数据总数
+        :type EffectCount: str
+        :param _EncryptionType: 加密类型[0 无需加密 1 MD5加密 2 SHA256加密]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EncryptionType: int
+        :param _SceneCode: 场景Code，all_scene代表全部场景
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SceneCode: str
+        """
+        self._NameListId = None
+        self._ListName = None
+        self._ListType = None
+        self._DataType = None
+        self._Status = None
+        self._Remark = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._EffectCount = None
+        self._EncryptionType = None
+        self._SceneCode = None
+
+    @property
+    def NameListId(self):
+        return self._NameListId
+
+    @NameListId.setter
+    def NameListId(self, NameListId):
+        self._NameListId = NameListId
+
+    @property
+    def ListName(self):
+        return self._ListName
+
+    @ListName.setter
+    def ListName(self, ListName):
+        self._ListName = ListName
+
+    @property
+    def ListType(self):
+        return self._ListType
+
+    @ListType.setter
+    def ListType(self, ListType):
+        self._ListType = ListType
+
+    @property
+    def DataType(self):
+        return self._DataType
+
+    @DataType.setter
+    def DataType(self, DataType):
+        self._DataType = DataType
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def EffectCount(self):
+        return self._EffectCount
+
+    @EffectCount.setter
+    def EffectCount(self, EffectCount):
+        self._EffectCount = EffectCount
+
+    @property
+    def EncryptionType(self):
+        return self._EncryptionType
+
+    @EncryptionType.setter
+    def EncryptionType(self, EncryptionType):
+        self._EncryptionType = EncryptionType
+
+    @property
+    def SceneCode(self):
+        return self._SceneCode
+
+    @SceneCode.setter
+    def SceneCode(self, SceneCode):
+        self._SceneCode = SceneCode
+
+
+    def _deserialize(self, params):
+        self._NameListId = params.get("NameListId")
+        self._ListName = params.get("ListName")
+        self._ListType = params.get("ListType")
+        self._DataType = params.get("DataType")
+        self._Status = params.get("Status")
+        self._Remark = params.get("Remark")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._EffectCount = params.get("EffectCount")
+        self._EncryptionType = params.get("EncryptionType")
+        self._SceneCode = params.get("SceneCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OutputDescribeNameListFrontFixListData(AbstractModel):
+    """查询黑白名单出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Code: 错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Code: int
+        :param _Message: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param _Value: 黑白名单列表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: :class:`tencentcloud.rce.v20201103.models.OutputDescribeNameListInfo`
+        """
+        self._Code = None
+        self._Message = None
+        self._Value = None
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        if params.get("Value") is not None:
+            self._Value = OutputDescribeNameListInfo()
+            self._Value._deserialize(params.get("Value"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OutputDescribeNameListInfo(AbstractModel):
+    """黑白名单信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Count: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        :param _List: 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of OutputDescribeNameListFrontFix
+        """
+        self._Count = None
+        self._List = None
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+
+    def _deserialize(self, params):
+        self._Count = params.get("Count")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = OutputDescribeNameListFrontFix()
+                obj._deserialize(item)
+                self._List.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OutputImportNameListDataFront(AbstractModel):
+    """添加黑白名单数据出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Code: 错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误
+        :type Code: int
+        :param _Message: 错误信息
+        :type Message: str
+        :param _Value: 空数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: list of str
+        """
+        self._Code = None
+        self._Message = None
+        self._Value = None
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1123,6 +3477,122 @@ reject：高风险，建议拦截
         self._RiskType = params.get("RiskType")
         self._ConstId = params.get("ConstId")
         self._RiskInformation = params.get("RiskInformation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OutputModifyNameFront(AbstractModel):
+    """修改黑白名单出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Code: 错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误
+        :type Code: int
+        :param _Message: 错误信息
+        :type Message: str
+        :param _Value: 空数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: list of str
+        """
+        self._Code = None
+        self._Message = None
+        self._Value = None
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OutputModifyNameListFront(AbstractModel):
+    """修改黑白名单数据出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Code: 错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误
+        :type Code: int
+        :param _Message: 错误信息
+        :type Message: str
+        :param _Value: 空数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: list of str
+        """
+        self._Code = None
+        self._Message = None
+        self._Value = None
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -2299,14 +2299,17 @@ class DeleteUserQuotaRequest(AbstractModel):
         r"""
         :param _FileSystemId: 文件系统 ID
         :type FileSystemId: str
-        :param _UserType: 指定配额类型，包括Uid、Gid
+        :param _UserType: 指定配额类型，包括Uid、Gid、Dir
         :type UserType: str
         :param _UserId: UID/GID信息
         :type UserId: str
+        :param _DirectoryPath: 设置目录配额的目录的绝对路径
+        :type DirectoryPath: str
         """
         self._FileSystemId = None
         self._UserType = None
         self._UserId = None
+        self._DirectoryPath = None
 
     @property
     def FileSystemId(self):
@@ -2332,11 +2335,20 @@ class DeleteUserQuotaRequest(AbstractModel):
     def UserId(self, UserId):
         self._UserId = UserId
 
+    @property
+    def DirectoryPath(self):
+        return self._DirectoryPath
+
+    @DirectoryPath.setter
+    def DirectoryPath(self, DirectoryPath):
+        self._DirectoryPath = DirectoryPath
+
 
     def _deserialize(self, params):
         self._FileSystemId = params.get("FileSystemId")
         self._UserType = params.get("UserType")
         self._UserId = params.get("UserId")
+        self._DirectoryPath = params.get("DirectoryPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5303,20 +5315,23 @@ class SetUserQuotaRequest(AbstractModel):
         r"""
         :param _FileSystemId: 文件系统 ID
         :type FileSystemId: str
-        :param _UserType: 指定配额类型，包括Uid、Gid
+        :param _UserType: 指定配额类型，包括Uid、Gid，Dir，分别代表用户配额，用户组配额，目录配额
         :type UserType: str
         :param _UserId: UID/GID信息
         :type UserId: str
-        :param _CapacityHardLimit: 容量硬限制，单位GiB
+        :param _CapacityHardLimit: 容量硬限制，单位GiB。设置范围10-10000000。
         :type CapacityHardLimit: int
-        :param _FileHardLimit: 文件硬限制，单位个
+        :param _FileHardLimit: 文件硬限制，单位个。设置范围1000-100000000
         :type FileHardLimit: int
+        :param _DirectoryPath: 需设置目录配额的目录绝对路径，不同目录不可存在包含关系
+        :type DirectoryPath: str
         """
         self._FileSystemId = None
         self._UserType = None
         self._UserId = None
         self._CapacityHardLimit = None
         self._FileHardLimit = None
+        self._DirectoryPath = None
 
     @property
     def FileSystemId(self):
@@ -5358,6 +5373,14 @@ class SetUserQuotaRequest(AbstractModel):
     def FileHardLimit(self, FileHardLimit):
         self._FileHardLimit = FileHardLimit
 
+    @property
+    def DirectoryPath(self):
+        return self._DirectoryPath
+
+    @DirectoryPath.setter
+    def DirectoryPath(self, DirectoryPath):
+        self._DirectoryPath = DirectoryPath
+
 
     def _deserialize(self, params):
         self._FileSystemId = params.get("FileSystemId")
@@ -5365,6 +5388,7 @@ class SetUserQuotaRequest(AbstractModel):
         self._UserId = params.get("UserId")
         self._CapacityHardLimit = params.get("CapacityHardLimit")
         self._FileHardLimit = params.get("FileHardLimit")
+        self._DirectoryPath = params.get("DirectoryPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

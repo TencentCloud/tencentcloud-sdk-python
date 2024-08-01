@@ -789,6 +789,205 @@ class BigKeyTypeInfo(AbstractModel):
         
 
 
+class CDCResource(AbstractModel):
+    """redis独享集群详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: 用户的Appid
+        :type AppId: int
+        :param _RegionId: 地域id
+        :type RegionId: int
+        :param _ZoneId: 可用区id
+        :type ZoneId: int
+        :param _RedisClusterId: redis独享集群id
+        :type RedisClusterId: str
+        :param _PayMode: 计费模式，1-包年包月，0-按量计费
+        :type PayMode: int
+        :param _ProjectId: 项目id
+        :type ProjectId: int
+        :param _AutoRenewFlag: 自动续费标识，0 - 默认状态（手动续费）；1 - 自动续费；2 - 明确不自动续费
+        :type AutoRenewFlag: int
+        :param _ClusterName: 独享集群名称
+        :type ClusterName: str
+        :param _StartTime: 实例创建时间
+        :type StartTime: str
+        :param _EndTime: 实例到期时间
+        :type EndTime: str
+        :param _Status: 集群状态：1-流程中，2-运行中，3-已隔离
+        :type Status: int
+        :param _BaseBundles: 基础管控资源包
+        :type BaseBundles: list of ResourceBundle
+        :param _ResourceBundles: 资源包列表
+        :type ResourceBundles: list of ResourceBundle
+        :param _DedicatedClusterId: 所属本地专有集群id
+        :type DedicatedClusterId: str
+        """
+        self._AppId = None
+        self._RegionId = None
+        self._ZoneId = None
+        self._RedisClusterId = None
+        self._PayMode = None
+        self._ProjectId = None
+        self._AutoRenewFlag = None
+        self._ClusterName = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Status = None
+        self._BaseBundles = None
+        self._ResourceBundles = None
+        self._DedicatedClusterId = None
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def RedisClusterId(self):
+        return self._RedisClusterId
+
+    @RedisClusterId.setter
+    def RedisClusterId(self, RedisClusterId):
+        self._RedisClusterId = RedisClusterId
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def AutoRenewFlag(self):
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def BaseBundles(self):
+        return self._BaseBundles
+
+    @BaseBundles.setter
+    def BaseBundles(self, BaseBundles):
+        self._BaseBundles = BaseBundles
+
+    @property
+    def ResourceBundles(self):
+        return self._ResourceBundles
+
+    @ResourceBundles.setter
+    def ResourceBundles(self, ResourceBundles):
+        self._ResourceBundles = ResourceBundles
+
+    @property
+    def DedicatedClusterId(self):
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._RegionId = params.get("RegionId")
+        self._ZoneId = params.get("ZoneId")
+        self._RedisClusterId = params.get("RedisClusterId")
+        self._PayMode = params.get("PayMode")
+        self._ProjectId = params.get("ProjectId")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._ClusterName = params.get("ClusterName")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Status = params.get("Status")
+        if params.get("BaseBundles") is not None:
+            self._BaseBundles = []
+            for item in params.get("BaseBundles"):
+                obj = ResourceBundle()
+                obj._deserialize(item)
+                self._BaseBundles.append(obj)
+        if params.get("ResourceBundles") is not None:
+            self._ResourceBundles = []
+            for item in params.get("ResourceBundles"):
+                obj = ResourceBundle()
+                obj._deserialize(item)
+                self._ResourceBundles.append(obj)
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ChangeInstanceRoleRequest(AbstractModel):
     """ChangeInstanceRole请求参数结构体
 
@@ -7447,6 +7646,271 @@ class DescribeProxySlowLogResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRedisClusterOverviewRequest(AbstractModel):
+    """DescribeRedisClusterOverview请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DedicatedClusterId: 本地专用集群id
+        :type DedicatedClusterId: str
+        """
+        self._DedicatedClusterId = None
+
+    @property
+    def DedicatedClusterId(self):
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
+
+
+    def _deserialize(self, params):
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRedisClusterOverviewResponse(AbstractModel):
+    """DescribeRedisClusterOverview返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalBundle: 资源包总数
+        :type TotalBundle: int
+        :param _TotalMemory: 资源包总内存大小，单位：GB
+        :type TotalMemory: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalBundle = None
+        self._TotalMemory = None
+        self._RequestId = None
+
+    @property
+    def TotalBundle(self):
+        return self._TotalBundle
+
+    @TotalBundle.setter
+    def TotalBundle(self, TotalBundle):
+        self._TotalBundle = TotalBundle
+
+    @property
+    def TotalMemory(self):
+        return self._TotalMemory
+
+    @TotalMemory.setter
+    def TotalMemory(self, TotalMemory):
+        self._TotalMemory = TotalMemory
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalBundle = params.get("TotalBundle")
+        self._TotalMemory = params.get("TotalMemory")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRedisClustersRequest(AbstractModel):
+    """DescribeRedisClusters请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RedisClusterIds: Redis独享集群id
+        :type RedisClusterIds: list of str
+        :param _Status: 集群状态：1-流程中，2-运行中，3-已隔离
+        :type Status: list of int
+        :param _ProjectIds: 项目ID数组
+        :type ProjectIds: list of int
+        :param _AutoRenewFlag: 续费模式：0 - 默认状态（手动续费）；1 - 自动续费；2 - 明确不自动续费
+        :type AutoRenewFlag: list of int
+        :param _ClusterName: Redis独享集群名称
+        :type ClusterName: str
+        :param _SearchKey: 搜索关键词：支持集群Id、集群名称
+        :type SearchKey: str
+        :param _Limit: 分页限制返回大小，不传则默认为20
+        :type Limit: int
+        :param _Offset: 偏移量，取Limit整数倍
+        :type Offset: int
+        :param _DedicatedClusterId: 本地专用集群id
+        :type DedicatedClusterId: str
+        """
+        self._RedisClusterIds = None
+        self._Status = None
+        self._ProjectIds = None
+        self._AutoRenewFlag = None
+        self._ClusterName = None
+        self._SearchKey = None
+        self._Limit = None
+        self._Offset = None
+        self._DedicatedClusterId = None
+
+    @property
+    def RedisClusterIds(self):
+        return self._RedisClusterIds
+
+    @RedisClusterIds.setter
+    def RedisClusterIds(self, RedisClusterIds):
+        self._RedisClusterIds = RedisClusterIds
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ProjectIds(self):
+        return self._ProjectIds
+
+    @ProjectIds.setter
+    def ProjectIds(self, ProjectIds):
+        self._ProjectIds = ProjectIds
+
+    @property
+    def AutoRenewFlag(self):
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def SearchKey(self):
+        return self._SearchKey
+
+    @SearchKey.setter
+    def SearchKey(self, SearchKey):
+        self._SearchKey = SearchKey
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def DedicatedClusterId(self):
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
+
+
+    def _deserialize(self, params):
+        self._RedisClusterIds = params.get("RedisClusterIds")
+        self._Status = params.get("Status")
+        self._ProjectIds = params.get("ProjectIds")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._ClusterName = params.get("ClusterName")
+        self._SearchKey = params.get("SearchKey")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRedisClustersResponse(AbstractModel):
+    """DescribeRedisClusters返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 集群总数
+        :type Total: int
+        :param _Resources: CDC集群资源列表
+        :type Resources: list of CDCResource
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Resources = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Resources(self):
+        return self._Resources
+
+    @Resources.setter
+    def Resources(self, Resources):
+        self._Resources = Resources
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Resources") is not None:
+            self._Resources = []
+            for item in params.get("Resources"):
+                obj = CDCResource()
+                obj._deserialize(item)
+                self._Resources.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeReplicationGroupInstanceRequest(AbstractModel):
     """DescribeReplicationGroupInstance请求参数结构体
 
@@ -10817,6 +11281,15 @@ class InstanceSet(AbstractModel):
         :param _PolarisServer: 北极星服务地址，内部使用。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolarisServer: str
+        :param _RedisClusterId: CDC Redis集群ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RedisClusterId: str
+        :param _DedicatedClusterId: CDC 集群ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DedicatedClusterId: str
+        :param _ProductVersion: 产品版本。<ul><li>local：本地盘。</li><li>cloud：云盘版。</li><li>cdc：CDC 集群版本。</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductVersion: str
         :param _CurrentProxyVersion: 实例当前Proxy版本。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentProxyVersion: str
@@ -10885,6 +11358,9 @@ class InstanceSet(AbstractModel):
         self._Region = None
         self._WanAddress = None
         self._PolarisServer = None
+        self._RedisClusterId = None
+        self._DedicatedClusterId = None
+        self._ProductVersion = None
         self._CurrentProxyVersion = None
         self._CurrentRedisVersion = None
         self._UpgradeProxyVersion = None
@@ -11308,6 +11784,30 @@ class InstanceSet(AbstractModel):
         self._PolarisServer = PolarisServer
 
     @property
+    def RedisClusterId(self):
+        return self._RedisClusterId
+
+    @RedisClusterId.setter
+    def RedisClusterId(self, RedisClusterId):
+        self._RedisClusterId = RedisClusterId
+
+    @property
+    def DedicatedClusterId(self):
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
+
+    @property
+    def ProductVersion(self):
+        return self._ProductVersion
+
+    @ProductVersion.setter
+    def ProductVersion(self, ProductVersion):
+        self._ProductVersion = ProductVersion
+
+    @property
     def CurrentProxyVersion(self):
         return self._CurrentProxyVersion
 
@@ -11416,6 +11916,9 @@ class InstanceSet(AbstractModel):
         self._Region = params.get("Region")
         self._WanAddress = params.get("WanAddress")
         self._PolarisServer = params.get("PolarisServer")
+        self._RedisClusterId = params.get("RedisClusterId")
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
+        self._ProductVersion = params.get("ProductVersion")
         self._CurrentProxyVersion = params.get("CurrentProxyVersion")
         self._CurrentRedisVersion = params.get("CurrentRedisVersion")
         self._UpgradeProxyVersion = params.get("UpgradeProxyVersion")
@@ -15896,6 +16399,63 @@ class ResetPasswordResponse(AbstractModel):
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
+
+
+class ResourceBundle(AbstractModel):
+    """redis独享集群资源包
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceBundleName: 资源包名称
+        :type ResourceBundleName: str
+        :param _AvailableMemory: 可售卖内存，单位：GB
+        :type AvailableMemory: int
+        :param _Count: 资源包个数
+        :type Count: int
+        """
+        self._ResourceBundleName = None
+        self._AvailableMemory = None
+        self._Count = None
+
+    @property
+    def ResourceBundleName(self):
+        return self._ResourceBundleName
+
+    @ResourceBundleName.setter
+    def ResourceBundleName(self, ResourceBundleName):
+        self._ResourceBundleName = ResourceBundleName
+
+    @property
+    def AvailableMemory(self):
+        return self._AvailableMemory
+
+    @AvailableMemory.setter
+    def AvailableMemory(self, AvailableMemory):
+        self._AvailableMemory = AvailableMemory
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+
+    def _deserialize(self, params):
+        self._ResourceBundleName = params.get("ResourceBundleName")
+        self._AvailableMemory = params.get("AvailableMemory")
+        self._Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ResourceTag(AbstractModel):
