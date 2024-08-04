@@ -6972,7 +6972,7 @@ class UserQuota(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserType: 指定配额类型，包括Uid、Gid
+        :param _UserType: 指定配额类型，包括Uid、Gid、Dir
         :type UserType: str
         :param _UserId: UID/GID信息
         :type UserId: str
@@ -6988,6 +6988,12 @@ class UserQuota(AbstractModel):
         :param _FileUsed: 文件使用个数，单位个
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileUsed: int
+        :param _DirectoryPath: 目录配额的目录绝对路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DirectoryPath: str
+        :param _Status: 配置规则状态，inavailable---配置中，available --已生效，deleting--删除中，deleted 已删除，failed--配置失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
         """
         self._UserType = None
         self._UserId = None
@@ -6996,6 +7002,8 @@ class UserQuota(AbstractModel):
         self._FileSystemId = None
         self._CapacityUsed = None
         self._FileUsed = None
+        self._DirectoryPath = None
+        self._Status = None
 
     @property
     def UserType(self):
@@ -7053,6 +7061,22 @@ class UserQuota(AbstractModel):
     def FileUsed(self, FileUsed):
         self._FileUsed = FileUsed
 
+    @property
+    def DirectoryPath(self):
+        return self._DirectoryPath
+
+    @DirectoryPath.setter
+    def DirectoryPath(self, DirectoryPath):
+        self._DirectoryPath = DirectoryPath
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
 
     def _deserialize(self, params):
         self._UserType = params.get("UserType")
@@ -7062,6 +7086,8 @@ class UserQuota(AbstractModel):
         self._FileSystemId = params.get("FileSystemId")
         self._CapacityUsed = params.get("CapacityUsed")
         self._FileUsed = params.get("FileUsed")
+        self._DirectoryPath = params.get("DirectoryPath")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

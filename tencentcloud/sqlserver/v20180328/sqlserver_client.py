@@ -486,6 +486,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CutXEvents(self, request):
+        """本接口(CutXEvents)用于手动切割阻塞日志和死锁日志。
+
+        :param request: Request instance for CutXEvents.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.CutXEventsRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.CutXEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CutXEvents", params, headers=headers)
+            response = json.loads(body)
+            model = models.CutXEventsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteAccount(self, request):
         """本接口（DeleteAccount）用于删除实例账号。
 

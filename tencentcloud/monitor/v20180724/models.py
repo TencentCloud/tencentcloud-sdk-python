@@ -3311,7 +3311,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
         r"""
         :param _Module: 固定值，为"monitor"
         :type Module: str
-        :param _PolicyName: 策略名称，不超过20字符
+        :param _PolicyName: 策略名称，不超过60字符
         :type PolicyName: str
         :param _MonitorType: 监控类型 MT_QCE=云产品监控
         :type MonitorType: str
@@ -8110,7 +8110,8 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
         :type StartTime: int
         :param _EndTime: 结束时间，默认当前时间戳。对应 `FirstOccurTime` 告警首次出现时间，告警历史的 `FirstOccurTime` 早于 `EndTime` 才可能被搜索到。
         :type EndTime: int
-        :param _MonitorTypes: 根据监控类型过滤，不选默认查所有类型。"MT_QCE"=云产品监控，支持的枚举值有："MT_QCE"=云产品监控；"MT_TAW"=应用性能监控；"MT_RUM"=前端性能监控；"MT_PROBE"=云拨测
+        :param _MonitorTypes: 根据监控类型过滤，不选默认查所有类型。"MT_QCE"=云产品监控，支持的枚举值有："MT_QCE"=云产品监控；"MT_TAW"=应用性能监控；"MT_RUM"=前端性能监控；"MT_PROBE"=云拨测，"MT_TRTC"=实时音视频，
+"MT_RUMAPP"=终端性能监控
         :type MonitorTypes: list of str
         :param _AlarmObject: 根据告警对象过滤 字符串模糊搜索
         :type AlarmObject: str
