@@ -42179,6 +42179,66 @@ AVAILABLE：可用的
         
 
 
+class PrivateNatCrossDomainInfo(AbstractModel):
+    """私网NAT网关跨域信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CcnId: 跨域私网NAT关联的云联网ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CcnId: str
+        :param _LocalVpcId: 跨域私网NAT本端Vpc
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocalVpcId: str
+        :param _PeerVpcId: 跨域私网NAT对端Vpc
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PeerVpcId: str
+        """
+        self._CcnId = None
+        self._LocalVpcId = None
+        self._PeerVpcId = None
+
+    @property
+    def CcnId(self):
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+    @property
+    def LocalVpcId(self):
+        return self._LocalVpcId
+
+    @LocalVpcId.setter
+    def LocalVpcId(self, LocalVpcId):
+        self._LocalVpcId = LocalVpcId
+
+    @property
+    def PeerVpcId(self):
+        return self._PeerVpcId
+
+    @PeerVpcId.setter
+    def PeerVpcId(self, PeerVpcId):
+        self._PeerVpcId = PeerVpcId
+
+
+    def _deserialize(self, params):
+        self._CcnId = params.get("CcnId")
+        self._LocalVpcId = params.get("LocalVpcId")
+        self._PeerVpcId = params.get("PeerVpcId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PrivateNatDestinationIpPortTranslationNatRule(AbstractModel):
     """本端目的IP端口转换复杂结构
 
@@ -42319,6 +42379,21 @@ class PrivateNatGateway(AbstractModel):
         :param _TagSet: 标签键值对。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: list of Tag
+        :param _DirectConnectGatewayIds: 专线网关唯一`ID`
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DirectConnectGatewayIds: list of str
+        :param _NatType: 私网网关类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NatType: str
+        :param _CrossDomainInfo: 私网NAT跨域信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CrossDomainInfo: :class:`tencentcloud.vpc.v20170312.models.PrivateNatCrossDomainInfo`
+        :param _VpcType: 是否VPC型私网网关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcType: bool
+        :param _CcnId: 跨域私网NAT关联的云联网ID	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CcnId: str
         """
         self._NatGatewayId = None
         self._NatGatewayName = None
@@ -42327,6 +42402,11 @@ class PrivateNatGateway(AbstractModel):
         self._CrossDomain = None
         self._CreatedTime = None
         self._TagSet = None
+        self._DirectConnectGatewayIds = None
+        self._NatType = None
+        self._CrossDomainInfo = None
+        self._VpcType = None
+        self._CcnId = None
 
     @property
     def NatGatewayId(self):
@@ -42384,6 +42464,46 @@ class PrivateNatGateway(AbstractModel):
     def TagSet(self, TagSet):
         self._TagSet = TagSet
 
+    @property
+    def DirectConnectGatewayIds(self):
+        return self._DirectConnectGatewayIds
+
+    @DirectConnectGatewayIds.setter
+    def DirectConnectGatewayIds(self, DirectConnectGatewayIds):
+        self._DirectConnectGatewayIds = DirectConnectGatewayIds
+
+    @property
+    def NatType(self):
+        return self._NatType
+
+    @NatType.setter
+    def NatType(self, NatType):
+        self._NatType = NatType
+
+    @property
+    def CrossDomainInfo(self):
+        return self._CrossDomainInfo
+
+    @CrossDomainInfo.setter
+    def CrossDomainInfo(self, CrossDomainInfo):
+        self._CrossDomainInfo = CrossDomainInfo
+
+    @property
+    def VpcType(self):
+        return self._VpcType
+
+    @VpcType.setter
+    def VpcType(self, VpcType):
+        self._VpcType = VpcType
+
+    @property
+    def CcnId(self):
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
 
     def _deserialize(self, params):
         self._NatGatewayId = params.get("NatGatewayId")
@@ -42398,6 +42518,13 @@ class PrivateNatGateway(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._TagSet.append(obj)
+        self._DirectConnectGatewayIds = params.get("DirectConnectGatewayIds")
+        self._NatType = params.get("NatType")
+        if params.get("CrossDomainInfo") is not None:
+            self._CrossDomainInfo = PrivateNatCrossDomainInfo()
+            self._CrossDomainInfo._deserialize(params.get("CrossDomainInfo"))
+        self._VpcType = params.get("VpcType")
+        self._CcnId = params.get("CcnId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

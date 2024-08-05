@@ -2945,6 +2945,8 @@ class VpcClient(AbstractClient):
 
     def DeleteVpnConnection(self, request):
         """本接口（DeleteVpnConnection）用于删除VPN通道。
+        >?本接口为异步接口
+        >
 
         :param request: Request instance for DeleteVpnConnection.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteVpnConnectionRequest`

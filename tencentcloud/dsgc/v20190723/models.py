@@ -20334,10 +20334,10 @@ class DspaUserResourceMeta(AbstractModel):
         :type ResourceAuthType: str
         :param _ResourceAuthAccount: 授权账号名
         :type ResourceAuthAccount: str
-        :param _InstanceType: x
+        :param _InstanceType: 实例类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: str
-        :param _InstanceValue: x
+        :param _InstanceValue: 实例值
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceValue: str
         """
@@ -22893,10 +22893,10 @@ class ModifyDSPAAssessmentRiskLatestRequest(AbstractModel):
         r"""
         :param _DspaId: dspa实例id
         :type DspaId: str
-        :param _RiskLatestTableId: 最新风险项Id
-        :type RiskLatestTableId: int
         :param _Status: 风险状态（waiting:待处理，processing:处理中，finished:已处理，ignored:已忽略）
         :type Status: str
+        :param _RiskLatestTableId: 最新风险项Id
+        :type RiskLatestTableId: int
         :param _Note: 备注
         :type Note: str
         :param _ProcessPeople: 处置人
@@ -22905,8 +22905,8 @@ class ModifyDSPAAssessmentRiskLatestRequest(AbstractModel):
         :type BathRiskIdList: list of int
         """
         self._DspaId = None
-        self._RiskLatestTableId = None
         self._Status = None
+        self._RiskLatestTableId = None
         self._Note = None
         self._ProcessPeople = None
         self._BathRiskIdList = None
@@ -22920,6 +22920,14 @@ class ModifyDSPAAssessmentRiskLatestRequest(AbstractModel):
         self._DspaId = DspaId
 
     @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
     def RiskLatestTableId(self):
         warnings.warn("parameter `RiskLatestTableId` is deprecated", DeprecationWarning) 
 
@@ -22930,14 +22938,6 @@ class ModifyDSPAAssessmentRiskLatestRequest(AbstractModel):
         warnings.warn("parameter `RiskLatestTableId` is deprecated", DeprecationWarning) 
 
         self._RiskLatestTableId = RiskLatestTableId
-
-    @property
-    def Status(self):
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
 
     @property
     def Note(self):
@@ -22966,8 +22966,8 @@ class ModifyDSPAAssessmentRiskLatestRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
-        self._RiskLatestTableId = params.get("RiskLatestTableId")
         self._Status = params.get("Status")
+        self._RiskLatestTableId = params.get("RiskLatestTableId")
         self._Note = params.get("Note")
         self._ProcessPeople = params.get("ProcessPeople")
         self._BathRiskIdList = params.get("BathRiskIdList")

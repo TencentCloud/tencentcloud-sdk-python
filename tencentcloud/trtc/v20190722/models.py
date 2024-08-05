@@ -717,6 +717,8 @@ class CreateCloudRecordingRequest(AbstractModel):
         :param _SdkAppId: TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和录制的房间所对应的SdkAppId相同。
         :type SdkAppId: int
         :param _RoomId: TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，录制的TRTC房间所对应的RoomId。
+注：房间号类型默认为整型，若房间号类型为字符串，请通过RoomIdType指定。
+
         :type RoomId: str
         :param _UserId: 录制机器人的UserId，用于进房发起录制任务。
 【*注意】这个UserId不能与当前房间内的主播观众[UserId](https://cloud.tencent.com/document/product/647/46351#userid)重复。如果一个房间发起多个录制任务时，机器人的userid也不能相互重复，否则会中断前一个录制任务。建议可以把房间ID作为UserId的标识的一部分，即录制机器人UserId在房间内唯一。
