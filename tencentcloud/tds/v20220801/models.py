@@ -18,6 +18,109 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class DataAuthorizationInfo(AbstractModel):
+    """数据授权信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataProviderName: 数据委托方、需求方：客户主体名称。
+        :type DataProviderName: str
+        :param _DataRecipientName: 数据受托方、提供方：腾讯云主体名称。
+
+固定填：腾讯云计算（北京）有限责任公司
+        :type DataRecipientName: str
+        :param _UserDataType: 客户请求所涉及的用户个人信息类型，支持多选。实际以接口请求传参为准。
+1-手机号；
+2-微信开放账号；
+3-QQ开放账号；
+4-IP地址；
+        :type UserDataType: list of int non-negative
+        :param _IsAuthorize: 客户是否已按合规指南要求获取用户授权，同意客户委托腾讯云处理入参信息，结合已合法收集的用户数据进行必要处理得出服务结果，并返回给客户。
+
+1-已授权；其它值为未授权。
+        :type IsAuthorize: int
+        :param _AuthorizationTerm: 客户获得的用户授权期限时间戳（单位秒）。
+
+不填或0默认无固定期限。
+        :type AuthorizationTerm: int
+        :param _PrivacyPolicyLink: 客户获得用户授权所依赖的协议地址。
+        :type PrivacyPolicyLink: str
+        """
+        self._DataProviderName = None
+        self._DataRecipientName = None
+        self._UserDataType = None
+        self._IsAuthorize = None
+        self._AuthorizationTerm = None
+        self._PrivacyPolicyLink = None
+
+    @property
+    def DataProviderName(self):
+        return self._DataProviderName
+
+    @DataProviderName.setter
+    def DataProviderName(self, DataProviderName):
+        self._DataProviderName = DataProviderName
+
+    @property
+    def DataRecipientName(self):
+        return self._DataRecipientName
+
+    @DataRecipientName.setter
+    def DataRecipientName(self, DataRecipientName):
+        self._DataRecipientName = DataRecipientName
+
+    @property
+    def UserDataType(self):
+        return self._UserDataType
+
+    @UserDataType.setter
+    def UserDataType(self, UserDataType):
+        self._UserDataType = UserDataType
+
+    @property
+    def IsAuthorize(self):
+        return self._IsAuthorize
+
+    @IsAuthorize.setter
+    def IsAuthorize(self, IsAuthorize):
+        self._IsAuthorize = IsAuthorize
+
+    @property
+    def AuthorizationTerm(self):
+        return self._AuthorizationTerm
+
+    @AuthorizationTerm.setter
+    def AuthorizationTerm(self, AuthorizationTerm):
+        self._AuthorizationTerm = AuthorizationTerm
+
+    @property
+    def PrivacyPolicyLink(self):
+        return self._PrivacyPolicyLink
+
+    @PrivacyPolicyLink.setter
+    def PrivacyPolicyLink(self, PrivacyPolicyLink):
+        self._PrivacyPolicyLink = PrivacyPolicyLink
+
+
+    def _deserialize(self, params):
+        self._DataProviderName = params.get("DataProviderName")
+        self._DataRecipientName = params.get("DataRecipientName")
+        self._UserDataType = params.get("UserDataType")
+        self._IsAuthorize = params.get("IsAuthorize")
+        self._AuthorizationTerm = params.get("AuthorizationTerm")
+        self._PrivacyPolicyLink = params.get("PrivacyPolicyLink")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeFraudBaseRequest(AbstractModel):
     """DescribeFraudBase请求参数结构体
 
@@ -455,6 +558,8 @@ class DescribeFraudUltimateRequest(AbstractModel):
         :type ClientIP: str
         :param _QQOpenId: QQ的OpenId
         :type QQOpenId: str
+        :param _DataAuthorization: 数据授权信息
+        :type DataAuthorization: :class:`tencentcloud.tds.v20220801.models.DataAuthorizationInfo`
         """
         self._DeviceToken = None
         self._SceneCode = None
@@ -465,6 +570,7 @@ class DescribeFraudUltimateRequest(AbstractModel):
         self._PhoneNumber = None
         self._ClientIP = None
         self._QQOpenId = None
+        self._DataAuthorization = None
 
     @property
     def DeviceToken(self):
@@ -538,6 +644,14 @@ class DescribeFraudUltimateRequest(AbstractModel):
     def QQOpenId(self, QQOpenId):
         self._QQOpenId = QQOpenId
 
+    @property
+    def DataAuthorization(self):
+        return self._DataAuthorization
+
+    @DataAuthorization.setter
+    def DataAuthorization(self, DataAuthorization):
+        self._DataAuthorization = DataAuthorization
+
 
     def _deserialize(self, params):
         self._DeviceToken = params.get("DeviceToken")
@@ -549,6 +663,9 @@ class DescribeFraudUltimateRequest(AbstractModel):
         self._PhoneNumber = params.get("PhoneNumber")
         self._ClientIP = params.get("ClientIP")
         self._QQOpenId = params.get("QQOpenId")
+        if params.get("DataAuthorization") is not None:
+            self._DataAuthorization = DataAuthorizationInfo()
+            self._DataAuthorization._deserialize(params.get("DataAuthorization"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

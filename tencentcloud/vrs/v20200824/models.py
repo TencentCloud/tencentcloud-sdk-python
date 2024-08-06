@@ -117,7 +117,7 @@ class CreateVRSTaskRequest(AbstractModel):
 
 1-中文
         :type VoiceLanguage: int
-        :param _AudioIdList: 音频ID集合
+        :param _AudioIdList: 音频ID集合。（一句话声音复刻仅需填写一个音质检测接口返回的AudioId）
         :type AudioIdList: list of str
         :param _SampleRate: 音频采样率：
 
@@ -130,9 +130,11 @@ class CreateVRSTaskRequest(AbstractModel):
         :type CallbackUrl: str
         :param _ModelType: 模型类型 1:在线 2:离线  默认为1
         :type ModelType: int
-        :param _TaskType: 复刻类型。 0 - 轻量版声音复刻（默认）。
+        :param _TaskType: 复刻类型。
+0 - 轻量版声音复刻（默认）；
+5 - 一句话声音复刻。
         :type TaskType: int
-        :param _VPRAudioId: 校验音频ID。
+        :param _VPRAudioId: 校验音频ID。（仅基础版声音复刻使用）
         :type VPRAudioId: str
         """
         self._SessionId = None
@@ -380,18 +382,26 @@ class DescribeVRSTaskStatusRespData(AbstractModel):
         :param _StatusStr: 任务状态，waiting：任务等待，doing：任务执行中，success：任务成功，failed：任务失败。
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatusStr: str
-        :param _VoiceType: 音色id。
+        :param _VoiceType: 音色id。（若为一句话复刻时，该值为固定值“200000000”）
 注意：此字段可能返回 null，表示取不到有效值。
         :type VoiceType: int
         :param _ErrorMsg: 失败原因说明。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
+        :param _ExpireTime: 任务过期时间。（当复刻类型为一句话复刻时展示）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: str
+        :param _FastVoiceType: 快速复刻音色ID。（当复刻类型为一句话复刻时展示）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FastVoiceType: str
         """
         self._TaskId = None
         self._Status = None
         self._StatusStr = None
         self._VoiceType = None
         self._ErrorMsg = None
+        self._ExpireTime = None
+        self._FastVoiceType = None
 
     @property
     def TaskId(self):
@@ -433,6 +443,22 @@ class DescribeVRSTaskStatusRespData(AbstractModel):
     def ErrorMsg(self, ErrorMsg):
         self._ErrorMsg = ErrorMsg
 
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def FastVoiceType(self):
+        return self._FastVoiceType
+
+    @FastVoiceType.setter
+    def FastVoiceType(self, FastVoiceType):
+        self._FastVoiceType = FastVoiceType
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -440,6 +466,8 @@ class DescribeVRSTaskStatusRespData(AbstractModel):
         self._StatusStr = params.get("StatusStr")
         self._VoiceType = params.get("VoiceType")
         self._ErrorMsg = params.get("ErrorMsg")
+        self._ExpireTime = params.get("ExpireTime")
+        self._FastVoiceType = params.get("FastVoiceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -504,16 +532,22 @@ class DetectEnvAndSoundQualityRequest(AbstractModel):
         :type TypeId: int
         :param _Codec: 音频格式，音频类型(wav,mp3,aac,m4a)
         :type Codec: str
-        :param _SampleRate: 音频采样率：
-
-16000：16k（默认）
+        :param _SampleRate: 音频采样率。
+16000：16k（默认）；
+24000：24k（仅一句话声音复刻支持）；
+48000：48k（仅一句话声音复刻支持）。
         :type SampleRate: int
+        :param _TaskType: 复刻类型。
+0 - 轻量版声音复刻（默认）;
+5 - 一句话声音复刻。
+        :type TaskType: int
         """
         self._TextId = None
         self._AudioData = None
         self._TypeId = None
         self._Codec = None
         self._SampleRate = None
+        self._TaskType = None
 
     @property
     def TextId(self):
@@ -555,6 +589,14 @@ class DetectEnvAndSoundQualityRequest(AbstractModel):
     def SampleRate(self, SampleRate):
         self._SampleRate = SampleRate
 
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
 
     def _deserialize(self, params):
         self._TextId = params.get("TextId")
@@ -562,6 +604,7 @@ class DetectEnvAndSoundQualityRequest(AbstractModel):
         self._TypeId = params.get("TypeId")
         self._Codec = params.get("Codec")
         self._SampleRate = params.get("SampleRate")
+        self._TaskType = params.get("TaskType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -859,6 +902,64 @@ class GetTrainingTextRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _TaskType: 复刻类型。
+0 - 轻量版声音复刻（默认）;
+5 - 一句话声音复刻。
+        :type TaskType: int
+        :param _Domain: 音色场景。（仅支持一句话声音复刻，其余复刻类型不生效） 
+0 - 通用场景（默认）； 
+1 - 聊天场景； 
+2 - 阅读场景； 
+3 - 资讯播报场景。
+        :type Domain: int
+        :param _TextLanguage: 文本语种。（仅支持一句话声音复刻，其余复刻类型不生效） 
+1 - 中文（默认）。
+        :type TextLanguage: int
+        """
+        self._TaskType = None
+        self._Domain = None
+        self._TextLanguage = None
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def TextLanguage(self):
+        return self._TextLanguage
+
+    @TextLanguage.setter
+    def TextLanguage(self, TextLanguage):
+        self._TextLanguage = TextLanguage
+
+
+    def _deserialize(self, params):
+        self._TaskType = params.get("TaskType")
+        self._Domain = params.get("Domain")
+        self._TextLanguage = params.get("TextLanguage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class GetTrainingTextResponse(AbstractModel):
     """GetTrainingText返回参数结构体
@@ -903,6 +1004,35 @@ class GetVRSVoiceTypesRequest(AbstractModel):
     """GetVRSVoiceTypes请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _TaskType: 复刻类型。
+0 - 除快速声音复刻外其他复刻类型（默认）；
+5 - 一句话声音复刻。
+        :type TaskType: int
+        """
+        self._TaskType = None
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+
+    def _deserialize(self, params):
+        self._TaskType = params.get("TaskType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class GetVRSVoiceTypesResponse(AbstractModel):
@@ -1037,7 +1167,7 @@ class VoiceTypeInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VoiceType: 音色id
+        :param _VoiceType: 音色id。（若为一句话复刻时，该值为固定值“200000000”）
         :type VoiceType: int
         :param _VoiceName: 音色名称
         :type VoiceName: str
@@ -1051,6 +1181,13 @@ class VoiceTypeInfo(AbstractModel):
         :type DateCreated: str
         :param _IsDeployed: 部署状态。若已部署，则可通过语音合成接口调用该音色
         :type IsDeployed: bool
+        :param _ExpireTime: 任务过期时间。（当复刻类型为一句话复刻时展示）
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: str
+        :param _FastVoiceType: 快速复刻音色ID。（当复刻类型为一句话复刻时展示）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FastVoiceType: str
         """
         self._VoiceType = None
         self._VoiceName = None
@@ -1059,6 +1196,8 @@ class VoiceTypeInfo(AbstractModel):
         self._TaskID = None
         self._DateCreated = None
         self._IsDeployed = None
+        self._ExpireTime = None
+        self._FastVoiceType = None
 
     @property
     def VoiceType(self):
@@ -1116,6 +1255,22 @@ class VoiceTypeInfo(AbstractModel):
     def IsDeployed(self, IsDeployed):
         self._IsDeployed = IsDeployed
 
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def FastVoiceType(self):
+        return self._FastVoiceType
+
+    @FastVoiceType.setter
+    def FastVoiceType(self, FastVoiceType):
+        self._FastVoiceType = FastVoiceType
+
 
     def _deserialize(self, params):
         self._VoiceType = params.get("VoiceType")
@@ -1125,6 +1280,8 @@ class VoiceTypeInfo(AbstractModel):
         self._TaskID = params.get("TaskID")
         self._DateCreated = params.get("DateCreated")
         self._IsDeployed = params.get("IsDeployed")
+        self._ExpireTime = params.get("ExpireTime")
+        self._FastVoiceType = params.get("FastVoiceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

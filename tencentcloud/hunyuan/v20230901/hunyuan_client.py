@@ -26,6 +26,29 @@ class HunyuanClient(AbstractClient):
     _service = 'hunyuan'
 
 
+    def ActivateService(self, request):
+        """开通服务
+
+        :param request: Request instance for ActivateService.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.ActivateServiceRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.ActivateServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ActivateService", params, headers=headers)
+            response = json.loads(body)
+            model = models.ActivateServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ChatCompletions(self, request):
         """腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 
@@ -112,6 +135,29 @@ class HunyuanClient(AbstractClient):
             body = self.call("QueryHunyuanImageJob", params, headers=headers)
             response = json.loads(body)
             model = models.QueryHunyuanImageJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SetPayMode(self, request):
+        """设置付费模式
+
+        :param request: Request instance for SetPayMode.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.SetPayModeRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.SetPayModeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetPayMode", params, headers=headers)
+            response = json.loads(body)
+            model = models.SetPayModeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

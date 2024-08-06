@@ -18,6 +18,64 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ActivateServiceRequest(AbstractModel):
+    """ActivateService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PayMode: 开通之后，是否关闭后付费；默认为0，不关闭；1为关闭
+        :type PayMode: int
+        """
+        self._PayMode = None
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+
+    def _deserialize(self, params):
+        self._PayMode = params.get("PayMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ActivateServiceResponse(AbstractModel):
+    """ActivateService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ChatCompletionsRequest(AbstractModel):
     """ChatCompletions请求参数结构体
 
@@ -61,14 +119,12 @@ class ChatCompletionsRequest(AbstractModel):
 当选择流式输出审核时，可能会出现部分内容已输出，但中间某一段响应中的 FinishReason 值为 sensitive，此时说明安全审核未通过。如果业务场景有实时文字上屏的需求，需要自行撤回已上屏的内容，并建议自定义替换为一条提示语，如 “这个问题我不方便回答，不如我们换个话题试试”，以保障终端体验。
         :type StreamModeration: bool
         :param _TopP: 说明：
-1. 影响输出文本的多样性，取值越大，生成文本的多样性越强。
-2. 取值区间为 [0.0, 1.0]，未传值时使用各模型推荐值。
-3. 非必要不建议使用，不合理的取值会影响效果。
+1. 影响输出文本的多样性，取值区间为 [0.0, 1.0]。取值越大，生成文本的多样性越强。
+2. 模型已有默认参数，不传值时使用各模型推荐值，不推荐用户修改。
         :type TopP: float
         :param _Temperature: 说明：
-1. 较高的数值会使输出更加随机，而较低的数值会使其更加集中和确定。
-2. 取值区间为 [0.0, 2.0]，未传值时使用各模型推荐值。
-3. 非必要不建议使用，不合理的取值会影响效果。
+1. 影响模型输出多样性，取值区间为 [0.0, 2.0]。较高的数值会使输出更加多样化和不可预测，而较低的数值会使其更加集中和确定。
+2. 模型已有默认参数，不传值时使用各模型推荐值，不推荐用户修改。
         :type Temperature: float
         :param _EnableEnhancement: 功能增强（如搜索）开关。
 说明：
@@ -1408,6 +1464,64 @@ class SearchResult(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SetPayModeRequest(AbstractModel):
+    """SetPayMode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PayMode: 设置后付费状态，0：后付费；1：预付费
+        :type PayMode: int
+        """
+        self._PayMode = None
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+
+    def _deserialize(self, params):
+        self._PayMode = params.get("PayMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetPayModeResponse(AbstractModel):
+    """SetPayMode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class SubmitHunyuanImageJobRequest(AbstractModel):

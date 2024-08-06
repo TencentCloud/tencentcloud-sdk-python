@@ -3617,6 +3617,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTaskLineage(self, request):
+        """通过任务查询表的血缘关系
+
+        :param request: Request instance for DescribeTaskLineage.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTaskLineageRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeTaskLineageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTaskLineage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTaskLineageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTaskLockStatus(self, request):
         """查看任务锁状态信息
 

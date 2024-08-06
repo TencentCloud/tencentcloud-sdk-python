@@ -8896,6 +8896,9 @@ class DescribeCloudBaseRunServerResponse(AbstractModel):
         :param _SourceType: 服务创建类型，默认为空，一键部署为oneclick
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceType: str
+        :param _Tag: 服务标签, function: 托管函数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tag: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -8906,6 +8909,7 @@ class DescribeCloudBaseRunServerResponse(AbstractModel):
         self._ImageRepo = None
         self._TrafficType = None
         self._SourceType = None
+        self._Tag = None
         self._RequestId = None
 
     @property
@@ -8965,6 +8969,14 @@ class DescribeCloudBaseRunServerResponse(AbstractModel):
         self._SourceType = SourceType
 
     @property
+    def Tag(self):
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -8986,6 +8998,7 @@ class DescribeCloudBaseRunServerResponse(AbstractModel):
         self._ImageRepo = params.get("ImageRepo")
         self._TrafficType = params.get("TrafficType")
         self._SourceType = params.get("SourceType")
+        self._Tag = params.get("Tag")
         self._RequestId = params.get("RequestId")
 
 

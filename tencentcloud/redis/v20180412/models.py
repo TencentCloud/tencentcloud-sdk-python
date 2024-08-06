@@ -3708,7 +3708,7 @@ class DescribeCommonDBInstancesRequest(AbstractModel):
         :type SubnetIds: list of int
         :param _PayMode: 计费类型过滤列表；0表示包年包月，1表示按量计费
         :type PayMode: int
-        :param _InstanceIds: 实例ID过滤信息列表
+        :param _InstanceIds: 实例ID过滤信息列表，数组最大长度限制为100
         :type InstanceIds: list of str
         :param _InstanceNames: 实例名称过滤信息列表
         :type InstanceNames: list of str
@@ -4662,7 +4662,7 @@ class DescribeInstanceDealDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealIds: 订单交易ID数组，即 [CreateInstances](https://cloud.tencent.com/document/api/239/20026) 的输出参数DealId。
+        :param _DealIds: 订单交易ID数组，即 [CreateInstances](https://cloud.tencent.com/document/api/239/20026) 的输出参数DealId。数组最大长度限制为10
         :type DealIds: list of str
         """
         self._DealIds = None
@@ -7125,10 +7125,12 @@ class DescribeParamTemplatesRequest(AbstractModel):
 - 9：Redis 5.0 内存版（集群架构）。
 - 15：Redis 6.2 内存版（标准架构）。
 - 16：Redis 6.2 内存版（集群架构）。
+- 17：Redis 7.0 内存版（标准架构）。
+- 18：Redis 7.0 内存版（集群架构）。
         :type ProductTypes: list of int
-        :param _TemplateNames: 模板名称数组。
+        :param _TemplateNames: 模板名称数组。数组最大长度限制为50
         :type TemplateNames: list of str
-        :param _TemplateIds: 模板ID数组。
+        :param _TemplateIds: 模板ID数组。数组最大长度限制为50
         :type TemplateIds: list of str
         """
         self._ProductTypes = None
@@ -13776,7 +13778,7 @@ class ModifyInstanceRequest(AbstractModel):
         r"""
         :param _Operation: 修改实例操作，如填写：rename-表示实例重命名；modifyProject-修改实例所属项目；modifyAutoRenew-修改实例续费标记
         :type Operation: str
-        :param _InstanceIds: 实例Id
+        :param _InstanceIds: 实例Id，每次请求的实例的上限为10。
         :type InstanceIds: list of str
         :param _InstanceNames: 实例的新名称
         :type InstanceNames: list of str
@@ -17833,7 +17835,7 @@ class UpgradeInstanceRequest(AbstractModel):
         :type RedisShardNum: int
         :param _RedisReplicasNum: 指实例变更后的副本数量。<ul><li>每次只能修改参数RedisReplicasNum、MemSize和RedisShardNum其中的一个，不能同时修改。且修改其中一个参数时，其他两个参数需输入实例原有的配置规格。</li><li>多AZ实例修改副本时必须要传入NodeSet。</li></ul>
         :type RedisReplicasNum: int
-        :param _NodeSet: 多AZ实例，增加副本时的附带信息，包括副本的可用区和副本的类型（NodeType为1）。非多AZ实例不需要配置该参数。
+        :param _NodeSet: 多AZ实例，增加副本时的节点信息，包括副本的 ID 编号及可用区信息。非多AZ实例不需要配置该参数。
         :type NodeSet: list of RedisNodeInfo
         """
         self._InstanceId = None

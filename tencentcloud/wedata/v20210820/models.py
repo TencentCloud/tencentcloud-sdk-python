@@ -335,6 +335,9 @@ class AlarmEventInfo(AbstractModel):
         :param _Threshold: 指标阈值
 注意：此字段可能返回 null，表示取不到有效值。
         :type Threshold: float
+        :param _AlarmReason: 告警原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmReason: str
         """
         self._AlarmId = None
         self._AlarmTime = None
@@ -362,6 +365,7 @@ class AlarmEventInfo(AbstractModel):
         self._MonitorObjectId = None
         self._MonitorObjectName = None
         self._Threshold = None
+        self._AlarmReason = None
 
     @property
     def AlarmId(self):
@@ -571,6 +575,14 @@ class AlarmEventInfo(AbstractModel):
     def Threshold(self, Threshold):
         self._Threshold = Threshold
 
+    @property
+    def AlarmReason(self):
+        return self._AlarmReason
+
+    @AlarmReason.setter
+    def AlarmReason(self, AlarmReason):
+        self._AlarmReason = AlarmReason
+
 
     def _deserialize(self, params):
         self._AlarmId = params.get("AlarmId")
@@ -599,6 +611,7 @@ class AlarmEventInfo(AbstractModel):
         self._MonitorObjectId = params.get("MonitorObjectId")
         self._MonitorObjectName = params.get("MonitorObjectName")
         self._Threshold = params.get("Threshold")
+        self._AlarmReason = params.get("AlarmReason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5972,6 +5985,9 @@ class ColumnMeta(AbstractModel):
         :param _LevelRank: 安全等级：值范围1-10
 注意：此字段可能返回 null，表示取不到有效值。
         :type LevelRank: int
+        :param _InfluxCategory: influxdb字段类别
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InfluxCategory: str
         """
         self._NameEn = None
         self._NameCn = None
@@ -5985,6 +6001,7 @@ class ColumnMeta(AbstractModel):
         self._DictionaryName = None
         self._LevelName = None
         self._LevelRank = None
+        self._InfluxCategory = None
 
     @property
     def NameEn(self):
@@ -6082,6 +6099,14 @@ class ColumnMeta(AbstractModel):
     def LevelRank(self, LevelRank):
         self._LevelRank = LevelRank
 
+    @property
+    def InfluxCategory(self):
+        return self._InfluxCategory
+
+    @InfluxCategory.setter
+    def InfluxCategory(self, InfluxCategory):
+        self._InfluxCategory = InfluxCategory
+
 
     def _deserialize(self, params):
         self._NameEn = params.get("NameEn")
@@ -6101,6 +6126,7 @@ class ColumnMeta(AbstractModel):
         self._DictionaryName = params.get("DictionaryName")
         self._LevelName = params.get("LevelName")
         self._LevelRank = params.get("LevelRank")
+        self._InfluxCategory = params.get("InfluxCategory")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8352,6 +8378,12 @@ class CreateOpsMakePlanRequest(AbstractModel):
         :type SchedulerResourceGroupName: str
         :param _IntegrationResourceGroupName: 补录指定的集成资源组名称 为空则表示使用任务原有集成执行资源组
         :type IntegrationResourceGroupName: str
+        :param _MakeExtList: 补录扩展属性
+        :type MakeExtList: list of StrToStrMap
+        :param _SameSelfWorkflowDependType: 补录扩展属性
+        :type SameSelfWorkflowDependType: bool
+        :param _SelfWorkflowDependency: 补录扩展属性
+        :type SelfWorkflowDependency: str
         """
         self._ProjectId = None
         self._MakeName = None
@@ -8376,6 +8408,9 @@ class CreateOpsMakePlanRequest(AbstractModel):
         self._IntegrationResourceGroup = None
         self._SchedulerResourceGroupName = None
         self._IntegrationResourceGroupName = None
+        self._MakeExtList = None
+        self._SameSelfWorkflowDependType = None
+        self._SelfWorkflowDependency = None
 
     @property
     def ProjectId(self):
@@ -8561,6 +8596,30 @@ class CreateOpsMakePlanRequest(AbstractModel):
     def IntegrationResourceGroupName(self, IntegrationResourceGroupName):
         self._IntegrationResourceGroupName = IntegrationResourceGroupName
 
+    @property
+    def MakeExtList(self):
+        return self._MakeExtList
+
+    @MakeExtList.setter
+    def MakeExtList(self, MakeExtList):
+        self._MakeExtList = MakeExtList
+
+    @property
+    def SameSelfWorkflowDependType(self):
+        return self._SameSelfWorkflowDependType
+
+    @SameSelfWorkflowDependType.setter
+    def SameSelfWorkflowDependType(self, SameSelfWorkflowDependType):
+        self._SameSelfWorkflowDependType = SameSelfWorkflowDependType
+
+    @property
+    def SelfWorkflowDependency(self):
+        return self._SelfWorkflowDependency
+
+    @SelfWorkflowDependency.setter
+    def SelfWorkflowDependency(self, SelfWorkflowDependency):
+        self._SelfWorkflowDependency = SelfWorkflowDependency
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -8596,6 +8655,14 @@ class CreateOpsMakePlanRequest(AbstractModel):
         self._IntegrationResourceGroup = params.get("IntegrationResourceGroup")
         self._SchedulerResourceGroupName = params.get("SchedulerResourceGroupName")
         self._IntegrationResourceGroupName = params.get("IntegrationResourceGroupName")
+        if params.get("MakeExtList") is not None:
+            self._MakeExtList = []
+            for item in params.get("MakeExtList"):
+                obj = StrToStrMap()
+                obj._deserialize(item)
+                self._MakeExtList.append(obj)
+        self._SameSelfWorkflowDependType = params.get("SameSelfWorkflowDependType")
+        self._SelfWorkflowDependency = params.get("SelfWorkflowDependency")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10770,6 +10837,12 @@ class DatabaseInfo(AbstractModel):
         :param _DsEnvType: 0或者未返回.未定义，1.生产 2.开发
 注意：此字段可能返回 null，表示取不到有效值。
         :type DsEnvType: int
+        :param _ClusterDeployType: EMR引擎部署方式：CVM/TKE
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterDeployType: str
+        :param _SchemaName: 模式名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchemaName: str
         """
         self._DatasourceName = None
         self._DatasourceId = None
@@ -10780,6 +10853,8 @@ class DatabaseInfo(AbstractModel):
         self._OriginDatabaseName = None
         self._OriginSchemaName = None
         self._DsEnvType = None
+        self._ClusterDeployType = None
+        self._SchemaName = None
 
     @property
     def DatasourceName(self):
@@ -10853,6 +10928,22 @@ class DatabaseInfo(AbstractModel):
     def DsEnvType(self, DsEnvType):
         self._DsEnvType = DsEnvType
 
+    @property
+    def ClusterDeployType(self):
+        return self._ClusterDeployType
+
+    @ClusterDeployType.setter
+    def ClusterDeployType(self, ClusterDeployType):
+        self._ClusterDeployType = ClusterDeployType
+
+    @property
+    def SchemaName(self):
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
 
     def _deserialize(self, params):
         self._DatasourceName = params.get("DatasourceName")
@@ -10864,6 +10955,8 @@ class DatabaseInfo(AbstractModel):
         self._OriginDatabaseName = params.get("OriginDatabaseName")
         self._OriginSchemaName = params.get("OriginSchemaName")
         self._DsEnvType = params.get("DsEnvType")
+        self._ClusterDeployType = params.get("ClusterDeployType")
+        self._SchemaName = params.get("SchemaName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15614,9 +15707,15 @@ class DescribeDatabaseMetasRequest(AbstractModel):
         :type Filters: list of Filter
         :param _OrderFields: 排序字段，如name
         :type OrderFields: list of OrderField
+        :param _PageSize: pagesize
+        :type PageSize: int
+        :param _PageNumber: pageNumber
+        :type PageNumber: int
         """
         self._Filters = None
         self._OrderFields = None
+        self._PageSize = None
+        self._PageNumber = None
 
     @property
     def Filters(self):
@@ -15634,6 +15733,22 @@ class DescribeDatabaseMetasRequest(AbstractModel):
     def OrderFields(self, OrderFields):
         self._OrderFields = OrderFields
 
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
@@ -15648,6 +15763,8 @@ class DescribeDatabaseMetasRequest(AbstractModel):
                 obj = OrderField()
                 obj._deserialize(item)
                 self._OrderFields.append(obj)
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20531,12 +20648,15 @@ class DescribeOpsMakePlanInstancesRequest(AbstractModel):
         :type PageNumber: int
         :param _PageSize: 分页大小，默认值10
         :type PageSize: int
+        :param _StateList: 实例状态列表
+        :type StateList: list of int
         """
         self._ProjectId = None
         self._PlanId = None
         self._TaskId = None
         self._PageNumber = None
         self._PageSize = None
+        self._StateList = None
 
     @property
     def ProjectId(self):
@@ -20578,6 +20698,14 @@ class DescribeOpsMakePlanInstancesRequest(AbstractModel):
     def PageSize(self, PageSize):
         self._PageSize = PageSize
 
+    @property
+    def StateList(self):
+        return self._StateList
+
+    @StateList.setter
+    def StateList(self, StateList):
+        self._StateList = StateList
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -20585,6 +20713,7 @@ class DescribeOpsMakePlanInstancesRequest(AbstractModel):
         self._TaskId = params.get("TaskId")
         self._PageNumber = params.get("PageNumber")
         self._PageSize = params.get("PageSize")
+        self._StateList = params.get("StateList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25843,10 +25972,13 @@ class DescribeTableMetaRequest(AbstractModel):
         :type TableNameFilter: :class:`tencentcloud.wedata.v20210820.models.TableNameFilter`
         :param _TableFilterType: 查询条件类型0按id，1按名称，默认为0
         :type TableFilterType: int
+        :param _SearchNames: 查询字段列表
+        :type SearchNames: list of str
         """
         self._TableId = None
         self._TableNameFilter = None
         self._TableFilterType = None
+        self._SearchNames = None
 
     @property
     def TableId(self):
@@ -25872,6 +26004,14 @@ class DescribeTableMetaRequest(AbstractModel):
     def TableFilterType(self, TableFilterType):
         self._TableFilterType = TableFilterType
 
+    @property
+    def SearchNames(self):
+        return self._SearchNames
+
+    @SearchNames.setter
+    def SearchNames(self, SearchNames):
+        self._SearchNames = SearchNames
+
 
     def _deserialize(self, params):
         self._TableId = params.get("TableId")
@@ -25879,6 +26019,7 @@ class DescribeTableMetaRequest(AbstractModel):
             self._TableNameFilter = TableNameFilter()
             self._TableNameFilter._deserialize(params.get("TableNameFilter"))
         self._TableFilterType = params.get("TableFilterType")
+        self._SearchNames = params.get("SearchNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25899,10 +26040,18 @@ class DescribeTableMetaResponse(AbstractModel):
         :param _TableMeta: 表的元数据信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableMeta: :class:`tencentcloud.wedata.v20210820.models.TableMeta`
+        :param _LifecycleInfo: 生命周期信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LifecycleInfo: :class:`tencentcloud.wedata.v20210820.models.LifecycleInfo`
+        :param _TagVoteSumList: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagVoteSumList: :class:`tencentcloud.wedata.v20210820.models.TagVoteSum`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TableMeta = None
+        self._LifecycleInfo = None
+        self._TagVoteSumList = None
         self._RequestId = None
 
     @property
@@ -25912,6 +26061,22 @@ class DescribeTableMetaResponse(AbstractModel):
     @TableMeta.setter
     def TableMeta(self, TableMeta):
         self._TableMeta = TableMeta
+
+    @property
+    def LifecycleInfo(self):
+        return self._LifecycleInfo
+
+    @LifecycleInfo.setter
+    def LifecycleInfo(self, LifecycleInfo):
+        self._LifecycleInfo = LifecycleInfo
+
+    @property
+    def TagVoteSumList(self):
+        return self._TagVoteSumList
+
+    @TagVoteSumList.setter
+    def TagVoteSumList(self, TagVoteSumList):
+        self._TagVoteSumList = TagVoteSumList
 
     @property
     def RequestId(self):
@@ -25926,6 +26091,12 @@ class DescribeTableMetaResponse(AbstractModel):
         if params.get("TableMeta") is not None:
             self._TableMeta = TableMeta()
             self._TableMeta._deserialize(params.get("TableMeta"))
+        if params.get("LifecycleInfo") is not None:
+            self._LifecycleInfo = LifecycleInfo()
+            self._LifecycleInfo._deserialize(params.get("LifecycleInfo"))
+        if params.get("TagVoteSumList") is not None:
+            self._TagVoteSumList = TagVoteSum()
+            self._TagVoteSumList._deserialize(params.get("TagVoteSumList"))
         self._RequestId = params.get("RequestId")
 
 
@@ -26252,6 +26423,12 @@ class DescribeTableSchemaInfoRequest(AbstractModel):
         :type SchemaName: str
         :param _ProjectId: 项目空间ID
         :type ProjectId: str
+        :param _Env: 环境信息
+        :type Env: str
+        :param _Model: 空间模式
+        :type Model: str
+        :param _DevDatasourceId: 开发态的datasourceId
+        :type DevDatasourceId: str
         """
         self._Name = None
         self._DatabaseName = None
@@ -26260,6 +26437,9 @@ class DescribeTableSchemaInfoRequest(AbstractModel):
         self._ConnectionType = None
         self._SchemaName = None
         self._ProjectId = None
+        self._Env = None
+        self._Model = None
+        self._DevDatasourceId = None
 
     @property
     def Name(self):
@@ -26317,6 +26497,30 @@ class DescribeTableSchemaInfoRequest(AbstractModel):
     def ProjectId(self, ProjectId):
         self._ProjectId = ProjectId
 
+    @property
+    def Env(self):
+        return self._Env
+
+    @Env.setter
+    def Env(self, Env):
+        self._Env = Env
+
+    @property
+    def Model(self):
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def DevDatasourceId(self):
+        return self._DevDatasourceId
+
+    @DevDatasourceId.setter
+    def DevDatasourceId(self, DevDatasourceId):
+        self._DevDatasourceId = DevDatasourceId
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -26326,6 +26530,9 @@ class DescribeTableSchemaInfoRequest(AbstractModel):
         self._ConnectionType = params.get("ConnectionType")
         self._SchemaName = params.get("SchemaName")
         self._ProjectId = params.get("ProjectId")
+        self._Env = params.get("Env")
+        self._Model = params.get("Model")
+        self._DevDatasourceId = params.get("DevDatasourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27075,6 +27282,106 @@ class DescribeTaskByStatusReportResponse(AbstractModel):
                 obj = TaskByStatus()
                 obj._deserialize(item)
                 self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTaskLineageRequest(AbstractModel):
+    """DescribeTaskLineage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestFromSource: 请求来源，WEB 前端；CLIENT 客户端
+        :type RequestFromSource: str
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        """
+        self._RequestFromSource = None
+        self._TaskId = None
+
+    @property
+    def RequestFromSource(self):
+        return self._RequestFromSource
+
+    @RequestFromSource.setter
+    def RequestFromSource(self, RequestFromSource):
+        self._RequestFromSource = RequestFromSource
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._RequestFromSource = params.get("RequestFromSource")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTaskLineageResponse(AbstractModel):
+    """DescribeTaskLineage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestFromSource: 请求来源，WEB 前端；CLIENT 客户端
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestFromSource: str
+        :param _TaskLineageInfos: 通过任务ID查询集成任务信息列表
+        :type TaskLineageInfos: list of TaskLineageInfoPair
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestFromSource = None
+        self._TaskLineageInfos = None
+        self._RequestId = None
+
+    @property
+    def RequestFromSource(self):
+        return self._RequestFromSource
+
+    @RequestFromSource.setter
+    def RequestFromSource(self, RequestFromSource):
+        self._RequestFromSource = RequestFromSource
+
+    @property
+    def TaskLineageInfos(self):
+        return self._TaskLineageInfos
+
+    @TaskLineageInfos.setter
+    def TaskLineageInfos(self, TaskLineageInfos):
+        self._TaskLineageInfos = TaskLineageInfos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestFromSource = params.get("RequestFromSource")
+        if params.get("TaskLineageInfos") is not None:
+            self._TaskLineageInfos = []
+            for item in params.get("TaskLineageInfos"):
+                obj = TaskLineageInfoPair()
+                obj._deserialize(item)
+                self._TaskLineageInfos.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -36137,6 +36444,9 @@ class IntegrationNodeSchema(AbstractModel):
         :param _Comment: 字段备注
 注意：此字段可能返回 null，表示取不到有效值。
         :type Comment: str
+        :param _Category: category
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Category: str
         """
         self._Id = None
         self._Name = None
@@ -36145,6 +36455,7 @@ class IntegrationNodeSchema(AbstractModel):
         self._Properties = None
         self._Alias = None
         self._Comment = None
+        self._Category = None
 
     @property
     def Id(self):
@@ -36202,6 +36513,14 @@ class IntegrationNodeSchema(AbstractModel):
     def Comment(self, Comment):
         self._Comment = Comment
 
+    @property
+    def Category(self):
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -36216,6 +36535,7 @@ class IntegrationNodeSchema(AbstractModel):
                 self._Properties.append(obj)
         self._Alias = params.get("Alias")
         self._Comment = params.get("Comment")
+        self._Category = params.get("Category")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37380,6 +37700,66 @@ class KillScheduleInstancesResponse(AbstractModel):
             self._Data = BatchOperateResultOpsDto()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
+
+
+class LifecycleInfo(AbstractModel):
+    """表生命周期相关信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Lifecycle: 生命周期值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Lifecycle: int
+        :param _Columns: 列名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Columns: list of str
+        :param _DateFormat: 日期格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DateFormat: list of str
+        """
+        self._Lifecycle = None
+        self._Columns = None
+        self._DateFormat = None
+
+    @property
+    def Lifecycle(self):
+        return self._Lifecycle
+
+    @Lifecycle.setter
+    def Lifecycle(self, Lifecycle):
+        self._Lifecycle = Lifecycle
+
+    @property
+    def Columns(self):
+        return self._Columns
+
+    @Columns.setter
+    def Columns(self, Columns):
+        self._Columns = Columns
+
+    @property
+    def DateFormat(self):
+        return self._DateFormat
+
+    @DateFormat.setter
+    def DateFormat(self, DateFormat):
+        self._DateFormat = DateFormat
+
+
+    def _deserialize(self, params):
+        self._Lifecycle = params.get("Lifecycle")
+        self._Columns = params.get("Columns")
+        self._DateFormat = params.get("DateFormat")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class LineageParamRecord(AbstractModel):
@@ -39970,6 +40350,12 @@ class ModifyRuleRequest(AbstractModel):
         :type TargetObjectValue: str
         :param _SourceEngineTypes: 该规则适配的执行引擎
         :type SourceEngineTypes: list of int non-negative
+        :param _TargetDatabaseName: 目标库名
+        :type TargetDatabaseName: str
+        :param _TargetSchemaName: 目标模式名
+        :type TargetSchemaName: str
+        :param _TargetTableName: 目标表名
+        :type TargetTableName: str
         """
         self._ProjectId = None
         self._RuleId = None
@@ -39994,6 +40380,9 @@ class ModifyRuleRequest(AbstractModel):
         self._FieldConfig = None
         self._TargetObjectValue = None
         self._SourceEngineTypes = None
+        self._TargetDatabaseName = None
+        self._TargetSchemaName = None
+        self._TargetTableName = None
 
     @property
     def ProjectId(self):
@@ -40179,6 +40568,30 @@ class ModifyRuleRequest(AbstractModel):
     def SourceEngineTypes(self, SourceEngineTypes):
         self._SourceEngineTypes = SourceEngineTypes
 
+    @property
+    def TargetDatabaseName(self):
+        return self._TargetDatabaseName
+
+    @TargetDatabaseName.setter
+    def TargetDatabaseName(self, TargetDatabaseName):
+        self._TargetDatabaseName = TargetDatabaseName
+
+    @property
+    def TargetSchemaName(self):
+        return self._TargetSchemaName
+
+    @TargetSchemaName.setter
+    def TargetSchemaName(self, TargetSchemaName):
+        self._TargetSchemaName = TargetSchemaName
+
+    @property
+    def TargetTableName(self):
+        return self._TargetTableName
+
+    @TargetTableName.setter
+    def TargetTableName(self, TargetTableName):
+        self._TargetTableName = TargetTableName
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -40208,6 +40621,9 @@ class ModifyRuleRequest(AbstractModel):
             self._FieldConfig._deserialize(params.get("FieldConfig"))
         self._TargetObjectValue = params.get("TargetObjectValue")
         self._SourceEngineTypes = params.get("SourceEngineTypes")
+        self._TargetDatabaseName = params.get("TargetDatabaseName")
+        self._TargetSchemaName = params.get("TargetSchemaName")
+        self._TargetTableName = params.get("TargetTableName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -45862,6 +46278,15 @@ class Rule(AbstractModel):
         :param _DsEnvType: 0或者未返回或者null：未定义，1：生产，2：开发
 注意：此字段可能返回 null，表示取不到有效值。
         :type DsEnvType: int
+        :param _DatasourceType: 数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceType: int
+        :param _SchemaName: 模式名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchemaName: str
+        :param _TargetSchemaName: 目标模式名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetSchemaName: str
         """
         self._RuleId = None
         self._RuleGroupId = None
@@ -45908,6 +46333,9 @@ class Rule(AbstractModel):
         self._MonitorStatus = None
         self._TriggerCondition = None
         self._DsEnvType = None
+        self._DatasourceType = None
+        self._SchemaName = None
+        self._TargetSchemaName = None
 
     @property
     def RuleId(self):
@@ -46269,6 +46697,30 @@ class Rule(AbstractModel):
     def DsEnvType(self, DsEnvType):
         self._DsEnvType = DsEnvType
 
+    @property
+    def DatasourceType(self):
+        return self._DatasourceType
+
+    @DatasourceType.setter
+    def DatasourceType(self, DatasourceType):
+        self._DatasourceType = DatasourceType
+
+    @property
+    def SchemaName(self):
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def TargetSchemaName(self):
+        return self._TargetSchemaName
+
+    @TargetSchemaName.setter
+    def TargetSchemaName(self, TargetSchemaName):
+        self._TargetSchemaName = TargetSchemaName
+
 
     def _deserialize(self, params):
         self._RuleId = params.get("RuleId")
@@ -46324,6 +46776,9 @@ class Rule(AbstractModel):
         self._MonitorStatus = params.get("MonitorStatus")
         self._TriggerCondition = params.get("TriggerCondition")
         self._DsEnvType = params.get("DsEnvType")
+        self._DatasourceType = params.get("DatasourceType")
+        self._SchemaName = params.get("SchemaName")
+        self._TargetSchemaName = params.get("TargetSchemaName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46518,10 +46973,14 @@ class RuleExecConfig(AbstractModel):
         :param _EngineType: 运行的执行引擎，不传时会请求该数据源下默认的执行引擎
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineType: str
+        :param _DlcGroupName: DLC执行引擎资源组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DlcGroupName: str
         """
         self._QueueName = None
         self._ExecutorGroupId = None
         self._EngineType = None
+        self._DlcGroupName = None
 
     @property
     def QueueName(self):
@@ -46547,11 +47006,20 @@ class RuleExecConfig(AbstractModel):
     def EngineType(self, EngineType):
         self._EngineType = EngineType
 
+    @property
+    def DlcGroupName(self):
+        return self._DlcGroupName
+
+    @DlcGroupName.setter
+    def DlcGroupName(self, DlcGroupName):
+        self._DlcGroupName = DlcGroupName
+
 
     def _deserialize(self, params):
         self._QueueName = params.get("QueueName")
         self._ExecutorGroupId = params.get("ExecutorGroupId")
         self._EngineType = params.get("EngineType")
+        self._DlcGroupName = params.get("DlcGroupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -47001,6 +47469,9 @@ class RuleExecResultDetail(AbstractModel):
         :param _DatasourceType: 2.HIVE 3.DLC
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatasourceType: int
+        :param _ClusterDeployType: 集群部署类型，CVM/TKE
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterDeployType: str
         """
         self._DatasourceId = None
         self._DatasourceName = None
@@ -47012,6 +47483,7 @@ class RuleExecResultDetail(AbstractModel):
         self._RuleExecResult = None
         self._TableOwnerUserId = None
         self._DatasourceType = None
+        self._ClusterDeployType = None
 
     @property
     def DatasourceId(self):
@@ -47093,6 +47565,14 @@ class RuleExecResultDetail(AbstractModel):
     def DatasourceType(self, DatasourceType):
         self._DatasourceType = DatasourceType
 
+    @property
+    def ClusterDeployType(self):
+        return self._ClusterDeployType
+
+    @ClusterDeployType.setter
+    def ClusterDeployType(self, ClusterDeployType):
+        self._ClusterDeployType = ClusterDeployType
+
 
     def _deserialize(self, params):
         self._DatasourceId = params.get("DatasourceId")
@@ -47107,6 +47587,7 @@ class RuleExecResultDetail(AbstractModel):
             self._RuleExecResult._deserialize(params.get("RuleExecResult"))
         self._TableOwnerUserId = params.get("TableOwnerUserId")
         self._DatasourceType = params.get("DatasourceType")
+        self._ClusterDeployType = params.get("ClusterDeployType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -47492,6 +47973,9 @@ class RuleGroup(AbstractModel):
         :param _DatabaseName: 数据库名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseName: str
+        :param _SchemaName: 模式名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchemaName: str
         :param _Permission: 是否有权限
 注意：此字段可能返回 null，表示取不到有效值。
         :type Permission: bool
@@ -47519,6 +48003,9 @@ class RuleGroup(AbstractModel):
         :param _DsEnvType: 数据源环境：0或者未返回.未定义，1.生产 2.开发
 注意：此字段可能返回 null，表示取不到有效值。
         :type DsEnvType: int
+        :param _ClusterDeployType: EMR集群部署方式：CVM/TKE
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterDeployType: str
         """
         self._RuleGroupId = None
         self._DatasourceId = None
@@ -47533,6 +48020,7 @@ class RuleGroup(AbstractModel):
         self._Subscription = None
         self._DatabaseId = None
         self._DatabaseName = None
+        self._SchemaName = None
         self._Permission = None
         self._RuleCount = None
         self._MonitorStatus = None
@@ -47542,6 +48030,7 @@ class RuleGroup(AbstractModel):
         self._StrategyConfig = None
         self._SubscribeConfig = None
         self._DsEnvType = None
+        self._ClusterDeployType = None
 
     @property
     def RuleGroupId(self):
@@ -47648,6 +48137,14 @@ class RuleGroup(AbstractModel):
         self._DatabaseName = DatabaseName
 
     @property
+    def SchemaName(self):
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
     def Permission(self):
         return self._Permission
 
@@ -47719,6 +48216,14 @@ class RuleGroup(AbstractModel):
     def DsEnvType(self, DsEnvType):
         self._DsEnvType = DsEnvType
 
+    @property
+    def ClusterDeployType(self):
+        return self._ClusterDeployType
+
+    @ClusterDeployType.setter
+    def ClusterDeployType(self, ClusterDeployType):
+        self._ClusterDeployType = ClusterDeployType
+
 
     def _deserialize(self, params):
         self._RuleGroupId = params.get("RuleGroupId")
@@ -47738,6 +48243,7 @@ class RuleGroup(AbstractModel):
             self._Subscription._deserialize(params.get("Subscription"))
         self._DatabaseId = params.get("DatabaseId")
         self._DatabaseName = params.get("DatabaseName")
+        self._SchemaName = params.get("SchemaName")
         self._Permission = params.get("Permission")
         self._RuleCount = params.get("RuleCount")
         self._MonitorStatus = params.get("MonitorStatus")
@@ -47747,6 +48253,7 @@ class RuleGroup(AbstractModel):
         self._StrategyConfig = params.get("StrategyConfig")
         self._SubscribeConfig = params.get("SubscribeConfig")
         self._DsEnvType = params.get("DsEnvType")
+        self._ClusterDeployType = params.get("ClusterDeployType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -47812,6 +48319,21 @@ class RuleGroupExecResult(AbstractModel):
         :param _RuleExecResultVOList: 规则执行结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleExecResultVOList: list of RuleExecResult
+        :param _DatabaseName: 数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseName: str
+        :param _RuleGroupTableId: 本地规则表id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupTableId: str
+        :param _ClusterDeployType: 集群部署类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterDeployType: str
+        :param _InstanceId: 实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _DsEnvType: 数据库所属环境，0.未定义，1.生产 2.开发
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DsEnvType: str
         """
         self._RuleGroupExecId = None
         self._RuleGroupId = None
@@ -47829,6 +48351,11 @@ class RuleGroupExecResult(AbstractModel):
         self._ExecDetail = None
         self._EngineType = None
         self._RuleExecResultVOList = None
+        self._DatabaseName = None
+        self._RuleGroupTableId = None
+        self._ClusterDeployType = None
+        self._InstanceId = None
+        self._DsEnvType = None
 
     @property
     def RuleGroupExecId(self):
@@ -47958,6 +48485,46 @@ class RuleGroupExecResult(AbstractModel):
     def RuleExecResultVOList(self, RuleExecResultVOList):
         self._RuleExecResultVOList = RuleExecResultVOList
 
+    @property
+    def DatabaseName(self):
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def RuleGroupTableId(self):
+        return self._RuleGroupTableId
+
+    @RuleGroupTableId.setter
+    def RuleGroupTableId(self, RuleGroupTableId):
+        self._RuleGroupTableId = RuleGroupTableId
+
+    @property
+    def ClusterDeployType(self):
+        return self._ClusterDeployType
+
+    @ClusterDeployType.setter
+    def ClusterDeployType(self, ClusterDeployType):
+        self._ClusterDeployType = ClusterDeployType
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DsEnvType(self):
+        return self._DsEnvType
+
+    @DsEnvType.setter
+    def DsEnvType(self, DsEnvType):
+        self._DsEnvType = DsEnvType
+
 
     def _deserialize(self, params):
         self._RuleGroupExecId = params.get("RuleGroupExecId")
@@ -47981,6 +48548,11 @@ class RuleGroupExecResult(AbstractModel):
                 obj = RuleExecResult()
                 obj._deserialize(item)
                 self._RuleExecResultVOList.append(obj)
+        self._DatabaseName = params.get("DatabaseName")
+        self._RuleGroupTableId = params.get("RuleGroupTableId")
+        self._ClusterDeployType = params.get("ClusterDeployType")
+        self._InstanceId = params.get("InstanceId")
+        self._DsEnvType = params.get("DsEnvType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -54402,6 +54974,9 @@ class TableInfo(AbstractModel):
         :param _TableName: 表名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
+        :param _TableType: 表类型，view/table
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableType: str
         :param _OriginDatabaseName: 表databaseName
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginDatabaseName: str
@@ -54411,6 +54986,7 @@ class TableInfo(AbstractModel):
         """
         self._TableId = None
         self._TableName = None
+        self._TableType = None
         self._OriginDatabaseName = None
         self._OriginSchemaName = None
 
@@ -54429,6 +55005,14 @@ class TableInfo(AbstractModel):
     @TableName.setter
     def TableName(self, TableName):
         self._TableName = TableName
+
+    @property
+    def TableType(self):
+        return self._TableType
+
+    @TableType.setter
+    def TableType(self, TableType):
+        self._TableType = TableType
 
     @property
     def OriginDatabaseName(self):
@@ -54450,6 +55034,7 @@ class TableInfo(AbstractModel):
     def _deserialize(self, params):
         self._TableId = params.get("TableId")
         self._TableName = params.get("TableName")
+        self._TableType = params.get("TableType")
         self._OriginDatabaseName = params.get("OriginDatabaseName")
         self._OriginSchemaName = params.get("OriginSchemaName")
         memeber_set = set(params.keys())
@@ -55279,6 +55864,12 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
         :param _TableProperties: 表附属信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableProperties: list of TableMetaProperty
+        :param _Environment: 环境，取值 prod或者 dev
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Environment: str
+        :param _Schema: 数据库模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Schema: str
         """
         self._TableId = None
         self._TableName = None
@@ -55334,6 +55925,8 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
         self._PartitionColumns = None
         self._PartitionExpireDays = None
         self._TableProperties = None
+        self._Environment = None
+        self._Schema = None
 
     @property
     def TableId(self):
@@ -55767,6 +56360,22 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
     def TableProperties(self, TableProperties):
         self._TableProperties = TableProperties
 
+    @property
+    def Environment(self):
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
+
+    @property
+    def Schema(self):
+        return self._Schema
+
+    @Schema.setter
+    def Schema(self, Schema):
+        self._Schema = Schema
+
 
     def _deserialize(self, params):
         self._TableId = params.get("TableId")
@@ -55837,6 +56446,8 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
                 obj = TableMetaProperty()
                 obj._deserialize(item)
                 self._TableProperties.append(obj)
+        self._Environment = params.get("Environment")
+        self._Schema = params.get("Schema")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -56129,6 +56740,12 @@ class TableQualityDetail(AbstractModel):
         :param _DsEnvType: 0或者未返回或者null：未定义，1：生产，2：开发
 注意：此字段可能返回 null，表示取不到有效值。
         :type DsEnvType: int
+        :param _SchemaName: 模式名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchemaName: str
+        :param _RuleGroupTableId: 规则表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupTableId: str
         """
         self._DatabaseId = None
         self._DatabaseName = None
@@ -56140,6 +56757,8 @@ class TableQualityDetail(AbstractModel):
         self._TableScore = None
         self._LastPeriodRatio = None
         self._DsEnvType = None
+        self._SchemaName = None
+        self._RuleGroupTableId = None
 
     @property
     def DatabaseId(self):
@@ -56221,6 +56840,22 @@ class TableQualityDetail(AbstractModel):
     def DsEnvType(self, DsEnvType):
         self._DsEnvType = DsEnvType
 
+    @property
+    def SchemaName(self):
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def RuleGroupTableId(self):
+        return self._RuleGroupTableId
+
+    @RuleGroupTableId.setter
+    def RuleGroupTableId(self, RuleGroupTableId):
+        self._RuleGroupTableId = RuleGroupTableId
+
 
     def _deserialize(self, params):
         self._DatabaseId = params.get("DatabaseId")
@@ -56233,6 +56868,8 @@ class TableQualityDetail(AbstractModel):
         self._TableScore = params.get("TableScore")
         self._LastPeriodRatio = params.get("LastPeriodRatio")
         self._DsEnvType = params.get("DsEnvType")
+        self._SchemaName = params.get("SchemaName")
+        self._RuleGroupTableId = params.get("RuleGroupTableId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -56345,6 +56982,75 @@ class TableScoreStatisticsInfo(AbstractModel):
         self._Level = params.get("Level")
         self._Scale = params.get("Scale")
         self._TableNumber = params.get("TableNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TagVoteSum(AbstractModel):
+    """基于表的标签统计信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagId: 标签id
+        :type TagId: int
+        :param _VoteSum: 该表该标签投票次数
+        :type VoteSum: int
+        :param _Status: 当前用户对这张表是否加了该标签 true 已添加 false 未添加
+        :type Status: bool
+        :param _TagName: 标签名
+        :type TagName: str
+        """
+        self._TagId = None
+        self._VoteSum = None
+        self._Status = None
+        self._TagName = None
+
+    @property
+    def TagId(self):
+        return self._TagId
+
+    @TagId.setter
+    def TagId(self, TagId):
+        self._TagId = TagId
+
+    @property
+    def VoteSum(self):
+        return self._VoteSum
+
+    @VoteSum.setter
+    def VoteSum(self, VoteSum):
+        self._VoteSum = VoteSum
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TagName(self):
+        return self._TagName
+
+    @TagName.setter
+    def TagName(self, TagName):
+        self._TagName = TagName
+
+
+    def _deserialize(self, params):
+        self._TagId = params.get("TagId")
+        self._VoteSum = params.get("VoteSum")
+        self._Status = params.get("Status")
+        self._TagName = params.get("TagName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -57200,6 +57906,197 @@ class TaskInstanceCountDto(AbstractModel):
         self._Depend = params.get("Depend")
         self._Failed = params.get("Failed")
         self._Stopped = params.get("Stopped")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskLineageInfo(AbstractModel):
+    """任务集成信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _TaskName: 任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskName: str
+        :param _TableName: 表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param _TableUri: 表 URI，格式：dsn.name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableUri: str
+        :param _Type: 表方向类型
+    - 0 - table作为源表
+    - 1 - table作为目标表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        :param _DataSourceId: 数据源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataSourceId: int
+        :param _DataSourceType: 数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataSourceType: str
+        :param _DatabaseName: 数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseName: str
+        :param _SchemaName: 模型名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchemaName: str
+        """
+        self._TaskId = None
+        self._TaskName = None
+        self._TableName = None
+        self._TableUri = None
+        self._Type = None
+        self._DataSourceId = None
+        self._DataSourceType = None
+        self._DatabaseName = None
+        self._SchemaName = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def TableUri(self):
+        return self._TableUri
+
+    @TableUri.setter
+    def TableUri(self, TableUri):
+        self._TableUri = TableUri
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def DataSourceId(self):
+        return self._DataSourceId
+
+    @DataSourceId.setter
+    def DataSourceId(self, DataSourceId):
+        self._DataSourceId = DataSourceId
+
+    @property
+    def DataSourceType(self):
+        return self._DataSourceType
+
+    @DataSourceType.setter
+    def DataSourceType(self, DataSourceType):
+        self._DataSourceType = DataSourceType
+
+    @property
+    def DatabaseName(self):
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def SchemaName(self):
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskName = params.get("TaskName")
+        self._TableName = params.get("TableName")
+        self._TableUri = params.get("TableUri")
+        self._Type = params.get("Type")
+        self._DataSourceId = params.get("DataSourceId")
+        self._DataSourceType = params.get("DataSourceType")
+        self._DatabaseName = params.get("DatabaseName")
+        self._SchemaName = params.get("SchemaName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskLineageInfoPair(AbstractModel):
+    """任务血缘信息，包括源表和目标表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceTable: 表血缘-源表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceTable: :class:`tencentcloud.wedata.v20210820.models.TaskLineageInfo`
+        :param _TargetTable: 表血缘-目标表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetTable: :class:`tencentcloud.wedata.v20210820.models.TaskLineageInfo`
+        """
+        self._SourceTable = None
+        self._TargetTable = None
+
+    @property
+    def SourceTable(self):
+        return self._SourceTable
+
+    @SourceTable.setter
+    def SourceTable(self, SourceTable):
+        self._SourceTable = SourceTable
+
+    @property
+    def TargetTable(self):
+        return self._TargetTable
+
+    @TargetTable.setter
+    def TargetTable(self, TargetTable):
+        self._TargetTable = TargetTable
+
+
+    def _deserialize(self, params):
+        if params.get("SourceTable") is not None:
+            self._SourceTable = TaskLineageInfo()
+            self._SourceTable._deserialize(params.get("SourceTable"))
+        if params.get("TargetTable") is not None:
+            self._TargetTable = TaskLineageInfo()
+            self._TargetTable._deserialize(params.get("TargetTable"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

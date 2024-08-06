@@ -26846,6 +26846,8 @@ class VatElectronicInfo(AbstractModel):
         :type SubTax: str
         :param _VatElectronicItems: 电子发票详细条目信息
         :type VatElectronicItems: list of VatElectronicItemInfo
+        :param _ServiceTypeLabel: 业务类型标志
+        :type ServiceTypeLabel: str
         """
         self._Title = None
         self._Number = None
@@ -26863,6 +26865,7 @@ class VatElectronicInfo(AbstractModel):
         self._SubTotal = None
         self._SubTax = None
         self._VatElectronicItems = None
+        self._ServiceTypeLabel = None
 
     @property
     def Title(self):
@@ -26992,6 +26995,14 @@ class VatElectronicInfo(AbstractModel):
     def VatElectronicItems(self, VatElectronicItems):
         self._VatElectronicItems = VatElectronicItems
 
+    @property
+    def ServiceTypeLabel(self):
+        return self._ServiceTypeLabel
+
+    @ServiceTypeLabel.setter
+    def ServiceTypeLabel(self, ServiceTypeLabel):
+        self._ServiceTypeLabel = ServiceTypeLabel
+
 
     def _deserialize(self, params):
         self._Title = params.get("Title")
@@ -27015,6 +27026,7 @@ class VatElectronicInfo(AbstractModel):
                 obj = VatElectronicItemInfo()
                 obj._deserialize(item)
                 self._VatElectronicItems.append(obj)
+        self._ServiceTypeLabel = params.get("ServiceTypeLabel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -564,6 +564,7 @@ class TextToVoiceRequest(AbstractModel):
         :param _ModelType: 模型类型，1-默认模型。
         :type ModelType: int
         :param _VoiceType: 音色 ID，包括标准音色与精品音色，精品音色拟真度更高，价格不同于标准音色，请参见[购买指南](https://cloud.tencent.com/document/product/1073/34112)。完整的音色 ID 列表请参见[音色列表](https://cloud.tencent.com/document/product/1073/92668)。
+若使用一句话版声音复刻，请填入固定值“200000000”
         :type VoiceType: int
         :param _PrimaryLanguage: 主语言类型：<li>1-中文（默认）</li><li>2-英文</li><li>3-日文</li>
         :type PrimaryLanguage: int
@@ -583,7 +584,7 @@ class TextToVoiceRequest(AbstractModel):
         :type EmotionCategory: str
         :param _EmotionIntensity: 控制合成音频情感程度，取值范围为[50,200],默认为100；只有EmotionCategory不为空时生效；
         :type EmotionIntensity: int
-        :param _FastVoiceType: 预留参数，暂未使用
+        :param _FastVoiceType: 一句话版声音复刻音色ID，使用一句话版声音复刻音色时需填写。
         :type FastVoiceType: str
         """
         self._Text = None
