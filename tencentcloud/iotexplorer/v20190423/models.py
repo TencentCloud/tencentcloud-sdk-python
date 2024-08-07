@@ -90,10 +90,18 @@ class ActivateTWeCallLicenseResponse(AbstractModel):
         :param _DeviceList: 设备激活返回数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceList: list of DeviceActiveResult
+        :param _FailureList: 设备激活失败返回数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailureList: list of DeviceActiveResult
+        :param _SuccessList: 设备激活成功返回数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuccessList: list of DeviceActiveResult
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DeviceList = None
+        self._FailureList = None
+        self._SuccessList = None
         self._RequestId = None
 
     @property
@@ -103,6 +111,22 @@ class ActivateTWeCallLicenseResponse(AbstractModel):
     @DeviceList.setter
     def DeviceList(self, DeviceList):
         self._DeviceList = DeviceList
+
+    @property
+    def FailureList(self):
+        return self._FailureList
+
+    @FailureList.setter
+    def FailureList(self, FailureList):
+        self._FailureList = FailureList
+
+    @property
+    def SuccessList(self):
+        return self._SuccessList
+
+    @SuccessList.setter
+    def SuccessList(self, SuccessList):
+        self._SuccessList = SuccessList
 
     @property
     def RequestId(self):
@@ -120,6 +144,18 @@ class ActivateTWeCallLicenseResponse(AbstractModel):
                 obj = DeviceActiveResult()
                 obj._deserialize(item)
                 self._DeviceList.append(obj)
+        if params.get("FailureList") is not None:
+            self._FailureList = []
+            for item in params.get("FailureList"):
+                obj = DeviceActiveResult()
+                obj._deserialize(item)
+                self._FailureList.append(obj)
+        if params.get("SuccessList") is not None:
+            self._SuccessList = []
+            for item in params.get("SuccessList"):
+                obj = DeviceActiveResult()
+                obj._deserialize(item)
+                self._SuccessList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -10223,10 +10259,14 @@ class DeviceActiveResult(AbstractModel):
         :param _ErrCode: 设备激活状态，0：激活成功；9800020：设备数超出限制；9800040：资源包类型和设备类型不匹配；9800039：资源包余额不足；9800037：激活码序号已使用；9800038：设备有效期超出限制；
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
+        :param _ExpireTime: 过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: int
         """
         self._ModelId = None
         self._Sn = None
         self._ErrCode = None
+        self._ExpireTime = None
 
     @property
     def ModelId(self):
@@ -10252,11 +10292,20 @@ class DeviceActiveResult(AbstractModel):
     def ErrCode(self, ErrCode):
         self._ErrCode = ErrCode
 
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
 
     def _deserialize(self, params):
         self._ModelId = params.get("ModelId")
         self._Sn = params.get("Sn")
         self._ErrCode = params.get("ErrCode")
+        self._ExpireTime = params.get("ExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

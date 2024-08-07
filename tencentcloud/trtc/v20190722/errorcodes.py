@@ -206,6 +206,9 @@ INVALIDPARAMETER_STRROOMID = 'InvalidParameter.StrRoomId'
 # StreamId参数错误。
 INVALIDPARAMETER_STREAMID = 'InvalidParameter.StreamId'
 
+# StreamUrl参数校验失败
+INVALIDPARAMETER_STREAMURL = 'InvalidParameter.StreamUrl'
+
 # TaskId 参数错误。
 INVALIDPARAMETER_TASKID = 'InvalidParameter.TaskId'
 

@@ -7244,6 +7244,8 @@ class CreateDataSourceRequest(AbstractModel):
         :type ConnectResult: str
         :param _DevelopmentParams: 开发环境数据源配置
         :type DevelopmentParams: str
+        :param _ProjectId: 新建数据源的项目ID
+        :type ProjectId: str
         """
         self._Name = None
         self._Category = None
@@ -7264,6 +7266,7 @@ class CreateDataSourceRequest(AbstractModel):
         self._COSRegion = None
         self._ConnectResult = None
         self._DevelopmentParams = None
+        self._ProjectId = None
 
     @property
     def Name(self):
@@ -7417,6 +7420,14 @@ class CreateDataSourceRequest(AbstractModel):
     def DevelopmentParams(self, DevelopmentParams):
         self._DevelopmentParams = DevelopmentParams
 
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -7438,6 +7449,7 @@ class CreateDataSourceRequest(AbstractModel):
         self._COSRegion = params.get("COSRegion")
         self._ConnectResult = params.get("ConnectResult")
         self._DevelopmentParams = params.get("DevelopmentParams")
+        self._ProjectId = params.get("ProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19808,7 +19820,7 @@ class DescribeIntegrationTasksRequest(AbstractModel):
         :type PageNumber: int
         :param _PageSize: 分页大小
         :type PageSize: int
-        :param _Filters: 查询filter
+        :param _Filters: 查询filter;默认查询任务的开发态，如需查询生产态任务需添加{"Values":["true"],"Name":"ProductionState"};如需查询查询任务状态需要查询生产态任务列表
         :type Filters: list of Filter
         :param _OrderFields: 排序字段信息
         :type OrderFields: list of OrderField
@@ -36694,7 +36706,7 @@ class IntegrationTaskInfo(AbstractModel):
         :param _AppId: 应用id
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: str
-        :param _Status: 1:未开始|2:操作中|3:运行中|4:暂停|5:任务停止中|6:停止|7:执行失败|20:异常|21:未知|
+        :param _Status: 0:新建(任务开发态默认状态)|1:未开始|2:操作中|3:运行中|4:暂停|5:任务停止中|6:停止|7:执行失败|20:异常|21:未知|
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _Nodes: 节点列表

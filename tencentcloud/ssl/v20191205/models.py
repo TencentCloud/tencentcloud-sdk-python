@@ -2440,6 +2440,9 @@ class CompanyInfo(AbstractModel):
         :param _IdNumber: ID号
 注意：此字段可能返回 null，表示取不到有效值。
         :type IdNumber: str
+        :param _Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tags
         """
         self._CompanyName = None
         self._CompanyId = None
@@ -2450,6 +2453,7 @@ class CompanyInfo(AbstractModel):
         self._CompanyPhone = None
         self._IdType = None
         self._IdNumber = None
+        self._Tags = None
 
     @property
     def CompanyName(self):
@@ -2523,6 +2527,14 @@ class CompanyInfo(AbstractModel):
     def IdNumber(self, IdNumber):
         self._IdNumber = IdNumber
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._CompanyName = params.get("CompanyName")
@@ -2534,6 +2546,12 @@ class CompanyInfo(AbstractModel):
         self._CompanyPhone = params.get("CompanyPhone")
         self._IdType = params.get("IdType")
         self._IdNumber = params.get("IdNumber")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tags()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10505,6 +10523,9 @@ class ManagerInfo(AbstractModel):
         :param _StatusInfo: 具体审核状态信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatusInfo: list of ManagerStatusInfo
+        :param _Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tags
         """
         self._Status = None
         self._ManagerFirstName = None
@@ -10521,6 +10542,7 @@ class ManagerInfo(AbstractModel):
         self._SubmitAuditTime = None
         self._VerifyTime = None
         self._StatusInfo = None
+        self._Tags = None
 
     @property
     def Status(self):
@@ -10642,6 +10664,14 @@ class ManagerInfo(AbstractModel):
     def StatusInfo(self, StatusInfo):
         self._StatusInfo = StatusInfo
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
@@ -10664,6 +10694,12 @@ class ManagerInfo(AbstractModel):
                 obj = ManagerStatusInfo()
                 obj._deserialize(item)
                 self._StatusInfo.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tags()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -962,8 +962,7 @@ class DescribeSignListStatus(AbstractModel):
         :type SignId: int
         :param _International: 是否国际/港澳台短信，其中0表示国内短信，1表示国际/港澳台短信。
         :type International: int
-        :param _StatusCode: 申请签名状态，其中0表示审核通过，1表示审核中。
--1：表示审核未通过或审核失败。
+        :param _StatusCode: 申请签名状态，其中0表示审核通过且已生效，1表示审核中，2表示审核通过待生效，-1表示审核未通过或审核失败。
         :type StatusCode: int
         :param _ReviewReply: 审核回复，审核人员审核后给出的回复，通常是审核未通过的原因。
         :type ReviewReply: str

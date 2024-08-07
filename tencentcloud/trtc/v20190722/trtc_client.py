@@ -1015,7 +1015,9 @@ class TrtcClient(AbstractClient):
 
 
     def StartAIConversation(self, request):
-        """启动一个任务，机器人将进入TRTC房间，与指定成员进行AI对话
+        """启动AI对话任务，AI通道机器人进入TRTC房间，与房间内指定的成员进行AI对话，适用于智能客服，AI口语教师等场景
+
+        TRTC AI对话功能内置语音转文本能力，同时提供通道服务，即客户可灵活指定第三方AI模型（LLM）服务和文本转音频（TTS)服务，更多[功能说明](https://cloud.tencent.com/document/product/647/108901)。
 
         :param request: Request instance for StartAIConversation.
         :type request: :class:`tencentcloud.trtc.v20190722.models.StartAIConversationRequest`

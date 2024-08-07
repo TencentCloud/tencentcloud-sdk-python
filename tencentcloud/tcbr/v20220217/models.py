@@ -1673,8 +1673,10 @@ class HpaPolicy(AbstractModel):
     def __init__(self):
         r"""
         :param _PolicyType: 扩缩容类型
+注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyType: str
         :param _PolicyThreshold: 扩缩容阈值
+注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyThreshold: int
         """
         self._PolicyType = None
@@ -2241,6 +2243,9 @@ class ServerBaseConfig(AbstractModel):
         :type LogTopicId: str
         :param _LogParseType: 解析类型：json ｜ line
         :type LogParseType: str
+        :param _Tag: 服务标签, function: 函数托管
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tag: str
         """
         self._EnvId = None
         self._ServerName = None
@@ -2262,6 +2267,7 @@ class ServerBaseConfig(AbstractModel):
         self._LogSetId = None
         self._LogTopicId = None
         self._LogParseType = None
+        self._Tag = None
 
     @property
     def EnvId(self):
@@ -2423,6 +2429,14 @@ class ServerBaseConfig(AbstractModel):
     def LogParseType(self, LogParseType):
         self._LogParseType = LogParseType
 
+    @property
+    def Tag(self):
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
 
     def _deserialize(self, params):
         self._EnvId = params.get("EnvId")
@@ -2450,6 +2464,7 @@ class ServerBaseConfig(AbstractModel):
         self._LogSetId = params.get("LogSetId")
         self._LogTopicId = params.get("LogTopicId")
         self._LogParseType = params.get("LogParseType")
+        self._Tag = params.get("Tag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

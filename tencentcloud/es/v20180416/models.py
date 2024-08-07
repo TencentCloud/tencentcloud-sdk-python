@@ -1118,6 +1118,8 @@ class CreateInstanceRequest(AbstractModel):
         :type CdcId: str
         :param _DisasterRecoverGroupAffinity: 置放群组亲和度，范围[0,10]，0表示不开启
         :type DisasterRecoverGroupAffinity: int
+        :param _SubProductCode: 子产品ID枚举值： 开源版："sp_es_io2"， 基础版："sp_es_basic"，白金版："sp_es_platinum"，企业版："sp_es_enterprise"，CDC白金版："sp_es_cdc_platinum"，日志增强版："sp_es_enlogging"，tsearch："sp_tsearch_io2"，logstash："sp_es_logstash" ，可以为空，为空的时候后台取LicenseType映射该字段
+        :type SubProductCode: str
         """
         self._Zone = None
         self._EsVersion = None
@@ -1155,6 +1157,7 @@ class CreateInstanceRequest(AbstractModel):
         self._EnableDiagnose = None
         self._CdcId = None
         self._DisasterRecoverGroupAffinity = None
+        self._SubProductCode = None
 
     @property
     def Zone(self):
@@ -1444,6 +1447,14 @@ class CreateInstanceRequest(AbstractModel):
     def DisasterRecoverGroupAffinity(self, DisasterRecoverGroupAffinity):
         self._DisasterRecoverGroupAffinity = DisasterRecoverGroupAffinity
 
+    @property
+    def SubProductCode(self):
+        return self._SubProductCode
+
+    @SubProductCode.setter
+    def SubProductCode(self, SubProductCode):
+        self._SubProductCode = SubProductCode
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -1501,6 +1512,7 @@ class CreateInstanceRequest(AbstractModel):
         self._EnableDiagnose = params.get("EnableDiagnose")
         self._CdcId = params.get("CdcId")
         self._DisasterRecoverGroupAffinity = params.get("DisasterRecoverGroupAffinity")
+        self._SubProductCode = params.get("SubProductCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3690,6 +3702,8 @@ class DescribeInstancesRequest(AbstractModel):
         :type HealthStatus: list of int
         :param _VpcIds: Vpc列表 筛选项
         :type VpcIds: list of str
+        :param _CdcId: cdc集群id
+        :type CdcId: str
         """
         self._Zone = None
         self._InstanceIds = None
@@ -3703,6 +3717,7 @@ class DescribeInstancesRequest(AbstractModel):
         self._ZoneList = None
         self._HealthStatus = None
         self._VpcIds = None
+        self._CdcId = None
 
     @property
     def Zone(self):
@@ -3800,6 +3815,14 @@ class DescribeInstancesRequest(AbstractModel):
     def VpcIds(self, VpcIds):
         self._VpcIds = VpcIds
 
+    @property
+    def CdcId(self):
+        return self._CdcId
+
+    @CdcId.setter
+    def CdcId(self, CdcId):
+        self._CdcId = CdcId
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -3819,6 +3842,7 @@ class DescribeInstancesRequest(AbstractModel):
         self._ZoneList = params.get("ZoneList")
         self._HealthStatus = params.get("HealthStatus")
         self._VpcIds = params.get("VpcIds")
+        self._CdcId = params.get("CdcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7847,6 +7871,9 @@ RENEW_FLAG_DEFAULT：不自动续费
         :param _DisasterRecoverGroupAffinity: 置放群组相关参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type DisasterRecoverGroupAffinity: int
+        :param _SubProductCode: 子产品ID枚举值： 开源版："sp_es_io2"， 基础版："sp_es_basic"，白金版："sp_es_platinum"，企业版："sp_es_enterprise"，CDC白金版："sp_es_cdc_platinum"，日志增强版："sp_es_enlogging"，tsearch："sp_tsearch_io2"，logstash："sp_es_logstash" ，可以为空，为空的时候后台取LicenseType映射该字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubProductCode: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -7936,6 +7963,7 @@ RENEW_FLAG_DEFAULT：不自动续费
         self._OutboundPublicAcls = None
         self._NetConnectScheme = None
         self._DisasterRecoverGroupAffinity = None
+        self._SubProductCode = None
 
     @property
     def InstanceId(self):
@@ -8641,6 +8669,14 @@ RENEW_FLAG_DEFAULT：不自动续费
     def DisasterRecoverGroupAffinity(self, DisasterRecoverGroupAffinity):
         self._DisasterRecoverGroupAffinity = DisasterRecoverGroupAffinity
 
+    @property
+    def SubProductCode(self):
+        return self._SubProductCode
+
+    @SubProductCode.setter
+    def SubProductCode(self, SubProductCode):
+        self._SubProductCode = SubProductCode
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -8777,6 +8813,7 @@ RENEW_FLAG_DEFAULT：不自动续费
                 self._OutboundPublicAcls.append(obj)
         self._NetConnectScheme = params.get("NetConnectScheme")
         self._DisasterRecoverGroupAffinity = params.get("DisasterRecoverGroupAffinity")
+        self._SubProductCode = params.get("SubProductCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

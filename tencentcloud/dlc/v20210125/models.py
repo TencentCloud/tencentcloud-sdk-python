@@ -26819,9 +26819,15 @@ class UpdateDataEngineConfigRequest(AbstractModel):
         :type DataEngineIds: list of str
         :param _DataEngineConfigCommand: 引擎配置命令，支持UpdateSparkSQLLakefsPath（更新原生表配置）、UpdateSparkSQLResultPath（更新结果路径配置）
         :type DataEngineConfigCommand: str
+        :param _UseLakeFs: 是否使用lakefs作为结果存储
+        :type UseLakeFs: bool
+        :param _CustomResultPath: 用户自定义结果路径
+        :type CustomResultPath: str
         """
         self._DataEngineIds = None
         self._DataEngineConfigCommand = None
+        self._UseLakeFs = None
+        self._CustomResultPath = None
 
     @property
     def DataEngineIds(self):
@@ -26839,10 +26845,28 @@ class UpdateDataEngineConfigRequest(AbstractModel):
     def DataEngineConfigCommand(self, DataEngineConfigCommand):
         self._DataEngineConfigCommand = DataEngineConfigCommand
 
+    @property
+    def UseLakeFs(self):
+        return self._UseLakeFs
+
+    @UseLakeFs.setter
+    def UseLakeFs(self, UseLakeFs):
+        self._UseLakeFs = UseLakeFs
+
+    @property
+    def CustomResultPath(self):
+        return self._CustomResultPath
+
+    @CustomResultPath.setter
+    def CustomResultPath(self, CustomResultPath):
+        self._CustomResultPath = CustomResultPath
+
 
     def _deserialize(self, params):
         self._DataEngineIds = params.get("DataEngineIds")
         self._DataEngineConfigCommand = params.get("DataEngineConfigCommand")
+        self._UseLakeFs = params.get("UseLakeFs")
+        self._CustomResultPath = params.get("CustomResultPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

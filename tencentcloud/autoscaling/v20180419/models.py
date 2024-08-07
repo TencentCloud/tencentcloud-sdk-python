@@ -1316,12 +1316,16 @@ class ClearLaunchConfigurationAttributesRequest(AbstractModel):
         :param _ClearDisasterRecoverGroupIds: 是否清空置放群组信息，非必填，默认为 false。
 填 true 代表清空置放群组信息，清空后基于此新创建的云主机将不指定任何置放群组。
         :type ClearDisasterRecoverGroupIds: bool
+        :param _ClearInstanceTags: 是否清空实例标签列表，非必填，默认为 false。
+填 true 代表清空实例标签列表，清空后基于此新创建的云主机将不会绑定列表中的标签。
+        :type ClearInstanceTags: bool
         """
         self._LaunchConfigurationId = None
         self._ClearDataDisks = None
         self._ClearHostNameSettings = None
         self._ClearInstanceNameSettings = None
         self._ClearDisasterRecoverGroupIds = None
+        self._ClearInstanceTags = None
 
     @property
     def LaunchConfigurationId(self):
@@ -1363,6 +1367,14 @@ class ClearLaunchConfigurationAttributesRequest(AbstractModel):
     def ClearDisasterRecoverGroupIds(self, ClearDisasterRecoverGroupIds):
         self._ClearDisasterRecoverGroupIds = ClearDisasterRecoverGroupIds
 
+    @property
+    def ClearInstanceTags(self):
+        return self._ClearInstanceTags
+
+    @ClearInstanceTags.setter
+    def ClearInstanceTags(self, ClearInstanceTags):
+        self._ClearInstanceTags = ClearInstanceTags
+
 
     def _deserialize(self, params):
         self._LaunchConfigurationId = params.get("LaunchConfigurationId")
@@ -1370,6 +1382,7 @@ class ClearLaunchConfigurationAttributesRequest(AbstractModel):
         self._ClearHostNameSettings = params.get("ClearHostNameSettings")
         self._ClearInstanceNameSettings = params.get("ClearInstanceNameSettings")
         self._ClearDisasterRecoverGroupIds = params.get("ClearDisasterRecoverGroupIds")
+        self._ClearInstanceTags = params.get("ClearInstanceTags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2059,9 +2072,9 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         :param _UserData: 经过 Base64 编码后的自定义数据，最大长度不超过16KB。
         :type UserData: str
         :param _InstanceChargeType: 实例计费类型，CVM默认值按照POSTPAID_BY_HOUR处理。
-<br><li>POSTPAID_BY_HOUR：按小时后付费
-<br><li>SPOTPAID：竞价付费
-<br><li>PREPAID：预付费，即包年包月
+<li>POSTPAID_BY_HOUR：按小时后付费</li>
+<li>SPOTPAID：竞价付费</li>
+<li>PREPAID：预付费，即包年包月</li>
         :type InstanceChargeType: str
         :param _InstanceMarketOptions: 实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。
         :type InstanceMarketOptions: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
@@ -2071,8 +2084,8 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         :param _CamRoleName: CAM角色名称。可通过DescribeRoleList接口返回值中的roleName获取。
         :type CamRoleName: str
         :param _InstanceTypesCheckPolicy: 实例类型校验策略，取值包括 ALL 和 ANY，默认取值为ANY。
-<br><li> ALL，所有实例类型（InstanceType）都可用则通过校验，否则校验报错。
-<br><li> ANY，存在任何一个实例类型（InstanceType）可用则通过校验，否则校验报错。
+<li> ALL，所有实例类型（InstanceType）都可用则通过校验，否则校验报错。</li>
+<li> ANY，存在任何一个实例类型（InstanceType）可用则通过校验，否则校验报错。</li>
 
 实例类型不可用的常见原因包括该实例类型售罄、对应云盘售罄等。
 如果 InstanceTypes 中一款机型不存在或者已下线，则无论 InstanceTypesCheckPolicy 采用何种取值，都会校验报错。
@@ -2089,8 +2102,8 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         :param _InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
         :type InstanceChargePrepaid: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
         :param _DiskTypePolicy: 云盘类型选择策略，默认取值 ORIGINAL，取值范围：
-<br><li>ORIGINAL：使用设置的云盘类型
-<br><li>AUTOMATIC：自动选择当前可用的云盘类型
+<li>ORIGINAL：使用设置的云盘类型</li>
+<li>AUTOMATIC：自动选择当前可用的云盘类型</li>
         :type DiskTypePolicy: str
         :param _HpcClusterId: 高性能计算集群ID。<br>
 注意：此字段默认为空。
@@ -5899,19 +5912,27 @@ class HostNameSettings(AbstractModel):
     def __init__(self):
         r"""
         :param _HostName: 云服务器的主机名。
-<br><li> 点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。
-<br><li> 不支持 Windows 实例。
-<br><li> 其他类型（Linux 等）实例：字符长度为[2, 40]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。不允许为纯数字。
+<li> 点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。</li> 
+<li> 不支持 Windows 实例。</li> 
+<li> 其他类型（Linux 等）实例：字符长度为[2, 40]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。不允许为纯数字。</li> 
 注意：此字段可能返回 null，表示取不到有效值。
         :type HostName: str
         :param _HostNameStyle: 云服务器主机名的风格，取值范围包括 ORIGINAL 和  UNIQUE，默认为 ORIGINAL。
-<br><li> ORIGINAL，AS 直接将入参中所填的 HostName 传递给 CVM，CVM 可能会对 HostName 追加序列号，伸缩组中实例的 HostName 会出现冲突的情况。
-<br><li> UNIQUE，入参所填的 HostName 相当于主机名前缀，AS 和 CVM 会对其进行拓展，伸缩组中实例的 HostName 可以保证唯一。
+<li> ORIGINAL，AS 直接将入参中所填的 HostName 传递给 CVM，CVM 可能会对 HostName 追加序列号，伸缩组中实例的 HostName 会出现冲突的情况。</li> 
+<li> UNIQUE，入参所填的 HostName 相当于主机名前缀，AS 和 CVM 会对其进行拓展，伸缩组中实例的 HostName 可以保证唯一。</li> 
 注意：此字段可能返回 null，表示取不到有效值。
         :type HostNameStyle: str
+        :param _HostNameSuffix: 云服务器的主机名后缀。
+<li> 点号（.）和短横线（-）不能作为 HostNameSuffix 的首尾字符，不能连续使用。</li> 
+<li> 不支持 Windows 实例。</li> 
+<li>其他类型（Linux 等）实例：字符长度为[1, 37]，且与 HostName 的长度和不能超过 39，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。</li> 
+假设后缀名称为 suffix，原主机名为 test.0，最终主机名为 test.0.suffix。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostNameSuffix: str
         """
         self._HostName = None
         self._HostNameStyle = None
+        self._HostNameSuffix = None
 
     @property
     def HostName(self):
@@ -5929,10 +5950,19 @@ class HostNameSettings(AbstractModel):
     def HostNameStyle(self, HostNameStyle):
         self._HostNameStyle = HostNameStyle
 
+    @property
+    def HostNameSuffix(self):
+        return self._HostNameSuffix
+
+    @HostNameSuffix.setter
+    def HostNameSuffix(self, HostNameSuffix):
+        self._HostNameSuffix = HostNameSuffix
+
 
     def _deserialize(self, params):
         self._HostName = params.get("HostName")
         self._HostNameStyle = params.get("HostNameStyle")
+        self._HostNameSuffix = params.get("HostNameSuffix")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8069,9 +8099,8 @@ class ModifyLaunchConfigurationAttributesRequest(AbstractModel):
 InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定多实例类型，并使原有的InstanceType失效。
         :type InstanceTypes: list of str
         :param _InstanceTypesCheckPolicy: 实例类型校验策略，在实际修改 InstanceTypes 时发挥作用，取值包括 ALL 和 ANY，默认取值为ANY。
-<br><li> ALL，所有实例类型（InstanceType）都可用则通过校验，否则校验报错。
-<br><li> ANY，存在任何一个实例类型（InstanceType）可用则通过校验，否则校验报错。
-
+<li> ALL，所有实例类型（InstanceType）都可用则通过校验，否则校验报错。</li> 
+<li> ANY，存在任何一个实例类型（InstanceType）可用则通过校验，否则校验报错。</li> 
 实例类型不可用的常见原因包括该实例类型售罄、对应云盘售罄等。
 如果 InstanceTypes 中一款机型不存在或者已下线，则无论 InstanceTypesCheckPolicy 采用何种取值，都会校验报错。
         :type InstanceTypesCheckPolicy: str
@@ -8086,9 +8115,9 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 当公网出带宽上限为0Mbps时，不支持修改为开通分配公网IP；相应的，当前为开通分配公网IP时，修改的公网出带宽上限值必须大于0Mbps。
         :type InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.InternetAccessible`
         :param _InstanceChargeType: 实例计费类型。具体取值范围如下：
-<br><li>POSTPAID_BY_HOUR：按小时后付费
-<br><li>SPOTPAID：竞价付费
-<br><li>PREPAID：预付费，即包年包月
+<li>POSTPAID_BY_HOUR：按小时后付费</li>
+<li>SPOTPAID：竞价付费</li>
+<li>PREPAID：预付费，即包年包月</li>
         :type InstanceChargeType: str
         :param _InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
 若修改实例的付费模式为预付费，则该参数必传；从预付费修改为其他付费模式时，本字段原信息会自动丢弃。
@@ -8101,8 +8130,8 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 当修改本字段时，当前付费模式必须为竞价付费。
         :type InstanceMarketOptions: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
         :param _DiskTypePolicy: 云盘类型选择策略，取值范围：
-<br><li>ORIGINAL：使用设置的云盘类型。
-<br><li>AUTOMATIC：自动选择当前可用的云盘类型。
+<li>ORIGINAL：使用设置的云盘类型。</li>
+<li>AUTOMATIC：自动选择当前可用的云盘类型。</li>
         :type DiskTypePolicy: str
         :param _SystemDisk: 实例系统盘配置信息。
         :type SystemDisk: :class:`tencentcloud.autoscaling.v20180419.models.SystemDisk`
@@ -8131,6 +8160,9 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
         :type DisasterRecoverGroupIds: list of str
         :param _LoginSettings: 实例登录设置，包括密码、密钥或保持镜像的原始登录设置。<br>请注意，指定新的登录设置会覆盖原有登录设置。例如，如果您之前使用密码登录，使用该参数将登录设置修改为密钥，则原有密码被清除。
         :type LoginSettings: :class:`tencentcloud.autoscaling.v20180419.models.LoginSettings`
+        :param _InstanceTags: 实例标签列表。通过指定该参数，可以为扩容的实例绑定标签。最多支持指定10个标签。
+该参数会覆盖原有的实例标签列表，如需新增标签，需将新标签和原有标签一并传入。
+        :type InstanceTags: list of InstanceTag
         """
         self._LaunchConfigurationId = None
         self._ImageId = None
@@ -8154,6 +8186,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
         self._IPv6InternetAccessible = None
         self._DisasterRecoverGroupIds = None
         self._LoginSettings = None
+        self._InstanceTags = None
 
     @property
     def LaunchConfigurationId(self):
@@ -8331,6 +8364,14 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
     def LoginSettings(self, LoginSettings):
         self._LoginSettings = LoginSettings
 
+    @property
+    def InstanceTags(self):
+        return self._InstanceTags
+
+    @InstanceTags.setter
+    def InstanceTags(self, InstanceTags):
+        self._InstanceTags = InstanceTags
+
 
     def _deserialize(self, params):
         self._LaunchConfigurationId = params.get("LaunchConfigurationId")
@@ -8378,6 +8419,12 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
         if params.get("LoginSettings") is not None:
             self._LoginSettings = LoginSettings()
             self._LoginSettings._deserialize(params.get("LoginSettings"))
+        if params.get("InstanceTags") is not None:
+            self._InstanceTags = []
+            for item in params.get("InstanceTags"):
+                obj = InstanceTag()
+                obj._deserialize(item)
+                self._InstanceTags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
