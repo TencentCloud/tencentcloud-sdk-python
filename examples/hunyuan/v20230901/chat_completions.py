@@ -18,15 +18,16 @@ try:
     cpf.httpProfile.pre_conn_pool_size = 3
     client = hunyuan_client.HunyuanClient(cred, "ap-guangzhou", cpf)
 
-    req = models.ChatStdRequest()
+    req = models.ChatCompletionsRequest()
+    req.Model = "hunyuan-standard"
     msg = models.Message()
     msg.Role = "user"
     msg.Content = "你好，可以讲个笑话吗"
     req.Messages = [msg]
 
-    # hunyuan ChatStd/ChatPro 同时支持 stream 和非 stream 的情况
+    # hunyuan ChatCompletions 同时支持 stream 和非 stream 的情况
     req.Stream = True
-    resp = client.ChatStd(req)
+    resp = client.ChatCompletions(req)
 
     full_content = ""
     if req.Stream:  # stream 示例
