@@ -256,6 +256,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateConsoleSharing(self, request):
+        """创建控制台分享
+
+        :param request: Request instance for CreateConsoleSharing.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateConsoleSharingRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateConsoleSharingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateConsoleSharing", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateConsoleSharingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateConsumer(self, request):
         """本接口用于创建投递CKafka任务
 
@@ -693,6 +716,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteConsoleSharing(self, request):
+        """删除控制台分享
+
+        :param request: Request instance for DeleteConsoleSharing.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteConsoleSharingRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteConsoleSharingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteConsoleSharing", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteConsoleSharingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteConsumer(self, request):
         """本接口用于删除投递配置
 
@@ -1121,6 +1167,29 @@ class ClsClient(AbstractClient):
             body = self.call("DescribeConfigs", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeConfigsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeConsoleSharingList(self, request):
+        """批量查询控制台分享列表
+
+        :param request: Request instance for DescribeConsoleSharingList.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeConsoleSharingListRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeConsoleSharingListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConsoleSharingList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConsoleSharingListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1743,6 +1812,29 @@ class ClsClient(AbstractClient):
             body = self.call("ModifyConfigExtra", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyConfigExtraResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyConsoleSharing(self, request):
+        """修改控制台分享，目前仅允许修改有效期
+
+        :param request: Request instance for ModifyConsoleSharing.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyConsoleSharingRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyConsoleSharingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyConsoleSharing", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyConsoleSharingResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

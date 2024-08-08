@@ -2198,6 +2198,112 @@ class DescribeConsumerGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeConsumerLagRequest(AbstractModel):
+    """DescribeConsumerLag请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _ConsumerGroup: 消费组名称
+        :type ConsumerGroup: str
+        :param _Namespace: 命名空间，4.x集群必填
+        :type Namespace: str
+        :param _SubscribeTopic: 订阅主题，不为空则查询订阅了该主题的消费组的堆积
+        :type SubscribeTopic: str
+        """
+        self._InstanceId = None
+        self._ConsumerGroup = None
+        self._Namespace = None
+        self._SubscribeTopic = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ConsumerGroup(self):
+        return self._ConsumerGroup
+
+    @ConsumerGroup.setter
+    def ConsumerGroup(self, ConsumerGroup):
+        self._ConsumerGroup = ConsumerGroup
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def SubscribeTopic(self):
+        return self._SubscribeTopic
+
+    @SubscribeTopic.setter
+    def SubscribeTopic(self, SubscribeTopic):
+        self._SubscribeTopic = SubscribeTopic
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ConsumerGroup = params.get("ConsumerGroup")
+        self._Namespace = params.get("Namespace")
+        self._SubscribeTopic = params.get("SubscribeTopic")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConsumerLagResponse(AbstractModel):
+    """DescribeConsumerLag返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConsumerLag: 堆积数
+        :type ConsumerLag: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ConsumerLag = None
+        self._RequestId = None
+
+    @property
+    def ConsumerLag(self):
+        return self._ConsumerLag
+
+    @ConsumerLag.setter
+    def ConsumerLag(self, ConsumerLag):
+        self._ConsumerLag = ConsumerLag
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ConsumerLag = params.get("ConsumerLag")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeFusionInstanceListRequest(AbstractModel):
     """DescribeFusionInstanceList请求参数结构体
 

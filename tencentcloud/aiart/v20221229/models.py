@@ -50,6 +50,9 @@ Dress：连衣裙
 其他数值：默认按1处理。
 建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
         :type LogoAdd: int
+        :param _LogoParam: 标识内容设置。
+默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        :type LogoParam: :class:`tencentcloud.aiart.v20221229.models.LogoParam`
         :param _RspImgType: 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
 生成图分辨率较大时建议选择 url，使用 base64 可能因图片过大导致返回失败。
         :type RspImgType: str
@@ -58,6 +61,7 @@ Dress：连衣裙
         self._ClothesUrl = None
         self._ClothesType = None
         self._LogoAdd = None
+        self._LogoParam = None
         self._RspImgType = None
 
     @property
@@ -93,6 +97,14 @@ Dress：连衣裙
         self._LogoAdd = LogoAdd
 
     @property
+    def LogoParam(self):
+        return self._LogoParam
+
+    @LogoParam.setter
+    def LogoParam(self, LogoParam):
+        self._LogoParam = LogoParam
+
+    @property
     def RspImgType(self):
         return self._RspImgType
 
@@ -106,6 +118,9 @@ Dress：连衣裙
         self._ClothesUrl = params.get("ClothesUrl")
         self._ClothesType = params.get("ClothesType")
         self._LogoAdd = params.get("LogoAdd")
+        if params.get("LogoParam") is not None:
+            self._LogoParam = LogoParam()
+            self._LogoParam._deserialize(params.get("LogoParam"))
         self._RspImgType = params.get("RspImgType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

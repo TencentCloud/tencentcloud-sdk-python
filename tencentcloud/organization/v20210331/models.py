@@ -973,6 +973,112 @@ class CheckAccountDeleteResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateOrgServiceAssignRequest(AbstractModel):
+    """CreateOrgServiceAssign请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceId: 集团服务ID。可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+        :type ServiceId: int
+        :param _MemberUins: 委派管理员Uin列表。 最大长度20个
+        :type MemberUins: list of int
+        :param _ManagementScope: 委派管理员管理范围。 取值：1-全部成员 2-部分成员，默认值1
+        :type ManagementScope: int
+        :param _ManagementScopeUins: 管理的成员Uin列表。ManagementScope为2时该参数有效
+        :type ManagementScopeUins: list of int
+        :param _ManagementScopeNodeIds: 管理的部门ID列表。ManagementScope为2时该参数有效
+        :type ManagementScopeNodeIds: list of int
+        """
+        self._ServiceId = None
+        self._MemberUins = None
+        self._ManagementScope = None
+        self._ManagementScopeUins = None
+        self._ManagementScopeNodeIds = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def MemberUins(self):
+        return self._MemberUins
+
+    @MemberUins.setter
+    def MemberUins(self, MemberUins):
+        self._MemberUins = MemberUins
+
+    @property
+    def ManagementScope(self):
+        return self._ManagementScope
+
+    @ManagementScope.setter
+    def ManagementScope(self, ManagementScope):
+        self._ManagementScope = ManagementScope
+
+    @property
+    def ManagementScopeUins(self):
+        return self._ManagementScopeUins
+
+    @ManagementScopeUins.setter
+    def ManagementScopeUins(self, ManagementScopeUins):
+        self._ManagementScopeUins = ManagementScopeUins
+
+    @property
+    def ManagementScopeNodeIds(self):
+        return self._ManagementScopeNodeIds
+
+    @ManagementScopeNodeIds.setter
+    def ManagementScopeNodeIds(self, ManagementScopeNodeIds):
+        self._ManagementScopeNodeIds = ManagementScopeNodeIds
+
+
+    def _deserialize(self, params):
+        self._ServiceId = params.get("ServiceId")
+        self._MemberUins = params.get("MemberUins")
+        self._ManagementScope = params.get("ManagementScope")
+        self._ManagementScopeUins = params.get("ManagementScopeUins")
+        self._ManagementScopeNodeIds = params.get("ManagementScopeNodeIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOrgServiceAssignResponse(AbstractModel):
+    """CreateOrgServiceAssign返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateOrganizationIdentityRequest(AbstractModel):
     """CreateOrganizationIdentity请求参数结构体
 
@@ -1733,6 +1839,76 @@ class DeleteAccountRequest(AbstractModel):
 
 class DeleteAccountResponse(AbstractModel):
     """DeleteAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteOrgServiceAssignRequest(AbstractModel):
+    """DeleteOrgServiceAssign请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceId: 集团服务ID。可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+        :type ServiceId: int
+        :param _MemberUin: 委派管理员Uin。
+        :type MemberUin: int
+        """
+        self._ServiceId = None
+        self._MemberUin = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def MemberUin(self):
+        return self._MemberUin
+
+    @MemberUin.setter
+    def MemberUin(self, MemberUin):
+        self._MemberUin = MemberUin
+
+
+    def _deserialize(self, params):
+        self._ServiceId = params.get("ServiceId")
+        self._MemberUin = params.get("MemberUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteOrgServiceAssignResponse(AbstractModel):
+    """DeleteOrgServiceAssign返回参数结构体
 
     """
 
@@ -5335,6 +5511,119 @@ class ListNonCompliantResourceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ListOrgServiceAssignMemberRequest(AbstractModel):
+    """ListOrgServiceAssignMember请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 偏移量。取值是limit的整数倍，默认值 : 0
+        :type Offset: int
+        :param _Limit: 限制数目。取值范围：1~50，默认值：10
+        :type Limit: int
+        :param _ServiceId: 集团服务ID。可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+        :type ServiceId: int
+        """
+        self._Offset = None
+        self._Limit = None
+        self._ServiceId = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._ServiceId = params.get("ServiceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListOrgServiceAssignMemberResponse(AbstractModel):
+    """ListOrgServiceAssignMember返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param _Items: 委派管理员列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of OrganizationServiceAssignMember
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = OrganizationServiceAssignMember()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class ListOrganizationIdentityRequest(AbstractModel):
     """ListOrganizationIdentity请求参数结构体
 
@@ -6626,6 +6915,53 @@ class MoveOrganizationNodeMembersResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class NodeMainInfo(AbstractModel):
+    """部门主要信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeId: 部门ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeId: int
+        :param _NodeName: 部门名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeName: str
+        """
+        self._NodeId = None
+        self._NodeName = None
+
+    @property
+    def NodeId(self):
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def NodeName(self):
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+
+    def _deserialize(self, params):
+        self._NodeId = params.get("NodeId")
+        self._NodeName = params.get("NodeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class NotAllowReason(AbstractModel):
@@ -8080,6 +8416,154 @@ class OrganizationServiceAssign(AbstractModel):
         self._ServiceGrant = params.get("ServiceGrant")
         self._GrantStatus = params.get("GrantStatus")
         self._IsSetManagementScope = params.get("IsSetManagementScope")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OrganizationServiceAssignMember(AbstractModel):
+    """集团服务委派成员信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceId: 集团服务ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceId: int
+        :param _ProductName: 集团服务产品名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductName: str
+        :param _MemberUin: 委派管理员Uin。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemberUin: int
+        :param _MemberName: 委派管理员名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemberName: str
+        :param _UsageStatus: 启用状态 。取值：0-服务无启用状态  1-已启用  2-未启用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsageStatus: int
+        :param _CreateTime: 委派时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _ManagementScope: 委派管理员管理范围。取值: 1-全部成员  2-部分成员
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ManagementScope: int
+        :param _ManagementScopeMembers: 管理的成员Uin列表。ManagementScope值为2时该参数有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ManagementScopeMembers: list of MemberMainInfo
+        :param _ManagementScopeNodes: 管理的部门ID列表。ManagementScope值为2时该参数有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ManagementScopeNodes: list of NodeMainInfo
+        """
+        self._ServiceId = None
+        self._ProductName = None
+        self._MemberUin = None
+        self._MemberName = None
+        self._UsageStatus = None
+        self._CreateTime = None
+        self._ManagementScope = None
+        self._ManagementScopeMembers = None
+        self._ManagementScopeNodes = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def ProductName(self):
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
+
+    @property
+    def MemberUin(self):
+        return self._MemberUin
+
+    @MemberUin.setter
+    def MemberUin(self, MemberUin):
+        self._MemberUin = MemberUin
+
+    @property
+    def MemberName(self):
+        return self._MemberName
+
+    @MemberName.setter
+    def MemberName(self, MemberName):
+        self._MemberName = MemberName
+
+    @property
+    def UsageStatus(self):
+        return self._UsageStatus
+
+    @UsageStatus.setter
+    def UsageStatus(self, UsageStatus):
+        self._UsageStatus = UsageStatus
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ManagementScope(self):
+        return self._ManagementScope
+
+    @ManagementScope.setter
+    def ManagementScope(self, ManagementScope):
+        self._ManagementScope = ManagementScope
+
+    @property
+    def ManagementScopeMembers(self):
+        return self._ManagementScopeMembers
+
+    @ManagementScopeMembers.setter
+    def ManagementScopeMembers(self, ManagementScopeMembers):
+        self._ManagementScopeMembers = ManagementScopeMembers
+
+    @property
+    def ManagementScopeNodes(self):
+        return self._ManagementScopeNodes
+
+    @ManagementScopeNodes.setter
+    def ManagementScopeNodes(self, ManagementScopeNodes):
+        self._ManagementScopeNodes = ManagementScopeNodes
+
+
+    def _deserialize(self, params):
+        self._ServiceId = params.get("ServiceId")
+        self._ProductName = params.get("ProductName")
+        self._MemberUin = params.get("MemberUin")
+        self._MemberName = params.get("MemberName")
+        self._UsageStatus = params.get("UsageStatus")
+        self._CreateTime = params.get("CreateTime")
+        self._ManagementScope = params.get("ManagementScope")
+        if params.get("ManagementScopeMembers") is not None:
+            self._ManagementScopeMembers = []
+            for item in params.get("ManagementScopeMembers"):
+                obj = MemberMainInfo()
+                obj._deserialize(item)
+                self._ManagementScopeMembers.append(obj)
+        if params.get("ManagementScopeNodes") is not None:
+            self._ManagementScopeNodes = []
+            for item in params.get("ManagementScopeNodes"):
+                obj = NodeMainInfo()
+                obj._deserialize(item)
+                self._ManagementScopeNodes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

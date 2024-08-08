@@ -443,6 +443,29 @@ class TrocketClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeConsumerLag(self, request):
+        """查询指定消费组堆积数。
+
+        :param request: Request instance for DescribeConsumerLag.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeConsumerLagRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DescribeConsumerLagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConsumerLag", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConsumerLagResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeFusionInstanceList(self, request):
         """获取实例列表，Filters参数使用说明如下：
         1. InstanceName, 名称模糊查询

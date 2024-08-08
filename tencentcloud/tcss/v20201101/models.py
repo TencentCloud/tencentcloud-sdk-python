@@ -2512,8 +2512,11 @@ class AddComplianceAssetPolicySetToWhitelistRequest(AbstractModel):
         r"""
         :param _AssetPolicySetList: 资产ID+检查项IDs. 列表
         :type AssetPolicySetList: list of ComplianceAssetPolicySetItem
+        :param _AssetType: 扫描资产类型 <li>ASSET_CONTAINER Docker容器</li> <li>ASSET_IMAGE Docker镜像</li> <li>ASSET_HOST Docker主机</li> <li>ASSET_K8S Kubernetes</li> <li>ASSET_CONTAINERD Containerd主机</li> <li>ASSET_CONTAINERD_CONTAINER Containerd容器</li>
+        :type AssetType: str
         """
         self._AssetPolicySetList = None
+        self._AssetType = None
 
     @property
     def AssetPolicySetList(self):
@@ -2523,6 +2526,14 @@ class AddComplianceAssetPolicySetToWhitelistRequest(AbstractModel):
     def AssetPolicySetList(self, AssetPolicySetList):
         self._AssetPolicySetList = AssetPolicySetList
 
+    @property
+    def AssetType(self):
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
 
     def _deserialize(self, params):
         if params.get("AssetPolicySetList") is not None:
@@ -2531,6 +2542,7 @@ class AddComplianceAssetPolicySetToWhitelistRequest(AbstractModel):
                 obj = ComplianceAssetPolicySetItem()
                 obj._deserialize(item)
                 self._AssetPolicySetList.append(obj)
+        self._AssetType = params.get("AssetType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7181,6 +7193,15 @@ CHECK_FAILED, 检测失败
         :param _IgnoredPolicyItemCount: 已忽略的检查项总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type IgnoredPolicyItemCount: int
+        :param _TotalPolicyItemCount: 总检测项数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalPolicyItemCount: int
+        :param _DetectHostCount: 检测主机数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DetectHostCount: int
+        :param _LeftTime: 当前任务剩余时间，单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LeftTime: int
         """
         self._AssetType = None
         self._IsCustomerFirstCheck = None
@@ -7202,6 +7223,9 @@ CHECK_FAILED, 检测失败
         self._PeriodRule = None
         self._OpenPolicyItemCount = None
         self._IgnoredPolicyItemCount = None
+        self._TotalPolicyItemCount = None
+        self._DetectHostCount = None
+        self._LeftTime = None
 
     @property
     def AssetType(self):
@@ -7363,6 +7387,30 @@ CHECK_FAILED, 检测失败
     def IgnoredPolicyItemCount(self, IgnoredPolicyItemCount):
         self._IgnoredPolicyItemCount = IgnoredPolicyItemCount
 
+    @property
+    def TotalPolicyItemCount(self):
+        return self._TotalPolicyItemCount
+
+    @TotalPolicyItemCount.setter
+    def TotalPolicyItemCount(self, TotalPolicyItemCount):
+        self._TotalPolicyItemCount = TotalPolicyItemCount
+
+    @property
+    def DetectHostCount(self):
+        return self._DetectHostCount
+
+    @DetectHostCount.setter
+    def DetectHostCount(self, DetectHostCount):
+        self._DetectHostCount = DetectHostCount
+
+    @property
+    def LeftTime(self):
+        return self._LeftTime
+
+    @LeftTime.setter
+    def LeftTime(self, LeftTime):
+        self._LeftTime = LeftTime
+
 
     def _deserialize(self, params):
         self._AssetType = params.get("AssetType")
@@ -7387,6 +7435,9 @@ CHECK_FAILED, 检测失败
             self._PeriodRule._deserialize(params.get("PeriodRule"))
         self._OpenPolicyItemCount = params.get("OpenPolicyItemCount")
         self._IgnoredPolicyItemCount = params.get("IgnoredPolicyItemCount")
+        self._TotalPolicyItemCount = params.get("TotalPolicyItemCount")
+        self._DetectHostCount = params.get("DetectHostCount")
+        self._LeftTime = params.get("LeftTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8072,6 +8123,11 @@ RESULT_FAILED: 未通过
         :param _AuditProcedure: 检查项审计方法
 注意：此字段可能返回 null，表示取不到有效值。
         :type AuditProcedure: str
+        :param _IsEnable: 是否开启
+<li>0 关闭</li>
+<li>1 开启</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsEnable: int
         """
         self._CustomerPolicyItemId = None
         self._BasePolicyItemId = None
@@ -8091,6 +8147,7 @@ RESULT_FAILED: 未通过
         self._ApplicableVersion = None
         self._Description = None
         self._AuditProcedure = None
+        self._IsEnable = None
 
     @property
     def CustomerPolicyItemId(self):
@@ -8236,6 +8293,14 @@ RESULT_FAILED: 未通过
     def AuditProcedure(self, AuditProcedure):
         self._AuditProcedure = AuditProcedure
 
+    @property
+    def IsEnable(self):
+        return self._IsEnable
+
+    @IsEnable.setter
+    def IsEnable(self, IsEnable):
+        self._IsEnable = IsEnable
+
 
     def _deserialize(self, params):
         self._CustomerPolicyItemId = params.get("CustomerPolicyItemId")
@@ -8256,6 +8321,7 @@ RESULT_FAILED: 未通过
         self._ApplicableVersion = params.get("ApplicableVersion")
         self._Description = params.get("Description")
         self._AuditProcedure = params.get("AuditProcedure")
+        self._IsEnable = params.get("IsEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14457,9 +14523,12 @@ class DeleteComplianceAssetPolicySetFromWhitelistRequest(AbstractModel):
         :type AssetItemId: int
         :param _CustomerPolicyItemIdSet: 需要忽略指定资产内的检查项ID列表
         :type CustomerPolicyItemIdSet: list of int non-negative
+        :param _AssetType: 扫描资产类型 <li>ASSET_CONTAINER Docker容器</li> <li>ASSET_IMAGE Docker镜像</li> <li>ASSET_HOST Docker主机</li> <li>ASSET_K8S Kubernetes</li> <li>ASSET_CONTAINERD Containerd主机</li> <li>ASSET_CONTAINERD_CONTAINER Containerd容器</li>
+        :type AssetType: str
         """
         self._AssetItemId = None
         self._CustomerPolicyItemIdSet = None
+        self._AssetType = None
 
     @property
     def AssetItemId(self):
@@ -14477,10 +14546,19 @@ class DeleteComplianceAssetPolicySetFromWhitelistRequest(AbstractModel):
     def CustomerPolicyItemIdSet(self, CustomerPolicyItemIdSet):
         self._CustomerPolicyItemIdSet = CustomerPolicyItemIdSet
 
+    @property
+    def AssetType(self):
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
 
     def _deserialize(self, params):
         self._AssetItemId = params.get("AssetItemId")
         self._CustomerPolicyItemIdSet = params.get("CustomerPolicyItemIdSet")
+        self._AssetType = params.get("AssetType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26030,8 +26108,11 @@ class DescribeComplianceAssetDetailInfoRequest(AbstractModel):
         r"""
         :param _CustomerAssetId: 客户资产ID。
         :type CustomerAssetId: int
+        :param _AssetType: 资产类型 <li>ASSET_CONTAINER Docker容器</li> <li>ASSET_IMAGE Docker镜像</li> <li>ASSET_HOST Docker主机</li> <li>ASSET_K8S Kubernetes</li> <li>ASSET_CONTAINERD Containerd主机</li> <li>ASSET_CONTAINERD_CONTAINER Containerd容器</li>
+        :type AssetType: str
         """
         self._CustomerAssetId = None
+        self._AssetType = None
 
     @property
     def CustomerAssetId(self):
@@ -26041,9 +26122,18 @@ class DescribeComplianceAssetDetailInfoRequest(AbstractModel):
     def CustomerAssetId(self, CustomerAssetId):
         self._CustomerAssetId = CustomerAssetId
 
+    @property
+    def AssetType(self):
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
 
     def _deserialize(self, params):
         self._CustomerAssetId = params.get("CustomerAssetId")
+        self._AssetType = params.get("AssetType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26296,13 +26386,16 @@ class DescribeComplianceAssetPolicyItemListRequest(AbstractModel):
         :param _Limit: 要获取的数据量，默认为10，最大为100。
         :type Limit: int
         :param _Filters: 过滤器列表。Name字段支持
-RiskLevel
+RiskLevel， AppId
         :type Filters: list of ComplianceFilters
+        :param _AssetType: 资产类型 <li>ASSET_CONTAINER Docker容器</li> <li>ASSET_IMAGE Docker镜像</li> <li>ASSET_HOST Docker主机</li> <li>ASSET_K8S Kubernetes</li> <li>ASSET_CONTAINERD Containerd主机</li> <li>ASSET_CONTAINERD_CONTAINER Containerd容器</li>
+        :type AssetType: str
         """
         self._CustomerAssetId = None
         self._Offset = None
         self._Limit = None
         self._Filters = None
+        self._AssetType = None
 
     @property
     def CustomerAssetId(self):
@@ -26336,6 +26429,14 @@ RiskLevel
     def Filters(self, Filters):
         self._Filters = Filters
 
+    @property
+    def AssetType(self):
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
 
     def _deserialize(self, params):
         self._CustomerAssetId = params.get("CustomerAssetId")
@@ -26347,6 +26448,7 @@ RiskLevel
                 obj = ComplianceFilters()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._AssetType = params.get("AssetType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26977,10 +27079,7 @@ ASSET_K8S, K8S资产
         :type Offset: int
         :param _Limit: 需要返回的数量，默认为10，最大值为100。
         :type Limit: int
-        :param _Filters: 过滤条件。
-Name - String
-Name 可取值：ItemType, StandardId,  RiskLevel。
-当为K8S资产时，还可取ClusterName。
+        :param _Filters: 过滤条件 <li>Name      string 检测项名字</li> <li>ItemType  string 检测项类型</li> <li>RiskLevel string 威胁等级</li> <li>IsOpen    int    是否开启</li>
         :type Filters: list of ComplianceFilters
         """
         self._AssetType = None
@@ -57717,9 +57816,12 @@ class ScanComplianceAssetsByPolicyItemRequest(AbstractModel):
         :type CustomerPolicyItemId: int
         :param _CustomerAssetIdSet: 要重新扫描的客户资产项ID的列表。
         :type CustomerAssetIdSet: list of int non-negative
+        :param _AssetType: 扫描资产类型 <li>ASSET_CONTAINER Docker容器</li> <li>ASSET_IMAGE Docker镜像</li> <li>ASSET_HOST Docker主机</li> <li>ASSET_K8S Kubernetes</li> <li>ASSET_CONTAINERD Containerd主机</li> <li>ASSET_CONTAINERD_CONTAINER Containerd容器</li>
+        :type AssetType: str
         """
         self._CustomerPolicyItemId = None
         self._CustomerAssetIdSet = None
+        self._AssetType = None
 
     @property
     def CustomerPolicyItemId(self):
@@ -57737,10 +57839,19 @@ class ScanComplianceAssetsByPolicyItemRequest(AbstractModel):
     def CustomerAssetIdSet(self, CustomerAssetIdSet):
         self._CustomerAssetIdSet = CustomerAssetIdSet
 
+    @property
+    def AssetType(self):
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
 
     def _deserialize(self, params):
         self._CustomerPolicyItemId = params.get("CustomerPolicyItemId")
         self._CustomerAssetIdSet = params.get("CustomerAssetIdSet")
+        self._AssetType = params.get("AssetType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -57797,8 +57908,11 @@ class ScanComplianceAssetsRequest(AbstractModel):
         r"""
         :param _CustomerAssetIdSet: 要重新扫描的客户资产项ID的列表。
         :type CustomerAssetIdSet: list of int non-negative
+        :param _AssetType: 扫描资产类型 <li>ASSET_CONTAINER Docker容器</li> <li>ASSET_IMAGE Docker镜像</li> <li>ASSET_HOST Docker主机</li> <li>ASSET_K8S Kubernetes</li> <li>ASSET_CONTAINERD Containerd主机</li> <li>ASSET_CONTAINERD_CONTAINER Containerd容器</li>
+        :type AssetType: str
         """
         self._CustomerAssetIdSet = None
+        self._AssetType = None
 
     @property
     def CustomerAssetIdSet(self):
@@ -57808,9 +57922,18 @@ class ScanComplianceAssetsRequest(AbstractModel):
     def CustomerAssetIdSet(self, CustomerAssetIdSet):
         self._CustomerAssetIdSet = CustomerAssetIdSet
 
+    @property
+    def AssetType(self):
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
 
     def _deserialize(self, params):
         self._CustomerAssetIdSet = params.get("CustomerAssetIdSet")
+        self._AssetType = params.get("AssetType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -57937,8 +58060,11 @@ class ScanComplianceScanFailedAssetsRequest(AbstractModel):
         r"""
         :param _CustomerAssetIdSet: 要重新扫描的客户资产项ID的列表。
         :type CustomerAssetIdSet: list of int non-negative
+        :param _AssetType: 扫描资产类型 <li>ASSET_CONTAINER Docker容器</li> <li>ASSET_IMAGE Docker镜像</li> <li>ASSET_HOST Docker主机</li> <li>ASSET_K8S Kubernetes</li> <li>ASSET_CONTAINERD Containerd主机</li> <li>ASSET_CONTAINERD_CONTAINER Containerd容器</li>
+        :type AssetType: str
         """
         self._CustomerAssetIdSet = None
+        self._AssetType = None
 
     @property
     def CustomerAssetIdSet(self):
@@ -57948,9 +58074,18 @@ class ScanComplianceScanFailedAssetsRequest(AbstractModel):
     def CustomerAssetIdSet(self, CustomerAssetIdSet):
         self._CustomerAssetIdSet = CustomerAssetIdSet
 
+    @property
+    def AssetType(self):
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
 
     def _deserialize(self, params):
         self._CustomerAssetIdSet = params.get("CustomerAssetIdSet")
+        self._AssetType = params.get("AssetType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

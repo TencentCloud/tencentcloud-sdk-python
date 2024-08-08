@@ -2733,6 +2733,229 @@ class ConfigInfo(AbstractModel):
         
 
 
+class ConsoleSharingConfig(AbstractModel):
+    """控制台分享配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 分享链接名称
+        :type Name: str
+        :param _Type: 仪表盘: 1; 检索页:2
+        :type Type: int
+        :param _DurationMilliseconds: 分享链接有效期，单位：毫秒，最长支持30天
+        :type DurationMilliseconds: int
+        :param _Resources: 允许访问的资源列表
+        :type Resources: list of str
+        :param _Domain: 分享链接域名，可选范围
+- 公网匿名分享：填写clsshare.com
+- datasight内网匿名分享(若开启)：datasight内网域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domain: str
+        :param _VerifyCode: 验证码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VerifyCode: str
+        :param _StartTime: 开始时间，支持绝对时间(13位时间戳字符串)/相对时间字符串
+        :type StartTime: str
+        :param _EndTime: 结束时间，支持绝对时间(13位时间戳字符串)/相对时间字符串
+        :type EndTime: str
+        :param _NowTime: 当StartTime/EndTime为相对时间时，基于NowTime计算绝对时间，默认为创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NowTime: int
+        :param _Params: params参数列表，当Type为2时支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Params: list of ConsoleSharingParam
+        :param _IsLockTimeRange: 是否允许访问者自行修改检索分析时间范围，默认不锁定
+        :type IsLockTimeRange: bool
+        :param _IsLockQuery: 是否允许访问者自行修改日志检索语句。在检索页分享中表示检索语句锁定状态；在仪表盘中表示过滤变量锁定状态
+        :type IsLockQuery: bool
+        """
+        self._Name = None
+        self._Type = None
+        self._DurationMilliseconds = None
+        self._Resources = None
+        self._Domain = None
+        self._VerifyCode = None
+        self._StartTime = None
+        self._EndTime = None
+        self._NowTime = None
+        self._Params = None
+        self._IsLockTimeRange = None
+        self._IsLockQuery = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def DurationMilliseconds(self):
+        return self._DurationMilliseconds
+
+    @DurationMilliseconds.setter
+    def DurationMilliseconds(self, DurationMilliseconds):
+        self._DurationMilliseconds = DurationMilliseconds
+
+    @property
+    def Resources(self):
+        return self._Resources
+
+    @Resources.setter
+    def Resources(self, Resources):
+        self._Resources = Resources
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def VerifyCode(self):
+        return self._VerifyCode
+
+    @VerifyCode.setter
+    def VerifyCode(self, VerifyCode):
+        self._VerifyCode = VerifyCode
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def NowTime(self):
+        return self._NowTime
+
+    @NowTime.setter
+    def NowTime(self, NowTime):
+        self._NowTime = NowTime
+
+    @property
+    def Params(self):
+        return self._Params
+
+    @Params.setter
+    def Params(self, Params):
+        self._Params = Params
+
+    @property
+    def IsLockTimeRange(self):
+        return self._IsLockTimeRange
+
+    @IsLockTimeRange.setter
+    def IsLockTimeRange(self, IsLockTimeRange):
+        self._IsLockTimeRange = IsLockTimeRange
+
+    @property
+    def IsLockQuery(self):
+        return self._IsLockQuery
+
+    @IsLockQuery.setter
+    def IsLockQuery(self, IsLockQuery):
+        self._IsLockQuery = IsLockQuery
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._DurationMilliseconds = params.get("DurationMilliseconds")
+        self._Resources = params.get("Resources")
+        self._Domain = params.get("Domain")
+        self._VerifyCode = params.get("VerifyCode")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._NowTime = params.get("NowTime")
+        if params.get("Params") is not None:
+            self._Params = []
+            for item in params.get("Params"):
+                obj = ConsoleSharingParam()
+                obj._deserialize(item)
+                self._Params.append(obj)
+        self._IsLockTimeRange = params.get("IsLockTimeRange")
+        self._IsLockQuery = params.get("IsLockQuery")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConsoleSharingParam(AbstractModel):
+    """控制台分享链接params参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Value: 值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ConsumerContent(AbstractModel):
     """投递任务出入参 Content
 
@@ -4631,6 +4854,90 @@ class CreateConfigResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._ConfigId = params.get("ConfigId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateConsoleSharingRequest(AbstractModel):
+    """CreateConsoleSharing请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SharingConfig: 免密分享配置
+        :type SharingConfig: :class:`tencentcloud.cls.v20201016.models.ConsoleSharingConfig`
+        """
+        self._SharingConfig = None
+
+    @property
+    def SharingConfig(self):
+        return self._SharingConfig
+
+    @SharingConfig.setter
+    def SharingConfig(self, SharingConfig):
+        self._SharingConfig = SharingConfig
+
+
+    def _deserialize(self, params):
+        if params.get("SharingConfig") is not None:
+            self._SharingConfig = ConsoleSharingConfig()
+            self._SharingConfig._deserialize(params.get("SharingConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateConsoleSharingResponse(AbstractModel):
+    """CreateConsoleSharing返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SharingUrl: 免密分享链接
+        :type SharingUrl: str
+        :param _SharingId: 免密分享链接ID
+        :type SharingId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SharingUrl = None
+        self._SharingId = None
+        self._RequestId = None
+
+    @property
+    def SharingUrl(self):
+        return self._SharingUrl
+
+    @SharingUrl.setter
+    def SharingUrl(self, SharingUrl):
+        self._SharingUrl = SharingUrl
+
+    @property
+    def SharingId(self):
+        return self._SharingId
+
+    @SharingId.setter
+    def SharingId(self, SharingId):
+        self._SharingId = SharingId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SharingUrl = params.get("SharingUrl")
+        self._SharingId = params.get("SharingId")
         self._RequestId = params.get("RequestId")
 
 
@@ -7847,6 +8154,64 @@ class DeleteConfigResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteConsoleSharingRequest(AbstractModel):
+    """DeleteConsoleSharing请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SharingId: 免密分享Id
+        :type SharingId: str
+        """
+        self._SharingId = None
+
+    @property
+    def SharingId(self):
+        return self._SharingId
+
+    @SharingId.setter
+    def SharingId(self, SharingId):
+        self._SharingId = SharingId
+
+
+    def _deserialize(self, params):
+        self._SharingId = params.get("SharingId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteConsoleSharingResponse(AbstractModel):
+    """DeleteConsoleSharing返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteConsumerRequest(AbstractModel):
     """DeleteConsumer请求参数结构体
 
@@ -9445,6 +9810,49 @@ class DescribeConfigsResponse(AbstractModel):
                 obj = ConfigInfo()
                 obj._deserialize(item)
                 self._Configs.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConsoleSharingListRequest(AbstractModel):
+    """DescribeConsoleSharingList请求参数结构体
+
+    """
+
+
+class DescribeConsoleSharingListResponse(AbstractModel):
+    """DescribeConsoleSharingList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 分页的总数目
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
@@ -16199,6 +16607,76 @@ class ModifyConfigRequest(AbstractModel):
 
 class ModifyConfigResponse(AbstractModel):
     """ModifyConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyConsoleSharingRequest(AbstractModel):
+    """ModifyConsoleSharing请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SharingId: 免密分享链接Id
+        :type SharingId: str
+        :param _DurationMilliseconds: 指定分享链接有效期，单位：毫秒，最长可设定有效期为30天
+        :type DurationMilliseconds: int
+        """
+        self._SharingId = None
+        self._DurationMilliseconds = None
+
+    @property
+    def SharingId(self):
+        return self._SharingId
+
+    @SharingId.setter
+    def SharingId(self, SharingId):
+        self._SharingId = SharingId
+
+    @property
+    def DurationMilliseconds(self):
+        return self._DurationMilliseconds
+
+    @DurationMilliseconds.setter
+    def DurationMilliseconds(self, DurationMilliseconds):
+        self._DurationMilliseconds = DurationMilliseconds
+
+
+    def _deserialize(self, params):
+        self._SharingId = params.get("SharingId")
+        self._DurationMilliseconds = params.get("DurationMilliseconds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyConsoleSharingResponse(AbstractModel):
+    """ModifyConsoleSharing返回参数结构体
 
     """
 

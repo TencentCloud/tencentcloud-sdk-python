@@ -68,6 +68,9 @@ FAILEDOPERATION_CREATEROLE = 'FailedOperation.CreateRole'
 # 删除授权策略异常。
 FAILEDOPERATION_DELETEPOLICY = 'FailedOperation.DeletePolicy'
 
+# 查询集团服务使用状态出错。
+FAILEDOPERATION_DESCRIBEORGSERVICEUSAGESTATUSERR = 'FailedOperation.DescribeOrgServiceUsageStatusErr'
+
 # 不能退出自己创建的企业组织。
 FAILEDOPERATION_DISABLEQUITSELFCREATEDORGANIZATION = 'FailedOperation.DisableQuitSelfCreatedOrganization'
 
@@ -178,6 +181,9 @@ FAILEDOPERATION_ORGANIZATIONPOLICYISNOTDISABLED = 'FailedOperation.OrganizationP
 
 # 集团策略不是启用状态。
 FAILEDOPERATION_ORGANIZATIONPOLICYISNOTENABLED = 'FailedOperation.OrganizationPolicyIsNotEnabled'
+
+# 集团服务委派在使用中。
+FAILEDOPERATION_ORGANIZATIONSERVICEASSIGNISUSE = 'FailedOperation.OrganizationServiceAssignIsUse'
 
 # 调用经销系统报错。
 FAILEDOPERATION_PARTNERMANAGEMENTERR = 'FailedOperation.PartnerManagementErr'
@@ -376,6 +382,9 @@ INVALIDPARAMETERVALUE_POLICYCONTENTINVALID = 'InvalidParameterValue.PolicyConten
 
 # 创建成员超过上限。
 LIMITEXCEEDED_CREATEMEMBEROVERLIMIT = 'LimitExceeded.CreateMemberOverLimit'
+
+# 服务委派管理员超过上限。
+LIMITEXCEEDED_CREATEORGSERVICEASSIGNOVERLIMIT = 'LimitExceeded.CreateOrgServiceAssignOverLimit'
 
 # 配置邮箱超过当日上限。
 LIMITEXCEEDED_EMAILBINDOVERLIMIT = 'LimitExceeded.EmailBindOverLimit'

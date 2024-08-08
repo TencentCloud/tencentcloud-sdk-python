@@ -256,6 +256,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateOrgServiceAssign(self, request):
+        """添加集团服务委派管理员
+
+        :param request: Request instance for CreateOrgServiceAssign.
+        :type request: :class:`tencentcloud.organization.v20210331.models.CreateOrgServiceAssignRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.CreateOrgServiceAssignResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateOrgServiceAssign", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateOrgServiceAssignResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateOrganization(self, request):
         """创建企业组织
 
@@ -431,6 +454,29 @@ class OrganizationClient(AbstractClient):
             body = self.call("DeleteAccount", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteAccountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteOrgServiceAssign(self, request):
+        """删除集团服务委派管理员
+
+        :param request: Request instance for DeleteOrgServiceAssign.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DeleteOrgServiceAssignRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DeleteOrgServiceAssignResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteOrgServiceAssign", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteOrgServiceAssignResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1167,6 +1213,29 @@ class OrganizationClient(AbstractClient):
             body = self.call("ListNonCompliantResource", params, headers=headers)
             response = json.loads(body)
             model = models.ListNonCompliantResourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListOrgServiceAssignMember(self, request):
+        """获取集团服务委派管理员列表
+
+        :param request: Request instance for ListOrgServiceAssignMember.
+        :type request: :class:`tencentcloud.organization.v20210331.models.ListOrgServiceAssignMemberRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.ListOrgServiceAssignMemberResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListOrgServiceAssignMember", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListOrgServiceAssignMemberResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
