@@ -72174,6 +72174,196 @@ class ModifyRansomDefenseStrategyStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyReverseShellRulesAggregationRequest(AbstractModel):
+    """ModifyReverseShellRulesAggregation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 规则ID(新增时请留空)
+        :type Id: int
+        :param _Uuids: 客户端ID数组
+        :type Uuids: list of str
+        :param _HostIp: 主机IP
+        :type HostIp: str
+        :param _DestIp: 目标IP
+        :type DestIp: str
+        :param _DestPort: 目标端口
+        :type DestPort: str
+        :param _ProcessName: 进程名
+        :type ProcessName: str
+        :param _IsGlobal: 是否全局规则(默认否)
+        :type IsGlobal: int
+        :param _EventId: 事件列表和详情点击加白时关联的事件id (新增规则时请留空)
+        :type EventId: int
+        :param _WhiteType: 加白方式， 0:常规加白 1:正则加白
+        :type WhiteType: int
+        :param _RuleRegexp: 正则表达式
+        :type RuleRegexp: str
+        :param _HandleHistory: 处理历史事件， 0:不处理 1:处理
+        :type HandleHistory: int
+        :param _GroupID: 批次id
+        :type GroupID: str
+        """
+        self._Id = None
+        self._Uuids = None
+        self._HostIp = None
+        self._DestIp = None
+        self._DestPort = None
+        self._ProcessName = None
+        self._IsGlobal = None
+        self._EventId = None
+        self._WhiteType = None
+        self._RuleRegexp = None
+        self._HandleHistory = None
+        self._GroupID = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Uuids(self):
+        return self._Uuids
+
+    @Uuids.setter
+    def Uuids(self, Uuids):
+        self._Uuids = Uuids
+
+    @property
+    def HostIp(self):
+        return self._HostIp
+
+    @HostIp.setter
+    def HostIp(self, HostIp):
+        self._HostIp = HostIp
+
+    @property
+    def DestIp(self):
+        return self._DestIp
+
+    @DestIp.setter
+    def DestIp(self, DestIp):
+        self._DestIp = DestIp
+
+    @property
+    def DestPort(self):
+        return self._DestPort
+
+    @DestPort.setter
+    def DestPort(self, DestPort):
+        self._DestPort = DestPort
+
+    @property
+    def ProcessName(self):
+        return self._ProcessName
+
+    @ProcessName.setter
+    def ProcessName(self, ProcessName):
+        self._ProcessName = ProcessName
+
+    @property
+    def IsGlobal(self):
+        return self._IsGlobal
+
+    @IsGlobal.setter
+    def IsGlobal(self, IsGlobal):
+        self._IsGlobal = IsGlobal
+
+    @property
+    def EventId(self):
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def WhiteType(self):
+        return self._WhiteType
+
+    @WhiteType.setter
+    def WhiteType(self, WhiteType):
+        self._WhiteType = WhiteType
+
+    @property
+    def RuleRegexp(self):
+        return self._RuleRegexp
+
+    @RuleRegexp.setter
+    def RuleRegexp(self, RuleRegexp):
+        self._RuleRegexp = RuleRegexp
+
+    @property
+    def HandleHistory(self):
+        return self._HandleHistory
+
+    @HandleHistory.setter
+    def HandleHistory(self, HandleHistory):
+        self._HandleHistory = HandleHistory
+
+    @property
+    def GroupID(self):
+        return self._GroupID
+
+    @GroupID.setter
+    def GroupID(self, GroupID):
+        self._GroupID = GroupID
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Uuids = params.get("Uuids")
+        self._HostIp = params.get("HostIp")
+        self._DestIp = params.get("DestIp")
+        self._DestPort = params.get("DestPort")
+        self._ProcessName = params.get("ProcessName")
+        self._IsGlobal = params.get("IsGlobal")
+        self._EventId = params.get("EventId")
+        self._WhiteType = params.get("WhiteType")
+        self._RuleRegexp = params.get("RuleRegexp")
+        self._HandleHistory = params.get("HandleHistory")
+        self._GroupID = params.get("GroupID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyReverseShellRulesAggregationResponse(AbstractModel):
+    """ModifyReverseShellRulesAggregation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyRiskDnsPolicyRequest(AbstractModel):
     """ModifyRiskDnsPolicy请求参数结构体
 

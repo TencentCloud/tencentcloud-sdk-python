@@ -20693,16 +20693,26 @@ class SearchLogRequest(AbstractModel):
 - 检索单个日志主题时请使用TopicId。
 - TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。
         :type Topics: list of MultiTopicSearchInformation
-        :param _Limit: 表示单次查询返回的原始日志条数，默认为100，最大值为1000，获取后续日志需使用Context参数
-注意：
-* 仅当检索分析语句(Query)不包含SQL时有效
-* SQL结果条数指定方式参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
-        :type Limit: int
         :param _Sort: 原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
 注意：
 * 仅当检索分析语句(Query)不包含SQL时有效
 * SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY语法</a>
         :type Sort: str
+        :param _Limit: 表示单次查询返回的原始日志条数，默认为100，最大值为1000。
+注意：
+* 仅当检索分析语句(Query)不包含SQL时有效
+* SQL结果条数指定方式参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
+
+可通过两种方式获取后续更多日志：
+* Context:透传上次接口返回的Context值，获取后续更多日志，总计最多可获取1万条原始日志
+* Offset:偏移量，表示从第几行开始返回原始日志，无日志条数限制
+        :type Limit: int
+        :param _Offset: 查询原始日志的偏移量，表示从第几行开始返回原始日志，默认为0。 
+注意：
+* 仅当检索分析语句(Query)不包含SQL时有效
+* 不能与Context参数同时使用
+* 仅适用于单日志主题检索
+        :type Offset: int
         :param _Context: 透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。
 注意：
 * 透传该参数时，请勿修改除该参数外的其它参数
@@ -20726,8 +20736,9 @@ class SearchLogRequest(AbstractModel):
         self._SyntaxRule = None
         self._TopicId = None
         self._Topics = None
-        self._Limit = None
         self._Sort = None
+        self._Limit = None
+        self._Offset = None
         self._Context = None
         self._SamplingRate = None
         self._UseNewAnalysis = None
@@ -20781,6 +20792,14 @@ class SearchLogRequest(AbstractModel):
         self._Topics = Topics
 
     @property
+    def Sort(self):
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
     def Limit(self):
         return self._Limit
 
@@ -20789,12 +20808,12 @@ class SearchLogRequest(AbstractModel):
         self._Limit = Limit
 
     @property
-    def Sort(self):
-        return self._Sort
+    def Offset(self):
+        return self._Offset
 
-    @Sort.setter
-    def Sort(self, Sort):
-        self._Sort = Sort
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
     @property
     def Context(self):
@@ -20833,8 +20852,9 @@ class SearchLogRequest(AbstractModel):
                 obj = MultiTopicSearchInformation()
                 obj._deserialize(item)
                 self._Topics.append(obj)
-        self._Limit = params.get("Limit")
         self._Sort = params.get("Sort")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         self._Context = params.get("Context")
         self._SamplingRate = params.get("SamplingRate")
         self._UseNewAnalysis = params.get("UseNewAnalysis")

@@ -138,6 +138,519 @@ class CreateLibraryResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateUserLifecycleRequest(AbstractModel):
+    """CreateUserLifecycle请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LibraryId: 媒体库 ID。
+        :type LibraryId: str
+        :param _Filter: 用于唯一查找用户的过滤器。
+        :type Filter: :class:`tencentcloud.smh.v20210712.models.UserFilter`
+        :param _IsolateTime: 隔离时间，当时间超过该时间点后，指定用户将无法登录，但他的账号信息、文件资源会被保留，可以通过再次调用本接口更新隔离时间，恢复登录。如不指定，则代表不设置隔离时间，且当前用户已经设置的隔离时间会被删除。
+        :type IsolateTime: str
+        :param _DestroyTime: 销毁时间，当时间超过该时间点后，指定用户的资源将被销毁且无法通过再次调用此接口更新时间。如果同时指定了 IsolateTime 则不能早于 IsolateTime 指定的时间。如不指定，则代表不设置销毁时间，且当前用户已经设置的销毁时间会被删除。
+        :type DestroyTime: str
+        """
+        self._LibraryId = None
+        self._Filter = None
+        self._IsolateTime = None
+        self._DestroyTime = None
+
+    @property
+    def LibraryId(self):
+        return self._LibraryId
+
+    @LibraryId.setter
+    def LibraryId(self, LibraryId):
+        self._LibraryId = LibraryId
+
+    @property
+    def Filter(self):
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def IsolateTime(self):
+        return self._IsolateTime
+
+    @IsolateTime.setter
+    def IsolateTime(self, IsolateTime):
+        self._IsolateTime = IsolateTime
+
+    @property
+    def DestroyTime(self):
+        return self._DestroyTime
+
+    @DestroyTime.setter
+    def DestroyTime(self, DestroyTime):
+        self._DestroyTime = DestroyTime
+
+
+    def _deserialize(self, params):
+        self._LibraryId = params.get("LibraryId")
+        if params.get("Filter") is not None:
+            self._Filter = UserFilter()
+            self._Filter._deserialize(params.get("Filter"))
+        self._IsolateTime = params.get("IsolateTime")
+        self._DestroyTime = params.get("DestroyTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateUserLifecycleResponse(AbstractModel):
+    """CreateUserLifecycle返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: 用户 ID。
+        :type UserId: str
+        :param _IsolateTime: 设置的隔离时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsolateTime: str
+        :param _DestroyTime: 设置的销毁时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DestroyTime: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._UserId = None
+        self._IsolateTime = None
+        self._DestroyTime = None
+        self._RequestId = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def IsolateTime(self):
+        return self._IsolateTime
+
+    @IsolateTime.setter
+    def IsolateTime(self, IsolateTime):
+        self._IsolateTime = IsolateTime
+
+    @property
+    def DestroyTime(self):
+        return self._DestroyTime
+
+    @DestroyTime.setter
+    def DestroyTime(self, DestroyTime):
+        self._DestroyTime = DestroyTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        self._IsolateTime = params.get("IsolateTime")
+        self._DestroyTime = params.get("DestroyTime")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateUserRequest(AbstractModel):
+    """CreateUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LibraryId: 媒体库 ID。
+        :type LibraryId: str
+        :param _Role: 用户角色，当只支持 user。
+        :type Role: str
+        :param _Enabled: 是否启用。
+        :type Enabled: bool
+        :param _CountryCode: 手机号国家码，不传默认为 null，此时无法使用该登录方式进行登录。
+        :type CountryCode: str
+        :param _PhoneNumber: 手机号码，不传默认为 null，此时无法使用该登录方式进行登录。如果与同一媒体库内已有手机号重复则报错。CountryCode 和 PhoneNumber 必须同时传入或同时不传入。
+        :type PhoneNumber: str
+        :param _Email: 邮箱，不传默认为 null，此时无法使用该登录方式进行登录。如果与同一媒体库内已有邮箱重复则报错。
+        :type Email: str
+        :param _AccountName: 账号，不传默认为 null，此时无法使用该登录方式进行登录。如果与同一媒体库内已有账号重复则报错。只能使用大小写字母、数字、中划线、下划线、小数点，长度不超过 50 个字符。
+        :type AccountName: str
+        :param _AccountPassword: 密码的 base64 形式，不传默认为 null，此时无法使用该登录方式进行登录。AccountName 和 AccountPassword 必须同时传入或同时不传入。
+        :type AccountPassword: str
+        :param _AccountUserId: 第三方账号 ID，用于关联第三方账号体系，不传默认为 null，此时无法使用该登录方式进行登录。如果与同一媒体库内已有第三方账号重复则报错。只能使用大小写字母、数字、中划线、下划线、小数点，长度不超过 200 个字符。
+        :type AccountUserId: str
+        :param _Comment: 备注。不超过 255 个字符。
+        :type Comment: str
+        :param _Nickname: 昵称。不超过 100 个字符。
+        :type Nickname: str
+        :param _Avatar: 用户头像地址。不超过 255 个字符。
+        :type Avatar: str
+        :param _Customize: 自定义信息。不超过 255 个字符。
+        :type Customize: str
+        """
+        self._LibraryId = None
+        self._Role = None
+        self._Enabled = None
+        self._CountryCode = None
+        self._PhoneNumber = None
+        self._Email = None
+        self._AccountName = None
+        self._AccountPassword = None
+        self._AccountUserId = None
+        self._Comment = None
+        self._Nickname = None
+        self._Avatar = None
+        self._Customize = None
+
+    @property
+    def LibraryId(self):
+        return self._LibraryId
+
+    @LibraryId.setter
+    def LibraryId(self, LibraryId):
+        self._LibraryId = LibraryId
+
+    @property
+    def Role(self):
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Enabled(self):
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def CountryCode(self):
+        return self._CountryCode
+
+    @CountryCode.setter
+    def CountryCode(self, CountryCode):
+        self._CountryCode = CountryCode
+
+    @property
+    def PhoneNumber(self):
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def AccountName(self):
+        return self._AccountName
+
+    @AccountName.setter
+    def AccountName(self, AccountName):
+        self._AccountName = AccountName
+
+    @property
+    def AccountPassword(self):
+        return self._AccountPassword
+
+    @AccountPassword.setter
+    def AccountPassword(self, AccountPassword):
+        self._AccountPassword = AccountPassword
+
+    @property
+    def AccountUserId(self):
+        return self._AccountUserId
+
+    @AccountUserId.setter
+    def AccountUserId(self, AccountUserId):
+        self._AccountUserId = AccountUserId
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Nickname(self):
+        return self._Nickname
+
+    @Nickname.setter
+    def Nickname(self, Nickname):
+        self._Nickname = Nickname
+
+    @property
+    def Avatar(self):
+        return self._Avatar
+
+    @Avatar.setter
+    def Avatar(self, Avatar):
+        self._Avatar = Avatar
+
+    @property
+    def Customize(self):
+        return self._Customize
+
+    @Customize.setter
+    def Customize(self, Customize):
+        self._Customize = Customize
+
+
+    def _deserialize(self, params):
+        self._LibraryId = params.get("LibraryId")
+        self._Role = params.get("Role")
+        self._Enabled = params.get("Enabled")
+        self._CountryCode = params.get("CountryCode")
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._Email = params.get("Email")
+        self._AccountName = params.get("AccountName")
+        self._AccountPassword = params.get("AccountPassword")
+        self._AccountUserId = params.get("AccountUserId")
+        self._Comment = params.get("Comment")
+        self._Nickname = params.get("Nickname")
+        self._Avatar = params.get("Avatar")
+        self._Customize = params.get("Customize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateUserResponse(AbstractModel):
+    """CreateUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LibraryId: 用户所在的媒体库 ID。
+        :type LibraryId: str
+        :param _UserId: 用户 ID。
+        :type UserId: str
+        :param _CreationTime: 用户创建时间。
+        :type CreationTime: str
+        :param _Role: 用户角色.
+        :type Role: str
+        :param _Enabled: 是否启用。
+        :type Enabled: bool
+        :param _CountryCode: 手机号国家码，如未指定则为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CountryCode: str
+        :param _PhoneNumber: 手机号码，如未指定则为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PhoneNumber: str
+        :param _Email: 邮箱，如未指定则为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Email: str
+        :param _AccountName: 账号，如未指定则为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountName: str
+        :param _AccountUserId: 第三方账号 ID，用于关联第三方账号体系，如未指定则为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountUserId: str
+        :param _Comment: 备注。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Comment: str
+        :param _Nickname: 昵称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Nickname: str
+        :param _Avatar: 用户头像地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Avatar: str
+        :param _Customize: 自定义信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Customize: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LibraryId = None
+        self._UserId = None
+        self._CreationTime = None
+        self._Role = None
+        self._Enabled = None
+        self._CountryCode = None
+        self._PhoneNumber = None
+        self._Email = None
+        self._AccountName = None
+        self._AccountUserId = None
+        self._Comment = None
+        self._Nickname = None
+        self._Avatar = None
+        self._Customize = None
+        self._RequestId = None
+
+    @property
+    def LibraryId(self):
+        return self._LibraryId
+
+    @LibraryId.setter
+    def LibraryId(self, LibraryId):
+        self._LibraryId = LibraryId
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def CreationTime(self):
+        return self._CreationTime
+
+    @CreationTime.setter
+    def CreationTime(self, CreationTime):
+        self._CreationTime = CreationTime
+
+    @property
+    def Role(self):
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Enabled(self):
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def CountryCode(self):
+        return self._CountryCode
+
+    @CountryCode.setter
+    def CountryCode(self, CountryCode):
+        self._CountryCode = CountryCode
+
+    @property
+    def PhoneNumber(self):
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def AccountName(self):
+        return self._AccountName
+
+    @AccountName.setter
+    def AccountName(self, AccountName):
+        self._AccountName = AccountName
+
+    @property
+    def AccountUserId(self):
+        return self._AccountUserId
+
+    @AccountUserId.setter
+    def AccountUserId(self, AccountUserId):
+        self._AccountUserId = AccountUserId
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Nickname(self):
+        return self._Nickname
+
+    @Nickname.setter
+    def Nickname(self, Nickname):
+        self._Nickname = Nickname
+
+    @property
+    def Avatar(self):
+        return self._Avatar
+
+    @Avatar.setter
+    def Avatar(self, Avatar):
+        self._Avatar = Avatar
+
+    @property
+    def Customize(self):
+        return self._Customize
+
+    @Customize.setter
+    def Customize(self, Customize):
+        self._Customize = Customize
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._LibraryId = params.get("LibraryId")
+        self._UserId = params.get("UserId")
+        self._CreationTime = params.get("CreationTime")
+        self._Role = params.get("Role")
+        self._Enabled = params.get("Enabled")
+        self._CountryCode = params.get("CountryCode")
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._Email = params.get("Email")
+        self._AccountName = params.get("AccountName")
+        self._AccountUserId = params.get("AccountUserId")
+        self._Comment = params.get("Comment")
+        self._Nickname = params.get("Nickname")
+        self._Avatar = params.get("Avatar")
+        self._Customize = params.get("Customize")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteLibraryRequest(AbstractModel):
     """DeleteLibrary请求参数结构体
 
@@ -173,6 +686,81 @@ class DeleteLibraryRequest(AbstractModel):
 
 class DeleteLibraryResponse(AbstractModel):
     """DeleteLibrary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteUserRequest(AbstractModel):
+    """DeleteUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LibraryId: 媒体库 ID。
+        :type LibraryId: str
+        :param _Filters: 用于唯一查找用户的过滤器数组，数组之间为 **或** 的关系，即满足任意一个过滤器的用户，都将被删除，单次传入的过滤器最多为 100 个。
+        :type Filters: list of UserFilter
+        """
+        self._LibraryId = None
+        self._Filters = None
+
+    @property
+    def LibraryId(self):
+        return self._LibraryId
+
+    @LibraryId.setter
+    def LibraryId(self, LibraryId):
+        self._LibraryId = LibraryId
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._LibraryId = params.get("LibraryId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = UserFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteUserResponse(AbstractModel):
+    """DeleteUser返回参数结构体
 
     """
 
@@ -783,6 +1371,116 @@ class DescribeTrafficPackagesResponse(AbstractModel):
                 obj._deserialize(item)
                 self._List.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeUserLifecycleRequest(AbstractModel):
+    """DescribeUserLifecycle请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LibraryId: 媒体库 ID。
+        :type LibraryId: str
+        :param _Filter: 用于唯一查找用户的过滤器。
+        :type Filter: :class:`tencentcloud.smh.v20210712.models.UserFilter`
+        """
+        self._LibraryId = None
+        self._Filter = None
+
+    @property
+    def LibraryId(self):
+        return self._LibraryId
+
+    @LibraryId.setter
+    def LibraryId(self, LibraryId):
+        self._LibraryId = LibraryId
+
+    @property
+    def Filter(self):
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._LibraryId = params.get("LibraryId")
+        if params.get("Filter") is not None:
+            self._Filter = UserFilter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserLifecycleResponse(AbstractModel):
+    """DescribeUserLifecycle返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: 用户 ID。
+        :type UserId: str
+        :param _IsolateTime: 设置的隔离时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsolateTime: str
+        :param _DestroyTime: 设置的销毁时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DestroyTime: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._UserId = None
+        self._IsolateTime = None
+        self._DestroyTime = None
+        self._RequestId = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def IsolateTime(self):
+        return self._IsolateTime
+
+    @IsolateTime.setter
+    def IsolateTime(self, IsolateTime):
+        self._IsolateTime = IsolateTime
+
+    @property
+    def DestroyTime(self):
+        return self._DestroyTime
+
+    @DestroyTime.setter
+    def DestroyTime(self, DestroyTime):
+        self._DestroyTime = DestroyTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        self._IsolateTime = params.get("IsolateTime")
+        self._DestroyTime = params.get("DestroyTime")
         self._RequestId = params.get("RequestId")
 
 
@@ -1432,6 +2130,395 @@ class ModifyLibraryResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyUserRequest(AbstractModel):
+    """ModifyUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LibraryId: 媒体库 ID。
+        :type LibraryId: str
+        :param _Filter: 用于唯一查找用户的过滤器。
+        :type Filter: :class:`tencentcloud.smh.v20210712.models.UserFilter`
+        :param _Role: 用户角色，当只支持 user。
+        :type Role: str
+        :param _Enabled: 是否启用。
+        :type Enabled: bool
+        :param _CountryCode: 手机号国家码，不传默认为 null，此时无法使用该登录方式进行登录。
+        :type CountryCode: str
+        :param _PhoneNumber: 手机号码，不传默认为 null，此时无法使用该登录方式进行登录。如果与同一媒体库内已有手机号重复则报错。CountryCode 和 PhoneNumber 必须同时传入或同时不传入。
+        :type PhoneNumber: str
+        :param _Email: 邮箱，不传默认为 null，此时无法使用该登录方式进行登录。如果与同一媒体库内已有邮箱重复则报错。
+        :type Email: str
+        :param _AccountName: 账号，不传默认为 null，此时无法使用该登录方式进行登录。如果与同一媒体库内已有账号重复则报错。只能使用大小写字母、数字、中划线、下划线、小数点，长度不超过 50 个字符。
+        :type AccountName: str
+        :param _AccountPassword: 密码的 base64 形式，不传默认为 null，此时无法使用该登录方式进行登录。AccountName 和 AccountPassword 必须同时传入或同时不传入。
+        :type AccountPassword: str
+        :param _AccountUserId: 第三方账号 ID，用于关联第三方账号体系，不传默认为 null，此时无法使用该登录方式进行登录。如果与同一媒体库内已有第三方账号重复则报错。只能使用大小写字母、数字、中划线、下划线、小数点，长度不超过 200 个字符。
+        :type AccountUserId: str
+        :param _Comment: 备注。不超过 255 个字符。
+        :type Comment: str
+        :param _Nickname: 昵称。不超过 100 个字符。
+        :type Nickname: str
+        :param _Avatar: 用户头像地址。不超过 255 个字符。
+        :type Avatar: str
+        :param _Customize: 自定义信息。不超过 255 个字符。
+        :type Customize: str
+        """
+        self._LibraryId = None
+        self._Filter = None
+        self._Role = None
+        self._Enabled = None
+        self._CountryCode = None
+        self._PhoneNumber = None
+        self._Email = None
+        self._AccountName = None
+        self._AccountPassword = None
+        self._AccountUserId = None
+        self._Comment = None
+        self._Nickname = None
+        self._Avatar = None
+        self._Customize = None
+
+    @property
+    def LibraryId(self):
+        return self._LibraryId
+
+    @LibraryId.setter
+    def LibraryId(self, LibraryId):
+        self._LibraryId = LibraryId
+
+    @property
+    def Filter(self):
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def Role(self):
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Enabled(self):
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def CountryCode(self):
+        return self._CountryCode
+
+    @CountryCode.setter
+    def CountryCode(self, CountryCode):
+        self._CountryCode = CountryCode
+
+    @property
+    def PhoneNumber(self):
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def AccountName(self):
+        return self._AccountName
+
+    @AccountName.setter
+    def AccountName(self, AccountName):
+        self._AccountName = AccountName
+
+    @property
+    def AccountPassword(self):
+        return self._AccountPassword
+
+    @AccountPassword.setter
+    def AccountPassword(self, AccountPassword):
+        self._AccountPassword = AccountPassword
+
+    @property
+    def AccountUserId(self):
+        return self._AccountUserId
+
+    @AccountUserId.setter
+    def AccountUserId(self, AccountUserId):
+        self._AccountUserId = AccountUserId
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Nickname(self):
+        return self._Nickname
+
+    @Nickname.setter
+    def Nickname(self, Nickname):
+        self._Nickname = Nickname
+
+    @property
+    def Avatar(self):
+        return self._Avatar
+
+    @Avatar.setter
+    def Avatar(self, Avatar):
+        self._Avatar = Avatar
+
+    @property
+    def Customize(self):
+        return self._Customize
+
+    @Customize.setter
+    def Customize(self, Customize):
+        self._Customize = Customize
+
+
+    def _deserialize(self, params):
+        self._LibraryId = params.get("LibraryId")
+        if params.get("Filter") is not None:
+            self._Filter = UserFilter()
+            self._Filter._deserialize(params.get("Filter"))
+        self._Role = params.get("Role")
+        self._Enabled = params.get("Enabled")
+        self._CountryCode = params.get("CountryCode")
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._Email = params.get("Email")
+        self._AccountName = params.get("AccountName")
+        self._AccountPassword = params.get("AccountPassword")
+        self._AccountUserId = params.get("AccountUserId")
+        self._Comment = params.get("Comment")
+        self._Nickname = params.get("Nickname")
+        self._Avatar = params.get("Avatar")
+        self._Customize = params.get("Customize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyUserResponse(AbstractModel):
+    """ModifyUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LibraryId: 用户所在的媒体库 ID。
+        :type LibraryId: str
+        :param _UserId: 用户 ID。
+        :type UserId: str
+        :param _CreationTime: 用户创建时间。
+        :type CreationTime: str
+        :param _Role: 用户角色.
+        :type Role: str
+        :param _Enabled: 是否启用。
+        :type Enabled: bool
+        :param _CountryCode: 手机号国家码，如未指定则为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CountryCode: str
+        :param _PhoneNumber: 手机号码，如未指定则为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PhoneNumber: str
+        :param _Email: 邮箱，如未指定则为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Email: str
+        :param _AccountName: 账号，如未指定则为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountName: str
+        :param _AccountUserId: 第三方账号 ID，用于关联第三方账号体系，如未指定则为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountUserId: str
+        :param _Comment: 备注。
+        :type Comment: str
+        :param _Nickname: 昵称。
+        :type Nickname: str
+        :param _Avatar: 用户头像地址。
+        :type Avatar: str
+        :param _Customize: 自定义信息。
+        :type Customize: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LibraryId = None
+        self._UserId = None
+        self._CreationTime = None
+        self._Role = None
+        self._Enabled = None
+        self._CountryCode = None
+        self._PhoneNumber = None
+        self._Email = None
+        self._AccountName = None
+        self._AccountUserId = None
+        self._Comment = None
+        self._Nickname = None
+        self._Avatar = None
+        self._Customize = None
+        self._RequestId = None
+
+    @property
+    def LibraryId(self):
+        return self._LibraryId
+
+    @LibraryId.setter
+    def LibraryId(self, LibraryId):
+        self._LibraryId = LibraryId
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def CreationTime(self):
+        return self._CreationTime
+
+    @CreationTime.setter
+    def CreationTime(self, CreationTime):
+        self._CreationTime = CreationTime
+
+    @property
+    def Role(self):
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Enabled(self):
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def CountryCode(self):
+        return self._CountryCode
+
+    @CountryCode.setter
+    def CountryCode(self, CountryCode):
+        self._CountryCode = CountryCode
+
+    @property
+    def PhoneNumber(self):
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def AccountName(self):
+        return self._AccountName
+
+    @AccountName.setter
+    def AccountName(self, AccountName):
+        self._AccountName = AccountName
+
+    @property
+    def AccountUserId(self):
+        return self._AccountUserId
+
+    @AccountUserId.setter
+    def AccountUserId(self, AccountUserId):
+        self._AccountUserId = AccountUserId
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Nickname(self):
+        return self._Nickname
+
+    @Nickname.setter
+    def Nickname(self, Nickname):
+        self._Nickname = Nickname
+
+    @property
+    def Avatar(self):
+        return self._Avatar
+
+    @Avatar.setter
+    def Avatar(self, Avatar):
+        self._Avatar = Avatar
+
+    @property
+    def Customize(self):
+        return self._Customize
+
+    @Customize.setter
+    def Customize(self, Customize):
+        self._Customize = Customize
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._LibraryId = params.get("LibraryId")
+        self._UserId = params.get("UserId")
+        self._CreationTime = params.get("CreationTime")
+        self._Role = params.get("Role")
+        self._Enabled = params.get("Enabled")
+        self._CountryCode = params.get("CountryCode")
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._Email = params.get("Email")
+        self._AccountName = params.get("AccountName")
+        self._AccountUserId = params.get("AccountUserId")
+        self._Comment = params.get("Comment")
+        self._Nickname = params.get("Nickname")
+        self._Avatar = params.get("Avatar")
+        self._Customize = params.get("Customize")
+        self._RequestId = params.get("RequestId")
+
+
 class SendSmsCodeRequest(AbstractModel):
     """SendSmsCode请求参数结构体
 
@@ -1659,6 +2746,56 @@ class TrafficPackage(AbstractModel):
         self._UsedPercentage = params.get("UsedPercentage")
         self._EffectiveTime = params.get("EffectiveTime")
         self._ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserFilter(AbstractModel):
+    """用于唯一查找用户的过滤器。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 过滤类型，当前支持：UserId、PhoneNumber、Email、AccountName、AccountUserId。
+        :type Key: str
+        :param _Value: 过滤值，只支持完全匹配，不支持模糊搜索。针对不同的 Key，Value 的取值如下：
+UserId: user12345678abcde
+PhoneNumber: +86-13800000000（格式为：{CountryCode}-{PhoneNumber}）
+Email: admin@mail.foobar.com
+AccountName: account_name
+AccountUserId: x53mYVqykfPqTCqekbNwwa4aXk4
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

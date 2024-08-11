@@ -26631,8 +26631,12 @@ class EditMediaTEHDConfig(AbstractModel):
         r"""
         :param _Type: 极速高清类型，可选值：<li>TEHD-100 表示极速高清-100;</li> <li>OFF 表示关闭极速高清。</li>不填表示 OFF。
         :type Type: str
+        :param _MaxVideoBitrate: 视频码率上限，当 Type 指定了极速高清类型时有效。
+不填或填0表示不设视频码率上限。
+        :type MaxVideoBitrate: int
         """
         self._Type = None
+        self._MaxVideoBitrate = None
 
     @property
     def Type(self):
@@ -26642,9 +26646,18 @@ class EditMediaTEHDConfig(AbstractModel):
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def MaxVideoBitrate(self):
+        return self._MaxVideoBitrate
+
+    @MaxVideoBitrate.setter
+    def MaxVideoBitrate(self, MaxVideoBitrate):
+        self._MaxVideoBitrate = MaxVideoBitrate
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
+        self._MaxVideoBitrate = params.get("MaxVideoBitrate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

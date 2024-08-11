@@ -1138,6 +1138,9 @@ class ReplaceBackgroundRequest(AbstractModel):
         :param _Prompt: 对新背景的文本描述。
 最多支持256个 utf-8 字符，支持中、英文。
         :type Prompt: str
+        :param _Product: 商品图中的商品主体名称。
+建议说明商品主体，否则影响生成效果。
+        :type Product: str
         :param _MaskUrl: 商品 Mask 图 Url，要求背景透明，保留商品主体。
 如果不传，将自动使用内置的商品分割算法得到 Mask。
 支持自定义上传 Mask，如果该参数不为空，则以实际上传的数据为准。
@@ -1162,6 +1165,7 @@ class ReplaceBackgroundRequest(AbstractModel):
         """
         self._ProductUrl = None
         self._Prompt = None
+        self._Product = None
         self._MaskUrl = None
         self._Resolution = None
         self._LogoAdd = None
@@ -1183,6 +1187,14 @@ class ReplaceBackgroundRequest(AbstractModel):
     @Prompt.setter
     def Prompt(self, Prompt):
         self._Prompt = Prompt
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
 
     @property
     def MaskUrl(self):
@@ -1228,6 +1240,7 @@ class ReplaceBackgroundRequest(AbstractModel):
     def _deserialize(self, params):
         self._ProductUrl = params.get("ProductUrl")
         self._Prompt = params.get("Prompt")
+        self._Product = params.get("Product")
         self._MaskUrl = params.get("MaskUrl")
         self._Resolution = params.get("Resolution")
         self._LogoAdd = params.get("LogoAdd")

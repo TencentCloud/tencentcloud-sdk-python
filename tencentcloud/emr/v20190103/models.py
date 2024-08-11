@@ -6248,6 +6248,279 @@ class DescribeResourceScheduleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeServiceNodeInfosRequest(AbstractModel):
+    """DescribeServiceNodeInfos请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Offset: 页码
+        :type Offset: int
+        :param _Limit: 页大小
+        :type Limit: int
+        :param _SearchText: 搜索字段
+        :type SearchText: str
+        :param _ConfStatus: '配置状态，-2：配置失败，-1:配置过期，1：已同步', -99 '全部'
+        :type ConfStatus: int
+        :param _MaintainStateId: 过滤条件：维护状态
+0代表所有状态
+1代表正常模式
+2代表维护模式
+
+        :type MaintainStateId: int
+        :param _OperatorStateId: 过滤条件：操作状态
+0代表所有状态
+1代表已启动
+2代表已停止
+        :type OperatorStateId: int
+        :param _HealthStateId: 过滤条件：健康状态
+"0"代表不可用
+"1"代表良好
+"-2"代表未知
+"-99"代表所有
+"-3"代表存在隐患
+"-4"代表未探测
+        :type HealthStateId: str
+        :param _ServiceName: 服务组件名称，都是大写比如YARN
+        :type ServiceName: str
+        :param _NodeTypeName: 节点名称
+master
+core
+task
+common
+router
+
+        :type NodeTypeName: str
+        :param _DataNodeMaintenanceId: 过滤条件：dn是否处于维护状态
+0代表所有状态
+1代表处于维护状态
+        :type DataNodeMaintenanceId: int
+        :param _SearchFields: 支持搜索的字段
+        :type SearchFields: list of SearchItem
+        """
+        self._InstanceId = None
+        self._Offset = None
+        self._Limit = None
+        self._SearchText = None
+        self._ConfStatus = None
+        self._MaintainStateId = None
+        self._OperatorStateId = None
+        self._HealthStateId = None
+        self._ServiceName = None
+        self._NodeTypeName = None
+        self._DataNodeMaintenanceId = None
+        self._SearchFields = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SearchText(self):
+        return self._SearchText
+
+    @SearchText.setter
+    def SearchText(self, SearchText):
+        self._SearchText = SearchText
+
+    @property
+    def ConfStatus(self):
+        return self._ConfStatus
+
+    @ConfStatus.setter
+    def ConfStatus(self, ConfStatus):
+        self._ConfStatus = ConfStatus
+
+    @property
+    def MaintainStateId(self):
+        return self._MaintainStateId
+
+    @MaintainStateId.setter
+    def MaintainStateId(self, MaintainStateId):
+        self._MaintainStateId = MaintainStateId
+
+    @property
+    def OperatorStateId(self):
+        return self._OperatorStateId
+
+    @OperatorStateId.setter
+    def OperatorStateId(self, OperatorStateId):
+        self._OperatorStateId = OperatorStateId
+
+    @property
+    def HealthStateId(self):
+        return self._HealthStateId
+
+    @HealthStateId.setter
+    def HealthStateId(self, HealthStateId):
+        self._HealthStateId = HealthStateId
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def NodeTypeName(self):
+        return self._NodeTypeName
+
+    @NodeTypeName.setter
+    def NodeTypeName(self, NodeTypeName):
+        self._NodeTypeName = NodeTypeName
+
+    @property
+    def DataNodeMaintenanceId(self):
+        return self._DataNodeMaintenanceId
+
+    @DataNodeMaintenanceId.setter
+    def DataNodeMaintenanceId(self, DataNodeMaintenanceId):
+        self._DataNodeMaintenanceId = DataNodeMaintenanceId
+
+    @property
+    def SearchFields(self):
+        return self._SearchFields
+
+    @SearchFields.setter
+    def SearchFields(self, SearchFields):
+        self._SearchFields = SearchFields
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SearchText = params.get("SearchText")
+        self._ConfStatus = params.get("ConfStatus")
+        self._MaintainStateId = params.get("MaintainStateId")
+        self._OperatorStateId = params.get("OperatorStateId")
+        self._HealthStateId = params.get("HealthStateId")
+        self._ServiceName = params.get("ServiceName")
+        self._NodeTypeName = params.get("NodeTypeName")
+        self._DataNodeMaintenanceId = params.get("DataNodeMaintenanceId")
+        if params.get("SearchFields") is not None:
+            self._SearchFields = []
+            for item in params.get("SearchFields"):
+                obj = SearchItem()
+                obj._deserialize(item)
+                self._SearchFields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeServiceNodeInfosResponse(AbstractModel):
+    """DescribeServiceNodeInfos返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCnt: 总数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCnt: int
+        :param _ServiceNodeList: 进程信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceNodeList: list of ServiceNodeDetailInfo
+        :param _AliasInfo: 集群所有节点的别名序列化
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AliasInfo: str
+        :param _SupportNodeFlagFilterList: 支持的FlagNode列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportNodeFlagFilterList: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCnt = None
+        self._ServiceNodeList = None
+        self._AliasInfo = None
+        self._SupportNodeFlagFilterList = None
+        self._RequestId = None
+
+    @property
+    def TotalCnt(self):
+        return self._TotalCnt
+
+    @TotalCnt.setter
+    def TotalCnt(self, TotalCnt):
+        self._TotalCnt = TotalCnt
+
+    @property
+    def ServiceNodeList(self):
+        return self._ServiceNodeList
+
+    @ServiceNodeList.setter
+    def ServiceNodeList(self, ServiceNodeList):
+        self._ServiceNodeList = ServiceNodeList
+
+    @property
+    def AliasInfo(self):
+        return self._AliasInfo
+
+    @AliasInfo.setter
+    def AliasInfo(self, AliasInfo):
+        self._AliasInfo = AliasInfo
+
+    @property
+    def SupportNodeFlagFilterList(self):
+        return self._SupportNodeFlagFilterList
+
+    @SupportNodeFlagFilterList.setter
+    def SupportNodeFlagFilterList(self, SupportNodeFlagFilterList):
+        self._SupportNodeFlagFilterList = SupportNodeFlagFilterList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCnt = params.get("TotalCnt")
+        if params.get("ServiceNodeList") is not None:
+            self._ServiceNodeList = []
+            for item in params.get("ServiceNodeList"):
+                obj = ServiceNodeDetailInfo()
+                obj._deserialize(item)
+                self._ServiceNodeList.append(obj)
+        self._AliasInfo = params.get("AliasInfo")
+        self._SupportNodeFlagFilterList = params.get("SupportNodeFlagFilterList")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTrinoQueryInfoRequest(AbstractModel):
     """DescribeTrinoQueryInfo请求参数结构体
 
@@ -6655,6 +6928,193 @@ class DescribeYarnApplicationsResponse(AbstractModel):
                 obj = YarnApplication()
                 obj._deserialize(item)
                 self._Results.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeYarnScheduleHistoryRequest(AbstractModel):
+    """DescribeYarnScheduleHistory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _StartTime: 开始时间
+        :type StartTime: int
+        :param _EndTime: 结束时间
+        :type EndTime: int
+        :param _Limit: 页码
+        :type Limit: int
+        :param _Offset: 页大小
+        :type Offset: int
+        :param _SchedulerType: 调度器类型 可选值为“ALL”，"Capacity Scheduler", "Fair Scheduler"
+        :type SchedulerType: str
+        :param _TaskState: 任务类型0:等待执行，1:执行中，2：完成，-1:失败 ，-99:全部
+        :type TaskState: int
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Limit = None
+        self._Offset = None
+        self._SchedulerType = None
+        self._TaskState = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def SchedulerType(self):
+        return self._SchedulerType
+
+    @SchedulerType.setter
+    def SchedulerType(self, SchedulerType):
+        self._SchedulerType = SchedulerType
+
+    @property
+    def TaskState(self):
+        return self._TaskState
+
+    @TaskState.setter
+    def TaskState(self, TaskState):
+        self._TaskState = TaskState
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._SchedulerType = params.get("SchedulerType")
+        self._TaskState = params.get("TaskState")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeYarnScheduleHistoryResponse(AbstractModel):
+    """DescribeYarnScheduleHistory返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Tasks: 任务详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tasks: list of SchedulerTaskInfo
+        :param _Total: 任务详情总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param _SchedulerNameList: 调度类型筛选列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchedulerNameList: list of str
+        :param _StateList: 状态筛选列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StateList: list of int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Tasks = None
+        self._Total = None
+        self._SchedulerNameList = None
+        self._StateList = None
+        self._RequestId = None
+
+    @property
+    def Tasks(self):
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def SchedulerNameList(self):
+        return self._SchedulerNameList
+
+    @SchedulerNameList.setter
+    def SchedulerNameList(self, SchedulerNameList):
+        self._SchedulerNameList = SchedulerNameList
+
+    @property
+    def StateList(self):
+        return self._StateList
+
+    @StateList.setter
+    def StateList(self, StateList):
+        self._StateList = StateList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = SchedulerTaskInfo()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
+        self._Total = params.get("Total")
+        self._SchedulerNameList = params.get("SchedulerNameList")
+        self._StateList = params.get("StateList")
         self._RequestId = params.get("RequestId")
 
 
@@ -8341,6 +8801,63 @@ class GroupGlobalConfs(AbstractModel):
         self._CurrentNodes = params.get("CurrentNodes")
         self._CurrentPostPaidNodes = params.get("CurrentPostPaidNodes")
         self._CurrentSpotPaidNodes = params.get("CurrentSpotPaidNodes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HealthStatus(AbstractModel):
+    """进程健康状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Code: 运行正常
+        :type Code: int
+        :param _Text: 运行正常
+        :type Text: str
+        :param _Desc: 运行正常
+        :type Desc: str
+        """
+        self._Code = None
+        self._Text = None
+        self._Desc = None
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Desc(self):
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+
+    def _deserialize(self, params):
+        self._Code = params.get("Code")
+        self._Text = params.get("Text")
+        self._Desc = params.get("Desc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11972,6 +12489,114 @@ class ModifyUserManagerPwdResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyYarnDeployRequest(AbstractModel):
+    """ModifyYarnDeploy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _NewScheduler: 切换后的调度器，可选值为fair、capacity
+        :type NewScheduler: str
+        :param _OldScheduler: 现在使用的调度器，可选值为fair、capacity
+        :type OldScheduler: str
+        """
+        self._InstanceId = None
+        self._NewScheduler = None
+        self._OldScheduler = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def NewScheduler(self):
+        return self._NewScheduler
+
+    @NewScheduler.setter
+    def NewScheduler(self, NewScheduler):
+        self._NewScheduler = NewScheduler
+
+    @property
+    def OldScheduler(self):
+        return self._OldScheduler
+
+    @OldScheduler.setter
+    def OldScheduler(self, OldScheduler):
+        self._OldScheduler = OldScheduler
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._NewScheduler = params.get("NewScheduler")
+        self._OldScheduler = params.get("OldScheduler")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyYarnDeployResponse(AbstractModel):
+    """ModifyYarnDeploy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsDraft: 为false不点亮部署生效、重置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsDraft: bool
+        :param _ErrorMsg: 错误信息，预留
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._IsDraft = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def IsDraft(self):
+        return self._IsDraft
+
+    @IsDraft.setter
+    def IsDraft(self, IsDraft):
+        self._IsDraft = IsDraft
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._IsDraft = params.get("IsDraft")
+        self._ErrorMsg = params.get("ErrorMsg")
         self._RequestId = params.get("RequestId")
 
 
@@ -15932,6 +16557,87 @@ class ResourceDetail(AbstractModel):
         
 
 
+class RestartPolicy(AbstractModel):
+    """组件重启策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 重启策略名。
+        :type Name: str
+        :param _DisplayName: 策略展示名称。
+        :type DisplayName: str
+        :param _Describe: 策略描述。
+        :type Describe: str
+        :param _BatchSizeRange: 批量重启节点数可选范围。
+        :type BatchSizeRange: list of int
+        :param _IsDefault: 是否是默认策略。
+        :type IsDefault: str
+        """
+        self._Name = None
+        self._DisplayName = None
+        self._Describe = None
+        self._BatchSizeRange = None
+        self._IsDefault = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def DisplayName(self):
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def Describe(self):
+        return self._Describe
+
+    @Describe.setter
+    def Describe(self, Describe):
+        self._Describe = Describe
+
+    @property
+    def BatchSizeRange(self):
+        return self._BatchSizeRange
+
+    @BatchSizeRange.setter
+    def BatchSizeRange(self, BatchSizeRange):
+        self._BatchSizeRange = BatchSizeRange
+
+    @property
+    def IsDefault(self):
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._DisplayName = params.get("DisplayName")
+        self._Describe = params.get("Describe")
+        self._BatchSizeRange = params.get("BatchSizeRange")
+        self._IsDefault = params.get("IsDefault")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RunJobFlowRequest(AbstractModel):
     """RunJobFlow请求参数结构体
 
@@ -17177,6 +17883,181 @@ Hadoop-Default
         
 
 
+class SchedulerTaskDetail(AbstractModel):
+    """调度任务详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Step: 步骤
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Step: str
+        :param _Progress: 进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Progress: str
+        :param _FailReason: 失败信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailReason: str
+        :param _JobId: 用来获取详情的id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobId: int
+        """
+        self._Step = None
+        self._Progress = None
+        self._FailReason = None
+        self._JobId = None
+
+    @property
+    def Step(self):
+        return self._Step
+
+    @Step.setter
+    def Step(self, Step):
+        self._Step = Step
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def FailReason(self):
+        return self._FailReason
+
+    @FailReason.setter
+    def FailReason(self, FailReason):
+        self._FailReason = FailReason
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+
+    def _deserialize(self, params):
+        self._Step = params.get("Step")
+        self._Progress = params.get("Progress")
+        self._FailReason = params.get("FailReason")
+        self._JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SchedulerTaskInfo(AbstractModel):
+    """yarn资源调度历史
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SchedulerName: 调度器类型
+        :type SchedulerName: str
+        :param _OperatorName: 操作类型
+        :type OperatorName: str
+        :param _CreateTime: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _EndTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _State: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: int
+        :param _Details: 详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Details: list of SchedulerTaskDetail
+        """
+        self._SchedulerName = None
+        self._OperatorName = None
+        self._CreateTime = None
+        self._EndTime = None
+        self._State = None
+        self._Details = None
+
+    @property
+    def SchedulerName(self):
+        return self._SchedulerName
+
+    @SchedulerName.setter
+    def SchedulerName(self, SchedulerName):
+        self._SchedulerName = SchedulerName
+
+    @property
+    def OperatorName(self):
+        return self._OperatorName
+
+    @OperatorName.setter
+    def OperatorName(self, OperatorName):
+        self._OperatorName = OperatorName
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def Details(self):
+        return self._Details
+
+    @Details.setter
+    def Details(self, Details):
+        self._Details = Details
+
+
+    def _deserialize(self, params):
+        self._SchedulerName = params.get("SchedulerName")
+        self._OperatorName = params.get("OperatorName")
+        self._CreateTime = params.get("CreateTime")
+        self._EndTime = params.get("EndTime")
+        self._State = params.get("State")
+        if params.get("Details") is not None:
+            self._Details = []
+            for item in params.get("Details"):
+                obj = SchedulerTaskDetail()
+                obj._deserialize(item)
+                self._Details.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ScriptBootstrapActionConfig(AbstractModel):
     """添加引导操作
 
@@ -17348,6 +18229,424 @@ class ServiceBasicRestartInfo(AbstractModel):
                 obj = ComponentBasicRestartInfo()
                 obj._deserialize(item)
                 self._ComponentInfoList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServiceNodeDetailInfo(AbstractModel):
+    """服务进程信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ip: 进程所在节点IP
+        :type Ip: str
+        :param _NodeType: 进程类型
+        :type NodeType: int
+        :param _NodeName: 进程名称
+        :type NodeName: str
+        :param _ServiceStatus: 服务组件状态
+        :type ServiceStatus: int
+        :param _MonitorStatus: 进程监控状态
+        :type MonitorStatus: int
+        :param _Status: 服务组件状态
+        :type Status: int
+        :param _PortsInfo: 进程端口信息
+        :type PortsInfo: str
+        :param _LastRestartTime: 最近重启时间
+        :type LastRestartTime: str
+        :param _Flag: 节点类型
+        :type Flag: int
+        :param _ConfGroupId: 配置组ID
+        :type ConfGroupId: int
+        :param _ConfGroupName: 配置组名称
+        :type ConfGroupName: str
+        :param _ConfStatus: 节点是否需要重启
+        :type ConfStatus: int
+        :param _ServiceDetectionInfo: 进程探测信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceDetectionInfo: list of ServiceProcessFunctionInfo
+        :param _NodeFlagFilter: 节点类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeFlagFilter: str
+        :param _HealthStatus: 进程健康状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthStatus: :class:`tencentcloud.emr.v20190103.models.HealthStatus`
+        :param _IsSupportRoleMonitor: 角色是否支持监控
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsSupportRoleMonitor: bool
+        :param _StopPolicies: 暂停策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StopPolicies: list of RestartPolicy
+        :param _HAState: 测试环境api强校验，现网没有，emrcc接口返回有。不加会报错
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HAState: str
+        :param _NameService: NameService名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NameService: str
+        :param _IsFederation: 是否支持联邦
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsFederation: bool
+        :param _DataNodeMaintenanceState: datanode是否是维护状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataNodeMaintenanceState: int
+        """
+        self._Ip = None
+        self._NodeType = None
+        self._NodeName = None
+        self._ServiceStatus = None
+        self._MonitorStatus = None
+        self._Status = None
+        self._PortsInfo = None
+        self._LastRestartTime = None
+        self._Flag = None
+        self._ConfGroupId = None
+        self._ConfGroupName = None
+        self._ConfStatus = None
+        self._ServiceDetectionInfo = None
+        self._NodeFlagFilter = None
+        self._HealthStatus = None
+        self._IsSupportRoleMonitor = None
+        self._StopPolicies = None
+        self._HAState = None
+        self._NameService = None
+        self._IsFederation = None
+        self._DataNodeMaintenanceState = None
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def NodeType(self):
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def NodeName(self):
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def ServiceStatus(self):
+        return self._ServiceStatus
+
+    @ServiceStatus.setter
+    def ServiceStatus(self, ServiceStatus):
+        self._ServiceStatus = ServiceStatus
+
+    @property
+    def MonitorStatus(self):
+        return self._MonitorStatus
+
+    @MonitorStatus.setter
+    def MonitorStatus(self, MonitorStatus):
+        self._MonitorStatus = MonitorStatus
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def PortsInfo(self):
+        return self._PortsInfo
+
+    @PortsInfo.setter
+    def PortsInfo(self, PortsInfo):
+        self._PortsInfo = PortsInfo
+
+    @property
+    def LastRestartTime(self):
+        return self._LastRestartTime
+
+    @LastRestartTime.setter
+    def LastRestartTime(self, LastRestartTime):
+        self._LastRestartTime = LastRestartTime
+
+    @property
+    def Flag(self):
+        return self._Flag
+
+    @Flag.setter
+    def Flag(self, Flag):
+        self._Flag = Flag
+
+    @property
+    def ConfGroupId(self):
+        return self._ConfGroupId
+
+    @ConfGroupId.setter
+    def ConfGroupId(self, ConfGroupId):
+        self._ConfGroupId = ConfGroupId
+
+    @property
+    def ConfGroupName(self):
+        return self._ConfGroupName
+
+    @ConfGroupName.setter
+    def ConfGroupName(self, ConfGroupName):
+        self._ConfGroupName = ConfGroupName
+
+    @property
+    def ConfStatus(self):
+        return self._ConfStatus
+
+    @ConfStatus.setter
+    def ConfStatus(self, ConfStatus):
+        self._ConfStatus = ConfStatus
+
+    @property
+    def ServiceDetectionInfo(self):
+        return self._ServiceDetectionInfo
+
+    @ServiceDetectionInfo.setter
+    def ServiceDetectionInfo(self, ServiceDetectionInfo):
+        self._ServiceDetectionInfo = ServiceDetectionInfo
+
+    @property
+    def NodeFlagFilter(self):
+        return self._NodeFlagFilter
+
+    @NodeFlagFilter.setter
+    def NodeFlagFilter(self, NodeFlagFilter):
+        self._NodeFlagFilter = NodeFlagFilter
+
+    @property
+    def HealthStatus(self):
+        return self._HealthStatus
+
+    @HealthStatus.setter
+    def HealthStatus(self, HealthStatus):
+        self._HealthStatus = HealthStatus
+
+    @property
+    def IsSupportRoleMonitor(self):
+        return self._IsSupportRoleMonitor
+
+    @IsSupportRoleMonitor.setter
+    def IsSupportRoleMonitor(self, IsSupportRoleMonitor):
+        self._IsSupportRoleMonitor = IsSupportRoleMonitor
+
+    @property
+    def StopPolicies(self):
+        return self._StopPolicies
+
+    @StopPolicies.setter
+    def StopPolicies(self, StopPolicies):
+        self._StopPolicies = StopPolicies
+
+    @property
+    def HAState(self):
+        return self._HAState
+
+    @HAState.setter
+    def HAState(self, HAState):
+        self._HAState = HAState
+
+    @property
+    def NameService(self):
+        return self._NameService
+
+    @NameService.setter
+    def NameService(self, NameService):
+        self._NameService = NameService
+
+    @property
+    def IsFederation(self):
+        return self._IsFederation
+
+    @IsFederation.setter
+    def IsFederation(self, IsFederation):
+        self._IsFederation = IsFederation
+
+    @property
+    def DataNodeMaintenanceState(self):
+        return self._DataNodeMaintenanceState
+
+    @DataNodeMaintenanceState.setter
+    def DataNodeMaintenanceState(self, DataNodeMaintenanceState):
+        self._DataNodeMaintenanceState = DataNodeMaintenanceState
+
+
+    def _deserialize(self, params):
+        self._Ip = params.get("Ip")
+        self._NodeType = params.get("NodeType")
+        self._NodeName = params.get("NodeName")
+        self._ServiceStatus = params.get("ServiceStatus")
+        self._MonitorStatus = params.get("MonitorStatus")
+        self._Status = params.get("Status")
+        self._PortsInfo = params.get("PortsInfo")
+        self._LastRestartTime = params.get("LastRestartTime")
+        self._Flag = params.get("Flag")
+        self._ConfGroupId = params.get("ConfGroupId")
+        self._ConfGroupName = params.get("ConfGroupName")
+        self._ConfStatus = params.get("ConfStatus")
+        if params.get("ServiceDetectionInfo") is not None:
+            self._ServiceDetectionInfo = []
+            for item in params.get("ServiceDetectionInfo"):
+                obj = ServiceProcessFunctionInfo()
+                obj._deserialize(item)
+                self._ServiceDetectionInfo.append(obj)
+        self._NodeFlagFilter = params.get("NodeFlagFilter")
+        if params.get("HealthStatus") is not None:
+            self._HealthStatus = HealthStatus()
+            self._HealthStatus._deserialize(params.get("HealthStatus"))
+        self._IsSupportRoleMonitor = params.get("IsSupportRoleMonitor")
+        if params.get("StopPolicies") is not None:
+            self._StopPolicies = []
+            for item in params.get("StopPolicies"):
+                obj = RestartPolicy()
+                obj._deserialize(item)
+                self._StopPolicies.append(obj)
+        self._HAState = params.get("HAState")
+        self._NameService = params.get("NameService")
+        self._IsFederation = params.get("IsFederation")
+        self._DataNodeMaintenanceState = params.get("DataNodeMaintenanceState")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServiceProcessFunctionInfo(AbstractModel):
+    """进程检测信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DetectAlert: 探测告警级别
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DetectAlert: str
+        :param _DetetcFunctionKey: 探测功能描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DetetcFunctionKey: str
+        :param _DetetcFunctionValue: 探测功能结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DetetcFunctionValue: str
+        :param _DetetcTime: 探测结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DetetcTime: str
+        :param _DetectFunctionKey: 探测功能描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DetectFunctionKey: str
+        :param _DetectFunctionValue: 探测功能结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DetectFunctionValue: str
+        :param _DetectTime: 探测结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DetectTime: str
+        """
+        self._DetectAlert = None
+        self._DetetcFunctionKey = None
+        self._DetetcFunctionValue = None
+        self._DetetcTime = None
+        self._DetectFunctionKey = None
+        self._DetectFunctionValue = None
+        self._DetectTime = None
+
+    @property
+    def DetectAlert(self):
+        return self._DetectAlert
+
+    @DetectAlert.setter
+    def DetectAlert(self, DetectAlert):
+        self._DetectAlert = DetectAlert
+
+    @property
+    def DetetcFunctionKey(self):
+        warnings.warn("parameter `DetetcFunctionKey` is deprecated", DeprecationWarning) 
+
+        return self._DetetcFunctionKey
+
+    @DetetcFunctionKey.setter
+    def DetetcFunctionKey(self, DetetcFunctionKey):
+        warnings.warn("parameter `DetetcFunctionKey` is deprecated", DeprecationWarning) 
+
+        self._DetetcFunctionKey = DetetcFunctionKey
+
+    @property
+    def DetetcFunctionValue(self):
+        warnings.warn("parameter `DetetcFunctionValue` is deprecated", DeprecationWarning) 
+
+        return self._DetetcFunctionValue
+
+    @DetetcFunctionValue.setter
+    def DetetcFunctionValue(self, DetetcFunctionValue):
+        warnings.warn("parameter `DetetcFunctionValue` is deprecated", DeprecationWarning) 
+
+        self._DetetcFunctionValue = DetetcFunctionValue
+
+    @property
+    def DetetcTime(self):
+        warnings.warn("parameter `DetetcTime` is deprecated", DeprecationWarning) 
+
+        return self._DetetcTime
+
+    @DetetcTime.setter
+    def DetetcTime(self, DetetcTime):
+        warnings.warn("parameter `DetetcTime` is deprecated", DeprecationWarning) 
+
+        self._DetetcTime = DetetcTime
+
+    @property
+    def DetectFunctionKey(self):
+        return self._DetectFunctionKey
+
+    @DetectFunctionKey.setter
+    def DetectFunctionKey(self, DetectFunctionKey):
+        self._DetectFunctionKey = DetectFunctionKey
+
+    @property
+    def DetectFunctionValue(self):
+        return self._DetectFunctionValue
+
+    @DetectFunctionValue.setter
+    def DetectFunctionValue(self, DetectFunctionValue):
+        self._DetectFunctionValue = DetectFunctionValue
+
+    @property
+    def DetectTime(self):
+        return self._DetectTime
+
+    @DetectTime.setter
+    def DetectTime(self, DetectTime):
+        self._DetectTime = DetectTime
+
+
+    def _deserialize(self, params):
+        self._DetectAlert = params.get("DetectAlert")
+        self._DetetcFunctionKey = params.get("DetetcFunctionKey")
+        self._DetetcFunctionValue = params.get("DetetcFunctionValue")
+        self._DetetcTime = params.get("DetetcTime")
+        self._DetectFunctionKey = params.get("DetectFunctionKey")
+        self._DetectFunctionValue = params.get("DetectFunctionValue")
+        self._DetectTime = params.get("DetectTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

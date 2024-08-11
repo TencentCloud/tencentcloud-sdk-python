@@ -49,6 +49,52 @@ class SmhClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateUser(self, request):
+        """新建用户。
+
+        :param request: Request instance for CreateUser.
+        :type request: :class:`tencentcloud.smh.v20210712.models.CreateUserRequest`
+        :rtype: :class:`tencentcloud.smh.v20210712.models.CreateUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateUserLifecycle(self, request):
+        """设置用户生命周期。如果指定的用户已经设置了生命周期，重复调用此接口将覆盖已有的设置。也可用于清除指定用户的生命周期。
+
+        :param request: Request instance for CreateUserLifecycle.
+        :type request: :class:`tencentcloud.smh.v20210712.models.CreateUserLifecycleRequest`
+        :rtype: :class:`tencentcloud.smh.v20210712.models.CreateUserLifecycleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateUserLifecycle", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateUserLifecycleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteLibrary(self, request):
         """删除 PaaS 服务媒体库
 
@@ -63,6 +109,29 @@ class SmhClient(AbstractClient):
             body = self.call("DeleteLibrary", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteLibraryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteUser(self, request):
+        """一次删除多个用户。
+
+        :param request: Request instance for DeleteUser.
+        :type request: :class:`tencentcloud.smh.v20210712.models.DeleteUserRequest`
+        :rtype: :class:`tencentcloud.smh.v20210712.models.DeleteUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteUserResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -187,6 +256,29 @@ class SmhClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeUserLifecycle(self, request):
+        """查询用户生命周期。
+
+        :param request: Request instance for DescribeUserLifecycle.
+        :type request: :class:`tencentcloud.smh.v20210712.models.DescribeUserLifecycleRequest`
+        :rtype: :class:`tencentcloud.smh.v20210712.models.DescribeUserLifecycleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserLifecycle", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserLifecycleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyLibrary(self, request):
         """修改 PaaS 服务媒体库配置项
 
@@ -201,6 +293,29 @@ class SmhClient(AbstractClient):
             body = self.call("ModifyLibrary", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyLibraryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyUser(self, request):
+        """更新用户信息。
+
+        :param request: Request instance for ModifyUser.
+        :type request: :class:`tencentcloud.smh.v20210712.models.ModifyUserRequest`
+        :rtype: :class:`tencentcloud.smh.v20210712.models.ModifyUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyUserResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

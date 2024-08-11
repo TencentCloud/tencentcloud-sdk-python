@@ -326,7 +326,9 @@ class CwpClient(AbstractClient):
 
 
     def CreateCloudProtectServiceOrderRecord(self, request):
-        """云护航服务使用完成后，该接口可以确认收货
+        """云护航计费产品已下线
+
+        云护航服务使用完成后，该接口可以确认收货
 
         :param request: Request instance for CreateCloudProtectServiceOrderRecord.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CreateCloudProtectServiceOrderRecordRequest`
@@ -10807,6 +10809,29 @@ class CwpClient(AbstractClient):
             body = self.call("ModifyRansomDefenseStrategyStatus", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyRansomDefenseStrategyStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyReverseShellRulesAggregation(self, request):
+        """编辑反弹Shell规则（支持多服务器选择）
+
+        :param request: Request instance for ModifyReverseShellRulesAggregation.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyReverseShellRulesAggregationRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ModifyReverseShellRulesAggregationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyReverseShellRulesAggregation", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyReverseShellRulesAggregationResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -556,6 +556,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeServiceNodeInfos(self, request):
+        """查询服务进程信息
+
+        :param request: Request instance for DescribeServiceNodeInfos.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeServiceNodeInfosRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeServiceNodeInfosResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeServiceNodeInfos", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeServiceNodeInfosResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTrinoQueryInfo(self, request):
         """获取trino查询结果
 
@@ -617,6 +640,29 @@ class EmrClient(AbstractClient):
             body = self.call("DescribeYarnApplications", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeYarnApplicationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeYarnScheduleHistory(self, request):
+        """查看yarn资源调度的调度历史
+
+        :param request: Request instance for DescribeYarnScheduleHistory.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeYarnScheduleHistoryRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeYarnScheduleHistoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeYarnScheduleHistory", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeYarnScheduleHistoryResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -870,6 +916,29 @@ class EmrClient(AbstractClient):
             body = self.call("ModifyUserManagerPwd", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyUserManagerPwdResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyYarnDeploy(self, request):
+        """部署生效
+
+        :param request: Request instance for ModifyYarnDeploy.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ModifyYarnDeployRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifyYarnDeployResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyYarnDeploy", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyYarnDeployResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
