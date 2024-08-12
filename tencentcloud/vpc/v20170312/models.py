@@ -3834,6 +3834,9 @@ class CCN(AbstractModel):
         :param _DirectConnectAccelerateChannelFlag: 是否开启二层云联网通道。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DirectConnectAccelerateChannelFlag: bool
+        :param _Ipv6Flag: 是否支持ipv6路由表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ipv6Flag: str
         """
         self._CcnId = None
         self._CcnName = None
@@ -3855,6 +3858,7 @@ class CCN(AbstractModel):
         self._TrafficMarkingPolicyFlag = None
         self._RouteSelectPolicyFlag = None
         self._DirectConnectAccelerateChannelFlag = None
+        self._Ipv6Flag = None
 
     @property
     def CcnId(self):
@@ -4016,6 +4020,14 @@ class CCN(AbstractModel):
     def DirectConnectAccelerateChannelFlag(self, DirectConnectAccelerateChannelFlag):
         self._DirectConnectAccelerateChannelFlag = DirectConnectAccelerateChannelFlag
 
+    @property
+    def Ipv6Flag(self):
+        return self._Ipv6Flag
+
+    @Ipv6Flag.setter
+    def Ipv6Flag(self, Ipv6Flag):
+        self._Ipv6Flag = Ipv6Flag
+
 
     def _deserialize(self, params):
         self._CcnId = params.get("CcnId")
@@ -4043,6 +4055,7 @@ class CCN(AbstractModel):
         self._TrafficMarkingPolicyFlag = params.get("TrafficMarkingPolicyFlag")
         self._RouteSelectPolicyFlag = params.get("RouteSelectPolicyFlag")
         self._DirectConnectAccelerateChannelFlag = params.get("DirectConnectAccelerateChannelFlag")
+        self._Ipv6Flag = params.get("Ipv6Flag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5012,6 +5025,12 @@ class CcnRoute(AbstractModel):
         :type RoutePriority: int
         :param _InstanceExtraName: 下一跳扩展名称（关联实例的扩展名称）
         :type InstanceExtraName: str
+        :param _AliasType: 实例类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AliasType: str
+        :param _AliasInstanceId: 实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AliasInstanceId: str
         """
         self._RouteId = None
         self._DestinationCidrBlock = None
@@ -5026,6 +5045,8 @@ class CcnRoute(AbstractModel):
         self._IsBgp = None
         self._RoutePriority = None
         self._InstanceExtraName = None
+        self._AliasType = None
+        self._AliasInstanceId = None
 
     @property
     def RouteId(self):
@@ -5131,6 +5152,22 @@ class CcnRoute(AbstractModel):
     def InstanceExtraName(self, InstanceExtraName):
         self._InstanceExtraName = InstanceExtraName
 
+    @property
+    def AliasType(self):
+        return self._AliasType
+
+    @AliasType.setter
+    def AliasType(self, AliasType):
+        self._AliasType = AliasType
+
+    @property
+    def AliasInstanceId(self):
+        return self._AliasInstanceId
+
+    @AliasInstanceId.setter
+    def AliasInstanceId(self, AliasInstanceId):
+        self._AliasInstanceId = AliasInstanceId
+
 
     def _deserialize(self, params):
         self._RouteId = params.get("RouteId")
@@ -5146,6 +5183,8 @@ class CcnRoute(AbstractModel):
         self._IsBgp = params.get("IsBgp")
         self._RoutePriority = params.get("RoutePriority")
         self._InstanceExtraName = params.get("InstanceExtraName")
+        self._AliasType = params.get("AliasType")
+        self._AliasInstanceId = params.get("AliasInstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

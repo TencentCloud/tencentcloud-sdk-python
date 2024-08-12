@@ -4034,7 +4034,9 @@ class CwpClient(AbstractClient):
 
 
     def DescribeCloudProtectServiceOrderList(self, request):
-        """查询云护航服务订单列表
+        """云护航计费产品已下线
+
+        查询云护航服务订单列表
 
         :param request: Request instance for DescribeCloudProtectServiceOrderList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeCloudProtectServiceOrderListRequest`

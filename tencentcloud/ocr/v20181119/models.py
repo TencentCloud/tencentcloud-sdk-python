@@ -3719,11 +3719,17 @@ class DriverLicenseOCRResponse(AbstractModel):
         :param _RecognizeWarnCode: Code 告警码列表和释义：
 -9102  复印件告警
 -9103  翻拍件告警
+-9104  反光告警
+-9105  模糊告警
+-9106  边框不完整告警
 注：告警码可以同时存在多个
         :type RecognizeWarnCode: list of int
         :param _RecognizeWarnMsg: 告警码说明：
 WARN_DRIVER_LICENSE_COPY_CARD 复印件告警
 WARN_DRIVER_LICENSE_SCREENED_CARD 翻拍件告警
+WARN_DRIVER_LICENSE_REFLECTION 反光告警
+WARN_DRIVER_LICENSE_BLUR 模糊告警
+WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 注：告警信息可以同时存在多个
         :type RecognizeWarnMsg: list of str
         :param _IssuingAuthority: 发证单位
@@ -30293,13 +30299,19 @@ class VehicleLicenseOCRResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type BackInfo: :class:`tencentcloud.ocr.v20181119.models.TextVehicleBack`
         :param _RecognizeWarnCode: Code 告警码列表和释义：
--9102 复印件告警
--9103 翻拍件告警
+-9102  复印件告警
+-9103  翻拍件告警
+-9104  反光告警
+-9105  模糊告警
+-9106  边框不完整告警
 注：告警码可以同时存在多个
         :type RecognizeWarnCode: list of int
         :param _RecognizeWarnMsg: 告警码说明：
 WARN_DRIVER_LICENSE_COPY_CARD 复印件告警
 WARN_DRIVER_LICENSE_SCREENED_CARD 翻拍件告警
+WARN_DRIVER_LICENSE_REFLECTION 反光告警
+WARN_DRIVER_LICENSE_BLUR 模糊告警
+WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 注：告警信息可以同时存在多个
         :type RecognizeWarnMsg: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
