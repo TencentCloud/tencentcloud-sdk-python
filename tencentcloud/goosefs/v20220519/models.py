@@ -479,10 +479,23 @@ class ClientNodeAttribute(AbstractModel):
         :type Status: str
         :param _ClientType: 客户端节点类型，extend(扩展节点)，manager(管理节点)
         :type ClientType: str
+        :param _VpcId: 节点所属vpcid	
+        :type VpcId: str
+        :param _SubnetId: 节点所属子网id
+        :type SubnetId: str
+        :param _InstanceId: cvmId
+        :type InstanceId: str
+        :param _MountPoint: 自定义挂载点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MountPoint: str
         """
         self._ClientNodeIp = None
         self._Status = None
         self._ClientType = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._InstanceId = None
+        self._MountPoint = None
 
     @property
     def ClientNodeIp(self):
@@ -508,11 +521,47 @@ class ClientNodeAttribute(AbstractModel):
     def ClientType(self, ClientType):
         self._ClientType = ClientType
 
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def MountPoint(self):
+        return self._MountPoint
+
+    @MountPoint.setter
+    def MountPoint(self, MountPoint):
+        self._MountPoint = MountPoint
+
 
     def _deserialize(self, params):
         self._ClientNodeIp = params.get("ClientNodeIp")
         self._Status = params.get("Status")
         self._ClientType = params.get("ClientType")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._InstanceId = params.get("InstanceId")
+        self._MountPoint = params.get("MountPoint")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2211,11 +2260,14 @@ class LinuxNodeAttribute(AbstractModel):
         :type SubnetId: str
         :param _LinuxClientNodeIp: linux客户端节点地址
         :type LinuxClientNodeIp: str
+        :param _MountPoint: 自定义挂载点
+        :type MountPoint: str
         """
         self._InstanceId = None
         self._VpcId = None
         self._SubnetId = None
         self._LinuxClientNodeIp = None
+        self._MountPoint = None
 
     @property
     def InstanceId(self):
@@ -2249,12 +2301,21 @@ class LinuxNodeAttribute(AbstractModel):
     def LinuxClientNodeIp(self, LinuxClientNodeIp):
         self._LinuxClientNodeIp = LinuxClientNodeIp
 
+    @property
+    def MountPoint(self):
+        return self._MountPoint
+
+    @MountPoint.setter
+    def MountPoint(self, MountPoint):
+        self._MountPoint = MountPoint
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")
         self._LinuxClientNodeIp = params.get("LinuxClientNodeIp")
+        self._MountPoint = params.get("MountPoint")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

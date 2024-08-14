@@ -151,6 +151,8 @@ class ChatCompletionsRequest(AbstractModel):
 2. false：开关关闭，true：开关打开。
 3. 未传值时默认开关关闭（false）。
         :type Citation: bool
+        :param _EnableSpeedSearch: 是否开启极速版搜索，默认false，不开启；在开启且命中搜索时，会启用极速版搜索，流式输出首字返回更快。
+        :type EnableSpeedSearch: bool
         """
         self._Model = None
         self._Messages = None
@@ -164,6 +166,7 @@ class ChatCompletionsRequest(AbstractModel):
         self._CustomTool = None
         self._SearchInfo = None
         self._Citation = None
+        self._EnableSpeedSearch = None
 
     @property
     def Model(self):
@@ -261,6 +264,14 @@ class ChatCompletionsRequest(AbstractModel):
     def Citation(self, Citation):
         self._Citation = Citation
 
+    @property
+    def EnableSpeedSearch(self):
+        return self._EnableSpeedSearch
+
+    @EnableSpeedSearch.setter
+    def EnableSpeedSearch(self, EnableSpeedSearch):
+        self._EnableSpeedSearch = EnableSpeedSearch
+
 
     def _deserialize(self, params):
         self._Model = params.get("Model")
@@ -287,6 +298,7 @@ class ChatCompletionsRequest(AbstractModel):
             self._CustomTool._deserialize(params.get("CustomTool"))
         self._SearchInfo = params.get("SearchInfo")
         self._Citation = params.get("Citation")
+        self._EnableSpeedSearch = params.get("EnableSpeedSearch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

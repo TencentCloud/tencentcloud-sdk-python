@@ -2871,6 +2871,202 @@ class CreateBatchInitOrganizationUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateBatchOrganizationAuthorizationUrlRequest(AbstractModel):
+    """CreateBatchOrganizationAuthorizationUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _AdminName: 组织机构超管姓名。 在注册流程中，必须是超管本人进行操作。
+此参数需要跟[创建企业批量认证链接](https://qian.tencent.com/developers/companyApis/organizations/CreateBatchOrganizationRegistrationTasks)中 AdminName 保持一致。
+        :type AdminName: str
+        :param _AdminMobile: 组织机构超管手机号。 在注册流程中，必须是超管本人进行操作。此参数需要跟[创建企业批量认证链接](https://qian.tencent.com/developers/companyApis/organizations/CreateBatchOrganizationRegistrationTasks)中 Admin Mobile保持一致。
+        :type AdminMobile: str
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _SubTaskIds: 企业批量认证链接的子任务 SubTaskId，该 SubTaskId 是通过接口 查询企业批量认证链接 DescribeBatchOrganizationRegistrationUrls 获得。此参数需与超管个人三要素（AdminName，AdminMobile，AdminIdCardNumber）配合使用。若 SubTaskId 不属于传入的超级管理员，将进行筛选。
+        :type SubTaskIds: list of str
+        :param _AdminIdCardType: 组织机构超管证件类型支持以下类型
+- ID_CARD : 居民身份证 (默认值)
+-  HONGKONG_AND_MACAO : 港澳居民来往内地通行证
+- HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)
+此参数需要跟[创建企业批量认证链接](https://qian.tencent.com/developers/companyApis/organizations/CreateBatchOrganizationRegistrationTasks)中 AdminIdCardType保持一致。
+        :type AdminIdCardType: str
+        :param _AdminIdCardNumber: 组织机构超管证件号。 在注册流程中，必须是超管本人进行操作。此参数需要跟[创建企业批量认证链接](https://qian.tencent.com/developers/companyApis/organizations/CreateBatchOrganizationRegistrationTasks)中 AdminIdCardNumber保持一致。
+        :type AdminIdCardNumber: str
+        :param _Endpoint: 要跳转的链接类型<ul><li> **HTTP**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  ，此时返回长链 (默认类型)</li><li>**HTTP_SHORT_URL**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型，此时返回短链</li><li>**APP**： 第三方APP或小程序跳转电子签小程序的path,  APP或者小程序跳转适合此类型</li><li>**QR_CODE**： 跳转电子签小程序的http_url的二维码形式,  可以在页面展示适合此类型</li></ul>
+        :type Endpoint: str
+        """
+        self._Operator = None
+        self._AdminName = None
+        self._AdminMobile = None
+        self._Agent = None
+        self._SubTaskIds = None
+        self._AdminIdCardType = None
+        self._AdminIdCardNumber = None
+        self._Endpoint = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def AdminName(self):
+        return self._AdminName
+
+    @AdminName.setter
+    def AdminName(self, AdminName):
+        self._AdminName = AdminName
+
+    @property
+    def AdminMobile(self):
+        return self._AdminMobile
+
+    @AdminMobile.setter
+    def AdminMobile(self, AdminMobile):
+        self._AdminMobile = AdminMobile
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def SubTaskIds(self):
+        return self._SubTaskIds
+
+    @SubTaskIds.setter
+    def SubTaskIds(self, SubTaskIds):
+        self._SubTaskIds = SubTaskIds
+
+    @property
+    def AdminIdCardType(self):
+        return self._AdminIdCardType
+
+    @AdminIdCardType.setter
+    def AdminIdCardType(self, AdminIdCardType):
+        self._AdminIdCardType = AdminIdCardType
+
+    @property
+    def AdminIdCardNumber(self):
+        return self._AdminIdCardNumber
+
+    @AdminIdCardNumber.setter
+    def AdminIdCardNumber(self, AdminIdCardNumber):
+        self._AdminIdCardNumber = AdminIdCardNumber
+
+    @property
+    def Endpoint(self):
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._AdminName = params.get("AdminName")
+        self._AdminMobile = params.get("AdminMobile")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._SubTaskIds = params.get("SubTaskIds")
+        self._AdminIdCardType = params.get("AdminIdCardType")
+        self._AdminIdCardNumber = params.get("AdminIdCardNumber")
+        self._Endpoint = params.get("Endpoint")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBatchOrganizationAuthorizationUrlResponse(AbstractModel):
+    """CreateBatchOrganizationAuthorizationUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuthUrl: 批量企业注册链接-单链接包含多条认证流，根据Endpoint的不同设置，返回不同的链接地址。失效时间：7天
+跳转链接, 链接的有效期根据企业,员工状态和终端等有区别, 可以参考下表
+<table> <thead> <tr> <th>Endpoint</th> <th>示例</th> <th>链接有效期限</th> </tr> </thead>  <tbody>
+ <tr> <td>HTTP</td> <td>https://res.ess.tencent.cn/cdn/h5-activity-dev/jump-mp.html?to=AUTHORIZATION_ENTERPRISE_FOR_BATCH_SUBMIT&shortKey=yDCHHURDfBxSB2rj2Bfa</td> <td>7天</td> </tr> 
+<tr> <td>HTTP_SHORT_URL</td> <td>https://test.essurl.cn/8gDKUBAWK8</td> <td>7天</td> </tr> 
+<tr> <td>APP</td> <td>pages/guide/index?to=AUTHORIZATION_ENTERPRISE_FOR_BATCH_SUBMIT&shortKey=yDCHpURDfR6iEkdpsDde</td> <td>7天</td> </tr><tr> <td>QR_CODE</td> <td>https://dyn.test.ess.tencent.cn/imgs/qrcode_urls/authorization_enterprise_for_batch_submit/yDCHHUUckpbdauq9UEjnoFDCCumAMmv1.png</td> <td>7天</td> </tr> </tbody> </table>
+注： 
+`1.创建的链接应避免被转义，如：&被转义为\u0026；如使用Postman请求后，请选择响应类型为 JSON，否则链接将被转义`
+
+        :type AuthUrl: str
+        :param _ErrorMessages: 认证流认证失败信息
+        :type ErrorMessages: list of str
+        :param _ExpireTime: 链接过期时间，为 7 天后，创建时间，格式为Unix标准时间戳（秒）。
+        :type ExpireTime: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AuthUrl = None
+        self._ErrorMessages = None
+        self._ExpireTime = None
+        self._RequestId = None
+
+    @property
+    def AuthUrl(self):
+        return self._AuthUrl
+
+    @AuthUrl.setter
+    def AuthUrl(self, AuthUrl):
+        self._AuthUrl = AuthUrl
+
+    @property
+    def ErrorMessages(self):
+        return self._ErrorMessages
+
+    @ErrorMessages.setter
+    def ErrorMessages(self, ErrorMessages):
+        self._ErrorMessages = ErrorMessages
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AuthUrl = params.get("AuthUrl")
+        self._ErrorMessages = params.get("ErrorMessages")
+        self._ExpireTime = params.get("ExpireTime")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateBatchOrganizationRegistrationTasksRequest(AbstractModel):
     """CreateBatchOrganizationRegistrationTasks请求参数结构体
 
@@ -21054,6 +21250,11 @@ WECHAT-微信通知
 <li> 5 :设备指纹识别</li>
 <li> 6 :设备面容识别</li></ul>
         :type ApproverSignTypes: list of int
+        :param _NoTransfer: 签署方是否可以转他人处理
+
+<ul><li> **false** : ( 默认)可以转他人处理</li>
+<li> **true** :不可以转他人处理</li></ul>
+        :type NoTransfer: bool
         """
         self._RecipientId = None
         self._RecipientType = None
@@ -21070,6 +21271,7 @@ WECHAT-微信通知
         self._RecipientExtra = None
         self._ApproverVerifyTypes = None
         self._ApproverSignTypes = None
+        self._NoTransfer = None
 
     @property
     def RecipientId(self):
@@ -21191,6 +21393,14 @@ WECHAT-微信通知
     def ApproverSignTypes(self, ApproverSignTypes):
         self._ApproverSignTypes = ApproverSignTypes
 
+    @property
+    def NoTransfer(self):
+        return self._NoTransfer
+
+    @NoTransfer.setter
+    def NoTransfer(self, NoTransfer):
+        self._NoTransfer = NoTransfer
+
 
     def _deserialize(self, params):
         self._RecipientId = params.get("RecipientId")
@@ -21208,6 +21418,7 @@ WECHAT-微信通知
         self._RecipientExtra = params.get("RecipientExtra")
         self._ApproverVerifyTypes = params.get("ApproverVerifyTypes")
         self._ApproverSignTypes = params.get("ApproverSignTypes")
+        self._NoTransfer = params.get("NoTransfer")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

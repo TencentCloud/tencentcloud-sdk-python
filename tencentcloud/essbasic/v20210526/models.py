@@ -18612,6 +18612,11 @@ false-否
 <li> 5 :设备指纹识别</li>
 <li> 6 :设备面容识别</li></ul>
         :type ApproverSignTypes: list of int
+        :param _NoTransfer: 签署方是否可以转他人处理
+
+<ul><li> **false** : ( 默认)可以转他人处理</li>
+<li> **true** :不可以转他人处理</li></ul>
+        :type NoTransfer: bool
         """
         self._RecipientId = None
         self._RecipientType = None
@@ -18624,6 +18629,7 @@ false-否
         self._IsPromoter = None
         self._ApproverVerifyTypes = None
         self._ApproverSignTypes = None
+        self._NoTransfer = None
 
     @property
     def RecipientId(self):
@@ -18713,6 +18719,14 @@ false-否
     def ApproverSignTypes(self, ApproverSignTypes):
         self._ApproverSignTypes = ApproverSignTypes
 
+    @property
+    def NoTransfer(self):
+        return self._NoTransfer
+
+    @NoTransfer.setter
+    def NoTransfer(self, NoTransfer):
+        self._NoTransfer = NoTransfer
+
 
     def _deserialize(self, params):
         self._RecipientId = params.get("RecipientId")
@@ -18726,6 +18740,7 @@ false-否
         self._IsPromoter = params.get("IsPromoter")
         self._ApproverVerifyTypes = params.get("ApproverVerifyTypes")
         self._ApproverSignTypes = params.get("ApproverSignTypes")
+        self._NoTransfer = params.get("NoTransfer")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

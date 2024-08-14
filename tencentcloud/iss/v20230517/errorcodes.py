@@ -212,6 +212,9 @@ INVALIDPARAMETERVALUE_INVALIDDEVICETYPE = 'InvalidParameterValue.InvalidDeviceTy
 # 无效的域名，长度或内容不符合规则
 INVALIDPARAMETERVALUE_INVALIDDOMAIN = 'InvalidParameterValue.InvalidDomain'
 
+# 无效的域名类型参数
+INVALIDPARAMETERVALUE_INVALIDDOMAINTYPE = 'InvalidParameterValue.InvalidDomainType'
+
 # 无效的使能参数
 INVALIDPARAMETERVALUE_INVALIDENALBEVALUE = 'InvalidParameterValue.InvalidEnalbeValue'
 
@@ -268,6 +271,12 @@ INVALIDPARAMETERVALUE_INVALIDPULLSTATE = 'InvalidParameterValue.InvalidPullState
 
 # 无效的推流鉴权开关值
 INVALIDPARAMETERVALUE_INVALIDPUSHSTATE = 'InvalidParameterValue.InvalidPushState'
+
+# 无效的RTMP推流AppName
+INVALIDPARAMETERVALUE_INVALIDRTMPAPPNAME = 'InvalidParameterValue.InvalidRTMPAppName'
+
+# 无效的RTMP推流StreamName
+INVALIDPARAMETERVALUE_INVALIDRTMPSTREAMNAME = 'InvalidParameterValue.InvalidRTMPStreamName'
 
 # 无效的取回模式
 INVALIDPARAMETERVALUE_INVALIDRETRIEVALMODE = 'InvalidParameterValue.InvalidRetrievalMode'
@@ -340,6 +349,9 @@ INVALIDPARAMETERVALUE_PLANCHANNELSEXCEEDSRANGE = 'InvalidParameterValue.PlanChan
 
 # 计划名称不能重复
 INVALIDPARAMETERVALUE_PLANNAMEREPEAT = 'InvalidParameterValue.PlanNameRepeat'
+
+# RTMP推流自定义AppName及StreamName不能重复配置
+INVALIDPARAMETERVALUE_RTMPPUSHSTREAMPARAMREPEAT = 'InvalidParameterValue.RTMPPushStreamParamRepeat'
 
 # 一个取回任务最多添加32个设备通道
 INVALIDPARAMETERVALUE_RETRIEVETASKCHANNELSEXCEEDSRANGE = 'InvalidParameterValue.RetrieveTaskChannelsExceedsRange'
@@ -517,6 +529,9 @@ UNSUPPORTEDOPERATION_ORGLINKDEV = 'UnsupportedOperation.OrgLinkDev'
 
 # 组织下有挂靠的组织，不允许删除
 UNSUPPORTEDOPERATION_ORGLINKORG = 'UnsupportedOperation.OrgLinkOrg'
+
+# RTMP推流域名不存在
+UNSUPPORTEDOPERATION_PUSHDOMAINNOTEXIST = 'UnsupportedOperation.PushDomainNotExist'
 
 # Scale和Pos参数不支持同时下发
 UNSUPPORTEDOPERATION_SCALEANDPOSBOTHEXIST = 'UnsupportedOperation.ScaleAndPosBothExist'

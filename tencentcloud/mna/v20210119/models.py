@@ -5732,6 +5732,126 @@ class OrderFlowPackageResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class OrderPerLicenseRequest(AbstractModel):
+    """OrderPerLicense请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceId: 购买永久授权License的设备ID，如果是厂商未激活设备采用HardwareId
+        :type DeviceId: str
+        :param _Type: 设备类型，0: SDK，1: CPE，作为用户创建或激活设备时传0，作为厂商创建待激活设备时传1
+        :type Type: int
+        :param _RollBack: 购买失败后是否回滚（删除）设备，默认true，如果设备绑定了生效中的流量包则不能回滚。
+        :type RollBack: bool
+        :param _AutoVoucher: 是否自动选择代金券，默认false。
+有多张券时的选择策略：按照可支付订单全部金额的券，先到期的券，可抵扣金额最大的券，余额最小的券，现金券 这个优先级进行扣券，且最多只抵扣一张券。
+        :type AutoVoucher: bool
+        :param _VoucherIds: 指定代金券ID。自动选择代金券时此参数无效。目前只允许传入一张代金券。
+注：若指定的代金券不符合订单抵扣条件，则正常支付，不扣券
+        :type VoucherIds: list of str
+        """
+        self._DeviceId = None
+        self._Type = None
+        self._RollBack = None
+        self._AutoVoucher = None
+        self._VoucherIds = None
+
+    @property
+    def DeviceId(self):
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def RollBack(self):
+        return self._RollBack
+
+    @RollBack.setter
+    def RollBack(self, RollBack):
+        self._RollBack = RollBack
+
+    @property
+    def AutoVoucher(self):
+        return self._AutoVoucher
+
+    @AutoVoucher.setter
+    def AutoVoucher(self, AutoVoucher):
+        self._AutoVoucher = AutoVoucher
+
+    @property
+    def VoucherIds(self):
+        return self._VoucherIds
+
+    @VoucherIds.setter
+    def VoucherIds(self, VoucherIds):
+        self._VoucherIds = VoucherIds
+
+
+    def _deserialize(self, params):
+        self._DeviceId = params.get("DeviceId")
+        self._Type = params.get("Type")
+        self._RollBack = params.get("RollBack")
+        self._AutoVoucher = params.get("AutoVoucher")
+        self._VoucherIds = params.get("VoucherIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OrderPerLicenseResponse(AbstractModel):
+    """OrderPerLicense返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 一次性授权License的资源ID
+        :type ResourceId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ResourceId = None
+        self._RequestId = None
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._RequestId = params.get("RequestId")
+
+
 class SetNotifyUrlRequest(AbstractModel):
     """SetNotifyUrl请求参数结构体
 

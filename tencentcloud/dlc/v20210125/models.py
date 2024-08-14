@@ -18789,11 +18789,27 @@ class LakeFsInfo(AbstractModel):
         :type SpaceUsedSize: float
         :param _CreateTimeStamp: 创建时候的时间戳
         :type CreateTimeStamp: int
+        :param _DefaultBucket: 是否是用户默认桶，0：默认桶，1：非默认桶
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultBucket: int
+        :param _ShortName: 托管存储short name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShortName: str
+        :param _Description: 桶描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _Status: 托管桶状态，当前取值为：creating、bind、readOnly、isolate
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
         """
         self._Name = None
         self._Type = None
         self._SpaceUsedSize = None
         self._CreateTimeStamp = None
+        self._DefaultBucket = None
+        self._ShortName = None
+        self._Description = None
+        self._Status = None
 
     @property
     def Name(self):
@@ -18827,12 +18843,48 @@ class LakeFsInfo(AbstractModel):
     def CreateTimeStamp(self, CreateTimeStamp):
         self._CreateTimeStamp = CreateTimeStamp
 
+    @property
+    def DefaultBucket(self):
+        return self._DefaultBucket
+
+    @DefaultBucket.setter
+    def DefaultBucket(self, DefaultBucket):
+        self._DefaultBucket = DefaultBucket
+
+    @property
+    def ShortName(self):
+        return self._ShortName
+
+    @ShortName.setter
+    def ShortName(self, ShortName):
+        self._ShortName = ShortName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Type = params.get("Type")
         self._SpaceUsedSize = params.get("SpaceUsedSize")
         self._CreateTimeStamp = params.get("CreateTimeStamp")
+        self._DefaultBucket = params.get("DefaultBucket")
+        self._ShortName = params.get("ShortName")
+        self._Description = params.get("Description")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23278,10 +23330,18 @@ class SmartOptimizerLifecyclePolicy(AbstractModel):
         :param _DropTable: 是否删表
 注意：此字段可能返回 null，表示取不到有效值。
         :type DropTable: bool
+        :param _ExpiredField: 过期字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpiredField: str
+        :param _ExpiredFieldFormat: 过期字段格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpiredFieldFormat: str
         """
         self._LifecycleEnable = None
         self._Expiration = None
         self._DropTable = None
+        self._ExpiredField = None
+        self._ExpiredFieldFormat = None
 
     @property
     def LifecycleEnable(self):
@@ -23307,11 +23367,29 @@ class SmartOptimizerLifecyclePolicy(AbstractModel):
     def DropTable(self, DropTable):
         self._DropTable = DropTable
 
+    @property
+    def ExpiredField(self):
+        return self._ExpiredField
+
+    @ExpiredField.setter
+    def ExpiredField(self, ExpiredField):
+        self._ExpiredField = ExpiredField
+
+    @property
+    def ExpiredFieldFormat(self):
+        return self._ExpiredFieldFormat
+
+    @ExpiredFieldFormat.setter
+    def ExpiredFieldFormat(self, ExpiredFieldFormat):
+        self._ExpiredFieldFormat = ExpiredFieldFormat
+
 
     def _deserialize(self, params):
         self._LifecycleEnable = params.get("LifecycleEnable")
         self._Expiration = params.get("Expiration")
         self._DropTable = params.get("DropTable")
+        self._ExpiredField = params.get("ExpiredField")
+        self._ExpiredFieldFormat = params.get("ExpiredFieldFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23423,6 +23501,34 @@ class SmartOptimizerWrittenPolicy(AbstractModel):
     """SmartOptimizerWrittenPolicy
 
     """
+
+    def __init__(self):
+        r"""
+        :param _WrittenEnable: none/enable/disable/default
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WrittenEnable: str
+        """
+        self._WrittenEnable = None
+
+    @property
+    def WrittenEnable(self):
+        return self._WrittenEnable
+
+    @WrittenEnable.setter
+    def WrittenEnable(self, WrittenEnable):
+        self._WrittenEnable = WrittenEnable
+
+
+    def _deserialize(self, params):
+        self._WrittenEnable = params.get("WrittenEnable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SmartPolicy(AbstractModel):
@@ -24857,20 +24963,33 @@ class TColumn(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 字段名称
+注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Type: 字段类型
+注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Comment: 字段描述
+注意：此字段可能返回 null，表示取不到有效值。
         :type Comment: str
         :param _Default: 字段默认值
+注意：此字段可能返回 null，表示取不到有效值。
         :type Default: str
         :param _NotNull: 字段是否是非空
+注意：此字段可能返回 null，表示取不到有效值。
         :type NotNull: bool
         :param _Precision: 表示整个 numeric 的长度,取值1-38
+注意：此字段可能返回 null，表示取不到有效值。
         :type Precision: int
         :param _Scale: 表示小数部分的长度
 Scale小于Precision
+注意：此字段可能返回 null，表示取不到有效值。
         :type Scale: int
+        :param _Position: 字段位置，小的在前
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Position: int
+        :param _IsPartition: 是否为分区字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsPartition: bool
         """
         self._Name = None
         self._Type = None
@@ -24879,6 +24998,8 @@ Scale小于Precision
         self._NotNull = None
         self._Precision = None
         self._Scale = None
+        self._Position = None
+        self._IsPartition = None
 
     @property
     def Name(self):
@@ -24936,6 +25057,22 @@ Scale小于Precision
     def Scale(self, Scale):
         self._Scale = Scale
 
+    @property
+    def Position(self):
+        return self._Position
+
+    @Position.setter
+    def Position(self, Position):
+        self._Position = Position
+
+    @property
+    def IsPartition(self):
+        return self._IsPartition
+
+    @IsPartition.setter
+    def IsPartition(self, IsPartition):
+        self._IsPartition = IsPartition
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -24945,6 +25082,8 @@ Scale小于Precision
         self._NotNull = params.get("NotNull")
         self._Precision = params.get("Precision")
         self._Scale = params.get("Scale")
+        self._Position = params.get("Position")
+        self._IsPartition = params.get("IsPartition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

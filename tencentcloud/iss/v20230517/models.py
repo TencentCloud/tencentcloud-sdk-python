@@ -2436,6 +2436,10 @@ class AddUserDeviceRequest(AbstractModel):
         :type Username: str
         :param _SNCode: 设备 SN，仅IVCP 协议设备需要
         :type SNCode: str
+        :param _AppName: RTMP推流地址自定义AppName（仅RTMP需要，支持英文、数字组合限制32个字符内）
+        :type AppName: str
+        :param _StreamName: RTMP推流地址自定义StreamName（仅RTMP需要，支持英文、数字组合限制32个字符内）
+        :type StreamName: str
         """
         self._Name = None
         self._AccessProtocol = None
@@ -2451,6 +2455,8 @@ class AddUserDeviceRequest(AbstractModel):
         self._Port = None
         self._Username = None
         self._SNCode = None
+        self._AppName = None
+        self._StreamName = None
 
     @property
     def Name(self):
@@ -2564,6 +2570,22 @@ class AddUserDeviceRequest(AbstractModel):
     def SNCode(self, SNCode):
         self._SNCode = SNCode
 
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -2580,6 +2602,8 @@ class AddUserDeviceRequest(AbstractModel):
         self._Port = params.get("Port")
         self._Username = params.get("Username")
         self._SNCode = params.get("SNCode")
+        self._AppName = params.get("AppName")
+        self._StreamName = params.get("StreamName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4740,8 +4764,11 @@ class DescribeCNAMERequest(AbstractModel):
         r"""
         :param _ClusterId: 服务节点 ID（从查询域名可绑定服务节点接口DescribeDomainRegion中获取）
         :type ClusterId: str
+        :param _DomainType: 域名类型，0:拉流域名 1:推流域名
+        :type DomainType: int
         """
         self._ClusterId = None
+        self._DomainType = None
 
     @property
     def ClusterId(self):
@@ -4751,9 +4778,18 @@ class DescribeCNAMERequest(AbstractModel):
     def ClusterId(self, ClusterId):
         self._ClusterId = ClusterId
 
+    @property
+    def DomainType(self):
+        return self._DomainType
+
+    @DomainType.setter
+    def DomainType(self, DomainType):
+        self._DomainType = DomainType
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
+        self._DomainType = params.get("DomainType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5119,6 +5155,12 @@ class DescribeDeviceData(AbstractModel):
         :param _SubscribeSwitch: 订阅开关（0：关闭；1：开启）默认开启，开启状态下会订阅设备通道变化，仅国标NVR设备有效	
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubscribeSwitch: int
+        :param _AppName: RTMP推流地址自定义appName
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppName: str
+        :param _StreamName: RTMP推流地址自定义streamName
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StreamName: str
         """
         self._DeviceId = None
         self._Code = None
@@ -5148,6 +5190,8 @@ class DescribeDeviceData(AbstractModel):
         self._Manufacturer = None
         self._AudioSwitch = None
         self._SubscribeSwitch = None
+        self._AppName = None
+        self._StreamName = None
 
     @property
     def DeviceId(self):
@@ -5373,6 +5417,22 @@ class DescribeDeviceData(AbstractModel):
     def SubscribeSwitch(self, SubscribeSwitch):
         self._SubscribeSwitch = SubscribeSwitch
 
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
 
     def _deserialize(self, params):
         self._DeviceId = params.get("DeviceId")
@@ -5403,6 +5463,8 @@ class DescribeDeviceData(AbstractModel):
         self._Manufacturer = params.get("Manufacturer")
         self._AudioSwitch = params.get("AudioSwitch")
         self._SubscribeSwitch = params.get("SubscribeSwitch")
+        self._AppName = params.get("AppName")
+        self._StreamName = params.get("StreamName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5674,6 +5736,9 @@ class DescribeDomainData(AbstractModel):
         :param _CertId: 证书ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertId: str
+        :param _DomainType: 域名类型 0:拉流域名 1:推流域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DomainType: int
         """
         self._Id = None
         self._PlayDomain = None
@@ -5683,6 +5748,7 @@ class DescribeDomainData(AbstractModel):
         self._ClusterName = None
         self._AppId = None
         self._CertId = None
+        self._DomainType = None
 
     @property
     def Id(self):
@@ -5748,6 +5814,14 @@ class DescribeDomainData(AbstractModel):
     def CertId(self, CertId):
         self._CertId = CertId
 
+    @property
+    def DomainType(self):
+        return self._DomainType
+
+    @DomainType.setter
+    def DomainType(self, DomainType):
+        self._DomainType = DomainType
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -5758,6 +5832,7 @@ class DescribeDomainData(AbstractModel):
         self._ClusterName = params.get("ClusterName")
         self._AppId = params.get("AppId")
         self._CertId = params.get("CertId")
+        self._DomainType = params.get("DomainType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

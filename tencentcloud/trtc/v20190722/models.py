@@ -172,12 +172,20 @@ class AgentConfig(AbstractModel):
         :param _WelcomeMessage: 机器人的欢迎语
 注意：此字段可能返回 null，表示取不到有效值。
         :type WelcomeMessage: str
+        :param _InterruptMode: 智能打断模式，默认为0，0表示服务端自动打断，1表示服务端不打断，由端上发送打断信令进行打断
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InterruptMode: int
+        :param _InterruptSpeechDuration: InterruptMode为0时使用，单位为毫秒，默认为500ms。表示服务端检测到持续InterruptSpeechDuration毫秒的人声则进行打断。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InterruptSpeechDuration: int
         """
         self._UserId = None
         self._UserSig = None
         self._TargetUserId = None
         self._MaxIdleTime = None
         self._WelcomeMessage = None
+        self._InterruptMode = None
+        self._InterruptSpeechDuration = None
 
     @property
     def UserId(self):
@@ -219,6 +227,22 @@ class AgentConfig(AbstractModel):
     def WelcomeMessage(self, WelcomeMessage):
         self._WelcomeMessage = WelcomeMessage
 
+    @property
+    def InterruptMode(self):
+        return self._InterruptMode
+
+    @InterruptMode.setter
+    def InterruptMode(self, InterruptMode):
+        self._InterruptMode = InterruptMode
+
+    @property
+    def InterruptSpeechDuration(self):
+        return self._InterruptSpeechDuration
+
+    @InterruptSpeechDuration.setter
+    def InterruptSpeechDuration(self, InterruptSpeechDuration):
+        self._InterruptSpeechDuration = InterruptSpeechDuration
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
@@ -226,6 +250,8 @@ class AgentConfig(AbstractModel):
         self._TargetUserId = params.get("TargetUserId")
         self._MaxIdleTime = params.get("MaxIdleTime")
         self._WelcomeMessage = params.get("WelcomeMessage")
+        self._InterruptMode = params.get("InterruptMode")
+        self._InterruptSpeechDuration = params.get("InterruptSpeechDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
