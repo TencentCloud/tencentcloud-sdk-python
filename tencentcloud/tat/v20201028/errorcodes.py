@@ -26,6 +26,9 @@ FAILEDOPERATION_LIGHTHOUSEERROR = 'FailedOperation.LighthouseError'
 # 内部错误。
 INTERNALERROR = 'InternalError'
 
+# 无效的过滤器
+INVALIDFILTER = 'InvalidFilter'
+
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
 
@@ -94,6 +97,12 @@ INVALIDPARAMETERVALUE_INVALIDREGISTERCODEID = 'InvalidParameterValue.InvalidRegi
 
 # 无效的托管实例ID。
 INVALIDPARAMETERVALUE_INVALIDREGISTERINSTANCEID = 'InvalidParameterValue.InvalidRegisterInstanceId'
+
+# 无效的场景 ID。
+INVALIDPARAMETERVALUE_INVALIDSCENEID = 'InvalidParameterValue.InvalidSceneId'
+
+# 无效的场景名称。
+INVALIDPARAMETERVALUE_INVALIDSCENENAME = 'InvalidParameterValue.InvalidSceneName'
 
 # 无效的时间格式。
 INVALIDPARAMETERVALUE_INVALIDTIMEFORMAT = 'InvalidParameterValue.InvalidTimeFormat'

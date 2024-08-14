@@ -1539,6 +1539,7 @@ class DescribeCommandsRequest(AbstractModel):
 <li> command-id - String - 是否必填：否 -（过滤条件）按照命令ID过滤。</li>
 <li> command-name - String - 是否必填：否 -（过滤条件）按照命令名称过滤。</li>
 <li> command-type - String - 是否必填：否 -（过滤条件）按照命令类型过滤，取值为 SHELL 或 POWERSHELL。</li>
+<li> scene-id - String - 是否必填：否 -（过滤条件）按照场景ID过滤。</li>
 <li> created-by - String - 是否必填：否 -（过滤条件）按照命令创建者过滤，取值为 TAT 或 USER，TAT 代表公共命令，USER 代表由用户创建的命令。</li>
 <li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
 <li> tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
@@ -2582,6 +2583,139 @@ class DescribeRegisterInstancesResponse(AbstractModel):
                 obj = RegisterInstanceInfo()
                 obj._deserialize(item)
                 self._RegisterInstanceSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeScenesRequest(AbstractModel):
+    """DescribeScenes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SceneIds: 场景 ID 数组
+        :type SceneIds: list of str
+        :param _Filters: 过滤条件。
+<li> scene-id - String - 是否必填：否 -（过滤条件）按照场景 ID 过滤。</li>
+<li> scene-name - String - 是否必填：否 -（过滤条件）按照场景名称过滤。</li>
+<li> created-by - String - 是否必填：否 -（过滤条件）按照场景创建者过滤，取值为 TAT 或 USER。TAT 代表公共命令，USER 代表由用户创建的命令。</li>
+
+每次请求的 `Filters` 的上限为10， `Filter.Values` 的上限为5。参数不支持同时指定 `SceneIds` 和 `Filters` 。
+        :type Filters: list of Filter
+        :param _Limit: 返回数量，默认为20，最大值为100。关于 `Limit` 的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :type Limit: int
+        :param _Offset: 偏移量，默认为0。关于 `Offset` 的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :type Offset: int
+        """
+        self._SceneIds = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def SceneIds(self):
+        return self._SceneIds
+
+    @SceneIds.setter
+    def SceneIds(self, SceneIds):
+        self._SceneIds = SceneIds
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._SceneIds = params.get("SceneIds")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeScenesResponse(AbstractModel):
+    """DescribeScenes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合条件的场景总数。
+        :type TotalCount: int
+        :param _SceneSet: 场景详情列表。
+        :type SceneSet: list of Scene
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._SceneSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SceneSet(self):
+        return self._SceneSet
+
+    @SceneSet.setter
+    def SceneSet(self, SceneSet):
+        self._SceneSet = SceneSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("SceneSet") is not None:
+            self._SceneSet = []
+            for item in params.get("SceneSet"):
+                obj = Scene()
+                obj._deserialize(item)
+                self._SceneSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -4158,7 +4292,7 @@ class ModifyRegisterInstanceRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例ID。
         :type InstanceId: str
-        :param _InstanceName: 实例名。
+        :param _InstanceName: 实例名称。有效长度为 1～60 字符。
         :type InstanceName: str
         """
         self._InstanceId = None
@@ -4989,6 +5123,92 @@ class RunCommandResponse(AbstractModel):
         self._CommandId = params.get("CommandId")
         self._InvocationId = params.get("InvocationId")
         self._RequestId = params.get("RequestId")
+
+
+class Scene(AbstractModel):
+    """场景详情。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SceneId: 场景 ID 。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SceneId: str
+        :param _SceneName: 场景名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SceneName: str
+        :param _CreatedBy: 场景创建者。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedBy: str
+        :param _CreatedTime: 创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        :param _UpdatedTime: 更新时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedTime: str
+        """
+        self._SceneId = None
+        self._SceneName = None
+        self._CreatedBy = None
+        self._CreatedTime = None
+        self._UpdatedTime = None
+
+    @property
+    def SceneId(self):
+        return self._SceneId
+
+    @SceneId.setter
+    def SceneId(self, SceneId):
+        self._SceneId = SceneId
+
+    @property
+    def SceneName(self):
+        return self._SceneName
+
+    @SceneName.setter
+    def SceneName(self, SceneName):
+        self._SceneName = SceneName
+
+    @property
+    def CreatedBy(self):
+        return self._CreatedBy
+
+    @CreatedBy.setter
+    def CreatedBy(self, CreatedBy):
+        self._CreatedBy = CreatedBy
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def UpdatedTime(self):
+        return self._UpdatedTime
+
+    @UpdatedTime.setter
+    def UpdatedTime(self, UpdatedTime):
+        self._UpdatedTime = UpdatedTime
+
+
+    def _deserialize(self, params):
+        self._SceneId = params.get("SceneId")
+        self._SceneName = params.get("SceneName")
+        self._CreatedBy = params.get("CreatedBy")
+        self._CreatedTime = params.get("CreatedTime")
+        self._UpdatedTime = params.get("UpdatedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ScheduleSettings(AbstractModel):

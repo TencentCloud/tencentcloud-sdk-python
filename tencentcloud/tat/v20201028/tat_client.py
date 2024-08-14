@@ -468,6 +468,29 @@ class TatClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeScenes(self, request):
+        """此接口用于查询场景详情。
+
+        :param request: Request instance for DescribeScenes.
+        :type request: :class:`tencentcloud.tat.v20201028.models.DescribeScenesRequest`
+        :rtype: :class:`tencentcloud.tat.v20201028.models.DescribeScenesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeScenes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeScenesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DisableInvoker(self, request):
         """此接口用于停止执行器。
 

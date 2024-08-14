@@ -268,7 +268,7 @@ BASIC 基础版
 PRO  专业版
 PLATINUM 铂金版
         :type InstanceType: str
-        :param _Name: 实例名称
+        :param _Name: 集群名称
         :type Name: str
         :param _SkuCode: 商品规格，可用规格如下：experiment_500, basic_1k, basic_2k, basic_3k, basic_4k, basic_5k, basic_6k, basic_7k, basic_8k, basic_9k, basic_10k, pro_4k, pro_6k, pro_8k, pro_1w, pro_15k, pro_2w, pro_25k, pro_3w, pro_35k, pro_4w, pro_45k, pro_5w, pro_55k, pro_60k, pro_65k, pro_70k, pro_75k, pro_80k, pro_85k, pro_90k, pro_95k, pro_100k, platinum_1w, platinum_2w, platinum_3w, platinum_4w, platinum_5w, platinum_6w, platinum_7w, platinum_8w, platinum_9w, platinum_10w, platinum_12w, platinum_14w, platinum_16w, platinum_18w, platinum_20w, platinum_25w, platinum_30w, platinum_35w, platinum_40w, platinum_45w, platinum_50w, platinum_60w, platinum_70w, platinum_80w, platinum_90w, platinum_100w
         :type SkuCode: str
@@ -276,21 +276,23 @@ PLATINUM 铂金版
         :type Remark: str
         :param _TagList: 标签列表
         :type TagList: list of Tag
-        :param _VpcList: 实例绑定的VPC信息
+        :param _VpcList: 集群绑定的VPC信息，必填
         :type VpcList: list of VpcInfo
-        :param _EnablePublic: 是否开启公网
+        :param _EnablePublic: 是否开启公网，默认值为false表示不开启
         :type EnablePublic: bool
-        :param _Bandwidth: 公网带宽（单位：兆）
+        :param _BillingFlow: 公网是否按流量计费，默认值为false表示不按流量计费
+        :type BillingFlow: bool
+        :param _Bandwidth: 公网带宽（单位：兆），默认值为0。如果开启公网，该字段必须为大于0的正整数
         :type Bandwidth: int
         :param _IpRules: 公网访问白名单
         :type IpRules: list of IpRule
         :param _MessageRetention: 消息保留时长（单位：小时）
         :type MessageRetention: int
-        :param _PayMode: 付费模式（0: 后付费；1: 预付费）
+        :param _PayMode: 付费模式（0: 后付费；1: 预付费），默认值为0
         :type PayMode: int
-        :param _RenewFlag: 是否自动续费（0: 不自动续费；1: 自动续费）
+        :param _RenewFlag: 是否自动续费（0: 不自动续费；1: 自动续费），默认值为0
         :type RenewFlag: int
-        :param _TimeSpan: 购买时长（单位：月）
+        :param _TimeSpan: 购买时长（单位：月），默认值为1
         :type TimeSpan: int
         :param _MaxTopicNum: 最大可创建主题数
         :type MaxTopicNum: int
@@ -302,6 +304,7 @@ PLATINUM 铂金版
         self._TagList = None
         self._VpcList = None
         self._EnablePublic = None
+        self._BillingFlow = None
         self._Bandwidth = None
         self._IpRules = None
         self._MessageRetention = None
@@ -365,6 +368,14 @@ PLATINUM 铂金版
     @EnablePublic.setter
     def EnablePublic(self, EnablePublic):
         self._EnablePublic = EnablePublic
+
+    @property
+    def BillingFlow(self):
+        return self._BillingFlow
+
+    @BillingFlow.setter
+    def BillingFlow(self, BillingFlow):
+        self._BillingFlow = BillingFlow
 
     @property
     def Bandwidth(self):
@@ -441,6 +452,7 @@ PLATINUM 铂金版
                 obj._deserialize(item)
                 self._VpcList.append(obj)
         self._EnablePublic = params.get("EnablePublic")
+        self._BillingFlow = params.get("BillingFlow")
         self._Bandwidth = params.get("Bandwidth")
         if params.get("IpRules") is not None:
             self._IpRules = []
@@ -8499,12 +8511,28 @@ Failure 失败
 AlreadyExists 已存在
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImportStatus: str
+        :param _NamespaceV4: 4.x的命名空间，出参使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceV4: str
+        :param _GroupNameV4: 4.x的消费组名，出参使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupNameV4: str
+        :param _FullNamespaceV4: 4.x的完整命名空间，出参使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FullNamespaceV4: str
+        :param _ConsumeMessageOrderly: 是否为顺序投递，5.0有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsumeMessageOrderly: bool
         """
         self._GroupName = None
         self._Remark = None
         self._Imported = None
         self._Namespace = None
         self._ImportStatus = None
+        self._NamespaceV4 = None
+        self._GroupNameV4 = None
+        self._FullNamespaceV4 = None
+        self._ConsumeMessageOrderly = None
 
     @property
     def GroupName(self):
@@ -8546,6 +8574,38 @@ AlreadyExists 已存在
     def ImportStatus(self, ImportStatus):
         self._ImportStatus = ImportStatus
 
+    @property
+    def NamespaceV4(self):
+        return self._NamespaceV4
+
+    @NamespaceV4.setter
+    def NamespaceV4(self, NamespaceV4):
+        self._NamespaceV4 = NamespaceV4
+
+    @property
+    def GroupNameV4(self):
+        return self._GroupNameV4
+
+    @GroupNameV4.setter
+    def GroupNameV4(self, GroupNameV4):
+        self._GroupNameV4 = GroupNameV4
+
+    @property
+    def FullNamespaceV4(self):
+        return self._FullNamespaceV4
+
+    @FullNamespaceV4.setter
+    def FullNamespaceV4(self, FullNamespaceV4):
+        self._FullNamespaceV4 = FullNamespaceV4
+
+    @property
+    def ConsumeMessageOrderly(self):
+        return self._ConsumeMessageOrderly
+
+    @ConsumeMessageOrderly.setter
+    def ConsumeMessageOrderly(self, ConsumeMessageOrderly):
+        self._ConsumeMessageOrderly = ConsumeMessageOrderly
+
 
     def _deserialize(self, params):
         self._GroupName = params.get("GroupName")
@@ -8553,6 +8613,10 @@ AlreadyExists 已存在
         self._Imported = params.get("Imported")
         self._Namespace = params.get("Namespace")
         self._ImportStatus = params.get("ImportStatus")
+        self._NamespaceV4 = params.get("NamespaceV4")
+        self._GroupNameV4 = params.get("GroupNameV4")
+        self._FullNamespaceV4 = params.get("FullNamespaceV4")
+        self._ConsumeMessageOrderly = params.get("ConsumeMessageOrderly")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

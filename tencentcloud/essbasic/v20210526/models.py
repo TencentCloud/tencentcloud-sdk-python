@@ -9618,6 +9618,140 @@ class ComponentLimit(AbstractModel):
         
 
 
+class CreateBatchInitOrganizationUrlRequest(AbstractModel):
+    """CreateBatchInitOrganizationUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 应用相关信息。 此接口Agent.AppId 必填。
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _OperateTypes: 初始化操作类型
+<ul><li>CREATE_SEAL : 创建印章</li>
+<li>OPEN_AUTO_SIGN :开通企业自动签署</li></ul>
+        :type OperateTypes: list of str
+        :param _ProxyOrganizationOpenIds: 批量操作的企业列表在第三方平台的企业Id列表，即ProxyOrganizationOpenId列表,最大支持50个
+        :type ProxyOrganizationOpenIds: list of str
+        """
+        self._Agent = None
+        self._OperateTypes = None
+        self._ProxyOrganizationOpenIds = None
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def OperateTypes(self):
+        return self._OperateTypes
+
+    @OperateTypes.setter
+    def OperateTypes(self, OperateTypes):
+        self._OperateTypes = OperateTypes
+
+    @property
+    def ProxyOrganizationOpenIds(self):
+        return self._ProxyOrganizationOpenIds
+
+    @ProxyOrganizationOpenIds.setter
+    def ProxyOrganizationOpenIds(self, ProxyOrganizationOpenIds):
+        self._ProxyOrganizationOpenIds = ProxyOrganizationOpenIds
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._OperateTypes = params.get("OperateTypes")
+        self._ProxyOrganizationOpenIds = params.get("ProxyOrganizationOpenIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBatchInitOrganizationUrlResponse(AbstractModel):
+    """CreateBatchInitOrganizationUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MiniAppPath: 小程序路径
+        :type MiniAppPath: str
+        :param _OperateLongUrl: 操作长链
+        :type OperateLongUrl: str
+        :param _OperateShortUrl: 操作短链
+        :type OperateShortUrl: str
+        :param _QRCodeUrl: 操作二维码
+        :type QRCodeUrl: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MiniAppPath = None
+        self._OperateLongUrl = None
+        self._OperateShortUrl = None
+        self._QRCodeUrl = None
+        self._RequestId = None
+
+    @property
+    def MiniAppPath(self):
+        return self._MiniAppPath
+
+    @MiniAppPath.setter
+    def MiniAppPath(self, MiniAppPath):
+        self._MiniAppPath = MiniAppPath
+
+    @property
+    def OperateLongUrl(self):
+        return self._OperateLongUrl
+
+    @OperateLongUrl.setter
+    def OperateLongUrl(self, OperateLongUrl):
+        self._OperateLongUrl = OperateLongUrl
+
+    @property
+    def OperateShortUrl(self):
+        return self._OperateShortUrl
+
+    @OperateShortUrl.setter
+    def OperateShortUrl(self, OperateShortUrl):
+        self._OperateShortUrl = OperateShortUrl
+
+    @property
+    def QRCodeUrl(self):
+        return self._QRCodeUrl
+
+    @QRCodeUrl.setter
+    def QRCodeUrl(self, QRCodeUrl):
+        self._QRCodeUrl = QRCodeUrl
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._MiniAppPath = params.get("MiniAppPath")
+        self._OperateLongUrl = params.get("OperateLongUrl")
+        self._OperateShortUrl = params.get("OperateShortUrl")
+        self._QRCodeUrl = params.get("QRCodeUrl")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateBatchOrganizationRegistrationTasksRequest(AbstractModel):
     """CreateBatchOrganizationRegistrationTasks请求参数结构体
 

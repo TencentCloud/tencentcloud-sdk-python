@@ -2093,12 +2093,15 @@ class CreateServerlessSpaceV2Request(AbstractModel):
         :type KibanaWhiteIpList: list of str
         :param _ZoneId: 空间id
         :type ZoneId: int
+        :param _TagList: 标签信息
+        :type TagList: list of TagInfo
         """
         self._VpcInfo = None
         self._SpaceName = None
         self._Zone = None
         self._KibanaWhiteIpList = None
         self._ZoneId = None
+        self._TagList = None
 
     @property
     def VpcInfo(self):
@@ -2140,6 +2143,14 @@ class CreateServerlessSpaceV2Request(AbstractModel):
     def ZoneId(self, ZoneId):
         self._ZoneId = ZoneId
 
+    @property
+    def TagList(self):
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
 
     def _deserialize(self, params):
         if params.get("VpcInfo") is not None:
@@ -2152,6 +2163,12 @@ class CreateServerlessSpaceV2Request(AbstractModel):
         self._Zone = params.get("Zone")
         self._KibanaWhiteIpList = params.get("KibanaWhiteIpList")
         self._ZoneId = params.get("ZoneId")
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._TagList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4706,12 +4723,15 @@ class DescribeServerlessMetricsRequest(AbstractModel):
         :type SpaceId: str
         :param _IndexId: index索引id
         :type IndexId: str
-        :param _MetricType: 指标类型，暂时只支持Storage
+        :param _MetricType: 指标类型，暂时只支持Storage(存储大小),AllMetric(所有存储指标：索引流量、存储大小、文档数量、读请求和写请求)
         :type MetricType: list of str
+        :param _DurationType: 时间长度类型DurationType(1: 3小时, 2: 昨天1天,3: 今日0点到现在)
+        :type DurationType: int
         """
         self._SpaceId = None
         self._IndexId = None
         self._MetricType = None
+        self._DurationType = None
 
     @property
     def SpaceId(self):
@@ -4737,11 +4757,20 @@ class DescribeServerlessMetricsRequest(AbstractModel):
     def MetricType(self, MetricType):
         self._MetricType = MetricType
 
+    @property
+    def DurationType(self):
+        return self._DurationType
+
+    @DurationType.setter
+    def DurationType(self, DurationType):
+        self._DurationType = DurationType
+
 
     def _deserialize(self, params):
         self._SpaceId = params.get("SpaceId")
         self._IndexId = params.get("IndexId")
         self._MetricType = params.get("MetricType")
+        self._DurationType = params.get("DurationType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4761,10 +4790,22 @@ class DescribeServerlessMetricsResponse(AbstractModel):
         r"""
         :param _Storage: storage指标值，单位byte
         :type Storage: float
+        :param _IndexTraffic: IndexTraffic指标值，单位byte
+        :type IndexTraffic: float
+        :param _ReadReqTimes: 读请求数，单位次数
+        :type ReadReqTimes: int
+        :param _WriteReqTimes: 写请求数，单位次数
+        :type WriteReqTimes: int
+        :param _DocCount: 文档数量，单位个数
+        :type DocCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Storage = None
+        self._IndexTraffic = None
+        self._ReadReqTimes = None
+        self._WriteReqTimes = None
+        self._DocCount = None
         self._RequestId = None
 
     @property
@@ -4774,6 +4815,38 @@ class DescribeServerlessMetricsResponse(AbstractModel):
     @Storage.setter
     def Storage(self, Storage):
         self._Storage = Storage
+
+    @property
+    def IndexTraffic(self):
+        return self._IndexTraffic
+
+    @IndexTraffic.setter
+    def IndexTraffic(self, IndexTraffic):
+        self._IndexTraffic = IndexTraffic
+
+    @property
+    def ReadReqTimes(self):
+        return self._ReadReqTimes
+
+    @ReadReqTimes.setter
+    def ReadReqTimes(self, ReadReqTimes):
+        self._ReadReqTimes = ReadReqTimes
+
+    @property
+    def WriteReqTimes(self):
+        return self._WriteReqTimes
+
+    @WriteReqTimes.setter
+    def WriteReqTimes(self, WriteReqTimes):
+        self._WriteReqTimes = WriteReqTimes
+
+    @property
+    def DocCount(self):
+        return self._DocCount
+
+    @DocCount.setter
+    def DocCount(self, DocCount):
+        self._DocCount = DocCount
 
     @property
     def RequestId(self):
@@ -4786,6 +4859,10 @@ class DescribeServerlessMetricsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Storage = params.get("Storage")
+        self._IndexTraffic = params.get("IndexTraffic")
+        self._ReadReqTimes = params.get("ReadReqTimes")
+        self._WriteReqTimes = params.get("WriteReqTimes")
+        self._DocCount = params.get("DocCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -4957,6 +5034,8 @@ class DescribeServerlessSpacesRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 分页条数
         :type Limit: int
+        :param _TagList: 标签信息
+        :type TagList: list of TagInfo
         """
         self._SpaceIds = None
         self._SpaceNames = None
@@ -4965,6 +5044,7 @@ class DescribeServerlessSpacesRequest(AbstractModel):
         self._VpcIds = None
         self._Offset = None
         self._Limit = None
+        self._TagList = None
 
     @property
     def SpaceIds(self):
@@ -5022,6 +5102,14 @@ class DescribeServerlessSpacesRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def TagList(self):
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
 
     def _deserialize(self, params):
         self._SpaceIds = params.get("SpaceIds")
@@ -5031,6 +5119,12 @@ class DescribeServerlessSpacesRequest(AbstractModel):
         self._VpcIds = params.get("VpcIds")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._TagList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12057,6 +12151,9 @@ class ServerlessIndexMetaField(AbstractModel):
         :type StorageType: int
         :param _TagList: 标签信息
         :type TagList: list of TagInfo
+        :param _IndexTraffic: 3782478.47
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexTraffic: float
         """
         self._AppId = None
         self._IndexName = None
@@ -12075,6 +12172,7 @@ class ServerlessIndexMetaField(AbstractModel):
         self._SpaceName = None
         self._StorageType = None
         self._TagList = None
+        self._IndexTraffic = None
 
     @property
     def AppId(self):
@@ -12212,6 +12310,14 @@ class ServerlessIndexMetaField(AbstractModel):
     def TagList(self, TagList):
         self._TagList = TagList
 
+    @property
+    def IndexTraffic(self):
+        return self._IndexTraffic
+
+    @IndexTraffic.setter
+    def IndexTraffic(self, IndexTraffic):
+        self._IndexTraffic = IndexTraffic
+
 
     def _deserialize(self, params):
         self._AppId = params.get("AppId")
@@ -12242,6 +12348,7 @@ class ServerlessIndexMetaField(AbstractModel):
                 obj = TagInfo()
                 obj._deserialize(item)
                 self._TagList.append(obj)
+        self._IndexTraffic = params.get("IndexTraffic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12517,6 +12624,9 @@ class ServerlessSpace(AbstractModel):
         :param _ClusterType: 0
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterType: int
+        :param _TagList: key:value
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagList: list of TagInfo
         """
         self._SpaceId = None
         self._SpaceName = None
@@ -12537,6 +12647,7 @@ class ServerlessSpace(AbstractModel):
         self._AppId = None
         self._KibanaLanguage = None
         self._ClusterType = None
+        self._TagList = None
 
     @property
     def SpaceId(self):
@@ -12690,6 +12801,14 @@ class ServerlessSpace(AbstractModel):
     def ClusterType(self, ClusterType):
         self._ClusterType = ClusterType
 
+    @property
+    def TagList(self):
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
 
     def _deserialize(self, params):
         self._SpaceId = params.get("SpaceId")
@@ -12720,6 +12839,12 @@ class ServerlessSpace(AbstractModel):
         self._AppId = params.get("AppId")
         self._KibanaLanguage = params.get("KibanaLanguage")
         self._ClusterType = params.get("ClusterType")
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._TagList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

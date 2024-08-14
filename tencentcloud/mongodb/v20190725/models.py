@@ -5219,8 +5219,8 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
         r"""
         :param _Zone: 实例所属区域及可用区信息。格式：ap-guangzhou-2。
         :type Zone: str
-        :param _NodeNum: 每个分片的主从节点数量。
-取值范围：请通过接口[DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567)查询，其返回的数据结构SpecItems中的参数MinNodeNum与MaxNodeNum分别对应其最小值与最大值。
+        :param _NodeNum: - 创建副本集实例，指每个副本集内主从节点数量。每个副本集所支持的的最大节点数与最小节点数，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
+- 创建分片集群实例，指每个分片的主从节点数量。每个分片所支持的最大节点数与最小节点数，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
         :type NodeNum: int
         :param _Memory: 实例内存大小。
 - 单位：GB。
@@ -5231,48 +5231,44 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
 - 取值范围：请通过接口[DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567)查询，其返回的数据结构SpecItems中的参数MinStorage与MaxStorage分别对应其最小磁盘规格与最大磁盘规格。
         :type Volume: int
         :param _MongoVersion: 实例版本信息。具体支持的版本，请通过接口[DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567)查询，其返回的数据结构SpecItems中的参数MongoVersionCode为实例所支持的版本信息。版本信息与版本号对应关系如下：
-- MONGO_3_WT：MongoDB 3.2 WiredTiger存储引擎版本。
-- MONGO_3_ROCKS：MongoDB 3.2 RocksDB存储引擎版本。
 - MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本。
 - MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。
 - MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
 - MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
 - MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
+- MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
         :type MongoVersion: str
-        :param _MachineCode: 机器类型。
-- HIO：高IO型。
-- HIO10G：高IO万兆型。
+        :param _MachineCode: 产品规格类型。
+- HIO10G：通用高HIO万兆型。
+- HCD：云盘版。
         :type MachineCode: str
         :param _GoodsNum: 实例数量，取值范围为[1,10]。
         :type GoodsNum: int
         :param _ClusterType: 实例类型。
 - REPLSET：副本集。
 - SHARD：分片集群。
-- STANDALONE：单节点。
         :type ClusterType: str
-        :param _ReplicateSetNum: 副本集个数。
-- 创建副本集实例时，该参数固定设置为1。
-- 创建分片集群时，指分片数量，请通过接口[DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567)查询，其返回的数据结构SpecItems中的参数MinReplicateSetNum与MaxReplicateSetNum分别对应其最小值与最大值。
-- 若为单节点实例，该参数固定设置为0。
+        :param _ReplicateSetNum: - 创建副本集实例，指副本集数量，该参数只能为1。
+- 创建分片集群实例，指分片的数量。请通过接口[DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567)查询分片数量的取值范围，其返回的数据结构SpecItems中的参数MinReplicateSetNum与MaxReplicateSetNum分别对应其最小值与最大值。
         :type ReplicateSetNum: int
-        :param _Period: - 选择包年包月计费模式，即 <b>InstanceChargeType </b>设定为<b>PREPAID</b>时，需设定购买实例的时长。该参数取值可选：[1,2,3,4,5,6,7,8,9,10,11,12,24,36]；单位：月。
+        :param _Period: - 选择包年包月计费模式，即 <b>InstanceChargeType </b>设定为<b>PREPAID</b>时，必须设置该参数，指定购买实例的购买时长。取值可选：[1,2,3,4,5,6,7,8,9,10,11,12,24,36]；单位：月。
 -选择按量计费，即 <b>InstanceChargeType</b> 设定为 **POSTPAID_BY_HOUR** 时，该参数仅可配置为 1。
         :type Period: int
         :param _InstanceChargeType: 实例付费方式。
 - PREPAID：包年包月计费。
 - POSTPAID_BY_HOUR：按量计费。
         :type InstanceChargeType: str
-        :param _MongosCpu: 分片实例询价必填参数，指 Mongos CPU核数，取值范围为[1,16]。
+        :param _MongosCpu: Mongos CPU 核数，支持1、2、4、8、16。购买分片集群时，必须填写。注意为空时取默认取值为2C。
         :type MongosCpu: int
-        :param _MongosMemory: 分片实例询价必填参数，指 Mongos 内存，取值范围为[2,32]，单位：GB。
+        :param _MongosMemory: Mongos 内存大小。-  购买分片集群时，必须填写。- 单位：GB，支持1核2GB、2核4GB、4核8GB、8核16GB、16核32GB。注意为空时取默认取值为4G。
         :type MongosMemory: int
-        :param _MongosNum: 分片实例询价必填参数，指 Mongos 个数，取值范围为[3,32]。
+        :param _MongosNum: 指 Mongos 个数，取值范围为[3,32]。若为分片集群实例询价，则该参数必须设置。注意为空时取默认取值为3个节点。
         :type MongosNum: int
-        :param _ConfigServerCpu: 分片实例询价必填参数，指 ConfigServer CPU核数，取值为1，单位：GB。
+        :param _ConfigServerCpu: 指 ConfigServer CPU核数，取值为1，单位：GB。若为分片集群实例询价，该参数必须设置。
         :type ConfigServerCpu: int
-        :param _ConfigServerMemory: 分片实例询价必填参数，指 ConfigServer 内存大小，取值为2，单位：GB。
+        :param _ConfigServerMemory: 指 ConfigServer 内存大小，取值为2，单位：GB。若为分片集群实例询价，则该参数必须设置。
         :type ConfigServerMemory: int
-        :param _ConfigServerVolume: 分片实例询价必填参数，指 ConfigServer 磁盘大小，取值为 20，单位：GB。
+        :param _ConfigServerVolume: 指 ConfigServer 磁盘大小，取值为 20，单位：GB。若为分片集群实例询价，则该参数必须设置。
         :type ConfigServerVolume: int
         """
         self._Zone = None
@@ -9478,47 +9474,70 @@ class SpecItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SpecCode: 规格信息标识
+        :param _SpecCode: 规格信息标识。格式如：mongo.HIO10G.128g。由节点类型、规格类型、内存规格三部分组成。
+- 节点类型，如下所示。
+  - mongo：Mongod 节点。
+ - mongos：Mongos 节点。
+ - cfgstr：Configserver 节点。
+- 规格类型，如下所示。
+ - HIO10G：通用高HIO万兆型。
+ - HCD：云盘版类型。
+- 内存规格，如下所示：
+ - 支持4、8、16、32、64、128、240、512。
+ - 单位g：表示GB。128g则表示128GB。
         :type SpecCode: str
-        :param _Status: 规格有效标志，取值：0-停止售卖，1-开放售卖
+        :param _Status: 售卖规格有效标志，取值范围如下：
+- 0：停止售卖，
+- 1：开放售卖。
         :type Status: int
-        :param _Cpu: 计算资源规格，单位为CPU核心数
+        :param _Cpu: 计算资源规格，CPU核数。
         :type Cpu: int
-        :param _Memory: 内存规格，单位为MB
+        :param _Memory: 内存规格，单位为：MB。
         :type Memory: int
-        :param _DefaultStorage: 默认磁盘规格，单位MB
+        :param _DefaultStorage: 默认磁盘规格，单位为：MB。
         :type DefaultStorage: int
-        :param _MaxStorage: 最大磁盘规格，单位MB
+        :param _MaxStorage: 最大磁盘规格，单位为：MB。
         :type MaxStorage: int
-        :param _MinStorage: 最小磁盘规格，单位MB
+        :param _MinStorage: 最小磁盘规格，单位为：MB。
         :type MinStorage: int
-        :param _Qps: 可承载qps信息
+        :param _Qps: 指每秒最大请求次数，单位为：次/秒。
         :type Qps: int
-        :param _Conns: 连接数限制
+        :param _Conns: 规格所支持的最大连接数限制。
         :type Conns: int
-        :param _MongoVersionCode: 实例mongodb版本信息
+        :param _MongoVersionCode: 实例存储引擎版本信息。
+- MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本。
+- MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。
+- MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
+- MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
+- MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。
+- MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。
         :type MongoVersionCode: str
-        :param _MongoVersionValue: 实例mongodb版本号
+        :param _MongoVersionValue: 实例版本对应的数字版本。
         :type MongoVersionValue: int
-        :param _Version: 实例mongodb版本号（短）
+        :param _Version: 实例版本信息。支持：3.6、4.2、4.4、5.0、6.0。
+
         :type Version: str
-        :param _EngineName: 存储引擎
+        :param _EngineName: 存储引擎。
         :type EngineName: str
-        :param _ClusterType: 集群类型，取值：1-分片集群，0-副本集集群
+        :param _ClusterType: 集群类型，取值如下：
+- 1：分片集群。
+- 0：副本集集群。
         :type ClusterType: int
-        :param _MinNodeNum: 最小副本集从节点数
+        :param _MinNodeNum: 每个副本集最小节点数。
         :type MinNodeNum: int
-        :param _MaxNodeNum: 最大副本集从节点数
+        :param _MaxNodeNum: 每个副本集最大节点数。
         :type MaxNodeNum: int
-        :param _MinReplicateSetNum: 最小分片数
+        :param _MinReplicateSetNum: 最小分片数。
         :type MinReplicateSetNum: int
-        :param _MaxReplicateSetNum: 最大分片数
+        :param _MaxReplicateSetNum: 最大分片数。
         :type MaxReplicateSetNum: int
-        :param _MinReplicateSetNodeNum: 最小分片从节点数
+        :param _MinReplicateSetNodeNum: 每个分片最小节点数。
         :type MinReplicateSetNodeNum: int
-        :param _MaxReplicateSetNodeNum: 最大分片从节点数
+        :param _MaxReplicateSetNodeNum: 每个分片最大节点数。
         :type MaxReplicateSetNodeNum: int
-        :param _MachineType: 机器类型，取值：0-HIO，4-HIO10G
+        :param _MachineType: 集群的规格类型，取值范围如下：
+- HIO10G：通用高HIO万兆型。
+- HCD：云盘版类型。
         :type MachineType: str
         """
         self._SpecCode = None

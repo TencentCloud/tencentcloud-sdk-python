@@ -21896,9 +21896,41 @@ class UsageDetails(AbstractModel):
         :param _SubProductName: 商品细节
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubProductName: str
+        :param _ProductCode: 产品码	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductCode: str
+        :param _SubProductCode: 子产品码	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubProductCode: str
+        :param _BillingItemCode: 计费项码	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillingItemCode: str
+        :param _SubBillingItemCode: 计费细项码	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubBillingItemCode: str
+        :param _ProductEnName: 产品英文名	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductEnName: str
+        :param _SubProductEnName: 子产品英文名	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubProductEnName: str
+        :param _CalcUnit: 结算周期	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CalcUnit: str
+        :param _Action: payMode为prepay 且 payScene为common的情况下存在
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Action: str
         """
         self._ProductName = None
         self._SubProductName = None
+        self._ProductCode = None
+        self._SubProductCode = None
+        self._BillingItemCode = None
+        self._SubBillingItemCode = None
+        self._ProductEnName = None
+        self._SubProductEnName = None
+        self._CalcUnit = None
+        self._Action = None
 
     @property
     def ProductName(self):
@@ -21916,10 +21948,82 @@ class UsageDetails(AbstractModel):
     def SubProductName(self, SubProductName):
         self._SubProductName = SubProductName
 
+    @property
+    def ProductCode(self):
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def SubProductCode(self):
+        return self._SubProductCode
+
+    @SubProductCode.setter
+    def SubProductCode(self, SubProductCode):
+        self._SubProductCode = SubProductCode
+
+    @property
+    def BillingItemCode(self):
+        return self._BillingItemCode
+
+    @BillingItemCode.setter
+    def BillingItemCode(self, BillingItemCode):
+        self._BillingItemCode = BillingItemCode
+
+    @property
+    def SubBillingItemCode(self):
+        return self._SubBillingItemCode
+
+    @SubBillingItemCode.setter
+    def SubBillingItemCode(self, SubBillingItemCode):
+        self._SubBillingItemCode = SubBillingItemCode
+
+    @property
+    def ProductEnName(self):
+        return self._ProductEnName
+
+    @ProductEnName.setter
+    def ProductEnName(self, ProductEnName):
+        self._ProductEnName = ProductEnName
+
+    @property
+    def SubProductEnName(self):
+        return self._SubProductEnName
+
+    @SubProductEnName.setter
+    def SubProductEnName(self, SubProductEnName):
+        self._SubProductEnName = SubProductEnName
+
+    @property
+    def CalcUnit(self):
+        return self._CalcUnit
+
+    @CalcUnit.setter
+    def CalcUnit(self, CalcUnit):
+        self._CalcUnit = CalcUnit
+
+    @property
+    def Action(self):
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
 
     def _deserialize(self, params):
         self._ProductName = params.get("ProductName")
         self._SubProductName = params.get("SubProductName")
+        self._ProductCode = params.get("ProductCode")
+        self._SubProductCode = params.get("SubProductCode")
+        self._BillingItemCode = params.get("BillingItemCode")
+        self._SubBillingItemCode = params.get("SubBillingItemCode")
+        self._ProductEnName = params.get("ProductEnName")
+        self._SubProductEnName = params.get("SubProductEnName")
+        self._CalcUnit = params.get("CalcUnit")
+        self._Action = params.get("Action")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21944,10 +22048,25 @@ class UsageRecords(AbstractModel):
         :param _UsageDetails: 使用记录细节
 注意：此字段可能返回 null，表示取不到有效值。
         :type UsageDetails: list of UsageDetails
+        :param _PayMode: 付费模式
+        :type PayMode: str
+        :param _VoucherId: 查询的券id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VoucherId: str
+        :param _PayScene: 交易场景：（adjust：调账、common：正常交易场景）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayScene: str
+        :param _SeqId: 唯一id,对应交易:预付费的dealName,调账/后付费的outTradeNo
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SeqId: str
         """
         self._UsedAmount = None
         self._UsedTime = None
         self._UsageDetails = None
+        self._PayMode = None
+        self._VoucherId = None
+        self._PayScene = None
+        self._SeqId = None
 
     @property
     def UsedAmount(self):
@@ -21973,6 +22092,38 @@ class UsageRecords(AbstractModel):
     def UsageDetails(self, UsageDetails):
         self._UsageDetails = UsageDetails
 
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def VoucherId(self):
+        return self._VoucherId
+
+    @VoucherId.setter
+    def VoucherId(self, VoucherId):
+        self._VoucherId = VoucherId
+
+    @property
+    def PayScene(self):
+        return self._PayScene
+
+    @PayScene.setter
+    def PayScene(self, PayScene):
+        self._PayScene = PayScene
+
+    @property
+    def SeqId(self):
+        return self._SeqId
+
+    @SeqId.setter
+    def SeqId(self, SeqId):
+        self._SeqId = SeqId
+
 
     def _deserialize(self, params):
         self._UsedAmount = params.get("UsedAmount")
@@ -21983,6 +22134,10 @@ class UsageRecords(AbstractModel):
                 obj = UsageDetails()
                 obj._deserialize(item)
                 self._UsageDetails.append(obj)
+        self._PayMode = params.get("PayMode")
+        self._VoucherId = params.get("VoucherId")
+        self._PayScene = params.get("PayScene")
+        self._SeqId = params.get("SeqId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

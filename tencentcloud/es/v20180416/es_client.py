@@ -603,6 +603,7 @@ class EsClient(AbstractClient):
 
     def DescribeServerlessMetrics(self, request):
         """获取serverless实例对应指标，获取space维度时不需要传入indexid，获取index时不需要传入spaceid
+        获取一段时间时间范围内的指标数据
 
         :param request: Request instance for DescribeServerlessMetrics.
         :type request: :class:`tencentcloud.es.v20180416.models.DescribeServerlessMetricsRequest`
