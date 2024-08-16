@@ -5128,6 +5128,9 @@ class TemplateGroupAction(AbstractModel):
         :param _ActionType: 动作类型：平台和自定义
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActionType: str
+        :param _ActionRisk: 动作风险等级，1:低风险 2:中风险 3:高风险
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActionRisk: str
         """
         self._TemplateGroupActionId = None
         self._ActionId = None
@@ -5143,6 +5146,7 @@ class TemplateGroupAction(AbstractModel):
         self._ActionApiType = None
         self._ActionAttribute = None
         self._ActionType = None
+        self._ActionRisk = None
 
     @property
     def TemplateGroupActionId(self):
@@ -5256,6 +5260,14 @@ class TemplateGroupAction(AbstractModel):
     def ActionType(self, ActionType):
         self._ActionType = ActionType
 
+    @property
+    def ActionRisk(self):
+        return self._ActionRisk
+
+    @ActionRisk.setter
+    def ActionRisk(self, ActionRisk):
+        self._ActionRisk = ActionRisk
+
 
     def _deserialize(self, params):
         self._TemplateGroupActionId = params.get("TemplateGroupActionId")
@@ -5272,6 +5284,7 @@ class TemplateGroupAction(AbstractModel):
         self._ActionApiType = params.get("ActionApiType")
         self._ActionAttribute = params.get("ActionAttribute")
         self._ActionType = params.get("ActionType")
+        self._ActionRisk = params.get("ActionRisk")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

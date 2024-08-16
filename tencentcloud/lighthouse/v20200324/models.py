@@ -6091,11 +6091,21 @@ class DescribeInstancesRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
         :type Limit: int
+        :param _OrderField: 指定排序字段 。取值范围： "EXPIRED_TIME"：依据实例的到期时间排序。 
+ 不传入此字段时, 优先返回实例状态为“待回收”的实例, 其余实例以“创建时间”倒序返回。
+        :type OrderField: str
+        :param _Order: 输出实例列表的排列顺序。取值范围：
+"ASC"：升序排列。
+"DESC"：降序排列。
+默认按升序排序。当传入该字段时，必须指定OrderField。
+        :type Order: str
         """
         self._InstanceIds = None
         self._Filters = None
         self._Offset = None
         self._Limit = None
+        self._OrderField = None
+        self._Order = None
 
     @property
     def InstanceIds(self):
@@ -6129,6 +6139,22 @@ class DescribeInstancesRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def OrderField(self):
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
 
     def _deserialize(self, params):
         self._InstanceIds = params.get("InstanceIds")
@@ -6140,6 +6166,8 @@ class DescribeInstancesRequest(AbstractModel):
                 self._Filters.append(obj)
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._OrderField = params.get("OrderField")
+        self._Order = params.get("Order")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

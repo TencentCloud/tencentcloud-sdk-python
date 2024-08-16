@@ -13281,11 +13281,15 @@ class CanFixVulInfo(AbstractModel):
         :param _FixTag: 修复提示tag
 注意：此字段可能返回 null，表示取不到有效值。
         :type FixTag: list of str
+        :param _VulCategory: 漏洞分类1 web cms漏洞,2应用漏洞,4linux软件漏洞,5windows系统漏洞
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VulCategory: int
         """
         self._VulId = None
         self._VulName = None
         self._HostList = None
         self._FixTag = None
+        self._VulCategory = None
 
     @property
     def VulId(self):
@@ -13319,6 +13323,14 @@ class CanFixVulInfo(AbstractModel):
     def FixTag(self, FixTag):
         self._FixTag = FixTag
 
+    @property
+    def VulCategory(self):
+        return self._VulCategory
+
+    @VulCategory.setter
+    def VulCategory(self, VulCategory):
+        self._VulCategory = VulCategory
+
 
     def _deserialize(self, params):
         self._VulId = params.get("VulId")
@@ -13330,6 +13342,7 @@ class CanFixVulInfo(AbstractModel):
                 obj._deserialize(item)
                 self._HostList.append(obj)
         self._FixTag = params.get("FixTag")
+        self._VulCategory = params.get("VulCategory")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16281,9 +16294,12 @@ class CreateVulFixTaskQuuids(AbstractModel):
         :type VulId: int
         :param _Quuids: 需要修复漏洞的主机，所有主机必须有VulId的这个漏洞且是待修复状态。
         :type Quuids: list of str
+        :param _FixMethod: 修复方式 0组件更新或者安装补丁,1禁用服务
+        :type FixMethod: int
         """
         self._VulId = None
         self._Quuids = None
+        self._FixMethod = None
 
     @property
     def VulId(self):
@@ -16301,10 +16317,19 @@ class CreateVulFixTaskQuuids(AbstractModel):
     def Quuids(self, Quuids):
         self._Quuids = Quuids
 
+    @property
+    def FixMethod(self):
+        return self._FixMethod
+
+    @FixMethod.setter
+    def FixMethod(self, FixMethod):
+        self._FixMethod = FixMethod
+
 
     def _deserialize(self, params):
         self._VulId = params.get("VulId")
         self._Quuids = params.get("Quuids")
+        self._FixMethod = params.get("FixMethod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -88205,6 +88230,9 @@ class VulFixStatusInfo(AbstractModel):
         :param _FixSuccessCnt: 修复成功的数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type FixSuccessCnt: int
+        :param _FixMethod: 修复方式 0组件更新或者安装补丁,1禁用服务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FixMethod: int
         """
         self._VulId = None
         self._VulName = None
@@ -88212,6 +88240,7 @@ class VulFixStatusInfo(AbstractModel):
         self._HostList = None
         self._FailCnt = None
         self._FixSuccessCnt = None
+        self._FixMethod = None
 
     @property
     def VulId(self):
@@ -88261,6 +88290,14 @@ class VulFixStatusInfo(AbstractModel):
     def FixSuccessCnt(self, FixSuccessCnt):
         self._FixSuccessCnt = FixSuccessCnt
 
+    @property
+    def FixMethod(self):
+        return self._FixMethod
+
+    @FixMethod.setter
+    def FixMethod(self, FixMethod):
+        self._FixMethod = FixMethod
+
 
     def _deserialize(self, params):
         self._VulId = params.get("VulId")
@@ -88274,6 +88311,7 @@ class VulFixStatusInfo(AbstractModel):
                 self._HostList.append(obj)
         self._FailCnt = params.get("FailCnt")
         self._FixSuccessCnt = params.get("FixSuccessCnt")
+        self._FixMethod = params.get("FixMethod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

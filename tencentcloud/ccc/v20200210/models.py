@@ -8003,6 +8003,8 @@ class ModifyStaffRequest(AbstractModel):
         :type Phone: str
         :param _Nick: 座席昵称
         :type Nick: str
+        :param _StaffNo: 座席工号
+        :type StaffNo: str
         :param _SkillGroupIds: 绑定技能组ID列表
         :type SkillGroupIds: list of int
         :param _UseMobileCallOut: 是否开启手机外呼开关
@@ -8015,6 +8017,7 @@ class ModifyStaffRequest(AbstractModel):
         self._Name = None
         self._Phone = None
         self._Nick = None
+        self._StaffNo = None
         self._SkillGroupIds = None
         self._UseMobileCallOut = None
         self._UseMobileAccept = None
@@ -8060,6 +8063,14 @@ class ModifyStaffRequest(AbstractModel):
         self._Nick = Nick
 
     @property
+    def StaffNo(self):
+        return self._StaffNo
+
+    @StaffNo.setter
+    def StaffNo(self, StaffNo):
+        self._StaffNo = StaffNo
+
+    @property
     def SkillGroupIds(self):
         return self._SkillGroupIds
 
@@ -8090,6 +8101,7 @@ class ModifyStaffRequest(AbstractModel):
         self._Name = params.get("Name")
         self._Phone = params.get("Phone")
         self._Nick = params.get("Nick")
+        self._StaffNo = params.get("StaffNo")
         self._SkillGroupIds = params.get("SkillGroupIds")
         self._UseMobileCallOut = params.get("UseMobileCallOut")
         self._UseMobileAccept = params.get("UseMobileAccept")

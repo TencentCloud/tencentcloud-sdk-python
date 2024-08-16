@@ -65,7 +65,7 @@ lo（老挝语）：zh（简体中文）、zh-HK（繁体中文）、 zh-TW（�
         :type DocumentType: str
         :param _SourceType: 数据来源，0：url，1：直接传文件编码后数据
         :type SourceType: int
-        :param _Url: 需要翻译文件url，文件限制如下：docx/xIsx/html/markdown文件不超过800万字符，doc/pdf/pptx文件不超过300页，txt/po文件不超过10MB，pdf/docx/pptx/xlsx不超过40MB
+        :param _Url: 需要翻译文件url，长度不超过256字符。文件限制如下：docx/xIsx/html/markdown文件不超过800万字符，doc/pdf/pptx文件不超过300页，txt/po文件不超过10MB，pdf/docx/pptx/xlsx不超过40MB
         :type Url: str
         :param _BasicDocumentType: 原始文档类型。该参数为高级参数，请留空，如需使用，请与工作人员确认后再使用。
         :type BasicDocumentType: str

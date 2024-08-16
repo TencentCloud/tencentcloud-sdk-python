@@ -1456,7 +1456,7 @@ class CloudStorageAIServiceTask(AbstractModel):
         :type ChannelId: int
         :param _ServiceType: 云存 AI 服务类型。可能取值：
 
-- `PackageDetect`：包裹检测
+- `RealtimeObjectDetect`：目标检测
 - `Highlight`：视频浓缩
         :type ServiceType: str
         :param _StartTime: 对应云存视频的起始时间
@@ -1473,6 +1473,8 @@ class CloudStorageAIServiceTask(AbstractModel):
         :type CreateTime: int
         :param _UpdateTime: 最后更新时间
         :type UpdateTime: int
+        :param _CustomId: 自定义任务 ID
+        :type CustomId: str
         """
         self._TaskId = None
         self._ProductId = None
@@ -1486,6 +1488,7 @@ class CloudStorageAIServiceTask(AbstractModel):
         self._Files = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._CustomId = None
 
     @property
     def TaskId(self):
@@ -1583,6 +1586,14 @@ class CloudStorageAIServiceTask(AbstractModel):
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def CustomId(self):
+        return self._CustomId
+
+    @CustomId.setter
+    def CustomId(self, CustomId):
+        self._CustomId = CustomId
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -1597,6 +1608,7 @@ class CloudStorageAIServiceTask(AbstractModel):
         self._Files = params.get("Files")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._CustomId = params.get("CustomId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5045,19 +5057,15 @@ class DescribeCloudStorageAIServiceResponse(AbstractModel):
 - `1`：全时套餐
 - `2`：事件套餐
 - `3`：低功耗套餐
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
         :param _Status: 云存 AI 套餐生效状态。可能取值：
 
 - `0`：未开通或已过期
 - `1`：生效中
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _ExpireTime: 云存 AI 套餐过期时间 UNIX 时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: int
         :param _UserId: 用户 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserId: str
         :param _Enabled: 视频分析启用状态
         :type Enabled: bool

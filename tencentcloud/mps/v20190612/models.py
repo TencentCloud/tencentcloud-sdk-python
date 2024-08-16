@@ -31391,6 +31391,12 @@ class MediaVideoStreamItem(AbstractModel):
         :param _Codecs: 视频Codecs。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Codecs: str
+        :param _FpsNumerator: 帧率分子部分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FpsNumerator: int
+        :param _FpsDenominator: 帧率分母部分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FpsDenominator: int
         """
         self._Bitrate = None
         self._Height = None
@@ -31402,6 +31408,8 @@ class MediaVideoStreamItem(AbstractModel):
         self._ColorTransfer = None
         self._HdrType = None
         self._Codecs = None
+        self._FpsNumerator = None
+        self._FpsDenominator = None
 
     @property
     def Bitrate(self):
@@ -31483,6 +31491,22 @@ class MediaVideoStreamItem(AbstractModel):
     def Codecs(self, Codecs):
         self._Codecs = Codecs
 
+    @property
+    def FpsNumerator(self):
+        return self._FpsNumerator
+
+    @FpsNumerator.setter
+    def FpsNumerator(self, FpsNumerator):
+        self._FpsNumerator = FpsNumerator
+
+    @property
+    def FpsDenominator(self):
+        return self._FpsDenominator
+
+    @FpsDenominator.setter
+    def FpsDenominator(self, FpsDenominator):
+        self._FpsDenominator = FpsDenominator
+
 
     def _deserialize(self, params):
         self._Bitrate = params.get("Bitrate")
@@ -31495,6 +31519,8 @@ class MediaVideoStreamItem(AbstractModel):
         self._ColorTransfer = params.get("ColorTransfer")
         self._HdrType = params.get("HdrType")
         self._Codecs = params.get("Codecs")
+        self._FpsNumerator = params.get("FpsNumerator")
+        self._FpsDenominator = params.get("FpsDenominator")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43295,10 +43321,12 @@ class VideoTemplateInfo(AbstractModel):
 注意：VP8、VP9编码容器目前只支持webm，mkv。
 注意：MPEG2、dnxhd 编码容器目前只支持mxf。
         :type Codec: str
-        :param _Fps: 视频帧率，取值范围：[0, 120]，单位：Hz。 当取值为 0，表示帧率和原始视频保持一致。
-注意：自适应码率时取值范围是 [0, 60]
+        :param _Fps: 视频帧率，取值范围：
+当FpsDenominator的值为空时，范围：[0, 120]，单位：Hz；
+当FpsDenominator的值不为空时，Fps/FpsDenominator的范围：[0,120]
+当取值为 0，表示帧率和原始视频保持一致。
         :type Fps: int
-        :param _Bitrate: 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
+        :param _Bitrate: 视频流的码率，取值范围：0 和 [128, 100000]，单位：kbps。
 当取值为 0，表示视频码率和原始视频保持一致。
         :type Bitrate: int
         :param _ResolutionAdaptive: 分辨率自适应，可选值：
@@ -43344,6 +43372,10 @@ class VideoTemplateInfo(AbstractModel):
 默认值：0
 注意：此字段可能返回 null，表示取不到有效值。
         :type SegmentType: int
+        :param _FpsDenominator: 帧率分母部分
+注意：值必须大于0
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FpsDenominator: int
         """
         self._Codec = None
         self._Fps = None
@@ -43355,6 +43387,7 @@ class VideoTemplateInfo(AbstractModel):
         self._FillType = None
         self._Vcrf = None
         self._SegmentType = None
+        self._FpsDenominator = None
 
     @property
     def Codec(self):
@@ -43436,6 +43469,14 @@ class VideoTemplateInfo(AbstractModel):
     def SegmentType(self, SegmentType):
         self._SegmentType = SegmentType
 
+    @property
+    def FpsDenominator(self):
+        return self._FpsDenominator
+
+    @FpsDenominator.setter
+    def FpsDenominator(self, FpsDenominator):
+        self._FpsDenominator = FpsDenominator
+
 
     def _deserialize(self, params):
         self._Codec = params.get("Codec")
@@ -43448,6 +43489,7 @@ class VideoTemplateInfo(AbstractModel):
         self._FillType = params.get("FillType")
         self._Vcrf = params.get("Vcrf")
         self._SegmentType = params.get("SegmentType")
+        self._FpsDenominator = params.get("FpsDenominator")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43482,10 +43524,13 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 注意：MPEG2、dnxhd 编码容器目前只支持mxf。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Codec: str
-        :param _Fps: 视频帧率，取值范围：[0, 120]，单位：Hz。 当取值为 0，表示帧率和原始视频保持一致。
+        :param _Fps: 视频帧率，取值范围：
+当FpsDenominator的值为空时，范围：[0, 120]，单位：Hz；
+当FpsDenominator的值不为空时，Fps/FpsDenominator的范围：[0,120]
+当取值为 0，表示帧率和原始视频保持一致。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Fps: int
-        :param _Bitrate: 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
+        :param _Bitrate: 视频流的码率，取值范围：0 和 [128, 100000]，单位：kbps。
 当取值为 0，表示视频码率和原始视频保持一致。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Bitrate: int
@@ -43533,6 +43578,10 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 默认值：0
 注意：此字段可能返回 null，表示取不到有效值。
         :type SegmentType: int
+        :param _FpsDenominator: 帧率分母部分
+注意：值必须大于0
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FpsDenominator: int
         """
         self._Codec = None
         self._Fps = None
@@ -43545,6 +43594,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
         self._Vcrf = None
         self._ContentAdaptStream = None
         self._SegmentType = None
+        self._FpsDenominator = None
 
     @property
     def Codec(self):
@@ -43634,6 +43684,14 @@ class VideoTemplateInfoForUpdate(AbstractModel):
     def SegmentType(self, SegmentType):
         self._SegmentType = SegmentType
 
+    @property
+    def FpsDenominator(self):
+        return self._FpsDenominator
+
+    @FpsDenominator.setter
+    def FpsDenominator(self, FpsDenominator):
+        self._FpsDenominator = FpsDenominator
+
 
     def _deserialize(self, params):
         self._Codec = params.get("Codec")
@@ -43647,6 +43705,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
         self._Vcrf = params.get("Vcrf")
         self._ContentAdaptStream = params.get("ContentAdaptStream")
         self._SegmentType = params.get("SegmentType")
+        self._FpsDenominator = params.get("FpsDenominator")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

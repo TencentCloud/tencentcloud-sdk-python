@@ -2464,6 +2464,8 @@ class SentenceRecognitionRequest(AbstractModel):
         :param _SubServiceType: 子服务类型。2： 一句话识别。
         :type SubServiceType: int
         :param _Url: 语音的URL地址，需要公网环境浏览器可下载。当 SourceType 值为 0时须填写该字段，为 1 时不填。音频时长不能超过60s，音频文件大小不能超过3MB。
+
+注意：推荐使用 [腾讯云COS](https://cloud.tencent.com/document/product/436/38484) 来存储音频、生成URL并提交请求，此种方式会走内网下载音频，极大降低整体请求时延；并且不会产生外网和流量下行费用，可节约成本（COS桶权限需要设置公有读私有写，或URL设置时效访问签名）
         :type Url: str
         :param _UsrAudioKey: 废弃参数，填写任意字符串即可。
         :type UsrAudioKey: str

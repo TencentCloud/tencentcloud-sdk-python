@@ -2756,20 +2756,23 @@ class ConsoleSharingConfig(AbstractModel):
         :param _VerifyCode: 验证码
 注意：此字段可能返回 null，表示取不到有效值。
         :type VerifyCode: str
-        :param _StartTime: 开始时间，支持绝对时间(13位时间戳字符串)/相对时间字符串
+        :param _StartTime: 默认查询范围的开始时间点，支持绝对时间(13位Unix时间戳)或相对时间表达式
         :type StartTime: str
-        :param _EndTime: 结束时间，支持绝对时间(13位时间戳字符串)/相对时间字符串
+        :param _EndTime: 默认查询范围的结束时间点，支持绝对时间(13位Unix时间戳)或相对时间表达式。注意，结束时间点要大于开始时间点
         :type EndTime: str
-        :param _NowTime: 当StartTime/EndTime为相对时间时，基于NowTime计算绝对时间，默认为创建时间
+        :param _NowTime: 仅当StartTime/EndTime为相对时间时使用，基于NowTime计算绝对时间，默认为创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type NowTime: int
-        :param _Params: params参数列表，当Type为2时支持
+        :param _Params: 默认的检索分析语句，仅当Type为2时使用
 注意：此字段可能返回 null，表示取不到有效值。
         :type Params: list of ConsoleSharingParam
-        :param _IsLockTimeRange: 是否允许访问者自行修改检索分析时间范围，默认不锁定
+        :param _IsLockTimeRange: 是否允许访问者自行修改检索分析时间范围。默认不锁定（false）
         :type IsLockTimeRange: bool
-        :param _IsLockQuery: 是否允许访问者自行修改日志检索语句。在检索页分享中表示检索语句锁定状态；在仪表盘中表示过滤变量锁定状态
+        :param _IsLockQuery: 是否允许访问者自行修改日志检索语句。在检索页分享中表示检索语句锁定状态；在仪表盘中表示过滤变量锁定状态。默认不锁定（false）
         :type IsLockQuery: bool
+        :param _IsSupportLogExport: 检索页分享是否允许访问者下载日志，默认不允许（false）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsSupportLogExport: bool
         """
         self._Name = None
         self._Type = None
@@ -2783,6 +2786,7 @@ class ConsoleSharingConfig(AbstractModel):
         self._Params = None
         self._IsLockTimeRange = None
         self._IsLockQuery = None
+        self._IsSupportLogExport = None
 
     @property
     def Name(self):
@@ -2880,6 +2884,14 @@ class ConsoleSharingConfig(AbstractModel):
     def IsLockQuery(self, IsLockQuery):
         self._IsLockQuery = IsLockQuery
 
+    @property
+    def IsSupportLogExport(self):
+        return self._IsSupportLogExport
+
+    @IsSupportLogExport.setter
+    def IsSupportLogExport(self, IsSupportLogExport):
+        self._IsSupportLogExport = IsSupportLogExport
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -2899,6 +2911,7 @@ class ConsoleSharingConfig(AbstractModel):
                 self._Params.append(obj)
         self._IsLockTimeRange = params.get("IsLockTimeRange")
         self._IsLockQuery = params.get("IsLockQuery")
+        self._IsSupportLogExport = params.get("IsSupportLogExport")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5251,6 +5264,71 @@ class CreateDashboardSubscribeRequest(AbstractModel):
     """CreateDashboardSubscribe请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _Name: 仪表盘订阅名称。
+        :type Name: str
+        :param _DashboardId: 仪表盘id。
+        :type DashboardId: str
+        :param _Cron: 订阅时间cron表达式，格式为：{秒数} {分钟} {小时} {日期} {月份} {星期}；（有效数据为：{分钟} {小时} {日期} {月份} {星期}）。<br><li/>{秒数} 取值范围： 0 ~ 59 <br><li/>{分钟} 取值范围： 0 ~ 59  <br><li/>{小时} 取值范围： 0 ~ 23  <br><li/>{日期} 取值范围： 1 ~ 31 AND (dayOfMonth最后一天： L) <br><li/>{月份} 取值范围： 1 ~ 12 <br><li/>{星期} 取值范围： 0 ~ 6 【0:星期日， 6星期六】
+        :type Cron: str
+        :param _SubscribeData: 仪表盘订阅数据。
+        :type SubscribeData: :class:`tencentcloud.cls.v20201016.models.DashboardSubscribeData`
+        """
+        self._Name = None
+        self._DashboardId = None
+        self._Cron = None
+        self._SubscribeData = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def DashboardId(self):
+        return self._DashboardId
+
+    @DashboardId.setter
+    def DashboardId(self, DashboardId):
+        self._DashboardId = DashboardId
+
+    @property
+    def Cron(self):
+        return self._Cron
+
+    @Cron.setter
+    def Cron(self, Cron):
+        self._Cron = Cron
+
+    @property
+    def SubscribeData(self):
+        return self._SubscribeData
+
+    @SubscribeData.setter
+    def SubscribeData(self, SubscribeData):
+        self._SubscribeData = SubscribeData
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._DashboardId = params.get("DashboardId")
+        self._Cron = params.get("Cron")
+        if params.get("SubscribeData") is not None:
+            self._SubscribeData = DashboardSubscribeData()
+            self._SubscribeData._deserialize(params.get("SubscribeData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CreateDashboardSubscribeResponse(AbstractModel):
@@ -8275,6 +8353,33 @@ class DeleteDashboardSubscribeRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _Id: 仪表盘订阅记录id。
+        :type Id: int
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DeleteDashboardSubscribeResponse(AbstractModel):
     """DeleteDashboardSubscribe返回参数结构体
@@ -10085,6 +10190,62 @@ class DescribeDashboardSubscribesRequest(AbstractModel):
     """DescribeDashboardSubscribes请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _Filters: <br><li/> dashboardId：按照【仪表盘id】进行过滤。类型：String必选：否<br><br><li/> 每次请求的Filters的上限为10，Filter.Values的上限为100。
+        :type Filters: list of Filter
+        :param _Offset: 分页的偏移量，默认值为0。
+        :type Offset: int
+        :param _Limit: 分页单页限制数目，默认值为20，最大值100。
+        :type Limit: int
+        """
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeDashboardSubscribesResponse(AbstractModel):
@@ -17020,6 +17181,83 @@ class ModifyDashboardSubscribeRequest(AbstractModel):
     """ModifyDashboardSubscribe请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _Id: 仪表盘订阅id。
+        :type Id: int
+        :param _DashboardId: 仪表盘id。
+        :type DashboardId: str
+        :param _Name: 仪表盘订阅名称。
+        :type Name: str
+        :param _Cron: 订阅时间cron表达式，格式为：{秒数} {分钟} {小时} {日期} {月份} {星期}；（有效数据为：{分钟} {小时} {日期} {月份} {星期}）。
+        :type Cron: str
+        :param _SubscribeData: 仪表盘订阅数据。
+        :type SubscribeData: :class:`tencentcloud.cls.v20201016.models.DashboardSubscribeData`
+        """
+        self._Id = None
+        self._DashboardId = None
+        self._Name = None
+        self._Cron = None
+        self._SubscribeData = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def DashboardId(self):
+        return self._DashboardId
+
+    @DashboardId.setter
+    def DashboardId(self, DashboardId):
+        self._DashboardId = DashboardId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Cron(self):
+        return self._Cron
+
+    @Cron.setter
+    def Cron(self, Cron):
+        self._Cron = Cron
+
+    @property
+    def SubscribeData(self):
+        return self._SubscribeData
+
+    @SubscribeData.setter
+    def SubscribeData(self, SubscribeData):
+        self._SubscribeData = SubscribeData
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._DashboardId = params.get("DashboardId")
+        self._Name = params.get("Name")
+        self._Cron = params.get("Cron")
+        if params.get("SubscribeData") is not None:
+            self._SubscribeData = DashboardSubscribeData()
+            self._SubscribeData._deserialize(params.get("SubscribeData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ModifyDashboardSubscribeResponse(AbstractModel):

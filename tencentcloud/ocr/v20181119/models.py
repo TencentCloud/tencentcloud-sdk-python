@@ -2946,6 +2946,92 @@ class ClassifyDetectOCRResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ClassifyStoreNameRequest(AbstractModel):
+    """ClassifyStoreName请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+支持的图片像素：需介于20-10000px之间。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param _ImageUrl: 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self._ImageBase64 = None
+        self._ImageUrl = None
+
+    @property
+    def ImageBase64(self):
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+
+    def _deserialize(self, params):
+        self._ImageBase64 = params.get("ImageBase64")
+        self._ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClassifyStoreNameResponse(AbstractModel):
+    """ClassifyStoreName返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StoreLabel: 门头照标签
+        :type StoreLabel: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._StoreLabel = None
+        self._RequestId = None
+
+    @property
+    def StoreLabel(self):
+        return self._StoreLabel
+
+    @StoreLabel.setter
+    def StoreLabel(self, StoreLabel):
+        self._StoreLabel = StoreLabel
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._StoreLabel = params.get("StoreLabel")
+        self._RequestId = params.get("RequestId")
+
+
 class Coord(AbstractModel):
     """坐标
 
@@ -15334,7 +15420,12 @@ class QrcodeResultsInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TypeName: 类型（二维码、条形码）
+        :param _TypeName: 类型包括
+二维码：QR_CODE
+一维码：EAN-13、EAN-8、EAN-2、UPC-A、UPC-E、CODE-39、CODE-93、CODE-128 
+PDF：PDF_417
+DataMatrix：DATA_MATRIX
+小程序码：WX_CODE
         :type TypeName: str
         :param _Url: 二维码/条形码包含的地址
         :type Url: str
@@ -19159,6 +19250,121 @@ class RecognizePhilippinesVoteIDOCRResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RecognizeStoreNameRequest(AbstractModel):
+    """RecognizeStoreName请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+支持的图片像素：需介于20-10000px之间。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param _ImageUrl: 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self._ImageBase64 = None
+        self._ImageUrl = None
+
+    @property
+    def ImageBase64(self):
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+
+    def _deserialize(self, params):
+        self._ImageBase64 = params.get("ImageBase64")
+        self._ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecognizeStoreNameResponse(AbstractModel):
+    """RecognizeStoreName返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StoreInfo: 门头照名称
+        :type StoreInfo: list of StoreInfo
+        :param _Angle: 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负
+        :type Angle: float
+        :param _StoreLabel: 门头照标签
+        :type StoreLabel: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._StoreInfo = None
+        self._Angle = None
+        self._StoreLabel = None
+        self._RequestId = None
+
+    @property
+    def StoreInfo(self):
+        return self._StoreInfo
+
+    @StoreInfo.setter
+    def StoreInfo(self, StoreInfo):
+        self._StoreInfo = StoreInfo
+
+    @property
+    def Angle(self):
+        return self._Angle
+
+    @Angle.setter
+    def Angle(self, Angle):
+        self._Angle = Angle
+
+    @property
+    def StoreLabel(self):
+        return self._StoreLabel
+
+    @StoreLabel.setter
+    def StoreLabel(self, StoreLabel):
+        self._StoreLabel = StoreLabel
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("StoreInfo") is not None:
+            self._StoreInfo = []
+            for item in params.get("StoreInfo"):
+                obj = StoreInfo()
+                obj._deserialize(item)
+                self._StoreInfo.append(obj)
+        self._Angle = params.get("Angle")
+        self._StoreLabel = params.get("StoreLabel")
+        self._RequestId = params.get("RequestId")
+
+
 class RecognizeTableAccurateOCRRequest(AbstractModel):
     """RecognizeTableAccurateOCR请求参数结构体
 
@@ -22387,6 +22593,66 @@ class SmartStructuralOCRV2Response(AbstractModel):
                 obj._deserialize(item)
                 self._WordList.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class StoreInfo(AbstractModel):
+    """门头照识别结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 识别出的字段名称(关键字)，支持以下字段：
+付款开户行、收款开户行、付款账号、收款账号、回单类型、回单编号、币种、流水号、凭证号码、交易机构、交易金额、手续费、日期等字段信息。
+        :type Name: str
+        :param _Value: 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
+        :type Value: str
+        :param _Rect: 文本行在旋转纠正之后的图像中的像素坐标
+        :type Rect: :class:`tencentcloud.ocr.v20181119.models.Rect`
+        """
+        self._Name = None
+        self._Value = None
+        self._Rect = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Rect(self):
+        return self._Rect
+
+    @Rect.setter
+    def Rect(self, Rect):
+        self._Rect = Rect
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        if params.get("Rect") is not None:
+            self._Rect = Rect()
+            self._Rect._deserialize(params.get("Rect"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class StructuralItem(AbstractModel):

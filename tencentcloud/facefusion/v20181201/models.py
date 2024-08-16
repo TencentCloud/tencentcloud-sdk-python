@@ -936,11 +936,17 @@ class MergeInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Image: 输入图片base64。
+●base64 和 url 必须提供一个，如果都提供以 url 为准。
+●素材图片限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64。（图片编码之后可能会大30%左右，建议合理控制图片大小）。
+●支持图片格式：支持jpg或png。
         :type Image: str
         :param _Url: 输入图片url。
-Url、Image必须提供一个，如果都提供，只使用 Url。
+●base64 和 url 必须提供一个，如果都提供以 url 为准。
+●素材图片限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64。（图片编码之后可能会大30%左右，建议合理控制图片大小）。
+●支持图片格式：支持jpg或png。
         :type Url: str
         :param _InputImageFaceRect: 输入图片人脸位置信息（人脸框）。不填默认取输入图中最大人脸。
+Width、Height >= 30。
         :type InputImageFaceRect: :class:`tencentcloud.facefusion.v20181201.models.FaceRect`
         :param _TemplateFaceID: 素材人脸ID，不填默认取素材中最大人脸。
         :type TemplateFaceID: str
@@ -1007,9 +1013,9 @@ class MetaData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MetaKey: MetaData的Key
+        :param _MetaKey: MetaData的Key，长度不能超过32。
         :type MetaKey: str
-        :param _MetaValue: MetaData的Value
+        :param _MetaValue: MetaData的Value，长度不能超过256。
         :type MetaValue: str
         """
         self._MetaKey = None

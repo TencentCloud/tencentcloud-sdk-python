@@ -253,6 +253,29 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ClassifyStoreName(self, request):
+        """本接口用于识别门头照分类标签信息
+
+        :param request: Request instance for ClassifyStoreName.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.ClassifyStoreNameRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.ClassifyStoreNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ClassifyStoreName", params, headers=headers)
+            response = json.loads(body)
+            model = models.ClassifyStoreNameResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAIFormTask(self, request):
         """本接口可创建智能表单录入任务，支持多个识别图片和PDF的URL上传，返回含有识别内容的操作页面URL。
 
@@ -1912,6 +1935,29 @@ class OcrClient(AbstractClient):
             body = self.call("RecognizePhilippinesVoteIDOCR", params, headers=headers)
             response = json.loads(body)
             model = models.RecognizePhilippinesVoteIDOCRResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RecognizeStoreName(self, request):
+        """本接口用于识别门头照文字识别结果以及对应分类标签信息
+
+        :param request: Request instance for RecognizeStoreName.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeStoreNameRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizeStoreNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RecognizeStoreName", params, headers=headers)
+            response = json.loads(body)
+            model = models.RecognizeStoreNameResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

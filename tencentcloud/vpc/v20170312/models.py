@@ -3837,6 +3837,12 @@ class CCN(AbstractModel):
         :param _Ipv6Flag: 是否支持ipv6路由表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ipv6Flag: str
+        :param _MrtbAggregatePolicyFlag: 是否支持路由表聚合策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MrtbAggregatePolicyFlag: bool
+        :param _MrtbPolicyValueFlag: 是否支持策略值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MrtbPolicyValueFlag: bool
         """
         self._CcnId = None
         self._CcnName = None
@@ -3859,6 +3865,8 @@ class CCN(AbstractModel):
         self._RouteSelectPolicyFlag = None
         self._DirectConnectAccelerateChannelFlag = None
         self._Ipv6Flag = None
+        self._MrtbAggregatePolicyFlag = None
+        self._MrtbPolicyValueFlag = None
 
     @property
     def CcnId(self):
@@ -4028,6 +4036,22 @@ class CCN(AbstractModel):
     def Ipv6Flag(self, Ipv6Flag):
         self._Ipv6Flag = Ipv6Flag
 
+    @property
+    def MrtbAggregatePolicyFlag(self):
+        return self._MrtbAggregatePolicyFlag
+
+    @MrtbAggregatePolicyFlag.setter
+    def MrtbAggregatePolicyFlag(self, MrtbAggregatePolicyFlag):
+        self._MrtbAggregatePolicyFlag = MrtbAggregatePolicyFlag
+
+    @property
+    def MrtbPolicyValueFlag(self):
+        return self._MrtbPolicyValueFlag
+
+    @MrtbPolicyValueFlag.setter
+    def MrtbPolicyValueFlag(self, MrtbPolicyValueFlag):
+        self._MrtbPolicyValueFlag = MrtbPolicyValueFlag
+
 
     def _deserialize(self, params):
         self._CcnId = params.get("CcnId")
@@ -4056,6 +4080,8 @@ class CCN(AbstractModel):
         self._RouteSelectPolicyFlag = params.get("RouteSelectPolicyFlag")
         self._DirectConnectAccelerateChannelFlag = params.get("DirectConnectAccelerateChannelFlag")
         self._Ipv6Flag = params.get("Ipv6Flag")
+        self._MrtbAggregatePolicyFlag = params.get("MrtbAggregatePolicyFlag")
+        self._MrtbPolicyValueFlag = params.get("MrtbPolicyValueFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5360,11 +5386,27 @@ class CcnRouteTableBroadcastPolicy(AbstractModel):
         :type Action: str
         :param _Description: 策略描述
         :type Description: str
+        :param _OperateAsPath: as-path操作
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperateAsPath: str
+        :param _AsPathOperateMode: as-path操作模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsPathOperateMode: str
+        :param _OperateCommunitySet: community操作
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperateCommunitySet: list of str
+        :param _CommunityOperateMode: community操作模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CommunityOperateMode: str
         """
         self._RouteConditions = None
         self._BroadcastConditions = None
         self._Action = None
         self._Description = None
+        self._OperateAsPath = None
+        self._AsPathOperateMode = None
+        self._OperateCommunitySet = None
+        self._CommunityOperateMode = None
 
     @property
     def RouteConditions(self):
@@ -5398,6 +5440,38 @@ class CcnRouteTableBroadcastPolicy(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def OperateAsPath(self):
+        return self._OperateAsPath
+
+    @OperateAsPath.setter
+    def OperateAsPath(self, OperateAsPath):
+        self._OperateAsPath = OperateAsPath
+
+    @property
+    def AsPathOperateMode(self):
+        return self._AsPathOperateMode
+
+    @AsPathOperateMode.setter
+    def AsPathOperateMode(self, AsPathOperateMode):
+        self._AsPathOperateMode = AsPathOperateMode
+
+    @property
+    def OperateCommunitySet(self):
+        return self._OperateCommunitySet
+
+    @OperateCommunitySet.setter
+    def OperateCommunitySet(self, OperateCommunitySet):
+        self._OperateCommunitySet = OperateCommunitySet
+
+    @property
+    def CommunityOperateMode(self):
+        return self._CommunityOperateMode
+
+    @CommunityOperateMode.setter
+    def CommunityOperateMode(self, CommunityOperateMode):
+        self._CommunityOperateMode = CommunityOperateMode
+
 
     def _deserialize(self, params):
         if params.get("RouteConditions") is not None:
@@ -5414,6 +5488,10 @@ class CcnRouteTableBroadcastPolicy(AbstractModel):
                 self._BroadcastConditions.append(obj)
         self._Action = params.get("Action")
         self._Description = params.get("Description")
+        self._OperateAsPath = params.get("OperateAsPath")
+        self._AsPathOperateMode = params.get("AsPathOperateMode")
+        self._OperateCommunitySet = params.get("OperateCommunitySet")
+        self._CommunityOperateMode = params.get("CommunityOperateMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5499,10 +5577,18 @@ class CcnRouteTableInputPolicy(AbstractModel):
         :type Action: str
         :param _Description: 策略描述。
         :type Description: str
+        :param _OperateAsPath: as-path操作
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperateAsPath: str
+        :param _AsPathOperateMode: as-path操作模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsPathOperateMode: str
         """
         self._RouteConditions = None
         self._Action = None
         self._Description = None
+        self._OperateAsPath = None
+        self._AsPathOperateMode = None
 
     @property
     def RouteConditions(self):
@@ -5528,6 +5614,22 @@ class CcnRouteTableInputPolicy(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def OperateAsPath(self):
+        return self._OperateAsPath
+
+    @OperateAsPath.setter
+    def OperateAsPath(self, OperateAsPath):
+        self._OperateAsPath = OperateAsPath
+
+    @property
+    def AsPathOperateMode(self):
+        return self._AsPathOperateMode
+
+    @AsPathOperateMode.setter
+    def AsPathOperateMode(self, AsPathOperateMode):
+        self._AsPathOperateMode = AsPathOperateMode
+
 
     def _deserialize(self, params):
         if params.get("RouteConditions") is not None:
@@ -5538,6 +5640,8 @@ class CcnRouteTableInputPolicy(AbstractModel):
                 self._RouteConditions.append(obj)
         self._Action = params.get("Action")
         self._Description = params.get("Description")
+        self._OperateAsPath = params.get("OperateAsPath")
+        self._AsPathOperateMode = params.get("AsPathOperateMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
