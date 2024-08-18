@@ -6546,6 +6546,138 @@ class DescribeSqlApisResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTableListRequest(AbstractModel):
+    """DescribeTableList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 资源ID，建表所用的TCHouse-D资源ID。
+        :type InstanceId: str
+        :param _DbName: 需要获取表列表的库
+        :type DbName: str
+        :param _UserName: 使用该用户进行操作，该用户需要有对应的权限。如果该TCHouse-D集群使用CAM用户注册内核账户，则不需要填写
+        :type UserName: str
+        :param _PassWord: 用户对应的密码。如果该TCHouse-D集群使用CAM用户注册内核账户，则不需要填写
+        :type PassWord: str
+        :param _CatalogName: 查询库所在的数据源，不填则默认为内部数据源（internal）。
+        :type CatalogName: str
+        """
+        self._InstanceId = None
+        self._DbName = None
+        self._UserName = None
+        self._PassWord = None
+        self._CatalogName = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DbName(self):
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def PassWord(self):
+        return self._PassWord
+
+    @PassWord.setter
+    def PassWord(self, PassWord):
+        self._PassWord = PassWord
+
+    @property
+    def CatalogName(self):
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DbName = params.get("DbName")
+        self._UserName = params.get("UserName")
+        self._PassWord = params.get("PassWord")
+        self._CatalogName = params.get("CatalogName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTableListResponse(AbstractModel):
+    """DescribeTableList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableNames: 表名列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableNames: list of str
+        :param _Message: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TableNames = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def TableNames(self):
+        return self._TableNames
+
+    @TableNames.setter
+    def TableNames(self, TableNames):
+        self._TableNames = TableNames
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TableNames = params.get("TableNames")
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeUserBindWorkloadGroupRequest(AbstractModel):
     """DescribeUserBindWorkloadGroup请求参数结构体
 

@@ -900,6 +900,29 @@ class CdwdorisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTableList(self, request):
+        """获取指定数据源和库下的表列表
+
+        :param request: Request instance for DescribeTableList.
+        :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeTableListRequest`
+        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeTableListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTableList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTableListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeUserBindWorkloadGroup(self, request):
         """获取当前集群各用户绑定的资源信息
 

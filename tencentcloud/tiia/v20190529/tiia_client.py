@@ -499,35 +499,6 @@ class TiiaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DetectProductBeta(self, request):
-        """产品不再维护，准备下线。
-
-        商品识别-微信识物版，基于人工智能技术、海量训练图片、亿级商品库，可以实现全覆盖、细粒度、高准确率的商品识别和商品推荐功能。
-        本服务可以识别出图片中的主体位置、主体商品类型，覆盖亿级SKU，输出具体商品的价格、型号等详细信息。
-        客户无需自建商品库，即可快速实现商品识别、拍照搜商品等功能。
-        >?
-        - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
-
-        :param request: Request instance for DetectProductBeta.
-        :type request: :class:`tencentcloud.tiia.v20190529.models.DetectProductBetaRequest`
-        :rtype: :class:`tencentcloud.tiia.v20190529.models.DetectProductBetaResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DetectProductBeta", params, headers=headers)
-            response = json.loads(body)
-            model = models.DetectProductBetaResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DetectSecurity(self, request):
         """安全属性识别可对图片中人体安全防护属性进行识别，支持识别安全帽，反光衣，护目镜，工服，手套，工地安全带，口罩，抽烟，玩手机等多种属性。
         "被优选过滤"标签值在人体优选开关开启时才会返回。

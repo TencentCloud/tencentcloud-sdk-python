@@ -2052,8 +2052,19 @@ class CreateReconstructDocumentFlowConfig(AbstractModel):
 1，表格以HTML形式返回
 默认为1
         :type TableResultType: str
+        :param _ResultType: 智能文档解析返回结果的格式
+0：只返回全文MD；
+1：只返回每一页的OCR原始Json；
+2：只返回每一页的MD，
+3：返回全文MD + 每一页的OCR原始Json；
+4：返回全文MD + 每一页的MD，
+默认值为3（返回全文MD + 每一页的OCR原始Json）
+
+
+        :type ResultType: str
         """
         self._TableResultType = None
+        self._ResultType = None
 
     @property
     def TableResultType(self):
@@ -2063,9 +2074,18 @@ class CreateReconstructDocumentFlowConfig(AbstractModel):
     def TableResultType(self, TableResultType):
         self._TableResultType = TableResultType
 
+    @property
+    def ResultType(self):
+        return self._ResultType
+
+    @ResultType.setter
+    def ResultType(self, ResultType):
+        self._ResultType = ResultType
+
 
     def _deserialize(self, params):
         self._TableResultType = params.get("TableResultType")
+        self._ResultType = params.get("ResultType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

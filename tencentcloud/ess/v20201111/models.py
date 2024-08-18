@@ -20626,9 +20626,12 @@ class OrganizationAuthUrl(AbstractModel):
         :type AuthUrl: str
         :param _ErrorMessage: 企业批量注册的错误信息，例如：企业三要素不通过	
         :type ErrorMessage: str
+        :param _SubTaskId: 企业批量注册的唯一 Id， 此 Id 可以用在[创建企业批量认证链接-单链接](https://qian.tencent.com/developers/companyApis/organizations/CreateBatchOrganizationAuthorizationUrl)。
+        :type SubTaskId: str
         """
         self._AuthUrl = None
         self._ErrorMessage = None
+        self._SubTaskId = None
 
     @property
     def AuthUrl(self):
@@ -20646,10 +20649,19 @@ class OrganizationAuthUrl(AbstractModel):
     def ErrorMessage(self, ErrorMessage):
         self._ErrorMessage = ErrorMessage
 
+    @property
+    def SubTaskId(self):
+        return self._SubTaskId
+
+    @SubTaskId.setter
+    def SubTaskId(self, SubTaskId):
+        self._SubTaskId = SubTaskId
+
 
     def _deserialize(self, params):
         self._AuthUrl = params.get("AuthUrl")
         self._ErrorMessage = params.get("ErrorMessage")
+        self._SubTaskId = params.get("SubTaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

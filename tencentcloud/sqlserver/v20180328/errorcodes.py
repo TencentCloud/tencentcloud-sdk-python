@@ -74,6 +74,9 @@ INTERNALERROR_DBCONNECTERROR = 'InternalError.DBConnectError'
 # 数据库错误。
 INTERNALERROR_DBERROR = 'InternalError.DBError'
 
+# 数据错误。
+INTERNALERROR_DATAERROR = 'InternalError.DataError'
+
 # GCS接口错误。
 INTERNALERROR_GCSERROR = 'InternalError.GcsError'
 

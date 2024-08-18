@@ -5062,6 +5062,8 @@ class DescribeMySqlProcessListRequest(AbstractModel):
         :type Limit: int
         :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
         :type Product: str
+        :param _StatDimensions: 会话统计的维度信息,可以多个维度。
+        :type StatDimensions: list of StatDimension
         """
         self._InstanceId = None
         self._ID = None
@@ -5074,6 +5076,7 @@ class DescribeMySqlProcessListRequest(AbstractModel):
         self._Info = None
         self._Limit = None
         self._Product = None
+        self._StatDimensions = None
 
     @property
     def InstanceId(self):
@@ -5163,6 +5166,14 @@ class DescribeMySqlProcessListRequest(AbstractModel):
     def Product(self, Product):
         self._Product = Product
 
+    @property
+    def StatDimensions(self):
+        return self._StatDimensions
+
+    @StatDimensions.setter
+    def StatDimensions(self, StatDimensions):
+        self._StatDimensions = StatDimensions
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -5176,6 +5187,12 @@ class DescribeMySqlProcessListRequest(AbstractModel):
         self._Info = params.get("Info")
         self._Limit = params.get("Limit")
         self._Product = params.get("Product")
+        if params.get("StatDimensions") is not None:
+            self._StatDimensions = []
+            for item in params.get("StatDimensions"):
+                obj = StatDimension()
+                obj._deserialize(item)
+                self._StatDimensions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5195,10 +5212,14 @@ class DescribeMySqlProcessListResponse(AbstractModel):
         r"""
         :param _ProcessList: 实时线程列表。
         :type ProcessList: list of MySqlProcess
+        :param _Statistics: sql会话统计信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Statistics: list of StatisticInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ProcessList = None
+        self._Statistics = None
         self._RequestId = None
 
     @property
@@ -5208,6 +5229,14 @@ class DescribeMySqlProcessListResponse(AbstractModel):
     @ProcessList.setter
     def ProcessList(self, ProcessList):
         self._ProcessList = ProcessList
+
+    @property
+    def Statistics(self):
+        return self._Statistics
+
+    @Statistics.setter
+    def Statistics(self, Statistics):
+        self._Statistics = Statistics
 
     @property
     def RequestId(self):
@@ -5225,6 +5254,12 @@ class DescribeMySqlProcessListResponse(AbstractModel):
                 obj = MySqlProcess()
                 obj._deserialize(item)
                 self._ProcessList.append(obj)
+        if params.get("Statistics") is not None:
+            self._Statistics = []
+            for item in params.get("Statistics"):
+                obj = StatisticInfo()
+                obj._deserialize(item)
+                self._Statistics.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -12924,6 +12959,181 @@ class SlowLogUser(AbstractModel):
         self._UserName = params.get("UserName")
         self._Ratio = params.get("Ratio")
         self._Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StatDimension(AbstractModel):
+    """会话统计的维度信息,可以多个维度
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Dimension: 维度名称，目前仅支持：SqlTag。
+        :type Dimension: str
+        :param _Data: SQL 标签过滤与统计信息
+示例：
+
+示例 1：[p=position] 统计包含 p=position 标签的 SQL 会话。
+示例 2：[p] 统计包含 p 标签的 SQL 会话。
+示例 3：[p=position, c=idCard] 统计同时包含 p=position 标签和 c=idCard 标签的 SQL 会话。
+        :type Data: list of str
+        """
+        self._Dimension = None
+        self._Data = None
+
+    @property
+    def Dimension(self):
+        return self._Dimension
+
+    @Dimension.setter
+    def Dimension(self, Dimension):
+        self._Dimension = Dimension
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+
+    def _deserialize(self, params):
+        self._Dimension = params.get("Dimension")
+        self._Data = params.get("Data")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StatisticDataInfo(AbstractModel):
+    """统计分析维度下的统计数据详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 统计维度的值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _TimeAvg: 平均时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeAvg: float
+        :param _TimeSum: 总时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeSum: float
+        :param _Count: 数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        """
+        self._Name = None
+        self._TimeAvg = None
+        self._TimeSum = None
+        self._Count = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TimeAvg(self):
+        return self._TimeAvg
+
+    @TimeAvg.setter
+    def TimeAvg(self, TimeAvg):
+        self._TimeAvg = TimeAvg
+
+    @property
+    def TimeSum(self):
+        return self._TimeSum
+
+    @TimeSum.setter
+    def TimeSum(self, TimeSum):
+        self._TimeSum = TimeSum
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._TimeAvg = params.get("TimeAvg")
+        self._TimeSum = params.get("TimeSum")
+        self._Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StatisticInfo(AbstractModel):
+    """sql会话统计信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Dimension: 统计分析的维度。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Dimension: str
+        :param _Data: 统计分析的维度下的统计数据详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of StatisticDataInfo
+        """
+        self._Dimension = None
+        self._Data = None
+
+    @property
+    def Dimension(self):
+        return self._Dimension
+
+    @Dimension.setter
+    def Dimension(self, Dimension):
+        self._Dimension = Dimension
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+
+    def _deserialize(self, params):
+        self._Dimension = params.get("Dimension")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = StatisticDataInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

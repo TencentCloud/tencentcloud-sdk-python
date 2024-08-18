@@ -23501,15 +23501,27 @@ class DescribeRoundPlaysRequest(AbstractModel):
         r"""
         :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
-        :param _RoundPlayIds: 轮播播单标识过滤条件，数组长度限制：100。
+        :param _RoundPlayIds: 过滤条件：轮播播单标识，数组长度限制：100。
         :type RoundPlayIds: list of str
-        :param _Offset: 分页偏移量，默认值：0。
+        :param _Status: 过滤条件，轮播播单状态，可选值： <li>Enabled：启动状态；</li> <li>Disabled：停止状态。</li>
+        :type Status: str
+        :param _CreateTime: 过滤条件：轮播播单创建时间。
+        :type CreateTime: :class:`tencentcloud.vod.v20180717.models.TimeRange`
+        :param _UpdateTime: 过滤条件：轮播播单更新时间。
+        :type UpdateTime: :class:`tencentcloud.vod.v20180717.models.TimeRange`
+        :param _ScrollToken: 翻页标识，分批拉取时使用：当单次请求无法拉取所有数据，接口将会返回 ScrollToken，下一次请求携带该 Token，将会从下一条记录开始获取。
+        :type ScrollToken: str
+        :param _Offset: 分页偏移量，默认值：0。已经废弃，请根据 ScrollToken 参数进行分批次查询。
         :type Offset: int
         :param _Limit: 返回记录条数，默认值：10，最大值：100。
         :type Limit: int
         """
         self._SubAppId = None
         self._RoundPlayIds = None
+        self._Status = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._ScrollToken = None
         self._Offset = None
         self._Limit = None
 
@@ -23528,6 +23540,38 @@ class DescribeRoundPlaysRequest(AbstractModel):
     @RoundPlayIds.setter
     def RoundPlayIds(self, RoundPlayIds):
         self._RoundPlayIds = RoundPlayIds
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def ScrollToken(self):
+        return self._ScrollToken
+
+    @ScrollToken.setter
+    def ScrollToken(self, ScrollToken):
+        self._ScrollToken = ScrollToken
 
     @property
     def Offset(self):
@@ -23549,6 +23593,14 @@ class DescribeRoundPlaysRequest(AbstractModel):
     def _deserialize(self, params):
         self._SubAppId = params.get("SubAppId")
         self._RoundPlayIds = params.get("RoundPlayIds")
+        self._Status = params.get("Status")
+        if params.get("CreateTime") is not None:
+            self._CreateTime = TimeRange()
+            self._CreateTime._deserialize(params.get("CreateTime"))
+        if params.get("UpdateTime") is not None:
+            self._UpdateTime = TimeRange()
+            self._UpdateTime._deserialize(params.get("UpdateTime"))
+        self._ScrollToken = params.get("ScrollToken")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
@@ -23568,15 +23620,18 @@ class DescribeRoundPlaysResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 符合过滤条件的轮播播单总数。
+        :param _TotalCount: 符合过滤条件的轮播播单总数。已经废弃，分批次查询请请使用 ScrollToken 参数。
         :type TotalCount: int
         :param _RoundPlaySet: 轮播播单详情列表。
         :type RoundPlaySet: list of RoundPlayInfo
+        :param _ScrollToken: 翻页标识，当请求未返回所有数据，该字段表示下一条记录的 ID。当该字段为空，说明已无更多数据。
+        :type ScrollToken: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
         self._RoundPlaySet = None
+        self._ScrollToken = None
         self._RequestId = None
 
     @property
@@ -23596,6 +23651,14 @@ class DescribeRoundPlaysResponse(AbstractModel):
         self._RoundPlaySet = RoundPlaySet
 
     @property
+    def ScrollToken(self):
+        return self._ScrollToken
+
+    @ScrollToken.setter
+    def ScrollToken(self, ScrollToken):
+        self._ScrollToken = ScrollToken
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -23612,6 +23675,7 @@ class DescribeRoundPlaysResponse(AbstractModel):
                 obj = RoundPlayInfo()
                 obj._deserialize(item)
                 self._RoundPlaySet.append(obj)
+        self._ScrollToken = params.get("ScrollToken")
         self._RequestId = params.get("RequestId")
 
 
@@ -39888,9 +39952,7 @@ class ModifyRoundPlayRequest(AbstractModel):
         :type Name: str
         :param _Desc: 轮播播单描述信息，长度限制：256 个字符。
         :type Desc: str
-        :param _Status: 播放状态，可选值：
-<li>Disabled：结束播放，结束后轮播任务不能再次启动。</li>
-
+        :param _Status: 播放状态，可选值：<li>Disabled：停止播放。</li><li>Enabled：启播时长到达后启动播放。</li>
         :type Status: str
         :param _PlayBackMode: 播放模式，可选值：
 <li>Loop：循环播放播单；</li>
@@ -51935,7 +51997,7 @@ class RoundPlayInfo(AbstractModel):
 
 
 class RoundPlayListItemInfo(AbstractModel):
-    """轮播媒体文件信息
+    """轮播播放节目信息
 
     """
 
@@ -51948,11 +52010,14 @@ class RoundPlayListItemInfo(AbstractModel):
 <li>Original：原始音视频。</li>
 Type 对应的格式必须为 HLS 格式。
         :type AudioVideoType: str
+        :param _ItemId: 播放节目的 ID，由系统分配。
+        :type ItemId: str
         :param _Definition: 指定播放的转码模版，当 AudioVideoType 为 Transcode 时必须指定。
         :type Definition: int
         """
         self._FileId = None
         self._AudioVideoType = None
+        self._ItemId = None
         self._Definition = None
 
     @property
@@ -51972,6 +52037,14 @@ Type 对应的格式必须为 HLS 格式。
         self._AudioVideoType = AudioVideoType
 
     @property
+    def ItemId(self):
+        return self._ItemId
+
+    @ItemId.setter
+    def ItemId(self, ItemId):
+        self._ItemId = ItemId
+
+    @property
     def Definition(self):
         return self._Definition
 
@@ -51983,6 +52056,7 @@ Type 对应的格式必须为 HLS 格式。
     def _deserialize(self, params):
         self._FileId = params.get("FileId")
         self._AudioVideoType = params.get("AudioVideoType")
+        self._ItemId = params.get("ItemId")
         self._Definition = params.get("Definition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

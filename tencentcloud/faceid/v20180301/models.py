@@ -1423,9 +1423,15 @@ Base64编码后的大小不超过8M，支持mp4、avi、flv格式。
 2- 传入的是视频类型
 其他 - 返回错误码InvalidParameter
         :type FaceInputType: int
+        :param _Encryption: 是否需要对请求信息进行全包体加密； 支持的加密算法:AES-256-CBC、SM4-GCM； 有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        :param _EncryptedBody: 加密后的密文； 加密前的数据格式如下:{"FaceInput":"AAAAA","FaceInputType":1}
+        :type EncryptedBody: str
         """
         self._FaceInput = None
         self._FaceInputType = None
+        self._Encryption = None
+        self._EncryptedBody = None
 
     @property
     def FaceInput(self):
@@ -1443,10 +1449,30 @@ Base64编码后的大小不超过8M，支持mp4、avi、flv格式。
     def FaceInputType(self, FaceInputType):
         self._FaceInputType = FaceInputType
 
+    @property
+    def Encryption(self):
+        return self._Encryption
+
+    @Encryption.setter
+    def Encryption(self, Encryption):
+        self._Encryption = Encryption
+
+    @property
+    def EncryptedBody(self):
+        return self._EncryptedBody
+
+    @EncryptedBody.setter
+    def EncryptedBody(self, EncryptedBody):
+        self._EncryptedBody = EncryptedBody
+
 
     def _deserialize(self, params):
         self._FaceInput = params.get("FaceInput")
         self._FaceInputType = params.get("FaceInputType")
+        if params.get("Encryption") is not None:
+            self._Encryption = Encryption()
+            self._Encryption._deserialize(params.get("Encryption"))
+        self._EncryptedBody = params.get("EncryptedBody")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

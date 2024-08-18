@@ -2717,6 +2717,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDatabasePrivilege(self, request):
+        """本接口（ModifyDatabasePrivilege）用于修改实例数据库权限。
+
+        :param request: Request instance for ModifyDatabasePrivilege.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDatabasePrivilegeRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDatabasePrivilegeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDatabasePrivilege", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDatabasePrivilegeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDatabaseShrinkMDF(self, request):
         """本接口(ModifyDatabaseShrinkDMF)用于收缩数据库mdf(Shrink mdf)。
 

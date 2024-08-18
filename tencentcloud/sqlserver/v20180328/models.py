@@ -433,17 +433,20 @@ class AccountPrivilegeModifyInfo(AbstractModel):
         r"""
         :param _UserName: 数据库用户名
         :type UserName: str
-        :param _DBPrivileges: 账号权限变更信息
+        :param _DBPrivileges: 账号权限变更信息。参数DBPrivileges和AccAllDB只能二选一
         :type DBPrivileges: list of DBPrivilegeModifyInfo
         :param _IsAdmin: 表示是否为管理员账户，当值为true，表示是 管理员。若实例 是 单节点，则管理员所在的 账号类型为超级权限账号 ，即AccountType=L0；若实例 是 双节点，则管理员所在的 账号类型为高级权限账号，即AccountType=L1；当值为false，表示 不是管理员，则账号类型为普通账号，即AccountType=L3
         :type IsAdmin: bool
         :param _AccountType: 账号类型，IsAdmin字段的扩展字段。 L0-超级权限(基础版独有),L1-高级权限,L2-特殊权限,L3-普通权限，默认L3
         :type AccountType: str
+        :param _AccAllDB: 全量修改指定账号下的所有DB权限，只支持特殊权限账号和普通权限账号。参数DBPrivileges和AccAllDB只能二选一
+        :type AccAllDB: :class:`tencentcloud.sqlserver.v20180328.models.SelectAllDB`
         """
         self._UserName = None
         self._DBPrivileges = None
         self._IsAdmin = None
         self._AccountType = None
+        self._AccAllDB = None
 
     @property
     def UserName(self):
@@ -477,6 +480,14 @@ class AccountPrivilegeModifyInfo(AbstractModel):
     def AccountType(self, AccountType):
         self._AccountType = AccountType
 
+    @property
+    def AccAllDB(self):
+        return self._AccAllDB
+
+    @AccAllDB.setter
+    def AccAllDB(self, AccAllDB):
+        self._AccAllDB = AccAllDB
+
 
     def _deserialize(self, params):
         self._UserName = params.get("UserName")
@@ -488,6 +499,9 @@ class AccountPrivilegeModifyInfo(AbstractModel):
                 self._DBPrivileges.append(obj)
         self._IsAdmin = params.get("IsAdmin")
         self._AccountType = params.get("AccountType")
+        if params.get("AccAllDB") is not None:
+            self._AccAllDB = SelectAllDB()
+            self._AccAllDB._deserialize(params.get("AccAllDB"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5960,6 +5974,56 @@ class DBTDEEncrypt(AbstractModel):
     def _deserialize(self, params):
         self._DBName = params.get("DBName")
         self._Encryption = params.get("Encryption")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DataBasePrivilegeModifyInfo(AbstractModel):
+    """数据库账号权限变更信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataBaseName: 数据库名称
+        :type DataBaseName: str
+        :param _AccountPrivileges: 数据库权限变更信息
+        :type AccountPrivileges: list of AccountPrivilege
+        """
+        self._DataBaseName = None
+        self._AccountPrivileges = None
+
+    @property
+    def DataBaseName(self):
+        return self._DataBaseName
+
+    @DataBaseName.setter
+    def DataBaseName(self, DataBaseName):
+        self._DataBaseName = DataBaseName
+
+    @property
+    def AccountPrivileges(self):
+        return self._AccountPrivileges
+
+    @AccountPrivileges.setter
+    def AccountPrivileges(self, AccountPrivileges):
+        self._AccountPrivileges = AccountPrivileges
+
+
+    def _deserialize(self, params):
+        self._DataBaseName = params.get("DataBaseName")
+        if params.get("AccountPrivileges") is not None:
+            self._AccountPrivileges = []
+            for item in params.get("AccountPrivileges"):
+                obj = AccountPrivilege()
+                obj._deserialize(item)
+                self._AccountPrivileges.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20361,6 +20425,93 @@ class ModifyDatabaseMdfResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDatabasePrivilegeRequest(AbstractModel):
+    """ModifyDatabasePrivilege请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 数据库实例ID，形如mssql-njj2mtpl
+        :type InstanceId: str
+        :param _DataBaseSet: 数据库权限变更信息
+        :type DataBaseSet: list of DataBasePrivilegeModifyInfo
+        """
+        self._InstanceId = None
+        self._DataBaseSet = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DataBaseSet(self):
+        return self._DataBaseSet
+
+    @DataBaseSet.setter
+    def DataBaseSet(self, DataBaseSet):
+        self._DataBaseSet = DataBaseSet
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("DataBaseSet") is not None:
+            self._DataBaseSet = []
+            for item in params.get("DataBaseSet"):
+                obj = DataBasePrivilegeModifyInfo()
+                obj._deserialize(item)
+                self._DataBaseSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDatabasePrivilegeResponse(AbstractModel):
+    """ModifyDatabasePrivilege返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 异步任务流程ID
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDatabaseShrinkMDFRequest(AbstractModel):
     """ModifyDatabaseShrinkMDF请求参数结构体
 
@@ -24271,6 +24422,39 @@ class SecurityGroupPolicy(AbstractModel):
         self._PortRange = params.get("PortRange")
         self._IpProtocol = params.get("IpProtocol")
         self._Dir = params.get("Dir")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SelectAllDB(AbstractModel):
+    """DB权限修改类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Privilege: 权限变更信息。ReadWrite表示可读写，ReadOnly表示只读，Delete表示删除账号对该DB的权限，DBOwner所有者
+        :type Privilege: str
+        """
+        self._Privilege = None
+
+    @property
+    def Privilege(self):
+        return self._Privilege
+
+    @Privilege.setter
+    def Privilege(self, Privilege):
+        self._Privilege = Privilege
+
+
+    def _deserialize(self, params):
+        self._Privilege = params.get("Privilege")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
