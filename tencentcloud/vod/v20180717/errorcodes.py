@@ -341,6 +341,9 @@ INVALIDPARAMETERVALUE_IMAGEDECODEERROR = 'InvalidParameterValue.ImageDecodeError
 # 参数错误：图片水印模板。
 INVALIDPARAMETERVALUE_IMAGETEMPLATE = 'InvalidParameterValue.ImageTemplate'
 
+# Index 参数错误。
+INVALIDPARAMETERVALUE_INDEX = 'InvalidParameterValue.Index'
+
 # 参数值错误：Interval 无效。
 INVALIDPARAMETERVALUE_INTERVAL = 'InvalidParameterValue.Interval'
 
@@ -457,6 +460,9 @@ INVALIDPARAMETERVALUE_REVIEWCONFIDENCE = 'InvalidParameterValue.ReviewConfidence
 
 # 参数值错误：ReviewWallSwitch 参数取值非法。
 INVALIDPARAMETERVALUE_REVIEWWALLSWITCH = 'InvalidParameterValue.ReviewWallSwitch'
+
+# RoundPlayId 参数错误。
+INVALIDPARAMETERVALUE_ROUNDPLAYID = 'InvalidParameterValue.RoundPlayId'
 
 # RoundPlaylist 参数长度错误。
 INVALIDPARAMETERVALUE_ROUNDPLAYLIST = 'InvalidParameterValue.RoundPlaylist'

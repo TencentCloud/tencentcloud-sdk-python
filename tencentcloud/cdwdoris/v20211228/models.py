@@ -852,6 +852,77 @@ class ChargeProperties(AbstractModel):
         
 
 
+class CheckCoolDownWorkingVariableConfigCorrectRequest(AbstractModel):
+    """CheckCoolDownWorkingVariableConfigCorrect请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckCoolDownWorkingVariableConfigCorrectResponse(AbstractModel):
+    """CheckCoolDownWorkingVariableConfigCorrect返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
 class ClusterConfigsHistory(AbstractModel):
     """集群的配置文件的修改历史
 
@@ -1161,6 +1232,212 @@ class ConfigKeyValue(AbstractModel):
         
 
 
+class CoolDownBackend(AbstractModel):
+    """冷热分层backend节点信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Host: 字段：Host
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Host: str
+        :param _DataUsedCapacity: 字段：DataUsedCapacity
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataUsedCapacity: str
+        :param _TotalCapacity: 字段：TotalCapacity
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCapacity: str
+        :param _RemoteUsedCapacity: 字段：RemoteUsedCapacity
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemoteUsedCapacity: str
+        """
+        self._Host = None
+        self._DataUsedCapacity = None
+        self._TotalCapacity = None
+        self._RemoteUsedCapacity = None
+
+    @property
+    def Host(self):
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def DataUsedCapacity(self):
+        return self._DataUsedCapacity
+
+    @DataUsedCapacity.setter
+    def DataUsedCapacity(self, DataUsedCapacity):
+        self._DataUsedCapacity = DataUsedCapacity
+
+    @property
+    def TotalCapacity(self):
+        return self._TotalCapacity
+
+    @TotalCapacity.setter
+    def TotalCapacity(self, TotalCapacity):
+        self._TotalCapacity = TotalCapacity
+
+    @property
+    def RemoteUsedCapacity(self):
+        return self._RemoteUsedCapacity
+
+    @RemoteUsedCapacity.setter
+    def RemoteUsedCapacity(self, RemoteUsedCapacity):
+        self._RemoteUsedCapacity = RemoteUsedCapacity
+
+
+    def _deserialize(self, params):
+        self._Host = params.get("Host")
+        self._DataUsedCapacity = params.get("DataUsedCapacity")
+        self._TotalCapacity = params.get("TotalCapacity")
+        self._RemoteUsedCapacity = params.get("RemoteUsedCapacity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CoolDownPolicyInfo(AbstractModel):
+    """冷热分层策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyName: 策略名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyName: str
+        :param _CooldownDatetime: cooldown_ttl
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CooldownDatetime: str
+        :param _CooldownTtl: cooldown_datetime
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CooldownTtl: str
+        """
+        self._PolicyName = None
+        self._CooldownDatetime = None
+        self._CooldownTtl = None
+
+    @property
+    def PolicyName(self):
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def CooldownDatetime(self):
+        return self._CooldownDatetime
+
+    @CooldownDatetime.setter
+    def CooldownDatetime(self, CooldownDatetime):
+        self._CooldownDatetime = CooldownDatetime
+
+    @property
+    def CooldownTtl(self):
+        return self._CooldownTtl
+
+    @CooldownTtl.setter
+    def CooldownTtl(self, CooldownTtl):
+        self._CooldownTtl = CooldownTtl
+
+
+    def _deserialize(self, params):
+        self._PolicyName = params.get("PolicyName")
+        self._CooldownDatetime = params.get("CooldownDatetime")
+        self._CooldownTtl = params.get("CooldownTtl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CoolDownTableDataInfo(AbstractModel):
+    """冷热分层Table数据信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatabaseName: 列：DatabaseName
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseName: str
+        :param _TableName: 列：TableName
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param _Size: 列：Size
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Size: str
+        :param _RemoteSize: 列：RemoteSize
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemoteSize: str
+        """
+        self._DatabaseName = None
+        self._TableName = None
+        self._Size = None
+        self._RemoteSize = None
+
+    @property
+    def DatabaseName(self):
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def Size(self):
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def RemoteSize(self):
+        return self._RemoteSize
+
+    @RemoteSize.setter
+    def RemoteSize(self, RemoteSize):
+        self._RemoteSize = RemoteSize
+
+
+    def _deserialize(self, params):
+        self._DatabaseName = params.get("DatabaseName")
+        self._TableName = params.get("TableName")
+        self._Size = params.get("Size")
+        self._RemoteSize = params.get("RemoteSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CosSourceInfo(AbstractModel):
     """客户提供cos认证信息。
 
@@ -1395,6 +1672,113 @@ class CreateBackUpScheduleResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCoolDownPolicyRequest(AbstractModel):
+    """CreateCoolDownPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _PolicyName: 策略名称
+        :type PolicyName: str
+        :param _CoolDownTtl: cooldown_ttl
+        :type CoolDownTtl: str
+        :param _CoolDownDatetime: cooldown_datetime
+        :type CoolDownDatetime: str
+        """
+        self._InstanceId = None
+        self._PolicyName = None
+        self._CoolDownTtl = None
+        self._CoolDownDatetime = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def PolicyName(self):
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def CoolDownTtl(self):
+        return self._CoolDownTtl
+
+    @CoolDownTtl.setter
+    def CoolDownTtl(self, CoolDownTtl):
+        self._CoolDownTtl = CoolDownTtl
+
+    @property
+    def CoolDownDatetime(self):
+        return self._CoolDownDatetime
+
+    @CoolDownDatetime.setter
+    def CoolDownDatetime(self, CoolDownDatetime):
+        self._CoolDownDatetime = CoolDownDatetime
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._PolicyName = params.get("PolicyName")
+        self._CoolDownTtl = params.get("CoolDownTtl")
+        self._CoolDownDatetime = params.get("CoolDownDatetime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCoolDownPolicyResponse(AbstractModel):
+    """CreateCoolDownPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorMsg = params.get("ErrorMsg")
         self._RequestId = params.get("RequestId")
 
 
@@ -3031,6 +3415,285 @@ class DescribeClusterConfigsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCoolDownBackendsRequest(AbstractModel):
+    """DescribeCoolDownBackends请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCoolDownBackendsResponse(AbstractModel):
+    """DescribeCoolDownBackends返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param _List: 节点信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of CoolDownBackend
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorMsg = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorMsg = params.get("ErrorMsg")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = CoolDownBackend()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCoolDownPoliciesRequest(AbstractModel):
+    """DescribeCoolDownPolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCoolDownPoliciesResponse(AbstractModel):
+    """DescribeCoolDownPolicies返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param _List: 冷热分层策略列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of CoolDownPolicyInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorMsg = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorMsg = params.get("ErrorMsg")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = CoolDownPolicyInfo()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCoolDownTableDataRequest(AbstractModel):
+    """DescribeCoolDownTableData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _DatabaseName: 数据库名称
+        :type DatabaseName: str
+        """
+        self._InstanceId = None
+        self._DatabaseName = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DatabaseName(self):
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DatabaseName = params.get("DatabaseName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCoolDownTableDataResponse(AbstractModel):
+    """DescribeCoolDownTableData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param _List: 冷热分层Table数据列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of CoolDownTableDataInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorMsg = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorMsg = params.get("ErrorMsg")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = CoolDownTableDataInfo()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDatabaseAuditDownloadRequest(AbstractModel):
     """DescribeDatabaseAuditDownload请求参数结构体
 
@@ -3494,981 +4157,6 @@ class DescribeDatabaseAuditRecordsResponse(AbstractModel):
         if params.get("SlowQueryRecords") is not None:
             self._SlowQueryRecords = DataBaseAuditRecord()
             self._SlowQueryRecords._deserialize(params.get("SlowQueryRecords"))
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeDatabaseAuditResourceRequest(AbstractModel):
-    """DescribeDatabaseAuditResource请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _InstanceId: 实例ID
-        :type InstanceId: str
-        """
-        self._InstanceId = None
-
-    @property
-    def InstanceId(self):
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
-
-
-    def _deserialize(self, params):
-        self._InstanceId = params.get("InstanceId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeDatabaseAuditResourceResponse(AbstractModel):
-    """DescribeDatabaseAuditResource返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Databases: 数据库列表
-        :type Databases: list of str
-        :param _Users: 用户列表
-        :type Users: list of str
-        :param _SqlTypes: sql类型列表
-        :type SqlTypes: list of str
-        :param _Catalogs: catalog字段
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Catalogs: list of str
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._Databases = None
-        self._Users = None
-        self._SqlTypes = None
-        self._Catalogs = None
-        self._RequestId = None
-
-    @property
-    def Databases(self):
-        return self._Databases
-
-    @Databases.setter
-    def Databases(self, Databases):
-        self._Databases = Databases
-
-    @property
-    def Users(self):
-        return self._Users
-
-    @Users.setter
-    def Users(self, Users):
-        self._Users = Users
-
-    @property
-    def SqlTypes(self):
-        return self._SqlTypes
-
-    @SqlTypes.setter
-    def SqlTypes(self, SqlTypes):
-        self._SqlTypes = SqlTypes
-
-    @property
-    def Catalogs(self):
-        return self._Catalogs
-
-    @Catalogs.setter
-    def Catalogs(self, Catalogs):
-        self._Catalogs = Catalogs
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._Databases = params.get("Databases")
-        self._Users = params.get("Users")
-        self._SqlTypes = params.get("SqlTypes")
-        self._Catalogs = params.get("Catalogs")
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeDmsSqlHistoryRequest(AbstractModel):
-    """DescribeDmsSqlHistory请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _QueryNode: 查询节点ip
-        :type QueryNode: list of str
-        :param _QueryStatus: 运行状态
-        :type QueryStatus: list of str
-        :param _QuerySql: 模糊搜索sql
-        :type QuerySql: str
-        :param _QueryErrMsg: 根据报错原因搜索
-        :type QueryErrMsg: str
-        """
-        self._QueryNode = None
-        self._QueryStatus = None
-        self._QuerySql = None
-        self._QueryErrMsg = None
-
-    @property
-    def QueryNode(self):
-        return self._QueryNode
-
-    @QueryNode.setter
-    def QueryNode(self, QueryNode):
-        self._QueryNode = QueryNode
-
-    @property
-    def QueryStatus(self):
-        return self._QueryStatus
-
-    @QueryStatus.setter
-    def QueryStatus(self, QueryStatus):
-        self._QueryStatus = QueryStatus
-
-    @property
-    def QuerySql(self):
-        return self._QuerySql
-
-    @QuerySql.setter
-    def QuerySql(self, QuerySql):
-        self._QuerySql = QuerySql
-
-    @property
-    def QueryErrMsg(self):
-        return self._QueryErrMsg
-
-    @QueryErrMsg.setter
-    def QueryErrMsg(self, QueryErrMsg):
-        self._QueryErrMsg = QueryErrMsg
-
-
-    def _deserialize(self, params):
-        self._QueryNode = params.get("QueryNode")
-        self._QueryStatus = params.get("QueryStatus")
-        self._QuerySql = params.get("QuerySql")
-        self._QueryErrMsg = params.get("QueryErrMsg")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeDmsSqlHistoryResponse(AbstractModel):
-    """DescribeDmsSqlHistory返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _QueryNodeList: 集群所有的查询节点
-        :type QueryNodeList: list of str
-        :param _QueryStatusList: 集群所有的查询状态
-        :type QueryStatusList: list of str
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._QueryNodeList = None
-        self._QueryStatusList = None
-        self._RequestId = None
-
-    @property
-    def QueryNodeList(self):
-        return self._QueryNodeList
-
-    @QueryNodeList.setter
-    def QueryNodeList(self, QueryNodeList):
-        self._QueryNodeList = QueryNodeList
-
-    @property
-    def QueryStatusList(self):
-        return self._QueryStatusList
-
-    @QueryStatusList.setter
-    def QueryStatusList(self, QueryStatusList):
-        self._QueryStatusList = QueryStatusList
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._QueryNodeList = params.get("QueryNodeList")
-        self._QueryStatusList = params.get("QueryStatusList")
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeDorisMetricFilesRequest(AbstractModel):
-    """DescribeDorisMetricFiles请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ApiType: 接口类型
-        :type ApiType: str
-        :param _InstanceId: 集群id
-        :type InstanceId: str
-        :param _DescribeMetricsFileReq: 展示监控指标入参
-        :type DescribeMetricsFileReq: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeMetricsFileReq`
-        :param _ModifyMetricFileReq: 点关注功能入参
-        :type ModifyMetricFileReq: :class:`tencentcloud.cdwdoris.v20211228.models.ModifyMetricFileStruct`
-        :param _ModifyAttentionMetricFileReq: 监控指标关注功能入参
-        :type ModifyAttentionMetricFileReq: :class:`tencentcloud.cdwdoris.v20211228.models.ModifyMetricFileStructNew`
-        """
-        self._ApiType = None
-        self._InstanceId = None
-        self._DescribeMetricsFileReq = None
-        self._ModifyMetricFileReq = None
-        self._ModifyAttentionMetricFileReq = None
-
-    @property
-    def ApiType(self):
-        return self._ApiType
-
-    @ApiType.setter
-    def ApiType(self, ApiType):
-        self._ApiType = ApiType
-
-    @property
-    def InstanceId(self):
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
-
-    @property
-    def DescribeMetricsFileReq(self):
-        return self._DescribeMetricsFileReq
-
-    @DescribeMetricsFileReq.setter
-    def DescribeMetricsFileReq(self, DescribeMetricsFileReq):
-        self._DescribeMetricsFileReq = DescribeMetricsFileReq
-
-    @property
-    def ModifyMetricFileReq(self):
-        return self._ModifyMetricFileReq
-
-    @ModifyMetricFileReq.setter
-    def ModifyMetricFileReq(self, ModifyMetricFileReq):
-        self._ModifyMetricFileReq = ModifyMetricFileReq
-
-    @property
-    def ModifyAttentionMetricFileReq(self):
-        return self._ModifyAttentionMetricFileReq
-
-    @ModifyAttentionMetricFileReq.setter
-    def ModifyAttentionMetricFileReq(self, ModifyAttentionMetricFileReq):
-        self._ModifyAttentionMetricFileReq = ModifyAttentionMetricFileReq
-
-
-    def _deserialize(self, params):
-        self._ApiType = params.get("ApiType")
-        self._InstanceId = params.get("InstanceId")
-        if params.get("DescribeMetricsFileReq") is not None:
-            self._DescribeMetricsFileReq = DescribeMetricsFileReq()
-            self._DescribeMetricsFileReq._deserialize(params.get("DescribeMetricsFileReq"))
-        if params.get("ModifyMetricFileReq") is not None:
-            self._ModifyMetricFileReq = ModifyMetricFileStruct()
-            self._ModifyMetricFileReq._deserialize(params.get("ModifyMetricFileReq"))
-        if params.get("ModifyAttentionMetricFileReq") is not None:
-            self._ModifyAttentionMetricFileReq = ModifyMetricFileStructNew()
-            self._ModifyAttentionMetricFileReq._deserialize(params.get("ModifyAttentionMetricFileReq"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeDorisMetricFilesResponse(AbstractModel):
-    """DescribeDorisMetricFiles返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ErrorMsg: ErrorMsg
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ErrorMsg: str
-        :param _ReturnData: 返回数据
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ReturnData: str
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._ErrorMsg = None
-        self._ReturnData = None
-        self._RequestId = None
-
-    @property
-    def ErrorMsg(self):
-        return self._ErrorMsg
-
-    @ErrorMsg.setter
-    def ErrorMsg(self, ErrorMsg):
-        self._ErrorMsg = ErrorMsg
-
-    @property
-    def ReturnData(self):
-        return self._ReturnData
-
-    @ReturnData.setter
-    def ReturnData(self, ReturnData):
-        self._ReturnData = ReturnData
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._ErrorMsg = params.get("ErrorMsg")
-        self._ReturnData = params.get("ReturnData")
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeFederationTokenRequest(AbstractModel):
-    """DescribeFederationToken请求参数结构体
-
-    """
-
-
-class DescribeFederationTokenResponse(AbstractModel):
-    """DescribeFederationToken返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeFrontEndRequest(AbstractModel):
-    """DescribeFrontEnd请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _InstanceId: 实例id
-        :type InstanceId: str
-        :param _ConfigType: 文件类型
-        :type ConfigType: str
-        :param _Param1: 参数1
-        :type Param1: str
-        :param _Param2: 参数2
-        :type Param2: str
-        :param _Param3: 参数3
-        :type Param3: str
-        :param _Param4: 参数4
-        :type Param4: str
-        :param _Param5: 参数5
-        :type Param5: str
-        """
-        self._InstanceId = None
-        self._ConfigType = None
-        self._Param1 = None
-        self._Param2 = None
-        self._Param3 = None
-        self._Param4 = None
-        self._Param5 = None
-
-    @property
-    def InstanceId(self):
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
-
-    @property
-    def ConfigType(self):
-        return self._ConfigType
-
-    @ConfigType.setter
-    def ConfigType(self, ConfigType):
-        self._ConfigType = ConfigType
-
-    @property
-    def Param1(self):
-        return self._Param1
-
-    @Param1.setter
-    def Param1(self, Param1):
-        self._Param1 = Param1
-
-    @property
-    def Param2(self):
-        return self._Param2
-
-    @Param2.setter
-    def Param2(self, Param2):
-        self._Param2 = Param2
-
-    @property
-    def Param3(self):
-        return self._Param3
-
-    @Param3.setter
-    def Param3(self, Param3):
-        self._Param3 = Param3
-
-    @property
-    def Param4(self):
-        return self._Param4
-
-    @Param4.setter
-    def Param4(self, Param4):
-        self._Param4 = Param4
-
-    @property
-    def Param5(self):
-        return self._Param5
-
-    @Param5.setter
-    def Param5(self, Param5):
-        self._Param5 = Param5
-
-
-    def _deserialize(self, params):
-        self._InstanceId = params.get("InstanceId")
-        self._ConfigType = params.get("ConfigType")
-        self._Param1 = params.get("Param1")
-        self._Param2 = params.get("Param2")
-        self._Param3 = params.get("Param3")
-        self._Param4 = params.get("Param4")
-        self._Param5 = params.get("Param5")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeFrontEndResponse(AbstractModel):
-    """DescribeFrontEnd返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeGoodsDetailRequest(AbstractModel):
-    """DescribeGoodsDetail请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Case: 操作类型，“CREATE"表示创建、”MODIFY"表示变更配置、“RENEW"表示续费
-        :type Case: str
-        :param _Zone: 可用区，例如"ap-guangzhou-3"表示广州三区等
-        :type Zone: str
-        :param _HaFlag: 集群的高可用标记，true表示为高可用集群
-        :type HaFlag: bool
-        :param _HaType: 高可用类型： 0：非高可用 1：读高可用 2：读写高可用。	
-        :type HaType: int
-        :param _UserVPCId: 用户集群的私有网络
-        :type UserVPCId: str
-        :param _UserSubnetId: 用户集群的子网
-        :type UserSubnetId: str
-        :param _ProductVersion: 用户集群的版本，例如“20.7.2.30”等
-        :type ProductVersion: str
-        :param _InstanceId: 集群ID，创建时为空，其他情况必须存在
-        :type InstanceId: str
-        :param _Resources: 集群资源规格描述
-        :type Resources: list of ResourceNodeSpec
-        :param _ModifySpec: 集群规格修改参数
-        :type ModifySpec: :class:`tencentcloud.cdwdoris.v20211228.models.ResourceNodeSpec`
-        :param _ChargeProperties: 计费信息
-        :type ChargeProperties: :class:`tencentcloud.cdwdoris.v20211228.models.ChargeProperties`
-        :param _InstanceName: 创建集群时需要填写InstanceName
-        :type InstanceName: str
-        :param _Tags: 购买页填写的标签列表
-        :type Tags: list of Tag
-        :param _ClsLogSetId: CLS日志集ID
-        :type ClsLogSetId: str
-        :param _UserSubnetIPNum: 用户子网剩余ip数量
-        :type UserSubnetIPNum: int
-        :param _CosBucketName: COS桶名称
-        :type CosBucketName: str
-        :param _HourToPrepaid: 按量计费转包年包月
-        :type HourToPrepaid: bool
-        :param _DorisUserPwd: base64密码
-        :type DorisUserPwd: str
-        :param _LogType: 日志的类型，es或者cls_topic
-        :type LogType: str
-        :param _CaseSensitive: 表名大小写是否敏感，0：敏感；1：不敏感，表名改为以小写存储；2：不敏感，以小写进行比较
-        :type CaseSensitive: int
-        :param _RollingRestart: true为滚动重启 false为批量重启
-        :type RollingRestart: bool
-        :param _EnableMultiZones: 是否为多可用区
-        :type EnableMultiZones: bool
-        :param _UserMultiZoneInfos: 用户多可用区的网络信息
-        :type UserMultiZoneInfos: list of NetworkInfo
-        :param _Details: 扩展字段
-        :type Details: :class:`tencentcloud.cdwdoris.v20211228.models.InstanceDetail`
-        """
-        self._Case = None
-        self._Zone = None
-        self._HaFlag = None
-        self._HaType = None
-        self._UserVPCId = None
-        self._UserSubnetId = None
-        self._ProductVersion = None
-        self._InstanceId = None
-        self._Resources = None
-        self._ModifySpec = None
-        self._ChargeProperties = None
-        self._InstanceName = None
-        self._Tags = None
-        self._ClsLogSetId = None
-        self._UserSubnetIPNum = None
-        self._CosBucketName = None
-        self._HourToPrepaid = None
-        self._DorisUserPwd = None
-        self._LogType = None
-        self._CaseSensitive = None
-        self._RollingRestart = None
-        self._EnableMultiZones = None
-        self._UserMultiZoneInfos = None
-        self._Details = None
-
-    @property
-    def Case(self):
-        return self._Case
-
-    @Case.setter
-    def Case(self, Case):
-        self._Case = Case
-
-    @property
-    def Zone(self):
-        return self._Zone
-
-    @Zone.setter
-    def Zone(self, Zone):
-        self._Zone = Zone
-
-    @property
-    def HaFlag(self):
-        return self._HaFlag
-
-    @HaFlag.setter
-    def HaFlag(self, HaFlag):
-        self._HaFlag = HaFlag
-
-    @property
-    def HaType(self):
-        return self._HaType
-
-    @HaType.setter
-    def HaType(self, HaType):
-        self._HaType = HaType
-
-    @property
-    def UserVPCId(self):
-        return self._UserVPCId
-
-    @UserVPCId.setter
-    def UserVPCId(self, UserVPCId):
-        self._UserVPCId = UserVPCId
-
-    @property
-    def UserSubnetId(self):
-        return self._UserSubnetId
-
-    @UserSubnetId.setter
-    def UserSubnetId(self, UserSubnetId):
-        self._UserSubnetId = UserSubnetId
-
-    @property
-    def ProductVersion(self):
-        return self._ProductVersion
-
-    @ProductVersion.setter
-    def ProductVersion(self, ProductVersion):
-        self._ProductVersion = ProductVersion
-
-    @property
-    def InstanceId(self):
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
-
-    @property
-    def Resources(self):
-        return self._Resources
-
-    @Resources.setter
-    def Resources(self, Resources):
-        self._Resources = Resources
-
-    @property
-    def ModifySpec(self):
-        return self._ModifySpec
-
-    @ModifySpec.setter
-    def ModifySpec(self, ModifySpec):
-        self._ModifySpec = ModifySpec
-
-    @property
-    def ChargeProperties(self):
-        return self._ChargeProperties
-
-    @ChargeProperties.setter
-    def ChargeProperties(self, ChargeProperties):
-        self._ChargeProperties = ChargeProperties
-
-    @property
-    def InstanceName(self):
-        return self._InstanceName
-
-    @InstanceName.setter
-    def InstanceName(self, InstanceName):
-        self._InstanceName = InstanceName
-
-    @property
-    def Tags(self):
-        return self._Tags
-
-    @Tags.setter
-    def Tags(self, Tags):
-        self._Tags = Tags
-
-    @property
-    def ClsLogSetId(self):
-        return self._ClsLogSetId
-
-    @ClsLogSetId.setter
-    def ClsLogSetId(self, ClsLogSetId):
-        self._ClsLogSetId = ClsLogSetId
-
-    @property
-    def UserSubnetIPNum(self):
-        return self._UserSubnetIPNum
-
-    @UserSubnetIPNum.setter
-    def UserSubnetIPNum(self, UserSubnetIPNum):
-        self._UserSubnetIPNum = UserSubnetIPNum
-
-    @property
-    def CosBucketName(self):
-        return self._CosBucketName
-
-    @CosBucketName.setter
-    def CosBucketName(self, CosBucketName):
-        self._CosBucketName = CosBucketName
-
-    @property
-    def HourToPrepaid(self):
-        return self._HourToPrepaid
-
-    @HourToPrepaid.setter
-    def HourToPrepaid(self, HourToPrepaid):
-        self._HourToPrepaid = HourToPrepaid
-
-    @property
-    def DorisUserPwd(self):
-        return self._DorisUserPwd
-
-    @DorisUserPwd.setter
-    def DorisUserPwd(self, DorisUserPwd):
-        self._DorisUserPwd = DorisUserPwd
-
-    @property
-    def LogType(self):
-        return self._LogType
-
-    @LogType.setter
-    def LogType(self, LogType):
-        self._LogType = LogType
-
-    @property
-    def CaseSensitive(self):
-        return self._CaseSensitive
-
-    @CaseSensitive.setter
-    def CaseSensitive(self, CaseSensitive):
-        self._CaseSensitive = CaseSensitive
-
-    @property
-    def RollingRestart(self):
-        return self._RollingRestart
-
-    @RollingRestart.setter
-    def RollingRestart(self, RollingRestart):
-        self._RollingRestart = RollingRestart
-
-    @property
-    def EnableMultiZones(self):
-        return self._EnableMultiZones
-
-    @EnableMultiZones.setter
-    def EnableMultiZones(self, EnableMultiZones):
-        self._EnableMultiZones = EnableMultiZones
-
-    @property
-    def UserMultiZoneInfos(self):
-        return self._UserMultiZoneInfos
-
-    @UserMultiZoneInfos.setter
-    def UserMultiZoneInfos(self, UserMultiZoneInfos):
-        self._UserMultiZoneInfos = UserMultiZoneInfos
-
-    @property
-    def Details(self):
-        return self._Details
-
-    @Details.setter
-    def Details(self, Details):
-        self._Details = Details
-
-
-    def _deserialize(self, params):
-        self._Case = params.get("Case")
-        self._Zone = params.get("Zone")
-        self._HaFlag = params.get("HaFlag")
-        self._HaType = params.get("HaType")
-        self._UserVPCId = params.get("UserVPCId")
-        self._UserSubnetId = params.get("UserSubnetId")
-        self._ProductVersion = params.get("ProductVersion")
-        self._InstanceId = params.get("InstanceId")
-        if params.get("Resources") is not None:
-            self._Resources = []
-            for item in params.get("Resources"):
-                obj = ResourceNodeSpec()
-                obj._deserialize(item)
-                self._Resources.append(obj)
-        if params.get("ModifySpec") is not None:
-            self._ModifySpec = ResourceNodeSpec()
-            self._ModifySpec._deserialize(params.get("ModifySpec"))
-        if params.get("ChargeProperties") is not None:
-            self._ChargeProperties = ChargeProperties()
-            self._ChargeProperties._deserialize(params.get("ChargeProperties"))
-        self._InstanceName = params.get("InstanceName")
-        if params.get("Tags") is not None:
-            self._Tags = []
-            for item in params.get("Tags"):
-                obj = Tag()
-                obj._deserialize(item)
-                self._Tags.append(obj)
-        self._ClsLogSetId = params.get("ClsLogSetId")
-        self._UserSubnetIPNum = params.get("UserSubnetIPNum")
-        self._CosBucketName = params.get("CosBucketName")
-        self._HourToPrepaid = params.get("HourToPrepaid")
-        self._DorisUserPwd = params.get("DorisUserPwd")
-        self._LogType = params.get("LogType")
-        self._CaseSensitive = params.get("CaseSensitive")
-        self._RollingRestart = params.get("RollingRestart")
-        self._EnableMultiZones = params.get("EnableMultiZones")
-        if params.get("UserMultiZoneInfos") is not None:
-            self._UserMultiZoneInfos = []
-            for item in params.get("UserMultiZoneInfos"):
-                obj = NetworkInfo()
-                obj._deserialize(item)
-                self._UserMultiZoneInfos.append(obj)
-        if params.get("Details") is not None:
-            self._Details = InstanceDetail()
-            self._Details._deserialize(params.get("Details"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeGoodsDetailResponse(AbstractModel):
-    """DescribeGoodsDetail返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _GoodsDetail: GoodsDetail对象
-        :type GoodsDetail: str
-        :param _GoodsCategoryId: GoodsCategoryId 表示操作类型
-        :type GoodsCategoryId: int
-        :param _Type: 子商品码
-        :type Type: str
-        :param _PayMode: 付费模式，0后付费，1预付费
-        :type PayMode: int
-        :param _RegionId: 地域ID
-        :type RegionId: int
-        :param _ZoneId: 可用区ID
-        :type ZoneId: int
-        :param _ResourceId: 资源标识符
-        :type ResourceId: str
-        :param _GoodsNum: 商品数目
-        :type GoodsNum: int
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._GoodsDetail = None
-        self._GoodsCategoryId = None
-        self._Type = None
-        self._PayMode = None
-        self._RegionId = None
-        self._ZoneId = None
-        self._ResourceId = None
-        self._GoodsNum = None
-        self._RequestId = None
-
-    @property
-    def GoodsDetail(self):
-        return self._GoodsDetail
-
-    @GoodsDetail.setter
-    def GoodsDetail(self, GoodsDetail):
-        self._GoodsDetail = GoodsDetail
-
-    @property
-    def GoodsCategoryId(self):
-        return self._GoodsCategoryId
-
-    @GoodsCategoryId.setter
-    def GoodsCategoryId(self, GoodsCategoryId):
-        self._GoodsCategoryId = GoodsCategoryId
-
-    @property
-    def Type(self):
-        return self._Type
-
-    @Type.setter
-    def Type(self, Type):
-        self._Type = Type
-
-    @property
-    def PayMode(self):
-        return self._PayMode
-
-    @PayMode.setter
-    def PayMode(self, PayMode):
-        self._PayMode = PayMode
-
-    @property
-    def RegionId(self):
-        return self._RegionId
-
-    @RegionId.setter
-    def RegionId(self, RegionId):
-        self._RegionId = RegionId
-
-    @property
-    def ZoneId(self):
-        return self._ZoneId
-
-    @ZoneId.setter
-    def ZoneId(self, ZoneId):
-        self._ZoneId = ZoneId
-
-    @property
-    def ResourceId(self):
-        return self._ResourceId
-
-    @ResourceId.setter
-    def ResourceId(self, ResourceId):
-        self._ResourceId = ResourceId
-
-    @property
-    def GoodsNum(self):
-        return self._GoodsNum
-
-    @GoodsNum.setter
-    def GoodsNum(self, GoodsNum):
-        self._GoodsNum = GoodsNum
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._GoodsDetail = params.get("GoodsDetail")
-        self._GoodsCategoryId = params.get("GoodsCategoryId")
-        self._Type = params.get("Type")
-        self._PayMode = params.get("PayMode")
-        self._RegionId = params.get("RegionId")
-        self._ZoneId = params.get("ZoneId")
-        self._ResourceId = params.get("ResourceId")
-        self._GoodsNum = params.get("GoodsNum")
         self._RequestId = params.get("RequestId")
 
 
@@ -5502,247 +5190,6 @@ class DescribeInstancesResponse(AbstractModel):
                 obj = InstanceInfo()
                 obj._deserialize(item)
                 self._InstancesList.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeMetricsFileReq(AbstractModel):
-    """展示doris监控指标请求入参
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _InstanceType: 集群类型
-        :type InstanceType: str
-        :param _MetricType: 指标类型
-        :type MetricType: str
-        :param _IfAttention: 是否关注
-        :type IfAttention: int
-        """
-        self._InstanceType = None
-        self._MetricType = None
-        self._IfAttention = None
-
-    @property
-    def InstanceType(self):
-        return self._InstanceType
-
-    @InstanceType.setter
-    def InstanceType(self, InstanceType):
-        self._InstanceType = InstanceType
-
-    @property
-    def MetricType(self):
-        return self._MetricType
-
-    @MetricType.setter
-    def MetricType(self, MetricType):
-        self._MetricType = MetricType
-
-    @property
-    def IfAttention(self):
-        return self._IfAttention
-
-    @IfAttention.setter
-    def IfAttention(self, IfAttention):
-        self._IfAttention = IfAttention
-
-
-    def _deserialize(self, params):
-        self._InstanceType = params.get("InstanceType")
-        self._MetricType = params.get("MetricType")
-        self._IfAttention = params.get("IfAttention")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeRegionZoneRequest(AbstractModel):
-    """DescribeRegionZone请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Service: 服务
-        :type Service: str
-        :param _IsInternationalSite: 是否是国际站
-        :type IsInternationalSite: bool
-        """
-        self._Service = None
-        self._IsInternationalSite = None
-
-    @property
-    def Service(self):
-        return self._Service
-
-    @Service.setter
-    def Service(self, Service):
-        self._Service = Service
-
-    @property
-    def IsInternationalSite(self):
-        return self._IsInternationalSite
-
-    @IsInternationalSite.setter
-    def IsInternationalSite(self, IsInternationalSite):
-        self._IsInternationalSite = IsInternationalSite
-
-
-    def _deserialize(self, params):
-        self._Service = params.get("Service")
-        self._IsInternationalSite = params.get("IsInternationalSite")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeRegionZoneResponse(AbstractModel):
-    """DescribeRegionZone返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Items: 地域列表
-        :type Items: list of RegionAreaInfo
-        :param _Versions: 内核版本列表
-        :type Versions: list of str
-        :param _VpcRule: 网络规则
-        :type VpcRule: str
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._Items = None
-        self._Versions = None
-        self._VpcRule = None
-        self._RequestId = None
-
-    @property
-    def Items(self):
-        return self._Items
-
-    @Items.setter
-    def Items(self, Items):
-        self._Items = Items
-
-    @property
-    def Versions(self):
-        return self._Versions
-
-    @Versions.setter
-    def Versions(self, Versions):
-        self._Versions = Versions
-
-    @property
-    def VpcRule(self):
-        return self._VpcRule
-
-    @VpcRule.setter
-    def VpcRule(self, VpcRule):
-        self._VpcRule = VpcRule
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("Items") is not None:
-            self._Items = []
-            for item in params.get("Items"):
-                obj = RegionAreaInfo()
-                obj._deserialize(item)
-                self._Items.append(obj)
-        self._Versions = params.get("Versions")
-        self._VpcRule = params.get("VpcRule")
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeReplicaVersionRequest(AbstractModel):
-    """DescribeReplicaVersion请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _InstanceId: 实例id
-        :type InstanceId: str
-        """
-        self._InstanceId = None
-
-    @property
-    def InstanceId(self):
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
-
-
-    def _deserialize(self, params):
-        self._InstanceId = params.get("InstanceId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeReplicaVersionResponse(AbstractModel):
-    """DescribeReplicaVersion返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ReplicaFlagItem: 是否支持新语法
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ReplicaFlagItem: :class:`tencentcloud.cdwdoris.v20211228.models.VersionReplicaItem`
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._ReplicaFlagItem = None
-        self._RequestId = None
-
-    @property
-    def ReplicaFlagItem(self):
-        return self._ReplicaFlagItem
-
-    @ReplicaFlagItem.setter
-    def ReplicaFlagItem(self, ReplicaFlagItem):
-        self._ReplicaFlagItem = ReplicaFlagItem
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("ReplicaFlagItem") is not None:
-            self._ReplicaFlagItem = VersionReplicaItem()
-            self._ReplicaFlagItem._deserialize(params.get("ReplicaFlagItem"))
         self._RequestId = params.get("RequestId")
 
 
@@ -7112,112 +6559,6 @@ class DorisSourceInfo(AbstractModel):
         
 
 
-class FitClsLogRequest(AbstractModel):
-    """FitClsLog请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _InstanceId: 集群ID，例如cdwch-xxxx
-        :type InstanceId: str
-        :param _ClsLogSetId: cls日志集ID
-        :type ClsLogSetId: str
-        :param _LogType: 日志的类型，es还是cls_topic
-        :type LogType: str
-        """
-        self._InstanceId = None
-        self._ClsLogSetId = None
-        self._LogType = None
-
-    @property
-    def InstanceId(self):
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
-
-    @property
-    def ClsLogSetId(self):
-        return self._ClsLogSetId
-
-    @ClsLogSetId.setter
-    def ClsLogSetId(self, ClsLogSetId):
-        self._ClsLogSetId = ClsLogSetId
-
-    @property
-    def LogType(self):
-        return self._LogType
-
-    @LogType.setter
-    def LogType(self, LogType):
-        self._LogType = LogType
-
-
-    def _deserialize(self, params):
-        self._InstanceId = params.get("InstanceId")
-        self._ClsLogSetId = params.get("ClsLogSetId")
-        self._LogType = params.get("LogType")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class FitClsLogResponse(AbstractModel):
-    """FitClsLog返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _FlowId: 流程相关信息
-        :type FlowId: int
-        :param _ErrorMsg: 错误信息
-        :type ErrorMsg: str
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._FlowId = None
-        self._ErrorMsg = None
-        self._RequestId = None
-
-    @property
-    def FlowId(self):
-        return self._FlowId
-
-    @FlowId.setter
-    def FlowId(self, FlowId):
-        self._FlowId = FlowId
-
-    @property
-    def ErrorMsg(self):
-        return self._ErrorMsg
-
-    @ErrorMsg.setter
-    def ErrorMsg(self, ErrorMsg):
-        self._ErrorMsg = ErrorMsg
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._FlowId = params.get("FlowId")
-        self._ErrorMsg = params.get("ErrorMsg")
-        self._RequestId = params.get("RequestId")
-
-
 class FrontEndRule(AbstractModel):
     """前端规则描述
 
@@ -8334,6 +7675,113 @@ class InstanceOperation(AbstractModel):
         
 
 
+class ModifyCoolDownPolicyRequest(AbstractModel):
+    """ModifyCoolDownPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _PolicyName: 策略名称
+        :type PolicyName: str
+        :param _CoolDownTtl: cooldown_ttl
+        :type CoolDownTtl: str
+        :param _CoolDownDatetime: cooldown_datetime
+        :type CoolDownDatetime: str
+        """
+        self._InstanceId = None
+        self._PolicyName = None
+        self._CoolDownTtl = None
+        self._CoolDownDatetime = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def PolicyName(self):
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def CoolDownTtl(self):
+        return self._CoolDownTtl
+
+    @CoolDownTtl.setter
+    def CoolDownTtl(self, CoolDownTtl):
+        self._CoolDownTtl = CoolDownTtl
+
+    @property
+    def CoolDownDatetime(self):
+        return self._CoolDownDatetime
+
+    @CoolDownDatetime.setter
+    def CoolDownDatetime(self, CoolDownDatetime):
+        self._CoolDownDatetime = CoolDownDatetime
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._PolicyName = params.get("PolicyName")
+        self._CoolDownTtl = params.get("CoolDownTtl")
+        self._CoolDownDatetime = params.get("CoolDownDatetime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCoolDownPolicyResponse(AbstractModel):
+    """ModifyCoolDownPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyInstanceKeyValConfigsRequest(AbstractModel):
     """ModifyInstanceKeyValConfigs请求参数结构体
 
@@ -8603,121 +8051,6 @@ class ModifyInstanceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
-
-
-class ModifyMetricFileStruct(AbstractModel):
-    """用户是否关注监控指标入参
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Id: 唯一id
-        :type Id: int
-        :param _IfAttention: 是否关注
-        :type IfAttention: str
-        """
-        self._Id = None
-        self._IfAttention = None
-
-    @property
-    def Id(self):
-        return self._Id
-
-    @Id.setter
-    def Id(self, Id):
-        self._Id = Id
-
-    @property
-    def IfAttention(self):
-        return self._IfAttention
-
-    @IfAttention.setter
-    def IfAttention(self, IfAttention):
-        self._IfAttention = IfAttention
-
-
-    def _deserialize(self, params):
-        self._Id = params.get("Id")
-        self._IfAttention = params.get("IfAttention")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyMetricFileStructNew(AbstractModel):
-    """doris监控指标关注（取消关注）功能入参
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _InstanceType: 集群类型
-        :type InstanceType: str
-        :param _MetricType: 指标类型
-        :type MetricType: str
-        :param _Name: 指标英文名
-        :type Name: str
-        :param _IfAttention: 1：关注
-0：取消关注
-        :type IfAttention: int
-        """
-        self._InstanceType = None
-        self._MetricType = None
-        self._Name = None
-        self._IfAttention = None
-
-    @property
-    def InstanceType(self):
-        return self._InstanceType
-
-    @InstanceType.setter
-    def InstanceType(self, InstanceType):
-        self._InstanceType = InstanceType
-
-    @property
-    def MetricType(self):
-        return self._MetricType
-
-    @MetricType.setter
-    def MetricType(self, MetricType):
-        self._MetricType = MetricType
-
-    @property
-    def Name(self):
-        return self._Name
-
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
-
-    @property
-    def IfAttention(self):
-        return self._IfAttention
-
-    @IfAttention.setter
-    def IfAttention(self, IfAttention):
-        self._IfAttention = IfAttention
-
-
-    def _deserialize(self, params):
-        self._InstanceType = params.get("InstanceType")
-        self._MetricType = params.get("MetricType")
-        self._Name = params.get("Name")
-        self._IfAttention = params.get("IfAttention")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
 
 
 class ModifyNodeStatusRequest(AbstractModel):
@@ -9799,26 +9132,35 @@ class NodesSummary(AbstractModel):
         
 
 
-class OpenBackUpRequest(AbstractModel):
-    """OpenBackUp请求参数结构体
+class OpenCoolDownPolicyRequest(AbstractModel):
+    """OpenCoolDownPolicy请求参数结构体
 
     """
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群id
+        :param _InstanceId: 实例id
         :type InstanceId: str
-        :param _OperationType: 取值：
-open:打开
-close:关闭
-updateBucket:变更桶名
+        :param _DatabaseName: db名称
+        :type DatabaseName: str
+        :param _TableName: table名称
+        :type TableName: str
+        :param _OperationType: 操作类型
         :type OperationType: str
-        :param _CosBucketName: 桶名字
-        :type CosBucketName: str
+        :param _BatchOpenCoolDownTables: 逗号分隔 需要带上db的名字 db1.tb1,db1.tb2,db2.tb1
+        :type BatchOpenCoolDownTables: str
+        :param _PolicyName: 绑定的时候用 策略名称
+        :type PolicyName: str
+        :param _BatchOpenCoolDownPartitions: 逗号分隔 p1,p2,p3
+        :type BatchOpenCoolDownPartitions: str
         """
         self._InstanceId = None
+        self._DatabaseName = None
+        self._TableName = None
         self._OperationType = None
-        self._CosBucketName = None
+        self._BatchOpenCoolDownTables = None
+        self._PolicyName = None
+        self._BatchOpenCoolDownPartitions = None
 
     @property
     def InstanceId(self):
@@ -9829,6 +9171,22 @@ updateBucket:变更桶名
         self._InstanceId = InstanceId
 
     @property
+    def DatabaseName(self):
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
     def OperationType(self):
         return self._OperationType
 
@@ -9837,18 +9195,38 @@ updateBucket:变更桶名
         self._OperationType = OperationType
 
     @property
-    def CosBucketName(self):
-        return self._CosBucketName
+    def BatchOpenCoolDownTables(self):
+        return self._BatchOpenCoolDownTables
 
-    @CosBucketName.setter
-    def CosBucketName(self, CosBucketName):
-        self._CosBucketName = CosBucketName
+    @BatchOpenCoolDownTables.setter
+    def BatchOpenCoolDownTables(self, BatchOpenCoolDownTables):
+        self._BatchOpenCoolDownTables = BatchOpenCoolDownTables
+
+    @property
+    def PolicyName(self):
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def BatchOpenCoolDownPartitions(self):
+        return self._BatchOpenCoolDownPartitions
+
+    @BatchOpenCoolDownPartitions.setter
+    def BatchOpenCoolDownPartitions(self, BatchOpenCoolDownPartitions):
+        self._BatchOpenCoolDownPartitions = BatchOpenCoolDownPartitions
 
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
+        self._DatabaseName = params.get("DatabaseName")
+        self._TableName = params.get("TableName")
         self._OperationType = params.get("OperationType")
-        self._CosBucketName = params.get("CosBucketName")
+        self._BatchOpenCoolDownTables = params.get("BatchOpenCoolDownTables")
+        self._PolicyName = params.get("PolicyName")
+        self._BatchOpenCoolDownPartitions = params.get("BatchOpenCoolDownPartitions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9859,17 +9237,39 @@ updateBucket:变更桶名
         
 
 
-class OpenBackUpResponse(AbstractModel):
-    """OpenBackUp返回参数结构体
+class OpenCoolDownPolicyResponse(AbstractModel):
+    """OpenCoolDownPolicy返回参数结构体
 
     """
 
     def __init__(self):
         r"""
+        :param _ErrorMsg: 错误信息
+        :type ErrorMsg: str
+        :param _QueryDocument: 返回信息
+        :type QueryDocument: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ErrorMsg = None
+        self._QueryDocument = None
         self._RequestId = None
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def QueryDocument(self):
+        return self._QueryDocument
+
+    @QueryDocument.setter
+    def QueryDocument(self, QueryDocument):
+        self._QueryDocument = QueryDocument
 
     @property
     def RequestId(self):
@@ -9881,6 +9281,79 @@ class OpenBackUpResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._QueryDocument = params.get("QueryDocument")
+        self._RequestId = params.get("RequestId")
+
+
+class OpenCoolDownRequest(AbstractModel):
+    """OpenCoolDown请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenCoolDownResponse(AbstractModel):
+    """OpenCoolDown返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorMsg = params.get("ErrorMsg")
         self._RequestId = params.get("RequestId")
 
 
@@ -10497,178 +9970,6 @@ class ResizeDiskResponse(AbstractModel):
         self._FlowId = params.get("FlowId")
         self._ErrorMsg = params.get("ErrorMsg")
         self._RequestId = params.get("RequestId")
-
-
-class ResourceNodeDiskSpec(AbstractModel):
-    """集群内节点的规格磁盘规格描述
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _DiskType: 节点磁盘类型，例如“CLOUD_SSD”\"CLOUD_PREMIUM"
-        :type DiskType: str
-        :param _DiskSize: 磁盘容量，单位G
-        :type DiskSize: int
-        :param _DiskCount: 磁盘总数
-        :type DiskCount: int
-        """
-        self._DiskType = None
-        self._DiskSize = None
-        self._DiskCount = None
-
-    @property
-    def DiskType(self):
-        return self._DiskType
-
-    @DiskType.setter
-    def DiskType(self, DiskType):
-        self._DiskType = DiskType
-
-    @property
-    def DiskSize(self):
-        return self._DiskSize
-
-    @DiskSize.setter
-    def DiskSize(self, DiskSize):
-        self._DiskSize = DiskSize
-
-    @property
-    def DiskCount(self):
-        return self._DiskCount
-
-    @DiskCount.setter
-    def DiskCount(self, DiskCount):
-        self._DiskCount = DiskCount
-
-
-    def _deserialize(self, params):
-        self._DiskType = params.get("DiskType")
-        self._DiskSize = params.get("DiskSize")
-        self._DiskCount = params.get("DiskCount")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ResourceNodeSpec(AbstractModel):
-    """集群内节点的规格描述
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Type: 节点类型，“DATA"数据节点，”COMMON" zookeeper节点
-        :type Type: str
-        :param _SpecName: 节点规格名称，例如 “SCH1","SCH2”等
-        :type SpecName: str
-        :param _Count: 节点数目
-        :type Count: int
-        :param _DiskSpec: 磁盘规格描述
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DiskSpec: :class:`tencentcloud.cdwdoris.v20211228.models.ResourceNodeDiskSpec`
-        :param _Encrypt: 云盘是否加密，0不加密/1加密  默认为0
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Encrypt: int
-        :param _Extra: 额外信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Extra: :class:`tencentcloud.cdwdoris.v20211228.models.SpecExtra`
-        :param _AttachCBSSpec: 挂载云盘信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AttachCBSSpec: :class:`tencentcloud.cdwdoris.v20211228.models.ResourceNodeDiskSpec`
-        """
-        self._Type = None
-        self._SpecName = None
-        self._Count = None
-        self._DiskSpec = None
-        self._Encrypt = None
-        self._Extra = None
-        self._AttachCBSSpec = None
-
-    @property
-    def Type(self):
-        return self._Type
-
-    @Type.setter
-    def Type(self, Type):
-        self._Type = Type
-
-    @property
-    def SpecName(self):
-        return self._SpecName
-
-    @SpecName.setter
-    def SpecName(self, SpecName):
-        self._SpecName = SpecName
-
-    @property
-    def Count(self):
-        return self._Count
-
-    @Count.setter
-    def Count(self, Count):
-        self._Count = Count
-
-    @property
-    def DiskSpec(self):
-        return self._DiskSpec
-
-    @DiskSpec.setter
-    def DiskSpec(self, DiskSpec):
-        self._DiskSpec = DiskSpec
-
-    @property
-    def Encrypt(self):
-        return self._Encrypt
-
-    @Encrypt.setter
-    def Encrypt(self, Encrypt):
-        self._Encrypt = Encrypt
-
-    @property
-    def Extra(self):
-        return self._Extra
-
-    @Extra.setter
-    def Extra(self, Extra):
-        self._Extra = Extra
-
-    @property
-    def AttachCBSSpec(self):
-        return self._AttachCBSSpec
-
-    @AttachCBSSpec.setter
-    def AttachCBSSpec(self, AttachCBSSpec):
-        self._AttachCBSSpec = AttachCBSSpec
-
-
-    def _deserialize(self, params):
-        self._Type = params.get("Type")
-        self._SpecName = params.get("SpecName")
-        self._Count = params.get("Count")
-        if params.get("DiskSpec") is not None:
-            self._DiskSpec = ResourceNodeDiskSpec()
-            self._DiskSpec._deserialize(params.get("DiskSpec"))
-        self._Encrypt = params.get("Encrypt")
-        if params.get("Extra") is not None:
-            self._Extra = SpecExtra()
-            self._Extra._deserialize(params.get("Extra"))
-        if params.get("AttachCBSSpec") is not None:
-            self._AttachCBSSpec = ResourceNodeDiskSpec()
-            self._AttachCBSSpec._deserialize(params.get("AttachCBSSpec"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
 
 
 class ResourceSpec(AbstractModel):
@@ -11868,55 +11169,6 @@ class SlowQueryRecord(AbstractModel):
         
 
 
-class SpecExtra(AbstractModel):
-    """额外参数
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _DelShards: 要删除的shards
-        :type DelShards: str
-        :param _DelHosts: 要删除的节点uip
-        :type DelHosts: str
-        """
-        self._DelShards = None
-        self._DelHosts = None
-
-    @property
-    def DelShards(self):
-        warnings.warn("parameter `DelShards` is deprecated", DeprecationWarning) 
-
-        return self._DelShards
-
-    @DelShards.setter
-    def DelShards(self, DelShards):
-        warnings.warn("parameter `DelShards` is deprecated", DeprecationWarning) 
-
-        self._DelShards = DelShards
-
-    @property
-    def DelHosts(self):
-        return self._DelHosts
-
-    @DelHosts.setter
-    def DelHosts(self, DelHosts):
-        self._DelHosts = DelHosts
-
-
-    def _deserialize(self, params):
-        self._DelShards = params.get("DelShards")
-        self._DelHosts = params.get("DelHosts")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class Tag(AbstractModel):
     """标签描述
 
@@ -11960,6 +11212,101 @@ class Tag(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateCoolDownRequest(AbstractModel):
+    """UpdateCoolDown请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _Enable: 是否启用 0：不启用 1：启用
+        :type Enable: int
+        :param _Bucket: 用户存放冷热分层数据Cos桶地址
+        :type Bucket: str
+        """
+        self._InstanceId = None
+        self._Enable = None
+        self._Bucket = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Bucket(self):
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Enable = params.get("Enable")
+        self._Bucket = params.get("Bucket")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateCoolDownResponse(AbstractModel):
+    """UpdateCoolDown返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateUserPrivileges(AbstractModel):
@@ -12032,53 +11379,6 @@ class UserWorkloadGroup(AbstractModel):
     def _deserialize(self, params):
         self._UserName = params.get("UserName")
         self._WorkloadGroupName = params.get("WorkloadGroupName")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class VersionReplicaItem(AbstractModel):
-    """检查doris内核是否支持新语法。
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ReplicaFlag: 版本描述
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ReplicaFlag: int
-        :param _ErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ErrorMsg: str
-        """
-        self._ReplicaFlag = None
-        self._ErrorMsg = None
-
-    @property
-    def ReplicaFlag(self):
-        return self._ReplicaFlag
-
-    @ReplicaFlag.setter
-    def ReplicaFlag(self, ReplicaFlag):
-        self._ReplicaFlag = ReplicaFlag
-
-    @property
-    def ErrorMsg(self):
-        return self._ErrorMsg
-
-    @ErrorMsg.setter
-    def ErrorMsg(self, ErrorMsg):
-        self._ErrorMsg = ErrorMsg
-
-
-    def _deserialize(self, params):
-        self._ReplicaFlag = params.get("ReplicaFlag")
-        self._ErrorMsg = params.get("ErrorMsg")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

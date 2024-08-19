@@ -11302,6 +11302,100 @@ class UpdatePublishCdnStreamResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class UpdateStreamIngestRequest(AbstractModel):
+    """UpdateStreamIngest请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: TRTC的SDKAppId，和任务的房间所对应的SDKAppId相同
+        :type SdkAppId: int
+        :param _TaskId: 任务的唯一Id，在启动任务成功后会返回。
+        :type TaskId: str
+        :param _StreamUrl: 源流URL【必填】。
+        :type StreamUrl: str
+        """
+        self._SdkAppId = None
+        self._TaskId = None
+        self._StreamUrl = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def StreamUrl(self):
+        return self._StreamUrl
+
+    @StreamUrl.setter
+    def StreamUrl(self, StreamUrl):
+        self._StreamUrl = StreamUrl
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._TaskId = params.get("TaskId")
+        self._StreamUrl = params.get("StreamUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateStreamIngestResponse(AbstractModel):
+    """UpdateStreamIngest返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务的状态信息。InProgress：表示当前任务正在进行中。NotExist：表示当前任务不存在。示例值：InProgress
+        :type Status: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
 class UserInformation(AbstractModel):
     """用户信息，包括用户进房时间，退房时间等
 

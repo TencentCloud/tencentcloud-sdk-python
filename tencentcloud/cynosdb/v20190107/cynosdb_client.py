@@ -923,6 +923,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBinlogConfig(self, request):
+        """该接口（DescribeBinlogConfig）用于查询binlog配置
+
+        :param request: Request instance for DescribeBinlogConfig.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeBinlogConfigRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeBinlogConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBinlogConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBinlogConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBinlogDownloadUrl(self, request):
         """此接口（DescribeBinlogDownloadUrl）用于查询Binlog的下载地址。
 
@@ -2181,6 +2204,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("ModifyBackupName", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyBackupNameResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyBinlogConfig(self, request):
+        """该接口（ModifyBinlogConfig）用于修改Binlog配置
+
+        :param request: Request instance for ModifyBinlogConfig.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyBinlogConfigRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyBinlogConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBinlogConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBinlogConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

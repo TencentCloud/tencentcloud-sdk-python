@@ -2137,6 +2137,66 @@ class BindInstanceInfo(AbstractModel):
         
 
 
+class BinlogConfigInfo(AbstractModel):
+    """binlog配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BinlogSaveDays: binlog保留时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BinlogSaveDays: int
+        :param _BinlogCrossRegionsEnable: binlog异地地域备份是否开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BinlogCrossRegionsEnable: str
+        :param _BinlogCrossRegions: binlog异地地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BinlogCrossRegions: list of str
+        """
+        self._BinlogSaveDays = None
+        self._BinlogCrossRegionsEnable = None
+        self._BinlogCrossRegions = None
+
+    @property
+    def BinlogSaveDays(self):
+        return self._BinlogSaveDays
+
+    @BinlogSaveDays.setter
+    def BinlogSaveDays(self, BinlogSaveDays):
+        self._BinlogSaveDays = BinlogSaveDays
+
+    @property
+    def BinlogCrossRegionsEnable(self):
+        return self._BinlogCrossRegionsEnable
+
+    @BinlogCrossRegionsEnable.setter
+    def BinlogCrossRegionsEnable(self, BinlogCrossRegionsEnable):
+        self._BinlogCrossRegionsEnable = BinlogCrossRegionsEnable
+
+    @property
+    def BinlogCrossRegions(self):
+        return self._BinlogCrossRegions
+
+    @BinlogCrossRegions.setter
+    def BinlogCrossRegions(self, BinlogCrossRegions):
+        self._BinlogCrossRegions = BinlogCrossRegions
+
+
+    def _deserialize(self, params):
+        self._BinlogSaveDays = params.get("BinlogSaveDays")
+        self._BinlogCrossRegionsEnable = params.get("BinlogCrossRegionsEnable")
+        self._BinlogCrossRegions = params.get("BinlogCrossRegions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BinlogItem(AbstractModel):
     """Binlog描述
 
@@ -11550,6 +11610,92 @@ class DescribeBackupListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeBinlogConfigRequest(AbstractModel):
+    """DescribeBinlogConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBinlogConfigResponse(AbstractModel):
+    """DescribeBinlogConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BinlogCrossRegionsConfigUpdateTime: Binlog跨地域配置更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BinlogCrossRegionsConfigUpdateTime: str
+        :param _BinlogConfig: Binlog配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BinlogConfig: :class:`tencentcloud.cynosdb.v20190107.models.BinlogConfigInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BinlogCrossRegionsConfigUpdateTime = None
+        self._BinlogConfig = None
+        self._RequestId = None
+
+    @property
+    def BinlogCrossRegionsConfigUpdateTime(self):
+        return self._BinlogCrossRegionsConfigUpdateTime
+
+    @BinlogCrossRegionsConfigUpdateTime.setter
+    def BinlogCrossRegionsConfigUpdateTime(self, BinlogCrossRegionsConfigUpdateTime):
+        self._BinlogCrossRegionsConfigUpdateTime = BinlogCrossRegionsConfigUpdateTime
+
+    @property
+    def BinlogConfig(self):
+        return self._BinlogConfig
+
+    @BinlogConfig.setter
+    def BinlogConfig(self, BinlogConfig):
+        self._BinlogConfig = BinlogConfig
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._BinlogCrossRegionsConfigUpdateTime = params.get("BinlogCrossRegionsConfigUpdateTime")
+        if params.get("BinlogConfig") is not None:
+            self._BinlogConfig = BinlogConfigInfo()
+            self._BinlogConfig._deserialize(params.get("BinlogConfig"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeBinlogDownloadUrlRequest(AbstractModel):
     """DescribeBinlogDownloadUrl请求参数结构体
 
@@ -19889,6 +20035,78 @@ class ModifyBackupNameRequest(AbstractModel):
 
 class ModifyBackupNameResponse(AbstractModel):
     """ModifyBackupName返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyBinlogConfigRequest(AbstractModel):
+    """ModifyBinlogConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _BinlogConfig: Binlog配置信息
+        :type BinlogConfig: :class:`tencentcloud.cynosdb.v20190107.models.BinlogConfigInfo`
+        """
+        self._ClusterId = None
+        self._BinlogConfig = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def BinlogConfig(self):
+        return self._BinlogConfig
+
+    @BinlogConfig.setter
+    def BinlogConfig(self, BinlogConfig):
+        self._BinlogConfig = BinlogConfig
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        if params.get("BinlogConfig") is not None:
+            self._BinlogConfig = BinlogConfigInfo()
+            self._BinlogConfig._deserialize(params.get("BinlogConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBinlogConfigResponse(AbstractModel):
+    """ModifyBinlogConfig返回参数结构体
 
     """
 

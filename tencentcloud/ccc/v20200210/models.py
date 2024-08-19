@@ -4057,10 +4057,10 @@ class DescribeChatMessagesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID（废弃）
-        :type InstanceId: int
         :param _SdkAppId: 应用 ID，可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
+        :param _InstanceId: 实例 ID（废弃）
+        :type InstanceId: int
         :param _CdrId: 服务记录ID（废弃）
         :type CdrId: str
         :param _Limit: 返回记录条数，最大为100 默认20
@@ -4072,13 +4072,21 @@ class DescribeChatMessagesRequest(AbstractModel):
         :param _SessionId: 服务记录 SessionID
         :type SessionId: str
         """
-        self._InstanceId = None
         self._SdkAppId = None
+        self._InstanceId = None
         self._CdrId = None
         self._Limit = None
         self._Offset = None
         self._Order = None
         self._SessionId = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
 
     @property
     def InstanceId(self):
@@ -4091,14 +4099,6 @@ class DescribeChatMessagesRequest(AbstractModel):
         warnings.warn("parameter `InstanceId` is deprecated", DeprecationWarning) 
 
         self._InstanceId = InstanceId
-
-    @property
-    def SdkAppId(self):
-        return self._SdkAppId
-
-    @SdkAppId.setter
-    def SdkAppId(self, SdkAppId):
-        self._SdkAppId = SdkAppId
 
     @property
     def CdrId(self):
@@ -4146,8 +4146,8 @@ class DescribeChatMessagesRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._InstanceId = params.get("InstanceId")
         self._SdkAppId = params.get("SdkAppId")
+        self._InstanceId = params.get("InstanceId")
         self._CdrId = params.get("CdrId")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")

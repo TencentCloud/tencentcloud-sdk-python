@@ -1760,6 +1760,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCurrentPlaylist(self, request):
+        """查询轮播当前播放列表。
+
+        :param request: Request instance for DescribeCurrentPlaylist.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeCurrentPlaylistRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeCurrentPlaylistResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCurrentPlaylist", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCurrentPlaylistResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDailyMediaPlayStat(self, request):
         """该接口用于查询指定日期范围内每天的播放统计数据。
         * 可以查询最近一年的播放统计数据。
@@ -2898,6 +2921,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def FastEditMedia(self, request):
+        """对 HLS 视频实现快速拼接和快速剪辑，生成新的 HLS 格式的媒体。
+
+        :param request: Request instance for FastEditMedia.
+        :type request: :class:`tencentcloud.vod.v20180717.models.FastEditMediaRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.FastEditMediaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("FastEditMedia", params, headers=headers)
+            response = json.loads(body)
+            model = models.FastEditMediaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ForbidMediaDistribution(self, request):
         """* 对媒体禁播后，除了点播控制台预览，其他场景访问视频各种资源的 URL（原始文件、转码输出文件、截图等）均会返回 403。
           禁播/解禁操作全网生效时间约 5~10 分钟。
@@ -2913,6 +2959,29 @@ class VodClient(AbstractClient):
             body = self.call("ForbidMediaDistribution", params, headers=headers)
             response = json.loads(body)
             model = models.ForbidMediaDistributionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def HandleCurrentPlaylist(self, request):
+        """操作轮播当前播放列表。支持的操作有：<li> Insert：向当前播列表插入播放节目。</li><li> Delete：删除播列表中的播放节目。</li>
+
+        :param request: Request instance for HandleCurrentPlaylist.
+        :type request: :class:`tencentcloud.vod.v20180717.models.HandleCurrentPlaylistRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.HandleCurrentPlaylistResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("HandleCurrentPlaylist", params, headers=headers)
+            response = json.loads(body)
+            model = models.HandleCurrentPlaylistResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

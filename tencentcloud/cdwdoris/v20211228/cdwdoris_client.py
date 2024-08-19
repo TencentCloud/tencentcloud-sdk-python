@@ -49,6 +49,29 @@ class CdwdorisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CheckCoolDownWorkingVariableConfigCorrect(self, request):
+        """查询冷热分层生效变量和配置是否正确
+
+        :param request: Request instance for CheckCoolDownWorkingVariableConfigCorrect.
+        :type request: :class:`tencentcloud.cdwdoris.v20211228.models.CheckCoolDownWorkingVariableConfigCorrectRequest`
+        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.CheckCoolDownWorkingVariableConfigCorrectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckCoolDownWorkingVariableConfigCorrect", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckCoolDownWorkingVariableConfigCorrectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateBackUpSchedule(self, request):
         """创建或者修改备份策略
 
@@ -63,6 +86,29 @@ class CdwdorisClient(AbstractClient):
             body = self.call("CreateBackUpSchedule", params, headers=headers)
             response = json.loads(body)
             model = models.CreateBackUpScheduleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateCoolDownPolicy(self, request):
+        """创建冷热分层策略
+
+        :param request: Request instance for CreateCoolDownPolicy.
+        :type request: :class:`tencentcloud.cdwdoris.v20211228.models.CreateCoolDownPolicyRequest`
+        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.CreateCoolDownPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCoolDownPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCoolDownPolicyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -348,6 +394,75 @@ class CdwdorisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCoolDownBackends(self, request):
+        """查询冷热分层backend节点信息列表
+
+        :param request: Request instance for DescribeCoolDownBackends.
+        :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeCoolDownBackendsRequest`
+        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeCoolDownBackendsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCoolDownBackends", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCoolDownBackendsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCoolDownPolicies(self, request):
+        """查询冷热分层策略列表
+
+        :param request: Request instance for DescribeCoolDownPolicies.
+        :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeCoolDownPoliciesRequest`
+        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeCoolDownPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCoolDownPolicies", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCoolDownPoliciesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCoolDownTableData(self, request):
+        """查询冷热分层Table数据
+
+        :param request: Request instance for DescribeCoolDownTableData.
+        :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeCoolDownTableDataRequest`
+        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeCoolDownTableDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCoolDownTableData", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCoolDownTableDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDatabaseAuditDownload(self, request):
         """下载数据库审计日志
 
@@ -385,144 +500,6 @@ class CdwdorisClient(AbstractClient):
             body = self.call("DescribeDatabaseAuditRecords", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDatabaseAuditRecordsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeDatabaseAuditResource(self, request):
-        """数据库审计数据库、用户等
-
-        :param request: Request instance for DescribeDatabaseAuditResource.
-        :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeDatabaseAuditResourceRequest`
-        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeDatabaseAuditResourceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeDatabaseAuditResource", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeDatabaseAuditResourceResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeDmsSqlHistory(self, request):
-        """查询sql工作区历史运行记录
-
-        :param request: Request instance for DescribeDmsSqlHistory.
-        :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeDmsSqlHistoryRequest`
-        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeDmsSqlHistoryResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeDmsSqlHistory", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeDmsSqlHistoryResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeDorisMetricFiles(self, request):
-        """展示监控指标文件
-
-        :param request: Request instance for DescribeDorisMetricFiles.
-        :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeDorisMetricFilesRequest`
-        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeDorisMetricFilesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeDorisMetricFiles", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeDorisMetricFilesResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeFederationToken(self, request):
-        """获取联合身份临时访问凭证
-
-        :param request: Request instance for DescribeFederationToken.
-        :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeFederationTokenRequest`
-        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeFederationTokenResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeFederationToken", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeFederationTokenResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeFrontEnd(self, request):
-        """查询前端内容
-
-        :param request: Request instance for DescribeFrontEnd.
-        :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeFrontEndRequest`
-        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeFrontEndResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeFrontEnd", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeFrontEndResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeGoodsDetail(self, request):
-        """生成计费相关接口的GoodsDetail结构
-
-        :param request: Request instance for DescribeGoodsDetail.
-        :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeGoodsDetailRequest`
-        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeGoodsDetailResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeGoodsDetail", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeGoodsDetailResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -739,52 +716,6 @@ class CdwdorisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeRegionZone(self, request):
-        """购买页获取地域及可用区列表、内核版本、网络规则等
-
-        :param request: Request instance for DescribeRegionZone.
-        :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeRegionZoneRequest`
-        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeRegionZoneResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeRegionZone", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeRegionZoneResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeReplicaVersion(self, request):
-        """检查内核版本是否支持新的备份恢复语法
-
-        :param request: Request instance for DescribeReplicaVersion.
-        :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeReplicaVersionRequest`
-        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeReplicaVersionResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeReplicaVersion", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeReplicaVersionResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeRestoreTaskDetail(self, request):
         """查询恢复任务进度详情
 
@@ -992,20 +923,20 @@ class CdwdorisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def FitClsLog(self, request):
-        """给已存在集群，配置日志服务
+    def ModifyCoolDownPolicy(self, request):
+        """修改冷热分层策略
 
-        :param request: Request instance for FitClsLog.
-        :type request: :class:`tencentcloud.cdwdoris.v20211228.models.FitClsLogRequest`
-        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.FitClsLogResponse`
+        :param request: Request instance for ModifyCoolDownPolicy.
+        :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ModifyCoolDownPolicyRequest`
+        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.ModifyCoolDownPolicyResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("FitClsLog", params, headers=headers)
+            body = self.call("ModifyCoolDownPolicy", params, headers=headers)
             response = json.loads(body)
-            model = models.FitClsLogResponse()
+            model = models.ModifyCoolDownPolicyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1199,20 +1130,43 @@ class CdwdorisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def OpenBackUp(self, request):
-        """开启或者关闭策略
+    def OpenCoolDown(self, request):
+        """开始启用冷热分层
 
-        :param request: Request instance for OpenBackUp.
-        :type request: :class:`tencentcloud.cdwdoris.v20211228.models.OpenBackUpRequest`
-        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.OpenBackUpResponse`
+        :param request: Request instance for OpenCoolDown.
+        :type request: :class:`tencentcloud.cdwdoris.v20211228.models.OpenCoolDownRequest`
+        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.OpenCoolDownResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("OpenBackUp", params, headers=headers)
+            body = self.call("OpenCoolDown", params, headers=headers)
             response = json.loads(body)
-            model = models.OpenBackUpResponse()
+            model = models.OpenCoolDownResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def OpenCoolDownPolicy(self, request):
+        """开通、描述降冷策略接口
+
+        :param request: Request instance for OpenCoolDownPolicy.
+        :type request: :class:`tencentcloud.cdwdoris.v20211228.models.OpenCoolDownPolicyRequest`
+        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.OpenCoolDownPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenCoolDownPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.OpenCoolDownPolicyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1374,6 +1328,29 @@ class CdwdorisClient(AbstractClient):
             body = self.call("ScaleUpInstance", params, headers=headers)
             response = json.loads(body)
             model = models.ScaleUpInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateCoolDown(self, request):
+        """更新集群冷热分层信息
+
+        :param request: Request instance for UpdateCoolDown.
+        :type request: :class:`tencentcloud.cdwdoris.v20211228.models.UpdateCoolDownRequest`
+        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.UpdateCoolDownResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateCoolDown", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateCoolDownResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

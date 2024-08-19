@@ -10168,6 +10168,8 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
         :type ResourceBaseType: str
         :param _ComputeResourceId: 计算资源id
         :type ComputeResourceId: str
+        :param _HardwareResourceType: 扩容资源类型
+        :type HardwareResourceType: str
         """
         self._TimeUnit = None
         self._TimeSpan = None
@@ -10181,6 +10183,7 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
         self._MasterCount = None
         self._ResourceBaseType = None
         self._ComputeResourceId = None
+        self._HardwareResourceType = None
 
     @property
     def TimeUnit(self):
@@ -10278,6 +10281,14 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
     def ComputeResourceId(self, ComputeResourceId):
         self._ComputeResourceId = ComputeResourceId
 
+    @property
+    def HardwareResourceType(self):
+        return self._HardwareResourceType
+
+    @HardwareResourceType.setter
+    def HardwareResourceType(self, HardwareResourceType):
+        self._HardwareResourceType = HardwareResourceType
+
 
     def _deserialize(self, params):
         self._TimeUnit = params.get("TimeUnit")
@@ -10292,6 +10303,7 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
         self._MasterCount = params.get("MasterCount")
         self._ResourceBaseType = params.get("ResourceBaseType")
         self._ComputeResourceId = params.get("ComputeResourceId")
+        self._HardwareResourceType = params.get("HardwareResourceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

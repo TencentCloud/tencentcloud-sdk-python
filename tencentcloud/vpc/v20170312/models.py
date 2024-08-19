@@ -47432,7 +47432,7 @@ class SourceIpTranslationNatRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: 资源ID，如果ResourceType为USERDEFINED，可以为空
+        :param _ResourceId: 资源ID，如果ResourceType为USERDEFINED，可以为空字符串
         :type ResourceId: str
         :param _ResourceType: 资源类型，目前包含SUBNET、NETWORKINTERFACE、USERDEFINED
 注意：此字段可能返回 null，表示取不到有效值。

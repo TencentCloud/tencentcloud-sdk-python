@@ -20255,6 +20255,105 @@ class DescribeContentReviewTemplatesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCurrentPlaylistRequest(AbstractModel):
+    """DescribeCurrentPlaylist请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。</b>
+        :type SubAppId: int
+        :param _RoundPlayId: 轮播播单唯一标识。
+        :type RoundPlayId: str
+        :param _Limit: 返回的播放列表的长度。最大10，默认值为5。
+        :type Limit: int
+        """
+        self._SubAppId = None
+        self._RoundPlayId = None
+        self._Limit = None
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def RoundPlayId(self):
+        return self._RoundPlayId
+
+    @RoundPlayId.setter
+    def RoundPlayId(self, RoundPlayId):
+        self._RoundPlayId = RoundPlayId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._RoundPlayId = params.get("RoundPlayId")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCurrentPlaylistResponse(AbstractModel):
+    """DescribeCurrentPlaylist返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CurrentPlaylist: 当前播放列表信息。
+        :type CurrentPlaylist: list of RoundPlayFilePlayInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CurrentPlaylist = None
+        self._RequestId = None
+
+    @property
+    def CurrentPlaylist(self):
+        return self._CurrentPlaylist
+
+    @CurrentPlaylist.setter
+    def CurrentPlaylist(self, CurrentPlaylist):
+        self._CurrentPlaylist = CurrentPlaylist
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CurrentPlaylist") is not None:
+            self._CurrentPlaylist = []
+            for item in params.get("CurrentPlaylist"):
+                obj = RoundPlayFilePlayInfo()
+                obj._deserialize(item)
+                self._CurrentPlaylist.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDailyMediaPlayStatRequest(AbstractModel):
     """DescribeDailyMediaPlayStat请求参数结构体
 
@@ -29121,6 +29220,201 @@ class FaceEnhanceInfo(AbstractModel):
         
 
 
+class FastEditMediaFileInfo(AbstractModel):
+    """快速媒体编辑操作的输入媒体类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileId: 媒体的 ID。
+        :type FileId: str
+        :param _AudioVideoType: 操作的音视频类型，可选值有：
+<li>Transcode：转码输出；</li>
+<li>Original：原始音视频。</li>
+注意：操作的音视频，必须为 HLS 格式。
+        :type AudioVideoType: str
+        :param _TranscodeDefinition: 当 AudioVideoType 为 Transcode 时有效，表示操作媒体的的转码模板 ID。
+        :type TranscodeDefinition: int
+        :param _StartTimeOffset: 媒体剪辑起始的偏移时间，单位：秒。
+        :type StartTimeOffset: float
+        :param _EndTimeOffset: 媒体剪辑结束的时间偏移，单位：秒。
+        :type EndTimeOffset: float
+        """
+        self._FileId = None
+        self._AudioVideoType = None
+        self._TranscodeDefinition = None
+        self._StartTimeOffset = None
+        self._EndTimeOffset = None
+
+    @property
+    def FileId(self):
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def AudioVideoType(self):
+        return self._AudioVideoType
+
+    @AudioVideoType.setter
+    def AudioVideoType(self, AudioVideoType):
+        self._AudioVideoType = AudioVideoType
+
+    @property
+    def TranscodeDefinition(self):
+        return self._TranscodeDefinition
+
+    @TranscodeDefinition.setter
+    def TranscodeDefinition(self, TranscodeDefinition):
+        self._TranscodeDefinition = TranscodeDefinition
+
+    @property
+    def StartTimeOffset(self):
+        return self._StartTimeOffset
+
+    @StartTimeOffset.setter
+    def StartTimeOffset(self, StartTimeOffset):
+        self._StartTimeOffset = StartTimeOffset
+
+    @property
+    def EndTimeOffset(self):
+        return self._EndTimeOffset
+
+    @EndTimeOffset.setter
+    def EndTimeOffset(self, EndTimeOffset):
+        self._EndTimeOffset = EndTimeOffset
+
+
+    def _deserialize(self, params):
+        self._FileId = params.get("FileId")
+        self._AudioVideoType = params.get("AudioVideoType")
+        self._TranscodeDefinition = params.get("TranscodeDefinition")
+        self._StartTimeOffset = params.get("StartTimeOffset")
+        self._EndTimeOffset = params.get("EndTimeOffset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FastEditMediaRequest(AbstractModel):
+    """FastEditMedia请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileInfos: 输入的媒体文件信息。最多支持传入100个媒体。
+        :type FileInfos: list of FastEditMediaFileInfo
+        :param _ClipMode: ClipMode 用来表示剪辑时间点落在一个 TS 分片中间时，是否包含这个分片。共有两种取值： <li>StartInclusiveEndInclusive：当剪辑起始时间点和结束时间点落在一个分片的中间时，都会包含这个分片；</li> <li>StartInclusiveEndExclusive：当起始时间点落在一个分片的中间时，会包含这个分片；而当结束时间点落在一个分片的中间时，不会包含这个分片。</li> 不填时，默认为 StartInclusiveEndInclusive。
+        :type ClipMode: str
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :type SubAppId: int
+        """
+        self._FileInfos = None
+        self._ClipMode = None
+        self._SubAppId = None
+
+    @property
+    def FileInfos(self):
+        return self._FileInfos
+
+    @FileInfos.setter
+    def FileInfos(self, FileInfos):
+        self._FileInfos = FileInfos
+
+    @property
+    def ClipMode(self):
+        return self._ClipMode
+
+    @ClipMode.setter
+    def ClipMode(self, ClipMode):
+        self._ClipMode = ClipMode
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+
+    def _deserialize(self, params):
+        if params.get("FileInfos") is not None:
+            self._FileInfos = []
+            for item in params.get("FileInfos"):
+                obj = FastEditMediaFileInfo()
+                obj._deserialize(item)
+                self._FileInfos.append(obj)
+        self._ClipMode = params.get("ClipMode")
+        self._SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FastEditMediaResponse(AbstractModel):
+    """FastEditMedia返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileId: 快速编辑后的视频的媒体文件的唯一标识。
+        :type FileId: str
+        :param _Url: 快速编辑后的媒体播放地址。
+        :type Url: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FileId = None
+        self._Url = None
+        self._RequestId = None
+
+    @property
+    def FileId(self):
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FileId = params.get("FileId")
+        self._Url = params.get("Url")
+        self._RequestId = params.get("RequestId")
+
+
 class FileDeleteResultItem(AbstractModel):
     """文件删除结果信息
 
@@ -29660,6 +29954,134 @@ class HDRInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class HandleCurrentPlaylistRequest(AbstractModel):
+    """HandleCurrentPlaylist请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。</b>
+        :type SubAppId: int
+        :param _RoundPlayId: 轮播播单唯一标识。
+        :type RoundPlayId: str
+        :param _Operation: 操作类型，取值有：<li>Insert：向当前播放列表插入播放节目。</li> <li>InsertTemporary：向当前播放列表临时插入播放节目。只能插入到当前正在播放的节目后面，临时插入的节目只在本次轮播过程生效。</li><li>Delete：删除播放列表中的播放节目。不能删除正在播放的节目。</li>
+        :type Operation: str
+        :param _ItemId: 播单节目 ID。当 Operation 为 Insert 时必填，表示插入的节目列表位于该播放节目之后。插入的位置必须在当前正在播放的节目之后。
+        :type ItemId: str
+        :param _RoundPlaylist: 节目列表。当 Operation 为 Insert、InsertTemporary、Delete 时必填，表示要操作的节目列表。列表长度最大为10。
+        :type RoundPlaylist: list of RoundPlayListItemInfo
+        """
+        self._SubAppId = None
+        self._RoundPlayId = None
+        self._Operation = None
+        self._ItemId = None
+        self._RoundPlaylist = None
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def RoundPlayId(self):
+        return self._RoundPlayId
+
+    @RoundPlayId.setter
+    def RoundPlayId(self, RoundPlayId):
+        self._RoundPlayId = RoundPlayId
+
+    @property
+    def Operation(self):
+        return self._Operation
+
+    @Operation.setter
+    def Operation(self, Operation):
+        self._Operation = Operation
+
+    @property
+    def ItemId(self):
+        return self._ItemId
+
+    @ItemId.setter
+    def ItemId(self, ItemId):
+        self._ItemId = ItemId
+
+    @property
+    def RoundPlaylist(self):
+        return self._RoundPlaylist
+
+    @RoundPlaylist.setter
+    def RoundPlaylist(self, RoundPlaylist):
+        self._RoundPlaylist = RoundPlaylist
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._RoundPlayId = params.get("RoundPlayId")
+        self._Operation = params.get("Operation")
+        self._ItemId = params.get("ItemId")
+        if params.get("RoundPlaylist") is not None:
+            self._RoundPlaylist = []
+            for item in params.get("RoundPlaylist"):
+                obj = RoundPlayListItemInfo()
+                obj._deserialize(item)
+                self._RoundPlaylist.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HandleCurrentPlaylistResponse(AbstractModel):
+    """HandleCurrentPlaylist返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoundPlaylist: 操作成功的节目列表。
+        :type RoundPlaylist: list of RoundPlayListItemInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RoundPlaylist = None
+        self._RequestId = None
+
+    @property
+    def RoundPlaylist(self):
+        return self._RoundPlaylist
+
+    @RoundPlaylist.setter
+    def RoundPlaylist(self, RoundPlaylist):
+        self._RoundPlaylist = RoundPlaylist
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RoundPlaylist") is not None:
+            self._RoundPlaylist = []
+            for item in params.get("RoundPlaylist"):
+                obj = RoundPlayListItemInfo()
+                obj._deserialize(item)
+                self._RoundPlaylist.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class HeadTailConfigureInfo(AbstractModel):
@@ -51868,6 +52290,89 @@ class ReviewTemplate(AbstractModel):
         
 
 
+class RoundPlayFilePlayInfo(AbstractModel):
+    """轮播节目播放信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ItemId: 播单节目的 ID，由系统分配。
+        :type ItemId: str
+        :param _FileId: 媒体文件标识。
+        :type FileId: str
+        :param _StartPlayTime: 启播时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。
+        :type StartPlayTime: str
+        :param _Duration: 播放时长，单位为秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Duration: float
+        :param _Progress: 播放进度，单位为妙。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Progress: float
+        """
+        self._ItemId = None
+        self._FileId = None
+        self._StartPlayTime = None
+        self._Duration = None
+        self._Progress = None
+
+    @property
+    def ItemId(self):
+        return self._ItemId
+
+    @ItemId.setter
+    def ItemId(self, ItemId):
+        self._ItemId = ItemId
+
+    @property
+    def FileId(self):
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def StartPlayTime(self):
+        return self._StartPlayTime
+
+    @StartPlayTime.setter
+    def StartPlayTime(self, StartPlayTime):
+        self._StartPlayTime = StartPlayTime
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+
+    def _deserialize(self, params):
+        self._ItemId = params.get("ItemId")
+        self._FileId = params.get("FileId")
+        self._StartPlayTime = params.get("StartPlayTime")
+        self._Duration = params.get("Duration")
+        self._Progress = params.get("Progress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RoundPlayInfo(AbstractModel):
     """轮播任务信息
 
@@ -51897,6 +52402,12 @@ class RoundPlayInfo(AbstractModel):
         :type PlayBackMode: str
         :param _Url: 轮播播放地址。
         :type Url: str
+        :param _CreateTime: 创建时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
         """
         self._RoundPlayId = None
         self._StartTime = None
@@ -51906,6 +52417,8 @@ class RoundPlayInfo(AbstractModel):
         self._Status = None
         self._PlayBackMode = None
         self._Url = None
+        self._CreateTime = None
+        self._UpdateTime = None
 
     @property
     def RoundPlayId(self):
@@ -51971,6 +52484,22 @@ class RoundPlayInfo(AbstractModel):
     def Url(self, Url):
         self._Url = Url
 
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
 
     def _deserialize(self, params):
         self._RoundPlayId = params.get("RoundPlayId")
@@ -51986,6 +52515,8 @@ class RoundPlayInfo(AbstractModel):
         self._Status = params.get("Status")
         self._PlayBackMode = params.get("PlayBackMode")
         self._Url = params.get("Url")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
