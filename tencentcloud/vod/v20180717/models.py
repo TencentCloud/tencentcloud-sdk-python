@@ -52306,7 +52306,7 @@ class RoundPlayFilePlayInfo(AbstractModel):
         :param _Duration: 播放时长，单位为秒。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: float
-        :param _Progress: 播放进度，单位为妙。
+        :param _Progress: 播放进度，单位为秒。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Progress: float
         """

@@ -2346,13 +2346,13 @@ class CreateRoleConfigurationRequest(AbstractModel):
         r"""
         :param _ZoneId: 空间 ID。
         :type ZoneId: str
-        :param _RoleConfigurationName: 访问配置名称。格式：包含英文字母、数字或短划线（-）。 长度：最大 128 个字符。
+        :param _RoleConfigurationName: 权限配置名称。格式：包含英文字母、数字或短划线（-）。 长度：最大 128 个字符。
         :type RoleConfigurationName: str
-        :param _Description: 访问配置的描述。 长度：最大 1024 个字符。
+        :param _Description: 权限配置的描述。 长度：最大 1024 个字符。
         :type Description: str
-        :param _SessionDuration: 会话持续时间。 CIC用户使用访问配置访问集团账号目标账号时，会话最多保持的时间。 单位：秒。 取值范围：900~43200（15 分钟~12 小时）。 默认值：3600（1 小时）。
+        :param _SessionDuration: 会话持续时间。 CIC用户使用权限配置访问集团账号目标账号时，会话最多保持的时间。 单位：秒。 取值范围：900 ~ 43200（15 分钟~12 小时）。 默认值：3600（1 小时）。
         :type SessionDuration: int
-        :param _RelayState: 初始访问页面。 CIC用户使用访问配置访问集团账号目标账号时，初始访问的页面地址。 该页面必须是腾讯云控制台页面。默认为空，表示跳转到腾讯云控制台首页。
+        :param _RelayState: 初始访问页面。 CIC用户使用权限配置访问集团账号目标账号时，初始访问的页面地址。 该页面必须是腾讯云控制台页面。默认为空，表示跳转到腾讯云控制台首页。
         :type RelayState: str
         """
         self._ZoneId = None
@@ -3322,11 +3322,11 @@ class DeleteRoleAssignmentRequest(AbstractModel):
         :type TargetType: str
         :param _TargetUin: 集团账号目标账号的UIN
         :type TargetUin: int
-        :param _PrincipalType: CAM用户同步的身份类型。取值： User：表示该 CAM 用户同步的身份是CIC用户。 Group：表示该 CAM 用户同步的身份是CIC用户组。
+        :param _PrincipalType: CAM 用户同步的身份类型。取值： User：表示同步的身份是用户。 Group：表示同步的身份是用户组。
         :type PrincipalType: str
-        :param _PrincipalId: CAM用户同步的身份 ID。取值： 当PrincipalType取值为Group时，该值为CIC 用户组 ID（g-********）， 当PrincipalType取值为User时，该值为CIC 用户 ID（u-********）。 	
+        :param _PrincipalId: 用户同步 ID。取值： 当PrincipalType取值为Group时，该值为用户组 ID（g-********）， 当PrincipalType取值为User时，该值为用户 ID（u-********）。 	
         :type PrincipalId: str
-        :param _DeprovisionStrategy: 当您移除一个集团账号目标账号上使用某访问配置的最后一个授权时，是否同时解除访问配置部署。取值： DeprovisionForLastRoleAssignmentOnAccount：解除访问配置部署。 None（默认值）：不解除访问配置部署。
+        :param _DeprovisionStrategy: 当您移除一个集团账号目标账号上使用某权限配置的最后一个授权时，是否同时解除权限配置部署。取值： DeprovisionForLastRoleAssignmentOnAccount：解除权限配置部署。 None（默认值）：不解除权限配置部署。
         :type DeprovisionStrategy: str
         """
         self._ZoneId = None
@@ -9743,9 +9743,9 @@ class ListRoleAssignmentsRequest(AbstractModel):
         :type TargetType: str
         :param _TargetUin: 同步的集团账号目标账号的UIN。
         :type TargetUin: int
-        :param _PrincipalType: CAM 用户同步的身份类型。取值： User：表示该 CAM 用户同步的身份是CIC用户。 Group：表示该 CAM 用户同步的身份是CIC用户组。
+        :param _PrincipalType: CAM 用户同步的身份类型。取值： User：表示同步的身份是用户。 Group：表示同步的身份是用户组。
         :type PrincipalType: str
-        :param _PrincipalId: CAM 用户同步的身份 ID。取值： 当PrincipalType取值为Group时，该值为CIC 用户组 ID（g-********）。 当PrincipalType取值为User时，该值为CIC 用户 ID（u-********）。
+        :param _PrincipalId: 用户同步 ID。取值： 当PrincipalType取值为Group时，该值为用户组 ID（g-****)，当PrincipalType取值为User时，该值为用户 ID （u-****）。
         :type PrincipalId: str
         :param _Filter: 查询条件，目前只支持权限配置名称查询。
         :type Filter: str
@@ -10163,7 +10163,7 @@ class ListRoleConfigurationsRequest(AbstractModel):
         :type NextToken: str
         :param _MaxResults: 每页的最大数据条数。  取值范围：1~100。  默认值：10。
         :type MaxResults: int
-        :param _Filter: 过滤条件。不区分大小写。目前，只支持 RoleConfigurationName，只支持 eq（Equals）和 sw（Start With）。 示例：Filter = "RoleConfigurationName，只支持 sw test"，表示查询名称以 test 开头的全部访问配置。Filter = "RoleConfigurationName，只支持 eq TestRoleConfiguration"，表示查询名称为 TestRoleConfiguration 的访问配置。
+        :param _Filter: 过滤条件。不区分大小写。目前，只支持 RoleConfigurationName，只支持 eq（Equals）和 sw（Start With）。 示例：Filter = "RoleConfigurationName，只支持 sw test"，表示查询名称以 test 开头的全部权限配置。Filter = "RoleConfigurationName，只支持 eq TestRoleConfiguration"，表示查询名称为 TestRoleConfiguration 的权限配置。
         :type Filter: str
         :param _FilterTargets: 检索成员账号是否配置过权限，如果配置过返回IsSelected: true, 否则返回false。
         :type FilterTargets: list of int
@@ -10560,13 +10560,13 @@ class ListTasksRequest(AbstractModel):
         r"""
         :param _ZoneId: 空间 ID。
         :type ZoneId: str
-        :param _PrincipalId: CAM 用户同步的身份 ID。取值：  当PrincipalType取值为Group时，该值为CIC用户组 ID（g-********）。 当PrincipalType取值为User时，该值为CIC用户 ID（u-********）。
+        :param _PrincipalId: 用户同步 ID。取值： 当PrincipalType取值为Group时，该值为用户组 ID（g-****）， 当PrincipalType取值为User时，该值为用户 ID（u-****）。
         :type PrincipalId: str
         :param _NextToken: 查询返回结果下一页的令牌。首次调用 API 不需要NextToken。  当您首次调用 API 时，如果返回数据总条数超过MaxResults限制，数据会被截断，只返回MaxResults条数据，同时，返回参数IsTruncated为true，返回一个NextToken。您可以使用上一次返回的NextToken继续调用 API，其他请求参数保持不变，查询被截断的数据。您可以按此方法多次查询，直到IsTruncated为false，表示全部数据查询完毕。
         :type NextToken: str
         :param _MaxResults: 每页的最大数据条数。  取值范围：1~100。  默认值：10。
         :type MaxResults: int
-        :param _PrincipalType: CAM 用户同步的身份类型。取值：  User：表示该 CAM 用户同步的身份是CIC用户。 Group：表示该 CAM 用户同步的身份是CIC用户组。
+        :param _PrincipalType: CAM 用户同步的身份类型。取值： User：表示同步的身份是用户。 Group：表示同步的身份是用户组。
         :type PrincipalType: str
         :param _TargetUin: 同步的集团账号目标账号的UIN。
         :type TargetUin: int
@@ -10791,13 +10791,13 @@ class ListUserSyncProvisioningsRequest(AbstractModel):
         r"""
         :param _ZoneId: 空间 ID。
         :type ZoneId: str
-        :param _PrincipalId: CAM 用户同步的身份 ID。取值：  当PrincipalType取值为Group时，该值为CIC用户组 ID（g-********）。 当PrincipalType取值为User时，该值为CIC用户 ID（u-********）。
+        :param _PrincipalId: 用户同步 ID。取值：  当PrincipalType取值为Group时，该值为用户组 ID（g-********）。 当PrincipalType取值为User时，该值为用户 ID（u-********）。
         :type PrincipalId: str
         :param _NextToken: 查询返回结果下一页的令牌。首次调用 API 不需要NextToken。  当您首次调用 API 时，如果返回数据总条数超过MaxResults限制，数据会被截断，只返回MaxResults条数据，同时，返回参数IsTruncated为true，返回一个NextToken。您可以使用上一次返回的NextToken继续调用 API，其他请求参数保持不变，查询被截断的数据。您可以按此方法多次查询，直到IsTruncated为false，表示全部数据查询完毕。
         :type NextToken: str
         :param _MaxResults: 每页的最大数据条数。  取值范围：1~100。  默认值：10。
         :type MaxResults: int
-        :param _PrincipalType: CAM 用户同步的身份类型。取值：  User：表示该 CAM 用户同步的身份是CIC用户。 Group：表示该 CAM 用户同步的身份是CIC用户组。
+        :param _PrincipalType: CAM 用户同步的身份类型。取值： User：表示同步的身份是用户。 Group：表示同步的身份是用户组。
         :type PrincipalType: str
         :param _TargetUin: 集团账号目标账号的UIN。
         :type TargetUin: int
@@ -16225,11 +16225,11 @@ class UpdateRoleConfigurationRequest(AbstractModel):
         :type ZoneId: str
         :param _RoleConfigurationId: 权限配置 ID
         :type RoleConfigurationId: str
-        :param _NewDescription: 新的访问配置描述。  长度：最大 1024 个字符。
+        :param _NewDescription: 新的权限配置描述。  长度：最大 1024 个字符。
         :type NewDescription: str
-        :param _NewSessionDuration: 新的会话持续时间。  CIC 用户使用访问配置访问集团账号目标账号时，会话最多保持的时间。  单位：秒。  取值范围：900-43200（15 分钟-12 小时）。
+        :param _NewSessionDuration: 新的会话持续时间。  CIC 用户使用权限配置访问集团账号目标账号时，会话最多保持的时间。  单位：秒。  取值范围：900-43200（15 分钟-12 小时）。
         :type NewSessionDuration: int
-        :param _NewRelayState: 新的初始访问页面。  CIC 用户使用访问配置访问集团账号目标账号时，初始访问的页面地址。  该页面必须是腾讯云控制台页面。
+        :param _NewRelayState: 新的初始访问页面。  CIC 用户使用权限配置访问集团账号目标账号时，初始访问的页面地址。  该页面必须是腾讯云控制台页面。
         :type NewRelayState: str
         """
         self._ZoneId = None

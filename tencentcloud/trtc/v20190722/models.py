@@ -11106,6 +11106,124 @@ class TrtcUsage(AbstractModel):
         
 
 
+class UpdateAIConversationRequest(AbstractModel):
+    """UpdateAIConversation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 唯一标识一个任务
+        :type TaskId: str
+        :param _WelcomeMessage: 不填写则不进行更新，机器人的欢迎语
+        :type WelcomeMessage: str
+        :param _InterruptMode: 不填写则不进行更新。智能打断模式，0表示服务端自动打断，1表示服务端不打断，由端上发送打断信令进行打断
+        :type InterruptMode: int
+        :param _InterruptSpeechDuration: 不填写则不进行更新。InterruptMode为0时使用，单位为毫秒，默认为500ms。表示服务端检测到持续InterruptSpeechDuration毫秒的人声则进行打断
+        :type InterruptSpeechDuration: int
+        :param _LLMConfig: 不填写则不进行更新，LLM配置，详情见StartAIConversation接口
+        :type LLMConfig: str
+        :param _TTSConfig: 不填写则不进行更新，TTS配置，详情见StartAIConversation接口
+        :type TTSConfig: str
+        """
+        self._TaskId = None
+        self._WelcomeMessage = None
+        self._InterruptMode = None
+        self._InterruptSpeechDuration = None
+        self._LLMConfig = None
+        self._TTSConfig = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def WelcomeMessage(self):
+        return self._WelcomeMessage
+
+    @WelcomeMessage.setter
+    def WelcomeMessage(self, WelcomeMessage):
+        self._WelcomeMessage = WelcomeMessage
+
+    @property
+    def InterruptMode(self):
+        return self._InterruptMode
+
+    @InterruptMode.setter
+    def InterruptMode(self, InterruptMode):
+        self._InterruptMode = InterruptMode
+
+    @property
+    def InterruptSpeechDuration(self):
+        return self._InterruptSpeechDuration
+
+    @InterruptSpeechDuration.setter
+    def InterruptSpeechDuration(self, InterruptSpeechDuration):
+        self._InterruptSpeechDuration = InterruptSpeechDuration
+
+    @property
+    def LLMConfig(self):
+        return self._LLMConfig
+
+    @LLMConfig.setter
+    def LLMConfig(self, LLMConfig):
+        self._LLMConfig = LLMConfig
+
+    @property
+    def TTSConfig(self):
+        return self._TTSConfig
+
+    @TTSConfig.setter
+    def TTSConfig(self, TTSConfig):
+        self._TTSConfig = TTSConfig
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._WelcomeMessage = params.get("WelcomeMessage")
+        self._InterruptMode = params.get("InterruptMode")
+        self._InterruptSpeechDuration = params.get("InterruptSpeechDuration")
+        self._LLMConfig = params.get("LLMConfig")
+        self._TTSConfig = params.get("TTSConfig")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateAIConversationResponse(AbstractModel):
+    """UpdateAIConversation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class UpdatePublishCdnStreamRequest(AbstractModel):
     """UpdatePublishCdnStream请求参数结构体
 

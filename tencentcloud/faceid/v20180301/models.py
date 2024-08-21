@@ -891,11 +891,17 @@ Config = {"CopyWarn":true,"ReshootWarn":true}
         :param _IsEncrypt: 是否需要对返回中的敏感信息进行加密。默认false。
 其中敏感信息包括：Response.IdNum、Response.Name
         :type IsEncrypt: bool
+        :param _IsEncryptResponse: 是否需要对响应体加密
+        :type IsEncryptResponse: bool
+        :param _Encryption: 是否需要对返回中的敏感信息进行加密,需指定加密算法Algorithm、CBC加密的初始向量、加密后的对称密钥。
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         self._ImageBase64 = None
         self._ImageUrl = None
         self._Config = None
         self._IsEncrypt = None
+        self._IsEncryptResponse = None
+        self._Encryption = None
 
     @property
     def ImageBase64(self):
@@ -929,12 +935,32 @@ Config = {"CopyWarn":true,"ReshootWarn":true}
     def IsEncrypt(self, IsEncrypt):
         self._IsEncrypt = IsEncrypt
 
+    @property
+    def IsEncryptResponse(self):
+        return self._IsEncryptResponse
+
+    @IsEncryptResponse.setter
+    def IsEncryptResponse(self, IsEncryptResponse):
+        self._IsEncryptResponse = IsEncryptResponse
+
+    @property
+    def Encryption(self):
+        return self._Encryption
+
+    @Encryption.setter
+    def Encryption(self, Encryption):
+        self._Encryption = Encryption
+
 
     def _deserialize(self, params):
         self._ImageBase64 = params.get("ImageBase64")
         self._ImageUrl = params.get("ImageUrl")
         self._Config = params.get("Config")
         self._IsEncrypt = params.get("IsEncrypt")
+        self._IsEncryptResponse = params.get("IsEncryptResponse")
+        if params.get("Encryption") is not None:
+            self._Encryption = Encryption()
+            self._Encryption._deserialize(params.get("Encryption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -988,6 +1014,8 @@ class CheckIdCardInformationResponse(AbstractModel):
         :param _Encryption: 敏感数据加密信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        :param _EncryptedBody: 加密后的数据
+        :type EncryptedBody: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1004,6 +1032,7 @@ class CheckIdCardInformationResponse(AbstractModel):
         self._Warnings = None
         self._Quality = None
         self._Encryption = None
+        self._EncryptedBody = None
         self._RequestId = None
 
     @property
@@ -1111,6 +1140,14 @@ class CheckIdCardInformationResponse(AbstractModel):
         self._Encryption = Encryption
 
     @property
+    def EncryptedBody(self):
+        return self._EncryptedBody
+
+    @EncryptedBody.setter
+    def EncryptedBody(self, EncryptedBody):
+        self._EncryptedBody = EncryptedBody
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -1135,6 +1172,7 @@ class CheckIdCardInformationResponse(AbstractModel):
         if params.get("Encryption") is not None:
             self._Encryption = Encryption()
             self._Encryption._deserialize(params.get("Encryption"))
+        self._EncryptedBody = params.get("EncryptedBody")
         self._RequestId = params.get("RequestId")
 
 

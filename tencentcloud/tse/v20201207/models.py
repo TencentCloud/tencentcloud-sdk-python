@@ -11924,6 +11924,8 @@ class DescribeGovernanceInstancesRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
+        :param _Location: 地域
+        :type Location: :class:`tencentcloud.tse.v20201207.models.Location`
         """
         self._Service = None
         self._Namespace = None
@@ -11936,6 +11938,7 @@ class DescribeGovernanceInstancesRequest(AbstractModel):
         self._Metadatas = None
         self._Offset = None
         self._Limit = None
+        self._Location = None
 
     @property
     def Service(self):
@@ -12025,6 +12028,14 @@ class DescribeGovernanceInstancesRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def Location(self):
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
 
     def _deserialize(self, params):
         self._Service = params.get("Service")
@@ -12043,6 +12054,9 @@ class DescribeGovernanceInstancesRequest(AbstractModel):
                 self._Metadatas.append(obj)
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        if params.get("Location") is not None:
+            self._Location = Location()
+            self._Location._deserialize(params.get("Location"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12064,11 +12078,14 @@ class DescribeGovernanceInstancesResponse(AbstractModel):
         :type TotalCount: int
         :param _Content: 服务里实例列表。
         :type Content: list of GovernanceInstance
+        :param _Location: 地域
+        :type Location: :class:`tencentcloud.tse.v20201207.models.Location`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
         self._Content = None
+        self._Location = None
         self._RequestId = None
 
     @property
@@ -12088,6 +12105,14 @@ class DescribeGovernanceInstancesResponse(AbstractModel):
         self._Content = Content
 
     @property
+    def Location(self):
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -12104,6 +12129,9 @@ class DescribeGovernanceInstancesResponse(AbstractModel):
                 obj = GovernanceInstance()
                 obj._deserialize(item)
                 self._Content.append(obj)
+        if params.get("Location") is not None:
+            self._Location = Location()
+            self._Location._deserialize(params.get("Location"))
         self._RequestId = params.get("RequestId")
 
 
@@ -19218,6 +19246,66 @@ class ListFilter(AbstractModel):
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Location(AbstractModel):
+    """新增Location字段，展示zone/region/campus
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: 大区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param _Zone: 可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param _Campus: 机房
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Campus: str
+        """
+        self._Region = None
+        self._Zone = None
+        self._Campus = None
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def Campus(self):
+        return self._Campus
+
+    @Campus.setter
+    def Campus(self, Campus):
+        self._Campus = Campus
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._Zone = params.get("Zone")
+        self._Campus = params.get("Campus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

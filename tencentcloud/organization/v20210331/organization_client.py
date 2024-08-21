@@ -1062,7 +1062,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DescribeIdentityCenter(self, request):
-        """获取cam身份中心服务信息
+        """获取集团账号身份中心服务信息
 
         :param request: Request instance for DescribeIdentityCenter.
         :type request: :class:`tencentcloud.organization.v20210331.models.DescribeIdentityCenterRequest`
@@ -2212,7 +2212,7 @@ class OrganizationClient(AbstractClient):
 
 
     def OpenIdentityCenter(self, request):
-        """开通CIC服务
+        """开通身份中心服务（CIC）
 
         :param request: Request instance for OpenIdentityCenter.
         :type request: :class:`tencentcloud.organization.v20210331.models.OpenIdentityCenterRequest`

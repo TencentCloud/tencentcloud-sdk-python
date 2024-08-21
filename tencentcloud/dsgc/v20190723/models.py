@@ -1929,6 +1929,12 @@ class CategoryRule(AbstractModel):
         :param _AliasRuleName: 别名规则名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type AliasRuleName: str
+        :param _RuleEffectItems: 各类分类分级规则数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleEffectItems: list of RuleEffectItem
+        :param _RuleStatus: 规则状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleStatus: int
         """
         self._CategoryId = None
         self._RuleId = None
@@ -1938,6 +1944,8 @@ class CategoryRule(AbstractModel):
         self._Id = None
         self._AliasRuleId = None
         self._AliasRuleName = None
+        self._RuleEffectItems = None
+        self._RuleStatus = None
 
     @property
     def CategoryId(self):
@@ -2003,6 +2011,22 @@ class CategoryRule(AbstractModel):
     def AliasRuleName(self, AliasRuleName):
         self._AliasRuleName = AliasRuleName
 
+    @property
+    def RuleEffectItems(self):
+        return self._RuleEffectItems
+
+    @RuleEffectItems.setter
+    def RuleEffectItems(self, RuleEffectItems):
+        self._RuleEffectItems = RuleEffectItems
+
+    @property
+    def RuleStatus(self):
+        return self._RuleStatus
+
+    @RuleStatus.setter
+    def RuleStatus(self, RuleStatus):
+        self._RuleStatus = RuleStatus
+
 
     def _deserialize(self, params):
         self._CategoryId = params.get("CategoryId")
@@ -2013,6 +2037,13 @@ class CategoryRule(AbstractModel):
         self._Id = params.get("Id")
         self._AliasRuleId = params.get("AliasRuleId")
         self._AliasRuleName = params.get("AliasRuleName")
+        if params.get("RuleEffectItems") is not None:
+            self._RuleEffectItems = []
+            for item in params.get("RuleEffectItems"):
+                obj = RuleEffectItem()
+                obj._deserialize(item)
+                self._RuleEffectItems.append(obj)
+        self._RuleStatus = params.get("RuleStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4306,12 +4337,15 @@ class CreateDSPADiscoveryRuleRequest(AbstractModel):
         :type RDBRules: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryRDBRules`
         :param _COSRules: COS类敏感数据识别规则
         :type COSRules: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryCOSRules`
+        :param _Status: 规则状态；0 不启用, 1 启用
+        :type Status: int
         """
         self._DspaId = None
         self._Name = None
         self._Description = None
         self._RDBRules = None
         self._COSRules = None
+        self._Status = None
 
     @property
     def DspaId(self):
@@ -4353,6 +4387,14 @@ class CreateDSPADiscoveryRuleRequest(AbstractModel):
     def COSRules(self, COSRules):
         self._COSRules = COSRules
 
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
@@ -4364,6 +4406,7 @@ class CreateDSPADiscoveryRuleRequest(AbstractModel):
         if params.get("COSRules") is not None:
             self._COSRules = DspaDiscoveryCOSRules()
             self._COSRules._deserialize(params.get("COSRules"))
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18630,6 +18673,9 @@ class DspaDiscoveryRuleDetail(AbstractModel):
         :param _COSRules: COS规则详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type COSRules: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryCOSRules`
+        :param _Status: 0关闭，1开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
         """
         self._RuleId = None
         self._Name = None
@@ -18637,6 +18683,7 @@ class DspaDiscoveryRuleDetail(AbstractModel):
         self._Source = None
         self._RDBRules = None
         self._COSRules = None
+        self._Status = None
 
     @property
     def RuleId(self):
@@ -18686,6 +18733,14 @@ class DspaDiscoveryRuleDetail(AbstractModel):
     def COSRules(self, COSRules):
         self._COSRules = COSRules
 
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
 
     def _deserialize(self, params):
         self._RuleId = params.get("RuleId")
@@ -18698,6 +18753,7 @@ class DspaDiscoveryRuleDetail(AbstractModel):
         if params.get("COSRules") is not None:
             self._COSRules = DspaDiscoveryCOSRules()
             self._COSRules._deserialize(params.get("COSRules"))
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24074,6 +24130,8 @@ class ModifyDSPADiscoveryRuleRequest(AbstractModel):
         :type RDBRules: :class:`tencentcloud.dsgc.v20190723.models.ScanTaskRDBRules`
         :param _COSRules: COS类敏感数据识别规则
         :type COSRules: :class:`tencentcloud.dsgc.v20190723.models.ScanTaskCOSRules`
+        :param _Status: 规则状态
+        :type Status: int
         """
         self._DspaId = None
         self._Name = None
@@ -24081,6 +24139,7 @@ class ModifyDSPADiscoveryRuleRequest(AbstractModel):
         self._Description = None
         self._RDBRules = None
         self._COSRules = None
+        self._Status = None
 
     @property
     def DspaId(self):
@@ -24130,6 +24189,14 @@ class ModifyDSPADiscoveryRuleRequest(AbstractModel):
     def COSRules(self, COSRules):
         self._COSRules = COSRules
 
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
@@ -24142,6 +24209,7 @@ class ModifyDSPADiscoveryRuleRequest(AbstractModel):
         if params.get("COSRules") is not None:
             self._COSRules = ScanTaskCOSRules()
             self._COSRules._deserialize(params.get("COSRules"))
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27008,6 +27076,53 @@ class RuleDistribution(AbstractModel):
         self._LevelId = params.get("LevelId")
         self._LevelName = params.get("LevelName")
         self._RuleCnt = params.get("RuleCnt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleEffectItem(AbstractModel):
+    """分类分级规则数量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 规则描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Value: 规则值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: int
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

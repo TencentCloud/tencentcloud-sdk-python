@@ -95,6 +95,9 @@ FAILEDOPERATION_LOGINTIMEOUT = 'FailedOperation.LoginTimeout'
 # 用户手机没有通过验证。
 FAILEDOPERATION_MOBILENOTVERIFIED = 'FailedOperation.MobileNotVerified'
 
+# 请先添加默认线路的解析记录
+FAILEDOPERATION_MUSTADDDEFAULTLINEFIRST = 'FailedOperation.MustAddDefaultLineFirst'
+
 # 权限错误，您无法查看该任务的详情。
 FAILEDOPERATION_NOTBATCHTASKOWNER = 'FailedOperation.NotBatchTaskOwner'
 

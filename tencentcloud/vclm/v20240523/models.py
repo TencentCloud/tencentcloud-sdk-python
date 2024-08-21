@@ -784,11 +784,14 @@ class SubmitImageAnimateJobRequest(AbstractModel):
         :type TemplateId: str
         :param _EnableAudio: 结果视频是否保留模板音频。默认为true
         :type EnableAudio: bool
+        :param _EnableBodyJoins: 是否检测输入图人体12个身体部位（头部、颈部、右肩、右肘、右腕、左肩、左肘、左腕、右髋、左髋,、左膝、右膝）。默认不检测。
+        :type EnableBodyJoins: bool
         """
         self._ImageUrl = None
         self._ImageBase64 = None
         self._TemplateId = None
         self._EnableAudio = None
+        self._EnableBodyJoins = None
 
     @property
     def ImageUrl(self):
@@ -822,12 +825,21 @@ class SubmitImageAnimateJobRequest(AbstractModel):
     def EnableAudio(self, EnableAudio):
         self._EnableAudio = EnableAudio
 
+    @property
+    def EnableBodyJoins(self):
+        return self._EnableBodyJoins
+
+    @EnableBodyJoins.setter
+    def EnableBodyJoins(self, EnableBodyJoins):
+        self._EnableBodyJoins = EnableBodyJoins
+
 
     def _deserialize(self, params):
         self._ImageUrl = params.get("ImageUrl")
         self._ImageBase64 = params.get("ImageBase64")
         self._TemplateId = params.get("TemplateId")
         self._EnableAudio = params.get("EnableAudio")
+        self._EnableBodyJoins = params.get("EnableBodyJoins")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

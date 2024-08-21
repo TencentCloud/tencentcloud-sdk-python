@@ -1025,12 +1025,16 @@ class AddressTemplate(AbstractModel):
         :type CreatedTime: str
         :param _AddressExtraSet: 带备注的IP地址信息。
         :type AddressExtraSet: list of AddressInfo
+        :param _TagSet: 标签键值对。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagSet: list of Tag
         """
         self._AddressTemplateName = None
         self._AddressTemplateId = None
         self._AddressSet = None
         self._CreatedTime = None
         self._AddressExtraSet = None
+        self._TagSet = None
 
     @property
     def AddressTemplateName(self):
@@ -1072,6 +1076,14 @@ class AddressTemplate(AbstractModel):
     def AddressExtraSet(self, AddressExtraSet):
         self._AddressExtraSet = AddressExtraSet
 
+    @property
+    def TagSet(self):
+        return self._TagSet
+
+    @TagSet.setter
+    def TagSet(self, TagSet):
+        self._TagSet = TagSet
+
 
     def _deserialize(self, params):
         self._AddressTemplateName = params.get("AddressTemplateName")
@@ -1084,6 +1096,12 @@ class AddressTemplate(AbstractModel):
                 obj = AddressInfo()
                 obj._deserialize(item)
                 self._AddressExtraSet.append(obj)
+        if params.get("TagSet") is not None:
+            self._TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TagSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1111,12 +1129,16 @@ class AddressTemplateGroup(AbstractModel):
         :type CreatedTime: str
         :param _AddressTemplateSet: IP地址模板实例。
         :type AddressTemplateSet: list of AddressTemplateItem
+        :param _TagSet: 标签键值对。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagSet: list of Tag
         """
         self._AddressTemplateGroupName = None
         self._AddressTemplateGroupId = None
         self._AddressTemplateIdSet = None
         self._CreatedTime = None
         self._AddressTemplateSet = None
+        self._TagSet = None
 
     @property
     def AddressTemplateGroupName(self):
@@ -1158,6 +1180,14 @@ class AddressTemplateGroup(AbstractModel):
     def AddressTemplateSet(self, AddressTemplateSet):
         self._AddressTemplateSet = AddressTemplateSet
 
+    @property
+    def TagSet(self):
+        return self._TagSet
+
+    @TagSet.setter
+    def TagSet(self, TagSet):
+        self._TagSet = TagSet
+
 
     def _deserialize(self, params):
         self._AddressTemplateGroupName = params.get("AddressTemplateGroupName")
@@ -1170,6 +1200,12 @@ class AddressTemplateGroup(AbstractModel):
                 obj = AddressTemplateItem()
                 obj._deserialize(item)
                 self._AddressTemplateSet.append(obj)
+        if params.get("TagSet") is not None:
+            self._TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TagSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30961,6 +30997,9 @@ class EndPoint(AbstractModel):
         :param _ServiceName: 终端节点服务名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceName: str
+        :param _TagSet: 标签键值对。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagSet: list of Tag
         """
         self._EndPointId = None
         self._VpcId = None
@@ -30975,6 +31014,7 @@ class EndPoint(AbstractModel):
         self._CreateTime = None
         self._GroupSet = None
         self._ServiceName = None
+        self._TagSet = None
 
     @property
     def EndPointId(self):
@@ -31080,6 +31120,14 @@ class EndPoint(AbstractModel):
     def ServiceName(self, ServiceName):
         self._ServiceName = ServiceName
 
+    @property
+    def TagSet(self):
+        return self._TagSet
+
+    @TagSet.setter
+    def TagSet(self, TagSet):
+        self._TagSet = TagSet
+
 
     def _deserialize(self, params):
         self._EndPointId = params.get("EndPointId")
@@ -31095,6 +31143,12 @@ class EndPoint(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._GroupSet = params.get("GroupSet")
         self._ServiceName = params.get("ServiceName")
+        if params.get("TagSet") is not None:
+            self._TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TagSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31142,6 +31196,9 @@ class EndPointService(AbstractModel):
         :param _BusinessIpType: 服务IP类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessIpType: int
+        :param _TagSet: 标签键值对。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagSet: list of Tag
         """
         self._EndPointServiceId = None
         self._VpcId = None
@@ -31156,6 +31213,7 @@ class EndPointService(AbstractModel):
         self._ServiceType = None
         self._ServiceUin = None
         self._BusinessIpType = None
+        self._TagSet = None
 
     @property
     def EndPointServiceId(self):
@@ -31261,6 +31319,14 @@ class EndPointService(AbstractModel):
     def BusinessIpType(self, BusinessIpType):
         self._BusinessIpType = BusinessIpType
 
+    @property
+    def TagSet(self):
+        return self._TagSet
+
+    @TagSet.setter
+    def TagSet(self, TagSet):
+        self._TagSet = TagSet
+
 
     def _deserialize(self, params):
         self._EndPointServiceId = params.get("EndPointServiceId")
@@ -31281,6 +31347,12 @@ class EndPointService(AbstractModel):
         self._ServiceType = params.get("ServiceType")
         self._ServiceUin = params.get("ServiceUin")
         self._BusinessIpType = params.get("BusinessIpType")
+        if params.get("TagSet") is not None:
+            self._TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TagSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32090,6 +32162,9 @@ class HaVip(AbstractModel):
         :param _FlushedTime: HAVIP 刷新时间。该参数只作为出参数。以下场景会触发 FlushTime 被刷新：1）子机发出免费 ARP 触发 HAVIP 漂移；2）手动HAVIP解绑网卡; 没有更新时默认值：0000-00-00 00:00:00
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlushedTime: str
+        :param _TagSet: 标签键值对。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagSet: list of Tag
         """
         self._HaVipId = None
         self._HaVipName = None
@@ -32105,6 +32180,7 @@ class HaVip(AbstractModel):
         self._HaVipAssociationSet = None
         self._CheckAssociate = None
         self._FlushedTime = None
+        self._TagSet = None
 
     @property
     def HaVipId(self):
@@ -32218,6 +32294,14 @@ class HaVip(AbstractModel):
     def FlushedTime(self, FlushedTime):
         self._FlushedTime = FlushedTime
 
+    @property
+    def TagSet(self):
+        return self._TagSet
+
+    @TagSet.setter
+    def TagSet(self, TagSet):
+        self._TagSet = TagSet
+
 
     def _deserialize(self, params):
         self._HaVipId = params.get("HaVipId")
@@ -32239,6 +32323,12 @@ class HaVip(AbstractModel):
                 self._HaVipAssociationSet.append(obj)
         self._CheckAssociate = params.get("CheckAssociate")
         self._FlushedTime = params.get("FlushedTime")
+        if params.get("TagSet") is not None:
+            self._TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TagSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34338,7 +34428,7 @@ class LocalGateway(AbstractModel):
         :type CdcId: str
         :param _VpcId: VPC实例ID
         :type VpcId: str
-        :param _UniqLocalGwId: 本地网关实例ID
+        :param _UniqLocalGwId: 本地网关实例ID（计划弃用）
         :type UniqLocalGwId: str
         :param _LocalGatewayName: 本地网关名称
         :type LocalGatewayName: str
@@ -34346,6 +34436,11 @@ class LocalGateway(AbstractModel):
         :type LocalGwIp: str
         :param _CreateTime: 本地网关创建时间
         :type CreateTime: str
+        :param _TagSet: 标签键值对。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagSet: list of Tag
+        :param _LocalGatewayId: 本地网关实例ID（计划起用）
+        :type LocalGatewayId: str
         """
         self._CdcId = None
         self._VpcId = None
@@ -34353,6 +34448,8 @@ class LocalGateway(AbstractModel):
         self._LocalGatewayName = None
         self._LocalGwIp = None
         self._CreateTime = None
+        self._TagSet = None
+        self._LocalGatewayId = None
 
     @property
     def CdcId(self):
@@ -34402,6 +34499,22 @@ class LocalGateway(AbstractModel):
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
 
+    @property
+    def TagSet(self):
+        return self._TagSet
+
+    @TagSet.setter
+    def TagSet(self, TagSet):
+        self._TagSet = TagSet
+
+    @property
+    def LocalGatewayId(self):
+        return self._LocalGatewayId
+
+    @LocalGatewayId.setter
+    def LocalGatewayId(self, LocalGatewayId):
+        self._LocalGatewayId = LocalGatewayId
+
 
     def _deserialize(self, params):
         self._CdcId = params.get("CdcId")
@@ -34410,6 +34523,13 @@ class LocalGateway(AbstractModel):
         self._LocalGatewayName = params.get("LocalGatewayName")
         self._LocalGwIp = params.get("LocalGwIp")
         self._CreateTime = params.get("CreateTime")
+        if params.get("TagSet") is not None:
+            self._TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TagSet.append(obj)
+        self._LocalGatewayId = params.get("LocalGatewayId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -40580,6 +40700,9 @@ NONEXTHOP：无下一跳；
         :param _CreateTime: 创建时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
+        :param _TagSet: 标签键值对。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagSet: list of Tag
         """
         self._VpcId = None
         self._VpcName = None
@@ -40594,6 +40717,7 @@ NONEXTHOP：无下一跳；
         self._NextHopName = None
         self._NetDetectDescription = None
         self._CreateTime = None
+        self._TagSet = None
 
     @property
     def VpcId(self):
@@ -40699,6 +40823,14 @@ NONEXTHOP：无下一跳；
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
 
+    @property
+    def TagSet(self):
+        return self._TagSet
+
+    @TagSet.setter
+    def TagSet(self, TagSet):
+        self._TagSet = TagSet
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -40714,6 +40846,12 @@ NONEXTHOP：无下一跳；
         self._NextHopName = params.get("NextHopName")
         self._NetDetectDescription = params.get("NetDetectDescription")
         self._CreateTime = params.get("CreateTime")
+        if params.get("TagSet") is not None:
+            self._TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TagSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46698,12 +46836,16 @@ class ServiceTemplate(AbstractModel):
         :type CreatedTime: str
         :param _ServiceExtraSet: 带备注的协议端口信息。
         :type ServiceExtraSet: list of ServicesInfo
+        :param _TagSet: 标签键值对。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagSet: list of Tag
         """
         self._ServiceTemplateId = None
         self._ServiceTemplateName = None
         self._ServiceSet = None
         self._CreatedTime = None
         self._ServiceExtraSet = None
+        self._TagSet = None
 
     @property
     def ServiceTemplateId(self):
@@ -46745,6 +46887,14 @@ class ServiceTemplate(AbstractModel):
     def ServiceExtraSet(self, ServiceExtraSet):
         self._ServiceExtraSet = ServiceExtraSet
 
+    @property
+    def TagSet(self):
+        return self._TagSet
+
+    @TagSet.setter
+    def TagSet(self, TagSet):
+        self._TagSet = TagSet
+
 
     def _deserialize(self, params):
         self._ServiceTemplateId = params.get("ServiceTemplateId")
@@ -46757,6 +46907,12 @@ class ServiceTemplate(AbstractModel):
                 obj = ServicesInfo()
                 obj._deserialize(item)
                 self._ServiceExtraSet.append(obj)
+        if params.get("TagSet") is not None:
+            self._TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TagSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46784,12 +46940,16 @@ class ServiceTemplateGroup(AbstractModel):
         :type CreatedTime: str
         :param _ServiceTemplateSet: 协议端口模板实例信息。
         :type ServiceTemplateSet: list of ServiceTemplate
+        :param _TagSet: 标签键值对。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagSet: list of Tag
         """
         self._ServiceTemplateGroupId = None
         self._ServiceTemplateGroupName = None
         self._ServiceTemplateIdSet = None
         self._CreatedTime = None
         self._ServiceTemplateSet = None
+        self._TagSet = None
 
     @property
     def ServiceTemplateGroupId(self):
@@ -46831,6 +46991,14 @@ class ServiceTemplateGroup(AbstractModel):
     def ServiceTemplateSet(self, ServiceTemplateSet):
         self._ServiceTemplateSet = ServiceTemplateSet
 
+    @property
+    def TagSet(self):
+        return self._TagSet
+
+    @TagSet.setter
+    def TagSet(self, TagSet):
+        self._TagSet = TagSet
+
 
     def _deserialize(self, params):
         self._ServiceTemplateGroupId = params.get("ServiceTemplateGroupId")
@@ -46843,6 +47011,12 @@ class ServiceTemplateGroup(AbstractModel):
                 obj = ServiceTemplate()
                 obj._deserialize(item)
                 self._ServiceTemplateSet.append(obj)
+        if params.get("TagSet") is not None:
+            self._TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TagSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -47306,6 +47480,9 @@ class SnapshotPolicy(AbstractModel):
         :param _CreateTime: 创建时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
+        :param _TagSet: 标签键值对。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagSet: list of Tag
         """
         self._SnapshotPolicyName = None
         self._BackupType = None
@@ -47317,6 +47494,7 @@ class SnapshotPolicy(AbstractModel):
         self._BackupPolicies = None
         self._Enable = None
         self._CreateTime = None
+        self._TagSet = None
 
     @property
     def SnapshotPolicyName(self):
@@ -47398,6 +47576,14 @@ class SnapshotPolicy(AbstractModel):
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
 
+    @property
+    def TagSet(self):
+        return self._TagSet
+
+    @TagSet.setter
+    def TagSet(self, TagSet):
+        self._TagSet = TagSet
+
 
     def _deserialize(self, params):
         self._SnapshotPolicyName = params.get("SnapshotPolicyName")
@@ -47415,6 +47601,12 @@ class SnapshotPolicy(AbstractModel):
                 self._BackupPolicies.append(obj)
         self._Enable = params.get("Enable")
         self._CreateTime = params.get("CreateTime")
+        if params.get("TagSet") is not None:
+            self._TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TagSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

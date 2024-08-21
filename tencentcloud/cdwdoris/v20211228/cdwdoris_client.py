@@ -26,6 +26,29 @@ class CdwdorisClient(AbstractClient):
     _service = 'cdwdoris'
 
 
+    def ActionAlterUser(self, request):
+        """新增和修改用户接口
+
+        :param request: Request instance for ActionAlterUser.
+        :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ActionAlterUserRequest`
+        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.ActionAlterUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ActionAlterUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.ActionAlterUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CancelBackupJob(self, request):
         """取消对应的备份实例任务
 

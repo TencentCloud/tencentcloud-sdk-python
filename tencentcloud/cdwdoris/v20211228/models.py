@@ -18,6 +18,103 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ActionAlterUserRequest(AbstractModel):
+    """ActionAlterUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserInfo: 用户信息
+        :type UserInfo: :class:`tencentcloud.cdwdoris.v20211228.models.UserInfo`
+        :param _ApiType: api接口类型
+        :type ApiType: str
+        :param _UserPrivilege: 用户权限类型 0:普通用户 1:管理员
+        :type UserPrivilege: int
+        """
+        self._UserInfo = None
+        self._ApiType = None
+        self._UserPrivilege = None
+
+    @property
+    def UserInfo(self):
+        return self._UserInfo
+
+    @UserInfo.setter
+    def UserInfo(self, UserInfo):
+        self._UserInfo = UserInfo
+
+    @property
+    def ApiType(self):
+        return self._ApiType
+
+    @ApiType.setter
+    def ApiType(self, ApiType):
+        self._ApiType = ApiType
+
+    @property
+    def UserPrivilege(self):
+        return self._UserPrivilege
+
+    @UserPrivilege.setter
+    def UserPrivilege(self, UserPrivilege):
+        self._UserPrivilege = UserPrivilege
+
+
+    def _deserialize(self, params):
+        if params.get("UserInfo") is not None:
+            self._UserInfo = UserInfo()
+            self._UserInfo._deserialize(params.get("UserInfo"))
+        self._ApiType = params.get("ApiType")
+        self._UserPrivilege = params.get("UserPrivilege")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ActionAlterUserResponse(AbstractModel):
+    """ActionAlterUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
 class AttachCBSSpec(AbstractModel):
     """集群内节点的规格磁盘规格描述
 
@@ -6856,6 +6953,12 @@ Modify 集群变更中；
         :param _Details: 实例扩展信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Details: :class:`tencentcloud.cdwdoris.v20211228.models.InstanceDetail`
+        :param _EnableDlc: 是否启用DLC 0:关闭 1:开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableDlc: int
+        :param _AccountType: 账户类型 0:普通用户 1:CAM用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountType: int
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -6905,6 +7008,8 @@ Modify 集群变更中；
         self._EnableCoolDown = None
         self._CoolDownBucket = None
         self._Details = None
+        self._EnableDlc = None
+        self._AccountType = None
 
     @property
     def InstanceId(self):
@@ -7294,6 +7399,22 @@ Modify 集群变更中；
     def Details(self, Details):
         self._Details = Details
 
+    @property
+    def EnableDlc(self):
+        return self._EnableDlc
+
+    @EnableDlc.setter
+    def EnableDlc(self, EnableDlc):
+        self._EnableDlc = EnableDlc
+
+    @property
+    def AccountType(self):
+        return self._AccountType
+
+    @AccountType.setter
+    def AccountType(self, AccountType):
+        self._AccountType = AccountType
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -7355,6 +7476,8 @@ Modify 集群变更中；
         if params.get("Details") is not None:
             self._Details = InstanceDetail()
             self._Details._deserialize(params.get("Details"))
+        self._EnableDlc = params.get("EnableDlc")
+        self._AccountType = params.get("AccountType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11332,6 +11455,111 @@ class UpdateUserPrivileges(AbstractModel):
 
     def _deserialize(self, params):
         self._IsSetGlobalCatalog = params.get("IsSetGlobalCatalog")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserInfo(AbstractModel):
+    """新增或是修改用户
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群实例id
+        :type InstanceId: str
+        :param _UserName: 用户名
+        :type UserName: str
+        :param _PassWord: 密码
+        :type PassWord: str
+        :param _WhiteHost: 用户链接来自的 IP
+        :type WhiteHost: str
+        :param _OldWhiteHost: 修改前用户链接来自的 IP
+        :type OldWhiteHost: str
+        :param _Describe: 描述
+        :type Describe: str
+        :param _OldPwd: 旧密码
+        :type OldPwd: str
+        """
+        self._InstanceId = None
+        self._UserName = None
+        self._PassWord = None
+        self._WhiteHost = None
+        self._OldWhiteHost = None
+        self._Describe = None
+        self._OldPwd = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def PassWord(self):
+        return self._PassWord
+
+    @PassWord.setter
+    def PassWord(self, PassWord):
+        self._PassWord = PassWord
+
+    @property
+    def WhiteHost(self):
+        return self._WhiteHost
+
+    @WhiteHost.setter
+    def WhiteHost(self, WhiteHost):
+        self._WhiteHost = WhiteHost
+
+    @property
+    def OldWhiteHost(self):
+        return self._OldWhiteHost
+
+    @OldWhiteHost.setter
+    def OldWhiteHost(self, OldWhiteHost):
+        self._OldWhiteHost = OldWhiteHost
+
+    @property
+    def Describe(self):
+        return self._Describe
+
+    @Describe.setter
+    def Describe(self, Describe):
+        self._Describe = Describe
+
+    @property
+    def OldPwd(self):
+        return self._OldPwd
+
+    @OldPwd.setter
+    def OldPwd(self, OldPwd):
+        self._OldPwd = OldPwd
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._UserName = params.get("UserName")
+        self._PassWord = params.get("PassWord")
+        self._WhiteHost = params.get("WhiteHost")
+        self._OldWhiteHost = params.get("OldWhiteHost")
+        self._Describe = params.get("Describe")
+        self._OldPwd = params.get("OldPwd")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
