@@ -1552,6 +1552,12 @@ class DeviceBaseInfo(AbstractModel):
         :param _FlowTrunc: 设备无流量包处理方式，0: 按量付费，1: 截断加速
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowTrunc: int
+        :param _Sn: 设备sn
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sn: str
+        :param _Vendor: 厂商
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vendor: str
         """
         self._DeviceId = None
         self._DeviceName = None
@@ -1564,6 +1570,8 @@ class DeviceBaseInfo(AbstractModel):
         self._GroupId = None
         self._GroupName = None
         self._FlowTrunc = None
+        self._Sn = None
+        self._Vendor = None
 
     @property
     def DeviceId(self):
@@ -1653,6 +1661,22 @@ class DeviceBaseInfo(AbstractModel):
     def FlowTrunc(self, FlowTrunc):
         self._FlowTrunc = FlowTrunc
 
+    @property
+    def Sn(self):
+        return self._Sn
+
+    @Sn.setter
+    def Sn(self, Sn):
+        self._Sn = Sn
+
+    @property
+    def Vendor(self):
+        return self._Vendor
+
+    @Vendor.setter
+    def Vendor(self, Vendor):
+        self._Vendor = Vendor
+
 
     def _deserialize(self, params):
         self._DeviceId = params.get("DeviceId")
@@ -1666,6 +1690,8 @@ class DeviceBaseInfo(AbstractModel):
         self._GroupId = params.get("GroupId")
         self._GroupName = params.get("GroupName")
         self._FlowTrunc = params.get("FlowTrunc")
+        self._Sn = params.get("Sn")
+        self._Vendor = params.get("Vendor")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

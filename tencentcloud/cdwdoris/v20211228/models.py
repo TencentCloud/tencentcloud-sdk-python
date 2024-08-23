@@ -1329,6 +1329,75 @@ class ConfigKeyValue(AbstractModel):
         
 
 
+class ConfigSubmitContext(AbstractModel):
+    """配置文件修改信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileName: 配置文件名称
+        :type FileName: str
+        :param _NewConfValue: 配置文件新内容，base64编码
+        :type NewConfValue: str
+        :param _OldConfValue: 配置文件旧内容，base64编码
+        :type OldConfValue: str
+        :param _FilePath: 文件路径
+        :type FilePath: str
+        """
+        self._FileName = None
+        self._NewConfValue = None
+        self._OldConfValue = None
+        self._FilePath = None
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def NewConfValue(self):
+        return self._NewConfValue
+
+    @NewConfValue.setter
+    def NewConfValue(self, NewConfValue):
+        self._NewConfValue = NewConfValue
+
+    @property
+    def OldConfValue(self):
+        return self._OldConfValue
+
+    @OldConfValue.setter
+    def OldConfValue(self, OldConfValue):
+        self._OldConfValue = OldConfValue
+
+    @property
+    def FilePath(self):
+        return self._FilePath
+
+    @FilePath.setter
+    def FilePath(self, FilePath):
+        self._FilePath = FilePath
+
+
+    def _deserialize(self, params):
+        self._FileName = params.get("FileName")
+        self._NewConfValue = params.get("NewConfValue")
+        self._OldConfValue = params.get("OldConfValue")
+        self._FilePath = params.get("FilePath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CoolDownBackend(AbstractModel):
     """冷热分层backend节点信息
 
@@ -2499,7 +2568,7 @@ class DeleteBackUpDataRequest(AbstractModel):
         :type InstanceId: str
         :param _BackUpJobId: 任务id
         :type BackUpJobId: int
-        :param _IsDeleteAll: 是否删除所有数据
+        :param _IsDeleteAll: 是否删除所有实例
         :type IsDeleteAll: bool
         """
         self._InstanceId = None
@@ -7798,6 +7867,117 @@ class InstanceOperation(AbstractModel):
         
 
 
+class ModifyClusterConfigsRequest(AbstractModel):
+    """ModifyClusterConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群ID，例如cdwch-xxxx
+        :type InstanceId: str
+        :param _ModifyConfContext: 配置文件修改信息
+        :type ModifyConfContext: list of ConfigSubmitContext
+        :param _Remark: 修改原因
+        :type Remark: str
+        """
+        self._InstanceId = None
+        self._ModifyConfContext = None
+        self._Remark = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ModifyConfContext(self):
+        return self._ModifyConfContext
+
+    @ModifyConfContext.setter
+    def ModifyConfContext(self, ModifyConfContext):
+        self._ModifyConfContext = ModifyConfContext
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("ModifyConfContext") is not None:
+            self._ModifyConfContext = []
+            for item in params.get("ModifyConfContext"):
+                obj = ConfigSubmitContext()
+                obj._deserialize(item)
+                self._ModifyConfContext.append(obj)
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClusterConfigsResponse(AbstractModel):
+    """ModifyClusterConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 流程相关信息
+        :type FlowId: int
+        :param _ErrorMsg: 错误信息
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyCoolDownPolicyRequest(AbstractModel):
     """ModifyCoolDownPolicy请求参数结构体
 
@@ -8971,7 +9151,7 @@ class NodeInfos(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NodeName: 节点在doris中明朝n
+        :param _NodeName: 节点名称
         :type NodeName: str
         :param _Status: 节点状态
         :type Status: int

@@ -312,7 +312,7 @@ class ActionLibraryListResult(AbstractModel):
         :type RelationActionId: int
         :param _ActionCommand: 操作命令
         :type ActionCommand: str
-        :param _ActionCommandType: 动作类型( 0 -- tat   1 -- 云API）
+        :param _ActionCommandType: 动作类型（0 -- tat   1 -- 云API）
         :type ActionCommandType: int
         :param _ActionContent: 自定义动作的参数，json string
         :type ActionContent: str

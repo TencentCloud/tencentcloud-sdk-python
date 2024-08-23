@@ -832,7 +832,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeSqlApis(self, request):
-        """针对驱动sql命令查询ck集群接口
+        """针对驱动sql命令查询集群接口
 
         :param request: Request instance for DescribeSqlApis.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeSqlApisRequest`
@@ -937,6 +937,29 @@ class CdwdorisClient(AbstractClient):
             body = self.call("DestroyInstance", params, headers=headers)
             response = json.loads(body)
             model = models.DestroyInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyClusterConfigs(self, request):
+        """在集群配置页面修改集群配置文件接口，xml模式
+
+        :param request: Request instance for ModifyClusterConfigs.
+        :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ModifyClusterConfigsRequest`
+        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.ModifyClusterConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyClusterConfigs", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyClusterConfigsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

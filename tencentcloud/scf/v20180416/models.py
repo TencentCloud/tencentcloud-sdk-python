@@ -10622,11 +10622,11 @@ class UpdateTriggerStatusRequest(AbstractModel):
         :type FunctionName: str
         :param _TriggerName: 触发器名称
         :type TriggerName: str
-        :param _Type: 触发器类型
+        :param _Type: 触发器类型，触发器类型，目前只支持 timer、 cos  、 ckafka三种类型
         :type Type: str
-        :param _Qualifier: 函数的版本，默认为 $LATEST，建议填写 [$DEFAULT](https://cloud.tencent.com/document/product/583/36149#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)方便后续进行版本的灰度发布。
+        :param _Qualifier: 触发器在创建时所指向的触发别名或版本，默认值为$LATEST
         :type Qualifier: str
-        :param _Namespace: 函数的命名空间
+        :param _Namespace: 函数所在的命名空间，默认值为default
         :type Namespace: str
         :param _TriggerDesc: 如果更新的触发器类型为 COS 触发器，该字段为必填值，存放 JSON 格式的数据 {"event":"cos:ObjectCreated:*"}，数据内容和 SetTrigger 接口中该字段的格式相同；如果更新的触发器类型为定时触发器或 CMQ 触发器，可以不指定该字段
         :type TriggerDesc: str

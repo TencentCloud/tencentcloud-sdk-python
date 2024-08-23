@@ -395,7 +395,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeCertificateBindResourceTaskDetail(self, request):
-        """查询CreateCertificateBindResourceSyncTask任务结果， 返回证书关联云资源异步任务结果， 支持以下云资源：clb、cdn、waf、live、vod、ddos、tke、apigateway、tcb、teo（edgeOne）
+        """查询CreateCertificateBindResourceSyncTask任务结果， 返回证书关联云资源异步任务结果， 支持以下云资源：clb、cdn、waf、live、vod、ddos、tke、apigateway、tcb、teo（edgeOne）、cos
 
         :param request: Request instance for DescribeCertificateBindResourceTaskDetail.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeCertificateBindResourceTaskDetailRequest`

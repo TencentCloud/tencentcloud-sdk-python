@@ -5385,6 +5385,8 @@ class CreateDataTransformRequest(AbstractModel):
         :type EnableFlag: int
         :param _PreviewLogStatistics: 用于预览加工结果的测试数据
         :type PreviewLogStatistics: list of PreviewLogStatistic
+        :param _DataTransformType: 数据加工类型。0：标准加工任务； 1：前置加工任务。前置加工任务将采集的日志处理完成后，再写入日志主题。
+        :type DataTransformType: int
         """
         self._FuncType = None
         self._SrcTopicId = None
@@ -5394,6 +5396,7 @@ class CreateDataTransformRequest(AbstractModel):
         self._DstResources = None
         self._EnableFlag = None
         self._PreviewLogStatistics = None
+        self._DataTransformType = None
 
     @property
     def FuncType(self):
@@ -5459,6 +5462,14 @@ class CreateDataTransformRequest(AbstractModel):
     def PreviewLogStatistics(self, PreviewLogStatistics):
         self._PreviewLogStatistics = PreviewLogStatistics
 
+    @property
+    def DataTransformType(self):
+        return self._DataTransformType
+
+    @DataTransformType.setter
+    def DataTransformType(self, DataTransformType):
+        self._DataTransformType = DataTransformType
+
 
     def _deserialize(self, params):
         self._FuncType = params.get("FuncType")
@@ -5479,6 +5490,7 @@ class CreateDataTransformRequest(AbstractModel):
                 obj = PreviewLogStatistic()
                 obj._deserialize(item)
                 self._PreviewLogStatistics.append(obj)
+        self._DataTransformType = params.get("DataTransformType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18677,10 +18689,11 @@ class MonitorTime(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 执行周期， 可选值：`Period`、`Fixed`。
+        :param _Type: 执行周期， 可选值：`Period`、`Fixed`、`Cron`。
 
 - Period：固定频率
 - Fixed：固定时间
+- Cron：Cron表达式
         :type Type: str
         :param _Time: 执行的周期，或者定制执行的时间节点。单位为分钟，取值范围为1~1440。
 当type为`Period`,`Fixed`时，time字段生效。

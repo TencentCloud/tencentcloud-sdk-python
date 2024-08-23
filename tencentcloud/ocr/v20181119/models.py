@@ -3832,6 +3832,10 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
         :type BackPageName: str
         :param _BackPageCardCode: 驾驶证副页证号
         :type BackPageCardCode: str
+        :param _DriverLicenseType: 驾驶证类型
+电子驾驶证：Electronic
+普通驾驶证：Normal
+        :type DriverLicenseType: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3856,6 +3860,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
         self._GenerateTime = None
         self._BackPageName = None
         self._BackPageCardCode = None
+        self._DriverLicenseType = None
         self._RequestId = None
 
     @property
@@ -4027,6 +4032,14 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
         self._BackPageCardCode = BackPageCardCode
 
     @property
+    def DriverLicenseType(self):
+        return self._DriverLicenseType
+
+    @DriverLicenseType.setter
+    def DriverLicenseType(self, DriverLicenseType):
+        self._DriverLicenseType = DriverLicenseType
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -4057,6 +4070,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
         self._GenerateTime = params.get("GenerateTime")
         self._BackPageName = params.get("BackPageName")
         self._BackPageCardCode = params.get("BackPageCardCode")
+        self._DriverLicenseType = params.get("DriverLicenseType")
         self._RequestId = params.get("RequestId")
 
 

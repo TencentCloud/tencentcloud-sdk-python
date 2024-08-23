@@ -1423,7 +1423,7 @@ class BGPInstance(AbstractModel):
         :param _BasicPlusFlag: 是否是基础防护加强版 0: 不是 1: 是
 注意：此字段可能返回 null，表示取不到有效值。
         :type BasicPlusFlag: int
-        :param _PlanCntFlag: 是否是商业模式优化-普惠版
+        :param _PlanCntFlag: 是否标准版2.0 0: 包含标准版2.0 1: 只查询标准版2.0 2: 不查标准版2.0
 注意：此字段可能返回 null，表示取不到有效值。
         :type PlanCntFlag: int
         :param _TransRegionFlag: 是否跨区域产品 0: 不包含跨区域产品 1: 中国大陆跨区域产品 2: 非中国大陆跨区域产品
@@ -6663,6 +6663,8 @@ class DescribeBGPIPL7RulesRequest(AbstractModel):
         :type Cname: str
         :param _Export: 默认为false，当为true时，将不对各个规则做策略检查，直接导出所有规则
         :type Export: bool
+        :param _Source: 源站，模糊查询
+        :type Source: str
         """
         self._Business = None
         self._StatusList = None
@@ -6673,6 +6675,7 @@ class DescribeBGPIPL7RulesRequest(AbstractModel):
         self._ProtocolList = None
         self._Cname = None
         self._Export = None
+        self._Source = None
 
     @property
     def Business(self):
@@ -6746,6 +6749,14 @@ class DescribeBGPIPL7RulesRequest(AbstractModel):
     def Export(self, Export):
         self._Export = Export
 
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
 
     def _deserialize(self, params):
         self._Business = params.get("Business")
@@ -6757,6 +6768,7 @@ class DescribeBGPIPL7RulesRequest(AbstractModel):
         self._ProtocolList = params.get("ProtocolList")
         self._Cname = params.get("Cname")
         self._Export = params.get("Export")
+        self._Source = params.get("Source")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -658,9 +658,9 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         :type Definition: int
         :param _WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
         :type WatermarkSet: list of WatermarkInput
-        :param _TraceWatermark: 溯源水印。
+        :param _TraceWatermark: 溯源水印，该功能已不再支持使用。
         :type TraceWatermark: :class:`tencentcloud.vod.v20180717.models.TraceWatermarkInput`
-        :param _CopyRightWatermark: 版权水印。
+        :param _CopyRightWatermark: 版权水印，该功能已不再支持使用。
         :type CopyRightWatermark: :class:`tencentcloud.vod.v20180717.models.CopyRightWatermarkInput`
         :param _SubtitleSet: 字幕列表，元素为字幕 ID，支持多个字幕，最大可支持16个。
         :type SubtitleSet: list of str
@@ -28953,7 +28953,7 @@ class ExtractTraceWatermarkTaskOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Uv: 播放者的 ID，以十六进制表示，共6位，该参数用于 [溯源水印](https://cloud.tencent.com/document/product/266/75789) 使用场景。
+        :param _Uv: 播放者的 ID，以十六进制表示，共6位。
         :type Uv: str
         :param _Uid: 该字段已废弃。
         :type Uid: str
@@ -57470,9 +57470,9 @@ class TranscodeTaskInput(AbstractModel):
         :type Definition: int
         :param _WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
         :type WatermarkSet: list of WatermarkInput
-        :param _TraceWatermark: 溯源水印。
+        :param _TraceWatermark: 溯源水印，该功能已不再支持使用。
         :type TraceWatermark: :class:`tencentcloud.vod.v20180717.models.TraceWatermarkInput`
-        :param _CopyRightWatermark: 版权水印。
+        :param _CopyRightWatermark: 版权水印，该功能已不再支持使用。
         :type CopyRightWatermark: :class:`tencentcloud.vod.v20180717.models.CopyRightWatermarkInput`
         :param _MosaicSet: 马赛克列表，最大可支持 10 张。
         :type MosaicSet: list of MosaicInput

@@ -10444,6 +10444,14 @@ class TelCdrInfo(AbstractModel):
         :param _AsrUrl: 获取录音ASR文本信息地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsrUrl: str
+        :param _AsrStatus: AsrUrl的状态：Complete
+已完成;
+Processing
+正在生成中;
+NotExists
+无记录(未开启生成离线asr或者无套餐包)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsrStatus: str
         :param _CustomRecordURL: 录音转存第三方COS地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomRecordURL: str
@@ -10491,6 +10499,7 @@ class TelCdrInfo(AbstractModel):
         self._UUI = None
         self._IVRKeyPressedEx = None
         self._AsrUrl = None
+        self._AsrStatus = None
         self._CustomRecordURL = None
         self._Remark = None
         self._QueuedSkillGroupName = None
@@ -10750,6 +10759,14 @@ class TelCdrInfo(AbstractModel):
         self._AsrUrl = AsrUrl
 
     @property
+    def AsrStatus(self):
+        return self._AsrStatus
+
+    @AsrStatus.setter
+    def AsrStatus(self, AsrStatus):
+        self._AsrStatus = AsrStatus
+
+    @property
     def CustomRecordURL(self):
         return self._CustomRecordURL
 
@@ -10839,6 +10856,7 @@ class TelCdrInfo(AbstractModel):
                 obj._deserialize(item)
                 self._IVRKeyPressedEx.append(obj)
         self._AsrUrl = params.get("AsrUrl")
+        self._AsrStatus = params.get("AsrStatus")
         self._CustomRecordURL = params.get("CustomRecordURL")
         self._Remark = params.get("Remark")
         self._QueuedSkillGroupName = params.get("QueuedSkillGroupName")

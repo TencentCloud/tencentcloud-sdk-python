@@ -3603,6 +3603,8 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
         :type Browser: str
         :param _Env: 环境区分
         :type Env: str
+        :param _ErrorMsg: js异常信息
+        :type ErrorMsg: str
         """
         self._StartTime = None
         self._Type = None
@@ -3625,6 +3627,7 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
         self._Os = None
         self._Browser = None
         self._Env = None
+        self._ErrorMsg = None
 
     @property
     def StartTime(self):
@@ -3794,6 +3797,14 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
     def Env(self, Env):
         self._Env = Env
 
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
 
     def _deserialize(self, params):
         self._StartTime = params.get("StartTime")
@@ -3817,6 +3828,7 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
         self._Os = params.get("Os")
         self._Browser = params.get("Browser")
         self._Env = params.get("Env")
+        self._ErrorMsg = params.get("ErrorMsg")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

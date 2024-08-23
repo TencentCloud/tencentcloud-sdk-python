@@ -32194,6 +32194,9 @@ class UserNotice(AbstractModel):
         :param _OnCallFormIDs: 值班表id列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type OnCallFormIDs: list of str
+        :param _VoiceConfirmKey: 电话按键确认
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VoiceConfirmKey: str
         """
         self._ReceiverType = None
         self._StartTime = None
@@ -32209,6 +32212,7 @@ class UserNotice(AbstractModel):
         self._PhoneCallType = None
         self._Weekday = None
         self._OnCallFormIDs = None
+        self._VoiceConfirmKey = None
 
     @property
     def ReceiverType(self):
@@ -32322,6 +32326,14 @@ class UserNotice(AbstractModel):
     def OnCallFormIDs(self, OnCallFormIDs):
         self._OnCallFormIDs = OnCallFormIDs
 
+    @property
+    def VoiceConfirmKey(self):
+        return self._VoiceConfirmKey
+
+    @VoiceConfirmKey.setter
+    def VoiceConfirmKey(self, VoiceConfirmKey):
+        self._VoiceConfirmKey = VoiceConfirmKey
+
 
     def _deserialize(self, params):
         self._ReceiverType = params.get("ReceiverType")
@@ -32338,6 +32350,7 @@ class UserNotice(AbstractModel):
         self._PhoneCallType = params.get("PhoneCallType")
         self._Weekday = params.get("Weekday")
         self._OnCallFormIDs = params.get("OnCallFormIDs")
+        self._VoiceConfirmKey = params.get("VoiceConfirmKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

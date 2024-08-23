@@ -15382,6 +15382,8 @@ class CreateMalwareWhiteListRequest(AbstractModel):
         :type Md5List: list of str
         :param _EventId: 木马事件ID
         :type EventId: int
+        :param _IsHandleHistoryEvents: 对历史待处理执行加白操作；0是不处理，1是处理
+        :type IsHandleHistoryEvents: int
         """
         self._Mode = None
         self._QuuidList = None
@@ -15392,6 +15394,7 @@ class CreateMalwareWhiteListRequest(AbstractModel):
         self._FileExtension = None
         self._Md5List = None
         self._EventId = None
+        self._IsHandleHistoryEvents = None
 
     @property
     def Mode(self):
@@ -15465,6 +15468,14 @@ class CreateMalwareWhiteListRequest(AbstractModel):
     def EventId(self, EventId):
         self._EventId = EventId
 
+    @property
+    def IsHandleHistoryEvents(self):
+        return self._IsHandleHistoryEvents
+
+    @IsHandleHistoryEvents.setter
+    def IsHandleHistoryEvents(self, IsHandleHistoryEvents):
+        self._IsHandleHistoryEvents = IsHandleHistoryEvents
+
 
     def _deserialize(self, params):
         self._Mode = params.get("Mode")
@@ -15476,6 +15487,7 @@ class CreateMalwareWhiteListRequest(AbstractModel):
         self._FileExtension = params.get("FileExtension")
         self._Md5List = params.get("Md5List")
         self._EventId = params.get("EventId")
+        self._IsHandleHistoryEvents = params.get("IsHandleHistoryEvents")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -45673,6 +45685,8 @@ class DescribeScanVulSettingResponse(AbstractModel):
         :type ClickTimeout: int
         :param _Uuids: 为空默认扫描全部专业版、旗舰版、普惠版主机，不为空只扫描选中主机
         :type Uuids: list of str
+        :param _ScanMethod: 0版本比对,2版本比对+poc
+        :type ScanMethod: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -45686,6 +45700,7 @@ class DescribeScanVulSettingResponse(AbstractModel):
         self._EndTime = None
         self._ClickTimeout = None
         self._Uuids = None
+        self._ScanMethod = None
         self._RequestId = None
 
     @property
@@ -45769,6 +45784,14 @@ class DescribeScanVulSettingResponse(AbstractModel):
         self._Uuids = Uuids
 
     @property
+    def ScanMethod(self):
+        return self._ScanMethod
+
+    @ScanMethod.setter
+    def ScanMethod(self, ScanMethod):
+        self._ScanMethod = ScanMethod
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -45788,6 +45811,7 @@ class DescribeScanVulSettingResponse(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._ClickTimeout = params.get("ClickTimeout")
         self._Uuids = params.get("Uuids")
+        self._ScanMethod = params.get("ScanMethod")
         self._RequestId = params.get("RequestId")
 
 
@@ -52063,6 +52087,8 @@ class DescribeWarningHostConfigResponse(AbstractModel):
         :param _ItemLabelIds: 项目或标签的id列表，自选主机时为空
 注意：此字段可能返回 null，表示取不到有效值。
         :type ItemLabelIds: list of str
+        :param _ExcludedQuuids: 需排除的机器列表
+        :type ExcludedQuuids: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -52071,6 +52097,7 @@ class DescribeWarningHostConfigResponse(AbstractModel):
         self._Quuids = None
         self._TotalCount = None
         self._ItemLabelIds = None
+        self._ExcludedQuuids = None
         self._RequestId = None
 
     @property
@@ -52114,6 +52141,14 @@ class DescribeWarningHostConfigResponse(AbstractModel):
         self._ItemLabelIds = ItemLabelIds
 
     @property
+    def ExcludedQuuids(self):
+        return self._ExcludedQuuids
+
+    @ExcludedQuuids.setter
+    def ExcludedQuuids(self, ExcludedQuuids):
+        self._ExcludedQuuids = ExcludedQuuids
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -52128,6 +52163,7 @@ class DescribeWarningHostConfigResponse(AbstractModel):
         self._Quuids = params.get("Quuids")
         self._TotalCount = params.get("TotalCount")
         self._ItemLabelIds = params.get("ItemLabelIds")
+        self._ExcludedQuuids = params.get("ExcludedQuuids")
         self._RequestId = params.get("RequestId")
 
 
@@ -72969,12 +73005,15 @@ class ModifyWarningHostConfigRequest(AbstractModel):
         :type Quuids: list of str
         :param _ItemLabelIds: 项目或标签的id列表，自选主机时为空
         :type ItemLabelIds: list of str
+        :param _ExcludedQuuids: 需排除的机器列表
+        :type ExcludedQuuids: list of str
         """
         self._Type = None
         self._HostRange = None
         self._ItemLabels = None
         self._Quuids = None
         self._ItemLabelIds = None
+        self._ExcludedQuuids = None
 
     @property
     def Type(self):
@@ -73016,6 +73055,14 @@ class ModifyWarningHostConfigRequest(AbstractModel):
     def ItemLabelIds(self, ItemLabelIds):
         self._ItemLabelIds = ItemLabelIds
 
+    @property
+    def ExcludedQuuids(self):
+        return self._ExcludedQuuids
+
+    @ExcludedQuuids.setter
+    def ExcludedQuuids(self, ExcludedQuuids):
+        self._ExcludedQuuids = ExcludedQuuids
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -73023,6 +73070,7 @@ class ModifyWarningHostConfigRequest(AbstractModel):
         self._ItemLabels = params.get("ItemLabels")
         self._Quuids = params.get("Quuids")
         self._ItemLabelIds = params.get("ItemLabelIds")
+        self._ExcludedQuuids = params.get("ExcludedQuuids")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -73146,6 +73194,8 @@ class ModifyWebHookPolicyRequest(AbstractModel):
         :type IsDisabled: int
         :param _Quuids: 主机列表
         :type Quuids: list of str
+        :param _ExcludedQuuids: 需排除的机器列表	
+        :type ExcludedQuuids: list of str
         """
         self._Id = None
         self._Name = None
@@ -73156,6 +73206,7 @@ class ModifyWebHookPolicyRequest(AbstractModel):
         self._CustomFields = None
         self._IsDisabled = None
         self._Quuids = None
+        self._ExcludedQuuids = None
 
     @property
     def Id(self):
@@ -73229,6 +73280,14 @@ class ModifyWebHookPolicyRequest(AbstractModel):
     def Quuids(self, Quuids):
         self._Quuids = Quuids
 
+    @property
+    def ExcludedQuuids(self):
+        return self._ExcludedQuuids
+
+    @ExcludedQuuids.setter
+    def ExcludedQuuids(self, ExcludedQuuids):
+        self._ExcludedQuuids = ExcludedQuuids
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -73260,6 +73319,7 @@ class ModifyWebHookPolicyRequest(AbstractModel):
                 self._CustomFields.append(obj)
         self._IsDisabled = params.get("IsDisabled")
         self._Quuids = params.get("Quuids")
+        self._ExcludedQuuids = params.get("ExcludedQuuids")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -81524,6 +81584,8 @@ class ScanVulRequest(AbstractModel):
         :type TimeoutPeriod: int
         :param _VulIds: 需要扫描的漏洞id
         :type VulIds: list of int non-negative
+        :param _ScanMethod: 0版本比对，2版本比对+poc
+        :type ScanMethod: int
         """
         self._VulLevels = None
         self._HostType = None
@@ -81532,6 +81594,7 @@ class ScanVulRequest(AbstractModel):
         self._VulEmergency = None
         self._TimeoutPeriod = None
         self._VulIds = None
+        self._ScanMethod = None
 
     @property
     def VulLevels(self):
@@ -81589,6 +81652,14 @@ class ScanVulRequest(AbstractModel):
     def VulIds(self, VulIds):
         self._VulIds = VulIds
 
+    @property
+    def ScanMethod(self):
+        return self._ScanMethod
+
+    @ScanMethod.setter
+    def ScanMethod(self, ScanMethod):
+        self._ScanMethod = ScanMethod
+
 
     def _deserialize(self, params):
         self._VulLevels = params.get("VulLevels")
@@ -81598,6 +81669,7 @@ class ScanVulRequest(AbstractModel):
         self._VulEmergency = params.get("VulEmergency")
         self._TimeoutPeriod = params.get("TimeoutPeriod")
         self._VulIds = params.get("VulIds")
+        self._ScanMethod = params.get("ScanMethod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -81671,6 +81743,8 @@ class ScanVulSettingRequest(AbstractModel):
         :type EnableScan: int
         :param _Uuids: 为空默认扫描全部专业版、旗舰版、普惠版主机，不为空只扫描选中主机
         :type Uuids: list of str
+        :param _ScanMethod: 0版本比对，2版本比对+poc
+        :type ScanMethod: int
         """
         self._TimerInterval = None
         self._VulCategories = None
@@ -81681,6 +81755,7 @@ class ScanVulSettingRequest(AbstractModel):
         self._EndTime = None
         self._EnableScan = None
         self._Uuids = None
+        self._ScanMethod = None
 
     @property
     def TimerInterval(self):
@@ -81754,6 +81829,14 @@ class ScanVulSettingRequest(AbstractModel):
     def Uuids(self, Uuids):
         self._Uuids = Uuids
 
+    @property
+    def ScanMethod(self):
+        return self._ScanMethod
+
+    @ScanMethod.setter
+    def ScanMethod(self, ScanMethod):
+        self._ScanMethod = ScanMethod
+
 
     def _deserialize(self, params):
         self._TimerInterval = params.get("TimerInterval")
@@ -81765,6 +81848,7 @@ class ScanVulSettingRequest(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._EnableScan = params.get("EnableScan")
         self._Uuids = params.get("Uuids")
+        self._ScanMethod = params.get("ScanMethod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
