@@ -5141,7 +5141,7 @@ class DescribeInstancesHealthStateRequest(AbstractModel):
         r"""
         :param _InstanceID: 集群Id
         :type InstanceID: str
-        :param _Input: "" 或者  某个集群Id
+        :param _Input: 为空：代表当前appId下所有集群 或者  某个集群Id
         :type Input: str
         """
         self._InstanceID = None
@@ -5188,7 +5188,7 @@ class DescribeInstancesHealthStateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 出参
+        :param _Data: base64编码后的数据，包含了集群的健康信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -11666,6 +11666,8 @@ class UserInfo(AbstractModel):
         :type Describe: str
         :param _OldPwd: 旧密码
         :type OldPwd: str
+        :param _CamUin: 绑定的子用户uin
+        :type CamUin: str
         """
         self._InstanceId = None
         self._UserName = None
@@ -11674,6 +11676,7 @@ class UserInfo(AbstractModel):
         self._OldWhiteHost = None
         self._Describe = None
         self._OldPwd = None
+        self._CamUin = None
 
     @property
     def InstanceId(self):
@@ -11731,6 +11734,14 @@ class UserInfo(AbstractModel):
     def OldPwd(self, OldPwd):
         self._OldPwd = OldPwd
 
+    @property
+    def CamUin(self):
+        return self._CamUin
+
+    @CamUin.setter
+    def CamUin(self, CamUin):
+        self._CamUin = CamUin
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -11740,6 +11751,7 @@ class UserInfo(AbstractModel):
         self._OldWhiteHost = params.get("OldWhiteHost")
         self._Describe = params.get("Describe")
         self._OldPwd = params.get("OldPwd")
+        self._CamUin = params.get("CamUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

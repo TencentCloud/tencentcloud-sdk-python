@@ -3384,6 +3384,9 @@ class ClusterInstanceDetail(AbstractModel):
         :param _InstanceDeviceType: 实例机器类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceDeviceType: str
+        :param _InstanceStorageType: 实例存储类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceStorageType: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -3400,6 +3403,7 @@ class ClusterInstanceDetail(AbstractModel):
         self._ServerlessStatus = None
         self._InstanceTasks = None
         self._InstanceDeviceType = None
+        self._InstanceStorageType = None
 
     @property
     def InstanceId(self):
@@ -3521,6 +3525,14 @@ class ClusterInstanceDetail(AbstractModel):
     def InstanceDeviceType(self, InstanceDeviceType):
         self._InstanceDeviceType = InstanceDeviceType
 
+    @property
+    def InstanceStorageType(self):
+        return self._InstanceStorageType
+
+    @InstanceStorageType.setter
+    def InstanceStorageType(self, InstanceStorageType):
+        self._InstanceStorageType = InstanceStorageType
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -3543,6 +3555,7 @@ class ClusterInstanceDetail(AbstractModel):
                 obj._deserialize(item)
                 self._InstanceTasks.append(obj)
         self._InstanceDeviceType = params.get("InstanceDeviceType")
+        self._InstanceStorageType = params.get("InstanceStorageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7589,6 +7602,9 @@ pause
         :param _DeviceType: 实例机器类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceType: str
+        :param _InstanceStorageType: 实例存储类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceStorageType: str
         """
         self._Uin = None
         self._AppId = None
@@ -7645,6 +7661,7 @@ pause
         self._InstanceIndexMode = None
         self._InstanceAbility = None
         self._DeviceType = None
+        self._InstanceStorageType = None
 
     @property
     def Uin(self):
@@ -8086,6 +8103,14 @@ pause
     def DeviceType(self, DeviceType):
         self._DeviceType = DeviceType
 
+    @property
+    def InstanceStorageType(self):
+        return self._InstanceStorageType
+
+    @InstanceStorageType.setter
+    def InstanceStorageType(self, InstanceStorageType):
+        self._InstanceStorageType = InstanceStorageType
+
 
     def _deserialize(self, params):
         self._Uin = params.get("Uin")
@@ -8165,6 +8190,7 @@ pause
             self._InstanceAbility = InstanceAbility()
             self._InstanceAbility._deserialize(params.get("InstanceAbility"))
         self._DeviceType = params.get("DeviceType")
+        self._InstanceStorageType = params.get("InstanceStorageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

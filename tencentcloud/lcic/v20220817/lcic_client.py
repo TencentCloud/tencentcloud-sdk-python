@@ -787,6 +787,29 @@ class LcicClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRecordStream(self, request):
+        """录制流查询
+
+        :param request: Request instance for DescribeRecordStream.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeRecordStreamRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DescribeRecordStreamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRecordStream", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRecordStreamResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRoom(self, request):
         """获取房间配置信息
 

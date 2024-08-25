@@ -4417,6 +4417,129 @@ class DescribeQuestionListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRecordStreamRequest(AbstractModel):
+    """DescribeRecordStream请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 学校ID
+        :type SdkAppId: int
+        :param _RoomId: 房间ID
+        :type RoomId: int
+        """
+        self._SdkAppId = None
+        self._RoomId = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRecordStreamResponse(AbstractModel):
+    """DescribeRecordStream返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SchoolId: 学校ID
+        :type SchoolId: int
+        :param _ClassId: 课堂ID
+        :type ClassId: int
+        :param _ClassType: 课堂类型
+        :type ClassType: int
+        :param _StreamInfo: 用户流信息
+        :type StreamInfo: list of SingleStreamInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SchoolId = None
+        self._ClassId = None
+        self._ClassType = None
+        self._StreamInfo = None
+        self._RequestId = None
+
+    @property
+    def SchoolId(self):
+        return self._SchoolId
+
+    @SchoolId.setter
+    def SchoolId(self, SchoolId):
+        self._SchoolId = SchoolId
+
+    @property
+    def ClassId(self):
+        return self._ClassId
+
+    @ClassId.setter
+    def ClassId(self, ClassId):
+        self._ClassId = ClassId
+
+    @property
+    def ClassType(self):
+        return self._ClassType
+
+    @ClassType.setter
+    def ClassType(self, ClassType):
+        self._ClassType = ClassType
+
+    @property
+    def StreamInfo(self):
+        return self._StreamInfo
+
+    @StreamInfo.setter
+    def StreamInfo(self, StreamInfo):
+        self._StreamInfo = StreamInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SchoolId = params.get("SchoolId")
+        self._ClassId = params.get("ClassId")
+        self._ClassType = params.get("ClassType")
+        if params.get("StreamInfo") is not None:
+            self._StreamInfo = []
+            for item in params.get("StreamInfo"):
+                obj = SingleStreamInfo()
+                obj._deserialize(item)
+                self._StreamInfo.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRoomForbiddenUserRequest(AbstractModel):
     """DescribeRoomForbiddenUser请求参数结构体
 
@@ -10119,6 +10242,144 @@ class SetWatermarkResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class SingleStreamInfo(AbstractModel):
+    """录制流信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: 用户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: str
+        :param _StartTime: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: int
+        :param _StopTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StopTime: int
+        :param _Duration: 总时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Duration: int
+        :param _FileFormat: 文件格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileFormat: str
+        :param _RecordUrl: 流url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordUrl: str
+        :param _RecordSize: 流大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordSize: int
+        :param _VideoId: 流ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoId: str
+        :param _Role: 流类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Role: str
+        """
+        self._UserId = None
+        self._StartTime = None
+        self._StopTime = None
+        self._Duration = None
+        self._FileFormat = None
+        self._RecordUrl = None
+        self._RecordSize = None
+        self._VideoId = None
+        self._Role = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def StopTime(self):
+        return self._StopTime
+
+    @StopTime.setter
+    def StopTime(self, StopTime):
+        self._StopTime = StopTime
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def FileFormat(self):
+        return self._FileFormat
+
+    @FileFormat.setter
+    def FileFormat(self, FileFormat):
+        self._FileFormat = FileFormat
+
+    @property
+    def RecordUrl(self):
+        return self._RecordUrl
+
+    @RecordUrl.setter
+    def RecordUrl(self, RecordUrl):
+        self._RecordUrl = RecordUrl
+
+    @property
+    def RecordSize(self):
+        return self._RecordSize
+
+    @RecordSize.setter
+    def RecordSize(self, RecordSize):
+        self._RecordSize = RecordSize
+
+    @property
+    def VideoId(self):
+        return self._VideoId
+
+    @VideoId.setter
+    def VideoId(self, VideoId):
+        self._VideoId = VideoId
+
+    @property
+    def Role(self):
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        self._StartTime = params.get("StartTime")
+        self._StopTime = params.get("StopTime")
+        self._Duration = params.get("Duration")
+        self._FileFormat = params.get("FileFormat")
+        self._RecordUrl = params.get("RecordUrl")
+        self._RecordSize = params.get("RecordSize")
+        self._VideoId = params.get("VideoId")
+        self._Role = params.get("Role")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class StartRoomRequest(AbstractModel):
