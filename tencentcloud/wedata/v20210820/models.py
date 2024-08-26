@@ -1115,6 +1115,9 @@ class Apply(AbstractModel):
         :param _ApproveProjectName: 审批所属项目
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproveProjectName: str
+        :param _ApplyId: 审批id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplyId: str
         """
         self._ApplicantId = None
         self._ApplicantName = None
@@ -1133,6 +1136,7 @@ class Apply(AbstractModel):
         self._ApproverId = None
         self._ApproverName = None
         self._ApproveProjectName = None
+        self._ApplyId = None
 
     @property
     def ApplicantId(self):
@@ -1270,6 +1274,14 @@ class Apply(AbstractModel):
     def ApproveProjectName(self, ApproveProjectName):
         self._ApproveProjectName = ApproveProjectName
 
+    @property
+    def ApplyId(self):
+        return self._ApplyId
+
+    @ApplyId.setter
+    def ApplyId(self, ApplyId):
+        self._ApplyId = ApplyId
+
 
     def _deserialize(self, params):
         self._ApplicantId = params.get("ApplicantId")
@@ -1289,6 +1301,7 @@ class Apply(AbstractModel):
         self._ApproverId = params.get("ApproverId")
         self._ApproverName = params.get("ApproverName")
         self._ApproveProjectName = params.get("ApproveProjectName")
+        self._ApplyId = params.get("ApplyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

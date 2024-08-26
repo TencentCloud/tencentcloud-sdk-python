@@ -1316,6 +1316,9 @@ class Certificates(AbstractModel):
         :param _SupportDownloadType: 支持下载的WEB服务器类型： nginx、apache、iis、tomcat、jks、root、other
 注意：此字段可能返回 null，表示取不到有效值。
         :type SupportDownloadType: :class:`tencentcloud.ssl.v20191205.models.SupportDownloadType`
+        :param _CertRevokedTime: 证书吊销完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertRevokedTime: str
         """
         self._OwnerUin = None
         self._ProjectId = None
@@ -1370,6 +1373,7 @@ class Certificates(AbstractModel):
         self._IsPackage = None
         self._KeyPasswordCustomFlag = None
         self._SupportDownloadType = None
+        self._CertRevokedTime = None
 
     @property
     def OwnerUin(self):
@@ -1795,6 +1799,14 @@ class Certificates(AbstractModel):
     def SupportDownloadType(self, SupportDownloadType):
         self._SupportDownloadType = SupportDownloadType
 
+    @property
+    def CertRevokedTime(self):
+        return self._CertRevokedTime
+
+    @CertRevokedTime.setter
+    def CertRevokedTime(self, CertRevokedTime):
+        self._CertRevokedTime = CertRevokedTime
+
 
     def _deserialize(self, params):
         self._OwnerUin = params.get("OwnerUin")
@@ -1863,6 +1875,7 @@ class Certificates(AbstractModel):
         if params.get("SupportDownloadType") is not None:
             self._SupportDownloadType = SupportDownloadType()
             self._SupportDownloadType._deserialize(params.get("SupportDownloadType"))
+        self._CertRevokedTime = params.get("CertRevokedTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

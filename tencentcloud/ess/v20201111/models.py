@@ -15447,10 +15447,10 @@ class DescribeUserAutoSignStatusResponse(AbstractModel):
 
 值为unix时间戳,单位为秒。
         :type LicenseTo: int
-        :param _LicenseType: 设置用户开通自动签时是否绑定个人自动签账号许可。
-
-<ul><li>**0**: 使用个人自动签账号许可进行开通，个人自动签账号许可有效期1年，注: `不可解绑释放更换他人`</li></ul>
+        :param _LicenseType: 设置用户开通自动签时是否绑定个人自动签账号许可。<ul><li>**0**: 使用个人自动签账号许可进行开通，个人自动签账号许可有效期1年，注: `不可解绑释放更换他人`</li><li>**1**: 不绑定自动签账号许可开通，后续使用合同份额进行合同发起</li></ul>
         :type LicenseType: int
+        :param _SealId: 用户开通自动签指定使用的印章，为空则未设置印章，需重新进入开通链接设置印章。
+        :type SealId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -15458,6 +15458,7 @@ class DescribeUserAutoSignStatusResponse(AbstractModel):
         self._LicenseFrom = None
         self._LicenseTo = None
         self._LicenseType = None
+        self._SealId = None
         self._RequestId = None
 
     @property
@@ -15493,6 +15494,14 @@ class DescribeUserAutoSignStatusResponse(AbstractModel):
         self._LicenseType = LicenseType
 
     @property
+    def SealId(self):
+        return self._SealId
+
+    @SealId.setter
+    def SealId(self, SealId):
+        self._SealId = SealId
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -15506,6 +15515,7 @@ class DescribeUserAutoSignStatusResponse(AbstractModel):
         self._LicenseFrom = params.get("LicenseFrom")
         self._LicenseTo = params.get("LicenseTo")
         self._LicenseType = params.get("LicenseType")
+        self._SealId = params.get("SealId")
         self._RequestId = params.get("RequestId")
 
 

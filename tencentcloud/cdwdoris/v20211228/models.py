@@ -11668,6 +11668,8 @@ class UserInfo(AbstractModel):
         :type OldPwd: str
         :param _CamUin: 绑定的子用户uin
         :type CamUin: str
+        :param _CamRangerGroupIds: ranger group id列表
+        :type CamRangerGroupIds: list of int
         """
         self._InstanceId = None
         self._UserName = None
@@ -11677,6 +11679,7 @@ class UserInfo(AbstractModel):
         self._Describe = None
         self._OldPwd = None
         self._CamUin = None
+        self._CamRangerGroupIds = None
 
     @property
     def InstanceId(self):
@@ -11742,6 +11745,14 @@ class UserInfo(AbstractModel):
     def CamUin(self, CamUin):
         self._CamUin = CamUin
 
+    @property
+    def CamRangerGroupIds(self):
+        return self._CamRangerGroupIds
+
+    @CamRangerGroupIds.setter
+    def CamRangerGroupIds(self, CamRangerGroupIds):
+        self._CamRangerGroupIds = CamRangerGroupIds
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -11752,6 +11763,7 @@ class UserInfo(AbstractModel):
         self._Describe = params.get("Describe")
         self._OldPwd = params.get("OldPwd")
         self._CamUin = params.get("CamUin")
+        self._CamRangerGroupIds = params.get("CamRangerGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

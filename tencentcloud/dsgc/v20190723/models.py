@@ -14556,12 +14556,18 @@ class DescribeDSPARDBDataAssetDetailRequest(AbstractModel):
         :type DspaId: str
         :param _ComplianceId: 合规组Id
         :type ComplianceId: int
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
         :param _CreditScore: 可信分排序，ASC-升序
 DESC降序
         :type CreditScore: str
         """
         self._DspaId = None
         self._ComplianceId = None
+        self._Offset = None
+        self._Limit = None
         self._CreditScore = None
 
     @property
@@ -14581,6 +14587,22 @@ DESC降序
         self._ComplianceId = ComplianceId
 
     @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
     def CreditScore(self):
         return self._CreditScore
 
@@ -14592,6 +14614,8 @@ DESC降序
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
         self._ComplianceId = params.get("ComplianceId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         self._CreditScore = params.get("CreditScore")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

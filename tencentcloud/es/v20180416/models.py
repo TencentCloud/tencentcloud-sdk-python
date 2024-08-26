@@ -1120,6 +1120,8 @@ class CreateInstanceRequest(AbstractModel):
         :type DisasterRecoverGroupAffinity: int
         :param _SubProductCode: 子产品ID枚举值： 开源版："sp_es_io2"， 基础版："sp_es_basic"，白金版："sp_es_platinum"，企业版："sp_es_enterprise"，CDC白金版："sp_es_cdc_platinum"，日志增强版："sp_es_enlogging"，tsearch："sp_tsearch_io2"，logstash："sp_es_logstash" ，可以为空，为空的时候后台取LicenseType映射该字段
         :type SubProductCode: str
+        :param _ReadWriteMode: 读写分离模式：0-不开启，1-本地读写分离，2-远端读写分离
+        :type ReadWriteMode: int
         """
         self._Zone = None
         self._EsVersion = None
@@ -1158,6 +1160,7 @@ class CreateInstanceRequest(AbstractModel):
         self._CdcId = None
         self._DisasterRecoverGroupAffinity = None
         self._SubProductCode = None
+        self._ReadWriteMode = None
 
     @property
     def Zone(self):
@@ -1455,6 +1458,14 @@ class CreateInstanceRequest(AbstractModel):
     def SubProductCode(self, SubProductCode):
         self._SubProductCode = SubProductCode
 
+    @property
+    def ReadWriteMode(self):
+        return self._ReadWriteMode
+
+    @ReadWriteMode.setter
+    def ReadWriteMode(self, ReadWriteMode):
+        self._ReadWriteMode = ReadWriteMode
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -1513,6 +1524,7 @@ class CreateInstanceRequest(AbstractModel):
         self._CdcId = params.get("CdcId")
         self._DisasterRecoverGroupAffinity = params.get("DisasterRecoverGroupAffinity")
         self._SubProductCode = params.get("SubProductCode")
+        self._ReadWriteMode = params.get("ReadWriteMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7968,6 +7980,12 @@ RENEW_FLAG_DEFAULT：不自动续费
         :param _SubProductCode: 子产品ID枚举值： 开源版："sp_es_io2"， 基础版："sp_es_basic"，白金版："sp_es_platinum"，企业版："sp_es_enterprise"，CDC白金版："sp_es_cdc_platinum"，日志增强版："sp_es_enlogging"，tsearch："sp_tsearch_io2"，logstash："sp_es_logstash" ，可以为空，为空的时候后台取LicenseType映射该字段
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubProductCode: str
+        :param _CosBucketStorageSize: 存算分离cos用量，单位M
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CosBucketStorageSize: int
+        :param _ReadWriteMode: 读写分离模式：0-不开启，1-本地读写分离，2-远端读写分离
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReadWriteMode: int
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -8058,6 +8076,8 @@ RENEW_FLAG_DEFAULT：不自动续费
         self._NetConnectScheme = None
         self._DisasterRecoverGroupAffinity = None
         self._SubProductCode = None
+        self._CosBucketStorageSize = None
+        self._ReadWriteMode = None
 
     @property
     def InstanceId(self):
@@ -8771,6 +8791,22 @@ RENEW_FLAG_DEFAULT：不自动续费
     def SubProductCode(self, SubProductCode):
         self._SubProductCode = SubProductCode
 
+    @property
+    def CosBucketStorageSize(self):
+        return self._CosBucketStorageSize
+
+    @CosBucketStorageSize.setter
+    def CosBucketStorageSize(self, CosBucketStorageSize):
+        self._CosBucketStorageSize = CosBucketStorageSize
+
+    @property
+    def ReadWriteMode(self):
+        return self._ReadWriteMode
+
+    @ReadWriteMode.setter
+    def ReadWriteMode(self, ReadWriteMode):
+        self._ReadWriteMode = ReadWriteMode
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -8908,6 +8944,8 @@ RENEW_FLAG_DEFAULT：不自动续费
         self._NetConnectScheme = params.get("NetConnectScheme")
         self._DisasterRecoverGroupAffinity = params.get("DisasterRecoverGroupAffinity")
         self._SubProductCode = params.get("SubProductCode")
+        self._CosBucketStorageSize = params.get("CosBucketStorageSize")
+        self._ReadWriteMode = params.get("ReadWriteMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13865,6 +13903,8 @@ CLOSE 关闭
         :type ShardAllocationConcurrents: int
         :param _ShardAllocationBytes: 分片迁移并发速度
         :type ShardAllocationBytes: int
+        :param _ReadWriteMode: 读写分离模式：-1-不开启，1-本地读写分离，2-远端读写分离
+        :type ReadWriteMode: int
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -13906,6 +13946,7 @@ CLOSE 关闭
         self._CvmDelayOnlineTime = None
         self._ShardAllocationConcurrents = None
         self._ShardAllocationBytes = None
+        self._ReadWriteMode = None
 
     @property
     def InstanceId(self):
@@ -14227,6 +14268,14 @@ CLOSE 关闭
     def ShardAllocationBytes(self, ShardAllocationBytes):
         self._ShardAllocationBytes = ShardAllocationBytes
 
+    @property
+    def ReadWriteMode(self):
+        return self._ReadWriteMode
+
+    @ReadWriteMode.setter
+    def ReadWriteMode(self, ReadWriteMode):
+        self._ReadWriteMode = ReadWriteMode
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -14296,6 +14345,7 @@ CLOSE 关闭
         self._CvmDelayOnlineTime = params.get("CvmDelayOnlineTime")
         self._ShardAllocationConcurrents = params.get("ShardAllocationConcurrents")
         self._ShardAllocationBytes = params.get("ShardAllocationBytes")
+        self._ReadWriteMode = params.get("ReadWriteMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

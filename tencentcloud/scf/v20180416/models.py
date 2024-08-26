@@ -5003,10 +5003,12 @@ class ImageConfig(AbstractModel):
         :param _ContainerImageAccelerate: 镜像加速开关，默认False
 注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerImageAccelerate: bool
-        :param _ImagePort: 镜像函数端口设置
-默认值: 9000
--1: 无端口镜像函数
-其他: 取值范围 0 ~ 65535
+        :param _ImagePort: 镜像函数端口设置，可指定镜像类型
+Web Server镜像：9000
+Job 镜像：-1
+注意：此字段可能返回 null，表示取不到有效值。
+默认值：9000
+示例值：9000
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImagePort: int
         """
@@ -7819,12 +7821,15 @@ class PublishLayerVersionRequest(AbstractModel):
         :type Description: str
         :param _LicenseInfo: 层的软件许可证
         :type LicenseInfo: str
+        :param _Tags: 层Tag 参数，以键值对数组形式传入
+        :type Tags: list of Tag
         """
         self._LayerName = None
         self._CompatibleRuntimes = None
         self._Content = None
         self._Description = None
         self._LicenseInfo = None
+        self._Tags = None
 
     @property
     def LayerName(self):
@@ -7866,6 +7871,14 @@ class PublishLayerVersionRequest(AbstractModel):
     def LicenseInfo(self, LicenseInfo):
         self._LicenseInfo = LicenseInfo
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._LayerName = params.get("LayerName")
@@ -7875,6 +7888,12 @@ class PublishLayerVersionRequest(AbstractModel):
             self._Content._deserialize(params.get("Content"))
         self._Description = params.get("Description")
         self._LicenseInfo = params.get("LicenseInfo")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
