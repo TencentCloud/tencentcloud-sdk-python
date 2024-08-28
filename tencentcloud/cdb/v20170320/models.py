@@ -4520,6 +4520,66 @@ class CloseWanServiceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ClusterInfo(AbstractModel):
+    """集群版节点信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeId: 节点id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeId: str
+        :param _Role: 节点类型：主节点，从节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Role: str
+        :param _Zone: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        """
+        self._NodeId = None
+        self._Role = None
+        self._Zone = None
+
+    @property
+    def NodeId(self):
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def Role(self):
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+
+    def _deserialize(self, params):
+        self._NodeId = params.get("NodeId")
+        self._Role = params.get("Role")
+        self._Zone = params.get("Zone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClusterNodeInfo(AbstractModel):
     """集群版实例节点信息
 
@@ -13564,6 +13624,8 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type ProxyIds: list of str
         :param _EngineTypes: 数据库引擎类型。
         :type EngineTypes: list of str
+        :param _QueryClusterInfo: 是否获取集群版实例节点信息，可填：true或false
+        :type QueryClusterInfo: bool
         """
         self._ProjectId = None
         self._InstanceTypes = None
@@ -13600,6 +13662,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self._ProxyVips = None
         self._ProxyIds = None
         self._EngineTypes = None
+        self._QueryClusterInfo = None
 
     @property
     def ProjectId(self):
@@ -13881,6 +13944,14 @@ class DescribeDBInstancesRequest(AbstractModel):
     def EngineTypes(self, EngineTypes):
         self._EngineTypes = EngineTypes
 
+    @property
+    def QueryClusterInfo(self):
+        return self._QueryClusterInfo
+
+    @QueryClusterInfo.setter
+    def QueryClusterInfo(self, QueryClusterInfo):
+        self._QueryClusterInfo = QueryClusterInfo
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -13923,6 +13994,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self._ProxyVips = params.get("ProxyVips")
         self._ProxyIds = params.get("ProxyIds")
         self._EngineTypes = params.get("EngineTypes")
+        self._QueryClusterInfo = params.get("QueryClusterInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19775,6 +19847,9 @@ class InstanceInfo(AbstractModel):
         :param _ExpandCpu: 当前扩容的CPU核心数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpandCpu: int
+        :param _ClusterInfo: 实例集群版节点信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterInfo: list of ClusterInfo
         """
         self._WanStatus = None
         self._Zone = None
@@ -19823,6 +19898,7 @@ class InstanceInfo(AbstractModel):
         self._MaxDelayTime = None
         self._DiskType = None
         self._ExpandCpu = None
+        self._ClusterInfo = None
 
     @property
     def WanStatus(self):
@@ -20200,6 +20276,14 @@ class InstanceInfo(AbstractModel):
     def ExpandCpu(self, ExpandCpu):
         self._ExpandCpu = ExpandCpu
 
+    @property
+    def ClusterInfo(self):
+        return self._ClusterInfo
+
+    @ClusterInfo.setter
+    def ClusterInfo(self, ClusterInfo):
+        self._ClusterInfo = ClusterInfo
+
 
     def _deserialize(self, params):
         self._WanStatus = params.get("WanStatus")
@@ -20270,6 +20354,12 @@ class InstanceInfo(AbstractModel):
         self._MaxDelayTime = params.get("MaxDelayTime")
         self._DiskType = params.get("DiskType")
         self._ExpandCpu = params.get("ExpandCpu")
+        if params.get("ClusterInfo") is not None:
+            self._ClusterInfo = []
+            for item in params.get("ClusterInfo"):
+                obj = ClusterInfo()
+                obj._deserialize(item)
+                self._ClusterInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

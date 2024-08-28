@@ -2746,7 +2746,7 @@ class ConsoleSharingConfig(AbstractModel):
         :type Type: int
         :param _DurationMilliseconds: 分享链接有效期，单位：毫秒，最长支持30天
         :type DurationMilliseconds: int
-        :param _Resources: 允许访问的资源列表
+        :param _Resources: 允许访问的资源列表，目前仅支持一个Resource
         :type Resources: list of str
         :param _Domain: 分享链接域名，可选范围
 - 公网匿名分享：填写clsshare.com

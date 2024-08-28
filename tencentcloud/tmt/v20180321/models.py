@@ -65,11 +65,11 @@ lo（老挝语）：zh（简体中文）、zh-HK（繁体中文）、 zh-TW（�
         :type DocumentType: str
         :param _SourceType: 数据来源，0：url，1：直接传文件编码后数据
         :type SourceType: int
-        :param _Url: 需要翻译文件url，长度不超过256字符。文件限制如下：docx/xIsx/html/markdown文件不超过800万字符，doc/pdf/pptx文件不超过300页，txt/po文件不超过10MB，pdf/docx/pptx/xlsx不超过40MB
+        :param _Url: 需要翻译文件url，URL长度不能超过1000字符。文件限制如下：docx/xIsx/html/markdown文件不超过800万字符，doc/pdf/pptx文件不超过300页，txt/po文件不超过10MB，pdf/docx/pptx/xlsx不超过40MB
         :type Url: str
         :param _BasicDocumentType: 原始文档类型。该参数为高级参数，请留空，如需使用，请与工作人员确认后再使用。
         :type BasicDocumentType: str
-        :param _CallbackUrl: 回调url，文件大于10MB，建议采用回调方式；回调时，所有内容会放入 Body 中，具体请参见[文件翻译回调说明](https://cloud.tencent.com/document/product/551/91138)。
+        :param _CallbackUrl: 回调url，URL长度不能超过256字符。文件大于10MB或字符较多时，建议采用回调方式；回调时，所有内容会放入 Body 中，具体请参见[文件翻译回调说明](https://cloud.tencent.com/document/product/551/91138)。
         :type CallbackUrl: str
         :param _Data: 文件数据，当SourceType 值为1时必须填写，为0可不写。要base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode()。编码后的数据不可带有回车换行符)。数据要小于5MB。
         :type Data: str

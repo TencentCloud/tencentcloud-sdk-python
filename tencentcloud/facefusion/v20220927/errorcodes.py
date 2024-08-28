@@ -17,6 +17,9 @@
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
+# 余额不足，开通失败，请充值后再开通。
+FAILEDOPERATION_BALANCEINSUFFICIENT = 'FailedOperation.BalanceInsufficient'
+
 # 人脸配准点出框错误码。
 FAILEDOPERATION_FACEBORDERCHECKFAILED = 'FailedOperation.FaceBorderCheckFailed'
 
@@ -59,14 +62,8 @@ FAILEDOPERATION_IMAGEDECODEFAILED = 'FailedOperation.ImageDecodeFailed'
 # 图片下载失败。
 FAILEDOPERATION_IMAGEDOWNLOADERROR = 'FailedOperation.ImageDownloadError'
 
-# 素材尺寸超过1080*1080像素。
-FAILEDOPERATION_IMAGEPIXELEXCEED = 'FailedOperation.ImagePixelExceed'
-
 # 素材尺寸超过8000*8000像素。
 FAILEDOPERATION_IMAGEPIXELEXCEED8000 = 'FailedOperation.ImagePixelExceed8000'
-
-# 图片分辨率过大。建议您resize压缩到3k*3k以内。
-FAILEDOPERATION_IMAGERESOLUTIONEXCEED = 'FailedOperation.ImageResolutionExceed'
 
 # 图片短边分辨率小于64。
 FAILEDOPERATION_IMAGERESOLUTIONTOOSMALL = 'FailedOperation.ImageResolutionTooSmall'
@@ -134,6 +131,15 @@ INVALIDPARAMETERVALUE_NOFACEINPHOTO = 'InvalidParameterValue.NoFaceInPhoto'
 # 参数字段或者值有误。
 INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = 'InvalidParameterValue.ParameterValueError'
 
+# URL格式不合法。
+INVALIDPARAMETERVALUE_URLILLEGAL = 'InvalidParameterValue.UrlIllegal'
+
+# 请求的次数超过了频率限制。
+REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'
+
+# 资源不足。
+RESOURCEINSUFFICIENT = 'ResourceInsufficient'
+
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'
 
@@ -148,6 +154,9 @@ RESOURCEUNAVAILABLE_GETAUTHINFOERROR = 'ResourceUnavailable.GetAuthInfoError'
 
 # 账号已欠费。
 RESOURCEUNAVAILABLE_INARREARS = 'ResourceUnavailable.InArrears'
+
+# 服务正在开通中，请稍等。
+RESOURCEUNAVAILABLE_ISOPENING = 'ResourceUnavailable.IsOpening'
 
 # 余额不足。
 RESOURCEUNAVAILABLE_LOWBALANCE = 'ResourceUnavailable.LowBalance'

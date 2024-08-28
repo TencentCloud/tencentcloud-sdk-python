@@ -213,8 +213,8 @@ class EssbasicClient(AbstractClient):
         请确保生成链接时候的身份信息和签署合同参与方的信息保持一致。
 
         注：
-        - 使用此接口生成链接，需要提前开通 `使用手机号验证签署方身份` 功能，在 `腾讯电子签网页端-企业设置-拓展服务` 中可以找到。
-        - 参与人点击链接后需短信验证码才能查看合同内容。
+        - 使用此接口生成链接，需要提前开通 `个人签署方仅校验手机号` 功能，在 `腾讯电子签网页端-企业设置-拓展服务` 中可以找到。
+        - 个人参与方点击链接后需短信验证码才能查看合同内容。
         - 个人用户批量签署，需要传Name，Mobile，IdCardNumber(IdCardType) 参数。
         - saas企业员工用户批量签署，在传递了姓名等基本信息参数的情况下，还需要传OrganizationName（参与方所在企业名称）参数生成签署链接，<font color="red">请确保此企业已完成腾讯电子签企业认证</font>。
         - 子客企业员工用户批量签署，需要传递员工OpenId和子客企业的OrganizationOpenId。<font color="red">请确保此OrganizationOpenId对应子客已经认证，且OpenId对应员工此子客下已经实名</font>。Name，Mobile, IdCard等信息此时可以不传，系统会查询此OpenId实名信息自动补充。

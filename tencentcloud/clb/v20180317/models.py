@@ -13446,6 +13446,8 @@ class ModifyRuleRequest(AbstractModel):
         :type TrpcCallee: str
         :param _TrpcFunc: TRPC调用服务接口，ForwardType为TRPC时必填。目前暂未对外开放。
         :type TrpcFunc: str
+        :param _OAuth: OAuth配置信息。
+        :type OAuth: :class:`tencentcloud.clb.v20180317.models.OAuth`
         """
         self._LoadBalancerId = None
         self._ListenerId = None
@@ -13457,6 +13459,7 @@ class ModifyRuleRequest(AbstractModel):
         self._ForwardType = None
         self._TrpcCallee = None
         self._TrpcFunc = None
+        self._OAuth = None
 
     @property
     def LoadBalancerId(self):
@@ -13538,6 +13541,14 @@ class ModifyRuleRequest(AbstractModel):
     def TrpcFunc(self, TrpcFunc):
         self._TrpcFunc = TrpcFunc
 
+    @property
+    def OAuth(self):
+        return self._OAuth
+
+    @OAuth.setter
+    def OAuth(self, OAuth):
+        self._OAuth = OAuth
+
 
     def _deserialize(self, params):
         self._LoadBalancerId = params.get("LoadBalancerId")
@@ -13552,6 +13563,9 @@ class ModifyRuleRequest(AbstractModel):
         self._ForwardType = params.get("ForwardType")
         self._TrpcCallee = params.get("TrpcCallee")
         self._TrpcFunc = params.get("TrpcFunc")
+        if params.get("OAuth") is not None:
+            self._OAuth = OAuth()
+            self._OAuth._deserialize(params.get("OAuth"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14129,6 +14143,56 @@ class MultiCertInfo(AbstractModel):
                 obj = CertInfo()
                 obj._deserialize(item)
                 self._CertList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OAuth(AbstractModel):
+    """OAuth配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OAuthEnable: 开启或关闭鉴权。
+True: 开启;
+False: 关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OAuthEnable: bool
+        :param _OAuthFailureStatus: IAP全部故障后，拒绝请求还是放行。BYPASS:通过,
+REJECT: 拒绝
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OAuthFailureStatus: str
+        """
+        self._OAuthEnable = None
+        self._OAuthFailureStatus = None
+
+    @property
+    def OAuthEnable(self):
+        return self._OAuthEnable
+
+    @OAuthEnable.setter
+    def OAuthEnable(self, OAuthEnable):
+        self._OAuthEnable = OAuthEnable
+
+    @property
+    def OAuthFailureStatus(self):
+        return self._OAuthFailureStatus
+
+    @OAuthFailureStatus.setter
+    def OAuthFailureStatus(self, OAuthFailureStatus):
+        self._OAuthFailureStatus = OAuthFailureStatus
+
+
+    def _deserialize(self, params):
+        self._OAuthEnable = params.get("OAuthEnable")
+        self._OAuthFailureStatus = params.get("OAuthFailureStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15564,6 +15628,9 @@ WRR、LEAST_CONN、IP_HASH分别表示按权重轮询、最小连接数、IP Has
         :param _TargetGroupList: 绑定的目标组列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetGroupList: list of BasicTargetGroupInfo
+        :param _OAuth: OAuth配置状态信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OAuth: :class:`tencentcloud.clb.v20180317.models.OAuth`
         """
         self._LocationId = None
         self._Domain = None
@@ -15588,6 +15655,7 @@ WRR、LEAST_CONN、IP_HASH分别表示按权重轮询、最小连接数、IP Has
         self._QuicStatus = None
         self._Domains = None
         self._TargetGroupList = None
+        self._OAuth = None
 
     @property
     def LocationId(self):
@@ -15773,6 +15841,14 @@ WRR、LEAST_CONN、IP_HASH分别表示按权重轮询、最小连接数、IP Has
     def TargetGroupList(self, TargetGroupList):
         self._TargetGroupList = TargetGroupList
 
+    @property
+    def OAuth(self):
+        return self._OAuth
+
+    @OAuth.setter
+    def OAuth(self, OAuth):
+        self._OAuth = OAuth
+
 
     def _deserialize(self, params):
         self._LocationId = params.get("LocationId")
@@ -15811,6 +15887,9 @@ WRR、LEAST_CONN、IP_HASH分别表示按权重轮询、最小连接数、IP Has
                 obj = BasicTargetGroupInfo()
                 obj._deserialize(item)
                 self._TargetGroupList.append(obj)
+        if params.get("OAuth") is not None:
+            self._OAuth = OAuth()
+            self._OAuth._deserialize(params.get("OAuth"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

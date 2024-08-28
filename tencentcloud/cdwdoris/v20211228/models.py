@@ -6090,10 +6090,16 @@ class DescribeSqlApisRequest(AbstractModel):
         :type Catalog: str
         :param _Catalogs: catalog集合
         :type Catalogs: list of str
+        :param _DatabaseName: 数据库名
+        :type DatabaseName: str
+        :param _TableName: 表名
+        :type TableName: str
         """
         self._WhiteHost = None
         self._Catalog = None
         self._Catalogs = None
+        self._DatabaseName = None
+        self._TableName = None
 
     @property
     def WhiteHost(self):
@@ -6119,11 +6125,29 @@ class DescribeSqlApisRequest(AbstractModel):
     def Catalogs(self, Catalogs):
         self._Catalogs = Catalogs
 
+    @property
+    def DatabaseName(self):
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
 
     def _deserialize(self, params):
         self._WhiteHost = params.get("WhiteHost")
         self._Catalog = params.get("Catalog")
         self._Catalogs = params.get("Catalogs")
+        self._DatabaseName = params.get("DatabaseName")
+        self._TableName = params.get("TableName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

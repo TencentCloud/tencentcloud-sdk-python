@@ -2372,6 +2372,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SendOrgMemberAccountBindEmail(self, request):
+        """重新发送成员绑定邮箱激活邮件
+
+        :param request: Request instance for SendOrgMemberAccountBindEmail.
+        :type request: :class:`tencentcloud.organization.v20210331.models.SendOrgMemberAccountBindEmailRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.SendOrgMemberAccountBindEmailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SendOrgMemberAccountBindEmail", params, headers=headers)
+            response = json.loads(body)
+            model = models.SendOrgMemberAccountBindEmailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SetExternalSAMLIdentityProvider(self, request):
         """配置SAML身份提供商信息
 

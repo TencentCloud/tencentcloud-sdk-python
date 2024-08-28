@@ -277,6 +277,69 @@ class AlertExtraInfo(AbstractModel):
         :param _HitStrategy: 主机防护命中策略，是策略ID和策略名称的组合
 注意：此字段可能返回 null，表示取不到有效值。
         :type HitStrategy: str
+        :param _ProcessName: 进程名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessName: str
+        :param _PID: PID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PID: str
+        :param _PodName: 容器Pod名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodName: str
+        :param _PodID: 容器PodID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodID: str
+        :param _Response: Http响应
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Response: str
+        :param _SystemCall: 系统调用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SystemCall: str
+        :param _Verb: 操作类型verb
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Verb: str
+        :param _LogID: 日志ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogID: str
+        :param _Different: 变更内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Different: str
+        :param _EventType: 事件类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventType: str
+        :param _Description: 事件描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _TargetAddress: 目标地址(容器反弹shell)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetAddress: str
+        :param _MaliciousRequestDomain: 恶意请求域名(容器恶意外联)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaliciousRequestDomain: str
+        :param _RuleType: 规则类型(容器K8sAPI异常请求)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleType: str
+        :param _RequestURI: 请求资源(容器K8sAPI异常请求)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestURI: str
+        :param _RequestUser: 发起请求用户(容器K8sAPI异常请求)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestUser: str
+        :param _RequestObject: 请求对象(容器K8sAPI异常请求)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestObject: str
+        :param _ResponseObject: 响应对象(容器K8sAPI异常请求)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResponseObject: str
+        :param _FileType: 文件类型(容器文件篡改)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileType: str
+        :param _TIType: 标签特征(容器恶意外联)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TIType: str
+        :param _SourceIP: 来源IP(容器K8sAPI异常请求)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceIP: str
         """
         self._RelateEvent = None
         self._LeakContent = None
@@ -347,6 +410,27 @@ class AlertExtraInfo(AbstractModel):
         self._StrategyID = None
         self._StrategyName = None
         self._HitStrategy = None
+        self._ProcessName = None
+        self._PID = None
+        self._PodName = None
+        self._PodID = None
+        self._Response = None
+        self._SystemCall = None
+        self._Verb = None
+        self._LogID = None
+        self._Different = None
+        self._EventType = None
+        self._Description = None
+        self._TargetAddress = None
+        self._MaliciousRequestDomain = None
+        self._RuleType = None
+        self._RequestURI = None
+        self._RequestUser = None
+        self._RequestObject = None
+        self._ResponseObject = None
+        self._FileType = None
+        self._TIType = None
+        self._SourceIP = None
 
     @property
     def RelateEvent(self):
@@ -900,6 +984,174 @@ class AlertExtraInfo(AbstractModel):
     def HitStrategy(self, HitStrategy):
         self._HitStrategy = HitStrategy
 
+    @property
+    def ProcessName(self):
+        return self._ProcessName
+
+    @ProcessName.setter
+    def ProcessName(self, ProcessName):
+        self._ProcessName = ProcessName
+
+    @property
+    def PID(self):
+        return self._PID
+
+    @PID.setter
+    def PID(self, PID):
+        self._PID = PID
+
+    @property
+    def PodName(self):
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
+
+    @property
+    def PodID(self):
+        return self._PodID
+
+    @PodID.setter
+    def PodID(self, PodID):
+        self._PodID = PodID
+
+    @property
+    def Response(self):
+        return self._Response
+
+    @Response.setter
+    def Response(self, Response):
+        self._Response = Response
+
+    @property
+    def SystemCall(self):
+        return self._SystemCall
+
+    @SystemCall.setter
+    def SystemCall(self, SystemCall):
+        self._SystemCall = SystemCall
+
+    @property
+    def Verb(self):
+        return self._Verb
+
+    @Verb.setter
+    def Verb(self, Verb):
+        self._Verb = Verb
+
+    @property
+    def LogID(self):
+        return self._LogID
+
+    @LogID.setter
+    def LogID(self, LogID):
+        self._LogID = LogID
+
+    @property
+    def Different(self):
+        return self._Different
+
+    @Different.setter
+    def Different(self, Different):
+        self._Different = Different
+
+    @property
+    def EventType(self):
+        return self._EventType
+
+    @EventType.setter
+    def EventType(self, EventType):
+        self._EventType = EventType
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def TargetAddress(self):
+        return self._TargetAddress
+
+    @TargetAddress.setter
+    def TargetAddress(self, TargetAddress):
+        self._TargetAddress = TargetAddress
+
+    @property
+    def MaliciousRequestDomain(self):
+        return self._MaliciousRequestDomain
+
+    @MaliciousRequestDomain.setter
+    def MaliciousRequestDomain(self, MaliciousRequestDomain):
+        self._MaliciousRequestDomain = MaliciousRequestDomain
+
+    @property
+    def RuleType(self):
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def RequestURI(self):
+        return self._RequestURI
+
+    @RequestURI.setter
+    def RequestURI(self, RequestURI):
+        self._RequestURI = RequestURI
+
+    @property
+    def RequestUser(self):
+        return self._RequestUser
+
+    @RequestUser.setter
+    def RequestUser(self, RequestUser):
+        self._RequestUser = RequestUser
+
+    @property
+    def RequestObject(self):
+        return self._RequestObject
+
+    @RequestObject.setter
+    def RequestObject(self, RequestObject):
+        self._RequestObject = RequestObject
+
+    @property
+    def ResponseObject(self):
+        return self._ResponseObject
+
+    @ResponseObject.setter
+    def ResponseObject(self, ResponseObject):
+        self._ResponseObject = ResponseObject
+
+    @property
+    def FileType(self):
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def TIType(self):
+        return self._TIType
+
+    @TIType.setter
+    def TIType(self, TIType):
+        self._TIType = TIType
+
+    @property
+    def SourceIP(self):
+        return self._SourceIP
+
+    @SourceIP.setter
+    def SourceIP(self, SourceIP):
+        self._SourceIP = SourceIP
+
 
     def _deserialize(self, params):
         if params.get("RelateEvent") is not None:
@@ -978,6 +1230,27 @@ class AlertExtraInfo(AbstractModel):
         self._StrategyID = params.get("StrategyID")
         self._StrategyName = params.get("StrategyName")
         self._HitStrategy = params.get("HitStrategy")
+        self._ProcessName = params.get("ProcessName")
+        self._PID = params.get("PID")
+        self._PodName = params.get("PodName")
+        self._PodID = params.get("PodID")
+        self._Response = params.get("Response")
+        self._SystemCall = params.get("SystemCall")
+        self._Verb = params.get("Verb")
+        self._LogID = params.get("LogID")
+        self._Different = params.get("Different")
+        self._EventType = params.get("EventType")
+        self._Description = params.get("Description")
+        self._TargetAddress = params.get("TargetAddress")
+        self._MaliciousRequestDomain = params.get("MaliciousRequestDomain")
+        self._RuleType = params.get("RuleType")
+        self._RequestURI = params.get("RequestURI")
+        self._RequestUser = params.get("RequestUser")
+        self._RequestObject = params.get("RequestObject")
+        self._ResponseObject = params.get("ResponseObject")
+        self._FileType = params.get("FileType")
+        self._TIType = params.get("TIType")
+        self._SourceIP = params.get("SourceIP")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1086,6 +1359,12 @@ CSIP:云安全中心
         :param _RiskTreatment: 风险处置
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskTreatment: str
+        :param _LogType: 日志类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogType: str
+        :param _LogSearch: 语句检索
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogSearch: str
         """
         self._ID = None
         self._Name = None
@@ -1114,6 +1393,8 @@ CSIP:云安全中心
         self._Action = None
         self._RiskInvestigation = None
         self._RiskTreatment = None
+        self._LogType = None
+        self._LogSearch = None
 
     @property
     def ID(self):
@@ -1331,6 +1612,22 @@ CSIP:云安全中心
     def RiskTreatment(self, RiskTreatment):
         self._RiskTreatment = RiskTreatment
 
+    @property
+    def LogType(self):
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def LogSearch(self):
+        return self._LogSearch
+
+    @LogSearch.setter
+    def LogSearch(self, LogSearch):
+        self._LogSearch = LogSearch
+
 
     def _deserialize(self, params):
         self._ID = params.get("ID")
@@ -1366,6 +1663,8 @@ CSIP:云安全中心
         self._Action = params.get("Action")
         self._RiskInvestigation = params.get("RiskInvestigation")
         self._RiskTreatment = params.get("RiskTreatment")
+        self._LogType = params.get("LogType")
+        self._LogSearch = params.get("LogSearch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4330,6 +4629,15 @@ class BugInfoDetail(AbstractModel):
 class CVMAssetVO(AbstractModel):
     """主机资产信息
 
+    主机防护状态枚举，左边是常量，右边是显示
+    0：未安装
+    1：基础版防护中
+    2：普惠版防护中
+    3：专业版防护中
+    4：旗舰版防护中
+    5：已离线
+    6：已关机
+
     """
 
     def __init__(self):
@@ -4529,6 +4837,19 @@ class CVMAssetVO(AbstractModel):
         :param _CloudType: 云资产类型：0：腾讯云，1：aws，2：azure
 注意：此字段可能返回 null，表示取不到有效值。
         :type CloudType: int
+        :param _ProtectStatus: 主机防护状态枚举
+0：未安装
+1：基础版防护中
+2：普惠版防护中
+3：专业版防护中
+4：旗舰版防护中
+5：已离线
+6：已关机
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProtectStatus: int
+        :param _OfflineTime: 最后离线时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OfflineTime: str
         """
         self._AssetId = None
         self._AssetName = None
@@ -4595,6 +4916,8 @@ class CVMAssetVO(AbstractModel):
         self._AgentCpuPer = None
         self._RealAppid = None
         self._CloudType = None
+        self._ProtectStatus = None
+        self._OfflineTime = None
 
     @property
     def AssetId(self):
@@ -5116,6 +5439,22 @@ class CVMAssetVO(AbstractModel):
     def CloudType(self, CloudType):
         self._CloudType = CloudType
 
+    @property
+    def ProtectStatus(self):
+        return self._ProtectStatus
+
+    @ProtectStatus.setter
+    def ProtectStatus(self, ProtectStatus):
+        self._ProtectStatus = ProtectStatus
+
+    @property
+    def OfflineTime(self):
+        return self._OfflineTime
+
+    @OfflineTime.setter
+    def OfflineTime(self, OfflineTime):
+        self._OfflineTime = OfflineTime
+
 
     def _deserialize(self, params):
         self._AssetId = params.get("AssetId")
@@ -5198,6 +5537,8 @@ class CVMAssetVO(AbstractModel):
         self._AgentCpuPer = params.get("AgentCpuPer")
         self._RealAppid = params.get("RealAppid")
         self._CloudType = params.get("CloudType")
+        self._ProtectStatus = params.get("ProtectStatus")
+        self._OfflineTime = params.get("OfflineTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7304,6 +7645,9 @@ class DescribeCVMAssetsResponse(AbstractModel):
         :param _PublicPrivateAttr: 公网内网枚举
 注意：此字段可能返回 null，表示取不到有效值。
         :type PublicPrivateAttr: list of FilterDataObject
+        :param _ProtectStatusList: 主机防护状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProtectStatusList: list of FilterDataObject
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7320,6 +7664,7 @@ class DescribeCVMAssetsResponse(AbstractModel):
         self._OsList = None
         self._AssetMapInstanceTypeList = None
         self._PublicPrivateAttr = None
+        self._ProtectStatusList = None
         self._RequestId = None
 
     @property
@@ -7427,6 +7772,14 @@ class DescribeCVMAssetsResponse(AbstractModel):
         self._PublicPrivateAttr = PublicPrivateAttr
 
     @property
+    def ProtectStatusList(self):
+        return self._ProtectStatusList
+
+    @ProtectStatusList.setter
+    def ProtectStatusList(self, ProtectStatusList):
+        self._ProtectStatusList = ProtectStatusList
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -7509,6 +7862,12 @@ class DescribeCVMAssetsResponse(AbstractModel):
                 obj = FilterDataObject()
                 obj._deserialize(item)
                 self._PublicPrivateAttr.append(obj)
+        if params.get("ProtectStatusList") is not None:
+            self._ProtectStatusList = []
+            for item in params.get("ProtectStatusList"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._ProtectStatusList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -15392,6 +15751,12 @@ class RoleInfo(AbstractModel):
         :param _FromLogAnalysisData: 来源日志分析的信息字段
 注意：此字段可能返回 null，表示取不到有效值。
         :type FromLogAnalysisData: list of KeyValue
+        :param _ContainerName: 容器名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerName: str
+        :param _ContainerID: 容器ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerID: str
         """
         self._IP = None
         self._HostIP = None
@@ -15414,6 +15779,8 @@ class RoleInfo(AbstractModel):
         self._FileName = None
         self._AssetType = None
         self._FromLogAnalysisData = None
+        self._ContainerName = None
+        self._ContainerID = None
 
     @property
     def IP(self):
@@ -15583,6 +15950,22 @@ class RoleInfo(AbstractModel):
     def FromLogAnalysisData(self, FromLogAnalysisData):
         self._FromLogAnalysisData = FromLogAnalysisData
 
+    @property
+    def ContainerName(self):
+        return self._ContainerName
+
+    @ContainerName.setter
+    def ContainerName(self, ContainerName):
+        self._ContainerName = ContainerName
+
+    @property
+    def ContainerID(self):
+        return self._ContainerID
+
+    @ContainerID.setter
+    def ContainerID(self, ContainerID):
+        self._ContainerID = ContainerID
+
 
     def _deserialize(self, params):
         self._IP = params.get("IP")
@@ -15611,6 +15994,8 @@ class RoleInfo(AbstractModel):
                 obj = KeyValue()
                 obj._deserialize(item)
                 self._FromLogAnalysisData.append(obj)
+        self._ContainerName = params.get("ContainerName")
+        self._ContainerID = params.get("ContainerID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

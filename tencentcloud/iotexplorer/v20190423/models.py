@@ -311,7 +311,7 @@ class AssignTWeCallLicenseRequest(AbstractModel):
         :type PkgType: int
         :param _MiniProgramAppId: appId
         :type MiniProgramAppId: str
-        :param _DeductNum: License数
+        :param _DeductNum: License数，只支持50,500,1000,5000,10000,20000,50000
         :type DeductNum: int
         """
         self._PkgType = None

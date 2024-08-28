@@ -21291,6 +21291,9 @@ class PulsarProClusterInfo(AbstractModel):
         :param _BillingLabelVersion: 代表是专业版和小规格专业版的不同计费规格PULSAR.P1固定存储PULSAR.P2弹性存储
 注意：此字段可能返回 null，表示取不到有效值。
         :type BillingLabelVersion: str
+        :param _ExpireTime: 实例到期时间戳，毫秒级精度。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: int
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -21302,6 +21305,7 @@ class PulsarProClusterInfo(AbstractModel):
         self._MaxStorage = None
         self._CanEditRoute = None
         self._BillingLabelVersion = None
+        self._ExpireTime = None
 
     @property
     def ClusterId(self):
@@ -21383,6 +21387,14 @@ class PulsarProClusterInfo(AbstractModel):
     def BillingLabelVersion(self, BillingLabelVersion):
         self._BillingLabelVersion = BillingLabelVersion
 
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -21400,6 +21412,7 @@ class PulsarProClusterInfo(AbstractModel):
         self._MaxStorage = params.get("MaxStorage")
         self._CanEditRoute = params.get("CanEditRoute")
         self._BillingLabelVersion = params.get("BillingLabelVersion")
+        self._ExpireTime = params.get("ExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

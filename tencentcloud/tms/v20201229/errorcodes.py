@@ -14,9 +14,6 @@
 # limitations under the License.
 
 
-# 内部错误。
-INTERNALERROR = 'InternalError'
-
 # 请求超时。
 INTERNALERROR_ERRTEXTTIMEOUT = 'InternalError.ErrTextTimeOut'
 
@@ -28,9 +25,6 @@ INVALIDPARAMETER_ERRTEXTCONTENTLEN = 'InvalidParameter.ErrTextContentLen'
 
 # 文本类型错误，需要base64的文本。
 INVALIDPARAMETER_ERRTEXTCONTENTTYPE = 'InvalidParameter.ErrTextContentType'
-
-# Question参数错误
-INVALIDPARAMETER_INVALIDQUESTION = 'InvalidParameter.InvalidQuestion'
 
 # InvalidParameter.ParameterError
 INVALIDPARAMETER_PARAMETERERROR = 'InvalidParameter.ParameterError'

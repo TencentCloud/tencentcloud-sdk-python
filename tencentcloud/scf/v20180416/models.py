@@ -5670,6 +5670,9 @@ class LayerVersionInfo(AbstractModel):
         :param _Stamp: Stamp
 注意：此字段可能返回 null，表示取不到有效值。
         :type Stamp: str
+        :param _Tags: 返回层绑定的标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self._CompatibleRuntimes = None
         self._AddTime = None
@@ -5679,6 +5682,7 @@ class LayerVersionInfo(AbstractModel):
         self._LayerName = None
         self._Status = None
         self._Stamp = None
+        self._Tags = None
 
     @property
     def CompatibleRuntimes(self):
@@ -5744,6 +5748,14 @@ class LayerVersionInfo(AbstractModel):
     def Stamp(self, Stamp):
         self._Stamp = Stamp
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._CompatibleRuntimes = params.get("CompatibleRuntimes")
@@ -5754,6 +5766,12 @@ class LayerVersionInfo(AbstractModel):
         self._LayerName = params.get("LayerName")
         self._Status = params.get("Status")
         self._Stamp = params.get("Stamp")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

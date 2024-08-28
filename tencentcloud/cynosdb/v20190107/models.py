@@ -5962,10 +5962,9 @@ class CreateResourcePackageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceType: 实例类型
+        :param _InstanceType: 实例类型，目前固定传cynosdb-serverless
         :type InstanceType: str
-        :param _PackageRegion: 资源包使用地域
-china-中国内地通用，overseas-港澳台及海外通用
+        :param _PackageRegion: 资源包使用地域chineseMainland-中国内地通用，overseas-港澳台及海外通用
         :type PackageRegion: str
         :param _PackageType: 资源包类型：CCU-计算资源包，DISK-存储资源包
         :type PackageType: str
@@ -23340,6 +23339,57 @@ class OpenClusterReadOnlyInstanceGroupAccessRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _Port: 端口
+        :type Port: str
+        :param _SecurityGroupIds: 安全组ID 
+        :type SecurityGroupIds: list of str
+        """
+        self._ClusterId = None
+        self._Port = None
+        self._SecurityGroupIds = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def SecurityGroupIds(self):
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._Port = params.get("Port")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class OpenClusterReadOnlyInstanceGroupAccessResponse(AbstractModel):
     """OpenClusterReadOnlyInstanceGroupAccess返回参数结构体
@@ -23348,10 +23398,21 @@ class OpenClusterReadOnlyInstanceGroupAccessResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _FlowId: 开启流程ID
+        :type FlowId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._FlowId = None
         self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
 
     @property
     def RequestId(self):
@@ -23363,6 +23424,7 @@ class OpenClusterReadOnlyInstanceGroupAccessResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
 
 
@@ -23373,17 +23435,17 @@ class OpenReadOnlyInstanceExclusiveAccessRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 请使用 集群信息描述（https://cloud.tencent.com/document/api/1003/48086） 获取 clusterId。
         :type ClusterId: str
-        :param _InstanceId: 需要开通独有访问的只读实例ID
+        :param _InstanceId: 请使用 集群信息描述（https://cloud.tencent.com/document/api/1003/48086） 获取 instanceId。
         :type InstanceId: str
-        :param _VpcId: 指定的vpc ID
+        :param _VpcId: 指定的vpc ID，请使用 查询私有网络列表（https://cloud.tencent.com/document/api/215/15778） 获取 vpc ID。
         :type VpcId: str
-        :param _SubnetId: 指定的子网ID
+        :param _SubnetId: 指定的子网 ID，如果设置了 vpc ID，则 SubnetId 必填，请使用 查询子网列表（https://cloud.tencent.com/document/api/215/15784）获取 SubnetId。
         :type SubnetId: str
-        :param _Port: 端口
+        :param _Port: 用户自定义的端口
         :type Port: int
-        :param _SecurityGroupIds: 安全组
+        :param _SecurityGroupIds: 安全组ID，请使用 查看安全组（https://cloud.tencent.com/document/api/215/15808）获取 SecurityGroupId。
         :type SecurityGroupIds: list of str
         """
         self._ClusterId = None

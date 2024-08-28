@@ -14857,6 +14857,76 @@ class SAMLServiceProvider(AbstractModel):
         
 
 
+class SendOrgMemberAccountBindEmailRequest(AbstractModel):
+    """SendOrgMemberAccountBindEmail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberUin: 成员Uin。
+        :type MemberUin: int
+        :param _BindId: 绑定ID。可以通过[DescribeOrganizationMemberEmailBind](https://cloud.tencent.com/document/product/850/93332)获取
+        :type BindId: int
+        """
+        self._MemberUin = None
+        self._BindId = None
+
+    @property
+    def MemberUin(self):
+        return self._MemberUin
+
+    @MemberUin.setter
+    def MemberUin(self, MemberUin):
+        self._MemberUin = MemberUin
+
+    @property
+    def BindId(self):
+        return self._BindId
+
+    @BindId.setter
+    def BindId(self, BindId):
+        self._BindId = BindId
+
+
+    def _deserialize(self, params):
+        self._MemberUin = params.get("MemberUin")
+        self._BindId = params.get("BindId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SendOrgMemberAccountBindEmailResponse(AbstractModel):
+    """SendOrgMemberAccountBindEmail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class SetExternalSAMLIdentityProviderRequest(AbstractModel):
     """SetExternalSAMLIdentityProvider请求参数结构体
 
