@@ -876,10 +876,70 @@ class CreateReceiverDetailWithDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TotalCount: 收件人总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _ValidCount: 实际上传数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValidCount: int
+        :param _TooLongCount: 数据过长数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TooLongCount: int
+        :param _EmptyEmailCount: 邮件地址为空数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EmptyEmailCount: int
+        :param _RepeatCount: 重复数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RepeatCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TotalCount = None
+        self._ValidCount = None
+        self._TooLongCount = None
+        self._EmptyEmailCount = None
+        self._RepeatCount = None
         self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ValidCount(self):
+        return self._ValidCount
+
+    @ValidCount.setter
+    def ValidCount(self, ValidCount):
+        self._ValidCount = ValidCount
+
+    @property
+    def TooLongCount(self):
+        return self._TooLongCount
+
+    @TooLongCount.setter
+    def TooLongCount(self, TooLongCount):
+        self._TooLongCount = TooLongCount
+
+    @property
+    def EmptyEmailCount(self):
+        return self._EmptyEmailCount
+
+    @EmptyEmailCount.setter
+    def EmptyEmailCount(self, EmptyEmailCount):
+        self._EmptyEmailCount = EmptyEmailCount
+
+    @property
+    def RepeatCount(self):
+        return self._RepeatCount
+
+    @RepeatCount.setter
+    def RepeatCount(self, RepeatCount):
+        self._RepeatCount = RepeatCount
 
     @property
     def RequestId(self):
@@ -891,6 +951,11 @@ class CreateReceiverDetailWithDataResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._ValidCount = params.get("ValidCount")
+        self._TooLongCount = params.get("TooLongCount")
+        self._EmptyEmailCount = params.get("EmptyEmailCount")
+        self._RepeatCount = params.get("RepeatCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -2550,11 +2615,20 @@ class ListReceiverDetailsRequest(AbstractModel):
         :type Limit: int
         :param _Email: 收件人地址，长度0-50，示例：xxx@te.com，支持模糊查询
         :type Email: str
+        :param _CreateTimeBegin: 搜索开始时间
+        :type CreateTimeBegin: str
+        :param _CreateTimeEnd: 搜索结束时间
+        :type CreateTimeEnd: str
+        :param _Status: 1:有效，2:无效
+        :type Status: int
         """
         self._ReceiverId = None
         self._Offset = None
         self._Limit = None
         self._Email = None
+        self._CreateTimeBegin = None
+        self._CreateTimeEnd = None
+        self._Status = None
 
     @property
     def ReceiverId(self):
@@ -2588,12 +2662,39 @@ class ListReceiverDetailsRequest(AbstractModel):
     def Email(self, Email):
         self._Email = Email
 
+    @property
+    def CreateTimeBegin(self):
+        return self._CreateTimeBegin
+
+    @CreateTimeBegin.setter
+    def CreateTimeBegin(self, CreateTimeBegin):
+        self._CreateTimeBegin = CreateTimeBegin
+
+    @property
+    def CreateTimeEnd(self):
+        return self._CreateTimeEnd
+
+    @CreateTimeEnd.setter
+    def CreateTimeEnd(self, CreateTimeEnd):
+        self._CreateTimeEnd = CreateTimeEnd
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
 
     def _deserialize(self, params):
         self._ReceiverId = params.get("ReceiverId")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._Email = params.get("Email")
+        self._CreateTimeBegin = params.get("CreateTimeBegin")
+        self._CreateTimeEnd = params.get("CreateTimeEnd")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2615,11 +2716,17 @@ class ListReceiverDetailsResponse(AbstractModel):
         :type TotalCount: int
         :param _Data: 数据记录
         :type Data: list of ReceiverDetail
+        :param _ValidCount: 有效邮件地址数
+        :type ValidCount: int
+        :param _InvalidCount: 无效邮件地址数
+        :type InvalidCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
         self._Data = None
+        self._ValidCount = None
+        self._InvalidCount = None
         self._RequestId = None
 
     @property
@@ -2639,6 +2746,22 @@ class ListReceiverDetailsResponse(AbstractModel):
         self._Data = Data
 
     @property
+    def ValidCount(self):
+        return self._ValidCount
+
+    @ValidCount.setter
+    def ValidCount(self, ValidCount):
+        self._ValidCount = ValidCount
+
+    @property
+    def InvalidCount(self):
+        return self._InvalidCount
+
+    @InvalidCount.setter
+    def InvalidCount(self, InvalidCount):
+        self._InvalidCount = InvalidCount
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -2655,6 +2778,8 @@ class ListReceiverDetailsResponse(AbstractModel):
                 obj = ReceiverDetail()
                 obj._deserialize(item)
                 self._Data.append(obj)
+        self._ValidCount = params.get("ValidCount")
+        self._InvalidCount = params.get("InvalidCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -2937,6 +3062,9 @@ class ReceiverData(AbstractModel):
         :type ReceiversStatus: int
         :param _CreateTime: 创建时间,如:2021-09-28 16:40:35
         :type CreateTime: str
+        :param _InvalidCount: 无效收件人数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvalidCount: int
         """
         self._ReceiverId = None
         self._ReceiversName = None
@@ -2944,6 +3072,7 @@ class ReceiverData(AbstractModel):
         self._Desc = None
         self._ReceiversStatus = None
         self._CreateTime = None
+        self._InvalidCount = None
 
     @property
     def ReceiverId(self):
@@ -2993,6 +3122,14 @@ class ReceiverData(AbstractModel):
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
 
+    @property
+    def InvalidCount(self):
+        return self._InvalidCount
+
+    @InvalidCount.setter
+    def InvalidCount(self, InvalidCount):
+        self._InvalidCount = InvalidCount
+
 
     def _deserialize(self, params):
         self._ReceiverId = params.get("ReceiverId")
@@ -3001,6 +3138,7 @@ class ReceiverData(AbstractModel):
         self._Desc = params.get("Desc")
         self._ReceiversStatus = params.get("ReceiversStatus")
         self._CreateTime = params.get("CreateTime")
+        self._InvalidCount = params.get("InvalidCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3024,10 +3162,22 @@ class ReceiverDetail(AbstractModel):
         :type CreateTime: str
         :param _TemplateData: 模板参数
         :type TemplateData: str
+        :param _Reason: 无效原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reason: str
+        :param _Status: 1:有效，2:无效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _EmailId: 收件人地址id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EmailId: int
         """
         self._Email = None
         self._CreateTime = None
         self._TemplateData = None
+        self._Reason = None
+        self._Status = None
+        self._EmailId = None
 
     @property
     def Email(self):
@@ -3053,11 +3203,38 @@ class ReceiverDetail(AbstractModel):
     def TemplateData(self, TemplateData):
         self._TemplateData = TemplateData
 
+    @property
+    def Reason(self):
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def EmailId(self):
+        return self._EmailId
+
+    @EmailId.setter
+    def EmailId(self, EmailId):
+        self._EmailId = EmailId
+
 
     def _deserialize(self, params):
         self._Email = params.get("Email")
         self._CreateTime = params.get("CreateTime")
         self._TemplateData = params.get("TemplateData")
+        self._Reason = params.get("Reason")
+        self._Status = params.get("Status")
+        self._EmailId = params.get("EmailId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

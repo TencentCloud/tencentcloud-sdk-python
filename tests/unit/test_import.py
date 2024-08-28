@@ -374,6 +374,11 @@ def test_import_config():
     from tencentcloud.config.v20220802 import models
 
 
+def test_import_controlcenter():
+    from tencentcloud.controlcenter.v20230110 import controlcenter_client
+    from tencentcloud.controlcenter.v20230110 import models
+
+
 def test_import_cpdp():
     from tencentcloud.cpdp.v20190820 import cpdp_client
     from tencentcloud.cpdp.v20190820 import models

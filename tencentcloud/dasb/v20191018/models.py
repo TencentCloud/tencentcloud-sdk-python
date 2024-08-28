@@ -9080,6 +9080,9 @@ class Resource(AbstractModel):
         :param _UsedDomainCount: 已使用网络域个数
 注意：此字段可能返回 null，表示取不到有效值。
         :type UsedDomainCount: int
+        :param _Trial: 0 非试用版，1 试用版
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Trial: int
         """
         self._ResourceId = None
         self._ApCode = None
@@ -9113,6 +9116,7 @@ class Resource(AbstractModel):
         self._ClbSet = None
         self._DomainCount = None
         self._UsedDomainCount = None
+        self._Trial = None
 
     @property
     def ResourceId(self):
@@ -9370,6 +9374,14 @@ class Resource(AbstractModel):
     def UsedDomainCount(self, UsedDomainCount):
         self._UsedDomainCount = UsedDomainCount
 
+    @property
+    def Trial(self):
+        return self._Trial
+
+    @Trial.setter
+    def Trial(self, Trial):
+        self._Trial = Trial
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
@@ -9409,6 +9421,7 @@ class Resource(AbstractModel):
                 self._ClbSet.append(obj)
         self._DomainCount = params.get("DomainCount")
         self._UsedDomainCount = params.get("UsedDomainCount")
+        self._Trial = params.get("Trial")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

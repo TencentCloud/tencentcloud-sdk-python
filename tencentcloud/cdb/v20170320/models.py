@@ -15594,6 +15594,100 @@ class DescribeInstanceParamsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeInstanceUpgradeCheckJobRequest(AbstractModel):
+    """DescribeInstanceUpgradeCheckJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _DstMysqlVersion: 目标数据库版本
+        :type DstMysqlVersion: str
+        """
+        self._InstanceId = None
+        self._DstMysqlVersion = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DstMysqlVersion(self):
+        return self._DstMysqlVersion
+
+    @DstMysqlVersion.setter
+    def DstMysqlVersion(self, DstMysqlVersion):
+        self._DstMysqlVersion = DstMysqlVersion
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DstMysqlVersion = params.get("DstMysqlVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceUpgradeCheckJobResponse(AbstractModel):
+    """DescribeInstanceUpgradeCheckJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExistUpgradeCheckJob: 24小时内是否存在历史升级校验任务
+        :type ExistUpgradeCheckJob: bool
+        :param _JobId: 任务id
+        :type JobId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ExistUpgradeCheckJob = None
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def ExistUpgradeCheckJob(self):
+        return self._ExistUpgradeCheckJob
+
+    @ExistUpgradeCheckJob.setter
+    def ExistUpgradeCheckJob(self, ExistUpgradeCheckJob):
+        self._ExistUpgradeCheckJob = ExistUpgradeCheckJob
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ExistUpgradeCheckJob = params.get("ExistUpgradeCheckJob")
+        self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeInstanceUpgradeTypeRequest(AbstractModel):
     """DescribeInstanceUpgradeType请求参数结构体
 
@@ -29537,6 +29631,88 @@ class StopRollbackResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class SubmitInstanceUpgradeCheckJobRequest(AbstractModel):
+    """SubmitInstanceUpgradeCheckJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例D
+        :type InstanceId: str
+        :param _DstMysqlVersion: 目标数据库版本
+        :type DstMysqlVersion: str
+        """
+        self._InstanceId = None
+        self._DstMysqlVersion = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DstMysqlVersion(self):
+        return self._DstMysqlVersion
+
+    @DstMysqlVersion.setter
+    def DstMysqlVersion(self, DstMysqlVersion):
+        self._DstMysqlVersion = DstMysqlVersion
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DstMysqlVersion = params.get("DstMysqlVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubmitInstanceUpgradeCheckJobResponse(AbstractModel):
+    """SubmitInstanceUpgradeCheckJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务ID
+        :type JobId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
+
+
 class SwitchCDBProxyRequest(AbstractModel):
     """SwitchCDBProxy请求参数结构体
 
@@ -30496,6 +30672,8 @@ class UpgradeDBInstanceEngineVersionRequest(AbstractModel):
         :type UpgradeSubversion: int
         :param _MaxDelayTime: 延迟阈值。取值范围1~10
         :type MaxDelayTime: int
+        :param _IgnoreErrKeyword: 5.7升级8.0是否忽略关键字错误，取值范围[0,1]，1表示忽略，0表示不忽略
+        :type IgnoreErrKeyword: int
         :param _ParamList: 版本升级支持指定参数
         :type ParamList: list of UpgradeEngineVersionParams
         """
@@ -30504,6 +30682,7 @@ class UpgradeDBInstanceEngineVersionRequest(AbstractModel):
         self._WaitSwitch = None
         self._UpgradeSubversion = None
         self._MaxDelayTime = None
+        self._IgnoreErrKeyword = None
         self._ParamList = None
 
     @property
@@ -30547,6 +30726,14 @@ class UpgradeDBInstanceEngineVersionRequest(AbstractModel):
         self._MaxDelayTime = MaxDelayTime
 
     @property
+    def IgnoreErrKeyword(self):
+        return self._IgnoreErrKeyword
+
+    @IgnoreErrKeyword.setter
+    def IgnoreErrKeyword(self, IgnoreErrKeyword):
+        self._IgnoreErrKeyword = IgnoreErrKeyword
+
+    @property
     def ParamList(self):
         return self._ParamList
 
@@ -30561,6 +30748,7 @@ class UpgradeDBInstanceEngineVersionRequest(AbstractModel):
         self._WaitSwitch = params.get("WaitSwitch")
         self._UpgradeSubversion = params.get("UpgradeSubversion")
         self._MaxDelayTime = params.get("MaxDelayTime")
+        self._IgnoreErrKeyword = params.get("IgnoreErrKeyword")
         if params.get("ParamList") is not None:
             self._ParamList = []
             for item in params.get("ParamList"):

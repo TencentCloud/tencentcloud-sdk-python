@@ -10744,7 +10744,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         :param _SnatIps: 开启SnatPro负载均衡后，SnatIp列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnatIps: list of SnatIp
-        :param _SlaType: 性能容量型规格。<ul><li> clb.c2.medium：标准型规格 </li><li> clb.c3.small：高阶型1规格 </li><li> clb.c3.medium：高阶型2规格 </li><li> clb.c4.small：超强型1规格 </li><li> clb.c4.medium：超强型2规格 </li><li> clb.c4.large：超强型3规格 </li><li> clb.c4.xlarge：超强型4规格 </li><li>null：共享型实例</li></ul>
+        :param _SlaType: 性能容量型规格。<ul><li> clb.c1.small：简约型规格 </li><li> clb.c2.medium：标准型规格 </li><li> clb.c3.small：高阶型1规格 </li><li> clb.c3.medium：高阶型2规格 </li><li> clb.c4.small：超强型1规格 </li><li> clb.c4.medium：超强型2规格 </li><li> clb.c4.large：超强型3规格 </li><li> clb.c4.xlarge：超强型4规格 </li><li>""：非性能容量型实例</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SlaType: str
         :param _IsBlock: vip是否被封堵
@@ -10786,6 +10786,9 @@ OPEN：公网属性， INTERNAL：内网属性。
         :param _Egress: 网络出口
 注意：此字段可能返回 null，表示取不到有效值。
         :type Egress: str
+        :param _Exclusive: 实例类型是否为独占型。1：独占型实例。0：非独占型实例。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Exclusive: int
         """
         self._LoadBalancerId = None
         self._LoadBalancerName = None
@@ -10842,6 +10845,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         self._AttributeFlags = None
         self._LoadBalancerDomain = None
         self._Egress = None
+        self._Exclusive = None
 
     @property
     def LoadBalancerId(self):
@@ -11287,6 +11291,14 @@ OPEN：公网属性， INTERNAL：内网属性。
     def Egress(self, Egress):
         self._Egress = Egress
 
+    @property
+    def Exclusive(self):
+        return self._Exclusive
+
+    @Exclusive.setter
+    def Exclusive(self, Exclusive):
+        self._Exclusive = Exclusive
+
 
     def _deserialize(self, params):
         self._LoadBalancerId = params.get("LoadBalancerId")
@@ -11371,6 +11383,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         self._AttributeFlags = params.get("AttributeFlags")
         self._LoadBalancerDomain = params.get("LoadBalancerDomain")
         self._Egress = params.get("Egress")
+        self._Exclusive = params.get("Exclusive")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

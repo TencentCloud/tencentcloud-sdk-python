@@ -118,6 +118,32 @@ class HunyuanClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def QueryHunyuanImageChatJob(self, request):
+        """混元生图（多轮对话）接口基于混元大模型，将根据输入的文本描述生成图像，支持通过多轮对话的方式不断调整图像内容。分为提交任务和查询任务2个接口。
+        提交任务：输入文本和前置对话 ID 等，提交一个混元生图多轮对话异步任务，获得任务 ID。
+        查询任务：根据任务 ID 查询任务的处理状态、处理结果，任务处理完成后可获得在上一轮对话基础上继续生成的图像结果。
+        混元生图（多轮对话）默认提供1个并发任务数，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
+
+        :param request: Request instance for QueryHunyuanImageChatJob.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.QueryHunyuanImageChatJobRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.QueryHunyuanImageChatJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryHunyuanImageChatJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryHunyuanImageChatJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def QueryHunyuanImageJob(self, request):
         """混元生图接口基于混元大模型，将根据输入的文本描述，智能生成与之相关的结果图。分为提交任务和查询任务2个接口。
         提交任务：输入文本等，提交一个混元生图异步任务，获得任务 ID。
@@ -158,6 +184,32 @@ class HunyuanClient(AbstractClient):
             body = self.call("SetPayMode", params, headers=headers)
             response = json.loads(body)
             model = models.SetPayModeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitHunyuanImageChatJob(self, request):
+        """混元生图（多轮对话）接口基于混元大模型，将根据输入的文本描述生成图像，支持通过多轮对话的方式不断调整图像内容。分为提交任务和查询任务2个接口。
+        提交任务：输入文本和前置对话 ID 等，提交一个混元生图多轮对话异步任务，获得任务 ID。
+        查询任务：根据任务 ID 查询任务的处理状态、处理结果，任务处理完成后可获得在上一轮对话基础上继续生成的图像结果。
+        混元生图（多轮对话）默认提供1个并发任务数，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
+
+        :param request: Request instance for SubmitHunyuanImageChatJob.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.SubmitHunyuanImageChatJobRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.SubmitHunyuanImageChatJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitHunyuanImageChatJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitHunyuanImageChatJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

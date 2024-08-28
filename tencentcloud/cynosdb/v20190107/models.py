@@ -23435,17 +23435,17 @@ class OpenReadOnlyInstanceExclusiveAccessRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 请使用 集群信息描述（https://cloud.tencent.com/document/api/1003/48086） 获取 clusterId。
+        :param _ClusterId: 请使用 [集群信息描述](https://cloud.tencent.com/document/api/1003/48086) 获取 clusterId。
         :type ClusterId: str
-        :param _InstanceId: 请使用 集群信息描述（https://cloud.tencent.com/document/api/1003/48086） 获取 instanceId。
+        :param _InstanceId: 请使用 [集群信息描述](https://cloud.tencent.com/document/api/1003/48086) 获取 instanceId。
         :type InstanceId: str
-        :param _VpcId: 指定的vpc ID，请使用 查询私有网络列表（https://cloud.tencent.com/document/api/215/15778） 获取 vpc ID。
+        :param _VpcId: 指定的 vpc ID，请使用 [查询私有网络列表](https://cloud.tencent.com/document/api/215/15778) 获取 vpc ID。
         :type VpcId: str
-        :param _SubnetId: 指定的子网 ID，如果设置了 vpc ID，则 SubnetId 必填，请使用 查询子网列表（https://cloud.tencent.com/document/api/215/15784）获取 SubnetId。
+        :param _SubnetId: 指定的子网 ID，如果设置了 vpc ID，则 SubnetId 必填，请使用 [查询子网列表](https://cloud.tencent.com/document/api/215/15784) 获取 SubnetId。
         :type SubnetId: str
-        :param _Port: 用户自定义的端口
+        :param _Port: 用户自定义的端口。
         :type Port: int
-        :param _SecurityGroupIds: 安全组ID，请使用 查看安全组（https://cloud.tencent.com/document/api/215/15808）获取 SecurityGroupId。
+        :param _SecurityGroupIds: 安全组 ID，请使用 [查看安全组](https://cloud.tencent.com/document/api/215/15808) 获取 SecurityGroupId。
         :type SecurityGroupIds: list of str
         """
         self._ClusterId = None

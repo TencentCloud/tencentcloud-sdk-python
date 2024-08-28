@@ -977,6 +977,79 @@ class GetTokenCountResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class History(AbstractModel):
+    """混元生图多轮对话历史记录。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChatId: 对话的 ID，用于唯一标识一轮对话
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChatId: str
+        :param _Prompt: 原始输入的 Prompt 文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Prompt: str
+        :param _RevisedPrompt: 扩写后的 Prompt 文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RevisedPrompt: str
+        :param _Seed: 生成图的随机种子
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Seed: int
+        """
+        self._ChatId = None
+        self._Prompt = None
+        self._RevisedPrompt = None
+        self._Seed = None
+
+    @property
+    def ChatId(self):
+        return self._ChatId
+
+    @ChatId.setter
+    def ChatId(self, ChatId):
+        self._ChatId = ChatId
+
+    @property
+    def Prompt(self):
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def RevisedPrompt(self):
+        return self._RevisedPrompt
+
+    @RevisedPrompt.setter
+    def RevisedPrompt(self, RevisedPrompt):
+        self._RevisedPrompt = RevisedPrompt
+
+    @property
+    def Seed(self):
+        return self._Seed
+
+    @Seed.setter
+    def Seed(self, Seed):
+        self._Seed = Seed
+
+
+    def _deserialize(self, params):
+        self._ChatId = params.get("ChatId")
+        self._Prompt = params.get("Prompt")
+        self._RevisedPrompt = params.get("RevisedPrompt")
+        self._Seed = params.get("Seed")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImageUrl(AbstractModel):
     """具体的图片内容
 
@@ -1231,6 +1304,172 @@ class Message(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class QueryHunyuanImageChatJobRequest(AbstractModel):
+    """QueryHunyuanImageChatJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务 ID。
+        :type JobId: str
+        """
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryHunyuanImageChatJobResponse(AbstractModel):
+    """QueryHunyuanImageChatJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobStatusCode: 当前任务状态码：
+1：等待中、2：运行中、4：处理失败、5：处理完成。
+        :type JobStatusCode: str
+        :param _JobStatusMsg: 当前任务状态：排队中、处理中、处理失败或者处理完成。
+
+        :type JobStatusMsg: str
+        :param _JobErrorCode: 任务处理失败错误码。
+
+        :type JobErrorCode: str
+        :param _JobErrorMsg: 任务处理失败错误信息。
+
+        :type JobErrorMsg: str
+        :param _ChatId: 本轮对话的 ChatId，ChatId 用于唯一标识一轮对话。
+一个对话组中，最多支持进行100轮对话。
+每轮对话数据有效期为7天，到期后 ChatId 失效，有效期内的历史对话数据可通过 History 查询，如有长期使用需求请及时保存输入输出数据。
+        :type ChatId: str
+        :param _ResultImage: 生成图 URL 列表，有效期7天，请及时保存。
+        :type ResultImage: list of str
+        :param _ResultDetails: 结果 detail 数组，Success 代表成功。
+
+        :type ResultDetails: list of str
+        :param _History: 本轮对话前置的历史对话数据（不含生成图）。
+        :type History: list of History
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobStatusCode = None
+        self._JobStatusMsg = None
+        self._JobErrorCode = None
+        self._JobErrorMsg = None
+        self._ChatId = None
+        self._ResultImage = None
+        self._ResultDetails = None
+        self._History = None
+        self._RequestId = None
+
+    @property
+    def JobStatusCode(self):
+        return self._JobStatusCode
+
+    @JobStatusCode.setter
+    def JobStatusCode(self, JobStatusCode):
+        self._JobStatusCode = JobStatusCode
+
+    @property
+    def JobStatusMsg(self):
+        return self._JobStatusMsg
+
+    @JobStatusMsg.setter
+    def JobStatusMsg(self, JobStatusMsg):
+        self._JobStatusMsg = JobStatusMsg
+
+    @property
+    def JobErrorCode(self):
+        return self._JobErrorCode
+
+    @JobErrorCode.setter
+    def JobErrorCode(self, JobErrorCode):
+        self._JobErrorCode = JobErrorCode
+
+    @property
+    def JobErrorMsg(self):
+        return self._JobErrorMsg
+
+    @JobErrorMsg.setter
+    def JobErrorMsg(self, JobErrorMsg):
+        self._JobErrorMsg = JobErrorMsg
+
+    @property
+    def ChatId(self):
+        return self._ChatId
+
+    @ChatId.setter
+    def ChatId(self, ChatId):
+        self._ChatId = ChatId
+
+    @property
+    def ResultImage(self):
+        return self._ResultImage
+
+    @ResultImage.setter
+    def ResultImage(self, ResultImage):
+        self._ResultImage = ResultImage
+
+    @property
+    def ResultDetails(self):
+        return self._ResultDetails
+
+    @ResultDetails.setter
+    def ResultDetails(self, ResultDetails):
+        self._ResultDetails = ResultDetails
+
+    @property
+    def History(self):
+        return self._History
+
+    @History.setter
+    def History(self, History):
+        self._History = History
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobStatusCode = params.get("JobStatusCode")
+        self._JobStatusMsg = params.get("JobStatusMsg")
+        self._JobErrorCode = params.get("JobErrorCode")
+        self._JobErrorMsg = params.get("JobErrorMsg")
+        self._ChatId = params.get("ChatId")
+        self._ResultImage = params.get("ResultImage")
+        self._ResultDetails = params.get("ResultDetails")
+        if params.get("History") is not None:
+            self._History = []
+            for item in params.get("History"):
+                obj = History()
+                obj._deserialize(item)
+                self._History.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class QueryHunyuanImageJobRequest(AbstractModel):
@@ -1535,6 +1774,127 @@ class SetPayModeResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class SubmitHunyuanImageChatJobRequest(AbstractModel):
+    """SubmitHunyuanImageChatJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Prompt: 本轮对话的文本描述。
+提交一个任务请求对应发起一轮生图对话，每轮对话中可输入一条 Prompt，生成一张图像，支持通过多轮输入 Prompt 来不断调整图像内容。
+推荐使用中文，最多可传1024个 utf-8 字符。
+输入示例：
+<li> 第一轮对话：一颗红色的苹果 </li>
+<li> 第二轮对话：将苹果改为绿色 </li>
+<li> 第三轮对话：苹果放在桌子上 </li>
+        :type Prompt: str
+        :param _ChatId: 上传上一轮对话的 ChatId，本轮对话将在指定的上一轮对话结果基础上继续生成图像。
+如果不传代表新建一个对话组，重新开启一轮新的对话。
+一个对话组中，最多支持进行100轮对话。
+        :type ChatId: str
+        :param _LogoAdd: 为生成结果图添加显式水印标识的开关，默认为1。  
+1：添加。  
+0：不添加。  
+其他数值：默认按1处理。  
+建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
+        :type LogoAdd: int
+        :param _LogoParam: 标识内容设置。
+默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        :type LogoParam: :class:`tencentcloud.hunyuan.v20230901.models.LogoParam`
+        """
+        self._Prompt = None
+        self._ChatId = None
+        self._LogoAdd = None
+        self._LogoParam = None
+
+    @property
+    def Prompt(self):
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def ChatId(self):
+        return self._ChatId
+
+    @ChatId.setter
+    def ChatId(self, ChatId):
+        self._ChatId = ChatId
+
+    @property
+    def LogoAdd(self):
+        return self._LogoAdd
+
+    @LogoAdd.setter
+    def LogoAdd(self, LogoAdd):
+        self._LogoAdd = LogoAdd
+
+    @property
+    def LogoParam(self):
+        return self._LogoParam
+
+    @LogoParam.setter
+    def LogoParam(self, LogoParam):
+        self._LogoParam = LogoParam
+
+
+    def _deserialize(self, params):
+        self._Prompt = params.get("Prompt")
+        self._ChatId = params.get("ChatId")
+        self._LogoAdd = params.get("LogoAdd")
+        if params.get("LogoParam") is not None:
+            self._LogoParam = LogoParam()
+            self._LogoParam._deserialize(params.get("LogoParam"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubmitHunyuanImageChatJobResponse(AbstractModel):
+    """SubmitHunyuanImageChatJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务 ID。
+        :type JobId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
         self._RequestId = params.get("RequestId")
 
 
