@@ -101,6 +101,9 @@ FAILEDOPERATION_REQUESTTIMEOUT = 'FailedOperation.RequestTimeout'
 # 系统内部错误。
 FAILEDOPERATION_SERVERERROR = 'FailedOperation.ServerError'
 
+# 请求声伴分离失败，请重试。
+FAILEDOPERATION_SUBMITASSPFAILED = 'FailedOperation.SubmitAsspFailed'
+
 # 任务不存在。
 FAILEDOPERATION_TASKNOTEXIST = 'FailedOperation.TaskNotExist'
 

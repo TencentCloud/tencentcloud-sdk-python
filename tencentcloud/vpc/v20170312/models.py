@@ -12455,10 +12455,13 @@ class CreateVpnGatewaySslClientRequest(AbstractModel):
         :type SslVpnClientName: str
         :param _SslVpnClientNames: SSL-VPN-CLIENT实例Name数字。批量创建时使用。不可和SslVpnClientName同时使用。
         :type SslVpnClientNames: list of str
+        :param _Tags: 指定绑定的标签列表
+        :type Tags: list of Tag
         """
         self._SslVpnServerId = None
         self._SslVpnClientName = None
         self._SslVpnClientNames = None
+        self._Tags = None
 
     @property
     def SslVpnServerId(self):
@@ -12484,11 +12487,25 @@ class CreateVpnGatewaySslClientRequest(AbstractModel):
     def SslVpnClientNames(self, SslVpnClientNames):
         self._SslVpnClientNames = SslVpnClientNames
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._SslVpnServerId = params.get("SslVpnServerId")
         self._SslVpnClientName = params.get("SslVpnClientName")
         self._SslVpnClientNames = params.get("SslVpnClientNames")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12579,6 +12596,8 @@ class CreateVpnGatewaySslServerRequest(AbstractModel):
         :type AccessPolicyEnabled: bool
         :param _SamlData: SAML-DATA，开启SSO时传。
         :type SamlData: str
+        :param _Tags: 指定绑定的标签列表
+        :type Tags: list of Tag
         """
         self._VpnGatewayId = None
         self._SslVpnServerName = None
@@ -12592,6 +12611,7 @@ class CreateVpnGatewaySslServerRequest(AbstractModel):
         self._SsoEnabled = None
         self._AccessPolicyEnabled = None
         self._SamlData = None
+        self._Tags = None
 
     @property
     def VpnGatewayId(self):
@@ -12689,6 +12709,14 @@ class CreateVpnGatewaySslServerRequest(AbstractModel):
     def SamlData(self, SamlData):
         self._SamlData = SamlData
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._VpnGatewayId = params.get("VpnGatewayId")
@@ -12703,6 +12731,12 @@ class CreateVpnGatewaySslServerRequest(AbstractModel):
         self._SsoEnabled = params.get("SsoEnabled")
         self._AccessPolicyEnabled = params.get("AccessPolicyEnabled")
         self._SamlData = params.get("SamlData")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

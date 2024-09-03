@@ -3502,6 +3502,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTablePartitions(self, request):
+        """查询表的分区详情信息
+
+        :param request: Request instance for DescribeTablePartitions.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTablePartitionsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeTablePartitionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTablePartitions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTablePartitionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTableQualityDetails(self, request):
         """质量报告-查询表质量详情
 

@@ -1753,6 +1753,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeServerlessStrategy(self, request):
+        """查询serverless策略
+
+        :param request: Request instance for DescribeServerlessStrategy.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeServerlessStrategyRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeServerlessStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeServerlessStrategy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeServerlessStrategyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSupportProxyVersion(self, request):
         """查询支持的数据库代理版本
 
@@ -2641,6 +2664,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("ModifyResourcePackagesDeductionPriority", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyResourcePackagesDeductionPriorityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyServerlessStrategy(self, request):
+        """修改serverless策略
+
+        :param request: Request instance for ModifyServerlessStrategy.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyServerlessStrategyRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyServerlessStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyServerlessStrategy", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyServerlessStrategyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -383,6 +383,9 @@ class Cluster(AbstractModel):
         :param _BillingResourceMode: 集群类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type BillingResourceMode: str
+        :param _MemRatio: Cu比例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemRatio: int
         """
         self._ClusterId = None
         self._Name = None
@@ -430,6 +433,7 @@ class Cluster(AbstractModel):
         self._AgentSerialId = None
         self._ResourceType = None
         self._BillingResourceMode = None
+        self._MemRatio = None
 
     @property
     def ClusterId(self):
@@ -799,6 +803,14 @@ class Cluster(AbstractModel):
     def BillingResourceMode(self, BillingResourceMode):
         self._BillingResourceMode = BillingResourceMode
 
+    @property
+    def MemRatio(self):
+        return self._MemRatio
+
+    @MemRatio.setter
+    def MemRatio(self, MemRatio):
+        self._MemRatio = MemRatio
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -881,6 +893,7 @@ class Cluster(AbstractModel):
         self._AgentSerialId = params.get("AgentSerialId")
         self._ResourceType = params.get("ResourceType")
         self._BillingResourceMode = params.get("BillingResourceMode")
+        self._MemRatio = params.get("MemRatio")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

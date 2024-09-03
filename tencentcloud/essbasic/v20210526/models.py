@@ -599,7 +599,7 @@ class AutoSignConfig(AbstractModel):
 <ul><li>**false**: 不需要(默认)</li>
 <li>**true**: 需要</li></ul>
         :type SealImgCallback: bool
-        :param _CallbackUrl: 回调链接，如果渠道已经配置了，可以不传
+        :param _CallbackUrl: 该字段已废弃，请使用【应用号配置】中的回调地址统一接口消息
         :type CallbackUrl: str
         :param _VerifyChannels: 开通时候的身份验证方式, 取值为：
 <ul><li>**WEIXINAPP** : 微信人脸识别</li>
@@ -669,10 +669,14 @@ class AutoSignConfig(AbstractModel):
 
     @property
     def CallbackUrl(self):
+        warnings.warn("parameter `CallbackUrl` is deprecated", DeprecationWarning) 
+
         return self._CallbackUrl
 
     @CallbackUrl.setter
     def CallbackUrl(self, CallbackUrl):
+        warnings.warn("parameter `CallbackUrl` is deprecated", DeprecationWarning) 
+
         self._CallbackUrl = CallbackUrl
 
     @property
@@ -2997,12 +3001,7 @@ class ChannelCreateFlowByFilesRequest(AbstractModel):
         :param _Deadline: 合同流程的签署截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为合同流程创建后的365天时截止。
 如果在签署截止时间前未完成签署，则合同状态会变为已过期，导致合同作废。
         :type Deadline: int
-        :param _CallbackUrl: 执行结果的回调URL，长度不超过255个字符，该URL仅支持HTTP或HTTPS协议，建议采用HTTPS协议以保证数据传输的安全性。
-腾讯电子签服务器将通过POST方式，application/json格式通知执行结果，请确保外网可以正常访问该URL。
-回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/partner/callback_data_types" target="_blank">回调通知</a>模块。
-
-注:
-`如果不传递回调地址， 则默认是配置应用号时候使用的回调地址`
+        :param _CallbackUrl: 该字段已废弃，请使用【应用号配置】中的回调地址
         :type CallbackUrl: str
         :param _Unordered: 合同流程的签署顺序类型：
 <ul><li> **false**：(默认)有序签署, 本合同多个参与人需要依次签署 </li>
@@ -3140,10 +3139,14 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
 
     @property
     def CallbackUrl(self):
+        warnings.warn("parameter `CallbackUrl` is deprecated", DeprecationWarning) 
+
         return self._CallbackUrl
 
     @CallbackUrl.setter
     def CallbackUrl(self, CallbackUrl):
+        warnings.warn("parameter `CallbackUrl` is deprecated", DeprecationWarning) 
+
         self._CallbackUrl = CallbackUrl
 
     @property
@@ -15504,7 +15507,7 @@ class FlowFileInfo(AbstractModel):
         :type FlowDescription: str
         :param _FlowType: 签署流程的类型，长度不超过255个字符
         :type FlowType: str
-        :param _CallbackUrl: 签署流程回调地址，长度不超过255个字符
+        :param _CallbackUrl: 已废弃，请使用【应用号配置】中的回调地址统一接收消息
         :type CallbackUrl: str
         :param _CustomerData: 第三方应用的业务信息，最大长度1000个字符。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
         :type CustomerData: str
@@ -15580,10 +15583,14 @@ class FlowFileInfo(AbstractModel):
 
     @property
     def CallbackUrl(self):
+        warnings.warn("parameter `CallbackUrl` is deprecated", DeprecationWarning) 
+
         return self._CallbackUrl
 
     @CallbackUrl.setter
     def CallbackUrl(self, CallbackUrl):
+        warnings.warn("parameter `CallbackUrl` is deprecated", DeprecationWarning) 
+
         self._CallbackUrl = CallbackUrl
 
     @property
@@ -15879,10 +15886,7 @@ class FlowInfo(AbstractModel):
 注：只有在控制台编辑模板时，<font color="red">归属给发起方</font>的填写控件（如下图）才能在创建文档的时候进行内容填充。(<font color="red">白名单功能需要联系对接经理开通，否则模板编辑时无法将填写控件分配给发起方</font>)。
 ![image](https://qcloudimg.tencent-cloud.cn/raw/b1d3978140ee2b44e2c9fdc96e467a5d.png)
         :type FormFields: list of FormField
-        :param _CallbackUrl: 合同状态变动结的通知回调URL，该URL仅支持HTTP或HTTPS协议，建议采用HTTPS协议以保证数据传输的安全性，最大长度1000个字符。
-
-腾讯电子签服务器将通过POST方式，application/json格式通知执行结果，请确保外网可以正常访问该URL。
-回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/partner/callback_data_types" target="_blank">回调通知</a>模块
+        :param _CallbackUrl: 该字段已废弃，请使用【应用号配置】中的回调地址统一接口消息
         :type CallbackUrl: str
         :param _FlowType: 合同流程的类别分类（可自定义名称，如销售合同/入职合同等），最大长度为200个字符，仅限中文、字母、数字和下划线组成。
         :type FlowType: str
@@ -15985,10 +15989,14 @@ class FlowInfo(AbstractModel):
 
     @property
     def CallbackUrl(self):
+        warnings.warn("parameter `CallbackUrl` is deprecated", DeprecationWarning) 
+
         return self._CallbackUrl
 
     @CallbackUrl.setter
     def CallbackUrl(self, CallbackUrl):
+        warnings.warn("parameter `CallbackUrl` is deprecated", DeprecationWarning) 
+
         self._CallbackUrl = CallbackUrl
 
     @property

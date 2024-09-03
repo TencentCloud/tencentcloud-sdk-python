@@ -25783,9 +25783,12 @@ class InstallLogAgentRequest(AbstractModel):
         :type ClusterId: str
         :param _KubeletRootDir: kubelet根目录
         :type KubeletRootDir: str
+        :param _ClusterType: 集群类型 tke/eks，默认tke
+        :type ClusterType: str
         """
         self._ClusterId = None
         self._KubeletRootDir = None
+        self._ClusterType = None
 
     @property
     def ClusterId(self):
@@ -25803,10 +25806,19 @@ class InstallLogAgentRequest(AbstractModel):
     def KubeletRootDir(self, KubeletRootDir):
         self._KubeletRootDir = KubeletRootDir
 
+    @property
+    def ClusterType(self):
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._KubeletRootDir = params.get("KubeletRootDir")
+        self._ClusterType = params.get("ClusterType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

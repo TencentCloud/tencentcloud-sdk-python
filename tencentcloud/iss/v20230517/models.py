@@ -8576,6 +8576,14 @@ class DescribeVideoDownloadUrlRequest(AbstractModel):
         :type IsRespActualTime: bool
         :param _IsInternal: 是否返回内网下载URL，默认是false，返回公网下载URL，true则返回内网下载URL
         :type IsInternal: bool
+        :param _Expires: 设置URL的有效期, 最小值是1秒, 最大值是86400秒, 不设置的话, 默认是600秒
+        :type Expires: int
+        :param _IsSupportG711: 下载的MP4文件是否支持G711音频编码. 
+注意: 如果云端录像中的音频编码为AAC, 那么下载的MP4默认是支持AAC编码的
+如果云端录像中的音频编码为G711且 IsSupportG711设置为true时, 下载的MP4是支持G711音频编码
+如果云端录像中的音频编码为G711且 IsSupportG711设置为false时, 下载的MP4是不支持G711音频编码
+该参数只对FileType为mp4才有效, 不设置的话, 默认是false
+        :type IsSupportG711: bool
         """
         self._ChannelId = None
         self._BeginTime = None
@@ -8583,6 +8591,8 @@ class DescribeVideoDownloadUrlRequest(AbstractModel):
         self._FileType = None
         self._IsRespActualTime = None
         self._IsInternal = None
+        self._Expires = None
+        self._IsSupportG711 = None
 
     @property
     def ChannelId(self):
@@ -8632,6 +8642,22 @@ class DescribeVideoDownloadUrlRequest(AbstractModel):
     def IsInternal(self, IsInternal):
         self._IsInternal = IsInternal
 
+    @property
+    def Expires(self):
+        return self._Expires
+
+    @Expires.setter
+    def Expires(self, Expires):
+        self._Expires = Expires
+
+    @property
+    def IsSupportG711(self):
+        return self._IsSupportG711
+
+    @IsSupportG711.setter
+    def IsSupportG711(self, IsSupportG711):
+        self._IsSupportG711 = IsSupportG711
+
 
     def _deserialize(self, params):
         self._ChannelId = params.get("ChannelId")
@@ -8640,6 +8666,8 @@ class DescribeVideoDownloadUrlRequest(AbstractModel):
         self._FileType = params.get("FileType")
         self._IsRespActualTime = params.get("IsRespActualTime")
         self._IsInternal = params.get("IsInternal")
+        self._Expires = params.get("Expires")
+        self._IsSupportG711 = params.get("IsSupportG711")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

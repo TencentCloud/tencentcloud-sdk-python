@@ -809,6 +809,29 @@ class EsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def InstallInstanceModel(self, request):
+        """ES集群安装模型接口
+
+        :param request: Request instance for InstallInstanceModel.
+        :type request: :class:`tencentcloud.es.v20180416.models.InstallInstanceModelRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.InstallInstanceModelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InstallInstanceModel", params, headers=headers)
+            response = json.loads(body)
+            model = models.InstallInstanceModelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyEsVipSecurityGroup(self, request):
         """修改绑定VIP的安全组，传安全组id列表
 

@@ -12477,10 +12477,10 @@ class SlowLogInfoItem(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserHost: str
         :param _QueryTime: 执行时间,单位秒
-        :type QueryTime: int
+        :type QueryTime: float
         :param _LockTime: 锁时间,单位秒
 注意：此字段可能返回 null，表示取不到有效值。
-        :type LockTime: int
+        :type LockTime: float
         :param _RowsExamined: 扫描行数
 注意：此字段可能返回 null，表示取不到有效值。
         :type RowsExamined: int

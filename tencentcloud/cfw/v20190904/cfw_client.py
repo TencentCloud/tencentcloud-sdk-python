@@ -624,6 +624,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteRemoteAccessDomain(self, request):
+        """删除远程运维域名
+
+        :param request: Request instance for DeleteRemoteAccessDomain.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DeleteRemoteAccessDomainRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DeleteRemoteAccessDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRemoteAccessDomain", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRemoteAccessDomainResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteResourceGroup(self, request):
         """DeleteResourceGroup-资产中心资产组删除
 

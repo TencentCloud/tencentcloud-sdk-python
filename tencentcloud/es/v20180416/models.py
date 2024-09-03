@@ -7737,6 +7737,100 @@ class InquirePriceRenewInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class InstallInstanceModelRequest(AbstractModel):
+    """InstallInstanceModel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _UsrCosModelUrlList: 客户上传到自己cos的地址列表
+        :type UsrCosModelUrlList: list of str
+        """
+        self._InstanceId = None
+        self._UsrCosModelUrlList = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def UsrCosModelUrlList(self):
+        return self._UsrCosModelUrlList
+
+    @UsrCosModelUrlList.setter
+    def UsrCosModelUrlList(self, UsrCosModelUrlList):
+        self._UsrCosModelUrlList = UsrCosModelUrlList
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._UsrCosModelUrlList = params.get("UsrCosModelUrlList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstallInstanceModelResponse(AbstractModel):
+    """InstallInstanceModel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 发起异步流程的flowId
+        :type FlowId: str
+        :param _ErrMsg: 调用接口的错误信息
+        :type ErrMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._ErrMsg = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def ErrMsg(self):
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._ErrMsg = params.get("ErrMsg")
+        self._RequestId = params.get("RequestId")
+
+
 class InstanceInfo(AbstractModel):
     """实例详细信息
 

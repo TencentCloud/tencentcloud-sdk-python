@@ -534,6 +534,29 @@ class DcdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDCDBBinlogTime(self, request):
+        """获取实例回档时可选的时间范围
+
+        :param request: Request instance for DescribeDCDBBinlogTime.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDCDBBinlogTimeRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeDCDBBinlogTimeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDCDBBinlogTime", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDCDBBinlogTimeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDCDBInstanceDetail(self, request):
         """本接口（DescribeDCDBInstanceDetail）用于获取TDSQL实例详情
 

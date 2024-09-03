@@ -396,6 +396,29 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBinlogTime(self, request):
+        """本接口（DescribeBinlogTime）用于查询可回档时间范围。
+
+        :param request: Request instance for DescribeBinlogTime.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.DescribeBinlogTimeRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DescribeBinlogTimeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBinlogTime", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBinlogTimeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDBEncryptAttributes(self, request):
         """本接口(DescribeDBEncryptAttributes)用于查询实例数据加密状态。
 

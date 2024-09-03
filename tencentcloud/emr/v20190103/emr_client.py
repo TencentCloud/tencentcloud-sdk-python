@@ -787,6 +787,30 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyAutoRenewFlag(self, request):
+        """前提：预付费集群
+        资源级别开启或关闭自动续费
+
+        :param request: Request instance for ModifyAutoRenewFlag.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ModifyAutoRenewFlagRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifyAutoRenewFlagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAutoRenewFlag", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAutoRenewFlagResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyAutoScaleStrategy(self, request):
         """修改自动扩缩容规则
 

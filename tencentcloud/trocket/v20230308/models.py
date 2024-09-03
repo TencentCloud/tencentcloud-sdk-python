@@ -38,6 +38,18 @@ class ConsumeGroupItem(AbstractModel):
         :type MaxRetryTimes: int
         :param _Remark: 备注
         :type Remark: str
+        :param _ClusterIdV4: 4.x的集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterIdV4: str
+        :param _NamespaceV4: 4.x的命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceV4: str
+        :param _ConsumerGroupV4: 4.x的消费组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsumerGroupV4: str
+        :param _FullNamespaceV4: 4.x的完整命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FullNamespaceV4: str
         """
         self._InstanceId = None
         self._ConsumerGroup = None
@@ -45,6 +57,10 @@ class ConsumeGroupItem(AbstractModel):
         self._ConsumeMessageOrderly = None
         self._MaxRetryTimes = None
         self._Remark = None
+        self._ClusterIdV4 = None
+        self._NamespaceV4 = None
+        self._ConsumerGroupV4 = None
+        self._FullNamespaceV4 = None
 
     @property
     def InstanceId(self):
@@ -94,6 +110,38 @@ class ConsumeGroupItem(AbstractModel):
     def Remark(self, Remark):
         self._Remark = Remark
 
+    @property
+    def ClusterIdV4(self):
+        return self._ClusterIdV4
+
+    @ClusterIdV4.setter
+    def ClusterIdV4(self, ClusterIdV4):
+        self._ClusterIdV4 = ClusterIdV4
+
+    @property
+    def NamespaceV4(self):
+        return self._NamespaceV4
+
+    @NamespaceV4.setter
+    def NamespaceV4(self, NamespaceV4):
+        self._NamespaceV4 = NamespaceV4
+
+    @property
+    def ConsumerGroupV4(self):
+        return self._ConsumerGroupV4
+
+    @ConsumerGroupV4.setter
+    def ConsumerGroupV4(self, ConsumerGroupV4):
+        self._ConsumerGroupV4 = ConsumerGroupV4
+
+    @property
+    def FullNamespaceV4(self):
+        return self._FullNamespaceV4
+
+    @FullNamespaceV4.setter
+    def FullNamespaceV4(self, FullNamespaceV4):
+        self._FullNamespaceV4 = FullNamespaceV4
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -102,6 +150,10 @@ class ConsumeGroupItem(AbstractModel):
         self._ConsumeMessageOrderly = params.get("ConsumeMessageOrderly")
         self._MaxRetryTimes = params.get("MaxRetryTimes")
         self._Remark = params.get("Remark")
+        self._ClusterIdV4 = params.get("ClusterIdV4")
+        self._NamespaceV4 = params.get("NamespaceV4")
+        self._ConsumerGroupV4 = params.get("ConsumerGroupV4")
+        self._FullNamespaceV4 = params.get("FullNamespaceV4")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

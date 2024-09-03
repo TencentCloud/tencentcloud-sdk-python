@@ -217,7 +217,7 @@ class GetFileTranslateData(AbstractModel):
         :type TaskId: str
         :param _Status: 状态
         :type Status: str
-        :param _FileData: 文件数据
+        :param _FileData: 文件数据，目标文件必须小于50M，否则请通过回调方式请求文件翻译接口
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileData: str
         :param _Message: 错误提示

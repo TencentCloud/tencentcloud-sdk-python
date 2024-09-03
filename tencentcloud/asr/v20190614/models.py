@@ -160,6 +160,95 @@ class CloseAsyncRecognitionTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateAsrKeyWordLibRequest(AbstractModel):
+    """CreateAsrKeyWordLib请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 词表名称，长度在1-20之间
+仅限中英文数字-_
+        :type Name: str
+        :param _KeyWordFile: 词文件（纯文本文件）的二进制base64编码，以行分隔
+格式要求：TXT
+每行只有一个词，不满足格式则报错无法上传
+每个词限制**5个汉字，15个字符**，单个词库最多不超过100个词
+注意不要有空行，尤其是最后一行
+        :type KeyWordFile: str
+        """
+        self._Name = None
+        self._KeyWordFile = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def KeyWordFile(self):
+        return self._KeyWordFile
+
+    @KeyWordFile.setter
+    def KeyWordFile(self, KeyWordFile):
+        self._KeyWordFile = KeyWordFile
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._KeyWordFile = params.get("KeyWordFile")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAsrKeyWordLibResponse(AbstractModel):
+    """CreateAsrKeyWordLib返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 词表ID数据
+        :type Data: :class:`tencentcloud.asr.v20190614.models.KeyWordLibIdData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = KeyWordLibIdData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class CreateAsrVocabRequest(AbstractModel):
     """CreateAsrVocab请求参数结构体
 
@@ -779,6 +868,9 @@ class CreateRecTaskRequest(AbstractModel):
 
 - 热词权重设置为100时，当前热词开启热词增强同音替换功能（仅支持8k_zh,16k_zh），举例：热词配置“蜜制|100”时，与“蜜制”同拼音（mizhi）的“秘制”的识别结果会被强制替换成“蜜制”。因此建议客户根据自己的实际情况开启该功能。建议仅将重要且必须生效的热词设置到100，设置过多权重为100的热词将影响整体字准率。
         :type HotwordList: str
+        :param _KeyWordLibIdList: 关键词识别ID列表，默认空为不进行识别，最多10个
+
+        :type KeyWordLibIdList: list of str
         """
         self._EngineModelType = None
         self._ChannelNum = None
@@ -802,6 +894,7 @@ class CreateRecTaskRequest(AbstractModel):
         self._SentenceMaxLength = None
         self._Extra = None
         self._HotwordList = None
+        self._KeyWordLibIdList = None
 
     @property
     def EngineModelType(self):
@@ -983,6 +1076,14 @@ class CreateRecTaskRequest(AbstractModel):
     def HotwordList(self, HotwordList):
         self._HotwordList = HotwordList
 
+    @property
+    def KeyWordLibIdList(self):
+        return self._KeyWordLibIdList
+
+    @KeyWordLibIdList.setter
+    def KeyWordLibIdList(self, KeyWordLibIdList):
+        self._KeyWordLibIdList = KeyWordLibIdList
+
 
     def _deserialize(self, params):
         self._EngineModelType = params.get("EngineModelType")
@@ -1007,6 +1108,7 @@ class CreateRecTaskRequest(AbstractModel):
         self._SentenceMaxLength = params.get("SentenceMaxLength")
         self._Extra = params.get("Extra")
         self._HotwordList = params.get("HotwordList")
+        self._KeyWordLibIdList = params.get("KeyWordLibIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1055,6 +1157,64 @@ class CreateRecTaskResponse(AbstractModel):
         if params.get("Data") is not None:
             self._Data = Task()
             self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteAsrKeyWordLibRequest(AbstractModel):
+    """DeleteAsrKeyWordLib请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KeyWordLibId: 关键词表ID
+        :type KeyWordLibId: str
+        """
+        self._KeyWordLibId = None
+
+    @property
+    def KeyWordLibId(self):
+        return self._KeyWordLibId
+
+    @KeyWordLibId.setter
+    def KeyWordLibId(self, KeyWordLibId):
+        self._KeyWordLibId = KeyWordLibId
+
+
+    def _deserialize(self, params):
+        self._KeyWordLibId = params.get("KeyWordLibId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAsrKeyWordLibResponse(AbstractModel):
+    """DeleteAsrKeyWordLib返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -1442,6 +1602,114 @@ class DownloadCustomizationResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._DownloadUrl = params.get("DownloadUrl")
+        self._RequestId = params.get("RequestId")
+
+
+class GetAsrKeyWordLibListRequest(AbstractModel):
+    """GetAsrKeyWordLibList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 分页Offset
+        :type Offset: int
+        :param _Limit: 分页Limit
+        :type Limit: int
+        :param _SpecifyNames: 词库名称或者UIN检索
+        :type SpecifyNames: list of str
+        :param _OnlySelf: 只看用户自己创建的
+        :type OnlySelf: bool
+        """
+        self._Offset = None
+        self._Limit = None
+        self._SpecifyNames = None
+        self._OnlySelf = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SpecifyNames(self):
+        return self._SpecifyNames
+
+    @SpecifyNames.setter
+    def SpecifyNames(self, SpecifyNames):
+        self._SpecifyNames = SpecifyNames
+
+    @property
+    def OnlySelf(self):
+        return self._OnlySelf
+
+    @OnlySelf.setter
+    def OnlySelf(self, OnlySelf):
+        self._OnlySelf = OnlySelf
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SpecifyNames = params.get("SpecifyNames")
+        self._OnlySelf = params.get("OnlySelf")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetAsrKeyWordLibListResponse(AbstractModel):
+    """GetAsrKeyWordLibList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 关键词列表返回数据
+        :type Data: :class:`tencentcloud.asr.v20190614.models.KeyWordLibListData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = KeyWordLibListData()
+            self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
 
@@ -1939,6 +2207,238 @@ class HotWord(AbstractModel):
         
 
 
+class KeyWordLib(AbstractModel):
+    """关键词表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KeyWordLibId: 关键词表ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyWordLibId: str
+        :param _Name: 关键词表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _KeyWordList: 关键词列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyWordList: list of str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self._KeyWordLibId = None
+        self._Name = None
+        self._KeyWordList = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def KeyWordLibId(self):
+        return self._KeyWordLibId
+
+    @KeyWordLibId.setter
+    def KeyWordLibId(self, KeyWordLibId):
+        self._KeyWordLibId = KeyWordLibId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def KeyWordList(self):
+        return self._KeyWordList
+
+    @KeyWordList.setter
+    def KeyWordList(self, KeyWordList):
+        self._KeyWordList = KeyWordList
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._KeyWordLibId = params.get("KeyWordLibId")
+        self._Name = params.get("Name")
+        self._KeyWordList = params.get("KeyWordList")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KeyWordLibIdData(AbstractModel):
+    """关键词ID
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KeyWordLibId: 关键词ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyWordLibId: str
+        """
+        self._KeyWordLibId = None
+
+    @property
+    def KeyWordLibId(self):
+        return self._KeyWordLibId
+
+    @KeyWordLibId.setter
+    def KeyWordLibId(self, KeyWordLibId):
+        self._KeyWordLibId = KeyWordLibId
+
+
+    def _deserialize(self, params):
+        self._KeyWordLibId = params.get("KeyWordLibId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KeyWordLibListData(AbstractModel):
+    """查询列表返回数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KeyWordLibList: 关键词表列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyWordLibList: list of KeyWordLib
+        :param _TotalCount: 关键词列表总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        """
+        self._KeyWordLibList = None
+        self._TotalCount = None
+
+    @property
+    def KeyWordLibList(self):
+        return self._KeyWordLibList
+
+    @KeyWordLibList.setter
+    def KeyWordLibList(self, KeyWordLibList):
+        self._KeyWordLibList = KeyWordLibList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        if params.get("KeyWordLibList") is not None:
+            self._KeyWordLibList = []
+            for item in params.get("KeyWordLibList"):
+                obj = KeyWordLib()
+                obj._deserialize(item)
+                self._KeyWordLibList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KeyWordResult(AbstractModel):
+    """关键字识别结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KeyWordLibID: 关键词库ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyWordLibID: str
+        :param _KeyWordLibName: 关键词库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyWordLibName: str
+        :param _KeyWords: 匹配到的关键词
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyWords: list of str
+        """
+        self._KeyWordLibID = None
+        self._KeyWordLibName = None
+        self._KeyWords = None
+
+    @property
+    def KeyWordLibID(self):
+        return self._KeyWordLibID
+
+    @KeyWordLibID.setter
+    def KeyWordLibID(self, KeyWordLibID):
+        self._KeyWordLibID = KeyWordLibID
+
+    @property
+    def KeyWordLibName(self):
+        return self._KeyWordLibName
+
+    @KeyWordLibName.setter
+    def KeyWordLibName(self, KeyWordLibName):
+        self._KeyWordLibName = KeyWordLibName
+
+    @property
+    def KeyWords(self):
+        return self._KeyWords
+
+    @KeyWords.setter
+    def KeyWords(self, KeyWords):
+        self._KeyWords = KeyWords
+
+
+    def _deserialize(self, params):
+        self._KeyWordLibID = params.get("KeyWordLibID")
+        self._KeyWordLibName = params.get("KeyWordLibName")
+        self._KeyWords = params.get("KeyWords")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Model(AbstractModel):
     """[自学习模型信息](https://cloud.tencent.com/document/product/1093/90813#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0)
 
@@ -2282,6 +2782,9 @@ class SentenceDetail(AbstractModel):
         :param _EmotionType: 情绪类型（可能为空）
 注意：此字段可能返回 null，表示取不到有效值。
         :type EmotionType: list of str
+        :param _KeyWordResults: 关键词识别结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyWordResults: list of KeyWordResult
         """
         self._FinalSentence = None
         self._SliceSentence = None
@@ -2295,6 +2798,7 @@ class SentenceDetail(AbstractModel):
         self._EmotionalEnergy = None
         self._SilenceTime = None
         self._EmotionType = None
+        self._KeyWordResults = None
 
     @property
     def FinalSentence(self):
@@ -2392,6 +2896,14 @@ class SentenceDetail(AbstractModel):
     def EmotionType(self, EmotionType):
         self._EmotionType = EmotionType
 
+    @property
+    def KeyWordResults(self):
+        return self._KeyWordResults
+
+    @KeyWordResults.setter
+    def KeyWordResults(self, KeyWordResults):
+        self._KeyWordResults = KeyWordResults
+
 
     def _deserialize(self, params):
         self._FinalSentence = params.get("FinalSentence")
@@ -2411,6 +2923,12 @@ class SentenceDetail(AbstractModel):
         self._EmotionalEnergy = params.get("EmotionalEnergy")
         self._SilenceTime = params.get("SilenceTime")
         self._EmotionType = params.get("EmotionType")
+        if params.get("KeyWordResults") is not None:
+            self._KeyWordResults = []
+            for item in params.get("KeyWordResults"):
+                obj = KeyWordResult()
+                obj._deserialize(item)
+                self._KeyWordResults.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3145,6 +3663,106 @@ class TaskStatus(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateAsrKeyWordLibRequest(AbstractModel):
+    """UpdateAsrKeyWordLib请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KeyWordLibId: 关键词表ID
+        :type KeyWordLibId: str
+        :param _Name: 词表名称，长度在1-20之间
+仅限中英文数字-_
+        :type Name: str
+        :param _KeyWordFile: - 词文件（纯文本文件）以行分隔 ，进行二进制base64编码
+- 格式要求：TXT 每行只有一个词，不满足格式则报错无法上传 
+- 每个词最多5个汉字或15个字符，单个词库最多不超过100个词
+- 此参数为空则只更新词表名称
+        :type KeyWordFile: str
+        """
+        self._KeyWordLibId = None
+        self._Name = None
+        self._KeyWordFile = None
+
+    @property
+    def KeyWordLibId(self):
+        return self._KeyWordLibId
+
+    @KeyWordLibId.setter
+    def KeyWordLibId(self, KeyWordLibId):
+        self._KeyWordLibId = KeyWordLibId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def KeyWordFile(self):
+        return self._KeyWordFile
+
+    @KeyWordFile.setter
+    def KeyWordFile(self, KeyWordFile):
+        self._KeyWordFile = KeyWordFile
+
+
+    def _deserialize(self, params):
+        self._KeyWordLibId = params.get("KeyWordLibId")
+        self._Name = params.get("Name")
+        self._KeyWordFile = params.get("KeyWordFile")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateAsrKeyWordLibResponse(AbstractModel):
+    """UpdateAsrKeyWordLib返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 关键词表ID数据
+        :type Data: :class:`tencentcloud.asr.v20190614.models.KeyWordLibIdData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = KeyWordLibIdData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateAsrVocabRequest(AbstractModel):

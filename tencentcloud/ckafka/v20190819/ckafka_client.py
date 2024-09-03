@@ -717,7 +717,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DeleteInstancePre(self, request):
-        """删除预付费实例
+        """删除预付费实例，该接口会对实例执行隔离并删除的动作，执行成功后实例会被直接删除销毁
 
         :param request: Request instance for DeleteInstancePre.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteInstancePreRequest`

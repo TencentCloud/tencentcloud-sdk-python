@@ -122,8 +122,7 @@ class DcClient(AbstractClient):
 
 
     def DeleteDirectConnect(self, request):
-        """删除物理专线。
-        只能删除处于已连接状态的物理专线。
+        """删除物理专线。只能删除处于已连接状态的物理专线。
 
         :param request: Request instance for DeleteDirectConnect.
         :type request: :class:`tencentcloud.dc.v20180410.models.DeleteDirectConnectRequest`
@@ -146,7 +145,7 @@ class DcClient(AbstractClient):
 
 
     def DeleteDirectConnectTunnel(self, request):
-        """删除专用通道
+        """删除专用通道。
 
         :param request: Request instance for DeleteDirectConnectTunnel.
         :type request: :class:`tencentcloud.dc.v20180410.models.DeleteDirectConnectTunnelRequest`
@@ -422,7 +421,7 @@ class DcClient(AbstractClient):
 
 
     def ModifyDirectConnectTunnelAttribute(self, request):
-        """修改专用通道属性
+        """修改专用通道属性。
 
         :param request: Request instance for ModifyDirectConnectTunnelAttribute.
         :type request: :class:`tencentcloud.dc.v20180410.models.ModifyDirectConnectTunnelAttributeRequest`

@@ -570,6 +570,8 @@ ChinaOther：中国其他；
         :type FaultReportContactNumber: str
         :param _SignLaw: 物理专线申请者是否签署了用户使用协议。默认已签署。
         :type SignLaw: bool
+        :param _Tags: 标签键值对
+        :type Tags: list of Tag
         """
         self._DirectConnectName = None
         self._AccessPointId = None
@@ -588,6 +590,7 @@ ChinaOther：中国其他；
         self._FaultReportContactPerson = None
         self._FaultReportContactNumber = None
         self._SignLaw = None
+        self._Tags = None
 
     @property
     def DirectConnectName(self):
@@ -725,6 +728,14 @@ ChinaOther：中国其他；
     def SignLaw(self, SignLaw):
         self._SignLaw = SignLaw
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._DirectConnectName = params.get("DirectConnectName")
@@ -744,6 +755,12 @@ ChinaOther：中国其他；
         self._FaultReportContactPerson = params.get("FaultReportContactPerson")
         self._FaultReportContactNumber = params.get("FaultReportContactNumber")
         self._SignLaw = params.get("SignLaw")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -805,11 +822,11 @@ class CreateDirectConnectTunnelRequest(AbstractModel):
         :param _DirectConnectOwnerAccount: 物理专线owner，缺省为当前客户（物理专线 owner）
 共享专线时这里需要填写共享专线的开发商账号 ID。
         :type DirectConnectOwnerAccount: str
-        :param _NetworkType: 网络类型，枚举：VPC、BMVPC、CCN；默认为VPC。VPC：私有网络；BMVPC：黑石网络；CCN：云联网）。
+        :param _NetworkType: 网络类型，枚举：VPC、CCN、NAT；默认为VPC。VPC：私有网络；CCN：云联网；NAT：NAT网络）。
         :type NetworkType: str
         :param _NetworkRegion: 网络地域。
         :type NetworkRegion: str
-        :param _VpcId: 私有网络统一ID或黑石网络统一ID。
+        :param _VpcId: 私有网络统一ID，在NetworkType为VPC时必填，且与专线网关所属的VPCID一致；NetworkType为其它组网类型时可不填，内部会统一处理。
         :type VpcId: str
         :param _DirectConnectGatewayId: 专线网关ID，例如 dcg-d545ddf。
         :type DirectConnectGatewayId: str
@@ -840,6 +857,8 @@ class CreateDirectConnectTunnelRequest(AbstractModel):
         :type BfdInfo: :class:`tencentcloud.dc.v20180410.models.BFDInfo`
         :param _NqaInfo: NQA配置信息。
         :type NqaInfo: :class:`tencentcloud.dc.v20180410.models.NQAInfo`
+        :param _Tags: 标签键值对
+        :type Tags: list of Tag
         """
         self._DirectConnectId = None
         self._DirectConnectTunnelName = None
@@ -861,6 +880,7 @@ class CreateDirectConnectTunnelRequest(AbstractModel):
         self._NqaEnable = None
         self._BfdInfo = None
         self._NqaInfo = None
+        self._Tags = None
 
     @property
     def DirectConnectId(self):
@@ -1022,6 +1042,14 @@ class CreateDirectConnectTunnelRequest(AbstractModel):
     def NqaInfo(self, NqaInfo):
         self._NqaInfo = NqaInfo
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._DirectConnectId = params.get("DirectConnectId")
@@ -1055,6 +1083,12 @@ class CreateDirectConnectTunnelRequest(AbstractModel):
         if params.get("NqaInfo") is not None:
             self._NqaInfo = NQAInfo()
             self._NqaInfo._deserialize(params.get("NqaInfo"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1167,7 +1201,7 @@ class DeleteDirectConnectTunnelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DirectConnectTunnelId: 专用通道ID
+        :param _DirectConnectTunnelId: 专用通道ID。
         :type DirectConnectTunnelId: str
         """
         self._DirectConnectTunnelId = None
@@ -1542,13 +1576,13 @@ class DescribeDirectConnectsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 过滤条件:
+        :param _Filters: 过滤条件。
         :type Filters: list of Filter
-        :param _DirectConnectIds: 物理专线 ID数组
+        :param _DirectConnectIds: 物理专线 ID数组。
         :type DirectConnectIds: list of str
-        :param _Offset: 偏移量，默认为0
+        :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param _Limit: 返回数量，默认为20，最大值为100
+        :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
         """
         self._Filters = None
@@ -1620,7 +1654,7 @@ class DescribeDirectConnectsResponse(AbstractModel):
         :type DirectConnectSet: list of DirectConnect
         :param _TotalCount: 符合物理专线列表数量。
         :type TotalCount: int
-        :param _AllSignLaw: 用户名下物理专线是否都签署了用户协议
+        :param _AllSignLaw: 用户名下物理专线是否都签署了用户协议。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AllSignLaw: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2184,6 +2218,12 @@ class DirectConnect(AbstractModel):
         :param _MinBandwidth: 物理专线最小带宽
 注意：此字段可能返回 null，表示取不到有效值。
         :type MinBandwidth: int
+        :param _Construct: 建设模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Construct: int
+        :param _AccessPointName: 物理专线的接入点名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessPointName: str
         """
         self._DirectConnectId = None
         self._DirectConnectName = None
@@ -2217,6 +2257,8 @@ class DirectConnect(AbstractModel):
         self._VlanZeroDirectConnectTunnelCount = None
         self._OtherVlanDirectConnectTunnelCount = None
         self._MinBandwidth = None
+        self._Construct = None
+        self._AccessPointName = None
 
     @property
     def DirectConnectId(self):
@@ -2474,6 +2516,22 @@ class DirectConnect(AbstractModel):
     def MinBandwidth(self, MinBandwidth):
         self._MinBandwidth = MinBandwidth
 
+    @property
+    def Construct(self):
+        return self._Construct
+
+    @Construct.setter
+    def Construct(self, Construct):
+        self._Construct = Construct
+
+    @property
+    def AccessPointName(self):
+        return self._AccessPointName
+
+    @AccessPointName.setter
+    def AccessPointName(self, AccessPointName):
+        self._AccessPointName = AccessPointName
+
 
     def _deserialize(self, params):
         self._DirectConnectId = params.get("DirectConnectId")
@@ -2513,6 +2571,8 @@ class DirectConnect(AbstractModel):
         self._VlanZeroDirectConnectTunnelCount = params.get("VlanZeroDirectConnectTunnelCount")
         self._OtherVlanDirectConnectTunnelCount = params.get("OtherVlanDirectConnectTunnelCount")
         self._MinBandwidth = params.get("MinBandwidth")
+        self._Construct = params.get("Construct")
+        self._AccessPointName = params.get("AccessPointName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3977,7 +4037,7 @@ class ModifyDirectConnectAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DirectConnectId: 物理专线的ID。
+        :param _DirectConnectId: 物理专线ID。
         :type DirectConnectId: str
         :param _DirectConnectName: 物理专线名称。
         :type DirectConnectName: str
@@ -3999,9 +4059,9 @@ class ModifyDirectConnectAttributeRequest(AbstractModel):
         :type FaultReportContactPerson: str
         :param _FaultReportContactNumber: 报障联系电话。
         :type FaultReportContactNumber: str
-        :param _SignLaw: 物理专线申请者补签用户使用协议
+        :param _SignLaw: 物理专线申请者补签用户使用协议。
         :type SignLaw: bool
-        :param _Bandwidth: 物理专线带宽
+        :param _Bandwidth: 物理专线带宽。
         :type Bandwidth: int
         """
         self._DirectConnectId = None
@@ -4179,21 +4239,21 @@ class ModifyDirectConnectTunnelAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DirectConnectTunnelId: 专用通道ID
+        :param _DirectConnectTunnelId: 专用通道ID。
         :type DirectConnectTunnelId: str
-        :param _DirectConnectTunnelName: 专用通道名称
+        :param _DirectConnectTunnelName: 专用通道名称。
         :type DirectConnectTunnelName: str
-        :param _BgpPeer: 用户侧BGP，包括Asn，AuthKey
+        :param _BgpPeer: 用户侧BGP，包括Asn，AuthKey。
         :type BgpPeer: :class:`tencentcloud.dc.v20180410.models.BgpPeer`
-        :param _RouteFilterPrefixes: 用户侧网段地址
+        :param _RouteFilterPrefixes: 用户侧网段地址。
         :type RouteFilterPrefixes: list of RouteFilterPrefix
-        :param _TencentAddress: 腾讯侧互联IP
+        :param _TencentAddress: 腾讯侧互联IP。
         :type TencentAddress: str
-        :param _CustomerAddress: 用户侧互联IP
+        :param _CustomerAddress: 用户侧互联IP。
         :type CustomerAddress: str
         :param _Bandwidth: 专用通道带宽值，单位为M。
         :type Bandwidth: int
-        :param _TencentBackupAddress: 腾讯侧备用互联IP
+        :param _TencentBackupAddress: 腾讯侧备用互联IP。
         :type TencentBackupAddress: str
         """
         self._DirectConnectTunnelId = None

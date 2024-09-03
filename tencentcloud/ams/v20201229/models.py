@@ -996,6 +996,10 @@ Block 建议屏蔽；
         :param _Duration: 识别音频时长，单位为毫秒；
 注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: str
+        :param _HitFlag: 是否命中(0:否, 1: 是)
+        :type HitFlag: int
+        :param _Score: 得分
+        :type Score: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1012,6 +1016,8 @@ Block 建议屏蔽；
         self._SpeakerResults = None
         self._RecognitionResults = None
         self._Duration = None
+        self._HitFlag = None
+        self._Score = None
         self._RequestId = None
 
     @property
@@ -1119,6 +1125,22 @@ Block 建议屏蔽；
         self._Duration = Duration
 
     @property
+    def HitFlag(self):
+        return self._HitFlag
+
+    @HitFlag.setter
+    def HitFlag(self, HitFlag):
+        self._HitFlag = HitFlag
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -1166,6 +1188,8 @@ Block 建议屏蔽；
                 obj._deserialize(item)
                 self._RecognitionResults.append(obj)
         self._Duration = params.get("Duration")
+        self._HitFlag = params.get("HitFlag")
+        self._Score = params.get("Score")
         self._RequestId = params.get("RequestId")
 
 

@@ -4532,6 +4532,8 @@ class CreateInstancePostRequest(AbstractModel):
         :type InstanceNum: int
         :param _PublicNetworkMonthly: 公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 6Mbps 公网带宽，此处传 3。需要保证传入参数为 3 的整数倍
         :type PublicNetworkMonthly: int
+        :param _Tags: 标签
+        :type Tags: list of Tag
         """
         self._InstanceName = None
         self._VpcId = None
@@ -4551,6 +4553,7 @@ class CreateInstancePostRequest(AbstractModel):
         self._ZoneIds = None
         self._InstanceNum = None
         self._PublicNetworkMonthly = None
+        self._Tags = None
 
     @property
     def InstanceName(self):
@@ -4696,6 +4699,14 @@ class CreateInstancePostRequest(AbstractModel):
     def PublicNetworkMonthly(self, PublicNetworkMonthly):
         self._PublicNetworkMonthly = PublicNetworkMonthly
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._InstanceName = params.get("InstanceName")
@@ -4716,6 +4727,12 @@ class CreateInstancePostRequest(AbstractModel):
         self._ZoneIds = params.get("ZoneIds")
         self._InstanceNum = params.get("InstanceNum")
         self._PublicNetworkMonthly = params.get("PublicNetworkMonthly")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5414,7 +5431,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
         :type ClusterId: int
         :param _KafkaVersion: 实例版本。目前支持 "0.10.2","1.1.1","2.4.1","2.4.2","2.8.1"。"2.4.1" 与 "2.4.2" 属于同一个版本，传任意一个均可。
         :type KafkaVersion: str
-        :param _SpecificationsType: 实例类型。"standard"：标准版，"profession"：专业版
+        :param _SpecificationsType: 实例类型。"standard"：标准版，"profession"：专业版。  (标准版仅国际站支持，国内站目前支持专业版)
         :type SpecificationsType: str
         :param _DiskType: 专业版实例磁盘类型，标准版实例不需要填写。"CLOUD_SSD"：SSD云硬盘；"CLOUD_BASIC"：高性能云硬盘。不传默认值为 "CLOUD_BASIC"
         :type DiskType: str
@@ -5436,6 +5453,8 @@ class CreatePostPaidInstanceRequest(AbstractModel):
         :type InstanceNum: int
         :param _PublicNetworkMonthly: 公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 6Mbps 公网带宽，此处传 3。需要保证传入参数为 3 的整数倍
         :type PublicNetworkMonthly: int
+        :param _Tags: 标签
+        :type Tags: list of Tag
         """
         self._InstanceName = None
         self._VpcId = None
@@ -5455,6 +5474,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
         self._ZoneIds = None
         self._InstanceNum = None
         self._PublicNetworkMonthly = None
+        self._Tags = None
 
     @property
     def InstanceName(self):
@@ -5600,6 +5620,14 @@ class CreatePostPaidInstanceRequest(AbstractModel):
     def PublicNetworkMonthly(self, PublicNetworkMonthly):
         self._PublicNetworkMonthly = PublicNetworkMonthly
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._InstanceName = params.get("InstanceName")
@@ -5620,6 +5648,12 @@ class CreatePostPaidInstanceRequest(AbstractModel):
         self._ZoneIds = params.get("ZoneIds")
         self._InstanceNum = params.get("InstanceNum")
         self._PublicNetworkMonthly = params.get("PublicNetworkMonthly")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8297,10 +8331,21 @@ class DeleteRouteTriggerTimeRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _InstanceId: 实例id
+        :type InstanceId: str
         :param _DelayTime: 修改时间
         :type DelayTime: str
         """
+        self._InstanceId = None
         self._DelayTime = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
     @property
     def DelayTime(self):
@@ -8312,6 +8357,7 @@ class DeleteRouteTriggerTimeRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
         self._DelayTime = params.get("DelayTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

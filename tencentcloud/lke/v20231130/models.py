@@ -1884,6 +1884,8 @@ class CreateQARequest(AbstractModel):
         :type ExpireStart: str
         :param _ExpireEnd: 有效结束时间，unix时间戳，0代表永久有效
         :type ExpireEnd: str
+        :param _SimilarQuestions: 相似问内容
+        :type SimilarQuestions: list of str
         """
         self._BotBizId = None
         self._Question = None
@@ -1895,6 +1897,7 @@ class CreateQARequest(AbstractModel):
         self._CateBizId = None
         self._ExpireStart = None
         self._ExpireEnd = None
+        self._SimilarQuestions = None
 
     @property
     def BotBizId(self):
@@ -1976,6 +1979,14 @@ class CreateQARequest(AbstractModel):
     def ExpireEnd(self, ExpireEnd):
         self._ExpireEnd = ExpireEnd
 
+    @property
+    def SimilarQuestions(self):
+        return self._SimilarQuestions
+
+    @SimilarQuestions.setter
+    def SimilarQuestions(self, SimilarQuestions):
+        self._SimilarQuestions = SimilarQuestions
+
 
     def _deserialize(self, params):
         self._BotBizId = params.get("BotBizId")
@@ -1993,6 +2004,7 @@ class CreateQARequest(AbstractModel):
         self._CateBizId = params.get("CateBizId")
         self._ExpireStart = params.get("ExpireStart")
         self._ExpireEnd = params.get("ExpireEnd")
+        self._SimilarQuestions = params.get("SimilarQuestions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3895,6 +3907,8 @@ class DescribeQAResponse(AbstractModel):
         :type ExpireStart: str
         :param _ExpireEnd: 有效结束时间，unix时间戳，0代表永久有效
         :type ExpireEnd: str
+        :param _SimilarQuestions: 相似问列表信息
+        :type SimilarQuestions: list of SimilarQuestion
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3922,6 +3936,7 @@ class DescribeQAResponse(AbstractModel):
         self._AttrLabels = None
         self._ExpireStart = None
         self._ExpireEnd = None
+        self._SimilarQuestions = None
         self._RequestId = None
 
     @property
@@ -4117,6 +4132,14 @@ class DescribeQAResponse(AbstractModel):
         self._ExpireEnd = ExpireEnd
 
     @property
+    def SimilarQuestions(self):
+        return self._SimilarQuestions
+
+    @SimilarQuestions.setter
+    def SimilarQuestions(self, SimilarQuestions):
+        self._SimilarQuestions = SimilarQuestions
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -4160,6 +4183,12 @@ class DescribeQAResponse(AbstractModel):
                 self._AttrLabels.append(obj)
         self._ExpireStart = params.get("ExpireStart")
         self._ExpireEnd = params.get("ExpireEnd")
+        if params.get("SimilarQuestions") is not None:
+            self._SimilarQuestions = []
+            for item in params.get("SimilarQuestions"):
+                obj = SimilarQuestion()
+                obj._deserialize(item)
+                self._SimilarQuestions.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -9470,7 +9499,7 @@ class ListQARequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _PageNumber: 页码
         :type PageNumber: int
@@ -9480,7 +9509,7 @@ class ListQARequest(AbstractModel):
         :type Query: str
         :param _AcceptStatus: 校验状态(1未校验2采纳3不采纳)
         :type AcceptStatus: list of int
-        :param _ReleaseStatus: 发布状态(2待发布 3发布中 4已发布 7审核中 8审核失败 9人工申述中 11人工申述失败)
+        :param _ReleaseStatus: 发布状态(2待发布 3发布中 4已发布 7审核中 8审核失败 9人工申述中 11人工申述失败 12已过期 13超量失效 14超量失效恢复)
         :type ReleaseStatus: list of int
         :param _DocBizId: 文档ID
         :type DocBizId: str
@@ -9745,6 +9774,16 @@ class ListQaItem(AbstractModel):
         :type FileType: str
         :param _QaCharSize: 问答字符数
         :type QaCharSize: str
+        :param _ExpireStart: 有效开始时间，unix时间戳
+        :type ExpireStart: str
+        :param _ExpireEnd: 有效结束时间，unix时间戳，0代表永久有效
+        :type ExpireEnd: str
+        :param _AttrRange: 属性标签适用范围 1：全部，2：按条件
+        :type AttrRange: int
+        :param _AttrLabels: 属性标签
+        :type AttrLabels: list of AttrLabel
+        :param _SimilarQuestionNum: 相似问个数
+        :type SimilarQuestionNum: int
         """
         self._QaBizId = None
         self._Question = None
@@ -9762,6 +9801,11 @@ class ListQaItem(AbstractModel):
         self._FileName = None
         self._FileType = None
         self._QaCharSize = None
+        self._ExpireStart = None
+        self._ExpireEnd = None
+        self._AttrRange = None
+        self._AttrLabels = None
+        self._SimilarQuestionNum = None
 
     @property
     def QaBizId(self):
@@ -9891,6 +9935,46 @@ class ListQaItem(AbstractModel):
     def QaCharSize(self, QaCharSize):
         self._QaCharSize = QaCharSize
 
+    @property
+    def ExpireStart(self):
+        return self._ExpireStart
+
+    @ExpireStart.setter
+    def ExpireStart(self, ExpireStart):
+        self._ExpireStart = ExpireStart
+
+    @property
+    def ExpireEnd(self):
+        return self._ExpireEnd
+
+    @ExpireEnd.setter
+    def ExpireEnd(self, ExpireEnd):
+        self._ExpireEnd = ExpireEnd
+
+    @property
+    def AttrRange(self):
+        return self._AttrRange
+
+    @AttrRange.setter
+    def AttrRange(self, AttrRange):
+        self._AttrRange = AttrRange
+
+    @property
+    def AttrLabels(self):
+        return self._AttrLabels
+
+    @AttrLabels.setter
+    def AttrLabels(self, AttrLabels):
+        self._AttrLabels = AttrLabels
+
+    @property
+    def SimilarQuestionNum(self):
+        return self._SimilarQuestionNum
+
+    @SimilarQuestionNum.setter
+    def SimilarQuestionNum(self, SimilarQuestionNum):
+        self._SimilarQuestionNum = SimilarQuestionNum
+
 
     def _deserialize(self, params):
         self._QaBizId = params.get("QaBizId")
@@ -9909,6 +9993,16 @@ class ListQaItem(AbstractModel):
         self._FileName = params.get("FileName")
         self._FileType = params.get("FileType")
         self._QaCharSize = params.get("QaCharSize")
+        self._ExpireStart = params.get("ExpireStart")
+        self._ExpireEnd = params.get("ExpireEnd")
+        self._AttrRange = params.get("AttrRange")
+        if params.get("AttrLabels") is not None:
+            self._AttrLabels = []
+            for item in params.get("AttrLabels"):
+                obj = AttrLabel()
+                obj._deserialize(item)
+                self._AttrLabels.append(obj)
+        self._SimilarQuestionNum = params.get("SimilarQuestionNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12177,6 +12271,8 @@ class ModifyQARequest(AbstractModel):
         :type ExpireStart: str
         :param _ExpireEnd: 有效结束时间，unix时间戳，0代表永久有效
         :type ExpireEnd: str
+        :param _SimilarQuestionModify: 相似问修改信息(相似问没有修改则不传)
+        :type SimilarQuestionModify: :class:`tencentcloud.lke.v20231130.models.SimilarQuestionModify`
         """
         self._BotBizId = None
         self._QaBizId = None
@@ -12189,6 +12285,7 @@ class ModifyQARequest(AbstractModel):
         self._CateBizId = None
         self._ExpireStart = None
         self._ExpireEnd = None
+        self._SimilarQuestionModify = None
 
     @property
     def BotBizId(self):
@@ -12278,6 +12375,14 @@ class ModifyQARequest(AbstractModel):
     def ExpireEnd(self, ExpireEnd):
         self._ExpireEnd = ExpireEnd
 
+    @property
+    def SimilarQuestionModify(self):
+        return self._SimilarQuestionModify
+
+    @SimilarQuestionModify.setter
+    def SimilarQuestionModify(self, SimilarQuestionModify):
+        self._SimilarQuestionModify = SimilarQuestionModify
+
 
     def _deserialize(self, params):
         self._BotBizId = params.get("BotBizId")
@@ -12296,6 +12401,9 @@ class ModifyQARequest(AbstractModel):
         self._CateBizId = params.get("CateBizId")
         self._ExpireStart = params.get("ExpireStart")
         self._ExpireEnd = params.get("ExpireEnd")
+        if params.get("SimilarQuestionModify") is not None:
+            self._SimilarQuestionModify = SimilarQuestionModify()
+            self._SimilarQuestionModify._deserialize(params.get("SimilarQuestionModify"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15695,6 +15803,120 @@ class SaveDocResponse(AbstractModel):
         self._ErrorLink = params.get("ErrorLink")
         self._ErrorLinkText = params.get("ErrorLinkText")
         self._RequestId = params.get("RequestId")
+
+
+class SimilarQuestion(AbstractModel):
+    """相似问信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SimBizId: 相似问ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SimBizId: str
+        :param _Question: 相似问内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Question: str
+        """
+        self._SimBizId = None
+        self._Question = None
+
+    @property
+    def SimBizId(self):
+        return self._SimBizId
+
+    @SimBizId.setter
+    def SimBizId(self, SimBizId):
+        self._SimBizId = SimBizId
+
+    @property
+    def Question(self):
+        return self._Question
+
+    @Question.setter
+    def Question(self, Question):
+        self._Question = Question
+
+
+    def _deserialize(self, params):
+        self._SimBizId = params.get("SimBizId")
+        self._Question = params.get("Question")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SimilarQuestionModify(AbstractModel):
+    """相似问修改(更新)信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AddQuestions: 需要添加的相似问(内容)列表
+        :type AddQuestions: list of str
+        :param _UpdateQuestions: 需要更新的相似问列表
+        :type UpdateQuestions: list of SimilarQuestion
+        :param _DeleteQuestions: 需要删除的相似问列表
+        :type DeleteQuestions: list of SimilarQuestion
+        """
+        self._AddQuestions = None
+        self._UpdateQuestions = None
+        self._DeleteQuestions = None
+
+    @property
+    def AddQuestions(self):
+        return self._AddQuestions
+
+    @AddQuestions.setter
+    def AddQuestions(self, AddQuestions):
+        self._AddQuestions = AddQuestions
+
+    @property
+    def UpdateQuestions(self):
+        return self._UpdateQuestions
+
+    @UpdateQuestions.setter
+    def UpdateQuestions(self, UpdateQuestions):
+        self._UpdateQuestions = UpdateQuestions
+
+    @property
+    def DeleteQuestions(self):
+        return self._DeleteQuestions
+
+    @DeleteQuestions.setter
+    def DeleteQuestions(self, DeleteQuestions):
+        self._DeleteQuestions = DeleteQuestions
+
+
+    def _deserialize(self, params):
+        self._AddQuestions = params.get("AddQuestions")
+        if params.get("UpdateQuestions") is not None:
+            self._UpdateQuestions = []
+            for item in params.get("UpdateQuestions"):
+                obj = SimilarQuestion()
+                obj._deserialize(item)
+                self._UpdateQuestions.append(obj)
+        if params.get("DeleteQuestions") is not None:
+            self._DeleteQuestions = []
+            for item in params.get("DeleteQuestions"):
+                obj = SimilarQuestion()
+                obj._deserialize(item)
+                self._DeleteQuestions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class StopDocParseRequest(AbstractModel):

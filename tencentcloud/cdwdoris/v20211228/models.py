@@ -5234,7 +5234,7 @@ class DescribeInstancesRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 分页参数，分页步长，默认为10
         :type Limit: int
-        :param _SearchTags: 搜索标签列表
+        :param _SearchTags: 搜索标签列表，没匹配到则不过滤集群列表
         :type SearchTags: list of SearchTags
         """
         self._SearchInstanceId = None
@@ -6084,6 +6084,17 @@ class DescribeSqlApisRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _ApiType: GetUsers：获取用户列表；
+GetDatabases：获取数据库列表；
+GetTables：获取数据库表列表；
+GetUserPrivilegesV2：获取用户下的权限，粒度到表级别；
+DeleteUser：删除用户；
+GetCatalog：获取Catalog列表；
+        :type ApiType: str
+        :param _UserName: 用户名称
+        :type UserName: str
         :param _WhiteHost: 用户链接来自的 IP
         :type WhiteHost: str
         :param _Catalog: catalog名称
@@ -6095,11 +6106,38 @@ class DescribeSqlApisRequest(AbstractModel):
         :param _TableName: 表名
         :type TableName: str
         """
+        self._InstanceId = None
+        self._ApiType = None
+        self._UserName = None
         self._WhiteHost = None
         self._Catalog = None
         self._Catalogs = None
         self._DatabaseName = None
         self._TableName = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ApiType(self):
+        return self._ApiType
+
+    @ApiType.setter
+    def ApiType(self, ApiType):
+        self._ApiType = ApiType
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
 
     @property
     def WhiteHost(self):
@@ -6143,6 +6181,9 @@ class DescribeSqlApisRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ApiType = params.get("ApiType")
+        self._UserName = params.get("UserName")
         self._WhiteHost = params.get("WhiteHost")
         self._Catalog = params.get("Catalog")
         self._Catalogs = params.get("Catalogs")
@@ -6165,10 +6206,34 @@ class DescribeSqlApisResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ReturnData: 返回的查询数据，大部分情况是list，也可能是bool
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReturnData: str
+        :param _ErrorMsg: 错误消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ReturnData = None
+        self._ErrorMsg = None
         self._RequestId = None
+
+    @property
+    def ReturnData(self):
+        return self._ReturnData
+
+    @ReturnData.setter
+    def ReturnData(self, ReturnData):
+        self._ReturnData = ReturnData
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
 
     @property
     def RequestId(self):
@@ -6180,6 +6245,8 @@ class DescribeSqlApisResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ReturnData = params.get("ReturnData")
+        self._ErrorMsg = params.get("ErrorMsg")
         self._RequestId = params.get("RequestId")
 
 
@@ -11244,7 +11311,7 @@ class SearchTags(AbstractModel):
         :type TagKey: str
         :param _TagValue: 标签的值
         :type TagValue: str
-        :param _AllValue: 1表示只输入标签的键，没有输入值；0表示输入键时且输入值
+        :param _AllValue: 1表示只输入标签的键，没有输入值；非1则表示输入键时且输入值
         :type AllValue: int
         """
         self._TagKey = None

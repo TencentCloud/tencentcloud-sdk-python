@@ -16068,6 +16068,138 @@ class DescribeRollbackTimeValidityResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeServerlessStrategyRequest(AbstractModel):
+    """DescribeServerlessStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: serverless集群id
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeServerlessStrategyResponse(AbstractModel):
+    """DescribeServerlessStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AutoPauseDelay: cpu负载为 0 时持续多久（秒）发起自动暂停
+        :type AutoPauseDelay: int
+        :param _AutoScaleUpDelay: cpu负载超过当前规格核数时，持续多久（秒）发起自动扩容
+        :type AutoScaleUpDelay: int
+        :param _AutoScaleDownDelay: cpu 负载低于低一级规格核数时，持续多久（秒）发起自动缩容
+        :type AutoScaleDownDelay: int
+        :param _AutoPause: 是否自动暂停，可能值：
+yes
+no
+        :type AutoPause: str
+        :param _AutoScaleUp: 集群是否允许向上扩容，可选范围<li>yes</li><li>no</li>
+        :type AutoScaleUp: str
+        :param _AutoScaleDown: 集群是否允许向下缩容，可选范围<li>yes</li><li>no</li>
+        :type AutoScaleDown: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AutoPauseDelay = None
+        self._AutoScaleUpDelay = None
+        self._AutoScaleDownDelay = None
+        self._AutoPause = None
+        self._AutoScaleUp = None
+        self._AutoScaleDown = None
+        self._RequestId = None
+
+    @property
+    def AutoPauseDelay(self):
+        return self._AutoPauseDelay
+
+    @AutoPauseDelay.setter
+    def AutoPauseDelay(self, AutoPauseDelay):
+        self._AutoPauseDelay = AutoPauseDelay
+
+    @property
+    def AutoScaleUpDelay(self):
+        return self._AutoScaleUpDelay
+
+    @AutoScaleUpDelay.setter
+    def AutoScaleUpDelay(self, AutoScaleUpDelay):
+        self._AutoScaleUpDelay = AutoScaleUpDelay
+
+    @property
+    def AutoScaleDownDelay(self):
+        return self._AutoScaleDownDelay
+
+    @AutoScaleDownDelay.setter
+    def AutoScaleDownDelay(self, AutoScaleDownDelay):
+        self._AutoScaleDownDelay = AutoScaleDownDelay
+
+    @property
+    def AutoPause(self):
+        return self._AutoPause
+
+    @AutoPause.setter
+    def AutoPause(self, AutoPause):
+        self._AutoPause = AutoPause
+
+    @property
+    def AutoScaleUp(self):
+        return self._AutoScaleUp
+
+    @AutoScaleUp.setter
+    def AutoScaleUp(self, AutoScaleUp):
+        self._AutoScaleUp = AutoScaleUp
+
+    @property
+    def AutoScaleDown(self):
+        return self._AutoScaleDown
+
+    @AutoScaleDown.setter
+    def AutoScaleDown(self, AutoScaleDown):
+        self._AutoScaleDown = AutoScaleDown
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AutoPauseDelay = params.get("AutoPauseDelay")
+        self._AutoScaleUpDelay = params.get("AutoScaleUpDelay")
+        self._AutoScaleDownDelay = params.get("AutoScaleDownDelay")
+        self._AutoPause = params.get("AutoPause")
+        self._AutoScaleUp = params.get("AutoScaleUp")
+        self._AutoScaleDown = params.get("AutoScaleDown")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSupportProxyVersionRequest(AbstractModel):
     """DescribeSupportProxyVersion请求参数结构体
 
@@ -22331,6 +22463,222 @@ class ModifyResourcePackagesDeductionPriorityResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyServerlessStrategyRequest(AbstractModel):
+    """ModifyServerlessStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: serverless集群id
+        :type ClusterId: str
+        :param _AutoPause: 集群是否自动暂停，可选范围
+<li>yes</li>
+<li>no</li>
+        :type AutoPause: str
+        :param _AutoPauseDelay: 集群自动暂停的延迟，单位秒，可选范围[600,691200]，默认600
+        :type AutoPauseDelay: int
+        :param _AutoScaleUpDelay: 该参数暂时无效
+        :type AutoScaleUpDelay: int
+        :param _AutoScaleDownDelay: 该参数暂时无效
+        :type AutoScaleDownDelay: int
+        :param _MinCpu: cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+        :type MinCpu: float
+        :param _MaxCpu: cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+        :type MaxCpu: float
+        :param _MinRoCpu: 只读实例cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+        :type MinRoCpu: float
+        :param _MaxRoCpu: 只读cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+        :type MaxRoCpu: float
+        :param _MinRoCount: 只读节点最小个数
+        :type MinRoCount: int
+        :param _MaxRoCount: 只读节点最大个数
+        :type MaxRoCount: int
+        :param _AutoScaleUp: 集群是否允许扩容，可选范围<li>yes</li><li>no</li>
+        :type AutoScaleUp: str
+        :param _AutoScaleDown: 集群是否允许缩容，可选范围<li>yes</li><li>no</li>
+        :type AutoScaleDown: str
+        """
+        self._ClusterId = None
+        self._AutoPause = None
+        self._AutoPauseDelay = None
+        self._AutoScaleUpDelay = None
+        self._AutoScaleDownDelay = None
+        self._MinCpu = None
+        self._MaxCpu = None
+        self._MinRoCpu = None
+        self._MaxRoCpu = None
+        self._MinRoCount = None
+        self._MaxRoCount = None
+        self._AutoScaleUp = None
+        self._AutoScaleDown = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def AutoPause(self):
+        return self._AutoPause
+
+    @AutoPause.setter
+    def AutoPause(self, AutoPause):
+        self._AutoPause = AutoPause
+
+    @property
+    def AutoPauseDelay(self):
+        return self._AutoPauseDelay
+
+    @AutoPauseDelay.setter
+    def AutoPauseDelay(self, AutoPauseDelay):
+        self._AutoPauseDelay = AutoPauseDelay
+
+    @property
+    def AutoScaleUpDelay(self):
+        return self._AutoScaleUpDelay
+
+    @AutoScaleUpDelay.setter
+    def AutoScaleUpDelay(self, AutoScaleUpDelay):
+        self._AutoScaleUpDelay = AutoScaleUpDelay
+
+    @property
+    def AutoScaleDownDelay(self):
+        return self._AutoScaleDownDelay
+
+    @AutoScaleDownDelay.setter
+    def AutoScaleDownDelay(self, AutoScaleDownDelay):
+        self._AutoScaleDownDelay = AutoScaleDownDelay
+
+    @property
+    def MinCpu(self):
+        return self._MinCpu
+
+    @MinCpu.setter
+    def MinCpu(self, MinCpu):
+        self._MinCpu = MinCpu
+
+    @property
+    def MaxCpu(self):
+        return self._MaxCpu
+
+    @MaxCpu.setter
+    def MaxCpu(self, MaxCpu):
+        self._MaxCpu = MaxCpu
+
+    @property
+    def MinRoCpu(self):
+        return self._MinRoCpu
+
+    @MinRoCpu.setter
+    def MinRoCpu(self, MinRoCpu):
+        self._MinRoCpu = MinRoCpu
+
+    @property
+    def MaxRoCpu(self):
+        return self._MaxRoCpu
+
+    @MaxRoCpu.setter
+    def MaxRoCpu(self, MaxRoCpu):
+        self._MaxRoCpu = MaxRoCpu
+
+    @property
+    def MinRoCount(self):
+        return self._MinRoCount
+
+    @MinRoCount.setter
+    def MinRoCount(self, MinRoCount):
+        self._MinRoCount = MinRoCount
+
+    @property
+    def MaxRoCount(self):
+        return self._MaxRoCount
+
+    @MaxRoCount.setter
+    def MaxRoCount(self, MaxRoCount):
+        self._MaxRoCount = MaxRoCount
+
+    @property
+    def AutoScaleUp(self):
+        return self._AutoScaleUp
+
+    @AutoScaleUp.setter
+    def AutoScaleUp(self, AutoScaleUp):
+        self._AutoScaleUp = AutoScaleUp
+
+    @property
+    def AutoScaleDown(self):
+        return self._AutoScaleDown
+
+    @AutoScaleDown.setter
+    def AutoScaleDown(self, AutoScaleDown):
+        self._AutoScaleDown = AutoScaleDown
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._AutoPause = params.get("AutoPause")
+        self._AutoPauseDelay = params.get("AutoPauseDelay")
+        self._AutoScaleUpDelay = params.get("AutoScaleUpDelay")
+        self._AutoScaleDownDelay = params.get("AutoScaleDownDelay")
+        self._MinCpu = params.get("MinCpu")
+        self._MaxCpu = params.get("MaxCpu")
+        self._MinRoCpu = params.get("MinRoCpu")
+        self._MaxRoCpu = params.get("MaxRoCpu")
+        self._MinRoCount = params.get("MinRoCount")
+        self._MaxRoCount = params.get("MaxRoCount")
+        self._AutoScaleUp = params.get("AutoScaleUp")
+        self._AutoScaleDown = params.get("AutoScaleDown")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyServerlessStrategyResponse(AbstractModel):
+    """ModifyServerlessStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 异步流程id
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
 
 

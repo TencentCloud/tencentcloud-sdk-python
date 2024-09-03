@@ -2792,6 +2792,8 @@ class CreateResourceRequest(AbstractModel):
         :type AutoRenewFlag: int
         :param _DeployZone: 部署zone
         :type DeployZone: str
+        :param _Trial: 0非试用版，1试用版
+        :type Trial: int
         """
         self._DeployRegion = None
         self._VpcId = None
@@ -2803,6 +2805,7 @@ class CreateResourceRequest(AbstractModel):
         self._PayMode = None
         self._AutoRenewFlag = None
         self._DeployZone = None
+        self._Trial = None
 
     @property
     def DeployRegion(self):
@@ -2884,6 +2887,14 @@ class CreateResourceRequest(AbstractModel):
     def DeployZone(self, DeployZone):
         self._DeployZone = DeployZone
 
+    @property
+    def Trial(self):
+        return self._Trial
+
+    @Trial.setter
+    def Trial(self, Trial):
+        self._Trial = Trial
+
 
     def _deserialize(self, params):
         self._DeployRegion = params.get("DeployRegion")
@@ -2896,6 +2907,7 @@ class CreateResourceRequest(AbstractModel):
         self._PayMode = params.get("PayMode")
         self._AutoRenewFlag = params.get("AutoRenewFlag")
         self._DeployZone = params.get("DeployZone")
+        self._Trial = params.get("Trial")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
