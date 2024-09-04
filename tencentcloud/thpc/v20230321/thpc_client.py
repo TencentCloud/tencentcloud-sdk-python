@@ -424,6 +424,29 @@ class ThpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeWorkspaces(self, request):
+        """本接口（DescribeWorkspaces）用于查询工作空间列表。
+
+        :param request: Request instance for DescribeWorkspaces.
+        :type request: :class:`tencentcloud.thpc.v20230321.models.DescribeWorkspacesRequest`
+        :rtype: :class:`tencentcloud.thpc.v20230321.models.DescribeWorkspacesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWorkspaces", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWorkspacesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DetachNodes(self, request):
         """本接口 (DetachNodes) 用于将一个或者多个计算节点从集群中移除，但是不销毁指定计算资源。
 
@@ -470,6 +493,29 @@ class ThpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyWorkspacesAttribute(self, request):
+        """本接口 (ModifyWorkspacesAttribute) 用于修改工作空间的属性（目前只支持修改工作空间的名称）。
+
+        :param request: Request instance for ModifyWorkspacesAttribute.
+        :type request: :class:`tencentcloud.thpc.v20230321.models.ModifyWorkspacesAttributeRequest`
+        :rtype: :class:`tencentcloud.thpc.v20230321.models.ModifyWorkspacesAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyWorkspacesAttribute", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyWorkspacesAttributeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SetAutoScalingConfiguration(self, request):
         """本接口(SetAutoScalingConfiguration)用于为集群设置集群弹性伸缩配置信息。
 
@@ -484,6 +530,29 @@ class ThpcClient(AbstractClient):
             body = self.call("SetAutoScalingConfiguration", params, headers=headers)
             response = json.loads(body)
             model = models.SetAutoScalingConfigurationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def TerminateWorkspaces(self, request):
+        """本接口 (TerminateWorkspaces) 用于主动退还工作空间。
+
+        :param request: Request instance for TerminateWorkspaces.
+        :type request: :class:`tencentcloud.thpc.v20230321.models.TerminateWorkspacesRequest`
+        :rtype: :class:`tencentcloud.thpc.v20230321.models.TerminateWorkspacesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TerminateWorkspaces", params, headers=headers)
+            response = json.loads(body)
+            model = models.TerminateWorkspacesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

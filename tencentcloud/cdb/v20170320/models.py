@@ -2584,7 +2584,7 @@ class BackupInfo(AbstractModel):
         :type Region: str
         :param _RemoteInfo: 异地备份详细信息
         :type RemoteInfo: list of RemoteBackupInfo
-        :param _CosStorageType: 存储方式，0-常规存储，1-归档存储，默认为0
+        :param _CosStorageType: 存储方式，0-常规存储，1-归档存储，2-标准存储，默认为0
         :type CosStorageType: int
         :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
         :type InstanceId: str
@@ -3141,7 +3141,7 @@ class BinlogInfo(AbstractModel):
         :type Status: str
         :param _RemoteInfo: binlog异地备份详细信息
         :type RemoteInfo: list of RemoteBackupInfo
-        :param _CosStorageType: 存储方式，0-常规存储，1-归档存储，默认为0
+        :param _CosStorageType: 存储方式，0-常规存储，1-归档存储，2-标准存储，默认为0
         :type CosStorageType: int
         :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
         :type InstanceId: str

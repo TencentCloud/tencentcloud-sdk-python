@@ -14556,6 +14556,17 @@ class DescribeDSPARDBDataAssetDetailRequest(AbstractModel):
         :type DspaId: str
         :param _ComplianceId: 合规组Id
         :type ComplianceId: int
+        :param _Filters: 过滤数组。支持的Name：
+DataSourceID 数据源ID
+DbName 数据库名称
+CategoryID 敏感数据分类ID
+RuleID 规则ID
+LevelID 敏感分级ID
+ResourceRegion 资源所在地域
+SensitiveField 过滤敏感字段，可选值为1，或者无此SensitiveField字段
+DataSourceType 数据源类型，不填默认过滤非自建的所有关系型数据源类型，填selfbuilt-db只过滤自建类型
+注意：每个name默认支持最多5个values。
+        :type Filters: list of Filter
         :param _Offset: 偏移量，默认为0。
         :type Offset: int
         :param _Limit: 返回数量，默认为20，最大值为100。
@@ -14566,6 +14577,7 @@ DESC降序
         """
         self._DspaId = None
         self._ComplianceId = None
+        self._Filters = None
         self._Offset = None
         self._Limit = None
         self._CreditScore = None
@@ -14585,6 +14597,14 @@ DESC降序
     @ComplianceId.setter
     def ComplianceId(self, ComplianceId):
         self._ComplianceId = ComplianceId
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
     @property
     def Offset(self):
@@ -14614,6 +14634,12 @@ DESC降序
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
         self._ComplianceId = params.get("ComplianceId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._CreditScore = params.get("CreditScore")

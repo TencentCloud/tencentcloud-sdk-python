@@ -5443,6 +5443,8 @@ class ModifyUserRoleRequest(AbstractModel):
         :type AreaCode: str
         :param _AppUserId: 企业微信应用用户id
         :type AppUserId: str
+        :param _LoginSecurityStatus: 是否开启手机验证码登录（0 关闭，1 开启）
+        :type LoginSecurityStatus: int
         """
         self._UserId = None
         self._RoleIdList = None
@@ -5451,6 +5453,7 @@ class ModifyUserRoleRequest(AbstractModel):
         self._PhoneNumber = None
         self._AreaCode = None
         self._AppUserId = None
+        self._LoginSecurityStatus = None
 
     @property
     def UserId(self):
@@ -5508,6 +5511,14 @@ class ModifyUserRoleRequest(AbstractModel):
     def AppUserId(self, AppUserId):
         self._AppUserId = AppUserId
 
+    @property
+    def LoginSecurityStatus(self):
+        return self._LoginSecurityStatus
+
+    @LoginSecurityStatus.setter
+    def LoginSecurityStatus(self, LoginSecurityStatus):
+        self._LoginSecurityStatus = LoginSecurityStatus
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
@@ -5517,6 +5528,7 @@ class ModifyUserRoleRequest(AbstractModel):
         self._PhoneNumber = params.get("PhoneNumber")
         self._AreaCode = params.get("AreaCode")
         self._AppUserId = params.get("AppUserId")
+        self._LoginSecurityStatus = params.get("LoginSecurityStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

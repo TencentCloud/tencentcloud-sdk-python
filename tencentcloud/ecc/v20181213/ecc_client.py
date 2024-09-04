@@ -74,8 +74,7 @@ class EccClient(AbstractClient):
 
 
     def ECC(self, request):
-        """接口请求域名： ecc.tencentcloudapi.com
-        纯文本英语作文批改
+        """纯文本英语作文批改
 
         :param request: Request instance for ECC.
         :type request: :class:`tencentcloud.ecc.v20181213.models.ECCRequest`

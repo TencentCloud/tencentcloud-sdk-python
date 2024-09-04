@@ -3072,6 +3072,134 @@ class DescribeQueuesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeWorkspacesRequest(AbstractModel):
+    """DescribeWorkspaces请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceIds: 集群ID列表。通过该参数可以指定需要查询信息的集群列表。<br>如果您不指定该参数，则返回Limit数量以内的集群信息。
+        :type SpaceIds: list of str
+        :param _Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :type Offset: int
+        :param _Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :type Limit: int
+        :param _Filters: 过滤列表
+        :type Filters: list of Filter
+        """
+        self._SpaceIds = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def SpaceIds(self):
+        return self._SpaceIds
+
+    @SpaceIds.setter
+    def SpaceIds(self, SpaceIds):
+        self._SpaceIds = SpaceIds
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._SpaceIds = params.get("SpaceIds")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWorkspacesResponse(AbstractModel):
+    """DescribeWorkspaces返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceSet: 集群概览信息列表
+        :type SpaceSet: list of SpaceInfo
+        :param _TotalCount: 集群数量
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SpaceSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def SpaceSet(self):
+        return self._SpaceSet
+
+    @SpaceSet.setter
+    def SpaceSet(self, SpaceSet):
+        self._SpaceSet = SpaceSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SpaceSet") is not None:
+            self._SpaceSet = []
+            for item in params.get("SpaceSet"):
+                obj = SpaceInfo()
+                obj._deserialize(item)
+                self._SpaceSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DetachNodesRequest(AbstractModel):
     """DetachNodes请求参数结构体
 
@@ -4283,6 +4411,76 @@ class ModifyInitNodeScriptsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyWorkspacesAttributeRequest(AbstractModel):
+    """ModifyWorkspacesAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceIds: 工作空间列表
+        :type SpaceIds: list of str
+        :param _SpaceName: 修改后的工作空间名称。可任意命名，但不得超过60个字符。
+        :type SpaceName: str
+        """
+        self._SpaceIds = None
+        self._SpaceName = None
+
+    @property
+    def SpaceIds(self):
+        return self._SpaceIds
+
+    @SpaceIds.setter
+    def SpaceIds(self, SpaceIds):
+        self._SpaceIds = SpaceIds
+
+    @property
+    def SpaceName(self):
+        return self._SpaceName
+
+    @SpaceName.setter
+    def SpaceName(self, SpaceName):
+        self._SpaceName = SpaceName
+
+
+    def _deserialize(self, params):
+        self._SpaceIds = params.get("SpaceIds")
+        self._SpaceName = params.get("SpaceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyWorkspacesAttributeResponse(AbstractModel):
+    """ModifyWorkspacesAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class NodeActivity(AbstractModel):
     """节点活动信息。
 
@@ -5455,6 +5653,204 @@ class SpaceDataDisk(AbstractModel):
         
 
 
+class SpaceInfo(AbstractModel):
+    """描述工作空间的信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: 工作空间ID
+        :type SpaceId: str
+        :param _SpaceFamily: 工作空间类型
+        :type SpaceFamily: str
+        :param _SpaceType: 工作空间规格
+        :type SpaceType: str
+        :param _SpaceName: 工作空间名称
+        :type SpaceName: str
+        :param _SpaceState: 工作空间状态。取值范围：<br><li>PENDING：表示创建中<br></li><li>LAUNCH_FAILED：表示创建失败<br></li><li>ONLINE：表示运行中<br></li><li>ARREARS：表示隔离中<br></li><li>TERMINATING：表示销毁中。<br></li>
+        :type SpaceState: str
+        :param _SpaceChargeType: 工作空间计费模式
+        :type SpaceChargeType: str
+        :param _ResourceId: 工作空间对应资源ID
+        :type ResourceId: str
+        :param _RenewFlag: 自动续费标识
+        :type RenewFlag: str
+        :param _Tags: 工作空间关联的工作列表
+        :type Tags: list of Tag
+        :param _CreatedTime: 创建时间
+        :type CreatedTime: str
+        :param _ExpiredTime: 到期时间
+        :type ExpiredTime: str
+        :param _Placement: 工作空间所在位置
+        :type Placement: :class:`tencentcloud.thpc.v20230321.models.Placement`
+        :param _LatestOperation: 工作空间的最新操作
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LatestOperation: str
+        :param _LatestOperationState: 工作空间的最新操作状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LatestOperationState: str
+        """
+        self._SpaceId = None
+        self._SpaceFamily = None
+        self._SpaceType = None
+        self._SpaceName = None
+        self._SpaceState = None
+        self._SpaceChargeType = None
+        self._ResourceId = None
+        self._RenewFlag = None
+        self._Tags = None
+        self._CreatedTime = None
+        self._ExpiredTime = None
+        self._Placement = None
+        self._LatestOperation = None
+        self._LatestOperationState = None
+
+    @property
+    def SpaceId(self):
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def SpaceFamily(self):
+        return self._SpaceFamily
+
+    @SpaceFamily.setter
+    def SpaceFamily(self, SpaceFamily):
+        self._SpaceFamily = SpaceFamily
+
+    @property
+    def SpaceType(self):
+        return self._SpaceType
+
+    @SpaceType.setter
+    def SpaceType(self, SpaceType):
+        self._SpaceType = SpaceType
+
+    @property
+    def SpaceName(self):
+        return self._SpaceName
+
+    @SpaceName.setter
+    def SpaceName(self, SpaceName):
+        self._SpaceName = SpaceName
+
+    @property
+    def SpaceState(self):
+        return self._SpaceState
+
+    @SpaceState.setter
+    def SpaceState(self, SpaceState):
+        self._SpaceState = SpaceState
+
+    @property
+    def SpaceChargeType(self):
+        return self._SpaceChargeType
+
+    @SpaceChargeType.setter
+    def SpaceChargeType(self, SpaceChargeType):
+        self._SpaceChargeType = SpaceChargeType
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def RenewFlag(self):
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def ExpiredTime(self):
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
+    @property
+    def Placement(self):
+        return self._Placement
+
+    @Placement.setter
+    def Placement(self, Placement):
+        self._Placement = Placement
+
+    @property
+    def LatestOperation(self):
+        return self._LatestOperation
+
+    @LatestOperation.setter
+    def LatestOperation(self, LatestOperation):
+        self._LatestOperation = LatestOperation
+
+    @property
+    def LatestOperationState(self):
+        return self._LatestOperationState
+
+    @LatestOperationState.setter
+    def LatestOperationState(self, LatestOperationState):
+        self._LatestOperationState = LatestOperationState
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        self._SpaceFamily = params.get("SpaceFamily")
+        self._SpaceType = params.get("SpaceType")
+        self._SpaceName = params.get("SpaceName")
+        self._SpaceState = params.get("SpaceState")
+        self._SpaceChargeType = params.get("SpaceChargeType")
+        self._ResourceId = params.get("ResourceId")
+        self._RenewFlag = params.get("RenewFlag")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._CreatedTime = params.get("CreatedTime")
+        self._ExpiredTime = params.get("ExpiredTime")
+        if params.get("Placement") is not None:
+            self._Placement = Placement()
+            self._Placement._deserialize(params.get("Placement"))
+        self._LatestOperation = params.get("LatestOperation")
+        self._LatestOperationState = params.get("LatestOperationState")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SpaceInternetAccessible(AbstractModel):
     """描述了工作空间的公网可访问性，声明了工作空间的公网使用计费模式，最大带宽等
 
@@ -5994,6 +6390,76 @@ class TagSpecification(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class TerminateWorkspacesRequest(AbstractModel):
+    """TerminateWorkspaces请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceIds: 工作空间ID
+        :type SpaceIds: list of str
+        :param _ReleasePrepaidDataDisks: 释放空间挂载的包年包月数据盘。true表示销毁空间同时释放包年包月数据盘，false表示只销毁空间。
+        :type ReleasePrepaidDataDisks: bool
+        """
+        self._SpaceIds = None
+        self._ReleasePrepaidDataDisks = None
+
+    @property
+    def SpaceIds(self):
+        return self._SpaceIds
+
+    @SpaceIds.setter
+    def SpaceIds(self, SpaceIds):
+        self._SpaceIds = SpaceIds
+
+    @property
+    def ReleasePrepaidDataDisks(self):
+        return self._ReleasePrepaidDataDisks
+
+    @ReleasePrepaidDataDisks.setter
+    def ReleasePrepaidDataDisks(self, ReleasePrepaidDataDisks):
+        self._ReleasePrepaidDataDisks = ReleasePrepaidDataDisks
+
+
+    def _deserialize(self, params):
+        self._SpaceIds = params.get("SpaceIds")
+        self._ReleasePrepaidDataDisks = params.get("ReleasePrepaidDataDisks")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TerminateWorkspacesResponse(AbstractModel):
+    """TerminateWorkspaces返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class VirtualPrivateCloud(AbstractModel):

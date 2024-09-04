@@ -1452,6 +1452,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeIsolatedInstances(self, request):
+        """本接口(DescribeIsolatedInstances)用于查询回收站实例列表。
+
+        :param request: Request instance for DescribeIsolatedInstances.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeIsolatedInstancesRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeIsolatedInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIsolatedInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIsolatedInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeMaintainPeriod(self, request):
         """查询实例维护时间窗
 

@@ -1034,10 +1034,21 @@ class AssignMangedTablePropertiesResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Properties: 分配的原生表表属性
+        :type Properties: list of Property
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Properties = None
         self._RequestId = None
+
+    @property
+    def Properties(self):
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
 
     @property
     def RequestId(self):
@@ -1049,6 +1060,12 @@ class AssignMangedTablePropertiesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Properties") is not None:
+            self._Properties = []
+            for item in params.get("Properties"):
+                obj = Property()
+                obj._deserialize(item)
+                self._Properties.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -16076,7 +16093,7 @@ class DescribeUserInfoRequest(AbstractModel):
         r"""
         :param _UserId: 用户Id
         :type UserId: str
-        :param _Type: 查询的信息类型，Group：工作组 DataAuth：数据权限 EngineAuth:引擎权限
+        :param _Type: 必传字段，查询的信息类型，Group：工作组 DataAuth：数据权限 EngineAuth:引擎权限 RowFilter：行级别权限
         :type Type: str
         :param _Filters: 查询的过滤条件。
 
@@ -27524,6 +27541,9 @@ class UserDetailInfo(AbstractModel):
         :param _RowFilterInfo: 行过滤集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type RowFilterInfo: :class:`tencentcloud.dlc.v20210125.models.Policys`
+        :param _AccountType: 账号类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountType: str
         """
         self._UserId = None
         self._Type = None
@@ -27534,6 +27554,7 @@ class UserDetailInfo(AbstractModel):
         self._WorkGroupInfo = None
         self._UserAlias = None
         self._RowFilterInfo = None
+        self._AccountType = None
 
     @property
     def UserId(self):
@@ -27607,6 +27628,14 @@ class UserDetailInfo(AbstractModel):
     def RowFilterInfo(self, RowFilterInfo):
         self._RowFilterInfo = RowFilterInfo
 
+    @property
+    def AccountType(self):
+        return self._AccountType
+
+    @AccountType.setter
+    def AccountType(self, AccountType):
+        self._AccountType = AccountType
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
@@ -27626,6 +27655,7 @@ class UserDetailInfo(AbstractModel):
         if params.get("RowFilterInfo") is not None:
             self._RowFilterInfo = Policys()
             self._RowFilterInfo._deserialize(params.get("RowFilterInfo"))
+        self._AccountType = params.get("AccountType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

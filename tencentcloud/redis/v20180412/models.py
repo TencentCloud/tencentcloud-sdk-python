@@ -13647,7 +13647,7 @@ class ModifyInstanceParamsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Changed: 说明修改参数配置是否成功。<br><li>true：指修改成功；<br><li>false：指修改失败。<br>
+        :param _Changed: 说明修改参数配置是否成功。<br><li>true：指修改成功；</li><li>false：指修改失败。</li>
         :type Changed: bool
         :param _TaskId: 任务ID。
         :type TaskId: int
@@ -17044,7 +17044,7 @@ class StartupInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务id
+        :param _TaskId: 该字段已废弃，请通过查询实例接口获取到的状态来判断实例是否已解隔离
         :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

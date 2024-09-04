@@ -14318,6 +14318,162 @@ class DescribeInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeIsolatedInstancesRequest(AbstractModel):
+    """DescribeIsolatedInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 返回数量，默认为 20，最大值为 100
+        :type Limit: int
+        :param _Offset: 记录偏移量，默认值为0
+        :type Offset: int
+        :param _OrderBy: 排序字段，取值范围：
+<li> CREATETIME：创建时间</li>
+<li> PERIODENDTIME：过期时间</li>
+        :type OrderBy: str
+        :param _OrderByType: 排序类型，取值范围：
+<li> ASC：升序排序 </li>
+<li> DESC：降序排序 </li>
+        :type OrderByType: str
+        :param _Filters: 搜索条件，若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
+        :type Filters: list of QueryFilter
+        :param _DbType: 引擎类型：目前支持“MYSQL”， “POSTGRESQL”
+        :type DbType: str
+        """
+        self._Limit = None
+        self._Offset = None
+        self._OrderBy = None
+        self._OrderByType = None
+        self._Filters = None
+        self._DbType = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def OrderBy(self):
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderByType(self):
+        return self._OrderByType
+
+    @OrderByType.setter
+    def OrderByType(self, OrderByType):
+        self._OrderByType = OrderByType
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def DbType(self):
+        return self._DbType
+
+    @DbType.setter
+    def DbType(self, DbType):
+        self._DbType = DbType
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderByType = params.get("OrderByType")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = QueryFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._DbType = params.get("DbType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIsolatedInstancesResponse(AbstractModel):
+    """DescribeIsolatedInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 实例个数
+        :type TotalCount: int
+        :param _InstanceSet: 实例列表
+        :type InstanceSet: list of CynosdbInstance
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._InstanceSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def InstanceSet(self):
+        return self._InstanceSet
+
+    @InstanceSet.setter
+    def InstanceSet(self, InstanceSet):
+        self._InstanceSet = InstanceSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("InstanceSet") is not None:
+            self._InstanceSet = []
+            for item in params.get("InstanceSet"):
+                obj = CynosdbInstance()
+                obj._deserialize(item)
+                self._InstanceSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeMaintainPeriodRequest(AbstractModel):
     """DescribeMaintainPeriod请求参数结构体
 
