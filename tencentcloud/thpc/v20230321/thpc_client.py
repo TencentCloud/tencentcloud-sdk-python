@@ -145,6 +145,29 @@ class ThpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateWorkspaces(self, request):
+        """本接口 (CreateWorkspaces) 用于创建工作空间。
+
+        :param request: Request instance for CreateWorkspaces.
+        :type request: :class:`tencentcloud.thpc.v20230321.models.CreateWorkspacesRequest`
+        :rtype: :class:`tencentcloud.thpc.v20230321.models.CreateWorkspacesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateWorkspaces", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateWorkspacesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteCluster(self, request):
         """本接口（DeleteCluster）用于删除一个指定的集群。
 

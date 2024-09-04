@@ -1671,6 +1671,10 @@ class CreateBackUpScheduleRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _OperationType: 操作类型 create(创建) update(编辑修改)
+        :type OperationType: str
         :param _ScheduleId: 编辑时需要传
         :type ScheduleId: int
         :param _WeekDays: 选择的星期 逗号分隔
@@ -1693,7 +1697,20 @@ class CreateBackUpScheduleRequest(AbstractModel):
         :type AuthType: int
         :param _CosSourceInfo: cos认证的信息
         :type CosSourceInfo: :class:`tencentcloud.cdwdoris.v20211228.models.CosSourceInfo`
+        :param _ScheduleName: 调度任务名
+        :type ScheduleName: str
+        :param _ScheduleInfo: 调度信息
+        :type ScheduleInfo: :class:`tencentcloud.cdwdoris.v20211228.models.ScheduleInfo`
+        :param _UpdateStatus: 更新任务状态：
+3-暂停,
+2-删除,
+1-启动
+        :type UpdateStatus: int
+        :param _CosBucket: 当前任务的cos桶信息
+        :type CosBucket: str
         """
+        self._InstanceId = None
+        self._OperationType = None
         self._ScheduleId = None
         self._WeekDays = None
         self._ExecuteHour = None
@@ -1704,6 +1721,26 @@ class CreateBackUpScheduleRequest(AbstractModel):
         self._RestoreType = None
         self._AuthType = None
         self._CosSourceInfo = None
+        self._ScheduleName = None
+        self._ScheduleInfo = None
+        self._UpdateStatus = None
+        self._CosBucket = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def OperationType(self):
+        return self._OperationType
+
+    @OperationType.setter
+    def OperationType(self, OperationType):
+        self._OperationType = OperationType
 
     @property
     def ScheduleId(self):
@@ -1785,8 +1822,42 @@ class CreateBackUpScheduleRequest(AbstractModel):
     def CosSourceInfo(self, CosSourceInfo):
         self._CosSourceInfo = CosSourceInfo
 
+    @property
+    def ScheduleName(self):
+        return self._ScheduleName
+
+    @ScheduleName.setter
+    def ScheduleName(self, ScheduleName):
+        self._ScheduleName = ScheduleName
+
+    @property
+    def ScheduleInfo(self):
+        return self._ScheduleInfo
+
+    @ScheduleInfo.setter
+    def ScheduleInfo(self, ScheduleInfo):
+        self._ScheduleInfo = ScheduleInfo
+
+    @property
+    def UpdateStatus(self):
+        return self._UpdateStatus
+
+    @UpdateStatus.setter
+    def UpdateStatus(self, UpdateStatus):
+        self._UpdateStatus = UpdateStatus
+
+    @property
+    def CosBucket(self):
+        return self._CosBucket
+
+    @CosBucket.setter
+    def CosBucket(self, CosBucket):
+        self._CosBucket = CosBucket
+
 
     def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._OperationType = params.get("OperationType")
         self._ScheduleId = params.get("ScheduleId")
         self._WeekDays = params.get("WeekDays")
         self._ExecuteHour = params.get("ExecuteHour")
@@ -1806,6 +1877,12 @@ class CreateBackUpScheduleRequest(AbstractModel):
         if params.get("CosSourceInfo") is not None:
             self._CosSourceInfo = CosSourceInfo()
             self._CosSourceInfo._deserialize(params.get("CosSourceInfo"))
+        self._ScheduleName = params.get("ScheduleName")
+        if params.get("ScheduleInfo") is not None:
+            self._ScheduleInfo = ScheduleInfo()
+            self._ScheduleInfo._deserialize(params.get("ScheduleInfo"))
+        self._UpdateStatus = params.get("UpdateStatus")
+        self._CosBucket = params.get("CosBucket")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11298,6 +11375,126 @@ class ScaleUpInstanceResponse(AbstractModel):
         self._InstanceId = params.get("InstanceId")
         self._ErrorMsg = params.get("ErrorMsg")
         self._RequestId = params.get("RequestId")
+
+
+class ScheduleInfo(AbstractModel):
+    """调度信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EffectivePeriod: 生效时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EffectivePeriod: str
+        :param _ScheduleType: 调度类型：
+Day-天
+Week-周
+Month-月
+Once-单次
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduleType: str
+        :param _ScheduleData: 执行调度的日期。调度类型为周和月时以英文逗号分隔；
+调度类型为单次时，该值是个日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduleData: str
+        :param _ScheduleHour: 执行时间：时
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduleHour: int
+        :param _ScheduleMin: 执行时间：分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduleMin: int
+        :param _BackupScope: 备份粒度：
+All-全量
+Database-按库
+Table-按表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupScope: str
+        :param _BackupDatabase: 备份库：如果是按库备份，则需要该字段，库之间用英文逗号分割
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupDatabase: str
+        """
+        self._EffectivePeriod = None
+        self._ScheduleType = None
+        self._ScheduleData = None
+        self._ScheduleHour = None
+        self._ScheduleMin = None
+        self._BackupScope = None
+        self._BackupDatabase = None
+
+    @property
+    def EffectivePeriod(self):
+        return self._EffectivePeriod
+
+    @EffectivePeriod.setter
+    def EffectivePeriod(self, EffectivePeriod):
+        self._EffectivePeriod = EffectivePeriod
+
+    @property
+    def ScheduleType(self):
+        return self._ScheduleType
+
+    @ScheduleType.setter
+    def ScheduleType(self, ScheduleType):
+        self._ScheduleType = ScheduleType
+
+    @property
+    def ScheduleData(self):
+        return self._ScheduleData
+
+    @ScheduleData.setter
+    def ScheduleData(self, ScheduleData):
+        self._ScheduleData = ScheduleData
+
+    @property
+    def ScheduleHour(self):
+        return self._ScheduleHour
+
+    @ScheduleHour.setter
+    def ScheduleHour(self, ScheduleHour):
+        self._ScheduleHour = ScheduleHour
+
+    @property
+    def ScheduleMin(self):
+        return self._ScheduleMin
+
+    @ScheduleMin.setter
+    def ScheduleMin(self, ScheduleMin):
+        self._ScheduleMin = ScheduleMin
+
+    @property
+    def BackupScope(self):
+        return self._BackupScope
+
+    @BackupScope.setter
+    def BackupScope(self, BackupScope):
+        self._BackupScope = BackupScope
+
+    @property
+    def BackupDatabase(self):
+        return self._BackupDatabase
+
+    @BackupDatabase.setter
+    def BackupDatabase(self, BackupDatabase):
+        self._BackupDatabase = BackupDatabase
+
+
+    def _deserialize(self, params):
+        self._EffectivePeriod = params.get("EffectivePeriod")
+        self._ScheduleType = params.get("ScheduleType")
+        self._ScheduleData = params.get("ScheduleData")
+        self._ScheduleHour = params.get("ScheduleHour")
+        self._ScheduleMin = params.get("ScheduleMin")
+        self._BackupScope = params.get("BackupScope")
+        self._BackupDatabase = params.get("BackupDatabase")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SearchTags(AbstractModel):

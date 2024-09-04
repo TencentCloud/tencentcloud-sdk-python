@@ -118,6 +118,29 @@ class SslClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CheckCertificateDomainVerification(self, request):
+        """检查证书域名验证
+
+        :param request: Request instance for CheckCertificateDomainVerification.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.CheckCertificateDomainVerificationRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.CheckCertificateDomainVerificationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckCertificateDomainVerification", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckCertificateDomainVerificationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CommitCertificateInformation(self, request):
         """提交证书订单。
 

@@ -1674,6 +1674,352 @@ class CreateClusterResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateWorkspacesRequest(AbstractModel):
+    """CreateWorkspaces请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+        :type ClientToken: str
+        :param _Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目，所属宿主机（在专用宿主机上创建子机时指定）等属性。 <b>注：如果您不指定LaunchTemplate参数，则Placement为必选参数。若同时传递Placement和LaunchTemplate，则默认覆盖LaunchTemplate中对应的Placement的值。</b>
+        :type Placement: :class:`tencentcloud.thpc.v20230321.models.SpacePlacement`
+        :param _SpaceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+        :type SpaceChargePrepaid: :class:`tencentcloud.thpc.v20230321.models.SpaceChargePrepaid`
+        :param _SpaceChargeType: 工作空间计费类型
+        :type SpaceChargeType: str
+        :param _SpaceType: 工作空间规格
+        :type SpaceType: str
+        :param _ImageId: 镜像ID
+        :type ImageId: str
+        :param _SystemDisk: 工作空间系统盘信息
+        :type SystemDisk: :class:`tencentcloud.thpc.v20230321.models.SpaceSystemDisk`
+        :param _DataDisks: 工作空间数据盘信息
+        :type DataDisks: list of SpaceDataDisk
+        :param _VirtualPrivateCloud: 私有网络相关信息
+        :type VirtualPrivateCloud: :class:`tencentcloud.thpc.v20230321.models.SpaceVirtualPrivateCloud`
+        :param _InternetAccessible: 公网带宽相关信息设置
+        :type InternetAccessible: :class:`tencentcloud.thpc.v20230321.models.SpaceInternetAccessible`
+        :param _SpaceCount: 购买工作空间数量
+        :type SpaceCount: int
+        :param _SpaceName: 工作空间显示名称
+        :type SpaceName: str
+        :param _LoginSettings: 工作空间登陆设置
+        :type LoginSettings: :class:`tencentcloud.thpc.v20230321.models.LoginSettings`
+        :param _SecurityGroupIds: 工作空间所属安全组
+        :type SecurityGroupIds: list of str
+        :param _EnhancedService: 增强服务
+        :type EnhancedService: :class:`tencentcloud.thpc.v20230321.models.EnhancedService`
+        :param _DryRun: 是否只预检此次请求
+        :type DryRun: bool
+        :param _UserData: 提供给工作空间使用的用户数据
+        :type UserData: str
+        :param _DisasterRecoverGroupIds: 置放群组id
+        :type DisasterRecoverGroupIds: list of str
+        :param _TagSpecification: 标签描述列表
+        :type TagSpecification: list of TagSpecification
+        :param _HpcClusterId: 高性能计算集群ID
+        :type HpcClusterId: str
+        :param _CamRoleName: CAM角色名称
+        :type CamRoleName: str
+        :param _HostName: 实例主机名。<br><li>点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。</li><br><li>Windows 实例：主机名名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。</li><br><li>其他类型（Linux 等）实例：主机名字符长度为[2, 60]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。</li><br><li>购买多台实例，如果指定模式串`{R:x}`，表示生成数字`[x, x+n-1]`，其中`n`表示购买实例的数量，例如`server{R:3}`，购买1台时，实例主机名为`server3`；购买2台时，实例主机名分别为`server3`，`server4`。支持指定多个模式串`{R:x}`。</li><br><li>购买多台实例，如果不指定模式串，则在实例主机名添加后缀`1、2...n`，其中`n`表示购买实例的数量，例如`server`，购买2台时，实例主机名分别为`server1`，`server2`。</li>
+        :type HostName: str
+        """
+        self._ClientToken = None
+        self._Placement = None
+        self._SpaceChargePrepaid = None
+        self._SpaceChargeType = None
+        self._SpaceType = None
+        self._ImageId = None
+        self._SystemDisk = None
+        self._DataDisks = None
+        self._VirtualPrivateCloud = None
+        self._InternetAccessible = None
+        self._SpaceCount = None
+        self._SpaceName = None
+        self._LoginSettings = None
+        self._SecurityGroupIds = None
+        self._EnhancedService = None
+        self._DryRun = None
+        self._UserData = None
+        self._DisasterRecoverGroupIds = None
+        self._TagSpecification = None
+        self._HpcClusterId = None
+        self._CamRoleName = None
+        self._HostName = None
+
+    @property
+    def ClientToken(self):
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
+    @property
+    def Placement(self):
+        return self._Placement
+
+    @Placement.setter
+    def Placement(self, Placement):
+        self._Placement = Placement
+
+    @property
+    def SpaceChargePrepaid(self):
+        return self._SpaceChargePrepaid
+
+    @SpaceChargePrepaid.setter
+    def SpaceChargePrepaid(self, SpaceChargePrepaid):
+        self._SpaceChargePrepaid = SpaceChargePrepaid
+
+    @property
+    def SpaceChargeType(self):
+        return self._SpaceChargeType
+
+    @SpaceChargeType.setter
+    def SpaceChargeType(self, SpaceChargeType):
+        self._SpaceChargeType = SpaceChargeType
+
+    @property
+    def SpaceType(self):
+        return self._SpaceType
+
+    @SpaceType.setter
+    def SpaceType(self, SpaceType):
+        self._SpaceType = SpaceType
+
+    @property
+    def ImageId(self):
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def SystemDisk(self):
+        return self._SystemDisk
+
+    @SystemDisk.setter
+    def SystemDisk(self, SystemDisk):
+        self._SystemDisk = SystemDisk
+
+    @property
+    def DataDisks(self):
+        return self._DataDisks
+
+    @DataDisks.setter
+    def DataDisks(self, DataDisks):
+        self._DataDisks = DataDisks
+
+    @property
+    def VirtualPrivateCloud(self):
+        return self._VirtualPrivateCloud
+
+    @VirtualPrivateCloud.setter
+    def VirtualPrivateCloud(self, VirtualPrivateCloud):
+        self._VirtualPrivateCloud = VirtualPrivateCloud
+
+    @property
+    def InternetAccessible(self):
+        return self._InternetAccessible
+
+    @InternetAccessible.setter
+    def InternetAccessible(self, InternetAccessible):
+        self._InternetAccessible = InternetAccessible
+
+    @property
+    def SpaceCount(self):
+        return self._SpaceCount
+
+    @SpaceCount.setter
+    def SpaceCount(self, SpaceCount):
+        self._SpaceCount = SpaceCount
+
+    @property
+    def SpaceName(self):
+        return self._SpaceName
+
+    @SpaceName.setter
+    def SpaceName(self, SpaceName):
+        self._SpaceName = SpaceName
+
+    @property
+    def LoginSettings(self):
+        return self._LoginSettings
+
+    @LoginSettings.setter
+    def LoginSettings(self, LoginSettings):
+        self._LoginSettings = LoginSettings
+
+    @property
+    def SecurityGroupIds(self):
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def EnhancedService(self):
+        return self._EnhancedService
+
+    @EnhancedService.setter
+    def EnhancedService(self, EnhancedService):
+        self._EnhancedService = EnhancedService
+
+    @property
+    def DryRun(self):
+        return self._DryRun
+
+    @DryRun.setter
+    def DryRun(self, DryRun):
+        self._DryRun = DryRun
+
+    @property
+    def UserData(self):
+        return self._UserData
+
+    @UserData.setter
+    def UserData(self, UserData):
+        self._UserData = UserData
+
+    @property
+    def DisasterRecoverGroupIds(self):
+        return self._DisasterRecoverGroupIds
+
+    @DisasterRecoverGroupIds.setter
+    def DisasterRecoverGroupIds(self, DisasterRecoverGroupIds):
+        self._DisasterRecoverGroupIds = DisasterRecoverGroupIds
+
+    @property
+    def TagSpecification(self):
+        return self._TagSpecification
+
+    @TagSpecification.setter
+    def TagSpecification(self, TagSpecification):
+        self._TagSpecification = TagSpecification
+
+    @property
+    def HpcClusterId(self):
+        return self._HpcClusterId
+
+    @HpcClusterId.setter
+    def HpcClusterId(self, HpcClusterId):
+        self._HpcClusterId = HpcClusterId
+
+    @property
+    def CamRoleName(self):
+        return self._CamRoleName
+
+    @CamRoleName.setter
+    def CamRoleName(self, CamRoleName):
+        self._CamRoleName = CamRoleName
+
+    @property
+    def HostName(self):
+        return self._HostName
+
+    @HostName.setter
+    def HostName(self, HostName):
+        self._HostName = HostName
+
+
+    def _deserialize(self, params):
+        self._ClientToken = params.get("ClientToken")
+        if params.get("Placement") is not None:
+            self._Placement = SpacePlacement()
+            self._Placement._deserialize(params.get("Placement"))
+        if params.get("SpaceChargePrepaid") is not None:
+            self._SpaceChargePrepaid = SpaceChargePrepaid()
+            self._SpaceChargePrepaid._deserialize(params.get("SpaceChargePrepaid"))
+        self._SpaceChargeType = params.get("SpaceChargeType")
+        self._SpaceType = params.get("SpaceType")
+        self._ImageId = params.get("ImageId")
+        if params.get("SystemDisk") is not None:
+            self._SystemDisk = SpaceSystemDisk()
+            self._SystemDisk._deserialize(params.get("SystemDisk"))
+        if params.get("DataDisks") is not None:
+            self._DataDisks = []
+            for item in params.get("DataDisks"):
+                obj = SpaceDataDisk()
+                obj._deserialize(item)
+                self._DataDisks.append(obj)
+        if params.get("VirtualPrivateCloud") is not None:
+            self._VirtualPrivateCloud = SpaceVirtualPrivateCloud()
+            self._VirtualPrivateCloud._deserialize(params.get("VirtualPrivateCloud"))
+        if params.get("InternetAccessible") is not None:
+            self._InternetAccessible = SpaceInternetAccessible()
+            self._InternetAccessible._deserialize(params.get("InternetAccessible"))
+        self._SpaceCount = params.get("SpaceCount")
+        self._SpaceName = params.get("SpaceName")
+        if params.get("LoginSettings") is not None:
+            self._LoginSettings = LoginSettings()
+            self._LoginSettings._deserialize(params.get("LoginSettings"))
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        if params.get("EnhancedService") is not None:
+            self._EnhancedService = EnhancedService()
+            self._EnhancedService._deserialize(params.get("EnhancedService"))
+        self._DryRun = params.get("DryRun")
+        self._UserData = params.get("UserData")
+        self._DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
+        if params.get("TagSpecification") is not None:
+            self._TagSpecification = []
+            for item in params.get("TagSpecification"):
+                obj = TagSpecification()
+                obj._deserialize(item)
+                self._TagSpecification.append(obj)
+        self._HpcClusterId = params.get("HpcClusterId")
+        self._CamRoleName = params.get("CamRoleName")
+        self._HostName = params.get("HostName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateWorkspacesResponse(AbstractModel):
+    """CreateWorkspaces返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceIdSet: 工作空间ID
+        :type SpaceIdSet: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SpaceIdSet = None
+        self._RequestId = None
+
+    @property
+    def SpaceIdSet(self):
+        return self._SpaceIdSet
+
+    @SpaceIdSet.setter
+    def SpaceIdSet(self, SpaceIdSet):
+        self._SpaceIdSet = SpaceIdSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SpaceIdSet = params.get("SpaceIdSet")
+        self._RequestId = params.get("RequestId")
+
+
 class DataDisk(AbstractModel):
     """描述了数据盘的信息
 
@@ -4871,6 +5217,492 @@ class SetAutoScalingConfigurationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class SpaceChargePrepaid(AbstractModel):
+    """描述了工作空间的计费模式
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Period: 购买实例的时长，单位：月。取值范围：1, 2, 3, 12, 24, 36。默认取值为1。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Period: int
+        :param _RenewFlag: 自动续费标识。取值范围：
+
+NOTIFY_AND_AUTO_RENEW：通知过期且自动续费
+
+NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费
+
+DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费
+
+
+默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RenewFlag: str
+        """
+        self._Period = None
+        self._RenewFlag = None
+
+    @property
+    def Period(self):
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def RenewFlag(self):
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+
+    def _deserialize(self, params):
+        self._Period = params.get("Period")
+        self._RenewFlag = params.get("RenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SpaceDataDisk(AbstractModel):
+    """工作空间数据盘配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DiskType: 数据盘类型。数据盘类型限制详见[存储概述](https://cloud.tencent.com/document/product/213/4952)。取值范围：<br />
+<li>
+  LOCAL_BASIC：本地硬盘<br />
+  <li>
+    LOCAL_SSD：本地SSD硬盘<br />
+    <li>
+      LOCAL_NVME：本地NVME硬盘，与InstanceType强相关，不支持指定<br />
+      <li>
+        LOCAL_PRO：本地HDD硬盘，与InstanceType强相关，不支持指定<br />
+        <li>
+          CLOUD_BASIC：普通云硬盘<br />
+          <li>
+            CLOUD_PREMIUM：高性能云硬盘<br />
+            <li>
+              CLOUD_SSD：SSD云硬盘<br />
+              <li>
+                CLOUD_HSSD：增强型SSD云硬盘<br />
+                <li>
+                  CLOUD_TSSD：极速型SSD云硬盘<br />
+                  <li>
+                    CLOUD_BSSD：通用型SSD云硬盘<br /><br />默认取值：LOCAL_BASIC。<br /><br />该参数对`ResizeInstanceDisk`接口无效。
+                  </li>
+                </li>
+              </li>
+            </li>
+          </li>
+        </li>
+      </li>
+    </li>
+  </li>
+</li>
+        :type DiskType: str
+        :param _DiskId: 数据盘
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskId: str
+        :param _DiskSize: 数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[存储概述](https://cloud.tencent.com/document/product/213/4952)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
+        :type DiskSize: int
+        :param _DeleteWithInstance: 数据盘是否随子机销毁。取值范围：
+<li>TRUE：子机销毁时，销毁数据盘，只支持按小时后付费云盘</li>
+<li>
+  FALSE：子机销毁时，保留数据盘<br />
+  默认取值：TRUE<br />
+  该参数目前仅用于 `RunInstances` 接口。
+</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeleteWithInstance: bool
+        :param _SnapshotId: 数据盘快照ID。选择的数据盘快照大小需小于数据盘大小。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SnapshotId: str
+        :param _Encrypt: 数据盘是加密。取值范围：
+<li>true：加密</li>
+<li>
+  false：不加密<br />
+  默认取值：false<br />
+  该参数目前仅用于 `RunInstances` 接口。
+</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Encrypt: bool
+        :param _KmsKeyId: 自定义CMK对应的ID，取值为UUID或者类似kms-abcd1234。用于加密云盘。
+
+该参数目前仅用于 `CreateWorkspaces` 接口。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KmsKeyId: str
+        :param _ThroughputPerformance: 云硬盘性能，单位：MB/s
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ThroughputPerformance: int
+        :param _BurstPerformance: 突发性能
+
+注：内测中。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BurstPerformance: bool
+        """
+        self._DiskType = None
+        self._DiskId = None
+        self._DiskSize = None
+        self._DeleteWithInstance = None
+        self._SnapshotId = None
+        self._Encrypt = None
+        self._KmsKeyId = None
+        self._ThroughputPerformance = None
+        self._BurstPerformance = None
+
+    @property
+    def DiskType(self):
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def DiskId(self):
+        return self._DiskId
+
+    @DiskId.setter
+    def DiskId(self, DiskId):
+        self._DiskId = DiskId
+
+    @property
+    def DiskSize(self):
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def DeleteWithInstance(self):
+        return self._DeleteWithInstance
+
+    @DeleteWithInstance.setter
+    def DeleteWithInstance(self, DeleteWithInstance):
+        self._DeleteWithInstance = DeleteWithInstance
+
+    @property
+    def SnapshotId(self):
+        return self._SnapshotId
+
+    @SnapshotId.setter
+    def SnapshotId(self, SnapshotId):
+        self._SnapshotId = SnapshotId
+
+    @property
+    def Encrypt(self):
+        return self._Encrypt
+
+    @Encrypt.setter
+    def Encrypt(self, Encrypt):
+        self._Encrypt = Encrypt
+
+    @property
+    def KmsKeyId(self):
+        return self._KmsKeyId
+
+    @KmsKeyId.setter
+    def KmsKeyId(self, KmsKeyId):
+        self._KmsKeyId = KmsKeyId
+
+    @property
+    def ThroughputPerformance(self):
+        return self._ThroughputPerformance
+
+    @ThroughputPerformance.setter
+    def ThroughputPerformance(self, ThroughputPerformance):
+        self._ThroughputPerformance = ThroughputPerformance
+
+    @property
+    def BurstPerformance(self):
+        return self._BurstPerformance
+
+    @BurstPerformance.setter
+    def BurstPerformance(self, BurstPerformance):
+        self._BurstPerformance = BurstPerformance
+
+
+    def _deserialize(self, params):
+        self._DiskType = params.get("DiskType")
+        self._DiskId = params.get("DiskId")
+        self._DiskSize = params.get("DiskSize")
+        self._DeleteWithInstance = params.get("DeleteWithInstance")
+        self._SnapshotId = params.get("SnapshotId")
+        self._Encrypt = params.get("Encrypt")
+        self._KmsKeyId = params.get("KmsKeyId")
+        self._ThroughputPerformance = params.get("ThroughputPerformance")
+        self._BurstPerformance = params.get("BurstPerformance")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SpaceInternetAccessible(AbstractModel):
+    """描述了工作空间的公网可访问性，声明了工作空间的公网使用计费模式，最大带宽等
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InternetChargeType: 网络计费类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InternetChargeType: str
+        :param _InternetMaxBandwidthOut: 公网出带宽上限，默认为0
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InternetMaxBandwidthOut: int
+        :param _PublicIpAssigned: 是否分配公网IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicIpAssigned: bool
+        :param _BandwidthPackageId: 带宽包ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BandwidthPackageId: str
+        """
+        self._InternetChargeType = None
+        self._InternetMaxBandwidthOut = None
+        self._PublicIpAssigned = None
+        self._BandwidthPackageId = None
+
+    @property
+    def InternetChargeType(self):
+        return self._InternetChargeType
+
+    @InternetChargeType.setter
+    def InternetChargeType(self, InternetChargeType):
+        self._InternetChargeType = InternetChargeType
+
+    @property
+    def InternetMaxBandwidthOut(self):
+        return self._InternetMaxBandwidthOut
+
+    @InternetMaxBandwidthOut.setter
+    def InternetMaxBandwidthOut(self, InternetMaxBandwidthOut):
+        self._InternetMaxBandwidthOut = InternetMaxBandwidthOut
+
+    @property
+    def PublicIpAssigned(self):
+        return self._PublicIpAssigned
+
+    @PublicIpAssigned.setter
+    def PublicIpAssigned(self, PublicIpAssigned):
+        self._PublicIpAssigned = PublicIpAssigned
+
+    @property
+    def BandwidthPackageId(self):
+        return self._BandwidthPackageId
+
+    @BandwidthPackageId.setter
+    def BandwidthPackageId(self, BandwidthPackageId):
+        self._BandwidthPackageId = BandwidthPackageId
+
+
+    def _deserialize(self, params):
+        self._InternetChargeType = params.get("InternetChargeType")
+        self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self._PublicIpAssigned = params.get("PublicIpAssigned")
+        self._BandwidthPackageId = params.get("BandwidthPackageId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SpacePlacement(AbstractModel):
+    """描述了实例的抽象位置，包括其所在的可用区，所属的项目
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Zone: 可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param _ProjectId: 项目，默认是0
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: int
+        """
+        self._Zone = None
+        self._ProjectId = None
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+
+    def _deserialize(self, params):
+        self._Zone = params.get("Zone")
+        self._ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SpaceSystemDisk(AbstractModel):
+    """工作空间系统盘配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DiskType: 系统盘类型。系统盘类型限制详见[存储概述](https://cloud.tencent.com/document/product/213/4952)。取值范围：<ul><li>LOCAL_BASIC：本地硬盘</li><li>LOCAL_SSD：本地SSD硬盘</li><li>CLOUD_BASIC：普通云硬盘</li><li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高性能云硬盘</li><li>CLOUD_BSSD：通用性SSD云硬盘</li><li>CLOUD_HSSD：增强型SSD云硬盘</li><li>CLOUD_TSSD：极速型SSD云硬盘</li></ul>默认取值：当前有库存的硬盘类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskType: str
+        :param _DiskSize: 系统盘大小，单位：GB。默认值为 50
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskSize: int
+        """
+        self._DiskType = None
+        self._DiskSize = None
+
+    @property
+    def DiskType(self):
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def DiskSize(self):
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+
+    def _deserialize(self, params):
+        self._DiskType = params.get("DiskType")
+        self._DiskSize = params.get("DiskSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SpaceVirtualPrivateCloud(AbstractModel):
+    """描述了工作空间VPC相关信息，包括子网，IP信息等
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: 私有网络ID
+        :type VpcId: str
+        :param _SubnetId: 私有网络子网ID
+        :type SubnetId: str
+        :param _AsVpcGateway: 是否用作公网网关
+        :type AsVpcGateway: bool
+        :param _PrivateIpAddresses: 私有网络子网 IP 数组
+        :type PrivateIpAddresses: list of str
+        :param _Ipv6AddressCount: 为弹性网卡指定随机生成
+        :type Ipv6AddressCount: int
+        """
+        self._VpcId = None
+        self._SubnetId = None
+        self._AsVpcGateway = None
+        self._PrivateIpAddresses = None
+        self._Ipv6AddressCount = None
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def AsVpcGateway(self):
+        return self._AsVpcGateway
+
+    @AsVpcGateway.setter
+    def AsVpcGateway(self, AsVpcGateway):
+        self._AsVpcGateway = AsVpcGateway
+
+    @property
+    def PrivateIpAddresses(self):
+        return self._PrivateIpAddresses
+
+    @PrivateIpAddresses.setter
+    def PrivateIpAddresses(self, PrivateIpAddresses):
+        self._PrivateIpAddresses = PrivateIpAddresses
+
+    @property
+    def Ipv6AddressCount(self):
+        return self._Ipv6AddressCount
+
+    @Ipv6AddressCount.setter
+    def Ipv6AddressCount(self, Ipv6AddressCount):
+        self._Ipv6AddressCount = Ipv6AddressCount
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._AsVpcGateway = params.get("AsVpcGateway")
+        self._PrivateIpAddresses = params.get("PrivateIpAddresses")
+        self._Ipv6AddressCount = params.get("Ipv6AddressCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StorageOption(AbstractModel):
     """描述集群文件系统选项
 
@@ -5102,6 +5934,58 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TagSpecification(AbstractModel):
+    """创建资源工作空间时同时绑定的标签对说明
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceType: 标签绑定的资源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceType: str
+        :param _Tags: 标签对列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        """
+        self._ResourceType = None
+        self._Tags = None
+
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._ResourceType = params.get("ResourceType")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

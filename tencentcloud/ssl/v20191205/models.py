@@ -1980,6 +1980,82 @@ class CheckCertificateChainResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CheckCertificateDomainVerificationRequest(AbstractModel):
+    """CheckCertificateDomainVerification请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertificateId: 证书ID。
+        :type CertificateId: str
+        """
+        self._CertificateId = None
+
+    @property
+    def CertificateId(self):
+        return self._CertificateId
+
+    @CertificateId.setter
+    def CertificateId(self, CertificateId):
+        self._CertificateId = CertificateId
+
+
+    def _deserialize(self, params):
+        self._CertificateId = params.get("CertificateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckCertificateDomainVerificationResponse(AbstractModel):
+    """CheckCertificateDomainVerification返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VerificationResults: 域名验证结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VerificationResults: list of DomainValidationResult
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._VerificationResults = None
+        self._RequestId = None
+
+    @property
+    def VerificationResults(self):
+        return self._VerificationResults
+
+    @VerificationResults.setter
+    def VerificationResults(self, VerificationResults):
+        self._VerificationResults = VerificationResults
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("VerificationResults") is not None:
+            self._VerificationResults = []
+            for item in params.get("VerificationResults"):
+                obj = DomainValidationResult()
+                obj._deserialize(item)
+                self._VerificationResults.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class ClbInstanceDetail(AbstractModel):
     """clb实例详情
 
@@ -9834,6 +9910,126 @@ class DescribePackagesResponse(AbstractModel):
         self._TotalCount = params.get("TotalCount")
         self._TotalBalance = params.get("TotalBalance")
         self._RequestId = params.get("RequestId")
+
+
+class DomainValidationResult(AbstractModel):
+    """域名验证结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名。
+        :type Domain: str
+        :param _VerifyType: 验证类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VerifyType: str
+        :param _LocalCheck: 本地检查结果。
+        :type LocalCheck: int
+        :param _CaCheck: CA检查结果。
+        :type CaCheck: int
+        :param _LocalCheckFailReason: 检查失败原因。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocalCheckFailReason: str
+        :param _CheckValue: 检查到的值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckValue: list of str
+        :param _Frequently: 是否频繁请求。
+        :type Frequently: bool
+        :param _Issued: 是否已经签发。
+        :type Issued: bool
+        """
+        self._Domain = None
+        self._VerifyType = None
+        self._LocalCheck = None
+        self._CaCheck = None
+        self._LocalCheckFailReason = None
+        self._CheckValue = None
+        self._Frequently = None
+        self._Issued = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def VerifyType(self):
+        return self._VerifyType
+
+    @VerifyType.setter
+    def VerifyType(self, VerifyType):
+        self._VerifyType = VerifyType
+
+    @property
+    def LocalCheck(self):
+        return self._LocalCheck
+
+    @LocalCheck.setter
+    def LocalCheck(self, LocalCheck):
+        self._LocalCheck = LocalCheck
+
+    @property
+    def CaCheck(self):
+        return self._CaCheck
+
+    @CaCheck.setter
+    def CaCheck(self, CaCheck):
+        self._CaCheck = CaCheck
+
+    @property
+    def LocalCheckFailReason(self):
+        return self._LocalCheckFailReason
+
+    @LocalCheckFailReason.setter
+    def LocalCheckFailReason(self, LocalCheckFailReason):
+        self._LocalCheckFailReason = LocalCheckFailReason
+
+    @property
+    def CheckValue(self):
+        return self._CheckValue
+
+    @CheckValue.setter
+    def CheckValue(self, CheckValue):
+        self._CheckValue = CheckValue
+
+    @property
+    def Frequently(self):
+        return self._Frequently
+
+    @Frequently.setter
+    def Frequently(self, Frequently):
+        self._Frequently = Frequently
+
+    @property
+    def Issued(self):
+        return self._Issued
+
+    @Issued.setter
+    def Issued(self, Issued):
+        self._Issued = Issued
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._VerifyType = params.get("VerifyType")
+        self._LocalCheck = params.get("LocalCheck")
+        self._CaCheck = params.get("CaCheck")
+        self._LocalCheckFailReason = params.get("LocalCheckFailReason")
+        self._CheckValue = params.get("CheckValue")
+        self._Frequently = params.get("Frequently")
+        self._Issued = params.get("Issued")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DownloadCertificateRequest(AbstractModel):

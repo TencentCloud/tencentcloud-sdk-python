@@ -3070,9 +3070,12 @@ class DeleteJobsRequest(AbstractModel):
         :type JobIds: list of str
         :param _WorkSpaceId: 工作空间Id
         :type WorkSpaceId: str
+        :param _JobNames: 作业名称列表
+        :type JobNames: list of str
         """
         self._JobIds = None
         self._WorkSpaceId = None
+        self._JobNames = None
 
     @property
     def JobIds(self):
@@ -3090,10 +3093,19 @@ class DeleteJobsRequest(AbstractModel):
     def WorkSpaceId(self, WorkSpaceId):
         self._WorkSpaceId = WorkSpaceId
 
+    @property
+    def JobNames(self):
+        return self._JobNames
+
+    @JobNames.setter
+    def JobNames(self, JobNames):
+        self._JobNames = JobNames
+
 
     def _deserialize(self, params):
         self._JobIds = params.get("JobIds")
         self._WorkSpaceId = params.get("WorkSpaceId")
+        self._JobNames = params.get("JobNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

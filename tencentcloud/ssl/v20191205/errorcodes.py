@@ -116,6 +116,9 @@ FAILEDOPERATION_CERTIFICATESTATUSNOTALLOWDOWNLOAD = 'FailedOperation.Certificate
 # 证书状态不允许重新申请。
 FAILEDOPERATION_CERTIFICATESTATUSNOTALLOWRESUBMIT = 'FailedOperation.CertificateStatusNotAllowResubmit'
 
+# 证书当前状态不允许进行域名验证。
+FAILEDOPERATION_CERTIFICATESTATUSNOTALLOWVERIFY = 'FailedOperation.CertificateStatusNotAllowVerify'
+
 # 证书关联云资源查询任务ID无效
 FAILEDOPERATION_CERTIFICATESYNCTASKIDINVALID = 'FailedOperation.CertificateSyncTaskIdInvalid'
 

@@ -1417,7 +1417,7 @@ class CreateAppRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppType: 应用类型；knowledge_qa-知识问答管理；summary-知识摘要；classifys-知识标签提取
+        :param _AppType: 应用类型；knowledge_qa-知识问答管理
         :type AppType: str
         :param _BaseConfig: 应用基础配置
         :type BaseConfig: :class:`tencentcloud.lke.v20231130.models.BaseConfig`
