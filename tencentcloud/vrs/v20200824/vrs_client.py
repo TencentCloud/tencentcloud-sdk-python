@@ -154,6 +154,7 @@ class VrsClient(AbstractClient):
         """本接口用于获取声音复刻训练文本信息。
          请求方法为 HTTP POST , Content-Type为"application/json; charset=utf-8"
         • 签名方法参考 公共参数 中签名方法v3。
+        • 当复刻类型为一句话声音复刻时，生成的TextId有效期为7天，且在成功创建一次复刻任务后失效。
 
         :param request: Request instance for GetTrainingText.
         :type request: :class:`tencentcloud.vrs.v20200824.models.GetTrainingTextRequest`

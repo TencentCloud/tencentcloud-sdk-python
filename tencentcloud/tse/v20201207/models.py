@@ -5633,7 +5633,8 @@ polarismesh - STANDARD版本
 - ap-jakarta：雅加达
 - ap-singapore：新加坡
 北美区 参考值
-- na-toronto：多伦多
+- na-siliconvalley：硅谷
+- na-ashburn: 弗吉尼亚
 金融专区 参考值
 - ap-beijing-fsi：北京金融
 - ap-shanghai-fsi：上海金融

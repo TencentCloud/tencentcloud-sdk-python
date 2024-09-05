@@ -788,7 +788,8 @@ class ImageCodecParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MetaData: 元数据，个数不能大于1。
+        :param _MetaData: 元数据是描述媒体文件的附加信息。通过添加自定义的元数据，可以将一些附加信息嵌入到文件中。这些信息可以用于版权、描述、标识等目的，并在后续的媒体处理或管理过程中使用。
+个数不能大于1。
         :type MetaData: list of MetaData
         """
         self._MetaData = None
@@ -827,14 +828,20 @@ class LogoParam(AbstractModel):
     def __init__(self):
         r"""
         :param _LogoRect: 标识图片位于融合结果图中的坐标，将按照坐标对标识图片进行位置和大小的拉伸匹配。
+Width、Height <= 2160。
         :type LogoRect: :class:`tencentcloud.facefusion.v20220927.models.FaceRect`
-        :param _LogoUrl: 标识图片Url地址。
+        :param _LogoUrl: 标识图片Url地址
+
 ●base64 和 url 必须提供一个，如果都提供以 url 为准。
-●支持图片格式：支持jpg或png。
+●支持图片格式：支持jpg或png
+专业版：base64 编码后大小不超过10M。
+非专业版：base64 编码后大小不超过5M。
         :type LogoUrl: str
-        :param _LogoImage: 标识图片base64
+        :param _LogoImage: 输入图片base64。
 ●base64 和 url 必须提供一个，如果都提供以 url 为准。
-●支持图片格式：支持jpg或png。
+●支持图片格式：支持jpg或png
+专业版：base64 编码后大小不超过10M。
+非专业版：base64 编码后大小不超过5M。
         :type LogoImage: str
         """
         self._LogoRect = None
@@ -1029,9 +1036,9 @@ class MetaData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MetaKey: MetaData的Key
+        :param _MetaKey: MetaData的Key，字符长度不能超过32
         :type MetaKey: str
-        :param _MetaValue: MetaData的Value
+        :param _MetaValue: MetaData的Value，字符长度不能超过256
         :type MetaValue: str
         """
         self._MetaKey = None

@@ -1108,6 +1108,8 @@ class SubmitVideoTranslateJobRequest(AbstractModel):
         :type Confirm: int
         :param _LipSync: 是否开启口型驱动，0：不开启，1：开启。默认开启。
         :type LipSync: int
+        :param _VoiceType: 音色 Id
+        :type VoiceType: str
         """
         self._VideoUrl = None
         self._SrcLang = None
@@ -1115,6 +1117,7 @@ class SubmitVideoTranslateJobRequest(AbstractModel):
         self._AudioUrl = None
         self._Confirm = None
         self._LipSync = None
+        self._VoiceType = None
 
     @property
     def VideoUrl(self):
@@ -1164,6 +1167,14 @@ class SubmitVideoTranslateJobRequest(AbstractModel):
     def LipSync(self, LipSync):
         self._LipSync = LipSync
 
+    @property
+    def VoiceType(self):
+        return self._VoiceType
+
+    @VoiceType.setter
+    def VoiceType(self, VoiceType):
+        self._VoiceType = VoiceType
+
 
     def _deserialize(self, params):
         self._VideoUrl = params.get("VideoUrl")
@@ -1172,6 +1183,7 @@ class SubmitVideoTranslateJobRequest(AbstractModel):
         self._AudioUrl = params.get("AudioUrl")
         self._Confirm = params.get("Confirm")
         self._LipSync = params.get("LipSync")
+        self._VoiceType = params.get("VoiceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

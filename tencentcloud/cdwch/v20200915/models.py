@@ -458,7 +458,7 @@ class CkUserAlterInfo(AbstractModel):
         :type InstanceId: str
         :param _UserName: 用户名
         :type UserName: str
-        :param _PassWord: 密码
+        :param _PassWord: base64加密后的密码
         :type PassWord: str
         :param _Describe: 描述
         :type Describe: str
