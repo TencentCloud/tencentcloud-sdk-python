@@ -4194,9 +4194,9 @@ class ScanDetail(AbstractModel):
         :type Rate: str
         :param _KeyWord: 违规关键字
         :type KeyWord: str
-        :param _StartTime: 关键字在音频的开始时间，从0开始的偏移量，单位为毫秒
+        :param _StartTime: 关键字在音频的开始时间，从0开始的偏移量，单位为毫秒，Label=moan时有效
         :type StartTime: int
-        :param _EndTime: 关键字在音频的结束时间，从0开始的偏移量,，单位为毫秒
+        :param _EndTime: 关键字在音频的结束时间，从0开始的偏移量,，单位为毫秒，Label=moan时有效
         :type EndTime: int
         """
         self._Label = None

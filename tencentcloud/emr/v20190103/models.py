@@ -2296,6 +2296,262 @@ class ComponentBasicRestartInfo(AbstractModel):
         
 
 
+class ConfigModifyInfoV2(AbstractModel):
+    """资源调度 - 队列修改信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OpType: 操作类型，可选值：
+
+- 0：新建队列
+- 1：编辑-全量覆盖
+- 2：新建子队列
+- 3：删除
+- 4：克隆，与新建子队列的行为一样，特别的对于`fair`，可以复制子队列到新建队列
+- 6：编辑-增量更新
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OpType: int
+        :param _Name: 队列名称，不支持修改。
+        :type Name: str
+        :param _ParentId: 新建队列 传root的MyId；新建子队列 传 选中队列的 myId；克隆 要传 选中队列 parentId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentId: str
+        :param _MyId: 编辑、删除 传选中队列的 myId。克隆只有在调度器是`fair`时才需要传，用来复制子队列到新队列。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MyId: str
+        :param _BasicParams: 基础配置信息。key的取值与**DescribeYarnQueue**返回的字段一致。
+###### 公平调度器
+key的取值信息如下：
+
+- type，父队列，取值为 **parent** 或 **null**
+- aclSubmitApps，提交访问控制，取值为**AclForYarnQueue类型的json串**或**null**
+- aclAdministerApps，管理访问控制，取值为**AclForYarnQueue类型的json串**或**null**
+- minSharePreemptionTimeout，最小共享优先权超时时间，取值为**数字字符串**或**null**
+- fairSharePreemptionTimeout，公平份额抢占超时时间，取值为**数字字符串**或**null**
+- fairSharePreemptionThreshold，公平份额抢占阈值，取值为**数字字符串**或**null**，其中数字的范围是（0，1]
+- allowPreemptionFrom，抢占模式，取值为**布尔字符串**或**null**
+- schedulingPolicy，调度策略，取值为**drf**、**fair**、**fifo**或**null**
+
+```
+type AclForYarnQueue struct {
+	User  *string `json:"user"` //用户名
+	Group *string `json:"group"`//组名
+}
+```
+###### 容量调度器
+key的取值信息如下：
+
+- state，队列状态，取值为**STOPPED**或**RUNNING**
+- default-node-label-expression，默认标签表达式，取值为**标签**或**null**
+- acl_submit_applications，提交访问控制，取值为**AclForYarnQueue类型的json串**或**null**
+- acl_administer_queue，管理访问控制，取值为**AclForYarnQueue类型的json串**或**null**
+- maximum-allocation-mb，分配Container最大内存数量，取值为**数字字符串**或**null**
+- maximum-allocation-vcores，Container最大vCore数量，取值为**数字字符串**或**null**
+```
+type AclForYarnQueue struct {
+	User  *string `json:"user"` //用户名
+	Group *string `json:"group"`//组名
+}
+```
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BasicParams: :class:`tencentcloud.emr.v20190103.models.ItemSeq`
+        :param _ConfigSetParams: 配置集信息，取值见该复杂类型的参数说明。配置集是计划模式在队列中表现，表示的是不同时间段不同的配置值，所有队列的配置集名称都一样，对于单个队列，每个配置集中的标签与参数都一样，只是参数值不同。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigSetParams: list of ConfigSetInfo
+        :param _DeleteLables: 容量调度专用，`OpType`为`6`时才生效，表示要删除这个队列中的哪些标签。优先级高于ConfigSetParams中的LabelParams。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeleteLables: list of str
+        """
+        self._OpType = None
+        self._Name = None
+        self._ParentId = None
+        self._MyId = None
+        self._BasicParams = None
+        self._ConfigSetParams = None
+        self._DeleteLables = None
+
+    @property
+    def OpType(self):
+        return self._OpType
+
+    @OpType.setter
+    def OpType(self, OpType):
+        self._OpType = OpType
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ParentId(self):
+        return self._ParentId
+
+    @ParentId.setter
+    def ParentId(self, ParentId):
+        self._ParentId = ParentId
+
+    @property
+    def MyId(self):
+        return self._MyId
+
+    @MyId.setter
+    def MyId(self, MyId):
+        self._MyId = MyId
+
+    @property
+    def BasicParams(self):
+        return self._BasicParams
+
+    @BasicParams.setter
+    def BasicParams(self, BasicParams):
+        self._BasicParams = BasicParams
+
+    @property
+    def ConfigSetParams(self):
+        return self._ConfigSetParams
+
+    @ConfigSetParams.setter
+    def ConfigSetParams(self, ConfigSetParams):
+        self._ConfigSetParams = ConfigSetParams
+
+    @property
+    def DeleteLables(self):
+        return self._DeleteLables
+
+    @DeleteLables.setter
+    def DeleteLables(self, DeleteLables):
+        self._DeleteLables = DeleteLables
+
+
+    def _deserialize(self, params):
+        self._OpType = params.get("OpType")
+        self._Name = params.get("Name")
+        self._ParentId = params.get("ParentId")
+        self._MyId = params.get("MyId")
+        if params.get("BasicParams") is not None:
+            self._BasicParams = ItemSeq()
+            self._BasicParams._deserialize(params.get("BasicParams"))
+        if params.get("ConfigSetParams") is not None:
+            self._ConfigSetParams = []
+            for item in params.get("ConfigSetParams"):
+                obj = ConfigSetInfo()
+                obj._deserialize(item)
+                self._ConfigSetParams.append(obj)
+        self._DeleteLables = params.get("DeleteLables")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConfigSetInfo(AbstractModel):
+    """资源调度-配置集信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConfigSet: 配置集名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigSet: str
+        :param _LabelParams: 容量调度器会使用，里面设置了标签相关的配置。key的取值与**DescribeYarnQueue**返回的字段一致。
+key的取值信息如下：
+- labelName，标签名称，标签管理里的标签。
+- capacity，容量，取值为**数字字符串**
+- maximum-capacity，最大容量，取值为**数字字符串**
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelParams: list of ItemSeq
+        :param _BasicParams: 设置配置集相关的参数。key的取值与**DescribeYarnQueue**返回的字段一致。
+###### 公平调度器
+key的取值信息如下：
+- minResources，最大资源量，取值为**YarnResource类型的json串**或**null**
+- maxResources，最大资源量，取值为**YarnResource类型的json串**或**null**
+- maxChildResources，能够分配给为未声明子队列的最大资源量，取值为**数字字符串**或**null**
+- maxRunningApps，最高可同时处于运行的App数量，取值为**数字字符串**或**null**
+- weight，权重，取值为**数字字符串**或**null**
+- maxAMShare，App Master最大份额，取值为**数字字符串**或**null**，其中数字的范围是[0，1]或-1
+
+```
+type YarnResource struct {
+	Vcores *int `json:"vcores"`
+	Memory *int `json:"memory"`
+	Type *string `json:"type"` // 取值为`percent`或`null`当值为`percent`时，表示使用的百分比，否则就是使用的绝对数值。只有maxResources、maxChildResources才可以取值为`percent`
+}
+```
+
+###### 容量调度器
+key的取值信息如下：
+- minimum-user-limit-percent，用户最小容量，取值为**YarnResource类型的json串**或**null**，其中数字的范围是[0，100]
+- user-limit-factor，用户资源因子，取值为**YarnResource类型的json串**或**null**
+- maximum-applications，最大应用数Max-Applications，取值为**数字字符串**或**null**，其中数字为正整数
+- maximum-am-resource-percent，最大AM比例，取值为**数字字符串**或**null**，其中数字的范围是[0，1]或-1
+- default-application-priority，资源池优先级，取值为**数字字符串**或**null**，其中数字为正整数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BasicParams: list of Item
+        """
+        self._ConfigSet = None
+        self._LabelParams = None
+        self._BasicParams = None
+
+    @property
+    def ConfigSet(self):
+        return self._ConfigSet
+
+    @ConfigSet.setter
+    def ConfigSet(self, ConfigSet):
+        self._ConfigSet = ConfigSet
+
+    @property
+    def LabelParams(self):
+        return self._LabelParams
+
+    @LabelParams.setter
+    def LabelParams(self, LabelParams):
+        self._LabelParams = LabelParams
+
+    @property
+    def BasicParams(self):
+        return self._BasicParams
+
+    @BasicParams.setter
+    def BasicParams(self, BasicParams):
+        self._BasicParams = BasicParams
+
+
+    def _deserialize(self, params):
+        self._ConfigSet = params.get("ConfigSet")
+        if params.get("LabelParams") is not None:
+            self._LabelParams = []
+            for item in params.get("LabelParams"):
+                obj = ItemSeq()
+                obj._deserialize(item)
+                self._LabelParams.append(obj)
+        if params.get("BasicParams") is not None:
+            self._BasicParams = []
+            for item in params.get("BasicParams"):
+                obj = Item()
+                obj._deserialize(item)
+                self._BasicParams.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Configuration(AbstractModel):
     """自定义配置参数
 
@@ -3706,6 +3962,76 @@ class DependService(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DeployYarnConfRequest(AbstractModel):
+    """DeployYarnConf请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: emr集群的英文id
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeployYarnConfResponse(AbstractModel):
+    """DeployYarnConf返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 启动流程后的流程ID，可以使用[DescribeClusterFlowStatusDetail](https://cloud.tencent.com/document/product/589/107224)接口来获取流程状态
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAutoScaleGroupGlobalConfRequest(AbstractModel):
@@ -6928,6 +7254,195 @@ class DescribeYarnApplicationsResponse(AbstractModel):
                 obj = YarnApplication()
                 obj._deserialize(item)
                 self._Results.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeYarnQueueRequest(AbstractModel):
+    """DescribeYarnQueue请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群Id
+        :type InstanceId: str
+        :param _Scheduler: 调度器，可选值：
+
+1. capacity
+2. fair
+        :type Scheduler: str
+        """
+        self._InstanceId = None
+        self._Scheduler = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Scheduler(self):
+        return self._Scheduler
+
+    @Scheduler.setter
+    def Scheduler(self, Scheduler):
+        self._Scheduler = Scheduler
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Scheduler = params.get("Scheduler")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeYarnQueueResponse(AbstractModel):
+    """DescribeYarnQueue返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Queue: 队列信息。是一个对象转成的json字符串，对应的golang结构体如下所示，比如`QueueWithConfigSetForFairScheduler`的第一个字段`Name`：
+
+```
+Name                         string                               `json:"name"` //队列名称
+```
+- `Name`：字段名
+- `string`：字段类型
+- `json:"name"`：表示在序列化和反序列化`json`时，对应的`json key`，下面以`json key`来指代
+- `//`：后面的注释内容对应页面上看到的名称
+
+字段类型以`*`开头的表示取值可能为json规范下的null，不同的语言需要使用能表达null的类型来接收，比如java的包装类型；字段类型以`[]`开头的表示是数组类型；`json key`在调用`ModifyYarnQueueV2 `接口也会使用。
+
+- 公平调度器
+
+```
+type QueueWithConfigSetForFairScheduler struct {
+	Name                         string                               `json:"name"` //队列名称
+	MyId                         string                  `json:"myId"` // 队列id，用于编辑、删除、克隆时使用
+	ParentId                     string                  `json:"parentId"`  // 父队列Id
+	Type                         *string                              `json:"type"` // 队列归属。parent或空，当确定某个队列是父队列，且没有子队列时，才可以设置，通常用来支持放置策略nestedUserQueue
+	AclSubmitApps                *AclForYarnQueue                     `json:"aclSubmitApps"` // 提交访问控制
+	AclAdministerApps            *AclForYarnQueue                     `json:"aclAdministerApps"` // 管理访问控制
+	MinSharePreemptionTimeout    *int                                 `json:"minSharePreemptionTimeout"` // 最小共享优先权超时时间
+	FairSharePreemptionTimeout   *int                                 `json:"fairSharePreemptionTimeout"` // 公平份额抢占超时时间
+	FairSharePreemptionThreshold *float32                             `json:"fairSharePreemptionThreshold"` // 公平份额抢占阈值。取值 （0，1]
+	AllowPreemptionFrom          *bool                                `json:"allowPreemptionFrom"`                                        // 抢占模式
+	SchedulingPolicy             *string                              `json:"schedulingPolicy"`  // 调度策略，取值有drf、fair、fifo
+	IsDefault                    *bool                                `json:"isDefault"` // 是否是root.default队列
+	IsRoot                       *bool                                `json:"isRoot"` // 是否是root队列
+	ConfigSets                   []ConfigSetForFairScheduler          `json:"configSets"` // 配置集设置
+	Children                     []QueueWithConfigSetForFairScheduler `json:"queues"` // 子队列信息。递归
+}
+
+type AclForYarnQueue struct {
+	User  *string `json:"user"` //用户名
+	Group *string `json:"group"`//组名
+}
+
+type ConfigSetForFairScheduler struct {
+	Name              string        `json:"name"` // 配置集名称
+	MinResources      *YarnResource `json:"minResources"` // 最小资源量
+	MaxResources      *YarnResource `json:"maxResources"` // 最大资源量
+	MaxChildResources *YarnResource `json:"maxChildResources"` // 能够分配给为未声明子队列的最大资源量
+	MaxRunningApps    *int          `json:"maxRunningApps"` // 最高可同时处于运行的App数量
+	Weight            *float32      `json:"weight"`                   // 权重
+	MaxAMShare        *float32      `json:"maxAMShare"` // App Master最大份额
+}
+
+type YarnResource struct {
+	Vcores *int `json:"vcores"`
+	Memory *int `json:"memory"`
+	Type *string `json:"type"` // 当值为`percent`时，表示使用的百分比，否则就是使用的绝对数值
+}
+```
+
+- 容量调度器
+
+```
+type QueueForCapacitySchedulerV3 struct {
+	Name                       string                `json:"name"` // 队列名称
+	MyId                       string                `json:"myId"` // 队列id，用于编辑、删除、克隆时使用
+	ParentId                   string                `json:"parentId"` // 父队列Id
+	Configs                    []ConfigForCapacityV3 `json:"configs"` //配置集设置
+	State                      *string         `json:"state"` // 资源池状态
+	DefaultNodeLabelExpression *string               `json:"default-node-label-expression"` // 默认标签表达式
+	AclSubmitApps              *AclForYarnQueue      `json:"acl_submit_applications"` // 提交访问控制
+	AclAdminQueue              *AclForYarnQueue      `json:"acl_administer_queue"` //管理访问控制
+	MaxAllocationMB *int32 `json:"maximum-allocation-mb"` // 分配Container最大内存数量
+	MaxAllocationVcores *int32                         `json:"maximum-allocation-vcores"` // Container最大vCore数量
+	IsDefault           *bool                          `json:"isDefault"`// 是否是root.default队列
+	IsRoot              *bool                          `json:"isRoot"` // 是否是root队列
+	Queues              []*QueueForCapacitySchedulerV3 `json:"queues"`//子队列信息。递归
+}
+type ConfigForCapacityV3 struct {
+	Name                string          `json:"configName"` // 配置集名称
+	Labels              []CapacityLabel `json:"labels"` // 标签信息
+	MinUserLimitPercent *int32          `json:"minimum-user-limit-percent"` // 用户最小容量
+	UserLimitFactor     *float32        `json:"user-limit-factor" valid:"rangeExcludeLeft(0|)"`  // 用户资源因子
+	MaxApps *int32 `json:"maximum-applications" valid:"rangeExcludeLeft(0|)"` // 最大应用数Max-Applications
+	MaxAmPercent               *float32 `json:"maximum-am-resource-percent"` // 最大AM比例
+	DefaultApplicationPriority *int32   `json:"default-application-priority"` // 资源池优先级
+}
+type CapacityLabel struct {
+	Name        string   `json:"labelName"`
+	Capacity    *float32 `json:"capacity"`  // 容量
+	MaxCapacity *float32 `json:"maximum-capacity"` //最大容量
+}
+
+type AclForYarnQueue struct {
+	User  *string `json:"user"` //用户名
+	Group *string `json:"group"`//组名
+}
+```
+        :type Queue: str
+        :param _Version: 版本
+        :type Version: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Queue = None
+        self._Version = None
+        self._RequestId = None
+
+    @property
+    def Queue(self):
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Queue = params.get("Queue")
+        self._Version = params.get("Version")
         self._RequestId = params.get("RequestId")
 
 
@@ -10894,6 +11409,92 @@ class InstanceChargePrepaid(AbstractModel):
         
 
 
+class Item(AbstractModel):
+    """代表一个kv结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 健值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: 值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ItemSeq(AbstractModel):
+    """键值对组成的列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 标签名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of Item
+        """
+        self._Items = None
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = Item()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class JobFlowResource(AbstractModel):
     """机器资源描述。
 
@@ -12691,6 +13292,96 @@ class ModifyYarnDeployResponse(AbstractModel):
     def _deserialize(self, params):
         self._IsDraft = params.get("IsDraft")
         self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyYarnQueueV2Request(AbstractModel):
+    """ModifyYarnQueueV2请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群Id
+        :type InstanceId: str
+        :param _Scheduler: 调度器类型。可选值：
+
+1. capacity
+2. fair
+        :type Scheduler: str
+        :param _ConfigModifyInfoList: 资源池数据
+        :type ConfigModifyInfoList: list of ConfigModifyInfoV2
+        """
+        self._InstanceId = None
+        self._Scheduler = None
+        self._ConfigModifyInfoList = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Scheduler(self):
+        return self._Scheduler
+
+    @Scheduler.setter
+    def Scheduler(self, Scheduler):
+        self._Scheduler = Scheduler
+
+    @property
+    def ConfigModifyInfoList(self):
+        return self._ConfigModifyInfoList
+
+    @ConfigModifyInfoList.setter
+    def ConfigModifyInfoList(self, ConfigModifyInfoList):
+        self._ConfigModifyInfoList = ConfigModifyInfoList
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Scheduler = params.get("Scheduler")
+        if params.get("ConfigModifyInfoList") is not None:
+            self._ConfigModifyInfoList = []
+            for item in params.get("ConfigModifyInfoList"):
+                obj = ConfigModifyInfoV2()
+                obj._deserialize(item)
+                self._ConfigModifyInfoList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyYarnQueueV2Response(AbstractModel):
+    """ModifyYarnQueueV2返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -16314,6 +17005,80 @@ class RepeatStrategy(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ResetYarnConfigRequest(AbstractModel):
+    """ResetYarnConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: emr集群的英文id
+        :type InstanceId: str
+        :param _Key: 要重置的配置别名，可选值：
+
+- capacityLabel：重置标签管理的配置
+- fair：重置公平调度的配置
+- capacity：重置容量调度的配置
+        :type Key: str
+        """
+        self._InstanceId = None
+        self._Key = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Key = params.get("Key")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetYarnConfigResponse(AbstractModel):
+    """ResetYarnConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class Resource(AbstractModel):

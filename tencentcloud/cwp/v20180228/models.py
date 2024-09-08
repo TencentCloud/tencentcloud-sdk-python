@@ -69372,7 +69372,7 @@ class ModifyEventAttackStatusRequest(AbstractModel):
         :type Ids: list of int non-negative
         :param _All: 是否更新全部，即是否对所有的事件进行操作，当ids 不为空时，此参数无效
         :type All: bool
-        :param _Status: 0：待处理 1：已处理 2： 已加白 3： 已忽略 4：已删除 
+        :param _Status: 0：待处理 1：已处理 3： 已忽略 4：已删除 
         :type Status: int
         :param _Filters: 过滤条件。
 <li>Type - String 攻击状态 0: 尝试攻击 1: 攻击成功 - 是否必填: 否</li>

@@ -3614,10 +3614,13 @@ class DescribeMQTTInstanceListRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 查询结果限制数量
         :type Limit: int
+        :param _IncludeNew: 是否包含新控制台集群
+        :type IncludeNew: bool
         """
         self._Filters = None
         self._Offset = None
         self._Limit = None
+        self._IncludeNew = None
 
     @property
     def Filters(self):
@@ -3643,6 +3646,14 @@ class DescribeMQTTInstanceListRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def IncludeNew(self):
+        return self._IncludeNew
+
+    @IncludeNew.setter
+    def IncludeNew(self, IncludeNew):
+        self._IncludeNew = IncludeNew
+
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
@@ -3653,6 +3664,7 @@ class DescribeMQTTInstanceListRequest(AbstractModel):
                 self._Filters.append(obj)
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._IncludeNew = params.get("IncludeNew")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -716,31 +716,6 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DeleteVpcInstance(self, request):
-        """接口废弃
-
-        删除防火墙实例
-
-        :param request: Request instance for DeleteVpcInstance.
-        :type request: :class:`tencentcloud.cfw.v20190904.models.DeleteVpcInstanceRequest`
-        :rtype: :class:`tencentcloud.cfw.v20190904.models.DeleteVpcInstanceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteVpcInstance", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteVpcInstanceResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeAcLists(self, request):
         """访问控制列表
 

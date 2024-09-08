@@ -6355,8 +6355,9 @@ class CreateZoneRequest(AbstractModel):
         r"""
         :param _Type: 站点接入类型。该参数取值如下，不填写时默认为 partial：
 <li>partial：CNAME 接入；</li>
-<li> full：NS 接入；</li>
-<li>noDomainAccess：无域名接入。</li>
+<li>full：NS 接入；</li>
+<li>noDomainAccess：无域名接入；</li>
+<li>dnsPodAccess：DNSPod 托管接入，该接入模式要求您的域名已托管在 DNSPod 内。</li>
         :type Type: str
         :param _ZoneName: 站点名称。CNAME/NS 接入的时，请传入二级域名（example.com）作为站点名称；无域名接入时，该值请保留为空。
         :type ZoneName: str
@@ -19793,8 +19794,9 @@ class ModifyZoneRequest(AbstractModel):
         :param _ZoneId: 站点 ID。
         :type ZoneId: str
         :param _Type: 站点接入方式，取值有：
-<li> full：NS 接入；</li>
-<li> partial：CNAME 接入，如果站点当前是无域名接入，仅支持切换到CNAME接入。</li>不填写保持原有配置。
+<li>full：NS 接入；</li>
+<li>partial：CNAME 接入，如果站点当前是无域名接入，仅支持切换到 CNAME 接入；</li>
+<li>dnsPodAccess：DNSPod 托管接入，该接入模式要求您的域名已托管在 DNSPod 内。</li>不填写保持原有配置。
         :type Type: str
         :param _VanityNameServers: 自定义站点信息，以替代系统默认分配的名称服务器。不填写保持原有配置。当站点是无域名接入方式时不允许传此参数。
         :type VanityNameServers: :class:`tencentcloud.teo.v20220901.models.VanityNameServers`

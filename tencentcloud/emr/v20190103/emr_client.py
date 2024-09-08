@@ -165,6 +165,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeployYarnConf(self, request):
+        """yarn资源调度-部署生效
+
+        :param request: Request instance for DeployYarnConf.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DeployYarnConfRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DeployYarnConfResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeployYarnConf", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeployYarnConfResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAutoScaleGroupGlobalConf(self, request):
         """获取自动扩缩容全局配置
 
@@ -534,7 +557,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeResourceSchedule(self, request):
-        """查询YARN资源调度数据信息
+        """查询YARN资源调度数据信息。已废弃，请使用`DescribeYarnQueue`去查询队列信息。
 
         :param request: Request instance for DescribeResourceSchedule.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeResourceScheduleRequest`
@@ -649,8 +672,31 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeYarnQueue(self, request):
+        """获取资源调度中的队列信息
+
+        :param request: Request instance for DescribeYarnQueue.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeYarnQueueRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeYarnQueueResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeYarnQueue", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeYarnQueueResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeYarnScheduleHistory(self, request):
-        """查看yarn资源调度的调度历史
+        """查看yarn资源调度的调度历史。废弃，请使用流程中心查看历史记录。
 
         :param request: Request instance for DescribeYarnScheduleHistory.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeYarnScheduleHistoryRequest`
@@ -835,7 +881,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifyResourcePools(self, request):
-        """刷新YARN的动态资源池
+        """刷新YARN的动态资源池。已废弃，请使用`DeployYarnConf`
 
         :param request: Request instance for ModifyResourcePools.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifyResourcePoolsRequest`
@@ -858,7 +904,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifyResourceScheduleConfig(self, request):
-        """修改YARN资源调度的资源配置
+        """修改YARN资源调度的资源配置。已废弃，请使用`ModifyYarnQueueV2`来修改队列配置
 
         :param request: Request instance for ModifyResourceScheduleConfig.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifyResourceScheduleConfigRequest`
@@ -881,7 +927,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifyResourceScheduler(self, request):
-        """修改了yarn的资源调度器，点击部署生效
+        """修改了yarn的资源调度器，点击部署生效。
 
         :param request: Request instance for ModifyResourceScheduler.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifyResourceSchedulerRequest`
@@ -950,7 +996,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifyYarnDeploy(self, request):
-        """部署生效
+        """部署生效。已废弃，请使用`DeployYarnConf`接口进行部署生效
 
         :param request: Request instance for ModifyYarnDeploy.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifyYarnDeployRequest`
@@ -963,6 +1009,52 @@ class EmrClient(AbstractClient):
             body = self.call("ModifyYarnDeploy", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyYarnDeployResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyYarnQueueV2(self, request):
+        """修改资源调度中队列信息
+
+        :param request: Request instance for ModifyYarnQueueV2.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ModifyYarnQueueV2Request`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifyYarnQueueV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyYarnQueueV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyYarnQueueV2Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ResetYarnConfig(self, request):
+        """修改YARN资源调度的资源配置
+
+        :param request: Request instance for ResetYarnConfig.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ResetYarnConfigRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ResetYarnConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResetYarnConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResetYarnConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

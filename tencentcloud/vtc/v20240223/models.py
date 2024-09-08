@@ -490,18 +490,32 @@ class SubmitVideoTranslateJobRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _VideoUrl: 视频地址URL。
+格式要求：支持 mp4、mov 。
+时长要求：【10-300】秒。
+fps 要求：【15-60】fps
+分辨率要求：单边像素要求在 【540~1920】 之间。
         :type VideoUrl: str
-        :param _SrcLang: 源语言：zh, en
+        :param _SrcLang: 源语言：zh(中文), en(英文)
         :type SrcLang: str
-        :param _DstLang: 目标语言：zh, en
+        :param _DstLang: 目标语种：
+zh(简体中文)、en(英语)、ar(阿拉伯语)、de(德语)、es(西班牙语)、fr(法语)、id(印尼语)、it(意大利语)、ja(日语)、ko(韩语)、ms(马来语)、pt(葡萄牙语)、ru(俄语)、th(泰语)、tr(土耳其语)、vi(越南语)
+示例值：ar(阿拉伯语)
         :type DstLang: str
-        :param _AudioUrl: 当音频 URL 不为空时，默认以音频驱动视频任务口型
+        :param _AudioUrl: 当音频 URL 不为空时，默认以音频驱动视频任务口型。
+格式要求：支持 mp3、m4a、acc、wav 格式。
+时长要求：【10~300】秒
+大小要求：不超过 100M。
+示例值：http://xxx/audio.mp3
         :type AudioUrl: str
         :param _Confirm: 是否需要确认翻译结果0：不需要，1：需要
         :type Confirm: int
         :param _LipSync: 是否开启口型驱动，0：不开启，1：开启。默认开启。
         :type LipSync: int
-        :param _VoiceType: 音色 ID
+        :param _VoiceType: 音色种别：一种音色种别对应一种不同区域的音色
+1）目标语种为小语种(非zh,en)时，该项为必填
+2）目标语种为zh,en时，该项为非必填，若填入，则对应填入的音色
+
+具体音色包含请见“支持音色种别列表”
         :type VoiceType: str
         """
         self._VideoUrl = None
