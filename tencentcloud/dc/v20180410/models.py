@@ -25,7 +25,7 @@ class AcceptDirectConnectTunnelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DirectConnectTunnelId: 物理专线拥有者接受共享专用通道申请
+        :param _DirectConnectTunnelId: 专用通道ID。
         :type DirectConnectTunnelId: str
         """
         self._DirectConnectTunnelId = None
@@ -1259,8 +1259,7 @@ class DescribeAccessPointsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RegionId: 接入点所在的地域。使用DescribeRegions查询
-
+        :param _RegionId: 接入点所在的地域。使用DescribeRegions查询。
 您可以通过调用 DescribeRegions接口获取地域ID。
         :type RegionId: str
         :param _Offset: 偏移量，默认为0。
@@ -1320,7 +1319,7 @@ class DescribeAccessPointsResponse(AbstractModel):
         r"""
         :param _AccessPointSet: 接入点信息。
         :type AccessPointSet: list of AccessPoint
-        :param _TotalCount: 符合接入点数量。
+        :param _TotalCount: 接入点总数量。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1372,7 +1371,7 @@ class DescribeDirectConnectTunnelExtraRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DirectConnectTunnelId: 专用通道ID
+        :param _DirectConnectTunnelId: 专用通道ID。
         :type DirectConnectTunnelId: str
         """
         self._DirectConnectTunnelId = None
@@ -1405,7 +1404,7 @@ class DescribeDirectConnectTunnelExtraResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DirectConnectTunnelExtra: 专用通道扩展信息
+        :param _DirectConnectTunnelExtra: 专用通道扩展信息。
         :type DirectConnectTunnelExtra: :class:`tencentcloud.dc.v20180410.models.DirectConnectTunnelExtra`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4732,7 +4731,7 @@ class RejectDirectConnectTunnelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DirectConnectTunnelId: 无
+        :param _DirectConnectTunnelId: 专用通道ID。
         :type DirectConnectTunnelId: str
         """
         self._DirectConnectTunnelId = None

@@ -579,6 +579,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeResourceScheduleDiffDetail(self, request):
+        """YARN资源调度-变更详情
+
+        :param request: Request instance for DescribeResourceScheduleDiffDetail.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeResourceScheduleDiffDetailRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeResourceScheduleDiffDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourceScheduleDiffDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResourceScheduleDiffDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeServiceNodeInfos(self, request):
         """查询服务进程信息
 

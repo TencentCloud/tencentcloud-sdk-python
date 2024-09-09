@@ -6468,6 +6468,94 @@ JobFlowFinish，流程任务已完成。
         self._RequestId = params.get("RequestId")
 
 
+class DescribeResourceScheduleDiffDetailRequest(AbstractModel):
+    """DescribeResourceScheduleDiffDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: emr集群的英文id
+        :type InstanceId: str
+        :param _Scheduler: 查询的变更明细对应的调度器，可选值为fair、capacity。如果不传或者传空会使用最新的调度器
+        :type Scheduler: str
+        """
+        self._InstanceId = None
+        self._Scheduler = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Scheduler(self):
+        return self._Scheduler
+
+    @Scheduler.setter
+    def Scheduler(self, Scheduler):
+        self._Scheduler = Scheduler
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Scheduler = params.get("Scheduler")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceScheduleDiffDetailResponse(AbstractModel):
+    """DescribeResourceScheduleDiffDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Details: 变化项的明细
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Details: list of DiffDetail
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Details = None
+        self._RequestId = None
+
+    @property
+    def Details(self):
+        return self._Details
+
+    @Details.setter
+    def Details(self, Details):
+        self._Details = Details
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Details") is not None:
+            self._Details = []
+            for item in params.get("Details"):
+                obj = DiffDetail()
+                obj._deserialize(item)
+                self._Details.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeResourceScheduleRequest(AbstractModel):
     """DescribeResourceSchedule请求参数结构体
 
@@ -7631,6 +7719,322 @@ class DescribeYarnScheduleHistoryResponse(AbstractModel):
         self._SchedulerNameList = params.get("SchedulerNameList")
         self._StateList = params.get("StateList")
         self._RequestId = params.get("RequestId")
+
+
+class DiffDetail(AbstractModel):
+    """动态生成的变更详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: tab页的头
+        :type Name: str
+        :param _Count: 变化项的个数
+        :type Count: int
+        :param _Rows: 要渲染的明细数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rows: list of DiffDetailItem
+        :param _Header: 要渲染的头部信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Header: list of DiffHeader
+        """
+        self._Name = None
+        self._Count = None
+        self._Rows = None
+        self._Header = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def Rows(self):
+        return self._Rows
+
+    @Rows.setter
+    def Rows(self, Rows):
+        self._Rows = Rows
+
+    @property
+    def Header(self):
+        return self._Header
+
+    @Header.setter
+    def Header(self, Header):
+        self._Header = Header
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Count = params.get("Count")
+        if params.get("Rows") is not None:
+            self._Rows = []
+            for item in params.get("Rows"):
+                obj = DiffDetailItem()
+                obj._deserialize(item)
+                self._Rows.append(obj)
+        if params.get("Header") is not None:
+            self._Header = []
+            for item in params.get("Header"):
+                obj = DiffHeader()
+                obj._deserialize(item)
+                self._Header.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DiffDetailItem(AbstractModel):
+    """动态生成的变更详情条目
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Attribute: 属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Attribute: str
+        :param _InEffect: 当前生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InEffect: str
+        :param _PendingEffectiveness: 待生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PendingEffectiveness: str
+        :param _Operation: 操作
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operation: str
+        :param _Queue: 队列
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Queue: str
+        :param _ConfigSet: 配置集
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigSet: str
+        :param _LabelName: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelName: str
+        :param _InEffectIndex: 当前所在位置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InEffectIndex: str
+        :param _PendingEffectIndex: 待生效的位置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PendingEffectIndex: str
+        :param _PlanName: 计划模式名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PlanName: str
+        :param _Label: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Label: str
+        :param _RuleName: 放置规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleName: str
+        :param _UserName: 用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        """
+        self._Attribute = None
+        self._InEffect = None
+        self._PendingEffectiveness = None
+        self._Operation = None
+        self._Queue = None
+        self._ConfigSet = None
+        self._LabelName = None
+        self._InEffectIndex = None
+        self._PendingEffectIndex = None
+        self._PlanName = None
+        self._Label = None
+        self._RuleName = None
+        self._UserName = None
+
+    @property
+    def Attribute(self):
+        return self._Attribute
+
+    @Attribute.setter
+    def Attribute(self, Attribute):
+        self._Attribute = Attribute
+
+    @property
+    def InEffect(self):
+        return self._InEffect
+
+    @InEffect.setter
+    def InEffect(self, InEffect):
+        self._InEffect = InEffect
+
+    @property
+    def PendingEffectiveness(self):
+        return self._PendingEffectiveness
+
+    @PendingEffectiveness.setter
+    def PendingEffectiveness(self, PendingEffectiveness):
+        self._PendingEffectiveness = PendingEffectiveness
+
+    @property
+    def Operation(self):
+        return self._Operation
+
+    @Operation.setter
+    def Operation(self, Operation):
+        self._Operation = Operation
+
+    @property
+    def Queue(self):
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def ConfigSet(self):
+        return self._ConfigSet
+
+    @ConfigSet.setter
+    def ConfigSet(self, ConfigSet):
+        self._ConfigSet = ConfigSet
+
+    @property
+    def LabelName(self):
+        return self._LabelName
+
+    @LabelName.setter
+    def LabelName(self, LabelName):
+        self._LabelName = LabelName
+
+    @property
+    def InEffectIndex(self):
+        return self._InEffectIndex
+
+    @InEffectIndex.setter
+    def InEffectIndex(self, InEffectIndex):
+        self._InEffectIndex = InEffectIndex
+
+    @property
+    def PendingEffectIndex(self):
+        return self._PendingEffectIndex
+
+    @PendingEffectIndex.setter
+    def PendingEffectIndex(self, PendingEffectIndex):
+        self._PendingEffectIndex = PendingEffectIndex
+
+    @property
+    def PlanName(self):
+        return self._PlanName
+
+    @PlanName.setter
+    def PlanName(self, PlanName):
+        self._PlanName = PlanName
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def RuleName(self):
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+
+    def _deserialize(self, params):
+        self._Attribute = params.get("Attribute")
+        self._InEffect = params.get("InEffect")
+        self._PendingEffectiveness = params.get("PendingEffectiveness")
+        self._Operation = params.get("Operation")
+        self._Queue = params.get("Queue")
+        self._ConfigSet = params.get("ConfigSet")
+        self._LabelName = params.get("LabelName")
+        self._InEffectIndex = params.get("InEffectIndex")
+        self._PendingEffectIndex = params.get("PendingEffectIndex")
+        self._PlanName = params.get("PlanName")
+        self._Label = params.get("Label")
+        self._RuleName = params.get("RuleName")
+        self._UserName = params.get("UserName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DiffHeader(AbstractModel):
+    """动态生成的变更详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 名称
+        :type Name: str
+        :param _Id: ID，前端会使用
+        :type Id: str
+        """
+        self._Name = None
+        self._Id = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DiskGroup(AbstractModel):

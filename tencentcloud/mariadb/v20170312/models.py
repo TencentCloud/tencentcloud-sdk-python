@@ -768,7 +768,7 @@ class CreateAccountRequest(AbstractModel):
         :type Host: str
         :param _Password: 账号密码，密码需要 8-32 个字符，不能以 '/' 开头，并且必须包含小写字母、大写字母、数字和符号()~!@#$%^&*-+=_|{}[]:<>,.?/。
         :type Password: str
-        :param _ReadOnly: 是否创建为只读账号，0：否:； 1：只读账号，该账号的sql请求优先选择备机执行，备机延迟时选择主机执行；2：只读账号，优先选择备机执行，备机延迟时操作报错；3：只读账号，优先选择备机执行，忽略备机延迟只读备机；
+        :param _ReadOnly: 是否创建为只读账号，0：否； 1：只读账号，该账号的sql请求优先选择备机执行，备机延迟时选择主机执行；2：只读账号，优先选择备机执行，备机延迟时操作报错；3：只读账号，优先选择备机执行，忽略备机延迟只读备机；
         :type ReadOnly: int
         :param _Description: 账号备注，可以包含中文、英文字符、常见符号和数字，长度为0~256字符
         :type Description: str
@@ -778,6 +778,8 @@ class CreateAccountRequest(AbstractModel):
         :type SlaveConst: int
         :param _MaxUserConnections: 用户最大连接数限制参数。不传或者传0表示为不限制，对应max_user_connections参数，目前10.1内核版本不支持设置。
         :type MaxUserConnections: int
+        :param _EncryptedPassword: 使用GetPublicKey返回的RSA2048公钥加密后的密码
+        :type EncryptedPassword: str
         """
         self._InstanceId = None
         self._UserName = None
@@ -788,6 +790,7 @@ class CreateAccountRequest(AbstractModel):
         self._DelayThresh = None
         self._SlaveConst = None
         self._MaxUserConnections = None
+        self._EncryptedPassword = None
 
     @property
     def InstanceId(self):
@@ -861,6 +864,14 @@ class CreateAccountRequest(AbstractModel):
     def MaxUserConnections(self, MaxUserConnections):
         self._MaxUserConnections = MaxUserConnections
 
+    @property
+    def EncryptedPassword(self):
+        return self._EncryptedPassword
+
+    @EncryptedPassword.setter
+    def EncryptedPassword(self, EncryptedPassword):
+        self._EncryptedPassword = EncryptedPassword
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -872,6 +883,7 @@ class CreateAccountRequest(AbstractModel):
         self._DelayThresh = params.get("DelayThresh")
         self._SlaveConst = params.get("SlaveConst")
         self._MaxUserConnections = params.get("MaxUserConnections")
+        self._EncryptedPassword = params.get("EncryptedPassword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11194,11 +11206,14 @@ class ResetAccountPasswordRequest(AbstractModel):
         :type Host: str
         :param _Password: 新密码，由字母、数字或常见符号组成，不能包含分号、单引号和双引号，长度为6~32位。
         :type Password: str
+        :param _EncryptedPassword: 使用GetPublicKey返回的RSA2048公钥加密后的密码
+        :type EncryptedPassword: str
         """
         self._InstanceId = None
         self._UserName = None
         self._Host = None
         self._Password = None
+        self._EncryptedPassword = None
 
     @property
     def InstanceId(self):
@@ -11232,12 +11247,21 @@ class ResetAccountPasswordRequest(AbstractModel):
     def Password(self, Password):
         self._Password = Password
 
+    @property
+    def EncryptedPassword(self):
+        return self._EncryptedPassword
+
+    @EncryptedPassword.setter
+    def EncryptedPassword(self, EncryptedPassword):
+        self._EncryptedPassword = EncryptedPassword
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._UserName = params.get("UserName")
         self._Host = params.get("Host")
         self._Password = params.get("Password")
+        self._EncryptedPassword = params.get("EncryptedPassword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

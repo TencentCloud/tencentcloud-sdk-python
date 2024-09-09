@@ -1157,6 +1157,131 @@ class ConfigureChcDeployVpcResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ConvertOperatingSystemsRequest(AbstractModel):
+    """ConvertOperatingSystems请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceIds: 执行操作系统转换的实例 ID
+        :type InstanceIds: list of str
+        :param _MinimalConversion: 是否最小规模转换
+        :type MinimalConversion: bool
+        :param _DryRun: 是否只预检
+        :type DryRun: bool
+        :param _TargetOSType: 转换的目标操作系统类型。仅支持 TencentOS。
+        :type TargetOSType: str
+        """
+        self._InstanceIds = None
+        self._MinimalConversion = None
+        self._DryRun = None
+        self._TargetOSType = None
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def MinimalConversion(self):
+        return self._MinimalConversion
+
+    @MinimalConversion.setter
+    def MinimalConversion(self, MinimalConversion):
+        self._MinimalConversion = MinimalConversion
+
+    @property
+    def DryRun(self):
+        return self._DryRun
+
+    @DryRun.setter
+    def DryRun(self, DryRun):
+        self._DryRun = DryRun
+
+    @property
+    def TargetOSType(self):
+        return self._TargetOSType
+
+    @TargetOSType.setter
+    def TargetOSType(self, TargetOSType):
+        self._TargetOSType = TargetOSType
+
+
+    def _deserialize(self, params):
+        self._InstanceIds = params.get("InstanceIds")
+        self._MinimalConversion = params.get("MinimalConversion")
+        self._DryRun = params.get("DryRun")
+        self._TargetOSType = params.get("TargetOSType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConvertOperatingSystemsResponse(AbstractModel):
+    """ConvertOperatingSystems返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SupportTargetOSList: 转换的目标操系统信息，仅在入参 DryRun 为 true 时返回。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportTargetOSList: list of TargetOS
+        :param _TaskId: 操作系统转换的任务 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SupportTargetOSList = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def SupportTargetOSList(self):
+        return self._SupportTargetOSList
+
+    @SupportTargetOSList.setter
+    def SupportTargetOSList(self, SupportTargetOSList):
+        self._SupportTargetOSList = SupportTargetOSList
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SupportTargetOSList") is not None:
+            self._SupportTargetOSList = []
+            for item in params.get("SupportTargetOSList"):
+                obj = TargetOS()
+                obj._deserialize(item)
+                self._SupportTargetOSList.append(obj)
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CpuTopology(AbstractModel):
     """描述了实例CPU拓扑结构的相关信息。
 
@@ -18081,6 +18206,51 @@ class TagSpecification(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TargetOS(AbstractModel):
+    """操作系统转换的目标操作系统信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TargetOSType: 目标操作系统类型
+        :type TargetOSType: str
+        :param _TargetOSVersion: 目标操作系统版本
+        :type TargetOSVersion: str
+        """
+        self._TargetOSType = None
+        self._TargetOSVersion = None
+
+    @property
+    def TargetOSType(self):
+        return self._TargetOSType
+
+    @TargetOSType.setter
+    def TargetOSType(self, TargetOSType):
+        self._TargetOSType = TargetOSType
+
+    @property
+    def TargetOSVersion(self):
+        return self._TargetOSVersion
+
+    @TargetOSVersion.setter
+    def TargetOSVersion(self, TargetOSVersion):
+        self._TargetOSVersion = TargetOSVersion
+
+
+    def _deserialize(self, params):
+        self._TargetOSType = params.get("TargetOSType")
+        self._TargetOSVersion = params.get("TargetOSVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

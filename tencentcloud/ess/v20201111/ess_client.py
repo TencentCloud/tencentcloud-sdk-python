@@ -2283,6 +2283,29 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeOrganizationAuthStatus(self, request):
+        """查询企业认证状态
+
+        :param request: Request instance for DescribeOrganizationAuthStatus.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DescribeOrganizationAuthStatusRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DescribeOrganizationAuthStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOrganizationAuthStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOrganizationAuthStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeOrganizationGroupOrganizations(self, request):
         """此API接口用来查询加入集团的成员企业信息
         适用场景：子企业在加入集团后，主企业可能通过此接口获取到所有的子企业列表，方便进行展示和统计

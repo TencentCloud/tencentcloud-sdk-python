@@ -4739,11 +4739,14 @@ class DescribeServerlessMetricsRequest(AbstractModel):
         :type MetricType: list of str
         :param _DurationType: 时间长度类型DurationType(1: 3小时, 2: 昨天1天,3: 今日0点到现在)
         :type DurationType: int
+        :param _BatchIndexList: 索引数据
+        :type BatchIndexList: list of str
         """
         self._SpaceId = None
         self._IndexId = None
         self._MetricType = None
         self._DurationType = None
+        self._BatchIndexList = None
 
     @property
     def SpaceId(self):
@@ -4777,12 +4780,21 @@ class DescribeServerlessMetricsRequest(AbstractModel):
     def DurationType(self, DurationType):
         self._DurationType = DurationType
 
+    @property
+    def BatchIndexList(self):
+        return self._BatchIndexList
+
+    @BatchIndexList.setter
+    def BatchIndexList(self, BatchIndexList):
+        self._BatchIndexList = BatchIndexList
+
 
     def _deserialize(self, params):
         self._SpaceId = params.get("SpaceId")
         self._IndexId = params.get("IndexId")
         self._MetricType = params.get("MetricType")
         self._DurationType = params.get("DurationType")
+        self._BatchIndexList = params.get("BatchIndexList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4810,6 +4822,9 @@ class DescribeServerlessMetricsResponse(AbstractModel):
         :type WriteReqTimes: int
         :param _DocCount: 文档数量，单位个数
         :type DocCount: int
+        :param _MetricMapList: 指标数据数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricMapList: list of MetricMapByIndexId
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4818,6 +4833,7 @@ class DescribeServerlessMetricsResponse(AbstractModel):
         self._ReadReqTimes = None
         self._WriteReqTimes = None
         self._DocCount = None
+        self._MetricMapList = None
         self._RequestId = None
 
     @property
@@ -4861,6 +4877,14 @@ class DescribeServerlessMetricsResponse(AbstractModel):
         self._DocCount = DocCount
 
     @property
+    def MetricMapList(self):
+        return self._MetricMapList
+
+    @MetricMapList.setter
+    def MetricMapList(self, MetricMapList):
+        self._MetricMapList = MetricMapList
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -4875,6 +4899,12 @@ class DescribeServerlessMetricsResponse(AbstractModel):
         self._ReadReqTimes = params.get("ReadReqTimes")
         self._WriteReqTimes = params.get("WriteReqTimes")
         self._DocCount = params.get("DocCount")
+        if params.get("MetricMapList") is not None:
+            self._MetricMapList = []
+            for item in params.get("MetricMapList"):
+                obj = MetricMapByIndexId()
+                obj._deserialize(item)
+                self._MetricMapList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -10594,6 +10624,87 @@ class Metric(AbstractModel):
         
 
 
+class MetricAllData(AbstractModel):
+    """全部指标数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IndexTraffic: 索引流量
+        :type IndexTraffic: float
+        :param _Storage: 存储大小
+        :type Storage: float
+        :param _ReadReqTimes: 读请求次数
+        :type ReadReqTimes: int
+        :param _WriteReqTimes: 写请求次数
+        :type WriteReqTimes: int
+        :param _DocCount: 文档数量
+        :type DocCount: int
+        """
+        self._IndexTraffic = None
+        self._Storage = None
+        self._ReadReqTimes = None
+        self._WriteReqTimes = None
+        self._DocCount = None
+
+    @property
+    def IndexTraffic(self):
+        return self._IndexTraffic
+
+    @IndexTraffic.setter
+    def IndexTraffic(self, IndexTraffic):
+        self._IndexTraffic = IndexTraffic
+
+    @property
+    def Storage(self):
+        return self._Storage
+
+    @Storage.setter
+    def Storage(self, Storage):
+        self._Storage = Storage
+
+    @property
+    def ReadReqTimes(self):
+        return self._ReadReqTimes
+
+    @ReadReqTimes.setter
+    def ReadReqTimes(self, ReadReqTimes):
+        self._ReadReqTimes = ReadReqTimes
+
+    @property
+    def WriteReqTimes(self):
+        return self._WriteReqTimes
+
+    @WriteReqTimes.setter
+    def WriteReqTimes(self, WriteReqTimes):
+        self._WriteReqTimes = WriteReqTimes
+
+    @property
+    def DocCount(self):
+        return self._DocCount
+
+    @DocCount.setter
+    def DocCount(self, DocCount):
+        self._DocCount = DocCount
+
+
+    def _deserialize(self, params):
+        self._IndexTraffic = params.get("IndexTraffic")
+        self._Storage = params.get("Storage")
+        self._ReadReqTimes = params.get("ReadReqTimes")
+        self._WriteReqTimes = params.get("WriteReqTimes")
+        self._DocCount = params.get("DocCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MetricDetail(AbstractModel):
     """智能运维指标详情
 
@@ -10634,6 +10745,53 @@ class MetricDetail(AbstractModel):
                 obj = Metric()
                 obj._deserialize(item)
                 self._Metrics.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MetricMapByIndexId(AbstractModel):
+    """指标数据map
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IndexId: 实例id
+        :type IndexId: str
+        :param _MetricAllData: 指标数据
+        :type MetricAllData: :class:`tencentcloud.es.v20180416.models.MetricAllData`
+        """
+        self._IndexId = None
+        self._MetricAllData = None
+
+    @property
+    def IndexId(self):
+        return self._IndexId
+
+    @IndexId.setter
+    def IndexId(self, IndexId):
+        self._IndexId = IndexId
+
+    @property
+    def MetricAllData(self):
+        return self._MetricAllData
+
+    @MetricAllData.setter
+    def MetricAllData(self, MetricAllData):
+        self._MetricAllData = MetricAllData
+
+
+    def _deserialize(self, params):
+        self._IndexId = params.get("IndexId")
+        if params.get("MetricAllData") is not None:
+            self._MetricAllData = MetricAllData()
+            self._MetricAllData._deserialize(params.get("MetricAllData"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

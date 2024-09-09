@@ -9784,6 +9784,66 @@ class DeleteSparkAppResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteTableRequest(AbstractModel):
+    """DeleteTable请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableBaseInfo: 表基本信息
+        :type TableBaseInfo: :class:`tencentcloud.dlc.v20210125.models.TableBaseInfo`
+        """
+        self._TableBaseInfo = None
+
+    @property
+    def TableBaseInfo(self):
+        return self._TableBaseInfo
+
+    @TableBaseInfo.setter
+    def TableBaseInfo(self, TableBaseInfo):
+        self._TableBaseInfo = TableBaseInfo
+
+
+    def _deserialize(self, params):
+        if params.get("TableBaseInfo") is not None:
+            self._TableBaseInfo = TableBaseInfo()
+            self._TableBaseInfo._deserialize(params.get("TableBaseInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteTableResponse(AbstractModel):
+    """DeleteTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteThirdPartyAccessUserRequest(AbstractModel):
     """DeleteThirdPartyAccessUser请求参数结构体
 
@@ -22263,6 +22323,88 @@ class PythonSparkImage(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class QueryInternalTableWarehouseRequest(AbstractModel):
+    """QueryInternalTableWarehouse请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatabaseName: 库名
+        :type DatabaseName: str
+        :param _TableName: 表名
+        :type TableName: str
+        """
+        self._DatabaseName = None
+        self._TableName = None
+
+    @property
+    def DatabaseName(self):
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+
+    def _deserialize(self, params):
+        self._DatabaseName = params.get("DatabaseName")
+        self._TableName = params.get("TableName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryInternalTableWarehouseResponse(AbstractModel):
+    """QueryInternalTableWarehouse返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WarehousePath: warehouse路径
+        :type WarehousePath: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._WarehousePath = None
+        self._RequestId = None
+
+    @property
+    def WarehousePath(self):
+        return self._WarehousePath
+
+    @WarehousePath.setter
+    def WarehousePath(self, WarehousePath):
+        self._WarehousePath = WarehousePath
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._WarehousePath = params.get("WarehousePath")
+        self._RequestId = params.get("RequestId")
 
 
 class QueryResultRequest(AbstractModel):

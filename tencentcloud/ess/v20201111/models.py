@@ -942,6 +942,85 @@ class AuthInfoDetail(AbstractModel):
         
 
 
+class AuthRecord(AbstractModel):
+    """企业认证信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OperatorName: 经办人姓名。
+        :type OperatorName: str
+        :param _OperatorMobile: 经办人手机号。
+        :type OperatorMobile: str
+        :param _AuthType: 认证授权方式：
+<ul><li> **0**：未选择授权方式（默认值）</li>
+<li> **1**：上传授权书</li>
+<li> **2**：法人授权</li>
+<li> **3**：法人认证</li></ul>
+        :type AuthType: int
+        :param _AuditStatus: 企业认证授权书审核状态：
+<ul><li> **0**：未提交授权书（默认值）</li>
+<li> **1**：审核通过</li>
+<li> **2**：审核驳回</li>
+<li> **3**：审核中</li>
+<li> **4**：AI识别中</li>
+<li> **5**：客户确认AI信息</li></ul>
+        :type AuditStatus: int
+        """
+        self._OperatorName = None
+        self._OperatorMobile = None
+        self._AuthType = None
+        self._AuditStatus = None
+
+    @property
+    def OperatorName(self):
+        return self._OperatorName
+
+    @OperatorName.setter
+    def OperatorName(self, OperatorName):
+        self._OperatorName = OperatorName
+
+    @property
+    def OperatorMobile(self):
+        return self._OperatorMobile
+
+    @OperatorMobile.setter
+    def OperatorMobile(self, OperatorMobile):
+        self._OperatorMobile = OperatorMobile
+
+    @property
+    def AuthType(self):
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        self._AuthType = AuthType
+
+    @property
+    def AuditStatus(self):
+        return self._AuditStatus
+
+    @AuditStatus.setter
+    def AuditStatus(self, AuditStatus):
+        self._AuditStatus = AuditStatus
+
+
+    def _deserialize(self, params):
+        self._OperatorName = params.get("OperatorName")
+        self._OperatorMobile = params.get("OperatorMobile")
+        self._AuthType = params.get("AuthType")
+        self._AuditStatus = params.get("AuditStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AuthorizedUser(AbstractModel):
     """授权用户
 
@@ -14560,6 +14639,158 @@ class DescribeIntegrationRolesResponse(AbstractModel):
                 obj = IntegrateRole()
                 obj._deserialize(item)
                 self._IntegrateRoles.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeOrganizationAuthStatusRequest(AbstractModel):
+    """DescribeOrganizationAuthStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。使用此接口时，必须填写userId。 支持填入集团子公司经办人 userId 代发合同。  注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _OrganizationName: 组织机构名称。 请确认该名称与企业营业执照中注册的名称一致。 如果名称中包含英文括号()，请使用中文括号（）代替。
+        :type OrganizationName: str
+        :param _UniformSocialCreditCode: 企业统一社会信用代码
+注意：OrganizationName和UniformSocialCreditCode不能同时为空
+        :type UniformSocialCreditCode: str
+        :param _LegalName: 法人姓名
+        :type LegalName: str
+        """
+        self._Operator = None
+        self._OrganizationName = None
+        self._UniformSocialCreditCode = None
+        self._LegalName = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def OrganizationName(self):
+        return self._OrganizationName
+
+    @OrganizationName.setter
+    def OrganizationName(self, OrganizationName):
+        self._OrganizationName = OrganizationName
+
+    @property
+    def UniformSocialCreditCode(self):
+        return self._UniformSocialCreditCode
+
+    @UniformSocialCreditCode.setter
+    def UniformSocialCreditCode(self, UniformSocialCreditCode):
+        self._UniformSocialCreditCode = UniformSocialCreditCode
+
+    @property
+    def LegalName(self):
+        return self._LegalName
+
+    @LegalName.setter
+    def LegalName(self, LegalName):
+        self._LegalName = LegalName
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._OrganizationName = params.get("OrganizationName")
+        self._UniformSocialCreditCode = params.get("UniformSocialCreditCode")
+        self._LegalName = params.get("LegalName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOrganizationAuthStatusResponse(AbstractModel):
+    """DescribeOrganizationAuthStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsVerified: 企业是否已认证
+        :type IsVerified: bool
+        :param _AuthStatus: 企业认证状态 0-未认证 1-认证中 2-已认证
+        :type AuthStatus: int
+        :param _AuthRecords: 企业认证信息
+        :type AuthRecords: list of AuthRecord
+        :param _OrganizationId: 企业在腾讯电子签平台的唯一身份标识，为32位字符串。
+可登录腾讯电子签控制台，在 "更多"->"企业设置"->"企业中心"- 中查看企业电子签账号。
+p.s. 只有当前企业认证成功的时候返回
+        :type OrganizationId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._IsVerified = None
+        self._AuthStatus = None
+        self._AuthRecords = None
+        self._OrganizationId = None
+        self._RequestId = None
+
+    @property
+    def IsVerified(self):
+        return self._IsVerified
+
+    @IsVerified.setter
+    def IsVerified(self, IsVerified):
+        self._IsVerified = IsVerified
+
+    @property
+    def AuthStatus(self):
+        return self._AuthStatus
+
+    @AuthStatus.setter
+    def AuthStatus(self, AuthStatus):
+        self._AuthStatus = AuthStatus
+
+    @property
+    def AuthRecords(self):
+        return self._AuthRecords
+
+    @AuthRecords.setter
+    def AuthRecords(self, AuthRecords):
+        self._AuthRecords = AuthRecords
+
+    @property
+    def OrganizationId(self):
+        return self._OrganizationId
+
+    @OrganizationId.setter
+    def OrganizationId(self, OrganizationId):
+        self._OrganizationId = OrganizationId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._IsVerified = params.get("IsVerified")
+        self._AuthStatus = params.get("AuthStatus")
+        if params.get("AuthRecords") is not None:
+            self._AuthRecords = []
+            for item in params.get("AuthRecords"):
+                obj = AuthRecord()
+                obj._deserialize(item)
+                self._AuthRecords.append(obj)
+        self._OrganizationId = params.get("OrganizationId")
         self._RequestId = params.get("RequestId")
 
 

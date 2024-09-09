@@ -151,6 +151,29 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ConvertOperatingSystems(self, request):
+        """本接口(ConvertOperatingSystem)用于转换实例的操作系统，仅支持源操作系统为 CentOS 7、CentOS 8 的实例。
+
+        :param request: Request instance for ConvertOperatingSystems.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.ConvertOperatingSystemsRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.ConvertOperatingSystemsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ConvertOperatingSystems", params, headers=headers)
+            response = json.loads(body)
+            model = models.ConvertOperatingSystemsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDisasterRecoverGroup(self, request):
         """本接口 (CreateDisasterRecoverGroup)用于创建[分散置放群组](https://cloud.tencent.com/document/product/213/15486)。创建好的置放群组，可在[创建实例](https://cloud.tencent.com/document/api/213/15730)时指定。
 
