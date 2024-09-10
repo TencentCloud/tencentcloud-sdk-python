@@ -3050,6 +3050,9 @@ class Task(AbstractModel):
         :param _TaskIssue: 问题和改进
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskIssue: str
+        :param _TaskRegionName: region信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskRegionName: str
         """
         self._TaskId = None
         self._TaskTitle = None
@@ -3084,6 +3087,7 @@ class Task(AbstractModel):
         self._TaskPlanEndTime = None
         self._TaskOrg = None
         self._TaskIssue = None
+        self._TaskRegionName = None
 
     @property
     def TaskId(self):
@@ -3349,6 +3353,14 @@ class Task(AbstractModel):
     def TaskIssue(self, TaskIssue):
         self._TaskIssue = TaskIssue
 
+    @property
+    def TaskRegionName(self):
+        return self._TaskRegionName
+
+    @TaskRegionName.setter
+    def TaskRegionName(self, TaskRegionName):
+        self._TaskRegionName = TaskRegionName
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -3411,6 +3423,7 @@ class Task(AbstractModel):
                 obj._deserialize(item)
                 self._TaskOrg.append(obj)
         self._TaskIssue = params.get("TaskIssue")
+        self._TaskRegionName = params.get("TaskRegionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

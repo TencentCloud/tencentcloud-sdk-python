@@ -205,6 +205,30 @@ class AiartClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SketchToImage(self, request):
+        """线稿生图接口支持上传一张黑白线稿图，按照指定的主体对象以及样式、颜色、材质、风格等的文本描述prompt ，对线稿图进行色彩填充与细节描绘，得到一张完整绘制的图像。生成图分辨率默认为1024:1024。
+        线稿生图默认提供1个并发任务数，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
+
+        :param request: Request instance for SketchToImage.
+        :type request: :class:`tencentcloud.aiart.v20221229.models.SketchToImageRequest`
+        :rtype: :class:`tencentcloud.aiart.v20221229.models.SketchToImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SketchToImage", params, headers=headers)
+            response = json.loads(body)
+            model = models.SketchToImageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SubmitDrawPortraitJob(self, request):
         """AI 写真提供 AI 写真形象照的训练与生成能力，分为上传训练图片、训练模型、生成图片3个环节，需要依次调用对应接口。
         每个写真模型自训练完成起1年内有效，有效期内可使用写真模型 ID 生成图片，期满后需要重新训练。

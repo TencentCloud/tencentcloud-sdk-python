@@ -4909,6 +4909,78 @@ class DescribeInstanceEventsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeInstanceLogDeliveryRequest(AbstractModel):
+    """DescribeInstanceLogDelivery请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceLogDeliveryResponse(AbstractModel):
+    """DescribeInstanceLogDelivery返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SlowLog: 实例慢日志投递信息。
+        :type SlowLog: :class:`tencentcloud.redis.v20180412.models.LogDeliveryInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SlowLog = None
+        self._RequestId = None
+
+    @property
+    def SlowLog(self):
+        return self._SlowLog
+
+    @SlowLog.setter
+    def SlowLog(self, SlowLog):
+        self._SlowLog = SlowLog
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SlowLog") is not None:
+            self._SlowLog = LogDeliveryInfo()
+            self._SlowLog._deserialize(params.get("SlowLog"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeInstanceMonitorBigKeyRequest(AbstractModel):
     """DescribeInstanceMonitorBigKey请求参数结构体
 
@@ -12580,6 +12652,79 @@ class KillMasterGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class LogDeliveryInfo(AbstractModel):
+    """日志投递信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: 日志投递开启状态，开启：true，关闭：false
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enabled: bool
+        :param _LogsetId: 日志集ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogsetId: str
+        :param _TopicId: 日志主题ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicId: str
+        :param _LogRegion: 日志集所在地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogRegion: str
+        """
+        self._Enabled = None
+        self._LogsetId = None
+        self._TopicId = None
+        self._LogRegion = None
+
+    @property
+    def Enabled(self):
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def LogsetId(self):
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def TopicId(self):
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def LogRegion(self):
+        return self._LogRegion
+
+    @LogRegion.setter
+    def LogRegion(self, LogRegion):
+        self._LogRegion = LogRegion
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        self._LogsetId = params.get("LogsetId")
+        self._TopicId = params.get("TopicId")
+        self._LogRegion = params.get("LogRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ManualBackupInstanceRequest(AbstractModel):
     """ManualBackupInstance请求参数结构体
 
@@ -13587,6 +13732,174 @@ class ModifyInstanceEventResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._EventId = params.get("EventId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyInstanceLogDeliveryRequest(AbstractModel):
+    """ModifyInstanceLogDelivery请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        :param _LogType: 日志类型。当前仅支持设置为slowlog，指慢查询日志。
+        :type LogType: str
+        :param _Enabled: 日志投递开启状态。
+- true：开启。
+- false：关闭。
+        :type Enabled: bool
+        :param _LogsetId: 投递的日志集ID。
+        :type LogsetId: str
+        :param _TopicId: 投递的日志主题ID。
+        :type TopicId: str
+        :param _LogsetName: 日志集名称。若**LogsetId**未指定具体的日志集ID，请配置该参数，设置日志集名称，系统会以设置的日志集名称自动创建新的日志集。
+        :type LogsetName: str
+        :param _TopicName: 日志主题名称，TopicId为空时必传，会自动创建新的日志主题。
+        :type TopicName: str
+        :param _LogRegion: 日志集所在地域，不传默认使用实例所在地域。
+        :type LogRegion: str
+        :param _Period: 日志存储时间，默认为30天，可选范围1-3600天。
+        :type Period: int
+        :param _CreateIndex: 创建日志主题时，是否创建索引。
+        :type CreateIndex: bool
+        """
+        self._InstanceId = None
+        self._LogType = None
+        self._Enabled = None
+        self._LogsetId = None
+        self._TopicId = None
+        self._LogsetName = None
+        self._TopicName = None
+        self._LogRegion = None
+        self._Period = None
+        self._CreateIndex = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def LogType(self):
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def Enabled(self):
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def LogsetId(self):
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def TopicId(self):
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def LogsetName(self):
+        return self._LogsetName
+
+    @LogsetName.setter
+    def LogsetName(self, LogsetName):
+        self._LogsetName = LogsetName
+
+    @property
+    def TopicName(self):
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def LogRegion(self):
+        return self._LogRegion
+
+    @LogRegion.setter
+    def LogRegion(self, LogRegion):
+        self._LogRegion = LogRegion
+
+    @property
+    def Period(self):
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def CreateIndex(self):
+        return self._CreateIndex
+
+    @CreateIndex.setter
+    def CreateIndex(self, CreateIndex):
+        self._CreateIndex = CreateIndex
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._LogType = params.get("LogType")
+        self._Enabled = params.get("Enabled")
+        self._LogsetId = params.get("LogsetId")
+        self._TopicId = params.get("TopicId")
+        self._LogsetName = params.get("LogsetName")
+        self._TopicName = params.get("TopicName")
+        self._LogRegion = params.get("LogRegion")
+        self._Period = params.get("Period")
+        self._CreateIndex = params.get("CreateIndex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceLogDeliveryResponse(AbstractModel):
+    """ModifyInstanceLogDelivery返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

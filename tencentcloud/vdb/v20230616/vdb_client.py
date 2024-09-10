@@ -26,6 +26,75 @@ class VdbClient(AbstractClient):
     _service = 'vdb'
 
 
+    def AssociateSecurityGroups(self, request):
+        """本接口 (AssociateSecurityGroups) 用于安全组批量绑定多个指定实例。
+
+        :param request: Request instance for AssociateSecurityGroups.
+        :type request: :class:`tencentcloud.vdb.v20230616.models.AssociateSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.vdb.v20230616.models.AssociateSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AssociateSecurityGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.AssociateSecurityGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDBSecurityGroups(self, request):
+        """本接口(DescribeDBSecurityGroups)用于查询实例的安全组详情。
+
+        :param request: Request instance for DescribeDBSecurityGroups.
+        :type request: :class:`tencentcloud.vdb.v20230616.models.DescribeDBSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.vdb.v20230616.models.DescribeDBSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBSecurityGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBSecurityGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInstanceNodes(self, request):
+        """实例节点列表
+
+        :param request: Request instance for DescribeInstanceNodes.
+        :type request: :class:`tencentcloud.vdb.v20230616.models.DescribeInstanceNodesRequest`
+        :rtype: :class:`tencentcloud.vdb.v20230616.models.DescribeInstanceNodesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceNodes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceNodesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstances(self, request):
         """查询实例列表
 
@@ -40,6 +109,52 @@ class VdbClient(AbstractClient):
             body = self.call("DescribeInstances", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DisassociateSecurityGroups(self, request):
+        """本接口(DisassociateSecurityGroups)用于安全组批量解绑实例。
+
+        :param request: Request instance for DisassociateSecurityGroups.
+        :type request: :class:`tencentcloud.vdb.v20230616.models.DisassociateSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.vdb.v20230616.models.DisassociateSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisassociateSecurityGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisassociateSecurityGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDBInstanceSecurityGroups(self, request):
+        """本接口(ModifyDBInstanceSecurityGroups)用于修改实例绑定的安全组。
+
+        :param request: Request instance for ModifyDBInstanceSecurityGroups.
+        :type request: :class:`tencentcloud.vdb.v20230616.models.ModifyDBInstanceSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.vdb.v20230616.models.ModifyDBInstanceSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBInstanceSecurityGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBInstanceSecurityGroupsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

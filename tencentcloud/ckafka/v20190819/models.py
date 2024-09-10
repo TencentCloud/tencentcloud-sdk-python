@@ -19963,10 +19963,14 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def DynamicDiskConfig(self):
+        warnings.warn("parameter `DynamicDiskConfig` is deprecated", DeprecationWarning) 
+
         return self._DynamicDiskConfig
 
     @DynamicDiskConfig.setter
     def DynamicDiskConfig(self, DynamicDiskConfig):
+        warnings.warn("parameter `DynamicDiskConfig` is deprecated", DeprecationWarning) 
+
         self._DynamicDiskConfig = DynamicDiskConfig
 
     @property
@@ -20270,7 +20274,7 @@ class ModifyRoutineMaintenanceTaskRequest(AbstractModel):
         :type InstanceId: str
         :param _MaintenanceType: 自动化运维类别
         :type MaintenanceType: str
-        :param _MaintenanceSubtype: 自动化运维子类别
+        :param _MaintenanceSubtype: INSTANCE_STORAGE_CAPACITY(磁盘自动扩容)/MESSAGE_RETENTION_PERIOD(磁盘动态消息保留策略)
         :type MaintenanceSubtype: str
         :param _TopicName: 主题名称
         :type TopicName: str

@@ -2284,7 +2284,7 @@ class EssClient(AbstractClient):
 
 
     def DescribeOrganizationAuthStatus(self, request):
-        """查询企业认证状态
+        """查询企业认证状态- 仅通过[CreateOrganizationAuthUrl](https://qian.tencent.com/developers/companyApis/organizations/CreateOrganizationAuthUrl) 和[CreateBatchOrganizationRegistrationTasks](https://qian.tencent.com/developers/companyApis/organizations/CreateBatchOrganizationRegistrationTasks)这两个接口进行引导认证的企业，调用方企业可以依据这个接口，查询认证状态。
 
         :param request: Request instance for DescribeOrganizationAuthStatus.
         :type request: :class:`tencentcloud.ess.v20201111.models.DescribeOrganizationAuthStatusRequest`

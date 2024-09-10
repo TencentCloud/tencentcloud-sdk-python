@@ -7829,13 +7829,9 @@ class GeneralBasicOCRRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageBase64: 图片/PDF的 Base64 值。
-要求图片/PDF经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
-图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :param _ImageBase64: 图片/PDF的 Base64 值。要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type ImageBase64: str
-        :param _ImageUrl: 图片/PDF的 Url 地址。
-要求图片/PDF经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
-图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :param _ImageUrl: 图片/PDF的 Url 地址。要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type ImageUrl: str
         :param _Scene: 保留字段。
         :type Scene: str
@@ -14867,6 +14863,8 @@ class PermitOCRResponse(AbstractModel):
         :type Birthday: str
         :param _PortraitImage: 头像照片的base64
         :type PortraitImage: str
+        :param _Type: 返回类型
+        :type Type: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -14879,6 +14877,7 @@ class PermitOCRResponse(AbstractModel):
         self._IssueAddress = None
         self._Birthday = None
         self._PortraitImage = None
+        self._Type = None
         self._RequestId = None
 
     @property
@@ -14954,6 +14953,14 @@ class PermitOCRResponse(AbstractModel):
         self._PortraitImage = PortraitImage
 
     @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -14972,6 +14979,7 @@ class PermitOCRResponse(AbstractModel):
         self._IssueAddress = params.get("IssueAddress")
         self._Birthday = params.get("Birthday")
         self._PortraitImage = params.get("PortraitImage")
+        self._Type = params.get("Type")
         self._RequestId = params.get("RequestId")
 
 

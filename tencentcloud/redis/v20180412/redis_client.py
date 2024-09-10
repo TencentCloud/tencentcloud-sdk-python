@@ -739,6 +739,29 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInstanceLogDelivery(self, request):
+        """本接口（DescribeInstanceLogDelivery）用于查询实例的日志投递配置。
+
+        :param request: Request instance for DescribeInstanceLogDelivery.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceLogDeliveryRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceLogDeliveryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceLogDelivery", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceLogDeliveryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstanceMonitorBigKey(self, request):
         """腾讯云数据库 Redis 已经于2022年10月31日下线查询实例大 Key 接口。具体公告，请参见[查询实例大 Key 接口下线公告](https://cloud.tencent.com/document/product/239/81005)。
 
@@ -1926,6 +1949,29 @@ class RedisClient(AbstractClient):
             body = self.call("ModifyInstanceEvent", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyInstanceEventResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyInstanceLogDelivery(self, request):
+        """本接口（ModifyInstanceLogDelivery）用于开启或关闭投递实例日志到CLS。
+
+        :param request: Request instance for ModifyInstanceLogDelivery.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceLogDeliveryRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceLogDeliveryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceLogDelivery", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceLogDeliveryResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

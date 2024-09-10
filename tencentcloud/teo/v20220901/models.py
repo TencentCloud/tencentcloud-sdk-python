@@ -8507,9 +8507,6 @@ class DescribeAccelerationDomainsRequest(AbstractModel):
 <li>backup-origin： 按照备用源站地址进行过滤；</li>
 <li>domain-cname：按照 CNAME 进行过滤；</li>
 <li>share-cname：按照共享 CNAME 进行过滤；</li>
-<li>vodeo-sub-app-id：按照【 vodeo 子应用 ID】进行过滤；</li>
-<li>vodeo-distribution-range：按照【 vodeo 分发范围】进行过滤；</li>
-<li>vodeo-bucket-id：按照【vodeo 存储桶 ID】进行过滤；</li>
         :type Filters: list of AdvancedFilter
         :param _Order: 可根据该字段对返回结果进行排序，取值有：
 <li>created_on：加速域名创建时间；</li>
@@ -12482,8 +12479,8 @@ class DescribeTimingL4DataRequest(AbstractModel):
 <li>day: 1天 。</li>不填将根据开始时间跟结束时间的间距自动推算粒度，具体为：1小时范围内以min粒度查询，2天范围内以5min粒度查询，7天范围内以hour粒度查询，超过7天以day粒度查询。
         :type Interval: str
         :param _Filters: 过滤条件，详细的过滤条件Key值如下：
-<li>ruleId<br>   按照【<strong>转发规则ID</strong>】进行过滤。</li>
-<li>proxyId<br>   按照【<strong>四层代理实例ID</strong>】进行过滤。</li>
+<li>ruleId：按照转发规则 ID 进行过滤。</li>
+<li>proxyId：按照四层代理实例 ID 进行过滤。</li>
         :type Filters: list of QueryCondition
         :param _Area: 数据归属地区，取值有：
 <li>overseas：全球（除中国大陆地区）数据；</li>
@@ -20635,7 +20632,6 @@ class OriginDetail(AbstractModel):
 <li>COS：腾讯云 COS 对象存储源站；</li>
 <li>AWS_S3：AWS S3 对象存储源站；</li>
 <li>ORIGIN_GROUP：源站组类型源站；</li>
-<li>VODEO：云点播-混合云版；</li>
 <li>VOD：云点播；</li>
 <li>SPACE：源站卸载，当前仅白名单开放；</li>
 <li>LB：负载均衡，当前仅白名单开放。</li>
@@ -20646,7 +20642,6 @@ class OriginDetail(AbstractModel):
 <li>当 OriginType = AWS_S3，该参数为 S3 桶的访问域名；</li>
 <li>当 OriginType = ORIGIN_GROUP 时，该参数为源站组 ID；</li>
 <li>当 OriginType = VOD 时，该参数请填写云点播应用 ID ；</li>
-<li>当 OriginType = VODEO 时，如果 VodeoDistributionRange = ALL，则该参数为 "all-buckets-in-vodeo-application"；如果 VodeoDistributionRange = Bucket，则该参数为对应存储桶域名。</li>
         :type Origin: str
         :param _BackupOrigin: 备用源站组 ID，该参数仅在 OriginType = ORIGIN_GROUP 且配置了备源站组时会生效。
         :type BackupOrigin: str
@@ -20738,26 +20733,38 @@ class OriginDetail(AbstractModel):
 
     @property
     def VodeoSubAppId(self):
+        warnings.warn("parameter `VodeoSubAppId` is deprecated", DeprecationWarning) 
+
         return self._VodeoSubAppId
 
     @VodeoSubAppId.setter
     def VodeoSubAppId(self, VodeoSubAppId):
+        warnings.warn("parameter `VodeoSubAppId` is deprecated", DeprecationWarning) 
+
         self._VodeoSubAppId = VodeoSubAppId
 
     @property
     def VodeoDistributionRange(self):
+        warnings.warn("parameter `VodeoDistributionRange` is deprecated", DeprecationWarning) 
+
         return self._VodeoDistributionRange
 
     @VodeoDistributionRange.setter
     def VodeoDistributionRange(self, VodeoDistributionRange):
+        warnings.warn("parameter `VodeoDistributionRange` is deprecated", DeprecationWarning) 
+
         self._VodeoDistributionRange = VodeoDistributionRange
 
     @property
     def VodeoBucketId(self):
+        warnings.warn("parameter `VodeoBucketId` is deprecated", DeprecationWarning) 
+
         return self._VodeoBucketId
 
     @VodeoBucketId.setter
     def VodeoBucketId(self, VodeoBucketId):
+        warnings.warn("parameter `VodeoBucketId` is deprecated", DeprecationWarning) 
+
         self._VodeoBucketId = VodeoBucketId
 
 
@@ -21072,26 +21079,38 @@ class OriginInfo(AbstractModel):
 
     @property
     def VodeoSubAppId(self):
+        warnings.warn("parameter `VodeoSubAppId` is deprecated", DeprecationWarning) 
+
         return self._VodeoSubAppId
 
     @VodeoSubAppId.setter
     def VodeoSubAppId(self, VodeoSubAppId):
+        warnings.warn("parameter `VodeoSubAppId` is deprecated", DeprecationWarning) 
+
         self._VodeoSubAppId = VodeoSubAppId
 
     @property
     def VodeoDistributionRange(self):
+        warnings.warn("parameter `VodeoDistributionRange` is deprecated", DeprecationWarning) 
+
         return self._VodeoDistributionRange
 
     @VodeoDistributionRange.setter
     def VodeoDistributionRange(self, VodeoDistributionRange):
+        warnings.warn("parameter `VodeoDistributionRange` is deprecated", DeprecationWarning) 
+
         self._VodeoDistributionRange = VodeoDistributionRange
 
     @property
     def VodeoBucketId(self):
+        warnings.warn("parameter `VodeoBucketId` is deprecated", DeprecationWarning) 
+
         return self._VodeoBucketId
 
     @VodeoBucketId.setter
     def VodeoBucketId(self, VodeoBucketId):
+        warnings.warn("parameter `VodeoBucketId` is deprecated", DeprecationWarning) 
+
         self._VodeoBucketId = VodeoBucketId
 
 
@@ -25541,7 +25560,7 @@ class TimingDataItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Timestamp: 返回数据对应时间点，采用unix秒级时间戳。
+        :param _Timestamp: 返回数据对应时间点，采用 unix 秒级时间戳。
         :type Timestamp: int
         :param _Value: 具体数值。
         :type Value: int
@@ -26484,7 +26503,6 @@ class Zone(AbstractModel):
 <li> full：NS 接入；</li>
 <li> partial：CNAME 接入；</li>
 <li> noDomainAccess：无域名接入；</li>
-<li> vodeo：开启 VODEO 后默认接入。</li>
         :type Type: str
         :param _Paused: 站点是否关闭。
         :type Paused: bool

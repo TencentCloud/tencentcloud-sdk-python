@@ -119,6 +119,31 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateSLInstance(self, request):
+        """本接口（CreateSLInstance）用于创建 Lite HBase 实例
+        - 接口调用成功，会创建Lite HBase实例，创建实例请求成功会返回创建实例的 InstaceId 和请求的 RequestID。
+        - 接口为异步接口，接口返回时操作并未立即完成，实例操作结果可以通过调用 DescribeInstancesList 查看当前实例的 StatusDesc 状态。
+
+        :param request: Request instance for CreateSLInstance.
+        :type request: :class:`tencentcloud.emr.v20190103.models.CreateSLInstanceRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.CreateSLInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSLInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSLInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteAutoScaleStrategy(self, request):
         """删除自动扩缩容规则，后台销毁根据该规则扩缩容出来的节点
 
@@ -602,6 +627,52 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSLInstance(self, request):
+        """本接口（DescribeSLInstance）用于查询 Lite HBase 实例基本信息
+
+        :param request: Request instance for DescribeSLInstance.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeSLInstanceRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeSLInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSLInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSLInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSLInstanceList(self, request):
+        """本接口（DescribeSLInstanceList）用于查询 Lite HBase 实例列表详细信息
+
+        :param request: Request instance for DescribeSLInstanceList.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeSLInstanceListRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeSLInstanceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSLInstanceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSLInstanceListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeServiceNodeInfos(self, request):
         """查询服务进程信息
 
@@ -995,6 +1066,31 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifySLInstance(self, request):
+        """本接口（ModifySLInstance）用于修改Lite HBase 实例节点数。
+        - 接口调用成功，会创建Lite HBase实例，创建实例请求成功会返回请求的 RequestID。
+        - 接口为异步接口，接口返回时操作并未立即完成，实例操作结果可以通过调用 DescribeInstancesList 查看当前实例的 StatusDesc 状态。
+
+        :param request: Request instance for ModifySLInstance.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ModifySLInstanceRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifySLInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySLInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySLInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyUserManagerPwd(self, request):
         """修改用户密码（用户管理）
 
@@ -1239,6 +1335,29 @@ class EmrClient(AbstractClient):
             body = self.call("TerminateInstance", params, headers=headers)
             response = json.loads(body)
             model = models.TerminateInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def TerminateSLInstance(self, request):
+        """本接口（TerminateSLInstance）用于销毁 Lite HBase 实例
+
+        :param request: Request instance for TerminateSLInstance.
+        :type request: :class:`tencentcloud.emr.v20190103.models.TerminateSLInstanceRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.TerminateSLInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TerminateSLInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.TerminateSLInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

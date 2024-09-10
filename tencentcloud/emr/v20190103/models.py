@@ -3481,6 +3481,158 @@ class CreateInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateSLInstanceRequest(AbstractModel):
+    """CreateSLInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceName: 实例名称。
+        :type InstanceName: str
+        :param _PayMode: 实例计费模式，0表示后付费，即按量计费。
+        :type PayMode: int
+        :param _DiskType: 实例存储类型，填写CLOUD_HSSD，表示性能云存储。
+        :type DiskType: str
+        :param _DiskSize: 实例单节点磁盘容量，单位GB，单节点磁盘容量需大于等于100，小于等于10000，容量调整步长为20。
+        :type DiskSize: int
+        :param _NodeType: 实例节点规格，可填写4C16G、8C32G、16C64G、32C128G，不区分大小写。
+        :type NodeType: str
+        :param _ZoneSettings: 实例可用区详细配置，当前支持多可用区，可用区数量只能为1或3，包含区域名称，VPC信息、节点数量，其中所有区域节点总数需大于等于3，小于等于50。
+        :type ZoneSettings: list of ZoneSetting
+        :param _Tags: 实例要绑定的标签列表。
+        :type Tags: list of Tag
+        """
+        self._InstanceName = None
+        self._PayMode = None
+        self._DiskType = None
+        self._DiskSize = None
+        self._NodeType = None
+        self._ZoneSettings = None
+        self._Tags = None
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def DiskType(self):
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def DiskSize(self):
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def NodeType(self):
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def ZoneSettings(self):
+        return self._ZoneSettings
+
+    @ZoneSettings.setter
+    def ZoneSettings(self, ZoneSettings):
+        self._ZoneSettings = ZoneSettings
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._InstanceName = params.get("InstanceName")
+        self._PayMode = params.get("PayMode")
+        self._DiskType = params.get("DiskType")
+        self._DiskSize = params.get("DiskSize")
+        self._NodeType = params.get("NodeType")
+        if params.get("ZoneSettings") is not None:
+            self._ZoneSettings = []
+            for item in params.get("ZoneSettings"):
+                obj = ZoneSetting()
+                obj._deserialize(item)
+                self._ZoneSettings.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSLInstanceResponse(AbstractModel):
+    """CreateSLInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例唯一标识符（字符串表示）
+        :type InstanceId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RequestId = params.get("RequestId")
+
+
 class CustomMetaDBInfo(AbstractModel):
     """用户Hive-MetaDB信息
 
@@ -6659,6 +6811,311 @@ class DescribeResourceScheduleResponse(AbstractModel):
         self._Scheduler = params.get("Scheduler")
         self._FSInfo = params.get("FSInfo")
         self._CSInfo = params.get("CSInfo")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSLInstanceListRequest(AbstractModel):
+    """DescribeSLInstanceList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DisplayStrategy: 实例筛选策略。取值范围：<li>clusterList：表示查询除了已销毁实例之外的实例列表。</li><li>monitorManage：表示查询除了已销毁、创建中以及创建失败的实例之外的实例列表。</li>
+        :type DisplayStrategy: str
+        :param _Offset: 页编号，默认值为0，表示第一页。
+        :type Offset: int
+        :param _Limit: 每页返回数量，默认值为10，最大值为100。	
+        :type Limit: int
+        :param _OrderField: 排序字段。取值范围：<li>clusterId：表示按照实例ID排序。</li><li>addTime：表示按照实例创建时间排序。</li><li>status：表示按照实例的状态码排序。</li>
+        :type OrderField: str
+        :param _Asc: 按照OrderField升序或者降序进行排序。取值范围：<li>0：表示降序。</li><li>1：表示升序。</li>默认值为0。
+        :type Asc: int
+        :param _Filters: 自定义查询过滤器。
+        :type Filters: list of Filters
+        """
+        self._DisplayStrategy = None
+        self._Offset = None
+        self._Limit = None
+        self._OrderField = None
+        self._Asc = None
+        self._Filters = None
+
+    @property
+    def DisplayStrategy(self):
+        return self._DisplayStrategy
+
+    @DisplayStrategy.setter
+    def DisplayStrategy(self, DisplayStrategy):
+        self._DisplayStrategy = DisplayStrategy
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OrderField(self):
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def Asc(self):
+        return self._Asc
+
+    @Asc.setter
+    def Asc(self, Asc):
+        self._Asc = Asc
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._DisplayStrategy = params.get("DisplayStrategy")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._OrderField = params.get("OrderField")
+        self._Asc = params.get("Asc")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSLInstanceListResponse(AbstractModel):
+    """DescribeSLInstanceList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCnt: 符合条件的实例总数。	
+        :type TotalCnt: int
+        :param _InstancesList: 实例信息列表，如果进行了分页，只显示当前分页的示例信息列表。
+        :type InstancesList: list of SLInstanceInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCnt = None
+        self._InstancesList = None
+        self._RequestId = None
+
+    @property
+    def TotalCnt(self):
+        return self._TotalCnt
+
+    @TotalCnt.setter
+    def TotalCnt(self, TotalCnt):
+        self._TotalCnt = TotalCnt
+
+    @property
+    def InstancesList(self):
+        return self._InstancesList
+
+    @InstancesList.setter
+    def InstancesList(self, InstancesList):
+        self._InstancesList = InstancesList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCnt = params.get("TotalCnt")
+        if params.get("InstancesList") is not None:
+            self._InstancesList = []
+            for item in params.get("InstancesList"):
+                obj = SLInstanceInfo()
+                obj._deserialize(item)
+                self._InstancesList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSLInstanceRequest(AbstractModel):
+    """DescribeSLInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例唯一标识符（字符串表示）
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSLInstanceResponse(AbstractModel):
+    """DescribeSLInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceName: 实例名称。
+        :type InstanceName: str
+        :param _PayMode: 实例计费模式。0表示后付费，即按量计费，1表示预付费，即包年包月。
+        :type PayMode: int
+        :param _DiskType: 实例存储类型。
+        :type DiskType: str
+        :param _DiskSize: 实例单节点磁盘容量，单位GB。
+        :type DiskSize: int
+        :param _NodeType: 实例节点规格。
+        :type NodeType: str
+        :param _ZoneSettings: 实例可用区详细配置，包含可用区名称，VPC信息、节点数量。
+        :type ZoneSettings: list of ZoneSetting
+        :param _Tags: 实例绑定的标签列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceName = None
+        self._PayMode = None
+        self._DiskType = None
+        self._DiskSize = None
+        self._NodeType = None
+        self._ZoneSettings = None
+        self._Tags = None
+        self._RequestId = None
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def DiskType(self):
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def DiskSize(self):
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def NodeType(self):
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def ZoneSettings(self):
+        return self._ZoneSettings
+
+    @ZoneSettings.setter
+    def ZoneSettings(self, ZoneSettings):
+        self._ZoneSettings = ZoneSettings
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceName = params.get("InstanceName")
+        self._PayMode = params.get("PayMode")
+        self._DiskType = params.get("DiskType")
+        self._DiskSize = params.get("DiskSize")
+        self._NodeType = params.get("NodeType")
+        if params.get("ZoneSettings") is not None:
+            self._ZoneSettings = []
+            for item in params.get("ZoneSettings"):
+                obj = ZoneSetting()
+                obj._deserialize(item)
+                self._ZoneSettings.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -12761,10 +13218,13 @@ class ModifyAutoRenewFlagRequest(AbstractModel):
         :type ResourceIds: list of str
         :param _RenewFlag: NOTIFY_AND_MANUAL_RENEW：表示通知即将过期，但不自动续费  NOTIFY_AND_AUTO_RENEW：表示通知即将过期，而且自动续费  DISABLE_NOTIFY_AND_MANUAL_RENEW：表示不通知即将过期，也不自动续费。
         :type RenewFlag: str
+        :param _ComputeResourceId: 计算资源id
+        :type ComputeResourceId: str
         """
         self._InstanceId = None
         self._ResourceIds = None
         self._RenewFlag = None
+        self._ComputeResourceId = None
 
     @property
     def InstanceId(self):
@@ -12790,11 +13250,20 @@ class ModifyAutoRenewFlagRequest(AbstractModel):
     def RenewFlag(self, RenewFlag):
         self._RenewFlag = RenewFlag
 
+    @property
+    def ComputeResourceId(self):
+        return self._ComputeResourceId
+
+    @ComputeResourceId.setter
+    def ComputeResourceId(self, ComputeResourceId):
+        self._ComputeResourceId = ComputeResourceId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._ResourceIds = params.get("ResourceIds")
         self._RenewFlag = params.get("RenewFlag")
+        self._ComputeResourceId = params.get("ComputeResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13506,6 +13975,88 @@ class ModifyResourcesTagsResponse(AbstractModel):
                 obj = ClusterIDToFlowID()
                 obj._deserialize(item)
                 self._ClusterToFlowIdList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ModifySLInstanceRequest(AbstractModel):
+    """ModifySLInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例唯一标识符（字符串表示）。
+        :type InstanceId: str
+        :param _Zone: 需要变更的区域名称。
+        :type Zone: str
+        :param _NodeNum: 该区域变配后的目标节点数量，所有区域节点总数应大于等于3，小于等于50。
+        :type NodeNum: int
+        """
+        self._InstanceId = None
+        self._Zone = None
+        self._NodeNum = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def NodeNum(self):
+        return self._NodeNum
+
+    @NodeNum.setter
+    def NodeNum(self, NodeNum):
+        self._NodeNum = NodeNum
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Zone = params.get("Zone")
+        self._NodeNum = params.get("NodeNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySLInstanceResponse(AbstractModel):
+    """ModifySLInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -18150,6 +18701,219 @@ class RunJobFlowResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class SLInstanceInfo(AbstractModel):
+    """EMR Lite HBase 实例信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群实例字符串ID
+        :type ClusterId: str
+        :param _Id: 集群实例数字ID
+        :type Id: int
+        :param _StatusDesc: 状态描述
+        :type StatusDesc: str
+        :param _ClusterName: 实例名称
+        :type ClusterName: str
+        :param _RegionId: 地域ID
+        :type RegionId: int
+        :param _ZoneId: 主可用区ID
+        :type ZoneId: int
+        :param _Zone: 主可用区
+        :type Zone: str
+        :param _AppId: 用户APPID
+        :type AppId: int
+        :param _VpcId: 主可用区私有网络ID
+        :type VpcId: int
+        :param _SubnetId: 主可用区子网ID
+        :type SubnetId: int
+        :param _Status: 状态码
+        :type Status: int
+        :param _AddTime: 创建时间
+        :type AddTime: str
+        :param _PayMode: 集群计费类型。0表示按量计费，1表示包年包月
+        :type PayMode: int
+        :param _ZoneSettings: 多可用区信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneSettings: list of ZoneSetting
+        :param _Tags: 实例标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        """
+        self._ClusterId = None
+        self._Id = None
+        self._StatusDesc = None
+        self._ClusterName = None
+        self._RegionId = None
+        self._ZoneId = None
+        self._Zone = None
+        self._AppId = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._Status = None
+        self._AddTime = None
+        self._PayMode = None
+        self._ZoneSettings = None
+        self._Tags = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def StatusDesc(self):
+        return self._StatusDesc
+
+    @StatusDesc.setter
+    def StatusDesc(self, StatusDesc):
+        self._StatusDesc = StatusDesc
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def AddTime(self):
+        return self._AddTime
+
+    @AddTime.setter
+    def AddTime(self, AddTime):
+        self._AddTime = AddTime
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def ZoneSettings(self):
+        return self._ZoneSettings
+
+    @ZoneSettings.setter
+    def ZoneSettings(self, ZoneSettings):
+        self._ZoneSettings = ZoneSettings
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._Id = params.get("Id")
+        self._StatusDesc = params.get("StatusDesc")
+        self._ClusterName = params.get("ClusterName")
+        self._RegionId = params.get("RegionId")
+        self._ZoneId = params.get("ZoneId")
+        self._Zone = params.get("Zone")
+        self._AppId = params.get("AppId")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._Status = params.get("Status")
+        self._AddTime = params.get("AddTime")
+        self._PayMode = params.get("PayMode")
+        if params.get("ZoneSettings") is not None:
+            self._ZoneSettings = []
+            for item in params.get("ZoneSettings"):
+                obj = ZoneSetting()
+                obj._deserialize(item)
+                self._ZoneSettings.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ScaleOutClusterRequest(AbstractModel):
     """ScaleOutCluster请求参数结构体
 
@@ -21030,6 +21794,64 @@ class TerminateInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class TerminateSLInstanceRequest(AbstractModel):
+    """TerminateSLInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例唯一标识符（字符串表示）
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TerminateSLInstanceResponse(AbstractModel):
+    """TerminateSLInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class TerminateTasksRequest(AbstractModel):
     """TerminateTasks请求参数结构体
 
@@ -23021,6 +23843,65 @@ class ZoneResourceConfiguration(AbstractModel):
             self._AllNodeResourceSpec = AllNodeResourceSpec()
             self._AllNodeResourceSpec._deserialize(params.get("AllNodeResourceSpec"))
         self._ZoneTag = params.get("ZoneTag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ZoneSetting(AbstractModel):
+    """可用区配置描述。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Zone: 可用区名称
+        :type Zone: str
+        :param _VPCSettings: 可用区VPC和子网
+        :type VPCSettings: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
+        :param _NodeNum: 可用区节点数量
+        :type NodeNum: int
+        """
+        self._Zone = None
+        self._VPCSettings = None
+        self._NodeNum = None
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def VPCSettings(self):
+        return self._VPCSettings
+
+    @VPCSettings.setter
+    def VPCSettings(self, VPCSettings):
+        self._VPCSettings = VPCSettings
+
+    @property
+    def NodeNum(self):
+        return self._NodeNum
+
+    @NodeNum.setter
+    def NodeNum(self, NodeNum):
+        self._NodeNum = NodeNum
+
+
+    def _deserialize(self, params):
+        self._Zone = params.get("Zone")
+        if params.get("VPCSettings") is not None:
+            self._VPCSettings = VPCSettings()
+            self._VPCSettings._deserialize(params.get("VPCSettings"))
+        self._NodeNum = params.get("NodeNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1979,6 +1979,39 @@ class EssbasicClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreatePersonAuthCertificateImage(self, request):
+        """获取个人用户认证证书图片下载URL
+
+        个人用户认证证书图片样式如下图
+
+        ![image](https://dyn.ess.tencent.cn/guide/capi/CreatePersonAuthCertificateImage.png)
+
+        注:
+        <ul>
+        <li>只能获取个人用户证明图片, 企业员工的暂不支持</li>
+        <li>处方单等特殊场景专用，此接口为白名单功能，使用前请联系对接的客户经理沟通。  </li>
+        </ul>
+
+        :param request: Request instance for CreatePersonAuthCertificateImage.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.CreatePersonAuthCertificateImageRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.CreatePersonAuthCertificateImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePersonAuthCertificateImage", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePersonAuthCertificateImageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateSealByImage(self, request):
         """1. 可以**通过图片**为子客企业代创建印章，图片最大5MB
 

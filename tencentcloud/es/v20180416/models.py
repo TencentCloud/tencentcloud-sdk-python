@@ -5233,6 +5233,88 @@ class DescribeServerlessSpacesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSpaceKibanaToolsRequest(AbstractModel):
+    """DescribeSpaceKibanaTools请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: space的ID
+        :type SpaceId: str
+        """
+        self._SpaceId = None
+
+    @property
+    def SpaceId(self):
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSpaceKibanaToolsResponse(AbstractModel):
+    """DescribeSpaceKibanaTools返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KibanaToken: 该token用于登录内嵌kibana
+        :type KibanaToken: str
+        :param _ExpireTime: token的过期时间
+        :type ExpireTime: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._KibanaToken = None
+        self._ExpireTime = None
+        self._RequestId = None
+
+    @property
+    def KibanaToken(self):
+        return self._KibanaToken
+
+    @KibanaToken.setter
+    def KibanaToken(self, KibanaToken):
+        self._KibanaToken = KibanaToken
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._KibanaToken = params.get("KibanaToken")
+        self._ExpireTime = params.get("ExpireTime")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeUserCosSnapshotListRequest(AbstractModel):
     """DescribeUserCosSnapshotList请求参数结构体
 

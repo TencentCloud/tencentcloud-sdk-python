@@ -45626,7 +45626,7 @@ class Route(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DestinationCidrBlock: 目的网段，取值不能在私有网络网段内，例如：112.20.51.0/24。
+        :param _DestinationCidrBlock: 创建IPv4目的网段，取值不能在私有网络网段内，例如：112.20.51.0/24。
         :type DestinationCidrBlock: str
         :param _GatewayType: 下一跳类型，目前我们支持的类型有：
 CVM：公网网关类型的云服务器；
@@ -45634,10 +45634,13 @@ VPN：VPN网关；
 DIRECTCONNECT：专线网关；
 PEERCONNECTION：对等连接；
 HAVIP：高可用虚拟IP；
-NAT：NAT网关; 
+NAT：公网NAT网关; 
 NORMAL_CVM：普通云服务器；
 EIP：云服务器的公网IP；
-LOCAL_GATEWAY：本地网关。
+LOCAL_GATEWAY：CDC本地网关；
+INTRANAT：私网NAT网关；
+USER_CCN；云联网（自定义路由）。
+
         :type GatewayType: str
         :param _GatewayId: 下一跳地址，这里只需要指定不同下一跳类型的网关ID，系统会自动匹配到下一跳地址。
 特殊说明：
@@ -45659,12 +45662,12 @@ CCN：云联网路由，系统默认下发，不可编辑与删除。
         :type RouteType: str
         :param _RouteTableId: 路由表实例ID，例如：rtb-azd4dt1c。
         :type RouteTableId: str
-        :param _DestinationIpv6CidrBlock: 目的IPv6网段，取值不能在私有网络网段内，例如：2402:4e00:1000:810b::/64。
+        :param _DestinationIpv6CidrBlock: 创建IPv6目的网段，取值不能在私有网络网段内，例如：2402:4e00:1000:810b::/64。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DestinationIpv6CidrBlock: str
         :param _RouteItemId: 路由唯一策略ID。
         :type RouteItemId: str
-        :param _PublishedToVbc: 路由策略是否发布到云联网。
+        :param _PublishedToVbc: 路由策略是否发布到云联网。该字段仅做出参使用，作为入参字段时此参数不生效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PublishedToVbc: bool
         :param _CreatedTime: 路由策略创建时间

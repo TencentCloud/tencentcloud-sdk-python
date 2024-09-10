@@ -227,6 +227,112 @@ class AssociateSecurityGroupsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class BackupConfig(AbstractModel):
+    """数据库超期备份配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnableBackupPolicy: 备份策略是否启用。
+        :type EnableBackupPolicy: bool
+        :param _BeginDate: 超期保留开始日期，早于开始日期的超期备份不保留，格式：yyyy-mm-dd。
+        :type BeginDate: str
+        :param _MaxRetentionDays: 超期备份保留时长，超出保留时间的超期备份将被删除，可填写1-3650整数。
+        :type MaxRetentionDays: int
+        :param _Frequency: 备份模式，可选择按年月周模式保存
+* 按年：annually
+* 按月：monthly
+* 按周：weekly
+        :type Frequency: str
+        :param _WeekDays: Frequency等于weekly时生效。
+表示保留特定工作日备份。可选择周一到周日，支持多选，取星期英文：
+* 星期一 ：Monday
+* 星期二 ：Tuesday
+* 星期三：Wednesday
+* 星期四：Thursday
+* 星期五：Friday
+* 星期六：Saturday
+* 星期日：Sunday
+        :type WeekDays: list of str
+        :param _BackupCount: 保留备份个数，Frequency等于monthly或weekly时生效。
+备份模式选择按月时，可填写1-28整数；
+备份模式选择年时，可填写1-336整数。
+        :type BackupCount: int
+        """
+        self._EnableBackupPolicy = None
+        self._BeginDate = None
+        self._MaxRetentionDays = None
+        self._Frequency = None
+        self._WeekDays = None
+        self._BackupCount = None
+
+    @property
+    def EnableBackupPolicy(self):
+        return self._EnableBackupPolicy
+
+    @EnableBackupPolicy.setter
+    def EnableBackupPolicy(self, EnableBackupPolicy):
+        self._EnableBackupPolicy = EnableBackupPolicy
+
+    @property
+    def BeginDate(self):
+        return self._BeginDate
+
+    @BeginDate.setter
+    def BeginDate(self, BeginDate):
+        self._BeginDate = BeginDate
+
+    @property
+    def MaxRetentionDays(self):
+        return self._MaxRetentionDays
+
+    @MaxRetentionDays.setter
+    def MaxRetentionDays(self, MaxRetentionDays):
+        self._MaxRetentionDays = MaxRetentionDays
+
+    @property
+    def Frequency(self):
+        return self._Frequency
+
+    @Frequency.setter
+    def Frequency(self, Frequency):
+        self._Frequency = Frequency
+
+    @property
+    def WeekDays(self):
+        return self._WeekDays
+
+    @WeekDays.setter
+    def WeekDays(self, WeekDays):
+        self._WeekDays = WeekDays
+
+    @property
+    def BackupCount(self):
+        return self._BackupCount
+
+    @BackupCount.setter
+    def BackupCount(self, BackupCount):
+        self._BackupCount = BackupCount
+
+
+    def _deserialize(self, params):
+        self._EnableBackupPolicy = params.get("EnableBackupPolicy")
+        self._BeginDate = params.get("BeginDate")
+        self._MaxRetentionDays = params.get("MaxRetentionDays")
+        self._Frequency = params.get("Frequency")
+        self._WeekDays = params.get("WeekDays")
+        self._BackupCount = params.get("BackupCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CancelDcnJobRequest(AbstractModel):
     """CancelDcnJob请求参数结构体
 
@@ -4155,6 +4261,153 @@ class DescribeAccountsResponse(AbstractModel):
                 obj = DBAccount()
                 obj._deserialize(item)
                 self._Users.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBackupConfigsRequest(AbstractModel):
+    """DescribeBackupConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID，格式如：tdsql-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupConfigsResponse(AbstractModel):
+    """DescribeBackupConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID。
+        :type InstanceId: str
+        :param _Days: 常规备份存储时长，范围[1, 3650]。
+        :type Days: int
+        :param _StartBackupTime: 每天备份执行的区间的开始时间，格式 mm:ss，形如 22:00。
+        :type StartBackupTime: str
+        :param _EndBackupTime: 每天备份执行的区间的结束时间，格式 mm:ss，形如 23:59。
+        :type EndBackupTime: str
+        :param _WeekDays: 执行备份周期，枚举值：Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday
+        :type WeekDays: list of str
+        :param _ArchiveDays: 沉降到归档存储时长，-1表示关闭归档设置。
+        :type ArchiveDays: int
+        :param _BackupConfigSet: 超期备份配置。
+        :type BackupConfigSet: list of BackupConfig
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._Days = None
+        self._StartBackupTime = None
+        self._EndBackupTime = None
+        self._WeekDays = None
+        self._ArchiveDays = None
+        self._BackupConfigSet = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Days(self):
+        return self._Days
+
+    @Days.setter
+    def Days(self, Days):
+        self._Days = Days
+
+    @property
+    def StartBackupTime(self):
+        return self._StartBackupTime
+
+    @StartBackupTime.setter
+    def StartBackupTime(self, StartBackupTime):
+        self._StartBackupTime = StartBackupTime
+
+    @property
+    def EndBackupTime(self):
+        return self._EndBackupTime
+
+    @EndBackupTime.setter
+    def EndBackupTime(self, EndBackupTime):
+        self._EndBackupTime = EndBackupTime
+
+    @property
+    def WeekDays(self):
+        return self._WeekDays
+
+    @WeekDays.setter
+    def WeekDays(self, WeekDays):
+        self._WeekDays = WeekDays
+
+    @property
+    def ArchiveDays(self):
+        return self._ArchiveDays
+
+    @ArchiveDays.setter
+    def ArchiveDays(self, ArchiveDays):
+        self._ArchiveDays = ArchiveDays
+
+    @property
+    def BackupConfigSet(self):
+        return self._BackupConfigSet
+
+    @BackupConfigSet.setter
+    def BackupConfigSet(self, BackupConfigSet):
+        self._BackupConfigSet = BackupConfigSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Days = params.get("Days")
+        self._StartBackupTime = params.get("StartBackupTime")
+        self._EndBackupTime = params.get("EndBackupTime")
+        self._WeekDays = params.get("WeekDays")
+        self._ArchiveDays = params.get("ArchiveDays")
+        if params.get("BackupConfigSet") is not None:
+            self._BackupConfigSet = []
+            for item in params.get("BackupConfigSet"):
+                obj = BackupConfig()
+                obj._deserialize(item)
+                self._BackupConfigSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -9390,6 +9643,141 @@ class ModifyAccountPrivilegesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyBackupConfigsRequest(AbstractModel):
+    """ModifyBackupConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID，格式如：tdsql-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        :type InstanceId: str
+        :param _Days: 常规备份存储时长，范围[1, 3650]。
+        :type Days: int
+        :param _StartBackupTime: 每天备份执行的区间的开始时间，格式 mm:ss，形如 22:00。
+        :type StartBackupTime: str
+        :param _EndBackupTime: 每天备份执行的区间的结束时间，格式 mm:ss，形如 23:59。
+        :type EndBackupTime: str
+        :param _WeekDays: 执行备份周期，枚举值：Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday
+        :type WeekDays: list of str
+        :param _ArchiveDays: 沉降到归档存储时长，-1表示关闭归档设置。
+        :type ArchiveDays: int
+        :param _BackupConfigSet: 超期备份配置。
+        :type BackupConfigSet: list of NewBackupConfig
+        """
+        self._InstanceId = None
+        self._Days = None
+        self._StartBackupTime = None
+        self._EndBackupTime = None
+        self._WeekDays = None
+        self._ArchiveDays = None
+        self._BackupConfigSet = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Days(self):
+        return self._Days
+
+    @Days.setter
+    def Days(self, Days):
+        self._Days = Days
+
+    @property
+    def StartBackupTime(self):
+        return self._StartBackupTime
+
+    @StartBackupTime.setter
+    def StartBackupTime(self, StartBackupTime):
+        self._StartBackupTime = StartBackupTime
+
+    @property
+    def EndBackupTime(self):
+        return self._EndBackupTime
+
+    @EndBackupTime.setter
+    def EndBackupTime(self, EndBackupTime):
+        self._EndBackupTime = EndBackupTime
+
+    @property
+    def WeekDays(self):
+        return self._WeekDays
+
+    @WeekDays.setter
+    def WeekDays(self, WeekDays):
+        self._WeekDays = WeekDays
+
+    @property
+    def ArchiveDays(self):
+        return self._ArchiveDays
+
+    @ArchiveDays.setter
+    def ArchiveDays(self, ArchiveDays):
+        self._ArchiveDays = ArchiveDays
+
+    @property
+    def BackupConfigSet(self):
+        return self._BackupConfigSet
+
+    @BackupConfigSet.setter
+    def BackupConfigSet(self, BackupConfigSet):
+        self._BackupConfigSet = BackupConfigSet
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Days = params.get("Days")
+        self._StartBackupTime = params.get("StartBackupTime")
+        self._EndBackupTime = params.get("EndBackupTime")
+        self._WeekDays = params.get("WeekDays")
+        self._ArchiveDays = params.get("ArchiveDays")
+        if params.get("BackupConfigSet") is not None:
+            self._BackupConfigSet = []
+            for item in params.get("BackupConfigSet"):
+                obj = NewBackupConfig()
+                obj._deserialize(item)
+                self._BackupConfigSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBackupConfigsResponse(AbstractModel):
+    """ModifyBackupConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyBackupTimeRequest(AbstractModel):
     """ModifyBackupTime请求参数结构体
 
@@ -10500,6 +10888,112 @@ class ModifySyncTaskAttributeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class NewBackupConfig(AbstractModel):
+    """数据库超期备份配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnableBackupPolicy: 备份策略是否启用。
+        :type EnableBackupPolicy: bool
+        :param _BeginDate: 超期保留开始日期，早于开始日期的超期备份不保留，格式：yyyy-mm-dd。
+        :type BeginDate: str
+        :param _MaxRetentionDays: 超期备份保留时长，超出保留时间的超期备份将被删除，可填写1-3650整数。
+        :type MaxRetentionDays: int
+        :param _Frequency: 备份模式，可选择按年月周模式保存
+* 按年：annually
+* 按月：monthly
+* 按周：weekly
+        :type Frequency: str
+        :param _WeekDays: Frequency等于weekly时生效。
+表示保留特定工作日备份。可选择周一到周日，支持多选，取星期英文： 
+* 星期一 ：Monday 
+* 星期二 ：Tuesday 
+* 星期三：Wednesday
+* 星期四：Thursday 
+* 星期五：Friday
+* 星期六：Saturday
+* 星期日：Sunday
+        :type WeekDays: list of str
+        :param _BackupCount: 保留备份个数，Frequency等于monthly或weekly时生效。
+备份模式选择按月时，可填写1-28整数；
+备份模式选择年时，可填写1-336整数。
+        :type BackupCount: int
+        """
+        self._EnableBackupPolicy = None
+        self._BeginDate = None
+        self._MaxRetentionDays = None
+        self._Frequency = None
+        self._WeekDays = None
+        self._BackupCount = None
+
+    @property
+    def EnableBackupPolicy(self):
+        return self._EnableBackupPolicy
+
+    @EnableBackupPolicy.setter
+    def EnableBackupPolicy(self, EnableBackupPolicy):
+        self._EnableBackupPolicy = EnableBackupPolicy
+
+    @property
+    def BeginDate(self):
+        return self._BeginDate
+
+    @BeginDate.setter
+    def BeginDate(self, BeginDate):
+        self._BeginDate = BeginDate
+
+    @property
+    def MaxRetentionDays(self):
+        return self._MaxRetentionDays
+
+    @MaxRetentionDays.setter
+    def MaxRetentionDays(self, MaxRetentionDays):
+        self._MaxRetentionDays = MaxRetentionDays
+
+    @property
+    def Frequency(self):
+        return self._Frequency
+
+    @Frequency.setter
+    def Frequency(self, Frequency):
+        self._Frequency = Frequency
+
+    @property
+    def WeekDays(self):
+        return self._WeekDays
+
+    @WeekDays.setter
+    def WeekDays(self, WeekDays):
+        self._WeekDays = WeekDays
+
+    @property
+    def BackupCount(self):
+        return self._BackupCount
+
+    @BackupCount.setter
+    def BackupCount(self, BackupCount):
+        self._BackupCount = BackupCount
+
+
+    def _deserialize(self, params):
+        self._EnableBackupPolicy = params.get("EnableBackupPolicy")
+        self._BeginDate = params.get("BeginDate")
+        self._MaxRetentionDays = params.get("MaxRetentionDays")
+        self._Frequency = params.get("Frequency")
+        self._WeekDays = params.get("WeekDays")
+        self._BackupCount = params.get("BackupCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class NodeInfo(AbstractModel):

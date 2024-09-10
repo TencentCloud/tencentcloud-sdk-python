@@ -1479,6 +1479,15 @@ class ApiRateLimitRule(AbstractModel):
         :param _UpdatedTime: 更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedTime: str
+        :param _Limit: 分页参数limit
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Limit: int
+        :param _Offset: 分页参数offset
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Offset: int
+        :param _AppId: AppId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: str
         """
         self._RuleId = None
         self._ApiId = None
@@ -1490,6 +1499,9 @@ class ApiRateLimitRule(AbstractModel):
         self._Description = None
         self._CreatedTime = None
         self._UpdatedTime = None
+        self._Limit = None
+        self._Offset = None
+        self._AppId = None
 
     @property
     def RuleId(self):
@@ -1571,6 +1583,30 @@ class ApiRateLimitRule(AbstractModel):
     def UpdatedTime(self, UpdatedTime):
         self._UpdatedTime = UpdatedTime
 
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
 
     def _deserialize(self, params):
         self._RuleId = params.get("RuleId")
@@ -1583,6 +1619,9 @@ class ApiRateLimitRule(AbstractModel):
         self._Description = params.get("Description")
         self._CreatedTime = params.get("CreatedTime")
         self._UpdatedTime = params.get("UpdatedTime")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._AppId = params.get("AppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7040,9 +7079,12 @@ class CreateAllGatewayApiAsyncRequest(AbstractModel):
         :type GroupId: str
         :param _MicroserviceId: 微服务ID
         :type MicroserviceId: str
+        :param _NamespaceId: 命名空间ID
+        :type NamespaceId: str
         """
         self._GroupId = None
         self._MicroserviceId = None
+        self._NamespaceId = None
 
     @property
     def GroupId(self):
@@ -7060,10 +7102,19 @@ class CreateAllGatewayApiAsyncRequest(AbstractModel):
     def MicroserviceId(self, MicroserviceId):
         self._MicroserviceId = MicroserviceId
 
+    @property
+    def NamespaceId(self):
+        return self._NamespaceId
+
+    @NamespaceId.setter
+    def NamespaceId(self, NamespaceId):
+        self._NamespaceId = NamespaceId
+
 
     def _deserialize(self, params):
         self._GroupId = params.get("GroupId")
         self._MicroserviceId = params.get("MicroserviceId")
+        self._NamespaceId = params.get("NamespaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
