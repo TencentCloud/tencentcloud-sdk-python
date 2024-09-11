@@ -5300,6 +5300,8 @@ class CreateClusterRequest(AbstractModel):
         :type InstanceDataDiskMountSettings: list of InstanceDataDiskMountSetting
         :param _ExtensionAddons: 需要安装的扩展组件信息
         :type ExtensionAddons: list of ExtensionAddon
+        :param _CdcId: 本地专用集群Id
+        :type CdcId: str
         """
         self._ClusterType = None
         self._ClusterCIDRSettings = None
@@ -5310,6 +5312,7 @@ class CreateClusterRequest(AbstractModel):
         self._ExistedInstancesForNode = None
         self._InstanceDataDiskMountSettings = None
         self._ExtensionAddons = None
+        self._CdcId = None
 
     @property
     def ClusterType(self):
@@ -5383,6 +5386,14 @@ class CreateClusterRequest(AbstractModel):
     def ExtensionAddons(self, ExtensionAddons):
         self._ExtensionAddons = ExtensionAddons
 
+    @property
+    def CdcId(self):
+        return self._CdcId
+
+    @CdcId.setter
+    def CdcId(self, CdcId):
+        self._CdcId = CdcId
+
 
     def _deserialize(self, params):
         self._ClusterType = params.get("ClusterType")
@@ -5422,6 +5433,7 @@ class CreateClusterRequest(AbstractModel):
                 obj = ExtensionAddon()
                 obj._deserialize(item)
                 self._ExtensionAddons.append(obj)
+        self._CdcId = params.get("CdcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

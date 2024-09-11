@@ -12032,6 +12032,8 @@ class MainlandPermitOCRResponse(AbstractModel):
         :type Type: str
         :param _Profile: RetProfile为True时返回头像字段， Base64编码
         :type Profile: str
+        :param _Nationality: 国籍
+        :type Nationality: str
         :param _MainlandTravelPermitBackInfos: 背面字段信息
         :type MainlandTravelPermitBackInfos: :class:`tencentcloud.ocr.v20181119.models.MainlandTravelPermitBackInfos`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12048,6 +12050,7 @@ class MainlandPermitOCRResponse(AbstractModel):
         self._IssueNumber = None
         self._Type = None
         self._Profile = None
+        self._Nationality = None
         self._MainlandTravelPermitBackInfos = None
         self._RequestId = None
 
@@ -12140,6 +12143,14 @@ class MainlandPermitOCRResponse(AbstractModel):
         self._Profile = Profile
 
     @property
+    def Nationality(self):
+        return self._Nationality
+
+    @Nationality.setter
+    def Nationality(self, Nationality):
+        self._Nationality = Nationality
+
+    @property
     def MainlandTravelPermitBackInfos(self):
         return self._MainlandTravelPermitBackInfos
 
@@ -12168,6 +12179,7 @@ class MainlandPermitOCRResponse(AbstractModel):
         self._IssueNumber = params.get("IssueNumber")
         self._Type = params.get("Type")
         self._Profile = params.get("Profile")
+        self._Nationality = params.get("Nationality")
         if params.get("MainlandTravelPermitBackInfos") is not None:
             self._MainlandTravelPermitBackInfos = MainlandTravelPermitBackInfos()
             self._MainlandTravelPermitBackInfos._deserialize(params.get("MainlandTravelPermitBackInfos"))

@@ -1454,6 +1454,9 @@ class AiAnalysisResult(AbstractModel):
         :param _DescriptionTask: 视频内容分析摘要任务的查询结果，当任务类型为 Description 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DescriptionTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDescriptionResult`
+        :param _HorizontalToVerticalTask: 视频内容分析横转竖任务的查询结果，当任务类型为 HorizontalToVertical 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HorizontalToVerticalTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHorizontalToVerticalResult`
         """
         self._Type = None
         self._ClassificationTask = None
@@ -1465,6 +1468,7 @@ class AiAnalysisResult(AbstractModel):
         self._SegmentTask = None
         self._HeadTailTask = None
         self._DescriptionTask = None
+        self._HorizontalToVerticalTask = None
 
     @property
     def Type(self):
@@ -1546,6 +1550,14 @@ class AiAnalysisResult(AbstractModel):
     def DescriptionTask(self, DescriptionTask):
         self._DescriptionTask = DescriptionTask
 
+    @property
+    def HorizontalToVerticalTask(self):
+        return self._HorizontalToVerticalTask
+
+    @HorizontalToVerticalTask.setter
+    def HorizontalToVerticalTask(self, HorizontalToVerticalTask):
+        self._HorizontalToVerticalTask = HorizontalToVerticalTask
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -1576,6 +1588,9 @@ class AiAnalysisResult(AbstractModel):
         if params.get("DescriptionTask") is not None:
             self._DescriptionTask = AiAnalysisTaskDescriptionResult()
             self._DescriptionTask._deserialize(params.get("DescriptionTask"))
+        if params.get("HorizontalToVerticalTask") is not None:
+            self._HorizontalToVerticalTask = AiAnalysisTaskHorizontalToVerticalResult()
+            self._HorizontalToVerticalTask._deserialize(params.get("HorizontalToVerticalTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2783,6 +2798,192 @@ class AiAnalysisTaskHighlightResult(AbstractModel):
             self._Input._deserialize(params.get("Input"))
         if params.get("Output") is not None:
             self._Output = AiAnalysisTaskHighlightOutput()
+            self._Output._deserialize(params.get("Output"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskHorizontalToVerticalInput(AbstractModel):
+    """智能横转竖任务输入类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 视频智能横转竖模板 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskHorizontalToVerticalOutput(AbstractModel):
+    """智能横转竖结果信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Path: 视频智能横转竖列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param _OutputStorage: 智能横转竖视频的存储位置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param _Confidence: 置信度。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Confidence: float
+        """
+        self._Path = None
+        self._OutputStorage = None
+        self._Confidence = None
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def OutputStorage(self):
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+    @property
+    def Confidence(self):
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+
+    def _deserialize(self, params):
+        self._Path = params.get("Path")
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        self._Confidence = params.get("Confidence")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskHorizontalToVerticalResult(AbstractModel):
+    """智能横转竖结果类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _ErrCode: 错误码，0：成功，其他值：失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrCode: int
+        :param _Message: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param _Input: 智能横转竖任务输入
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHorizontalToVerticalInput`
+        :param _Output: 智能横转竖任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHorizontalToVerticalOutput`
+        """
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = AiAnalysisTaskHorizontalToVerticalInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = AiAnalysisTaskHorizontalToVerticalOutput()
             self._Output._deserialize(params.get("Output"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -25235,10 +25436,14 @@ class HighlightSegmentItem(AbstractModel):
         :type StartTimeOffset: float
         :param _EndTimeOffset: 片段结束时间偏移。
         :type EndTimeOffset: float
+        :param _SegmentTags: 片段标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SegmentTags: list of str
         """
         self._Confidence = None
         self._StartTimeOffset = None
         self._EndTimeOffset = None
+        self._SegmentTags = None
 
     @property
     def Confidence(self):
@@ -25264,11 +25469,20 @@ class HighlightSegmentItem(AbstractModel):
     def EndTimeOffset(self, EndTimeOffset):
         self._EndTimeOffset = EndTimeOffset
 
+    @property
+    def SegmentTags(self):
+        return self._SegmentTags
+
+    @SegmentTags.setter
+    def SegmentTags(self, SegmentTags):
+        self._SegmentTags = SegmentTags
+
 
     def _deserialize(self, params):
         self._Confidence = params.get("Confidence")
         self._StartTimeOffset = params.get("StartTimeOffset")
         self._EndTimeOffset = params.get("EndTimeOffset")
+        self._SegmentTags = params.get("SegmentTags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

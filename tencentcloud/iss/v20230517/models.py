@@ -2939,6 +2939,102 @@ class BodyAIResultInfo(AbstractModel):
         
 
 
+class CallISAPIRequest(AbstractModel):
+    """CallISAPI请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceId: 设备ID
+        :type DeviceId: str
+        :param _Url: url 资源
+        :type Url: str
+        :param _InputData: 输入参数
+        :type InputData: str
+        """
+        self._DeviceId = None
+        self._Url = None
+        self._InputData = None
+
+    @property
+    def DeviceId(self):
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def InputData(self):
+        return self._InputData
+
+    @InputData.setter
+    def InputData(self, InputData):
+        self._InputData = InputData
+
+
+    def _deserialize(self, params):
+        self._DeviceId = params.get("DeviceId")
+        self._Url = params.get("Url")
+        self._InputData = params.get("InputData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CallISAPIResponse(AbstractModel):
+    """CallISAPI返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回数据
+        :type Data: :class:`tencentcloud.iss.v20230517.models.ISAPIOutputData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ISAPIOutputData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class CarAIResultInfo(AbstractModel):
     """车辆车牌识别结果信息
 
@@ -9105,6 +9201,40 @@ class GatewaysData(AbstractModel):
         self._Status = params.get("Status")
         self._CreatedAt = params.get("CreatedAt")
         self._DeviceNum = params.get("DeviceNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ISAPIOutputData(AbstractModel):
+    """ISUP智能安全接入 API返回数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OutputData: 输出参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputData: str
+        """
+        self._OutputData = None
+
+    @property
+    def OutputData(self):
+        return self._OutputData
+
+    @OutputData.setter
+    def OutputData(self, OutputData):
+        self._OutputData = OutputData
+
+
+    def _deserialize(self, params):
+        self._OutputData = params.get("OutputData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

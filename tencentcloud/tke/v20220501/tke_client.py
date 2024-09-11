@@ -26,6 +26,29 @@ class TkeClient(AbstractClient):
     _service = 'tke'
 
 
+    def CreateHealthCheckPolicy(self, request):
+        """创建健康检测策略
+
+        :param request: Request instance for CreateHealthCheckPolicy.
+        :type request: :class:`tencentcloud.tke.v20220501.models.CreateHealthCheckPolicyRequest`
+        :rtype: :class:`tencentcloud.tke.v20220501.models.CreateHealthCheckPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateHealthCheckPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateHealthCheckPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateNodePool(self, request):
         """创建 TKE 节点池
 
@@ -40,6 +63,29 @@ class TkeClient(AbstractClient):
             body = self.call("CreateNodePool", params, headers=headers)
             response = json.loads(body)
             model = models.CreateNodePoolResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteHealthCheckPolicy(self, request):
+        """删除健康检测策略
+
+        :param request: Request instance for DeleteHealthCheckPolicy.
+        :type request: :class:`tencentcloud.tke.v20220501.models.DeleteHealthCheckPolicyRequest`
+        :rtype: :class:`tencentcloud.tke.v20220501.models.DeleteHealthCheckPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteHealthCheckPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteHealthCheckPolicyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -95,6 +141,75 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeHealthCheckPolicies(self, request):
+        """查询健康检测策略
+
+        :param request: Request instance for DescribeHealthCheckPolicies.
+        :type request: :class:`tencentcloud.tke.v20220501.models.DescribeHealthCheckPoliciesRequest`
+        :rtype: :class:`tencentcloud.tke.v20220501.models.DescribeHealthCheckPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHealthCheckPolicies", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHealthCheckPoliciesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeHealthCheckPolicyBindings(self, request):
+        """查询健康检测策略绑定关系
+
+        :param request: Request instance for DescribeHealthCheckPolicyBindings.
+        :type request: :class:`tencentcloud.tke.v20220501.models.DescribeHealthCheckPolicyBindingsRequest`
+        :rtype: :class:`tencentcloud.tke.v20220501.models.DescribeHealthCheckPolicyBindingsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHealthCheckPolicyBindings", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHealthCheckPolicyBindingsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeHealthCheckTemplate(self, request):
+        """查询健康检测策略模板
+
+        :param request: Request instance for DescribeHealthCheckTemplate.
+        :type request: :class:`tencentcloud.tke.v20220501.models.DescribeHealthCheckTemplateRequest`
+        :rtype: :class:`tencentcloud.tke.v20220501.models.DescribeHealthCheckTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHealthCheckTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHealthCheckTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeNodePools(self, request):
         """查询 TKE 节点池列表
 
@@ -109,6 +224,29 @@ class TkeClient(AbstractClient):
             body = self.call("DescribeNodePools", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeNodePoolsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyHealthCheckPolicy(self, request):
+        """修改健康检测策略
+
+        :param request: Request instance for ModifyHealthCheckPolicy.
+        :type request: :class:`tencentcloud.tke.v20220501.models.ModifyHealthCheckPolicyRequest`
+        :rtype: :class:`tencentcloud.tke.v20220501.models.ModifyHealthCheckPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyHealthCheckPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyHealthCheckPolicyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

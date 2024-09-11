@@ -1374,6 +1374,11 @@ def test_import_vod():
     from tencentcloud.vod.v20180717 import models
 
 
+def test_import_vod():
+    from tencentcloud.vod.v20240718 import vod_client
+    from tencentcloud.vod.v20240718 import models
+
+
 def test_import_vpc():
     from tencentcloud.vpc.v20170312 import vpc_client
     from tencentcloud.vpc.v20170312 import models

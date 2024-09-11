@@ -10433,11 +10433,14 @@ class CreateSecurityGroupWithPoliciesRequest(AbstractModel):
         :type ProjectId: str
         :param _SecurityGroupPolicySet: 安全组规则集合。
         :type SecurityGroupPolicySet: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`
+        :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        :type Tags: list of Tag
         """
         self._GroupName = None
         self._GroupDescription = None
         self._ProjectId = None
         self._SecurityGroupPolicySet = None
+        self._Tags = None
 
     @property
     def GroupName(self):
@@ -10471,6 +10474,14 @@ class CreateSecurityGroupWithPoliciesRequest(AbstractModel):
     def SecurityGroupPolicySet(self, SecurityGroupPolicySet):
         self._SecurityGroupPolicySet = SecurityGroupPolicySet
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._GroupName = params.get("GroupName")
@@ -10479,6 +10490,12 @@ class CreateSecurityGroupWithPoliciesRequest(AbstractModel):
         if params.get("SecurityGroupPolicySet") is not None:
             self._SecurityGroupPolicySet = SecurityGroupPolicySet()
             self._SecurityGroupPolicySet._deserialize(params.get("SecurityGroupPolicySet"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

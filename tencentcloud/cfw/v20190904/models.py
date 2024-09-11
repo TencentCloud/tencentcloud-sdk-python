@@ -1074,12 +1074,16 @@ class BanAndAllowRule(AbstractModel):
         :param _CustomRule: 自定义白名单规则
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomRule: :class:`tencentcloud.cfw.v20190904.models.CustomWhiteRule`
+        :param _FwType: 放通的引擎: 1针对互联网边界 2针对nat防火墙 4针对vpc防火墙
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FwType: int
         """
         self._Ioc = None
         self._DirectionList = None
         self._EndTime = None
         self._Comment = None
         self._CustomRule = None
+        self._FwType = None
 
     @property
     def Ioc(self):
@@ -1121,6 +1125,14 @@ class BanAndAllowRule(AbstractModel):
     def CustomRule(self, CustomRule):
         self._CustomRule = CustomRule
 
+    @property
+    def FwType(self):
+        return self._FwType
+
+    @FwType.setter
+    def FwType(self, FwType):
+        self._FwType = FwType
+
 
     def _deserialize(self, params):
         self._Ioc = params.get("Ioc")
@@ -1130,6 +1142,7 @@ class BanAndAllowRule(AbstractModel):
         if params.get("CustomRule") is not None:
             self._CustomRule = CustomWhiteRule()
             self._CustomRule._deserialize(params.get("CustomRule"))
+        self._FwType = params.get("FwType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1150,7 +1163,7 @@ class BanAndAllowRuleDel(AbstractModel):
         :param _Ioc: 封禁和放通对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ioc: str
-        :param _DirectionList: 0互联网出站 1互联网入站 5内网访问源 6内网访问目的
+        :param _DirectionList: 0互联网出站 1互联网入站 5内网访问源 6内网访问目的 （DeleteBlockIgnoreRuleNew接口，该字段无效）
 注意：此字段可能返回 null，表示取不到有效值。
         :type DirectionList: str
         :param _RuleType: 规则类型
@@ -1336,6 +1349,9 @@ class BlockIgnoreRule(AbstractModel):
         :param _CustomRule: 自定义规则细节
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomRule: :class:`tencentcloud.cfw.v20190904.models.CustomWhiteRule`
+        :param _FwType: 1 border 2 nat 4 vpc 8 border-serial
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FwType: int
         """
         self._RuleType = None
         self._Ioc = None
@@ -1360,6 +1376,7 @@ class BlockIgnoreRule(AbstractModel):
         self._Comment = None
         self._LastHitTime = None
         self._CustomRule = None
+        self._FwType = None
 
     @property
     def RuleType(self):
@@ -1545,6 +1562,14 @@ class BlockIgnoreRule(AbstractModel):
     def CustomRule(self, CustomRule):
         self._CustomRule = CustomRule
 
+    @property
+    def FwType(self):
+        return self._FwType
+
+    @FwType.setter
+    def FwType(self, FwType):
+        self._FwType = FwType
+
 
     def _deserialize(self, params):
         self._RuleType = params.get("RuleType")
@@ -1572,6 +1597,7 @@ class BlockIgnoreRule(AbstractModel):
         if params.get("CustomRule") is not None:
             self._CustomRule = CustomWhiteRule()
             self._CustomRule._deserialize(params.get("CustomRule"))
+        self._FwType = params.get("FwType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3426,6 +3452,8 @@ class CreateNatRuleItem(AbstractModel):
         :type ParamTemplateId: str
         :param _InternalUuid: 内部id
         :type InternalUuid: int
+        :param _Scope: 规则生效的范围：ALL，全局生效；ap-guangzhou，生效的地域；cfwnat-xxx，生效基于实例维度
+        :type Scope: str
         """
         self._SourceContent = None
         self._SourceType = None
@@ -3441,6 +3469,7 @@ class CreateNatRuleItem(AbstractModel):
         self._Description = None
         self._ParamTemplateId = None
         self._InternalUuid = None
+        self._Scope = None
 
     @property
     def SourceContent(self):
@@ -3554,6 +3583,14 @@ class CreateNatRuleItem(AbstractModel):
     def InternalUuid(self, InternalUuid):
         self._InternalUuid = InternalUuid
 
+    @property
+    def Scope(self):
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
 
     def _deserialize(self, params):
         self._SourceContent = params.get("SourceContent")
@@ -3570,6 +3607,7 @@ class CreateNatRuleItem(AbstractModel):
         self._Description = params.get("Description")
         self._ParamTemplateId = params.get("ParamTemplateId")
         self._InternalUuid = params.get("InternalUuid")
+        self._Scope = params.get("Scope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5362,9 +5400,13 @@ class DescAcItem(AbstractModel):
         :param _BetaList: 关联任务详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type BetaList: list of BetaInfoByACL
-        :param _Scope: 生效范围：serial，串行；side，旁路；all，全局
+        :param _Scope: （1）互联网边界防火墙，生效范围：serial，串行；side，旁路；all，全局；
+（2）NAT边界防火墙：ALL，全局生效；ap-guangzhou，生效的地域；cfwnat-xxx，生效基于实例维度
 注意：此字段可能返回 null，表示取不到有效值。
         :type Scope: str
+        :param _ScopeDesc: 生效范围描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScopeDesc: str
         :param _InternetBorderUuid: 互联网边界防火墙使用的内部规则id
 注意：此字段可能返回 null，表示取不到有效值。
         :type InternetBorderUuid: str
@@ -5410,6 +5452,7 @@ class DescAcItem(AbstractModel):
         self._Status = None
         self._BetaList = None
         self._Scope = None
+        self._ScopeDesc = None
         self._InternetBorderUuid = None
         self._ParamTemplateName = None
         self._ParamTemplateId = None
@@ -5626,6 +5669,14 @@ class DescAcItem(AbstractModel):
         self._Scope = Scope
 
     @property
+    def ScopeDesc(self):
+        return self._ScopeDesc
+
+    @ScopeDesc.setter
+    def ScopeDesc(self, ScopeDesc):
+        self._ScopeDesc = ScopeDesc
+
+    @property
     def InternetBorderUuid(self):
         return self._InternetBorderUuid
 
@@ -5706,6 +5757,7 @@ class DescAcItem(AbstractModel):
                 obj._deserialize(item)
                 self._BetaList.append(obj)
         self._Scope = params.get("Scope")
+        self._ScopeDesc = params.get("ScopeDesc")
         self._InternetBorderUuid = params.get("InternetBorderUuid")
         self._ParamTemplateName = params.get("ParamTemplateName")
         self._ParamTemplateId = params.get("ParamTemplateId")
@@ -11522,6 +11574,9 @@ class EdgeIpInfo(AbstractModel):
         :param _Domain: 域名化CLB的域名
 注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
+        :param _OverUsedStatus: IP超量状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OverUsedStatus: int
         """
         self._PublicIp = None
         self._PublicIpType = None
@@ -11545,6 +11600,7 @@ class EdgeIpInfo(AbstractModel):
         self._SwitchMode = None
         self._SwitchWeight = None
         self._Domain = None
+        self._OverUsedStatus = None
 
     @property
     def PublicIp(self):
@@ -11722,6 +11778,14 @@ class EdgeIpInfo(AbstractModel):
     def Domain(self, Domain):
         self._Domain = Domain
 
+    @property
+    def OverUsedStatus(self):
+        return self._OverUsedStatus
+
+    @OverUsedStatus.setter
+    def OverUsedStatus(self, OverUsedStatus):
+        self._OverUsedStatus = OverUsedStatus
+
 
     def _deserialize(self, params):
         self._PublicIp = params.get("PublicIp")
@@ -11746,6 +11810,7 @@ class EdgeIpInfo(AbstractModel):
         self._SwitchMode = params.get("SwitchMode")
         self._SwitchWeight = params.get("SwitchWeight")
         self._Domain = params.get("Domain")
+        self._OverUsedStatus = params.get("OverUsedStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17021,6 +17086,15 @@ class NatSwitchListData(AbstractModel):
         :param _Abnormal: 开关是否异常,0:正常,1:异常
 注意：此字段可能返回 null，表示取不到有效值。
         :type Abnormal: int
+        :param _ORTableId: nat防火墙出口路由表id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ORTableId: str
+        :param _ORTableName: nat防火墙出口路由表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ORTableName: str
+        :param _Ohavips: 出口Snat Ip列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ohavips: list of str
         """
         self._Id = None
         self._SubnetId = None
@@ -17039,6 +17113,9 @@ class NatSwitchListData(AbstractModel):
         self._NatInsName = None
         self._Region = None
         self._Abnormal = None
+        self._ORTableId = None
+        self._ORTableName = None
+        self._Ohavips = None
 
     @property
     def Id(self):
@@ -17176,6 +17253,30 @@ class NatSwitchListData(AbstractModel):
     def Abnormal(self, Abnormal):
         self._Abnormal = Abnormal
 
+    @property
+    def ORTableId(self):
+        return self._ORTableId
+
+    @ORTableId.setter
+    def ORTableId(self, ORTableId):
+        self._ORTableId = ORTableId
+
+    @property
+    def ORTableName(self):
+        return self._ORTableName
+
+    @ORTableName.setter
+    def ORTableName(self, ORTableName):
+        self._ORTableName = ORTableName
+
+    @property
+    def Ohavips(self):
+        return self._Ohavips
+
+    @Ohavips.setter
+    def Ohavips(self, Ohavips):
+        self._Ohavips = Ohavips
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -17195,6 +17296,9 @@ class NatSwitchListData(AbstractModel):
         self._NatInsName = params.get("NatInsName")
         self._Region = params.get("Region")
         self._Abnormal = params.get("Abnormal")
+        self._ORTableId = params.get("ORTableId")
+        self._ORTableName = params.get("ORTableName")
+        self._Ohavips = params.get("Ohavips")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

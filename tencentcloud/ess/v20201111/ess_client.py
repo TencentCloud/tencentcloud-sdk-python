@@ -1695,11 +1695,9 @@ class EssClient(AbstractClient):
 
 
     def CreateUserVerifyUrl(self, request):
-        """客户可以主动调用生成实名链接去做C端用户实名，会对实名的用户进行打标记为调用链接客户的用户
-        使用场景：
-        用户集成场景
-        使用限制：
-        此接口需要购买单独的实名套餐包方可调用，如有需求请联系对接人员评估
+        """生成个人用户实名认证链接，个人用户点击此链接进入实名流程（若用户已完成实名认证，则直接进入成功页面）。
+
+        注： 调用此接口需要购买<font color="red"><b>单独的实名套餐包</b></font>。使用前请联系对接的客户经理沟通。
 
         :param request: Request instance for CreateUserVerifyUrl.
         :type request: :class:`tencentcloud.ess.v20201111.models.CreateUserVerifyUrlRequest`
@@ -2414,8 +2412,8 @@ class EssClient(AbstractClient):
 
         注意:
         <ul>
-        <li>此接口为合作引流场景使用，使用`有白名单限制`，使用前请联系对接的客户经理沟通。</li>
-        <li>`AuthCode 只能使用一次`，查询一次再次查询会返回错误</li>
+        <li>此接口为合作引流场景使用，使用<b>有白名单限制</b>，使用前请联系对接的客户经理沟通。</li>
+        <li><b>AuthCode 只能使用一次</b>，查询一次再次查询会返回错误</li>
         </ul>
 
         :param request: Request instance for DescribeThirdPartyAuthCode.
