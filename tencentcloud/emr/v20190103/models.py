@@ -7155,7 +7155,7 @@ class DescribeServiceNodeInfosRequest(AbstractModel):
 "-3"代表存在隐患
 "-4"代表未探测
         :type HealthStateId: str
-        :param _ServiceName: 服务组件名称，都是大写比如YARN
+        :param _ServiceName: 服务组件名称，都是大写例如YARN
         :type ServiceName: str
         :param _NodeTypeName: 节点名称
 master

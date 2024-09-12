@@ -217,6 +217,9 @@ class Command(AbstractModel):
         :param _DefaultParameterConfs: 自定义参数的默认取值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultParameterConfs: list of DefaultParameterConf
+        :param _Scenes: 命令关联的场景
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Scenes: list of str
         :param _FormattedDescription: 命令的结构化描述。公共命令有值，用户命令为空字符串。
         :type FormattedDescription: str
         :param _CreatedBy: 命令创建者。TAT 代表公共命令，USER 代表个人命令。
@@ -242,6 +245,7 @@ class Command(AbstractModel):
         self._EnableParameter = None
         self._DefaultParameters = None
         self._DefaultParameterConfs = None
+        self._Scenes = None
         self._FormattedDescription = None
         self._CreatedBy = None
         self._Tags = None
@@ -346,6 +350,14 @@ class Command(AbstractModel):
         self._DefaultParameterConfs = DefaultParameterConfs
 
     @property
+    def Scenes(self):
+        return self._Scenes
+
+    @Scenes.setter
+    def Scenes(self, Scenes):
+        self._Scenes = Scenes
+
+    @property
     def FormattedDescription(self):
         return self._FormattedDescription
 
@@ -412,6 +424,7 @@ class Command(AbstractModel):
                 obj = DefaultParameterConf()
                 obj._deserialize(item)
                 self._DefaultParameterConfs.append(obj)
+        self._Scenes = params.get("Scenes")
         self._FormattedDescription = params.get("FormattedDescription")
         self._CreatedBy = params.get("CreatedBy")
         if params.get("Tags") is not None:

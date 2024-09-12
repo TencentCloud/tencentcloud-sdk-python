@@ -169,6 +169,57 @@ class DescribeInstanceNodesRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _Limit: limit
+        :type Limit: int
+        :param _Offset: offset
+        :type Offset: int
+        :param _Component: component
+        :type Component: str
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Component = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Component(self):
+        return self._Component
+
+    @Component.setter
+    def Component(self, Component):
+        self._Component = Component
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Component = params.get("Component")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeInstanceNodesResponse(AbstractModel):
     """DescribeInstanceNodes返回参数结构体

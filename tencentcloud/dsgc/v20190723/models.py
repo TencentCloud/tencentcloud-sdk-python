@@ -6155,9 +6155,13 @@ class DbInfo(AbstractModel):
         :param _ValidStatus: 绑定的状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type ValidStatus: str
+        :param _BindType: 绑定的类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BindType: str
         """
         self._DbName = None
         self._ValidStatus = None
+        self._BindType = None
 
     @property
     def DbName(self):
@@ -6175,10 +6179,19 @@ class DbInfo(AbstractModel):
     def ValidStatus(self, ValidStatus):
         self._ValidStatus = ValidStatus
 
+    @property
+    def BindType(self):
+        return self._BindType
+
+    @BindType.setter
+    def BindType(self, BindType):
+        self._BindType = BindType
+
 
     def _deserialize(self, params):
         self._DbName = params.get("DbName")
         self._ValidStatus = params.get("ValidStatus")
+        self._BindType = params.get("BindType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10875,7 +10888,7 @@ class DescribeDSPAAssessmentTemplatesRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 结果集个数限制。默认为20，最大值为100
         :type Limit: int
-        :param _Filters: 过滤项。支持模糊搜索：（TemplateId，TemplateName）支持过滤：Source：模板来源，system / userUseType：模板类型，auto，semi-auto，law等Status：模板启用状态，draft / launched
+        :param _Filters: 过滤项。支持模糊搜索：（TemplateId，TemplateName）支持过滤：Source：模板来源，system / userUseType：模板类型，auto，semi-auto，law等Status：模板启用状态，draft / launched，ComplianceId：关联的分类分级模版id
         :type Filters: list of DspaAssessmentFilter
         """
         self._DspaId = None

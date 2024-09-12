@@ -17053,11 +17053,14 @@ class DescribeAIAnalysisTemplatesRequest(AbstractModel):
 * Preset：系统预置模板；
 * Custom：用户自定义模板。
         :type Type: str
+        :param _Name: 视频内容分析模板标识过滤条件，长度限制：64 个字符。
+        :type Name: str
         """
         self._Definitions = None
         self._Offset = None
         self._Limit = None
         self._Type = None
+        self._Name = None
 
     @property
     def Definitions(self):
@@ -17091,12 +17094,21 @@ class DescribeAIAnalysisTemplatesRequest(AbstractModel):
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
 
     def _deserialize(self, params):
         self._Definitions = params.get("Definitions")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._Type = params.get("Type")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17178,11 +17190,14 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
 * Preset：系统预置模板；
 * Custom：用户自定义模板。
         :type Type: str
+        :param _Name: 视频内容识别模板标识过滤条件，长度限制：64 个字符。
+        :type Name: str
         """
         self._Definitions = None
         self._Offset = None
         self._Limit = None
         self._Type = None
+        self._Name = None
 
     @property
     def Definitions(self):
@@ -17216,12 +17231,21 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
 
     def _deserialize(self, params):
         self._Definitions = params.get("Definitions")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._Type = params.get("Type")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17305,12 +17329,15 @@ class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
         :type Type: str
         :param _PureAudio: 是否为纯音频，0表示视频，1表示纯音频
         :type PureAudio: int
+        :param _Name: 自适应转码模板标识过滤条件，长度限制：64 个字符
+        :type Name: str
         """
         self._Definitions = None
         self._Offset = None
         self._Limit = None
         self._Type = None
         self._PureAudio = None
+        self._Name = None
 
     @property
     def Definitions(self):
@@ -17352,6 +17379,14 @@ class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
     def PureAudio(self, PureAudio):
         self._PureAudio = PureAudio
 
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
 
     def _deserialize(self, params):
         self._Definitions = params.get("Definitions")
@@ -17359,6 +17394,7 @@ class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
         self._Limit = params.get("Limit")
         self._Type = params.get("Type")
         self._PureAudio = params.get("PureAudio")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17440,11 +17476,14 @@ class DescribeAnimatedGraphicsTemplatesRequest(AbstractModel):
 <li>Preset：系统预置模板；</li>
 <li>Custom：用户自定义模板。</li>
         :type Type: str
+        :param _Name: 转动图模板标识过滤条件，长度限制：64 个字符。
+        :type Name: str
         """
         self._Definitions = None
         self._Offset = None
         self._Limit = None
         self._Type = None
+        self._Name = None
 
     @property
     def Definitions(self):
@@ -17478,12 +17517,21 @@ class DescribeAnimatedGraphicsTemplatesRequest(AbstractModel):
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
 
     def _deserialize(self, params):
         self._Definitions = params.get("Definitions")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._Type = params.get("Type")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17565,11 +17613,14 @@ class DescribeContentReviewTemplatesRequest(AbstractModel):
 * Preset：系统预置模板；
 * Custom：用户自定义模板。
         :type Type: str
+        :param _Name: 智能审核模板标识过滤条件，长度限制：64 个字符。
+        :type Name: str
         """
         self._Definitions = None
         self._Offset = None
         self._Limit = None
         self._Type = None
+        self._Name = None
 
     @property
     def Definitions(self):
@@ -17603,12 +17654,21 @@ class DescribeContentReviewTemplatesRequest(AbstractModel):
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
 
     def _deserialize(self, params):
         self._Definitions = params.get("Definitions")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._Type = params.get("Type")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17998,11 +18058,14 @@ class DescribeImageSpriteTemplatesRequest(AbstractModel):
 <li>Preset：系统预置模板；</li>
 <li>Custom：用户自定义模板。</li>
         :type Type: str
+        :param _Name: 雪碧图模板标识过滤条件，长度限制：64 个字符。
+        :type Name: str
         """
         self._Definitions = None
         self._Offset = None
         self._Limit = None
         self._Type = None
+        self._Name = None
 
     @property
     def Definitions(self):
@@ -18036,12 +18099,21 @@ class DescribeImageSpriteTemplatesRequest(AbstractModel):
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
 
     def _deserialize(self, params):
         self._Definitions = params.get("Definitions")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._Type = params.get("Type")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19716,11 +19788,14 @@ class DescribeQualityControlTemplatesRequest(AbstractModel):
         :type Limit: int
         :param _Type: "Preset"：预设，Custom":客户魔板
         :type Type: str
+        :param _Name: 媒体质检模板标识过滤条件，长度限制：64 个字符。
+        :type Name: str
         """
         self._Definitions = None
         self._Offset = None
         self._Limit = None
         self._Type = None
+        self._Name = None
 
     @property
     def Definitions(self):
@@ -19754,12 +19829,21 @@ class DescribeQualityControlTemplatesRequest(AbstractModel):
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
 
     def _deserialize(self, params):
         self._Definitions = params.get("Definitions")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._Type = params.get("Type")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19923,11 +20007,14 @@ class DescribeSampleSnapshotTemplatesRequest(AbstractModel):
 <li>Preset：系统预置模板；</li>
 <li>Custom：用户自定义模板。</li>
         :type Type: str
+        :param _Name: 采样截图模板标识过滤条件，长度限制：64 个字符。
+        :type Name: str
         """
         self._Definitions = None
         self._Offset = None
         self._Limit = None
         self._Type = None
+        self._Name = None
 
     @property
     def Definitions(self):
@@ -19961,12 +20048,21 @@ class DescribeSampleSnapshotTemplatesRequest(AbstractModel):
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
 
     def _deserialize(self, params):
         self._Definitions = params.get("Definitions")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._Type = params.get("Type")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20189,11 +20285,14 @@ class DescribeSnapshotByTimeOffsetTemplatesRequest(AbstractModel):
 <li>Preset：系统预置模板；</li>
 <li>Custom：用户自定义模板。</li>
         :type Type: str
+        :param _Name: 指定时间点截图模板标识过滤条件，长度限制：64 个字符。
+        :type Name: str
         """
         self._Definitions = None
         self._Offset = None
         self._Limit = None
         self._Type = None
+        self._Name = None
 
     @property
     def Definitions(self):
@@ -20227,12 +20326,21 @@ class DescribeSnapshotByTimeOffsetTemplatesRequest(AbstractModel):
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
 
     def _deserialize(self, params):
         self._Definitions = params.get("Definitions")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._Type = params.get("Type")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22093,6 +22201,8 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
 默认空，不限制类型。
 
         :type TranscodeType: str
+        :param _Name: 转码模板标识过滤条件，长度限制：64 个字符。	
+        :type Name: str
         """
         self._Definitions = None
         self._Type = None
@@ -22101,6 +22211,7 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
         self._Offset = None
         self._Limit = None
         self._TranscodeType = None
+        self._Name = None
 
     @property
     def Definitions(self):
@@ -22158,6 +22269,14 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
     def TranscodeType(self, TranscodeType):
         self._TranscodeType = TranscodeType
 
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
 
     def _deserialize(self, params):
         self._Definitions = params.get("Definitions")
@@ -22167,6 +22286,7 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._TranscodeType = params.get("TranscodeType")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22250,11 +22370,14 @@ class DescribeWatermarkTemplatesRequest(AbstractModel):
 <li>默认值：10；</li>
 <li>最大值：100。</li>
         :type Limit: int
+        :param _Name: 水印模板标识过滤条件，长度限制：64 个字符。
+        :type Name: str
         """
         self._Definitions = None
         self._Type = None
         self._Offset = None
         self._Limit = None
+        self._Name = None
 
     @property
     def Definitions(self):
@@ -22288,12 +22411,21 @@ class DescribeWatermarkTemplatesRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
 
     def _deserialize(self, params):
         self._Definitions = params.get("Definitions")
         self._Type = params.get("Type")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43385,7 +43517,7 @@ class UserDefineOcrTextReviewTemplateInfoForUpdate(AbstractModel):
         :type Switch: str
         :param _LabelSet: 用户自定义文本过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义文本关键词素材时需要添加对应标签。
 标签个数最多 10 个，每个标签长度最多 16 个字符。
-        :type LabelSet: str
+        :type LabelSet: list of str
         :param _BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
         :type BlockConfidence: int
         :param _ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
@@ -43698,12 +43830,14 @@ class VideoTemplateInfo(AbstractModel):
 <li>vp9：VP9 编码</li>
 <li>mpeg2：MPEG2 编码</li>
 <li>dnxhd：DNxHD 编码</li>
+<li>mv-hevc：MV-HEVC 编码</li>
 注意：目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。
 
 注意：av1 编码容器目前只支持 mp4 ，webm，mkv。
 注意：H.266 编码容器目前只支持 mp4 ，hls，ts，mov。
 注意：VP8、VP9编码容器目前只支持webm，mkv。
 注意：MPEG2、dnxhd 编码容器目前只支持mxf。
+注意：MV-HEVC编码容器目前只支持mp4，hls，mov。其中hls格式只支持mp4分片格式。
         :type Codec: str
         :param _Fps: 视频帧率，取值范围：
 当FpsDenominator的值为空时，范围：[0, 120]，单位：Hz；
@@ -43733,8 +43867,7 @@ class VideoTemplateInfo(AbstractModel):
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
 默认值：0。
         :type Height: int
-        :param _Gop: 关键帧 I 帧之间的间隔，取值范围：0 和 [1, 100000]，单位：帧数。
-当填 0 或不填时，系统将自动设置 gop 长度。
+        :param _Gop: 关键帧 I 帧之间的间隔，取值范围：0 和 [1, 100000]，单位：帧数。 当填 0 或不填时，系统将自动设置 gop 长度。
         :type Gop: int
         :param _FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
@@ -43760,6 +43893,12 @@ class VideoTemplateInfo(AbstractModel):
 注意：值必须大于0
 注意：此字段可能返回 null，表示取不到有效值。
         :type FpsDenominator: int
+        :param _Stereo3dType: 3D视频拼接方式，仅mv-hevc，3D视频生效，可选值：
+<li>side_by_side：左右视角</li>
+<li>top_bottom：上下视角</li>
+默认值:side_by_side
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Stereo3dType: str
         """
         self._Codec = None
         self._Fps = None
@@ -43772,6 +43911,7 @@ class VideoTemplateInfo(AbstractModel):
         self._Vcrf = None
         self._SegmentType = None
         self._FpsDenominator = None
+        self._Stereo3dType = None
 
     @property
     def Codec(self):
@@ -43861,6 +44001,14 @@ class VideoTemplateInfo(AbstractModel):
     def FpsDenominator(self, FpsDenominator):
         self._FpsDenominator = FpsDenominator
 
+    @property
+    def Stereo3dType(self):
+        return self._Stereo3dType
+
+    @Stereo3dType.setter
+    def Stereo3dType(self, Stereo3dType):
+        self._Stereo3dType = Stereo3dType
+
 
     def _deserialize(self, params):
         self._Codec = params.get("Codec")
@@ -43874,6 +44022,7 @@ class VideoTemplateInfo(AbstractModel):
         self._Vcrf = params.get("Vcrf")
         self._SegmentType = params.get("SegmentType")
         self._FpsDenominator = params.get("FpsDenominator")
+        self._Stereo3dType = params.get("Stereo3dType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43900,12 +44049,14 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 <li>vp9：VP9 编码</li>
 <li>mpeg2：MPEG2 编码</li>
 <li>dnxhd：DNxHD 编码</li>
+<li>mv-hevc：MV-HEVC 编码</li>
 注意：目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。
 
 注意：av1 编码容器目前只支持 mp4 ，webm，mkv。
 注意：H.266 编码容器目前只支持 mp4 ，hls，ts，mov。
 注意：VP8、VP9编码容器目前只支持webm，mkv。
 注意：MPEG2、dnxhd 编码容器目前只支持mxf。
+注意：MV-HEVC编码容器目前只支持mp4，hls，mov。其中hls格式只支持mp4分片格式。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Codec: str
         :param _Fps: 视频帧率，取值范围：
@@ -43966,6 +44117,12 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 注意：值必须大于0
 注意：此字段可能返回 null，表示取不到有效值。
         :type FpsDenominator: int
+        :param _Stereo3dType: 3D视频拼接方式，仅mv-hevc，3D视频生效，可选值：
+<li>side_by_side：左右视角</li>
+<li>top_bottom：上下视角</li>
+默认值:side_by_side
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Stereo3dType: str
         """
         self._Codec = None
         self._Fps = None
@@ -43979,6 +44136,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
         self._ContentAdaptStream = None
         self._SegmentType = None
         self._FpsDenominator = None
+        self._Stereo3dType = None
 
     @property
     def Codec(self):
@@ -44076,6 +44234,14 @@ class VideoTemplateInfoForUpdate(AbstractModel):
     def FpsDenominator(self, FpsDenominator):
         self._FpsDenominator = FpsDenominator
 
+    @property
+    def Stereo3dType(self):
+        return self._Stereo3dType
+
+    @Stereo3dType.setter
+    def Stereo3dType(self, Stereo3dType):
+        self._Stereo3dType = Stereo3dType
+
 
     def _deserialize(self, params):
         self._Codec = params.get("Codec")
@@ -44090,6 +44256,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
         self._ContentAdaptStream = params.get("ContentAdaptStream")
         self._SegmentType = params.get("SegmentType")
         self._FpsDenominator = params.get("FpsDenominator")
+        self._Stereo3dType = params.get("Stereo3dType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

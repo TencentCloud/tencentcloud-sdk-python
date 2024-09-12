@@ -487,6 +487,29 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteMessageReceiver(self, request):
+        """删除消息接收人
+
+        :param request: Request instance for DeleteMessageReceiver.
+        :type request: :class:`tencentcloud.cam.v20190116.models.DeleteMessageReceiverRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.DeleteMessageReceiverResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteMessageReceiver", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteMessageReceiverResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteOIDCConfig(self, request):
         """删除OIDC身份提供商
 
@@ -1536,6 +1559,29 @@ class CamClient(AbstractClient):
             body = self.call("ListPolicyVersions", params, headers=headers)
             response = json.loads(body)
             model = models.ListPolicyVersionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListReceiver(self, request):
+        """获取消息接收人列表
+
+        :param request: Request instance for ListReceiver.
+        :type request: :class:`tencentcloud.cam.v20190116.models.ListReceiverRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.ListReceiverResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListReceiver", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListReceiverResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

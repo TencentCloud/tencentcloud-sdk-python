@@ -1430,7 +1430,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeDataEngines(self, request):
-        """本接口（DescribeDataEngines）用于查询DataEngines信息列表
+        """本接口（DescribeDataEngines）用于查询DataEngines信息列表.
 
         :param request: Request instance for DescribeDataEngines.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDataEnginesRequest`

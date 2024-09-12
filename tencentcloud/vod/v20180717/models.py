@@ -548,6 +548,10 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
         :type SubStreamSet: list of MediaSubStreamInfoItem
         :param _CopyRightWatermarkText: 版权信息。
         :type CopyRightWatermarkText: str
+        :param _SubtitleSet: 字幕信息列表。
+        :type SubtitleSet: list of MediaSubtitleItem
+        :param _DefaultSubtitleId: 默认字幕的唯一标识。
+        :type DefaultSubtitleId: str
         """
         self._Definition = None
         self._Package = None
@@ -557,6 +561,8 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
         self._DigitalWatermarkType = None
         self._SubStreamSet = None
         self._CopyRightWatermarkText = None
+        self._SubtitleSet = None
+        self._DefaultSubtitleId = None
 
     @property
     def Definition(self):
@@ -622,6 +628,22 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
     def CopyRightWatermarkText(self, CopyRightWatermarkText):
         self._CopyRightWatermarkText = CopyRightWatermarkText
 
+    @property
+    def SubtitleSet(self):
+        return self._SubtitleSet
+
+    @SubtitleSet.setter
+    def SubtitleSet(self, SubtitleSet):
+        self._SubtitleSet = SubtitleSet
+
+    @property
+    def DefaultSubtitleId(self):
+        return self._DefaultSubtitleId
+
+    @DefaultSubtitleId.setter
+    def DefaultSubtitleId(self, DefaultSubtitleId):
+        self._DefaultSubtitleId = DefaultSubtitleId
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -637,6 +659,13 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
                 obj._deserialize(item)
                 self._SubStreamSet.append(obj)
         self._CopyRightWatermarkText = params.get("CopyRightWatermarkText")
+        if params.get("SubtitleSet") is not None:
+            self._SubtitleSet = []
+            for item in params.get("SubtitleSet"):
+                obj = MediaSubtitleItem()
+                obj._deserialize(item)
+                self._SubtitleSet.append(obj)
+        self._DefaultSubtitleId = params.get("DefaultSubtitleId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9283,6 +9312,8 @@ class AttachMediaSubtitlesRequest(AbstractModel):
         :type AdaptiveDynamicStreamingDefinition: int
         :param _SubtitleIds: 字幕的唯一标识。
         :type SubtitleIds: list of str
+        :param _DefaultSubtitleId: 默认字幕的唯一标识。不填则不设置默认字幕。
+        :type DefaultSubtitleId: str
         :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         """
@@ -9290,6 +9321,7 @@ class AttachMediaSubtitlesRequest(AbstractModel):
         self._Operation = None
         self._AdaptiveDynamicStreamingDefinition = None
         self._SubtitleIds = None
+        self._DefaultSubtitleId = None
         self._SubAppId = None
 
     @property
@@ -9325,6 +9357,14 @@ class AttachMediaSubtitlesRequest(AbstractModel):
         self._SubtitleIds = SubtitleIds
 
     @property
+    def DefaultSubtitleId(self):
+        return self._DefaultSubtitleId
+
+    @DefaultSubtitleId.setter
+    def DefaultSubtitleId(self, DefaultSubtitleId):
+        self._DefaultSubtitleId = DefaultSubtitleId
+
+    @property
     def SubAppId(self):
         return self._SubAppId
 
@@ -9338,6 +9378,7 @@ class AttachMediaSubtitlesRequest(AbstractModel):
         self._Operation = params.get("Operation")
         self._AdaptiveDynamicStreamingDefinition = params.get("AdaptiveDynamicStreamingDefinition")
         self._SubtitleIds = params.get("SubtitleIds")
+        self._DefaultSubtitleId = params.get("DefaultSubtitleId")
         self._SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

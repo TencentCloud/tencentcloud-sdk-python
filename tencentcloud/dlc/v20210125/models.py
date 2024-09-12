@@ -2341,8 +2341,7 @@ class Column(AbstractModel):
         r"""
         :param _Name: 列名称，不区分大小写，最大支持25个字符。
         :type Name: str
-        :param _Type: 列类型，支持如下类型定义:
-string|tinyint|smallint|int|bigint|boolean|float|double|decimal|timestamp|date|binary|array<data_type>|map<primitive_type, data_type>|struct<col_name : data_type [COMMENT col_comment], ...>|uniontype<data_type, data_type, ...>。
+        :param _Type: string|tinyint|smallint|int|bigint|boolean|float|double|decimal|timestamp|date|binary|array|map|struct|uniontype
         :type Type: str
         :param _Comment: 对该类的注释。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2368,6 +2367,9 @@ string|tinyint|smallint|int|bigint|boolean|float|double|decimal|timestamp|date|b
         :param _IsPartition: 是否为分区字段
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsPartition: bool
+        :param _DataMaskStrategyInfo: 数据脱敏策略信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataMaskStrategyInfo: :class:`tencentcloud.dlc.v20210125.models.DataMaskStrategyInfo`
         """
         self._Name = None
         self._Type = None
@@ -2379,6 +2381,7 @@ string|tinyint|smallint|int|bigint|boolean|float|double|decimal|timestamp|date|b
         self._CreateTime = None
         self._ModifiedTime = None
         self._IsPartition = None
+        self._DataMaskStrategyInfo = None
 
     @property
     def Name(self):
@@ -2460,6 +2463,14 @@ string|tinyint|smallint|int|bigint|boolean|float|double|decimal|timestamp|date|b
     def IsPartition(self, IsPartition):
         self._IsPartition = IsPartition
 
+    @property
+    def DataMaskStrategyInfo(self):
+        return self._DataMaskStrategyInfo
+
+    @DataMaskStrategyInfo.setter
+    def DataMaskStrategyInfo(self, DataMaskStrategyInfo):
+        self._DataMaskStrategyInfo = DataMaskStrategyInfo
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -2472,6 +2483,9 @@ string|tinyint|smallint|int|bigint|boolean|float|double|decimal|timestamp|date|b
         self._CreateTime = params.get("CreateTime")
         self._ModifiedTime = params.get("ModifiedTime")
         self._IsPartition = params.get("IsPartition")
+        if params.get("DataMaskStrategyInfo") is not None:
+            self._DataMaskStrategyInfo = DataMaskStrategyInfo()
+            self._DataMaskStrategyInfo._deserialize(params.get("DataMaskStrategyInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4586,7 +4600,7 @@ class CreateResultDownloadRequest(AbstractModel):
         :type TaskId: str
         :param _Format: 下载格式
         :type Format: str
-        :param _Force: 是否重新生成下载文件，仅当之前任务为 Timout | Error 时有效
+        :param _Force: 是否重新生成下载文件，仅当之前任务状态为 timeout | error 时有效
         :type Force: bool
         """
         self._TaskId = None
@@ -8613,6 +8627,110 @@ class DataGovernPolicy(AbstractModel):
         
 
 
+class DataMaskStrategyInfo(AbstractModel):
+    """数据脱敏策略信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StrategyName: 策略名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrategyName: str
+        :param _StrategyType: MASK_SHOW_FIRST_4; MASK_SHOW_LAST_4;MASK_HASH; MASK_DATE_SHOW_YEAR; MASK_NULL; MASK_DEFAULT 等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrategyType: str
+        :param _StrategyDesc: 策略描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrategyDesc: str
+        :param _Groups: 用户组策略列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Groups: list of GroupInfo
+        :param _Users: 用户子账号uin列表，按;拼接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Users: str
+        :param _StrategyId: 策略Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrategyId: str
+        """
+        self._StrategyName = None
+        self._StrategyType = None
+        self._StrategyDesc = None
+        self._Groups = None
+        self._Users = None
+        self._StrategyId = None
+
+    @property
+    def StrategyName(self):
+        return self._StrategyName
+
+    @StrategyName.setter
+    def StrategyName(self, StrategyName):
+        self._StrategyName = StrategyName
+
+    @property
+    def StrategyType(self):
+        return self._StrategyType
+
+    @StrategyType.setter
+    def StrategyType(self, StrategyType):
+        self._StrategyType = StrategyType
+
+    @property
+    def StrategyDesc(self):
+        return self._StrategyDesc
+
+    @StrategyDesc.setter
+    def StrategyDesc(self, StrategyDesc):
+        self._StrategyDesc = StrategyDesc
+
+    @property
+    def Groups(self):
+        return self._Groups
+
+    @Groups.setter
+    def Groups(self, Groups):
+        self._Groups = Groups
+
+    @property
+    def Users(self):
+        return self._Users
+
+    @Users.setter
+    def Users(self, Users):
+        self._Users = Users
+
+    @property
+    def StrategyId(self):
+        return self._StrategyId
+
+    @StrategyId.setter
+    def StrategyId(self, StrategyId):
+        self._StrategyId = StrategyId
+
+
+    def _deserialize(self, params):
+        self._StrategyName = params.get("StrategyName")
+        self._StrategyType = params.get("StrategyType")
+        self._StrategyDesc = params.get("StrategyDesc")
+        if params.get("Groups") is not None:
+            self._Groups = []
+            for item in params.get("Groups"):
+                obj = GroupInfo()
+                obj._deserialize(item)
+                self._Groups.append(obj)
+        self._Users = params.get("Users")
+        self._StrategyId = params.get("StrategyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DataSourceInfo(AbstractModel):
     """数据源详细信息
 
@@ -8995,6 +9113,9 @@ class DatasourceConnectionConfig(AbstractModel):
         :param _TDSQLPostgreSql: TDSQL-PostgreSQL数据源连接的属性
 注意：此字段可能返回 null，表示取不到有效值。
         :type TDSQLPostgreSql: :class:`tencentcloud.dlc.v20210125.models.DataSourceInfo`
+        :param _TCHouseD: Doris数据源连接的属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TCHouseD: :class:`tencentcloud.dlc.v20210125.models.TCHouseD`
         """
         self._Mysql = None
         self._Hive = None
@@ -9005,6 +9126,7 @@ class DatasourceConnectionConfig(AbstractModel):
         self._ClickHouse = None
         self._Elasticsearch = None
         self._TDSQLPostgreSql = None
+        self._TCHouseD = None
 
     @property
     def Mysql(self):
@@ -9078,6 +9200,14 @@ class DatasourceConnectionConfig(AbstractModel):
     def TDSQLPostgreSql(self, TDSQLPostgreSql):
         self._TDSQLPostgreSql = TDSQLPostgreSql
 
+    @property
+    def TCHouseD(self):
+        return self._TCHouseD
+
+    @TCHouseD.setter
+    def TCHouseD(self, TCHouseD):
+        self._TCHouseD = TCHouseD
+
 
     def _deserialize(self, params):
         if params.get("Mysql") is not None:
@@ -9107,6 +9237,9 @@ class DatasourceConnectionConfig(AbstractModel):
         if params.get("TDSQLPostgreSql") is not None:
             self._TDSQLPostgreSql = DataSourceInfo()
             self._TDSQLPostgreSql._deserialize(params.get("TDSQLPostgreSql"))
+        if params.get("TCHouseD") is not None:
+            self._TCHouseD = TCHouseD()
+            self._TCHouseD._deserialize(params.get("TCHouseD"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13493,10 +13626,10 @@ class DescribeResultDownloadResponse(AbstractModel):
         :param _Reason: 任务异常原因
 注意：此字段可能返回 null，表示取不到有效值。
         :type Reason: str
-        :param _SecretId: 临时AK
+        :param _SecretId: 临时SecretId
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecretId: str
-        :param _SecretKey: 临时SK
+        :param _SecretKey: 临时SecretKey
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecretKey: str
         :param _Token: 临时Token
@@ -18237,6 +18370,53 @@ class GrantDLCCatalogAccessResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GroupInfo(AbstractModel):
+    """数据脱敏用户组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkGroupId: 用户组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkGroupId: int
+        :param _StrategyType: 策略类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrategyType: str
+        """
+        self._WorkGroupId = None
+        self._StrategyType = None
+
+    @property
+    def WorkGroupId(self):
+        return self._WorkGroupId
+
+    @WorkGroupId.setter
+    def WorkGroupId(self, WorkGroupId):
+        self._WorkGroupId = WorkGroupId
+
+    @property
+    def StrategyType(self):
+        return self._StrategyType
+
+    @StrategyType.setter
+    def StrategyType(self, StrategyType):
+        self._StrategyType = StrategyType
+
+
+    def _deserialize(self, params):
+        self._WorkGroupId = params.get("WorkGroupId")
+        self._StrategyType = params.get("StrategyType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HiveInfo(AbstractModel):
     """hive类型数据源的信息
 
@@ -22928,6 +23108,9 @@ class ResourceInfo(AbstractModel):
         :param _Status: 状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
+        :param _ResourceGroupName: 标准引擎资源组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceGroupName: str
         """
         self._AttributionType = None
         self._ResourceType = None
@@ -22935,6 +23118,7 @@ class ResourceInfo(AbstractModel):
         self._Instance = None
         self._Favor = None
         self._Status = None
+        self._ResourceGroupName = None
 
     @property
     def AttributionType(self):
@@ -22984,6 +23168,14 @@ class ResourceInfo(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def ResourceGroupName(self):
+        return self._ResourceGroupName
+
+    @ResourceGroupName.setter
+    def ResourceGroupName(self, ResourceGroupName):
+        self._ResourceGroupName = ResourceGroupName
+
 
     def _deserialize(self, params):
         self._AttributionType = params.get("AttributionType")
@@ -22997,6 +23189,7 @@ class ResourceInfo(AbstractModel):
                 obj._deserialize(item)
                 self._Favor.append(obj)
         self._Status = params.get("Status")
+        self._ResourceGroupName = params.get("ResourceGroupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25112,6 +25305,133 @@ class SwitchDataEngineResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class TCHouseD(AbstractModel):
+    """Doirs数据源详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 数据源实例的唯一ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _InstanceName: 数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param _JdbcUrl: 数据源的JDBC
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JdbcUrl: str
+        :param _User: 用于访问数据源的用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :type User: str
+        :param _Password: 数据源访问密码，需要base64编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param _Location: 数据源的VPC和子网信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Location: :class:`tencentcloud.dlc.v20210125.models.DatasourceConnectionLocation`
+        :param _DbName: 默认数据库名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbName: str
+        :param _AccessInfo: 访问信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessInfo: str
+        """
+        self._InstanceId = None
+        self._InstanceName = None
+        self._JdbcUrl = None
+        self._User = None
+        self._Password = None
+        self._Location = None
+        self._DbName = None
+        self._AccessInfo = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def JdbcUrl(self):
+        return self._JdbcUrl
+
+    @JdbcUrl.setter
+    def JdbcUrl(self, JdbcUrl):
+        self._JdbcUrl = JdbcUrl
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def Location(self):
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+    @property
+    def DbName(self):
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def AccessInfo(self):
+        return self._AccessInfo
+
+    @AccessInfo.setter
+    def AccessInfo(self, AccessInfo):
+        self._AccessInfo = AccessInfo
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._JdbcUrl = params.get("JdbcUrl")
+        self._User = params.get("User")
+        self._Password = params.get("Password")
+        if params.get("Location") is not None:
+            self._Location = DatasourceConnectionLocation()
+            self._Location._deserialize(params.get("Location"))
+        self._DbName = params.get("DbName")
+        self._AccessInfo = params.get("AccessInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TColumn(AbstractModel):

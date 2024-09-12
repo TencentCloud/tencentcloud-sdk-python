@@ -4928,6 +4928,8 @@ class CreateFlowByFilesRequest(AbstractModel):
 <li> 如果企业通知腾讯电子签平台审核未通过，平台将继续阻塞签署方的签署动作，直到企业通知平台审核通过。</li></ul>
 注：`此功能可用于与企业内部的审批流程进行关联，支持手动、静默签署合同`
         :type NeedSignReview: bool
+        :param _FlowDisplayType: 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+        :type FlowDisplayType: int
         """
         self._Operator = None
         self._FlowName = None
@@ -4950,6 +4952,7 @@ class CreateFlowByFilesRequest(AbstractModel):
         self._Agent = None
         self._AutoSignScene = None
         self._NeedSignReview = None
+        self._FlowDisplayType = None
 
     @property
     def Operator(self):
@@ -5119,6 +5122,14 @@ class CreateFlowByFilesRequest(AbstractModel):
     def NeedSignReview(self, NeedSignReview):
         self._NeedSignReview = NeedSignReview
 
+    @property
+    def FlowDisplayType(self):
+        return self._FlowDisplayType
+
+    @FlowDisplayType.setter
+    def FlowDisplayType(self, FlowDisplayType):
+        self._FlowDisplayType = FlowDisplayType
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -5161,6 +5172,7 @@ class CreateFlowByFilesRequest(AbstractModel):
             self._Agent._deserialize(params.get("Agent"))
         self._AutoSignScene = params.get("AutoSignScene")
         self._NeedSignReview = params.get("NeedSignReview")
+        self._FlowDisplayType = params.get("FlowDisplayType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6333,6 +6345,12 @@ class CreateFlowRequest(AbstractModel):
         :type RelatedFlowId: str
         :param _CallbackUrl: 暂未开放
         :type CallbackUrl: str
+        :param _FlowDisplayType: 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下： 
+ <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li></ul>
+
+效果如下:
+![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+        :type FlowDisplayType: int
         """
         self._Operator = None
         self._FlowName = None
@@ -6351,6 +6369,7 @@ class CreateFlowRequest(AbstractModel):
         self._AutoSignScene = None
         self._RelatedFlowId = None
         self._CallbackUrl = None
+        self._FlowDisplayType = None
 
     @property
     def Operator(self):
@@ -6496,6 +6515,14 @@ class CreateFlowRequest(AbstractModel):
 
         self._CallbackUrl = CallbackUrl
 
+    @property
+    def FlowDisplayType(self):
+        return self._FlowDisplayType
+
+    @FlowDisplayType.setter
+    def FlowDisplayType(self, FlowDisplayType):
+        self._FlowDisplayType = FlowDisplayType
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -6529,6 +6556,7 @@ class CreateFlowRequest(AbstractModel):
         self._AutoSignScene = params.get("AutoSignScene")
         self._RelatedFlowId = params.get("RelatedFlowId")
         self._CallbackUrl = params.get("CallbackUrl")
+        self._FlowDisplayType = params.get("FlowDisplayType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6753,7 +6781,7 @@ class CreateFlowSignUrlRequest(AbstractModel):
         :param _FlowApproverInfos: 流程签署人列表，其中结构体的ApproverName，ApproverMobile和ApproverType必传，企业签署人则需传OrganizationName，其他可不传。
 
 注:
-`1. 签署人只能有手写签名、时间类型、印章类型的签署控件和内容填写控件，其他类型的签署控件暂时未支持。`
+`1. 签署人只能有手写签名、时间类型、印章类型、签批类型的签署控件和内容填写控件，其他类型的签署控件暂时未支持。`
 `2. 生成发起方预览链接时，该字段（FlowApproverInfos）传空或者不传`
         :type FlowApproverInfos: list of FlowCreateApprover
         :param _Organization: 机构信息，暂未开放
@@ -13511,8 +13539,8 @@ class DescribeFlowComponentsRequest(AbstractModel):
 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _FlowId: 合同流程ID，为32位字符串。
-建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
-可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
+
+[点击产看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
         :type FlowId: str
         :param _Agent: 代理企业和员工的信息。
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
@@ -13572,7 +13600,7 @@ class DescribeFlowComponentsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RecipientComponentInfos: 合同流程关联的填写控件信息，按照参与方进行分类返回。
+        :param _RecipientComponentInfos: 合同流程关联的填写控件信息，包括填写控件的归属方以及是否填写等内容。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecipientComponentInfos: list of RecipientComponentInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -18221,6 +18249,8 @@ false：有序签
         :param _AutoSignScene: 个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
 示例值：E_PRESCRIPTION_AUTO_SIGN
         :type AutoSignScene: str
+        :param _FlowDisplayType: 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+        :type FlowDisplayType: int
         """
         self._FlowName = None
         self._Approvers = None
@@ -18235,6 +18265,7 @@ false：有序签
         self._Components = None
         self._NeedSignReview = None
         self._AutoSignScene = None
+        self._FlowDisplayType = None
 
     @property
     def FlowName(self):
@@ -18344,6 +18375,14 @@ false：有序签
     def AutoSignScene(self, AutoSignScene):
         self._AutoSignScene = AutoSignScene
 
+    @property
+    def FlowDisplayType(self):
+        return self._FlowDisplayType
+
+    @FlowDisplayType.setter
+    def FlowDisplayType(self, FlowDisplayType):
+        self._FlowDisplayType = FlowDisplayType
+
 
     def _deserialize(self, params):
         self._FlowName = params.get("FlowName")
@@ -18369,6 +18408,7 @@ false：有序签
                 self._Components.append(obj)
         self._NeedSignReview = params.get("NeedSignReview")
         self._AutoSignScene = params.get("AutoSignScene")
+        self._FlowDisplayType = params.get("FlowDisplayType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21674,12 +21714,15 @@ class RecipientComponentInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RecipientId: 参与方Id
+        :param _RecipientId: 签署方经办人在合同流程中的参与方ID，与控件绑定，是控件的归属方
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecipientId: str
         :param _RecipientFillStatus: 参与方填写状态
-<ul><li>0-未填写</li>
-<li>1-已填写</li></ul>
+<ul>
+<li>**空值** : 此参与方没有填写控件</li>
+<li>**0**:  未填写, 表示此参与方还没有填写合同的填写控件</li>
+<li>**1**:  已填写, 表示此参与方已经填写所有的填写控件</li></ul>
+
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecipientFillStatus: str
         :param _IsPromoter: 是否为发起方
@@ -21687,7 +21730,7 @@ class RecipientComponentInfo(AbstractModel):
 <li>false-参与方</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsPromoter: bool
-        :param _Components: 填写控件列表
+        :param _Components: 改参与方填写控件信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Components: list of FilledComponent
         """
@@ -21757,10 +21800,13 @@ class RegisterInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _LegalName: 法人姓名
+注意：此字段可能返回 null，表示取不到有效值。
         :type LegalName: str
         :param _Uscc: 社会统一信用代码
+注意：此字段可能返回 null，表示取不到有效值。
         :type Uscc: str
         :param _UnifiedSocialCreditCode: 社会统一信用代码
+注意：此字段可能返回 null，表示取不到有效值。
         :type UnifiedSocialCreditCode: str
         """
         self._LegalName = None

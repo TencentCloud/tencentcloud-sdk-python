@@ -831,6 +831,29 @@ class DasbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDomains(self, request):
+        """查询网络域
+
+        :param request: Request instance for DescribeDomains.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.DescribeDomainsRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.DescribeDomainsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDomains", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDomainsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeLoginEvent(self, request):
         """查询登录日志
 

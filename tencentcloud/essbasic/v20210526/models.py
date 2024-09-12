@@ -3060,6 +3060,8 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
         :type AutoSignScene: str
         :param _Operator: 操作者的信息，不用传
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param _FlowDisplayType: 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+        :type FlowDisplayType: int
         """
         self._Agent = None
         self._FlowName = None
@@ -3080,6 +3082,7 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
         self._CcNotifyType = None
         self._AutoSignScene = None
         self._Operator = None
+        self._FlowDisplayType = None
 
     @property
     def Agent(self):
@@ -3241,6 +3244,14 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
 
         self._Operator = Operator
 
+    @property
+    def FlowDisplayType(self):
+        return self._FlowDisplayType
+
+    @FlowDisplayType.setter
+    def FlowDisplayType(self, FlowDisplayType):
+        self._FlowDisplayType = FlowDisplayType
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -3281,6 +3292,7 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
         if params.get("Operator") is not None:
             self._Operator = UserInfo()
             self._Operator._deserialize(params.get("Operator"))
+        self._FlowDisplayType = params.get("FlowDisplayType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3968,7 +3980,7 @@ class ChannelCreateFlowSignUrlRequest(AbstractModel):
 若为子客企业签署方则需传OpenId、OrganizationOpenId，其他可不传。
 
 注:
-`1. 签署人只能有手写签名、时间类型、印章类型的签署控件和内容填写控件，其他类型的签署控件暂时未支持。`
+`1. 签署人只能有手写签名、时间类型、印章类型、签批类型的签署控件和内容填写控件，其他类型的签署控件暂时未支持。`
 `2. 生成发起方预览链接时，该字段（FlowApproverInfos）传空或者不传`
         :type FlowApproverInfos: list of FlowApproverInfo
         :param _Operator: 用户信息，暂未开放
@@ -15691,6 +15703,8 @@ class FlowFileInfo(AbstractModel):
         :type CustomShowMap: str
         :param _NeedSignReview: 本企业(发起方企业)是否需要签署审批
         :type NeedSignReview: bool
+        :param _FlowDisplayType: 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+        :type FlowDisplayType: int
         """
         self._FileIds = None
         self._FlowName = None
@@ -15704,6 +15718,7 @@ class FlowFileInfo(AbstractModel):
         self._Components = None
         self._CustomShowMap = None
         self._NeedSignReview = None
+        self._FlowDisplayType = None
 
     @property
     def FileIds(self):
@@ -15805,6 +15820,14 @@ class FlowFileInfo(AbstractModel):
     def NeedSignReview(self, NeedSignReview):
         self._NeedSignReview = NeedSignReview
 
+    @property
+    def FlowDisplayType(self):
+        return self._FlowDisplayType
+
+    @FlowDisplayType.setter
+    def FlowDisplayType(self, FlowDisplayType):
+        self._FlowDisplayType = FlowDisplayType
+
 
     def _deserialize(self, params):
         self._FileIds = params.get("FileIds")
@@ -15829,6 +15852,7 @@ class FlowFileInfo(AbstractModel):
                 self._Components.append(obj)
         self._CustomShowMap = params.get("CustomShowMap")
         self._NeedSignReview = params.get("NeedSignReview")
+        self._FlowDisplayType = params.get("FlowDisplayType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16103,6 +16127,8 @@ class FlowInfo(AbstractModel):
 <ul><li> **E_PRESCRIPTION_AUTO_SIGN**：电子处方单（医疗自动签）  </li><li> **OTHER** :  通用场景</li></ul>
 注: `个人自动签名场景是白名单功能，使用前请与对接的客户经理联系沟通。`
         :type AutoSignScene: str
+        :param _FlowDisplayType: 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+        :type FlowDisplayType: int
         """
         self._FlowName = None
         self._Deadline = None
@@ -16118,6 +16144,7 @@ class FlowInfo(AbstractModel):
         self._NeedSignReview = None
         self._CcNotifyType = None
         self._AutoSignScene = None
+        self._FlowDisplayType = None
 
     @property
     def FlowName(self):
@@ -16235,6 +16262,14 @@ class FlowInfo(AbstractModel):
     def AutoSignScene(self, AutoSignScene):
         self._AutoSignScene = AutoSignScene
 
+    @property
+    def FlowDisplayType(self):
+        return self._FlowDisplayType
+
+    @FlowDisplayType.setter
+    def FlowDisplayType(self, FlowDisplayType):
+        self._FlowDisplayType = FlowDisplayType
+
 
     def _deserialize(self, params):
         self._FlowName = params.get("FlowName")
@@ -16266,6 +16301,7 @@ class FlowInfo(AbstractModel):
         self._NeedSignReview = params.get("NeedSignReview")
         self._CcNotifyType = params.get("CcNotifyType")
         self._AutoSignScene = params.get("AutoSignScene")
+        self._FlowDisplayType = params.get("FlowDisplayType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

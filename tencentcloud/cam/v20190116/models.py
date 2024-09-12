@@ -2761,6 +2761,64 @@ class DeleteGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteMessageReceiverRequest(AbstractModel):
+    """DeleteMessageReceiver请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 消息接受者的名称
+        :type Name: str
+        """
+        self._Name = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteMessageReceiverResponse(AbstractModel):
+    """DeleteMessageReceiver返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteOIDCConfigRequest(AbstractModel):
     """DeleteOIDCConfig请求参数结构体
 
@@ -7794,6 +7852,105 @@ class ListPolicyVersionsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ListReceiverRequest(AbstractModel):
+    """ListReceiver请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 分页偏移量
+        :type Offset: int
+        :param _Limit: 分页限制数目
+        :type Limit: int
+        """
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListReceiverResponse(AbstractModel):
+    """ListReceiver返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数目
+        :type TotalCount: int
+        :param _Receivers: 联系人列表
+        :type Receivers: list of Receiver
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Receivers = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Receivers(self):
+        return self._Receivers
+
+    @Receivers.setter
+    def Receivers(self, Receivers):
+        self._Receivers = Receivers
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Receivers") is not None:
+            self._Receivers = []
+            for item in params.get("Receivers"):
+                obj = Receiver()
+                obj._deserialize(item)
+                self._Receivers.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class ListSAMLProvidersRequest(AbstractModel):
     """ListSAMLProviders请求参数结构体
 
@@ -8745,6 +8902,150 @@ class PutUserPermissionsBoundaryResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class Receiver(AbstractModel):
+    """消息接收人信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Uid: id
+        :type Uid: int
+        :param _Name: 名字
+        :type Name: str
+        :param _Remark: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param _PhoneNumber: 手机号码
+        :type PhoneNumber: str
+        :param _PhoneFlag: 手机号码是否验证
+        :type PhoneFlag: int
+        :param _Email: 邮箱
+        :type Email: str
+        :param _EmailFlag: 邮箱是否验证
+        :type EmailFlag: int
+        :param _IsReceiverOwner: 是否主联系人
+        :type IsReceiverOwner: int
+        :param _WechatFlag: 是否允许微信接收通知
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WechatFlag: int
+        :param _Uin: 账号uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: int
+        """
+        self._Uid = None
+        self._Name = None
+        self._Remark = None
+        self._PhoneNumber = None
+        self._PhoneFlag = None
+        self._Email = None
+        self._EmailFlag = None
+        self._IsReceiverOwner = None
+        self._WechatFlag = None
+        self._Uin = None
+
+    @property
+    def Uid(self):
+        return self._Uid
+
+    @Uid.setter
+    def Uid(self, Uid):
+        self._Uid = Uid
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def PhoneNumber(self):
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def PhoneFlag(self):
+        return self._PhoneFlag
+
+    @PhoneFlag.setter
+    def PhoneFlag(self, PhoneFlag):
+        self._PhoneFlag = PhoneFlag
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def EmailFlag(self):
+        return self._EmailFlag
+
+    @EmailFlag.setter
+    def EmailFlag(self, EmailFlag):
+        self._EmailFlag = EmailFlag
+
+    @property
+    def IsReceiverOwner(self):
+        return self._IsReceiverOwner
+
+    @IsReceiverOwner.setter
+    def IsReceiverOwner(self, IsReceiverOwner):
+        self._IsReceiverOwner = IsReceiverOwner
+
+    @property
+    def WechatFlag(self):
+        return self._WechatFlag
+
+    @WechatFlag.setter
+    def WechatFlag(self, WechatFlag):
+        self._WechatFlag = WechatFlag
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+
+    def _deserialize(self, params):
+        self._Uid = params.get("Uid")
+        self._Name = params.get("Name")
+        self._Remark = params.get("Remark")
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._PhoneFlag = params.get("PhoneFlag")
+        self._Email = params.get("Email")
+        self._EmailFlag = params.get("EmailFlag")
+        self._IsReceiverOwner = params.get("IsReceiverOwner")
+        self._WechatFlag = params.get("WechatFlag")
+        self._Uin = params.get("Uin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RemoveUserFromGroupRequest(AbstractModel):

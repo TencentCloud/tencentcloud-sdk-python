@@ -311,6 +311,9 @@ OPERATIONDENIED_SUBUIN = 'OperationDenied.SubUin'
 # 被操作密钥与账号不匹配。
 OPERATIONDENIED_UINNOTMATCH = 'OperationDenied.UinNotMatch'
 
+# 请求的次数超过了频率限制。
+REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'
+
 # 创建子用户频率超过限制。
 REQUESTLIMITEXCEEDED_CREATEUSER = 'RequestLimitExceeded.CreateUser'
 
@@ -337,6 +340,9 @@ RESOURCENOTFOUND_SECRETNOTEXIST = 'ResourceNotFound.SecretNotExist'
 
 # 用户不存在。
 RESOURCENOTFOUND_USERNOTEXIST = 'ResourceNotFound.UserNotExist'
+
+# 用户不存在。
+RESOURCENOTFOUND_USERNOTEXISTS = 'ResourceNotFound.UserNotExists'
 
 # 凭据信息异常。
 RESOURCEUNAVAILABLE_FLOWAUTHSECET = 'ResourceUnavailable.FlowAuthSecet'
