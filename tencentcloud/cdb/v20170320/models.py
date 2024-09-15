@@ -17334,6 +17334,8 @@ class DescribeSlowLogDataRequest(AbstractModel):
         :type Limit: int
         :param _InstType: 仅在实例为主实例或者灾备实例时生效，可选值：slave，代表拉取从机的日志。
         :type InstType: str
+        :param _OpResourceId: 节点ID
+        :type OpResourceId: str
         """
         self._InstanceId = None
         self._StartTime = None
@@ -17346,6 +17348,7 @@ class DescribeSlowLogDataRequest(AbstractModel):
         self._Offset = None
         self._Limit = None
         self._InstType = None
+        self._OpResourceId = None
 
     @property
     def InstanceId(self):
@@ -17435,6 +17438,14 @@ class DescribeSlowLogDataRequest(AbstractModel):
     def InstType(self, InstType):
         self._InstType = InstType
 
+    @property
+    def OpResourceId(self):
+        return self._OpResourceId
+
+    @OpResourceId.setter
+    def OpResourceId(self, OpResourceId):
+        self._OpResourceId = OpResourceId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -17448,6 +17459,7 @@ class DescribeSlowLogDataRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._InstType = params.get("InstType")
+        self._OpResourceId = params.get("OpResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

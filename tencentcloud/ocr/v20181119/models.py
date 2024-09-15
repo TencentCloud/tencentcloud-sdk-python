@@ -1594,6 +1594,8 @@ WARN_RESHOOT_CARD翻拍件告警
         :type SerialNumber: str
         :param _RegistrationAuthority: 登记机关
         :type RegistrationAuthority: str
+        :param _Electronic: 是否是电子营业执照。0为不是，1为是。
+        :type Electronic: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1618,6 +1620,7 @@ WARN_RESHOOT_CARD翻拍件告警
         self._Title = None
         self._SerialNumber = None
         self._RegistrationAuthority = None
+        self._Electronic = None
         self._RequestId = None
 
     @property
@@ -1789,6 +1792,14 @@ WARN_RESHOOT_CARD翻拍件告警
         self._RegistrationAuthority = RegistrationAuthority
 
     @property
+    def Electronic(self):
+        return self._Electronic
+
+    @Electronic.setter
+    def Electronic(self, Electronic):
+        self._Electronic = Electronic
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -1819,6 +1830,7 @@ WARN_RESHOOT_CARD翻拍件告警
         self._Title = params.get("Title")
         self._SerialNumber = params.get("SerialNumber")
         self._RegistrationAuthority = params.get("RegistrationAuthority")
+        self._Electronic = params.get("Electronic")
         self._RequestId = params.get("RequestId")
 
 

@@ -1688,7 +1688,7 @@ class LkeClient(AbstractClient):
 
 
     def RateMsgRecord(self, request):
-        """是否意图转人工
+        """点赞点踩消息
 
         :param request: Request instance for RateMsgRecord.
         :type request: :class:`tencentcloud.lke.v20231130.models.RateMsgRecordRequest`

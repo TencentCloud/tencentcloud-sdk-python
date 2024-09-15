@@ -876,6 +876,8 @@ class FeedRecommendRequest(AbstractModel):
         :type ItemCnt: int
         :param _CurrentItemId: 当场景是相关推荐时该值必填，场景是非相关推荐时该值无效
         :type CurrentItemId: str
+        :param _Extension: 扩展字段，json字符串，需要base64加密
+        :type Extension: str
         """
         self._InstanceId = None
         self._SceneId = None
@@ -883,6 +885,7 @@ class FeedRecommendRequest(AbstractModel):
         self._UserIdList = None
         self._ItemCnt = None
         self._CurrentItemId = None
+        self._Extension = None
 
     @property
     def InstanceId(self):
@@ -932,6 +935,14 @@ class FeedRecommendRequest(AbstractModel):
     def CurrentItemId(self, CurrentItemId):
         self._CurrentItemId = CurrentItemId
 
+    @property
+    def Extension(self):
+        return self._Extension
+
+    @Extension.setter
+    def Extension(self, Extension):
+        self._Extension = Extension
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -945,6 +956,7 @@ class FeedRecommendRequest(AbstractModel):
                 self._UserIdList.append(obj)
         self._ItemCnt = params.get("ItemCnt")
         self._CurrentItemId = params.get("CurrentItemId")
+        self._Extension = params.get("Extension")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -962,7 +974,7 @@ class FeedRecommendResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DataList: 推荐返回的内容信息列表
+        :param _DataList: 推荐返回的内容信息列表，返回结果已按策略规则做好了排序
         :type DataList: list of RecItemData
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

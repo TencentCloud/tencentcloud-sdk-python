@@ -7582,6 +7582,194 @@ class DescribeEnterpriseSGRuleProgressResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeEnterpriseSecurityGroupRuleListRequest(AbstractModel):
+    """DescribeEnterpriseSecurityGroupRuleList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 分页每页数量
+        :type Limit: int
+        :param _Offset: 分页当前页
+        :type Offset: int
+        :param _Status: 启用状态 1启用 0 未启用
+        :type Status: str
+        :param _Area: 地域
+        :type Area: str
+        :param _Filter: 规则下发方式筛选  1 新规则和延迟下发  2  仅看新规则  
+        :type Filter: int
+        :param _SearchValue: 查询条件
+        :type SearchValue: str
+        :param _SearchFilters: 查询条件新
+        :type SearchFilters: list of CommonFilter
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Status = None
+        self._Area = None
+        self._Filter = None
+        self._SearchValue = None
+        self._SearchFilters = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Area(self):
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def Filter(self):
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def SearchValue(self):
+        return self._SearchValue
+
+    @SearchValue.setter
+    def SearchValue(self, SearchValue):
+        self._SearchValue = SearchValue
+
+    @property
+    def SearchFilters(self):
+        return self._SearchFilters
+
+    @SearchFilters.setter
+    def SearchFilters(self, SearchFilters):
+        self._SearchFilters = SearchFilters
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Status = params.get("Status")
+        self._Area = params.get("Area")
+        self._Filter = params.get("Filter")
+        self._SearchValue = params.get("SearchValue")
+        if params.get("SearchFilters") is not None:
+            self._SearchFilters = []
+            for item in params.get("SearchFilters"):
+                obj = CommonFilter()
+                obj._deserialize(item)
+                self._SearchFilters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEnterpriseSecurityGroupRuleListResponse(AbstractModel):
+    """DescribeEnterpriseSecurityGroupRuleList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 查询结果总数
+        :type Total: int
+        :param _AllTotal: 规则总数
+        :type AllTotal: int
+        :param _Data: 规则列表
+        :type Data: list of EnterpriseSecurityGroupRuleRuleInfo
+        :param _Enable: 规则整体启用状态
+        :type Enable: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._AllTotal = None
+        self._Data = None
+        self._Enable = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def AllTotal(self):
+        return self._AllTotal
+
+    @AllTotal.setter
+    def AllTotal(self, AllTotal):
+        self._AllTotal = AllTotal
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._AllTotal = params.get("AllTotal")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = EnterpriseSecurityGroupRuleRuleInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Enable = params.get("Enable")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeEnterpriseSecurityGroupRuleRequest(AbstractModel):
     """DescribeEnterpriseSecurityGroupRule请求参数结构体
 
@@ -11880,6 +12068,482 @@ class EdgeIpSwitch(AbstractModel):
         self._SubnetId = params.get("SubnetId")
         self._EndpointIp = params.get("EndpointIp")
         self._SwitchMode = params.get("SwitchMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnterpriseSecurityGroupRuleBetaInfo(AbstractModel):
+    """企业安全组自动化任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: int
+        :param _TaskName: 任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskName: str
+        :param _LastTime: 时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastTime: str
+        """
+        self._TaskId = None
+        self._TaskName = None
+        self._LastTime = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def LastTime(self):
+        return self._LastTime
+
+    @LastTime.setter
+    def LastTime(self, LastTime):
+        self._LastTime = LastTime
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskName = params.get("TaskName")
+        self._LastTime = params.get("LastTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnterpriseSecurityGroupRuleRuleInfo(AbstractModel):
+    """企业安全组规则列表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrderIndex: 排序
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderIndex: int
+        :param _RuleUuid: 主键id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleUuid: int
+        :param _Uuid: 规则uuid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uuid: str
+        :param _SourceId: 源规则内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceId: str
+        :param _SourceType: 源规则类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceType: int
+        :param _TargetId: 目的规则内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetId: str
+        :param _TargetType: 目的规则类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetType: int
+        :param _Protocol: 协议名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        :param _Port: 端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: str
+        :param _Strategy: 策略，1阻断，2放行
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Strategy: int
+        :param _Status: 启用状态 ，0未开启，1开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _Detail: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Detail: str
+        :param _AclTags: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AclTags: str
+        :param _IsNew: 是否最新一次改动的规则,0否，1是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsNew: int
+        :param _Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param _IsDelay: 是否延迟下发
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsDelay: int
+        :param _ServiceTemplateId: 服务模版id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceTemplateId: str
+        :param _SouInstanceName: 源资产名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SouInstanceName: str
+        :param _SouPublicIp: 源资产公网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SouPublicIp: str
+        :param _SouPrivateIp: 源资产内网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SouPrivateIp: str
+        :param _SouCidr: 源资产网段信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SouCidr: str
+        :param _SouParameterName: 源模版名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SouParameterName: str
+        :param _InstanceName: 目的资产名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param _PublicIp: 目的资产公网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicIp: str
+        :param _PrivateIp: 目的资产内网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivateIp: str
+        :param _Cidr: 目的资产网段信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cidr: str
+        :param _ParameterName: 目的模版名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParameterName: str
+        :param _ProtocolPortName: 端口模版名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProtocolPortName: str
+        :param _BetaList: 自动化任务任务信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BetaList: list of EnterpriseSecurityGroupRuleBetaInfo
+        :param _Id: 规则id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        """
+        self._OrderIndex = None
+        self._RuleUuid = None
+        self._Uuid = None
+        self._SourceId = None
+        self._SourceType = None
+        self._TargetId = None
+        self._TargetType = None
+        self._Protocol = None
+        self._Port = None
+        self._Strategy = None
+        self._Status = None
+        self._Detail = None
+        self._AclTags = None
+        self._IsNew = None
+        self._Region = None
+        self._IsDelay = None
+        self._ServiceTemplateId = None
+        self._SouInstanceName = None
+        self._SouPublicIp = None
+        self._SouPrivateIp = None
+        self._SouCidr = None
+        self._SouParameterName = None
+        self._InstanceName = None
+        self._PublicIp = None
+        self._PrivateIp = None
+        self._Cidr = None
+        self._ParameterName = None
+        self._ProtocolPortName = None
+        self._BetaList = None
+        self._Id = None
+
+    @property
+    def OrderIndex(self):
+        return self._OrderIndex
+
+    @OrderIndex.setter
+    def OrderIndex(self, OrderIndex):
+        self._OrderIndex = OrderIndex
+
+    @property
+    def RuleUuid(self):
+        return self._RuleUuid
+
+    @RuleUuid.setter
+    def RuleUuid(self, RuleUuid):
+        self._RuleUuid = RuleUuid
+
+    @property
+    def Uuid(self):
+        return self._Uuid
+
+    @Uuid.setter
+    def Uuid(self, Uuid):
+        self._Uuid = Uuid
+
+    @property
+    def SourceId(self):
+        return self._SourceId
+
+    @SourceId.setter
+    def SourceId(self, SourceId):
+        self._SourceId = SourceId
+
+    @property
+    def SourceType(self):
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def TargetId(self):
+        return self._TargetId
+
+    @TargetId.setter
+    def TargetId(self, TargetId):
+        self._TargetId = TargetId
+
+    @property
+    def TargetType(self):
+        return self._TargetType
+
+    @TargetType.setter
+    def TargetType(self, TargetType):
+        self._TargetType = TargetType
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def Strategy(self):
+        return self._Strategy
+
+    @Strategy.setter
+    def Strategy(self, Strategy):
+        self._Strategy = Strategy
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Detail(self):
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def AclTags(self):
+        return self._AclTags
+
+    @AclTags.setter
+    def AclTags(self, AclTags):
+        self._AclTags = AclTags
+
+    @property
+    def IsNew(self):
+        return self._IsNew
+
+    @IsNew.setter
+    def IsNew(self, IsNew):
+        self._IsNew = IsNew
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def IsDelay(self):
+        return self._IsDelay
+
+    @IsDelay.setter
+    def IsDelay(self, IsDelay):
+        self._IsDelay = IsDelay
+
+    @property
+    def ServiceTemplateId(self):
+        return self._ServiceTemplateId
+
+    @ServiceTemplateId.setter
+    def ServiceTemplateId(self, ServiceTemplateId):
+        self._ServiceTemplateId = ServiceTemplateId
+
+    @property
+    def SouInstanceName(self):
+        return self._SouInstanceName
+
+    @SouInstanceName.setter
+    def SouInstanceName(self, SouInstanceName):
+        self._SouInstanceName = SouInstanceName
+
+    @property
+    def SouPublicIp(self):
+        return self._SouPublicIp
+
+    @SouPublicIp.setter
+    def SouPublicIp(self, SouPublicIp):
+        self._SouPublicIp = SouPublicIp
+
+    @property
+    def SouPrivateIp(self):
+        return self._SouPrivateIp
+
+    @SouPrivateIp.setter
+    def SouPrivateIp(self, SouPrivateIp):
+        self._SouPrivateIp = SouPrivateIp
+
+    @property
+    def SouCidr(self):
+        return self._SouCidr
+
+    @SouCidr.setter
+    def SouCidr(self, SouCidr):
+        self._SouCidr = SouCidr
+
+    @property
+    def SouParameterName(self):
+        return self._SouParameterName
+
+    @SouParameterName.setter
+    def SouParameterName(self, SouParameterName):
+        self._SouParameterName = SouParameterName
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def PublicIp(self):
+        return self._PublicIp
+
+    @PublicIp.setter
+    def PublicIp(self, PublicIp):
+        self._PublicIp = PublicIp
+
+    @property
+    def PrivateIp(self):
+        return self._PrivateIp
+
+    @PrivateIp.setter
+    def PrivateIp(self, PrivateIp):
+        self._PrivateIp = PrivateIp
+
+    @property
+    def Cidr(self):
+        return self._Cidr
+
+    @Cidr.setter
+    def Cidr(self, Cidr):
+        self._Cidr = Cidr
+
+    @property
+    def ParameterName(self):
+        return self._ParameterName
+
+    @ParameterName.setter
+    def ParameterName(self, ParameterName):
+        self._ParameterName = ParameterName
+
+    @property
+    def ProtocolPortName(self):
+        return self._ProtocolPortName
+
+    @ProtocolPortName.setter
+    def ProtocolPortName(self, ProtocolPortName):
+        self._ProtocolPortName = ProtocolPortName
+
+    @property
+    def BetaList(self):
+        return self._BetaList
+
+    @BetaList.setter
+    def BetaList(self, BetaList):
+        self._BetaList = BetaList
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._OrderIndex = params.get("OrderIndex")
+        self._RuleUuid = params.get("RuleUuid")
+        self._Uuid = params.get("Uuid")
+        self._SourceId = params.get("SourceId")
+        self._SourceType = params.get("SourceType")
+        self._TargetId = params.get("TargetId")
+        self._TargetType = params.get("TargetType")
+        self._Protocol = params.get("Protocol")
+        self._Port = params.get("Port")
+        self._Strategy = params.get("Strategy")
+        self._Status = params.get("Status")
+        self._Detail = params.get("Detail")
+        self._AclTags = params.get("AclTags")
+        self._IsNew = params.get("IsNew")
+        self._Region = params.get("Region")
+        self._IsDelay = params.get("IsDelay")
+        self._ServiceTemplateId = params.get("ServiceTemplateId")
+        self._SouInstanceName = params.get("SouInstanceName")
+        self._SouPublicIp = params.get("SouPublicIp")
+        self._SouPrivateIp = params.get("SouPrivateIp")
+        self._SouCidr = params.get("SouCidr")
+        self._SouParameterName = params.get("SouParameterName")
+        self._InstanceName = params.get("InstanceName")
+        self._PublicIp = params.get("PublicIp")
+        self._PrivateIp = params.get("PrivateIp")
+        self._Cidr = params.get("Cidr")
+        self._ParameterName = params.get("ParameterName")
+        self._ProtocolPortName = params.get("ProtocolPortName")
+        if params.get("BetaList") is not None:
+            self._BetaList = []
+            for item in params.get("BetaList"):
+                obj = EnterpriseSecurityGroupRuleBetaInfo()
+                obj._deserialize(item)
+                self._BetaList.append(obj)
+        self._Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

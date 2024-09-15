@@ -171,6 +171,8 @@ class DescribeInstanceNodesRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
         :param _Limit: limit
         :type Limit: int
         :param _Offset: offset
@@ -178,9 +180,18 @@ class DescribeInstanceNodesRequest(AbstractModel):
         :param _Component: component
         :type Component: str
         """
+        self._InstanceId = None
         self._Limit = None
         self._Offset = None
         self._Component = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
     @property
     def Limit(self):
@@ -208,6 +219,7 @@ class DescribeInstanceNodesRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
         self._Component = params.get("Component")

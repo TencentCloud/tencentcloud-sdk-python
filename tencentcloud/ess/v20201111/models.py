@@ -12518,6 +12518,7 @@ class DescribeBillUsageDetailRequest(AbstractModel):
 <li>**OrgEssAuth**: 签署企业实名</li>
 <li>**FlowNotify**: 短信通知</li>
 <li>**AuthService**: 企业工商信息查询</li>
+<li>**NoAuthSign**: 形式签</li>
 </ul>
         :type QuotaType: str
         :param _Agent: 代理企业和员工的信息。
@@ -13540,7 +13541,7 @@ class DescribeFlowComponentsRequest(AbstractModel):
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _FlowId: 合同流程ID，为32位字符串。
 
-[点击产看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
+[点击查看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
         :type FlowId: str
         :param _Agent: 代理企业和员工的信息。
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。

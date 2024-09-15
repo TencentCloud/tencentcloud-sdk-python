@@ -2630,7 +2630,7 @@ class CreateClusterRequest(AbstractModel):
         :type SecurityGroupIds: list of str
         :param _ScriptBootstrapActionConfig: [引导操作](https://cloud.tencent.com/document/product/589/35656)脚本设置。
         :type ScriptBootstrapActionConfig: list of ScriptBootstrapActionConfig
-        :param _ClientToken: 唯一随机标识，时效性为5分钟，需要调用者指定 防止客户端重复创建资源，例如 a9a90aa6-751a-41b6-aad6-fae360632808
+        :param _ClientToken: 唯一随机标识，时效性为5分钟，需要调用者指定 防止客户端重复创建资源，例如 a9a90aa6-****-****-****-fae360632808
         :type ClientToken: str
         :param _NeedMasterWan: 是否开启集群Master节点公网。取值范围：
 <li>NEED_MASTER_WAN：表示开启集群Master节点公网。</li>
@@ -3021,7 +3021,7 @@ class CreateInstanceRequest(AbstractModel):
 <li>0：表示不自动续费。</li>
 <li>1：表示自动续费。</li>
         :type AutoRenew: int
-        :param _ClientToken: 唯一随机标识，时效5分钟，需要调用者指定 防止客户端重新创建资源，例如 a9a90aa6-751a-41b6-aad6-fae36063280
+        :param _ClientToken: 唯一随机标识，时效5分钟，需要调用者指定 防止客户端重新创建资源，例如 a9a90aa6-****-****-****-fae36063280
         :type ClientToken: str
         :param _NeedMasterWan: 是否开启集群Master节点公网。取值范围：
 <li>NEED_MASTER_WAN：表示开启集群Master节点公网。</li>
@@ -18930,7 +18930,7 @@ class ScaleOutClusterRequest(AbstractModel):
         :type InstanceId: str
         :param _ScaleOutNodeConfig: 扩容节点类型以及数量
         :type ScaleOutNodeConfig: :class:`tencentcloud.emr.v20190103.models.ScaleOutNodeConfig`
-        :param _ClientToken: 唯一随机标识，时效5分钟，需要调用者指定 防止客户端重新创建资源，例如 a9a90aa6-751a-41b6-aad6-fae36063280
+        :param _ClientToken: 唯一随机标识，时效5分钟，需要调用者指定 防止客户端重新创建资源，例如 a9a90aa6-****-****-****-fae36063280
         :type ClientToken: str
         :param _InstanceChargePrepaid: 即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
         :type InstanceChargePrepaid: :class:`tencentcloud.emr.v20190103.models.InstanceChargePrepaid`
@@ -19301,7 +19301,7 @@ class ScaleOutInstanceRequest(AbstractModel):
 <li>0：表示按量计费。</li>
 <li>1：表示包年包月。</li>
         :type PayMode: int
-        :param _ClientToken: 唯一随机标识，时效5分钟，需要调用者指定 防止客户端重新创建资源，例如 a9a90aa6-751a-41b6-aad6-fae36063280
+        :param _ClientToken: 唯一随机标识，时效5分钟，需要调用者指定 防止客户端重新创建资源，例如 a9a90aa6-****-****-****-fae36063280
         :type ClientToken: str
         :param _PreExecutedFileSettings: 引导操作脚本设置。
         :type PreExecutedFileSettings: list of PreExecuteFileSettings

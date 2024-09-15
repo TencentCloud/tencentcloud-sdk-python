@@ -992,6 +992,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeEnterpriseSecurityGroupRuleList(self, request):
+        """查询新企业安全组规则  从node接口迁移   原接口DescribeSecurityGroupNewList
+
+        :param request: Request instance for DescribeEnterpriseSecurityGroupRuleList.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeEnterpriseSecurityGroupRuleListRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeEnterpriseSecurityGroupRuleListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEnterpriseSecurityGroupRuleList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEnterpriseSecurityGroupRuleListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeFwEdgeIps(self, request):
         """串行防火墙IP开关列表
 

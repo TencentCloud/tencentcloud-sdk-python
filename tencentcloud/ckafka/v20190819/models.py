@@ -15177,6 +15177,129 @@ class FetchMessageListByOffsetResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class FetchMessageListByTimestampRequest(AbstractModel):
+    """FetchMessageListByTimestamp请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例Id
+        :type InstanceId: str
+        :param _Topic: 主题名
+        :type Topic: str
+        :param _Partition: 分区id
+        :type Partition: int
+        :param _StartTime: 查询开始时间，13位时间戳
+        :type StartTime: int
+        :param _SinglePartitionRecordNumber: 最大查询条数，默认20，最大20
+        :type SinglePartitionRecordNumber: int
+        """
+        self._InstanceId = None
+        self._Topic = None
+        self._Partition = None
+        self._StartTime = None
+        self._SinglePartitionRecordNumber = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Topic(self):
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def Partition(self):
+        return self._Partition
+
+    @Partition.setter
+    def Partition(self, Partition):
+        self._Partition = Partition
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def SinglePartitionRecordNumber(self):
+        return self._SinglePartitionRecordNumber
+
+    @SinglePartitionRecordNumber.setter
+    def SinglePartitionRecordNumber(self, SinglePartitionRecordNumber):
+        self._SinglePartitionRecordNumber = SinglePartitionRecordNumber
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Topic = params.get("Topic")
+        self._Partition = params.get("Partition")
+        self._StartTime = params.get("StartTime")
+        self._SinglePartitionRecordNumber = params.get("SinglePartitionRecordNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FetchMessageListByTimestampResponse(AbstractModel):
+    """FetchMessageListByTimestamp返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 返回结果。注意，列表中不返回具体的消息内容（key、value），如果需要查询具体消息内容，请使用FetchMessageByOffset接口
+        :type Result: list of ConsumerRecord
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = []
+            for item in params.get("Result"):
+                obj = ConsumerRecord()
+                obj._deserialize(item)
+                self._Result.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class FieldParam(AbstractModel):
     """数据处理——处理链
 

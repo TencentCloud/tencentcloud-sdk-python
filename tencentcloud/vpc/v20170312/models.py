@@ -2897,7 +2897,7 @@ class AssociateNetworkInterfaceSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NetworkInterfaceIds: 弹性网卡实例ID。形如：eni-pxir56ns。每次请求的实例的上限为100。
+        :param _NetworkInterfaceIds: 弹性网卡实例ID。形如：eni-pxir56ns。每次请求的实例的上限为100。本接口不支持主网卡绑定安全组。
         :type NetworkInterfaceIds: list of str
         :param _SecurityGroupIds: 安全组实例ID，例如：sg-33ocnj9n，可通过DescribeSecurityGroups获取。每次请求的实例的上限为100。
         :type SecurityGroupIds: list of str
@@ -30718,9 +30718,9 @@ class EnableRoutesRequest(AbstractModel):
         r"""
         :param _RouteTableId: 路由表唯一ID。
         :type RouteTableId: str
-        :param _RouteIds: 路由策略ID。不能和RouteItemIds同时使用，但至少输入一个。该参数取值可通过查询路由列表（[DescribeRouteTables](https://cloud.tencent.com/document/product/215/15763)）获取。
+        :param _RouteIds: 路由策略ID。不能和RouteItemIds同时使用，但至少输入一个。单次处理上限100个。该参数取值可通过查询路由列表（[DescribeRouteTables](https://cloud.tencent.com/document/product/215/15763)）获取。
         :type RouteIds: list of int non-negative
-        :param _RouteItemIds: 路由策略唯一ID。不能和RouteIds同时使用，但至少输入一个。该参数取值可通过查询路由列表（[DescribeRouteTables](https://cloud.tencent.com/document/product/215/15763)）获取。
+        :param _RouteItemIds: 路由策略唯一ID。不能和RouteIds同时使用，但至少输入一个。单次处理上限100个。该参数取值可通过查询路由列表（[DescribeRouteTables](https://cloud.tencent.com/document/product/215/15763)）获取。
         :type RouteItemIds: list of str
         """
         self._RouteTableId = None

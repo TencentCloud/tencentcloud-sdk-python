@@ -1637,6 +1637,29 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def FetchMessageListByTimestamp(self, request):
+        """根据时间戳查询消息列表
+
+        :param request: Request instance for FetchMessageListByTimestamp.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.FetchMessageListByTimestampRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.FetchMessageListByTimestampResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("FetchMessageListByTimestamp", params, headers=headers)
+            response = json.loads(body)
+            model = models.FetchMessageListByTimestampResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def InquireCkafkaPrice(self, request):
         """Ckafka实例购买/续费询价
 

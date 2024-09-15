@@ -1173,6 +1173,9 @@ class Context(AbstractModel):
         :param _FileInfos: 文档信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileInfos: list of MsgFileInfo
+        :param _ReplyMethod: 回复方式，15：澄清确认回复
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReplyMethod: int
         """
         self._RecordBizId = None
         self._IsVisitor = None
@@ -1180,6 +1183,7 @@ class Context(AbstractModel):
         self._Avatar = None
         self._Content = None
         self._FileInfos = None
+        self._ReplyMethod = None
 
     @property
     def RecordBizId(self):
@@ -1229,6 +1233,14 @@ class Context(AbstractModel):
     def FileInfos(self, FileInfos):
         self._FileInfos = FileInfos
 
+    @property
+    def ReplyMethod(self):
+        return self._ReplyMethod
+
+    @ReplyMethod.setter
+    def ReplyMethod(self, ReplyMethod):
+        self._ReplyMethod = ReplyMethod
+
 
     def _deserialize(self, params):
         self._RecordBizId = params.get("RecordBizId")
@@ -1242,6 +1254,7 @@ class Context(AbstractModel):
                 obj = MsgFileInfo()
                 obj._deserialize(item)
                 self._FileInfos.append(obj)
+        self._ReplyMethod = params.get("ReplyMethod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6894,7 +6907,7 @@ class GetMsgRecordRequest(AbstractModel):
         :type SessionId: str
         :param _LastRecordId: 最后一条记录ID
         :type LastRecordId: str
-        :param _BotAppKey: 应用AppKey
+        :param _BotAppKey: 应用AppKey, 当Type=5[API访客]时, 该字段必填
         :type BotAppKey: str
         :param _Scene: 场景, 体验: 1; 正式: 2
         :type Scene: int
@@ -12654,6 +12667,7 @@ class MsgRecord(AbstractModel):
         :param _IsLlmGenerated: 是否大模型
         :type IsLlmGenerated: bool
         :param _ImageUrls: 图片链接，可公有读
+注意：此字段可能返回 null，表示取不到有效值。
         :type ImageUrls: list of str
         :param _TokenStat: 当次 token 统计信息
 注意：此字段可能返回 null，表示取不到有效值。
@@ -12684,6 +12698,9 @@ class MsgRecord(AbstractModel):
         :param _FileInfos: 用户传入的文件信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileInfos: list of FileInfo
+        :param _QuoteInfos: 参考来源引用位置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QuoteInfos: list of QuoteInfo
         """
         self._Content = None
         self._SessionId = None
@@ -12707,6 +12724,7 @@ class MsgRecord(AbstractModel):
         self._OptionCards = None
         self._TaskFlow = None
         self._FileInfos = None
+        self._QuoteInfos = None
 
     @property
     def Content(self):
@@ -12884,6 +12902,14 @@ class MsgRecord(AbstractModel):
     def FileInfos(self, FileInfos):
         self._FileInfos = FileInfos
 
+    @property
+    def QuoteInfos(self):
+        return self._QuoteInfos
+
+    @QuoteInfos.setter
+    def QuoteInfos(self, QuoteInfos):
+        self._QuoteInfos = QuoteInfos
+
 
     def _deserialize(self, params):
         self._Content = params.get("Content")
@@ -12922,6 +12948,12 @@ class MsgRecord(AbstractModel):
                 obj = FileInfo()
                 obj._deserialize(item)
                 self._FileInfos.append(obj)
+        if params.get("QuoteInfos") is not None:
+            self._QuoteInfos = []
+            for item in params.get("QuoteInfos"):
+                obj = QuoteInfo()
+                obj._deserialize(item)
+                self._QuoteInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14085,6 +14117,53 @@ class QueryRewriteResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class QuoteInfo(AbstractModel):
+    """搜索引擎参考来源索引
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Position: 参考来源位置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Position: int
+        :param _Index: 参考来源索引顺序
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Index: str
+        """
+        self._Position = None
+        self._Index = None
+
+    @property
+    def Position(self):
+        return self._Position
+
+    @Position.setter
+    def Position(self, Position):
+        self._Position = Position
+
+    @property
+    def Index(self):
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+
+    def _deserialize(self, params):
+        self._Position = params.get("Position")
+        self._Index = params.get("Index")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RateMsgRecordRequest(AbstractModel):
     """RateMsgRecord请求参数结构体
 
@@ -14435,6 +14514,15 @@ class ReferDetail(AbstractModel):
         :param _OrgData: 原始内容
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrgData: str
+        :param _PageInfos: 页码信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageInfos: list of int non-negative
+        :param _SheetInfos: sheet信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SheetInfos: list of str
+        :param _DocBizId: 文档ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DocBizId: str
         """
         self._ReferBizId = None
         self._DocType = None
@@ -14446,6 +14534,9 @@ class ReferDetail(AbstractModel):
         self._Mark = None
         self._Highlights = None
         self._OrgData = None
+        self._PageInfos = None
+        self._SheetInfos = None
+        self._DocBizId = None
 
     @property
     def ReferBizId(self):
@@ -14527,6 +14618,30 @@ class ReferDetail(AbstractModel):
     def OrgData(self, OrgData):
         self._OrgData = OrgData
 
+    @property
+    def PageInfos(self):
+        return self._PageInfos
+
+    @PageInfos.setter
+    def PageInfos(self, PageInfos):
+        self._PageInfos = PageInfos
+
+    @property
+    def SheetInfos(self):
+        return self._SheetInfos
+
+    @SheetInfos.setter
+    def SheetInfos(self, SheetInfos):
+        self._SheetInfos = SheetInfos
+
+    @property
+    def DocBizId(self):
+        return self._DocBizId
+
+    @DocBizId.setter
+    def DocBizId(self, DocBizId):
+        self._DocBizId = DocBizId
+
 
     def _deserialize(self, params):
         self._ReferBizId = params.get("ReferBizId")
@@ -14544,6 +14659,9 @@ class ReferDetail(AbstractModel):
                 obj._deserialize(item)
                 self._Highlights.append(obj)
         self._OrgData = params.get("OrgData")
+        self._PageInfos = params.get("PageInfos")
+        self._SheetInfos = params.get("SheetInfos")
+        self._DocBizId = params.get("DocBizId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -2697,17 +2697,20 @@ class NFOption(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Resume: bool
         :param _NFVersion: Nextflow引擎版本，取值范围：
-- 22.10.4
-- 22.10.8 
+- 22.10.7
 - 23.10.1
 注意：此字段可能返回 null，表示取不到有效值。
         :type NFVersion: str
+        :param _LaunchDir: 启动路径。可填写指定缓存卷内的绝对路径，nextflow run 命令将在此路径执行。当WorkDir为COS路径时必填；当WorkDir为缓存卷路径时选填，不填默认使用WorkDir作为LaunchDir。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LaunchDir: str
         """
         self._Config = None
         self._Profile = None
         self._Report = None
         self._Resume = None
         self._NFVersion = None
+        self._LaunchDir = None
 
     @property
     def Config(self):
@@ -2749,6 +2752,14 @@ class NFOption(AbstractModel):
     def NFVersion(self, NFVersion):
         self._NFVersion = NFVersion
 
+    @property
+    def LaunchDir(self):
+        return self._LaunchDir
+
+    @LaunchDir.setter
+    def LaunchDir(self, LaunchDir):
+        self._LaunchDir = LaunchDir
+
 
     def _deserialize(self, params):
         self._Config = params.get("Config")
@@ -2756,6 +2767,7 @@ class NFOption(AbstractModel):
         self._Report = params.get("Report")
         self._Resume = params.get("Resume")
         self._NFVersion = params.get("NFVersion")
+        self._LaunchDir = params.get("LaunchDir")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3338,7 +3350,7 @@ class RunApplicationRequest(AbstractModel):
         :type Option: :class:`tencentcloud.omics.v20221128.models.RunOption`
         :param _NFOption: Nextflow运行选项。
         :type NFOption: :class:`tencentcloud.omics.v20221128.models.NFOption`
-        :param _WorkDir: 工作目录，可填写指定缓存卷内的绝对路径，不填使用默认缓存卷内的默认路径，暂时仅支持Nextflow。
+        :param _WorkDir: 工作目录，当前仅支持Nextflow。可填写指定缓存卷内的绝对路径或者COS路径，不填使用默认缓存卷内的默认路径。如果使用COS路径，NFOption中LaunchDir需填写指定缓存卷内的绝对路径作为启动路径。
         :type WorkDir: str
         :param _AccessMode: 访问模式，不填默认私有。取值范围
 - PRIVATE：私有应用
