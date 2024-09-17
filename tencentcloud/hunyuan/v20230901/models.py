@@ -133,11 +133,11 @@ class ChatCompletionsRequest(AbstractModel):
 3. 关闭时将直接由主模型生成回复内容，可以降低响应时延（对于流式输出时的首字时延尤为明显）。但在少数场景里，回复效果可能会下降。
 4. 安全审核能力不属于功能增强范围，不受此字段影响。
         :type EnableEnhancement: bool
-        :param _Tools: 可调用的工具列表，仅对 hunyuan-functioncall 模型生效。
+        :param _Tools: 可调用的工具列表，仅对 hunyuan-pro、hunyuan-turbo、hunyuan-functioncall 模型生效。
         :type Tools: list of Tool
         :param _ToolChoice: 工具使用选项，可选值包括 none、auto、custom。
 说明：
-1. 仅对 hunyuan-functioncall 模型生效。
+1. 仅对 hunyuan-pro、hunyuan-turbo、hunyuan-functioncall 模型生效。
 2. none：不调用工具；auto：模型自行选择生成回复或调用工具；custom：强制模型调用指定的工具。
 3. 未设置时，默认值为auto
         :type ToolChoice: str
@@ -153,6 +153,13 @@ class ChatCompletionsRequest(AbstractModel):
         :type Citation: bool
         :param _EnableSpeedSearch: 是否开启极速版搜索，默认false，不开启；在开启且命中搜索时，会启用极速版搜索，流式输出首字返回更快。
         :type EnableSpeedSearch: bool
+        :param _EnableMultimedia: 图文并茂开关。
+说明：
+1. 该参数仅在功能增强（如搜索）开关开启（EnableEnhancement=true）时生效。
+2. hunyuan-lite 无图文并茂能力，该参数对 hunyuan-lite 版本不生效。
+3. 未传值时默认关闭。
+4. 开启并搜索到对应的多媒体信息时，会输出对应的多媒体地址，可以定制个性化的图文消息。
+        :type EnableMultimedia: bool
         """
         self._Model = None
         self._Messages = None
@@ -167,6 +174,7 @@ class ChatCompletionsRequest(AbstractModel):
         self._SearchInfo = None
         self._Citation = None
         self._EnableSpeedSearch = None
+        self._EnableMultimedia = None
 
     @property
     def Model(self):
@@ -272,6 +280,14 @@ class ChatCompletionsRequest(AbstractModel):
     def EnableSpeedSearch(self, EnableSpeedSearch):
         self._EnableSpeedSearch = EnableSpeedSearch
 
+    @property
+    def EnableMultimedia(self):
+        return self._EnableMultimedia
+
+    @EnableMultimedia.setter
+    def EnableMultimedia(self, EnableMultimedia):
+        self._EnableMultimedia = EnableMultimedia
+
 
     def _deserialize(self, params):
         self._Model = params.get("Model")
@@ -299,6 +315,7 @@ class ChatCompletionsRequest(AbstractModel):
         self._SearchInfo = params.get("SearchInfo")
         self._Citation = params.get("Citation")
         self._EnableSpeedSearch = params.get("EnableSpeedSearch")
+        self._EnableMultimedia = params.get("EnableMultimedia")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -335,6 +352,11 @@ class ChatCompletionsResponse(AbstractModel):
         :type ModerationLevel: str
         :param _SearchInfo: 搜索结果信息
         :type SearchInfo: :class:`tencentcloud.hunyuan.v20230901.models.SearchInfo`
+        :param _Replaces: 多媒体信息。
+说明：
+1. 可以用多媒体信息替换回复内容里的占位符，得到完整的图文信息。
+2. 可能会出现回复内容里存在占位符，但是因为审核等原因没有返回多媒体信息。
+        :type Replaces: list of Replace
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
         :type RequestId: str
         """
@@ -346,6 +368,7 @@ class ChatCompletionsResponse(AbstractModel):
         self._ErrorMsg = None
         self._ModerationLevel = None
         self._SearchInfo = None
+        self._Replaces = None
         self._RequestId = None
 
     @property
@@ -413,6 +436,14 @@ class ChatCompletionsResponse(AbstractModel):
         self._SearchInfo = SearchInfo
 
     @property
+    def Replaces(self):
+        return self._Replaces
+
+    @Replaces.setter
+    def Replaces(self, Replaces):
+        self._Replaces = Replaces
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -441,6 +472,12 @@ class ChatCompletionsResponse(AbstractModel):
         if params.get("SearchInfo") is not None:
             self._SearchInfo = SearchInfo()
             self._SearchInfo._deserialize(params.get("SearchInfo"))
+        if params.get("Replaces") is not None:
+            self._Replaces = []
+            for item in params.get("Replaces"):
+                obj = Replace()
+                obj._deserialize(item)
+                self._Replaces.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -1306,6 +1343,63 @@ class Message(AbstractModel):
         
 
 
+class Multimedia(AbstractModel):
+    """图文并茂详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 多媒体类型，image：图片。
+        :type Type: str
+        :param _Url: 多媒体预览地址。
+        :type Url: str
+        :param _JumpUrl: 多媒体详情地址。
+        :type JumpUrl: str
+        """
+        self._Type = None
+        self._Url = None
+        self._JumpUrl = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def JumpUrl(self):
+        return self._JumpUrl
+
+    @JumpUrl.setter
+    def JumpUrl(self, JumpUrl):
+        self._JumpUrl = JumpUrl
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Url = params.get("Url")
+        self._JumpUrl = params.get("JumpUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QueryHunyuanImageChatJobRequest(AbstractModel):
     """QueryHunyuanImageChatJob请求参数结构体
 
@@ -1618,6 +1712,56 @@ class QueryHunyuanImageJobResponse(AbstractModel):
         self._ResultDetails = params.get("ResultDetails")
         self._RevisedPrompt = params.get("RevisedPrompt")
         self._RequestId = params.get("RequestId")
+
+
+class Replace(AbstractModel):
+    """图文并茂占位符替换信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 占位符序号
+        :type Id: str
+        :param _Multimedia: 多媒体详情
+        :type Multimedia: list of Multimedia
+        """
+        self._Id = None
+        self._Multimedia = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Multimedia(self):
+        return self._Multimedia
+
+    @Multimedia.setter
+    def Multimedia(self, Multimedia):
+        self._Multimedia = Multimedia
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        if params.get("Multimedia") is not None:
+            self._Multimedia = []
+            for item in params.get("Multimedia"):
+                obj = Multimedia()
+                obj._deserialize(item)
+                self._Multimedia.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SearchInfo(AbstractModel):
