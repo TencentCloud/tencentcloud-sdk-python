@@ -11183,6 +11183,8 @@ class CreateVpcEndPointRequest(AbstractModel):
         :type EndPointVip: str
         :param _SecurityGroupId: 安全组ID。
         :type SecurityGroupId: str
+        :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        :type Tags: list of Tag
         """
         self._VpcId = None
         self._SubnetId = None
@@ -11190,6 +11192,7 @@ class CreateVpcEndPointRequest(AbstractModel):
         self._EndPointServiceId = None
         self._EndPointVip = None
         self._SecurityGroupId = None
+        self._Tags = None
 
     @property
     def VpcId(self):
@@ -11239,6 +11242,14 @@ class CreateVpcEndPointRequest(AbstractModel):
     def SecurityGroupId(self, SecurityGroupId):
         self._SecurityGroupId = SecurityGroupId
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -11247,6 +11258,12 @@ class CreateVpcEndPointRequest(AbstractModel):
         self._EndPointServiceId = params.get("EndPointServiceId")
         self._EndPointVip = params.get("EndPointVip")
         self._SecurityGroupId = params.get("SecurityGroupId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -12193,7 +12193,7 @@ class EnterpriseSecurityGroupRuleRuleInfo(AbstractModel):
         :param _IsDelay: 是否延迟下发
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsDelay: int
-        :param _ServiceTemplateId: 服务模版id
+        :param _ServiceTemplateId: 服务模板id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceTemplateId: str
         :param _SouInstanceName: 源资产名称
@@ -12208,7 +12208,7 @@ class EnterpriseSecurityGroupRuleRuleInfo(AbstractModel):
         :param _SouCidr: 源资产网段信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type SouCidr: str
-        :param _SouParameterName: 源模版名称
+        :param _SouParameterName: 源模板名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type SouParameterName: str
         :param _InstanceName: 目的资产名称
@@ -12223,10 +12223,10 @@ class EnterpriseSecurityGroupRuleRuleInfo(AbstractModel):
         :param _Cidr: 目的资产网段信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cidr: str
-        :param _ParameterName: 目的模版名称
+        :param _ParameterName: 目的模板名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParameterName: str
-        :param _ProtocolPortName: 端口模版名称
+        :param _ProtocolPortName: 端口模板名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProtocolPortName: str
         :param _BetaList: 自动化任务任务信息
