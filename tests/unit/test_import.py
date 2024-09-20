@@ -859,6 +859,11 @@ def test_import_mps():
     from tencentcloud.mps.v20190612 import models
 
 
+def test_import_mqtt():
+    from tencentcloud.mqtt.v20240516 import mqtt_client
+    from tencentcloud.mqtt.v20240516 import models
+
+
 def test_import_mrs():
     from tencentcloud.mrs.v20200910 import mrs_client
     from tencentcloud.mrs.v20200910 import models
