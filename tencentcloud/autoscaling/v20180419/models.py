@@ -10707,10 +10707,17 @@ WAKE_UP_STOPPED_SCALING：扩容优先开机。扩容时优先对已关机的实
         :type ScalingMode: str
         :param _ReplaceLoadBalancerUnhealthy: 开启负载均衡不健康替换服务。若开启则对于负载均衡健康检查判断不健康的实例，弹性伸缩服务会进行替换。若不指定该参数，则默认为 False。
         :type ReplaceLoadBalancerUnhealthy: bool
+        :param _ReplaceMode: 不健康替换服务的替换模式。取值范围：
+RECREATE：重建实例替代原有不健康实例；
+RESET：对原有不健康实例进行重装系统操作，可保持数据盘、内网IP、实例id等信息不发生变化，实例登录设置、主机名、增强服务和 UserData 与当前启动配置保持一致。
+默认取值：RECREATE
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReplaceMode: str
         """
         self._ReplaceMonitorUnhealthy = None
         self._ScalingMode = None
         self._ReplaceLoadBalancerUnhealthy = None
+        self._ReplaceMode = None
 
     @property
     def ReplaceMonitorUnhealthy(self):
@@ -10736,11 +10743,20 @@ WAKE_UP_STOPPED_SCALING：扩容优先开机。扩容时优先对已关机的实
     def ReplaceLoadBalancerUnhealthy(self, ReplaceLoadBalancerUnhealthy):
         self._ReplaceLoadBalancerUnhealthy = ReplaceLoadBalancerUnhealthy
 
+    @property
+    def ReplaceMode(self):
+        return self._ReplaceMode
+
+    @ReplaceMode.setter
+    def ReplaceMode(self, ReplaceMode):
+        self._ReplaceMode = ReplaceMode
+
 
     def _deserialize(self, params):
         self._ReplaceMonitorUnhealthy = params.get("ReplaceMonitorUnhealthy")
         self._ScalingMode = params.get("ScalingMode")
         self._ReplaceLoadBalancerUnhealthy = params.get("ReplaceLoadBalancerUnhealthy")
+        self._ReplaceMode = params.get("ReplaceMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

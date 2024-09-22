@@ -473,6 +473,29 @@ class AsrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetUsageByDate(self, request):
+        """查询用户用量
+
+        :param request: Request instance for GetUsageByDate.
+        :type request: :class:`tencentcloud.asr.v20190614.models.GetUsageByDateRequest`
+        :rtype: :class:`tencentcloud.asr.v20190614.models.GetUsageByDateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetUsageByDate", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetUsageByDateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyCustomization(self, request):
         """用户通过该接口可以更新自学习模型，如模型名称、模型类型、模型语料。
 

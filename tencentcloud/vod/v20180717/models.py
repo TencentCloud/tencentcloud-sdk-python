@@ -21174,6 +21174,8 @@ class DescribeEventConfigResponse(AbstractModel):
         :type UploadMediaCompleteEventSwitch: str
         :param _DeleteMediaCompleteEventSwitch: 是否接收 [视频删除完成](https://cloud.tencent.com/document/product/266/13434) 事件通知，"OFF" 为忽略该事件通知，"ON" 为接收事件通知。
         :type DeleteMediaCompleteEventSwitch: str
+        :param _PersistenceCompleteEventSwitch: 是否接收剪辑固化完成事件通知，"OFF" 为忽略该事件通知，"ON" 为接收事件通知。
+        :type PersistenceCompleteEventSwitch: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -21181,6 +21183,7 @@ class DescribeEventConfigResponse(AbstractModel):
         self._NotificationUrl = None
         self._UploadMediaCompleteEventSwitch = None
         self._DeleteMediaCompleteEventSwitch = None
+        self._PersistenceCompleteEventSwitch = None
         self._RequestId = None
 
     @property
@@ -21216,6 +21219,14 @@ class DescribeEventConfigResponse(AbstractModel):
         self._DeleteMediaCompleteEventSwitch = DeleteMediaCompleteEventSwitch
 
     @property
+    def PersistenceCompleteEventSwitch(self):
+        return self._PersistenceCompleteEventSwitch
+
+    @PersistenceCompleteEventSwitch.setter
+    def PersistenceCompleteEventSwitch(self, PersistenceCompleteEventSwitch):
+        self._PersistenceCompleteEventSwitch = PersistenceCompleteEventSwitch
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -21229,6 +21240,7 @@ class DescribeEventConfigResponse(AbstractModel):
         self._NotificationUrl = params.get("NotificationUrl")
         self._UploadMediaCompleteEventSwitch = params.get("UploadMediaCompleteEventSwitch")
         self._DeleteMediaCompleteEventSwitch = params.get("DeleteMediaCompleteEventSwitch")
+        self._PersistenceCompleteEventSwitch = params.get("PersistenceCompleteEventSwitch")
         self._RequestId = params.get("RequestId")
 
 
@@ -27778,7 +27790,8 @@ class EventContent(AbstractModel):
 <li>ExtractCopyRightWatermarkComplete：提取版权水印完成；</li>
 <li>DescribeFileAttributesComplete：获取文件属性完成；</li>
 <li>QualityInspectComplete：音画质检测完成；</li>
-<li>QualityEnhanceComplete：音画质重生任务完成。</li>
+<li>QualityEnhanceComplete：音画质重生任务完成；</li>
+<li>PersistenceComplete：剪辑固化完成。</li>
 <b>兼容 2017 版的事件类型：</b>
 <li>TranscodeComplete：视频转码完成；</li>
 <li>ConcatComplete：视频拼接完成；</li>
@@ -27861,6 +27874,9 @@ class EventContent(AbstractModel):
         :param _MediaCastStatusChangedEvent: 媒体转推状态变化事件，当事件类型为 MediaCastStatusChanged 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MediaCastStatusChangedEvent: :class:`tencentcloud.vod.v20180717.models.MediaCastEvent`
+        :param _PersistenceCompleteEvent: 剪辑固化完成事件，当事件类型为 PersistenceComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PersistenceCompleteEvent: :class:`tencentcloud.vod.v20180717.models.PersistenceCompleteTask`
         """
         self._EventHandle = None
         self._EventType = None
@@ -27889,6 +27905,7 @@ class EventContent(AbstractModel):
         self._QualityInspectCompleteEvent = None
         self._QualityEnhanceCompleteEvent = None
         self._MediaCastStatusChangedEvent = None
+        self._PersistenceCompleteEvent = None
 
     @property
     def EventHandle(self):
@@ -28106,6 +28123,14 @@ class EventContent(AbstractModel):
     def MediaCastStatusChangedEvent(self, MediaCastStatusChangedEvent):
         self._MediaCastStatusChangedEvent = MediaCastStatusChangedEvent
 
+    @property
+    def PersistenceCompleteEvent(self):
+        return self._PersistenceCompleteEvent
+
+    @PersistenceCompleteEvent.setter
+    def PersistenceCompleteEvent(self, PersistenceCompleteEvent):
+        self._PersistenceCompleteEvent = PersistenceCompleteEvent
+
 
     def _deserialize(self, params):
         self._EventHandle = params.get("EventHandle")
@@ -28185,6 +28210,9 @@ class EventContent(AbstractModel):
         if params.get("MediaCastStatusChangedEvent") is not None:
             self._MediaCastStatusChangedEvent = MediaCastEvent()
             self._MediaCastStatusChangedEvent._deserialize(params.get("MediaCastStatusChangedEvent"))
+        if params.get("PersistenceCompleteEvent") is not None:
+            self._PersistenceCompleteEvent = PersistenceCompleteTask()
+            self._PersistenceCompleteEvent._deserialize(params.get("PersistenceCompleteEvent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38738,6 +38766,8 @@ class ModifyEventConfigRequest(AbstractModel):
         :type UploadMediaCompleteEventSwitch: str
         :param _DeleteMediaCompleteEventSwitch: 是否接收 [视频删除完成](https://cloud.tencent.com/document/product/266/13434) 事件通知，  默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。
         :type DeleteMediaCompleteEventSwitch: str
+        :param _PersistenceCompleteEventSwitch: 是否接收剪辑固化完成事件通知，  默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。
+        :type PersistenceCompleteEventSwitch: str
         :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         """
@@ -38745,6 +38775,7 @@ class ModifyEventConfigRequest(AbstractModel):
         self._NotificationUrl = None
         self._UploadMediaCompleteEventSwitch = None
         self._DeleteMediaCompleteEventSwitch = None
+        self._PersistenceCompleteEventSwitch = None
         self._SubAppId = None
 
     @property
@@ -38780,6 +38811,14 @@ class ModifyEventConfigRequest(AbstractModel):
         self._DeleteMediaCompleteEventSwitch = DeleteMediaCompleteEventSwitch
 
     @property
+    def PersistenceCompleteEventSwitch(self):
+        return self._PersistenceCompleteEventSwitch
+
+    @PersistenceCompleteEventSwitch.setter
+    def PersistenceCompleteEventSwitch(self, PersistenceCompleteEventSwitch):
+        self._PersistenceCompleteEventSwitch = PersistenceCompleteEventSwitch
+
+    @property
     def SubAppId(self):
         return self._SubAppId
 
@@ -38793,6 +38832,7 @@ class ModifyEventConfigRequest(AbstractModel):
         self._NotificationUrl = params.get("NotificationUrl")
         self._UploadMediaCompleteEventSwitch = params.get("UploadMediaCompleteEventSwitch")
         self._DeleteMediaCompleteEventSwitch = params.get("DeleteMediaCompleteEventSwitch")
+        self._PersistenceCompleteEventSwitch = params.get("PersistenceCompleteEventSwitch")
         self._SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -42719,6 +42759,56 @@ class ParseStreamingManifestResponse(AbstractModel):
     def _deserialize(self, params):
         self._MediaSegmentSet = params.get("MediaSegmentSet")
         self._RequestId = params.get("RequestId")
+
+
+class PersistenceCompleteTask(AbstractModel):
+    """剪辑固化任务信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileId: 固化生成的媒体 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileId: str
+        :param _PersistenceSource: 剪辑固化的来源，有以下三种。
+<li>SimpleHlsClip：来自简单 HLS 剪辑；</li>
+<li>FastEditMedia：来自快速媒体编辑；</li>
+<li>LiveRealTimeClip:来自直播即时剪辑。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PersistenceSource: str
+        """
+        self._FileId = None
+        self._PersistenceSource = None
+
+    @property
+    def FileId(self):
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def PersistenceSource(self):
+        return self._PersistenceSource
+
+    @PersistenceSource.setter
+    def PersistenceSource(self, PersistenceSource):
+        self._PersistenceSource = PersistenceSource
+
+
+    def _deserialize(self, params):
+        self._FileId = params.get("FileId")
+        self._PersistenceSource = params.get("PersistenceSource")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class PlayStatFileInfo(AbstractModel):

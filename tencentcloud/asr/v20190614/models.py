@@ -2160,6 +2160,108 @@ class GetModelInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetUsageByDateRequest(AbstractModel):
+    """GetUsageByDate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BizNameList: 需要查询的业务类型名字列表
+- asr_rt 实时识别
+- asr_rec 录音文件识别
+        :type BizNameList: list of str
+        :param _StartDate: 查询开始时间
+开始时间包含当天，支持 YYYY-MM-DD 日期以国内时区为准
+开始时间到结束时间需要在3个月以内
+        :type StartDate: str
+        :param _EndDate: 查询结束时间
+结束时间包含当天，，支持 YYYY-MM-DD 日期以国内时区为准
+开始时间到结束时间需要在3个月以内
+        :type EndDate: str
+        """
+        self._BizNameList = None
+        self._StartDate = None
+        self._EndDate = None
+
+    @property
+    def BizNameList(self):
+        return self._BizNameList
+
+    @BizNameList.setter
+    def BizNameList(self, BizNameList):
+        self._BizNameList = BizNameList
+
+    @property
+    def StartDate(self):
+        return self._StartDate
+
+    @StartDate.setter
+    def StartDate(self, StartDate):
+        self._StartDate = StartDate
+
+    @property
+    def EndDate(self):
+        return self._EndDate
+
+    @EndDate.setter
+    def EndDate(self, EndDate):
+        self._EndDate = EndDate
+
+
+    def _deserialize(self, params):
+        self._BizNameList = params.get("BizNameList")
+        self._StartDate = params.get("StartDate")
+        self._EndDate = params.get("EndDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetUsageByDateResponse(AbstractModel):
+    """GetUsageByDate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 用量次数
+        :type Data: :class:`tencentcloud.asr.v20190614.models.UsageByDateInfoData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = UsageByDateInfoData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class HotWord(AbstractModel):
     """[热词的词和权重](https://cloud.tencent.com/document/product/1093/41111#2.-.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0)
 
@@ -3888,6 +3990,107 @@ class UpdateAsrVocabResponse(AbstractModel):
     def _deserialize(self, params):
         self._VocabId = params.get("VocabId")
         self._RequestId = params.get("RequestId")
+
+
+class UsageByDateInfo(AbstractModel):
+    """用户用量信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BizName: 业务类型名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BizName: str
+        :param _Count: 识别次数
+单位：次
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        :param _Duration: 识别时长
+单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Duration: int
+        """
+        self._BizName = None
+        self._Count = None
+        self._Duration = None
+
+    @property
+    def BizName(self):
+        return self._BizName
+
+    @BizName.setter
+    def BizName(self, BizName):
+        self._BizName = BizName
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+
+    def _deserialize(self, params):
+        self._BizName = params.get("BizName")
+        self._Count = params.get("Count")
+        self._Duration = params.get("Duration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UsageByDateInfoData(AbstractModel):
+    """用户用量信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UsageByDateInfoList: 用量信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsageByDateInfoList: list of UsageByDateInfo
+        """
+        self._UsageByDateInfoList = None
+
+    @property
+    def UsageByDateInfoList(self):
+        return self._UsageByDateInfoList
+
+    @UsageByDateInfoList.setter
+    def UsageByDateInfoList(self, UsageByDateInfoList):
+        self._UsageByDateInfoList = UsageByDateInfoList
+
+
+    def _deserialize(self, params):
+        if params.get("UsageByDateInfoList") is not None:
+            self._UsageByDateInfoList = []
+            for item in params.get("UsageByDateInfoList"):
+                obj = UsageByDateInfo()
+                obj._deserialize(item)
+                self._UsageByDateInfoList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class VerifyTop(AbstractModel):

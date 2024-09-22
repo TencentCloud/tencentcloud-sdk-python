@@ -1479,7 +1479,9 @@ class TcssClient(AbstractClient):
 
 
     def DeleteCompliancePolicyItemFromWhitelist(self, request):
-        """从白名单中删除将指定的检测项。
+        """产品重构优化，这几个接口已经没有调用了
+
+        从白名单中删除将指定的检测项。
 
         :param request: Request instance for DeleteCompliancePolicyItemFromWhitelist.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteCompliancePolicyItemFromWhitelistRequest`

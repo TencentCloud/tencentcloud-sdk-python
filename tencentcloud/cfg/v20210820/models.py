@@ -2309,12 +2309,15 @@ class ModifyTaskRunStatusRequest(AbstractModel):
         :type Summary: str
         :param _Issue: 问题以及改进
         :type Issue: str
+        :param _Record: 演练记录
+        :type Record: str
         """
         self._TaskId = None
         self._Status = None
         self._IsExpect = None
         self._Summary = None
         self._Issue = None
+        self._Record = None
 
     @property
     def TaskId(self):
@@ -2356,6 +2359,14 @@ class ModifyTaskRunStatusRequest(AbstractModel):
     def Issue(self, Issue):
         self._Issue = Issue
 
+    @property
+    def Record(self):
+        return self._Record
+
+    @Record.setter
+    def Record(self, Record):
+        self._Record = Record
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -2363,6 +2374,7 @@ class ModifyTaskRunStatusRequest(AbstractModel):
         self._IsExpect = params.get("IsExpect")
         self._Summary = params.get("Summary")
         self._Issue = params.get("Issue")
+        self._Record = params.get("Record")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -10888,7 +10888,7 @@ class DescribeDSPAAssessmentTemplatesRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 结果集个数限制。默认为20，最大值为100
         :type Limit: int
-        :param _Filters: 过滤项。支持模糊搜索：（TemplateId，TemplateName）支持过滤：Source：模板来源，system / userUseType：模板类型，auto，semi-auto，law等Status：模板启用状态，draft / launched，ComplianceId：关联的分类分级模版id
+        :param _Filters: 过滤项。支持模糊搜索：（TemplateId，TemplateName）支持过滤：Source：模板来源，system / userUseType：模板类型，auto，semi-auto，law等Status：模板启用状态，draft / launched，ComplianceId：关联的分类分级模板id
         :type Filters: list of DspaAssessmentFilter
         """
         self._DspaId = None

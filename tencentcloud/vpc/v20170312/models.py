@@ -646,6 +646,9 @@ class Address(AbstractModel):
         :param _BandwidthPackageId: 当前公网IP所关联的带宽包ID，如果该公网IP未使用带宽包计费，则返回为空
 注意：此字段可能返回 null，表示取不到有效值。
         :type BandwidthPackageId: str
+        :param _UnVpcId: 传统弹性公网IPv6所属vpc唯一ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnVpcId: str
         """
         self._AddressId = None
         self._AddressName = None
@@ -672,6 +675,7 @@ class Address(AbstractModel):
         self._AntiDDoSPackageId = None
         self._RenewFlag = None
         self._BandwidthPackageId = None
+        self._UnVpcId = None
 
     @property
     def AddressId(self):
@@ -873,6 +877,14 @@ class Address(AbstractModel):
     def BandwidthPackageId(self, BandwidthPackageId):
         self._BandwidthPackageId = BandwidthPackageId
 
+    @property
+    def UnVpcId(self):
+        return self._UnVpcId
+
+    @UnVpcId.setter
+    def UnVpcId(self, UnVpcId):
+        self._UnVpcId = UnVpcId
+
 
     def _deserialize(self, params):
         self._AddressId = params.get("AddressId")
@@ -907,6 +919,7 @@ class Address(AbstractModel):
         self._AntiDDoSPackageId = params.get("AntiDDoSPackageId")
         self._RenewFlag = params.get("RenewFlag")
         self._BandwidthPackageId = params.get("BandwidthPackageId")
+        self._UnVpcId = params.get("UnVpcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43041,16 +43054,26 @@ class Quota(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _QuotaId: 配额名称，取值范围：<br><li>`TOTAL_EIP_QUOTA`：用户当前地域下EIP的配额数；<br><li>`DAILY_EIP_APPLY`：用户当前地域下今日申购次数；<br><li>`DAILY_PUBLIC_IP_ASSIGN`：用户当前地域下，重新分配公网 IP次数。
+        :param _QuotaId: 配额名称，取值范围：
+- `TOTAL_EIP_QUOTA`：用户当前地域下EIP的配额数；
+- `DAILY_EIP_APPLY`：用户当前地域下今日申购次数；
+- `DAILY_PUBLIC_IP_ASSIGN`：用户当前地域下，重新分配公网 IP次数；
+- `TOTAL_EIP6_QUOTA`：用户当前地域下，传统弹性公网IPv6的配额数；
+- `BGP_EIPv6_QUOTA`：用户当前地域下，可申请的 BGP 弹性公网IPv6 的配额数；
+- `SINGLEISP_EIPv6_QUOTA`：用户当前地域下，可申请的静态单线弹性公网IPv6 的配额数；
         :type QuotaId: str
         :param _QuotaCurrent: 当前数量
         :type QuotaCurrent: int
         :param _QuotaLimit: 配额数量
         :type QuotaLimit: int
+        :param _QuotaGroup: 配额所属的网络组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QuotaGroup: str
         """
         self._QuotaId = None
         self._QuotaCurrent = None
         self._QuotaLimit = None
+        self._QuotaGroup = None
 
     @property
     def QuotaId(self):
@@ -43076,11 +43099,20 @@ class Quota(AbstractModel):
     def QuotaLimit(self, QuotaLimit):
         self._QuotaLimit = QuotaLimit
 
+    @property
+    def QuotaGroup(self):
+        return self._QuotaGroup
+
+    @QuotaGroup.setter
+    def QuotaGroup(self, QuotaGroup):
+        self._QuotaGroup = QuotaGroup
+
 
     def _deserialize(self, params):
         self._QuotaId = params.get("QuotaId")
         self._QuotaCurrent = params.get("QuotaCurrent")
         self._QuotaLimit = params.get("QuotaLimit")
+        self._QuotaGroup = params.get("QuotaGroup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

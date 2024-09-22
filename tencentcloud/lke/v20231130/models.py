@@ -3379,6 +3379,474 @@ class DescribeAttributeLabelResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCallStatsGraphRequest(AbstractModel):
+    """DescribeCallStatsGraph请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UinAccount: uin
+        :type UinAccount: list of str
+        :param _LoginUin: 登录用户主账号(集成商模式必填)
+        :type LoginUin: str
+        :param _LoginSubAccountUin: 登录用户子账号(集成商模式必填)
+        :type LoginSubAccountUin: str
+        :param _SubBizType: 子业务类型
+        :type SubBizType: str
+        :param _ModelName: 模型标识
+        :type ModelName: str
+        :param _StartTime: 开始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _AppBizIds: 应用id列表
+        :type AppBizIds: list of str
+        """
+        self._UinAccount = None
+        self._LoginUin = None
+        self._LoginSubAccountUin = None
+        self._SubBizType = None
+        self._ModelName = None
+        self._StartTime = None
+        self._EndTime = None
+        self._AppBizIds = None
+
+    @property
+    def UinAccount(self):
+        return self._UinAccount
+
+    @UinAccount.setter
+    def UinAccount(self, UinAccount):
+        self._UinAccount = UinAccount
+
+    @property
+    def LoginUin(self):
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+    @property
+    def LoginSubAccountUin(self):
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
+
+    @property
+    def SubBizType(self):
+        return self._SubBizType
+
+    @SubBizType.setter
+    def SubBizType(self, SubBizType):
+        self._SubBizType = SubBizType
+
+    @property
+    def ModelName(self):
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def AppBizIds(self):
+        return self._AppBizIds
+
+    @AppBizIds.setter
+    def AppBizIds(self, AppBizIds):
+        self._AppBizIds = AppBizIds
+
+
+    def _deserialize(self, params):
+        self._UinAccount = params.get("UinAccount")
+        self._LoginUin = params.get("LoginUin")
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
+        self._SubBizType = params.get("SubBizType")
+        self._ModelName = params.get("ModelName")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._AppBizIds = params.get("AppBizIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCallStatsGraphResponse(AbstractModel):
+    """DescribeCallStatsGraph返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: 统计信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of Stat
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = Stat()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConcurrencyUsageGraphRequest(AbstractModel):
+    """DescribeConcurrencyUsageGraph请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelName: 模型标识
+        :type ModelName: str
+        :param _StartTime: 开始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _UinAccount: uin
+        :type UinAccount: list of str
+        :param _LoginUin: 登录用户主账号(集成商模式必填)
+        :type LoginUin: str
+        :param _LoginSubAccountUin: 登录用户子账号(集成商模式必填)
+        :type LoginSubAccountUin: str
+        :param _SubBizType: 子业务类型
+        :type SubBizType: str
+        :param _AppBizIds: 应用id列表
+        :type AppBizIds: list of str
+        """
+        self._ModelName = None
+        self._StartTime = None
+        self._EndTime = None
+        self._UinAccount = None
+        self._LoginUin = None
+        self._LoginSubAccountUin = None
+        self._SubBizType = None
+        self._AppBizIds = None
+
+    @property
+    def ModelName(self):
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def UinAccount(self):
+        return self._UinAccount
+
+    @UinAccount.setter
+    def UinAccount(self, UinAccount):
+        self._UinAccount = UinAccount
+
+    @property
+    def LoginUin(self):
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+    @property
+    def LoginSubAccountUin(self):
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
+
+    @property
+    def SubBizType(self):
+        return self._SubBizType
+
+    @SubBizType.setter
+    def SubBizType(self, SubBizType):
+        self._SubBizType = SubBizType
+
+    @property
+    def AppBizIds(self):
+        return self._AppBizIds
+
+    @AppBizIds.setter
+    def AppBizIds(self, AppBizIds):
+        self._AppBizIds = AppBizIds
+
+
+    def _deserialize(self, params):
+        self._ModelName = params.get("ModelName")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._UinAccount = params.get("UinAccount")
+        self._LoginUin = params.get("LoginUin")
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
+        self._SubBizType = params.get("SubBizType")
+        self._AppBizIds = params.get("AppBizIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConcurrencyUsageGraphResponse(AbstractModel):
+    """DescribeConcurrencyUsageGraph返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _X: 统计信息
+        :type X: list of str
+        :param _AvailableY: 可用并发y轴坐标
+        :type AvailableY: list of int
+        :param _SuccessCallY: 成功调用并发y轴坐标
+        :type SuccessCallY: list of int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._X = None
+        self._AvailableY = None
+        self._SuccessCallY = None
+        self._RequestId = None
+
+    @property
+    def X(self):
+        return self._X
+
+    @X.setter
+    def X(self, X):
+        self._X = X
+
+    @property
+    def AvailableY(self):
+        return self._AvailableY
+
+    @AvailableY.setter
+    def AvailableY(self, AvailableY):
+        self._AvailableY = AvailableY
+
+    @property
+    def SuccessCallY(self):
+        return self._SuccessCallY
+
+    @SuccessCallY.setter
+    def SuccessCallY(self, SuccessCallY):
+        self._SuccessCallY = SuccessCallY
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._X = params.get("X")
+        self._AvailableY = params.get("AvailableY")
+        self._SuccessCallY = params.get("SuccessCallY")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConcurrencyUsageRequest(AbstractModel):
+    """DescribeConcurrencyUsage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelName: 模型标识
+        :type ModelName: str
+        :param _StartTime: 开始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _AppBizIds: 应用id列表
+        :type AppBizIds: list of str
+        """
+        self._ModelName = None
+        self._StartTime = None
+        self._EndTime = None
+        self._AppBizIds = None
+
+    @property
+    def ModelName(self):
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def AppBizIds(self):
+        return self._AppBizIds
+
+    @AppBizIds.setter
+    def AppBizIds(self, AppBizIds):
+        self._AppBizIds = AppBizIds
+
+
+    def _deserialize(self, params):
+        self._ModelName = params.get("ModelName")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._AppBizIds = params.get("AppBizIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConcurrencyUsageResponse(AbstractModel):
+    """DescribeConcurrencyUsage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AvailableConcurrency: 可用并发数
+        :type AvailableConcurrency: int
+        :param _ConcurrencyPeak: 并发峰值
+        :type ConcurrencyPeak: int
+        :param _ExceedUsageTime: 调用超可用次数
+        :type ExceedUsageTime: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AvailableConcurrency = None
+        self._ConcurrencyPeak = None
+        self._ExceedUsageTime = None
+        self._RequestId = None
+
+    @property
+    def AvailableConcurrency(self):
+        return self._AvailableConcurrency
+
+    @AvailableConcurrency.setter
+    def AvailableConcurrency(self, AvailableConcurrency):
+        self._AvailableConcurrency = AvailableConcurrency
+
+    @property
+    def ConcurrencyPeak(self):
+        return self._ConcurrencyPeak
+
+    @ConcurrencyPeak.setter
+    def ConcurrencyPeak(self, ConcurrencyPeak):
+        self._ConcurrencyPeak = ConcurrencyPeak
+
+    @property
+    def ExceedUsageTime(self):
+        return self._ExceedUsageTime
+
+    @ExceedUsageTime.setter
+    def ExceedUsageTime(self, ExceedUsageTime):
+        self._ExceedUsageTime = ExceedUsageTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AvailableConcurrency = params.get("AvailableConcurrency")
+        self._ConcurrencyPeak = params.get("ConcurrencyPeak")
+        self._ExceedUsageTime = params.get("ExceedUsageTime")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCorpRequest(AbstractModel):
     """DescribeCorp请求参数结构体
 
@@ -3798,6 +4266,148 @@ class DescribeDocResponse(AbstractModel):
                 obj = AttrLabel()
                 obj._deserialize(item)
                 self._AttrLabels.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeKnowledgeUsagePieGraphRequest(AbstractModel):
+    """DescribeKnowledgeUsagePieGraph请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppBizIds: 应用ID数组
+        :type AppBizIds: list of str
+        """
+        self._AppBizIds = None
+
+    @property
+    def AppBizIds(self):
+        return self._AppBizIds
+
+    @AppBizIds.setter
+    def AppBizIds(self, AppBizIds):
+        self._AppBizIds = AppBizIds
+
+
+    def _deserialize(self, params):
+        self._AppBizIds = params.get("AppBizIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeKnowledgeUsagePieGraphResponse(AbstractModel):
+    """DescribeKnowledgeUsagePieGraph返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AvailableCharSize: 所有应用已用的字符总数
+        :type AvailableCharSize: str
+        :param _List: 应用饼图详情列表
+        :type List: list of KnowledgeCapacityPieGraphDetail
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AvailableCharSize = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def AvailableCharSize(self):
+        return self._AvailableCharSize
+
+    @AvailableCharSize.setter
+    def AvailableCharSize(self, AvailableCharSize):
+        self._AvailableCharSize = AvailableCharSize
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AvailableCharSize = params.get("AvailableCharSize")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = KnowledgeCapacityPieGraphDetail()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeKnowledgeUsageRequest(AbstractModel):
+    """DescribeKnowledgeUsage请求参数结构体
+
+    """
+
+
+class DescribeKnowledgeUsageResponse(AbstractModel):
+    """DescribeKnowledgeUsage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AvailableCharSize: 可用字符数
+        :type AvailableCharSize: str
+        :param _ExceedCharSize: 超量字符数
+        :type ExceedCharSize: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AvailableCharSize = None
+        self._ExceedCharSize = None
+        self._RequestId = None
+
+    @property
+    def AvailableCharSize(self):
+        return self._AvailableCharSize
+
+    @AvailableCharSize.setter
+    def AvailableCharSize(self, AvailableCharSize):
+        self._AvailableCharSize = AvailableCharSize
+
+    @property
+    def ExceedCharSize(self):
+        return self._ExceedCharSize
+
+    @ExceedCharSize.setter
+    def ExceedCharSize(self, ExceedCharSize):
+        self._ExceedCharSize = ExceedCharSize
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AvailableCharSize = params.get("AvailableCharSize")
+        self._ExceedCharSize = params.get("ExceedCharSize")
         self._RequestId = params.get("RequestId")
 
 
@@ -4612,6 +5222,166 @@ class DescribeRobotBizIDByAppKeyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSearchStatsGraphRequest(AbstractModel):
+    """DescribeSearchStatsGraph请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LoginUin: 登录用户主账号(集成商模式必填)
+        :type LoginUin: str
+        :param _LoginSubAccountUin: 登录用户子账号(集成商模式必填)
+        :type LoginSubAccountUin: str
+        :param _UinAccount: uin列表
+        :type UinAccount: list of str
+        :param _SubBizType: 子业务类型
+        :type SubBizType: str
+        :param _ModelName: 模型标识
+        :type ModelName: str
+        :param _StartTime: 开始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _AppBizIds: 应用id列表
+        :type AppBizIds: list of str
+        """
+        self._LoginUin = None
+        self._LoginSubAccountUin = None
+        self._UinAccount = None
+        self._SubBizType = None
+        self._ModelName = None
+        self._StartTime = None
+        self._EndTime = None
+        self._AppBizIds = None
+
+    @property
+    def LoginUin(self):
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+    @property
+    def LoginSubAccountUin(self):
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
+
+    @property
+    def UinAccount(self):
+        return self._UinAccount
+
+    @UinAccount.setter
+    def UinAccount(self, UinAccount):
+        self._UinAccount = UinAccount
+
+    @property
+    def SubBizType(self):
+        return self._SubBizType
+
+    @SubBizType.setter
+    def SubBizType(self, SubBizType):
+        self._SubBizType = SubBizType
+
+    @property
+    def ModelName(self):
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def AppBizIds(self):
+        return self._AppBizIds
+
+    @AppBizIds.setter
+    def AppBizIds(self, AppBizIds):
+        self._AppBizIds = AppBizIds
+
+
+    def _deserialize(self, params):
+        self._LoginUin = params.get("LoginUin")
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
+        self._UinAccount = params.get("UinAccount")
+        self._SubBizType = params.get("SubBizType")
+        self._ModelName = params.get("ModelName")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._AppBizIds = params.get("AppBizIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSearchStatsGraphResponse(AbstractModel):
+    """DescribeSearchStatsGraph返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: 统计结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of Stat
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = Stat()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSegmentsRequest(AbstractModel):
     """DescribeSegments请求参数结构体
 
@@ -4913,6 +5683,377 @@ class DescribeStorageCredentialResponse(AbstractModel):
         self._CorpUin = params.get("CorpUin")
         self._ImagePath = params.get("ImagePath")
         self._UploadPath = params.get("UploadPath")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTokenUsageGraphRequest(AbstractModel):
+    """DescribeTokenUsageGraph请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UinAccount: 腾讯云主账号
+        :type UinAccount: list of str
+        :param _SubBizType: 知识引擎子业务类型:  FileParse(文档解析)、Embedding、Rewrite(多轮改写)、 Concurrency(并发)、KnowledgeSummary(知识总结)   KnowledgeQA(知识问答)、KnowledgeCapacity(知识库容量)、SearchEngine(搜索引擎)
+        :type SubBizType: str
+        :param _ModelName: 模型标识
+        :type ModelName: str
+        :param _StartTime: 开始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _AppBizIds: 应用id列表
+        :type AppBizIds: list of str
+        """
+        self._UinAccount = None
+        self._SubBizType = None
+        self._ModelName = None
+        self._StartTime = None
+        self._EndTime = None
+        self._AppBizIds = None
+
+    @property
+    def UinAccount(self):
+        return self._UinAccount
+
+    @UinAccount.setter
+    def UinAccount(self, UinAccount):
+        self._UinAccount = UinAccount
+
+    @property
+    def SubBizType(self):
+        return self._SubBizType
+
+    @SubBizType.setter
+    def SubBizType(self, SubBizType):
+        self._SubBizType = SubBizType
+
+    @property
+    def ModelName(self):
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def AppBizIds(self):
+        return self._AppBizIds
+
+    @AppBizIds.setter
+    def AppBizIds(self, AppBizIds):
+        self._AppBizIds = AppBizIds
+
+
+    def _deserialize(self, params):
+        self._UinAccount = params.get("UinAccount")
+        self._SubBizType = params.get("SubBizType")
+        self._ModelName = params.get("ModelName")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._AppBizIds = params.get("AppBizIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTokenUsageGraphResponse(AbstractModel):
+    """DescribeTokenUsageGraph返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总消耗
+        :type Total: list of Stat
+        :param _Input: 输入消耗
+        :type Input: list of Stat
+        :param _Output: 输出消耗
+        :type Output: list of Stat
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Input = None
+        self._Output = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Input(self):
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Total") is not None:
+            self._Total = []
+            for item in params.get("Total"):
+                obj = Stat()
+                obj._deserialize(item)
+                self._Total.append(obj)
+        if params.get("Input") is not None:
+            self._Input = []
+            for item in params.get("Input"):
+                obj = Stat()
+                obj._deserialize(item)
+                self._Input.append(obj)
+        if params.get("Output") is not None:
+            self._Output = []
+            for item in params.get("Output"):
+                obj = Stat()
+                obj._deserialize(item)
+                self._Output.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTokenUsageRequest(AbstractModel):
+    """DescribeTokenUsage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UinAccount: 腾讯云主账号
+        :type UinAccount: list of str
+        :param _LoginUin: 登录用户主账号(集成商模式必填)
+        :type LoginUin: str
+        :param _LoginSubAccountUin: 登录用户子账号(集成商模式必填)
+        :type LoginSubAccountUin: str
+        :param _SubBizType: 知识引擎子业务类型:  FileParse(文档解析)、Embedding、Rewrite(多轮改写)、 Concurrency(并发)、KnowledgeSummary(知识总结)   KnowledgeQA(知识问答)、KnowledgeCapacity(知识库容量)、SearchEngine(搜索引擎)
+        :type SubBizType: str
+        :param _ModelName: 模型标识
+        :type ModelName: str
+        :param _StartTime: 开始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _AppBizIds: 应用id列表
+        :type AppBizIds: list of str
+        """
+        self._UinAccount = None
+        self._LoginUin = None
+        self._LoginSubAccountUin = None
+        self._SubBizType = None
+        self._ModelName = None
+        self._StartTime = None
+        self._EndTime = None
+        self._AppBizIds = None
+
+    @property
+    def UinAccount(self):
+        return self._UinAccount
+
+    @UinAccount.setter
+    def UinAccount(self, UinAccount):
+        self._UinAccount = UinAccount
+
+    @property
+    def LoginUin(self):
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+    @property
+    def LoginSubAccountUin(self):
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
+
+    @property
+    def SubBizType(self):
+        return self._SubBizType
+
+    @SubBizType.setter
+    def SubBizType(self, SubBizType):
+        self._SubBizType = SubBizType
+
+    @property
+    def ModelName(self):
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def AppBizIds(self):
+        return self._AppBizIds
+
+    @AppBizIds.setter
+    def AppBizIds(self, AppBizIds):
+        self._AppBizIds = AppBizIds
+
+
+    def _deserialize(self, params):
+        self._UinAccount = params.get("UinAccount")
+        self._LoginUin = params.get("LoginUin")
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
+        self._SubBizType = params.get("SubBizType")
+        self._ModelName = params.get("ModelName")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._AppBizIds = params.get("AppBizIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTokenUsageResponse(AbstractModel):
+    """DescribeTokenUsage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalTokenUsage: 总token消耗量
+        :type TotalTokenUsage: float
+        :param _InputTokenUsage: 输入token消耗
+        :type InputTokenUsage: float
+        :param _OutputTokenUsage: 输出token消耗
+        :type OutputTokenUsage: float
+        :param _ApiCallStats: 接口调用次数
+        :type ApiCallStats: int
+        :param _SearchUsage: 搜索服务调用次数
+        :type SearchUsage: float
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalTokenUsage = None
+        self._InputTokenUsage = None
+        self._OutputTokenUsage = None
+        self._ApiCallStats = None
+        self._SearchUsage = None
+        self._RequestId = None
+
+    @property
+    def TotalTokenUsage(self):
+        return self._TotalTokenUsage
+
+    @TotalTokenUsage.setter
+    def TotalTokenUsage(self, TotalTokenUsage):
+        self._TotalTokenUsage = TotalTokenUsage
+
+    @property
+    def InputTokenUsage(self):
+        return self._InputTokenUsage
+
+    @InputTokenUsage.setter
+    def InputTokenUsage(self, InputTokenUsage):
+        self._InputTokenUsage = InputTokenUsage
+
+    @property
+    def OutputTokenUsage(self):
+        return self._OutputTokenUsage
+
+    @OutputTokenUsage.setter
+    def OutputTokenUsage(self, OutputTokenUsage):
+        self._OutputTokenUsage = OutputTokenUsage
+
+    @property
+    def ApiCallStats(self):
+        return self._ApiCallStats
+
+    @ApiCallStats.setter
+    def ApiCallStats(self, ApiCallStats):
+        self._ApiCallStats = ApiCallStats
+
+    @property
+    def SearchUsage(self):
+        return self._SearchUsage
+
+    @SearchUsage.setter
+    def SearchUsage(self, SearchUsage):
+        self._SearchUsage = SearchUsage
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalTokenUsage = params.get("TotalTokenUsage")
+        self._InputTokenUsage = params.get("InputTokenUsage")
+        self._OutputTokenUsage = params.get("OutputTokenUsage")
+        self._ApiCallStats = params.get("ApiCallStats")
+        self._SearchUsage = params.get("SearchUsage")
         self._RequestId = params.get("RequestId")
 
 
@@ -7973,6 +9114,66 @@ class IsTransferIntentResponse(AbstractModel):
     def _deserialize(self, params):
         self._Hit = params.get("Hit")
         self._RequestId = params.get("RequestId")
+
+
+class KnowledgeCapacityPieGraphDetail(AbstractModel):
+    """知识库容量饼图详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppName: 应用名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppName: str
+        :param _UsedCharSize: 应用使用的字符数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsedCharSize: str
+        :param _Proportion: 应用占比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Proportion: float
+        """
+        self._AppName = None
+        self._UsedCharSize = None
+        self._Proportion = None
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def UsedCharSize(self):
+        return self._UsedCharSize
+
+    @UsedCharSize.setter
+    def UsedCharSize(self, UsedCharSize):
+        self._UsedCharSize = UsedCharSize
+
+    @property
+    def Proportion(self):
+        return self._Proportion
+
+    @Proportion.setter
+    def Proportion(self, Proportion):
+        self._Proportion = Proportion
+
+
+    def _deserialize(self, params):
+        self._AppName = params.get("AppName")
+        self._UsedCharSize = params.get("UsedCharSize")
+        self._Proportion = params.get("Proportion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class KnowledgeQaConfig(AbstractModel):
@@ -16027,6 +17228,53 @@ class SimilarQuestionModify(AbstractModel):
                 obj = SimilarQuestion()
                 obj._deserialize(item)
                 self._DeleteQuestions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Stat(AbstractModel):
+    """计费统计信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _X: x轴时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type X: str
+        :param _Y: y轴统计值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Y: float
+        """
+        self._X = None
+        self._Y = None
+
+    @property
+    def X(self):
+        return self._X
+
+    @X.setter
+    def X(self, X):
+        self._X = X
+
+    @property
+    def Y(self):
+        return self._Y
+
+    @Y.setter
+    def Y(self, Y):
+        self._Y = Y
+
+
+    def _deserialize(self, params):
+        self._X = params.get("X")
+        self._Y = params.get("Y")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

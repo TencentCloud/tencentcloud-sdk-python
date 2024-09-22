@@ -779,6 +779,9 @@ class InstanceInfo(AbstractModel):
         :param _EngineVersion: 引擎版本。
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineVersion: str
+        :param _ApiVersion: api版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiVersion: str
         :param _PayMode: 计费模式。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PayMode: int
@@ -821,6 +824,7 @@ class InstanceInfo(AbstractModel):
         self._Status = None
         self._EngineName = None
         self._EngineVersion = None
+        self._ApiVersion = None
         self._PayMode = None
         self._Extend = None
         self._ExpiredAt = None
@@ -990,6 +994,14 @@ class InstanceInfo(AbstractModel):
         self._EngineVersion = EngineVersion
 
     @property
+    def ApiVersion(self):
+        return self._ApiVersion
+
+    @ApiVersion.setter
+    def ApiVersion(self, ApiVersion):
+        self._ApiVersion = ApiVersion
+
+    @property
     def PayMode(self):
         return self._PayMode
 
@@ -1077,6 +1089,7 @@ class InstanceInfo(AbstractModel):
         self._Status = params.get("Status")
         self._EngineName = params.get("EngineName")
         self._EngineVersion = params.get("EngineVersion")
+        self._ApiVersion = params.get("ApiVersion")
         self._PayMode = params.get("PayMode")
         self._Extend = params.get("Extend")
         self._ExpiredAt = params.get("ExpiredAt")

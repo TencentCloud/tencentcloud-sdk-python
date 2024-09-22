@@ -393,7 +393,7 @@ class VodClient(AbstractClient):
 
     def CreateHeadTailTemplate(self, request):
         """创建片头片尾模板。
-        - 最大支持模版数量为 100 个。
+        - 最大支持模板数量为 100 个。
 
         :param request: Request instance for CreateHeadTailTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateHeadTailTemplateRequest`

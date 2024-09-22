@@ -19786,7 +19786,7 @@ class DescribeQualityControlTemplatesRequest(AbstractModel):
 <li>默认值：10；</li>
 <li>最大值：100。</li>
         :type Limit: int
-        :param _Type: "Preset"：预设，Custom":客户魔板
+        :param _Type: "Preset"：预设，Custom":自定义模板
         :type Type: str
         :param _Name: 媒体质检模板标识过滤条件，长度限制：64 个字符。
         :type Name: str
@@ -33230,6 +33230,8 @@ class ModifyOutputInfo(AbstractModel):
         :type MaxConcurrent: int
         :param _SecurityGroupIds: 绑定的安全组 ID。 仅支持关联一组安全组。	
         :type SecurityGroupIds: list of str
+        :param _Zones: 可用区
+        :type Zones: list of str
         """
         self._OutputId = None
         self._OutputName = None
@@ -33241,6 +33243,7 @@ class ModifyOutputInfo(AbstractModel):
         self._AllowIpList = None
         self._MaxConcurrent = None
         self._SecurityGroupIds = None
+        self._Zones = None
 
     @property
     def OutputId(self):
@@ -33322,6 +33325,14 @@ class ModifyOutputInfo(AbstractModel):
     def SecurityGroupIds(self, SecurityGroupIds):
         self._SecurityGroupIds = SecurityGroupIds
 
+    @property
+    def Zones(self):
+        return self._Zones
+
+    @Zones.setter
+    def Zones(self, Zones):
+        self._Zones = Zones
+
 
     def _deserialize(self, params):
         self._OutputId = params.get("OutputId")
@@ -33340,6 +33351,7 @@ class ModifyOutputInfo(AbstractModel):
         self._AllowIpList = params.get("AllowIpList")
         self._MaxConcurrent = params.get("MaxConcurrent")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._Zones = params.get("Zones")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37108,6 +37120,7 @@ class ProcessMediaRequest(AbstractModel):
         :param _InputInfo: 媒体处理的文件输入信息。
         :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         :param _OutputStorage: 媒体处理输出文件的目标存储。不填则继承 InputInfo 中的存储位置。
+注意：当InputInfo.Type为URL时，该参数是必填项
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _OutputDir: 媒体处理生成的文件输出的目标目录，必选以 / 开头和结尾，如`/movie/201907/`。
 如果不填，表示与 InputInfo 中文件所在的目录一致。
@@ -44089,13 +44102,13 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Gop: int
         :param _FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
-<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+ <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
 <li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
 <li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊填充。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FillType: str
-        :param _Vcrf: 视频恒定码率控制因子。取值范围为[0, 51]，填0表示禁用该参数。
+        :param _Vcrf: 视频恒定码率控制因子。取值范围为[0, 51]，填0表示禁用该参数。 
 如果没有特殊需求，不建议指定该参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Vcrf: int

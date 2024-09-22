@@ -1314,6 +1314,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteLogConfigs(self, request):
+        """删除集群内采集规则
+
+        :param request: Request instance for DeleteLogConfigs.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DeleteLogConfigsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteLogConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteLogConfigs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteLogConfigsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeletePrometheusAlertPolicy(self, request):
         """删除2.0实例告警策略
 
@@ -2779,6 +2802,29 @@ class TkeClient(AbstractClient):
             body = self.call("DescribeImages", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeImagesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLogConfigs(self, request):
+        """查询日志采集规则
+
+        :param request: Request instance for DescribeLogConfigs.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeLogConfigsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeLogConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLogConfigs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLogConfigsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

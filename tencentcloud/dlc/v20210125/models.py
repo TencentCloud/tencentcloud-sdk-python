@@ -5883,12 +5883,15 @@ class CreateTasksRequest(AbstractModel):
         :type DataEngineName: str
         :param _ResourceGroupName: spark集群资源组名称
         :type ResourceGroupName: str
+        :param _IsMultiStatement: 是否使用multi- statement方式运行一批次任务，true: 是，false: 否
+        :type IsMultiStatement: bool
         """
         self._DatabaseName = None
         self._Tasks = None
         self._DatasourceConnectionName = None
         self._DataEngineName = None
         self._ResourceGroupName = None
+        self._IsMultiStatement = None
 
     @property
     def DatabaseName(self):
@@ -5930,6 +5933,14 @@ class CreateTasksRequest(AbstractModel):
     def ResourceGroupName(self, ResourceGroupName):
         self._ResourceGroupName = ResourceGroupName
 
+    @property
+    def IsMultiStatement(self):
+        return self._IsMultiStatement
+
+    @IsMultiStatement.setter
+    def IsMultiStatement(self, IsMultiStatement):
+        self._IsMultiStatement = IsMultiStatement
+
 
     def _deserialize(self, params):
         self._DatabaseName = params.get("DatabaseName")
@@ -5939,6 +5950,7 @@ class CreateTasksRequest(AbstractModel):
         self._DatasourceConnectionName = params.get("DatasourceConnectionName")
         self._DataEngineName = params.get("DataEngineName")
         self._ResourceGroupName = params.get("ResourceGroupName")
+        self._IsMultiStatement = params.get("IsMultiStatement")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

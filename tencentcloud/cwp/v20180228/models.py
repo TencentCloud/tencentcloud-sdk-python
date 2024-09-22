@@ -11800,7 +11800,7 @@ class BashEventsInfoNew(AbstractModel):
 
 
 class BashPolicy(AbstractModel):
-    """高位命令策略
+    """高危命令策略
 
     """
 
@@ -11814,7 +11814,7 @@ class BashPolicy(AbstractModel):
         :type White: int
         :param _BashAction: 0:告警 1:白名单 2:拦截
         :type BashAction: int
-        :param _Rule: 正则表达式
+        :param _Rule: 正则表达式 base64 加密,该字段废弃,如果写入则自动替换为Rules.Process.CmdLine
         :type Rule: str
         :param _Level: 危险等级(0:无，1: 高危 2:中危 3: 低危)
         :type Level: int
@@ -11842,6 +11842,9 @@ class BashPolicy(AbstractModel):
         :type ModifyTime: str
         :param _Uuids: 老版本兼容可能会用到
         :type Uuids: list of str
+        :param _Rules: 规则表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rules: :class:`tencentcloud.cwp.v20180228.models.PolicyRules`
         """
         self._Name = None
         self._Enable = None
@@ -11859,6 +11862,7 @@ class BashPolicy(AbstractModel):
         self._CreateTime = None
         self._ModifyTime = None
         self._Uuids = None
+        self._Rules = None
 
     @property
     def Name(self):
@@ -11988,6 +11992,14 @@ class BashPolicy(AbstractModel):
     def Uuids(self, Uuids):
         self._Uuids = Uuids
 
+    @property
+    def Rules(self):
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -12006,6 +12018,9 @@ class BashPolicy(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._ModifyTime = params.get("ModifyTime")
         self._Uuids = params.get("Uuids")
+        if params.get("Rules") is not None:
+            self._Rules = PolicyRules()
+            self._Rules._deserialize(params.get("Rules"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13663,22 +13678,31 @@ class CheckBashPolicyParamsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CheckField: 校验内容 Name或Rule ，两个都要校验时逗号分割
+        :param _CheckField: 校验内容字段,如果需要检测多个字段时,用逗号分割
+<li>Name 策略名称</li>
+<li>Process 进程</li>
+<li>Name PProcess 父进程</li>
+<li>Name AProcess 祖先进程</li>
+
         :type CheckField: str
         :param _EventId: 在事件列表中新增白名时需要提交事件ID
         :type EventId: int
         :param _Name: 填入的规则名称
         :type Name: str
-        :param _Rule: 用户填入的正则表达式："正则表达式" 需与 "提交EventId对应的命令内容" 相匹配
+        :param _Rule: 该字段不在维护,如果填入该参数,自动替换到Rules.Process
+
         :type Rule: str
         :param _Id: 编辑时传的规则id
         :type Id: int
+        :param _Rules: 规则表达式
+        :type Rules: :class:`tencentcloud.cwp.v20180228.models.PolicyRules`
         """
         self._CheckField = None
         self._EventId = None
         self._Name = None
         self._Rule = None
         self._Id = None
+        self._Rules = None
 
     @property
     def CheckField(self):
@@ -13720,6 +13744,14 @@ class CheckBashPolicyParamsRequest(AbstractModel):
     def Id(self, Id):
         self._Id = Id
 
+    @property
+    def Rules(self):
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
 
     def _deserialize(self, params):
         self._CheckField = params.get("CheckField")
@@ -13727,6 +13759,9 @@ class CheckBashPolicyParamsRequest(AbstractModel):
         self._Name = params.get("Name")
         self._Rule = params.get("Rule")
         self._Id = params.get("Id")
+        if params.get("Rules") is not None:
+            self._Rules = PolicyRules()
+            self._Rules._deserialize(params.get("Rules"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14297,6 +14332,53 @@ class CloudProtectService(AbstractModel):
         self._Config = params.get("Config")
         self._ServiceName = params.get("ServiceName")
         self._BeginTime = params.get("BeginTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CommandLine(AbstractModel):
+    """命令行内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Exe: 路径,需要base64加密
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Exe: str
+        :param _Cmdline: 命令行,需要base64加密
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cmdline: str
+        """
+        self._Exe = None
+        self._Cmdline = None
+
+    @property
+    def Exe(self):
+        return self._Exe
+
+    @Exe.setter
+    def Exe(self, Exe):
+        self._Exe = Exe
+
+    @property
+    def Cmdline(self):
+        return self._Cmdline
+
+    @Cmdline.setter
+    def Cmdline(self, Cmdline):
+        self._Cmdline = Cmdline
+
+
+    def _deserialize(self, params):
+        self._Exe = params.get("Exe")
+        self._Cmdline = params.get("Cmdline")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35255,7 +35337,9 @@ class DescribeJavaMemShellListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 过滤条件：Keywords: ip或者主机名模糊查询, Type，Status精确匹配，CreateBeginTime，CreateEndTime时间段
+        :param _Filters: 过滤条件：InstanceID、IP、
+
+MachineName主机名模糊查询, Type，Status精确匹配，CreateBeginTime，CreateEndTime时间段
         :type Filters: list of Filters
         :param _Offset: 偏移量，默认为0。
         :type Offset: int
@@ -64436,6 +64520,21 @@ class JavaMemShellInfo(AbstractModel):
         :param _Uuid: 服务器uuid
 注意：此字段可能返回 null，表示取不到有效值。
         :type Uuid: str
+        :param _ClassName: 类名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClassName: str
+        :param _SuperClassName: 父类名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuperClassName: str
+        :param _Interfaces: 继承的接口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Interfaces: str
+        :param _Annotations: 注释
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Annotations: str
+        :param _LoaderClassName: 所属的类加载器
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoaderClassName: str
         """
         self._Id = None
         self._Alias = None
@@ -64448,6 +64547,11 @@ class JavaMemShellInfo(AbstractModel):
         self._Quuid = None
         self._MachineExtraInfo = None
         self._Uuid = None
+        self._ClassName = None
+        self._SuperClassName = None
+        self._Interfaces = None
+        self._Annotations = None
+        self._LoaderClassName = None
 
     @property
     def Id(self):
@@ -64537,6 +64641,46 @@ class JavaMemShellInfo(AbstractModel):
     def Uuid(self, Uuid):
         self._Uuid = Uuid
 
+    @property
+    def ClassName(self):
+        return self._ClassName
+
+    @ClassName.setter
+    def ClassName(self, ClassName):
+        self._ClassName = ClassName
+
+    @property
+    def SuperClassName(self):
+        return self._SuperClassName
+
+    @SuperClassName.setter
+    def SuperClassName(self, SuperClassName):
+        self._SuperClassName = SuperClassName
+
+    @property
+    def Interfaces(self):
+        return self._Interfaces
+
+    @Interfaces.setter
+    def Interfaces(self, Interfaces):
+        self._Interfaces = Interfaces
+
+    @property
+    def Annotations(self):
+        return self._Annotations
+
+    @Annotations.setter
+    def Annotations(self, Annotations):
+        self._Annotations = Annotations
+
+    @property
+    def LoaderClassName(self):
+        return self._LoaderClassName
+
+    @LoaderClassName.setter
+    def LoaderClassName(self, LoaderClassName):
+        self._LoaderClassName = LoaderClassName
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -64552,6 +64696,11 @@ class JavaMemShellInfo(AbstractModel):
             self._MachineExtraInfo = MachineExtraInfo()
             self._MachineExtraInfo._deserialize(params.get("MachineExtraInfo"))
         self._Uuid = params.get("Uuid")
+        self._ClassName = params.get("ClassName")
+        self._SuperClassName = params.get("SuperClassName")
+        self._Interfaces = params.get("Interfaces")
+        self._Annotations = params.get("Annotations")
+        self._LoaderClassName = params.get("LoaderClassName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -69858,13 +70007,24 @@ class ModifyJavaMemShellsStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ids: 事件Id数组
-        :type Ids: list of int non-negative
         :param _Status: 目标处理状态： 0 - 待处理 1 - 已加白 2 - 已删除 3 - 已忽略 4 - 已手动处理
         :type Status: int
+        :param _Ids: 事件Id数组
+        :type Ids: list of int non-negative
+        :param _UpdateAll: 是否更新全部，只支持忽略、已处理、删除
+        :type UpdateAll: bool
         """
-        self._Ids = None
         self._Status = None
+        self._Ids = None
+        self._UpdateAll = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
     @property
     def Ids(self):
@@ -69875,17 +70035,18 @@ class ModifyJavaMemShellsStatusRequest(AbstractModel):
         self._Ids = Ids
 
     @property
-    def Status(self):
-        return self._Status
+    def UpdateAll(self):
+        return self._UpdateAll
 
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
+    @UpdateAll.setter
+    def UpdateAll(self, UpdateAll):
+        self._UpdateAll = UpdateAll
 
 
     def _deserialize(self, params):
-        self._Ids = params.get("Ids")
         self._Status = params.get("Status")
+        self._Ids = params.get("Ids")
+        self._UpdateAll = params.get("UpdateAll")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -75069,6 +75230,72 @@ class Place(AbstractModel):
         self._ProvinceId = params.get("ProvinceId")
         self._CountryId = params.get("CountryId")
         self._Location = params.get("Location")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PolicyRules(AbstractModel):
+    """策略规则表达式
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Process: 进程
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Process: :class:`tencentcloud.cwp.v20180228.models.CommandLine`
+        :param _PProcess: 父进程
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PProcess: :class:`tencentcloud.cwp.v20180228.models.CommandLine`
+        :param _AProcess: 祖先进程
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AProcess: :class:`tencentcloud.cwp.v20180228.models.CommandLine`
+        """
+        self._Process = None
+        self._PProcess = None
+        self._AProcess = None
+
+    @property
+    def Process(self):
+        return self._Process
+
+    @Process.setter
+    def Process(self, Process):
+        self._Process = Process
+
+    @property
+    def PProcess(self):
+        return self._PProcess
+
+    @PProcess.setter
+    def PProcess(self, PProcess):
+        self._PProcess = PProcess
+
+    @property
+    def AProcess(self):
+        return self._AProcess
+
+    @AProcess.setter
+    def AProcess(self, AProcess):
+        self._AProcess = AProcess
+
+
+    def _deserialize(self, params):
+        if params.get("Process") is not None:
+            self._Process = CommandLine()
+            self._Process._deserialize(params.get("Process"))
+        if params.get("PProcess") is not None:
+            self._PProcess = CommandLine()
+            self._PProcess._deserialize(params.get("PProcess"))
+        if params.get("AProcess") is not None:
+            self._AProcess = CommandLine()
+            self._AProcess._deserialize(params.get("AProcess"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

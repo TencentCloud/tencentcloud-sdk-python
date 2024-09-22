@@ -10000,6 +10000,101 @@ class DeleteImageCachesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteLogConfigsRequest(AbstractModel):
+    """DeleteLogConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _LogConfigNames: 待删除采集规则名称，多个采集规则使用","分隔
+        :type LogConfigNames: str
+        :param _ClusterType: 集群集群类型, tke/eks 默认为 tke 集群
+        :type ClusterType: str
+        """
+        self._ClusterId = None
+        self._LogConfigNames = None
+        self._ClusterType = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def LogConfigNames(self):
+        return self._LogConfigNames
+
+    @LogConfigNames.setter
+    def LogConfigNames(self, LogConfigNames):
+        self._LogConfigNames = LogConfigNames
+
+    @property
+    def ClusterType(self):
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._LogConfigNames = params.get("LogConfigNames")
+        self._ClusterType = params.get("ClusterType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLogConfigsResponse(AbstractModel):
+    """DeleteLogConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Message: 删除采集规则遇到错误时返回错误原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
 class DeletePrometheusAlertPolicyRequest(AbstractModel):
     """DeletePrometheusAlertPolicy请求参数结构体
 
@@ -16763,6 +16858,151 @@ class DescribeImagesResponse(AbstractModel):
                 obj = ImageInstance()
                 obj._deserialize(item)
                 self._ImageInstanceSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLogConfigsRequest(AbstractModel):
+    """DescribeLogConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _ClusterType: 当前集群类型支持tke、eks。默认为tke
+        :type ClusterType: str
+        :param _LogConfigNames: 按照采集规则名称查找，多个采集规则使用 "," 分隔。
+        :type LogConfigNames: str
+        :param _Offset: 偏移量,默认0
+        :type Offset: int
+        :param _Limit: 最大输出条数，默认20，最大为100
+        :type Limit: int
+        """
+        self._ClusterId = None
+        self._ClusterType = None
+        self._LogConfigNames = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterType(self):
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
+    def LogConfigNames(self):
+        return self._LogConfigNames
+
+    @LogConfigNames.setter
+    def LogConfigNames(self, LogConfigNames):
+        self._LogConfigNames = LogConfigNames
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterType = params.get("ClusterType")
+        self._LogConfigNames = params.get("LogConfigNames")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLogConfigsResponse(AbstractModel):
+    """DescribeLogConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 分页查找时返回采集规则总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param _Message: 指定采集规则名称查找，部分失败时返回失败采集规则名称及最后一个失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param _LogConfigs: 采集规则查询结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogConfigs: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Message = None
+        self._LogConfigs = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def LogConfigs(self):
+        return self._LogConfigs
+
+    @LogConfigs.setter
+    def LogConfigs(self, LogConfigs):
+        self._LogConfigs = LogConfigs
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._Message = params.get("Message")
+        self._LogConfigs = params.get("LogConfigs")
         self._RequestId = params.get("RequestId")
 
 
@@ -31177,7 +31417,7 @@ class PendingRelease(AbstractModel):
         :param _Namespace: 应用命名空间
 注意：此字段可能返回 null，表示取不到有效值。
         :type Namespace: str
-        :param _Status: 应用状态
+        :param _Status: 应用状态(参考helm的发布状态： unknown, deployed, uninstalled, superseded, failed, uninstalling, pending-install, pending-upgrade 或 pending-rollback)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _UpdatedTime: 更新时间
