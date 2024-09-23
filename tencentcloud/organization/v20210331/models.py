@@ -278,10 +278,13 @@ class AddOrganizationNodeRequest(AbstractModel):
         :type Name: str
         :param _Remark: 备注。
         :type Remark: str
+        :param _Tags: 部门标签列表。最大10个
+        :type Tags: list of Tag
         """
         self._ParentNodeId = None
         self._Name = None
         self._Remark = None
+        self._Tags = None
 
     @property
     def ParentNodeId(self):
@@ -307,11 +310,25 @@ class AddOrganizationNodeRequest(AbstractModel):
     def Remark(self, Remark):
         self._Remark = Remark
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._ParentNodeId = params.get("ParentNodeId")
         self._Name = params.get("Name")
         self._Remark = params.get("Remark")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -370,11 +387,11 @@ class AddPermissionPolicyToRoleConfigurationRequest(AbstractModel):
         :type ZoneId: str
         :param _RoleConfigurationId: 权限配置 ID
         :type RoleConfigurationId: str
-        :param _RolePolicyType: 权限策略类型。取值：  System：系统策略。复用 CAM 的系统策略。 Custom: 自定义策略。按照 CAM 权限策略语法和结构编写的自定义策略。 前期只支持系统策略，自定义策略后期在支持
+        :param _RolePolicyType: 权限策略类型。取值：  System：系统策略。复用 CAM 的系统策略。 Custom: 自定义策略。按照 CAM 权限策略语法和结构编写的自定义策略。 
         :type RolePolicyType: str
-        :param _RolePolicyNames: 权限策略名称，长度最大为 20策略，每个策略长度最大32个字符。
+        :param _RolePolicyNames: 权限策略名称，长度最大为 20策略，每个策略长度最大32个字符。如果要添加系统策略，建议使用RolePolicies参数。自定义策略时，数组长度最大为1。
         :type RolePolicyNames: list of str
-        :param _RolePolicies: 策略详情。
+        :param _RolePolicies: 添加的系统策略详情。
         :type RolePolicies: list of PolicyDetail
         :param _CustomPolicyDocument: 自定义策略内容。长度：最大 4096 个字符。当RolePolicyType为Inline时，该参数必须配置。关于权限策略的语法和结构，请参见权限策略语法和结构。
         :type CustomPolicyDocument: str
@@ -1002,6 +1019,53 @@ class AuthNode(AbstractModel):
         if params.get("Manager") is not None:
             self._Manager = MemberMainInfo()
             self._Manager._deserialize(params.get("Manager"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuthRelationFile(AbstractModel):
+    """野鹤实名互信申请证明文件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 文件名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Url: 文件路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        """
+        self._Name = None
+        self._Url = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Url = params.get("Url")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1824,6 +1888,8 @@ class CreateOrganizationMemberRequest(AbstractModel):
         :type IdentityRoleID: list of int non-negative
         :param _AuthRelationId: 认证主体关系ID。给不同主体创建成员时需要，可以调用DescribeOrganizationAuthNode获取
         :type AuthRelationId: int
+        :param _Tags: 成员标签列表。最大10个
+        :type Tags: list of Tag
         """
         self._Name = None
         self._PolicyType = None
@@ -1835,6 +1901,7 @@ class CreateOrganizationMemberRequest(AbstractModel):
         self._PayUin = None
         self._IdentityRoleID = None
         self._AuthRelationId = None
+        self._Tags = None
 
     @property
     def Name(self):
@@ -1916,6 +1983,14 @@ class CreateOrganizationMemberRequest(AbstractModel):
     def AuthRelationId(self, AuthRelationId):
         self._AuthRelationId = AuthRelationId
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -1928,6 +2003,12 @@ class CreateOrganizationMemberRequest(AbstractModel):
         self._PayUin = params.get("PayUin")
         self._IdentityRoleID = params.get("IdentityRoleID")
         self._AuthRelationId = params.get("AuthRelationId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5213,6 +5294,8 @@ class DescribeOrganizationMembersRequest(AbstractModel):
         :type AuthName: str
         :param _Product: 可信服务产品简称。可信服务管理员查询时必须指定
         :type Product: str
+        :param _Tags: 成员标签搜索列表，最大10个
+        :type Tags: list of Tag
         """
         self._Offset = None
         self._Limit = None
@@ -5220,6 +5303,7 @@ class DescribeOrganizationMembersRequest(AbstractModel):
         self._SearchKey = None
         self._AuthName = None
         self._Product = None
+        self._Tags = None
 
     @property
     def Offset(self):
@@ -5269,6 +5353,14 @@ class DescribeOrganizationMembersRequest(AbstractModel):
     def Product(self, Product):
         self._Product = Product
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._Offset = params.get("Offset")
@@ -5277,6 +5369,12 @@ class DescribeOrganizationMembersRequest(AbstractModel):
         self._SearchKey = params.get("SearchKey")
         self._AuthName = params.get("AuthName")
         self._Product = params.get("Product")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5352,9 +5450,12 @@ class DescribeOrganizationNodesRequest(AbstractModel):
         :type Limit: int
         :param _Offset: 偏移量。取值是limit的整数倍。默认值 : 0。
         :type Offset: int
+        :param _Tags: 部门标签搜索列表，最大10个
+        :type Tags: list of Tag
         """
         self._Limit = None
         self._Offset = None
+        self._Tags = None
 
     @property
     def Limit(self):
@@ -5372,10 +5473,24 @@ class DescribeOrganizationNodesRequest(AbstractModel):
     def Offset(self, Offset):
         self._Offset = Offset
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7887,6 +8002,194 @@ class IdentityPolicy(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class InviteOrganizationMemberRequest(AbstractModel):
+    """InviteOrganizationMember请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberUin: 被邀请账号Uin。
+        :type MemberUin: int
+        :param _Name: 成员名称。最大长度为25个字符，支持英文字母、数字、汉字、符号+@、&._[]-:,
+        :type Name: str
+        :param _PolicyType: 关系策略。取值：Financial
+        :type PolicyType: str
+        :param _PermissionIds: 成员财务权限ID列表。取值：1-查看账单、2-查看余额、3-资金划拨、4-合并出账、5-开票、6-优惠继承、7-代付费，1、2 默认必须
+        :type PermissionIds: list of int non-negative
+        :param _NodeId: 成员所属部门的节点ID。可以通过[DescribeOrganizationNodes](https://cloud.tencent.com/document/product/850/82926)获取
+        :type NodeId: int
+        :param _Remark: 备注。
+        :type Remark: str
+        :param _IsAllowQuit: 是否允许成员退出。允许：Allow，不允许：Denied。
+        :type IsAllowQuit: str
+        :param _PayUin: 代付者Uin。成员代付费时需要
+        :type PayUin: str
+        :param _RelationAuthName: 互信实名主体名称。
+        :type RelationAuthName: str
+        :param _AuthFile: 互信主体证明文件列表。
+        :type AuthFile: list of AuthRelationFile
+        :param _Tags: 成员标签列表。最大10个
+        :type Tags: list of Tag
+        """
+        self._MemberUin = None
+        self._Name = None
+        self._PolicyType = None
+        self._PermissionIds = None
+        self._NodeId = None
+        self._Remark = None
+        self._IsAllowQuit = None
+        self._PayUin = None
+        self._RelationAuthName = None
+        self._AuthFile = None
+        self._Tags = None
+
+    @property
+    def MemberUin(self):
+        return self._MemberUin
+
+    @MemberUin.setter
+    def MemberUin(self, MemberUin):
+        self._MemberUin = MemberUin
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def PolicyType(self):
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def PermissionIds(self):
+        return self._PermissionIds
+
+    @PermissionIds.setter
+    def PermissionIds(self, PermissionIds):
+        self._PermissionIds = PermissionIds
+
+    @property
+    def NodeId(self):
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def IsAllowQuit(self):
+        return self._IsAllowQuit
+
+    @IsAllowQuit.setter
+    def IsAllowQuit(self, IsAllowQuit):
+        self._IsAllowQuit = IsAllowQuit
+
+    @property
+    def PayUin(self):
+        return self._PayUin
+
+    @PayUin.setter
+    def PayUin(self, PayUin):
+        self._PayUin = PayUin
+
+    @property
+    def RelationAuthName(self):
+        return self._RelationAuthName
+
+    @RelationAuthName.setter
+    def RelationAuthName(self, RelationAuthName):
+        self._RelationAuthName = RelationAuthName
+
+    @property
+    def AuthFile(self):
+        return self._AuthFile
+
+    @AuthFile.setter
+    def AuthFile(self, AuthFile):
+        self._AuthFile = AuthFile
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._MemberUin = params.get("MemberUin")
+        self._Name = params.get("Name")
+        self._PolicyType = params.get("PolicyType")
+        self._PermissionIds = params.get("PermissionIds")
+        self._NodeId = params.get("NodeId")
+        self._Remark = params.get("Remark")
+        self._IsAllowQuit = params.get("IsAllowQuit")
+        self._PayUin = params.get("PayUin")
+        self._RelationAuthName = params.get("RelationAuthName")
+        if params.get("AuthFile") is not None:
+            self._AuthFile = []
+            for item in params.get("AuthFile"):
+                obj = AuthRelationFile()
+                obj._deserialize(item)
+                self._AuthFile.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InviteOrganizationMemberResponse(AbstractModel):
+    """InviteOrganizationMember返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class JoinedGroups(AbstractModel):
@@ -12008,6 +12311,9 @@ class OrgMember(AbstractModel):
         :param _PermissionStatus: 成员权限状态 已确认：Confirmed ，待确认：UnConfirmed
 注意：此字段可能返回 null，表示取不到有效值。
         :type PermissionStatus: str
+        :param _Tags: 成员标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self._MemberUin = None
         self._Name = None
@@ -12026,6 +12332,7 @@ class OrgMember(AbstractModel):
         self._OrgIdentity = None
         self._BindStatus = None
         self._PermissionStatus = None
+        self._Tags = None
 
     @property
     def MemberUin(self):
@@ -12163,6 +12470,14 @@ class OrgMember(AbstractModel):
     def PermissionStatus(self, PermissionStatus):
         self._PermissionStatus = PermissionStatus
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._MemberUin = params.get("MemberUin")
@@ -12192,6 +12507,12 @@ class OrgMember(AbstractModel):
                 self._OrgIdentity.append(obj)
         self._BindStatus = params.get("BindStatus")
         self._PermissionStatus = params.get("PermissionStatus")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12714,6 +13035,9 @@ class OrgNode(AbstractModel):
         :param _UpdateTime: 更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
+        :param _Tags: 成员标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self._NodeId = None
         self._Name = None
@@ -12721,6 +13045,7 @@ class OrgNode(AbstractModel):
         self._Remark = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._Tags = None
 
     @property
     def NodeId(self):
@@ -12770,6 +13095,14 @@ class OrgNode(AbstractModel):
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._NodeId = params.get("NodeId")
@@ -12778,6 +13111,12 @@ class OrgNode(AbstractModel):
         self._Remark = params.get("Remark")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15340,6 +15679,53 @@ class ShareUnitResource(AbstractModel):
         
 
 
+class Tag(AbstractModel):
+    """标签键值对
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: 标签键
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagKey: str
+        :param _TagValue: 标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagValue: str
+        """
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TagComplianceDetails(AbstractModel):
     """标签合规信息
 
@@ -15662,6 +16048,100 @@ DeleteRoleAssignment：移除 成员 账号上的授权。
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateCustomPolicyForRoleConfigurationRequest(AbstractModel):
+    """UpdateCustomPolicyForRoleConfiguration请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 空间 ID
+        :type ZoneId: str
+        :param _RoleConfigurationId: 权限配置 ID
+        :type RoleConfigurationId: str
+        :param _CustomPolicyName: 权限策略名称，长度最大为 32 个字符。
+        :type CustomPolicyName: str
+        :param _NewCustomPolicyDocument: 自定义策略内容。长度：最大 4096 个字符。当RolePolicyType为Inline时，该参数必须配置。关于权限策略的语法和结构，请参见权限策略语法和结构。
+        :type NewCustomPolicyDocument: str
+        """
+        self._ZoneId = None
+        self._RoleConfigurationId = None
+        self._CustomPolicyName = None
+        self._NewCustomPolicyDocument = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def RoleConfigurationId(self):
+        return self._RoleConfigurationId
+
+    @RoleConfigurationId.setter
+    def RoleConfigurationId(self, RoleConfigurationId):
+        self._RoleConfigurationId = RoleConfigurationId
+
+    @property
+    def CustomPolicyName(self):
+        return self._CustomPolicyName
+
+    @CustomPolicyName.setter
+    def CustomPolicyName(self, CustomPolicyName):
+        self._CustomPolicyName = CustomPolicyName
+
+    @property
+    def NewCustomPolicyDocument(self):
+        return self._NewCustomPolicyDocument
+
+    @NewCustomPolicyDocument.setter
+    def NewCustomPolicyDocument(self, NewCustomPolicyDocument):
+        self._NewCustomPolicyDocument = NewCustomPolicyDocument
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._RoleConfigurationId = params.get("RoleConfigurationId")
+        self._CustomPolicyName = params.get("CustomPolicyName")
+        self._NewCustomPolicyDocument = params.get("NewCustomPolicyDocument")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateCustomPolicyForRoleConfigurationResponse(AbstractModel):
+    """UpdateCustomPolicyForRoleConfiguration返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateGroupRequest(AbstractModel):

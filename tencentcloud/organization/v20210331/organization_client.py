@@ -1774,6 +1774,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def InviteOrganizationMember(self, request):
+        """邀请组织成员
+
+        :param request: Request instance for InviteOrganizationMember.
+        :type request: :class:`tencentcloud.organization.v20210331.models.InviteOrganizationMemberRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.InviteOrganizationMemberResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InviteOrganizationMember", params, headers=headers)
+            response = json.loads(body)
+            model = models.InviteOrganizationMemberResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListExternalSAMLIdPCertificates(self, request):
         """查询SAML签名证书列表
 
@@ -2409,6 +2432,29 @@ class OrganizationClient(AbstractClient):
             body = self.call("SetExternalSAMLIdentityProvider", params, headers=headers)
             response = json.loads(body)
             model = models.SetExternalSAMLIdentityProviderResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateCustomPolicyForRoleConfiguration(self, request):
+        """为权限配置修改自定义策略
+
+        :param request: Request instance for UpdateCustomPolicyForRoleConfiguration.
+        :type request: :class:`tencentcloud.organization.v20210331.models.UpdateCustomPolicyForRoleConfigurationRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.UpdateCustomPolicyForRoleConfigurationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateCustomPolicyForRoleConfiguration", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateCustomPolicyForRoleConfigurationResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
