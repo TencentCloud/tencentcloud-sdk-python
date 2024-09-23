@@ -3341,6 +3341,8 @@ class CreateBatchQuickSignUrlRequest(AbstractModel):
 注：
 `不指定该值时，默认为签署方自行选择。`
         :type SignTypeSelector: int
+        :param _FlowBatchUrlInfo: 批量签署合同相关信息，指定合同和签署方的信息，用于补充动态签署人。	
+        :type FlowBatchUrlInfo: :class:`tencentcloud.ess.v20201111.models.FlowBatchUrlInfo`
         """
         self._FlowApproverInfo = None
         self._Agent = None
@@ -3351,6 +3353,7 @@ class CreateBatchQuickSignUrlRequest(AbstractModel):
         self._SignatureTypes = None
         self._ApproverSignTypes = None
         self._SignTypeSelector = None
+        self._FlowBatchUrlInfo = None
 
     @property
     def FlowApproverInfo(self):
@@ -3424,6 +3427,14 @@ class CreateBatchQuickSignUrlRequest(AbstractModel):
     def SignTypeSelector(self, SignTypeSelector):
         self._SignTypeSelector = SignTypeSelector
 
+    @property
+    def FlowBatchUrlInfo(self):
+        return self._FlowBatchUrlInfo
+
+    @FlowBatchUrlInfo.setter
+    def FlowBatchUrlInfo(self, FlowBatchUrlInfo):
+        self._FlowBatchUrlInfo = FlowBatchUrlInfo
+
 
     def _deserialize(self, params):
         if params.get("FlowApproverInfo") is not None:
@@ -3441,6 +3452,9 @@ class CreateBatchQuickSignUrlRequest(AbstractModel):
         self._SignatureTypes = params.get("SignatureTypes")
         self._ApproverSignTypes = params.get("ApproverSignTypes")
         self._SignTypeSelector = params.get("SignTypeSelector")
+        if params.get("FlowBatchUrlInfo") is not None:
+            self._FlowBatchUrlInfo = FlowBatchUrlInfo()
+            self._FlowBatchUrlInfo._deserialize(params.get("FlowBatchUrlInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9162,6 +9176,8 @@ class CreatePrepareFlowRequest(AbstractModel):
         :param _InitiatorComponents: 模板或者合同中的填写控件列表，列表中可支持下列多种填写控件，控件的详细定义参考开发者中心的Component结构体
 
         :type InitiatorComponents: list of Component
+        :param _FlowDisplayType: 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+        :type FlowDisplayType: int
         """
         self._Operator = None
         self._ResourceId = None
@@ -9182,6 +9198,7 @@ class CreatePrepareFlowRequest(AbstractModel):
         self._FlowId = None
         self._Agent = None
         self._InitiatorComponents = None
+        self._FlowDisplayType = None
 
     @property
     def Operator(self):
@@ -9335,6 +9352,14 @@ class CreatePrepareFlowRequest(AbstractModel):
     def InitiatorComponents(self, InitiatorComponents):
         self._InitiatorComponents = InitiatorComponents
 
+    @property
+    def FlowDisplayType(self):
+        return self._FlowDisplayType
+
+    @FlowDisplayType.setter
+    def FlowDisplayType(self, FlowDisplayType):
+        self._FlowDisplayType = FlowDisplayType
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -9376,6 +9401,7 @@ class CreatePrepareFlowRequest(AbstractModel):
                 obj = Component()
                 obj._deserialize(item)
                 self._InitiatorComponents.append(obj)
+        self._FlowDisplayType = params.get("FlowDisplayType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -523,10 +523,10 @@ class CallbackStatusStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BeginTime: 起始时间，格式为yyyymmddhh，精确到小时，例如2021050113，表示2021年5月1号13时。
+        :param _BeginTime: 起始时间，格式为yyyymmddhh，精确到小时，例如2024050113，表示2024年5月1号13时。
         :type BeginTime: str
-        :param _EndTime: 结束时间，格式为yyyymmddhh，精确到小时，例如2021050118，表示2021年5月1号18时。
-注：EndTime 必须大于 BeginTime，且相差不超过32天。
+        :param _EndTime: 结束时间，格式为yyyymmddhh，精确到小时，例如2024050118，表示2024年5月1号18时。
+注：EndTime 必须大于等于 BeginTime，且相差不超过32天。
         :type EndTime: str
         :param _SmsSdkAppId: 短信 SdkAppId 在 [短信控制台](https://console.cloud.tencent.com/smsv2/app-manage)  添加应用后生成的实际 SdkAppId，示例如1400006666。
         :type SmsSdkAppId: str
@@ -3000,10 +3000,10 @@ class SendStatusStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BeginTime: 起始时间，格式为yyyymmddhh，精确到小时，例如2021050113，表示2021年5月1号13时。
+        :param _BeginTime: 起始时间，格式为yyyymmddhh，精确到小时，例如2024050113，表示2024年5月1号13时。
         :type BeginTime: str
-        :param _EndTime: 结束时间，格式为yyyymmddhh，精确到小时，例如2021050118，表示2021年5月1号18时。
-注：EndTime 必须大于 BeginTime。
+        :param _EndTime: 结束时间，格式为yyyymmddhh，精确到小时，例如2024050118，表示2024年5月1号18时。
+注：EndTime 必须大于等于 BeginTime。
         :type EndTime: str
         :param _SmsSdkAppId: 短信 SdkAppId 在 [短信控制台](https://console.cloud.tencent.com/smsv2/app-manage)  添加应用后生成的实际 SdkAppId，示例如1400006666。
         :type SmsSdkAppId: str
@@ -3231,13 +3231,14 @@ class SmsPackagesStatisticsRequest(AbstractModel):
         :param _SmsSdkAppId: 短信 SdkAppId 在 [短信控制台](https://console.cloud.tencent.com/smsv2/app-manage)  添加应用后生成的实际 SdkAppId，示例如1400006666。
         :type SmsSdkAppId: str
         :param _Limit: 最大上限(需要拉取的套餐包个数)。
+注：Limit默认最大值为500，可结合Offset实现分页查询。
         :type Limit: int
         :param _Offset: 偏移量。
         :type Offset: int
-        :param _BeginTime: 起始时间，格式为yyyymmddhh，精确到小时，例如2021050113，表示2021年5月1号13时。
+        :param _BeginTime: 起始时间，格式为yyyymmddhh，精确到小时，例如2024050113，表示2024年5月1号13时。
 注：接口会返回 BeginTime 到 EndTime 之间创建的套餐包的统计信息。
         :type BeginTime: str
-        :param _EndTime: 结束时间，格式为yyyymmddhh，精确到小时，例如2021050118，表示2021年5月1号18时。
+        :param _EndTime: 结束时间，格式为yyyymmddhh，精确到小时，例如2024050118，表示2024年5月1号18时。
 注：EndTime 必须大于 BeginTime 且小于当前时间。
         :type EndTime: str
         """

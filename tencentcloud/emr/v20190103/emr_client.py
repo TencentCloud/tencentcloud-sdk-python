@@ -397,6 +397,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeGlobalConfig(self, request):
+        """查询YARN资源调度的全局配置
+
+        :param request: Request instance for DescribeGlobalConfig.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeGlobalConfigRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeGlobalConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGlobalConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGlobalConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeHBaseTableOverview(self, request):
         """获取Hbase表级监控数据概览接口
 
@@ -965,6 +988,29 @@ class EmrClient(AbstractClient):
             body = self.call("ModifyAutoScaleStrategy", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAutoScaleStrategyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyGlobalConfig(self, request):
+        """修改YARN资源调度的全局配置
+
+        :param request: Request instance for ModifyGlobalConfig.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ModifyGlobalConfigRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifyGlobalConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyGlobalConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyGlobalConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -2020,6 +2020,124 @@ class CreateDBInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateDatabaseRequest(AbstractModel):
+    """CreateDatabase请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: 实例ID，形如postgres-6fego161
+        :type DBInstanceId: str
+        :param _DatabaseName: 创建的数据库名
+        :type DatabaseName: str
+        :param _DatabaseOwner: 数据库的所有者
+        :type DatabaseOwner: str
+        :param _Encoding: 数据库的字符编码
+        :type Encoding: str
+        :param _Collate: 数据库的排序规则
+        :type Collate: str
+        :param _Ctype: 数据库的字符分类
+        :type Ctype: str
+        """
+        self._DBInstanceId = None
+        self._DatabaseName = None
+        self._DatabaseOwner = None
+        self._Encoding = None
+        self._Collate = None
+        self._Ctype = None
+
+    @property
+    def DBInstanceId(self):
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def DatabaseName(self):
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def DatabaseOwner(self):
+        return self._DatabaseOwner
+
+    @DatabaseOwner.setter
+    def DatabaseOwner(self, DatabaseOwner):
+        self._DatabaseOwner = DatabaseOwner
+
+    @property
+    def Encoding(self):
+        return self._Encoding
+
+    @Encoding.setter
+    def Encoding(self, Encoding):
+        self._Encoding = Encoding
+
+    @property
+    def Collate(self):
+        return self._Collate
+
+    @Collate.setter
+    def Collate(self, Collate):
+        self._Collate = Collate
+
+    @property
+    def Ctype(self):
+        return self._Ctype
+
+    @Ctype.setter
+    def Ctype(self, Ctype):
+        self._Ctype = Ctype
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._DatabaseName = params.get("DatabaseName")
+        self._DatabaseOwner = params.get("DatabaseOwner")
+        self._Encoding = params.get("Encoding")
+        self._Collate = params.get("Collate")
+        self._Ctype = params.get("Ctype")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDatabaseResponse(AbstractModel):
+    """CreateDatabase返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateInstancesRequest(AbstractModel):
     """CreateInstances请求参数结构体
 
@@ -2649,28 +2767,28 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
         :param _InstanceCount: 购买实例数量，取值范围：[1-10]。一次性购买支持最大数量10个，若超过该数量，可进行多次调用进行购买。
         :type InstanceCount: int
         :param _Period: 购买时长，单位：月。
-<li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36
-<li>后付费：只支持1
+<li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36</li>
+<li>后付费：只支持1</li>
         :type Period: int
-        :param _VpcId: 私有网络ID，形如vpc-xxxxxxxx。有效的VpcId可通过登录控制台查询；也可以调用接口 [DescribeVpcEx](https://cloud.tencent.com/document/api/215/1372) ，从接口返回中的unVpcId字段获取。
+        :param _VpcId: 私有网络ID，形如vpc-xxxxxxxx（该参数当前必传）。有效的VpcId可通过登录控制台查询；也可以调用接口 [DescribeVpcEx](https://cloud.tencent.com/document/api/215/1372) ，从接口返回中的unVpcId字段获取。
         :type VpcId: str
-        :param _SubnetId: 私有网络子网ID，形如subnet-xxxxxxxx。有效的私有网络子网ID可通过登录控制台查询；也可以调用接口 [DescribeSubnets ](https://cloud.tencent.com/document/api/215/15784)，从接口返回中的unSubnetId字段获取。
+        :param _SubnetId: 私有网络子网ID，形如subnet-xxxxxxxx（该参数当前必传）。有效的私有网络子网ID可通过登录控制台查询；也可以调用接口 [DescribeSubnets ](https://cloud.tencent.com/document/api/215/15784)，从接口返回中的unSubnetId字段获取。
         :type SubnetId: str
         :param _InstanceChargeType: 实例计费类型，目前支持：
-<li>PREPAID：预付费，即包年包月。
-<li>POSTPAID_BY_HOUR：后付费，即按量计费。
+<li>PREPAID：预付费，即包年包月。</li>
+<li>POSTPAID_BY_HOUR：后付费，即按量计费。</li>
 默认值：PREPAID。如果主实例为后付费，只读实例必须也为后付费。
         :type InstanceChargeType: str
         :param _AutoVoucher: 是否自动使用代金券：
-<li>0：否
-<li>1：是
+<li>0：否</li>
+<li>1：是</li>
 默认值：0
         :type AutoVoucher: int
         :param _VoucherIds: 代金券ID列表，目前仅支持指定一张代金券。
         :type VoucherIds: list of str
         :param _AutoRenewFlag: 续费标记：
-<li>0：手动续费
-<li>1：自动续费
+<li>0：手动续费</li>
+<li>1：自动续费</li>
 默认值：0
         :type AutoRenewFlag: int
         :param _ProjectId: 项目ID。
@@ -2685,8 +2803,8 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
 
         :type SecurityGroupIds: list of str
         :param _NeedSupportIpv6: 是否需要支持Ipv6：
-<li>0：否
-<li>1：是
+<li>0：否</li>
+<li>1：是</li>
 默认值：0
         :type NeedSupportIpv6: int
         :param _Name: 实例名(后续支持)
@@ -4287,7 +4405,7 @@ class DBInstanceNetInfo(AbstractModel):
 
 
 class DBNode(AbstractModel):
-    """描述实例节点信息，包括节点类型、节点所在可用区。
+    """描述实例节点信息，包括节点类型、节点所在可用区、节点所在专属集群。
 
     """
 
@@ -4323,6 +4441,131 @@ Standby，代表备节点。
     def _deserialize(self, params):
         self._Role = params.get("Role")
         self._Zone = params.get("Zone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Database(AbstractModel):
+    """描述数据库详细信息，包括所有者、字符编码等
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatabaseName: 数据库名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseName: str
+        :param _DatabaseOwner: 数据库所有者
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseOwner: str
+        :param _Encoding: 数据库字符编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Encoding: str
+        :param _Collate: 数据库排序规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Collate: str
+        :param _Ctype: 数据库字符分类
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ctype: str
+        :param _AllowConn: 数据库是否允许连接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AllowConn: bool
+        :param _ConnLimit: 数据库最大连接数，-1表示无限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConnLimit: int
+        :param _Privileges: 数据库权限列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Privileges: str
+        """
+        self._DatabaseName = None
+        self._DatabaseOwner = None
+        self._Encoding = None
+        self._Collate = None
+        self._Ctype = None
+        self._AllowConn = None
+        self._ConnLimit = None
+        self._Privileges = None
+
+    @property
+    def DatabaseName(self):
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def DatabaseOwner(self):
+        return self._DatabaseOwner
+
+    @DatabaseOwner.setter
+    def DatabaseOwner(self, DatabaseOwner):
+        self._DatabaseOwner = DatabaseOwner
+
+    @property
+    def Encoding(self):
+        return self._Encoding
+
+    @Encoding.setter
+    def Encoding(self, Encoding):
+        self._Encoding = Encoding
+
+    @property
+    def Collate(self):
+        return self._Collate
+
+    @Collate.setter
+    def Collate(self, Collate):
+        self._Collate = Collate
+
+    @property
+    def Ctype(self):
+        return self._Ctype
+
+    @Ctype.setter
+    def Ctype(self, Ctype):
+        self._Ctype = Ctype
+
+    @property
+    def AllowConn(self):
+        return self._AllowConn
+
+    @AllowConn.setter
+    def AllowConn(self, AllowConn):
+        self._AllowConn = AllowConn
+
+    @property
+    def ConnLimit(self):
+        return self._ConnLimit
+
+    @ConnLimit.setter
+    def ConnLimit(self, ConnLimit):
+        self._ConnLimit = ConnLimit
+
+    @property
+    def Privileges(self):
+        return self._Privileges
+
+    @Privileges.setter
+    def Privileges(self, Privileges):
+        self._Privileges = Privileges
+
+
+    def _deserialize(self, params):
+        self._DatabaseName = params.get("DatabaseName")
+        self._DatabaseOwner = params.get("DatabaseOwner")
+        self._Encoding = params.get("Encoding")
+        self._Collate = params.get("Collate")
+        self._Ctype = params.get("Ctype")
+        self._AllowConn = params.get("AllowConn")
+        self._ConnLimit = params.get("ConnLimit")
+        self._Privileges = params.get("Privileges")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7070,6 +7313,7 @@ db-pay-mode：按照实例付费模式过滤，类型为string
 db-tag-key：按照标签键过滤，类型为string
 db-private-ip： 按照实例私有网络IP过滤，类型为string
 db-public-address： 按照实例外网地址过滤，类型为string
+db-dedicated-cluster-id: 按照私有集群Id过滤，类型为string
         :type Filters: list of Filter
         :param _Limit: 每页显示数量，取值范围为1-100，默认为返回10条。
         :type Limit: int
@@ -7794,11 +8038,14 @@ class DescribeDatabasesResponse(AbstractModel):
         :type Items: list of str
         :param _TotalCount: 数据库总数
         :type TotalCount: int
+        :param _Databases: 数据库详情列表
+        :type Databases: list of Database
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Items = None
         self._TotalCount = None
+        self._Databases = None
         self._RequestId = None
 
     @property
@@ -7818,6 +8065,14 @@ class DescribeDatabasesResponse(AbstractModel):
         self._TotalCount = TotalCount
 
     @property
+    def Databases(self):
+        return self._Databases
+
+    @Databases.setter
+    def Databases(self, Databases):
+        self._Databases = Databases
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -7829,6 +8084,12 @@ class DescribeDatabasesResponse(AbstractModel):
     def _deserialize(self, params):
         self._Items = params.get("Items")
         self._TotalCount = params.get("TotalCount")
+        if params.get("Databases") is not None:
+            self._Databases = []
+            for item in params.get("Databases"):
+                obj = Database()
+                obj._deserialize(item)
+                self._Databases.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -12426,6 +12687,88 @@ class ModifyDBInstancesProjectResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Count = params.get("Count")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDatabaseOwnerRequest(AbstractModel):
+    """ModifyDatabaseOwner请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: 实例ID
+        :type DBInstanceId: str
+        :param _DatabaseName: 数据库名称
+        :type DatabaseName: str
+        :param _DatabaseOwner: 数据库新所有者
+        :type DatabaseOwner: str
+        """
+        self._DBInstanceId = None
+        self._DatabaseName = None
+        self._DatabaseOwner = None
+
+    @property
+    def DBInstanceId(self):
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def DatabaseName(self):
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def DatabaseOwner(self):
+        return self._DatabaseOwner
+
+    @DatabaseOwner.setter
+    def DatabaseOwner(self, DatabaseOwner):
+        self._DatabaseOwner = DatabaseOwner
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._DatabaseName = params.get("DatabaseName")
+        self._DatabaseOwner = params.get("DatabaseOwner")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDatabaseOwnerResponse(AbstractModel):
+    """ModifyDatabaseOwner返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

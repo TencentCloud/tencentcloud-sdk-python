@@ -1004,6 +1004,29 @@ class ApigatewayClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeExclusiveInstanceRegions(self, request):
+        """Get the list of supported regions for dedicated instances
+
+        :param request: Request instance for DescribeExclusiveInstanceRegions.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeExclusiveInstanceRegionsRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribeExclusiveInstanceRegionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeExclusiveInstanceRegions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeExclusiveInstanceRegionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeExclusiveInstances(self, request):
         """本接口（DescribeExclusiveInstances）用于查询独享实例列表信息。
 

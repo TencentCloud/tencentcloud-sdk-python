@@ -7924,10 +7924,17 @@ class RuleIdConfig(AbstractModel):
         :type IntentionType: int
         :param _MouthOpenRecognition: 用户语音回答过程中是否开启张嘴识别检测，默认不开启，仅在意愿核身问答模式中使用。
         :type MouthOpenRecognition: bool
+        :param _Speed: 意愿核身语音播报速度，配置后问答模式和点头模式的语音播报环节都会生效，默认值为0：
+0：智能语速（根据播报文案的长度自动调整语音播报速度）
+1：固定1倍速
+2：固定1.2倍速
+3：固定1.5倍速
+        :type Speed: int
         """
         self._IntentionRecognition = None
         self._IntentionType = None
         self._MouthOpenRecognition = None
+        self._Speed = None
 
     @property
     def IntentionRecognition(self):
@@ -7953,11 +7960,20 @@ class RuleIdConfig(AbstractModel):
     def MouthOpenRecognition(self, MouthOpenRecognition):
         self._MouthOpenRecognition = MouthOpenRecognition
 
+    @property
+    def Speed(self):
+        return self._Speed
+
+    @Speed.setter
+    def Speed(self, Speed):
+        self._Speed = Speed
+
 
     def _deserialize(self, params):
         self._IntentionRecognition = params.get("IntentionRecognition")
         self._IntentionType = params.get("IntentionType")
         self._MouthOpenRecognition = params.get("MouthOpenRecognition")
+        self._Speed = params.get("Speed")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
