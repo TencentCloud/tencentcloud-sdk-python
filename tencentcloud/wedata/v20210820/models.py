@@ -60661,6 +60661,9 @@ class TaskOpsDto(AbstractModel):
         :param _ExtResourceFlag: 资源获取标识
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtResourceFlag: :class:`tencentcloud.wedata.v20210820.models.ExtResourceFlagDto`
+        :param _NewParentTaskInfos: 父任务simple信息(新)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NewParentTaskInfos: list of AiopsSimpleTaskDto
         """
         self._TaskId = None
         self._VirtualTaskId = None
@@ -60750,6 +60753,7 @@ class TaskOpsDto(AbstractModel):
         self._DLCResourceConfig = None
         self._ParentTaskInfos = None
         self._ExtResourceFlag = None
+        self._NewParentTaskInfos = None
 
     @property
     def TaskId(self):
@@ -61455,6 +61459,14 @@ class TaskOpsDto(AbstractModel):
     def ExtResourceFlag(self, ExtResourceFlag):
         self._ExtResourceFlag = ExtResourceFlag
 
+    @property
+    def NewParentTaskInfos(self):
+        return self._NewParentTaskInfos
+
+    @NewParentTaskInfos.setter
+    def NewParentTaskInfos(self, NewParentTaskInfos):
+        self._NewParentTaskInfos = NewParentTaskInfos
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -61562,6 +61574,12 @@ class TaskOpsDto(AbstractModel):
         if params.get("ExtResourceFlag") is not None:
             self._ExtResourceFlag = ExtResourceFlagDto()
             self._ExtResourceFlag._deserialize(params.get("ExtResourceFlag"))
+        if params.get("NewParentTaskInfos") is not None:
+            self._NewParentTaskInfos = []
+            for item in params.get("NewParentTaskInfos"):
+                obj = AiopsSimpleTaskDto()
+                obj._deserialize(item)
+                self._NewParentTaskInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

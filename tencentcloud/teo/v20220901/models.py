@@ -16992,6 +16992,68 @@ class L4Proxy(AbstractModel):
         
 
 
+class L4ProxyRemoteAuth(AbstractModel):
+    """四层远程鉴权信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 四层远程鉴权开关，取值有：
+<li>on：表示开启;</li>
+<li>off：表示关闭。</li>
+        :type Switch: str
+        :param _Address: 远程鉴权服务地址，格式为: domain/ip:port。例：example.auth.com:8888
+
+        :type Address: str
+        :param _ServerFaultyBehavior: 远程鉴权服务不可访问后，经过四层转发规则默认回源行为，取值有：
+<li>reject：表示进行拦截，拒绝访问;</li>
+<li>allow：表示允许通过。</li>
+        :type ServerFaultyBehavior: str
+        """
+        self._Switch = None
+        self._Address = None
+        self._ServerFaultyBehavior = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Address(self):
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def ServerFaultyBehavior(self):
+        return self._ServerFaultyBehavior
+
+    @ServerFaultyBehavior.setter
+    def ServerFaultyBehavior(self, ServerFaultyBehavior):
+        self._ServerFaultyBehavior = ServerFaultyBehavior
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Address = params.get("Address")
+        self._ServerFaultyBehavior = params.get("ServerFaultyBehavior")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class L4ProxyRule(AbstractModel):
     """四层代理转发规则详情。
 
@@ -17059,6 +17121,10 @@ class L4ProxyRule(AbstractModel):
         :type Status: str
         :param _BuId: BuID。
         :type BuId: str
+        :param _RemoteAuth: 远程鉴权信息。
+注意：RemoteAuth 在 CreateL4ProxyRules 或 ModifyL4ProxyRules 不可作为入参使用，如有传此参数，会忽略。在 DescribeL4ProxyRules 返回为空时，表示没有开启远程鉴权。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemoteAuth: :class:`tencentcloud.teo.v20220901.models.L4ProxyRemoteAuth`
         """
         self._RuleId = None
         self._Protocol = None
@@ -17072,6 +17138,7 @@ class L4ProxyRule(AbstractModel):
         self._RuleTag = None
         self._Status = None
         self._BuId = None
+        self._RemoteAuth = None
 
     @property
     def RuleId(self):
@@ -17169,6 +17236,14 @@ class L4ProxyRule(AbstractModel):
     def BuId(self, BuId):
         self._BuId = BuId
 
+    @property
+    def RemoteAuth(self):
+        return self._RemoteAuth
+
+    @RemoteAuth.setter
+    def RemoteAuth(self, RemoteAuth):
+        self._RemoteAuth = RemoteAuth
+
 
     def _deserialize(self, params):
         self._RuleId = params.get("RuleId")
@@ -17183,6 +17258,9 @@ class L4ProxyRule(AbstractModel):
         self._RuleTag = params.get("RuleTag")
         self._Status = params.get("Status")
         self._BuId = params.get("BuId")
+        if params.get("RemoteAuth") is not None:
+            self._RemoteAuth = L4ProxyRemoteAuth()
+            self._RemoteAuth._deserialize(params.get("RemoteAuth"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

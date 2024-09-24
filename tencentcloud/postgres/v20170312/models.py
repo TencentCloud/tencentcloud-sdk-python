@@ -2811,6 +2811,8 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
         :type Name: str
         :param _DBVersion: 【废弃】不再需要指定，内核版本号与主实例保持一致
         :type DBVersion: str
+        :param _DedicatedClusterId: 专属集群ID
+        :type DedicatedClusterId: str
         """
         self._Zone = None
         self._MasterDBInstanceId = None
@@ -2832,6 +2834,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
         self._NeedSupportIpv6 = None
         self._Name = None
         self._DBVersion = None
+        self._DedicatedClusterId = None
 
     @property
     def Zone(self):
@@ -2993,6 +2996,14 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
     def DBVersion(self, DBVersion):
         self._DBVersion = DBVersion
 
+    @property
+    def DedicatedClusterId(self):
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -3017,6 +3028,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
         self._NeedSupportIpv6 = params.get("NeedSupportIpv6")
         self._Name = params.get("Name")
         self._DBVersion = params.get("DBVersion")
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4417,9 +4429,13 @@ Standby，代表备节点。
         :type Role: str
         :param _Zone: 节点所在可用区，例如 ap-guangzhou-1。
         :type Zone: str
+        :param _DedicatedClusterId: 专属集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DedicatedClusterId: str
         """
         self._Role = None
         self._Zone = None
+        self._DedicatedClusterId = None
 
     @property
     def Role(self):
@@ -4437,10 +4453,19 @@ Standby，代表备节点。
     def Zone(self, Zone):
         self._Zone = Zone
 
+    @property
+    def DedicatedClusterId(self):
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
+
 
     def _deserialize(self, params):
         self._Role = params.get("Role")
         self._Zone = params.get("Zone")
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4701,6 +4726,170 @@ class DatabasePrivilege(AbstractModel):
             self._Object = DatabaseObject()
             self._Object._deserialize(params.get("Object"))
         self._PrivilegeSet = params.get("PrivilegeSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DedicatedCluster(AbstractModel):
+    """专属集群相关信息，用于查询用户的专属集群列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DedicatedClusterId: 专属集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DedicatedClusterId: str
+        :param _Name: 专属集群名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Zone: 专属集群所在可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param _StandbyDedicatedClusterSet: 灾备集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StandbyDedicatedClusterSet: list of str
+        :param _InstanceCount: 实例数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceCount: int
+        :param _CpuTotal: Cpu总量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CpuTotal: int
+        :param _CpuAvailable: Cpu可用数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CpuAvailable: int
+        :param _MemTotal: 内存总量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemTotal: int
+        :param _MemAvailable: 内存可用量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemAvailable: int
+        :param _DiskTotal: 磁盘总量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskTotal: int
+        :param _DiskAvailable: 磁盘可用量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskAvailable: int
+        """
+        self._DedicatedClusterId = None
+        self._Name = None
+        self._Zone = None
+        self._StandbyDedicatedClusterSet = None
+        self._InstanceCount = None
+        self._CpuTotal = None
+        self._CpuAvailable = None
+        self._MemTotal = None
+        self._MemAvailable = None
+        self._DiskTotal = None
+        self._DiskAvailable = None
+
+    @property
+    def DedicatedClusterId(self):
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def StandbyDedicatedClusterSet(self):
+        return self._StandbyDedicatedClusterSet
+
+    @StandbyDedicatedClusterSet.setter
+    def StandbyDedicatedClusterSet(self, StandbyDedicatedClusterSet):
+        self._StandbyDedicatedClusterSet = StandbyDedicatedClusterSet
+
+    @property
+    def InstanceCount(self):
+        return self._InstanceCount
+
+    @InstanceCount.setter
+    def InstanceCount(self, InstanceCount):
+        self._InstanceCount = InstanceCount
+
+    @property
+    def CpuTotal(self):
+        return self._CpuTotal
+
+    @CpuTotal.setter
+    def CpuTotal(self, CpuTotal):
+        self._CpuTotal = CpuTotal
+
+    @property
+    def CpuAvailable(self):
+        return self._CpuAvailable
+
+    @CpuAvailable.setter
+    def CpuAvailable(self, CpuAvailable):
+        self._CpuAvailable = CpuAvailable
+
+    @property
+    def MemTotal(self):
+        return self._MemTotal
+
+    @MemTotal.setter
+    def MemTotal(self, MemTotal):
+        self._MemTotal = MemTotal
+
+    @property
+    def MemAvailable(self):
+        return self._MemAvailable
+
+    @MemAvailable.setter
+    def MemAvailable(self, MemAvailable):
+        self._MemAvailable = MemAvailable
+
+    @property
+    def DiskTotal(self):
+        return self._DiskTotal
+
+    @DiskTotal.setter
+    def DiskTotal(self, DiskTotal):
+        self._DiskTotal = DiskTotal
+
+    @property
+    def DiskAvailable(self):
+        return self._DiskAvailable
+
+    @DiskAvailable.setter
+    def DiskAvailable(self, DiskAvailable):
+        self._DiskAvailable = DiskAvailable
+
+
+    def _deserialize(self, params):
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
+        self._Name = params.get("Name")
+        self._Zone = params.get("Zone")
+        self._StandbyDedicatedClusterSet = params.get("StandbyDedicatedClusterSet")
+        self._InstanceCount = params.get("InstanceCount")
+        self._CpuTotal = params.get("CpuTotal")
+        self._CpuAvailable = params.get("CpuAvailable")
+        self._MemTotal = params.get("MemTotal")
+        self._MemAvailable = params.get("MemAvailable")
+        self._DiskTotal = params.get("DiskTotal")
+        self._DiskAvailable = params.get("DiskAvailable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8090,6 +8279,87 @@ class DescribeDatabasesResponse(AbstractModel):
                 obj = Database()
                 obj._deserialize(item)
                 self._Databases.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDedicatedClustersRequest(AbstractModel):
+    """DescribeDedicatedClusters请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
+dedicated-cluster-id: 按照专属集群ID筛选，类型为string
+        :type Filters: list of Filter
+        """
+        self._Filters = None
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDedicatedClustersResponse(AbstractModel):
+    """DescribeDedicatedClusters返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DedicatedClusterSet: 专属集群信息
+        :type DedicatedClusterSet: list of DedicatedCluster
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DedicatedClusterSet = None
+        self._RequestId = None
+
+    @property
+    def DedicatedClusterSet(self):
+        return self._DedicatedClusterSet
+
+    @DedicatedClusterSet.setter
+    def DedicatedClusterSet(self, DedicatedClusterSet):
+        self._DedicatedClusterSet = DedicatedClusterSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DedicatedClusterSet") is not None:
+            self._DedicatedClusterSet = []
+            for item in params.get("DedicatedClusterSet"):
+                obj = DedicatedCluster()
+                obj._deserialize(item)
+                self._DedicatedClusterSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 

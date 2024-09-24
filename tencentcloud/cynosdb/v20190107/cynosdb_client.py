@@ -1751,31 +1751,6 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeRollbackTimeValidity(self, request):
-        """历史废弃接口，从云API下线
-
-        指定时间和集群查询是否可回滚
-
-        :param request: Request instance for DescribeRollbackTimeValidity.
-        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeRollbackTimeValidityRequest`
-        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeRollbackTimeValidityResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeRollbackTimeValidity", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeRollbackTimeValidityResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeServerlessStrategy(self, request):
         """查询serverless策略
 

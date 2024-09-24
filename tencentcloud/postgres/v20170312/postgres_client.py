@@ -1088,6 +1088,29 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDedicatedClusters(self, request):
+        """查询专属集群
+
+        :param request: Request instance for DescribeDedicatedClusters.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDedicatedClustersRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeDedicatedClustersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDedicatedClusters", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDedicatedClustersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDefaultParameters(self, request):
         """本接口（DescribeDefaultParameters）主要用于查询某个数据库版本和引擎支持的所有参数。
 

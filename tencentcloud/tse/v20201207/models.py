@@ -22762,9 +22762,17 @@ class RuleFilter(AbstractModel):
         :param _Values: 限流条件的Values
 注意：此字段可能返回 null，表示取不到有效值。
         :type Values: list of str
+        :param _Operator: 操作符
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operator: str
+        :param _Name: header或query对应的name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
         """
         self._Key = None
         self._Values = None
+        self._Operator = None
+        self._Name = None
 
     @property
     def Key(self):
@@ -22782,10 +22790,28 @@ class RuleFilter(AbstractModel):
     def Values(self, Values):
         self._Values = Values
 
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
 
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Values = params.get("Values")
+        self._Operator = params.get("Operator")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

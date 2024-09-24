@@ -124,7 +124,7 @@ class AutoUpgradeOptions(AbstractModel):
 
 
 class AutoscalingAdded(AbstractModel):
-    """自动扩所容的节点
+    """自动扩缩容的节点
 
     """
 

@@ -1683,31 +1683,6 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeApplicationBusinessLogConfig(self, request):
-        """接口未使用，废弃录用
-
-        查询应用关联日志配置项信息
-
-        :param request: Request instance for DescribeApplicationBusinessLogConfig.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeApplicationBusinessLogConfigRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeApplicationBusinessLogConfigResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeApplicationBusinessLogConfig", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeApplicationBusinessLogConfigResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeApplications(self, request):
         """获取应用列表
 

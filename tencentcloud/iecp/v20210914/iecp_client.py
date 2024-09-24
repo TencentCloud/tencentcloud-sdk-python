@@ -26,31 +26,6 @@ class IecpClient(AbstractClient):
     _service = 'iecp'
 
 
-    def ApplyMarketComponent(self, request):
-        """产品停售，预下线
-
-        从组件市场选中组件并添加到应用模板列表
-
-        :param request: Request instance for ApplyMarketComponent.
-        :type request: :class:`tencentcloud.iecp.v20210914.models.ApplyMarketComponentRequest`
-        :rtype: :class:`tencentcloud.iecp.v20210914.models.ApplyMarketComponentResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ApplyMarketComponent", params, headers=headers)
-            response = json.loads(body)
-            model = models.ApplyMarketComponentResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def BuildMessageRoute(self, request):
         """建立消息路由
 
@@ -65,31 +40,6 @@ class IecpClient(AbstractClient):
             body = self.call("BuildMessageRoute", params, headers=headers)
             response = json.loads(body)
             model = models.BuildMessageRouteResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def CreateApplicationVisualization(self, request):
-        """产品停售，预下线
-
-        创建可视化创建应用模板
-
-        :param request: Request instance for CreateApplicationVisualization.
-        :type request: :class:`tencentcloud.iecp.v20210914.models.CreateApplicationVisualizationRequest`
-        :rtype: :class:`tencentcloud.iecp.v20210914.models.CreateApplicationVisualizationResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateApplicationVisualization", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateApplicationVisualizationResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -205,56 +155,6 @@ class IecpClient(AbstractClient):
             body = self.call("CreateEdgeNodeUnitTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.CreateEdgeNodeUnitTemplateResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def CreateEdgeUnitApplicationVisualization(self, request):
-        """产品停售，预下线
-
-        可视化创建应用
-
-        :param request: Request instance for CreateEdgeUnitApplicationVisualization.
-        :type request: :class:`tencentcloud.iecp.v20210914.models.CreateEdgeUnitApplicationVisualizationRequest`
-        :rtype: :class:`tencentcloud.iecp.v20210914.models.CreateEdgeUnitApplicationVisualizationResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateEdgeUnitApplicationVisualization", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateEdgeUnitApplicationVisualizationResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def CreateEdgeUnitApplicationYaml(self, request):
-        """产品停售，预下线
-
-        yaml方式创建应用
-
-        :param request: Request instance for CreateEdgeUnitApplicationYaml.
-        :type request: :class:`tencentcloud.iecp.v20210914.models.CreateEdgeUnitApplicationYamlRequest`
-        :rtype: :class:`tencentcloud.iecp.v20210914.models.CreateEdgeUnitApplicationYamlResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateEdgeUnitApplicationYaml", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateEdgeUnitApplicationYamlResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -448,31 +348,6 @@ class IecpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DeleteApplications(self, request):
-        """产品停售，预下线
-
-        删除应用模板
-
-        :param request: Request instance for DeleteApplications.
-        :type request: :class:`tencentcloud.iecp.v20210914.models.DeleteApplicationsRequest`
-        :rtype: :class:`tencentcloud.iecp.v20210914.models.DeleteApplicationsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteApplications", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteApplicationsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DeleteConfigMap(self, request):
         """删除ConfigMap
 
@@ -556,31 +431,6 @@ class IecpClient(AbstractClient):
             body = self.call("DeleteEdgeNodes", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteEdgeNodesResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DeleteEdgeUnitApplications(self, request):
-        """产品停售，预下线
-
-        删除应用列表
-
-        :param request: Request instance for DeleteEdgeUnitApplications.
-        :type request: :class:`tencentcloud.iecp.v20210914.models.DeleteEdgeUnitApplicationsRequest`
-        :rtype: :class:`tencentcloud.iecp.v20210914.models.DeleteEdgeUnitApplicationsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteEdgeUnitApplications", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteEdgeUnitApplicationsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -811,106 +661,6 @@ class IecpClient(AbstractClient):
             body = self.call("DeleteSecret", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteSecretResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeApplicationVisualization(self, request):
-        """产品停售，预下线
-
-        获取应用模板可视化配置信息
-
-        :param request: Request instance for DescribeApplicationVisualization.
-        :type request: :class:`tencentcloud.iecp.v20210914.models.DescribeApplicationVisualizationRequest`
-        :rtype: :class:`tencentcloud.iecp.v20210914.models.DescribeApplicationVisualizationResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeApplicationVisualization", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeApplicationVisualizationResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeApplicationYaml(self, request):
-        """产品停售，预下线
-
-        查询应用模板Yaml
-
-        :param request: Request instance for DescribeApplicationYaml.
-        :type request: :class:`tencentcloud.iecp.v20210914.models.DescribeApplicationYamlRequest`
-        :rtype: :class:`tencentcloud.iecp.v20210914.models.DescribeApplicationYamlResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeApplicationYaml", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeApplicationYamlResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeApplicationYamlError(self, request):
-        """产品停售，预下线
-
-        检查应用模板的Yaml配置
-
-        :param request: Request instance for DescribeApplicationYamlError.
-        :type request: :class:`tencentcloud.iecp.v20210914.models.DescribeApplicationYamlErrorRequest`
-        :rtype: :class:`tencentcloud.iecp.v20210914.models.DescribeApplicationYamlErrorResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeApplicationYamlError", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeApplicationYamlErrorResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeApplications(self, request):
-        """产品停售，预下线
-
-        获取应用模板列表
-
-        :param request: Request instance for DescribeApplications.
-        :type request: :class:`tencentcloud.iecp.v20210914.models.DescribeApplicationsRequest`
-        :rtype: :class:`tencentcloud.iecp.v20210914.models.DescribeApplicationsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeApplications", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeApplicationsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1242,181 +992,6 @@ class IecpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeEdgeUnitApplicationEvents(self, request):
-        """产品停售，预下线
-
-        获取应用事件列表
-
-        :param request: Request instance for DescribeEdgeUnitApplicationEvents.
-        :type request: :class:`tencentcloud.iecp.v20210914.models.DescribeEdgeUnitApplicationEventsRequest`
-        :rtype: :class:`tencentcloud.iecp.v20210914.models.DescribeEdgeUnitApplicationEventsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeEdgeUnitApplicationEvents", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeEdgeUnitApplicationEventsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeEdgeUnitApplicationLogs(self, request):
-        """产品停售，预下线
-
-        获取应用日志
-
-        :param request: Request instance for DescribeEdgeUnitApplicationLogs.
-        :type request: :class:`tencentcloud.iecp.v20210914.models.DescribeEdgeUnitApplicationLogsRequest`
-        :rtype: :class:`tencentcloud.iecp.v20210914.models.DescribeEdgeUnitApplicationLogsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeEdgeUnitApplicationLogs", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeEdgeUnitApplicationLogsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeEdgeUnitApplicationPodContainers(self, request):
-        """产品停售，预下线
-
-        获取应用容器状态
-
-        :param request: Request instance for DescribeEdgeUnitApplicationPodContainers.
-        :type request: :class:`tencentcloud.iecp.v20210914.models.DescribeEdgeUnitApplicationPodContainersRequest`
-        :rtype: :class:`tencentcloud.iecp.v20210914.models.DescribeEdgeUnitApplicationPodContainersResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeEdgeUnitApplicationPodContainers", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeEdgeUnitApplicationPodContainersResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeEdgeUnitApplicationPods(self, request):
-        """产品停售，预下线
-
-        获取应用下Pod状态
-
-        :param request: Request instance for DescribeEdgeUnitApplicationPods.
-        :type request: :class:`tencentcloud.iecp.v20210914.models.DescribeEdgeUnitApplicationPodsRequest`
-        :rtype: :class:`tencentcloud.iecp.v20210914.models.DescribeEdgeUnitApplicationPodsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeEdgeUnitApplicationPods", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeEdgeUnitApplicationPodsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeEdgeUnitApplicationVisualization(self, request):
-        """产品停售，预下线
-
-        获取单元可视化配置信息
-
-        :param request: Request instance for DescribeEdgeUnitApplicationVisualization.
-        :type request: :class:`tencentcloud.iecp.v20210914.models.DescribeEdgeUnitApplicationVisualizationRequest`
-        :rtype: :class:`tencentcloud.iecp.v20210914.models.DescribeEdgeUnitApplicationVisualizationResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeEdgeUnitApplicationVisualization", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeEdgeUnitApplicationVisualizationResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeEdgeUnitApplicationYaml(self, request):
-        """产品停售，预下线
-
-        获取应用的Yaml配置
-
-        :param request: Request instance for DescribeEdgeUnitApplicationYaml.
-        :type request: :class:`tencentcloud.iecp.v20210914.models.DescribeEdgeUnitApplicationYamlRequest`
-        :rtype: :class:`tencentcloud.iecp.v20210914.models.DescribeEdgeUnitApplicationYamlResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeEdgeUnitApplicationYaml", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeEdgeUnitApplicationYamlResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeEdgeUnitApplicationYamlError(self, request):
-        """产品停售，预下线
-
-        检查单元应用的Yaml配置
-
-        :param request: Request instance for DescribeEdgeUnitApplicationYamlError.
-        :type request: :class:`tencentcloud.iecp.v20210914.models.DescribeEdgeUnitApplicationYamlErrorRequest`
-        :rtype: :class:`tencentcloud.iecp.v20210914.models.DescribeEdgeUnitApplicationYamlErrorResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeEdgeUnitApplicationYamlError", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeEdgeUnitApplicationYamlErrorResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeEdgeUnitApplications(self, request):
         """获取单元下应用列表
 
@@ -1431,31 +1006,6 @@ class IecpClient(AbstractClient):
             body = self.call("DescribeEdgeUnitApplications", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeEdgeUnitApplicationsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeEdgeUnitCloud(self, request):
-        """产品停售，预下线
-
-        查询边缘集群详情
-
-        :param request: Request instance for DescribeEdgeUnitCloud.
-        :type request: :class:`tencentcloud.iecp.v20210914.models.DescribeEdgeUnitCloudRequest`
-        :rtype: :class:`tencentcloud.iecp.v20210914.models.DescribeEdgeUnitCloudResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeEdgeUnitCloud", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeEdgeUnitCloudResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2031,56 +1581,6 @@ class IecpClient(AbstractClient):
             body = self.call("GetMarketComponentList", params, headers=headers)
             response = json.loads(body)
             model = models.GetMarketComponentListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ModifyApplicationBasicInfo(self, request):
-        """产品停售，预下线
-
-        修改应用模板基本信息
-
-        :param request: Request instance for ModifyApplicationBasicInfo.
-        :type request: :class:`tencentcloud.iecp.v20210914.models.ModifyApplicationBasicInfoRequest`
-        :rtype: :class:`tencentcloud.iecp.v20210914.models.ModifyApplicationBasicInfoResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyApplicationBasicInfo", params, headers=headers)
-            response = json.loads(body)
-            model = models.ModifyApplicationBasicInfoResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ModifyApplicationVisualization(self, request):
-        """产品停售，预下线
-
-        修改应用模板配置
-
-        :param request: Request instance for ModifyApplicationVisualization.
-        :type request: :class:`tencentcloud.iecp.v20210914.models.ModifyApplicationVisualizationRequest`
-        :rtype: :class:`tencentcloud.iecp.v20210914.models.ModifyApplicationVisualizationResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyApplicationVisualization", params, headers=headers)
-            response = json.loads(body)
-            model = models.ModifyApplicationVisualizationResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

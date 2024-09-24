@@ -3042,7 +3042,7 @@ class CreateListenerRequest(AbstractModel):
         :param _Scheduler: 监听器转发的方式。可选值：WRR、LEAST_CONN
 分别表示按权重轮询、最小连接数， 默认为 WRR。此参数仅适用于TCP/UDP/TCP_SSL/QUIC监听器。
         :type Scheduler: str
-        :param _SniSwitch: 是否开启SNI特性，此参数仅适用于HTTPS监听器。0表示开启，1表示未开启。
+        :param _SniSwitch: 是否开启SNI特性，此参数仅适用于HTTPS监听器。0表示未开启，1表示开启。
         :type SniSwitch: int
         :param _TargetType: 后端目标类型，NODE表示绑定普通节点，TARGETGROUP表示绑定目标组。此参数仅适用于TCP/UDP监听器。七层监听器应在转发规则中设置。
         :type TargetType: str
@@ -3066,6 +3066,10 @@ class CreateListenerRequest(AbstractModel):
         :type SnatEnable: bool
         :param _FullEndPorts: 全端口段监听器的结束端口
         :type FullEndPorts: list of int
+        :param _H2cSwitch: 内网http监听器开启h2c开关
+        :type H2cSwitch: bool
+        :param _SslCloseSwitch: TCP_SSL监听器支持关闭SSL后仍然支持混绑，此参数为关闭开关
+        :type SslCloseSwitch: bool
         """
         self._LoadBalancerId = None
         self._Ports = None
@@ -3087,6 +3091,8 @@ class CreateListenerRequest(AbstractModel):
         self._IdleConnectTimeout = None
         self._SnatEnable = None
         self._FullEndPorts = None
+        self._H2cSwitch = None
+        self._SslCloseSwitch = None
 
     @property
     def LoadBalancerId(self):
@@ -3248,6 +3254,22 @@ class CreateListenerRequest(AbstractModel):
     def FullEndPorts(self, FullEndPorts):
         self._FullEndPorts = FullEndPorts
 
+    @property
+    def H2cSwitch(self):
+        return self._H2cSwitch
+
+    @H2cSwitch.setter
+    def H2cSwitch(self, H2cSwitch):
+        self._H2cSwitch = H2cSwitch
+
+    @property
+    def SslCloseSwitch(self):
+        return self._SslCloseSwitch
+
+    @SslCloseSwitch.setter
+    def SslCloseSwitch(self, SslCloseSwitch):
+        self._SslCloseSwitch = SslCloseSwitch
+
 
     def _deserialize(self, params):
         self._LoadBalancerId = params.get("LoadBalancerId")
@@ -3276,6 +3298,8 @@ class CreateListenerRequest(AbstractModel):
         self._IdleConnectTimeout = params.get("IdleConnectTimeout")
         self._SnatEnable = params.get("SnatEnable")
         self._FullEndPorts = params.get("FullEndPorts")
+        self._H2cSwitch = params.get("H2cSwitch")
+        self._SslCloseSwitch = params.get("SslCloseSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

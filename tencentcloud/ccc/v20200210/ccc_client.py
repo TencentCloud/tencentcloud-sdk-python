@@ -95,6 +95,29 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAICall(self, request):
+        """创建ai外呼会话(仅支持高级版座席)
+
+        :param request: Request instance for CreateAICall.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.CreateAICallRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.CreateAICallResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAICall", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAICallResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAdminURL(self, request):
         """创建管理端访问链接
 

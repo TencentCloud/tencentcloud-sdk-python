@@ -2871,6 +2871,8 @@ HmtResidentPermitFront: 港澳台居住证正面
 HmtResidentPermitBack: 港澳台居住证背面
 EstateCert: 不动产证
 BizLicense: 营业执照
+ForeignPermanentResidentFront: 外国人永居证正面识别
+ForeignPermanentResidentBack: 外国人永居证背面识别
         :type DiscernType: list of str
         """
         self._ImageBase64 = None
