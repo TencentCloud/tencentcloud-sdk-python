@@ -1319,6 +1319,12 @@ class Certificates(AbstractModel):
         :param _CertRevokedTime: 证书吊销完成时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertRevokedTime: str
+        :param _HostingResourceTypes: 托管资源类型列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostingResourceTypes: list of str
+        :param _HostingConfig: 托管配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostingConfig: :class:`tencentcloud.ssl.v20191205.models.HostingConfig`
         """
         self._OwnerUin = None
         self._ProjectId = None
@@ -1374,6 +1380,8 @@ class Certificates(AbstractModel):
         self._KeyPasswordCustomFlag = None
         self._SupportDownloadType = None
         self._CertRevokedTime = None
+        self._HostingResourceTypes = None
+        self._HostingConfig = None
 
     @property
     def OwnerUin(self):
@@ -1807,6 +1815,22 @@ class Certificates(AbstractModel):
     def CertRevokedTime(self, CertRevokedTime):
         self._CertRevokedTime = CertRevokedTime
 
+    @property
+    def HostingResourceTypes(self):
+        return self._HostingResourceTypes
+
+    @HostingResourceTypes.setter
+    def HostingResourceTypes(self, HostingResourceTypes):
+        self._HostingResourceTypes = HostingResourceTypes
+
+    @property
+    def HostingConfig(self):
+        return self._HostingConfig
+
+    @HostingConfig.setter
+    def HostingConfig(self, HostingConfig):
+        self._HostingConfig = HostingConfig
+
 
     def _deserialize(self, params):
         self._OwnerUin = params.get("OwnerUin")
@@ -1876,6 +1900,10 @@ class Certificates(AbstractModel):
             self._SupportDownloadType = SupportDownloadType()
             self._SupportDownloadType._deserialize(params.get("SupportDownloadType"))
         self._CertRevokedTime = params.get("CertRevokedTime")
+        self._HostingResourceTypes = params.get("HostingResourceTypes")
+        if params.get("HostingConfig") is not None:
+            self._HostingConfig = HostingConfig()
+            self._HostingConfig._deserialize(params.get("HostingConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10487,6 +10515,53 @@ class GatewayCertificate(AbstractModel):
         self._BindDomains = params.get("BindDomains")
         self._CertSource = params.get("CertSource")
         self._CertId = params.get("CertId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HostingConfig(AbstractModel):
+    """托管配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReplaceTime: 托管资源替换时间， 默认为证书过期前30天存在续费证书则替换
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReplaceTime: int
+        :param _MessageTypes: 托管发送消息类型：0，托管开始前消息提醒（没有续费证书也会收到该提示消息）； 1， 托管开始消息提醒（存在续费证书才会收到消息提醒）； 2， 托管资源替换失败消息提醒； 3 托管资源替换成功消息提醒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessageTypes: list of int
+        """
+        self._ReplaceTime = None
+        self._MessageTypes = None
+
+    @property
+    def ReplaceTime(self):
+        return self._ReplaceTime
+
+    @ReplaceTime.setter
+    def ReplaceTime(self, ReplaceTime):
+        self._ReplaceTime = ReplaceTime
+
+    @property
+    def MessageTypes(self):
+        return self._MessageTypes
+
+    @MessageTypes.setter
+    def MessageTypes(self, MessageTypes):
+        self._MessageTypes = MessageTypes
+
+
+    def _deserialize(self, params):
+        self._ReplaceTime = params.get("ReplaceTime")
+        self._MessageTypes = params.get("MessageTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

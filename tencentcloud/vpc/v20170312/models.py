@@ -649,6 +649,9 @@ class Address(AbstractModel):
         :param _UnVpcId: 传统弹性公网IPv6所属vpc唯一ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type UnVpcId: str
+        :param _DedicatedClusterId: CDC唯一ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DedicatedClusterId: str
         """
         self._AddressId = None
         self._AddressName = None
@@ -676,6 +679,7 @@ class Address(AbstractModel):
         self._RenewFlag = None
         self._BandwidthPackageId = None
         self._UnVpcId = None
+        self._DedicatedClusterId = None
 
     @property
     def AddressId(self):
@@ -885,6 +889,14 @@ class Address(AbstractModel):
     def UnVpcId(self, UnVpcId):
         self._UnVpcId = UnVpcId
 
+    @property
+    def DedicatedClusterId(self):
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
+
 
     def _deserialize(self, params):
         self._AddressId = params.get("AddressId")
@@ -920,6 +932,7 @@ class Address(AbstractModel):
         self._RenewFlag = params.get("RenewFlag")
         self._BandwidthPackageId = params.get("BandwidthPackageId")
         self._UnVpcId = params.get("UnVpcId")
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1519,6 +1532,8 @@ AnycastEIP是否用于绑定负载均衡。
         :type BandwidthPackageId: str
         :param _AddressName: EIP名称，用于申请EIP时用户自定义该EIP的个性化名称，默认值：未命名
         :type AddressName: str
+        :param _DedicatedClusterId: CDC唯一ID
+        :type DedicatedClusterId: str
         :param _Egress: 网络出口，当前仅支持精品BGP、静态单线，这2种IP 地址类型的指定出口传入，默认值：center_egress1，其它可选值：center_egress2、center_egress3
         :type Egress: str
         :param _AntiDDoSPackageId: 高防包ID， 申请高防IP时，该字段必传。
@@ -1537,6 +1552,7 @@ AnycastEIP是否用于绑定负载均衡。
         self._Tags = None
         self._BandwidthPackageId = None
         self._AddressName = None
+        self._DedicatedClusterId = None
         self._Egress = None
         self._AntiDDoSPackageId = None
         self._ClientToken = None
@@ -1630,6 +1646,14 @@ AnycastEIP是否用于绑定负载均衡。
         self._AddressName = AddressName
 
     @property
+    def DedicatedClusterId(self):
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
+
+    @property
     def Egress(self):
         return self._Egress
 
@@ -1673,6 +1697,7 @@ AnycastEIP是否用于绑定负载均衡。
                 self._Tags.append(obj)
         self._BandwidthPackageId = params.get("BandwidthPackageId")
         self._AddressName = params.get("AddressName")
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
         self._Egress = params.get("Egress")
         self._AntiDDoSPackageId = params.get("AntiDDoSPackageId")
         self._ClientToken = params.get("ClientToken")

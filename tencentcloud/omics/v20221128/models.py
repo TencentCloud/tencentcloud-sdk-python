@@ -52,6 +52,9 @@ class ApplicationVersion(AbstractModel):
         :param _GitInfo: Git信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type GitInfo: str
+        :param _GitSource: Git信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GitSource: :class:`tencentcloud.omics.v20221128.models.GitInfo`
         """
         self._Type = None
         self._ApplicationVersionId = None
@@ -62,6 +65,7 @@ class ApplicationVersion(AbstractModel):
         self._CreatorName = None
         self._CreatorId = None
         self._GitInfo = None
+        self._GitSource = None
 
     @property
     def Type(self):
@@ -129,11 +133,23 @@ class ApplicationVersion(AbstractModel):
 
     @property
     def GitInfo(self):
+        warnings.warn("parameter `GitInfo` is deprecated", DeprecationWarning) 
+
         return self._GitInfo
 
     @GitInfo.setter
     def GitInfo(self, GitInfo):
+        warnings.warn("parameter `GitInfo` is deprecated", DeprecationWarning) 
+
         self._GitInfo = GitInfo
+
+    @property
+    def GitSource(self):
+        return self._GitSource
+
+    @GitSource.setter
+    def GitSource(self, GitSource):
+        self._GitSource = GitSource
 
 
     def _deserialize(self, params):
@@ -146,6 +162,9 @@ class ApplicationVersion(AbstractModel):
         self._CreatorName = params.get("CreatorName")
         self._CreatorId = params.get("CreatorId")
         self._GitInfo = params.get("GitInfo")
+        if params.get("GitSource") is not None:
+            self._GitSource = GitInfo()
+            self._GitSource._deserialize(params.get("GitSource"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -972,6 +991,8 @@ class DescribeRunGroupsRequest(AbstractModel):
 - Name：任务批次名称
 - RunGroupId：任务批次ID
 - Status：任务批次状态
+- ApplicationId：应用ID
+- Type：类型（支持WDL，NEXTFLOW）
         :type Filters: list of Filter
         """
         self._ProjectId = None
@@ -1104,7 +1125,8 @@ class DescribeRunsRequest(AbstractModel):
 - RunGroupId：任务批次ID
 - Status：任务状态
 - RunUuid：任务UUID
-- UserDefinedId：用户定义ID
+- ApplicationId：应用ID
+- UserDefinedId：用户定义ID（批量运行表格第一列）
         :type Filters: list of Filter
         """
         self._ProjectId = None
@@ -2357,14 +2379,19 @@ class GitInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _GitHttpPath: Git地址。
+注意：此字段可能返回 null，表示取不到有效值。
         :type GitHttpPath: str
         :param _GitUserName: Git用户名。
+注意：此字段可能返回 null，表示取不到有效值。
         :type GitUserName: str
         :param _GitTokenOrPassword: Git密码或者Token。
+注意：此字段可能返回 null，表示取不到有效值。
         :type GitTokenOrPassword: str
         :param _Branch: 分支。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Branch: str
         :param _Tag: 标签。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Tag: str
         """
         self._GitHttpPath = None
@@ -3592,6 +3619,14 @@ class RunGroup(AbstractModel):
         :type ApplicationName: str
         :param _ApplicationType: 应用类型。
         :type ApplicationType: str
+        :param _ApplicationVersion: 应用版本。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationVersion: :class:`tencentcloud.omics.v20221128.models.ApplicationVersion`
+        :param _AccessMode: 应用访问类型：
+- PRIVATE 私有应用
+- PUBLIC 公共应用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessMode: str
         :param _EnvironmentId: 环境ID。
         :type EnvironmentId: str
         :param _EnvironmentName: 环境名称。
@@ -3605,13 +3640,36 @@ class RunGroup(AbstractModel):
         :type Description: str
         :param _Status: 任务状态。
         :type Status: str
+        :param _Type: 任务批次类型 ：
+- WDL
+- NEXTFLOW
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _WorkDir: 工作目录。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkDir: str
         :param _Input: 任务输入。
         :type Input: str
+        :param _InputType: 任务输入类型：
+- JSON: 导入JSON
+- MANUAL: 手动输入
+- COS: COS文件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputType: str
+        :param _InputCosUri: 输入COS地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputCosUri: str
+        :param _InputTemplateId: 输入模版ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputTemplateId: str
         :param _Option: WDL运行选项。
         :type Option: :class:`tencentcloud.omics.v20221128.models.RunOption`
         :param _NFOption: Nextflow运行选项。
 注意：此字段可能返回 null，表示取不到有效值。
         :type NFOption: :class:`tencentcloud.omics.v20221128.models.NFOption`
+        :param _Volumes: 使用的缓存卷。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Volumes: list of VolumeInfo
         :param _TotalRun: 任务总数量。
         :type TotalRun: int
         :param _RunStatusCounts: 各状态任务的数量。
@@ -3620,6 +3678,9 @@ class RunGroup(AbstractModel):
         :type ExecutionTime: :class:`tencentcloud.omics.v20221128.models.ExecutionTime`
         :param _ErrorMessage: 错误信息。
         :type ErrorMessage: str
+        :param _ResultNotify: 运行结果通知方式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultNotify: str
         :param _CreateTime: 创建时间。
         :type CreateTime: str
         :param _UpdateTime: 更新时间。
@@ -3630,12 +3691,6 @@ class RunGroup(AbstractModel):
         :param _CreatorId: 创建者ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatorId: str
-        :param _ResultNotify: 运行结果通知方式。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ResultNotify: str
-        :param _ApplicationVersion: 应用版本。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ApplicationVersion: :class:`tencentcloud.omics.v20221128.models.ApplicationVersion`
         """
         self._RunGroupId = None
         self._ProjectId = None
@@ -3643,25 +3698,32 @@ class RunGroup(AbstractModel):
         self._ApplicationId = None
         self._ApplicationName = None
         self._ApplicationType = None
+        self._ApplicationVersion = None
+        self._AccessMode = None
         self._EnvironmentId = None
         self._EnvironmentName = None
         self._TableId = None
         self._Name = None
         self._Description = None
         self._Status = None
+        self._Type = None
+        self._WorkDir = None
         self._Input = None
+        self._InputType = None
+        self._InputCosUri = None
+        self._InputTemplateId = None
         self._Option = None
         self._NFOption = None
+        self._Volumes = None
         self._TotalRun = None
         self._RunStatusCounts = None
         self._ExecutionTime = None
         self._ErrorMessage = None
+        self._ResultNotify = None
         self._CreateTime = None
         self._UpdateTime = None
         self._Creator = None
         self._CreatorId = None
-        self._ResultNotify = None
-        self._ApplicationVersion = None
 
     @property
     def RunGroupId(self):
@@ -3712,6 +3774,22 @@ class RunGroup(AbstractModel):
         self._ApplicationType = ApplicationType
 
     @property
+    def ApplicationVersion(self):
+        return self._ApplicationVersion
+
+    @ApplicationVersion.setter
+    def ApplicationVersion(self, ApplicationVersion):
+        self._ApplicationVersion = ApplicationVersion
+
+    @property
+    def AccessMode(self):
+        return self._AccessMode
+
+    @AccessMode.setter
+    def AccessMode(self, AccessMode):
+        self._AccessMode = AccessMode
+
+    @property
     def EnvironmentId(self):
         return self._EnvironmentId
 
@@ -3760,12 +3838,52 @@ class RunGroup(AbstractModel):
         self._Status = Status
 
     @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def WorkDir(self):
+        return self._WorkDir
+
+    @WorkDir.setter
+    def WorkDir(self, WorkDir):
+        self._WorkDir = WorkDir
+
+    @property
     def Input(self):
         return self._Input
 
     @Input.setter
     def Input(self, Input):
         self._Input = Input
+
+    @property
+    def InputType(self):
+        return self._InputType
+
+    @InputType.setter
+    def InputType(self, InputType):
+        self._InputType = InputType
+
+    @property
+    def InputCosUri(self):
+        return self._InputCosUri
+
+    @InputCosUri.setter
+    def InputCosUri(self, InputCosUri):
+        self._InputCosUri = InputCosUri
+
+    @property
+    def InputTemplateId(self):
+        return self._InputTemplateId
+
+    @InputTemplateId.setter
+    def InputTemplateId(self, InputTemplateId):
+        self._InputTemplateId = InputTemplateId
 
     @property
     def Option(self):
@@ -3782,6 +3900,14 @@ class RunGroup(AbstractModel):
     @NFOption.setter
     def NFOption(self, NFOption):
         self._NFOption = NFOption
+
+    @property
+    def Volumes(self):
+        return self._Volumes
+
+    @Volumes.setter
+    def Volumes(self, Volumes):
+        self._Volumes = Volumes
 
     @property
     def TotalRun(self):
@@ -3816,6 +3942,14 @@ class RunGroup(AbstractModel):
         self._ErrorMessage = ErrorMessage
 
     @property
+    def ResultNotify(self):
+        return self._ResultNotify
+
+    @ResultNotify.setter
+    def ResultNotify(self, ResultNotify):
+        self._ResultNotify = ResultNotify
+
+    @property
     def CreateTime(self):
         return self._CreateTime
 
@@ -3847,22 +3981,6 @@ class RunGroup(AbstractModel):
     def CreatorId(self, CreatorId):
         self._CreatorId = CreatorId
 
-    @property
-    def ResultNotify(self):
-        return self._ResultNotify
-
-    @ResultNotify.setter
-    def ResultNotify(self, ResultNotify):
-        self._ResultNotify = ResultNotify
-
-    @property
-    def ApplicationVersion(self):
-        return self._ApplicationVersion
-
-    @ApplicationVersion.setter
-    def ApplicationVersion(self, ApplicationVersion):
-        self._ApplicationVersion = ApplicationVersion
-
 
     def _deserialize(self, params):
         self._RunGroupId = params.get("RunGroupId")
@@ -3871,19 +3989,34 @@ class RunGroup(AbstractModel):
         self._ApplicationId = params.get("ApplicationId")
         self._ApplicationName = params.get("ApplicationName")
         self._ApplicationType = params.get("ApplicationType")
+        if params.get("ApplicationVersion") is not None:
+            self._ApplicationVersion = ApplicationVersion()
+            self._ApplicationVersion._deserialize(params.get("ApplicationVersion"))
+        self._AccessMode = params.get("AccessMode")
         self._EnvironmentId = params.get("EnvironmentId")
         self._EnvironmentName = params.get("EnvironmentName")
         self._TableId = params.get("TableId")
         self._Name = params.get("Name")
         self._Description = params.get("Description")
         self._Status = params.get("Status")
+        self._Type = params.get("Type")
+        self._WorkDir = params.get("WorkDir")
         self._Input = params.get("Input")
+        self._InputType = params.get("InputType")
+        self._InputCosUri = params.get("InputCosUri")
+        self._InputTemplateId = params.get("InputTemplateId")
         if params.get("Option") is not None:
             self._Option = RunOption()
             self._Option._deserialize(params.get("Option"))
         if params.get("NFOption") is not None:
             self._NFOption = NFOption()
             self._NFOption._deserialize(params.get("NFOption"))
+        if params.get("Volumes") is not None:
+            self._Volumes = []
+            for item in params.get("Volumes"):
+                obj = VolumeInfo()
+                obj._deserialize(item)
+                self._Volumes.append(obj)
         self._TotalRun = params.get("TotalRun")
         if params.get("RunStatusCounts") is not None:
             self._RunStatusCounts = []
@@ -3895,14 +4028,11 @@ class RunGroup(AbstractModel):
             self._ExecutionTime = ExecutionTime()
             self._ExecutionTime._deserialize(params.get("ExecutionTime"))
         self._ErrorMessage = params.get("ErrorMessage")
+        self._ResultNotify = params.get("ResultNotify")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._Creator = params.get("Creator")
         self._CreatorId = params.get("CreatorId")
-        self._ResultNotify = params.get("ResultNotify")
-        if params.get("ApplicationVersion") is not None:
-            self._ApplicationVersion = ApplicationVersion()
-            self._ApplicationVersion._deserialize(params.get("ApplicationVersion"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3974,6 +4104,9 @@ class RunMetadata(AbstractModel):
         :param _CallCached: Cache命中
 注意：此字段可能返回 null，表示取不到有效值。
         :type CallCached: bool
+        :param _WorkDir: 工作目录。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkDir: str
         :param _Stdout: 标准输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Stdout: str
@@ -4002,6 +4135,7 @@ class RunMetadata(AbstractModel):
         self._Preprocess = None
         self._PostProcess = None
         self._CallCached = None
+        self._WorkDir = None
         self._Stdout = None
         self._Stderr = None
         self._Meta = None
@@ -4151,6 +4285,14 @@ class RunMetadata(AbstractModel):
         self._CallCached = CallCached
 
     @property
+    def WorkDir(self):
+        return self._WorkDir
+
+    @WorkDir.setter
+    def WorkDir(self, WorkDir):
+        self._WorkDir = WorkDir
+
+    @property
     def Stdout(self):
         return self._Stdout
 
@@ -4194,6 +4336,7 @@ class RunMetadata(AbstractModel):
         self._Preprocess = params.get("Preprocess")
         self._PostProcess = params.get("PostProcess")
         self._CallCached = params.get("CallCached")
+        self._WorkDir = params.get("WorkDir")
         self._Stdout = params.get("Stdout")
         self._Stderr = params.get("Stderr")
         self._Meta = params.get("Meta")
@@ -4228,12 +4371,16 @@ class RunOption(AbstractModel):
         :param _UseRelativeOutputPaths: 是否使用相对目录归档输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UseRelativeOutputPaths: bool
+        :param _AddRunInfoToOutputDir: 是否添加运行信息到输出目录中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AddRunInfoToOutputDir: bool
         """
         self._FailureMode = None
         self._UseCallCache = None
         self._UseErrorOnHold = None
         self._FinalWorkflowOutputsDir = None
         self._UseRelativeOutputPaths = None
+        self._AddRunInfoToOutputDir = None
 
     @property
     def FailureMode(self):
@@ -4275,6 +4422,14 @@ class RunOption(AbstractModel):
     def UseRelativeOutputPaths(self, UseRelativeOutputPaths):
         self._UseRelativeOutputPaths = UseRelativeOutputPaths
 
+    @property
+    def AddRunInfoToOutputDir(self):
+        return self._AddRunInfoToOutputDir
+
+    @AddRunInfoToOutputDir.setter
+    def AddRunInfoToOutputDir(self, AddRunInfoToOutputDir):
+        self._AddRunInfoToOutputDir = AddRunInfoToOutputDir
+
 
     def _deserialize(self, params):
         self._FailureMode = params.get("FailureMode")
@@ -4282,6 +4437,7 @@ class RunOption(AbstractModel):
         self._UseErrorOnHold = params.get("UseErrorOnHold")
         self._FinalWorkflowOutputsDir = params.get("FinalWorkflowOutputsDir")
         self._UseRelativeOutputPaths = params.get("UseRelativeOutputPaths")
+        self._AddRunInfoToOutputDir = params.get("AddRunInfoToOutputDir")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5181,6 +5337,66 @@ class Volume(AbstractModel):
         self._DefaultMountPath = params.get("DefaultMountPath")
         self._IsDefault = params.get("IsDefault")
         self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VolumeInfo(AbstractModel):
+    """缓存卷信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VolumeId: 缓存卷ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VolumeId: str
+        :param _Name: 名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _MountPath: 挂载路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MountPath: str
+        """
+        self._VolumeId = None
+        self._Name = None
+        self._MountPath = None
+
+    @property
+    def VolumeId(self):
+        return self._VolumeId
+
+    @VolumeId.setter
+    def VolumeId(self, VolumeId):
+        self._VolumeId = VolumeId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def MountPath(self):
+        return self._MountPath
+
+    @MountPath.setter
+    def MountPath(self, MountPath):
+        self._MountPath = MountPath
+
+
+    def _deserialize(self, params):
+        self._VolumeId = params.get("VolumeId")
+        self._Name = params.get("Name")
+        self._MountPath = params.get("MountPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

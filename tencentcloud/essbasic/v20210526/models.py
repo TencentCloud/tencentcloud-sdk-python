@@ -10309,6 +10309,8 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
         :type AutoJumpUrl: str
         :param _TopNavigationStatus: 是否展示头顶导航栏  <ul><li> **ENABLE** : (默认)进入web控制台展示头顶导航栏</li> <li> **DISABLE** : 进入web控制台不展示头顶导航栏</li></ul> 注：该参数**仅在企业和员工激活完成，登录控制台场景才生效**。
         :type TopNavigationStatus: str
+        :param _AutoActive: 是否自动激活子客
+        :type AutoActive: bool
         """
         self._Agent = None
         self._ProxyOrganizationName = None
@@ -10325,6 +10327,7 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
         self._ProxyOperatorIdCardNumber = None
         self._AutoJumpUrl = None
         self._TopNavigationStatus = None
+        self._AutoActive = None
 
     @property
     def Agent(self):
@@ -10450,6 +10453,14 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
     def TopNavigationStatus(self, TopNavigationStatus):
         self._TopNavigationStatus = TopNavigationStatus
 
+    @property
+    def AutoActive(self):
+        return self._AutoActive
+
+    @AutoActive.setter
+    def AutoActive(self, AutoActive):
+        self._AutoActive = AutoActive
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -10471,6 +10482,7 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
         self._ProxyOperatorIdCardNumber = params.get("ProxyOperatorIdCardNumber")
         self._AutoJumpUrl = params.get("AutoJumpUrl")
         self._TopNavigationStatus = params.get("TopNavigationStatus")
+        self._AutoActive = params.get("AutoActive")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14984,11 +14996,14 @@ class FlowApproverInfo(AbstractModel):
 
 注：`此参数仅在通过文件发起合同或者合同组时生效`
         :type Components: list of Component
-        :param _Intention: 视频核身意图配置，可指定问答模式或者点头模式的语音文本。
+        :param _Intention: <b>只有在生成H5签署链接的情形下</b>（ 如调用<a href="https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelCreateFlowSignUrl" target="_blank">获取H5签署链接</a>、<a href="https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelCreateBatchQuickSignUrl" target="_blank">获取H5批量签署链接</a>等接口），该配置才会生效。
 
-注:
- `1.视频认证为白名单功能，使用前请联系对接的客户经理沟通。`
-`2.使用视频认证必须指定签署认证方式为人脸（即ApproverSignTypes）。`
+您可以指定H5签署视频核身的意图配置，选择问答模式或点头模式的语音文本。
+
+注意：
+1. 视频认证为<b>白名单功能，使用前请联系对接的客户经理沟通</b>。
+2. 使用视频认证时，<b>合同发起的时候必须将签署认证方式指定为人脸</b>（即ApproverSignTypes设置成人脸签署）。
+3. 签署完成后，可以通过<a href="https://qian.tencent.com/developers/partnerApis/flows/ChannelDescribeSignFaceVideo" target="_blank">查询签署认证人脸视频</a>获取到当时的视频。
         :type Intention: :class:`tencentcloud.essbasic.v20210526.models.Intention`
         """
         self._Name = None

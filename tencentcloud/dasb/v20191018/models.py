@@ -151,6 +151,9 @@ class Acl(AbstractModel):
         :param _WhiteCmds: 关联的白命令命令
 注意：此字段可能返回 null，表示取不到有效值。
         :type WhiteCmds: list of str
+        :param _AllowKeyboardLogger: 是否允许记录键盘
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AllowKeyboardLogger: bool
         """
         self._Id = None
         self._Name = None
@@ -182,6 +185,7 @@ class Acl(AbstractModel):
         self._AllowAccessCredential = None
         self._ACTemplateSet = None
         self._WhiteCmds = None
+        self._AllowKeyboardLogger = None
 
     @property
     def Id(self):
@@ -423,6 +427,14 @@ class Acl(AbstractModel):
     def WhiteCmds(self, WhiteCmds):
         self._WhiteCmds = WhiteCmds
 
+    @property
+    def AllowKeyboardLogger(self):
+        return self._AllowKeyboardLogger
+
+    @AllowKeyboardLogger.setter
+    def AllowKeyboardLogger(self, AllowKeyboardLogger):
+        self._AllowKeyboardLogger = AllowKeyboardLogger
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -487,6 +499,7 @@ class Acl(AbstractModel):
                 obj._deserialize(item)
                 self._ACTemplateSet.append(obj)
         self._WhiteCmds = params.get("WhiteCmds")
+        self._AllowKeyboardLogger = params.get("AllowKeyboardLogger")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1839,6 +1852,8 @@ class CreateAclRequest(AbstractModel):
         :type DepartmentId: str
         :param _AllowAccessCredential: 是否允许使用访问串，默认允许
         :type AllowAccessCredential: bool
+        :param _AllowKeyboardLogger: 是否允许记录键盘
+        :type AllowKeyboardLogger: bool
         """
         self._Name = None
         self._AllowDiskRedirect = None
@@ -1867,6 +1882,7 @@ class CreateAclRequest(AbstractModel):
         self._ValidateTo = None
         self._DepartmentId = None
         self._AllowAccessCredential = None
+        self._AllowKeyboardLogger = None
 
     @property
     def Name(self):
@@ -2084,6 +2100,14 @@ class CreateAclRequest(AbstractModel):
     def AllowAccessCredential(self, AllowAccessCredential):
         self._AllowAccessCredential = AllowAccessCredential
 
+    @property
+    def AllowKeyboardLogger(self):
+        return self._AllowKeyboardLogger
+
+    @AllowKeyboardLogger.setter
+    def AllowKeyboardLogger(self, AllowKeyboardLogger):
+        self._AllowKeyboardLogger = AllowKeyboardLogger
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -2113,6 +2137,7 @@ class CreateAclRequest(AbstractModel):
         self._ValidateTo = params.get("ValidateTo")
         self._DepartmentId = params.get("DepartmentId")
         self._AllowAccessCredential = params.get("AllowAccessCredential")
+        self._AllowKeyboardLogger = params.get("AllowKeyboardLogger")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7544,6 +7569,8 @@ class ModifyAclRequest(AbstractModel):
         :type DepartmentId: str
         :param _AllowAccessCredential: 是否允许使用访问串
         :type AllowAccessCredential: bool
+        :param _AllowKeyboardLogger: 是否允许键盘记录
+        :type AllowKeyboardLogger: bool
         """
         self._Name = None
         self._AllowDiskRedirect = None
@@ -7573,6 +7600,7 @@ class ModifyAclRequest(AbstractModel):
         self._ValidateTo = None
         self._DepartmentId = None
         self._AllowAccessCredential = None
+        self._AllowKeyboardLogger = None
 
     @property
     def Name(self):
@@ -7798,6 +7826,14 @@ class ModifyAclRequest(AbstractModel):
     def AllowAccessCredential(self, AllowAccessCredential):
         self._AllowAccessCredential = AllowAccessCredential
 
+    @property
+    def AllowKeyboardLogger(self):
+        return self._AllowKeyboardLogger
+
+    @AllowKeyboardLogger.setter
+    def AllowKeyboardLogger(self, AllowKeyboardLogger):
+        self._AllowKeyboardLogger = AllowKeyboardLogger
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -7828,6 +7864,7 @@ class ModifyAclRequest(AbstractModel):
         self._ValidateTo = params.get("ValidateTo")
         self._DepartmentId = params.get("DepartmentId")
         self._AllowAccessCredential = params.get("AllowAccessCredential")
+        self._AllowKeyboardLogger = params.get("AllowKeyboardLogger")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

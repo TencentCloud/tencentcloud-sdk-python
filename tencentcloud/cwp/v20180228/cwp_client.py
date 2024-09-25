@@ -4657,7 +4657,9 @@ class CwpClient(AbstractClient):
 
 
     def DescribeIndexList(self, request):
-        """获取索引列表
+        """接口已废弃
+
+        获取索引列表
 
         :param request: Request instance for DescribeIndexList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeIndexListRequest`

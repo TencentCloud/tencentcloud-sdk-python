@@ -233,11 +233,14 @@ class ApproverInfo(AbstractModel):
 <li> 企业印章</li>
 <li> 骑缝章等签署控件</li></ul>
         :type SignComponents: list of Component
-        :param _ApproverIdCardType: 签署方经办人的证件类型，支持以下类型
+        :param _ApproverIdCardType: 签署方经办人的证件类型，支持以下类型，样式可以参考<a href="https://qian.tencent.com/developers/partner/id_card_support/" target="_blank">常见个人证件类型介绍</a>
 <ul><li>ID_CARD 中国大陆居民身份证  (默认值)</li>
 <li>HONGKONG_AND_MACAO 港澳居民来往内地通行证</li>
 <li>HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)</li>
 <li>OTHER_CARD_TYPE 其他证件</li></ul>
+
+
+
 
 注: `其他证件类型为白名单功能，使用前请联系对接的客户经理沟通。`
         :type ApproverIdCardType: str
@@ -253,7 +256,7 @@ class ApproverInfo(AbstractModel):
 注意：
 `如果使用的是通过文件发起合同（CreateFlowByFiles），NotifyType必须 是 sms 才会发送短信`
         :type NotifyType: str
-        :param _ApproverRole: 收据场景设置签署人角色类型, 可以设置如下****类型****:
+        :param _ApproverRole: 收据场景设置签署人角色类型, 可以设置如下<b>类型</b>:
 <ul><li> **1**  :收款人</li>
 <li>   **2**   :开具人</li>
 <li>   **3** :见证人</li></ul>
@@ -17645,11 +17648,14 @@ class FlowCreateApprover(AbstractModel):
 
 注: `若不设置此参数，则默认使用合同的截止时间，此参数暂不支持合同组子合同`
         :type Deadline: int
-        :param _Intention: 视频核身意图配置，可指定问答模式或者点头模式的语音文本。
+        :param _Intention: <b>只有在生成H5签署链接的情形下</b>（ 如调用<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowSignUrl" target="_blank">获取H5签署链接</a>、<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateBatchQuickSignUrl" target="_blank">获取H5批量签署链接</a>等接口），该配置才会生效。
 
-注:
- `1.视频认证为白名单功能，使用前请联系对接的客户经理沟通。`
-`2.使用视频认证必须指定签署认证方式为人脸（即ApproverSignTypes）。`
+您可以指定H5签署视频核身的意图配置，选择问答模式或点头模式的语音文本。
+
+注意：
+1. 视频认证为<b>白名单功能，使用前请联系对接的客户经理沟通</b>。
+2. 使用视频认证时，<b>合同发起的时候必须将签署认证方式指定为人脸</b>（即ApproverSignTypes设置成人脸签署）。
+3. 签署完成后，可以通过<a href="https://qian.tencent.com/developers/companyApis/queryFlows/DescribeSignFaceVideo" target="_blank">查询签署认证人脸视频</a>获取到当时的视频。
         :type Intention: :class:`tencentcloud.ess.v20201111.models.Intention`
         """
         self._ApproverType = None
