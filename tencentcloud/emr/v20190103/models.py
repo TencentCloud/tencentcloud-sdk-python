@@ -6253,12 +6253,15 @@ class DescribeInsightListRequest(AbstractModel):
         :type PageSize: int
         :param _Page: 分页查询时的页号，从1开始
         :type Page: int
+        :param _Type: 查询类型,支持HIVE,SPARK,MAPREDUCE,TRINO等类型,默认查询全部
+        :type Type: str
         """
         self._InstanceId = None
         self._StartTime = None
         self._EndTime = None
         self._PageSize = None
         self._Page = None
+        self._Type = None
 
     @property
     def InstanceId(self):
@@ -6300,6 +6303,14 @@ class DescribeInsightListRequest(AbstractModel):
     def Page(self, Page):
         self._Page = Page
 
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -6307,6 +6318,7 @@ class DescribeInsightListRequest(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._PageSize = params.get("PageSize")
         self._Page = params.get("Page")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

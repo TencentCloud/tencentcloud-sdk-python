@@ -6785,9 +6785,10 @@ class CreateFlowSignUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 合同流程ID，为32位字符串。
-建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
-可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
+        :param _FlowId: 合同流程ID为32位字符串。
+
+您可以登录腾讯电子签控制台，在 "合同" -> "合同中心" 中查看某个合同的FlowId（在页面中展示为合同ID）。[点击查看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)。
+
         :type FlowId: str
         :param _Operator: 执行本接口操作的员工信息。
 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
@@ -6795,23 +6796,27 @@ class CreateFlowSignUrlRequest(AbstractModel):
         :param _Agent: 代理企业和员工的信息。
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param _FlowApproverInfos: 流程签署人列表，其中结构体的ApproverName，ApproverMobile和ApproverType必传，企业签署人则需传OrganizationName，其他可不传。
+        :param _FlowApproverInfos: 流程签署人列表中，结构体的ApproverName、ApproverMobile和ApproverType为必传字段。如果是企业签署人，还需传递OrganizationName。
 
-注:
-`1. 签署人只能有手写签名、时间类型、印章类型、签批类型的签署控件和内容填写控件，其他类型的签署控件暂时未支持。`
-`2. 生成发起方预览链接时，该字段（FlowApproverInfos）传空或者不传`
+注：
+1. 签署人<b>只能使用手写签名、时间类型、印章类型、签批类型的签署控件和内容填写控件</b>，其他类型的签署控件暂时不支持。
+2. 生成发起方预览链接时，该字段（FlowApproverInfos）可以传空或者不传。
+
+
         :type FlowApproverInfos: list of FlowCreateApprover
         :param _Organization: 机构信息，暂未开放
         :type Organization: :class:`tencentcloud.ess.v20201111.models.OrganizationInfo`
         :param _JumpUrl: 签署完之后的H5页面的跳转链接，最大长度1000个字符。链接类型请参考 <a href="https://qian.tencent.com/developers/company/openqianh5" target="_blank">跳转电子签H5</a>
 
         :type JumpUrl: str
-        :param _UrlType: 链接类型，支持指定以下类型
-<ul><li>0 : 签署链接 (默认值)</li>
-<li>1 : 预览链接</li></ul>
-注:
-`1. 当指定链接类型为1时，链接为预览链接，打开链接无法签署仅支持预览以及查看当前合同状态。`
-`2. 如需生成发起方预览链接，则签署方信息传空，即FlowApproverInfos传空或者不传。`
+        :param _UrlType: 链接类型支持以下指定类型：
+
+<ul><li><b>0</b>: 签署链接（默认值），进入后可以填写或签署合同。</li><li><b>1 </b>: 预览链接，进入后可以预览合同当前的样子。</li></ul>
+
+注：
+
+1. 当指定链接类型为1时，链接为预览链接，打开链接后无法进行签署操作，仅支持预览和查看当前合同状态。
+2. 如需生成发起方预览链接，则签署方信息应传空，即FlowApproverInfos传空或者不传。
         :type UrlType: int
         """
         self._FlowId = None
@@ -13458,11 +13463,10 @@ class DescribeFlowBriefsRequest(AbstractModel):
 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _FlowIds: 查询的合同流程ID列表最多支持100个流程ID。 
+
 如果某个合同流程ID不存在，系统会跳过此ID的查询，继续查询剩余存在的合同流程。
 
-可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
-
-[点击查看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
+可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。[点击查看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
         :type FlowIds: list of str
         :param _Agent: 代理企业和员工的信息。
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
@@ -17654,7 +17658,7 @@ class FlowCreateApprover(AbstractModel):
 
 注意：
 1. 视频认证为<b>白名单功能，使用前请联系对接的客户经理沟通</b>。
-2. 使用视频认证时，<b>合同发起的时候必须将签署认证方式指定为人脸</b>（即ApproverSignTypes设置成人脸签署）。
+2. 使用视频认证时，<b>生成H5签署链接必须将签署认证方式指定为人脸</b>（即ApproverSignTypes设置成人脸签署）。
 3. 签署完成后，可以通过<a href="https://qian.tencent.com/developers/companyApis/queryFlows/DescribeSignFaceVideo" target="_blank">查询签署认证人脸视频</a>获取到当时的视频。
         :type Intention: :class:`tencentcloud.ess.v20201111.models.Intention`
         """

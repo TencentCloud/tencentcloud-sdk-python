@@ -908,6 +908,52 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCdcLDCXList(self, request):
+        """创建 IDC 通道
+
+        :param request: Request instance for CreateCdcLDCXList.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateCdcLDCXListRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateCdcLDCXListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCdcLDCXList", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCdcLDCXListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateCdcNetPlanes(self, request):
+        """创建虚拟连接，用于支持 CDC 多租户模式
+
+        :param request: Request instance for CreateCdcNetPlanes.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateCdcNetPlanesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateCdcNetPlanesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCdcNetPlanes", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCdcNetPlanesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCustomerGateway(self, request):
         """本接口（CreateCustomerGateway）用于创建对端网关。
 
@@ -1094,6 +1140,52 @@ class VpcClient(AbstractClient):
             body = self.call("CreateHaVip", params, headers=headers)
             response = json.loads(body)
             model = models.CreateHaVipResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateHighPriorityRouteTable(self, request):
+        """高优路由表创建
+
+        :param request: Request instance for CreateHighPriorityRouteTable.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateHighPriorityRouteTableRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateHighPriorityRouteTableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateHighPriorityRouteTable", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateHighPriorityRouteTableResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateHighPriorityRoutes(self, request):
+        """创建高优路由表条目。
+
+        :param request: Request instance for CreateHighPriorityRoutes.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateHighPriorityRoutesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateHighPriorityRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateHighPriorityRoutes", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateHighPriorityRoutesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2113,6 +2205,52 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteCdcLDCXList(self, request):
+        """删除 IDC通道
+
+        :param request: Request instance for DeleteCdcLDCXList.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteCdcLDCXListRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteCdcLDCXListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCdcLDCXList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCdcLDCXListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCdcNetPlanes(self, request):
+        """删除虚拟连接
+
+        :param request: Request instance for DeleteCdcNetPlanes.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteCdcNetPlanesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteCdcNetPlanesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCdcNetPlanes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCdcNetPlanesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteCustomerGateway(self, request):
         """本接口（DeleteCustomerGateway）用于删除对端网关。
 
@@ -2248,6 +2386,52 @@ class VpcClient(AbstractClient):
             body = self.call("DeleteHaVip", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteHaVipResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteHighPriorityRouteTables(self, request):
+        """删除高优路由表
+
+        :param request: Request instance for DeleteHighPriorityRouteTables.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteHighPriorityRouteTablesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteHighPriorityRouteTablesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteHighPriorityRouteTables", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteHighPriorityRouteTablesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteHighPriorityRoutes(self, request):
+        """删除高优路由表的路由条目。
+
+        :param request: Request instance for DeleteHighPriorityRoutes.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteHighPriorityRoutesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteHighPriorityRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteHighPriorityRoutes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteHighPriorityRoutesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3452,6 +3636,75 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCdcLDCXList(self, request):
+        """查询 IDC通道信息
+
+        :param request: Request instance for DescribeCdcLDCXList.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeCdcLDCXListRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeCdcLDCXListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCdcLDCXList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCdcLDCXListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCdcNetPlanes(self, request):
+        """查询虚拟连接
+
+        :param request: Request instance for DescribeCdcNetPlanes.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeCdcNetPlanesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeCdcNetPlanesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCdcNetPlanes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCdcNetPlanesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCdcUsedIdcVlan(self, request):
+        """查询IDC使用的 VLAN
+
+        :param request: Request instance for DescribeCdcUsedIdcVlan.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeCdcUsedIdcVlanRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeCdcUsedIdcVlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCdcUsedIdcVlan", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCdcUsedIdcVlanResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeClassicLinkInstances(self, request):
         """本接口（DescribeClassicLinkInstances）用于查询私有网络和基础网络设备互通列表。
 
@@ -3770,6 +4023,52 @@ class VpcClient(AbstractClient):
             body = self.call("DescribeHaVips", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeHaVipsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeHighPriorityRouteTables(self, request):
+        """查询高优路由表。
+
+        :param request: Request instance for DescribeHighPriorityRouteTables.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeHighPriorityRouteTablesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeHighPriorityRouteTablesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHighPriorityRouteTables", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHighPriorityRouteTablesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeHighPriorityRoutes(self, request):
+        """查询高优路由表条目信息。
+
+        :param request: Request instance for DescribeHighPriorityRoutes.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeHighPriorityRoutesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeHighPriorityRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHighPriorityRoutes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHighPriorityRoutesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4417,6 +4716,29 @@ class VpcClient(AbstractClient):
             body = self.call("DescribeRouteTables", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRouteTablesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRoutes(self, request):
+        """本接口（DescribeRoutes）用于查询路由列表。
+
+        :param request: Request instance for DescribeRoutes.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeRoutesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRoutes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRoutesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -6448,6 +6770,52 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyCdcLDCXAttribute(self, request):
+        """修改 IDC通道信息
+
+        :param request: Request instance for ModifyCdcLDCXAttribute.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyCdcLDCXAttributeRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyCdcLDCXAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCdcLDCXAttribute", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCdcLDCXAttributeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCdcNetPlaneAttribute(self, request):
+        """修改虚拟连接
+
+        :param request: Request instance for ModifyCdcNetPlaneAttribute.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyCdcNetPlaneAttributeRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyCdcNetPlaneAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCdcNetPlaneAttribute", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCdcNetPlaneAttributeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyCustomerGatewayAttribute(self, request):
         """本接口（ModifyCustomerGatewayAttribute）用于修改对端网关信息。
 
@@ -6577,6 +6945,75 @@ class VpcClient(AbstractClient):
             body = self.call("ModifyHaVipAttribute", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyHaVipAttributeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyHighPriorityRouteAttribute(self, request):
+        """修改高优路由表条目属性。
+
+        :param request: Request instance for ModifyHighPriorityRouteAttribute.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyHighPriorityRouteAttributeRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyHighPriorityRouteAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyHighPriorityRouteAttribute", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyHighPriorityRouteAttributeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyHighPriorityRouteECMPAlgorithm(self, request):
+        """修改高优路由表 HASH 策略。
+
+        :param request: Request instance for ModifyHighPriorityRouteECMPAlgorithm.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyHighPriorityRouteECMPAlgorithmRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyHighPriorityRouteECMPAlgorithmResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyHighPriorityRouteECMPAlgorithm", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyHighPriorityRouteECMPAlgorithmResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyHighPriorityRouteTableAttribute(self, request):
+        """修改高优路由表属性
+
+        :param request: Request instance for ModifyHighPriorityRouteTableAttribute.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyHighPriorityRouteTableAttributeRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyHighPriorityRouteTableAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyHighPriorityRouteTableAttribute", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyHighPriorityRouteTableAttributeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -7842,6 +8279,52 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ReplaceHighPriorityRouteTableAssociation(self, request):
+        """替换高优路由表和子网绑定关系。
+
+        :param request: Request instance for ReplaceHighPriorityRouteTableAssociation.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ReplaceHighPriorityRouteTableAssociationRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ReplaceHighPriorityRouteTableAssociationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReplaceHighPriorityRouteTableAssociation", params, headers=headers)
+            response = json.loads(body)
+            model = models.ReplaceHighPriorityRouteTableAssociationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ReplaceHighPriorityRoutes(self, request):
+        """替换高优路由表条目信息。
+
+        :param request: Request instance for ReplaceHighPriorityRoutes.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ReplaceHighPriorityRoutesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ReplaceHighPriorityRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReplaceHighPriorityRoutes", params, headers=headers)
+            response = json.loads(body)
+            model = models.ReplaceHighPriorityRoutesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ReplaceRouteTableAssociation(self, request):
         """本接口（ReplaceRouteTableAssociation）用于修改子网（Subnet）关联的路由表（RouteTable）。
         * 一个子网只能关联一个路由表。
@@ -7951,6 +8434,29 @@ class VpcClient(AbstractClient):
             body = self.call("ResetAttachCcnInstances", params, headers=headers)
             response = json.loads(body)
             model = models.ResetAttachCcnInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ResetHighPriorityRoutes(self, request):
+        """重置高优路由表。
+
+        :param request: Request instance for ResetHighPriorityRoutes.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ResetHighPriorityRoutesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ResetHighPriorityRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResetHighPriorityRoutes", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResetHighPriorityRoutesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

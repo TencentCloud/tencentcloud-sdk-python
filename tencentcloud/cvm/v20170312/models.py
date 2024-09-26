@@ -9749,6 +9749,8 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
         :type InstanceMarketOptions: :class:`tencentcloud.cvm.v20170312.models.InstanceMarketOptionsRequest`
         :param _HpcClusterId: 高性能计算集群ID。
         :type HpcClusterId: str
+        :param _CpuTopology: 描述了实例CPU拓扑结构的相关信息。若不指定该参数，则按系统资源情况决定。
+        :type CpuTopology: :class:`tencentcloud.cvm.v20170312.models.CpuTopology`
         :param _LaunchTemplate: 实例启动模板。
         :type LaunchTemplate: :class:`tencentcloud.cvm.v20170312.models.LaunchTemplate`
         """
@@ -9771,6 +9773,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
         self._TagSpecification = None
         self._InstanceMarketOptions = None
         self._HpcClusterId = None
+        self._CpuTopology = None
         self._LaunchTemplate = None
 
     @property
@@ -9926,6 +9929,14 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
         self._HpcClusterId = HpcClusterId
 
     @property
+    def CpuTopology(self):
+        return self._CpuTopology
+
+    @CpuTopology.setter
+    def CpuTopology(self, CpuTopology):
+        self._CpuTopology = CpuTopology
+
+    @property
     def LaunchTemplate(self):
         return self._LaunchTemplate
 
@@ -9980,6 +9991,9 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
             self._InstanceMarketOptions = InstanceMarketOptionsRequest()
             self._InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
         self._HpcClusterId = params.get("HpcClusterId")
+        if params.get("CpuTopology") is not None:
+            self._CpuTopology = CpuTopology()
+            self._CpuTopology._deserialize(params.get("CpuTopology"))
         if params.get("LaunchTemplate") is not None:
             self._LaunchTemplate = LaunchTemplate()
             self._LaunchTemplate._deserialize(params.get("LaunchTemplate"))

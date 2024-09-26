@@ -2488,7 +2488,7 @@ class CynosdbClient(AbstractClient):
 
 
     def ModifyInstanceUpgradeLimitDays(self, request):
-        """修改实例小版本升级限制时间
+        """本接口（ModifyInstanceUpgradeLimitDays）用于修改实例内核小版本的升级限制时间。
 
         :param request: Request instance for ModifyInstanceUpgradeLimitDays.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyInstanceUpgradeLimitDaysRequest`
@@ -2718,7 +2718,7 @@ class CynosdbClient(AbstractClient):
 
 
     def OfflineCluster(self, request):
-        """销毁集群
+        """本接口（OfflineCluster）用于销毁集群。
 
         :param request: Request instance for OfflineCluster.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.OfflineClusterRequest`
@@ -3201,7 +3201,7 @@ class CynosdbClient(AbstractClient):
 
 
     def StartCLSDelivery(self, request):
-        """开启日志投递
+        """本接口（StartCLSDelivery）用于开启日志投递功能。
 
         :param request: Request instance for StartCLSDelivery.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.StartCLSDeliveryRequest`
@@ -3224,7 +3224,7 @@ class CynosdbClient(AbstractClient):
 
 
     def StopCLSDelivery(self, request):
-        """停止日志投递
+        """本接口（StopCLSDelivery）用于停止日志投递功能。
 
         :param request: Request instance for StopCLSDelivery.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.StopCLSDeliveryRequest`
@@ -3339,7 +3339,7 @@ class CynosdbClient(AbstractClient):
 
 
     def UpgradeClusterVersion(self, request):
-        """更新内核小版本
+        """本接口（UpgradeClusterVersion）用于更新内核小版本。
 
         :param request: Request instance for UpgradeClusterVersion.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.UpgradeClusterVersionRequest`
@@ -3362,7 +3362,7 @@ class CynosdbClient(AbstractClient):
 
 
     def UpgradeInstance(self, request):
-        """实例变配
+        """本接口（UpgradeInstance）用于实例变配。
 
         :param request: Request instance for UpgradeInstance.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.UpgradeInstanceRequest`

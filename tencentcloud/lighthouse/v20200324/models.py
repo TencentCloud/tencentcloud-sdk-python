@@ -322,7 +322,7 @@ class AttachCcnRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CcnId: 云联网实例ID。可通过[DescribeCcnAttachedInstances](https://cloud.tencent.com/document/product/1207/58797)接口返回值中的CcnId获取。
+        :param _CcnId: 云联网实例ID。可通过[DescribeCcns](https://cloud.tencent.com/document/product/215/19199)接口返回值中的CcnId获取。
         :type CcnId: str
         """
         self._CcnId = None
@@ -13634,7 +13634,7 @@ class ResetAttachCcnRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CcnId: 云联网实例ID。可通过[DescribeCcnAttachedInstances](https://cloud.tencent.com/document/product/1207/58797)接口返回值中的CcnId获取。
+        :param _CcnId: 云联网实例ID。可通过[DescribeCcns](https://cloud.tencent.com/document/product/215/19199)接口返回值中的CcnId获取。
         :type CcnId: str
         """
         self._CcnId = None

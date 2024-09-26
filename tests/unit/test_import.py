@@ -199,6 +199,11 @@ def test_import_btoe():
     from tencentcloud.btoe.v20210514 import models
 
 
+def test_import_ca():
+    from tencentcloud.ca.v20230228 import ca_client
+    from tencentcloud.ca.v20230228 import models
+
+
 def test_import_cam():
     from tencentcloud.cam.v20190116 import cam_client
     from tencentcloud.cam.v20190116 import models

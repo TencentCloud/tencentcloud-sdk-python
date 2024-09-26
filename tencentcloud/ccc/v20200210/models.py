@@ -7718,6 +7718,8 @@ class IMCdrInfo(AbstractModel):
         :param _Satisfaction: 满意度
 注意：此字段可能返回 null，表示取不到有效值。
         :type Satisfaction: :class:`tencentcloud.ccc.v20200210.models.IMSatisfaction`
+        :param _ClientUserId: 用户ID
+        :type ClientUserId: str
         """
         self._Id = None
         self._Duration = None
@@ -7730,6 +7732,7 @@ class IMCdrInfo(AbstractModel):
         self._SkillGroupId = None
         self._SkillGroupName = None
         self._Satisfaction = None
+        self._ClientUserId = None
 
     @property
     def Id(self):
@@ -7819,6 +7822,14 @@ class IMCdrInfo(AbstractModel):
     def Satisfaction(self, Satisfaction):
         self._Satisfaction = Satisfaction
 
+    @property
+    def ClientUserId(self):
+        return self._ClientUserId
+
+    @ClientUserId.setter
+    def ClientUserId(self, ClientUserId):
+        self._ClientUserId = ClientUserId
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -7834,6 +7845,7 @@ class IMCdrInfo(AbstractModel):
         if params.get("Satisfaction") is not None:
             self._Satisfaction = IMSatisfaction()
             self._Satisfaction._deserialize(params.get("Satisfaction"))
+        self._ClientUserId = params.get("ClientUserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

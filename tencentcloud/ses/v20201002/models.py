@@ -478,10 +478,70 @@ class CreateCustomBlacklistResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TotalCount: 收件人总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _ValidCount: 实际上传数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValidCount: int
+        :param _TooLongCount: 数据过长数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TooLongCount: int
+        :param _RepeatCount: 重复数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RepeatCount: int
+        :param _InvalidCount: 格式不正确数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvalidCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TotalCount = None
+        self._ValidCount = None
+        self._TooLongCount = None
+        self._RepeatCount = None
+        self._InvalidCount = None
         self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ValidCount(self):
+        return self._ValidCount
+
+    @ValidCount.setter
+    def ValidCount(self, ValidCount):
+        self._ValidCount = ValidCount
+
+    @property
+    def TooLongCount(self):
+        return self._TooLongCount
+
+    @TooLongCount.setter
+    def TooLongCount(self, TooLongCount):
+        self._TooLongCount = TooLongCount
+
+    @property
+    def RepeatCount(self):
+        return self._RepeatCount
+
+    @RepeatCount.setter
+    def RepeatCount(self, RepeatCount):
+        self._RepeatCount = RepeatCount
+
+    @property
+    def InvalidCount(self):
+        return self._InvalidCount
+
+    @InvalidCount.setter
+    def InvalidCount(self, InvalidCount):
+        self._InvalidCount = InvalidCount
 
     @property
     def RequestId(self):
@@ -493,6 +553,11 @@ class CreateCustomBlacklistResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._ValidCount = params.get("ValidCount")
+        self._TooLongCount = params.get("TooLongCount")
+        self._RepeatCount = params.get("RepeatCount")
+        self._InvalidCount = params.get("InvalidCount")
         self._RequestId = params.get("RequestId")
 
 

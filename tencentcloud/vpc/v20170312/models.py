@@ -7486,6 +7486,68 @@ class CreateCcnRouteTablesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateCdcLDCXListRequest(AbstractModel):
+    """CreateCdcLDCXList请求参数结构体
+
+    """
+
+
+class CreateCdcLDCXListResponse(AbstractModel):
+    """CreateCdcLDCXList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCdcNetPlanesRequest(AbstractModel):
+    """CreateCdcNetPlanes请求参数结构体
+
+    """
+
+
+class CreateCdcNetPlanesResponse(AbstractModel):
+    """CreateCdcNetPlanes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateCustomerGatewayRequest(AbstractModel):
     """CreateCustomerGateway请求参数结构体
 
@@ -8421,6 +8483,199 @@ class CreateHaVipResponse(AbstractModel):
         if params.get("HaVip") is not None:
             self._HaVip = HaVip()
             self._HaVip._deserialize(params.get("HaVip"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateHighPriorityRouteTableRequest(AbstractModel):
+    """CreateHighPriorityRouteTable请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: 待操作的VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+        :type VpcId: str
+        :param _Name: 高优路由表名称，最大长度不能超过60个字节。
+        :type Name: str
+        :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+        :type Tags: list of Tag
+        """
+        self._VpcId = None
+        self._Name = None
+        self._Tags = None
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._Name = params.get("Name")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateHighPriorityRouteTableResponse(AbstractModel):
+    """CreateHighPriorityRouteTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HighPriorityRouteTable: 高优路由表信息
+        :type HighPriorityRouteTable: :class:`tencentcloud.vpc.v20170312.models.HighPriorityRouteTable`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._HighPriorityRouteTable = None
+        self._RequestId = None
+
+    @property
+    def HighPriorityRouteTable(self):
+        return self._HighPriorityRouteTable
+
+    @HighPriorityRouteTable.setter
+    def HighPriorityRouteTable(self, HighPriorityRouteTable):
+        self._HighPriorityRouteTable = HighPriorityRouteTable
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("HighPriorityRouteTable") is not None:
+            self._HighPriorityRouteTable = HighPriorityRouteTable()
+            self._HighPriorityRouteTable._deserialize(params.get("HighPriorityRouteTable"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateHighPriorityRoutesRequest(AbstractModel):
+    """CreateHighPriorityRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HighPriorityRouteTableId: 高优路由表唯一 ID。
+        :type HighPriorityRouteTableId: str
+        :param _HighPriorityRoutes: 高优路由表条目信息。
+        :type HighPriorityRoutes: list of HighPriorityRoute
+        """
+        self._HighPriorityRouteTableId = None
+        self._HighPriorityRoutes = None
+
+    @property
+    def HighPriorityRouteTableId(self):
+        return self._HighPriorityRouteTableId
+
+    @HighPriorityRouteTableId.setter
+    def HighPriorityRouteTableId(self, HighPriorityRouteTableId):
+        self._HighPriorityRouteTableId = HighPriorityRouteTableId
+
+    @property
+    def HighPriorityRoutes(self):
+        return self._HighPriorityRoutes
+
+    @HighPriorityRoutes.setter
+    def HighPriorityRoutes(self, HighPriorityRoutes):
+        self._HighPriorityRoutes = HighPriorityRoutes
+
+
+    def _deserialize(self, params):
+        self._HighPriorityRouteTableId = params.get("HighPriorityRouteTableId")
+        if params.get("HighPriorityRoutes") is not None:
+            self._HighPriorityRoutes = []
+            for item in params.get("HighPriorityRoutes"):
+                obj = HighPriorityRoute()
+                obj._deserialize(item)
+                self._HighPriorityRoutes.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateHighPriorityRoutesResponse(AbstractModel):
+    """CreateHighPriorityRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HighPriorityRouteSet: 高优路由表信息。
+        :type HighPriorityRouteSet: list of HighPriorityRoute
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._HighPriorityRouteSet = None
+        self._RequestId = None
+
+    @property
+    def HighPriorityRouteSet(self):
+        return self._HighPriorityRouteSet
+
+    @HighPriorityRouteSet.setter
+    def HighPriorityRouteSet(self, HighPriorityRouteSet):
+        self._HighPriorityRouteSet = HighPriorityRouteSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("HighPriorityRouteSet") is not None:
+            self._HighPriorityRouteSet = []
+            for item in params.get("HighPriorityRouteSet"):
+                obj = HighPriorityRoute()
+                obj._deserialize(item)
+                self._HighPriorityRouteSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -13992,6 +14247,68 @@ class DeleteCcnRouteTablesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteCdcLDCXListRequest(AbstractModel):
+    """DeleteCdcLDCXList请求参数结构体
+
+    """
+
+
+class DeleteCdcLDCXListResponse(AbstractModel):
+    """DeleteCdcLDCXList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteCdcNetPlanesRequest(AbstractModel):
+    """DeleteCdcNetPlanes请求参数结构体
+
+    """
+
+
+class DeleteCdcNetPlanesResponse(AbstractModel):
+    """DeleteCdcNetPlanes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteCustomerGatewayRequest(AbstractModel):
     """DeleteCustomerGateway请求参数结构体
 
@@ -14361,6 +14678,151 @@ class DeleteHaVipResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteHighPriorityRouteTablesRequest(AbstractModel):
+    """DeleteHighPriorityRouteTables请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HighPriorityRouteTableIds: 高优路由表表唯一ID 列表。
+        :type HighPriorityRouteTableIds: list of str
+        """
+        self._HighPriorityRouteTableIds = None
+
+    @property
+    def HighPriorityRouteTableIds(self):
+        return self._HighPriorityRouteTableIds
+
+    @HighPriorityRouteTableIds.setter
+    def HighPriorityRouteTableIds(self, HighPriorityRouteTableIds):
+        self._HighPriorityRouteTableIds = HighPriorityRouteTableIds
+
+
+    def _deserialize(self, params):
+        self._HighPriorityRouteTableIds = params.get("HighPriorityRouteTableIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteHighPriorityRouteTablesResponse(AbstractModel):
+    """DeleteHighPriorityRouteTables返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteHighPriorityRoutesRequest(AbstractModel):
+    """DeleteHighPriorityRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HighPriorityRouteTableId: 高优路由表唯一 ID。
+        :type HighPriorityRouteTableId: str
+        :param _HighPriorityRouteIds: 高优路由表条目唯一 ID 列表。
+        :type HighPriorityRouteIds: list of str
+        """
+        self._HighPriorityRouteTableId = None
+        self._HighPriorityRouteIds = None
+
+    @property
+    def HighPriorityRouteTableId(self):
+        return self._HighPriorityRouteTableId
+
+    @HighPriorityRouteTableId.setter
+    def HighPriorityRouteTableId(self, HighPriorityRouteTableId):
+        self._HighPriorityRouteTableId = HighPriorityRouteTableId
+
+    @property
+    def HighPriorityRouteIds(self):
+        return self._HighPriorityRouteIds
+
+    @HighPriorityRouteIds.setter
+    def HighPriorityRouteIds(self, HighPriorityRouteIds):
+        self._HighPriorityRouteIds = HighPriorityRouteIds
+
+
+    def _deserialize(self, params):
+        self._HighPriorityRouteTableId = params.get("HighPriorityRouteTableId")
+        self._HighPriorityRouteIds = params.get("HighPriorityRouteIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteHighPriorityRoutesResponse(AbstractModel):
+    """DeleteHighPriorityRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HighPriorityRouteSet: 高优路由表条目信息。
+        :type HighPriorityRouteSet: list of HighPriorityRoute
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._HighPriorityRouteSet = None
+        self._RequestId = None
+
+    @property
+    def HighPriorityRouteSet(self):
+        return self._HighPriorityRouteSet
+
+    @HighPriorityRouteSet.setter
+    def HighPriorityRouteSet(self, HighPriorityRouteSet):
+        self._HighPriorityRouteSet = HighPriorityRouteSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("HighPriorityRouteSet") is not None:
+            self._HighPriorityRouteSet = []
+            for item in params.get("HighPriorityRouteSet"):
+                obj = HighPriorityRoute()
+                obj._deserialize(item)
+                self._HighPriorityRouteSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -18569,6 +19031,99 @@ class DescribeCcnsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCdcLDCXListRequest(AbstractModel):
+    """DescribeCdcLDCXList请求参数结构体
+
+    """
+
+
+class DescribeCdcLDCXListResponse(AbstractModel):
+    """DescribeCdcLDCXList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCdcNetPlanesRequest(AbstractModel):
+    """DescribeCdcNetPlanes请求参数结构体
+
+    """
+
+
+class DescribeCdcNetPlanesResponse(AbstractModel):
+    """DescribeCdcNetPlanes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCdcUsedIdcVlanRequest(AbstractModel):
+    """DescribeCdcUsedIdcVlan请求参数结构体
+
+    """
+
+
+class DescribeCdcUsedIdcVlanResponse(AbstractModel):
+    """DescribeCdcUsedIdcVlan返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeClassicLinkInstancesRequest(AbstractModel):
     """DescribeClassicLinkInstances请求参数结构体
 
@@ -20597,6 +21152,289 @@ class DescribeHaVipsResponse(AbstractModel):
                 obj = HaVip()
                 obj._deserialize(item)
                 self._HaVipSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeHighPriorityRouteTablesRequest(AbstractModel):
+    """DescribeHighPriorityRouteTables请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 过滤条件，参数不支持同时指定HighPriorityRouteTableIds和Filters。
+<li>high-priority-route-table-id - String - （过滤条件）高优路由表实例ID。</li>
+<li>name - String - （过滤条件）高优路由表名称。</li>
+<li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
+<li>tag-key - String -是否必填：否 - （过滤条件）按照标签键进行过滤。</li>
+<li>next-hop-type - String - 是否必填：否 - （过滤条件）按下一跳类型进行过滤。使用next-hop-type进行过滤时，必须同时携带route-table-id与vpc-id。
+目前我们支持的类型有：
+HAVIP：高可用虚拟IP；
+NORMAL_CVM：普通云服务器；
+</li>
+        :type Filters: list of Filter
+        :param _HighPriorityRouteTableIds: 高优路由表实例ID，例如：hprtb-18mot1fm。
+        :type HighPriorityRouteTableIds: list of str
+        :param _Offset: 偏移量。
+        :type Offset: str
+        :param _Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: str
+        :param _NeedRouterInfo: 是否需要获取路由策略信息，默认获取，当控制台不需要拉取路由策略信息时，改为False。
+        :type NeedRouterInfo: bool
+        """
+        self._Filters = None
+        self._HighPriorityRouteTableIds = None
+        self._Offset = None
+        self._Limit = None
+        self._NeedRouterInfo = None
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def HighPriorityRouteTableIds(self):
+        return self._HighPriorityRouteTableIds
+
+    @HighPriorityRouteTableIds.setter
+    def HighPriorityRouteTableIds(self, HighPriorityRouteTableIds):
+        self._HighPriorityRouteTableIds = HighPriorityRouteTableIds
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def NeedRouterInfo(self):
+        return self._NeedRouterInfo
+
+    @NeedRouterInfo.setter
+    def NeedRouterInfo(self, NeedRouterInfo):
+        self._NeedRouterInfo = NeedRouterInfo
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._HighPriorityRouteTableIds = params.get("HighPriorityRouteTableIds")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._NeedRouterInfo = params.get("NeedRouterInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHighPriorityRouteTablesResponse(AbstractModel):
+    """DescribeHighPriorityRouteTables返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HighPriorityRouteTableSet: 高优路由表对象。
+        :type HighPriorityRouteTableSet: list of HighPriorityRouteTable
+        :param _TotalCount: 符合条件的实例数量。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._HighPriorityRouteTableSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def HighPriorityRouteTableSet(self):
+        return self._HighPriorityRouteTableSet
+
+    @HighPriorityRouteTableSet.setter
+    def HighPriorityRouteTableSet(self, HighPriorityRouteTableSet):
+        self._HighPriorityRouteTableSet = HighPriorityRouteTableSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("HighPriorityRouteTableSet") is not None:
+            self._HighPriorityRouteTableSet = []
+            for item in params.get("HighPriorityRouteTableSet"):
+                obj = HighPriorityRouteTable()
+                obj._deserialize(item)
+                self._HighPriorityRouteTableSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeHighPriorityRoutesRequest(AbstractModel):
+    """DescribeHighPriorityRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HighPriorityRouteTableId: 高优路由表唯一 ID。
+        :type HighPriorityRouteTableId: str
+        :param _Filters: <li>gateway-id - String - （过滤条件）网关ID。</li>
+<li>description - String - （过滤条件）路由描述。</li>
+<li>dest-cidr - String - （过滤条件）目的端地址，支持模糊左匹配。</li>
+<li>subnet-route-algorithm - String - （过滤条件）现在支持的算法有：ECMP_QUINTUPLE_HASH：五元组hash，ECMP_SOURCE_DESTINATION_IP_HASH：源和目的IP hash，ECMP_DESTINATION_IP_HASH：目的IP hash，ECMP_SOURCE_IP_HASH：源IP hash。</li>
+<li>is-cdc - String - （过滤条件）CDC属性高优路由表。</li>
+<li>cdc-id - String - （过滤条件）CDC 集群唯一 ID 。</li>
+
+        :type Filters: list of Filter
+        :param _Offset: 偏移量。
+        :type Offset: int
+        :param _Limit: 请求对象个数。
+        :type Limit: int
+        """
+        self._HighPriorityRouteTableId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def HighPriorityRouteTableId(self):
+        return self._HighPriorityRouteTableId
+
+    @HighPriorityRouteTableId.setter
+    def HighPriorityRouteTableId(self, HighPriorityRouteTableId):
+        self._HighPriorityRouteTableId = HighPriorityRouteTableId
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._HighPriorityRouteTableId = params.get("HighPriorityRouteTableId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHighPriorityRoutesResponse(AbstractModel):
+    """DescribeHighPriorityRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HighPriorityRouteSet: 高优路由表条目信息。
+        :type HighPriorityRouteSet: list of HighPriorityRoute
+        :param _TotalCount: 高优路由表条目个数。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._HighPriorityRouteSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def HighPriorityRouteSet(self):
+        return self._HighPriorityRouteSet
+
+    @HighPriorityRouteSet.setter
+    def HighPriorityRouteSet(self, HighPriorityRouteSet):
+        self._HighPriorityRouteSet = HighPriorityRouteSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("HighPriorityRouteSet") is not None:
+            self._HighPriorityRouteSet = []
+            for item in params.get("HighPriorityRouteSet"):
+                obj = HighPriorityRoute()
+                obj._deserialize(item)
+                self._HighPriorityRouteSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -23963,6 +24801,127 @@ class DescribeRouteTablesResponse(AbstractModel):
                 obj = RouteTable()
                 obj._deserialize(item)
                 self._RouteTableSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRoutesRequest(AbstractModel):
+    """DescribeRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 过滤条件，参数不支持同时指定RouteTableIds和Filters。
+<li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
+<li>gateway-id - String - （过滤条件）网关ID。</li>
+<li>description - String - （过滤条件）路由描述。</li>
+<li>route-table-id - String - （过滤条件）路由表实例ID。</li>
+<li>dest-cidr - String - （过滤条件）目的端地址，支持模糊左匹配。</li>
+        :type Filters: list of Filter
+        :param _Offset: 偏移量。
+        :type Offset: int
+        :param _Limit: 请求对象个数。
+        :type Limit: int
+        """
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRoutesResponse(AbstractModel):
+    """DescribeRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RouteSet: 路由对象。
+        :type RouteSet: list of Route
+        :param _TotalCount: 符合条件的实例数量。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RouteSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def RouteSet(self):
+        return self._RouteSet
+
+    @RouteSet.setter
+    def RouteSet(self, RouteSet):
+        self._RouteSet = RouteSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RouteSet") is not None:
+            self._RouteSet = []
+            for item in params.get("RouteSet"):
+                obj = Route()
+                obj._deserialize(item)
+                self._RouteSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -31103,6 +32062,9 @@ class EndPoint(AbstractModel):
         :param _ServiceName: 终端节点服务名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceName: str
+        :param _CdcId: CDC 集群唯一 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CdcId: str
         :param _TagSet: 标签键值对。	
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: list of Tag
@@ -31120,6 +32082,7 @@ class EndPoint(AbstractModel):
         self._CreateTime = None
         self._GroupSet = None
         self._ServiceName = None
+        self._CdcId = None
         self._TagSet = None
 
     @property
@@ -31227,6 +32190,14 @@ class EndPoint(AbstractModel):
         self._ServiceName = ServiceName
 
     @property
+    def CdcId(self):
+        return self._CdcId
+
+    @CdcId.setter
+    def CdcId(self, CdcId):
+        self._CdcId = CdcId
+
+    @property
     def TagSet(self):
         return self._TagSet
 
@@ -31249,6 +32220,7 @@ class EndPoint(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._GroupSet = params.get("GroupSet")
         self._ServiceName = params.get("ServiceName")
+        self._CdcId = params.get("CdcId")
         if params.get("TagSet") is not None:
             self._TagSet = []
             for item in params.get("TagSet"):
@@ -31296,6 +32268,9 @@ class EndPointService(AbstractModel):
         :type CreateTime: str
         :param _ServiceType: 挂载的PAAS服务类型，CLB,CDB,CRS
         :type ServiceType: str
+        :param _CdcId: CDC 集群唯一 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CdcId: str
         :param _ServiceUin: Uin
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceUin: str
@@ -31317,6 +32292,7 @@ class EndPointService(AbstractModel):
         self._EndPointSet = None
         self._CreateTime = None
         self._ServiceType = None
+        self._CdcId = None
         self._ServiceUin = None
         self._BusinessIpType = None
         self._TagSet = None
@@ -31410,6 +32386,14 @@ class EndPointService(AbstractModel):
         self._ServiceType = ServiceType
 
     @property
+    def CdcId(self):
+        return self._CdcId
+
+    @CdcId.setter
+    def CdcId(self, CdcId):
+        self._CdcId = CdcId
+
+    @property
     def ServiceUin(self):
         return self._ServiceUin
 
@@ -31451,6 +32435,7 @@ class EndPointService(AbstractModel):
                 self._EndPointSet.append(obj)
         self._CreateTime = params.get("CreateTime")
         self._ServiceType = params.get("ServiceType")
+        self._CdcId = params.get("CdcId")
         self._ServiceUin = params.get("ServiceUin")
         self._BusinessIpType = params.get("BusinessIpType")
         if params.get("TagSet") is not None:
@@ -32265,6 +33250,9 @@ class HaVip(AbstractModel):
         :param _CheckAssociate: 是否开启`HAVIP`的飘移范围校验。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CheckAssociate: bool
+        :param _CdcId: CDC实例ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CdcId: str
         :param _FlushedTime: HAVIP 刷新时间。该参数只作为出参数。以下场景会触发 FlushTime 被刷新：1）子机发出免费 ARP 触发 HAVIP 漂移；2）手动HAVIP解绑网卡; 没有更新时默认值：0000-00-00 00:00:00
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlushedTime: str
@@ -32285,6 +33273,7 @@ class HaVip(AbstractModel):
         self._Business = None
         self._HaVipAssociationSet = None
         self._CheckAssociate = None
+        self._CdcId = None
         self._FlushedTime = None
         self._TagSet = None
 
@@ -32393,6 +33382,14 @@ class HaVip(AbstractModel):
         self._CheckAssociate = CheckAssociate
 
     @property
+    def CdcId(self):
+        return self._CdcId
+
+    @CdcId.setter
+    def CdcId(self, CdcId):
+        self._CdcId = CdcId
+
+    @property
     def FlushedTime(self):
         return self._FlushedTime
 
@@ -32428,6 +33425,7 @@ class HaVip(AbstractModel):
                 obj._deserialize(item)
                 self._HaVipAssociationSet.append(obj)
         self._CheckAssociate = params.get("CheckAssociate")
+        self._CdcId = params.get("CdcId")
         self._FlushedTime = params.get("FlushedTime")
         if params.get("TagSet") is not None:
             self._TagSet = []
@@ -32696,6 +33694,306 @@ class HealthCheckConfig(AbstractModel):
         self._ProbeInterval = params.get("ProbeInterval")
         self._ProbeThreshold = params.get("ProbeThreshold")
         self._ProbeTimeout = params.get("ProbeTimeout")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HighPriorityModifyItem(AbstractModel):
+    """高优路由表条目修改属性。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HighPriorityRouteId: 高优路由条目唯一ID。
+        :type HighPriorityRouteId: str
+        :param _Description: 高优路由条目描述。
+        :type Description: str
+        """
+        self._HighPriorityRouteId = None
+        self._Description = None
+
+    @property
+    def HighPriorityRouteId(self):
+        return self._HighPriorityRouteId
+
+    @HighPriorityRouteId.setter
+    def HighPriorityRouteId(self, HighPriorityRouteId):
+        self._HighPriorityRouteId = HighPriorityRouteId
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._HighPriorityRouteId = params.get("HighPriorityRouteId")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HighPriorityRoute(AbstractModel):
+    """高优路由表条目信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HighPriorityRouteTableId: 高优路由表唯一 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HighPriorityRouteTableId: str
+        :param _HighPriorityRouteId: 高优路由表条目唯一 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HighPriorityRouteId: str
+        :param _DestinationCidrBlock: 目标网段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DestinationCidrBlock: str
+        :param _GatewayType: 网关类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayType: str
+        :param _GatewayId: 网关唯一ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayId: str
+        :param _Description: 高优路由条目描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _SubnetRouteAlgorithm: ECMP算法，支持的算法有：ECMP_QUINTUPLE_HASH：五元组hash，ECMP_SOURCE_DESTINATION_IP_HASH：源和目的IP hash，ECMP_DESTINATION_IP_HASH：目的IP hash，ECMP_SOURCE_IP_HASH：源IP hash。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetRouteAlgorithm: str
+        :param _IsCdc: 出参展示，是否为CDC属性高优路由
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsCdc: bool
+        :param _CdcId: 出参展示，CDC 唯一ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CdcId: str
+        :param _CreatedTime: 创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        """
+        self._HighPriorityRouteTableId = None
+        self._HighPriorityRouteId = None
+        self._DestinationCidrBlock = None
+        self._GatewayType = None
+        self._GatewayId = None
+        self._Description = None
+        self._SubnetRouteAlgorithm = None
+        self._IsCdc = None
+        self._CdcId = None
+        self._CreatedTime = None
+
+    @property
+    def HighPriorityRouteTableId(self):
+        return self._HighPriorityRouteTableId
+
+    @HighPriorityRouteTableId.setter
+    def HighPriorityRouteTableId(self, HighPriorityRouteTableId):
+        self._HighPriorityRouteTableId = HighPriorityRouteTableId
+
+    @property
+    def HighPriorityRouteId(self):
+        return self._HighPriorityRouteId
+
+    @HighPriorityRouteId.setter
+    def HighPriorityRouteId(self, HighPriorityRouteId):
+        self._HighPriorityRouteId = HighPriorityRouteId
+
+    @property
+    def DestinationCidrBlock(self):
+        return self._DestinationCidrBlock
+
+    @DestinationCidrBlock.setter
+    def DestinationCidrBlock(self, DestinationCidrBlock):
+        self._DestinationCidrBlock = DestinationCidrBlock
+
+    @property
+    def GatewayType(self):
+        return self._GatewayType
+
+    @GatewayType.setter
+    def GatewayType(self, GatewayType):
+        self._GatewayType = GatewayType
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def SubnetRouteAlgorithm(self):
+        return self._SubnetRouteAlgorithm
+
+    @SubnetRouteAlgorithm.setter
+    def SubnetRouteAlgorithm(self, SubnetRouteAlgorithm):
+        self._SubnetRouteAlgorithm = SubnetRouteAlgorithm
+
+    @property
+    def IsCdc(self):
+        return self._IsCdc
+
+    @IsCdc.setter
+    def IsCdc(self, IsCdc):
+        self._IsCdc = IsCdc
+
+    @property
+    def CdcId(self):
+        return self._CdcId
+
+    @CdcId.setter
+    def CdcId(self, CdcId):
+        self._CdcId = CdcId
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+
+    def _deserialize(self, params):
+        self._HighPriorityRouteTableId = params.get("HighPriorityRouteTableId")
+        self._HighPriorityRouteId = params.get("HighPriorityRouteId")
+        self._DestinationCidrBlock = params.get("DestinationCidrBlock")
+        self._GatewayType = params.get("GatewayType")
+        self._GatewayId = params.get("GatewayId")
+        self._Description = params.get("Description")
+        self._SubnetRouteAlgorithm = params.get("SubnetRouteAlgorithm")
+        self._IsCdc = params.get("IsCdc")
+        self._CdcId = params.get("CdcId")
+        self._CreatedTime = params.get("CreatedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HighPriorityRouteTable(AbstractModel):
+    """高优路由表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HighPriorityRouteTableId: 高优路由表唯一 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HighPriorityRouteTableId: str
+        :param _VpcId: VPC实例ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param _Name: 高优路由表名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _SubnetSet: 高优路由表关联的子网列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetSet: list of str
+        :param _HighPriorityRouteSet: 高优路由表条目信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HighPriorityRouteSet: list of HighPriorityRoute
+        :param _CreatedTime: 创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        """
+        self._HighPriorityRouteTableId = None
+        self._VpcId = None
+        self._Name = None
+        self._SubnetSet = None
+        self._HighPriorityRouteSet = None
+        self._CreatedTime = None
+
+    @property
+    def HighPriorityRouteTableId(self):
+        return self._HighPriorityRouteTableId
+
+    @HighPriorityRouteTableId.setter
+    def HighPriorityRouteTableId(self, HighPriorityRouteTableId):
+        self._HighPriorityRouteTableId = HighPriorityRouteTableId
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SubnetSet(self):
+        return self._SubnetSet
+
+    @SubnetSet.setter
+    def SubnetSet(self, SubnetSet):
+        self._SubnetSet = SubnetSet
+
+    @property
+    def HighPriorityRouteSet(self):
+        return self._HighPriorityRouteSet
+
+    @HighPriorityRouteSet.setter
+    def HighPriorityRouteSet(self, HighPriorityRouteSet):
+        self._HighPriorityRouteSet = HighPriorityRouteSet
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+
+    def _deserialize(self, params):
+        self._HighPriorityRouteTableId = params.get("HighPriorityRouteTableId")
+        self._VpcId = params.get("VpcId")
+        self._Name = params.get("Name")
+        self._SubnetSet = params.get("SubnetSet")
+        if params.get("HighPriorityRouteSet") is not None:
+            self._HighPriorityRouteSet = []
+            for item in params.get("HighPriorityRouteSet"):
+                obj = HighPriorityRoute()
+                obj._deserialize(item)
+                self._HighPriorityRouteSet.append(obj)
+        self._CreatedTime = params.get("CreatedTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35923,6 +37221,68 @@ class ModifyCcnRouteTablesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyCdcLDCXAttributeRequest(AbstractModel):
+    """ModifyCdcLDCXAttribute请求参数结构体
+
+    """
+
+
+class ModifyCdcLDCXAttributeResponse(AbstractModel):
+    """ModifyCdcLDCXAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyCdcNetPlaneAttributeRequest(AbstractModel):
+    """ModifyCdcNetPlaneAttribute请求参数结构体
+
+    """
+
+
+class ModifyCdcNetPlaneAttributeResponse(AbstractModel):
+    """ModifyCdcNetPlaneAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyCustomerGatewayAttributeRequest(AbstractModel):
     """ModifyCustomerGatewayAttribute请求参数结构体
 
@@ -36395,6 +37755,226 @@ class ModifyHaVipAttributeRequest(AbstractModel):
 
 class ModifyHaVipAttributeResponse(AbstractModel):
     """ModifyHaVipAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyHighPriorityRouteAttributeRequest(AbstractModel):
+    """ModifyHighPriorityRouteAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HighPriorityRouteTableId: 高优路由表唯一 ID。
+        :type HighPriorityRouteTableId: str
+        :param _HighPriorityModifyItems: 高优路由表条目修改属性。
+        :type HighPriorityModifyItems: list of HighPriorityModifyItem
+        """
+        self._HighPriorityRouteTableId = None
+        self._HighPriorityModifyItems = None
+
+    @property
+    def HighPriorityRouteTableId(self):
+        return self._HighPriorityRouteTableId
+
+    @HighPriorityRouteTableId.setter
+    def HighPriorityRouteTableId(self, HighPriorityRouteTableId):
+        self._HighPriorityRouteTableId = HighPriorityRouteTableId
+
+    @property
+    def HighPriorityModifyItems(self):
+        return self._HighPriorityModifyItems
+
+    @HighPriorityModifyItems.setter
+    def HighPriorityModifyItems(self, HighPriorityModifyItems):
+        self._HighPriorityModifyItems = HighPriorityModifyItems
+
+
+    def _deserialize(self, params):
+        self._HighPriorityRouteTableId = params.get("HighPriorityRouteTableId")
+        if params.get("HighPriorityModifyItems") is not None:
+            self._HighPriorityModifyItems = []
+            for item in params.get("HighPriorityModifyItems"):
+                obj = HighPriorityModifyItem()
+                obj._deserialize(item)
+                self._HighPriorityModifyItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyHighPriorityRouteAttributeResponse(AbstractModel):
+    """ModifyHighPriorityRouteAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyHighPriorityRouteECMPAlgorithmRequest(AbstractModel):
+    """ModifyHighPriorityRouteECMPAlgorithm请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HighPriorityRouteTableId: 高优路由表实例唯一ID。
+        :type HighPriorityRouteTableId: str
+        :param _RouteECMPAlgorithms: 高优路由表HASH策略。
+        :type RouteECMPAlgorithms: list of RouteECMPAlgorithm
+        """
+        self._HighPriorityRouteTableId = None
+        self._RouteECMPAlgorithms = None
+
+    @property
+    def HighPriorityRouteTableId(self):
+        return self._HighPriorityRouteTableId
+
+    @HighPriorityRouteTableId.setter
+    def HighPriorityRouteTableId(self, HighPriorityRouteTableId):
+        self._HighPriorityRouteTableId = HighPriorityRouteTableId
+
+    @property
+    def RouteECMPAlgorithms(self):
+        return self._RouteECMPAlgorithms
+
+    @RouteECMPAlgorithms.setter
+    def RouteECMPAlgorithms(self, RouteECMPAlgorithms):
+        self._RouteECMPAlgorithms = RouteECMPAlgorithms
+
+
+    def _deserialize(self, params):
+        self._HighPriorityRouteTableId = params.get("HighPriorityRouteTableId")
+        if params.get("RouteECMPAlgorithms") is not None:
+            self._RouteECMPAlgorithms = []
+            for item in params.get("RouteECMPAlgorithms"):
+                obj = RouteECMPAlgorithm()
+                obj._deserialize(item)
+                self._RouteECMPAlgorithms.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyHighPriorityRouteECMPAlgorithmResponse(AbstractModel):
+    """ModifyHighPriorityRouteECMPAlgorithm返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyHighPriorityRouteTableAttributeRequest(AbstractModel):
+    """ModifyHighPriorityRouteTableAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HighPriorityRouteTableId: 高优路由表表唯一ID 
+        :type HighPriorityRouteTableId: str
+        :param _Name: 高优路由表表名称
+        :type Name: str
+        """
+        self._HighPriorityRouteTableId = None
+        self._Name = None
+
+    @property
+    def HighPriorityRouteTableId(self):
+        return self._HighPriorityRouteTableId
+
+    @HighPriorityRouteTableId.setter
+    def HighPriorityRouteTableId(self, HighPriorityRouteTableId):
+        self._HighPriorityRouteTableId = HighPriorityRouteTableId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._HighPriorityRouteTableId = params.get("HighPriorityRouteTableId")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyHighPriorityRouteTableAttributeResponse(AbstractModel):
+    """ModifyHighPriorityRouteTableAttribute返回参数结构体
 
     """
 
@@ -44122,6 +45702,185 @@ class ReplaceDirectConnectGatewayCcnRoutesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ReplaceHighPriorityRouteTableAssociationRequest(AbstractModel):
+    """ReplaceHighPriorityRouteTableAssociation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HighPriorityRouteTableId: 高优路由表唯一 ID。
+        :type HighPriorityRouteTableId: str
+        :param _SubnetId: 子网唯一 ID
+        :type SubnetId: str
+        """
+        self._HighPriorityRouteTableId = None
+        self._SubnetId = None
+
+    @property
+    def HighPriorityRouteTableId(self):
+        return self._HighPriorityRouteTableId
+
+    @HighPriorityRouteTableId.setter
+    def HighPriorityRouteTableId(self, HighPriorityRouteTableId):
+        self._HighPriorityRouteTableId = HighPriorityRouteTableId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+
+    def _deserialize(self, params):
+        self._HighPriorityRouteTableId = params.get("HighPriorityRouteTableId")
+        self._SubnetId = params.get("SubnetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReplaceHighPriorityRouteTableAssociationResponse(AbstractModel):
+    """ReplaceHighPriorityRouteTableAssociation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ReplaceHighPriorityRoutesRequest(AbstractModel):
+    """ReplaceHighPriorityRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HighPriorityRouteTableId: 高优路由表唯一 ID。
+        :type HighPriorityRouteTableId: str
+        :param _HighPriorityRoutes: 高优路由表条目信息。
+        :type HighPriorityRoutes: list of HighPriorityRoute
+        """
+        self._HighPriorityRouteTableId = None
+        self._HighPriorityRoutes = None
+
+    @property
+    def HighPriorityRouteTableId(self):
+        return self._HighPriorityRouteTableId
+
+    @HighPriorityRouteTableId.setter
+    def HighPriorityRouteTableId(self, HighPriorityRouteTableId):
+        self._HighPriorityRouteTableId = HighPriorityRouteTableId
+
+    @property
+    def HighPriorityRoutes(self):
+        return self._HighPriorityRoutes
+
+    @HighPriorityRoutes.setter
+    def HighPriorityRoutes(self, HighPriorityRoutes):
+        self._HighPriorityRoutes = HighPriorityRoutes
+
+
+    def _deserialize(self, params):
+        self._HighPriorityRouteTableId = params.get("HighPriorityRouteTableId")
+        if params.get("HighPriorityRoutes") is not None:
+            self._HighPriorityRoutes = []
+            for item in params.get("HighPriorityRoutes"):
+                obj = HighPriorityRoute()
+                obj._deserialize(item)
+                self._HighPriorityRoutes.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReplaceHighPriorityRoutesResponse(AbstractModel):
+    """ReplaceHighPriorityRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NewHighPriorityRouteSet: 新的高优路由表条目列表。
+        :type NewHighPriorityRouteSet: list of HighPriorityRoute
+        :param _OldHighPriorityRouteSet: 旧的高优路由表条目列表。
+        :type OldHighPriorityRouteSet: list of HighPriorityRoute
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._NewHighPriorityRouteSet = None
+        self._OldHighPriorityRouteSet = None
+        self._RequestId = None
+
+    @property
+    def NewHighPriorityRouteSet(self):
+        return self._NewHighPriorityRouteSet
+
+    @NewHighPriorityRouteSet.setter
+    def NewHighPriorityRouteSet(self, NewHighPriorityRouteSet):
+        self._NewHighPriorityRouteSet = NewHighPriorityRouteSet
+
+    @property
+    def OldHighPriorityRouteSet(self):
+        return self._OldHighPriorityRouteSet
+
+    @OldHighPriorityRouteSet.setter
+    def OldHighPriorityRouteSet(self, OldHighPriorityRouteSet):
+        self._OldHighPriorityRouteSet = OldHighPriorityRouteSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("NewHighPriorityRouteSet") is not None:
+            self._NewHighPriorityRouteSet = []
+            for item in params.get("NewHighPriorityRouteSet"):
+                obj = HighPriorityRoute()
+                obj._deserialize(item)
+                self._NewHighPriorityRouteSet.append(obj)
+        if params.get("OldHighPriorityRouteSet") is not None:
+            self._OldHighPriorityRouteSet = []
+            for item in params.get("OldHighPriorityRouteSet"):
+                obj = HighPriorityRoute()
+                obj._deserialize(item)
+                self._OldHighPriorityRouteSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class ReplaceRouteTableAssociationRequest(AbstractModel):
     """ReplaceRouteTableAssociation请求参数结构体
 
@@ -44537,6 +46296,93 @@ class ResetAttachCcnInstancesRequest(AbstractModel):
 
 class ResetAttachCcnInstancesResponse(AbstractModel):
     """ResetAttachCcnInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ResetHighPriorityRoutesRequest(AbstractModel):
+    """ResetHighPriorityRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HighPriorityRouteTableId: 高优路由表唯一 ID。
+        :type HighPriorityRouteTableId: str
+        :param _Name: 高优路由表名称。
+        :type Name: str
+        :param _HighPriorityRoutes: 高优路由表条目信息。
+        :type HighPriorityRoutes: list of HighPriorityRoute
+        """
+        self._HighPriorityRouteTableId = None
+        self._Name = None
+        self._HighPriorityRoutes = None
+
+    @property
+    def HighPriorityRouteTableId(self):
+        return self._HighPriorityRouteTableId
+
+    @HighPriorityRouteTableId.setter
+    def HighPriorityRouteTableId(self, HighPriorityRouteTableId):
+        self._HighPriorityRouteTableId = HighPriorityRouteTableId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def HighPriorityRoutes(self):
+        return self._HighPriorityRoutes
+
+    @HighPriorityRoutes.setter
+    def HighPriorityRoutes(self, HighPriorityRoutes):
+        self._HighPriorityRoutes = HighPriorityRoutes
+
+
+    def _deserialize(self, params):
+        self._HighPriorityRouteTableId = params.get("HighPriorityRouteTableId")
+        self._Name = params.get("Name")
+        if params.get("HighPriorityRoutes") is not None:
+            self._HighPriorityRoutes = []
+            for item in params.get("HighPriorityRoutes"):
+                obj = HighPriorityRoute()
+                obj._deserialize(item)
+                self._HighPriorityRoutes.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetHighPriorityRoutesResponse(AbstractModel):
+    """ResetHighPriorityRoutes返回参数结构体
 
     """
 
@@ -45763,6 +47609,9 @@ CCN：云联网路由，系统默认下发，不可编辑与删除。
         :type PublishedToVbc: bool
         :param _CreatedTime: 路由策略创建时间
         :type CreatedTime: str
+        :param _CdcId: CDC 集群唯一 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CdcId: str
         """
         self._DestinationCidrBlock = None
         self._GatewayType = None
@@ -45776,6 +47625,7 @@ CCN：云联网路由，系统默认下发，不可编辑与删除。
         self._RouteItemId = None
         self._PublishedToVbc = None
         self._CreatedTime = None
+        self._CdcId = None
 
     @property
     def DestinationCidrBlock(self):
@@ -45873,6 +47723,14 @@ CCN：云联网路由，系统默认下发，不可编辑与删除。
     def CreatedTime(self, CreatedTime):
         self._CreatedTime = CreatedTime
 
+    @property
+    def CdcId(self):
+        return self._CdcId
+
+    @CdcId.setter
+    def CdcId(self, CdcId):
+        self._CdcId = CdcId
+
 
     def _deserialize(self, params):
         self._DestinationCidrBlock = params.get("DestinationCidrBlock")
@@ -45887,6 +47745,7 @@ CCN：云联网路由，系统默认下发，不可编辑与删除。
         self._RouteItemId = params.get("RouteItemId")
         self._PublishedToVbc = params.get("PublishedToVbc")
         self._CreatedTime = params.get("CreatedTime")
+        self._CdcId = params.get("CdcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -45949,6 +47808,53 @@ class RouteConflict(AbstractModel):
                 obj = Route()
                 obj._deserialize(item)
                 self._ConflictSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RouteECMPAlgorithm(AbstractModel):
+    """用于修改入路由表ECMP算法。现在支持的算法有：ECMP_QUINTUPLE_HASH：五元组hash，ECMP_SOURCE_DESTINATION_IP_HASH：源和目的IP hash，ECMP_DESTINATION_IP_HASH：目的IP hash，ECMP_SOURCE_IP_HASH：源IP hash。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DestinationCidrBlock:  目标网段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DestinationCidrBlock: str
+        :param _SubnetRouteAlgorithm: 支持的 ECMP算法有：ECMP_QUINTUPLE_HASH：五元组hash，ECMP_SOURCE_DESTINATION_IP_HASH：源和目的IP hash，ECMP_DESTINATION_IP_HASH：目的IP hash，ECMP_SOURCE_IP_HASH：源IP hash。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetRouteAlgorithm: str
+        """
+        self._DestinationCidrBlock = None
+        self._SubnetRouteAlgorithm = None
+
+    @property
+    def DestinationCidrBlock(self):
+        return self._DestinationCidrBlock
+
+    @DestinationCidrBlock.setter
+    def DestinationCidrBlock(self, DestinationCidrBlock):
+        self._DestinationCidrBlock = DestinationCidrBlock
+
+    @property
+    def SubnetRouteAlgorithm(self):
+        return self._SubnetRouteAlgorithm
+
+    @SubnetRouteAlgorithm.setter
+    def SubnetRouteAlgorithm(self, SubnetRouteAlgorithm):
+        self._SubnetRouteAlgorithm = SubnetRouteAlgorithm
+
+
+    def _deserialize(self, params):
+        self._DestinationCidrBlock = params.get("DestinationCidrBlock")
+        self._SubnetRouteAlgorithm = params.get("SubnetRouteAlgorithm")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

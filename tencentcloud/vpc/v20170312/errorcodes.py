@@ -632,6 +632,9 @@ LIMITEXCEEDED_VPCPEERTOTALLIMITEXCEEDED = 'LimitExceeded.VpcPeerTotalLimitExceed
 # 缺少参数错误。
 MISSINGPARAMETER = 'MissingParameter'
 
+# 缺少多个参数错误
+MISSINGPARAMETER_MULTIMISSINGPARAMETER = 'MissingParameter.MultiMissingParameter'
+
 # 指定公网IP处于隔离状态。
 OPERATIONDENIED_ADDRESSINARREARS = 'OperationDenied.AddressInArrears'
 
@@ -916,6 +919,9 @@ UNSUPPORTEDOPERATION_ISNOTFINANCEACCOUNT = 'UnsupportedOperation.IsNotFinanceAcc
 
 # 该ISP不支持此操作。
 UNSUPPORTEDOPERATION_ISPNOTSUPPORTED = 'UnsupportedOperation.IspNotSupported'
+
+# 需要先解绑 IDC通道
+UNSUPPORTEDOPERATION_LDCXDISASSOCIATE = 'UnsupportedOperation.LDCXDisassociate'
 
 # 指定的CDC已存在本地网关。
 UNSUPPORTEDOPERATION_LOCALGATEWAYALREADYEXISTS = 'UnsupportedOperation.LocalGatewayAlreadyExists'

@@ -11302,6 +11302,15 @@ class MLIDPassportOCRResponse(AbstractModel):
         :type Type: str
         :param _PassportRecognizeInfos: 信息区证件内容
         :type PassportRecognizeInfos: :class:`tencentcloud.ocr.v20181119.models.PassportRecognizeInfos`
+        :param _WarnCardInfos: 告警码
+-9101 证件边框不完整告警
+-9102 证件复印件告警
+-9103 证件翻拍告警
+-9104 证件PS告警
+-9107 证件反光告警
+-9108 证件模糊告警
+-9109 告警能力未开通
+        :type WarnCardInfos: list of int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -11321,6 +11330,7 @@ class MLIDPassportOCRResponse(AbstractModel):
         self._GivenName = None
         self._Type = None
         self._PassportRecognizeInfos = None
+        self._WarnCardInfos = None
         self._RequestId = None
 
     @property
@@ -11452,6 +11462,14 @@ class MLIDPassportOCRResponse(AbstractModel):
         self._PassportRecognizeInfos = PassportRecognizeInfos
 
     @property
+    def WarnCardInfos(self):
+        return self._WarnCardInfos
+
+    @WarnCardInfos.setter
+    def WarnCardInfos(self, WarnCardInfos):
+        self._WarnCardInfos = WarnCardInfos
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -11479,6 +11497,7 @@ class MLIDPassportOCRResponse(AbstractModel):
         if params.get("PassportRecognizeInfos") is not None:
             self._PassportRecognizeInfos = PassportRecognizeInfos()
             self._PassportRecognizeInfos._deserialize(params.get("PassportRecognizeInfos"))
+        self._WarnCardInfos = params.get("WarnCardInfos")
         self._RequestId = params.get("RequestId")
 
 
