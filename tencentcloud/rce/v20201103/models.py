@@ -178,17 +178,17 @@ class DataAuthorizationInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DataProviderName: 客户主体名称。
+        :param _DataProviderName: 数据委托方、需求方：客户主体名称。
 
 示例值：某某有限公司。
         :type DataProviderName: str
-        :param _DataRecipientName: 接收方主体名称。
+        :param _DataRecipientName: 数据受托方、提供方：腾讯云主体名称。
 
 固定填：腾讯云计算（北京）有限责任公司
 
 示例值：腾讯云计算（北京）有限责任公司
         :type DataRecipientName: str
-        :param _UserDataType: 客户请求RCE所涉及的用户敏感数据类型，支持多选。实际以接口请求传参为准。
+        :param _UserDataType: 客户请求RCE所提供的用户数据类型，支持多选。实际以接口请求传参为准。
 
 1-手机号；
 
@@ -198,42 +198,44 @@ class DataAuthorizationInfo(AbstractModel):
 
 4-IP地址；
 
-5-设备指纹；
-
 999-其它；
 
 示例值：[1, 4]
         :type UserDataType: list of int non-negative
-        :param _IsAuthorize: 客户是否已经获取用户授权。
-
+        :param _IsAuthorize: 客户是否已按[合规指南](https://rule.tencent.com/rule/202409130001)要求获取用户授权，同意客户委托腾讯云处理入参信息
 1-已授权；其它值为未授权。
-
 示例值：1
         :type IsAuthorize: int
-        :param _IsPersonalData: 是否是用户个人敏感数据。
-
-固定填：1。
-
+        :param _IsOrderHandling: 客户是否已按[合规指南](https://rule.tencent.com/rule/202409130001)要求获取用户授权，同意腾讯云结合客户提供的信息，对已合法收集的用户数据进行必要处理得出服务结果，并返回给客户。
+1-已授权；其它值为未授权。
 示例值：1
-        :type IsPersonalData: int
+        :type IsOrderHandling: int
         :param _AuthorizationTerm: 客户获得的用户授权期限时间戳（单位秒）。
 
 不填默认无固定期限。
 
 示例值：1719805604
         :type AuthorizationTerm: int
-        :param _PrivacyPolicyLink: 客户获得用户授权所依赖的协议地址。
+        :param _PrivacyPolicyLink: 	
+客户获得用户授权所依赖的协议地址。
 
-示例值：https://www.*****.com/*****
+示例值：https://www.*****.com/*
         :type PrivacyPolicyLink: str
+        :param _IsPersonalData: 是否是用户个人敏感数据。
+
+固定填：1。
+
+示例值：1
+        :type IsPersonalData: int
         """
         self._DataProviderName = None
         self._DataRecipientName = None
         self._UserDataType = None
         self._IsAuthorize = None
-        self._IsPersonalData = None
+        self._IsOrderHandling = None
         self._AuthorizationTerm = None
         self._PrivacyPolicyLink = None
+        self._IsPersonalData = None
 
     @property
     def DataProviderName(self):
@@ -268,12 +270,12 @@ class DataAuthorizationInfo(AbstractModel):
         self._IsAuthorize = IsAuthorize
 
     @property
-    def IsPersonalData(self):
-        return self._IsPersonalData
+    def IsOrderHandling(self):
+        return self._IsOrderHandling
 
-    @IsPersonalData.setter
-    def IsPersonalData(self, IsPersonalData):
-        self._IsPersonalData = IsPersonalData
+    @IsOrderHandling.setter
+    def IsOrderHandling(self, IsOrderHandling):
+        self._IsOrderHandling = IsOrderHandling
 
     @property
     def AuthorizationTerm(self):
@@ -291,15 +293,24 @@ class DataAuthorizationInfo(AbstractModel):
     def PrivacyPolicyLink(self, PrivacyPolicyLink):
         self._PrivacyPolicyLink = PrivacyPolicyLink
 
+    @property
+    def IsPersonalData(self):
+        return self._IsPersonalData
+
+    @IsPersonalData.setter
+    def IsPersonalData(self, IsPersonalData):
+        self._IsPersonalData = IsPersonalData
+
 
     def _deserialize(self, params):
         self._DataProviderName = params.get("DataProviderName")
         self._DataRecipientName = params.get("DataRecipientName")
         self._UserDataType = params.get("UserDataType")
         self._IsAuthorize = params.get("IsAuthorize")
-        self._IsPersonalData = params.get("IsPersonalData")
+        self._IsOrderHandling = params.get("IsOrderHandling")
         self._AuthorizationTerm = params.get("AuthorizationTerm")
         self._PrivacyPolicyLink = params.get("PrivacyPolicyLink")
+        self._IsPersonalData = params.get("IsPersonalData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -44,6 +44,9 @@ FAILEDOPERATION_STARTJOBFAILED = 'FailedOperation.StartJobFailed'
 # 当前状态冲突，不能执行该操作。
 FAILEDOPERATION_STATUSINCONFLICT = 'FailedOperation.StatusInConflict'
 
+# 用户没有实名认证。
+FAILEDOPERATION_USERNOTAUTHED = 'FailedOperation.UserNotAuthed'
+
 # 内部错误。
 INTERNALERROR = 'InternalError'
 

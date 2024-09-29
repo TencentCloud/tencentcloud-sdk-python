@@ -35,6 +35,9 @@ FAILEDOPERATION_BYOLIMAGESHAREFAILED = 'FailedOperation.BYOLImageShareFailed'
 # 未找到指定的容灾组
 FAILEDOPERATION_DISASTERRECOVERGROUPNOTFOUND = 'FailedOperation.DisasterRecoverGroupNotFound'
 
+# 获取实例的自动化助手状态失败
+FAILEDOPERATION_GETINSTANCETATAGENTSTATUSFAILED = 'FailedOperation.GetInstanceTATAgentStatusFailed'
+
 # 标签键存在不合法字符
 FAILEDOPERATION_ILLEGALTAGKEY = 'FailedOperation.IllegalTagKey'
 
@@ -221,6 +224,9 @@ INVALIDPARAMETER = 'InvalidParameter'
 # 最多指定一个参数。
 INVALIDPARAMETER_ATMOSTONE = 'InvalidParameter.AtMostOne'
 
+# 不支持自动制作快照。
+INVALIDPARAMETER_AUTOSNAPSHOTNOTSUPPORTED = 'InvalidParameter.AutoSnapshotNotSupported'
+
 # 不支持参数CdcId。
 INVALIDPARAMETER_CDCNOTSUPPORTED = 'InvalidParameter.CdcNotSupported'
 
@@ -280,6 +286,9 @@ INVALIDPARAMETER_INVALIDPARAMETERCOEXISTIMAGEIDSFILTERS = 'InvalidParameter.Inva
 
 # 错误的url地址。
 INVALIDPARAMETER_INVALIDPARAMETERURLERROR = 'InvalidParameter.InvalidParameterUrlError'
+
+# 输入的 TargetOSType 非法
+INVALIDPARAMETER_INVALIDTARGETOSTYPE = 'InvalidParameter.InvalidTargetOSType'
 
 # CoreCount和ThreadPerCore必须同时提供。
 INVALIDPARAMETER_LACKCORECOUNTORTHREADPERCORE = 'InvalidParameter.LackCoreCountOrThreadPerCore'
@@ -890,6 +899,9 @@ UNSUPPORTEDOPERATION_INSTANCEMIXEDPRICINGMODEL = 'UnsupportedOperation.InstanceM
 # 中心可用区和边缘可用区实例不能混用批量操作。
 UNSUPPORTEDOPERATION_INSTANCEMIXEDZONETYPE = 'UnsupportedOperation.InstanceMixedZoneType'
 
+# 指定实例不支持操作系统转换。
+UNSUPPORTEDOPERATION_INSTANCEOSCONVERTOSNOTSUPPORT = 'UnsupportedOperation.InstanceOsConvertOsNotSupport'
+
 # 请求不支持操作系统为`Xserver windows2012cndatacenterx86_64`的实例`ins-xxxxxx` 。
 UNSUPPORTEDOPERATION_INSTANCEOSWINDOWS = 'UnsupportedOperation.InstanceOsWindows'
 
@@ -922,6 +934,9 @@ UNSUPPORTEDOPERATION_INSTANCESTATEISOLATING = 'UnsupportedOperation.InstanceStat
 
 # 不支持操作创建失败的实例。
 UNSUPPORTEDOPERATION_INSTANCESTATELAUNCHFAILED = 'UnsupportedOperation.InstanceStateLaunchFailed'
+
+# 指定操作不支持非运行中状态的实例。
+UNSUPPORTEDOPERATION_INSTANCESTATENOTRUNNING = 'UnsupportedOperation.InstanceStateNotRunning'
 
 # 请求不支持创建未完成的实例
 UNSUPPORTEDOPERATION_INSTANCESTATEPENDING = 'UnsupportedOperation.InstanceStatePending'
@@ -1013,6 +1028,9 @@ UNSUPPORTEDOPERATION_LOCALDISKMIGRATINGTOCLOUDDISK = 'UnsupportedOperation.Local
 # 此请求不支持该区域镜像,请更换其他镜像。
 UNSUPPORTEDOPERATION_LOCATIONIMAGENOTSUPPORTED = 'UnsupportedOperation.LocationImageNotSupported'
 
+# 市场镜像实例不支持操作系统转换
+UNSUPPORTEDOPERATION_MARKETIMAGECONVERTOSUNSUPPORTED = 'UnsupportedOperation.MarketImageConvertOSUnsupported'
+
 # 从市场镜像创建的自定义镜像不支持导出。
 UNSUPPORTEDOPERATION_MARKETIMAGEEXPORTUNSUPPORTED = 'UnsupportedOperation.MarketImageExportUnsupported'
 
@@ -1094,6 +1112,9 @@ UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGINGSAMEFAMILY = 'UnsupportedOperation.S
 # 请求不支持该类型系统盘。
 UNSUPPORTEDOPERATION_SYSTEMDISKTYPE = 'UnsupportedOperation.SystemDiskType'
 
+# 自动化助手不在线情况下，不支持该操作。
+UNSUPPORTEDOPERATION_TATAGENTNOTONLINE = 'UnsupportedOperation.TatAgentNotOnline'
+
 # 包月转包销，不支持包销折扣高于现有包年包月折扣。
 UNSUPPORTEDOPERATION_UNDERWRITEDISCOUNTGREATERTHANPREPAIDDISCOUNT = 'UnsupportedOperation.UnderwriteDiscountGreaterThanPrepaidDiscount'
 
@@ -1117,6 +1138,9 @@ UNSUPPORTEDOPERATION_UNSUPPORTEDINTERNATIONALUSER = 'UnsupportedOperation.Unsupp
 
 # 指定的Pool非法。
 UNSUPPORTEDOPERATION_UNSUPPORTEDPOOL = 'UnsupportedOperation.UnsupportedPool'
+
+# 指定用户不支持执行操作系统转换。
+UNSUPPORTEDOPERATION_USERCONVERTOSNOTSUPPORT = 'UnsupportedOperation.UserConvertOsNotSupport'
 
 # 用户限额操作的配额不足。
 UNSUPPORTEDOPERATION_USERLIMITOPERATIONEXCEEDQUOTA = 'UnsupportedOperation.UserLimitOperationExceedQuota'

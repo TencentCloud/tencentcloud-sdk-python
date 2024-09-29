@@ -632,6 +632,9 @@ LIMITEXCEEDED_VPCPEERTOTALLIMITEXCEEDED = 'LimitExceeded.VpcPeerTotalLimitExceed
 # 缺少参数错误。
 MISSINGPARAMETER = 'MissingParameter'
 
+# 缺少多个参数错误
+MISSINGPARAMETER_MULTIMISSINGPARAMETER = 'MissingParameter.MultiMissingParameter'
+
 # 指定公网IP处于隔离状态。
 OPERATIONDENIED_ADDRESSINARREARS = 'OperationDenied.AddressInArrears'
 
@@ -809,6 +812,9 @@ UNSUPPORTEDOPERATION_DELROUTEWITHSUBNET = 'UnsupportedOperation.DelRouteWithSubn
 # VPN通道状态为更新中/销毁中/创建中，不支持此操作。
 UNSUPPORTEDOPERATION_DELETEVPNCONNINVALIDSTATE = 'UnsupportedOperation.DeleteVpnConnInvalidState'
 
+# 发货失败。
+UNSUPPORTEDOPERATION_DELIVERYFAILED = 'UnsupportedOperation.DeliveryFailed'
+
 # 专线网关正在更新BGP Community属性。
 UNSUPPORTEDOPERATION_DIRECTCONNECTGATEWAYISUPDATINGCOMMUNITY = 'UnsupportedOperation.DirectConnectGatewayIsUpdatingCommunity'
 
@@ -913,6 +919,9 @@ UNSUPPORTEDOPERATION_ISNOTFINANCEACCOUNT = 'UnsupportedOperation.IsNotFinanceAcc
 
 # 该ISP不支持此操作。
 UNSUPPORTEDOPERATION_ISPNOTSUPPORTED = 'UnsupportedOperation.IspNotSupported'
+
+# 需要先解绑 IDC通道
+UNSUPPORTEDOPERATION_LDCXDISASSOCIATE = 'UnsupportedOperation.LDCXDisassociate'
 
 # 指定的CDC已存在本地网关。
 UNSUPPORTEDOPERATION_LOCALGATEWAYALREADYEXISTS = 'UnsupportedOperation.LocalGatewayAlreadyExists'

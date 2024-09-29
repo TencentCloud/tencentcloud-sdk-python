@@ -466,6 +466,75 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCallStatsGraph(self, request):
+        """接口调用折线图
+
+        :param request: Request instance for DescribeCallStatsGraph.
+        :type request: :class:`tencentcloud.lke.v20231130.models.DescribeCallStatsGraphRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.DescribeCallStatsGraphResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCallStatsGraph", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCallStatsGraphResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeConcurrencyUsage(self, request):
+        """并发调用响应
+
+        :param request: Request instance for DescribeConcurrencyUsage.
+        :type request: :class:`tencentcloud.lke.v20231130.models.DescribeConcurrencyUsageRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.DescribeConcurrencyUsageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConcurrencyUsage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConcurrencyUsageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeConcurrencyUsageGraph(self, request):
+        """并发调用折线图
+
+        :param request: Request instance for DescribeConcurrencyUsageGraph.
+        :type request: :class:`tencentcloud.lke.v20231130.models.DescribeConcurrencyUsageGraphRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.DescribeConcurrencyUsageGraphResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConcurrencyUsageGraph", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConcurrencyUsageGraphResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCorp(self, request):
         """企业详情
 
@@ -503,6 +572,52 @@ class LkeClient(AbstractClient):
             body = self.call("DescribeDoc", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDocResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeKnowledgeUsage(self, request):
+        """查询知识库用量
+
+        :param request: Request instance for DescribeKnowledgeUsage.
+        :type request: :class:`tencentcloud.lke.v20231130.models.DescribeKnowledgeUsageRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.DescribeKnowledgeUsageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeKnowledgeUsage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeKnowledgeUsageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeKnowledgeUsagePieGraph(self, request):
+        """查询企业知识库容量饼图
+
+        :param request: Request instance for DescribeKnowledgeUsagePieGraph.
+        :type request: :class:`tencentcloud.lke.v20231130.models.DescribeKnowledgeUsagePieGraphRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.DescribeKnowledgeUsagePieGraphResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeKnowledgeUsagePieGraph", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeKnowledgeUsagePieGraphResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -627,6 +742,29 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSearchStatsGraph(self, request):
+        """查询搜索服务调用折线图
+
+        :param request: Request instance for DescribeSearchStatsGraph.
+        :type request: :class:`tencentcloud.lke.v20231130.models.DescribeSearchStatsGraphRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.DescribeSearchStatsGraphResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSearchStatsGraph", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSearchStatsGraphResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSegments(self, request):
         """获取片段详情
 
@@ -664,6 +802,52 @@ class LkeClient(AbstractClient):
             body = self.call("DescribeStorageCredential", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeStorageCredentialResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTokenUsage(self, request):
+        """接口调用token详情
+
+        :param request: Request instance for DescribeTokenUsage.
+        :type request: :class:`tencentcloud.lke.v20231130.models.DescribeTokenUsageRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.DescribeTokenUsageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTokenUsage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTokenUsageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTokenUsageGraph(self, request):
+        """接口调用token折线图
+
+        :param request: Request instance for DescribeTokenUsageGraph.
+        :type request: :class:`tencentcloud.lke.v20231130.models.DescribeTokenUsageGraphRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.DescribeTokenUsageGraphResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTokenUsageGraph", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTokenUsageGraphResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1688,7 +1872,7 @@ class LkeClient(AbstractClient):
 
 
     def RateMsgRecord(self, request):
-        """是否意图转人工
+        """点赞点踩消息
 
         :param request: Request instance for RateMsgRecord.
         :type request: :class:`tencentcloud.lke.v20231130.models.RateMsgRecordRequest`

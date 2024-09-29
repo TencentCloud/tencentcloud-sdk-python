@@ -161,6 +161,9 @@ FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = 'FailedOperation.KubernetesListOp
 # Kubernetes patch 操作失败。
 FAILEDOPERATION_KUBERNETESPATCHOPERATIONERROR = 'FailedOperation.KubernetesPatchOperationError'
 
+# Kubernetes没有找到。
+FAILEDOPERATION_KUBERNETESRESOURCENOTFOUND = 'FailedOperation.KubernetesResourceNotFound'
+
 # 底层调用CLB未知错误。
 FAILEDOPERATION_LBCOMMON = 'FailedOperation.LbCommon'
 
@@ -526,6 +529,9 @@ INVALIDPARAMETER_SUBNETINVALIDERROR = 'InvalidParameter.SubnetInvalidError'
 
 # 子网不存在。
 INVALIDPARAMETER_SUBNETNOTEXIST = 'InvalidParameter.SubnetNotExist'
+
+# 客户创建参数中，k8s 版本、运行时版本或 tke-eni-agent 版本不支持客户选择的操作系统中的CgroupV2。
+INVALIDPARAMETER_VERSIONNOTSUPPORTCGROUPV2 = 'InvalidParameter.VersionNotSupportCgroupV2'
 
 # 超过配额限制。
 LIMITEXCEEDED = 'LimitExceeded'

@@ -670,6 +670,9 @@ class ApmInstanceDetail(AbstractModel):
         :param _PayModeEffective: 实例计费模式是否生效
 注意：此字段可能返回 null，表示取不到有效值。
         :type PayModeEffective: bool
+        :param _ResponseDurationWarningThreshold: 响应时间满意阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResponseDurationWarningThreshold: int
         """
         self._AmountOfUsedStorage = None
         self._Name = None
@@ -700,6 +703,7 @@ class ApmInstanceDetail(AbstractModel):
         self._CustomShowTags = None
         self._PayMode = None
         self._PayModeEffective = None
+        self._ResponseDurationWarningThreshold = None
 
     @property
     def AmountOfUsedStorage(self):
@@ -933,6 +937,14 @@ class ApmInstanceDetail(AbstractModel):
     def PayModeEffective(self, PayModeEffective):
         self._PayModeEffective = PayModeEffective
 
+    @property
+    def ResponseDurationWarningThreshold(self):
+        return self._ResponseDurationWarningThreshold
+
+    @ResponseDurationWarningThreshold.setter
+    def ResponseDurationWarningThreshold(self, ResponseDurationWarningThreshold):
+        self._ResponseDurationWarningThreshold = ResponseDurationWarningThreshold
+
 
     def _deserialize(self, params):
         self._AmountOfUsedStorage = params.get("AmountOfUsedStorage")
@@ -969,6 +981,7 @@ class ApmInstanceDetail(AbstractModel):
         self._CustomShowTags = params.get("CustomShowTags")
         self._PayMode = params.get("PayMode")
         self._PayModeEffective = params.get("PayModeEffective")
+        self._ResponseDurationWarningThreshold = params.get("ResponseDurationWarningThreshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2816,6 +2829,8 @@ class ModifyApmInstanceRequest(AbstractModel):
 1为预付费
 0为按量付费
         :type PayMode: int
+        :param _ResponseDurationWarningThreshold: 响应时间满意阈值
+        :type ResponseDurationWarningThreshold: int
         """
         self._InstanceId = None
         self._Name = None
@@ -2835,6 +2850,7 @@ class ModifyApmInstanceRequest(AbstractModel):
         self._LogSource = None
         self._CustomShowTags = None
         self._PayMode = None
+        self._ResponseDurationWarningThreshold = None
 
     @property
     def InstanceId(self):
@@ -2980,6 +2996,14 @@ class ModifyApmInstanceRequest(AbstractModel):
     def PayMode(self, PayMode):
         self._PayMode = PayMode
 
+    @property
+    def ResponseDurationWarningThreshold(self):
+        return self._ResponseDurationWarningThreshold
+
+    @ResponseDurationWarningThreshold.setter
+    def ResponseDurationWarningThreshold(self, ResponseDurationWarningThreshold):
+        self._ResponseDurationWarningThreshold = ResponseDurationWarningThreshold
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -3005,6 +3029,7 @@ class ModifyApmInstanceRequest(AbstractModel):
         self._LogSource = params.get("LogSource")
         self._CustomShowTags = params.get("CustomShowTags")
         self._PayMode = params.get("PayMode")
+        self._ResponseDurationWarningThreshold = params.get("ResponseDurationWarningThreshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

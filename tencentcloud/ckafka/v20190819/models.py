@@ -4532,6 +4532,8 @@ class CreateInstancePostRequest(AbstractModel):
         :type InstanceNum: int
         :param _PublicNetworkMonthly: 公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 6Mbps 公网带宽，此处传 3。需要保证传入参数为 3 的整数倍
         :type PublicNetworkMonthly: int
+        :param _Tags: 标签
+        :type Tags: list of Tag
         """
         self._InstanceName = None
         self._VpcId = None
@@ -4551,6 +4553,7 @@ class CreateInstancePostRequest(AbstractModel):
         self._ZoneIds = None
         self._InstanceNum = None
         self._PublicNetworkMonthly = None
+        self._Tags = None
 
     @property
     def InstanceName(self):
@@ -4696,6 +4699,14 @@ class CreateInstancePostRequest(AbstractModel):
     def PublicNetworkMonthly(self, PublicNetworkMonthly):
         self._PublicNetworkMonthly = PublicNetworkMonthly
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._InstanceName = params.get("InstanceName")
@@ -4716,6 +4727,12 @@ class CreateInstancePostRequest(AbstractModel):
         self._ZoneIds = params.get("ZoneIds")
         self._InstanceNum = params.get("InstanceNum")
         self._PublicNetworkMonthly = params.get("PublicNetworkMonthly")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5414,7 +5431,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
         :type ClusterId: int
         :param _KafkaVersion: 实例版本。目前支持 "0.10.2","1.1.1","2.4.1","2.4.2","2.8.1"。"2.4.1" 与 "2.4.2" 属于同一个版本，传任意一个均可。
         :type KafkaVersion: str
-        :param _SpecificationsType: 实例类型。"standard"：标准版，"profession"：专业版
+        :param _SpecificationsType: 实例类型。"standard"：标准版，"profession"：专业版。  (标准版仅国际站支持，国内站目前支持专业版)
         :type SpecificationsType: str
         :param _DiskType: 专业版实例磁盘类型，标准版实例不需要填写。"CLOUD_SSD"：SSD云硬盘；"CLOUD_BASIC"：高性能云硬盘。不传默认值为 "CLOUD_BASIC"
         :type DiskType: str
@@ -5436,6 +5453,8 @@ class CreatePostPaidInstanceRequest(AbstractModel):
         :type InstanceNum: int
         :param _PublicNetworkMonthly: 公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 6Mbps 公网带宽，此处传 3。需要保证传入参数为 3 的整数倍
         :type PublicNetworkMonthly: int
+        :param _Tags: 标签
+        :type Tags: list of Tag
         """
         self._InstanceName = None
         self._VpcId = None
@@ -5455,6 +5474,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
         self._ZoneIds = None
         self._InstanceNum = None
         self._PublicNetworkMonthly = None
+        self._Tags = None
 
     @property
     def InstanceName(self):
@@ -5600,6 +5620,14 @@ class CreatePostPaidInstanceRequest(AbstractModel):
     def PublicNetworkMonthly(self, PublicNetworkMonthly):
         self._PublicNetworkMonthly = PublicNetworkMonthly
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._InstanceName = params.get("InstanceName")
@@ -5620,6 +5648,12 @@ class CreatePostPaidInstanceRequest(AbstractModel):
         self._ZoneIds = params.get("ZoneIds")
         self._InstanceNum = params.get("InstanceNum")
         self._PublicNetworkMonthly = params.get("PublicNetworkMonthly")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8297,10 +8331,21 @@ class DeleteRouteTriggerTimeRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _InstanceId: 实例id
+        :type InstanceId: str
         :param _DelayTime: 修改时间
         :type DelayTime: str
         """
+        self._InstanceId = None
         self._DelayTime = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
     @property
     def DelayTime(self):
@@ -8312,6 +8357,7 @@ class DeleteRouteTriggerTimeRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
         self._DelayTime = params.get("DelayTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -15131,6 +15177,129 @@ class FetchMessageListByOffsetResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class FetchMessageListByTimestampRequest(AbstractModel):
+    """FetchMessageListByTimestamp请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例Id
+        :type InstanceId: str
+        :param _Topic: 主题名
+        :type Topic: str
+        :param _Partition: 分区id
+        :type Partition: int
+        :param _StartTime: 查询开始时间，13位时间戳
+        :type StartTime: int
+        :param _SinglePartitionRecordNumber: 最大查询条数，默认20，最大20
+        :type SinglePartitionRecordNumber: int
+        """
+        self._InstanceId = None
+        self._Topic = None
+        self._Partition = None
+        self._StartTime = None
+        self._SinglePartitionRecordNumber = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Topic(self):
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def Partition(self):
+        return self._Partition
+
+    @Partition.setter
+    def Partition(self, Partition):
+        self._Partition = Partition
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def SinglePartitionRecordNumber(self):
+        return self._SinglePartitionRecordNumber
+
+    @SinglePartitionRecordNumber.setter
+    def SinglePartitionRecordNumber(self, SinglePartitionRecordNumber):
+        self._SinglePartitionRecordNumber = SinglePartitionRecordNumber
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Topic = params.get("Topic")
+        self._Partition = params.get("Partition")
+        self._StartTime = params.get("StartTime")
+        self._SinglePartitionRecordNumber = params.get("SinglePartitionRecordNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FetchMessageListByTimestampResponse(AbstractModel):
+    """FetchMessageListByTimestamp返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 返回结果。注意，列表中不返回具体的消息内容（key、value），如果需要查询具体消息内容，请使用FetchMessageByOffset接口
+        :type Result: list of ConsumerRecord
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = []
+            for item in params.get("Result"):
+                obj = ConsumerRecord()
+                obj._deserialize(item)
+                self._Result.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class FieldParam(AbstractModel):
     """数据处理——处理链
 
@@ -19917,10 +20086,14 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def DynamicDiskConfig(self):
+        warnings.warn("parameter `DynamicDiskConfig` is deprecated", DeprecationWarning) 
+
         return self._DynamicDiskConfig
 
     @DynamicDiskConfig.setter
     def DynamicDiskConfig(self, DynamicDiskConfig):
+        warnings.warn("parameter `DynamicDiskConfig` is deprecated", DeprecationWarning) 
+
         self._DynamicDiskConfig = DynamicDiskConfig
 
     @property
@@ -20224,7 +20397,7 @@ class ModifyRoutineMaintenanceTaskRequest(AbstractModel):
         :type InstanceId: str
         :param _MaintenanceType: 自动化运维类别
         :type MaintenanceType: str
-        :param _MaintenanceSubtype: 自动化运维子类别
+        :param _MaintenanceSubtype: INSTANCE_STORAGE_CAPACITY(磁盘自动扩容)/MESSAGE_RETENTION_PERIOD(磁盘动态消息保留策略)
         :type MaintenanceSubtype: str
         :param _TopicName: 主题名称
         :type TopicName: str

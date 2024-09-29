@@ -3042,7 +3042,7 @@ class CreateListenerRequest(AbstractModel):
         :param _Scheduler: 监听器转发的方式。可选值：WRR、LEAST_CONN
 分别表示按权重轮询、最小连接数， 默认为 WRR。此参数仅适用于TCP/UDP/TCP_SSL/QUIC监听器。
         :type Scheduler: str
-        :param _SniSwitch: 是否开启SNI特性，此参数仅适用于HTTPS监听器。0表示开启，1表示未开启。
+        :param _SniSwitch: 是否开启SNI特性，此参数仅适用于HTTPS监听器。0表示未开启，1表示开启。
         :type SniSwitch: int
         :param _TargetType: 后端目标类型，NODE表示绑定普通节点，TARGETGROUP表示绑定目标组。此参数仅适用于TCP/UDP监听器。七层监听器应在转发规则中设置。
         :type TargetType: str
@@ -3064,6 +3064,12 @@ class CreateListenerRequest(AbstractModel):
         :type IdleConnectTimeout: int
         :param _SnatEnable: 是否开启SNAT。
         :type SnatEnable: bool
+        :param _FullEndPorts: 全端口段监听器的结束端口
+        :type FullEndPorts: list of int
+        :param _H2cSwitch: 内网http监听器开启h2c开关
+        :type H2cSwitch: bool
+        :param _SslCloseSwitch: TCP_SSL监听器支持关闭SSL后仍然支持混绑，此参数为关闭开关
+        :type SslCloseSwitch: bool
         """
         self._LoadBalancerId = None
         self._Ports = None
@@ -3084,6 +3090,9 @@ class CreateListenerRequest(AbstractModel):
         self._MaxCps = None
         self._IdleConnectTimeout = None
         self._SnatEnable = None
+        self._FullEndPorts = None
+        self._H2cSwitch = None
+        self._SslCloseSwitch = None
 
     @property
     def LoadBalancerId(self):
@@ -3237,6 +3246,30 @@ class CreateListenerRequest(AbstractModel):
     def SnatEnable(self, SnatEnable):
         self._SnatEnable = SnatEnable
 
+    @property
+    def FullEndPorts(self):
+        return self._FullEndPorts
+
+    @FullEndPorts.setter
+    def FullEndPorts(self, FullEndPorts):
+        self._FullEndPorts = FullEndPorts
+
+    @property
+    def H2cSwitch(self):
+        return self._H2cSwitch
+
+    @H2cSwitch.setter
+    def H2cSwitch(self, H2cSwitch):
+        self._H2cSwitch = H2cSwitch
+
+    @property
+    def SslCloseSwitch(self):
+        return self._SslCloseSwitch
+
+    @SslCloseSwitch.setter
+    def SslCloseSwitch(self, SslCloseSwitch):
+        self._SslCloseSwitch = SslCloseSwitch
+
 
     def _deserialize(self, params):
         self._LoadBalancerId = params.get("LoadBalancerId")
@@ -3264,6 +3297,9 @@ class CreateListenerRequest(AbstractModel):
         self._MaxCps = params.get("MaxCps")
         self._IdleConnectTimeout = params.get("IdleConnectTimeout")
         self._SnatEnable = params.get("SnatEnable")
+        self._FullEndPorts = params.get("FullEndPorts")
+        self._H2cSwitch = params.get("H2cSwitch")
+        self._SslCloseSwitch = params.get("SslCloseSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11406,7 +11442,7 @@ class LoadBalancerDetail(AbstractModel):
         :param _LoadBalancerName: 负载均衡实例的名称。
         :type LoadBalancerName: str
         :param _LoadBalancerType: 负载均衡实例的网络类型：
-Public：公网属性， Private：内网属性。
+OPEN：公网属性，INTERNAL：内网属性。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancerType: str
         :param _Status: 负载均衡实例的状态，包括
@@ -11518,6 +11554,16 @@ Public：公网属性， Private：内网属性。
         :param _Egress: 网络出口
 注意：此字段可能返回 null，表示取不到有效值。
         :type Egress: str
+        :param _AttributeFlags: 负载均衡的属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttributeFlags: list of str
+        :param _SlaType: 负载均衡实例的规格类型信息<ul><li> clb.c1.small：简约型规格 </li><li>clb.c2.medium：标准型规格 </li><li> clb.c3.small：高阶型1规格 </li><li> clb.c3.medium：高阶型2规格 </li><li> clb.c4.small：超强型1规格 </li><li> clb.c4.medium：超强型2规格 </li><li> clb.c4.large：超强型3规格 </li><li> clb.c4.xlarge：超强型4规格 </li><li>""：非性能容量型实例</li></ul>
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlaType: str
+        :param _Exclusive: 0：表示非独占型实例，1：表示独占型态实例。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Exclusive: int
         """
         self._LoadBalancerId = None
         self._LoadBalancerName = None
@@ -11558,6 +11604,9 @@ Public：公网属性， Private：内网属性。
         self._SniSwitch = None
         self._LoadBalancerDomain = None
         self._Egress = None
+        self._AttributeFlags = None
+        self._SlaType = None
+        self._Exclusive = None
 
     @property
     def LoadBalancerId(self):
@@ -11871,6 +11920,30 @@ Public：公网属性， Private：内网属性。
     def Egress(self, Egress):
         self._Egress = Egress
 
+    @property
+    def AttributeFlags(self):
+        return self._AttributeFlags
+
+    @AttributeFlags.setter
+    def AttributeFlags(self, AttributeFlags):
+        self._AttributeFlags = AttributeFlags
+
+    @property
+    def SlaType(self):
+        return self._SlaType
+
+    @SlaType.setter
+    def SlaType(self, SlaType):
+        self._SlaType = SlaType
+
+    @property
+    def Exclusive(self):
+        return self._Exclusive
+
+    @Exclusive.setter
+    def Exclusive(self, Exclusive):
+        self._Exclusive = Exclusive
+
 
     def _deserialize(self, params):
         self._LoadBalancerId = params.get("LoadBalancerId")
@@ -11923,6 +11996,9 @@ Public：公网属性， Private：内网属性。
         self._SniSwitch = params.get("SniSwitch")
         self._LoadBalancerDomain = params.get("LoadBalancerDomain")
         self._Egress = params.get("Egress")
+        self._AttributeFlags = params.get("AttributeFlags")
+        self._SlaType = params.get("SlaType")
+        self._Exclusive = params.get("Exclusive")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

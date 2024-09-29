@@ -210,6 +210,29 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDatabase(self, request):
+        """此接口用于创建数据库，需指定数据库名及所有者。
+
+        :param request: Request instance for CreateDatabase.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.CreateDatabaseRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.CreateDatabaseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDatabase", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDatabaseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateInstances(self, request):
         """本接口 (CreateInstances) 用于创建一个或者多个PostgreSQL实例，通过此接口创建的实例无需进行初始化，可直接使用。
         <li>实例创建成功后将自动开机启动，实例状态变为“运行中”。</li>
@@ -1065,6 +1088,29 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDedicatedClusters(self, request):
+        """查询专属集群
+
+        :param request: Request instance for DescribeDedicatedClusters.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDedicatedClustersRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeDedicatedClustersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDedicatedClusters", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDedicatedClustersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDefaultParameters(self, request):
         """本接口（DescribeDefaultParameters）主要用于查询某个数据库版本和引擎支持的所有参数。
 
@@ -1886,6 +1932,29 @@ class PostgresClient(AbstractClient):
             body = self.call("ModifyDBInstancesProject", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyDBInstancesProjectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDatabaseOwner(self, request):
+        """修改数据库所有者
+
+        :param request: Request instance for ModifyDatabaseOwner.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDatabaseOwnerRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.ModifyDatabaseOwnerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDatabaseOwner", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDatabaseOwnerResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

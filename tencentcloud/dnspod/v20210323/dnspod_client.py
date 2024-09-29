@@ -788,6 +788,29 @@ class DnspodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDomainShareUserList(self, request):
+        """获取指定域名的已共享列表
+
+        :param request: Request instance for DescribeDomainShareUserList.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainShareUserListRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainShareUserListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDomainShareUserList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDomainShareUserListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDomainWhois(self, request):
         """获取域名Whois信息
 

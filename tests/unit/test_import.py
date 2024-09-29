@@ -199,6 +199,11 @@ def test_import_btoe():
     from tencentcloud.btoe.v20210514 import models
 
 
+def test_import_ca():
+    from tencentcloud.ca.v20230228 import ca_client
+    from tencentcloud.ca.v20230228 import models
+
+
 def test_import_cam():
     from tencentcloud.cam.v20190116 import cam_client
     from tencentcloud.cam.v20190116 import models
@@ -859,6 +864,11 @@ def test_import_mps():
     from tencentcloud.mps.v20190612 import models
 
 
+def test_import_mqtt():
+    from tencentcloud.mqtt.v20240516 import mqtt_client
+    from tencentcloud.mqtt.v20240516 import models
+
+
 def test_import_mrs():
     from tencentcloud.mrs.v20200910 import mrs_client
     from tencentcloud.mrs.v20200910 import models
@@ -1372,6 +1382,11 @@ def test_import_vms():
 def test_import_vod():
     from tencentcloud.vod.v20180717 import vod_client
     from tencentcloud.vod.v20180717 import models
+
+
+def test_import_vod():
+    from tencentcloud.vod.v20240718 import vod_client
+    from tencentcloud.vod.v20240718 import models
 
 
 def test_import_vpc():

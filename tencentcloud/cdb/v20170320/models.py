@@ -2584,7 +2584,7 @@ class BackupInfo(AbstractModel):
         :type Region: str
         :param _RemoteInfo: 异地备份详细信息
         :type RemoteInfo: list of RemoteBackupInfo
-        :param _CosStorageType: 存储方式，0-常规存储，1-归档存储，默认为0
+        :param _CosStorageType: 存储方式，0-常规存储，1-归档存储，2-标准存储，默认为0
         :type CosStorageType: int
         :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
         :type InstanceId: str
@@ -3141,7 +3141,7 @@ class BinlogInfo(AbstractModel):
         :type Status: str
         :param _RemoteInfo: binlog异地备份详细信息
         :type RemoteInfo: list of RemoteBackupInfo
-        :param _CosStorageType: 存储方式，0-常规存储，1-归档存储，默认为0
+        :param _CosStorageType: 存储方式，0-常规存储，1-归档存储，2-标准存储，默认为0
         :type CosStorageType: int
         :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
         :type InstanceId: str
@@ -4459,8 +4459,11 @@ class CloseWanServiceRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
         :type InstanceId: str
+        :param _OpResourceId: 变更集群版实例只读组时，InstanceId传实例id，需要额外指定该参数表示操作只读组。 如果操作读写节点则不需指定该参数。
+        :type OpResourceId: str
         """
         self._InstanceId = None
+        self._OpResourceId = None
 
     @property
     def InstanceId(self):
@@ -4470,9 +4473,18 @@ class CloseWanServiceRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def OpResourceId(self):
+        return self._OpResourceId
+
+    @OpResourceId.setter
+    def OpResourceId(self, OpResourceId):
+        self._OpResourceId = OpResourceId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
+        self._OpResourceId = params.get("OpResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17216,9 +17228,11 @@ class DescribeSSLStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID 。只读组 ID为空时必填。
+        :param _InstanceId: 实例 ID。
+说明：实例 ID 和实例组 ID 两个参数选其一填写即可。若要查询双节点、三节点实例 SSL 开通情况，请填写实例 ID 参数进行查询。单节点（云盘）、集群版实例不支持开启 SSL，因此不支持查询。
         :type InstanceId: str
-        :param _RoGroupId: 只读组 ID。实例 ID为空时必填。
+        :param _RoGroupId: 只读组 ID。
+说明：实例 ID 和实例组 ID 两个参数选其一填写即可。若要查询只读实例或只读组 SSL 开通情况，请填写 RoGroupId 参数，并注意填写的都是只读组 ID。单节点（云盘）、集群版实例不支持开启 SSL，因此不支持查询。
         :type RoGroupId: str
         """
         self._InstanceId = None
@@ -17332,6 +17346,8 @@ class DescribeSlowLogDataRequest(AbstractModel):
         :type Limit: int
         :param _InstType: 仅在实例为主实例或者灾备实例时生效，可选值：slave，代表拉取从机的日志。
         :type InstType: str
+        :param _OpResourceId: 节点ID
+        :type OpResourceId: str
         """
         self._InstanceId = None
         self._StartTime = None
@@ -17344,6 +17360,7 @@ class DescribeSlowLogDataRequest(AbstractModel):
         self._Offset = None
         self._Limit = None
         self._InstType = None
+        self._OpResourceId = None
 
     @property
     def InstanceId(self):
@@ -17433,6 +17450,14 @@ class DescribeSlowLogDataRequest(AbstractModel):
     def InstType(self, InstType):
         self._InstType = InstType
 
+    @property
+    def OpResourceId(self):
+        return self._OpResourceId
+
+    @OpResourceId.setter
+    def OpResourceId(self, OpResourceId):
+        self._OpResourceId = OpResourceId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -17446,6 +17471,7 @@ class DescribeSlowLogDataRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._InstType = params.get("InstType")
+        self._OpResourceId = params.get("OpResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23314,10 +23340,13 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
         :type SecurityGroupIds: list of str
         :param _ForReadonlyInstance: 当传入只读实例ID时，默认操作的是对应只读组的安全组。如果需要操作只读实例ID的安全组， 需要将该入参置为True
         :type ForReadonlyInstance: bool
+        :param _OpResourceId: 变更集群版实例只读组时，InstanceId传实例id，需要额外指定该参数表示操作只读组。 如果操作读写节点则不需指定该参数。
+        :type OpResourceId: str
         """
         self._InstanceId = None
         self._SecurityGroupIds = None
         self._ForReadonlyInstance = None
+        self._OpResourceId = None
 
     @property
     def InstanceId(self):
@@ -23343,11 +23372,20 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
     def ForReadonlyInstance(self, ForReadonlyInstance):
         self._ForReadonlyInstance = ForReadonlyInstance
 
+    @property
+    def OpResourceId(self):
+        return self._OpResourceId
+
+    @OpResourceId.setter
+    def OpResourceId(self, OpResourceId):
+        self._OpResourceId = OpResourceId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
         self._ForReadonlyInstance = params.get("ForReadonlyInstance")
+        self._OpResourceId = params.get("OpResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23402,6 +23440,8 @@ class ModifyDBInstanceVipVportRequest(AbstractModel):
         :type UniqSubnetId: str
         :param _ReleaseDuration: 进行基础网络转 VPC 网络和 VPC 网络下的子网变更时，原网络中旧IP的回收时间，单位为小时，取值范围为0-168，默认值为24小时。
         :type ReleaseDuration: int
+        :param _OpResourceId: 变更集群版实例只读组时，InstanceId传实例id，需要额外指定该参数表示操作只读组。 如果操作读写节点则不需指定该参数。
+        :type OpResourceId: str
         """
         self._InstanceId = None
         self._DstIp = None
@@ -23409,6 +23449,7 @@ class ModifyDBInstanceVipVportRequest(AbstractModel):
         self._UniqVpcId = None
         self._UniqSubnetId = None
         self._ReleaseDuration = None
+        self._OpResourceId = None
 
     @property
     def InstanceId(self):
@@ -23458,6 +23499,14 @@ class ModifyDBInstanceVipVportRequest(AbstractModel):
     def ReleaseDuration(self, ReleaseDuration):
         self._ReleaseDuration = ReleaseDuration
 
+    @property
+    def OpResourceId(self):
+        return self._OpResourceId
+
+    @OpResourceId.setter
+    def OpResourceId(self, OpResourceId):
+        self._OpResourceId = OpResourceId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -23466,6 +23515,7 @@ class ModifyDBInstanceVipVportRequest(AbstractModel):
         self._UniqVpcId = params.get("UniqVpcId")
         self._UniqSubnetId = params.get("UniqSubnetId")
         self._ReleaseDuration = params.get("ReleaseDuration")
+        self._OpResourceId = params.get("OpResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24907,8 +24957,11 @@ class OpenWanServiceRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
         :type InstanceId: str
+        :param _OpResourceId: 变更集群版实例只读组时，InstanceId传实例id，需要额外指定该参数表示操作只读组。 如果操作读写节点则不需指定该参数。
+        :type OpResourceId: str
         """
         self._InstanceId = None
+        self._OpResourceId = None
 
     @property
     def InstanceId(self):
@@ -24918,9 +24971,18 @@ class OpenWanServiceRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def OpResourceId(self):
+        return self._OpResourceId
+
+    @OpResourceId.setter
+    def OpResourceId(self, OpResourceId):
+        self._OpResourceId = OpResourceId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
+        self._OpResourceId = params.get("OpResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29798,11 +29860,14 @@ class SwitchDBInstanceMasterSlaveRequest(AbstractModel):
         :type ForceSwitch: bool
         :param _WaitSwitch: 是否时间窗内切换。默认为 False，即不在时间窗内切换。注意，如果设置了 ForceSwitch 参数为 True，则该参数不生效。
         :type WaitSwitch: bool
+        :param _DstNodeId: 集群版实例指定节点id发起主从切换。
+        :type DstNodeId: str
         """
         self._InstanceId = None
         self._DstSlave = None
         self._ForceSwitch = None
         self._WaitSwitch = None
+        self._DstNodeId = None
 
     @property
     def InstanceId(self):
@@ -29836,12 +29901,21 @@ class SwitchDBInstanceMasterSlaveRequest(AbstractModel):
     def WaitSwitch(self, WaitSwitch):
         self._WaitSwitch = WaitSwitch
 
+    @property
+    def DstNodeId(self):
+        return self._DstNodeId
+
+    @DstNodeId.setter
+    def DstNodeId(self, DstNodeId):
+        self._DstNodeId = DstNodeId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._DstSlave = params.get("DstSlave")
         self._ForceSwitch = params.get("ForceSwitch")
         self._WaitSwitch = params.get("WaitSwitch")
+        self._DstNodeId = params.get("DstNodeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

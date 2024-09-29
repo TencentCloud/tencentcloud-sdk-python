@@ -624,6 +624,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteRemoteAccessDomain(self, request):
+        """删除远程运维域名
+
+        :param request: Request instance for DeleteRemoteAccessDomain.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DeleteRemoteAccessDomainRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DeleteRemoteAccessDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRemoteAccessDomain", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRemoteAccessDomainResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteResourceGroup(self, request):
         """DeleteResourceGroup-资产中心资产组删除
 
@@ -684,31 +707,6 @@ class CfwClient(AbstractClient):
             body = self.call("DeleteVpcFwGroup", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteVpcFwGroupResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DeleteVpcInstance(self, request):
-        """接口废弃
-
-        删除防火墙实例
-
-        :param request: Request instance for DeleteVpcInstance.
-        :type request: :class:`tencentcloud.cfw.v20190904.models.DeleteVpcInstanceRequest`
-        :rtype: :class:`tencentcloud.cfw.v20190904.models.DeleteVpcInstanceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteVpcInstance", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteVpcInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -985,6 +983,29 @@ class CfwClient(AbstractClient):
             body = self.call("DescribeEnterpriseSecurityGroupRule", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeEnterpriseSecurityGroupRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeEnterpriseSecurityGroupRuleList(self, request):
+        """查询新企业安全组规则  从node接口迁移   原接口DescribeSecurityGroupNewList
+
+        :param request: Request instance for DescribeEnterpriseSecurityGroupRuleList.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeEnterpriseSecurityGroupRuleListRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeEnterpriseSecurityGroupRuleListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEnterpriseSecurityGroupRuleList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEnterpriseSecurityGroupRuleListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

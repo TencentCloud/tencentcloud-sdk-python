@@ -1495,6 +1495,325 @@ class CompanyStateInfo(AbstractModel):
         
 
 
+class CreateAICallRequest(AbstractModel):
+    """CreateAICall请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param _Callee: 被叫
+        :type Callee: str
+        :param _SystemPrompt: 用于设定AI座席人设、说话规则、任务等的全局提示词。
+        :type SystemPrompt: str
+        :param _LLMType: LLM类型
+        :type LLMType: str
+        :param _Model: 模型（当前仅支持openai协议的模型）
+        :type Model: str
+        :param _APIKey: API密钥
+        :type APIKey: str
+        :param _APIUrl: API URL，仅支持兼容openai协议的模型，填写url时后缀不要带/chat/completions
+        :type APIUrl: str
+        :param _VoiceType: 音色，目前仅支持以下音色:
+汉语：
+ZhiMei：智美，客服女声
+ZhiXi： 智希 通用女声
+ZhiQi：智琪 客服女声
+ZhiTian：智甜 女童声
+AiXiaoJing：爱小静 对话女声
+
+英语:
+WeRose：英文女声
+Monika：英文女声
+
+日语：
+Nanami
+
+韩语：
+SunHi
+
+印度尼西亚语(印度尼西亚)：
+Gadis
+
+马来语（马来西亚）:
+Yasmin
+
+ 泰米尔语（马来西亚）:
+Kani
+
+泰语（泰国）:
+Achara
+
+越南语(越南):
+HoaiMy
+
+
+        :type VoiceType: str
+        :param _Callers: 主叫号码列表
+        :type Callers: list of str
+        :param _WelcomeMessage: 用于设定AI座席欢迎语。
+        :type WelcomeMessage: str
+        :param _WelcomeType: 0：使用welcomeMessage(为空时，被叫先说话；不为空时，机器人先说话)
+1:   使用ai根据prompt自动生成welcomeMessage并先说话
+        :type WelcomeType: int
+        :param _MaxDuration: 最大等待时长(毫秒)，默认60秒，超过这个时间用户没说话，自动挂断
+        :type MaxDuration: int
+        :param _Languages: 语音识别支持的语言, 默认是"zh" 中文,
+填写数组,最长4个语言，第一个语言为主要识别语言，后面为可选语言，
+注意:主要语言为中国方言时，可选语言无效
+目前全量支持的语言如下，等号左面是语言英文名，右面是Language字段需要填写的值，该值遵循ISO639：
+1. Chinese = "zh" # 中文
+2. Chinese_TW = "zh-TW" # 中国台湾
+3. Chinese_DIALECT = "zh-dialect" # 中国方言
+4. English = "en" # 英语
+5. Vietnamese = "vi" # 越南语
+6. Japanese = "ja" # 日语
+7. Korean = "ko" # 汉语
+8. Indonesia = "id" # 印度尼西亚语
+9. Thai = "th" # 泰语
+10. Portuguese = "pt" # 葡萄牙语
+11. Turkish = "tr" # 土耳其语
+12. Arabic = "ar" # 阿拉伯语
+13. Spanish = "es" # 西班牙语
+14. Hindi = "hi" # 印地语
+15. French = "fr" # 法语
+16. Malay = "ms" # 马来语
+17. Filipino = "fil" # 菲律宾语
+18. German = "de" # 德语
+19. Italian = "it" # 意大利语
+20. Russian = "ru" # 俄语
+        :type Languages: list of str
+        :param _InterruptMode: 打断AI说话模式，默认为0，0表示服务端自动打断，1表示服务端不打断，由端上发送打断信令进行打断
+        :type InterruptMode: int
+        :param _InterruptSpeechDuration: InterruptMode为0时使用，单位为毫秒，默认为500ms。表示服务端检测到持续InterruptSpeechDuration毫秒的人声则进行打断。
+        :type InterruptSpeechDuration: int
+        :param _EndFunctionEnable: 模型是否支持(或者开启)call_end function calling
+        :type EndFunctionEnable: bool
+        :param _EndFunctionDesc: EndFunctionEnable为true时生效；call_end function calling的desc，默认为 "End the call when user has to leave (like says bye) or you are instructed to do so."
+        :type EndFunctionDesc: str
+        """
+        self._SdkAppId = None
+        self._Callee = None
+        self._SystemPrompt = None
+        self._LLMType = None
+        self._Model = None
+        self._APIKey = None
+        self._APIUrl = None
+        self._VoiceType = None
+        self._Callers = None
+        self._WelcomeMessage = None
+        self._WelcomeType = None
+        self._MaxDuration = None
+        self._Languages = None
+        self._InterruptMode = None
+        self._InterruptSpeechDuration = None
+        self._EndFunctionEnable = None
+        self._EndFunctionDesc = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def Callee(self):
+        return self._Callee
+
+    @Callee.setter
+    def Callee(self, Callee):
+        self._Callee = Callee
+
+    @property
+    def SystemPrompt(self):
+        return self._SystemPrompt
+
+    @SystemPrompt.setter
+    def SystemPrompt(self, SystemPrompt):
+        self._SystemPrompt = SystemPrompt
+
+    @property
+    def LLMType(self):
+        return self._LLMType
+
+    @LLMType.setter
+    def LLMType(self, LLMType):
+        self._LLMType = LLMType
+
+    @property
+    def Model(self):
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def APIKey(self):
+        return self._APIKey
+
+    @APIKey.setter
+    def APIKey(self, APIKey):
+        self._APIKey = APIKey
+
+    @property
+    def APIUrl(self):
+        return self._APIUrl
+
+    @APIUrl.setter
+    def APIUrl(self, APIUrl):
+        self._APIUrl = APIUrl
+
+    @property
+    def VoiceType(self):
+        return self._VoiceType
+
+    @VoiceType.setter
+    def VoiceType(self, VoiceType):
+        self._VoiceType = VoiceType
+
+    @property
+    def Callers(self):
+        return self._Callers
+
+    @Callers.setter
+    def Callers(self, Callers):
+        self._Callers = Callers
+
+    @property
+    def WelcomeMessage(self):
+        return self._WelcomeMessage
+
+    @WelcomeMessage.setter
+    def WelcomeMessage(self, WelcomeMessage):
+        self._WelcomeMessage = WelcomeMessage
+
+    @property
+    def WelcomeType(self):
+        return self._WelcomeType
+
+    @WelcomeType.setter
+    def WelcomeType(self, WelcomeType):
+        self._WelcomeType = WelcomeType
+
+    @property
+    def MaxDuration(self):
+        return self._MaxDuration
+
+    @MaxDuration.setter
+    def MaxDuration(self, MaxDuration):
+        self._MaxDuration = MaxDuration
+
+    @property
+    def Languages(self):
+        return self._Languages
+
+    @Languages.setter
+    def Languages(self, Languages):
+        self._Languages = Languages
+
+    @property
+    def InterruptMode(self):
+        return self._InterruptMode
+
+    @InterruptMode.setter
+    def InterruptMode(self, InterruptMode):
+        self._InterruptMode = InterruptMode
+
+    @property
+    def InterruptSpeechDuration(self):
+        return self._InterruptSpeechDuration
+
+    @InterruptSpeechDuration.setter
+    def InterruptSpeechDuration(self, InterruptSpeechDuration):
+        self._InterruptSpeechDuration = InterruptSpeechDuration
+
+    @property
+    def EndFunctionEnable(self):
+        return self._EndFunctionEnable
+
+    @EndFunctionEnable.setter
+    def EndFunctionEnable(self, EndFunctionEnable):
+        self._EndFunctionEnable = EndFunctionEnable
+
+    @property
+    def EndFunctionDesc(self):
+        return self._EndFunctionDesc
+
+    @EndFunctionDesc.setter
+    def EndFunctionDesc(self, EndFunctionDesc):
+        self._EndFunctionDesc = EndFunctionDesc
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._Callee = params.get("Callee")
+        self._SystemPrompt = params.get("SystemPrompt")
+        self._LLMType = params.get("LLMType")
+        self._Model = params.get("Model")
+        self._APIKey = params.get("APIKey")
+        self._APIUrl = params.get("APIUrl")
+        self._VoiceType = params.get("VoiceType")
+        self._Callers = params.get("Callers")
+        self._WelcomeMessage = params.get("WelcomeMessage")
+        self._WelcomeType = params.get("WelcomeType")
+        self._MaxDuration = params.get("MaxDuration")
+        self._Languages = params.get("Languages")
+        self._InterruptMode = params.get("InterruptMode")
+        self._InterruptSpeechDuration = params.get("InterruptSpeechDuration")
+        self._EndFunctionEnable = params.get("EndFunctionEnable")
+        self._EndFunctionDesc = params.get("EndFunctionDesc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAICallResponse(AbstractModel):
+    """CreateAICall返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SessionId: 新创建的会话 ID
+        :type SessionId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SessionId = None
+        self._RequestId = None
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SessionId = params.get("SessionId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateAdminURLRequest(AbstractModel):
     """CreateAdminURL请求参数结构体
 
@@ -7399,6 +7718,8 @@ class IMCdrInfo(AbstractModel):
         :param _Satisfaction: 满意度
 注意：此字段可能返回 null，表示取不到有效值。
         :type Satisfaction: :class:`tencentcloud.ccc.v20200210.models.IMSatisfaction`
+        :param _ClientUserId: 用户ID
+        :type ClientUserId: str
         """
         self._Id = None
         self._Duration = None
@@ -7411,6 +7732,7 @@ class IMCdrInfo(AbstractModel):
         self._SkillGroupId = None
         self._SkillGroupName = None
         self._Satisfaction = None
+        self._ClientUserId = None
 
     @property
     def Id(self):
@@ -7500,6 +7822,14 @@ class IMCdrInfo(AbstractModel):
     def Satisfaction(self, Satisfaction):
         self._Satisfaction = Satisfaction
 
+    @property
+    def ClientUserId(self):
+        return self._ClientUserId
+
+    @ClientUserId.setter
+    def ClientUserId(self, ClientUserId):
+        self._ClientUserId = ClientUserId
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -7515,6 +7845,7 @@ class IMCdrInfo(AbstractModel):
         if params.get("Satisfaction") is not None:
             self._Satisfaction = IMSatisfaction()
             self._Satisfaction._deserialize(params.get("Satisfaction"))
+        self._ClientUserId = params.get("ClientUserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

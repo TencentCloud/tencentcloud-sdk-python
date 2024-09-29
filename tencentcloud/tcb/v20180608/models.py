@@ -2580,11 +2580,15 @@ class CloudBaseRunVolumeMount(AbstractModel):
         :param _NfsVolumes: Nfs挂载信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type NfsVolumes: list of CloudBaseRunNfsVolumeSource
+        :param _MountPropagation: 挂载配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MountPropagation: str
         """
         self._Name = None
         self._MountPath = None
         self._ReadOnly = None
         self._NfsVolumes = None
+        self._MountPropagation = None
 
     @property
     def Name(self):
@@ -2618,6 +2622,14 @@ class CloudBaseRunVolumeMount(AbstractModel):
     def NfsVolumes(self, NfsVolumes):
         self._NfsVolumes = NfsVolumes
 
+    @property
+    def MountPropagation(self):
+        return self._MountPropagation
+
+    @MountPropagation.setter
+    def MountPropagation(self, MountPropagation):
+        self._MountPropagation = MountPropagation
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -2629,6 +2641,7 @@ class CloudBaseRunVolumeMount(AbstractModel):
                 obj = CloudBaseRunNfsVolumeSource()
                 obj._deserialize(item)
                 self._NfsVolumes.append(obj)
+        self._MountPropagation = params.get("MountPropagation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5868,6 +5881,8 @@ class DeleteCloudBaseRunServerVersionRequest(AbstractModel):
         :type IsDeleteImage: bool
         :param _OperatorRemark: 操作备注
         :type OperatorRemark: str
+        :param _DelayedDeletionTime: 延迟删除版本时间
+        :type DelayedDeletionTime: int
         """
         self._EnvId = None
         self._ServerName = None
@@ -5875,6 +5890,7 @@ class DeleteCloudBaseRunServerVersionRequest(AbstractModel):
         self._IsDeleteServer = None
         self._IsDeleteImage = None
         self._OperatorRemark = None
+        self._DelayedDeletionTime = None
 
     @property
     def EnvId(self):
@@ -5924,6 +5940,14 @@ class DeleteCloudBaseRunServerVersionRequest(AbstractModel):
     def OperatorRemark(self, OperatorRemark):
         self._OperatorRemark = OperatorRemark
 
+    @property
+    def DelayedDeletionTime(self):
+        return self._DelayedDeletionTime
+
+    @DelayedDeletionTime.setter
+    def DelayedDeletionTime(self, DelayedDeletionTime):
+        self._DelayedDeletionTime = DelayedDeletionTime
+
 
     def _deserialize(self, params):
         self._EnvId = params.get("EnvId")
@@ -5932,6 +5956,7 @@ class DeleteCloudBaseRunServerVersionRequest(AbstractModel):
         self._IsDeleteServer = params.get("IsDeleteServer")
         self._IsDeleteImage = params.get("IsDeleteImage")
         self._OperatorRemark = params.get("OperatorRemark")
+        self._DelayedDeletionTime = params.get("DelayedDeletionTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

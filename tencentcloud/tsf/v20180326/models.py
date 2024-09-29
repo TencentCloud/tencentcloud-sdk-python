@@ -1479,6 +1479,15 @@ class ApiRateLimitRule(AbstractModel):
         :param _UpdatedTime: 更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedTime: str
+        :param _Limit: 分页参数limit
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Limit: int
+        :param _Offset: 分页参数offset
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Offset: int
+        :param _AppId: AppId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: str
         """
         self._RuleId = None
         self._ApiId = None
@@ -1490,6 +1499,9 @@ class ApiRateLimitRule(AbstractModel):
         self._Description = None
         self._CreatedTime = None
         self._UpdatedTime = None
+        self._Limit = None
+        self._Offset = None
+        self._AppId = None
 
     @property
     def RuleId(self):
@@ -1571,6 +1583,30 @@ class ApiRateLimitRule(AbstractModel):
     def UpdatedTime(self, UpdatedTime):
         self._UpdatedTime = UpdatedTime
 
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
 
     def _deserialize(self, params):
         self._RuleId = params.get("RuleId")
@@ -1583,6 +1619,9 @@ class ApiRateLimitRule(AbstractModel):
         self._Description = params.get("Description")
         self._CreatedTime = params.get("CreatedTime")
         self._UpdatedTime = params.get("UpdatedTime")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._AppId = params.get("AppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7040,9 +7079,12 @@ class CreateAllGatewayApiAsyncRequest(AbstractModel):
         :type GroupId: str
         :param _MicroserviceId: 微服务ID
         :type MicroserviceId: str
+        :param _NamespaceId: 命名空间ID
+        :type NamespaceId: str
         """
         self._GroupId = None
         self._MicroserviceId = None
+        self._NamespaceId = None
 
     @property
     def GroupId(self):
@@ -7060,10 +7102,19 @@ class CreateAllGatewayApiAsyncRequest(AbstractModel):
     def MicroserviceId(self, MicroserviceId):
         self._MicroserviceId = MicroserviceId
 
+    @property
+    def NamespaceId(self):
+        return self._NamespaceId
+
+    @NamespaceId.setter
+    def NamespaceId(self, NamespaceId):
+        self._NamespaceId = NamespaceId
+
 
     def _deserialize(self, params):
         self._GroupId = params.get("GroupId")
         self._MicroserviceId = params.get("MicroserviceId")
+        self._NamespaceId = params.get("NamespaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15211,64 +15262,6 @@ class DescribeApplicationAttributeResponse(AbstractModel):
         if params.get("Result") is not None:
             self._Result = ApplicationAttribute()
             self._Result._deserialize(params.get("Result"))
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeApplicationBusinessLogConfigRequest(AbstractModel):
-    """DescribeApplicationBusinessLogConfig请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ApplicationId: TSF应用ID
-        :type ApplicationId: str
-        """
-        self._ApplicationId = None
-
-    @property
-    def ApplicationId(self):
-        return self._ApplicationId
-
-    @ApplicationId.setter
-    def ApplicationId(self, ApplicationId):
-        self._ApplicationId = ApplicationId
-
-
-    def _deserialize(self, params):
-        self._ApplicationId = params.get("ApplicationId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeApplicationBusinessLogConfigResponse(AbstractModel):
-    """DescribeApplicationBusinessLogConfig返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

@@ -17194,7 +17194,7 @@ class GetAttackTotalCountRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: 结束时间
         :type EndTime: str
-        :param _Domain: 查询的域名，全部域名不指定
+        :param _Domain: 查询的域名，全部域名填all
         :type Domain: str
         :param _QueryString: 查询条件，默认为""
         :type QueryString: str

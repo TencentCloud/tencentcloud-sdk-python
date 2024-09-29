@@ -1452,6 +1452,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeIsolatedInstances(self, request):
+        """本接口(DescribeIsolatedInstances)用于查询回收站实例列表。
+
+        :param request: Request instance for DescribeIsolatedInstances.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeIsolatedInstancesRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeIsolatedInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIsolatedInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIsolatedInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeMaintainPeriod(self, request):
         """查询实例维护时间窗
 
@@ -1728,22 +1751,20 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeRollbackTimeValidity(self, request):
-        """历史废弃接口，从云API下线
+    def DescribeServerlessStrategy(self, request):
+        """查询serverless策略
 
-        指定时间和集群查询是否可回滚
-
-        :param request: Request instance for DescribeRollbackTimeValidity.
-        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeRollbackTimeValidityRequest`
-        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeRollbackTimeValidityResponse`
+        :param request: Request instance for DescribeServerlessStrategy.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeServerlessStrategyRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeServerlessStrategyResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeRollbackTimeValidity", params, headers=headers)
+            body = self.call("DescribeServerlessStrategy", params, headers=headers)
             response = json.loads(body)
-            model = models.DescribeRollbackTimeValidityResponse()
+            model = models.DescribeServerlessStrategyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2467,7 +2488,7 @@ class CynosdbClient(AbstractClient):
 
 
     def ModifyInstanceUpgradeLimitDays(self, request):
-        """修改实例小版本升级限制时间
+        """本接口（ModifyInstanceUpgradeLimitDays）用于修改实例内核小版本的升级限制时间。
 
         :param request: Request instance for ModifyInstanceUpgradeLimitDays.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyInstanceUpgradeLimitDaysRequest`
@@ -2650,6 +2671,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyServerlessStrategy(self, request):
+        """修改serverless策略
+
+        :param request: Request instance for ModifyServerlessStrategy.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyServerlessStrategyRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyServerlessStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyServerlessStrategy", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyServerlessStrategyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyVipVport(self, request):
         """修改实例组ip，端口
 
@@ -2674,7 +2718,7 @@ class CynosdbClient(AbstractClient):
 
 
     def OfflineCluster(self, request):
-        """销毁集群
+        """本接口（OfflineCluster）用于销毁集群。
 
         :param request: Request instance for OfflineCluster.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.OfflineClusterRequest`
@@ -3157,7 +3201,7 @@ class CynosdbClient(AbstractClient):
 
 
     def StartCLSDelivery(self, request):
-        """开启日志投递
+        """本接口（StartCLSDelivery）用于开启日志投递功能。
 
         :param request: Request instance for StartCLSDelivery.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.StartCLSDeliveryRequest`
@@ -3180,7 +3224,7 @@ class CynosdbClient(AbstractClient):
 
 
     def StopCLSDelivery(self, request):
-        """停止日志投递
+        """本接口（StopCLSDelivery）用于停止日志投递功能。
 
         :param request: Request instance for StopCLSDelivery.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.StopCLSDeliveryRequest`
@@ -3295,7 +3339,7 @@ class CynosdbClient(AbstractClient):
 
 
     def UpgradeClusterVersion(self, request):
-        """更新内核小版本
+        """本接口（UpgradeClusterVersion）用于更新内核小版本。
 
         :param request: Request instance for UpgradeClusterVersion.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.UpgradeClusterVersionRequest`
@@ -3318,7 +3362,7 @@ class CynosdbClient(AbstractClient):
 
 
     def UpgradeInstance(self, request):
-        """实例变配
+        """本接口（UpgradeInstance）用于实例变配。
 
         :param request: Request instance for UpgradeInstance.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.UpgradeInstanceRequest`

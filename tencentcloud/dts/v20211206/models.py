@@ -1545,15 +1545,15 @@ class ConfigureSyncJobRequest(AbstractModel):
         :type ExpectRunTime: str
         :param _SrcConnectType: 源端tdsql连接方式：proxy-通过tdsql proxy主机访问各个set节点，注意只有在自研上云的网络环境下才能通过这种方式连接，SrcInfos中只需要提供proxy主机信息。set-直连set节点，如选择直连set方式，需要正确填写proxy主机信息及所有set节点信息。源端是tdsqlmysql类型必填。
         :type SrcConnectType: str
-        :param _SrcInfo: 源端信息，单节点数据库使用，且SrcNodeType传single
+        :param _SrcInfo: 源端信息，单机版类型数据库配置使用，且SrcNodeType传single。例如mysql、percona、mariadb等。
         :type SrcInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
-        :param _SrcInfos: 源端信息，多节点数据库使用，且SrcNodeType传cluster
+        :param _SrcInfos: 源端信息，分布式类型数据库配置使用，且SrcNodeType传cluster。例如分布式数据库tdsqlmysql等。
         :type SrcInfos: :class:`tencentcloud.dts.v20211206.models.SyncDBEndpointInfos`
         :param _SrcNodeType: 枚举值：cluster、single。源库为单节点数据库使用single，多节点使用cluster
         :type SrcNodeType: str
-        :param _DstInfo: 目标端信息，单节点数据库使用
+        :param _DstInfo: 目标端信息，单机版类型数据库配置使用，且SrcNodeType传single。例如mysql、percona、mariadb等。
         :type DstInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
-        :param _DstInfos: 目标端信息，多节点数据库使用，且DstNodeType传cluster
+        :param _DstInfos: 目标端信息，分布式类型数据库配置使用，且SrcNodeType传cluster。例如分布式数据库tdsqlmysql等。
         :type DstInfos: :class:`tencentcloud.dts.v20211206.models.SyncDBEndpointInfos`
         :param _DstNodeType: 枚举值：cluster、single。目标库为单节点数据库使用single，多节点使用cluster
         :type DstNodeType: str
@@ -3175,13 +3175,13 @@ class DBInfo(AbstractModel):
         :param _AccountMode: 资源所属账号 为空或self(表示本账号内资源)、other(表示其他账户资源)
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountMode: str
-        :param _TmpSecretId: 临时密钥Id，可通过 获取联合身份临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48195
+        :param _TmpSecretId: 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TmpSecretId: str
-        :param _TmpSecretKey: 临时密钥Key，可通过 获取联合身份临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48195
+        :param _TmpSecretKey: 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TmpSecretKey: str
-        :param _TmpToken: 临时Token，可通过 获取联合身份临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48195
+        :param _TmpToken: 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TmpToken: str
         :param _SetId: tdsql的分片id。如节点类型为set必填。
@@ -4818,11 +4818,11 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
         :type Offset: int
         :param _AccountMode: 资源所属账号 为空值或self(表示本账号内资源)、other(表示其他账户资源)
         :type AccountMode: str
-        :param _TmpSecretId: 临时密钥Id，若为跨账号资源此项必填
+        :param _TmpSecretId: 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。
         :type TmpSecretId: str
-        :param _TmpSecretKey: 临时密钥Key，若为跨账号资源此项必填
+        :param _TmpSecretKey: 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。
         :type TmpSecretKey: str
-        :param _TmpToken: 临时密钥Token，若为跨账号资源此项必填
+        :param _TmpToken: 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。
         :type TmpToken: str
         """
         self._DatabaseType = None
@@ -8080,13 +8080,13 @@ class Endpoint(AbstractModel):
         :param _RoleExternalId: 外部角色id
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoleExternalId: str
-        :param _TmpSecretId: 临时密钥Id，可通过获取联合身份临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48195，如果为跨账号实例此项必填
+        :param _TmpSecretId: 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号同步文档(https://cloud.tencent.com/document/product/571/68729)第4节中关于角色的定义。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TmpSecretId: str
-        :param _TmpSecretKey: 临时密钥Key，可通过获取联合身份临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48195，，如果为跨账号实例此项必填
+        :param _TmpSecretKey: 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号同步文档(https://cloud.tencent.com/document/product/571/68729)第4节中关于角色的定义。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TmpSecretKey: str
-        :param _TmpToken: 临时Token，可通过获取联合身份临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48195，，如果为跨账号实例此项必填
+        :param _TmpToken: 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号同步文档(https://cloud.tencent.com/document/product/571/68729)第4节中关于角色的定义。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TmpToken: str
         :param _EncryptConn: 是否走加密传输、UnEncrypted表示不走加密传输，Encrypted表示走加密传输，默认UnEncrypted
@@ -9801,13 +9801,13 @@ class MigrateOption(AbstractModel):
         :param _DatabaseTable: 迁移对象选项，需要告知迁移服务迁移哪些库表对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseTable: :class:`tencentcloud.dts.v20211206.models.DatabaseTableObject`
-        :param _MigrateType: 迁移类型，full(全量迁移)，structure(结构迁移)，fullAndIncrement(全量加增量迁移)， 默认为fullAndIncrement
+        :param _MigrateType: 迁移类型，full(全量迁移)，structure(结构迁移)，fullAndIncrement(全量加增量迁移)， 默认为fullAndIncrement;注意redis,keewidb产品只支持fullAndIncrement类型。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MigrateType: str
         :param _Consistency: 数据一致性校验选项， 默认为不开启一致性校验
 注意：此字段可能返回 null，表示取不到有效值。
         :type Consistency: :class:`tencentcloud.dts.v20211206.models.ConsistencyOption`
-        :param _IsMigrateAccount: 是否迁移账号，yes(迁移账号)，no(不迁移账号)
+        :param _IsMigrateAccount: 是否迁移账号，true(迁移账号)，false(不迁移账号)
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsMigrateAccount: bool
         :param _IsOverrideRoot: 是否用源库Root账户覆盖目标库，值包括：false-不覆盖，true-覆盖，选择库表或者结构迁移时应该为false，注意只对旧版迁移有效
@@ -9817,7 +9817,7 @@ class MigrateOption(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsDstReadOnly: bool
         :param _ExtraAttr: 其他附加信息，对于特定库可设置额外参数，Redis可定义如下的参数: 
-["DstWriteMode":normal, 	目标库写入模式,可取值clearData(清空目标实例数据)、overwrite(以覆盖写的方式执行任务)、normal(跟正常流程一样，不做额外动作) 	"IsDstReadOnly":true, 	是否在迁移时设置目标库只读,true(设置只读)、false(不设置只读) 	"ClientOutputBufferHardLimit":512, 	从机缓冲区的硬性容量限制(MB) 	"ClientOutputBufferSoftLimit":512, 	从机缓冲区的软性容量限制(MB) 	"ClientOutputBufferPersistTime":60, 从机缓冲区的软性限制持续时间(秒) 	"ReplBacklogSize":512, 	环形缓冲区容量限制(MB) 	"ReplTimeout":120，		复制超时时间(秒)]
+["DstWriteMode":normal, 	目标库写入模式,可取值clearData(清空目标实例数据)、overwrite(以覆盖写的方式执行任务)、normal(跟正常流程一样，不做额外动作) 	"IsDstReadOnly":true, 	是否在迁移时设置目标库只读,true(设置只读)、false(不设置只读) 	"ClientOutputBufferHardLimit":512, 	从机缓冲区的硬性容量限制(MB) 	"ClientOutputBufferSoftLimit":512, 	从机缓冲区的软性容量限制(MB) 	"ClientOutputBufferPersistTime":60, 从机缓冲区的软性限制持续时间(秒) 	"ReplBacklogSize":512, 	环形缓冲区容量限制(MB) 	"ReplTimeout":120，		复制超时时间(秒) 	"IsExpireKey":"true",过期key自动淘汰]
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraAttr: list of KeyValuePairOption
         :param _MigrateWay: pgsql迁移分类：logical(逻辑迁移)、physical(物理迁移)

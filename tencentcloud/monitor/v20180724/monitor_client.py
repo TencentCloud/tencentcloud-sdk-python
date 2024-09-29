@@ -95,31 +95,6 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CheckIsPrometheusNewUser(self, request):
-        """接口功能是检查是否为prometheus新用户，已有其他功能更加全面的接口替代
-
-        判断用户是否为云原生监控新用户，即在任何地域下均未创建过监控实例的用户
-
-        :param request: Request instance for CheckIsPrometheusNewUser.
-        :type request: :class:`tencentcloud.monitor.v20180724.models.CheckIsPrometheusNewUserRequest`
-        :rtype: :class:`tencentcloud.monitor.v20180724.models.CheckIsPrometheusNewUserResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CheckIsPrometheusNewUser", params, headers=headers)
-            response = json.loads(body)
-            model = models.CheckIsPrometheusNewUserResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CleanGrafanaInstance(self, request):
         """强制销毁 Grafana 实例
 
@@ -2196,31 +2171,6 @@ class MonitorClient(AbstractClient):
             body = self.call("DescribePrometheusInstancesOverview", params, headers=headers)
             response = json.loads(body)
             model = models.DescribePrometheusInstancesOverviewResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribePrometheusRecordRuleYaml(self, request):
-        """DescribePrometheusRecordRules 接口可完全代替该接口。近30天仅有3次调用，且都是报错请求
-
-        拉取Prometheus聚合规则yaml列表
-
-        :param request: Request instance for DescribePrometheusRecordRuleYaml.
-        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusRecordRuleYamlRequest`
-        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusRecordRuleYamlResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribePrometheusRecordRuleYaml", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribePrometheusRecordRuleYamlResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

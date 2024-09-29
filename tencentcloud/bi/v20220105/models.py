@@ -2034,6 +2034,9 @@ class DatasourceInfo(AbstractModel):
         :param _ClusterId: 集群id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
+        :param _DbTypeName: 数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbTypeName: str
         """
         self._Id = None
         self._DbName = None
@@ -2070,6 +2073,7 @@ class DatasourceInfo(AbstractModel):
         self._DataOriginProjectId = None
         self._DataOriginDatasourceId = None
         self._ClusterId = None
+        self._DbTypeName = None
 
     @property
     def Id(self):
@@ -2351,6 +2355,14 @@ class DatasourceInfo(AbstractModel):
     def ClusterId(self, ClusterId):
         self._ClusterId = ClusterId
 
+    @property
+    def DbTypeName(self):
+        return self._DbTypeName
+
+    @DbTypeName.setter
+    def DbTypeName(self, DbTypeName):
+        self._DbTypeName = DbTypeName
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -2395,6 +2407,7 @@ class DatasourceInfo(AbstractModel):
         self._DataOriginProjectId = params.get("DataOriginProjectId")
         self._DataOriginDatasourceId = params.get("DataOriginDatasourceId")
         self._ClusterId = params.get("ClusterId")
+        self._DbTypeName = params.get("DbTypeName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5430,6 +5443,8 @@ class ModifyUserRoleRequest(AbstractModel):
         :type AreaCode: str
         :param _AppUserId: 企业微信应用用户id
         :type AppUserId: str
+        :param _LoginSecurityStatus: 是否开启手机验证码登录（0 关闭，1 开启）
+        :type LoginSecurityStatus: int
         """
         self._UserId = None
         self._RoleIdList = None
@@ -5438,6 +5453,7 @@ class ModifyUserRoleRequest(AbstractModel):
         self._PhoneNumber = None
         self._AreaCode = None
         self._AppUserId = None
+        self._LoginSecurityStatus = None
 
     @property
     def UserId(self):
@@ -5495,6 +5511,14 @@ class ModifyUserRoleRequest(AbstractModel):
     def AppUserId(self, AppUserId):
         self._AppUserId = AppUserId
 
+    @property
+    def LoginSecurityStatus(self):
+        return self._LoginSecurityStatus
+
+    @LoginSecurityStatus.setter
+    def LoginSecurityStatus(self, LoginSecurityStatus):
+        self._LoginSecurityStatus = LoginSecurityStatus
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
@@ -5504,6 +5528,7 @@ class ModifyUserRoleRequest(AbstractModel):
         self._PhoneNumber = params.get("PhoneNumber")
         self._AreaCode = params.get("AreaCode")
         self._AppUserId = params.get("AppUserId")
+        self._LoginSecurityStatus = params.get("LoginSecurityStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

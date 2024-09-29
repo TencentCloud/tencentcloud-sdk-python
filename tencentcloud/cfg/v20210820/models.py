@@ -2307,11 +2307,17 @@ class ModifyTaskRunStatusRequest(AbstractModel):
         :type IsExpect: bool
         :param _Summary: 演习结论（当演习状态转变为执行结束时，需要填写此字段）
         :type Summary: str
+        :param _Issue: 问题以及改进
+        :type Issue: str
+        :param _Record: 演练记录
+        :type Record: str
         """
         self._TaskId = None
         self._Status = None
         self._IsExpect = None
         self._Summary = None
+        self._Issue = None
+        self._Record = None
 
     @property
     def TaskId(self):
@@ -2345,12 +2351,30 @@ class ModifyTaskRunStatusRequest(AbstractModel):
     def Summary(self, Summary):
         self._Summary = Summary
 
+    @property
+    def Issue(self):
+        return self._Issue
+
+    @Issue.setter
+    def Issue(self, Issue):
+        self._Issue = Issue
+
+    @property
+    def Record(self):
+        return self._Record
+
+    @Record.setter
+    def Record(self, Record):
+        self._Record = Record
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._Status = params.get("Status")
         self._IsExpect = params.get("IsExpect")
         self._Summary = params.get("Summary")
+        self._Issue = params.get("Issue")
+        self._Record = params.get("Record")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2407,6 +2431,12 @@ class ObjectType(AbstractModel):
         :param _ObjectHasNewAction: 是否包含新动作
 注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectHasNewAction: bool
+        :param _ObjectPlatformName: 对应在平台架构图中的资源类型名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ObjectPlatformName: str
+        :param _ObjectSupportType: 1：平台支持的对象 2：应用支持的部分对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ObjectSupportType: int
         """
         self._ObjectTypeId = None
         self._ObjectTypeTitle = None
@@ -2414,6 +2444,8 @@ class ObjectType(AbstractModel):
         self._ObjectTypeParams = None
         self._ObjectTypeJsonParse = None
         self._ObjectHasNewAction = None
+        self._ObjectPlatformName = None
+        self._ObjectSupportType = None
 
     @property
     def ObjectTypeId(self):
@@ -2463,6 +2495,22 @@ class ObjectType(AbstractModel):
     def ObjectHasNewAction(self, ObjectHasNewAction):
         self._ObjectHasNewAction = ObjectHasNewAction
 
+    @property
+    def ObjectPlatformName(self):
+        return self._ObjectPlatformName
+
+    @ObjectPlatformName.setter
+    def ObjectPlatformName(self, ObjectPlatformName):
+        self._ObjectPlatformName = ObjectPlatformName
+
+    @property
+    def ObjectSupportType(self):
+        return self._ObjectSupportType
+
+    @ObjectSupportType.setter
+    def ObjectSupportType(self, ObjectSupportType):
+        self._ObjectSupportType = ObjectSupportType
+
 
     def _deserialize(self, params):
         self._ObjectTypeId = params.get("ObjectTypeId")
@@ -2475,6 +2523,8 @@ class ObjectType(AbstractModel):
             self._ObjectTypeJsonParse = ObjectTypeJsonParse()
             self._ObjectTypeJsonParse._deserialize(params.get("ObjectTypeJsonParse"))
         self._ObjectHasNewAction = params.get("ObjectHasNewAction")
+        self._ObjectPlatformName = params.get("ObjectPlatformName")
+        self._ObjectSupportType = params.get("ObjectSupportType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2833,8 +2883,10 @@ class TagWithCreate(AbstractModel):
     def __init__(self):
         r"""
         :param _TagKey: 标签键
+注意：此字段可能返回 null，表示取不到有效值。
         :type TagKey: str
         :param _TagValue: 标签值
+注意：此字段可能返回 null，表示取不到有效值。
         :type TagValue: str
         """
         self._TagKey = None
@@ -2998,6 +3050,21 @@ class Task(AbstractModel):
         :param _PolicyDealType: 护栏处理方式，1--顺序回滚，2--演练暂停
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyDealType: int
+        :param _TaskPlanStartTime: 计划开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskPlanStartTime: str
+        :param _TaskPlanEndTime: 计划结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskPlanEndTime: str
+        :param _TaskOrg: 人员组织
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskOrg: list of TaskOrg
+        :param _TaskIssue: 问题和改进
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskIssue: str
+        :param _TaskRegionName: region信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskRegionName: str
         """
         self._TaskId = None
         self._TaskTitle = None
@@ -3028,6 +3095,11 @@ class Task(AbstractModel):
         self._ApmServiceList = None
         self._VerifyId = None
         self._PolicyDealType = None
+        self._TaskPlanStartTime = None
+        self._TaskPlanEndTime = None
+        self._TaskOrg = None
+        self._TaskIssue = None
+        self._TaskRegionName = None
 
     @property
     def TaskId(self):
@@ -3261,6 +3333,46 @@ class Task(AbstractModel):
     def PolicyDealType(self, PolicyDealType):
         self._PolicyDealType = PolicyDealType
 
+    @property
+    def TaskPlanStartTime(self):
+        return self._TaskPlanStartTime
+
+    @TaskPlanStartTime.setter
+    def TaskPlanStartTime(self, TaskPlanStartTime):
+        self._TaskPlanStartTime = TaskPlanStartTime
+
+    @property
+    def TaskPlanEndTime(self):
+        return self._TaskPlanEndTime
+
+    @TaskPlanEndTime.setter
+    def TaskPlanEndTime(self, TaskPlanEndTime):
+        self._TaskPlanEndTime = TaskPlanEndTime
+
+    @property
+    def TaskOrg(self):
+        return self._TaskOrg
+
+    @TaskOrg.setter
+    def TaskOrg(self, TaskOrg):
+        self._TaskOrg = TaskOrg
+
+    @property
+    def TaskIssue(self):
+        return self._TaskIssue
+
+    @TaskIssue.setter
+    def TaskIssue(self, TaskIssue):
+        self._TaskIssue = TaskIssue
+
+    @property
+    def TaskRegionName(self):
+        return self._TaskRegionName
+
+    @TaskRegionName.setter
+    def TaskRegionName(self, TaskRegionName):
+        self._TaskRegionName = TaskRegionName
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -3314,6 +3426,16 @@ class Task(AbstractModel):
                 self._ApmServiceList.append(obj)
         self._VerifyId = params.get("VerifyId")
         self._PolicyDealType = params.get("PolicyDealType")
+        self._TaskPlanStartTime = params.get("TaskPlanStartTime")
+        self._TaskPlanEndTime = params.get("TaskPlanEndTime")
+        if params.get("TaskOrg") is not None:
+            self._TaskOrg = []
+            for item in params.get("TaskOrg"):
+                obj = TaskOrg()
+                obj._deserialize(item)
+                self._TaskOrg.append(obj)
+        self._TaskIssue = params.get("TaskIssue")
+        self._TaskRegionName = params.get("TaskRegionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4577,6 +4699,53 @@ class TaskMonitor(AbstractModel):
         
 
 
+class TaskOrg(AbstractModel):
+    """演练人员组织
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskRole: 演练角色
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskRole: str
+        :param _TaskOperator: 负责人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskOperator: str
+        """
+        self._TaskRole = None
+        self._TaskOperator = None
+
+    @property
+    def TaskRole(self):
+        return self._TaskRole
+
+    @TaskRole.setter
+    def TaskRole(self, TaskRole):
+        self._TaskRole = TaskRole
+
+    @property
+    def TaskOperator(self):
+        return self._TaskOperator
+
+    @TaskOperator.setter
+    def TaskOperator(self, TaskOperator):
+        self._TaskOperator = TaskOperator
+
+
+    def _deserialize(self, params):
+        self._TaskRole = params.get("TaskRole")
+        self._TaskOperator = params.get("TaskOperator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TaskReportInfo(AbstractModel):
     """演练报告状态信息
 
@@ -4598,6 +4767,10 @@ class TaskReportInfo(AbstractModel):
         :param _Log: 演练报告导出日志
 注意：此字段可能返回 null，表示取不到有效值。
         :type Log: str
+        :param _ArchiveStage: 0--未开始，1--正在归档，2--归档成功，3--归档失败
+        :type ArchiveStage: int
+        :param _ArchiveTime: 归档时间
+        :type ArchiveTime: str
         """
         self._Stage = None
         self._CreateTime = None
@@ -4605,6 +4778,8 @@ class TaskReportInfo(AbstractModel):
         self._Expired = None
         self._CosUrl = None
         self._Log = None
+        self._ArchiveStage = None
+        self._ArchiveTime = None
 
     @property
     def Stage(self):
@@ -4654,6 +4829,22 @@ class TaskReportInfo(AbstractModel):
     def Log(self, Log):
         self._Log = Log
 
+    @property
+    def ArchiveStage(self):
+        return self._ArchiveStage
+
+    @ArchiveStage.setter
+    def ArchiveStage(self, ArchiveStage):
+        self._ArchiveStage = ArchiveStage
+
+    @property
+    def ArchiveTime(self):
+        return self._ArchiveTime
+
+    @ArchiveTime.setter
+    def ArchiveTime(self, ArchiveTime):
+        self._ArchiveTime = ArchiveTime
+
 
     def _deserialize(self, params):
         self._Stage = params.get("Stage")
@@ -4662,6 +4853,8 @@ class TaskReportInfo(AbstractModel):
         self._Expired = params.get("Expired")
         self._CosUrl = params.get("CosUrl")
         self._Log = params.get("Log")
+        self._ArchiveStage = params.get("ArchiveStage")
+        self._ArchiveTime = params.get("ArchiveTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

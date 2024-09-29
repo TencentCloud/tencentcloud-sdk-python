@@ -4966,6 +4966,93 @@ class DescribeDomainShareInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDomainShareUserListRequest(AbstractModel):
+    """DescribeDomainShareUserList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+        :type DomainId: int
+        """
+        self._Domain = None
+        self._DomainId = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDomainShareUserListResponse(AbstractModel):
+    """DescribeDomainShareUserList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DomainShareList: 域名套餐信息
+        :type DomainShareList: list of DomainShareUserInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DomainShareList = None
+        self._RequestId = None
+
+    @property
+    def DomainShareList(self):
+        return self._DomainShareList
+
+    @DomainShareList.setter
+    def DomainShareList(self, DomainShareList):
+        self._DomainShareList = DomainShareList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DomainShareList") is not None:
+            self._DomainShareList = []
+            for item in params.get("DomainShareList"):
+                obj = DomainShareUserInfo()
+                obj._deserialize(item)
+                self._DomainShareList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDomainWhoisRequest(AbstractModel):
     """DescribeDomainWhois请求参数结构体
 
@@ -8578,6 +8665,104 @@ class DomainShareInfo(AbstractModel):
         self._ShareTo = params.get("ShareTo")
         self._Mode = params.get("Mode")
         self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DomainShareUserInfo(AbstractModel):
+    """域名共享信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DomainShareId: 共享记录ID
+        :type DomainShareId: int
+        :param _Mode: 共享模式。r-只读；w-可写；rw-可读写。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mode: str
+        :param _Nickname: 共享到的用户昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Nickname: str
+        :param _QCloudUIN: 共享到的用户UIN
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QCloudUIN: str
+        :param _Status: 共享状态。enabled-有效；pause-无效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _SubDomain: 共享的子域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubDomain: str
+        """
+        self._DomainShareId = None
+        self._Mode = None
+        self._Nickname = None
+        self._QCloudUIN = None
+        self._Status = None
+        self._SubDomain = None
+
+    @property
+    def DomainShareId(self):
+        return self._DomainShareId
+
+    @DomainShareId.setter
+    def DomainShareId(self, DomainShareId):
+        self._DomainShareId = DomainShareId
+
+    @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Nickname(self):
+        return self._Nickname
+
+    @Nickname.setter
+    def Nickname(self, Nickname):
+        self._Nickname = Nickname
+
+    @property
+    def QCloudUIN(self):
+        return self._QCloudUIN
+
+    @QCloudUIN.setter
+    def QCloudUIN(self, QCloudUIN):
+        self._QCloudUIN = QCloudUIN
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SubDomain(self):
+        return self._SubDomain
+
+    @SubDomain.setter
+    def SubDomain(self, SubDomain):
+        self._SubDomain = SubDomain
+
+
+    def _deserialize(self, params):
+        self._DomainShareId = params.get("DomainShareId")
+        self._Mode = params.get("Mode")
+        self._Nickname = params.get("Nickname")
+        self._QCloudUIN = params.get("QCloudUIN")
+        self._Status = params.get("Status")
+        self._SubDomain = params.get("SubDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

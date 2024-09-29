@@ -350,6 +350,29 @@ class DcdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBackupConfigs(self, request):
+        """本接口(DescribeBackupConfigs)用于查询数据库备份配置信息。
+
+        :param request: Request instance for DescribeBackupConfigs.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeBackupConfigsRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeBackupConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackupConfigs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackupConfigsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBackupFiles(self, request):
         """本接口(DescribeBackupFiles)用于查看备份文件列表。
 
@@ -525,6 +548,29 @@ class DcdbClient(AbstractClient):
             body = self.call("DescribeDBTmpInstances", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDBTmpInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDCDBBinlogTime(self, request):
+        """获取实例回档时可选的时间范围
+
+        :param request: Request instance for DescribeDCDBBinlogTime.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDCDBBinlogTimeRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeDCDBBinlogTimeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDCDBBinlogTime", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDCDBBinlogTimeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1292,6 +1338,31 @@ class DcdbClient(AbstractClient):
             body = self.call("ModifyAccountPrivileges", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAccountPrivilegesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyBackupConfigs(self, request):
+        """本接口(ModifyBackupConfigs)用于修改数据库备份配置信息。
+
+        1. 修改数据库超期备份配置，目前按年、按月、按日只支持一种，存在互斥关系，如当前策略按年备份，如果传入按月备份策略将会覆盖当前的按年备份策略，务必注意。
+
+        :param request: Request instance for ModifyBackupConfigs.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyBackupConfigsRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.ModifyBackupConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBackupConfigs", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBackupConfigsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

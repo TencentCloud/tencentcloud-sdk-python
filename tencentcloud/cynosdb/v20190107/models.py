@@ -14318,6 +14318,162 @@ class DescribeInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeIsolatedInstancesRequest(AbstractModel):
+    """DescribeIsolatedInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 返回数量，默认为 20，最大值为 100
+        :type Limit: int
+        :param _Offset: 记录偏移量，默认值为0
+        :type Offset: int
+        :param _OrderBy: 排序字段，取值范围：
+<li> CREATETIME：创建时间</li>
+<li> PERIODENDTIME：过期时间</li>
+        :type OrderBy: str
+        :param _OrderByType: 排序类型，取值范围：
+<li> ASC：升序排序 </li>
+<li> DESC：降序排序 </li>
+        :type OrderByType: str
+        :param _Filters: 搜索条件，若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
+        :type Filters: list of QueryFilter
+        :param _DbType: 引擎类型：目前支持“MYSQL”， “POSTGRESQL”
+        :type DbType: str
+        """
+        self._Limit = None
+        self._Offset = None
+        self._OrderBy = None
+        self._OrderByType = None
+        self._Filters = None
+        self._DbType = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def OrderBy(self):
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderByType(self):
+        return self._OrderByType
+
+    @OrderByType.setter
+    def OrderByType(self, OrderByType):
+        self._OrderByType = OrderByType
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def DbType(self):
+        return self._DbType
+
+    @DbType.setter
+    def DbType(self, DbType):
+        self._DbType = DbType
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderByType = params.get("OrderByType")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = QueryFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._DbType = params.get("DbType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIsolatedInstancesResponse(AbstractModel):
+    """DescribeIsolatedInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 实例个数
+        :type TotalCount: int
+        :param _InstanceSet: 实例列表
+        :type InstanceSet: list of CynosdbInstance
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._InstanceSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def InstanceSet(self):
+        return self._InstanceSet
+
+    @InstanceSet.setter
+    def InstanceSet(self, InstanceSet):
+        self._InstanceSet = InstanceSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("InstanceSet") is not None:
+            self._InstanceSet = []
+            for item in params.get("InstanceSet"):
+                obj = CynosdbInstance()
+                obj._deserialize(item)
+                self._InstanceSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeMaintainPeriodRequest(AbstractModel):
     """DescribeMaintainPeriod请求参数结构体
 
@@ -15938,23 +16094,17 @@ class DescribeRollbackTimeRangeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class DescribeRollbackTimeValidityRequest(AbstractModel):
-    """DescribeRollbackTimeValidity请求参数结构体
+class DescribeServerlessStrategyRequest(AbstractModel):
+    """DescribeServerlessStrategy请求参数结构体
 
     """
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: serverless集群id
         :type ClusterId: str
-        :param _ExpectTime: 期望回滚的时间点
-        :type ExpectTime: str
-        :param _ExpectTimeThresh: 回滚时间点的允许误差范围
-        :type ExpectTimeThresh: int
         """
         self._ClusterId = None
-        self._ExpectTime = None
-        self._ExpectTimeThresh = None
 
     @property
     def ClusterId(self):
@@ -15964,27 +16114,9 @@ class DescribeRollbackTimeValidityRequest(AbstractModel):
     def ClusterId(self, ClusterId):
         self._ClusterId = ClusterId
 
-    @property
-    def ExpectTime(self):
-        return self._ExpectTime
-
-    @ExpectTime.setter
-    def ExpectTime(self, ExpectTime):
-        self._ExpectTime = ExpectTime
-
-    @property
-    def ExpectTimeThresh(self):
-        return self._ExpectTimeThresh
-
-    @ExpectTimeThresh.setter
-    def ExpectTimeThresh(self, ExpectTimeThresh):
-        self._ExpectTimeThresh = ExpectTimeThresh
-
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
-        self._ExpectTime = params.get("ExpectTime")
-        self._ExpectTimeThresh = params.get("ExpectTimeThresh")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15995,61 +16127,85 @@ class DescribeRollbackTimeValidityRequest(AbstractModel):
         
 
 
-class DescribeRollbackTimeValidityResponse(AbstractModel):
-    """DescribeRollbackTimeValidity返回参数结构体
+class DescribeServerlessStrategyResponse(AbstractModel):
+    """DescribeServerlessStrategy返回参数结构体
 
     """
 
     def __init__(self):
         r"""
-        :param _PoolId: 存储poolID
-        :type PoolId: int
-        :param _QueryId: 回滚任务ID，后续按该时间点回滚时，需要传入
-        :type QueryId: int
-        :param _Status: 时间点是否有效：pass，检测通过；fail，检测失败
-        :type Status: str
-        :param _SuggestTime: 建议时间点，在Status为fail时，该值才有效
-        :type SuggestTime: str
+        :param _AutoPauseDelay: cpu负载为 0 时持续多久（秒）发起自动暂停
+        :type AutoPauseDelay: int
+        :param _AutoScaleUpDelay: cpu负载超过当前规格核数时，持续多久（秒）发起自动扩容
+        :type AutoScaleUpDelay: int
+        :param _AutoScaleDownDelay: cpu 负载低于低一级规格核数时，持续多久（秒）发起自动缩容
+        :type AutoScaleDownDelay: int
+        :param _AutoPause: 是否自动暂停，可能值：
+yes
+no
+        :type AutoPause: str
+        :param _AutoScaleUp: 集群是否允许向上扩容，可选范围<li>yes</li><li>no</li>
+        :type AutoScaleUp: str
+        :param _AutoScaleDown: 集群是否允许向下缩容，可选范围<li>yes</li><li>no</li>
+        :type AutoScaleDown: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self._PoolId = None
-        self._QueryId = None
-        self._Status = None
-        self._SuggestTime = None
+        self._AutoPauseDelay = None
+        self._AutoScaleUpDelay = None
+        self._AutoScaleDownDelay = None
+        self._AutoPause = None
+        self._AutoScaleUp = None
+        self._AutoScaleDown = None
         self._RequestId = None
 
     @property
-    def PoolId(self):
-        return self._PoolId
+    def AutoPauseDelay(self):
+        return self._AutoPauseDelay
 
-    @PoolId.setter
-    def PoolId(self, PoolId):
-        self._PoolId = PoolId
-
-    @property
-    def QueryId(self):
-        return self._QueryId
-
-    @QueryId.setter
-    def QueryId(self, QueryId):
-        self._QueryId = QueryId
+    @AutoPauseDelay.setter
+    def AutoPauseDelay(self, AutoPauseDelay):
+        self._AutoPauseDelay = AutoPauseDelay
 
     @property
-    def Status(self):
-        return self._Status
+    def AutoScaleUpDelay(self):
+        return self._AutoScaleUpDelay
 
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
+    @AutoScaleUpDelay.setter
+    def AutoScaleUpDelay(self, AutoScaleUpDelay):
+        self._AutoScaleUpDelay = AutoScaleUpDelay
 
     @property
-    def SuggestTime(self):
-        return self._SuggestTime
+    def AutoScaleDownDelay(self):
+        return self._AutoScaleDownDelay
 
-    @SuggestTime.setter
-    def SuggestTime(self, SuggestTime):
-        self._SuggestTime = SuggestTime
+    @AutoScaleDownDelay.setter
+    def AutoScaleDownDelay(self, AutoScaleDownDelay):
+        self._AutoScaleDownDelay = AutoScaleDownDelay
+
+    @property
+    def AutoPause(self):
+        return self._AutoPause
+
+    @AutoPause.setter
+    def AutoPause(self, AutoPause):
+        self._AutoPause = AutoPause
+
+    @property
+    def AutoScaleUp(self):
+        return self._AutoScaleUp
+
+    @AutoScaleUp.setter
+    def AutoScaleUp(self, AutoScaleUp):
+        self._AutoScaleUp = AutoScaleUp
+
+    @property
+    def AutoScaleDown(self):
+        return self._AutoScaleDown
+
+    @AutoScaleDown.setter
+    def AutoScaleDown(self, AutoScaleDown):
+        self._AutoScaleDown = AutoScaleDown
 
     @property
     def RequestId(self):
@@ -16061,10 +16217,12 @@ class DescribeRollbackTimeValidityResponse(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._PoolId = params.get("PoolId")
-        self._QueryId = params.get("QueryId")
-        self._Status = params.get("Status")
-        self._SuggestTime = params.get("SuggestTime")
+        self._AutoPauseDelay = params.get("AutoPauseDelay")
+        self._AutoScaleUpDelay = params.get("AutoScaleUpDelay")
+        self._AutoScaleDownDelay = params.get("AutoScaleDownDelay")
+        self._AutoPause = params.get("AutoPause")
+        self._AutoScaleUp = params.get("AutoScaleUp")
+        self._AutoScaleDown = params.get("AutoScaleDown")
         self._RequestId = params.get("RequestId")
 
 
@@ -20898,7 +21056,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例组ID
+        :param _InstanceId: 网络组id(cynosdbmysql-grp-前缀开头)或集群id
         :type InstanceId: str
         :param _SecurityGroupIds: 要修改的安全组ID列表，一个或者多个安全组ID组成的数组。
         :type SecurityGroupIds: list of str
@@ -22331,6 +22489,222 @@ class ModifyResourcePackagesDeductionPriorityResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyServerlessStrategyRequest(AbstractModel):
+    """ModifyServerlessStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: serverless集群id
+        :type ClusterId: str
+        :param _AutoPause: 集群是否自动暂停，可选范围
+<li>yes</li>
+<li>no</li>
+        :type AutoPause: str
+        :param _AutoPauseDelay: 集群自动暂停的延迟，单位秒，可选范围[600,691200]，默认600
+        :type AutoPauseDelay: int
+        :param _AutoScaleUpDelay: 该参数暂时无效
+        :type AutoScaleUpDelay: int
+        :param _AutoScaleDownDelay: 该参数暂时无效
+        :type AutoScaleDownDelay: int
+        :param _MinCpu: cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+        :type MinCpu: float
+        :param _MaxCpu: cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+        :type MaxCpu: float
+        :param _MinRoCpu: 只读实例cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+        :type MinRoCpu: float
+        :param _MaxRoCpu: 只读cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+        :type MaxRoCpu: float
+        :param _MinRoCount: 只读节点最小个数
+        :type MinRoCount: int
+        :param _MaxRoCount: 只读节点最大个数
+        :type MaxRoCount: int
+        :param _AutoScaleUp: 集群是否允许扩容，可选范围<li>yes</li><li>no</li>
+        :type AutoScaleUp: str
+        :param _AutoScaleDown: 集群是否允许缩容，可选范围<li>yes</li><li>no</li>
+        :type AutoScaleDown: str
+        """
+        self._ClusterId = None
+        self._AutoPause = None
+        self._AutoPauseDelay = None
+        self._AutoScaleUpDelay = None
+        self._AutoScaleDownDelay = None
+        self._MinCpu = None
+        self._MaxCpu = None
+        self._MinRoCpu = None
+        self._MaxRoCpu = None
+        self._MinRoCount = None
+        self._MaxRoCount = None
+        self._AutoScaleUp = None
+        self._AutoScaleDown = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def AutoPause(self):
+        return self._AutoPause
+
+    @AutoPause.setter
+    def AutoPause(self, AutoPause):
+        self._AutoPause = AutoPause
+
+    @property
+    def AutoPauseDelay(self):
+        return self._AutoPauseDelay
+
+    @AutoPauseDelay.setter
+    def AutoPauseDelay(self, AutoPauseDelay):
+        self._AutoPauseDelay = AutoPauseDelay
+
+    @property
+    def AutoScaleUpDelay(self):
+        return self._AutoScaleUpDelay
+
+    @AutoScaleUpDelay.setter
+    def AutoScaleUpDelay(self, AutoScaleUpDelay):
+        self._AutoScaleUpDelay = AutoScaleUpDelay
+
+    @property
+    def AutoScaleDownDelay(self):
+        return self._AutoScaleDownDelay
+
+    @AutoScaleDownDelay.setter
+    def AutoScaleDownDelay(self, AutoScaleDownDelay):
+        self._AutoScaleDownDelay = AutoScaleDownDelay
+
+    @property
+    def MinCpu(self):
+        return self._MinCpu
+
+    @MinCpu.setter
+    def MinCpu(self, MinCpu):
+        self._MinCpu = MinCpu
+
+    @property
+    def MaxCpu(self):
+        return self._MaxCpu
+
+    @MaxCpu.setter
+    def MaxCpu(self, MaxCpu):
+        self._MaxCpu = MaxCpu
+
+    @property
+    def MinRoCpu(self):
+        return self._MinRoCpu
+
+    @MinRoCpu.setter
+    def MinRoCpu(self, MinRoCpu):
+        self._MinRoCpu = MinRoCpu
+
+    @property
+    def MaxRoCpu(self):
+        return self._MaxRoCpu
+
+    @MaxRoCpu.setter
+    def MaxRoCpu(self, MaxRoCpu):
+        self._MaxRoCpu = MaxRoCpu
+
+    @property
+    def MinRoCount(self):
+        return self._MinRoCount
+
+    @MinRoCount.setter
+    def MinRoCount(self, MinRoCount):
+        self._MinRoCount = MinRoCount
+
+    @property
+    def MaxRoCount(self):
+        return self._MaxRoCount
+
+    @MaxRoCount.setter
+    def MaxRoCount(self, MaxRoCount):
+        self._MaxRoCount = MaxRoCount
+
+    @property
+    def AutoScaleUp(self):
+        return self._AutoScaleUp
+
+    @AutoScaleUp.setter
+    def AutoScaleUp(self, AutoScaleUp):
+        self._AutoScaleUp = AutoScaleUp
+
+    @property
+    def AutoScaleDown(self):
+        return self._AutoScaleDown
+
+    @AutoScaleDown.setter
+    def AutoScaleDown(self, AutoScaleDown):
+        self._AutoScaleDown = AutoScaleDown
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._AutoPause = params.get("AutoPause")
+        self._AutoPauseDelay = params.get("AutoPauseDelay")
+        self._AutoScaleUpDelay = params.get("AutoScaleUpDelay")
+        self._AutoScaleDownDelay = params.get("AutoScaleDownDelay")
+        self._MinCpu = params.get("MinCpu")
+        self._MaxCpu = params.get("MaxCpu")
+        self._MinRoCpu = params.get("MinRoCpu")
+        self._MaxRoCpu = params.get("MaxRoCpu")
+        self._MinRoCount = params.get("MinRoCount")
+        self._MaxRoCount = params.get("MaxRoCount")
+        self._AutoScaleUp = params.get("AutoScaleUp")
+        self._AutoScaleDown = params.get("AutoScaleDown")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyServerlessStrategyResponse(AbstractModel):
+    """ModifyServerlessStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 异步流程id
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
 
 

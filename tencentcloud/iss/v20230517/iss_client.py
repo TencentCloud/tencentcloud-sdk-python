@@ -259,6 +259,29 @@ class IssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CallISAPI(self, request):
+        """本接口可基于海康ISUP 5.0协议实现透传ISAPI的请求数据，调用接口前需确保设备采用ISUP协议成功注册至本平台
+
+        :param request: Request instance for CallISAPI.
+        :type request: :class:`tencentcloud.iss.v20230517.models.CallISAPIRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.CallISAPIResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CallISAPI", params, headers=headers)
+            response = json.loads(body)
+            model = models.CallISAPIResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CheckDomain(self, request):
         """用于检测域名是否备案。
 

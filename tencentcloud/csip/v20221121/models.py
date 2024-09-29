@@ -5861,7 +5861,7 @@ class CreateRiskCenterScanTaskRequest(AbstractModel):
         :type ScanPlanContent: str
         :param _SelfDefiningAssets: ip/域名/url数组
         :type SelfDefiningAssets: list of str
-        :param _ScanFrom: 请求发起源，默认为vss表示漏洞扫描服务，云安全中心的用户请填充csip
+        :param _ScanFrom: 请求发起源，vss表示漏洞扫描服务，云安全中心的用户请填充csip，默认csip
         :type ScanFrom: str
         :param _TaskAdvanceCFG: 高级配置
         :type TaskAdvanceCFG: :class:`tencentcloud.csip.v20221121.models.TaskAdvanceCFG`

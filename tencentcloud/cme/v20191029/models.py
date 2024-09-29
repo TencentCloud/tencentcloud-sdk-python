@@ -11560,12 +11560,15 @@ class SlotInfo(AbstractModel):
         :type DefaultTextSlotInfo: :class:`tencentcloud.cme.v20191029.models.TextSlotInfo`
         :param _Duration: 素材时长，单位秒。
         :type Duration: float
+        :param _StartTime: 卡槽起始时间，单位秒。
+        :type StartTime: float
         """
         self._Id = None
         self._Type = None
         self._DefaultMaterialId = None
         self._DefaultTextSlotInfo = None
         self._Duration = None
+        self._StartTime = None
 
     @property
     def Id(self):
@@ -11607,6 +11610,14 @@ class SlotInfo(AbstractModel):
     def Duration(self, Duration):
         self._Duration = Duration
 
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -11616,6 +11627,7 @@ class SlotInfo(AbstractModel):
             self._DefaultTextSlotInfo = TextSlotInfo()
             self._DefaultTextSlotInfo._deserialize(params.get("DefaultTextSlotInfo"))
         self._Duration = params.get("Duration")
+        self._StartTime = params.get("StartTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

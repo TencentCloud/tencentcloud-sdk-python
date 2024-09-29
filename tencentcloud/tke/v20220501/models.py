@@ -124,7 +124,7 @@ class AutoUpgradeOptions(AbstractModel):
 
 
 class AutoscalingAdded(AbstractModel):
-    """自动扩所容的节点
+    """自动扩缩容的节点
 
     """
 
@@ -190,6 +190,90 @@ class AutoscalingAdded(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateHealthCheckPolicyRequest(AbstractModel):
+    """CreateHealthCheckPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _HealthCheckPolicy: 健康检测策略
+        :type HealthCheckPolicy: :class:`tencentcloud.tke.v20220501.models.HealthCheckPolicy`
+        """
+        self._ClusterId = None
+        self._HealthCheckPolicy = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def HealthCheckPolicy(self):
+        return self._HealthCheckPolicy
+
+    @HealthCheckPolicy.setter
+    def HealthCheckPolicy(self, HealthCheckPolicy):
+        self._HealthCheckPolicy = HealthCheckPolicy
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        if params.get("HealthCheckPolicy") is not None:
+            self._HealthCheckPolicy = HealthCheckPolicy()
+            self._HealthCheckPolicy._deserialize(params.get("HealthCheckPolicy"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateHealthCheckPolicyResponse(AbstractModel):
+    """CreateHealthCheckPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HealthCheckPolicyName: 健康检测策略名称
+        :type HealthCheckPolicyName: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._HealthCheckPolicyName = None
+        self._RequestId = None
+
+    @property
+    def HealthCheckPolicyName(self):
+        return self._HealthCheckPolicyName
+
+    @HealthCheckPolicyName.setter
+    def HealthCheckPolicyName(self, HealthCheckPolicyName):
+        self._HealthCheckPolicyName = HealthCheckPolicyName
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._HealthCheckPolicyName = params.get("HealthCheckPolicyName")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateNativeNodePoolParam(AbstractModel):
@@ -823,6 +907,76 @@ class DataDisk(AbstractModel):
         
 
 
+class DeleteHealthCheckPolicyRequest(AbstractModel):
+    """DeleteHealthCheckPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群 ID
+        :type ClusterId: str
+        :param _HealthCheckPolicyName: 健康检测策略名称
+        :type HealthCheckPolicyName: str
+        """
+        self._ClusterId = None
+        self._HealthCheckPolicyName = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def HealthCheckPolicyName(self):
+        return self._HealthCheckPolicyName
+
+    @HealthCheckPolicyName.setter
+    def HealthCheckPolicyName(self, HealthCheckPolicyName):
+        self._HealthCheckPolicyName = HealthCheckPolicyName
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._HealthCheckPolicyName = params.get("HealthCheckPolicyName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteHealthCheckPolicyResponse(AbstractModel):
+    """DeleteHealthCheckPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteNodePoolRequest(AbstractModel):
     """DeleteNodePool请求参数结构体
 
@@ -1046,6 +1200,317 @@ class DescribeClusterInstancesResponse(AbstractModel):
                 obj._deserialize(item)
                 self._InstanceSet.append(obj)
         self._Errors = params.get("Errors")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeHealthCheckPoliciesRequest(AbstractModel):
+    """DescribeHealthCheckPolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群 ID
+        :type ClusterId: str
+        :param _Filters: ·  HealthCheckPolicyName
+    按照【健康检测策略名称】进行过滤。
+    类型：String
+    必选：否
+        :type Filters: list of Filter
+        :param _Limit: 最大输出条数，默认20，最大为100
+        :type Limit: int
+        :param _Offset: 偏移量，默认0
+        :type Offset: int
+        """
+        self._ClusterId = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHealthCheckPoliciesResponse(AbstractModel):
+    """DescribeHealthCheckPolicies返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HealthCheckPolicies: 健康检测策略数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthCheckPolicies: list of HealthCheckPolicy
+        :param _TotalCount: 数组总数目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._HealthCheckPolicies = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def HealthCheckPolicies(self):
+        return self._HealthCheckPolicies
+
+    @HealthCheckPolicies.setter
+    def HealthCheckPolicies(self, HealthCheckPolicies):
+        self._HealthCheckPolicies = HealthCheckPolicies
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("HealthCheckPolicies") is not None:
+            self._HealthCheckPolicies = []
+            for item in params.get("HealthCheckPolicies"):
+                obj = HealthCheckPolicy()
+                obj._deserialize(item)
+                self._HealthCheckPolicies.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeHealthCheckPolicyBindingsRequest(AbstractModel):
+    """DescribeHealthCheckPolicyBindings请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群 ID
+        :type ClusterId: str
+        :param _Filter: ·  HealthCheckPolicyName
+    按照【健康检测规则名称】进行过滤。
+    类型：String
+    必选：否
+        :type Filter: list of Filter
+        :param _Limit: 最大输出条数，默认20，最大为100
+        :type Limit: int
+        :param _Offset: 偏移量，默认0
+        :type Offset: int
+        """
+        self._ClusterId = None
+        self._Filter = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Filter(self):
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        if params.get("Filter") is not None:
+            self._Filter = []
+            for item in params.get("Filter"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filter.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHealthCheckPolicyBindingsResponse(AbstractModel):
+    """DescribeHealthCheckPolicyBindings返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HealthCheckPolicyBindings: 健康检测规则数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthCheckPolicyBindings: list of HealthCheckPolicyBinding
+        :param _TotalCount: 健康检测规则数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._HealthCheckPolicyBindings = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def HealthCheckPolicyBindings(self):
+        return self._HealthCheckPolicyBindings
+
+    @HealthCheckPolicyBindings.setter
+    def HealthCheckPolicyBindings(self, HealthCheckPolicyBindings):
+        self._HealthCheckPolicyBindings = HealthCheckPolicyBindings
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("HealthCheckPolicyBindings") is not None:
+            self._HealthCheckPolicyBindings = []
+            for item in params.get("HealthCheckPolicyBindings"):
+                obj = HealthCheckPolicyBinding()
+                obj._deserialize(item)
+                self._HealthCheckPolicyBindings.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeHealthCheckTemplateRequest(AbstractModel):
+    """DescribeHealthCheckTemplate请求参数结构体
+
+    """
+
+
+class DescribeHealthCheckTemplateResponse(AbstractModel):
+    """DescribeHealthCheckTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HealthCheckTemplate: 健康检测策略模板
+        :type HealthCheckTemplate: :class:`tencentcloud.tke.v20220501.models.HealthCheckTemplate`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._HealthCheckTemplate = None
+        self._RequestId = None
+
+    @property
+    def HealthCheckTemplate(self):
+        return self._HealthCheckTemplate
+
+    @HealthCheckTemplate.setter
+    def HealthCheckTemplate(self, HealthCheckTemplate):
+        self._HealthCheckTemplate = HealthCheckTemplate
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("HealthCheckTemplate") is not None:
+            self._HealthCheckTemplate = HealthCheckTemplate()
+            self._HealthCheckTemplate._deserialize(params.get("HealthCheckTemplate"))
         self._RequestId = params.get("RequestId")
 
 
@@ -1433,6 +1898,313 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HealthCheckPolicy(AbstractModel):
+    """健康检测规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 健康检测策略名称
+        :type Name: str
+        :param _Rules: 健康检测策略规则列表
+        :type Rules: list of HealthCheckPolicyRule
+        """
+        self._Name = None
+        self._Rules = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Rules(self):
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = HealthCheckPolicyRule()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HealthCheckPolicyBinding(AbstractModel):
+    """健康检测策略和节点池的绑定关系
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 健康检测策略名称
+        :type Name: str
+        :param _CreatedAt: 规则创建时间
+        :type CreatedAt: str
+        :param _NodePools: 关联节点池数组
+        :type NodePools: list of str
+        """
+        self._Name = None
+        self._CreatedAt = None
+        self._NodePools = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def CreatedAt(self):
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def NodePools(self):
+        return self._NodePools
+
+    @NodePools.setter
+    def NodePools(self, NodePools):
+        self._NodePools = NodePools
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._CreatedAt = params.get("CreatedAt")
+        self._NodePools = params.get("NodePools")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HealthCheckPolicyRule(AbstractModel):
+    """健康检测规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 健康检测规则
+        :type Name: str
+        :param _Enabled: 是否检测此项目
+        :type Enabled: bool
+        :param _AutoRepairEnabled: 是否启用修复
+        :type AutoRepairEnabled: bool
+        """
+        self._Name = None
+        self._Enabled = None
+        self._AutoRepairEnabled = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Enabled(self):
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def AutoRepairEnabled(self):
+        return self._AutoRepairEnabled
+
+    @AutoRepairEnabled.setter
+    def AutoRepairEnabled(self, AutoRepairEnabled):
+        self._AutoRepairEnabled = AutoRepairEnabled
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Enabled = params.get("Enabled")
+        self._AutoRepairEnabled = params.get("AutoRepairEnabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HealthCheckTemplate(AbstractModel):
+    """健康检测模板
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Rules: 健康检测项
+        :type Rules: list of HealthCheckTemplateRule
+        """
+        self._Rules = None
+
+    @property
+    def Rules(self):
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = HealthCheckTemplateRule()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HealthCheckTemplateRule(AbstractModel):
+    """健康检测模板规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 健康检测项目名称
+        :type Name: str
+        :param _Description: 健康检测规则描述
+        :type Description: str
+        :param _RepairAction: 修复动作
+        :type RepairAction: str
+        :param _RepairEffect: 修复影响
+        :type RepairEffect: str
+        :param _ShouldEnable: 是否建议开启检测
+        :type ShouldEnable: bool
+        :param _ShouldRepair: 是否建议修复
+        :type ShouldRepair: bool
+        :param _Severity: 问题严重程度
+        :type Severity: str
+        """
+        self._Name = None
+        self._Description = None
+        self._RepairAction = None
+        self._RepairEffect = None
+        self._ShouldEnable = None
+        self._ShouldRepair = None
+        self._Severity = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def RepairAction(self):
+        return self._RepairAction
+
+    @RepairAction.setter
+    def RepairAction(self, RepairAction):
+        self._RepairAction = RepairAction
+
+    @property
+    def RepairEffect(self):
+        return self._RepairEffect
+
+    @RepairEffect.setter
+    def RepairEffect(self, RepairEffect):
+        self._RepairEffect = RepairEffect
+
+    @property
+    def ShouldEnable(self):
+        return self._ShouldEnable
+
+    @ShouldEnable.setter
+    def ShouldEnable(self, ShouldEnable):
+        self._ShouldEnable = ShouldEnable
+
+    @property
+    def ShouldRepair(self):
+        return self._ShouldRepair
+
+    @ShouldRepair.setter
+    def ShouldRepair(self, ShouldRepair):
+        self._ShouldRepair = ShouldRepair
+
+    @property
+    def Severity(self):
+        return self._Severity
+
+    @Severity.setter
+    def Severity(self, Severity):
+        self._Severity = Severity
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._RepairAction = params.get("RepairAction")
+        self._RepairEffect = params.get("RepairEffect")
+        self._ShouldEnable = params.get("ShouldEnable")
+        self._ShouldRepair = params.get("ShouldRepair")
+        self._Severity = params.get("Severity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2287,6 +3059,78 @@ class ManuallyAdded(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyHealthCheckPolicyRequest(AbstractModel):
+    """ModifyHealthCheckPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群 ID
+        :type ClusterId: str
+        :param _HealthCheckPolicy: 健康检测策略
+        :type HealthCheckPolicy: :class:`tencentcloud.tke.v20220501.models.HealthCheckPolicy`
+        """
+        self._ClusterId = None
+        self._HealthCheckPolicy = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def HealthCheckPolicy(self):
+        return self._HealthCheckPolicy
+
+    @HealthCheckPolicy.setter
+    def HealthCheckPolicy(self, HealthCheckPolicy):
+        self._HealthCheckPolicy = HealthCheckPolicy
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        if params.get("HealthCheckPolicy") is not None:
+            self._HealthCheckPolicy = HealthCheckPolicy()
+            self._HealthCheckPolicy._deserialize(params.get("HealthCheckPolicy"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyHealthCheckPolicyResponse(AbstractModel):
+    """ModifyHealthCheckPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyNodePoolRequest(AbstractModel):

@@ -119,6 +119,31 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateSLInstance(self, request):
+        """本接口（CreateSLInstance）用于创建 Lite HBase 实例
+        - 接口调用成功，会创建Lite HBase实例，创建实例请求成功会返回创建实例的 InstaceId 和请求的 RequestID。
+        - 接口为异步接口，接口返回时操作并未立即完成，实例操作结果可以通过调用 DescribeInstancesList 查看当前实例的 StatusDesc 状态。
+
+        :param request: Request instance for CreateSLInstance.
+        :type request: :class:`tencentcloud.emr.v20190103.models.CreateSLInstanceRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.CreateSLInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSLInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSLInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteAutoScaleStrategy(self, request):
         """删除自动扩缩容规则，后台销毁根据该规则扩缩容出来的节点
 
@@ -156,6 +181,29 @@ class EmrClient(AbstractClient):
             body = self.call("DeleteUserManagerUserList", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteUserManagerUserListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeployYarnConf(self, request):
+        """yarn资源调度-部署生效
+
+        :param request: Request instance for DeployYarnConf.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DeployYarnConfRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DeployYarnConfResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeployYarnConf", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeployYarnConfResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -340,6 +388,29 @@ class EmrClient(AbstractClient):
             body = self.call("DescribeEmrOverviewMetrics", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeEmrOverviewMetricsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeGlobalConfig(self, request):
+        """查询YARN资源调度的全局配置
+
+        :param request: Request instance for DescribeGlobalConfig.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeGlobalConfigRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeGlobalConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGlobalConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGlobalConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -534,7 +605,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeResourceSchedule(self, request):
-        """查询YARN资源调度数据信息
+        """查询YARN资源调度数据信息。已废弃，请使用`DescribeYarnQueue`去查询队列信息。
 
         :param request: Request instance for DescribeResourceSchedule.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeResourceScheduleRequest`
@@ -547,6 +618,75 @@ class EmrClient(AbstractClient):
             body = self.call("DescribeResourceSchedule", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeResourceScheduleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeResourceScheduleDiffDetail(self, request):
+        """YARN资源调度-变更详情
+
+        :param request: Request instance for DescribeResourceScheduleDiffDetail.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeResourceScheduleDiffDetailRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeResourceScheduleDiffDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourceScheduleDiffDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResourceScheduleDiffDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSLInstance(self, request):
+        """本接口（DescribeSLInstance）用于查询 Lite HBase 实例基本信息
+
+        :param request: Request instance for DescribeSLInstance.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeSLInstanceRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeSLInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSLInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSLInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSLInstanceList(self, request):
+        """本接口（DescribeSLInstanceList）用于查询 Lite HBase 实例列表详细信息
+
+        :param request: Request instance for DescribeSLInstanceList.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeSLInstanceListRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeSLInstanceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSLInstanceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSLInstanceListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -649,8 +789,31 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeYarnQueue(self, request):
+        """获取资源调度中的队列信息
+
+        :param request: Request instance for DescribeYarnQueue.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeYarnQueueRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeYarnQueueResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeYarnQueue", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeYarnQueueResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeYarnScheduleHistory(self, request):
-        """查看yarn资源调度的调度历史
+        """查看yarn资源调度的调度历史。废弃，请使用流程中心查看历史记录。
 
         :param request: Request instance for DescribeYarnScheduleHistory.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeYarnScheduleHistoryRequest`
@@ -787,6 +950,30 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyAutoRenewFlag(self, request):
+        """前提：预付费集群
+        资源级别开启或关闭自动续费
+
+        :param request: Request instance for ModifyAutoRenewFlag.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ModifyAutoRenewFlagRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifyAutoRenewFlagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAutoRenewFlag", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAutoRenewFlagResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyAutoScaleStrategy(self, request):
         """修改自动扩缩容规则
 
@@ -810,8 +997,31 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyGlobalConfig(self, request):
+        """修改YARN资源调度的全局配置
+
+        :param request: Request instance for ModifyGlobalConfig.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ModifyGlobalConfigRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifyGlobalConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyGlobalConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyGlobalConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyResourcePools(self, request):
-        """刷新YARN的动态资源池
+        """刷新YARN的动态资源池。已废弃，请使用`DeployYarnConf`
 
         :param request: Request instance for ModifyResourcePools.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifyResourcePoolsRequest`
@@ -834,7 +1044,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifyResourceScheduleConfig(self, request):
-        """修改YARN资源调度的资源配置
+        """修改YARN资源调度的资源配置。已废弃，请使用`ModifyYarnQueueV2`来修改队列配置
 
         :param request: Request instance for ModifyResourceScheduleConfig.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifyResourceScheduleConfigRequest`
@@ -857,7 +1067,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifyResourceScheduler(self, request):
-        """修改了yarn的资源调度器，点击部署生效
+        """修改了yarn的资源调度器，点击部署生效。
 
         :param request: Request instance for ModifyResourceScheduler.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifyResourceSchedulerRequest`
@@ -902,6 +1112,31 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifySLInstance(self, request):
+        """本接口（ModifySLInstance）用于修改Lite HBase 实例节点数。
+        - 接口调用成功，会创建Lite HBase实例，创建实例请求成功会返回请求的 RequestID。
+        - 接口为异步接口，接口返回时操作并未立即完成，实例操作结果可以通过调用 DescribeInstancesList 查看当前实例的 StatusDesc 状态。
+
+        :param request: Request instance for ModifySLInstance.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ModifySLInstanceRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifySLInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySLInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySLInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyUserManagerPwd(self, request):
         """修改用户密码（用户管理）
 
@@ -926,7 +1161,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifyYarnDeploy(self, request):
-        """部署生效
+        """部署生效。已废弃，请使用`DeployYarnConf`接口进行部署生效
 
         :param request: Request instance for ModifyYarnDeploy.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifyYarnDeployRequest`
@@ -939,6 +1174,52 @@ class EmrClient(AbstractClient):
             body = self.call("ModifyYarnDeploy", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyYarnDeployResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyYarnQueueV2(self, request):
+        """修改资源调度中队列信息
+
+        :param request: Request instance for ModifyYarnQueueV2.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ModifyYarnQueueV2Request`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifyYarnQueueV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyYarnQueueV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyYarnQueueV2Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ResetYarnConfig(self, request):
+        """修改YARN资源调度的资源配置
+
+        :param request: Request instance for ResetYarnConfig.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ResetYarnConfigRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ResetYarnConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResetYarnConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResetYarnConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1100,6 +1381,29 @@ class EmrClient(AbstractClient):
             body = self.call("TerminateInstance", params, headers=headers)
             response = json.loads(body)
             model = models.TerminateInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def TerminateSLInstance(self, request):
+        """本接口（TerminateSLInstance）用于销毁 Lite HBase 实例
+
+        :param request: Request instance for TerminateSLInstance.
+        :type request: :class:`tencentcloud.emr.v20190103.models.TerminateSLInstanceRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.TerminateSLInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TerminateSLInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.TerminateSLInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

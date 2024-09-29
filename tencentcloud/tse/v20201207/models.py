@@ -5265,8 +5265,6 @@ class CreateCloudNativeAPIGatewayServiceRequest(AbstractModel):
 - tcp
 - udp
         :type Protocol: str
-        :param _Path: 请求路径
-        :type Path: str
         :param _Timeout: 超时时间，单位ms
         :type Timeout: int
         :param _Retries: 重试次数
@@ -5280,15 +5278,17 @@ class CreateCloudNativeAPIGatewayServiceRequest(AbstractModel):
         :type UpstreamType: str
         :param _UpstreamInfo: 服务配置信息
         :type UpstreamInfo: :class:`tencentcloud.tse.v20201207.models.KongUpstreamInfo`
+        :param _Path: 请求路径
+        :type Path: str
         """
         self._GatewayId = None
         self._Name = None
         self._Protocol = None
-        self._Path = None
         self._Timeout = None
         self._Retries = None
         self._UpstreamType = None
         self._UpstreamInfo = None
+        self._Path = None
 
     @property
     def GatewayId(self):
@@ -5313,14 +5313,6 @@ class CreateCloudNativeAPIGatewayServiceRequest(AbstractModel):
     @Protocol.setter
     def Protocol(self, Protocol):
         self._Protocol = Protocol
-
-    @property
-    def Path(self):
-        return self._Path
-
-    @Path.setter
-    def Path(self, Path):
-        self._Path = Path
 
     @property
     def Timeout(self):
@@ -5354,18 +5346,26 @@ class CreateCloudNativeAPIGatewayServiceRequest(AbstractModel):
     def UpstreamInfo(self, UpstreamInfo):
         self._UpstreamInfo = UpstreamInfo
 
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
         self._Name = params.get("Name")
         self._Protocol = params.get("Protocol")
-        self._Path = params.get("Path")
         self._Timeout = params.get("Timeout")
         self._Retries = params.get("Retries")
         self._UpstreamType = params.get("UpstreamType")
         if params.get("UpstreamInfo") is not None:
             self._UpstreamInfo = KongUpstreamInfo()
             self._UpstreamInfo._deserialize(params.get("UpstreamInfo"))
+        self._Path = params.get("Path")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5633,7 +5633,8 @@ polarismesh - STANDARD版本
 - ap-jakarta：雅加达
 - ap-singapore：新加坡
 北美区 参考值
-- na-toronto：多伦多
+- na-siliconvalley：硅谷
+- na-ashburn: 弗吉尼亚
 金融专区 参考值
 - ap-beijing-fsi：北京金融
 - ap-shanghai-fsi：上海金融
@@ -20313,8 +20314,6 @@ class ModifyCloudNativeAPIGatewayServiceRequest(AbstractModel):
 - tcp 
 - udp
         :type Protocol: str
-        :param _Path: 请求路径
-        :type Path: str
         :param _Timeout: 超时时间，单位ms
         :type Timeout: int
         :param _Retries: 重试次数
@@ -20330,16 +20329,18 @@ class ModifyCloudNativeAPIGatewayServiceRequest(AbstractModel):
         :type UpstreamInfo: :class:`tencentcloud.tse.v20201207.models.KongUpstreamInfo`
         :param _ID: 服务ID
         :type ID: str
+        :param _Path: 请求路径
+        :type Path: str
         """
         self._GatewayId = None
         self._Name = None
         self._Protocol = None
-        self._Path = None
         self._Timeout = None
         self._Retries = None
         self._UpstreamType = None
         self._UpstreamInfo = None
         self._ID = None
+        self._Path = None
 
     @property
     def GatewayId(self):
@@ -20364,14 +20365,6 @@ class ModifyCloudNativeAPIGatewayServiceRequest(AbstractModel):
     @Protocol.setter
     def Protocol(self, Protocol):
         self._Protocol = Protocol
-
-    @property
-    def Path(self):
-        return self._Path
-
-    @Path.setter
-    def Path(self, Path):
-        self._Path = Path
 
     @property
     def Timeout(self):
@@ -20413,12 +20406,19 @@ class ModifyCloudNativeAPIGatewayServiceRequest(AbstractModel):
     def ID(self, ID):
         self._ID = ID
 
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
         self._Name = params.get("Name")
         self._Protocol = params.get("Protocol")
-        self._Path = params.get("Path")
         self._Timeout = params.get("Timeout")
         self._Retries = params.get("Retries")
         self._UpstreamType = params.get("UpstreamType")
@@ -20426,6 +20426,7 @@ class ModifyCloudNativeAPIGatewayServiceRequest(AbstractModel):
             self._UpstreamInfo = KongUpstreamInfo()
             self._UpstreamInfo._deserialize(params.get("UpstreamInfo"))
         self._ID = params.get("ID")
+        self._Path = params.get("Path")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22761,9 +22762,17 @@ class RuleFilter(AbstractModel):
         :param _Values: 限流条件的Values
 注意：此字段可能返回 null，表示取不到有效值。
         :type Values: list of str
+        :param _Operator: 操作符
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operator: str
+        :param _Name: header或query对应的name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
         """
         self._Key = None
         self._Values = None
+        self._Operator = None
+        self._Name = None
 
     @property
     def Key(self):
@@ -22781,10 +22790,28 @@ class RuleFilter(AbstractModel):
     def Values(self, Values):
         self._Values = Values
 
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
 
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Values = params.get("Values")
+        self._Operator = params.get("Operator")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

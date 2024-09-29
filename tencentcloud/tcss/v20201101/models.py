@@ -20594,11 +20594,14 @@ class DescribeAssetImageRegistryAssetStatusResponse(AbstractModel):
         :param _Err: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Err: str
+        :param _LatestSyncSuccessTime: 最后一次同步成功时间
+        :type LatestSyncSuccessTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Status = None
         self._Err = None
+        self._LatestSyncSuccessTime = None
         self._RequestId = None
 
     @property
@@ -20618,6 +20621,14 @@ class DescribeAssetImageRegistryAssetStatusResponse(AbstractModel):
         self._Err = Err
 
     @property
+    def LatestSyncSuccessTime(self):
+        return self._LatestSyncSuccessTime
+
+    @LatestSyncSuccessTime.setter
+    def LatestSyncSuccessTime(self, LatestSyncSuccessTime):
+        self._LatestSyncSuccessTime = LatestSyncSuccessTime
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -20629,6 +20640,7 @@ class DescribeAssetImageRegistryAssetStatusResponse(AbstractModel):
     def _deserialize(self, params):
         self._Status = params.get("Status")
         self._Err = params.get("Err")
+        self._LatestSyncSuccessTime = params.get("LatestSyncSuccessTime")
         self._RequestId = params.get("RequestId")
 
 
@@ -22261,10 +22273,21 @@ class DescribeAssetImageRegistrySummaryResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _UnScannedImageCnt: 待扫描镜像个数
+        :type UnScannedImageCnt: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._UnScannedImageCnt = None
         self._RequestId = None
+
+    @property
+    def UnScannedImageCnt(self):
+        return self._UnScannedImageCnt
+
+    @UnScannedImageCnt.setter
+    def UnScannedImageCnt(self, UnScannedImageCnt):
+        self._UnScannedImageCnt = UnScannedImageCnt
 
     @property
     def RequestId(self):
@@ -22276,6 +22299,7 @@ class DescribeAssetImageRegistrySummaryResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._UnScannedImageCnt = params.get("UnScannedImageCnt")
         self._RequestId = params.get("RequestId")
 
 
@@ -23146,6 +23170,12 @@ class DescribeAssetImageScanSettingResponse(AbstractModel):
         :param _ExcludeImages: 排除的扫描镜像
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExcludeImages: list of str
+        :param _LastScanTime: 最后一次扫描时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastScanTime: str
+        :param _ScanResult: 扫描结果(Success|InsufficientLicense|ImageNeedIsEmpty|InternalError)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanResult: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -23161,6 +23191,8 @@ class DescribeAssetImageScanSettingResponse(AbstractModel):
         self._ScanScope = None
         self._ScanEndTime = None
         self._ExcludeImages = None
+        self._LastScanTime = None
+        self._ScanResult = None
         self._RequestId = None
 
     @property
@@ -23264,6 +23296,22 @@ class DescribeAssetImageScanSettingResponse(AbstractModel):
         self._ExcludeImages = ExcludeImages
 
     @property
+    def LastScanTime(self):
+        return self._LastScanTime
+
+    @LastScanTime.setter
+    def LastScanTime(self, LastScanTime):
+        self._LastScanTime = LastScanTime
+
+    @property
+    def ScanResult(self):
+        return self._ScanResult
+
+    @ScanResult.setter
+    def ScanResult(self, ScanResult):
+        self._ScanResult = ScanResult
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -23285,6 +23333,8 @@ class DescribeAssetImageScanSettingResponse(AbstractModel):
         self._ScanScope = params.get("ScanScope")
         self._ScanEndTime = params.get("ScanEndTime")
         self._ExcludeImages = params.get("ExcludeImages")
+        self._LastScanTime = params.get("LastScanTime")
+        self._ScanResult = params.get("ScanResult")
         self._RequestId = params.get("RequestId")
 
 
@@ -23445,10 +23495,19 @@ class DescribeAssetImageScanTaskResponse(AbstractModel):
         r"""
         :param _TaskID: 任务id
         :type TaskID: str
+        :param _LastScanTime: 最近扫描时间
+        :type LastScanTime: str
+        :param _Status: 扫描状态(READY:准备 SCANNING:扫描中 END:完成)
+        :type Status: str
+        :param _SubStatus: 扫描子状态(Success:成功 Timeout:超时 Cancel:取消 Error:错误)
+        :type SubStatus: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskID = None
+        self._LastScanTime = None
+        self._Status = None
+        self._SubStatus = None
         self._RequestId = None
 
     @property
@@ -23458,6 +23517,30 @@ class DescribeAssetImageScanTaskResponse(AbstractModel):
     @TaskID.setter
     def TaskID(self, TaskID):
         self._TaskID = TaskID
+
+    @property
+    def LastScanTime(self):
+        return self._LastScanTime
+
+    @LastScanTime.setter
+    def LastScanTime(self, LastScanTime):
+        self._LastScanTime = LastScanTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SubStatus(self):
+        return self._SubStatus
+
+    @SubStatus.setter
+    def SubStatus(self, SubStatus):
+        self._SubStatus = SubStatus
 
     @property
     def RequestId(self):
@@ -23470,6 +23553,9 @@ class DescribeAssetImageScanTaskResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._TaskID = params.get("TaskID")
+        self._LastScanTime = params.get("LastScanTime")
+        self._Status = params.get("Status")
+        self._SubStatus = params.get("SubStatus")
         self._RequestId = params.get("RequestId")
 
 
@@ -24486,6 +24572,8 @@ class DescribeAssetSummaryResponse(AbstractModel):
         :type RecommendedFixImageCnt: int
         :param _ScannedImageCnt: 已扫描镜像个数
         :type ScannedImageCnt: int
+        :param _UnScannedImageCnt: 待扫描镜像个数
+        :type UnScannedImageCnt: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -24515,6 +24603,7 @@ class DescribeAssetSummaryResponse(AbstractModel):
         self._TodayUnsafeImageCnt = None
         self._RecommendedFixImageCnt = None
         self._ScannedImageCnt = None
+        self._UnScannedImageCnt = None
         self._RequestId = None
 
     @property
@@ -24726,6 +24815,14 @@ class DescribeAssetSummaryResponse(AbstractModel):
         self._ScannedImageCnt = ScannedImageCnt
 
     @property
+    def UnScannedImageCnt(self):
+        return self._UnScannedImageCnt
+
+    @UnScannedImageCnt.setter
+    def UnScannedImageCnt(self, UnScannedImageCnt):
+        self._UnScannedImageCnt = UnScannedImageCnt
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -24761,6 +24858,7 @@ class DescribeAssetSummaryResponse(AbstractModel):
         self._TodayUnsafeImageCnt = params.get("TodayUnsafeImageCnt")
         self._RecommendedFixImageCnt = params.get("RecommendedFixImageCnt")
         self._ScannedImageCnt = params.get("ScannedImageCnt")
+        self._UnScannedImageCnt = params.get("UnScannedImageCnt")
         self._RequestId = params.get("RequestId")
 
 
@@ -29301,6 +29399,10 @@ class DescribeImageAuthorizedInfoResponse(AbstractModel):
         :type UsedPurchasedAuthorizedCnt: int
         :param _CanApplyFreeImageAuthorize: 是否可免费领取镜像授权数
         :type CanApplyFreeImageAuthorize: bool
+        :param _ImageScanInquireInfo: 镜像扫描计费信息
+        :type ImageScanInquireInfo: :class:`tencentcloud.tcss.v20201101.models.ImageScanInquireInfo`
+        :param _RepeatImageIdCnt: 重复镜像数(本地镜像和仓库镜像)
+        :type RepeatImageIdCnt: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -29314,6 +29416,8 @@ class DescribeImageAuthorizedInfoResponse(AbstractModel):
         self._PurchasedAuthorizedCnt = None
         self._UsedPurchasedAuthorizedCnt = None
         self._CanApplyFreeImageAuthorize = None
+        self._ImageScanInquireInfo = None
+        self._RepeatImageIdCnt = None
         self._RequestId = None
 
     @property
@@ -29397,6 +29501,22 @@ class DescribeImageAuthorizedInfoResponse(AbstractModel):
         self._CanApplyFreeImageAuthorize = CanApplyFreeImageAuthorize
 
     @property
+    def ImageScanInquireInfo(self):
+        return self._ImageScanInquireInfo
+
+    @ImageScanInquireInfo.setter
+    def ImageScanInquireInfo(self, ImageScanInquireInfo):
+        self._ImageScanInquireInfo = ImageScanInquireInfo
+
+    @property
+    def RepeatImageIdCnt(self):
+        return self._RepeatImageIdCnt
+
+    @RepeatImageIdCnt.setter
+    def RepeatImageIdCnt(self, RepeatImageIdCnt):
+        self._RepeatImageIdCnt = RepeatImageIdCnt
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -29416,6 +29536,10 @@ class DescribeImageAuthorizedInfoResponse(AbstractModel):
         self._PurchasedAuthorizedCnt = params.get("PurchasedAuthorizedCnt")
         self._UsedPurchasedAuthorizedCnt = params.get("UsedPurchasedAuthorizedCnt")
         self._CanApplyFreeImageAuthorize = params.get("CanApplyFreeImageAuthorize")
+        if params.get("ImageScanInquireInfo") is not None:
+            self._ImageScanInquireInfo = ImageScanInquireInfo()
+            self._ImageScanInquireInfo._deserialize(params.get("ImageScanInquireInfo"))
+        self._RepeatImageIdCnt = params.get("RepeatImageIdCnt")
         self._RequestId = params.get("RequestId")
 
 
@@ -30162,6 +30286,11 @@ class DescribeImageRegistryTimingScanTaskResponse(AbstractModel):
         :param _ExcludeImageAssetIds: 排除的镜像资产id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExcludeImageAssetIds: list of int non-negative
+        :param _LastScanTime: 最近扫描时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastScanTime: str
+        :param _ScanResult: 扫描结果(Success|InsufficientLicense|ImageNeedIsEmpty|InternalError)
+        :type ScanResult: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -30179,6 +30308,8 @@ class DescribeImageRegistryTimingScanTaskResponse(AbstractModel):
         self._ScanScope = None
         self._Namespace = None
         self._ExcludeImageAssetIds = None
+        self._LastScanTime = None
+        self._ScanResult = None
         self._RequestId = None
 
     @property
@@ -30298,6 +30429,22 @@ class DescribeImageRegistryTimingScanTaskResponse(AbstractModel):
         self._ExcludeImageAssetIds = ExcludeImageAssetIds
 
     @property
+    def LastScanTime(self):
+        return self._LastScanTime
+
+    @LastScanTime.setter
+    def LastScanTime(self, LastScanTime):
+        self._LastScanTime = LastScanTime
+
+    @property
+    def ScanResult(self):
+        return self._ScanResult
+
+    @ScanResult.setter
+    def ScanResult(self, ScanResult):
+        self._ScanResult = ScanResult
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -30326,6 +30473,8 @@ class DescribeImageRegistryTimingScanTaskResponse(AbstractModel):
         self._ScanScope = params.get("ScanScope")
         self._Namespace = params.get("Namespace")
         self._ExcludeImageAssetIds = params.get("ExcludeImageAssetIds")
+        self._LastScanTime = params.get("LastScanTime")
+        self._ScanResult = params.get("ScanResult")
         self._RequestId = params.get("RequestId")
 
 
@@ -47542,6 +47691,114 @@ IRT_RISK:敏感信息
                 obj._deserialize(item)
                 self._ImageRiskSet.append(obj)
         self._ImageRiskType = params.get("ImageRiskType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageScanInquireInfo(AbstractModel):
+    """镜像扫描计费信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InquireKey: 计费项
+        :type InquireKey: str
+        :param _Capcity: 容量
+        :type Capcity: int
+        :param _Useage: 已使用量
+        :type Useage: int
+        :param _StartTime: 起始时间
+        :type StartTime: str
+        :param _EndTime: 截止时间
+        :type EndTime: str
+        :param _PurchaseStatus: 计费状态
+(Pending:待购)
+(Normal:正常)
+(Isolate:隔离)
+        :type PurchaseStatus: str
+        :param _ResourceID: 资源ID
+        :type ResourceID: str
+        """
+        self._InquireKey = None
+        self._Capcity = None
+        self._Useage = None
+        self._StartTime = None
+        self._EndTime = None
+        self._PurchaseStatus = None
+        self._ResourceID = None
+
+    @property
+    def InquireKey(self):
+        return self._InquireKey
+
+    @InquireKey.setter
+    def InquireKey(self, InquireKey):
+        self._InquireKey = InquireKey
+
+    @property
+    def Capcity(self):
+        return self._Capcity
+
+    @Capcity.setter
+    def Capcity(self, Capcity):
+        self._Capcity = Capcity
+
+    @property
+    def Useage(self):
+        return self._Useage
+
+    @Useage.setter
+    def Useage(self, Useage):
+        self._Useage = Useage
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def PurchaseStatus(self):
+        return self._PurchaseStatus
+
+    @PurchaseStatus.setter
+    def PurchaseStatus(self, PurchaseStatus):
+        self._PurchaseStatus = PurchaseStatus
+
+    @property
+    def ResourceID(self):
+        return self._ResourceID
+
+    @ResourceID.setter
+    def ResourceID(self, ResourceID):
+        self._ResourceID = ResourceID
+
+
+    def _deserialize(self, params):
+        self._InquireKey = params.get("InquireKey")
+        self._Capcity = params.get("Capcity")
+        self._Useage = params.get("Useage")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._PurchaseStatus = params.get("PurchaseStatus")
+        self._ResourceID = params.get("ResourceID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

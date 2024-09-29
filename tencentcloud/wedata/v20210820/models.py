@@ -27338,6 +27338,152 @@ class DescribeTableMetasResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTablePartitionsRequest(AbstractModel):
+    """DescribeTablePartitions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableId: 表ID
+        :type TableId: str
+        :param _PageNumber: 分页number
+        :type PageNumber: int
+        :param _PageSize: 分页size
+        :type PageSize: int
+        :param _FilterSet: 过滤器
+        :type FilterSet: list of Filter
+        :param _OrderFieldSet: 排序字段
+        :type OrderFieldSet: list of OrderField
+        """
+        self._TableId = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._FilterSet = None
+        self._OrderFieldSet = None
+
+    @property
+    def TableId(self):
+        return self._TableId
+
+    @TableId.setter
+    def TableId(self, TableId):
+        self._TableId = TableId
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def FilterSet(self):
+        return self._FilterSet
+
+    @FilterSet.setter
+    def FilterSet(self, FilterSet):
+        self._FilterSet = FilterSet
+
+    @property
+    def OrderFieldSet(self):
+        return self._OrderFieldSet
+
+    @OrderFieldSet.setter
+    def OrderFieldSet(self, OrderFieldSet):
+        self._OrderFieldSet = OrderFieldSet
+
+
+    def _deserialize(self, params):
+        self._TableId = params.get("TableId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        if params.get("FilterSet") is not None:
+            self._FilterSet = []
+            for item in params.get("FilterSet"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._FilterSet.append(obj)
+        if params.get("OrderFieldSet") is not None:
+            self._OrderFieldSet = []
+            for item in params.get("OrderFieldSet"):
+                obj = OrderField()
+                obj._deserialize(item)
+                self._OrderFieldSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTablePartitionsResponse(AbstractModel):
+    """DescribeTablePartitions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TablePartitionSet: 分区详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TablePartitionSet: list of TablePartition
+        :param _TotalCount: 总记录数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TablePartitionSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def TablePartitionSet(self):
+        return self._TablePartitionSet
+
+    @TablePartitionSet.setter
+    def TablePartitionSet(self, TablePartitionSet):
+        self._TablePartitionSet = TablePartitionSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TablePartitionSet") is not None:
+            self._TablePartitionSet = []
+            for item in params.get("TablePartitionSet"):
+                obj = TablePartition()
+                obj._deserialize(item)
+                self._TablePartitionSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTableQualityDetailsRequest(AbstractModel):
     """DescribeTableQualityDetails请求参数结构体
 
@@ -58388,6 +58534,125 @@ class TableNameFilter(AbstractModel):
         
 
 
+class TablePartition(AbstractModel):
+    """表的分区数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PartitionName: 分区名称
+        :type PartitionName: str
+        :param _RecordCount: 分区记录数
+        :type RecordCount: int
+        :param _StorageSize: 分区数据存储大小，字节数
+        :type StorageSize: str
+        :param _CreateTime: 分区创建时间
+        :type CreateTime: str
+        :param _ModifiedTime: 分区修改时间
+        :type ModifiedTime: str
+        :param _StorageSizeWithUnit: 分区数据存储大小，已转为适合的单位
+        :type StorageSizeWithUnit: str
+        :param _NumFiles: 文件数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NumFiles: int
+        :param _AverageFileSizeWithUnit: 平均文件大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AverageFileSizeWithUnit: str
+        """
+        self._PartitionName = None
+        self._RecordCount = None
+        self._StorageSize = None
+        self._CreateTime = None
+        self._ModifiedTime = None
+        self._StorageSizeWithUnit = None
+        self._NumFiles = None
+        self._AverageFileSizeWithUnit = None
+
+    @property
+    def PartitionName(self):
+        return self._PartitionName
+
+    @PartitionName.setter
+    def PartitionName(self, PartitionName):
+        self._PartitionName = PartitionName
+
+    @property
+    def RecordCount(self):
+        return self._RecordCount
+
+    @RecordCount.setter
+    def RecordCount(self, RecordCount):
+        self._RecordCount = RecordCount
+
+    @property
+    def StorageSize(self):
+        return self._StorageSize
+
+    @StorageSize.setter
+    def StorageSize(self, StorageSize):
+        self._StorageSize = StorageSize
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifiedTime(self):
+        return self._ModifiedTime
+
+    @ModifiedTime.setter
+    def ModifiedTime(self, ModifiedTime):
+        self._ModifiedTime = ModifiedTime
+
+    @property
+    def StorageSizeWithUnit(self):
+        return self._StorageSizeWithUnit
+
+    @StorageSizeWithUnit.setter
+    def StorageSizeWithUnit(self, StorageSizeWithUnit):
+        self._StorageSizeWithUnit = StorageSizeWithUnit
+
+    @property
+    def NumFiles(self):
+        return self._NumFiles
+
+    @NumFiles.setter
+    def NumFiles(self, NumFiles):
+        self._NumFiles = NumFiles
+
+    @property
+    def AverageFileSizeWithUnit(self):
+        return self._AverageFileSizeWithUnit
+
+    @AverageFileSizeWithUnit.setter
+    def AverageFileSizeWithUnit(self, AverageFileSizeWithUnit):
+        self._AverageFileSizeWithUnit = AverageFileSizeWithUnit
+
+
+    def _deserialize(self, params):
+        self._PartitionName = params.get("PartitionName")
+        self._RecordCount = params.get("RecordCount")
+        self._StorageSize = params.get("StorageSize")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifiedTime = params.get("ModifiedTime")
+        self._StorageSizeWithUnit = params.get("StorageSizeWithUnit")
+        self._NumFiles = params.get("NumFiles")
+        self._AverageFileSizeWithUnit = params.get("AverageFileSizeWithUnit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TablePropertyScore(AbstractModel):
     """按天更新的表的资产评分
 
@@ -60396,6 +60661,9 @@ class TaskOpsDto(AbstractModel):
         :param _ExtResourceFlag: 资源获取标识
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtResourceFlag: :class:`tencentcloud.wedata.v20210820.models.ExtResourceFlagDto`
+        :param _NewParentTaskInfos: 父任务simple信息(新)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NewParentTaskInfos: list of AiopsSimpleTaskDto
         """
         self._TaskId = None
         self._VirtualTaskId = None
@@ -60485,6 +60753,7 @@ class TaskOpsDto(AbstractModel):
         self._DLCResourceConfig = None
         self._ParentTaskInfos = None
         self._ExtResourceFlag = None
+        self._NewParentTaskInfos = None
 
     @property
     def TaskId(self):
@@ -61190,6 +61459,14 @@ class TaskOpsDto(AbstractModel):
     def ExtResourceFlag(self, ExtResourceFlag):
         self._ExtResourceFlag = ExtResourceFlag
 
+    @property
+    def NewParentTaskInfos(self):
+        return self._NewParentTaskInfos
+
+    @NewParentTaskInfos.setter
+    def NewParentTaskInfos(self, NewParentTaskInfos):
+        self._NewParentTaskInfos = NewParentTaskInfos
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -61297,6 +61574,12 @@ class TaskOpsDto(AbstractModel):
         if params.get("ExtResourceFlag") is not None:
             self._ExtResourceFlag = ExtResourceFlagDto()
             self._ExtResourceFlag._deserialize(params.get("ExtResourceFlag"))
+        if params.get("NewParentTaskInfos") is not None:
+            self._NewParentTaskInfos = []
+            for item in params.get("NewParentTaskInfos"):
+                obj = AiopsSimpleTaskDto()
+                obj._deserialize(item)
+                self._NewParentTaskInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -843,7 +843,7 @@ class AutoUpgradeClusterLevel(AbstractModel):
 
 
 class AutoscalingAdded(AbstractModel):
-    """自动扩所容的节点
+    """自动扩缩容的节点
 
     """
 
@@ -1671,6 +1671,9 @@ class Cluster(AbstractModel):
         :param _ClusterEtcdNodeNum: 集群当前etcd数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterEtcdNodeNum: int
+        :param _CdcId: 本地专用集群Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CdcId: str
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -1696,6 +1699,7 @@ class Cluster(AbstractModel):
         self._QGPUShareEnable = None
         self._RuntimeVersion = None
         self._ClusterEtcdNodeNum = None
+        self._CdcId = None
 
     @property
     def ClusterId(self):
@@ -1889,6 +1893,14 @@ class Cluster(AbstractModel):
     def ClusterEtcdNodeNum(self, ClusterEtcdNodeNum):
         self._ClusterEtcdNodeNum = ClusterEtcdNodeNum
 
+    @property
+    def CdcId(self):
+        return self._CdcId
+
+    @CdcId.setter
+    def CdcId(self, CdcId):
+        self._CdcId = CdcId
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -1922,6 +1934,7 @@ class Cluster(AbstractModel):
         self._QGPUShareEnable = params.get("QGPUShareEnable")
         self._RuntimeVersion = params.get("RuntimeVersion")
         self._ClusterEtcdNodeNum = params.get("ClusterEtcdNodeNum")
+        self._CdcId = params.get("CdcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5300,6 +5313,8 @@ class CreateClusterRequest(AbstractModel):
         :type InstanceDataDiskMountSettings: list of InstanceDataDiskMountSetting
         :param _ExtensionAddons: 需要安装的扩展组件信息
         :type ExtensionAddons: list of ExtensionAddon
+        :param _CdcId: 本地专用集群Id
+        :type CdcId: str
         """
         self._ClusterType = None
         self._ClusterCIDRSettings = None
@@ -5310,6 +5325,7 @@ class CreateClusterRequest(AbstractModel):
         self._ExistedInstancesForNode = None
         self._InstanceDataDiskMountSettings = None
         self._ExtensionAddons = None
+        self._CdcId = None
 
     @property
     def ClusterType(self):
@@ -5383,6 +5399,14 @@ class CreateClusterRequest(AbstractModel):
     def ExtensionAddons(self, ExtensionAddons):
         self._ExtensionAddons = ExtensionAddons
 
+    @property
+    def CdcId(self):
+        return self._CdcId
+
+    @CdcId.setter
+    def CdcId(self, CdcId):
+        self._CdcId = CdcId
+
 
     def _deserialize(self, params):
         self._ClusterType = params.get("ClusterType")
@@ -5422,6 +5446,7 @@ class CreateClusterRequest(AbstractModel):
                 obj = ExtensionAddon()
                 obj._deserialize(item)
                 self._ExtensionAddons.append(obj)
+        self._CdcId = params.get("CdcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9972,6 +9997,101 @@ class DeleteImageCachesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteLogConfigsRequest(AbstractModel):
+    """DeleteLogConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _LogConfigNames: 待删除采集规则名称，多个采集规则使用","分隔
+        :type LogConfigNames: str
+        :param _ClusterType: 集群集群类型, tke/eks 默认为 tke 集群
+        :type ClusterType: str
+        """
+        self._ClusterId = None
+        self._LogConfigNames = None
+        self._ClusterType = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def LogConfigNames(self):
+        return self._LogConfigNames
+
+    @LogConfigNames.setter
+    def LogConfigNames(self, LogConfigNames):
+        self._LogConfigNames = LogConfigNames
+
+    @property
+    def ClusterType(self):
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._LogConfigNames = params.get("LogConfigNames")
+        self._ClusterType = params.get("ClusterType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLogConfigsResponse(AbstractModel):
+    """DeleteLogConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Message: 删除采集规则遇到错误时返回错误原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Message = params.get("Message")
         self._RequestId = params.get("RequestId")
 
 
@@ -16207,8 +16327,11 @@ class DescribeExternalNodeSupportConfigResponse(AbstractModel):
         :type Progress: list of Step
         :param _EnabledPublicConnect: 是否开启第三方节点公网连接支持
         :type EnabledPublicConnect: bool
-        :param _PublicConnectUrl: 公网连接地址
+        :param _PublicConnectUrl: 注册节点公网版公网连接地址
         :type PublicConnectUrl: str
+        :param _PublicCustomDomain: 注册节点公网版自定义域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicCustomDomain: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -16225,6 +16348,7 @@ class DescribeExternalNodeSupportConfigResponse(AbstractModel):
         self._Progress = None
         self._EnabledPublicConnect = None
         self._PublicConnectUrl = None
+        self._PublicCustomDomain = None
         self._RequestId = None
 
     @property
@@ -16332,6 +16456,14 @@ class DescribeExternalNodeSupportConfigResponse(AbstractModel):
         self._PublicConnectUrl = PublicConnectUrl
 
     @property
+    def PublicCustomDomain(self):
+        return self._PublicCustomDomain
+
+    @PublicCustomDomain.setter
+    def PublicCustomDomain(self, PublicCustomDomain):
+        self._PublicCustomDomain = PublicCustomDomain
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -16359,6 +16491,7 @@ class DescribeExternalNodeSupportConfigResponse(AbstractModel):
                 self._Progress.append(obj)
         self._EnabledPublicConnect = params.get("EnabledPublicConnect")
         self._PublicConnectUrl = params.get("PublicConnectUrl")
+        self._PublicCustomDomain = params.get("PublicCustomDomain")
         self._RequestId = params.get("RequestId")
 
 
@@ -16728,6 +16861,151 @@ class DescribeImagesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeLogConfigsRequest(AbstractModel):
+    """DescribeLogConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _ClusterType: 当前集群类型支持tke、eks。默认为tke
+        :type ClusterType: str
+        :param _LogConfigNames: 按照采集规则名称查找，多个采集规则使用 "," 分隔。
+        :type LogConfigNames: str
+        :param _Offset: 偏移量,默认0
+        :type Offset: int
+        :param _Limit: 最大输出条数，默认20，最大为100
+        :type Limit: int
+        """
+        self._ClusterId = None
+        self._ClusterType = None
+        self._LogConfigNames = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterType(self):
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
+    def LogConfigNames(self):
+        return self._LogConfigNames
+
+    @LogConfigNames.setter
+    def LogConfigNames(self, LogConfigNames):
+        self._LogConfigNames = LogConfigNames
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterType = params.get("ClusterType")
+        self._LogConfigNames = params.get("LogConfigNames")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLogConfigsResponse(AbstractModel):
+    """DescribeLogConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 分页查找时返回采集规则总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param _Message: 指定采集规则名称查找，部分失败时返回失败采集规则名称及最后一个失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param _LogConfigs: 采集规则查询结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogConfigs: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Message = None
+        self._LogConfigs = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def LogConfigs(self):
+        return self._LogConfigs
+
+    @LogConfigs.setter
+    def LogConfigs(self, LogConfigs):
+        self._LogConfigs = LogConfigs
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._Message = params.get("Message")
+        self._LogConfigs = params.get("LogConfigs")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeLogSwitchesRequest(AbstractModel):
     """DescribeLogSwitches请求参数结构体
 
@@ -16813,6 +17091,94 @@ class DescribeLogSwitchesResponse(AbstractModel):
                 obj = Switch()
                 obj._deserialize(item)
                 self._SwitchSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeOpenPolicyListRequest(AbstractModel):
+    """DescribeOpenPolicyList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _Category: 策略分类 基线：baseline 优选：priority 可选：optional
+        :type Category: str
+        """
+        self._ClusterId = None
+        self._Category = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Category(self):
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._Category = params.get("Category")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOpenPolicyListResponse(AbstractModel):
+    """DescribeOpenPolicyList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OpenPolicyInfoList: 策略信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OpenPolicyInfoList: list of OpenPolicyInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._OpenPolicyInfoList = None
+        self._RequestId = None
+
+    @property
+    def OpenPolicyInfoList(self):
+        return self._OpenPolicyInfoList
+
+    @OpenPolicyInfoList.setter
+    def OpenPolicyInfoList(self, OpenPolicyInfoList):
+        self._OpenPolicyInfoList = OpenPolicyInfoList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("OpenPolicyInfoList") is not None:
+            self._OpenPolicyInfoList = []
+            for item in params.get("OpenPolicyInfoList"):
+                obj = OpenPolicyInfo()
+                obj._deserialize(item)
+                self._OpenPolicyInfoList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -25783,9 +26149,12 @@ class InstallLogAgentRequest(AbstractModel):
         :type ClusterId: str
         :param _KubeletRootDir: kubelet根目录
         :type KubeletRootDir: str
+        :param _ClusterType: 集群类型 tke/eks，默认tke
+        :type ClusterType: str
         """
         self._ClusterId = None
         self._KubeletRootDir = None
+        self._ClusterType = None
 
     @property
     def ClusterId(self):
@@ -25803,10 +26172,19 @@ class InstallLogAgentRequest(AbstractModel):
     def KubeletRootDir(self, KubeletRootDir):
         self._KubeletRootDir = KubeletRootDir
 
+    @property
+    def ClusterType(self):
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._KubeletRootDir = params.get("KubeletRootDir")
+        self._ClusterType = params.get("ClusterType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29099,6 +29477,93 @@ class ModifyNodePoolInstanceTypesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyOpenPolicyListRequest(AbstractModel):
+    """ModifyOpenPolicyList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _OpenPolicyInfoList: 修改的策略列表，目前仅支持修改EnforcementAction字段
+        :type OpenPolicyInfoList: list of OpenPolicySwitch
+        :param _Category: 策略分类 基线：baseline 优选：priority 可选：optional
+        :type Category: str
+        """
+        self._ClusterId = None
+        self._OpenPolicyInfoList = None
+        self._Category = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def OpenPolicyInfoList(self):
+        return self._OpenPolicyInfoList
+
+    @OpenPolicyInfoList.setter
+    def OpenPolicyInfoList(self, OpenPolicyInfoList):
+        self._OpenPolicyInfoList = OpenPolicyInfoList
+
+    @property
+    def Category(self):
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        if params.get("OpenPolicyInfoList") is not None:
+            self._OpenPolicyInfoList = []
+            for item in params.get("OpenPolicyInfoList"):
+                obj = OpenPolicySwitch()
+                obj._deserialize(item)
+                self._OpenPolicyInfoList.append(obj)
+        self._Category = params.get("Category")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyOpenPolicyListResponse(AbstractModel):
+    """ModifyOpenPolicyList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyPrometheusAgentExternalLabelsRequest(AbstractModel):
     """ModifyPrometheusAgentExternalLabels请求参数结构体
 
@@ -30568,6 +31033,308 @@ class OIDCConfigAuthenticationOptions(AbstractModel):
         
 
 
+class OpenConstraintInfo(AbstractModel):
+    """策略实例信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 策略实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _EventNums: 策略实例关联事件数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventNums: int
+        :param _YamlDetail: 实例yaml详情base64编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type YamlDetail: str
+        """
+        self._Name = None
+        self._EventNums = None
+        self._YamlDetail = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def EventNums(self):
+        return self._EventNums
+
+    @EventNums.setter
+    def EventNums(self, EventNums):
+        self._EventNums = EventNums
+
+    @property
+    def YamlDetail(self):
+        return self._YamlDetail
+
+    @YamlDetail.setter
+    def YamlDetail(self, YamlDetail):
+        self._YamlDetail = YamlDetail
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._EventNums = params.get("EventNums")
+        self._YamlDetail = params.get("YamlDetail")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenPolicyInfo(AbstractModel):
+    """opa策略信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyCategory: 策略分类：cluster集群策略、node节点策略、namespace命名空间策略、configuration配置相关策略、compute计算资源策略、storage存储资源策略、network网络资源策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyCategory: str
+        :param _PolicyName: 策略中文名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyName: str
+        :param _PolicyDesc: 策略描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyDesc: str
+        :param _EnforcementAction: 策略运行模式：dryrun空跑不生效，deny拦截生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnforcementAction: str
+        :param _EventNums: 关联的事件数量(最近7d)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventNums: int
+        :param _Name: 策略英文名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Kind: 策略模版类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Kind: str
+        :param _EnabledStatus: 策略开关状态：open打开，close关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnabledStatus: str
+        :param _ConstraintYamlExample: 策略的实例的yaml示例base64编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConstraintYamlExample: str
+        :param _OpenConstraintInfoList: 策略关联的实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OpenConstraintInfoList: list of OpenConstraintInfo
+        """
+        self._PolicyCategory = None
+        self._PolicyName = None
+        self._PolicyDesc = None
+        self._EnforcementAction = None
+        self._EventNums = None
+        self._Name = None
+        self._Kind = None
+        self._EnabledStatus = None
+        self._ConstraintYamlExample = None
+        self._OpenConstraintInfoList = None
+
+    @property
+    def PolicyCategory(self):
+        return self._PolicyCategory
+
+    @PolicyCategory.setter
+    def PolicyCategory(self, PolicyCategory):
+        self._PolicyCategory = PolicyCategory
+
+    @property
+    def PolicyName(self):
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def PolicyDesc(self):
+        return self._PolicyDesc
+
+    @PolicyDesc.setter
+    def PolicyDesc(self, PolicyDesc):
+        self._PolicyDesc = PolicyDesc
+
+    @property
+    def EnforcementAction(self):
+        return self._EnforcementAction
+
+    @EnforcementAction.setter
+    def EnforcementAction(self, EnforcementAction):
+        self._EnforcementAction = EnforcementAction
+
+    @property
+    def EventNums(self):
+        return self._EventNums
+
+    @EventNums.setter
+    def EventNums(self, EventNums):
+        self._EventNums = EventNums
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Kind(self):
+        return self._Kind
+
+    @Kind.setter
+    def Kind(self, Kind):
+        self._Kind = Kind
+
+    @property
+    def EnabledStatus(self):
+        return self._EnabledStatus
+
+    @EnabledStatus.setter
+    def EnabledStatus(self, EnabledStatus):
+        self._EnabledStatus = EnabledStatus
+
+    @property
+    def ConstraintYamlExample(self):
+        return self._ConstraintYamlExample
+
+    @ConstraintYamlExample.setter
+    def ConstraintYamlExample(self, ConstraintYamlExample):
+        self._ConstraintYamlExample = ConstraintYamlExample
+
+    @property
+    def OpenConstraintInfoList(self):
+        return self._OpenConstraintInfoList
+
+    @OpenConstraintInfoList.setter
+    def OpenConstraintInfoList(self, OpenConstraintInfoList):
+        self._OpenConstraintInfoList = OpenConstraintInfoList
+
+
+    def _deserialize(self, params):
+        self._PolicyCategory = params.get("PolicyCategory")
+        self._PolicyName = params.get("PolicyName")
+        self._PolicyDesc = params.get("PolicyDesc")
+        self._EnforcementAction = params.get("EnforcementAction")
+        self._EventNums = params.get("EventNums")
+        self._Name = params.get("Name")
+        self._Kind = params.get("Kind")
+        self._EnabledStatus = params.get("EnabledStatus")
+        self._ConstraintYamlExample = params.get("ConstraintYamlExample")
+        if params.get("OpenConstraintInfoList") is not None:
+            self._OpenConstraintInfoList = []
+            for item in params.get("OpenConstraintInfoList"):
+                obj = OpenConstraintInfo()
+                obj._deserialize(item)
+                self._OpenConstraintInfoList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenPolicySwitch(AbstractModel):
+    """opa策略开关
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnforcementAction: 策略运行模式：dryrun空跑不生效，deny拦截生效
+        :type EnforcementAction: str
+        :param _Name: 策略英文名称
+        :type Name: str
+        :param _Kind: 策略模版类型
+        :type Kind: str
+        :param _EnabledStatus: 策略开关状态：open打开，close关闭
+        :type EnabledStatus: str
+        :param _OpenConstraintInfoList: 策略关联的实例列表
+        :type OpenConstraintInfoList: list of OpenConstraintInfo
+        """
+        self._EnforcementAction = None
+        self._Name = None
+        self._Kind = None
+        self._EnabledStatus = None
+        self._OpenConstraintInfoList = None
+
+    @property
+    def EnforcementAction(self):
+        return self._EnforcementAction
+
+    @EnforcementAction.setter
+    def EnforcementAction(self, EnforcementAction):
+        self._EnforcementAction = EnforcementAction
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Kind(self):
+        return self._Kind
+
+    @Kind.setter
+    def Kind(self, Kind):
+        self._Kind = Kind
+
+    @property
+    def EnabledStatus(self):
+        return self._EnabledStatus
+
+    @EnabledStatus.setter
+    def EnabledStatus(self, EnabledStatus):
+        self._EnabledStatus = EnabledStatus
+
+    @property
+    def OpenConstraintInfoList(self):
+        return self._OpenConstraintInfoList
+
+    @OpenConstraintInfoList.setter
+    def OpenConstraintInfoList(self, OpenConstraintInfoList):
+        self._OpenConstraintInfoList = OpenConstraintInfoList
+
+
+    def _deserialize(self, params):
+        self._EnforcementAction = params.get("EnforcementAction")
+        self._Name = params.get("Name")
+        self._Kind = params.get("Kind")
+        self._EnabledStatus = params.get("EnabledStatus")
+        if params.get("OpenConstraintInfoList") is not None:
+            self._OpenConstraintInfoList = []
+            for item in params.get("OpenConstraintInfoList"):
+                obj = OpenConstraintInfo()
+                obj._deserialize(item)
+                self._OpenConstraintInfoList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OptionalRuntimes(AbstractModel):
     """可选运行时
 
@@ -30650,7 +31417,7 @@ class PendingRelease(AbstractModel):
         :param _Namespace: 应用命名空间
 注意：此字段可能返回 null，表示取不到有效值。
         :type Namespace: str
-        :param _Status: 应用状态
+        :param _Status: 应用状态(参考helm的发布状态： unknown, deployed, uninstalled, superseded, failed, uninstalling, pending-install, pending-upgrade 或 pending-rollback)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _UpdatedTime: 更新时间

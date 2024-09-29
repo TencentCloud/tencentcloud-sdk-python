@@ -350,6 +350,29 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBackupConfigs(self, request):
+        """本接口(DescribeBackupConfigs)用于查询数据库备份配置信息。
+
+        :param request: Request instance for DescribeBackupConfigs.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.DescribeBackupConfigsRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DescribeBackupConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackupConfigs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackupConfigsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBackupFiles(self, request):
         """本接口(DescribeBackupFiles)用于查看备份文件列表。
 
@@ -387,6 +410,29 @@ class MariadbClient(AbstractClient):
             body = self.call("DescribeBackupTime", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeBackupTimeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBinlogTime(self, request):
+        """本接口（DescribeBinlogTime）用于查询可回档时间范围。
+
+        :param request: Request instance for DescribeBinlogTime.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.DescribeBinlogTimeRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DescribeBinlogTimeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBinlogTime", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBinlogTimeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1200,6 +1246,31 @@ class MariadbClient(AbstractClient):
             body = self.call("ModifyAccountPrivileges", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAccountPrivilegesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyBackupConfigs(self, request):
+        """本接口(ModifyBackupConfigs)用于修改数据库备份配置信息。
+
+        1. 修改数据库超期备份配置，目前按年、按月、按日只支持一种，存在互斥关系，如当前策略按年备份，如果传入按月备份策略将会覆盖当前的按年备份策略，务必注意。
+
+        :param request: Request instance for ModifyBackupConfigs.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.ModifyBackupConfigsRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.ModifyBackupConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBackupConfigs", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBackupConfigsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

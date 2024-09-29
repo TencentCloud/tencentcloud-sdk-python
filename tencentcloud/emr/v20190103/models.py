@@ -1063,6 +1063,83 @@ class COSSettings(AbstractModel):
         
 
 
+class CapacityGlobalConfig(AbstractModel):
+    """资源调度-容量调度器的全局设置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnableLabel: 是否开启了标签调度
+        :type EnableLabel: bool
+        :param _LabelDir: 如果开启了标签调度，标签信息存放的路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelDir: str
+        :param _QueueMappingOverride: 是否覆盖用户指定队列，为true表示覆盖。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueueMappingOverride: bool
+        :param _DefaultSettings: 高级设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultSettings: list of DefaultSetting
+        """
+        self._EnableLabel = None
+        self._LabelDir = None
+        self._QueueMappingOverride = None
+        self._DefaultSettings = None
+
+    @property
+    def EnableLabel(self):
+        return self._EnableLabel
+
+    @EnableLabel.setter
+    def EnableLabel(self, EnableLabel):
+        self._EnableLabel = EnableLabel
+
+    @property
+    def LabelDir(self):
+        return self._LabelDir
+
+    @LabelDir.setter
+    def LabelDir(self, LabelDir):
+        self._LabelDir = LabelDir
+
+    @property
+    def QueueMappingOverride(self):
+        return self._QueueMappingOverride
+
+    @QueueMappingOverride.setter
+    def QueueMappingOverride(self, QueueMappingOverride):
+        self._QueueMappingOverride = QueueMappingOverride
+
+    @property
+    def DefaultSettings(self):
+        return self._DefaultSettings
+
+    @DefaultSettings.setter
+    def DefaultSettings(self, DefaultSettings):
+        self._DefaultSettings = DefaultSettings
+
+
+    def _deserialize(self, params):
+        self._EnableLabel = params.get("EnableLabel")
+        self._LabelDir = params.get("LabelDir")
+        self._QueueMappingOverride = params.get("QueueMappingOverride")
+        if params.get("DefaultSettings") is not None:
+            self._DefaultSettings = []
+            for item in params.get("DefaultSettings"):
+                obj = DefaultSetting()
+                obj._deserialize(item)
+                self._DefaultSettings.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CdbInfo(AbstractModel):
     """出参
 
@@ -2296,6 +2373,262 @@ class ComponentBasicRestartInfo(AbstractModel):
         
 
 
+class ConfigModifyInfoV2(AbstractModel):
+    """资源调度 - 队列修改信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OpType: 操作类型，可选值：
+
+- 0：新建队列
+- 1：编辑-全量覆盖
+- 2：新建子队列
+- 3：删除
+- 4：克隆，与新建子队列的行为一样，特别的对于`fair`，可以复制子队列到新建队列
+- 6：编辑-增量更新
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OpType: int
+        :param _Name: 队列名称，不支持修改。
+        :type Name: str
+        :param _ParentId: 新建队列 传root的MyId；新建子队列 传 选中队列的 myId；克隆 要传 选中队列 parentId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentId: str
+        :param _MyId: 编辑、删除 传选中队列的 myId。克隆只有在调度器是`fair`时才需要传，用来复制子队列到新队列。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MyId: str
+        :param _BasicParams: 基础配置信息。key的取值与**DescribeYarnQueue**返回的字段一致。
+###### 公平调度器
+key的取值信息如下：
+
+- type，父队列，取值为 **parent** 或 **null**
+- aclSubmitApps，提交访问控制，取值为**AclForYarnQueue类型的json串**或**null**
+- aclAdministerApps，管理访问控制，取值为**AclForYarnQueue类型的json串**或**null**
+- minSharePreemptionTimeout，最小共享优先权超时时间，取值为**数字字符串**或**null**
+- fairSharePreemptionTimeout，公平份额抢占超时时间，取值为**数字字符串**或**null**
+- fairSharePreemptionThreshold，公平份额抢占阈值，取值为**数字字符串**或**null**，其中数字的范围是（0，1]
+- allowPreemptionFrom，抢占模式，取值为**布尔字符串**或**null**
+- schedulingPolicy，调度策略，取值为**drf**、**fair**、**fifo**或**null**
+
+```
+type AclForYarnQueue struct {
+	User  *string `json:"user"` //用户名
+	Group *string `json:"group"`//组名
+}
+```
+###### 容量调度器
+key的取值信息如下：
+
+- state，队列状态，取值为**STOPPED**或**RUNNING**
+- default-node-label-expression，默认标签表达式，取值为**标签**或**null**
+- acl_submit_applications，提交访问控制，取值为**AclForYarnQueue类型的json串**或**null**
+- acl_administer_queue，管理访问控制，取值为**AclForYarnQueue类型的json串**或**null**
+- maximum-allocation-mb，分配Container最大内存数量，取值为**数字字符串**或**null**
+- maximum-allocation-vcores，Container最大vCore数量，取值为**数字字符串**或**null**
+```
+type AclForYarnQueue struct {
+	User  *string `json:"user"` //用户名
+	Group *string `json:"group"`//组名
+}
+```
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BasicParams: :class:`tencentcloud.emr.v20190103.models.ItemSeq`
+        :param _ConfigSetParams: 配置集信息，取值见该复杂类型的参数说明。配置集是计划模式在队列中表现，表示的是不同时间段不同的配置值，所有队列的配置集名称都一样，对于单个队列，每个配置集中的标签与参数都一样，只是参数值不同。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigSetParams: list of ConfigSetInfo
+        :param _DeleteLables: 容量调度专用，`OpType`为`6`时才生效，表示要删除这个队列中的哪些标签。优先级高于ConfigSetParams中的LabelParams。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeleteLables: list of str
+        """
+        self._OpType = None
+        self._Name = None
+        self._ParentId = None
+        self._MyId = None
+        self._BasicParams = None
+        self._ConfigSetParams = None
+        self._DeleteLables = None
+
+    @property
+    def OpType(self):
+        return self._OpType
+
+    @OpType.setter
+    def OpType(self, OpType):
+        self._OpType = OpType
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ParentId(self):
+        return self._ParentId
+
+    @ParentId.setter
+    def ParentId(self, ParentId):
+        self._ParentId = ParentId
+
+    @property
+    def MyId(self):
+        return self._MyId
+
+    @MyId.setter
+    def MyId(self, MyId):
+        self._MyId = MyId
+
+    @property
+    def BasicParams(self):
+        return self._BasicParams
+
+    @BasicParams.setter
+    def BasicParams(self, BasicParams):
+        self._BasicParams = BasicParams
+
+    @property
+    def ConfigSetParams(self):
+        return self._ConfigSetParams
+
+    @ConfigSetParams.setter
+    def ConfigSetParams(self, ConfigSetParams):
+        self._ConfigSetParams = ConfigSetParams
+
+    @property
+    def DeleteLables(self):
+        return self._DeleteLables
+
+    @DeleteLables.setter
+    def DeleteLables(self, DeleteLables):
+        self._DeleteLables = DeleteLables
+
+
+    def _deserialize(self, params):
+        self._OpType = params.get("OpType")
+        self._Name = params.get("Name")
+        self._ParentId = params.get("ParentId")
+        self._MyId = params.get("MyId")
+        if params.get("BasicParams") is not None:
+            self._BasicParams = ItemSeq()
+            self._BasicParams._deserialize(params.get("BasicParams"))
+        if params.get("ConfigSetParams") is not None:
+            self._ConfigSetParams = []
+            for item in params.get("ConfigSetParams"):
+                obj = ConfigSetInfo()
+                obj._deserialize(item)
+                self._ConfigSetParams.append(obj)
+        self._DeleteLables = params.get("DeleteLables")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConfigSetInfo(AbstractModel):
+    """资源调度-配置集信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConfigSet: 配置集名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigSet: str
+        :param _LabelParams: 容量调度器会使用，里面设置了标签相关的配置。key的取值与**DescribeYarnQueue**返回的字段一致。
+key的取值信息如下：
+- labelName，标签名称，标签管理里的标签。
+- capacity，容量，取值为**数字字符串**
+- maximum-capacity，最大容量，取值为**数字字符串**
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelParams: list of ItemSeq
+        :param _BasicParams: 设置配置集相关的参数。key的取值与**DescribeYarnQueue**返回的字段一致。
+###### 公平调度器
+key的取值信息如下：
+- minResources，最大资源量，取值为**YarnResource类型的json串**或**null**
+- maxResources，最大资源量，取值为**YarnResource类型的json串**或**null**
+- maxChildResources，能够分配给为未声明子队列的最大资源量，取值为**数字字符串**或**null**
+- maxRunningApps，最高可同时处于运行的App数量，取值为**数字字符串**或**null**
+- weight，权重，取值为**数字字符串**或**null**
+- maxAMShare，App Master最大份额，取值为**数字字符串**或**null**，其中数字的范围是[0，1]或-1
+
+```
+type YarnResource struct {
+	Vcores *int `json:"vcores"`
+	Memory *int `json:"memory"`
+	Type *string `json:"type"` // 取值为`percent`或`null`当值为`percent`时，表示使用的百分比，否则就是使用的绝对数值。只有maxResources、maxChildResources才可以取值为`percent`
+}
+```
+
+###### 容量调度器
+key的取值信息如下：
+- minimum-user-limit-percent，用户最小容量，取值为**YarnResource类型的json串**或**null**，其中数字的范围是[0，100]
+- user-limit-factor，用户资源因子，取值为**YarnResource类型的json串**或**null**
+- maximum-applications，最大应用数Max-Applications，取值为**数字字符串**或**null**，其中数字为正整数
+- maximum-am-resource-percent，最大AM比例，取值为**数字字符串**或**null**，其中数字的范围是[0，1]或-1
+- default-application-priority，资源池优先级，取值为**数字字符串**或**null**，其中数字为正整数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BasicParams: list of Item
+        """
+        self._ConfigSet = None
+        self._LabelParams = None
+        self._BasicParams = None
+
+    @property
+    def ConfigSet(self):
+        return self._ConfigSet
+
+    @ConfigSet.setter
+    def ConfigSet(self, ConfigSet):
+        self._ConfigSet = ConfigSet
+
+    @property
+    def LabelParams(self):
+        return self._LabelParams
+
+    @LabelParams.setter
+    def LabelParams(self, LabelParams):
+        self._LabelParams = LabelParams
+
+    @property
+    def BasicParams(self):
+        return self._BasicParams
+
+    @BasicParams.setter
+    def BasicParams(self, BasicParams):
+        self._BasicParams = BasicParams
+
+
+    def _deserialize(self, params):
+        self._ConfigSet = params.get("ConfigSet")
+        if params.get("LabelParams") is not None:
+            self._LabelParams = []
+            for item in params.get("LabelParams"):
+                obj = ItemSeq()
+                obj._deserialize(item)
+                self._LabelParams.append(obj)
+        if params.get("BasicParams") is not None:
+            self._BasicParams = []
+            for item in params.get("BasicParams"):
+                obj = Item()
+                obj._deserialize(item)
+                self._BasicParams.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Configuration(AbstractModel):
     """自定义配置参数
 
@@ -2374,7 +2707,7 @@ class CreateClusterRequest(AbstractModel):
         :type SecurityGroupIds: list of str
         :param _ScriptBootstrapActionConfig: [引导操作](https://cloud.tencent.com/document/product/589/35656)脚本设置。
         :type ScriptBootstrapActionConfig: list of ScriptBootstrapActionConfig
-        :param _ClientToken: 唯一随机标识，时效性为5分钟，需要调用者指定 防止客户端重复创建资源，例如 a9a90aa6-751a-41b6-aad6-fae360632808
+        :param _ClientToken: 唯一随机标识，时效性为5分钟，需要调用者指定 防止客户端重复创建资源，例如 a9a90aa6-****-****-****-fae360632808
         :type ClientToken: str
         :param _NeedMasterWan: 是否开启集群Master节点公网。取值范围：
 <li>NEED_MASTER_WAN：表示开启集群Master节点公网。</li>
@@ -2765,7 +3098,7 @@ class CreateInstanceRequest(AbstractModel):
 <li>0：表示不自动续费。</li>
 <li>1：表示自动续费。</li>
         :type AutoRenew: int
-        :param _ClientToken: 唯一随机标识，时效5分钟，需要调用者指定 防止客户端重新创建资源，例如 a9a90aa6-751a-41b6-aad6-fae36063280
+        :param _ClientToken: 唯一随机标识，时效5分钟，需要调用者指定 防止客户端重新创建资源，例如 a9a90aa6-****-****-****-fae36063280
         :type ClientToken: str
         :param _NeedMasterWan: 是否开启集群Master节点公网。取值范围：
 <li>NEED_MASTER_WAN：表示开启集群Master节点公网。</li>
@@ -3225,6 +3558,158 @@ class CreateInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateSLInstanceRequest(AbstractModel):
+    """CreateSLInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceName: 实例名称。
+        :type InstanceName: str
+        :param _PayMode: 实例计费模式，0表示后付费，即按量计费。
+        :type PayMode: int
+        :param _DiskType: 实例存储类型，填写CLOUD_HSSD，表示性能云存储。
+        :type DiskType: str
+        :param _DiskSize: 实例单节点磁盘容量，单位GB，单节点磁盘容量需大于等于100，小于等于10000，容量调整步长为20。
+        :type DiskSize: int
+        :param _NodeType: 实例节点规格，可填写4C16G、8C32G、16C64G、32C128G，不区分大小写。
+        :type NodeType: str
+        :param _ZoneSettings: 实例可用区详细配置，当前支持多可用区，可用区数量只能为1或3，包含区域名称，VPC信息、节点数量，其中所有区域节点总数需大于等于3，小于等于50。
+        :type ZoneSettings: list of ZoneSetting
+        :param _Tags: 实例要绑定的标签列表。
+        :type Tags: list of Tag
+        """
+        self._InstanceName = None
+        self._PayMode = None
+        self._DiskType = None
+        self._DiskSize = None
+        self._NodeType = None
+        self._ZoneSettings = None
+        self._Tags = None
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def DiskType(self):
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def DiskSize(self):
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def NodeType(self):
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def ZoneSettings(self):
+        return self._ZoneSettings
+
+    @ZoneSettings.setter
+    def ZoneSettings(self, ZoneSettings):
+        self._ZoneSettings = ZoneSettings
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._InstanceName = params.get("InstanceName")
+        self._PayMode = params.get("PayMode")
+        self._DiskType = params.get("DiskType")
+        self._DiskSize = params.get("DiskSize")
+        self._NodeType = params.get("NodeType")
+        if params.get("ZoneSettings") is not None:
+            self._ZoneSettings = []
+            for item in params.get("ZoneSettings"):
+                obj = ZoneSetting()
+                obj._deserialize(item)
+                self._ZoneSettings.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSLInstanceResponse(AbstractModel):
+    """CreateSLInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例唯一标识符（字符串表示）
+        :type InstanceId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RequestId = params.get("RequestId")
+
+
 class CustomMetaDBInfo(AbstractModel):
     """用户Hive-MetaDB信息
 
@@ -3448,6 +3933,88 @@ class DayRepeatStrategy(AbstractModel):
     def _deserialize(self, params):
         self._ExecuteAtTimeOfDay = params.get("ExecuteAtTimeOfDay")
         self._Step = params.get("Step")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DefaultSetting(AbstractModel):
+    """资源调度的默认设置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 名称，作为入参的key
+        :type Name: str
+        :param _Desc: 描述
+        :type Desc: str
+        :param _Prompt: 提示
+        :type Prompt: str
+        :param _Key: key，用于展示，该配置对应与配置文件中的配置项
+        :type Key: str
+        :param _Value: Name对应的值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Name = None
+        self._Desc = None
+        self._Prompt = None
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Desc(self):
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def Prompt(self):
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Desc = params.get("Desc")
+        self._Prompt = params.get("Prompt")
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3706,6 +4273,76 @@ class DependService(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DeployYarnConfRequest(AbstractModel):
+    """DeployYarnConf请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: emr集群的英文id
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeployYarnConfResponse(AbstractModel):
+    """DeployYarnConf返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 启动流程后的流程ID，可以使用[DescribeClusterFlowStatusDetail](https://cloud.tencent.com/document/product/589/107224)接口来获取流程状态
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAutoScaleGroupGlobalConfRequest(AbstractModel):
@@ -4969,6 +5606,130 @@ class DescribeEmrOverviewMetricsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeGlobalConfigRequest(AbstractModel):
+    """DescribeGlobalConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: emr集群的英文id
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGlobalConfigResponse(AbstractModel):
+    """DescribeGlobalConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnableResourceSchedule: 是否开启了资源调度功能
+        :type EnableResourceSchedule: bool
+        :param _ActiveScheduler: 当前生效的资源调度器
+        :type ActiveScheduler: str
+        :param _CapacityGlobalConfig: 公平调度器的信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CapacityGlobalConfig: :class:`tencentcloud.emr.v20190103.models.CapacityGlobalConfig`
+        :param _FairGlobalConfig: 容量调度器的信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FairGlobalConfig: :class:`tencentcloud.emr.v20190103.models.FairGlobalConfig`
+        :param _Scheduler: 最新的资源调度器
+        :type Scheduler: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._EnableResourceSchedule = None
+        self._ActiveScheduler = None
+        self._CapacityGlobalConfig = None
+        self._FairGlobalConfig = None
+        self._Scheduler = None
+        self._RequestId = None
+
+    @property
+    def EnableResourceSchedule(self):
+        return self._EnableResourceSchedule
+
+    @EnableResourceSchedule.setter
+    def EnableResourceSchedule(self, EnableResourceSchedule):
+        self._EnableResourceSchedule = EnableResourceSchedule
+
+    @property
+    def ActiveScheduler(self):
+        return self._ActiveScheduler
+
+    @ActiveScheduler.setter
+    def ActiveScheduler(self, ActiveScheduler):
+        self._ActiveScheduler = ActiveScheduler
+
+    @property
+    def CapacityGlobalConfig(self):
+        return self._CapacityGlobalConfig
+
+    @CapacityGlobalConfig.setter
+    def CapacityGlobalConfig(self, CapacityGlobalConfig):
+        self._CapacityGlobalConfig = CapacityGlobalConfig
+
+    @property
+    def FairGlobalConfig(self):
+        return self._FairGlobalConfig
+
+    @FairGlobalConfig.setter
+    def FairGlobalConfig(self, FairGlobalConfig):
+        self._FairGlobalConfig = FairGlobalConfig
+
+    @property
+    def Scheduler(self):
+        return self._Scheduler
+
+    @Scheduler.setter
+    def Scheduler(self, Scheduler):
+        self._Scheduler = Scheduler
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._EnableResourceSchedule = params.get("EnableResourceSchedule")
+        self._ActiveScheduler = params.get("ActiveScheduler")
+        if params.get("CapacityGlobalConfig") is not None:
+            self._CapacityGlobalConfig = CapacityGlobalConfig()
+            self._CapacityGlobalConfig._deserialize(params.get("CapacityGlobalConfig"))
+        if params.get("FairGlobalConfig") is not None:
+            self._FairGlobalConfig = FairGlobalConfig()
+            self._FairGlobalConfig._deserialize(params.get("FairGlobalConfig"))
+        self._Scheduler = params.get("Scheduler")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeHBaseTableOverviewRequest(AbstractModel):
     """DescribeHBaseTableOverview请求参数结构体
 
@@ -5492,12 +6253,15 @@ class DescribeInsightListRequest(AbstractModel):
         :type PageSize: int
         :param _Page: 分页查询时的页号，从1开始
         :type Page: int
+        :param _Type: 查询类型,支持HIVE,SPARK,MAPREDUCE,TRINO等类型,默认查询全部
+        :type Type: str
         """
         self._InstanceId = None
         self._StartTime = None
         self._EndTime = None
         self._PageSize = None
         self._Page = None
+        self._Type = None
 
     @property
     def InstanceId(self):
@@ -5539,6 +6303,14 @@ class DescribeInsightListRequest(AbstractModel):
     def Page(self, Page):
         self._Page = Page
 
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -5546,6 +6318,7 @@ class DescribeInsightListRequest(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._PageSize = params.get("PageSize")
         self._Page = params.get("Page")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5730,7 +6503,7 @@ class DescribeInstancesListRequest(AbstractModel):
         :type OrderField: str
         :param _Asc: 按照OrderField升序或者降序进行排序。取值范围：<li>0：表示升序。</li><li>1：表示降序。</li>默认值为0。
         :type Asc: int
-        :param _Filters: 自定义查询
+        :param _Filters: 自定义查询过滤器。示例：<li>根据ClusterId过滤实例：[{"Name":"ClusterId","Values":["emr-xxxxxxxx"]}]</li><li>根据clusterName过滤实例：[{"Name": "ClusterName","Values": ["cluster_name"]}]</li><li>根据ClusterStatus过滤实例：[{"Name": "ClusterStatus","Values": ["2"]}]</li>
         :type Filters: list of Filters
         """
         self._DisplayStrategy = None
@@ -6142,6 +6915,94 @@ JobFlowFinish，流程任务已完成。
         self._RequestId = params.get("RequestId")
 
 
+class DescribeResourceScheduleDiffDetailRequest(AbstractModel):
+    """DescribeResourceScheduleDiffDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: emr集群的英文id
+        :type InstanceId: str
+        :param _Scheduler: 查询的变更明细对应的调度器，可选值为fair、capacity。如果不传或者传空会使用最新的调度器
+        :type Scheduler: str
+        """
+        self._InstanceId = None
+        self._Scheduler = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Scheduler(self):
+        return self._Scheduler
+
+    @Scheduler.setter
+    def Scheduler(self, Scheduler):
+        self._Scheduler = Scheduler
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Scheduler = params.get("Scheduler")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceScheduleDiffDetailResponse(AbstractModel):
+    """DescribeResourceScheduleDiffDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Details: 变化项的明细
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Details: list of DiffDetail
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Details = None
+        self._RequestId = None
+
+    @property
+    def Details(self):
+        return self._Details
+
+    @Details.setter
+    def Details(self, Details):
+        self._Details = Details
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Details") is not None:
+            self._Details = []
+            for item in params.get("Details"):
+                obj = DiffDetail()
+                obj._deserialize(item)
+                self._Details.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeResourceScheduleRequest(AbstractModel):
     """DescribeResourceSchedule请求参数结构体
 
@@ -6248,6 +7109,311 @@ class DescribeResourceScheduleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSLInstanceListRequest(AbstractModel):
+    """DescribeSLInstanceList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DisplayStrategy: 实例筛选策略。取值范围：<li>clusterList：表示查询除了已销毁实例之外的实例列表。</li><li>monitorManage：表示查询除了已销毁、创建中以及创建失败的实例之外的实例列表。</li>
+        :type DisplayStrategy: str
+        :param _Offset: 页编号，默认值为0，表示第一页。
+        :type Offset: int
+        :param _Limit: 每页返回数量，默认值为10，最大值为100。	
+        :type Limit: int
+        :param _OrderField: 排序字段。取值范围：<li>clusterId：表示按照实例ID排序。</li><li>addTime：表示按照实例创建时间排序。</li><li>status：表示按照实例的状态码排序。</li>
+        :type OrderField: str
+        :param _Asc: 按照OrderField升序或者降序进行排序。取值范围：<li>0：表示升序。</li><li>1：表示降序。</li>默认值为0。
+        :type Asc: int
+        :param _Filters: 自定义查询过滤器。示例：<li>根据ClusterId过滤实例：[{"Name":"ClusterId","Values":["emr-xxxxxxxx"]}]</li><li>根据clusterName过滤实例：[{"Name": "ClusterName","Values": ["cluster_name"]}]</li><li>根据ClusterStatus过滤实例：[{"Name": "ClusterStatus","Values": ["2"]}]</li>
+        :type Filters: list of Filters
+        """
+        self._DisplayStrategy = None
+        self._Offset = None
+        self._Limit = None
+        self._OrderField = None
+        self._Asc = None
+        self._Filters = None
+
+    @property
+    def DisplayStrategy(self):
+        return self._DisplayStrategy
+
+    @DisplayStrategy.setter
+    def DisplayStrategy(self, DisplayStrategy):
+        self._DisplayStrategy = DisplayStrategy
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OrderField(self):
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def Asc(self):
+        return self._Asc
+
+    @Asc.setter
+    def Asc(self, Asc):
+        self._Asc = Asc
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._DisplayStrategy = params.get("DisplayStrategy")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._OrderField = params.get("OrderField")
+        self._Asc = params.get("Asc")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSLInstanceListResponse(AbstractModel):
+    """DescribeSLInstanceList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCnt: 符合条件的实例总数。	
+        :type TotalCnt: int
+        :param _InstancesList: 实例信息列表，如果进行了分页，只显示当前分页的示例信息列表。
+        :type InstancesList: list of SLInstanceInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCnt = None
+        self._InstancesList = None
+        self._RequestId = None
+
+    @property
+    def TotalCnt(self):
+        return self._TotalCnt
+
+    @TotalCnt.setter
+    def TotalCnt(self, TotalCnt):
+        self._TotalCnt = TotalCnt
+
+    @property
+    def InstancesList(self):
+        return self._InstancesList
+
+    @InstancesList.setter
+    def InstancesList(self, InstancesList):
+        self._InstancesList = InstancesList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCnt = params.get("TotalCnt")
+        if params.get("InstancesList") is not None:
+            self._InstancesList = []
+            for item in params.get("InstancesList"):
+                obj = SLInstanceInfo()
+                obj._deserialize(item)
+                self._InstancesList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSLInstanceRequest(AbstractModel):
+    """DescribeSLInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例唯一标识符（字符串表示）
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSLInstanceResponse(AbstractModel):
+    """DescribeSLInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceName: 实例名称。
+        :type InstanceName: str
+        :param _PayMode: 实例计费模式。0表示后付费，即按量计费，1表示预付费，即包年包月。
+        :type PayMode: int
+        :param _DiskType: 实例存储类型。
+        :type DiskType: str
+        :param _DiskSize: 实例单节点磁盘容量，单位GB。
+        :type DiskSize: int
+        :param _NodeType: 实例节点规格。
+        :type NodeType: str
+        :param _ZoneSettings: 实例可用区详细配置，包含可用区名称，VPC信息、节点数量。
+        :type ZoneSettings: list of ZoneSetting
+        :param _Tags: 实例绑定的标签列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceName = None
+        self._PayMode = None
+        self._DiskType = None
+        self._DiskSize = None
+        self._NodeType = None
+        self._ZoneSettings = None
+        self._Tags = None
+        self._RequestId = None
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def DiskType(self):
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def DiskSize(self):
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def NodeType(self):
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def ZoneSettings(self):
+        return self._ZoneSettings
+
+    @ZoneSettings.setter
+    def ZoneSettings(self, ZoneSettings):
+        self._ZoneSettings = ZoneSettings
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceName = params.get("InstanceName")
+        self._PayMode = params.get("PayMode")
+        self._DiskType = params.get("DiskType")
+        self._DiskSize = params.get("DiskSize")
+        self._NodeType = params.get("NodeType")
+        if params.get("ZoneSettings") is not None:
+            self._ZoneSettings = []
+            for item in params.get("ZoneSettings"):
+                obj = ZoneSetting()
+                obj._deserialize(item)
+                self._ZoneSettings.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeServiceNodeInfosRequest(AbstractModel):
     """DescribeServiceNodeInfos请求参数结构体
 
@@ -6284,7 +7450,7 @@ class DescribeServiceNodeInfosRequest(AbstractModel):
 "-3"代表存在隐患
 "-4"代表未探测
         :type HealthStateId: str
-        :param _ServiceName: 服务组件名称，都是大写比如YARN
+        :param _ServiceName: 服务组件名称，都是大写例如YARN
         :type ServiceName: str
         :param _NodeTypeName: 节点名称
 master
@@ -6931,6 +8097,195 @@ class DescribeYarnApplicationsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeYarnQueueRequest(AbstractModel):
+    """DescribeYarnQueue请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群Id
+        :type InstanceId: str
+        :param _Scheduler: 调度器，可选值：
+
+1. capacity
+2. fair
+        :type Scheduler: str
+        """
+        self._InstanceId = None
+        self._Scheduler = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Scheduler(self):
+        return self._Scheduler
+
+    @Scheduler.setter
+    def Scheduler(self, Scheduler):
+        self._Scheduler = Scheduler
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Scheduler = params.get("Scheduler")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeYarnQueueResponse(AbstractModel):
+    """DescribeYarnQueue返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Queue: 队列信息。是一个对象转成的json字符串，对应的golang结构体如下所示，比如`QueueWithConfigSetForFairScheduler`的第一个字段`Name`：
+
+```
+Name                         string                               `json:"name"` //队列名称
+```
+- `Name`：字段名
+- `string`：字段类型
+- `json:"name"`：表示在序列化和反序列化`json`时，对应的`json key`，下面以`json key`来指代
+- `//`：后面的注释内容对应页面上看到的名称
+
+字段类型以`*`开头的表示取值可能为json规范下的null，不同的语言需要使用能表达null的类型来接收，比如java的包装类型；字段类型以`[]`开头的表示是数组类型；`json key`在调用`ModifyYarnQueueV2 `接口也会使用。
+
+- 公平调度器
+
+```
+type QueueWithConfigSetForFairScheduler struct {
+	Name                         string                               `json:"name"` //队列名称
+	MyId                         string                  `json:"myId"` // 队列id，用于编辑、删除、克隆时使用
+	ParentId                     string                  `json:"parentId"`  // 父队列Id
+	Type                         *string                              `json:"type"` // 队列归属。parent或空，当确定某个队列是父队列，且没有子队列时，才可以设置，通常用来支持放置策略nestedUserQueue
+	AclSubmitApps                *AclForYarnQueue                     `json:"aclSubmitApps"` // 提交访问控制
+	AclAdministerApps            *AclForYarnQueue                     `json:"aclAdministerApps"` // 管理访问控制
+	MinSharePreemptionTimeout    *int                                 `json:"minSharePreemptionTimeout"` // 最小共享优先权超时时间
+	FairSharePreemptionTimeout   *int                                 `json:"fairSharePreemptionTimeout"` // 公平份额抢占超时时间
+	FairSharePreemptionThreshold *float32                             `json:"fairSharePreemptionThreshold"` // 公平份额抢占阈值。取值 （0，1]
+	AllowPreemptionFrom          *bool                                `json:"allowPreemptionFrom"`                                        // 抢占模式
+	SchedulingPolicy             *string                              `json:"schedulingPolicy"`  // 调度策略，取值有drf、fair、fifo
+	IsDefault                    *bool                                `json:"isDefault"` // 是否是root.default队列
+	IsRoot                       *bool                                `json:"isRoot"` // 是否是root队列
+	ConfigSets                   []ConfigSetForFairScheduler          `json:"configSets"` // 配置集设置
+	Children                     []QueueWithConfigSetForFairScheduler `json:"queues"` // 子队列信息。递归
+}
+
+type AclForYarnQueue struct {
+	User  *string `json:"user"` //用户名
+	Group *string `json:"group"`//组名
+}
+
+type ConfigSetForFairScheduler struct {
+	Name              string        `json:"name"` // 配置集名称
+	MinResources      *YarnResource `json:"minResources"` // 最小资源量
+	MaxResources      *YarnResource `json:"maxResources"` // 最大资源量
+	MaxChildResources *YarnResource `json:"maxChildResources"` // 能够分配给为未声明子队列的最大资源量
+	MaxRunningApps    *int          `json:"maxRunningApps"` // 最高可同时处于运行的App数量
+	Weight            *float32      `json:"weight"`                   // 权重
+	MaxAMShare        *float32      `json:"maxAMShare"` // App Master最大份额
+}
+
+type YarnResource struct {
+	Vcores *int `json:"vcores"`
+	Memory *int `json:"memory"`
+	Type *string `json:"type"` // 当值为`percent`时，表示使用的百分比，否则就是使用的绝对数值
+}
+```
+
+- 容量调度器
+
+```
+type QueueForCapacitySchedulerV3 struct {
+	Name                       string                `json:"name"` // 队列名称
+	MyId                       string                `json:"myId"` // 队列id，用于编辑、删除、克隆时使用
+	ParentId                   string                `json:"parentId"` // 父队列Id
+	Configs                    []ConfigForCapacityV3 `json:"configs"` //配置集设置
+	State                      *string         `json:"state"` // 资源池状态
+	DefaultNodeLabelExpression *string               `json:"default-node-label-expression"` // 默认标签表达式
+	AclSubmitApps              *AclForYarnQueue      `json:"acl_submit_applications"` // 提交访问控制
+	AclAdminQueue              *AclForYarnQueue      `json:"acl_administer_queue"` //管理访问控制
+	MaxAllocationMB *int32 `json:"maximum-allocation-mb"` // 分配Container最大内存数量
+	MaxAllocationVcores *int32                         `json:"maximum-allocation-vcores"` // Container最大vCore数量
+	IsDefault           *bool                          `json:"isDefault"`// 是否是root.default队列
+	IsRoot              *bool                          `json:"isRoot"` // 是否是root队列
+	Queues              []*QueueForCapacitySchedulerV3 `json:"queues"`//子队列信息。递归
+}
+type ConfigForCapacityV3 struct {
+	Name                string          `json:"configName"` // 配置集名称
+	Labels              []CapacityLabel `json:"labels"` // 标签信息
+	MinUserLimitPercent *int32          `json:"minimum-user-limit-percent"` // 用户最小容量
+	UserLimitFactor     *float32        `json:"user-limit-factor" valid:"rangeExcludeLeft(0|)"`  // 用户资源因子
+	MaxApps *int32 `json:"maximum-applications" valid:"rangeExcludeLeft(0|)"` // 最大应用数Max-Applications
+	MaxAmPercent               *float32 `json:"maximum-am-resource-percent"` // 最大AM比例
+	DefaultApplicationPriority *int32   `json:"default-application-priority"` // 资源池优先级
+}
+type CapacityLabel struct {
+	Name        string   `json:"labelName"`
+	Capacity    *float32 `json:"capacity"`  // 容量
+	MaxCapacity *float32 `json:"maximum-capacity"` //最大容量
+}
+
+type AclForYarnQueue struct {
+	User  *string `json:"user"` //用户名
+	Group *string `json:"group"`//组名
+}
+```
+        :type Queue: str
+        :param _Version: 版本
+        :type Version: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Queue = None
+        self._Version = None
+        self._RequestId = None
+
+    @property
+    def Queue(self):
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Queue = params.get("Queue")
+        self._Version = params.get("Version")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeYarnScheduleHistoryRequest(AbstractModel):
     """DescribeYarnScheduleHistory请求参数结构体
 
@@ -7118,6 +8473,322 @@ class DescribeYarnScheduleHistoryResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DiffDetail(AbstractModel):
+    """动态生成的变更详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: tab页的头
+        :type Name: str
+        :param _Count: 变化项的个数
+        :type Count: int
+        :param _Rows: 要渲染的明细数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rows: list of DiffDetailItem
+        :param _Header: 要渲染的头部信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Header: list of DiffHeader
+        """
+        self._Name = None
+        self._Count = None
+        self._Rows = None
+        self._Header = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def Rows(self):
+        return self._Rows
+
+    @Rows.setter
+    def Rows(self, Rows):
+        self._Rows = Rows
+
+    @property
+    def Header(self):
+        return self._Header
+
+    @Header.setter
+    def Header(self, Header):
+        self._Header = Header
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Count = params.get("Count")
+        if params.get("Rows") is not None:
+            self._Rows = []
+            for item in params.get("Rows"):
+                obj = DiffDetailItem()
+                obj._deserialize(item)
+                self._Rows.append(obj)
+        if params.get("Header") is not None:
+            self._Header = []
+            for item in params.get("Header"):
+                obj = DiffHeader()
+                obj._deserialize(item)
+                self._Header.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DiffDetailItem(AbstractModel):
+    """动态生成的变更详情条目
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Attribute: 属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Attribute: str
+        :param _InEffect: 当前生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InEffect: str
+        :param _PendingEffectiveness: 待生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PendingEffectiveness: str
+        :param _Operation: 操作
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operation: str
+        :param _Queue: 队列
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Queue: str
+        :param _ConfigSet: 配置集
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigSet: str
+        :param _LabelName: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelName: str
+        :param _InEffectIndex: 当前所在位置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InEffectIndex: str
+        :param _PendingEffectIndex: 待生效的位置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PendingEffectIndex: str
+        :param _PlanName: 计划模式名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PlanName: str
+        :param _Label: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Label: str
+        :param _RuleName: 放置规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleName: str
+        :param _UserName: 用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        """
+        self._Attribute = None
+        self._InEffect = None
+        self._PendingEffectiveness = None
+        self._Operation = None
+        self._Queue = None
+        self._ConfigSet = None
+        self._LabelName = None
+        self._InEffectIndex = None
+        self._PendingEffectIndex = None
+        self._PlanName = None
+        self._Label = None
+        self._RuleName = None
+        self._UserName = None
+
+    @property
+    def Attribute(self):
+        return self._Attribute
+
+    @Attribute.setter
+    def Attribute(self, Attribute):
+        self._Attribute = Attribute
+
+    @property
+    def InEffect(self):
+        return self._InEffect
+
+    @InEffect.setter
+    def InEffect(self, InEffect):
+        self._InEffect = InEffect
+
+    @property
+    def PendingEffectiveness(self):
+        return self._PendingEffectiveness
+
+    @PendingEffectiveness.setter
+    def PendingEffectiveness(self, PendingEffectiveness):
+        self._PendingEffectiveness = PendingEffectiveness
+
+    @property
+    def Operation(self):
+        return self._Operation
+
+    @Operation.setter
+    def Operation(self, Operation):
+        self._Operation = Operation
+
+    @property
+    def Queue(self):
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def ConfigSet(self):
+        return self._ConfigSet
+
+    @ConfigSet.setter
+    def ConfigSet(self, ConfigSet):
+        self._ConfigSet = ConfigSet
+
+    @property
+    def LabelName(self):
+        return self._LabelName
+
+    @LabelName.setter
+    def LabelName(self, LabelName):
+        self._LabelName = LabelName
+
+    @property
+    def InEffectIndex(self):
+        return self._InEffectIndex
+
+    @InEffectIndex.setter
+    def InEffectIndex(self, InEffectIndex):
+        self._InEffectIndex = InEffectIndex
+
+    @property
+    def PendingEffectIndex(self):
+        return self._PendingEffectIndex
+
+    @PendingEffectIndex.setter
+    def PendingEffectIndex(self, PendingEffectIndex):
+        self._PendingEffectIndex = PendingEffectIndex
+
+    @property
+    def PlanName(self):
+        return self._PlanName
+
+    @PlanName.setter
+    def PlanName(self, PlanName):
+        self._PlanName = PlanName
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def RuleName(self):
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+
+    def _deserialize(self, params):
+        self._Attribute = params.get("Attribute")
+        self._InEffect = params.get("InEffect")
+        self._PendingEffectiveness = params.get("PendingEffectiveness")
+        self._Operation = params.get("Operation")
+        self._Queue = params.get("Queue")
+        self._ConfigSet = params.get("ConfigSet")
+        self._LabelName = params.get("LabelName")
+        self._InEffectIndex = params.get("InEffectIndex")
+        self._PendingEffectIndex = params.get("PendingEffectIndex")
+        self._PlanName = params.get("PlanName")
+        self._Label = params.get("Label")
+        self._RuleName = params.get("RuleName")
+        self._UserName = params.get("UserName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DiffHeader(AbstractModel):
+    """动态生成的变更详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 名称
+        :type Name: str
+        :param _Id: ID，前端会使用
+        :type Id: str
+        """
+        self._Name = None
+        self._Id = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DiskGroup(AbstractModel):
     """磁盘组。
 
@@ -7247,10 +8918,14 @@ class DiskSpecInfo(AbstractModel):
         :param _DiskSize: 数据容量，单位为GB
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiskSize: int
+        :param _ExtraPerformance: 额外性能
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtraPerformance: int
         """
         self._Count = None
         self._DiskType = None
         self._DiskSize = None
+        self._ExtraPerformance = None
 
     @property
     def Count(self):
@@ -7276,11 +8951,20 @@ class DiskSpecInfo(AbstractModel):
     def DiskSize(self, DiskSize):
         self._DiskSize = DiskSize
 
+    @property
+    def ExtraPerformance(self):
+        return self._ExtraPerformance
+
+    @ExtraPerformance.setter
+    def ExtraPerformance(self, ExtraPerformance):
+        self._ExtraPerformance = ExtraPerformance
+
 
     def _deserialize(self, params):
         self._Count = params.get("Count")
         self._DiskType = params.get("DiskType")
         self._DiskSize = params.get("DiskSize")
+        self._ExtraPerformance = params.get("ExtraPerformance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8536,6 +10220,40 @@ class ExternalService(AbstractModel):
                 self._CustomServiceDefineList.append(obj)
         self._Service = params.get("Service")
         self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FairGlobalConfig(AbstractModel):
+    """资源调度-公平调度器的全局配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserMaxAppsDefault: 对应与页面的<p>程序上限</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserMaxAppsDefault: int
+        """
+        self._UserMaxAppsDefault = None
+
+    @property
+    def UserMaxAppsDefault(self):
+        return self._UserMaxAppsDefault
+
+    @UserMaxAppsDefault.setter
+    def UserMaxAppsDefault(self, UserMaxAppsDefault):
+        self._UserMaxAppsDefault = UserMaxAppsDefault
+
+
+    def _deserialize(self, params):
+        self._UserMaxAppsDefault = params.get("UserMaxAppsDefault")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10894,6 +12612,92 @@ class InstanceChargePrepaid(AbstractModel):
         
 
 
+class Item(AbstractModel):
+    """代表一个kv结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 健值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: 值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ItemSeq(AbstractModel):
+    """键值对组成的列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 标签名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of Item
+        """
+        self._Items = None
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = Item()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class JobFlowResource(AbstractModel):
     """机器资源描述。
 
@@ -11743,6 +13547,100 @@ class MetricTags(AbstractModel):
         
 
 
+class ModifyAutoRenewFlagRequest(AbstractModel):
+    """ModifyAutoRenewFlag请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群ID
+        :type InstanceId: str
+        :param _ResourceIds: 实例ID
+        :type ResourceIds: list of str
+        :param _RenewFlag: NOTIFY_AND_MANUAL_RENEW：表示通知即将过期，但不自动续费  NOTIFY_AND_AUTO_RENEW：表示通知即将过期，而且自动续费  DISABLE_NOTIFY_AND_MANUAL_RENEW：表示不通知即将过期，也不自动续费。
+        :type RenewFlag: str
+        :param _ComputeResourceId: 计算资源id
+        :type ComputeResourceId: str
+        """
+        self._InstanceId = None
+        self._ResourceIds = None
+        self._RenewFlag = None
+        self._ComputeResourceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ResourceIds(self):
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def RenewFlag(self):
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def ComputeResourceId(self):
+        return self._ComputeResourceId
+
+    @ComputeResourceId.setter
+    def ComputeResourceId(self, ComputeResourceId):
+        self._ComputeResourceId = ComputeResourceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ResourceIds = params.get("ResourceIds")
+        self._RenewFlag = params.get("RenewFlag")
+        self._ComputeResourceId = params.get("ComputeResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAutoRenewFlagResponse(AbstractModel):
+    """ModifyAutoRenewFlag返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyAutoScaleStrategyRequest(AbstractModel):
     """ModifyAutoScaleStrategy请求参数结构体
 
@@ -11836,6 +13734,89 @@ class ModifyAutoScaleStrategyRequest(AbstractModel):
 
 class ModifyAutoScaleStrategyResponse(AbstractModel):
     """ModifyAutoScaleStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyGlobalConfigRequest(AbstractModel):
+    """ModifyGlobalConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: emr集群的英文id
+        :type InstanceId: str
+        :param _Items: 修改的配置列表。其中Key的取值与`DescribeGlobalConfig`接口的出参一一对应，不区分大小写（如果报错找不到Key，以出参为准），分别为：
+1. 开启或关闭资源调度：enableResourceSchedule；在关闭时会有一个同步的选项，Key为sync，取值为true或false。
+2. 调度器类型：scheduler。
+2. 开启或关闭标签：enableLabel，取值为true或false。
+2. 标签目录：labelDir。
+3. 是否覆盖用户指定队列：queueMappingOverride，取值为true、false。
+4. 程序上限：userMaxAppsDefault。
+5. 动态配置项：`DescribeGlobalConfig`接口返回的DefaultSettings中的Name字段。
+Value的取值都是字符串，对于**是否覆盖用户指定队列**、**程序上限**，json规范中的null表示清空该配置的值。支持修改单个配置项的值。对于**动态配置项**则需要全量传递以进行覆盖。
+        :type Items: list of Item
+        """
+        self._InstanceId = None
+        self._Items = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = Item()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyGlobalConfigResponse(AbstractModel):
+    """ModifyGlobalConfig返回参数结构体
 
     """
 
@@ -12422,6 +14403,88 @@ class ModifyResourcesTagsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifySLInstanceRequest(AbstractModel):
+    """ModifySLInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例唯一标识符（字符串表示）。
+        :type InstanceId: str
+        :param _Zone: 需要变更的区域名称。
+        :type Zone: str
+        :param _NodeNum: 该区域变配后的目标节点数量，所有区域节点总数应大于等于3，小于等于50。
+        :type NodeNum: int
+        """
+        self._InstanceId = None
+        self._Zone = None
+        self._NodeNum = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def NodeNum(self):
+        return self._NodeNum
+
+    @NodeNum.setter
+    def NodeNum(self, NodeNum):
+        self._NodeNum = NodeNum
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Zone = params.get("Zone")
+        self._NodeNum = params.get("NodeNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySLInstanceResponse(AbstractModel):
+    """ModifySLInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyUserManagerPwdRequest(AbstractModel):
     """ModifyUserManagerPwd请求参数结构体
 
@@ -12612,6 +14675,96 @@ class ModifyYarnDeployResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyYarnQueueV2Request(AbstractModel):
+    """ModifyYarnQueueV2请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群Id
+        :type InstanceId: str
+        :param _Scheduler: 调度器类型。可选值：
+
+1. capacity
+2. fair
+        :type Scheduler: str
+        :param _ConfigModifyInfoList: 资源池数据
+        :type ConfigModifyInfoList: list of ConfigModifyInfoV2
+        """
+        self._InstanceId = None
+        self._Scheduler = None
+        self._ConfigModifyInfoList = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Scheduler(self):
+        return self._Scheduler
+
+    @Scheduler.setter
+    def Scheduler(self, Scheduler):
+        self._Scheduler = Scheduler
+
+    @property
+    def ConfigModifyInfoList(self):
+        return self._ConfigModifyInfoList
+
+    @ConfigModifyInfoList.setter
+    def ConfigModifyInfoList(self, ConfigModifyInfoList):
+        self._ConfigModifyInfoList = ConfigModifyInfoList
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Scheduler = params.get("Scheduler")
+        if params.get("ConfigModifyInfoList") is not None:
+            self._ConfigModifyInfoList = []
+            for item in params.get("ConfigModifyInfoList"):
+                obj = ConfigModifyInfoV2()
+                obj._deserialize(item)
+                self._ConfigModifyInfoList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyYarnQueueV2Response(AbstractModel):
+    """ModifyYarnQueueV2返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class MonthRepeatStrategy(AbstractModel):
     """定时伸缩每月重复任务策略
 
@@ -12735,12 +14888,16 @@ class MultiDiskMC(AbstractModel):
         :param _Type: 磁盘类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
+        :param _Size: 磁盘大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Size: str
         :param _Volume: 云盘大小
 注意：此字段可能返回 null，表示取不到有效值。
         :type Volume: int
         """
         self._Count = None
         self._Type = None
+        self._Size = None
         self._Volume = None
 
     @property
@@ -12760,6 +14917,14 @@ class MultiDiskMC(AbstractModel):
         self._Type = Type
 
     @property
+    def Size(self):
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
     def Volume(self):
         return self._Volume
 
@@ -12771,6 +14936,7 @@ class MultiDiskMC(AbstractModel):
     def _deserialize(self, params):
         self._Count = params.get("Count")
         self._Type = params.get("Type")
+        self._Size = params.get("Size")
         self._Volume = params.get("Volume")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -13198,6 +15364,12 @@ class NodeHardwareInfo(AbstractModel):
         :param _Remark: 备注
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
+        :param _SharedClusterId: 共享集群id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SharedClusterId: str
+        :param _SharedClusterIdDesc: 共享集群id描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SharedClusterIdDesc: str
         """
         self._AppId = None
         self._SerialNo = None
@@ -13251,6 +15423,8 @@ class NodeHardwareInfo(AbstractModel):
         self._TradeVersion = None
         self._ServicesStatus = None
         self._Remark = None
+        self._SharedClusterId = None
+        self._SharedClusterIdDesc = None
 
     @property
     def AppId(self):
@@ -13668,6 +15842,22 @@ class NodeHardwareInfo(AbstractModel):
     def Remark(self, Remark):
         self._Remark = Remark
 
+    @property
+    def SharedClusterId(self):
+        return self._SharedClusterId
+
+    @SharedClusterId.setter
+    def SharedClusterId(self, SharedClusterId):
+        self._SharedClusterId = SharedClusterId
+
+    @property
+    def SharedClusterIdDesc(self):
+        return self._SharedClusterIdDesc
+
+    @SharedClusterIdDesc.setter
+    def SharedClusterIdDesc(self, SharedClusterIdDesc):
+        self._SharedClusterIdDesc = SharedClusterIdDesc
+
 
     def _deserialize(self, params):
         self._AppId = params.get("AppId")
@@ -13736,6 +15926,8 @@ class NodeHardwareInfo(AbstractModel):
         self._TradeVersion = params.get("TradeVersion")
         self._ServicesStatus = params.get("ServicesStatus")
         self._Remark = params.get("Remark")
+        self._SharedClusterId = params.get("SharedClusterId")
+        self._SharedClusterIdDesc = params.get("SharedClusterIdDesc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16234,6 +18426,80 @@ class RepeatStrategy(AbstractModel):
         
 
 
+class ResetYarnConfigRequest(AbstractModel):
+    """ResetYarnConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: emr集群的英文id
+        :type InstanceId: str
+        :param _Key: 要重置的配置别名，可选值：
+
+- capacityLabel：重置标签管理的配置
+- fair：重置公平调度的配置
+- capacity：重置容量调度的配置
+        :type Key: str
+        """
+        self._InstanceId = None
+        self._Key = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Key = params.get("Key")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetYarnConfigResponse(AbstractModel):
+    """ResetYarnConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class Resource(AbstractModel):
     """资源详情
 
@@ -16899,6 +19165,219 @@ class RunJobFlowResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class SLInstanceInfo(AbstractModel):
+    """EMR Lite HBase 实例信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群实例字符串ID
+        :type ClusterId: str
+        :param _Id: 集群实例数字ID
+        :type Id: int
+        :param _StatusDesc: 状态描述
+        :type StatusDesc: str
+        :param _ClusterName: 实例名称
+        :type ClusterName: str
+        :param _RegionId: 地域ID
+        :type RegionId: int
+        :param _ZoneId: 主可用区ID
+        :type ZoneId: int
+        :param _Zone: 主可用区
+        :type Zone: str
+        :param _AppId: 用户APPID
+        :type AppId: int
+        :param _VpcId: 主可用区私有网络ID
+        :type VpcId: int
+        :param _SubnetId: 主可用区子网ID
+        :type SubnetId: int
+        :param _Status: 状态码
+        :type Status: int
+        :param _AddTime: 创建时间
+        :type AddTime: str
+        :param _PayMode: 集群计费类型。0表示按量计费，1表示包年包月
+        :type PayMode: int
+        :param _ZoneSettings: 多可用区信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneSettings: list of ZoneSetting
+        :param _Tags: 实例标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        """
+        self._ClusterId = None
+        self._Id = None
+        self._StatusDesc = None
+        self._ClusterName = None
+        self._RegionId = None
+        self._ZoneId = None
+        self._Zone = None
+        self._AppId = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._Status = None
+        self._AddTime = None
+        self._PayMode = None
+        self._ZoneSettings = None
+        self._Tags = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def StatusDesc(self):
+        return self._StatusDesc
+
+    @StatusDesc.setter
+    def StatusDesc(self, StatusDesc):
+        self._StatusDesc = StatusDesc
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def AddTime(self):
+        return self._AddTime
+
+    @AddTime.setter
+    def AddTime(self, AddTime):
+        self._AddTime = AddTime
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def ZoneSettings(self):
+        return self._ZoneSettings
+
+    @ZoneSettings.setter
+    def ZoneSettings(self, ZoneSettings):
+        self._ZoneSettings = ZoneSettings
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._Id = params.get("Id")
+        self._StatusDesc = params.get("StatusDesc")
+        self._ClusterName = params.get("ClusterName")
+        self._RegionId = params.get("RegionId")
+        self._ZoneId = params.get("ZoneId")
+        self._Zone = params.get("Zone")
+        self._AppId = params.get("AppId")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._Status = params.get("Status")
+        self._AddTime = params.get("AddTime")
+        self._PayMode = params.get("PayMode")
+        if params.get("ZoneSettings") is not None:
+            self._ZoneSettings = []
+            for item in params.get("ZoneSettings"):
+                obj = ZoneSetting()
+                obj._deserialize(item)
+                self._ZoneSettings.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ScaleOutClusterRequest(AbstractModel):
     """ScaleOutCluster请求参数结构体
 
@@ -16915,7 +19394,7 @@ class ScaleOutClusterRequest(AbstractModel):
         :type InstanceId: str
         :param _ScaleOutNodeConfig: 扩容节点类型以及数量
         :type ScaleOutNodeConfig: :class:`tencentcloud.emr.v20190103.models.ScaleOutNodeConfig`
-        :param _ClientToken: 唯一随机标识，时效5分钟，需要调用者指定 防止客户端重新创建资源，例如 a9a90aa6-751a-41b6-aad6-fae36063280
+        :param _ClientToken: 唯一随机标识，时效5分钟，需要调用者指定 防止客户端重新创建资源，例如 a9a90aa6-****-****-****-fae36063280
         :type ClientToken: str
         :param _InstanceChargePrepaid: 即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
         :type InstanceChargePrepaid: :class:`tencentcloud.emr.v20190103.models.InstanceChargePrepaid`
@@ -17286,7 +19765,7 @@ class ScaleOutInstanceRequest(AbstractModel):
 <li>0：表示按量计费。</li>
 <li>1：表示包年包月。</li>
         :type PayMode: int
-        :param _ClientToken: 唯一随机标识，时效5分钟，需要调用者指定 防止客户端重新创建资源，例如 a9a90aa6-751a-41b6-aad6-fae36063280
+        :param _ClientToken: 唯一随机标识，时效5分钟，需要调用者指定 防止客户端重新创建资源，例如 a9a90aa6-****-****-****-fae36063280
         :type ClientToken: str
         :param _PreExecutedFileSettings: 引导操作脚本设置。
         :type PreExecutedFileSettings: list of PreExecuteFileSettings
@@ -19779,6 +22258,64 @@ class TerminateInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class TerminateSLInstanceRequest(AbstractModel):
+    """TerminateSLInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例唯一标识符（字符串表示）
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TerminateSLInstanceResponse(AbstractModel):
+    """TerminateSLInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class TerminateTasksRequest(AbstractModel):
     """TerminateTasks请求参数结构体
 
@@ -21770,6 +24307,65 @@ class ZoneResourceConfiguration(AbstractModel):
             self._AllNodeResourceSpec = AllNodeResourceSpec()
             self._AllNodeResourceSpec._deserialize(params.get("AllNodeResourceSpec"))
         self._ZoneTag = params.get("ZoneTag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ZoneSetting(AbstractModel):
+    """可用区配置描述。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Zone: 可用区名称
+        :type Zone: str
+        :param _VPCSettings: 可用区VPC和子网
+        :type VPCSettings: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
+        :param _NodeNum: 可用区节点数量
+        :type NodeNum: int
+        """
+        self._Zone = None
+        self._VPCSettings = None
+        self._NodeNum = None
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def VPCSettings(self):
+        return self._VPCSettings
+
+    @VPCSettings.setter
+    def VPCSettings(self, VPCSettings):
+        self._VPCSettings = VPCSettings
+
+    @property
+    def NodeNum(self):
+        return self._NodeNum
+
+    @NodeNum.setter
+    def NodeNum(self, NodeNum):
+        self._NodeNum = NodeNum
+
+
+    def _deserialize(self, params):
+        self._Zone = params.get("Zone")
+        if params.get("VPCSettings") is not None:
+            self._VPCSettings = VPCSettings()
+            self._VPCSettings._deserialize(params.get("VPCSettings"))
+        self._NodeNum = params.get("NodeNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

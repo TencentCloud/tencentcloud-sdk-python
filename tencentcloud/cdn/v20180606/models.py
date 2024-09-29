@@ -4286,12 +4286,19 @@ off：关闭，遵循用户自定义的节点缓存规则
 默认为关闭状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type IgnoreSetCookie: str
+        :param _OriginMtimeCheckType: 当缓存过期后，是否开启源站 mtime 校验，配置值为equal、since、none 和 null。默认配置值为equal，会校验源站文件的mtime与长度。2024-09-12 18:00 之前创建的域名默认值 null，行为保持不变。
+equal：源站响应mtime必须和缓存mtime一致，若mtime值不一致，清除缓存。
+since：若源站响应mtime大于缓存mtime，清除缓存。
+none： 缓存过期回源重新获取文件mtime和长度后，不会校验源站响应mtime，若源站响应携带Content-Length头部，只有文件大小改变时才会更新缓存；若源站响应不携带Content-Length头部，会更新缓存。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginMtimeCheckType: str
         """
         self._Switch = None
         self._CacheTime = None
         self._CompareMaxAge = None
         self._IgnoreCacheControl = None
         self._IgnoreSetCookie = None
+        self._OriginMtimeCheckType = None
 
     @property
     def Switch(self):
@@ -4333,6 +4340,14 @@ off：关闭，遵循用户自定义的节点缓存规则
     def IgnoreSetCookie(self, IgnoreSetCookie):
         self._IgnoreSetCookie = IgnoreSetCookie
 
+    @property
+    def OriginMtimeCheckType(self):
+        return self._OriginMtimeCheckType
+
+    @OriginMtimeCheckType.setter
+    def OriginMtimeCheckType(self, OriginMtimeCheckType):
+        self._OriginMtimeCheckType = OriginMtimeCheckType
+
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
@@ -4340,6 +4355,7 @@ off：关闭，遵循用户自定义的节点缓存规则
         self._CompareMaxAge = params.get("CompareMaxAge")
         self._IgnoreCacheControl = params.get("IgnoreCacheControl")
         self._IgnoreSetCookie = params.get("IgnoreSetCookie")
+        self._OriginMtimeCheckType = params.get("OriginMtimeCheckType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4364,9 +4380,16 @@ off：关闭
         :param _HeuristicCache: 启发式缓存配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type HeuristicCache: :class:`tencentcloud.cdn.v20180606.models.HeuristicCache`
+        :param _OriginMtimeCheckType: 当缓存过期后，是否开启源站 mtime 校验，配置值为equal、since、none 和 null。默认配置值为equal，会校验源站文件的mtime与长度。2024-09-12 18:00 之前创建的域名默认值 null，行为保持不变。
+equal：源站响应mtime必须和缓存mtime一致，若mtime值不一致，清除缓存。
+since：若源站响应mtime大于缓存mtime，清除缓存。
+none： 缓存过期回源重新获取文件mtime和长度后，不会校验源站响应mtime，若源站响应携带Content-Length头部，只有文件大小改变时才会更新缓存；若源站响应不携带Content-Length头部，会更新缓存。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginMtimeCheckType: str
         """
         self._Switch = None
         self._HeuristicCache = None
+        self._OriginMtimeCheckType = None
 
     @property
     def Switch(self):
@@ -4384,12 +4407,21 @@ off：关闭
     def HeuristicCache(self, HeuristicCache):
         self._HeuristicCache = HeuristicCache
 
+    @property
+    def OriginMtimeCheckType(self):
+        return self._OriginMtimeCheckType
+
+    @OriginMtimeCheckType.setter
+    def OriginMtimeCheckType(self, OriginMtimeCheckType):
+        self._OriginMtimeCheckType = OriginMtimeCheckType
+
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         if params.get("HeuristicCache") is not None:
             self._HeuristicCache = HeuristicCache()
             self._HeuristicCache._deserialize(params.get("HeuristicCache"))
+        self._OriginMtimeCheckType = params.get("OriginMtimeCheckType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

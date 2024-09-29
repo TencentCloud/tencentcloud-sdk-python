@@ -591,6 +591,91 @@ class ClearCmqSubscriptionFilterTagsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ClientSubscriptionInfo(AbstractModel):
+    """客户端订阅详情，可用于辅助判断哪些客户端订阅关系不一致
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClientId: 客户端ID
+        :type ClientId: str
+        :param _ClientAddr: 客户端IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientAddr: str
+        :param _Topic: 订阅主题
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Topic: str
+        :param _SubString: 订阅表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubString: str
+        :param _ExpressionType: 订阅方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpressionType: str
+        """
+        self._ClientId = None
+        self._ClientAddr = None
+        self._Topic = None
+        self._SubString = None
+        self._ExpressionType = None
+
+    @property
+    def ClientId(self):
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def ClientAddr(self):
+        return self._ClientAddr
+
+    @ClientAddr.setter
+    def ClientAddr(self, ClientAddr):
+        self._ClientAddr = ClientAddr
+
+    @property
+    def Topic(self):
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def SubString(self):
+        return self._SubString
+
+    @SubString.setter
+    def SubString(self, SubString):
+        self._SubString = SubString
+
+    @property
+    def ExpressionType(self):
+        return self._ExpressionType
+
+    @ExpressionType.setter
+    def ExpressionType(self, ExpressionType):
+        self._ExpressionType = ExpressionType
+
+
+    def _deserialize(self, params):
+        self._ClientId = params.get("ClientId")
+        self._ClientAddr = params.get("ClientAddr")
+        self._Topic = params.get("Topic")
+        self._SubString = params.get("SubString")
+        self._ExpressionType = params.get("ExpressionType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Cluster(AbstractModel):
     """集群信息集合
 
@@ -21443,6 +21528,10 @@ class PulsarProClusterSpecInfo(AbstractModel):
         :param _ScalableTps: 规格外弹性TPS
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScalableTps: int
+        :param _MaxPartitions: 32或者128
+当前集群topic的最大分区数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxPartitions: int
         """
         self._SpecName = None
         self._MaxTps = None
@@ -21450,6 +21539,7 @@ class PulsarProClusterSpecInfo(AbstractModel):
         self._MaxNamespaces = None
         self._MaxTopics = None
         self._ScalableTps = None
+        self._MaxPartitions = None
 
     @property
     def SpecName(self):
@@ -21499,6 +21589,14 @@ class PulsarProClusterSpecInfo(AbstractModel):
     def ScalableTps(self, ScalableTps):
         self._ScalableTps = ScalableTps
 
+    @property
+    def MaxPartitions(self):
+        return self._MaxPartitions
+
+    @MaxPartitions.setter
+    def MaxPartitions(self, MaxPartitions):
+        self._MaxPartitions = MaxPartitions
+
 
     def _deserialize(self, params):
         self._SpecName = params.get("SpecName")
@@ -21507,6 +21605,7 @@ class PulsarProClusterSpecInfo(AbstractModel):
         self._MaxNamespaces = params.get("MaxNamespaces")
         self._MaxTopics = params.get("MaxTopics")
         self._ScalableTps = params.get("ScalableTps")
+        self._MaxPartitions = params.get("MaxPartitions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26406,6 +26505,9 @@ DeadLetter 死信
         :param _ClientProtocol: 协议类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClientProtocol: str
+        :param _ClientSubscriptionInfos: 客户端订阅详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientSubscriptionInfos: list of ClientSubscriptionInfo
         """
         self._Topic = None
         self._Type = None
@@ -26422,6 +26524,7 @@ DeadLetter 死信
         self._LastUpdateTime = None
         self._MaxRetryTimes = None
         self._ClientProtocol = None
+        self._ClientSubscriptionInfos = None
 
     @property
     def Topic(self):
@@ -26543,6 +26646,14 @@ DeadLetter 死信
     def ClientProtocol(self, ClientProtocol):
         self._ClientProtocol = ClientProtocol
 
+    @property
+    def ClientSubscriptionInfos(self):
+        return self._ClientSubscriptionInfos
+
+    @ClientSubscriptionInfos.setter
+    def ClientSubscriptionInfos(self, ClientSubscriptionInfos):
+        self._ClientSubscriptionInfos = ClientSubscriptionInfos
+
 
     def _deserialize(self, params):
         self._Topic = params.get("Topic")
@@ -26560,6 +26671,12 @@ DeadLetter 死信
         self._LastUpdateTime = params.get("LastUpdateTime")
         self._MaxRetryTimes = params.get("MaxRetryTimes")
         self._ClientProtocol = params.get("ClientProtocol")
+        if params.get("ClientSubscriptionInfos") is not None:
+            self._ClientSubscriptionInfos = []
+            for item in params.get("ClientSubscriptionInfos"):
+                obj = ClientSubscriptionInfo()
+                obj._deserialize(item)
+                self._ClientSubscriptionInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

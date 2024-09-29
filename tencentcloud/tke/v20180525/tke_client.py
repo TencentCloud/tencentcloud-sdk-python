@@ -1314,6 +1314,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteLogConfigs(self, request):
+        """删除集群内采集规则
+
+        :param request: Request instance for DeleteLogConfigs.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DeleteLogConfigsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteLogConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteLogConfigs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteLogConfigsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeletePrometheusAlertPolicy(self, request):
         """删除2.0实例告警策略
 
@@ -2788,6 +2811,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeLogConfigs(self, request):
+        """查询日志采集规则
+
+        :param request: Request instance for DescribeLogConfigs.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeLogConfigsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeLogConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLogConfigs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLogConfigsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeLogSwitches(self, request):
         """查询集群日志（审计、事件、普通日志）开关列表
 
@@ -2802,6 +2848,29 @@ class TkeClient(AbstractClient):
             body = self.call("DescribeLogSwitches", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeLogSwitchesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeOpenPolicyList(self, request):
+        """查询opa策略列表
+
+        :param request: Request instance for DescribeOpenPolicyList.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeOpenPolicyListRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeOpenPolicyListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOpenPolicyList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOpenPolicyListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4389,6 +4458,29 @@ class TkeClient(AbstractClient):
             body = self.call("ModifyNodePoolInstanceTypes", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyNodePoolInstanceTypesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyOpenPolicyList(self, request):
+        """批量修改opa策略
+
+        :param request: Request instance for ModifyOpenPolicyList.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ModifyOpenPolicyListRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ModifyOpenPolicyListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyOpenPolicyList", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyOpenPolicyListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

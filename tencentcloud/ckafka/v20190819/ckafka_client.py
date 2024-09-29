@@ -717,7 +717,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DeleteInstancePre(self, request):
-        """删除预付费实例
+        """删除预付费实例，该接口会对实例执行隔离并删除的动作，执行成功后实例会被直接删除销毁
 
         :param request: Request instance for DeleteInstancePre.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteInstancePreRequest`
@@ -1628,6 +1628,29 @@ class CkafkaClient(AbstractClient):
             body = self.call("FetchMessageListByOffset", params, headers=headers)
             response = json.loads(body)
             model = models.FetchMessageListByOffsetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def FetchMessageListByTimestamp(self, request):
+        """根据时间戳查询消息列表
+
+        :param request: Request instance for FetchMessageListByTimestamp.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.FetchMessageListByTimestampRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.FetchMessageListByTimestampResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("FetchMessageListByTimestamp", params, headers=headers)
+            response = json.loads(body)
+            model = models.FetchMessageListByTimestampResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -233,11 +233,14 @@ class ApproverInfo(AbstractModel):
 <li> 企业印章</li>
 <li> 骑缝章等签署控件</li></ul>
         :type SignComponents: list of Component
-        :param _ApproverIdCardType: 签署方经办人的证件类型，支持以下类型
+        :param _ApproverIdCardType: 签署方经办人的证件类型，支持以下类型，样式可以参考<a href="https://qian.tencent.com/developers/partner/id_card_support/" target="_blank">常见个人证件类型介绍</a>
 <ul><li>ID_CARD 中国大陆居民身份证  (默认值)</li>
 <li>HONGKONG_AND_MACAO 港澳居民来往内地通行证</li>
 <li>HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)</li>
 <li>OTHER_CARD_TYPE 其他证件</li></ul>
+
+
+
 
 注: `其他证件类型为白名单功能，使用前请联系对接的客户经理沟通。`
         :type ApproverIdCardType: str
@@ -253,7 +256,7 @@ class ApproverInfo(AbstractModel):
 注意：
 `如果使用的是通过文件发起合同（CreateFlowByFiles），NotifyType必须 是 sms 才会发送短信`
         :type NotifyType: str
-        :param _ApproverRole: 收据场景设置签署人角色类型, 可以设置如下****类型****:
+        :param _ApproverRole: 收据场景设置签署人角色类型, 可以设置如下<b>类型</b>:
 <ul><li> **1**  :收款人</li>
 <li>   **2**   :开具人</li>
 <li>   **3** :见证人</li></ul>
@@ -932,6 +935,85 @@ class AuthInfoDetail(AbstractModel):
                 self._HasAuthOrganizationList.append(obj)
         self._AuthUserTotal = params.get("AuthUserTotal")
         self._AuthOrganizationTotal = params.get("AuthOrganizationTotal")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuthRecord(AbstractModel):
+    """企业认证信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OperatorName: 经办人姓名。
+        :type OperatorName: str
+        :param _OperatorMobile: 经办人手机号。
+        :type OperatorMobile: str
+        :param _AuthType: 认证授权方式：
+<ul><li> **0**：未选择授权方式（默认值）</li>
+<li> **1**：上传授权书</li>
+<li> **2**：法人授权</li>
+<li> **3**：法人认证</li></ul>
+        :type AuthType: int
+        :param _AuditStatus: 企业认证授权书审核状态：
+<ul><li> **0**：未提交授权书（默认值）</li>
+<li> **1**：审核通过</li>
+<li> **2**：审核驳回</li>
+<li> **3**：审核中</li>
+<li> **4**：AI识别中</li>
+<li> **5**：客户确认AI信息</li></ul>
+        :type AuditStatus: int
+        """
+        self._OperatorName = None
+        self._OperatorMobile = None
+        self._AuthType = None
+        self._AuditStatus = None
+
+    @property
+    def OperatorName(self):
+        return self._OperatorName
+
+    @OperatorName.setter
+    def OperatorName(self, OperatorName):
+        self._OperatorName = OperatorName
+
+    @property
+    def OperatorMobile(self):
+        return self._OperatorMobile
+
+    @OperatorMobile.setter
+    def OperatorMobile(self, OperatorMobile):
+        self._OperatorMobile = OperatorMobile
+
+    @property
+    def AuthType(self):
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        self._AuthType = AuthType
+
+    @property
+    def AuditStatus(self):
+        return self._AuditStatus
+
+    @AuditStatus.setter
+    def AuditStatus(self, AuditStatus):
+        self._AuditStatus = AuditStatus
+
+
+    def _deserialize(self, params):
+        self._OperatorName = params.get("OperatorName")
+        self._OperatorMobile = params.get("OperatorMobile")
+        self._AuthType = params.get("AuthType")
+        self._AuditStatus = params.get("AuditStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3262,6 +3344,8 @@ class CreateBatchQuickSignUrlRequest(AbstractModel):
 注：
 `不指定该值时，默认为签署方自行选择。`
         :type SignTypeSelector: int
+        :param _FlowBatchUrlInfo: 批量签署合同相关信息，指定合同和签署方的信息，用于补充动态签署人。	
+        :type FlowBatchUrlInfo: :class:`tencentcloud.ess.v20201111.models.FlowBatchUrlInfo`
         """
         self._FlowApproverInfo = None
         self._Agent = None
@@ -3272,6 +3356,7 @@ class CreateBatchQuickSignUrlRequest(AbstractModel):
         self._SignatureTypes = None
         self._ApproverSignTypes = None
         self._SignTypeSelector = None
+        self._FlowBatchUrlInfo = None
 
     @property
     def FlowApproverInfo(self):
@@ -3345,6 +3430,14 @@ class CreateBatchQuickSignUrlRequest(AbstractModel):
     def SignTypeSelector(self, SignTypeSelector):
         self._SignTypeSelector = SignTypeSelector
 
+    @property
+    def FlowBatchUrlInfo(self):
+        return self._FlowBatchUrlInfo
+
+    @FlowBatchUrlInfo.setter
+    def FlowBatchUrlInfo(self, FlowBatchUrlInfo):
+        self._FlowBatchUrlInfo = FlowBatchUrlInfo
+
 
     def _deserialize(self, params):
         if params.get("FlowApproverInfo") is not None:
@@ -3362,6 +3455,9 @@ class CreateBatchQuickSignUrlRequest(AbstractModel):
         self._SignatureTypes = params.get("SignatureTypes")
         self._ApproverSignTypes = params.get("ApproverSignTypes")
         self._SignTypeSelector = params.get("SignTypeSelector")
+        if params.get("FlowBatchUrlInfo") is not None:
+            self._FlowBatchUrlInfo = FlowBatchUrlInfo()
+            self._FlowBatchUrlInfo._deserialize(params.get("FlowBatchUrlInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4849,6 +4945,8 @@ class CreateFlowByFilesRequest(AbstractModel):
 <li> 如果企业通知腾讯电子签平台审核未通过，平台将继续阻塞签署方的签署动作，直到企业通知平台审核通过。</li></ul>
 注：`此功能可用于与企业内部的审批流程进行关联，支持手动、静默签署合同`
         :type NeedSignReview: bool
+        :param _FlowDisplayType: 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+        :type FlowDisplayType: int
         """
         self._Operator = None
         self._FlowName = None
@@ -4871,6 +4969,7 @@ class CreateFlowByFilesRequest(AbstractModel):
         self._Agent = None
         self._AutoSignScene = None
         self._NeedSignReview = None
+        self._FlowDisplayType = None
 
     @property
     def Operator(self):
@@ -5040,6 +5139,14 @@ class CreateFlowByFilesRequest(AbstractModel):
     def NeedSignReview(self, NeedSignReview):
         self._NeedSignReview = NeedSignReview
 
+    @property
+    def FlowDisplayType(self):
+        return self._FlowDisplayType
+
+    @FlowDisplayType.setter
+    def FlowDisplayType(self, FlowDisplayType):
+        self._FlowDisplayType = FlowDisplayType
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -5082,6 +5189,7 @@ class CreateFlowByFilesRequest(AbstractModel):
             self._Agent._deserialize(params.get("Agent"))
         self._AutoSignScene = params.get("AutoSignScene")
         self._NeedSignReview = params.get("NeedSignReview")
+        self._FlowDisplayType = params.get("FlowDisplayType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6254,6 +6362,12 @@ class CreateFlowRequest(AbstractModel):
         :type RelatedFlowId: str
         :param _CallbackUrl: 暂未开放
         :type CallbackUrl: str
+        :param _FlowDisplayType: 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下： 
+ <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li></ul>
+
+效果如下:
+![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+        :type FlowDisplayType: int
         """
         self._Operator = None
         self._FlowName = None
@@ -6272,6 +6386,7 @@ class CreateFlowRequest(AbstractModel):
         self._AutoSignScene = None
         self._RelatedFlowId = None
         self._CallbackUrl = None
+        self._FlowDisplayType = None
 
     @property
     def Operator(self):
@@ -6417,6 +6532,14 @@ class CreateFlowRequest(AbstractModel):
 
         self._CallbackUrl = CallbackUrl
 
+    @property
+    def FlowDisplayType(self):
+        return self._FlowDisplayType
+
+    @FlowDisplayType.setter
+    def FlowDisplayType(self, FlowDisplayType):
+        self._FlowDisplayType = FlowDisplayType
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -6450,6 +6573,7 @@ class CreateFlowRequest(AbstractModel):
         self._AutoSignScene = params.get("AutoSignScene")
         self._RelatedFlowId = params.get("RelatedFlowId")
         self._CallbackUrl = params.get("CallbackUrl")
+        self._FlowDisplayType = params.get("FlowDisplayType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6661,9 +6785,10 @@ class CreateFlowSignUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 合同流程ID，为32位字符串。
-建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
-可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
+        :param _FlowId: 合同流程ID为32位字符串。
+
+您可以登录腾讯电子签控制台，在 "合同" -> "合同中心" 中查看某个合同的FlowId（在页面中展示为合同ID）。[点击查看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)。
+
         :type FlowId: str
         :param _Operator: 执行本接口操作的员工信息。
 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
@@ -6671,23 +6796,27 @@ class CreateFlowSignUrlRequest(AbstractModel):
         :param _Agent: 代理企业和员工的信息。
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param _FlowApproverInfos: 流程签署人列表，其中结构体的ApproverName，ApproverMobile和ApproverType必传，企业签署人则需传OrganizationName，其他可不传。
+        :param _FlowApproverInfos: 流程签署人列表中，结构体的ApproverName、ApproverMobile和ApproverType为必传字段。如果是企业签署人，还需传递OrganizationName。
 
-注:
-`1. 签署人只能有手写签名、时间类型、印章类型的签署控件和内容填写控件，其他类型的签署控件暂时未支持。`
-`2. 生成发起方预览链接时，该字段（FlowApproverInfos）传空或者不传`
+注：
+1. 签署人<b>只能使用手写签名、时间类型、印章类型、签批类型的签署控件和内容填写控件</b>，其他类型的签署控件暂时不支持。
+2. 生成发起方预览链接时，该字段（FlowApproverInfos）可以传空或者不传。
+
+
         :type FlowApproverInfos: list of FlowCreateApprover
         :param _Organization: 机构信息，暂未开放
         :type Organization: :class:`tencentcloud.ess.v20201111.models.OrganizationInfo`
         :param _JumpUrl: 签署完之后的H5页面的跳转链接，最大长度1000个字符。链接类型请参考 <a href="https://qian.tencent.com/developers/company/openqianh5" target="_blank">跳转电子签H5</a>
 
         :type JumpUrl: str
-        :param _UrlType: 链接类型，支持指定以下类型
-<ul><li>0 : 签署链接 (默认值)</li>
-<li>1 : 预览链接</li></ul>
-注:
-`1. 当指定链接类型为1时，链接为预览链接，打开链接无法签署仅支持预览以及查看当前合同状态。`
-`2. 如需生成发起方预览链接，则签署方信息传空，即FlowApproverInfos传空或者不传。`
+        :param _UrlType: 链接类型支持以下指定类型：
+
+<ul><li><b>0</b>: 签署链接（默认值），进入后可以填写或签署合同。</li><li><b>1 </b>: 预览链接，进入后可以预览合同当前的样子。</li></ul>
+
+注：
+
+1. 当指定链接类型为1时，链接为预览链接，打开链接后无法进行签署操作，仅支持预览和查看当前合同状态。
+2. 如需生成发起方预览链接，则签署方信息应传空，即FlowApproverInfos传空或者不传。
         :type UrlType: int
         """
         self._FlowId = None
@@ -7866,22 +7995,29 @@ class CreateOrganizationAuthUrlRequest(AbstractModel):
         :param _Operator: 操作人信息
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _AuthorizationTypes: 指定授权方式 支持多选:
-1-上传授权书方式
-2- 法人授权方式
-3- 法人身份认证方式
+
+<ul>
+<li><strong>1</strong>:上传授权书方式</li>
+<li><strong>2</strong>: 法人授权方式</li>
+<li><strong>3</strong>: 法人身份认证方式</li>
+</ul>
         :type AuthorizationTypes: list of int non-negative
-        :param _OrganizationName: 企业名称
-EndPointType=“H5”或者"SHORT_H5"时，该参数必填
+        :param _OrganizationName: 认证企业名称，请确认该名称与企业营业执照中注册的名称一致。
+
+注：
+
+1. `如果名称中包含英文括号()，请使用中文括号（）代替。`
+
+2. `EndPointType=“H5”或者"SHORT_H5"时，该参数必填`
 
         :type OrganizationName: str
         :param _UniformSocialCreditCode: 企业统一社会信用代码
         :type UniformSocialCreditCode: str
-        :param _LegalName: 法人姓名
+        :param _LegalName: 企业法人的姓名
         :type LegalName: str
-        :param _AutoJumpUrl: 认证完成跳转链接
+        :param _AutoJumpUrl: 认证完成跳回的链接，最长500个字符
         :type AutoJumpUrl: str
         :param _OrganizationAddress: 营业执照企业地址
-示例：xx省xx市xx县/区xx街道
         :type OrganizationAddress: str
         :param _AdminName: 认证人姓名
         :type AdminName: str
@@ -7889,50 +8025,39 @@ EndPointType=“H5”或者"SHORT_H5"时，该参数必填
         :type AdminMobile: str
         :param _AdminIdCardNumber: 认证人身份证号
         :type AdminIdCardNumber: str
-        :param _AdminIdCardType: 认证人证件类型
-支持以下类型
-<ul><li>ID_CARD : 中国大陆居民身份证  (默认值)</li>
-<li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
-<li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
+        :param _AdminIdCardType: 认证人证件类型， 支持以下类型
+<ul><li><b>ID_CARD</b> : 中国大陆居民身份证  (默认值)</li>
+<li><b>HONGKONG_AND_MACAO</b>  : 港澳居民来往内地通行证</li>
+<li><b>HONGKONG_MACAO_AND_TAIWAN</b>  : 港澳台居民居住证(格式同居民身份证)</li></ul>
 
         :type AdminIdCardType: str
-        :param _UniformSocialCreditCodeSame: 营业执照的社会信用代码保持一致
-false 关闭-默认
-true 开启
+        :param _UniformSocialCreditCodeSame: 对方打开链接认证时，对方填写的营业执照的社会信用代码是否与接口上传上来的要保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>
         :type UniformSocialCreditCodeSame: bool
-        :param _LegalNameSame: 法人姓名保持一致
-false 关闭-默认
-true 开启
+        :param _LegalNameSame: 对方打开链接认证时，法人姓名是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>
         :type LegalNameSame: bool
-        :param _AdminNameSame: 认证人姓名一致
-false 关闭-默认
-true 开启
-注意：
-开启后在认证过程前会校验拦截
+        :param _AdminNameSame: 对方打开链接认证时，认证人姓名是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>
         :type AdminNameSame: bool
-        :param _AdminIdCardNumberSame: 认证人居民身份证件号一致
-false 关闭-默认
-true 开启
-注意：
-开启后在认证过程前会校验拦截
+        :param _AdminIdCardNumberSame: 对方打开链接认证时，认证人居民身份证件号是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>
         :type AdminIdCardNumberSame: bool
-        :param _AdminMobileSame: 认证人手机号一致
-false 关闭-默认
-true 开启
-注意：
-开启后在认证过程前会校验拦截
+        :param _AdminMobileSame: 对方打开链接认证时，认证人手机号是否要与接口传递上来的保持一致。<ul>
+<li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li>
+<li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li>
+</ul>
         :type AdminMobileSame: bool
-        :param _OrganizationNameSame: 企业名称保持一致
-false 关闭-默认
-true 开启
+        :param _OrganizationNameSame: 对方打开链接认证时，企业名称是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>
         :type OrganizationNameSame: bool
-        :param _BusinessLicense: 营业执照正面照(PNG或JPG) base64格式, 大小不超过5M
+        :param _BusinessLicense: 营业执照正面照（支持PNG或JPG格式）需以base64格式提供，且文件大小不得超过5MB。
         :type BusinessLicense: str
         :param _Endpoint: 跳转链接类型：
-"PC"-PC端认证链接 
-"APP"-全屏或半屏跳转小程序链接
-“H5”-H5页面认证链接 "SHORT_H5"- H5认证短链
-"SHORT_URL"- 跳转小程序短链	
+
+<ul>
+<li><b>PC</b>：适用于PC端的认证链接</li>
+<li><b>APP</b>：用于全屏或半屏跳转的小程序链接</li>
+<li><b>SHORT_URL</b>：跳转小程序的链接的短链形式</li>
+<li><b>H5</b>：适用于H5页面的认证链接</li>
+<li><b>SHORT_H5</b>：H5认证链接的短链形式</li>
+</ul>
+
         :type Endpoint: str
         """
         self._Operator = None
@@ -8147,13 +8272,11 @@ class CreateOrganizationAuthUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AuthUrl: “H5”-H5长连接
-"SHORT_H5"- H5短链
-"APP"-小程序
-"PC"-PC浏览器
-链接有效期统一30天
+        :param _AuthUrl: 生成的认证链接。
+
+注： `链接有效期统一30天`
         :type AuthUrl: str
-        :param _ExpiredTime: 链接过期时间戳
+        :param _ExpiredTime: 链接过期时间，格式为Unix标准时间戳（秒）
         :type ExpiredTime: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9061,6 +9184,8 @@ class CreatePrepareFlowRequest(AbstractModel):
         :param _InitiatorComponents: 模板或者合同中的填写控件列表，列表中可支持下列多种填写控件，控件的详细定义参考开发者中心的Component结构体
 
         :type InitiatorComponents: list of Component
+        :param _FlowDisplayType: 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+        :type FlowDisplayType: int
         """
         self._Operator = None
         self._ResourceId = None
@@ -9081,6 +9206,7 @@ class CreatePrepareFlowRequest(AbstractModel):
         self._FlowId = None
         self._Agent = None
         self._InitiatorComponents = None
+        self._FlowDisplayType = None
 
     @property
     def Operator(self):
@@ -9234,6 +9360,14 @@ class CreatePrepareFlowRequest(AbstractModel):
     def InitiatorComponents(self, InitiatorComponents):
         self._InitiatorComponents = InitiatorComponents
 
+    @property
+    def FlowDisplayType(self):
+        return self._FlowDisplayType
+
+    @FlowDisplayType.setter
+    def FlowDisplayType(self, FlowDisplayType):
+        self._FlowDisplayType = FlowDisplayType
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -9275,6 +9409,7 @@ class CreatePrepareFlowRequest(AbstractModel):
                 obj = Component()
                 obj._deserialize(item)
                 self._InitiatorComponents.append(obj)
+        self._FlowDisplayType = params.get("FlowDisplayType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11236,23 +11371,21 @@ class CreateUserMobileChangeUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Url: 腾讯电子签小程序的实名认证链接。
-如果没有传递，默认值是 HTTP。 链接的有效期均是 7 天。
+        :param _Url: 腾讯电子签小程序的实名认证链接。 如果没有传递，默认值是 HTTP。 链接的有效期均是 7 天。
 
-- 如果EndPoint是APP，
-得到的链接类似于pages/guide/index?to=MOBILE_CHANGE_INTENTION&shortKey=yDCZHUyOcExAlcOvNod0, 用法可以参考描述中的"跳转到小程序的实现"
+<b>1.如果EndPoint是APP</b>，
+得到的链接类似于<a href="">pages/guide/index?to=MOBILE_CHANGE_INTENTION&shortKey=yDCZHUyOcExAlcOvNod0</a>, 用法可以参考描述中的"跳转到小程序的实现"
 
-- 如果EndPoint是HTTP，
-得到的链接类似于https://res.ess.tencent.cn/cdn/h5-activity/jump-mp.html?to=MOBILE_CHANGE_INTENTION&shortKey=yDCZHUyOcChrfpaswT0d，点击后会跳转到腾讯电子签小程序进行签署
+<b>2.如果EndPoint是HTTP</b>，
+得到的链接类似于<a href="">https://res.ess.tencent.cn/cdn/h5-activity/jump-mp.html?to=MOBILE_CHANGE_INTENTION&shortKey=yDCZHUyOcChrfpaswT0d</a>，点击后会跳转到腾讯电子签小程序进行签署
 
-- 如果EndPoint是HTTP_SHORT_URL，
-得到的链接类似于https://essurl.cn/2n**42Nd，点击后会跳转到腾讯电子签小程序进行签署
+<b>3.如果EndPoint是HTTP_SHORT_URL</b>，
+得到的链接类似于<a href="">https://essurl.cn/2n**42Nd</a>，点击后会跳转到腾讯电子签小程序进行签署
 
+注： <font color="red">生成的链路后面不能再增加参数</font>
 
-注： 生成的链路后面不能再增加参数
-示例值：https://essurl.cn/2n**42Nd
         :type Url: str
-        :param _ExpireTime: 链接失效期限如下：
+        :param _ExpireTime: 链接失效期限，为Unix时间戳（单位秒），有如下规则：
 
 <ul>
 <li>如果指定更换绑定手机号的用户(指定用户ID或姓名等信息)，则设定的链接失效期限为7天后。</li>
@@ -11323,20 +11456,13 @@ class CreateUserVerifyUrlRequest(AbstractModel):
         :type JumpUrl: str
         :param _Endpoint: 要跳转的链接类型
 
-- HTTP：
-跳转电子签小程序的http_url,短信通知或者H5跳转适合此类型 ，此时返回长链 (默认类型)
-
-- HTTP_SHORT_URL：
-跳转电子签小程序的http_url,短信通知或者H5跳转适合此类型，此时返回短链
-
-- APP：
-第三方APP或小程序跳转电子签小程序的path, APP或者小程序跳转适合此类型
-
-- H5：
-跳转电子签H5实名页面的长链
-
-- H5_SHORT_URL：
-跳转电子签H5实名页面的短链
+<ul>
+<li><strong>HTTP</strong>：适用于短信通知或H5跳转的电子签小程序HTTP长链接</li>
+<li><strong>HTTP_SHORT_URL</strong>：适用于短信通知或H5跳转的电子签小程序HTTP短链接</li>
+<li><strong>APP</strong>：（默认类型）适用于第三方APP或小程序跳转的电子签小程序路径</li>
+<li><strong>H5</strong>：适用于跳转至电子签H5实名页面的长链接</li>
+<li><strong>H5_SHORT_URL</strong>：适用于跳转至电子签H5实名页面的短链接</li>
+</ul>
 
 注：如果不传递，默认值是 <font color="red"> APP </font>
         :type Endpoint: str
@@ -11466,26 +11592,26 @@ class CreateUserVerifyUrlResponse(AbstractModel):
         :param _UserVerifyUrl: 腾讯电子签小程序的实名认证链接。
 如果没有传递，默认值是 HTTP。 链接的有效期均是 7 天。
 
-- 如果EndPoint是APP，
-得到的链接类似于pages/guide/index?to=MP_PERSONAL_VERIFY&shortKey=yDCZHUyOcExAlcOvNod0, 用法可以参考描述中的"跳转到小程序的实现"
+<strong>1.如果EndPoint是APP</strong>：
+得到的链接类似于<a href="">pages/guide/index?to=MP_PERSONAL_VERIFY&shortKey=yDCZHUyOcExAlcOvNod0</a>, 用法可以参考描述中的"跳转到小程序的实现"
 
-- 如果EndPoint是HTTP，
-得到的链接类似于https://res.ess.tencent.cn/cdn/h5-activity/jump-mp.html?to=TAG_VERIFY&shortKey=yDCZHUyOcChrfpaswT0d，点击后会跳转到腾讯电子签小程序进行签署
+<strong>2.如果EndPoint是HTTP</strong>：
+得到的链接类似于 <a href="">https://res.ess.tencent.cn/cdn/h5-activity/jump-mp.html?to=TAG_VERIFY&shortKey=yDCZHUyOcChrfpaswT0d</a>，点击后会跳转到腾讯电子签小程序进行签署
 
-- 如果EndPoint是HTTP_SHORT_URL，
-得到的链接类似于https://essurl.cn/2n**42Nd，点击后会跳转到腾讯电子签小程序进行签署
+<strong>3.如果EndPoint是HTTP_SHORT_URL</strong>：
+得到的链接类似于<a href="">https://essurl.cn/2n**42Nd</a>，点击后会跳转到腾讯电子签小程序进行签署
 
-- 如果EndPoint是H5，
-得到的链接类似于 https://quick.test.qian.tencent.cn/guide?Code=yDU****VJhsS5q&CodeType=xxx&shortKey=yD*****frcb，点击后会跳转到腾讯电子签H5页面进行签署
+<strong>4.如果EndPoint是H5</strong>：
+得到的链接类似于 <a href="">https://quick.test.qian.tencent.cn/guide?Code=yDU****VJhsS5q&CodeType=xxx&shortKey=yD*****frcb</a>，点击后会跳转到腾讯电子签H5页面进行签署
 
-- 如果EndPoint是H5_SHORT_URL，
-得到的链接类似于https://essurl.cn/2n**42Nd，点击后会跳转到腾讯电子签H5页面进行签署
+<strong>5.如果EndPoint是H5_SHORT_URL</strong>：
+得到的链接类似于<a href="">https://essurl.cn/2n**42Nd</a>，点击后会跳转到腾讯电子签H5页面进行签署
 
 
-`注：` <font color="red">生成的链路后面不能再增加参数</font>
+`注：` <font color="red">生成的链路后面不能再增加参数，防止出错重复参数覆盖原有的参数</font>
 示例值：https://essurl.cn/2n**42Nd
         :type UserVerifyUrl: str
-        :param _ExpireTime: 链接过期时间
+        :param _ExpireTime: 链接过期时间，为Unix时间戳（单位为秒）。
         :type ExpireTime: int
         :param _MiniAppId: 小程序appid，用于半屏拉起电子签小程序， 仅在 Endpoint 设置为 APP 的时候返回
         :type MiniAppId: str
@@ -12426,6 +12552,7 @@ class DescribeBillUsageDetailRequest(AbstractModel):
 <li>**OrgEssAuth**: 签署企业实名</li>
 <li>**FlowNotify**: 短信通知</li>
 <li>**AuthService**: 企业工商信息查询</li>
+<li>**NoAuthSign**: 形式签</li>
 </ul>
         :type QuotaType: str
         :param _Agent: 代理企业和员工的信息。
@@ -13336,11 +13463,10 @@ class DescribeFlowBriefsRequest(AbstractModel):
 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _FlowIds: 查询的合同流程ID列表最多支持100个流程ID。 
+
 如果某个合同流程ID不存在，系统会跳过此ID的查询，继续查询剩余存在的合同流程。
 
-可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
-
-[点击查看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
+可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。[点击查看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
         :type FlowIds: list of str
         :param _Agent: 代理企业和员工的信息。
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
@@ -13447,8 +13573,8 @@ class DescribeFlowComponentsRequest(AbstractModel):
 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _FlowId: 合同流程ID，为32位字符串。
-建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
-可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
+
+[点击查看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
         :type FlowId: str
         :param _Agent: 代理企业和员工的信息。
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
@@ -13508,7 +13634,7 @@ class DescribeFlowComponentsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RecipientComponentInfos: 合同流程关联的填写控件信息，按照参与方进行分类返回。
+        :param _RecipientComponentInfos: 合同流程关联的填写控件信息，包括填写控件的归属方以及是否填写等内容。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecipientComponentInfos: list of RecipientComponentInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -14566,6 +14692,158 @@ class DescribeIntegrationRolesResponse(AbstractModel):
                 obj = IntegrateRole()
                 obj._deserialize(item)
                 self._IntegrateRoles.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeOrganizationAuthStatusRequest(AbstractModel):
+    """DescribeOrganizationAuthStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。使用此接口时，必须填写userId。 支持填入集团子公司经办人 userId 代发合同。  注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _OrganizationName: 组织机构名称。 请确认该名称与企业营业执照中注册的名称一致。 如果名称中包含英文括号()，请使用中文括号（）代替。
+        :type OrganizationName: str
+        :param _UniformSocialCreditCode: 企业统一社会信用代码
+注意：OrganizationName和UniformSocialCreditCode不能同时为空
+        :type UniformSocialCreditCode: str
+        :param _LegalName: 法人姓名
+        :type LegalName: str
+        """
+        self._Operator = None
+        self._OrganizationName = None
+        self._UniformSocialCreditCode = None
+        self._LegalName = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def OrganizationName(self):
+        return self._OrganizationName
+
+    @OrganizationName.setter
+    def OrganizationName(self, OrganizationName):
+        self._OrganizationName = OrganizationName
+
+    @property
+    def UniformSocialCreditCode(self):
+        return self._UniformSocialCreditCode
+
+    @UniformSocialCreditCode.setter
+    def UniformSocialCreditCode(self, UniformSocialCreditCode):
+        self._UniformSocialCreditCode = UniformSocialCreditCode
+
+    @property
+    def LegalName(self):
+        return self._LegalName
+
+    @LegalName.setter
+    def LegalName(self, LegalName):
+        self._LegalName = LegalName
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._OrganizationName = params.get("OrganizationName")
+        self._UniformSocialCreditCode = params.get("UniformSocialCreditCode")
+        self._LegalName = params.get("LegalName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOrganizationAuthStatusResponse(AbstractModel):
+    """DescribeOrganizationAuthStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsVerified: 企业是否已认证
+        :type IsVerified: bool
+        :param _AuthStatus: 企业认证状态 0-未认证 1-认证中 2-已认证
+        :type AuthStatus: int
+        :param _AuthRecords: 企业认证信息
+        :type AuthRecords: list of AuthRecord
+        :param _OrganizationId: 企业在腾讯电子签平台的唯一身份标识，为32位字符串。
+可登录腾讯电子签控制台，在 "更多"->"企业设置"->"企业中心"- 中查看企业电子签账号。
+p.s. 只有当前企业认证成功的时候返回
+        :type OrganizationId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._IsVerified = None
+        self._AuthStatus = None
+        self._AuthRecords = None
+        self._OrganizationId = None
+        self._RequestId = None
+
+    @property
+    def IsVerified(self):
+        return self._IsVerified
+
+    @IsVerified.setter
+    def IsVerified(self, IsVerified):
+        self._IsVerified = IsVerified
+
+    @property
+    def AuthStatus(self):
+        return self._AuthStatus
+
+    @AuthStatus.setter
+    def AuthStatus(self, AuthStatus):
+        self._AuthStatus = AuthStatus
+
+    @property
+    def AuthRecords(self):
+        return self._AuthRecords
+
+    @AuthRecords.setter
+    def AuthRecords(self, AuthRecords):
+        self._AuthRecords = AuthRecords
+
+    @property
+    def OrganizationId(self):
+        return self._OrganizationId
+
+    @OrganizationId.setter
+    def OrganizationId(self, OrganizationId):
+        self._OrganizationId = OrganizationId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._IsVerified = params.get("IsVerified")
+        self._AuthStatus = params.get("AuthStatus")
+        if params.get("AuthRecords") is not None:
+            self._AuthRecords = []
+            for item in params.get("AuthRecords"):
+                obj = AuthRecord()
+                obj._deserialize(item)
+                self._AuthRecords.append(obj)
+        self._OrganizationId = params.get("OrganizationId")
         self._RequestId = params.get("RequestId")
 
 
@@ -17374,11 +17652,14 @@ class FlowCreateApprover(AbstractModel):
 
 注: `若不设置此参数，则默认使用合同的截止时间，此参数暂不支持合同组子合同`
         :type Deadline: int
-        :param _Intention: 视频核身意图配置，可指定问答模式或者点头模式的语音文本。
+        :param _Intention: <b>只有在生成H5签署链接的情形下</b>（ 如调用<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowSignUrl" target="_blank">获取H5签署链接</a>、<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateBatchQuickSignUrl" target="_blank">获取H5批量签署链接</a>等接口），该配置才会生效。
 
-注:
- `1.视频认证为白名单功能，使用前请联系对接的客户经理沟通。`
-`2.使用视频认证必须指定签署认证方式为人脸（即ApproverSignTypes）。`
+您可以指定H5签署视频核身的意图配置，选择问答模式或点头模式的语音文本。
+
+注意：
+1. 视频认证为<b>白名单功能，使用前请联系对接的客户经理沟通</b>。
+2. 使用视频认证时，<b>生成H5签署链接必须将签署认证方式指定为人脸</b>（即ApproverSignTypes设置成人脸签署）。
+3. 签署完成后，可以通过<a href="https://qian.tencent.com/developers/companyApis/queryFlows/DescribeSignFaceVideo" target="_blank">查询签署认证人脸视频</a>获取到当时的视频。
         :type Intention: :class:`tencentcloud.ess.v20201111.models.Intention`
         """
         self._ApproverType = None
@@ -18005,6 +18286,8 @@ false：有序签
         :param _AutoSignScene: 个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
 示例值：E_PRESCRIPTION_AUTO_SIGN
         :type AutoSignScene: str
+        :param _FlowDisplayType: 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+        :type FlowDisplayType: int
         """
         self._FlowName = None
         self._Approvers = None
@@ -18019,6 +18302,7 @@ false：有序签
         self._Components = None
         self._NeedSignReview = None
         self._AutoSignScene = None
+        self._FlowDisplayType = None
 
     @property
     def FlowName(self):
@@ -18128,6 +18412,14 @@ false：有序签
     def AutoSignScene(self, AutoSignScene):
         self._AutoSignScene = AutoSignScene
 
+    @property
+    def FlowDisplayType(self):
+        return self._FlowDisplayType
+
+    @FlowDisplayType.setter
+    def FlowDisplayType(self, FlowDisplayType):
+        self._FlowDisplayType = FlowDisplayType
+
 
     def _deserialize(self, params):
         self._FlowName = params.get("FlowName")
@@ -18153,6 +18445,7 @@ false：有序签
                 self._Components.append(obj)
         self._NeedSignReview = params.get("NeedSignReview")
         self._AutoSignScene = params.get("AutoSignScene")
+        self._FlowDisplayType = params.get("FlowDisplayType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21458,12 +21751,15 @@ class RecipientComponentInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RecipientId: 参与方Id
+        :param _RecipientId: 签署方经办人在合同流程中的参与方ID，与控件绑定，是控件的归属方
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecipientId: str
         :param _RecipientFillStatus: 参与方填写状态
-<ul><li>0-未填写</li>
-<li>1-已填写</li></ul>
+<ul>
+<li>**空值** : 此参与方没有填写控件</li>
+<li>**0**:  未填写, 表示此参与方还没有填写合同的填写控件</li>
+<li>**1**:  已填写, 表示此参与方已经填写所有的填写控件</li></ul>
+
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecipientFillStatus: str
         :param _IsPromoter: 是否为发起方
@@ -21471,7 +21767,7 @@ class RecipientComponentInfo(AbstractModel):
 <li>false-参与方</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsPromoter: bool
-        :param _Components: 填写控件列表
+        :param _Components: 改参与方填写控件信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Components: list of FilledComponent
         """
@@ -21541,10 +21837,13 @@ class RegisterInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _LegalName: 法人姓名
+注意：此字段可能返回 null，表示取不到有效值。
         :type LegalName: str
         :param _Uscc: 社会统一信用代码
+注意：此字段可能返回 null，表示取不到有效值。
         :type Uscc: str
         :param _UnifiedSocialCreditCode: 社会统一信用代码
+注意：此字段可能返回 null，表示取不到有效值。
         :type UnifiedSocialCreditCode: str
         """
         self._LegalName = None

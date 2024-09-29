@@ -65,7 +65,7 @@ class EssClient(AbstractClient):
 
         3. <font color='red'>只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。</font>
 
-        4.  撤销后可以看合同PDF内容的人员： 发起方的超管， 发起方自己，发起方撤销合同的操作人员，已经签署合同、已经填写合同、邀请填写已经补充信息的参与人员
+        4.  撤销后可以看合同PDF内容的人员： 发起方的超管， 发起方自己，发起方撤销合同的操作人员，已经签署合同、已经填写合同、邀请填写已经补充信息的参与人员， 其他参与人员看不到合同的内容。
 
         :param request: Request instance for CancelFlow.
         :type request: :class:`tencentcloud.ess.v20201111.models.CancelFlowRequest`
@@ -157,6 +157,8 @@ class EssClient(AbstractClient):
         ![image](https://qcloudimg.tencent-cloud.cn/raw/1f9f07fea6a70766cd286e0d58682ee2.png)
 
         3. <font color='red'>只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。</font>
+
+        4. 撤销后可以看合同PDF内容的人员： 发起方的超管， 发起方自己，发起方撤销合同的操作人员，已经签署合同、已经填写合同、邀请填写已经补充信息的参与人员， 其他参与人员看不到合同的内容。
 
         :param request: Request instance for CreateBatchCancelFlowUrl.
         :type request: :class:`tencentcloud.ess.v20201111.models.CreateBatchCancelFlowUrlRequest`
@@ -282,13 +284,12 @@ class EssClient(AbstractClient):
 
 
     def CreateBatchQuickSignUrl(self, request):
-        """该接口用于发起合同后，生成个人用户的批量签署链接, 暂时不支持企业端签署。
+        """该接口用于发起合同后，生成个人用户的批量待办链接, 暂时不支持企业端签署。
         **注意：**
         1. 该接口目前仅支持签署人类型是**个人签署方的批量签署场景**(ApproverType=1)。
-        2. 该接口可生成批量签署链接的C端签署人**必须仅有手写签名(控件类型为SIGN_SIGNATURE)和时间类型的签署控件**，**不支持填写控件** 。
-        3. 请确保C端签署人在批量签署合同中**为待签署状态**，如需顺序签署请待前一位参与人签署完成后，再创建该C端用户的签署链接。
-        4. 该签署链接**有效期为30分钟**，过期后将失效，如需签署可重新创建批量签署链接 。
-        5. 该接口返回的签署链接适用于APP集成的场景，支持APP打开或浏览器直接打开，**不支持微信小程序嵌入**。
+        2. 该接口可生成C端签署人的批量签署/查看链接，**签署控件仅支持手写签名(控件类型为SIGN_SIGNATURE)和时间类型的签署控件** 。
+        3. 该签署链接**有效期为30分钟**，过期后将失效，如需签署可重新创建批量签署链接 。
+        4. 该接口返回的签署链接适用于APP集成的场景，支持APP打开或浏览器直接打开，**不支持微信小程序嵌入**。
         跳转到小程序的实现，参考微信官方文档(分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式)，如何配置也可以请参考: <a href="https://qian.tencent.com/developers/company/openwxminiprogram">跳转电子签小程序配置</a>。
         6. 因h5涉及人脸身份认证能力基于慧眼人脸核身，对Android和iOS系统均有一定要求， 因此<font color='red'>App嵌入H5签署合同需要按照慧眼提供的<a href="https://cloud.tencent.com/document/product/1007/61076">慧眼人脸核身兼容性文档</a>做兼容性适配</font>。
 
@@ -377,7 +378,7 @@ class EssClient(AbstractClient):
         ###  调用流程
         该接口需要给对应的流程指定一个模板id，并且填充该模板中需要补充的信息。需要配置<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow" target="_blank">创建签署流程</a>和<a href="https://qian.tencent.com/developers/companyApis/startFlows/StartFlow" target="_blank">发起签署流程</a>接口使用。具体逻辑可以参考下图:
 
-        ![image](https://qcloudimg.tencent-cloud.cn/raw/06f2bc0f1772d8deac2f92b5df61a5ac.png)
+        ![image](https://qcloudimg.tencent-cloud.cn/raw/1f38ebd7c5afed8763ad961741d81438.png)
 
 
         ### 填充模板中定义的填写控件
@@ -561,7 +562,7 @@ class EssClient(AbstractClient):
 
         注：配合<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateDocument" target="_blank">创建电子文档</a>和<a href="https://qian.tencent.com/developers/companyApis/startFlows/StartFlow" target="_blank">发起签署流程</a>接口使用。整体的逻辑如下图
 
-        ![image](https://qcloudimg.tencent-cloud.cn/raw/06f2bc0f1772d8deac2f92b5df61a5ac.png)
+        ![image](https://qcloudimg.tencent-cloud.cn/raw/1f38ebd7c5afed8763ad961741d81438.png)
 
         注：**静默（自动）签署不支持合同签署方存在填写**功能
         <br>
@@ -1224,10 +1225,22 @@ class EssClient(AbstractClient):
 
 
     def CreateOrganizationAuthUrl(self, request):
-        """本接口（CreateOrganizationAuthUrl）用于生成创建企业认证链接。
-        用于业务方系统自己生成认证链接进行跳转.而不用电子签自带的生成链接
+        """本接口（CreateOrganizationAuthUrl）的主要功能是生成合作企业的认证链接。
 
-        注： **此接口需要购买单独的实名套餐包方可调用，如有需求请联系对接人员评估**
+        在生成链接的过程中，可以提供一部分已知信息，以便为对方进行认证流程提供便利。
+
+        ![image](https://qcloudimg.tencent-cloud.cn/raw/7ec91b79a0a4860e77c9ff9f4a5f13ad/channel_SyncProxyOrganization2.png)
+
+
+        - **企业统一社会信用代码**: 对应上图中的**1**
+        - **企业名称**: 对应上图中的**2**
+        - **企业法定代表人的名字**:对应上图中的**3**
+        - **企业详细住所**:对应上图中的**4**
+
+
+
+
+        <b>注</b>：此接口需要 <font  color="red"><b>购买单独的实名套餐包</b></font>方可调用，如有需求请联系对接人员评估
 
         :param request: Request instance for CreateOrganizationAuthUrl.
         :type request: :class:`tencentcloud.ess.v20201111.models.CreateOrganizationAuthUrlRequest`
@@ -1492,6 +1505,8 @@ class EssClient(AbstractClient):
         <li>非原合同企业参与人发起解除协议时，需要有<code>解除合同的权限</code>。</li>
         </ul>
 
+        ![image](https://qcloudimg.tencent-cloud.cn/raw/3427941ecb091bf0c55009bad192dd1c.png)
+
         :param request: Request instance for CreateReleaseFlow.
         :type request: :class:`tencentcloud.ess.v20201111.models.CreateReleaseFlowRequest`
         :rtype: :class:`tencentcloud.ess.v20201111.models.CreateReleaseFlowResponse`
@@ -1683,11 +1698,9 @@ class EssClient(AbstractClient):
 
 
     def CreateUserVerifyUrl(self, request):
-        """客户可以主动调用生成实名链接去做C端用户实名，会对实名的用户进行打标记为调用链接客户的用户
-        使用场景：
-        用户集成场景
-        使用限制：
-        此接口需要购买单独的实名套餐包方可调用，如有需求请联系对接人员评估
+        """生成个人用户实名认证链接，个人用户点击此链接进入实名流程（若用户已完成实名认证，则直接进入成功页面）。
+
+        注： 调用此接口需要购买<font color="red"><b>单独的实名套餐包</b></font>。使用前请联系对接的客户经理沟通。
 
         :param request: Request instance for CreateUserVerifyUrl.
         :type request: :class:`tencentcloud.ess.v20201111.models.CreateUserVerifyUrlRequest`
@@ -2058,8 +2071,7 @@ class EssClient(AbstractClient):
 
 
     def DescribeFlowBriefs(self, request):
-        """查询流程基础信息
-        适用场景：可用于主动查询某个合同流程的签署状态信息。可以配合回调通知使用。
+        """查询流程基础信息，主要用于<font color="red">查询合同的状态</font>信息。可以配合回调通知使用。
 
         注: `每个企业限制日调用量限制：100W，当日超过此限制后再调用接口返回错误`
 
@@ -2084,7 +2096,12 @@ class EssClient(AbstractClient):
 
 
     def DescribeFlowComponents(self, request):
-        """查询流程填写控件内容，可以根据合同流程ID查询该合同流程相关联的填写控件信息和填写内容。
+        """可以根据合同流程ID查询该合同流程相关联的填写控件信息和填写内容，包括填写控件的归属方、填写控件是否已经填写以及填写的具体内容。
+
+
+        如下图模板所示，发起后对方填写后，可以获取红框中用户填写的信息。
+
+        ![image](https://qcloudimg.tencent-cloud.cn/raw/08f6ea50d3ae88b51c280c2b17c2a126.png)
 
         :param request: Request instance for DescribeFlowComponents.
         :type request: :class:`tencentcloud.ess.v20201111.models.DescribeFlowComponentsRequest`
@@ -2271,6 +2288,29 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeOrganizationAuthStatus(self, request):
+        """查询企业认证状态- 仅通过[CreateOrganizationAuthUrl](https://qian.tencent.com/developers/companyApis/organizations/CreateOrganizationAuthUrl) 和[CreateBatchOrganizationRegistrationTasks](https://qian.tencent.com/developers/companyApis/organizations/CreateBatchOrganizationRegistrationTasks)这两个接口进行引导认证的企业，调用方企业可以依据这个接口，查询认证状态。
+
+        :param request: Request instance for DescribeOrganizationAuthStatus.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DescribeOrganizationAuthStatusRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DescribeOrganizationAuthStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOrganizationAuthStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOrganizationAuthStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeOrganizationGroupOrganizations(self, request):
         """此API接口用来查询加入集团的成员企业信息
         适用场景：子企业在加入集团后，主企业可能通过此接口获取到所有的子企业列表，方便进行展示和统计
@@ -2347,9 +2387,9 @@ class EssClient(AbstractClient):
     def DescribeSignFaceVideo(self, request):
         """该接口用于在使用视频认证方式签署合同后，获取用户的签署人脸认证视频。
 
-        1. 该接口**仅适用于在H5端签署**的合同，**在通过视频认证后**获取人脸图片。
-        2. 该接口**不支持小程序端**的签署人脸图片获取。
-        3. 请在**签署完成后的三天内**获取人脸图片，**过期后将无法获取**。
+        1. 该接口**仅适用于在H5端签署**的合同，**在通过视频认证后**获取人脸视频。
+        2. 该接口**不支持小程序端**的签署人脸视频获取。
+        3. 请在**签署完成后的三天内**获取人脸视频，**过期后将无法获取**。
 
         **注意：该接口需要开通白名单，请联系客户经理开通后使用。**
 
@@ -2379,8 +2419,8 @@ class EssClient(AbstractClient):
 
         注意:
         <ul>
-        <li>此接口为合作引流场景使用，使用`有白名单限制`，使用前请联系对接的客户经理沟通。</li>
-        <li>`AuthCode 只能使用一次`，查询一次再次查询会返回错误</li>
+        <li>此接口为合作引流场景使用，使用<b>有白名单限制</b>，使用前请联系对接的客户经理沟通。</li>
+        <li><b>AuthCode 只能使用一次</b>，查询一次再次查询会返回错误</li>
         </ul>
 
         :param request: Request instance for DescribeThirdPartyAuthCode.
@@ -2698,7 +2738,7 @@ class EssClient(AbstractClient):
         """此接口用于启动流程。它是模板发起合同的最后一步。
         在[创建签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow)和[创建电子文档](https://qian.tencent.com/developers/companyApis/startFlows/CreateDocument)之后，用于开始整个合同流程,  推进流程进入到签署环节。
 
-        ![image](https://qcloudimg.tencent-cloud.cn/raw/06f2bc0f1772d8deac2f92b5df61a5ac.png)
+        ![image](https://qcloudimg.tencent-cloud.cn/raw/1f38ebd7c5afed8763ad961741d81438.png)
 
         注：
         1.<font color="red">合同发起后就会扣减合同的额度</font>, 只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。（过期，拒签，签署完成，解除完成等状态不会返还额度）

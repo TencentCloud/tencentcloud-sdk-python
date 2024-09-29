@@ -49,6 +49,33 @@ class AsrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAsrKeyWordLib(self, request):
+        """用户通过本接口进行关键字词表的创建。
+        <br>•   默认每个用户最多可创建30个关键字词表。
+        <br>•   每个关键词词表最多可添加100个词，每个词最多5个汉字或15个字符。
+        <br>•   词表通过本地文件形式上传。
+        <br>•   本地文件必须为UTF-8编码格式，每行仅添加一个词且不能包含标点和特殊字符。
+
+        :param request: Request instance for CreateAsrKeyWordLib.
+        :type request: :class:`tencentcloud.asr.v20190614.models.CreateAsrKeyWordLibRequest`
+        :rtype: :class:`tencentcloud.asr.v20190614.models.CreateAsrKeyWordLibResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAsrKeyWordLib", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAsrKeyWordLibResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAsrVocab(self, request):
         """用户通过本接口进行热词表的创建。
         <br>•   默认最多可创建30个热词表。
@@ -154,6 +181,29 @@ class AsrClient(AbstractClient):
             body = self.call("CreateRecTask", params, headers=headers)
             response = json.loads(body)
             model = models.CreateRecTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteAsrKeyWordLib(self, request):
+        """用户通过本接口进行关键词表的删除。
+
+        :param request: Request instance for DeleteAsrKeyWordLib.
+        :type request: :class:`tencentcloud.asr.v20190614.models.DeleteAsrKeyWordLibRequest`
+        :rtype: :class:`tencentcloud.asr.v20190614.models.DeleteAsrKeyWordLibResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAsrKeyWordLib", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAsrKeyWordLibResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -308,6 +358,29 @@ class AsrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetAsrKeyWordLibList(self, request):
+        """用户通过该接口，可获得所有的关键词表及其信息。
+
+        :param request: Request instance for GetAsrKeyWordLibList.
+        :type request: :class:`tencentcloud.asr.v20190614.models.GetAsrKeyWordLibListRequest`
+        :rtype: :class:`tencentcloud.asr.v20190614.models.GetAsrKeyWordLibListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetAsrKeyWordLibList", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetAsrKeyWordLibListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetAsrVocab(self, request):
         """用户根据词表的ID可以获取对应的热词表信息
 
@@ -391,6 +464,29 @@ class AsrClient(AbstractClient):
             body = self.call("GetModelInfo", params, headers=headers)
             response = json.loads(body)
             model = models.GetModelInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetUsageByDate(self, request):
+        """查询用户用量
+
+        :param request: Request instance for GetUsageByDate.
+        :type request: :class:`tencentcloud.asr.v20190614.models.GetUsageByDateRequest`
+        :rtype: :class:`tencentcloud.asr.v20190614.models.GetUsageByDateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetUsageByDate", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetUsageByDateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -489,6 +585,29 @@ class AsrClient(AbstractClient):
             body = self.call("SetVocabState", params, headers=headers)
             response = json.loads(body)
             model = models.SetVocabStateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateAsrKeyWordLib(self, request):
+        """用户通过本接口进行对应的关键词表信息更新。
+
+        :param request: Request instance for UpdateAsrKeyWordLib.
+        :type request: :class:`tencentcloud.asr.v20190614.models.UpdateAsrKeyWordLibRequest`
+        :rtype: :class:`tencentcloud.asr.v20190614.models.UpdateAsrKeyWordLibResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateAsrKeyWordLib", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateAsrKeyWordLibResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

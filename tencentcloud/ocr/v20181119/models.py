@@ -1594,6 +1594,8 @@ WARN_RESHOOT_CARD翻拍件告警
         :type SerialNumber: str
         :param _RegistrationAuthority: 登记机关
         :type RegistrationAuthority: str
+        :param _Electronic: 是否是电子营业执照。0为不是，1为是。
+        :type Electronic: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1618,6 +1620,7 @@ WARN_RESHOOT_CARD翻拍件告警
         self._Title = None
         self._SerialNumber = None
         self._RegistrationAuthority = None
+        self._Electronic = None
         self._RequestId = None
 
     @property
@@ -1789,6 +1792,14 @@ WARN_RESHOOT_CARD翻拍件告警
         self._RegistrationAuthority = RegistrationAuthority
 
     @property
+    def Electronic(self):
+        return self._Electronic
+
+    @Electronic.setter
+    def Electronic(self, Electronic):
+        self._Electronic = Electronic
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -1819,6 +1830,7 @@ WARN_RESHOOT_CARD翻拍件告警
         self._Title = params.get("Title")
         self._SerialNumber = params.get("SerialNumber")
         self._RegistrationAuthority = params.get("RegistrationAuthority")
+        self._Electronic = params.get("Electronic")
         self._RequestId = params.get("RequestId")
 
 
@@ -2859,6 +2871,8 @@ HmtResidentPermitFront: 港澳台居住证正面
 HmtResidentPermitBack: 港澳台居住证背面
 EstateCert: 不动产证
 BizLicense: 营业执照
+ForeignPermanentResidentFront: 外国人永居证正面识别
+ForeignPermanentResidentBack: 外国人永居证背面识别
         :type DiscernType: list of str
         """
         self._ImageBase64 = None
@@ -7829,13 +7843,9 @@ class GeneralBasicOCRRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageBase64: 图片/PDF的 Base64 值。
-要求图片/PDF经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
-图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :param _ImageBase64: 图片/PDF的 Base64 值。要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type ImageBase64: str
-        :param _ImageUrl: 图片/PDF的 Url 地址。
-要求图片/PDF经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
-图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :param _ImageUrl: 图片/PDF的 Url 地址。要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type ImageUrl: str
         :param _Scene: 保留字段。
         :type Scene: str
@@ -11292,6 +11302,15 @@ class MLIDPassportOCRResponse(AbstractModel):
         :type Type: str
         :param _PassportRecognizeInfos: 信息区证件内容
         :type PassportRecognizeInfos: :class:`tencentcloud.ocr.v20181119.models.PassportRecognizeInfos`
+        :param _WarnCardInfos: 告警码
+-9101 证件边框不完整告警
+-9102 证件复印件告警
+-9103 证件翻拍告警
+-9104 证件PS告警
+-9107 证件反光告警
+-9108 证件模糊告警
+-9109 告警能力未开通
+        :type WarnCardInfos: list of int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -11311,6 +11330,7 @@ class MLIDPassportOCRResponse(AbstractModel):
         self._GivenName = None
         self._Type = None
         self._PassportRecognizeInfos = None
+        self._WarnCardInfos = None
         self._RequestId = None
 
     @property
@@ -11442,6 +11462,14 @@ class MLIDPassportOCRResponse(AbstractModel):
         self._PassportRecognizeInfos = PassportRecognizeInfos
 
     @property
+    def WarnCardInfos(self):
+        return self._WarnCardInfos
+
+    @WarnCardInfos.setter
+    def WarnCardInfos(self, WarnCardInfos):
+        self._WarnCardInfos = WarnCardInfos
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -11469,6 +11497,7 @@ class MLIDPassportOCRResponse(AbstractModel):
         if params.get("PassportRecognizeInfos") is not None:
             self._PassportRecognizeInfos = PassportRecognizeInfos()
             self._PassportRecognizeInfos._deserialize(params.get("PassportRecognizeInfos"))
+        self._WarnCardInfos = params.get("WarnCardInfos")
         self._RequestId = params.get("RequestId")
 
 
@@ -12036,6 +12065,8 @@ class MainlandPermitOCRResponse(AbstractModel):
         :type Type: str
         :param _Profile: RetProfile为True时返回头像字段， Base64编码
         :type Profile: str
+        :param _Nationality: 国籍
+        :type Nationality: str
         :param _MainlandTravelPermitBackInfos: 背面字段信息
         :type MainlandTravelPermitBackInfos: :class:`tencentcloud.ocr.v20181119.models.MainlandTravelPermitBackInfos`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12052,6 +12083,7 @@ class MainlandPermitOCRResponse(AbstractModel):
         self._IssueNumber = None
         self._Type = None
         self._Profile = None
+        self._Nationality = None
         self._MainlandTravelPermitBackInfos = None
         self._RequestId = None
 
@@ -12144,6 +12176,14 @@ class MainlandPermitOCRResponse(AbstractModel):
         self._Profile = Profile
 
     @property
+    def Nationality(self):
+        return self._Nationality
+
+    @Nationality.setter
+    def Nationality(self, Nationality):
+        self._Nationality = Nationality
+
+    @property
     def MainlandTravelPermitBackInfos(self):
         return self._MainlandTravelPermitBackInfos
 
@@ -12172,6 +12212,7 @@ class MainlandPermitOCRResponse(AbstractModel):
         self._IssueNumber = params.get("IssueNumber")
         self._Type = params.get("Type")
         self._Profile = params.get("Profile")
+        self._Nationality = params.get("Nationality")
         if params.get("MainlandTravelPermitBackInfos") is not None:
             self._MainlandTravelPermitBackInfos = MainlandTravelPermitBackInfos()
             self._MainlandTravelPermitBackInfos._deserialize(params.get("MainlandTravelPermitBackInfos"))
@@ -14867,6 +14908,8 @@ class PermitOCRResponse(AbstractModel):
         :type Birthday: str
         :param _PortraitImage: 头像照片的base64
         :type PortraitImage: str
+        :param _Type: 返回类型
+        :type Type: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -14879,6 +14922,7 @@ class PermitOCRResponse(AbstractModel):
         self._IssueAddress = None
         self._Birthday = None
         self._PortraitImage = None
+        self._Type = None
         self._RequestId = None
 
     @property
@@ -14954,6 +14998,14 @@ class PermitOCRResponse(AbstractModel):
         self._PortraitImage = PortraitImage
 
     @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -14972,6 +15024,7 @@ class PermitOCRResponse(AbstractModel):
         self._IssueAddress = params.get("IssueAddress")
         self._Birthday = params.get("Birthday")
         self._PortraitImage = params.get("PortraitImage")
+        self._Type = params.get("Type")
         self._RequestId = params.get("RequestId")
 
 
@@ -22616,8 +22669,7 @@ class StoreInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 识别出的字段名称(关键字)，支持以下字段：
-付款开户行、收款开户行、付款账号、收款账号、回单类型、回单编号、币种、流水号、凭证号码、交易机构、交易金额、手续费、日期等字段信息。
+        :param _Name: 识别出的字段名称(关键字)，如商店名称
         :type Name: str
         :param _Value: 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
         :type Value: str

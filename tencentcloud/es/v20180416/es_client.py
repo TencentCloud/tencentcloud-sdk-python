@@ -671,6 +671,29 @@ class EsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSpaceKibanaTools(self, request):
+        """space维度的kibana获取登录token
+
+        :param request: Request instance for DescribeSpaceKibanaTools.
+        :type request: :class:`tencentcloud.es.v20180416.models.DescribeSpaceKibanaToolsRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DescribeSpaceKibanaToolsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSpaceKibanaTools", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSpaceKibanaToolsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeUserCosSnapshotList(self, request):
         """查询快照信息接口
 
@@ -800,6 +823,29 @@ class EsClient(AbstractClient):
             body = self.call("InquirePriceRenewInstance", params, headers=headers)
             response = json.loads(body)
             model = models.InquirePriceRenewInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def InstallInstanceModel(self, request):
+        """ES集群安装模型接口
+
+        :param request: Request instance for InstallInstanceModel.
+        :type request: :class:`tencentcloud.es.v20180416.models.InstallInstanceModelRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.InstallInstanceModelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InstallInstanceModel", params, headers=headers)
+            response = json.loads(body)
+            model = models.InstallInstanceModelResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

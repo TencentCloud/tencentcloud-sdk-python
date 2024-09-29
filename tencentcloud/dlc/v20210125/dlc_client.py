@@ -1084,6 +1084,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteTable(self, request):
+        """删除表
+
+        :param request: Request instance for DeleteTable.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteTableRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DeleteTableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteTable", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteTableResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteThirdPartyAccessUser(self, request):
         """本接口（RegisterThirdPartyAccessUser）用于移除第三方平台访问
 
@@ -1407,7 +1430,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeDataEngines(self, request):
-        """本接口（DescribeDataEngines）用于查询DataEngines信息列表
+        """本接口（DescribeDataEngines）用于查询DataEngines信息列表.
 
         :param request: Request instance for DescribeDataEngines.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDataEnginesRequest`
@@ -2846,6 +2869,29 @@ class DlcClient(AbstractClient):
             body = self.call("ModifyWorkGroup", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyWorkGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def QueryInternalTableWarehouse(self, request):
+        """本接口（QueryInternalTableWarehouse）用于获取原生表warehouse路径
+
+        :param request: Request instance for QueryInternalTableWarehouse.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.QueryInternalTableWarehouseRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.QueryInternalTableWarehouseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryInternalTableWarehouse", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryInternalTableWarehouseResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

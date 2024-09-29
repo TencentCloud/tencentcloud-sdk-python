@@ -7605,7 +7605,7 @@ class RecognizeConfig(AbstractModel):
 - English = "en" # 英语
 - Vietnamese = "vi" # 越南语
 - Japanese = "ja" # 日语
-- Korean = "ko" # 汉语
+- Korean = "ko" # 韩语
 - Indonesia = "id" # 印度尼西亚语
 - Thai = "th" # 泰语
 - Portuguese = "pt" # 葡萄牙语
@@ -8218,7 +8218,7 @@ class STTConfig(AbstractModel):
 4.     English = "en" # 英语
 5.     Vietnamese = "vi" # 越南语
 6.     Japanese = "ja" # 日语
-7.     Korean = "ko" # 汉语
+7.     Korean = "ko" # 韩语
 8.     Indonesia = "id" # 印度尼西亚语
 9.     Thai = "th" # 泰语
 10.     Portuguese = "pt" # 葡萄牙语
@@ -8242,9 +8242,13 @@ class STTConfig(AbstractModel):
 
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlternativeLanguage: list of str
+        :param _VadSilenceTime: 语音识别vad的时间，范围为240-2000，默认为1000，单位为ms。更小的值会让语音识别分句更快。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VadSilenceTime: int
         """
         self._Language = None
         self._AlternativeLanguage = None
+        self._VadSilenceTime = None
 
     @property
     def Language(self):
@@ -8262,10 +8266,19 @@ class STTConfig(AbstractModel):
     def AlternativeLanguage(self, AlternativeLanguage):
         self._AlternativeLanguage = AlternativeLanguage
 
+    @property
+    def VadSilenceTime(self):
+        return self._VadSilenceTime
+
+    @VadSilenceTime.setter
+    def VadSilenceTime(self, VadSilenceTime):
+        self._VadSilenceTime = VadSilenceTime
+
 
     def _deserialize(self, params):
         self._Language = params.get("Language")
         self._AlternativeLanguage = params.get("AlternativeLanguage")
+        self._VadSilenceTime = params.get("VadSilenceTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

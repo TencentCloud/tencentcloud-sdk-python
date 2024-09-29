@@ -224,6 +224,9 @@ RESOURCENOTFOUND_TCRRESOURCENOTFOUND = 'ResourceNotFound.TcrResourceNotFound'
 # 未授权操作。
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 
+# 未授权操作
+UNAUTHORIZEDOPERATION_ERRORTCRUNAUTHORIZED = 'UnauthorizedOperation.ErrorTcrUnauthorized'
+
 # 未知参数错误。
 UNKNOWNPARAMETER = 'UnknownParameter'
 

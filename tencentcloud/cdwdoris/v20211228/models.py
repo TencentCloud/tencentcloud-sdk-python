@@ -1671,6 +1671,10 @@ class CreateBackUpScheduleRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _OperationType: 操作类型 create(创建) update(编辑修改)
+        :type OperationType: str
         :param _ScheduleId: 编辑时需要传
         :type ScheduleId: int
         :param _WeekDays: 选择的星期 逗号分隔
@@ -1693,7 +1697,20 @@ class CreateBackUpScheduleRequest(AbstractModel):
         :type AuthType: int
         :param _CosSourceInfo: cos认证的信息
         :type CosSourceInfo: :class:`tencentcloud.cdwdoris.v20211228.models.CosSourceInfo`
+        :param _ScheduleName: 调度任务名
+        :type ScheduleName: str
+        :param _ScheduleInfo: 调度信息
+        :type ScheduleInfo: :class:`tencentcloud.cdwdoris.v20211228.models.ScheduleInfo`
+        :param _UpdateStatus: 更新任务状态：
+3-暂停,
+2-删除,
+1-启动
+        :type UpdateStatus: int
+        :param _CosBucket: 当前任务的cos桶信息
+        :type CosBucket: str
         """
+        self._InstanceId = None
+        self._OperationType = None
         self._ScheduleId = None
         self._WeekDays = None
         self._ExecuteHour = None
@@ -1704,6 +1721,26 @@ class CreateBackUpScheduleRequest(AbstractModel):
         self._RestoreType = None
         self._AuthType = None
         self._CosSourceInfo = None
+        self._ScheduleName = None
+        self._ScheduleInfo = None
+        self._UpdateStatus = None
+        self._CosBucket = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def OperationType(self):
+        return self._OperationType
+
+    @OperationType.setter
+    def OperationType(self, OperationType):
+        self._OperationType = OperationType
 
     @property
     def ScheduleId(self):
@@ -1785,8 +1822,42 @@ class CreateBackUpScheduleRequest(AbstractModel):
     def CosSourceInfo(self, CosSourceInfo):
         self._CosSourceInfo = CosSourceInfo
 
+    @property
+    def ScheduleName(self):
+        return self._ScheduleName
+
+    @ScheduleName.setter
+    def ScheduleName(self, ScheduleName):
+        self._ScheduleName = ScheduleName
+
+    @property
+    def ScheduleInfo(self):
+        return self._ScheduleInfo
+
+    @ScheduleInfo.setter
+    def ScheduleInfo(self, ScheduleInfo):
+        self._ScheduleInfo = ScheduleInfo
+
+    @property
+    def UpdateStatus(self):
+        return self._UpdateStatus
+
+    @UpdateStatus.setter
+    def UpdateStatus(self, UpdateStatus):
+        self._UpdateStatus = UpdateStatus
+
+    @property
+    def CosBucket(self):
+        return self._CosBucket
+
+    @CosBucket.setter
+    def CosBucket(self, CosBucket):
+        self._CosBucket = CosBucket
+
 
     def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._OperationType = params.get("OperationType")
         self._ScheduleId = params.get("ScheduleId")
         self._WeekDays = params.get("WeekDays")
         self._ExecuteHour = params.get("ExecuteHour")
@@ -1806,6 +1877,12 @@ class CreateBackUpScheduleRequest(AbstractModel):
         if params.get("CosSourceInfo") is not None:
             self._CosSourceInfo = CosSourceInfo()
             self._CosSourceInfo._deserialize(params.get("CosSourceInfo"))
+        self._ScheduleName = params.get("ScheduleName")
+        if params.get("ScheduleInfo") is not None:
+            self._ScheduleInfo = ScheduleInfo()
+            self._ScheduleInfo._deserialize(params.get("ScheduleInfo"))
+        self._UpdateStatus = params.get("UpdateStatus")
+        self._CosBucket = params.get("CosBucket")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5234,7 +5311,7 @@ class DescribeInstancesRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 分页参数，分页步长，默认为10
         :type Limit: int
-        :param _SearchTags: 搜索标签列表
+        :param _SearchTags: 搜索标签列表，没匹配到则不过滤集群列表
         :type SearchTags: list of SearchTags
         """
         self._SearchInstanceId = None
@@ -6084,6 +6161,17 @@ class DescribeSqlApisRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _ApiType: GetUsers：获取用户列表；
+GetDatabases：获取数据库列表；
+GetTables：获取数据库表列表；
+GetUserPrivilegesV2：获取用户下的权限，粒度到表级别；
+DeleteUser：删除用户；
+GetCatalog：获取Catalog列表；
+        :type ApiType: str
+        :param _UserName: 用户名称
+        :type UserName: str
         :param _WhiteHost: 用户链接来自的 IP
         :type WhiteHost: str
         :param _Catalog: catalog名称
@@ -6095,11 +6183,38 @@ class DescribeSqlApisRequest(AbstractModel):
         :param _TableName: 表名
         :type TableName: str
         """
+        self._InstanceId = None
+        self._ApiType = None
+        self._UserName = None
         self._WhiteHost = None
         self._Catalog = None
         self._Catalogs = None
         self._DatabaseName = None
         self._TableName = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ApiType(self):
+        return self._ApiType
+
+    @ApiType.setter
+    def ApiType(self, ApiType):
+        self._ApiType = ApiType
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
 
     @property
     def WhiteHost(self):
@@ -6143,6 +6258,9 @@ class DescribeSqlApisRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ApiType = params.get("ApiType")
+        self._UserName = params.get("UserName")
         self._WhiteHost = params.get("WhiteHost")
         self._Catalog = params.get("Catalog")
         self._Catalogs = params.get("Catalogs")
@@ -6165,10 +6283,34 @@ class DescribeSqlApisResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ReturnData: 返回的查询数据，大部分情况是list，也可能是bool
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReturnData: str
+        :param _ErrorMsg: 错误消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ReturnData = None
+        self._ErrorMsg = None
         self._RequestId = None
+
+    @property
+    def ReturnData(self):
+        return self._ReturnData
+
+    @ReturnData.setter
+    def ReturnData(self, ReturnData):
+        self._ReturnData = ReturnData
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
 
     @property
     def RequestId(self):
@@ -6180,6 +6322,8 @@ class DescribeSqlApisResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ReturnData = params.get("ReturnData")
+        self._ErrorMsg = params.get("ErrorMsg")
         self._RequestId = params.get("RequestId")
 
 
@@ -11233,6 +11377,126 @@ class ScaleUpInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ScheduleInfo(AbstractModel):
+    """调度信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EffectivePeriod: 生效时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EffectivePeriod: str
+        :param _ScheduleType: 调度类型：
+Day-天
+Week-周
+Month-月
+Once-单次
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduleType: str
+        :param _ScheduleData: 执行调度的日期。调度类型为周和月时以英文逗号分隔；
+调度类型为单次时，该值是个日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduleData: str
+        :param _ScheduleHour: 执行时间：时
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduleHour: int
+        :param _ScheduleMin: 执行时间：分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduleMin: int
+        :param _BackupScope: 备份粒度：
+All-全量
+Database-按库
+Table-按表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupScope: str
+        :param _BackupDatabase: 备份库：如果是按库备份，则需要该字段，库之间用英文逗号分割
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupDatabase: str
+        """
+        self._EffectivePeriod = None
+        self._ScheduleType = None
+        self._ScheduleData = None
+        self._ScheduleHour = None
+        self._ScheduleMin = None
+        self._BackupScope = None
+        self._BackupDatabase = None
+
+    @property
+    def EffectivePeriod(self):
+        return self._EffectivePeriod
+
+    @EffectivePeriod.setter
+    def EffectivePeriod(self, EffectivePeriod):
+        self._EffectivePeriod = EffectivePeriod
+
+    @property
+    def ScheduleType(self):
+        return self._ScheduleType
+
+    @ScheduleType.setter
+    def ScheduleType(self, ScheduleType):
+        self._ScheduleType = ScheduleType
+
+    @property
+    def ScheduleData(self):
+        return self._ScheduleData
+
+    @ScheduleData.setter
+    def ScheduleData(self, ScheduleData):
+        self._ScheduleData = ScheduleData
+
+    @property
+    def ScheduleHour(self):
+        return self._ScheduleHour
+
+    @ScheduleHour.setter
+    def ScheduleHour(self, ScheduleHour):
+        self._ScheduleHour = ScheduleHour
+
+    @property
+    def ScheduleMin(self):
+        return self._ScheduleMin
+
+    @ScheduleMin.setter
+    def ScheduleMin(self, ScheduleMin):
+        self._ScheduleMin = ScheduleMin
+
+    @property
+    def BackupScope(self):
+        return self._BackupScope
+
+    @BackupScope.setter
+    def BackupScope(self, BackupScope):
+        self._BackupScope = BackupScope
+
+    @property
+    def BackupDatabase(self):
+        return self._BackupDatabase
+
+    @BackupDatabase.setter
+    def BackupDatabase(self, BackupDatabase):
+        self._BackupDatabase = BackupDatabase
+
+
+    def _deserialize(self, params):
+        self._EffectivePeriod = params.get("EffectivePeriod")
+        self._ScheduleType = params.get("ScheduleType")
+        self._ScheduleData = params.get("ScheduleData")
+        self._ScheduleHour = params.get("ScheduleHour")
+        self._ScheduleMin = params.get("ScheduleMin")
+        self._BackupScope = params.get("BackupScope")
+        self._BackupDatabase = params.get("BackupDatabase")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SearchTags(AbstractModel):
     """列表页搜索的标记列表
 
@@ -11244,7 +11508,7 @@ class SearchTags(AbstractModel):
         :type TagKey: str
         :param _TagValue: 标签的值
         :type TagValue: str
-        :param _AllValue: 1表示只输入标签的键，没有输入值；0表示输入键时且输入值
+        :param _AllValue: 1表示只输入标签的键，没有输入值；非1则表示输入键时且输入值
         :type AllValue: int
         """
         self._TagKey = None

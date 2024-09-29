@@ -1319,6 +1319,12 @@ class Certificates(AbstractModel):
         :param _CertRevokedTime: 证书吊销完成时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertRevokedTime: str
+        :param _HostingResourceTypes: 托管资源类型列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostingResourceTypes: list of str
+        :param _HostingConfig: 托管配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostingConfig: :class:`tencentcloud.ssl.v20191205.models.HostingConfig`
         """
         self._OwnerUin = None
         self._ProjectId = None
@@ -1374,6 +1380,8 @@ class Certificates(AbstractModel):
         self._KeyPasswordCustomFlag = None
         self._SupportDownloadType = None
         self._CertRevokedTime = None
+        self._HostingResourceTypes = None
+        self._HostingConfig = None
 
     @property
     def OwnerUin(self):
@@ -1807,6 +1815,22 @@ class Certificates(AbstractModel):
     def CertRevokedTime(self, CertRevokedTime):
         self._CertRevokedTime = CertRevokedTime
 
+    @property
+    def HostingResourceTypes(self):
+        return self._HostingResourceTypes
+
+    @HostingResourceTypes.setter
+    def HostingResourceTypes(self, HostingResourceTypes):
+        self._HostingResourceTypes = HostingResourceTypes
+
+    @property
+    def HostingConfig(self):
+        return self._HostingConfig
+
+    @HostingConfig.setter
+    def HostingConfig(self, HostingConfig):
+        self._HostingConfig = HostingConfig
+
 
     def _deserialize(self, params):
         self._OwnerUin = params.get("OwnerUin")
@@ -1876,6 +1900,10 @@ class Certificates(AbstractModel):
             self._SupportDownloadType = SupportDownloadType()
             self._SupportDownloadType._deserialize(params.get("SupportDownloadType"))
         self._CertRevokedTime = params.get("CertRevokedTime")
+        self._HostingResourceTypes = params.get("HostingResourceTypes")
+        if params.get("HostingConfig") is not None:
+            self._HostingConfig = HostingConfig()
+            self._HostingConfig._deserialize(params.get("HostingConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1977,6 +2005,82 @@ class CheckCertificateChainResponse(AbstractModel):
         self._IsValid = params.get("IsValid")
         self._IsTrustedCA = params.get("IsTrustedCA")
         self._Chains = params.get("Chains")
+        self._RequestId = params.get("RequestId")
+
+
+class CheckCertificateDomainVerificationRequest(AbstractModel):
+    """CheckCertificateDomainVerification请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertificateId: 证书ID。
+        :type CertificateId: str
+        """
+        self._CertificateId = None
+
+    @property
+    def CertificateId(self):
+        return self._CertificateId
+
+    @CertificateId.setter
+    def CertificateId(self, CertificateId):
+        self._CertificateId = CertificateId
+
+
+    def _deserialize(self, params):
+        self._CertificateId = params.get("CertificateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckCertificateDomainVerificationResponse(AbstractModel):
+    """CheckCertificateDomainVerification返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VerificationResults: 域名验证结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VerificationResults: list of DomainValidationResult
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._VerificationResults = None
+        self._RequestId = None
+
+    @property
+    def VerificationResults(self):
+        return self._VerificationResults
+
+    @VerificationResults.setter
+    def VerificationResults(self, VerificationResults):
+        self._VerificationResults = VerificationResults
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("VerificationResults") is not None:
+            self._VerificationResults = []
+            for item in params.get("VerificationResults"):
+                obj = DomainValidationResult()
+                obj._deserialize(item)
+                self._VerificationResults.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -9836,6 +9940,126 @@ class DescribePackagesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DomainValidationResult(AbstractModel):
+    """域名验证结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名。
+        :type Domain: str
+        :param _VerifyType: 验证类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VerifyType: str
+        :param _LocalCheck: 本地检查结果。
+        :type LocalCheck: int
+        :param _CaCheck: CA检查结果。
+        :type CaCheck: int
+        :param _LocalCheckFailReason: 检查失败原因。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocalCheckFailReason: str
+        :param _CheckValue: 检查到的值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckValue: list of str
+        :param _Frequently: 是否频繁请求。
+        :type Frequently: bool
+        :param _Issued: 是否已经签发。
+        :type Issued: bool
+        """
+        self._Domain = None
+        self._VerifyType = None
+        self._LocalCheck = None
+        self._CaCheck = None
+        self._LocalCheckFailReason = None
+        self._CheckValue = None
+        self._Frequently = None
+        self._Issued = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def VerifyType(self):
+        return self._VerifyType
+
+    @VerifyType.setter
+    def VerifyType(self, VerifyType):
+        self._VerifyType = VerifyType
+
+    @property
+    def LocalCheck(self):
+        return self._LocalCheck
+
+    @LocalCheck.setter
+    def LocalCheck(self, LocalCheck):
+        self._LocalCheck = LocalCheck
+
+    @property
+    def CaCheck(self):
+        return self._CaCheck
+
+    @CaCheck.setter
+    def CaCheck(self, CaCheck):
+        self._CaCheck = CaCheck
+
+    @property
+    def LocalCheckFailReason(self):
+        return self._LocalCheckFailReason
+
+    @LocalCheckFailReason.setter
+    def LocalCheckFailReason(self, LocalCheckFailReason):
+        self._LocalCheckFailReason = LocalCheckFailReason
+
+    @property
+    def CheckValue(self):
+        return self._CheckValue
+
+    @CheckValue.setter
+    def CheckValue(self, CheckValue):
+        self._CheckValue = CheckValue
+
+    @property
+    def Frequently(self):
+        return self._Frequently
+
+    @Frequently.setter
+    def Frequently(self, Frequently):
+        self._Frequently = Frequently
+
+    @property
+    def Issued(self):
+        return self._Issued
+
+    @Issued.setter
+    def Issued(self, Issued):
+        self._Issued = Issued
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._VerifyType = params.get("VerifyType")
+        self._LocalCheck = params.get("LocalCheck")
+        self._CaCheck = params.get("CaCheck")
+        self._LocalCheckFailReason = params.get("LocalCheckFailReason")
+        self._CheckValue = params.get("CheckValue")
+        self._Frequently = params.get("Frequently")
+        self._Issued = params.get("Issued")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DownloadCertificateRequest(AbstractModel):
     """DownloadCertificate请求参数结构体
 
@@ -10291,6 +10515,53 @@ class GatewayCertificate(AbstractModel):
         self._BindDomains = params.get("BindDomains")
         self._CertSource = params.get("CertSource")
         self._CertId = params.get("CertId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HostingConfig(AbstractModel):
+    """托管配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReplaceTime: 托管资源替换时间， 默认为证书过期前30天存在续费证书则替换
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReplaceTime: int
+        :param _MessageTypes: 托管发送消息类型：0，托管开始前消息提醒（没有续费证书也会收到该提示消息）； 1， 托管开始消息提醒（存在续费证书才会收到消息提醒）； 2， 托管资源替换失败消息提醒； 3 托管资源替换成功消息提醒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessageTypes: list of int
+        """
+        self._ReplaceTime = None
+        self._MessageTypes = None
+
+    @property
+    def ReplaceTime(self):
+        return self._ReplaceTime
+
+    @ReplaceTime.setter
+    def ReplaceTime(self, ReplaceTime):
+        self._ReplaceTime = ReplaceTime
+
+    @property
+    def MessageTypes(self):
+        return self._MessageTypes
+
+    @MessageTypes.setter
+    def MessageTypes(self, MessageTypes):
+        self._MessageTypes = MessageTypes
+
+
+    def _deserialize(self, params):
+        self._ReplaceTime = params.get("ReplaceTime")
+        self._MessageTypes = params.get("MessageTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

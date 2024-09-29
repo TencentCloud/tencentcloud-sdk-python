@@ -151,6 +151,9 @@ class Acl(AbstractModel):
         :param _WhiteCmds: 关联的白命令命令
 注意：此字段可能返回 null，表示取不到有效值。
         :type WhiteCmds: list of str
+        :param _AllowKeyboardLogger: 是否允许记录键盘
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AllowKeyboardLogger: bool
         """
         self._Id = None
         self._Name = None
@@ -182,6 +185,7 @@ class Acl(AbstractModel):
         self._AllowAccessCredential = None
         self._ACTemplateSet = None
         self._WhiteCmds = None
+        self._AllowKeyboardLogger = None
 
     @property
     def Id(self):
@@ -423,6 +427,14 @@ class Acl(AbstractModel):
     def WhiteCmds(self, WhiteCmds):
         self._WhiteCmds = WhiteCmds
 
+    @property
+    def AllowKeyboardLogger(self):
+        return self._AllowKeyboardLogger
+
+    @AllowKeyboardLogger.setter
+    def AllowKeyboardLogger(self, AllowKeyboardLogger):
+        self._AllowKeyboardLogger = AllowKeyboardLogger
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -487,6 +499,7 @@ class Acl(AbstractModel):
                 obj._deserialize(item)
                 self._ACTemplateSet.append(obj)
         self._WhiteCmds = params.get("WhiteCmds")
+        self._AllowKeyboardLogger = params.get("AllowKeyboardLogger")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1839,6 +1852,8 @@ class CreateAclRequest(AbstractModel):
         :type DepartmentId: str
         :param _AllowAccessCredential: 是否允许使用访问串，默认允许
         :type AllowAccessCredential: bool
+        :param _AllowKeyboardLogger: 是否允许记录键盘
+        :type AllowKeyboardLogger: bool
         """
         self._Name = None
         self._AllowDiskRedirect = None
@@ -1867,6 +1882,7 @@ class CreateAclRequest(AbstractModel):
         self._ValidateTo = None
         self._DepartmentId = None
         self._AllowAccessCredential = None
+        self._AllowKeyboardLogger = None
 
     @property
     def Name(self):
@@ -2084,6 +2100,14 @@ class CreateAclRequest(AbstractModel):
     def AllowAccessCredential(self, AllowAccessCredential):
         self._AllowAccessCredential = AllowAccessCredential
 
+    @property
+    def AllowKeyboardLogger(self):
+        return self._AllowKeyboardLogger
+
+    @AllowKeyboardLogger.setter
+    def AllowKeyboardLogger(self, AllowKeyboardLogger):
+        self._AllowKeyboardLogger = AllowKeyboardLogger
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -2113,6 +2137,7 @@ class CreateAclRequest(AbstractModel):
         self._ValidateTo = params.get("ValidateTo")
         self._DepartmentId = params.get("DepartmentId")
         self._AllowAccessCredential = params.get("AllowAccessCredential")
+        self._AllowKeyboardLogger = params.get("AllowKeyboardLogger")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2792,6 +2817,8 @@ class CreateResourceRequest(AbstractModel):
         :type AutoRenewFlag: int
         :param _DeployZone: 部署zone
         :type DeployZone: str
+        :param _Trial: 0非试用版，1试用版
+        :type Trial: int
         """
         self._DeployRegion = None
         self._VpcId = None
@@ -2803,6 +2830,7 @@ class CreateResourceRequest(AbstractModel):
         self._PayMode = None
         self._AutoRenewFlag = None
         self._DeployZone = None
+        self._Trial = None
 
     @property
     def DeployRegion(self):
@@ -2884,6 +2912,14 @@ class CreateResourceRequest(AbstractModel):
     def DeployZone(self, DeployZone):
         self._DeployZone = DeployZone
 
+    @property
+    def Trial(self):
+        return self._Trial
+
+    @Trial.setter
+    def Trial(self, Trial):
+        self._Trial = Trial
+
 
     def _deserialize(self, params):
         self._DeployRegion = params.get("DeployRegion")
@@ -2896,6 +2932,7 @@ class CreateResourceRequest(AbstractModel):
         self._PayMode = params.get("PayMode")
         self._AutoRenewFlag = params.get("AutoRenewFlag")
         self._DeployZone = params.get("DeployZone")
+        self._Trial = params.get("Trial")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5503,6 +5540,122 @@ class DescribeDevicesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDomainsRequest(AbstractModel):
+    """DescribeDomains请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 每页条目数量，默认20，最大500
+        :type Limit: int
+        :param _Filters: 过滤数组
+        :type Filters: list of Filter
+        :param _Offset: 分页偏移位置，默认值为0
+        :type Offset: int
+        """
+        self._Limit = None
+        self._Filters = None
+        self._Offset = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDomainsResponse(AbstractModel):
+    """DescribeDomains返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 网络域总数
+        :type TotalCount: int
+        :param _DomainSet: 网络域列表
+        :type DomainSet: list of Domain
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._DomainSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DomainSet(self):
+        return self._DomainSet
+
+    @DomainSet.setter
+    def DomainSet(self, DomainSet):
+        self._DomainSet = DomainSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DomainSet") is not None:
+            self._DomainSet = []
+            for item in params.get("DomainSet"):
+                obj = Domain()
+                obj._deserialize(item)
+                self._DomainSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeLoginEventRequest(AbstractModel):
     """DescribeLoginEvent请求参数结构体
 
@@ -6833,6 +6986,142 @@ class DeviceAccount(AbstractModel):
         
 
 
+class Domain(AbstractModel):
+    """网络域
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 自增id
+        :type Id: int
+        :param _DomainId: 网络域id
+        :type DomainId: str
+        :param _DomainName: 网络域名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DomainName: str
+        :param _ResourceId: 堡垒机id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: str
+        :param _WhiteIpSet: ip，网段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WhiteIpSet: list of str
+        :param _Enabled: 是否启用  默认 1启用 0禁用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enabled: int
+        :param _Status: 状态 0-已断开  1-已连接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _CreateTime: 网络域创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _Default: 是否资源默认网络域 1-资源默认网络域 0-用户添加网络域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Default: int
+        """
+        self._Id = None
+        self._DomainId = None
+        self._DomainName = None
+        self._ResourceId = None
+        self._WhiteIpSet = None
+        self._Enabled = None
+        self._Status = None
+        self._CreateTime = None
+        self._Default = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def WhiteIpSet(self):
+        return self._WhiteIpSet
+
+    @WhiteIpSet.setter
+    def WhiteIpSet(self, WhiteIpSet):
+        self._WhiteIpSet = WhiteIpSet
+
+    @property
+    def Enabled(self):
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Default(self):
+        return self._Default
+
+    @Default.setter
+    def Default(self, Default):
+        self._Default = Default
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._DomainId = params.get("DomainId")
+        self._DomainName = params.get("DomainName")
+        self._ResourceId = params.get("ResourceId")
+        self._WhiteIpSet = params.get("WhiteIpSet")
+        self._Enabled = params.get("Enabled")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._Default = params.get("Default")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ExternalDevice(AbstractModel):
     """主机参数，导入外部主机时使用
 
@@ -7280,6 +7569,8 @@ class ModifyAclRequest(AbstractModel):
         :type DepartmentId: str
         :param _AllowAccessCredential: 是否允许使用访问串
         :type AllowAccessCredential: bool
+        :param _AllowKeyboardLogger: 是否允许键盘记录
+        :type AllowKeyboardLogger: bool
         """
         self._Name = None
         self._AllowDiskRedirect = None
@@ -7309,6 +7600,7 @@ class ModifyAclRequest(AbstractModel):
         self._ValidateTo = None
         self._DepartmentId = None
         self._AllowAccessCredential = None
+        self._AllowKeyboardLogger = None
 
     @property
     def Name(self):
@@ -7534,6 +7826,14 @@ class ModifyAclRequest(AbstractModel):
     def AllowAccessCredential(self, AllowAccessCredential):
         self._AllowAccessCredential = AllowAccessCredential
 
+    @property
+    def AllowKeyboardLogger(self):
+        return self._AllowKeyboardLogger
+
+    @AllowKeyboardLogger.setter
+    def AllowKeyboardLogger(self, AllowKeyboardLogger):
+        self._AllowKeyboardLogger = AllowKeyboardLogger
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -7564,6 +7864,7 @@ class ModifyAclRequest(AbstractModel):
         self._ValidateTo = params.get("ValidateTo")
         self._DepartmentId = params.get("DepartmentId")
         self._AllowAccessCredential = params.get("AllowAccessCredential")
+        self._AllowKeyboardLogger = params.get("AllowKeyboardLogger")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

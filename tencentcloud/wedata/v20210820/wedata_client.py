@@ -2626,7 +2626,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribePendingSubmitTaskList(self, request):
-        """获取待提交任务预提交校验信息
+        """获取待提交任务预提交校验信息（注意：工作流编号或者任务编号列表，必须填一项）
 
         :param request: Request instance for DescribePendingSubmitTaskList.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribePendingSubmitTaskListRequest`
@@ -3493,6 +3493,29 @@ class WedataClient(AbstractClient):
             body = self.call("DescribeTableMetas", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTableMetasResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTablePartitions(self, request):
+        """查询表的分区详情信息
+
+        :param request: Request instance for DescribeTablePartitions.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTablePartitionsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeTablePartitionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTablePartitions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTablePartitionsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

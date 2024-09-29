@@ -100,11 +100,13 @@ class AiartClient(AbstractClient):
 
 
     def QueryDrawPortraitJob(self, request):
-        """AI 写真提供 AI 写真形象照的训练与生成能力，分为上传训练图片、训练模型、生成图片3个环节，需要依次调用对应接口。
-        每个写真模型自训练完成起1年内有效，有效期内可使用写真模型 ID 生成图片，期满后需要重新训练。
-        生成图片分为提交任务和查询任务2个接口。
-        - 提交生成写真图片任务：完成训练写真模型后，选择写真风格模板，提交一个生成写真图片异步任务，根据写真模型 ID 开始生成人物形象在指定风格上的写真图片，获得任务 ID。
+        """AI 写真分为上传训练图片、训练写真模型（可选跳过）、生成写真图片3个环节，需要依次调用对应接口。
+        生成图片分为提交任务和查询任务2个接口：
+
+        - 提交生成写真图片任务：选择风格模板，提交一个生成写真图片异步任务，根据写真模型 ID 生成写真图片，获得任务 ID。
         - 查询生成写真图片任务：根据任务 ID 查询生成图片任务的处理状态、处理结果。
+
+        每个写真模型自训练完成起1年内有效，有效期内可使用写真模型 ID 生成图片，期满后需要重新训练。
 
         :param request: Request instance for QueryDrawPortraitJob.
         :type request: :class:`tencentcloud.aiart.v20221229.models.QueryDrawPortraitJobRequest`
@@ -154,11 +156,14 @@ class AiartClient(AbstractClient):
 
 
     def QueryTrainPortraitModelJob(self, request):
-        """AI 写真提供 AI 写真形象照的训练与生成能力，分为上传训练图片、训练模型、生成图片3个环节，需要依次调用对应接口。
-        每个写真模型自训练完成起1年内有效，有效期内可使用写真模型 ID 生成图片，期满后需要重新训练。
-        训练模型分为提交任务和查询任务2个接口。
-        - 提交训练写真模型任务：完成上传训练图片后，提交一个训练写真模型异步任务，根据写真模型 ID 开始训练模型。
+        """AI 写真分为上传训练图片、训练写真模型（可选跳过）、生成写真图片3个环节，需要依次调用对应接口。
+        如果选择免训练模式无需调用本接口。
+        训练模型分为提交任务和查询任务2个接口：
+
+        - 提交训练写真模型任务：完成上传图片后，提交一个训练写真模型异步任务，根据写真模型 ID 开始训练模型。
         - 查询训练写真模型任务：根据写真模型 ID 查询训练任务的处理状态、处理结果。
+
+        每个写真模型自训练完成起1年内有效，有效期内可使用写真模型 ID 生成图片，期满后需要重新训练。
 
         :param request: Request instance for QueryTrainPortraitModelJob.
         :type request: :class:`tencentcloud.aiart.v20221229.models.QueryTrainPortraitModelJobRequest`
@@ -205,14 +210,39 @@ class AiartClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SketchToImage(self, request):
+        """线稿生图接口支持上传一张黑白线稿图，按照指定的主体对象以及样式、颜色、材质、风格等的文本描述prompt ，对线稿图进行色彩填充与细节描绘，得到一张完整绘制的图像。生成图分辨率默认为1024:1024。
+        线稿生图默认提供1个并发任务数，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
+
+        :param request: Request instance for SketchToImage.
+        :type request: :class:`tencentcloud.aiart.v20221229.models.SketchToImageRequest`
+        :rtype: :class:`tencentcloud.aiart.v20221229.models.SketchToImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SketchToImage", params, headers=headers)
+            response = json.loads(body)
+            model = models.SketchToImageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SubmitDrawPortraitJob(self, request):
-        """AI 写真提供 AI 写真形象照的训练与生成能力，分为上传训练图片、训练模型、生成图片3个环节，需要依次调用对应接口。
-        每个写真模型自训练完成起1年内有效，有效期内可使用写真模型 ID 生成图片，期满后需要重新训练。
-        生成图片分为提交任务和查询任务2个接口。
-        - 提交生成写真图片任务：完成训练写真模型后，选择风格模板，提交一个生成写真图片异步任务，根据写真模型 ID 开始生成人物形象在指定风格上的写真图片，获得任务 ID。
+        """AI 写真分为上传训练图片、训练写真模型（可选跳过）、生成写真图片3个环节，需要依次调用对应接口。
+        生成图片分为提交任务和查询任务2个接口：
+
+        - 提交生成写真图片任务：选择风格模板，提交一个生成写真图片异步任务，根据写真模型 ID 生成写真图片，获得任务 ID。
         - 查询生成写真图片任务：根据任务 ID 查询生成图片任务的处理状态、处理结果。
 
-        提交生成写真图片任务默认提供1个并发任务数。
+        每个写真模型自训练完成起1年内有效，有效期内可使用写真模型 ID 生成图片，期满后需要重新训练。
+        提交生成写真图片任务默认提供1个并发。
 
         :param request: Request instance for SubmitDrawPortraitJob.
         :type request: :class:`tencentcloud.aiart.v20221229.models.SubmitDrawPortraitJobRequest`
@@ -262,12 +292,14 @@ class AiartClient(AbstractClient):
 
 
     def SubmitTrainPortraitModelJob(self, request):
-        """AI 写真提供 AI 写真形象照的训练与生成能力，分为上传训练图片、训练模型、生成图片3个环节，需要依次调用对应接口。
-        每个写真模型自训练完成起1年内有效，有效期内可使用写真模型 ID 生成图片，期满后需要重新训练。
-        训练模型分为提交任务和查询任务2个接口。
-        - 提交训练写真模型任务：完成上传训练图片后，提交一个训练写真模型异步任务，根据写真模型 ID 开始训练模型。
+        """AI 写真分为上传训练图片、训练写真模型（可选跳过）、生成写真图片3个环节，需要依次调用对应接口。
+        如果选择免训练模式无需调用本接口。
+        训练模型分为提交任务和查询任务2个接口：
+        - 提交训练写真模型任务：完成上传图片后，提交一个训练写真模型异步任务，根据写真模型 ID 开始训练模型。
         - 查询训练写真模型任务：根据写真模型 ID 查询训练任务的处理状态、处理结果。
-        提交训练写真模型任务按并发任务数计费，无默认并发额度。
+
+        每个写真模型自训练完成起1年内有效，有效期内可使用写真模型 ID 生成图片，期满后需要重新训练。
+        提交训练写真模型任务按并发计费，无默认并发额度。
 
         :param request: Request instance for SubmitTrainPortraitModelJob.
         :type request: :class:`tencentcloud.aiart.v20221229.models.SubmitTrainPortraitModelJobRequest`
@@ -317,9 +349,14 @@ class AiartClient(AbstractClient):
 
 
     def UploadTrainPortraitImages(self, request):
-        """AI 写真提供 AI 写真形象照的训练与生成能力，分为上传训练图片、训练模型、生成图片3个环节，需要依次调用对应接口。
-        本接口用于指定一个人物形象的写真模型 ID，上传用于训练该模型的图片。一个写真模型仅用于一个人物形象的写真生成，上传的训练图片要求所属同一人，建议上传单人、正脸、脸部区域占比较大、脸部清晰无遮挡、无大角度偏转、无夸张表情的图片。
-        上传写真训练图片默认提供1个并发任务数。
+        """AI 写真分为上传训练图片、训练写真模型（可选跳过）、生成写真图片3个环节，需要依次调用对应接口。
+        本接口用于上传人像图片并指定对应的写真模型 ID。上传的图片要求是同一个人，建议上传单人、正脸、脸部区域占比较大、脸部清晰无遮挡、无大角度偏转、无夸张表情的图片。
+        可选模式：
+        - 常规训练模式：上传20 - 25张图片用于模型训练，完成训练后可生成写真图片。
+        - 快速训练模式：仅需上传1张图片用于模型训练，训练速度更快，完成训练后可生成写真图片。
+        - 免训练模式：仅需上传1张图片，跳过训练环节，直接生成写真图片。
+
+        上传写真训练图片默认提供1个并发。
 
         :param request: Request instance for UploadTrainPortraitImages.
         :type request: :class:`tencentcloud.aiart.v20221229.models.UploadTrainPortraitImagesRequest`

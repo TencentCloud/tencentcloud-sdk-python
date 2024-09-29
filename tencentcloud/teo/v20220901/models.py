@@ -4888,6 +4888,223 @@ class CreateCustomizeErrorPageResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateFunctionRequest(AbstractModel):
+    """CreateFunction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _Name: 函数名称，只能包含小写字母、数字、连字符，以数字或字母开头，以数字或字母结尾，最大支持 30 个字符。
+        :type Name: str
+        :param _Content: 函数内容，当前仅支持 JavaScript 代码，最大支持 5MB 大小。
+        :type Content: str
+        :param _Remark: 函数描述，最大支持 60 个字符。
+        :type Remark: str
+        """
+        self._ZoneId = None
+        self._Name = None
+        self._Content = None
+        self._Remark = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Name = params.get("Name")
+        self._Content = params.get("Content")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateFunctionResponse(AbstractModel):
+    """CreateFunction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FunctionId: 函数 ID。
+        :type FunctionId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FunctionId = None
+        self._RequestId = None
+
+    @property
+    def FunctionId(self):
+        return self._FunctionId
+
+    @FunctionId.setter
+    def FunctionId(self, FunctionId):
+        self._FunctionId = FunctionId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FunctionId = params.get("FunctionId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateFunctionRuleRequest(AbstractModel):
+    """CreateFunctionRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _FunctionRuleConditions: 规则条件列表，相同触发规则的不同条件匹配项之间为或关系。
+        :type FunctionRuleConditions: list of FunctionRuleCondition
+        :param _FunctionId: 函数 ID，命中触发规则条件后执行的函数。
+        :type FunctionId: str
+        :param _Remark: 规则描述，最大支持 60 个字符。
+        :type Remark: str
+        """
+        self._ZoneId = None
+        self._FunctionRuleConditions = None
+        self._FunctionId = None
+        self._Remark = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def FunctionRuleConditions(self):
+        return self._FunctionRuleConditions
+
+    @FunctionRuleConditions.setter
+    def FunctionRuleConditions(self, FunctionRuleConditions):
+        self._FunctionRuleConditions = FunctionRuleConditions
+
+    @property
+    def FunctionId(self):
+        return self._FunctionId
+
+    @FunctionId.setter
+    def FunctionId(self, FunctionId):
+        self._FunctionId = FunctionId
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("FunctionRuleConditions") is not None:
+            self._FunctionRuleConditions = []
+            for item in params.get("FunctionRuleConditions"):
+                obj = FunctionRuleCondition()
+                obj._deserialize(item)
+                self._FunctionRuleConditions.append(obj)
+        self._FunctionId = params.get("FunctionId")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateFunctionRuleResponse(AbstractModel):
+    """CreateFunctionRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 规则 ID。
+        :type RuleId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RuleId = None
+        self._RequestId = None
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateL4ProxyRequest(AbstractModel):
     """CreateL4Proxy请求参数结构体
 
@@ -6355,8 +6572,9 @@ class CreateZoneRequest(AbstractModel):
         r"""
         :param _Type: 站点接入类型。该参数取值如下，不填写时默认为 partial：
 <li>partial：CNAME 接入；</li>
-<li> full：NS 接入；</li>
-<li>noDomainAccess：无域名接入。</li>
+<li>full：NS 接入；</li>
+<li>noDomainAccess：无域名接入；</li>
+<li>dnsPodAccess：DNSPod 托管接入，该接入模式要求您的域名已托管在 DNSPod 内。</li>
         :type Type: str
         :param _ZoneName: 站点名称。CNAME/NS 接入的时，请传入二级域名（example.com）作为站点名称；无域名接入时，该值请保留为空。
         :type ZoneName: str
@@ -7671,6 +7889,146 @@ class DeleteCustomErrorPageResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteFunctionRequest(AbstractModel):
+    """DeleteFunction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _FunctionId: 函数 ID。
+        :type FunctionId: str
+        """
+        self._ZoneId = None
+        self._FunctionId = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def FunctionId(self):
+        return self._FunctionId
+
+    @FunctionId.setter
+    def FunctionId(self, FunctionId):
+        self._FunctionId = FunctionId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._FunctionId = params.get("FunctionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteFunctionResponse(AbstractModel):
+    """DeleteFunction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteFunctionRulesRequest(AbstractModel):
+    """DeleteFunctionRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _RuleIds: 规则 ID 列表。
+        :type RuleIds: list of str
+        """
+        self._ZoneId = None
+        self._RuleIds = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def RuleIds(self):
+        return self._RuleIds
+
+    @RuleIds.setter
+    def RuleIds(self, RuleIds):
+        self._RuleIds = RuleIds
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._RuleIds = params.get("RuleIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteFunctionRulesResponse(AbstractModel):
+    """DeleteFunctionRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteL4ProxyRequest(AbstractModel):
     """DeleteL4Proxy请求参数结构体
 
@@ -8506,9 +8864,6 @@ class DescribeAccelerationDomainsRequest(AbstractModel):
 <li>backup-origin： 按照备用源站地址进行过滤；</li>
 <li>domain-cname：按照 CNAME 进行过滤；</li>
 <li>share-cname：按照共享 CNAME 进行过滤；</li>
-<li>vodeo-sub-app-id：按照【 vodeo 子应用 ID】进行过滤；</li>
-<li>vodeo-distribution-range：按照【 vodeo 分发范围】进行过滤；</li>
-<li>vodeo-bucket-id：按照【vodeo 存储桶 ID】进行过滤；</li>
         :type Filters: list of AdvancedFilter
         :param _Order: 可根据该字段对返回结果进行排序，取值有：
 <li>created_on：加速域名创建时间；</li>
@@ -10515,6 +10870,330 @@ class DescribeEnvironmentsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeFunctionRulesRequest(AbstractModel):
+    """DescribeFunctionRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _Filters: 过滤条件列表，多个条件为且关系，Filters.Values 的上限为 20。详细的过滤条件如下：
+<li>rule-id：按照【规则 ID】进行精确匹配。</li>
+<li>function-id：按照【函数 ID】进行精确匹配。</li>
+<li>remark：按照【规则描述】进行模糊匹配。</li>
+        :type Filters: list of Filter
+        """
+        self._ZoneId = None
+        self._Filters = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFunctionRulesResponse(AbstractModel):
+    """DescribeFunctionRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FunctionRules: 规则详情列表。
+        :type FunctionRules: list of FunctionRule
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FunctionRules = None
+        self._RequestId = None
+
+    @property
+    def FunctionRules(self):
+        return self._FunctionRules
+
+    @FunctionRules.setter
+    def FunctionRules(self, FunctionRules):
+        self._FunctionRules = FunctionRules
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("FunctionRules") is not None:
+            self._FunctionRules = []
+            for item in params.get("FunctionRules"):
+                obj = FunctionRule()
+                obj._deserialize(item)
+                self._FunctionRules.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFunctionRuntimeEnvironmentRequest(AbstractModel):
+    """DescribeFunctionRuntimeEnvironment请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _FunctionId: 函数 ID。
+        :type FunctionId: str
+        """
+        self._ZoneId = None
+        self._FunctionId = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def FunctionId(self):
+        return self._FunctionId
+
+    @FunctionId.setter
+    def FunctionId(self, FunctionId):
+        self._FunctionId = FunctionId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._FunctionId = params.get("FunctionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFunctionRuntimeEnvironmentResponse(AbstractModel):
+    """DescribeFunctionRuntimeEnvironment返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvironmentVariables: 环境变量列表。
+        :type EnvironmentVariables: list of FunctionEnvironmentVariable
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._EnvironmentVariables = None
+        self._RequestId = None
+
+    @property
+    def EnvironmentVariables(self):
+        return self._EnvironmentVariables
+
+    @EnvironmentVariables.setter
+    def EnvironmentVariables(self, EnvironmentVariables):
+        self._EnvironmentVariables = EnvironmentVariables
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("EnvironmentVariables") is not None:
+            self._EnvironmentVariables = []
+            for item in params.get("EnvironmentVariables"):
+                obj = FunctionEnvironmentVariable()
+                obj._deserialize(item)
+                self._EnvironmentVariables.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFunctionsRequest(AbstractModel):
+    """DescribeFunctions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _FunctionIds: 按照函数 ID 列表过滤。
+        :type FunctionIds: list of str
+        :param _Filters: 过滤条件列表，多个条件为且关系，Filters.Values 的上限为 20。详细的过滤条件如下：
+<li>name：按照【函数名称】进行模糊匹配。</li>
+<li>remark：按照【函数描述】进行模糊匹配。</li>
+        :type Filters: list of Filter
+        :param _Offset: 分页查询偏移量。默认值：0。
+        :type Offset: int
+        :param _Limit: 分页查询限制数目。默认值：20，最大值：200。
+        :type Limit: int
+        """
+        self._ZoneId = None
+        self._FunctionIds = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def FunctionIds(self):
+        return self._FunctionIds
+
+    @FunctionIds.setter
+    def FunctionIds(self, FunctionIds):
+        self._FunctionIds = FunctionIds
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._FunctionIds = params.get("FunctionIds")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFunctionsResponse(AbstractModel):
+    """DescribeFunctions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合查询条件的函数总数。
+        :type TotalCount: int
+        :param _Functions: 符合查询条件的所有函数信息。
+        :type Functions: list of Function
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Functions = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Functions(self):
+        return self._Functions
+
+    @Functions.setter
+    def Functions(self, Functions):
+        self._Functions = Functions
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Functions") is not None:
+            self._Functions = []
+            for item in params.get("Functions"):
+                obj = Function()
+                obj._deserialize(item)
+                self._Functions.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeHostsSettingRequest(AbstractModel):
     """DescribeHostsSetting请求参数结构体
 
@@ -11729,18 +12408,22 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: 站点ID。
-必填参数。
+        :param _ZoneId: 站点 ID。该参数必填。
         :type ZoneId: str
-        :param _StartTime: 查询起始时间，时间与job-id必填一个。
+        :param _StartTime: 查询起始时间，时间与 job-id 必填一个。
         :type StartTime: str
-        :param _EndTime: 查询结束时间，时间与job-id必填一个。
+        :param _EndTime: 查询结束时间，时间与 job-id 必填一个。
         :type EndTime: str
-        :param _Offset: 分页查询偏移量，默认为0。
+        :param _Offset: 分页查询偏移量，默认为 0。
         :type Offset: int
-        :param _Limit: 分页查限制数目，默认值：20，最大值：1000。
+        :param _Limit: 分页查询限制数目，默认值：20，最大值：1000。
         :type Limit: int
-        :param _Filters: 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：<li>job-id<br>   按照【<strong>任务ID</strong>】进行过滤。job-id形如：1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持</li><li>target<br>   按照【<strong>目标资源信息</strong>】进行过滤，target形如：http://www.qq.com/1.txt或者tag1，暂不支持多值<br>   类型：String<br>   必选：否<br>   模糊查询：不支持</li><li>domains<br>   按照【<strong>域名</strong>】进行过滤，domains形如：www.qq.com<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。</li><li>statuses<br>   按照【<strong>任务状态</strong>】进行过滤<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时</li><li>type<br>   按照【<strong>清除缓存类型</strong>】进行过滤，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持<br>   可选项：<br>   purge_url：URL<br>   purge_prefix：前缀<br>   purge_all：全部缓存内容<br>   purge_host：Hostname<br>   purge_cache_tag：CacheTag</li>
+        :param _Filters: 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
+<li>job-id：按照任务 ID 进行过滤。job-id 形如：1379afjk91u32h，暂不支持多值，不支持模糊查询；</li>
+<li>target：按照目标资源信息进行过滤，target 形如：http://www.qq.com/1.txt 或者 tag1，暂不支持多值，支持模糊查询；</li>
+<li>domains：按照域名进行过滤，形如：www.qq.com，不支持模糊查询；</li>
+<li>statuses：按照任务状态进行过滤，不支持模糊查询。可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时</li>
+<li>type：按照清除缓存类型进行过滤，暂不支持多值，不支持模糊查询。可选项：<br>   purge_url：URL<br>   purge_prefix：前缀<br>   purge_all：全部缓存内容<br>   purge_host：Hostname<br>   purge_cache_tag：CacheTag</li>
         :type Filters: list of AdvancedFilter
         """
         self._ZoneId = None
@@ -12481,8 +13164,8 @@ class DescribeTimingL4DataRequest(AbstractModel):
 <li>day: 1天 。</li>不填将根据开始时间跟结束时间的间距自动推算粒度，具体为：1小时范围内以min粒度查询，2天范围内以5min粒度查询，7天范围内以hour粒度查询，超过7天以day粒度查询。
         :type Interval: str
         :param _Filters: 过滤条件，详细的过滤条件Key值如下：
-<li>ruleId<br>   按照【<strong>转发规则ID</strong>】进行过滤。</li>
-<li>proxyId<br>   按照【<strong>四层代理实例ID</strong>】进行过滤。</li>
+<li>ruleId：按照转发规则 ID 进行过滤。</li>
+<li>proxyId：按照四层代理实例 ID 进行过滤。</li>
         :type Filters: list of QueryCondition
         :param _Area: 数据归属地区，取值有：
 <li>overseas：全球（除中国大陆地区）数据；</li>
@@ -15568,6 +16251,342 @@ class ForceRedirect(AbstractModel):
         
 
 
+class Function(AbstractModel):
+    """边缘函数详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FunctionId: 函数 ID。
+        :type FunctionId: str
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _Name: 函数名字。
+        :type Name: str
+        :param _Remark: 函数描述。
+        :type Remark: str
+        :param _Content: 函数内容。
+        :type Content: str
+        :param _Domain: 函数默认域名。
+        :type Domain: str
+        :param _CreateTime: 创建时间。时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。
+        :type CreateTime: str
+        :param _UpdateTime: 修改时间。时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。
+        :type UpdateTime: str
+        """
+        self._FunctionId = None
+        self._ZoneId = None
+        self._Name = None
+        self._Remark = None
+        self._Content = None
+        self._Domain = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def FunctionId(self):
+        return self._FunctionId
+
+    @FunctionId.setter
+    def FunctionId(self, FunctionId):
+        self._FunctionId = FunctionId
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._FunctionId = params.get("FunctionId")
+        self._ZoneId = params.get("ZoneId")
+        self._Name = params.get("Name")
+        self._Remark = params.get("Remark")
+        self._Content = params.get("Content")
+        self._Domain = params.get("Domain")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FunctionEnvironmentVariable(AbstractModel):
+    """边缘函数环境变量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 变量的名称，限制只能包含大小写字母、数字，特殊字符仅支持 @ . - _ ，最大 64 个字节，不支持重复。
+        :type Key: str
+        :param _Value: 变量的值，限制最大 5000 字节，默认值为空。
+        :type Value: str
+        :param _Type: 变量的类型，取值有：
+<li>string：字符串类型；</li>
+<li>json：json 对象类型。</li>默认值为：string。
+        :type Type: str
+        """
+        self._Key = None
+        self._Value = None
+        self._Type = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FunctionRule(AbstractModel):
+    """边缘函数触发规则。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 规则ID。
+        :type RuleId: str
+        :param _FunctionRuleConditions: 规则条件列表，列表项之间为或关系。
+        :type FunctionRuleConditions: list of FunctionRuleCondition
+        :param _FunctionId: 函数 ID，命中触发规则条件后执行的函数。
+        :type FunctionId: str
+        :param _Remark: 规则描述。
+        :type Remark: str
+        :param _FunctionName: 函数名称。
+        :type FunctionName: str
+        :param _Priority: 函数触发规则优先级，数值越大，优先级越高。
+        :type Priority: int
+        :param _CreateTime: 创建时间。时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间。时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。
+        :type UpdateTime: str
+        """
+        self._RuleId = None
+        self._FunctionRuleConditions = None
+        self._FunctionId = None
+        self._Remark = None
+        self._FunctionName = None
+        self._Priority = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def FunctionRuleConditions(self):
+        return self._FunctionRuleConditions
+
+    @FunctionRuleConditions.setter
+    def FunctionRuleConditions(self, FunctionRuleConditions):
+        self._FunctionRuleConditions = FunctionRuleConditions
+
+    @property
+    def FunctionId(self):
+        return self._FunctionId
+
+    @FunctionId.setter
+    def FunctionId(self, FunctionId):
+        self._FunctionId = FunctionId
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def Priority(self):
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        if params.get("FunctionRuleConditions") is not None:
+            self._FunctionRuleConditions = []
+            for item in params.get("FunctionRuleConditions"):
+                obj = FunctionRuleCondition()
+                obj._deserialize(item)
+                self._FunctionRuleConditions.append(obj)
+        self._FunctionId = params.get("FunctionId")
+        self._Remark = params.get("Remark")
+        self._FunctionName = params.get("FunctionName")
+        self._Priority = params.get("Priority")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FunctionRuleCondition(AbstractModel):
+    """边缘函数触发规则条件。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleConditions: 边缘函数触发规则条件，该列表内所有项全部满足即判断该条件满足。
+        :type RuleConditions: list of RuleCondition
+        """
+        self._RuleConditions = None
+
+    @property
+    def RuleConditions(self):
+        return self._RuleConditions
+
+    @RuleConditions.setter
+    def RuleConditions(self, RuleConditions):
+        self._RuleConditions = RuleConditions
+
+
+    def _deserialize(self, params):
+        if params.get("RuleConditions") is not None:
+            self._RuleConditions = []
+            for item in params.get("RuleConditions"):
+                obj = RuleCondition()
+                obj._deserialize(item)
+                self._RuleConditions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Grpc(AbstractModel):
     """Grpc配置项
 
@@ -15601,6 +16620,109 @@ class Grpc(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class HandleFunctionRuntimeEnvironmentRequest(AbstractModel):
+    """HandleFunctionRuntimeEnvironment请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _FunctionId: 函数 ID。
+        :type FunctionId: str
+        :param _Operation: 操作类型，取值有：
+<li>setEnvironmentVariable：设置环境变量，当环境变量存在时为修改行为，否则为添加行为；</li>
+<li>deleteEnvironmentVariable：删除环境变量变量；</li>
+<li>clearEnvironmentVariable：清空环境变量变量；</li>
+<li>resetEnvironmentVariable：重置环境变量变量。</li>
+        :type Operation: str
+        :param _EnvironmentVariables: 环境变量列表，函数运行环境最多支持 64 个变量。当 Operation 取值为 setEnvironmentVariable、deleteEnvironmentVariable、resetEnvironmentVariable 时必填。
+        :type EnvironmentVariables: list of FunctionEnvironmentVariable
+        """
+        self._ZoneId = None
+        self._FunctionId = None
+        self._Operation = None
+        self._EnvironmentVariables = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def FunctionId(self):
+        return self._FunctionId
+
+    @FunctionId.setter
+    def FunctionId(self, FunctionId):
+        self._FunctionId = FunctionId
+
+    @property
+    def Operation(self):
+        return self._Operation
+
+    @Operation.setter
+    def Operation(self, Operation):
+        self._Operation = Operation
+
+    @property
+    def EnvironmentVariables(self):
+        return self._EnvironmentVariables
+
+    @EnvironmentVariables.setter
+    def EnvironmentVariables(self, EnvironmentVariables):
+        self._EnvironmentVariables = EnvironmentVariables
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._FunctionId = params.get("FunctionId")
+        self._Operation = params.get("Operation")
+        if params.get("EnvironmentVariables") is not None:
+            self._EnvironmentVariables = []
+            for item in params.get("EnvironmentVariables"):
+                obj = FunctionEnvironmentVariable()
+                obj._deserialize(item)
+                self._EnvironmentVariables.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HandleFunctionRuntimeEnvironmentResponse(AbstractModel):
+    """HandleFunctionRuntimeEnvironment返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class Header(AbstractModel):
@@ -16990,6 +18112,68 @@ class L4Proxy(AbstractModel):
         
 
 
+class L4ProxyRemoteAuth(AbstractModel):
+    """四层远程鉴权信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 四层远程鉴权开关，取值有：
+<li>on：表示开启;</li>
+<li>off：表示关闭。</li>
+        :type Switch: str
+        :param _Address: 远程鉴权服务地址，格式为: domain/ip:port。例：example.auth.com:8888
+
+        :type Address: str
+        :param _ServerFaultyBehavior: 远程鉴权服务不可访问后，经过四层转发规则默认回源行为，取值有：
+<li>reject：表示进行拦截，拒绝访问;</li>
+<li>allow：表示允许通过。</li>
+        :type ServerFaultyBehavior: str
+        """
+        self._Switch = None
+        self._Address = None
+        self._ServerFaultyBehavior = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Address(self):
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def ServerFaultyBehavior(self):
+        return self._ServerFaultyBehavior
+
+    @ServerFaultyBehavior.setter
+    def ServerFaultyBehavior(self, ServerFaultyBehavior):
+        self._ServerFaultyBehavior = ServerFaultyBehavior
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Address = params.get("Address")
+        self._ServerFaultyBehavior = params.get("ServerFaultyBehavior")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class L4ProxyRule(AbstractModel):
     """四层代理转发规则详情。
 
@@ -17057,6 +18241,10 @@ class L4ProxyRule(AbstractModel):
         :type Status: str
         :param _BuId: BuID。
         :type BuId: str
+        :param _RemoteAuth: 远程鉴权信息。
+注意：RemoteAuth 在 CreateL4ProxyRules 或 ModifyL4ProxyRules 不可作为入参使用，如有传此参数，会忽略。在 DescribeL4ProxyRules 返回为空时，表示没有开启远程鉴权。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemoteAuth: :class:`tencentcloud.teo.v20220901.models.L4ProxyRemoteAuth`
         """
         self._RuleId = None
         self._Protocol = None
@@ -17070,6 +18258,7 @@ class L4ProxyRule(AbstractModel):
         self._RuleTag = None
         self._Status = None
         self._BuId = None
+        self._RemoteAuth = None
 
     @property
     def RuleId(self):
@@ -17167,6 +18356,14 @@ class L4ProxyRule(AbstractModel):
     def BuId(self, BuId):
         self._BuId = BuId
 
+    @property
+    def RemoteAuth(self):
+        return self._RemoteAuth
+
+    @RemoteAuth.setter
+    def RemoteAuth(self, RemoteAuth):
+        self._RemoteAuth = RemoteAuth
+
 
     def _deserialize(self, params):
         self._RuleId = params.get("RuleId")
@@ -17181,6 +18378,9 @@ class L4ProxyRule(AbstractModel):
         self._RuleTag = params.get("RuleTag")
         self._Status = params.get("Status")
         self._BuId = params.get("BuId")
+        if params.get("RemoteAuth") is not None:
+            self._RemoteAuth = L4ProxyRemoteAuth()
+            self._RemoteAuth._deserialize(params.get("RemoteAuth"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18545,6 +19745,281 @@ class ModifyCustomErrorPageResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyFunctionRequest(AbstractModel):
+    """ModifyFunction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _FunctionId: 函数 ID。
+        :type FunctionId: str
+        :param _Remark: 函数描述，最大支持 60 个字符，不填写保持原有配置。
+        :type Remark: str
+        :param _Content: 函数内容，当前仅支持 JavaScript 代码，最大支持 5MB 大小，不填写保持原有配置。
+        :type Content: str
+        """
+        self._ZoneId = None
+        self._FunctionId = None
+        self._Remark = None
+        self._Content = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def FunctionId(self):
+        return self._FunctionId
+
+    @FunctionId.setter
+    def FunctionId(self, FunctionId):
+        self._FunctionId = FunctionId
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._FunctionId = params.get("FunctionId")
+        self._Remark = params.get("Remark")
+        self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyFunctionResponse(AbstractModel):
+    """ModifyFunction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyFunctionRulePriorityRequest(AbstractModel):
+    """ModifyFunctionRulePriority请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _RuleIds: 规则 ID 列表，必须填入调整优先级后的所有规则 ID，多条规则执行顺序依次从上往下，不填写保持原优先级顺序。
+        :type RuleIds: list of str
+        """
+        self._ZoneId = None
+        self._RuleIds = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def RuleIds(self):
+        return self._RuleIds
+
+    @RuleIds.setter
+    def RuleIds(self, RuleIds):
+        self._RuleIds = RuleIds
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._RuleIds = params.get("RuleIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyFunctionRulePriorityResponse(AbstractModel):
+    """ModifyFunctionRulePriority返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyFunctionRuleRequest(AbstractModel):
+    """ModifyFunctionRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _RuleId: 规则 ID。
+        :type RuleId: str
+        :param _FunctionRuleConditions: 规则条件列表，相同触发规则的不同条件匹配项之间为或关系，不填写保持原有配置。
+        :type FunctionRuleConditions: list of FunctionRuleCondition
+        :param _FunctionId: 函数 ID，命中触发规则条件后执行的函数，不填写保持原有配置。
+        :type FunctionId: str
+        :param _Remark: 规则描述，最大支持 60 个字符，不填写保持原有配置。
+        :type Remark: str
+        """
+        self._ZoneId = None
+        self._RuleId = None
+        self._FunctionRuleConditions = None
+        self._FunctionId = None
+        self._Remark = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def FunctionRuleConditions(self):
+        return self._FunctionRuleConditions
+
+    @FunctionRuleConditions.setter
+    def FunctionRuleConditions(self, FunctionRuleConditions):
+        self._FunctionRuleConditions = FunctionRuleConditions
+
+    @property
+    def FunctionId(self):
+        return self._FunctionId
+
+    @FunctionId.setter
+    def FunctionId(self, FunctionId):
+        self._FunctionId = FunctionId
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._RuleId = params.get("RuleId")
+        if params.get("FunctionRuleConditions") is not None:
+            self._FunctionRuleConditions = []
+            for item in params.get("FunctionRuleConditions"):
+                obj = FunctionRuleCondition()
+                obj._deserialize(item)
+                self._FunctionRuleConditions.append(obj)
+        self._FunctionId = params.get("FunctionId")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyFunctionRuleResponse(AbstractModel):
+    """ModifyFunctionRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyHostsCertificateRequest(AbstractModel):
     """ModifyHostsCertificate请求参数结构体
 
@@ -19793,8 +21268,9 @@ class ModifyZoneRequest(AbstractModel):
         :param _ZoneId: 站点 ID。
         :type ZoneId: str
         :param _Type: 站点接入方式，取值有：
-<li> full：NS 接入；</li>
-<li> partial：CNAME 接入，如果站点当前是无域名接入，仅支持切换到CNAME接入。</li>不填写保持原有配置。
+<li>full：NS 接入；</li>
+<li>partial：CNAME 接入，如果站点当前是无域名接入，仅支持切换到 CNAME 接入；</li>
+<li>dnsPodAccess：DNSPod 托管接入，该接入模式要求您的域名已托管在 DNSPod 内。</li>不填写保持原有配置。
         :type Type: str
         :param _VanityNameServers: 自定义站点信息，以替代系统默认分配的名称服务器。不填写保持原有配置。当站点是无域名接入方式时不允许传此参数。
         :type VanityNameServers: :class:`tencentcloud.teo.v20220901.models.VanityNameServers`
@@ -20633,7 +22109,6 @@ class OriginDetail(AbstractModel):
 <li>COS：腾讯云 COS 对象存储源站；</li>
 <li>AWS_S3：AWS S3 对象存储源站；</li>
 <li>ORIGIN_GROUP：源站组类型源站；</li>
-<li>VODEO：云点播-混合云版；</li>
 <li>VOD：云点播；</li>
 <li>SPACE：源站卸载，当前仅白名单开放；</li>
 <li>LB：负载均衡，当前仅白名单开放。</li>
@@ -20644,7 +22119,6 @@ class OriginDetail(AbstractModel):
 <li>当 OriginType = AWS_S3，该参数为 S3 桶的访问域名；</li>
 <li>当 OriginType = ORIGIN_GROUP 时，该参数为源站组 ID；</li>
 <li>当 OriginType = VOD 时，该参数请填写云点播应用 ID ；</li>
-<li>当 OriginType = VODEO 时，如果 VodeoDistributionRange = ALL，则该参数为 "all-buckets-in-vodeo-application"；如果 VodeoDistributionRange = Bucket，则该参数为对应存储桶域名。</li>
         :type Origin: str
         :param _BackupOrigin: 备用源站组 ID，该参数仅在 OriginType = ORIGIN_GROUP 且配置了备源站组时会生效。
         :type BackupOrigin: str
@@ -20736,26 +22210,38 @@ class OriginDetail(AbstractModel):
 
     @property
     def VodeoSubAppId(self):
+        warnings.warn("parameter `VodeoSubAppId` is deprecated", DeprecationWarning) 
+
         return self._VodeoSubAppId
 
     @VodeoSubAppId.setter
     def VodeoSubAppId(self, VodeoSubAppId):
+        warnings.warn("parameter `VodeoSubAppId` is deprecated", DeprecationWarning) 
+
         self._VodeoSubAppId = VodeoSubAppId
 
     @property
     def VodeoDistributionRange(self):
+        warnings.warn("parameter `VodeoDistributionRange` is deprecated", DeprecationWarning) 
+
         return self._VodeoDistributionRange
 
     @VodeoDistributionRange.setter
     def VodeoDistributionRange(self, VodeoDistributionRange):
+        warnings.warn("parameter `VodeoDistributionRange` is deprecated", DeprecationWarning) 
+
         self._VodeoDistributionRange = VodeoDistributionRange
 
     @property
     def VodeoBucketId(self):
+        warnings.warn("parameter `VodeoBucketId` is deprecated", DeprecationWarning) 
+
         return self._VodeoBucketId
 
     @VodeoBucketId.setter
     def VodeoBucketId(self, VodeoBucketId):
+        warnings.warn("parameter `VodeoBucketId` is deprecated", DeprecationWarning) 
+
         self._VodeoBucketId = VodeoBucketId
 
 
@@ -21070,26 +22556,38 @@ class OriginInfo(AbstractModel):
 
     @property
     def VodeoSubAppId(self):
+        warnings.warn("parameter `VodeoSubAppId` is deprecated", DeprecationWarning) 
+
         return self._VodeoSubAppId
 
     @VodeoSubAppId.setter
     def VodeoSubAppId(self, VodeoSubAppId):
+        warnings.warn("parameter `VodeoSubAppId` is deprecated", DeprecationWarning) 
+
         self._VodeoSubAppId = VodeoSubAppId
 
     @property
     def VodeoDistributionRange(self):
+        warnings.warn("parameter `VodeoDistributionRange` is deprecated", DeprecationWarning) 
+
         return self._VodeoDistributionRange
 
     @VodeoDistributionRange.setter
     def VodeoDistributionRange(self, VodeoDistributionRange):
+        warnings.warn("parameter `VodeoDistributionRange` is deprecated", DeprecationWarning) 
+
         self._VodeoDistributionRange = VodeoDistributionRange
 
     @property
     def VodeoBucketId(self):
+        warnings.warn("parameter `VodeoBucketId` is deprecated", DeprecationWarning) 
+
         return self._VodeoBucketId
 
     @VodeoBucketId.setter
     def VodeoBucketId(self, VodeoBucketId):
+        warnings.warn("parameter `VodeoBucketId` is deprecated", DeprecationWarning) 
+
         self._VodeoBucketId = VodeoBucketId
 
 
@@ -25539,7 +27037,7 @@ class TimingDataItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Timestamp: 返回数据对应时间点，采用unix秒级时间戳。
+        :param _Timestamp: 返回数据对应时间点，采用 unix 秒级时间戳。
         :type Timestamp: int
         :param _Value: 具体数值。
         :type Value: int
@@ -26482,7 +27980,6 @@ class Zone(AbstractModel):
 <li> full：NS 接入；</li>
 <li> partial：CNAME 接入；</li>
 <li> noDomainAccess：无域名接入；</li>
-<li> vodeo：开启 VODEO 后默认接入。</li>
         :type Type: str
         :param _Paused: 站点是否关闭。
         :type Paused: bool
