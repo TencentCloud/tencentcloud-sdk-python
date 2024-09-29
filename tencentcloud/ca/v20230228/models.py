@@ -25,17 +25,17 @@ class CreateVerifyReportRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplyCustomerType: 客户类型 1:个人，2:企业
+        :param _ApplyCustomerType: 申请者类型 1:个人，2:企业
         :type ApplyCustomerType: str
         :param _ApplyCustomerName: 申请企业 or 自然人名称
         :type ApplyCustomerName: str
-        :param _ApplyName: 验签申请人姓名
+        :param _ApplyName: 验签申请经办人姓名
         :type ApplyName: str
-        :param _ApplyMobile: 验签申请人电弧
+        :param _ApplyMobile: 验签申请经办人电话
         :type ApplyMobile: str
         :param _FileId: 验签文件id
         :type FileId: str
-        :param _ApplyEmail: 验签申请人邮箱
+        :param _ApplyEmail: 验签申请经办人邮箱
         :type ApplyEmail: str
         """
         self._ApplyCustomerType = None
@@ -275,7 +275,7 @@ class FileInfo(AbstractModel):
         r"""
         :param _FileBody: BASE64编码后的文件内容
         :type FileBody: str
-        :param _FileName: 文件名，最大长度不超过200字符
+        :param _FileName: 文件名及类型，最大长度不超过200字符
         :type FileName: str
         """
         self._FileBody = None

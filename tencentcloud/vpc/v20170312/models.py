@@ -11845,6 +11845,8 @@ class CreateVpcPeeringConnectionRequest(AbstractModel):
         :type ChargeType: str
         :param _QosLevel: 服务分级：PT、AU、AG。
         :type QosLevel: str
+        :param _Tags: 标签键值对
+        :type Tags: list of Tags
         """
         self._SourceVpcId = None
         self._PeeringConnectionName = None
@@ -11855,6 +11857,7 @@ class CreateVpcPeeringConnectionRequest(AbstractModel):
         self._Type = None
         self._ChargeType = None
         self._QosLevel = None
+        self._Tags = None
 
     @property
     def SourceVpcId(self):
@@ -11928,6 +11931,14 @@ class CreateVpcPeeringConnectionRequest(AbstractModel):
     def QosLevel(self, QosLevel):
         self._QosLevel = QosLevel
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._SourceVpcId = params.get("SourceVpcId")
@@ -11939,6 +11950,12 @@ class CreateVpcPeeringConnectionRequest(AbstractModel):
         self._Type = params.get("Type")
         self._ChargeType = params.get("ChargeType")
         self._QosLevel = params.get("QosLevel")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tags()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -50574,6 +50591,53 @@ class SubnetInput(AbstractModel):
 
 class Tag(AbstractModel):
     """标签键值对
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 标签键
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: 标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Tags(AbstractModel):
+    """标签描述信息
 
     """
 

@@ -1620,7 +1620,7 @@ class CreateImageRequest(AbstractModel):
         :param _ImageDescription: 镜像描述
         :type ImageDescription: str
         :param _ForcePoweroff: 是否执行强制关机以制作镜像。
-取值范围：<br><li>true：表示关机之后制作镜像<br><li>false：表示开机状态制作镜像<br><br>默认取值：false。<br><br>开机状态制作镜像，可能导致部分数据未备份，影响数据安全。
+取值范围：<br><li>true：表示关机之后制作镜像</li><br><li>false：表示开机状态制作镜像</li><br><br>默认取值：false。<br><br>开机状态制作镜像，可能导致部分数据未备份，影响数据安全。
         :type ForcePoweroff: str
         :param _Sysprep: 创建Windows镜像时是否启用Sysprep。
 取值范围：true或false，传true表示启用Sysprep，传false表示不启用，默认取值为false。
@@ -1635,6 +1635,8 @@ class CreateImageRequest(AbstractModel):
         :type DryRun: bool
         :param _TagSpecification: 标签描述列表。通过指定该参数可以同时绑定标签到自定义镜像。
         :type TagSpecification: list of TagSpecification
+        :param _ImageFamily: 镜像族
+        :type ImageFamily: str
         """
         self._ImageName = None
         self._InstanceId = None
@@ -1645,6 +1647,7 @@ class CreateImageRequest(AbstractModel):
         self._SnapshotIds = None
         self._DryRun = None
         self._TagSpecification = None
+        self._ImageFamily = None
 
     @property
     def ImageName(self):
@@ -1718,6 +1721,14 @@ class CreateImageRequest(AbstractModel):
     def TagSpecification(self, TagSpecification):
         self._TagSpecification = TagSpecification
 
+    @property
+    def ImageFamily(self):
+        return self._ImageFamily
+
+    @ImageFamily.setter
+    def ImageFamily(self, ImageFamily):
+        self._ImageFamily = ImageFamily
+
 
     def _deserialize(self, params):
         self._ImageName = params.get("ImageName")
@@ -1734,6 +1745,7 @@ class CreateImageRequest(AbstractModel):
                 obj = TagSpecification()
                 obj._deserialize(item)
                 self._TagSpecification.append(obj)
+        self._ImageFamily = params.get("ImageFamily")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4167,6 +4179,79 @@ class DescribeHpcClustersResponse(AbstractModel):
                 obj._deserialize(item)
                 self._HpcClusterSet.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeImageFromFamilyRequest(AbstractModel):
+    """DescribeImageFromFamily请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageFamily: 镜像族
+        :type ImageFamily: str
+        """
+        self._ImageFamily = None
+
+    @property
+    def ImageFamily(self):
+        return self._ImageFamily
+
+    @ImageFamily.setter
+    def ImageFamily(self, ImageFamily):
+        self._ImageFamily = ImageFamily
+
+
+    def _deserialize(self, params):
+        self._ImageFamily = params.get("ImageFamily")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeImageFromFamilyResponse(AbstractModel):
+    """DescribeImageFromFamily返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Image: 镜像信息，没有可用镜像是返回为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Image: :class:`tencentcloud.cvm.v20170312.models.Image`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Image = None
+        self._RequestId = None
+
+    @property
+    def Image(self):
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Image") is not None:
+            self._Image = Image()
+            self._Image._deserialize(params.get("Image"))
         self._RequestId = params.get("RequestId")
 
 
@@ -8173,6 +8258,11 @@ IMPORTFAILED-导入失败
         :type Tags: list of Tag
         :param _LicenseType: 镜像许可类型
         :type LicenseType: str
+        :param _ImageFamily: 镜像族
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageFamily: str
+        :param _ImageDeprecated: 镜像是否废弃
+        :type ImageDeprecated: bool
         """
         self._ImageId = None
         self._OsName = None
@@ -8191,6 +8281,8 @@ IMPORTFAILED-导入失败
         self._SnapshotSet = None
         self._Tags = None
         self._LicenseType = None
+        self._ImageFamily = None
+        self._ImageDeprecated = None
 
     @property
     def ImageId(self):
@@ -8328,6 +8420,22 @@ IMPORTFAILED-导入失败
     def LicenseType(self, LicenseType):
         self._LicenseType = LicenseType
 
+    @property
+    def ImageFamily(self):
+        return self._ImageFamily
+
+    @ImageFamily.setter
+    def ImageFamily(self, ImageFamily):
+        self._ImageFamily = ImageFamily
+
+    @property
+    def ImageDeprecated(self):
+        return self._ImageDeprecated
+
+    @ImageDeprecated.setter
+    def ImageDeprecated(self, ImageDeprecated):
+        self._ImageDeprecated = ImageDeprecated
+
 
     def _deserialize(self, params):
         self._ImageId = params.get("ImageId")
@@ -8357,6 +8465,8 @@ IMPORTFAILED-导入失败
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._LicenseType = params.get("LicenseType")
+        self._ImageFamily = params.get("ImageFamily")
+        self._ImageDeprecated = params.get("ImageDeprecated")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9083,7 +9193,7 @@ class InquiryPriceRenewHostsRequest(AbstractModel):
         :type HostIds: list of str
         :param _HostChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的续费时长、是否设置自动续费等属性。
         :type HostChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.ChargePrepaid`
-        :param _DryRun: 试运行，测试使用，不执行具体逻辑。取值范围：<br><li>TRUE：跳过执行逻辑<br><li>FALSE：执行逻辑<br><br>默认取值：FALSE。
+        :param _DryRun: 是否只预检此次请求。true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制和云服务器库存。如果检查不通过，则返回对应错误码；如果检查通过，则返回RequestId.false（默认）：发送正常请求，通过检查后直接创建实例
         :type DryRun: bool
         """
         self._HostIds = None
@@ -12713,13 +12823,13 @@ class LoginSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Password: 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到30位，至少包括两项[a-z]，[A-Z]、[0-9] 和 [( ) \` ~ ! @ # $ % ^ & *  - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。<br><li>Windows实例密码必须12到30位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) \` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? /]中的特殊符号。<br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
+        :param _Password: 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<li>Linux实例密码必须8到30位，至少包括两项[a-z]，[A-Z]、[0-9] 和 [( ) \` ~ ! @ # $ % ^ & *  - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。</li><li>Windows实例密码必须12到30位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) \` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? /]中的特殊符号。</li>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
         :param _KeyIds: 密钥ID列表。关联密钥后，就可以通过对应的私钥来访问实例；KeyId可通过接口[DescribeKeyPairs](https://cloud.tencent.com/document/api/213/15699)获取，密钥与密码不能同时指定，同时Windows操作系统不支持指定密钥。
 注意：此字段可能返回 null，表示取不到有效值。
         :type KeyIds: list of str
-        :param _KeepImageLogin: 保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为TRUE。取值范围：<br><li>TRUE：表示保持镜像的登录设置<br><li>FALSE：表示不保持镜像的登录设置<br><br>默认取值：FALSE。
+        :param _KeepImageLogin: 保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为true。取值范围：<li>true：表示保持镜像的登录设置</li><li>false：表示不保持镜像的登录设置</li>默认取值：false。
 注意：此字段可能返回 null，表示取不到有效值。
         :type KeepImageLogin: str
         """
@@ -13143,10 +13253,16 @@ class ModifyImageAttributeRequest(AbstractModel):
         :type ImageName: str
         :param _ImageDescription: 设置新的镜像描述；必须满足下列限制： <li> 不得超过 256 个字符。</li>
         :type ImageDescription: str
+        :param _ImageFamily: 设置镜像族；
+        :type ImageFamily: str
+        :param _ImageDeprecated: 设置镜像是否废弃；
+        :type ImageDeprecated: bool
         """
         self._ImageId = None
         self._ImageName = None
         self._ImageDescription = None
+        self._ImageFamily = None
+        self._ImageDeprecated = None
 
     @property
     def ImageId(self):
@@ -13172,11 +13288,29 @@ class ModifyImageAttributeRequest(AbstractModel):
     def ImageDescription(self, ImageDescription):
         self._ImageDescription = ImageDescription
 
+    @property
+    def ImageFamily(self):
+        return self._ImageFamily
+
+    @ImageFamily.setter
+    def ImageFamily(self, ImageFamily):
+        self._ImageFamily = ImageFamily
+
+    @property
+    def ImageDeprecated(self):
+        return self._ImageDeprecated
+
+    @ImageDeprecated.setter
+    def ImageDeprecated(self, ImageDeprecated):
+        self._ImageDeprecated = ImageDeprecated
+
 
     def _deserialize(self, params):
         self._ImageId = params.get("ImageId")
         self._ImageName = params.get("ImageName")
         self._ImageDescription = params.get("ImageDescription")
+        self._ImageFamily = params.get("ImageFamily")
+        self._ImageDeprecated = params.get("ImageDeprecated")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15695,11 +15829,19 @@ class ReservedInstancePrice(AbstractModel):
         :type OriginalUsagePrice: float
         :param _DiscountUsagePrice: 后续合计费用的折扣价，单位：元/小时
         :type DiscountUsagePrice: float
+        :param _FixedPriceDiscount: 预支费用的折扣，如20.0代表2折。 注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FixedPriceDiscount: float
+        :param _UsagePriceDiscount: 后续费用的折扣，如20.0代表2折。 注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsagePriceDiscount: float
         """
         self._OriginalFixedPrice = None
         self._DiscountFixedPrice = None
         self._OriginalUsagePrice = None
         self._DiscountUsagePrice = None
+        self._FixedPriceDiscount = None
+        self._UsagePriceDiscount = None
 
     @property
     def OriginalFixedPrice(self):
@@ -15733,12 +15875,30 @@ class ReservedInstancePrice(AbstractModel):
     def DiscountUsagePrice(self, DiscountUsagePrice):
         self._DiscountUsagePrice = DiscountUsagePrice
 
+    @property
+    def FixedPriceDiscount(self):
+        return self._FixedPriceDiscount
+
+    @FixedPriceDiscount.setter
+    def FixedPriceDiscount(self, FixedPriceDiscount):
+        self._FixedPriceDiscount = FixedPriceDiscount
+
+    @property
+    def UsagePriceDiscount(self):
+        return self._UsagePriceDiscount
+
+    @UsagePriceDiscount.setter
+    def UsagePriceDiscount(self, UsagePriceDiscount):
+        self._UsagePriceDiscount = UsagePriceDiscount
+
 
     def _deserialize(self, params):
         self._OriginalFixedPrice = params.get("OriginalFixedPrice")
         self._DiscountFixedPrice = params.get("DiscountFixedPrice")
         self._OriginalUsagePrice = params.get("OriginalUsagePrice")
         self._DiscountUsagePrice = params.get("DiscountUsagePrice")
+        self._FixedPriceDiscount = params.get("FixedPriceDiscount")
+        self._UsagePriceDiscount = params.get("UsagePriceDiscount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15772,6 +15932,10 @@ class ReservedInstancePriceItem(AbstractModel):
         :param _ProductDescription: 预留实例计费的平台描述（即操作系统）。形如：Linux。
 返回项： Linux 。
         :type ProductDescription: str
+        :param _DiscountUsagePrice: 预支合计费用，单位：元。
+        :type DiscountUsagePrice: float
+        :param _DiscountFixedPrice: 后续合计费用的折扣价，单位：元/小时
+        :type DiscountFixedPrice: float
         """
         self._OfferingType = None
         self._FixedPrice = None
@@ -15780,6 +15944,8 @@ class ReservedInstancePriceItem(AbstractModel):
         self._Zone = None
         self._Duration = None
         self._ProductDescription = None
+        self._DiscountUsagePrice = None
+        self._DiscountFixedPrice = None
 
     @property
     def OfferingType(self):
@@ -15837,6 +16003,22 @@ class ReservedInstancePriceItem(AbstractModel):
     def ProductDescription(self, ProductDescription):
         self._ProductDescription = ProductDescription
 
+    @property
+    def DiscountUsagePrice(self):
+        return self._DiscountUsagePrice
+
+    @DiscountUsagePrice.setter
+    def DiscountUsagePrice(self, DiscountUsagePrice):
+        self._DiscountUsagePrice = DiscountUsagePrice
+
+    @property
+    def DiscountFixedPrice(self):
+        return self._DiscountFixedPrice
+
+    @DiscountFixedPrice.setter
+    def DiscountFixedPrice(self, DiscountFixedPrice):
+        self._DiscountFixedPrice = DiscountFixedPrice
+
 
     def _deserialize(self, params):
         self._OfferingType = params.get("OfferingType")
@@ -15846,6 +16028,8 @@ class ReservedInstancePriceItem(AbstractModel):
         self._Zone = params.get("Zone")
         self._Duration = params.get("Duration")
         self._ProductDescription = params.get("ProductDescription")
+        self._DiscountUsagePrice = params.get("DiscountUsagePrice")
+        self._DiscountFixedPrice = params.get("DiscountFixedPrice")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

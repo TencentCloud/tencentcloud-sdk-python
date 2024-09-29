@@ -302,6 +302,29 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateOwnNumberApply(self, request):
+        """创建客户自携号码接入审核
+
+        :param request: Request instance for CreateOwnNumberApply.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.CreateOwnNumberApplyRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.CreateOwnNumberApplyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateOwnNumberApply", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateOwnNumberApplyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreatePredictiveDialingCampaign(self, request):
         """创建预测式外呼任务
 
@@ -1123,6 +1146,29 @@ class CccClient(AbstractClient):
             body = self.call("ModifyExtension", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyExtensionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyOwnNumberApply(self, request):
+        """修改客户自携号码审批单
+
+        :param request: Request instance for ModifyOwnNumberApply.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.ModifyOwnNumberApplyRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.ModifyOwnNumberApplyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyOwnNumberApply", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyOwnNumberApplyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -10948,6 +10948,8 @@ class ImageToObjectRequest(AbstractModel):
 （2）病理报告 15，默认使用 V1，最高支持 V2。
 （3）入院记录29、出院记录 28、病历记录 216、病程记录 217、门诊记录 210，默认使用 V1，最高支持 V2。
         :type ReportTypeVersion: list of ReportTypeVersion
+        :param _OcrInfoList: 可选。 图片OCR信息列表，每一个元素是一张图片的OCR结果。适用于不想将医疗报告图片传入腾讯云的客户，客户可对图片OCR信息中的敏感信息去除之后再传入。与 ImageInfoList 二选一，同时存在则使用OcrInfoList
+        :type OcrInfoList: list of OcrInfo
         """
         self._ImageInfoList = None
         self._HandleParam = None
@@ -10955,6 +10957,7 @@ class ImageToObjectRequest(AbstractModel):
         self._IsUsedClassify = None
         self._UserType = None
         self._ReportTypeVersion = None
+        self._OcrInfoList = None
 
     @property
     def ImageInfoList(self):
@@ -11004,6 +11007,14 @@ class ImageToObjectRequest(AbstractModel):
     def ReportTypeVersion(self, ReportTypeVersion):
         self._ReportTypeVersion = ReportTypeVersion
 
+    @property
+    def OcrInfoList(self):
+        return self._OcrInfoList
+
+    @OcrInfoList.setter
+    def OcrInfoList(self, OcrInfoList):
+        self._OcrInfoList = OcrInfoList
+
 
     def _deserialize(self, params):
         if params.get("ImageInfoList") is not None:
@@ -11024,6 +11035,12 @@ class ImageToObjectRequest(AbstractModel):
                 obj = ReportTypeVersion()
                 obj._deserialize(item)
                 self._ReportTypeVersion.append(obj)
+        if params.get("OcrInfoList") is not None:
+            self._OcrInfoList = []
+            for item in params.get("OcrInfoList"):
+                obj = OcrInfo()
+                obj._deserialize(item)
+                self._OcrInfoList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15640,6 +15657,120 @@ class ObstetricalHistoryBlock(AbstractModel):
         if params.get("FertilityHistory") is not None:
             self._FertilityHistory = FertilityHistoryBlock()
             self._FertilityHistory._deserialize(params.get("FertilityHistory"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OcrInfo(AbstractModel):
+    """图片完整的OCR信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 图片进行OCR之后得到的所有包含字块的OCR信息
+        :type Items: list of OcrItem
+        :param _Text: 图片进行OCR之后得到的所有字符
+        :type Text: str
+        """
+        self._Items = None
+        self._Text = None
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = OcrItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OcrItem(AbstractModel):
+    """图片进行OCR之后,包含字符块的信息，包含字符与坐标，一个图片进行OCR之后可能分为多个这样的块
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Words: 图片中文字的字符串
+        :type Words: str
+        :param _Coords: Words 中每个文字的坐标数组，顺序与Words中的字符顺序一致
+        :type Coords: list of Coordinate
+        :param _WordCoords: 整个字符块的坐标信息
+        :type WordCoords: :class:`tencentcloud.mrs.v20200910.models.Coordinate`
+        """
+        self._Words = None
+        self._Coords = None
+        self._WordCoords = None
+
+    @property
+    def Words(self):
+        return self._Words
+
+    @Words.setter
+    def Words(self, Words):
+        self._Words = Words
+
+    @property
+    def Coords(self):
+        return self._Coords
+
+    @Coords.setter
+    def Coords(self, Coords):
+        self._Coords = Coords
+
+    @property
+    def WordCoords(self):
+        return self._WordCoords
+
+    @WordCoords.setter
+    def WordCoords(self, WordCoords):
+        self._WordCoords = WordCoords
+
+
+    def _deserialize(self, params):
+        self._Words = params.get("Words")
+        if params.get("Coords") is not None:
+            self._Coords = []
+            for item in params.get("Coords"):
+                obj = Coordinate()
+                obj._deserialize(item)
+                self._Coords.append(obj)
+        if params.get("WordCoords") is not None:
+            self._WordCoords = Coordinate()
+            self._WordCoords._deserialize(params.get("WordCoords"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

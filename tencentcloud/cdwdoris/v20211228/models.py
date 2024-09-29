@@ -6836,7 +6836,7 @@ class DorisSourceInfo(AbstractModel):
         :param _User: doris集群的账号
 注意：此字段可能返回 null，表示取不到有效值。
         :type User: str
-        :param _Password: doris集群的密码
+        :param _Password: base64编码的doris集群对应用户的密码
 注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
         """

@@ -50,7 +50,7 @@ class CynosdbClient(AbstractClient):
 
 
     def AddClusterSlaveZone(self, request):
-        """开启多可用区部署
+        """本接口（AddClusterSlaveZone）用于对集群开启多可用区部署。
 
         :param request: Request instance for AddClusterSlaveZone.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.AddClusterSlaveZoneRequest`
@@ -73,7 +73,7 @@ class CynosdbClient(AbstractClient):
 
 
     def AddInstances(self, request):
-        """本接口（AddInstances）用于集群添加实例
+        """本接口（AddInstances）用于集群添加实例。
 
         :param request: Request instance for AddInstances.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.AddInstancesRequest`
@@ -96,7 +96,7 @@ class CynosdbClient(AbstractClient):
 
 
     def AssociateSecurityGroups(self, request):
-        """安全组批量绑定云资源
+        """本接口（AssociateSecurityGroups）用于安全组批量绑定云资源。
 
         :param request: Request instance for AssociateSecurityGroups.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.AssociateSecurityGroupsRequest`
@@ -165,7 +165,7 @@ class CynosdbClient(AbstractClient):
 
 
     def CloseClusterPasswordComplexity(self, request):
-        """本接口（CloseClusterPasswordComplexity）用于关闭集群密码复杂度
+        """本接口（CloseClusterPasswordComplexity）用于关闭集群密码复杂度。
 
         :param request: Request instance for CloseClusterPasswordComplexity.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.CloseClusterPasswordComplexityRequest`
@@ -188,7 +188,7 @@ class CynosdbClient(AbstractClient):
 
 
     def CloseProxy(self, request):
-        """关闭数据库代理
+        """本接口（CloseProxy）用于关闭集群的数据库代理服务。
 
         :param request: Request instance for CloseProxy.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.CloseProxyRequest`
@@ -211,7 +211,7 @@ class CynosdbClient(AbstractClient):
 
 
     def CloseWan(self, request):
-        """本接口（CloseWan）用于关闭外网
+        """本接口（CloseWan）用于关闭外网。
 
         :param request: Request instance for CloseWan.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.CloseWanRequest`
@@ -234,7 +234,7 @@ class CynosdbClient(AbstractClient):
 
 
     def CopyClusterPasswordComplexity(self, request):
-        """本接口（CopyClusterPasswordComplexity）用于复制集群密码复杂度
+        """本接口（CopyClusterPasswordComplexity）用于复制集群密码复杂度。
 
         :param request: Request instance for CopyClusterPasswordComplexity.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.CopyClusterPasswordComplexityRequest`
@@ -441,7 +441,7 @@ class CynosdbClient(AbstractClient):
 
 
     def CreateProxy(self, request):
-        """创建数据库代理
+        """本接口（CreateProxy）用于开启集群的数据库代理。
 
         :param request: Request instance for CreateProxy.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.CreateProxyRequest`
@@ -487,7 +487,7 @@ class CynosdbClient(AbstractClient):
 
 
     def CreateResourcePackage(self, request):
-        """新购资源包
+        """本接口（CreateResourcePackage）用于新购资源包。
 
         :param request: Request instance for CreateResourcePackage.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.CreateResourcePackageRequest`
@@ -579,7 +579,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DeleteBackup(self, request):
-        """为集群删除手动备份，无法删除自动备份
+        """本接口（DeleteBackup）用于为集群删除手动备份，无法删除自动备份。
 
         :param request: Request instance for DeleteBackup.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DeleteBackupRequest`
@@ -625,7 +625,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DeleteClusterDatabase(self, request):
-        """删除数据库
+        """本接口（DeleteClusterDatabase）用于删除数据库。
 
         :param request: Request instance for DeleteClusterDatabase.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DeleteClusterDatabaseRequest`
@@ -671,7 +671,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeAccountAllGrantPrivileges(self, request):
-        """查询账号所有可授予权限
+        """本接口（DescribeAccountAllGrantPrivileges）用于查询账号所有可授予的权限。
 
         :param request: Request instance for DescribeAccountAllGrantPrivileges.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeAccountAllGrantPrivilegesRequest`
@@ -717,7 +717,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeAccounts(self, request):
-        """本接口(DescribeAccounts)用于查询数据库账号列表
+        """本接口（DescribeAccounts）用于查询数据库账号列表。
 
         :param request: Request instance for DescribeAccounts.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeAccountsRequest`
@@ -855,7 +855,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeBackupConfig(self, request):
-        """获取指定集群的备份配置信息，包括全量备份时间段，备份文件保留时间
+        """本接口（DescribeBackupConfig）用于获取指定集群的备份配置信息，包括全量备份时间段、备份文件保留时间。
 
         :param request: Request instance for DescribeBackupConfig.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeBackupConfigRequest`
@@ -901,7 +901,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeBackupList(self, request):
-        """查询备份文件列表
+        """本接口（DescribeBackupList）用于查询集群的备份文件列表。
 
         :param request: Request instance for DescribeBackupList.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeBackupListRequest`
@@ -1016,7 +1016,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeChangedParamsAfterUpgrade(self, request):
-        """本接口（DescribeChangedParamsAfterUpgrade）用于查询升降配运行参数对比
+        """本接口（DescribeChangedParamsAfterUpgrade）用于查询升降配运行参数对比。
 
         :param request: Request instance for DescribeChangedParamsAfterUpgrade.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeChangedParamsAfterUpgradeRequest`
@@ -1085,7 +1085,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeClusterDetailDatabases(self, request):
-        """查询数据库列表
+        """本接口（DescribeClusterDetailDatabases）用于查询数据库列表。
 
         :param request: Request instance for DescribeClusterDetailDatabases.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterDetailDatabasesRequest`
@@ -1154,7 +1154,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeClusterParamLogs(self, request):
-        """本接口（DescribeClusterParamLogs）查询参数修改记录
+        """本接口（DescribeClusterParamLogs）用于查询参数修改记录。
 
         :param request: Request instance for DescribeClusterParamLogs.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterParamLogsRequest`
@@ -1269,7 +1269,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeFlow(self, request):
-        """本接口（DescribeFlow）用于查询任务流信息
+        """本接口（DescribeFlow）用于查询任务流信息。
 
         :param request: Request instance for DescribeFlow.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeFlowRequest`
@@ -1407,7 +1407,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeInstanceSpecs(self, request):
-        """本接口（DescribeInstanceSpecs）用于查询购买页可购买的实例规格
+        """本接口（DescribeInstanceSpecs）用于查询购买页可购买的实例规格。
 
         :param request: Request instance for DescribeInstanceSpecs.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeInstanceSpecsRequest`
@@ -1476,7 +1476,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeMaintainPeriod(self, request):
-        """查询实例维护时间窗
+        """本接口（DescribeMaintainPeriod）用于查询实例维护时间窗。
 
         :param request: Request instance for DescribeMaintainPeriod.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeMaintainPeriodRequest`
@@ -1545,7 +1545,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeProjectSecurityGroups(self, request):
-        """查询项目安全组信息
+        """本接口（DescribeProjectSecurityGroups）用于查询项目安全组信息。
 
         :param request: Request instance for DescribeProjectSecurityGroups.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeProjectSecurityGroupsRequest`
@@ -1729,7 +1729,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeRollbackTimeRange(self, request):
-        """查询回档时间范围
+        """本接口（DescribeRollbackTimeRange）用于查询回档时间范围。
 
         :param request: Request instance for DescribeRollbackTimeRange.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeRollbackTimeRangeRequest`
@@ -1844,7 +1844,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DisassociateSecurityGroups(self, request):
-        """安全组批量解绑云资源
+        """本接口（DisassociateSecurityGroups）用于安全组批量解绑云资源。
 
         :param request: Request instance for DisassociateSecurityGroups.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DisassociateSecurityGroupsRequest`
@@ -1959,7 +1959,7 @@ class CynosdbClient(AbstractClient):
 
 
     def InquirePriceCreate(self, request):
-        """查询新购集群价格
+        """本接口（InquirePriceCreate）用于新购集群的价格查询。
 
         :param request: Request instance for InquirePriceCreate.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.InquirePriceCreateRequest`
@@ -2189,7 +2189,7 @@ class CynosdbClient(AbstractClient):
 
 
     def ModifyBackupConfig(self, request):
-        """修改指定集群的备份配置
+        """本接口（ModifyBackupConfig）用于修改指定集群的备份配置。
 
         :param request: Request instance for ModifyBackupConfig.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyBackupConfigRequest`
@@ -2281,7 +2281,7 @@ class CynosdbClient(AbstractClient):
 
 
     def ModifyClusterDatabase(self, request):
-        """修改数据库
+        """本接口（ModifyClusterDatabase）用于修改数据库的账号授权。
 
         :param request: Request instance for ModifyClusterDatabase.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyClusterDatabaseRequest`
@@ -2304,7 +2304,7 @@ class CynosdbClient(AbstractClient):
 
 
     def ModifyClusterName(self, request):
-        """修改集群名称
+        """本接口（ModifyClusterName）用于修改集群名称。
 
         :param request: Request instance for ModifyClusterName.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyClusterNameRequest`
@@ -2350,7 +2350,7 @@ class CynosdbClient(AbstractClient):
 
 
     def ModifyClusterPasswordComplexity(self, request):
-        """本接口（ModifyClusterPasswordComplexity）用于修改/开启集群密码复杂度
+        """本接口（ModifyClusterPasswordComplexity）用于修改/开启集群密码复杂度。
 
         :param request: Request instance for ModifyClusterPasswordComplexity.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyClusterPasswordComplexityRequest`
@@ -2373,7 +2373,7 @@ class CynosdbClient(AbstractClient):
 
 
     def ModifyClusterSlaveZone(self, request):
-        """变更备可用区
+        """本接口（ModifyClusterSlaveZone）用于变更集群的备可用区。
 
         :param request: Request instance for ModifyClusterSlaveZone.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyClusterSlaveZoneRequest`
@@ -2511,7 +2511,7 @@ class CynosdbClient(AbstractClient):
 
 
     def ModifyMaintainPeriodConfig(self, request):
-        """修改维护时间配置
+        """本接口（ModifyMaintainPeriodConfig）用于修改维护时间配置。
 
         :param request: Request instance for ModifyMaintainPeriodConfig.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyMaintainPeriodConfigRequest`
@@ -2787,7 +2787,7 @@ class CynosdbClient(AbstractClient):
 
 
     def OpenClusterPasswordComplexity(self, request):
-        """本接口（OpenClusterPasswordComplexity）用于开启自定义密码复杂度功能
+        """本接口（OpenClusterPasswordComplexity）用于开启自定义密码复杂度功能。
 
         :param request: Request instance for OpenClusterPasswordComplexity.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.OpenClusterPasswordComplexityRequest`
@@ -2810,7 +2810,7 @@ class CynosdbClient(AbstractClient):
 
 
     def OpenClusterReadOnlyInstanceGroupAccess(self, request):
-        """开启只读实例组接入
+        """本接口（OpenClusterReadOnlyInstanceGroupAccess）用于开启只读实例组接入。
 
         :param request: Request instance for OpenClusterReadOnlyInstanceGroupAccess.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.OpenClusterReadOnlyInstanceGroupAccessRequest`
@@ -2833,7 +2833,7 @@ class CynosdbClient(AbstractClient):
 
 
     def OpenReadOnlyInstanceExclusiveAccess(self, request):
-        """开通只读实例独有访问接入组
+        """本接口（OpenReadOnlyInstanceExclusiveAccess）用于开通只读实例独有访问接入组。
 
         :param request: Request instance for OpenReadOnlyInstanceExclusiveAccess.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.OpenReadOnlyInstanceExclusiveAccessRequest`
@@ -2856,7 +2856,7 @@ class CynosdbClient(AbstractClient):
 
 
     def OpenWan(self, request):
-        """本接口（OpenWan）用于开通外网
+        """本接口（OpenWan）用于开通外网。
 
         :param request: Request instance for OpenWan.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.OpenWanRequest`
@@ -2879,7 +2879,7 @@ class CynosdbClient(AbstractClient):
 
 
     def PauseServerless(self, request):
-        """暂停serverless集群
+        """本接口（PauseServerless）用于暂停 serverless 集群。
 
         :param request: Request instance for PauseServerless.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.PauseServerlessRequest`
@@ -2948,7 +2948,7 @@ class CynosdbClient(AbstractClient):
 
 
     def RemoveClusterSlaveZone(self, request):
-        """关闭多可用区部署
+        """本接口（RemoveClusterSlaveZone）用于关闭集群多可用区部署。
 
         :param request: Request instance for RemoveClusterSlaveZone.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.RemoveClusterSlaveZoneRequest`
@@ -3040,7 +3040,7 @@ class CynosdbClient(AbstractClient):
 
 
     def ResumeServerless(self, request):
-        """恢复serverless集群
+        """本接口（ResumeServerless）用于恢复 serverless 集群（启动暂停的集群）。
 
         :param request: Request instance for ResumeServerless.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.ResumeServerlessRequest`
@@ -3063,7 +3063,7 @@ class CynosdbClient(AbstractClient):
 
 
     def RevokeAccountPrivileges(self, request):
-        """批量回收账号权限
+        """本接口（RevokeAccountPrivileges）用于批量回收账号权限。
 
         :param request: Request instance for RevokeAccountPrivileges.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.RevokeAccountPrivilegesRequest`
@@ -3109,7 +3109,7 @@ class CynosdbClient(AbstractClient):
 
 
     def RollbackToNewCluster(self, request):
-        """回档到新集群
+        """本接口（RollbackToNewCluster）用于回档到新集群。
 
         :param request: Request instance for RollbackToNewCluster.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.RollbackToNewClusterRequest`
@@ -3132,7 +3132,7 @@ class CynosdbClient(AbstractClient):
 
 
     def SearchClusterDatabases(self, request):
-        """本接口(SearchClusterDatabases)搜索集群数据库列表
+        """本接口（SearchClusterDatabases）用于搜索集群数据库列表。
 
         :param request: Request instance for SearchClusterDatabases.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.SearchClusterDatabasesRequest`
@@ -3270,7 +3270,7 @@ class CynosdbClient(AbstractClient):
 
 
     def SwitchClusterZone(self, request):
-        """主备可用区切换
+        """本接口（SwitchClusterZone）用于切换集群的主备可用区。
 
         :param request: Request instance for SwitchClusterZone.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.SwitchClusterZoneRequest`

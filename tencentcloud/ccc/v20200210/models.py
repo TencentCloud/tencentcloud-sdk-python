@@ -2792,6 +2792,117 @@ class CreateIVRSessionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateOwnNumberApplyRequest(AbstractModel):
+    """CreateOwnNumberApply请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param _SipTrunkId: SIP通道ID
+        :type SipTrunkId: int
+        :param _DetailList: 线路相关参数
+        :type DetailList: list of OwnNumberApplyDetailItem
+        :param _Prefix: 送号前缀
+        :type Prefix: str
+        """
+        self._SdkAppId = None
+        self._SipTrunkId = None
+        self._DetailList = None
+        self._Prefix = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def SipTrunkId(self):
+        return self._SipTrunkId
+
+    @SipTrunkId.setter
+    def SipTrunkId(self, SipTrunkId):
+        self._SipTrunkId = SipTrunkId
+
+    @property
+    def DetailList(self):
+        return self._DetailList
+
+    @DetailList.setter
+    def DetailList(self, DetailList):
+        self._DetailList = DetailList
+
+    @property
+    def Prefix(self):
+        return self._Prefix
+
+    @Prefix.setter
+    def Prefix(self, Prefix):
+        self._Prefix = Prefix
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._SipTrunkId = params.get("SipTrunkId")
+        if params.get("DetailList") is not None:
+            self._DetailList = []
+            for item in params.get("DetailList"):
+                obj = OwnNumberApplyDetailItem()
+                obj._deserialize(item)
+                self._DetailList.append(obj)
+        self._Prefix = params.get("Prefix")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOwnNumberApplyResponse(AbstractModel):
+    """CreateOwnNumberApply返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApplyId: 审批单号
+        :type ApplyId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ApplyId = None
+        self._RequestId = None
+
+    @property
+    def ApplyId(self):
+        return self._ApplyId
+
+    @ApplyId.setter
+    def ApplyId(self, ApplyId):
+        self._ApplyId = ApplyId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ApplyId = params.get("ApplyId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreatePredictiveDialingCampaignRequest(AbstractModel):
     """CreatePredictiveDialingCampaign请求参数结构体
 
@@ -8235,6 +8346,105 @@ class ModifyExtensionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyOwnNumberApplyRequest(AbstractModel):
+    """ModifyOwnNumberApply请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param _DetailList: 线路相关参数
+        :type DetailList: list of OwnNumberApplyDetailItem
+        :param _ApplyId: 审批单号
+        :type ApplyId: int
+        :param _Prefix: 送号前缀
+        :type Prefix: str
+        """
+        self._SdkAppId = None
+        self._DetailList = None
+        self._ApplyId = None
+        self._Prefix = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def DetailList(self):
+        return self._DetailList
+
+    @DetailList.setter
+    def DetailList(self, DetailList):
+        self._DetailList = DetailList
+
+    @property
+    def ApplyId(self):
+        return self._ApplyId
+
+    @ApplyId.setter
+    def ApplyId(self, ApplyId):
+        self._ApplyId = ApplyId
+
+    @property
+    def Prefix(self):
+        return self._Prefix
+
+    @Prefix.setter
+    def Prefix(self, Prefix):
+        self._Prefix = Prefix
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        if params.get("DetailList") is not None:
+            self._DetailList = []
+            for item in params.get("DetailList"):
+                obj = OwnNumberApplyDetailItem()
+                obj._deserialize(item)
+                self._DetailList.append(obj)
+        self._ApplyId = params.get("ApplyId")
+        self._Prefix = params.get("Prefix")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyOwnNumberApplyResponse(AbstractModel):
+    """ModifyOwnNumberApply返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyStaffPasswordRequest(AbstractModel):
     """ModifyStaffPassword请求参数结构体
 
@@ -8518,6 +8728,75 @@ class NumberInfo(AbstractModel):
         self._Number = params.get("Number")
         self._CallOutSkillGroupIds = params.get("CallOutSkillGroupIds")
         self._State = params.get("State")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OwnNumberApplyDetailItem(AbstractModel):
+    """用户自带号码审批明细数据类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CallType: 号码类型：0-呼入|1-呼出|2-呼入呼出
+        :type CallType: int
+        :param _PhoneNumber: 线路号码
+        :type PhoneNumber: str
+        :param _MaxCallCount: 最大并发呼叫数
+        :type MaxCallCount: int
+        :param _MaxCallPSec: 每秒最大并发数
+        :type MaxCallPSec: int
+        """
+        self._CallType = None
+        self._PhoneNumber = None
+        self._MaxCallCount = None
+        self._MaxCallPSec = None
+
+    @property
+    def CallType(self):
+        return self._CallType
+
+    @CallType.setter
+    def CallType(self, CallType):
+        self._CallType = CallType
+
+    @property
+    def PhoneNumber(self):
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def MaxCallCount(self):
+        return self._MaxCallCount
+
+    @MaxCallCount.setter
+    def MaxCallCount(self, MaxCallCount):
+        self._MaxCallCount = MaxCallCount
+
+    @property
+    def MaxCallPSec(self):
+        return self._MaxCallPSec
+
+    @MaxCallPSec.setter
+    def MaxCallPSec(self, MaxCallPSec):
+        self._MaxCallPSec = MaxCallPSec
+
+
+    def _deserialize(self, params):
+        self._CallType = params.get("CallType")
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._MaxCallCount = params.get("MaxCallCount")
+        self._MaxCallPSec = params.get("MaxCallPSec")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

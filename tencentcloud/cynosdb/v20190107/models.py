@@ -820,7 +820,8 @@ class AssociateSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: 实例组ID数组
+        :param _InstanceIds: 实例组 ID 数组，cynosdbmysql-grp-前缀开头或集群 ID。
+说明：要获取集群的实例组 ID，可通过 [查询集群实例组](https://cloud.tencent.com/document/product/1003/103934) 进行。
         :type InstanceIds: list of str
         :param _SecurityGroupIds: 要修改的安全组ID列表，一个或者多个安全组Id组成的数组。
         :type SecurityGroupIds: list of str
@@ -16556,11 +16557,13 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: 实例组ID数组
+        :param _InstanceIds: 实例组 ID 数组，cynosdbmysql-grp-前缀开头或集群 ID。
+说明：要获取集群的实例组 ID，可通过 [查询集群实例组](https://cloud.tencent.com/document/product/1003/103934) 进行。
         :type InstanceIds: list of str
         :param _SecurityGroupIds: 要修改的安全组ID列表，一个或者多个安全组ID组成的数组。
         :type SecurityGroupIds: list of str
-        :param _Zone: 可用区
+        :param _Zone: 可用区。
+说明：请正确输入集群所在的主可用区，若输入非集群所在的主可用区可能显示调用成功，但实际执行会失败。
         :type Zone: str
         """
         self._InstanceIds = None
