@@ -62,6 +62,9 @@ FAILEDOPERATION_CREATECLSLOGTOPICTASKFAILED = 'FailedOperation.CreateClsLogTopic
 # 创建自定义推送任务认证失败, 请检查推送地址是否正确。
 FAILEDOPERATION_CREATELOGTOPICTASKAUTHFAILURE = 'FailedOperation.CreateLogTopicTaskAuthFailure'
 
+# 有其他任务正在部署中，请稍后重试。
+FAILEDOPERATION_FUNCTIONDEPLOYING = 'FailedOperation.FunctionDeploying'
+
 # 账户余额不足。
 FAILEDOPERATION_INSUFFICIENTACCOUNTBALANCE = 'FailedOperation.InsufficientAccountBalance'
 
@@ -79,6 +82,9 @@ FAILEDOPERATION_REALTIMELOGAUTHFAILURE = 'FailedOperation.RealtimeLogAuthFailure
 
 # 实时日志推送任务不存在
 FAILEDOPERATION_REALTIMELOGNOTFOUND = 'FailedOperation.RealtimeLogNotFound'
+
+# 该站点下函数规则操作冲突。
+FAILEDOPERATION_RULEOPERATIONCONFLICT = 'FailedOperation.RuleOperationConflict'
 
 # 未知的配置组类型。
 FAILEDOPERATION_UNKNOWNCONFIGGROUPTYPE = 'FailedOperation.UnknownConfigGroupType'
@@ -134,6 +140,12 @@ INVALIDPARAMETER_ACTIONINPROGRESS = 'InvalidParameter.ActionInProgress'
 # 别称域名不支持配置国密证书。
 INVALIDPARAMETER_ALIASDOMAINNOTSUPPORTSMCERT = 'InvalidParameter.AliasDomainNotSupportSMCert'
 
+# 函数内容存在语法错误。
+INVALIDPARAMETER_BADCONTENT = 'InvalidParameter.BadContent'
+
+# 函数名称不符合命名规范。
+INVALIDPARAMETER_BADFUNCTIONNAME = 'InvalidParameter.BadFunctionName'
+
 # 无效的查询字符串。
 INVALIDPARAMETER_CACHEKEYQUERYSTRINGREQUIRESFULLURLCACHEOFF = 'InvalidParameter.CacheKeyQueryStringRequiresFullUrlCacheOff'
 
@@ -163,6 +175,9 @@ INVALIDPARAMETER_COMPRESSIONINVALIDALGORITHMS = 'InvalidParameter.CompressionInv
 
 # 源站不能和域名一致。
 INVALIDPARAMETER_CONFLICTHOSTORIGIN = 'InvalidParameter.ConflictHostOrigin'
+
+# 函数内容超过大小限制。
+INVALIDPARAMETER_CONTENTEXCEEDSLIMIT = 'InvalidParameter.ContentExceedsLimit'
 
 # 域名不存在或不属于该账号。
 INVALIDPARAMETER_DOMAINNOTFOUND = 'InvalidParameter.DomainNotFound'
@@ -259,6 +274,9 @@ INVALIDPARAMETER_ERRINVALIDELSEWHENMODIFYORIGINACTIONCONFIGURED = 'InvalidParame
 
 # 条件为空。
 INVALIDPARAMETER_ERRNILCONDITION = 'InvalidParameter.ErrNilCondition'
+
+# 函数名称和本账号下其他函数冲突。
+INVALIDPARAMETER_FUNCTIONNAMECONFLICT = 'InvalidParameter.FunctionNameConflict'
 
 # 开启 Grpc 协议支持需要同时开启 HTTP/2 协议支持。
 INVALIDPARAMETER_GRPCREQUIREHTTP2 = 'InvalidParameter.GrpcRequireHttp2'
@@ -367,6 +385,9 @@ INVALIDPARAMETER_INVALIDERRORPAGE = 'InvalidParameter.InvalidErrorPage'
 
 # 无效的自定义错误页面。
 INVALIDPARAMETER_INVALIDERRORPAGEREDIRECTURL = 'InvalidParameter.InvalidErrorPageRedirectUrl'
+
+# 不合法的过滤字段。
+INVALIDPARAMETER_INVALIDFILTERNAME = 'InvalidParameter.InvalidFilterName'
 
 # 无效的强制HTTPS跳转。
 INVALIDPARAMETER_INVALIDFORCEREDIRECTTYPE = 'InvalidParameter.InvalidForceRedirectType'
@@ -536,6 +557,9 @@ INVALIDPARAMETER_LENGTHEXCEEDSLIMIT = 'InvalidParameter.LengthExceedsLimit'
 # 修改源站操作中负载均衡实例Id必填。
 INVALIDPARAMETER_LOADBALANCEINSTANCEIDISREQUIRED = 'InvalidParameter.LoadBalanceInstanceIdIsRequired'
 
+# 修改参数缺失。
+INVALIDPARAMETER_MODIFYPARAMETERSMISSING = 'InvalidParameter.ModifyParametersMissing'
+
 # 不支持智能路由
 INVALIDPARAMETER_MULTIPLYLAYERNOTSUPPORTSMARTROUTING = 'InvalidParameter.MultiplyLayerNotSupportSmartRouting'
 
@@ -652,6 +676,9 @@ INVALIDPARAMETER_TLSVERSIONNOTINSEQUENCE = 'InvalidParameter.TlsVersionNotInSequ
 
 # 过滤值过多。
 INVALIDPARAMETER_TOOMANYFILTERVALUES = 'InvalidParameter.TooManyFilterValues'
+
+# 过滤项过多。
+INVALIDPARAMETER_TOOMANYFILTERS = 'InvalidParameter.TooManyFilters'
 
 # 文件上传链接存在问题。
 INVALIDPARAMETER_UPLOADURL = 'InvalidParameter.UploadUrl'
@@ -796,6 +823,9 @@ LIMITEXCEEDED_CUSTOMLOGFIELDREGEXLIMITEXCEEDED = 'LimitExceeded.CustomLogFieldRe
 
 # 当天提交的资源数超过上限。
 LIMITEXCEEDED_DAILYQUOTA = 'LimitExceeded.DailyQuota'
+
+# 函数数量达到限制。
+LIMITEXCEEDED_FUNCTIONLIMITEXCEEDED = 'LimitExceeded.FunctionLimitExceeded'
 
 # 计费套餐不支持。
 LIMITEXCEEDED_PACKNOTALLOW = 'LimitExceeded.PackNotAllow'
@@ -1105,6 +1135,9 @@ RESOURCEUNAVAILABLE_FUNCTIONNOTFOUND = 'ResourceUnavailable.FunctionNotFound'
 
 # 域名不存在或未开启代理。
 RESOURCEUNAVAILABLE_HOSTNOTFOUND = 'ResourceUnavailable.HostNotFound'
+
+# 规则不存在或不属于该账号。
+RESOURCEUNAVAILABLE_RULENOTFOUND = 'ResourceUnavailable.RuleNotFound'
 
 # 该共享 CNAME 已被占用，请重新输入。
 RESOURCEUNAVAILABLE_SHAREDCNAMEALREADYEXISTS = 'ResourceUnavailable.SharedCNAMEAlreadyExists'
