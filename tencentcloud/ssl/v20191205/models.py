@@ -3552,6 +3552,45 @@ class DeleteCertificatesRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _CertificateIds: 要删除的证书ID。单次最多100个
+        :type CertificateIds: list of str
+        :param _IsSync: 删除时是否检查证书关联了云资源。默认不检查。如需要检查关联云资源 (需授权服务角色SSL_QCSLinkedRoleInReplaceLoadCertificate)，完成授权后，删除将变成异步任务，接口会返回异步任务ID。需搭配 DescribeDeleteCertificatesTaskResult接口使用，查询删除任务是否成功。
+        :type IsSync: bool
+        """
+        self._CertificateIds = None
+        self._IsSync = None
+
+    @property
+    def CertificateIds(self):
+        return self._CertificateIds
+
+    @CertificateIds.setter
+    def CertificateIds(self, CertificateIds):
+        self._CertificateIds = CertificateIds
+
+    @property
+    def IsSync(self):
+        return self._IsSync
+
+    @IsSync.setter
+    def IsSync(self, IsSync):
+        self._IsSync = IsSync
+
+
+    def _deserialize(self, params):
+        self._CertificateIds = params.get("CertificateIds")
+        self._IsSync = params.get("IsSync")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DeleteCertificatesResponse(AbstractModel):
     """DeleteCertificates返回参数结构体
