@@ -9818,10 +9818,8 @@ class CreateBatchOrganizationRegistrationTasksRequest(AbstractModel):
 此接口下面信息必填。
 <ul>
 <li>渠道应用标识:  Agent.AppId</li>
-<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 </ul>
-第三方平台子客企业和员工必须已经经过实名认证
+
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param _RegistrationOrganizations: 当前应用下子企业的组织机构注册信息。最多支持查询10子企业。
         :type RegistrationOrganizations: list of RegistrationOrganizationInfo
@@ -10305,9 +10303,11 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
 注意：`如果已同步，这里非空会更新同步的经办人身份证号，暂时只支持居民身份证类型`。
         :type ProxyOperatorIdCardNumber: str
         :param _AutoJumpUrl: 认证完成跳转链接。
-注意：`目前仅支持 H5 和 PC`。
+注意：`此功能仅在Endpoint参数设置成 H5 或 PC时才有效`。
         :type AutoJumpUrl: str
         :param _TopNavigationStatus: 是否展示头顶导航栏  <ul><li> **ENABLE** : (默认)进入web控制台展示头顶导航栏</li> <li> **DISABLE** : 进入web控制台不展示头顶导航栏</li></ul> 注：该参数**仅在企业和员工激活完成，登录控制台场景才生效**。
+
+<a href="https://qcloudimg.tencent-cloud.cn/raw/dd54f333140c711cf6a88e3801bcd178.png" target="_blank">点击查看头顶导航栏位置</a>
         :type TopNavigationStatus: str
         :param _AutoActive: 是否自动激活子客
         :type AutoActive: bool
@@ -12386,10 +12386,7 @@ class DescribeBatchOrganizationRegistrationUrlsRequest(AbstractModel):
 此接口下面信息必填。
 <ul>
 <li>渠道应用标识:  Agent.AppId</li>
-<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 </ul>
-第三方平台子客企业和员工必须已经经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param _TaskId: 通过接口<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks" target="_blank">提交子企业批量认证链接创建任务</a>调用得到的任务ID。
         :type TaskId: str

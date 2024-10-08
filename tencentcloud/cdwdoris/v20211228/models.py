@@ -3615,11 +3615,15 @@ class DescribeClusterConfigsResponse(AbstractModel):
         :type ClusterConfList: list of ClusterConfigsInfoFromEMR
         :param _BuildVersion: 返回当前内核版本 如果不存在则返回空字符串
         :type BuildVersion: str
+        :param _ErrorMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ClusterConfList = None
         self._BuildVersion = None
+        self._ErrorMsg = None
         self._RequestId = None
 
     @property
@@ -3639,6 +3643,14 @@ class DescribeClusterConfigsResponse(AbstractModel):
         self._BuildVersion = BuildVersion
 
     @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -3655,6 +3667,7 @@ class DescribeClusterConfigsResponse(AbstractModel):
                 obj._deserialize(item)
                 self._ClusterConfList.append(obj)
         self._BuildVersion = params.get("BuildVersion")
+        self._ErrorMsg = params.get("ErrorMsg")
         self._RequestId = params.get("RequestId")
 
 
@@ -4363,11 +4376,15 @@ class DescribeDatabaseAuditRecordsResponse(AbstractModel):
         :type TotalCount: int
         :param _SlowQueryRecords: 记录列表
         :type SlowQueryRecords: :class:`tencentcloud.cdwdoris.v20211228.models.DataBaseAuditRecord`
+        :param _ErrorMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
         self._SlowQueryRecords = None
+        self._ErrorMsg = None
         self._RequestId = None
 
     @property
@@ -4387,6 +4404,14 @@ class DescribeDatabaseAuditRecordsResponse(AbstractModel):
         self._SlowQueryRecords = SlowQueryRecords
 
     @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -4400,6 +4425,7 @@ class DescribeDatabaseAuditRecordsResponse(AbstractModel):
         if params.get("SlowQueryRecords") is not None:
             self._SlowQueryRecords = DataBaseAuditRecord()
             self._SlowQueryRecords._deserialize(params.get("SlowQueryRecords"))
+        self._ErrorMsg = params.get("ErrorMsg")
         self._RequestId = params.get("RequestId")
 
 
@@ -9228,6 +9254,9 @@ class NodeInfo(AbstractModel):
         :param _Zone: 节点所在可用区
 注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: str
+        :param _Id: Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
         """
         self._Ip = None
         self._Status = None
@@ -9236,6 +9265,7 @@ class NodeInfo(AbstractModel):
         self._NodeRole = None
         self._LastRestartTime = None
         self._Zone = None
+        self._Id = None
 
     @property
     def Ip(self):
@@ -9293,6 +9323,14 @@ class NodeInfo(AbstractModel):
     def Zone(self, Zone):
         self._Zone = Zone
 
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
 
     def _deserialize(self, params):
         self._Ip = params.get("Ip")
@@ -9302,6 +9340,7 @@ class NodeInfo(AbstractModel):
         self._NodeRole = params.get("NodeRole")
         self._LastRestartTime = params.get("LastRestartTime")
         self._Zone = params.get("Zone")
+        self._Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9331,6 +9370,12 @@ class NodeInfos(AbstractModel):
         :type ComponentName: str
         :param _LastRestartTime: 上一次重启时间
         :type LastRestartTime: str
+        :param _Id: id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param _Zone: 可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
         """
         self._NodeName = None
         self._Status = None
@@ -9338,6 +9383,8 @@ class NodeInfos(AbstractModel):
         self._NodeRole = None
         self._ComponentName = None
         self._LastRestartTime = None
+        self._Id = None
+        self._Zone = None
 
     @property
     def NodeName(self):
@@ -9387,6 +9434,22 @@ class NodeInfos(AbstractModel):
     def LastRestartTime(self, LastRestartTime):
         self._LastRestartTime = LastRestartTime
 
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
 
     def _deserialize(self, params):
         self._NodeName = params.get("NodeName")
@@ -9395,6 +9458,8 @@ class NodeInfos(AbstractModel):
         self._NodeRole = params.get("NodeRole")
         self._ComponentName = params.get("ComponentName")
         self._LastRestartTime = params.get("LastRestartTime")
+        self._Id = params.get("Id")
+        self._Zone = params.get("Zone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11596,6 +11661,12 @@ class SlowQueryRecord(AbstractModel):
         :param _DurationSec: DurationMs的秒表示
 注意：此字段可能返回 null，表示取不到有效值。
         :type DurationSec: float
+        :param _State: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: str
+        :param _CatalogName: Catalog  Name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CatalogName: str
         """
         self._OsUser = None
         self._InitialQueryId = None
@@ -11612,6 +11683,8 @@ class SlowQueryRecord(AbstractModel):
         self._ResultBytesMB = None
         self._MemoryUsageMB = None
         self._DurationSec = None
+        self._State = None
+        self._CatalogName = None
 
     @property
     def OsUser(self):
@@ -11733,6 +11806,22 @@ class SlowQueryRecord(AbstractModel):
     def DurationSec(self, DurationSec):
         self._DurationSec = DurationSec
 
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def CatalogName(self):
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
 
     def _deserialize(self, params):
         self._OsUser = params.get("OsUser")
@@ -11750,6 +11839,8 @@ class SlowQueryRecord(AbstractModel):
         self._ResultBytesMB = params.get("ResultBytesMB")
         self._MemoryUsageMB = params.get("MemoryUsageMB")
         self._DurationSec = params.get("DurationSec")
+        self._State = params.get("State")
+        self._CatalogName = params.get("CatalogName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12211,11 +12302,15 @@ class ZoneInfo(AbstractModel):
         :param _Encrypt: Encryptid
 注意：此字段可能返回 null，表示取不到有效值。
         :type Encrypt: int
+        :param _Main: 是否为主力园区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Main: bool
         """
         self._Name = None
         self._Desc = None
         self._ZoneId = None
         self._Encrypt = None
+        self._Main = None
 
     @property
     def Name(self):
@@ -12249,12 +12344,21 @@ class ZoneInfo(AbstractModel):
     def Encrypt(self, Encrypt):
         self._Encrypt = Encrypt
 
+    @property
+    def Main(self):
+        return self._Main
+
+    @Main.setter
+    def Main(self, Main):
+        self._Main = Main
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Desc = params.get("Desc")
         self._ZoneId = params.get("ZoneId")
         self._Encrypt = params.get("Encrypt")
+        self._Main = params.get("Main")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
