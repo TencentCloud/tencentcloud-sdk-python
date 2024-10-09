@@ -261,6 +261,8 @@ class DescribeImageAnimateJobResponse(AbstractModel):
         :type ErrorMessage: str
         :param _ResultVideoUrl: 结果视频URL。有效期 24 小时。
         :type ResultVideoUrl: str
+        :param _MaskVideoUrl: 掩码视频链接
+        :type MaskVideoUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -268,6 +270,7 @@ class DescribeImageAnimateJobResponse(AbstractModel):
         self._ErrorCode = None
         self._ErrorMessage = None
         self._ResultVideoUrl = None
+        self._MaskVideoUrl = None
         self._RequestId = None
 
     @property
@@ -303,6 +306,14 @@ class DescribeImageAnimateJobResponse(AbstractModel):
         self._ResultVideoUrl = ResultVideoUrl
 
     @property
+    def MaskVideoUrl(self):
+        return self._MaskVideoUrl
+
+    @MaskVideoUrl.setter
+    def MaskVideoUrl(self, MaskVideoUrl):
+        self._MaskVideoUrl = MaskVideoUrl
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -316,6 +327,7 @@ class DescribeImageAnimateJobResponse(AbstractModel):
         self._ErrorCode = params.get("ErrorCode")
         self._ErrorMessage = params.get("ErrorMessage")
         self._ResultVideoUrl = params.get("ResultVideoUrl")
+        self._MaskVideoUrl = params.get("MaskVideoUrl")
         self._RequestId = params.get("RequestId")
 
 
@@ -786,12 +798,16 @@ class SubmitImageAnimateJobRequest(AbstractModel):
         :type EnableAudio: bool
         :param _EnableBodyJoins: 是否检测输入图人体12个身体部位（头部、颈部、右肩、右肘、右腕、左肩、左肘、左腕、右髋、左髋,、左膝、右膝）。默认不检测。
         :type EnableBodyJoins: bool
+        :param _EnableSegment: 最终视频是否保留原图的背景（该模式对于tuziwu、huajiangwu不生效）
+
+        :type EnableSegment: bool
         """
         self._ImageUrl = None
         self._ImageBase64 = None
         self._TemplateId = None
         self._EnableAudio = None
         self._EnableBodyJoins = None
+        self._EnableSegment = None
 
     @property
     def ImageUrl(self):
@@ -833,6 +849,14 @@ class SubmitImageAnimateJobRequest(AbstractModel):
     def EnableBodyJoins(self, EnableBodyJoins):
         self._EnableBodyJoins = EnableBodyJoins
 
+    @property
+    def EnableSegment(self):
+        return self._EnableSegment
+
+    @EnableSegment.setter
+    def EnableSegment(self, EnableSegment):
+        self._EnableSegment = EnableSegment
+
 
     def _deserialize(self, params):
         self._ImageUrl = params.get("ImageUrl")
@@ -840,6 +864,7 @@ class SubmitImageAnimateJobRequest(AbstractModel):
         self._TemplateId = params.get("TemplateId")
         self._EnableAudio = params.get("EnableAudio")
         self._EnableBodyJoins = params.get("EnableBodyJoins")
+        self._EnableSegment = params.get("EnableSegment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

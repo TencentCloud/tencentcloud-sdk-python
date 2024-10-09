@@ -8173,6 +8173,14 @@ class ChannelOrganizationInfo(AbstractModel):
   <li>**"AuthorizationLegalIdentity"**： 法人直接认证</li>
 </ul>
         :type AuthorizationType: str
+        :param _ActiveStatus: 子企业激活状态。值如下：
+<ul>
+  <li>**0**： 未激活</li>
+  <li>**1**： 已激活</li>
+</ul>
+        :type ActiveStatus: int
+        :param _LicenseExpireTime: 账号过期时间，时间戳
+        :type LicenseExpireTime: int
         """
         self._OrganizationId = None
         self._OrganizationOpenId = None
@@ -8185,6 +8193,8 @@ class ChannelOrganizationInfo(AbstractModel):
         self._AdminMobile = None
         self._AuthorizationStatus = None
         self._AuthorizationType = None
+        self._ActiveStatus = None
+        self._LicenseExpireTime = None
 
     @property
     def OrganizationId(self):
@@ -8274,6 +8284,22 @@ class ChannelOrganizationInfo(AbstractModel):
     def AuthorizationType(self, AuthorizationType):
         self._AuthorizationType = AuthorizationType
 
+    @property
+    def ActiveStatus(self):
+        return self._ActiveStatus
+
+    @ActiveStatus.setter
+    def ActiveStatus(self, ActiveStatus):
+        self._ActiveStatus = ActiveStatus
+
+    @property
+    def LicenseExpireTime(self):
+        return self._LicenseExpireTime
+
+    @LicenseExpireTime.setter
+    def LicenseExpireTime(self, LicenseExpireTime):
+        self._LicenseExpireTime = LicenseExpireTime
+
 
     def _deserialize(self, params):
         self._OrganizationId = params.get("OrganizationId")
@@ -8287,6 +8313,8 @@ class ChannelOrganizationInfo(AbstractModel):
         self._AdminMobile = params.get("AdminMobile")
         self._AuthorizationStatus = params.get("AuthorizationStatus")
         self._AuthorizationType = params.get("AuthorizationType")
+        self._ActiveStatus = params.get("ActiveStatus")
+        self._LicenseExpireTime = params.get("LicenseExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10213,6 +10241,102 @@ class CreateChannelOrganizationInfoChangeUrlResponse(AbstractModel):
     def _deserialize(self, params):
         self._Url = params.get("Url")
         self._ExpiredTime = params.get("ExpiredTime")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateChannelSubOrganizationActiveRequest(AbstractModel):
+    """CreateChannelSubOrganizationActive请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+
+此接口下面信息必填。
+<ul>
+<li>渠道应用标识:  Agent.AppId</li>
+<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+</ul>
+第三方平台子客企业和员工必须已经经过实名认证
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _SubOrganizationOpenIds: 要进行激活或者续期的子客企业OrganizationOpenId列表，请确保所有列出的子客企业均已完成认证。
+        :type SubOrganizationOpenIds: list of str
+        :param _Renew: 操作类型，可以选择如下：
+
+**false**：（默认）激活子客企业
+**true**：续期子客企业
+
+        :type Renew: bool
+        """
+        self._Agent = None
+        self._SubOrganizationOpenIds = None
+        self._Renew = None
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def SubOrganizationOpenIds(self):
+        return self._SubOrganizationOpenIds
+
+    @SubOrganizationOpenIds.setter
+    def SubOrganizationOpenIds(self, SubOrganizationOpenIds):
+        self._SubOrganizationOpenIds = SubOrganizationOpenIds
+
+    @property
+    def Renew(self):
+        return self._Renew
+
+    @Renew.setter
+    def Renew(self, Renew):
+        self._Renew = Renew
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._SubOrganizationOpenIds = params.get("SubOrganizationOpenIds")
+        self._Renew = params.get("Renew")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateChannelSubOrganizationActiveResponse(AbstractModel):
+    """CreateChannelSubOrganizationActive返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

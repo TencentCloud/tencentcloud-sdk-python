@@ -12338,10 +12338,13 @@ class DescribeShippersRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 分页单页的限制数目，默认值为20，最大值100
         :type Limit: int
+        :param _PreciseSearch: 控制Filters相关字段是否为精确匹配。  0: 默认值，shipperName模糊匹配 1: shipperName 精确匹配
+        :type PreciseSearch: int
         """
         self._Filters = None
         self._Offset = None
         self._Limit = None
+        self._PreciseSearch = None
 
     @property
     def Filters(self):
@@ -12367,6 +12370,14 @@ class DescribeShippersRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def PreciseSearch(self):
+        return self._PreciseSearch
+
+    @PreciseSearch.setter
+    def PreciseSearch(self, PreciseSearch):
+        self._PreciseSearch = PreciseSearch
+
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
@@ -12377,6 +12388,7 @@ class DescribeShippersRequest(AbstractModel):
                 self._Filters.append(obj)
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._PreciseSearch = params.get("PreciseSearch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

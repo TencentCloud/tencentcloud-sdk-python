@@ -6596,6 +6596,100 @@ class DescribeDBSlowLogsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDBSyncModeRequest(AbstractModel):
+    """DescribeDBSyncMode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID，形如：tdsql-ow728lmc
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBSyncModeResponse(AbstractModel):
+    """DescribeDBSyncMode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SyncMode: 同步模式：0 异步，1 强同步， 2 强同步可退化
+        :type SyncMode: int
+        :param _IsModifying: 是否有修改流程在执行中：1 是， 0 否。
+        :type IsModifying: int
+        :param _CurrentSyncMode: 当前复制方式，0 异步，1 同步
+        :type CurrentSyncMode: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SyncMode = None
+        self._IsModifying = None
+        self._CurrentSyncMode = None
+        self._RequestId = None
+
+    @property
+    def SyncMode(self):
+        return self._SyncMode
+
+    @SyncMode.setter
+    def SyncMode(self, SyncMode):
+        self._SyncMode = SyncMode
+
+    @property
+    def IsModifying(self):
+        return self._IsModifying
+
+    @IsModifying.setter
+    def IsModifying(self, IsModifying):
+        self._IsModifying = IsModifying
+
+    @property
+    def CurrentSyncMode(self):
+        return self._CurrentSyncMode
+
+    @CurrentSyncMode.setter
+    def CurrentSyncMode(self, CurrentSyncMode):
+        self._CurrentSyncMode = CurrentSyncMode
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SyncMode = params.get("SyncMode")
+        self._IsModifying = params.get("IsModifying")
+        self._CurrentSyncMode = params.get("CurrentSyncMode")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDBTmpInstancesRequest(AbstractModel):
     """DescribeDBTmpInstances请求参数结构体
 

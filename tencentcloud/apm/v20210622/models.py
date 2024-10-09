@@ -218,17 +218,17 @@ class ApmApplicationConfigView(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceKey: 实例ID	
+        :param _InstanceKey: 业务系统ID	
         :type InstanceKey: str
-        :param _ServiceName: 服务名	
+        :param _ServiceName: 应用名	
         :type ServiceName: str
         :param _OperationNameFilter: 接口过滤
         :type OperationNameFilter: str
-        :param _ExceptionFilter: 异常过滤
+        :param _ExceptionFilter: 错误类型过滤
         :type ExceptionFilter: str
-        :param _ErrorCodeFilter: 错误码过滤	
+        :param _ErrorCodeFilter: HTTP状态码过滤
         :type ErrorCodeFilter: str
-        :param _EventEnable: 应用诊断开关
+        :param _EventEnable: 应用诊断开关（已废弃）
 注意：此字段可能返回 null，表示取不到有效值。
         :type EventEnable: bool
         :param _UrlConvergenceSwitch: URL收敛开关 0 关 1 开
@@ -241,23 +241,23 @@ class ApmApplicationConfigView(AbstractModel):
         :type UrlExclude: str
         :param _IsRelatedLog: 是否开启日志 0 关 1 开
         :type IsRelatedLog: int
-        :param _LogSource: 日志来源	
+        :param _LogSource: 日志源	
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogSource: str
-        :param _LogSet: CLS日志集 
+        :param _LogSet: 日志集 
         :type LogSet: str
-        :param _LogTopicID: 日志主题ID
+        :param _LogTopicID: 日志主题
         :type LogTopicID: str
-        :param _SnapshotEnable: 线程剖析开关
+        :param _SnapshotEnable: 方法栈快照开关 true 开启 false 关闭
         :type SnapshotEnable: bool
-        :param _SnapshotTimeout: 线程剖析超时阈值	
+        :param _SnapshotTimeout: 慢调用监听触发阈值
         :type SnapshotTimeout: int
-        :param _AgentEnable: 探针开启开关
+        :param _AgentEnable: 探针总开关
         :type AgentEnable: bool
-        :param _InstrumentList: 组件列表开关
+        :param _InstrumentList: 组件列表开关（已废弃）
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstrumentList: list of Instrument
-        :param _TraceSquash: 链路压缩开关
+        :param _TraceSquash: 链路压缩开关（已废弃）
         :type TraceSquash: bool
         """
         self._InstanceKey = None
@@ -3072,11 +3072,12 @@ class ModifyGeneralApmApplicationConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例Id
+        :param _InstanceId: 业务系统Id
         :type InstanceId: str
         :param _Tags: 需要修改的字段key value分别指定字段名、字段值
+[具体字段请见](https://cloud.tencent.com/document/product/248/111241)
         :type Tags: list of ApmTag
-        :param _ServiceNames: 需要修改配置的服务列表名称	
+        :param _ServiceNames: 需要修改配置的应用列表名称	
         :type ServiceNames: list of str
         """
         self._InstanceId = None

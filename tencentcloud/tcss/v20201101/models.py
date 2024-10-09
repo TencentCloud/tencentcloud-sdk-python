@@ -60900,6 +60900,8 @@ class UpdateAssetImageRegistryRegistryDetailRequest(AbstractModel):
         :type Insecure: int
         :param _ConnDetectConfig: 联通性检测的配置
         :type ConnDetectConfig: list of ConnDetectConfig
+        :param _RegistryId: 仓库唯一id
+        :type RegistryId: int
         """
         self._Name = None
         self._Username = None
@@ -60912,6 +60914,7 @@ class UpdateAssetImageRegistryRegistryDetailRequest(AbstractModel):
         self._SpeedLimit = None
         self._Insecure = None
         self._ConnDetectConfig = None
+        self._RegistryId = None
 
     @property
     def Name(self):
@@ -61001,6 +61004,14 @@ class UpdateAssetImageRegistryRegistryDetailRequest(AbstractModel):
     def ConnDetectConfig(self, ConnDetectConfig):
         self._ConnDetectConfig = ConnDetectConfig
 
+    @property
+    def RegistryId(self):
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -61019,6 +61030,7 @@ class UpdateAssetImageRegistryRegistryDetailRequest(AbstractModel):
                 obj = ConnDetectConfig()
                 obj._deserialize(item)
                 self._ConnDetectConfig.append(obj)
+        self._RegistryId = params.get("RegistryId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

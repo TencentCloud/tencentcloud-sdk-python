@@ -627,6 +627,29 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDBSyncMode(self, request):
+        """本接口（DescribeDBSyncMode）用于查询云数据库实例的同步模式。
+
+        :param request: Request instance for DescribeDBSyncMode.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.DescribeDBSyncModeRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DescribeDBSyncModeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBSyncMode", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBSyncModeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDBTmpInstances(self, request):
         """本接口（DescribeDBTmpInstances）用于获取实例回档生成的临时实例
 

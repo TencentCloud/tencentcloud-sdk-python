@@ -1892,18 +1892,30 @@ cdn-waf：CDN上的Web防护能力
         :type SniType: int
         :param _SniHost: SniType为3时，需要填此参数，表示自定义的SNI；
         :type SniHost: str
-        :param _XFFReset: 是否开启XFF重置。
-0：关闭
-1：开启
+        :param _XFFReset: 是否开启XFF重置。0：关闭 1：开启
         :type XFFReset: int
         :param _Note: 域名备注信息
         :type Note: str
         :param _UpstreamHost: 自定义回源Host。默认为空字符串，表示使用防护域名作为回源Host。
         :type UpstreamHost: str
-        :param _ProxyBuffer: 是否开启缓存 0-关闭 1-开启
+        :param _ProxyBuffer: 是否开启缓存。 0：关闭 1：开启
         :type ProxyBuffer: int
-        :param _ProbeStatus: 0: 禁用拨测, 1: 启用拨测。默认启用拨测
+        :param _ProbeStatus: 是否开启拨测。 0: 禁用拨测  1: 启用拨测。默认启用拨测
         :type ProbeStatus: int
+        :param _GmType: 国密选项。0：不开启国密 1：在原有TLS选项的基础上追加支持国密 2：开启国密并仅支持国密客户端访问
+        :type GmType: int
+        :param _GmCertType: 国密证书类型。0：无国密证书 1：证书来源为自有国密证书 2：证书来源为托管国密证书
+        :type GmCertType: int
+        :param _GmCert: GmCertType为1时，需要填充此参数，表示自有国密证书的证书链
+        :type GmCert: str
+        :param _GmPrivateKey: GmCertType为1时，需要填充此参数，表示自有国密证书的私钥
+        :type GmPrivateKey: str
+        :param _GmEncCert: GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书
+        :type GmEncCert: str
+        :param _GmEncPrivateKey: GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书的私钥
+        :type GmEncPrivateKey: str
+        :param _GmSSLId: GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
+        :type GmSSLId: str
         """
         self._Domain = None
         self._CertType = None
@@ -1943,6 +1955,13 @@ cdn-waf：CDN上的Web防护能力
         self._UpstreamHost = None
         self._ProxyBuffer = None
         self._ProbeStatus = None
+        self._GmType = None
+        self._GmCertType = None
+        self._GmCert = None
+        self._GmPrivateKey = None
+        self._GmEncCert = None
+        self._GmEncPrivateKey = None
+        self._GmSSLId = None
 
     @property
     def Domain(self):
@@ -2248,6 +2267,62 @@ cdn-waf：CDN上的Web防护能力
     def ProbeStatus(self, ProbeStatus):
         self._ProbeStatus = ProbeStatus
 
+    @property
+    def GmType(self):
+        return self._GmType
+
+    @GmType.setter
+    def GmType(self, GmType):
+        self._GmType = GmType
+
+    @property
+    def GmCertType(self):
+        return self._GmCertType
+
+    @GmCertType.setter
+    def GmCertType(self, GmCertType):
+        self._GmCertType = GmCertType
+
+    @property
+    def GmCert(self):
+        return self._GmCert
+
+    @GmCert.setter
+    def GmCert(self, GmCert):
+        self._GmCert = GmCert
+
+    @property
+    def GmPrivateKey(self):
+        return self._GmPrivateKey
+
+    @GmPrivateKey.setter
+    def GmPrivateKey(self, GmPrivateKey):
+        self._GmPrivateKey = GmPrivateKey
+
+    @property
+    def GmEncCert(self):
+        return self._GmEncCert
+
+    @GmEncCert.setter
+    def GmEncCert(self, GmEncCert):
+        self._GmEncCert = GmEncCert
+
+    @property
+    def GmEncPrivateKey(self):
+        return self._GmEncPrivateKey
+
+    @GmEncPrivateKey.setter
+    def GmEncPrivateKey(self, GmEncPrivateKey):
+        self._GmEncPrivateKey = GmEncPrivateKey
+
+    @property
+    def GmSSLId(self):
+        return self._GmSSLId
+
+    @GmSSLId.setter
+    def GmSSLId(self, GmSSLId):
+        self._GmSSLId = GmSSLId
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -2293,6 +2368,13 @@ cdn-waf：CDN上的Web防护能力
         self._UpstreamHost = params.get("UpstreamHost")
         self._ProxyBuffer = params.get("ProxyBuffer")
         self._ProbeStatus = params.get("ProbeStatus")
+        self._GmType = params.get("GmType")
+        self._GmCertType = params.get("GmCertType")
+        self._GmCert = params.get("GmCert")
+        self._GmPrivateKey = params.get("GmPrivateKey")
+        self._GmEncCert = params.get("GmEncCert")
+        self._GmEncPrivateKey = params.get("GmEncPrivateKey")
+        self._GmSSLId = params.get("GmSSLId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4197,6 +4279,9 @@ class ClbDomainsInfo(AbstractModel):
         :param _Note: 域名备注信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Note: str
+        :param _Labels: 域名标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Labels: list of str
         """
         self._Domain = None
         self._DomainId = None
@@ -4212,6 +4297,7 @@ class ClbDomainsInfo(AbstractModel):
         self._CdcClusters = None
         self._CloudType = None
         self._Note = None
+        self._Labels = None
 
     @property
     def Domain(self):
@@ -4325,6 +4411,14 @@ class ClbDomainsInfo(AbstractModel):
     def Note(self, Note):
         self._Note = Note
 
+    @property
+    def Labels(self):
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -4346,6 +4440,7 @@ class ClbDomainsInfo(AbstractModel):
         self._CdcClusters = params.get("CdcClusters")
         self._CloudType = params.get("CloudType")
         self._Note = params.get("Note")
+        self._Labels = params.get("Labels")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4414,6 +4509,9 @@ class ClbObject(AbstractModel):
         :param _ObjectFlowMode: 对象接入模式，0表示镜像模式，1表示清洗模式，2表示体检模式，默认为清洗模式
 注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectFlowMode: int
+        :param _NumericalVpcId: 数值形式的私有网络 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NumericalVpcId: int
         """
         self._ObjectId = None
         self._InstanceId = None
@@ -4437,6 +4535,7 @@ class ClbObject(AbstractModel):
         self._BotStatus = None
         self._ApiStatus = None
         self._ObjectFlowMode = None
+        self._NumericalVpcId = None
 
     @property
     def ObjectId(self):
@@ -4614,6 +4713,14 @@ class ClbObject(AbstractModel):
     def ObjectFlowMode(self, ObjectFlowMode):
         self._ObjectFlowMode = ObjectFlowMode
 
+    @property
+    def NumericalVpcId(self):
+        return self._NumericalVpcId
+
+    @NumericalVpcId.setter
+    def NumericalVpcId(self, NumericalVpcId):
+        self._NumericalVpcId = NumericalVpcId
+
 
     def _deserialize(self, params):
         self._ObjectId = params.get("ObjectId")
@@ -4638,6 +4745,7 @@ class ClbObject(AbstractModel):
         self._BotStatus = params.get("BotStatus")
         self._ApiStatus = params.get("ApiStatus")
         self._ObjectFlowMode = params.get("ObjectFlowMode")
+        self._NumericalVpcId = params.get("NumericalVpcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6694,13 +6802,13 @@ class DeleteIpAccessControlV2Request(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
-        :param _RuleIds: 规则ID列表，支持批量删除
+        :param _RuleIds: 规则ID列表，支持批量删除，在DeleteAll参数为true的时候可以不传
         :type RuleIds: list of int non-negative
-        :param _DeleteAll: 是否删除对应的域名下的所有黑/白IP名单，true表示全部删除，false表示只删除指定ip名单
+        :param _DeleteAll: 是否删除对应的域名下的所有黑/白IP名单，true表示全部删除，false表示只删除指定IP名单，批量防护不支持
         :type DeleteAll: bool
         :param _SourceType: batch表示为批量防护的IP黑白名单
         :type SourceType: str
-        :param _ActionType: IP黑白名单类型，40为IP白名单，42为IP黑名单
+        :param _ActionType: IP黑白名单类型，40为IP白名单，42为IP黑名单，在DeleteAll为true的时候必传此参数
         :type ActionType: int
         """
         self._Domain = None
@@ -9689,7 +9797,7 @@ class DescribeCertificateVerifyResultRequest(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
-        :param _CertType: 证书类型。 0：仅配置HTTP监听端口，没有证书 1：证书来源为自有证书 2：证书来源为托管证书
+        :param _CertType: 证书类型。 0：不检测国际标准证书 1：证书来源为自有证书 2：证书来源为托管证书
         :type CertType: int
         :param _Certificate: CertType为1时，需要填充此参数，表示自有证书的证书链
         :type Certificate: str
@@ -9697,12 +9805,30 @@ class DescribeCertificateVerifyResultRequest(AbstractModel):
         :type CertID: str
         :param _PrivateKey: CertType为1时，需要填充此参数，表示自有证书的私钥
         :type PrivateKey: str
+        :param _GmCertType: 国密证书类型。0：不检测国密证书 1：证书来源为自有国密证书 2：证书来源为托管国密证书
+        :type GmCertType: int
+        :param _GmCert: GmCertType为1时，需要填充此参数，表示自有国密证书的证书链
+        :type GmCert: str
+        :param _GmPrivateKey: GmCertType为1时，需要填充此参数，表示自有国密证书的私钥
+        :type GmPrivateKey: str
+        :param _GmEncCert: GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书
+        :type GmEncCert: str
+        :param _GmEncPrivateKey: GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书的私钥
+        :type GmEncPrivateKey: str
+        :param _GmSSLId: GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
+        :type GmSSLId: str
         """
         self._Domain = None
         self._CertType = None
         self._Certificate = None
         self._CertID = None
         self._PrivateKey = None
+        self._GmCertType = None
+        self._GmCert = None
+        self._GmPrivateKey = None
+        self._GmEncCert = None
+        self._GmEncPrivateKey = None
+        self._GmSSLId = None
 
     @property
     def Domain(self):
@@ -9744,6 +9870,54 @@ class DescribeCertificateVerifyResultRequest(AbstractModel):
     def PrivateKey(self, PrivateKey):
         self._PrivateKey = PrivateKey
 
+    @property
+    def GmCertType(self):
+        return self._GmCertType
+
+    @GmCertType.setter
+    def GmCertType(self, GmCertType):
+        self._GmCertType = GmCertType
+
+    @property
+    def GmCert(self):
+        return self._GmCert
+
+    @GmCert.setter
+    def GmCert(self, GmCert):
+        self._GmCert = GmCert
+
+    @property
+    def GmPrivateKey(self):
+        return self._GmPrivateKey
+
+    @GmPrivateKey.setter
+    def GmPrivateKey(self, GmPrivateKey):
+        self._GmPrivateKey = GmPrivateKey
+
+    @property
+    def GmEncCert(self):
+        return self._GmEncCert
+
+    @GmEncCert.setter
+    def GmEncCert(self, GmEncCert):
+        self._GmEncCert = GmEncCert
+
+    @property
+    def GmEncPrivateKey(self):
+        return self._GmEncPrivateKey
+
+    @GmEncPrivateKey.setter
+    def GmEncPrivateKey(self, GmEncPrivateKey):
+        self._GmEncPrivateKey = GmEncPrivateKey
+
+    @property
+    def GmSSLId(self):
+        return self._GmSSLId
+
+    @GmSSLId.setter
+    def GmSSLId(self, GmSSLId):
+        self._GmSSLId = GmSSLId
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -9751,6 +9925,12 @@ class DescribeCertificateVerifyResultRequest(AbstractModel):
         self._Certificate = params.get("Certificate")
         self._CertID = params.get("CertID")
         self._PrivateKey = params.get("PrivateKey")
+        self._GmCertType = params.get("GmCertType")
+        self._GmCert = params.get("GmCert")
+        self._GmPrivateKey = params.get("GmPrivateKey")
+        self._GmEncCert = params.get("GmEncCert")
+        self._GmEncPrivateKey = params.get("GmEncPrivateKey")
+        self._GmSSLId = params.get("GmSSLId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11094,7 +11274,7 @@ class DescribeDomainsRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 返回域名的数量
         :type Limit: int
-        :param _Filters: 过滤数组
+        :param _Filters: 过滤数组，过滤字段包括：Edition：实例版本，sparta-waf或clb-waf Domain：域名 DomainId：域名ID InstanceName：实例名称 InstanceId：实例ID FlowMode：流量接入模式，仅支持CLBWAF FlowCheckMode：流量体检模式，仅支持CLBWAF ClsStatus：日志开关 Status：WAF开关BotStatus：BOT开关 ApiStatus：API安全开关 Engine：引擎模式 UpstreamIP：源站IP，仅支持SAAS型WAF UpstreamDomain：源站域名，仅支持SAAS型WAF DomainState：域名状态，仅支持SAAS型WAF SgState：安全组状态，仅支持SAAS型WAF Label：分组标签，同时仅支持一种标签过滤
         :type Filters: list of FiltersItemNew
         """
         self._Offset = None
@@ -14139,6 +14319,33 @@ class DescribeUserClbWafRegionsRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _AlbType: 流量来源，不填默认clb。clb：负载均衡器，tsegw：云原生API网关，scf：云函数，apisix：腾讯云上其他网关
+        :type AlbType: str
+        """
+        self._AlbType = None
+
+    @property
+    def AlbType(self):
+        return self._AlbType
+
+    @AlbType.setter
+    def AlbType(self, AlbType):
+        self._AlbType = AlbType
+
+
+    def _deserialize(self, params):
+        self._AlbType = params.get("AlbType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeUserClbWafRegionsResponse(AbstractModel):
     """DescribeUserClbWafRegions返回参数结构体
@@ -15023,6 +15230,9 @@ public：公有云域名
         :param _AccessStatus: clbwaf接入状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccessStatus: int
+        :param _Labels: 域名标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Labels: list of str
         """
         self._Domain = None
         self._DomainId = None
@@ -15059,6 +15269,7 @@ public：公有云域名
         self._UpstreamDomainList = None
         self._SgID = None
         self._AccessStatus = None
+        self._Labels = None
 
     @property
     def Domain(self):
@@ -15340,6 +15551,14 @@ public：公有云域名
     def AccessStatus(self, AccessStatus):
         self._AccessStatus = AccessStatus
 
+    @property
+    def Labels(self):
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -15387,6 +15606,7 @@ public：公有云域名
         self._UpstreamDomainList = params.get("UpstreamDomainList")
         self._SgID = params.get("SgID")
         self._AccessStatus = params.get("AccessStatus")
+        self._Labels = params.get("Labels")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15739,6 +15959,30 @@ https：使用https协议回源
         :param _ProxyBuffer: 是否开启缓存 0-关闭 1-开启
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyBuffer: int
+        :param _GmType: 国密选项。0：不开启国密 1：在原有TLS选项的基础上追加支持国密 2：开启国密并仅支持国密客户端访问
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GmType: int
+        :param _GmCertType: 国密证书类型。0：无国密证书 1：证书来源为自有国密证书 2：证书来源为托管国密证书
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GmCertType: int
+        :param _GmCert: GmCertType为1时，需要填充此参数，表示自有国密证书的证书链
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GmCert: str
+        :param _GmPrivateKey: GmCertType为1时，需要填充此参数，表示自有国密证书的私钥
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GmPrivateKey: str
+        :param _GmEncCert: GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GmEncCert: str
+        :param _GmEncPrivateKey: GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书的私钥
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GmEncPrivateKey: str
+        :param _GmSSLId: GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GmSSLId: str
+        :param _Labels: 域名标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Labels: list of str
         """
         self._Domain = None
         self._DomainId = None
@@ -15782,6 +16026,14 @@ https：使用https协议回源
         self._UpstreamHost = None
         self._Level = None
         self._ProxyBuffer = None
+        self._GmType = None
+        self._GmCertType = None
+        self._GmCert = None
+        self._GmPrivateKey = None
+        self._GmEncCert = None
+        self._GmEncPrivateKey = None
+        self._GmSSLId = None
+        self._Labels = None
 
     @property
     def Domain(self):
@@ -16119,6 +16371,70 @@ https：使用https协议回源
     def ProxyBuffer(self, ProxyBuffer):
         self._ProxyBuffer = ProxyBuffer
 
+    @property
+    def GmType(self):
+        return self._GmType
+
+    @GmType.setter
+    def GmType(self, GmType):
+        self._GmType = GmType
+
+    @property
+    def GmCertType(self):
+        return self._GmCertType
+
+    @GmCertType.setter
+    def GmCertType(self, GmCertType):
+        self._GmCertType = GmCertType
+
+    @property
+    def GmCert(self):
+        return self._GmCert
+
+    @GmCert.setter
+    def GmCert(self, GmCert):
+        self._GmCert = GmCert
+
+    @property
+    def GmPrivateKey(self):
+        return self._GmPrivateKey
+
+    @GmPrivateKey.setter
+    def GmPrivateKey(self, GmPrivateKey):
+        self._GmPrivateKey = GmPrivateKey
+
+    @property
+    def GmEncCert(self):
+        return self._GmEncCert
+
+    @GmEncCert.setter
+    def GmEncCert(self, GmEncCert):
+        self._GmEncCert = GmEncCert
+
+    @property
+    def GmEncPrivateKey(self):
+        return self._GmEncPrivateKey
+
+    @GmEncPrivateKey.setter
+    def GmEncPrivateKey(self, GmEncPrivateKey):
+        self._GmEncPrivateKey = GmEncPrivateKey
+
+    @property
+    def GmSSLId(self):
+        return self._GmSSLId
+
+    @GmSSLId.setter
+    def GmSSLId(self, GmSSLId):
+        self._GmSSLId = GmSSLId
+
+    @property
+    def Labels(self):
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -16168,6 +16484,14 @@ https：使用https协议回源
         self._UpstreamHost = params.get("UpstreamHost")
         self._Level = params.get("Level")
         self._ProxyBuffer = params.get("ProxyBuffer")
+        self._GmType = params.get("GmType")
+        self._GmCertType = params.get("GmCertType")
+        self._GmCert = params.get("GmCert")
+        self._GmPrivateKey = params.get("GmPrivateKey")
+        self._GmEncCert = params.get("GmEncCert")
+        self._GmEncPrivateKey = params.get("GmEncPrivateKey")
+        self._GmSSLId = params.get("GmSSLId")
+        self._Labels = params.get("Labels")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17885,6 +18209,9 @@ Saas 域名扩展包  sv_wsm_waf_domain
         :param _ResourceId: 资源id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
+        :param _MicroVersion: 模式clb-waf或者saas-waf
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MicroVersion: str
         """
         self._TimeSpan = None
         self._TimeUnit = None
@@ -17898,6 +18225,7 @@ Saas 域名扩展包  sv_wsm_waf_domain
         self._CurDeadline = None
         self._InstanceId = None
         self._ResourceId = None
+        self._MicroVersion = None
 
     @property
     def TimeSpan(self):
@@ -17995,6 +18323,14 @@ Saas 域名扩展包  sv_wsm_waf_domain
     def ResourceId(self, ResourceId):
         self._ResourceId = ResourceId
 
+    @property
+    def MicroVersion(self):
+        return self._MicroVersion
+
+    @MicroVersion.setter
+    def MicroVersion(self, MicroVersion):
+        self._MicroVersion = MicroVersion
+
 
     def _deserialize(self, params):
         self._TimeSpan = params.get("TimeSpan")
@@ -18009,6 +18345,7 @@ Saas 域名扩展包  sv_wsm_waf_domain
         self._CurDeadline = params.get("CurDeadline")
         self._InstanceId = params.get("InstanceId")
         self._ResourceId = params.get("ResourceId")
+        self._MicroVersion = params.get("MicroVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24346,10 +24683,24 @@ https：使用https协议回源
         :type Note: str
         :param _UpstreamHost: 自定义回源Host。默认为空字符串，表示使用防护域名作为回源Host。
         :type UpstreamHost: str
-        :param _ProxyBuffer: 是否开启缓存 0-关闭 1-开启
+        :param _ProxyBuffer: 是否开启缓存。 0：关闭 1：开启
         :type ProxyBuffer: int
-        :param _ProbeStatus: 0: 禁用拨测, 1: 启用拨测。默认启用拨测
+        :param _ProbeStatus: 是否开启拨测。 0: 禁用拨测 1: 启用拨测。默认启用拨测
         :type ProbeStatus: int
+        :param _GmType: 国密选项。0：不开启国密 1：在原有TLS选项的基础上追加支持国密 2：开启国密并仅支持国密客户端访问
+        :type GmType: int
+        :param _GmCertType: 国密证书类型。0：无国密证书 1：证书来源为自有国密证书 2：证书来源为托管国密证书
+        :type GmCertType: int
+        :param _GmCert: GmCertType为1时，需要填充此参数，表示自有国密证书的证书链
+        :type GmCert: str
+        :param _GmPrivateKey: GmCertType为1时，需要填充此参数，表示自有国密证书的私钥
+        :type GmPrivateKey: str
+        :param _GmEncCert: GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书
+        :type GmEncCert: str
+        :param _GmEncPrivateKey: GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书的私钥
+        :type GmEncPrivateKey: str
+        :param _GmSSLId: GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
+        :type GmSSLId: str
         """
         self._Domain = None
         self._DomainId = None
@@ -24388,6 +24739,13 @@ https：使用https协议回源
         self._UpstreamHost = None
         self._ProxyBuffer = None
         self._ProbeStatus = None
+        self._GmType = None
+        self._GmCertType = None
+        self._GmCert = None
+        self._GmPrivateKey = None
+        self._GmEncCert = None
+        self._GmEncPrivateKey = None
+        self._GmSSLId = None
 
     @property
     def Domain(self):
@@ -24685,6 +25043,62 @@ https：使用https协议回源
     def ProbeStatus(self, ProbeStatus):
         self._ProbeStatus = ProbeStatus
 
+    @property
+    def GmType(self):
+        return self._GmType
+
+    @GmType.setter
+    def GmType(self, GmType):
+        self._GmType = GmType
+
+    @property
+    def GmCertType(self):
+        return self._GmCertType
+
+    @GmCertType.setter
+    def GmCertType(self, GmCertType):
+        self._GmCertType = GmCertType
+
+    @property
+    def GmCert(self):
+        return self._GmCert
+
+    @GmCert.setter
+    def GmCert(self, GmCert):
+        self._GmCert = GmCert
+
+    @property
+    def GmPrivateKey(self):
+        return self._GmPrivateKey
+
+    @GmPrivateKey.setter
+    def GmPrivateKey(self, GmPrivateKey):
+        self._GmPrivateKey = GmPrivateKey
+
+    @property
+    def GmEncCert(self):
+        return self._GmEncCert
+
+    @GmEncCert.setter
+    def GmEncCert(self, GmEncCert):
+        self._GmEncCert = GmEncCert
+
+    @property
+    def GmEncPrivateKey(self):
+        return self._GmEncPrivateKey
+
+    @GmEncPrivateKey.setter
+    def GmEncPrivateKey(self, GmEncPrivateKey):
+        self._GmEncPrivateKey = GmEncPrivateKey
+
+    @property
+    def GmSSLId(self):
+        return self._GmSSLId
+
+    @GmSSLId.setter
+    def GmSSLId(self, GmSSLId):
+        self._GmSSLId = GmSSLId
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -24729,6 +25143,13 @@ https：使用https协议回源
         self._UpstreamHost = params.get("UpstreamHost")
         self._ProxyBuffer = params.get("ProxyBuffer")
         self._ProbeStatus = params.get("ProbeStatus")
+        self._GmType = params.get("GmType")
+        self._GmCertType = params.get("GmCertType")
+        self._GmCert = params.get("GmCert")
+        self._GmPrivateKey = params.get("GmPrivateKey")
+        self._GmEncCert = params.get("GmEncCert")
+        self._GmEncPrivateKey = params.get("GmEncPrivateKey")
+        self._GmSSLId = params.get("GmSSLId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27342,11 +27763,16 @@ class Strategy(AbstractModel):
 
 注意：此字段可能返回 null，表示取不到有效值。
         :type Arg: str
+        :param _CaseNotSensitive: 0：大小写敏感
+1：大小写不敏感
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CaseNotSensitive: int
         """
         self._Field = None
         self._CompareFunc = None
         self._Content = None
         self._Arg = None
+        self._CaseNotSensitive = None
 
     @property
     def Field(self):
@@ -27380,12 +27806,21 @@ class Strategy(AbstractModel):
     def Arg(self, Arg):
         self._Arg = Arg
 
+    @property
+    def CaseNotSensitive(self):
+        return self._CaseNotSensitive
+
+    @CaseNotSensitive.setter
+    def CaseNotSensitive(self, CaseNotSensitive):
+        self._CaseNotSensitive = CaseNotSensitive
+
 
     def _deserialize(self, params):
         self._Field = params.get("Field")
         self._CompareFunc = params.get("CompareFunc")
         self._Content = params.get("Content")
         self._Arg = params.get("Arg")
+        self._CaseNotSensitive = params.get("CaseNotSensitive")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

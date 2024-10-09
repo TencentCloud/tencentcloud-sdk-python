@@ -4104,10 +4104,14 @@ class CCN(AbstractModel):
 
     @property
     def Ipv6Flag(self):
+        warnings.warn("parameter `Ipv6Flag` is deprecated", DeprecationWarning) 
+
         return self._Ipv6Flag
 
     @Ipv6Flag.setter
     def Ipv6Flag(self, Ipv6Flag):
+        warnings.warn("parameter `Ipv6Flag` is deprecated", DeprecationWarning) 
+
         self._Ipv6Flag = Ipv6Flag
 
     @property
@@ -17526,7 +17530,7 @@ class DescribeAddressesRequest(AbstractModel):
 <li> private-ip-address - String - 是否必填：否 - （过滤条件）按照 EIP 绑定的内网 IP 过滤。</li>
 <li> network-interface-id - String - 是否必填：否 - （过滤条件）按照 EIP 绑定的弹性网卡 ID 过滤。弹性网卡 ID 形如：eni-11112222。</li>
 <li> is-arrears - String - 是否必填：否 - （过滤条件）按照 EIP 是否欠费进行过滤。（TRUE：EIP 处于欠费状态|FALSE：EIP 费用状态正常）</li>
-<li> address-type - String - 是否必填：否 - （过滤条件）按照 IP类型 进行过滤。可选值：'WanIP', 'EIP'，'AnycastEIP'，'HighQualityEIP'。默认值是'EIP'。</li>
+<li> address-type - String - 是否必填：否 - （过滤条件）按照 IP类型 进行过滤。可选值：'WanIP', 'EIP'，'AnycastEIP'，'HighQualityEIP'， 'AntiDDoSEIP'。默认值是'EIP'。</li>
 <li> address-isp - String - 是否必填：否 - （过滤条件）按照 运营商类型 进行过滤。可选值：'BGP'，'CMCC'，'CUCC', 'CTCC'</li>
 <li> dedicated-cluster-id - String - 是否必填：否 - （过滤条件）按照 CDC 的唯一 ID 过滤。CDC 唯一 ID 形如：cluster-11112222。</li>
 <li> tag-key - String - 是否必填：否 - （过滤条件）按照标签键进行过滤。</li>
@@ -30815,7 +30819,7 @@ class DisassociateAddressRequest(AbstractModel):
         r"""
         :param _AddressId: 标识 EIP 的唯一 ID。EIP 唯一 ID 形如：`eip-11112222`。
         :type AddressId: str
-        :param _ReallocateNormalPublicIp: 表示解绑 EIP 之后是否分配普通公网 IP。取值范围：<br><li>TRUE：表示解绑 EIP 之后分配普通公网 IP。<br><li>FALSE：表示解绑 EIP 之后不分配普通公网 IP。<br>默认取值：FALSE。<br><br>只有满足以下条件时才能指定该参数：<br><li> 只有在解绑主网卡的主内网 IP 上的 EIP 时才能指定该参数。<br><li>解绑 EIP 后重新分配普通公网 IP 操作一个账号每天最多操作 10 次；详情可通过 [DescribeAddressQuota](https://cloud.tencent.com/document/api/213/1378) 接口获取。
+        :param _ReallocateNormalPublicIp: 表示解绑 EIP 之后是否分配普通公网 IP。取值范围：<br><li />TRUE：表示解绑 EIP 之后分配普通公网 IP。<br><li />FALSE：表示解绑 EIP 之后不分配普通公网 IP。<br>默认取值：FALSE。<br><br>只有满足以下条件时才能指定该参数：<br><li /> 只有在解绑主网卡的主内网 IP 上的 EIP 时才能指定该参数。<br><li />解绑 EIP 后重新分配普通公网 IP 操作一个账号每天最多操作 10 次；详情可通过 [DescribeAddressQuota](https://cloud.tencent.com/document/api/213/1378) 接口获取。
         :type ReallocateNormalPublicIp: bool
         """
         self._AddressId = None
