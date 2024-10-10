@@ -390,7 +390,7 @@ class AbstractClient(object):
             key = line[:colon_idx]
             val = line[colon_idx + 1:]
             # If value starts with a U+0020 SPACE character, remove it from value.
-            if val[0] == " ":
+            if val and val[0] == " ":
                 val = val[1:]
             if key == 'data':
                 # The spec allows for multiple data fields per event, concatenated them with "\n".
