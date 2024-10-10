@@ -2128,7 +2128,7 @@ class CreateReconstructDocumentFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileType: 文件类型。支持的文件类型：PDF、DOCX、DOC、XLS、XLSX、PPT、PPTX、PNG、JPG、JPEG、CSV
+        :param _FileType: 文件类型。支持的文件类型：PDF、DOC、DOCX、PPT、PPTX、MD、TXT、XLS、XLSX、CSV、PNG、JPG、JPEG、BMP、GIF、WEBP、HEIC、EPS、ICNS、IM、PCX、PPM、TIFF、XBM、HEIF、JP2
         :type FileType: str
         :param _FileBase64: 文件的 Base64 值。支持的文件大小：所下载文件经Base64编码后不超过 8M。文件下载时间不超过 3 秒。支持的图片像素：单边介于20-10000px之间。文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
         :type FileBase64: str

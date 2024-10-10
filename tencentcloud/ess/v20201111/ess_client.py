@@ -26,6 +26,29 @@ class EssClient(AbstractClient):
     _service = 'ess'
 
 
+    def ArchiveDynamicFlow(self, request):
+        """该接口用于结束动态签署流程，若当前合同还存在签署方未签署，无法结束。
+
+        :param request: Request instance for ArchiveDynamicFlow.
+        :type request: :class:`tencentcloud.ess.v20201111.models.ArchiveDynamicFlowRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.ArchiveDynamicFlowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ArchiveDynamicFlow", params, headers=headers)
+            response = json.loads(body)
+            model = models.ArchiveDynamicFlowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BindEmployeeUserIdWithClientOpenId(self, request):
         """此接口（BindEmployeeUserIdWithClientOpenId）用于将电子签系统员工UserId与客户系统员工OpenId进行绑定。
 
@@ -425,6 +448,30 @@ class EssClient(AbstractClient):
             body = self.call("CreateDocument", params, headers=headers)
             response = json.loads(body)
             model = models.CreateDocumentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateDynamicFlowApprover(self, request):
+        """此接口（CreateDynamicFlowApprover）用来补充动态合同的签署人信息。<br/>
+        适用场景：使用CreateFlowByFiles指定：OpenDynamicSignFlow=true发起的合同，可以使用该接口补充后续签署人。<br/>
+
+        :param request: Request instance for CreateDynamicFlowApprover.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateDynamicFlowApproverRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateDynamicFlowApproverResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDynamicFlowApprover", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDynamicFlowApproverResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

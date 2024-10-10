@@ -1387,7 +1387,7 @@ class CvmClient(AbstractClient):
 
 
     def ImportImage(self, request):
-        """本接口(ImportImage)用于导入镜像，导入后的镜像可用于创建实例。目前支持 RAW、VHD、QCOW2、VMDK 镜像格式。
+        """本接口(ImportImage)用于导入镜像，导入后的镜像可用于创建实例。目前支持RAW、VHD、QCOW2、VMDK镜像格式。
 
         :param request: Request instance for ImportImage.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ImportImageRequest`

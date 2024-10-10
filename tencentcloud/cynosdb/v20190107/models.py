@@ -17688,6 +17688,166 @@ class InquirePriceCreateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class InquirePriceModifyRequest(AbstractModel):
+    """InquirePriceModify请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _Cpu: CPU核数
+        :type Cpu: int
+        :param _Memory: 内存大小
+        :type Memory: int
+        :param _StorageLimit: 存储大小，存储资源变配：ClusterId,StorageLimit
+        :type StorageLimit: int
+        :param _InstanceId: 实例ID，计算资源变配必传: ClusterId,InstanceId,Cpu,Memory 
+        :type InstanceId: str
+        :param _DeviceType: 实例设备类型
+        :type DeviceType: str
+        :param _Ccu: serverless实例ccu大小
+        :type Ccu: float
+        """
+        self._ClusterId = None
+        self._Cpu = None
+        self._Memory = None
+        self._StorageLimit = None
+        self._InstanceId = None
+        self._DeviceType = None
+        self._Ccu = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def StorageLimit(self):
+        return self._StorageLimit
+
+    @StorageLimit.setter
+    def StorageLimit(self, StorageLimit):
+        self._StorageLimit = StorageLimit
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DeviceType(self):
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
+
+    @property
+    def Ccu(self):
+        return self._Ccu
+
+    @Ccu.setter
+    def Ccu(self, Ccu):
+        self._Ccu = Ccu
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._StorageLimit = params.get("StorageLimit")
+        self._InstanceId = params.get("InstanceId")
+        self._DeviceType = params.get("DeviceType")
+        self._Ccu = params.get("Ccu")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquirePriceModifyResponse(AbstractModel):
+    """InquirePriceModify返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstancePrice: 实例价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstancePrice: :class:`tencentcloud.cynosdb.v20190107.models.TradePrice`
+        :param _StoragePrice: 存储价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StoragePrice: :class:`tencentcloud.cynosdb.v20190107.models.TradePrice`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstancePrice = None
+        self._StoragePrice = None
+        self._RequestId = None
+
+    @property
+    def InstancePrice(self):
+        return self._InstancePrice
+
+    @InstancePrice.setter
+    def InstancePrice(self, InstancePrice):
+        self._InstancePrice = InstancePrice
+
+    @property
+    def StoragePrice(self):
+        return self._StoragePrice
+
+    @StoragePrice.setter
+    def StoragePrice(self, StoragePrice):
+        self._StoragePrice = StoragePrice
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("InstancePrice") is not None:
+            self._InstancePrice = TradePrice()
+            self._InstancePrice._deserialize(params.get("InstancePrice"))
+        if params.get("StoragePrice") is not None:
+            self._StoragePrice = TradePrice()
+            self._StoragePrice._deserialize(params.get("StoragePrice"))
+        self._RequestId = params.get("RequestId")
+
+
 class InquirePriceRenewRequest(AbstractModel):
     """InquirePriceRenew请求参数结构体
 

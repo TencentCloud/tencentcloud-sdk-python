@@ -1981,6 +1981,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def InquirePriceModify(self, request):
+        """变配预付费集群询价
+
+        :param request: Request instance for InquirePriceModify.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.InquirePriceModifyRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.InquirePriceModifyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InquirePriceModify", params, headers=headers)
+            response = json.loads(body)
+            model = models.InquirePriceModifyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def InquirePriceRenew(self, request):
         """查询续费集群价格
 

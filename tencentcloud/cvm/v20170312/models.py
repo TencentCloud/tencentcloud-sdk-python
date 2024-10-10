@@ -8601,6 +8601,8 @@ BYOL: 自带许可（Bring Your Own License）
         :type LicenseType: str
         :param _BootMode: 启动模式
         :type BootMode: str
+        :param _ImageFamily:  镜像族
+        :type ImageFamily: str
         """
         self._Architecture = None
         self._OsType = None
@@ -8613,6 +8615,7 @@ BYOL: 自带许可（Bring Your Own License）
         self._TagSpecification = None
         self._LicenseType = None
         self._BootMode = None
+        self._ImageFamily = None
 
     @property
     def Architecture(self):
@@ -8702,6 +8705,14 @@ BYOL: 自带许可（Bring Your Own License）
     def BootMode(self, BootMode):
         self._BootMode = BootMode
 
+    @property
+    def ImageFamily(self):
+        return self._ImageFamily
+
+    @ImageFamily.setter
+    def ImageFamily(self, ImageFamily):
+        self._ImageFamily = ImageFamily
+
 
     def _deserialize(self, params):
         self._Architecture = params.get("Architecture")
@@ -8720,6 +8731,7 @@ BYOL: 自带许可（Bring Your Own License）
                 self._TagSpecification.append(obj)
         self._LicenseType = params.get("LicenseType")
         self._BootMode = params.get("BootMode")
+        self._ImageFamily = params.get("ImageFamily")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -3910,7 +3910,7 @@ class CCN(AbstractModel):
         :type DirectConnectAccelerateChannelFlag: bool
         :param _Ipv6Flag: 是否支持ipv6路由表
 注意：此字段可能返回 null，表示取不到有效值。
-        :type Ipv6Flag: str
+        :type Ipv6Flag: bool
         :param _MrtbAggregatePolicyFlag: 是否支持路由表聚合策略
 注意：此字段可能返回 null，表示取不到有效值。
         :type MrtbAggregatePolicyFlag: bool
@@ -4104,14 +4104,10 @@ class CCN(AbstractModel):
 
     @property
     def Ipv6Flag(self):
-        warnings.warn("parameter `Ipv6Flag` is deprecated", DeprecationWarning) 
-
         return self._Ipv6Flag
 
     @Ipv6Flag.setter
     def Ipv6Flag(self, Ipv6Flag):
-        warnings.warn("parameter `Ipv6Flag` is deprecated", DeprecationWarning) 
-
         self._Ipv6Flag = Ipv6Flag
 
     @property
