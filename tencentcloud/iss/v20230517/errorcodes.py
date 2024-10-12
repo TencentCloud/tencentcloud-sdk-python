@@ -68,6 +68,9 @@ INVALIDPARAMETER_INVALIDLIFERULEPARAM = 'InvalidParameter.InvalidLifeRuleParam'
 # 无效的组织参数
 INVALIDPARAMETER_INVALIDORGANIZATIONPARAM = 'InvalidParameter.InvalidOrganizationParam'
 
+# 无效的输入参数
+INVALIDPARAMETER_INVALIDPARAMETER = 'InvalidParameter.InvalidParameter'
+
 # 参数格式不对或缺少参数
 INVALIDPARAMETER_INVALIDPARAMETERFORMAT = 'InvalidParameter.InvalidParameterFormat'
 

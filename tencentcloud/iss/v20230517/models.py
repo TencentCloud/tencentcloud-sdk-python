@@ -7487,11 +7487,14 @@ class DescribeRecordFileRequest(AbstractModel):
         :type StartTime: int
         :param _EndTime: 检索结束时间，UTC秒数，例如：1662114246，开始和结束时间段最长为一天，且不能跨天
         :type EndTime: int
+        :param _WithUrl: 是否携带每个时间段的播放url
+        :type WithUrl: bool
         """
         self._DeviceId = None
         self._ChannelId = None
         self._StartTime = None
         self._EndTime = None
+        self._WithUrl = None
 
     @property
     def DeviceId(self):
@@ -7525,12 +7528,21 @@ class DescribeRecordFileRequest(AbstractModel):
     def EndTime(self, EndTime):
         self._EndTime = EndTime
 
+    @property
+    def WithUrl(self):
+        return self._WithUrl
+
+    @WithUrl.setter
+    def WithUrl(self, WithUrl):
+        self._WithUrl = WithUrl
+
 
     def _deserialize(self, params):
         self._DeviceId = params.get("DeviceId")
         self._ChannelId = params.get("ChannelId")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
+        self._WithUrl = params.get("WithUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13278,9 +13290,13 @@ class RecordTimeLine(AbstractModel):
         :type Begin: int
         :param _End: 时间片段结束时间，UTC秒数，例如：1662114146
         :type End: int
+        :param _HlsUrl: 对应时间片段的播放url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HlsUrl: str
         """
         self._Begin = None
         self._End = None
+        self._HlsUrl = None
 
     @property
     def Begin(self):
@@ -13298,10 +13314,19 @@ class RecordTimeLine(AbstractModel):
     def End(self, End):
         self._End = End
 
+    @property
+    def HlsUrl(self):
+        return self._HlsUrl
+
+    @HlsUrl.setter
+    def HlsUrl(self, HlsUrl):
+        self._HlsUrl = HlsUrl
+
 
     def _deserialize(self, params):
         self._Begin = params.get("Begin")
         self._End = params.get("End")
+        self._HlsUrl = params.get("HlsUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
