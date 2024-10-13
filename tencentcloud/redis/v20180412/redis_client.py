@@ -1844,7 +1844,7 @@ class RedisClient(AbstractClient):
 
 
     def ModifyDBInstanceSecurityGroups(self, request):
-        """本接口(ModifyDBInstanceSecurityGroups)用于修改实例绑定的安全组。
+        """本接口（ModifyDBInstanceSecurityGroups）用于对实例原有的安全组列表进行修改。
 
         :param request: Request instance for ModifyDBInstanceSecurityGroups.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModifyDBInstanceSecurityGroupsRequest`
@@ -1995,6 +1995,29 @@ class RedisClient(AbstractClient):
             body = self.call("ModifyInstanceParams", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyInstanceParamsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyInstancePassword(self, request):
+        """本接口（ModifyInstancePassword）用于修改实例访问密码。
+
+        :param request: Request instance for ModifyInstancePassword.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ModifyInstancePasswordRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifyInstancePasswordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstancePassword", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstancePasswordResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

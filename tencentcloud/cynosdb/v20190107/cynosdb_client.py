@@ -1798,7 +1798,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeTasks(self, request):
-        """查询任务列表
+        """本接口（DescribeTasks）用于查询任务列表。
 
         :param request: Request instance for DescribeTasks.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeTasksRequest`

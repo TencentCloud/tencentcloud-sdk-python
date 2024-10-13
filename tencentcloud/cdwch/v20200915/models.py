@@ -3522,6 +3522,12 @@ Modify 集群变更中；
         :param _Details: 实例扩展信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Details: :class:`tencentcloud.cdwch.v20200915.models.InstanceDetail`
+        :param _IsWhiteSGs: 安全组白名单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsWhiteSGs: bool
+        :param _BindSGs: 绑定的安全组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BindSGs: list of str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -3573,6 +3579,8 @@ Modify 集群变更中；
         self._SecondaryZoneInfo = None
         self._ClickHouseKeeper = None
         self._Details = None
+        self._IsWhiteSGs = None
+        self._BindSGs = None
 
     @property
     def InstanceId(self):
@@ -3974,6 +3982,22 @@ Modify 集群变更中；
     def Details(self, Details):
         self._Details = Details
 
+    @property
+    def IsWhiteSGs(self):
+        return self._IsWhiteSGs
+
+    @IsWhiteSGs.setter
+    def IsWhiteSGs(self, IsWhiteSGs):
+        self._IsWhiteSGs = IsWhiteSGs
+
+    @property
+    def BindSGs(self):
+        return self._BindSGs
+
+    @BindSGs.setter
+    def BindSGs(self, BindSGs):
+        self._BindSGs = BindSGs
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -4044,6 +4068,8 @@ Modify 集群变更中；
         if params.get("Details") is not None:
             self._Details = InstanceDetail()
             self._Details._deserialize(params.get("Details"))
+        self._IsWhiteSGs = params.get("IsWhiteSGs")
+        self._BindSGs = params.get("BindSGs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

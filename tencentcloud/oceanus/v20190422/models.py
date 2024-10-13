@@ -4096,6 +4096,105 @@ class DescribeJobEventsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeJobRuntimeInfoRequest(AbstractModel):
+    """DescribeJobRuntimeInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 作业ID
+        :type JobId: str
+        :param _WorkSpaceId: 工作空间ID
+        :type WorkSpaceId: str
+        :param _IncludeInfo: 作业运行信息 key
+        :type IncludeInfo: list of str
+        """
+        self._JobId = None
+        self._WorkSpaceId = None
+        self._IncludeInfo = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
+
+    @property
+    def IncludeInfo(self):
+        return self._IncludeInfo
+
+    @IncludeInfo.setter
+    def IncludeInfo(self, IncludeInfo):
+        self._IncludeInfo = IncludeInfo
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._WorkSpaceId = params.get("WorkSpaceId")
+        self._IncludeInfo = params.get("IncludeInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeJobRuntimeInfoResponse(AbstractModel):
+    """DescribeJobRuntimeInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobRuntimeInfo: 作业运行时信息
+        :type JobRuntimeInfo: list of JobRuntimeInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobRuntimeInfo = None
+        self._RequestId = None
+
+    @property
+    def JobRuntimeInfo(self):
+        return self._JobRuntimeInfo
+
+    @JobRuntimeInfo.setter
+    def JobRuntimeInfo(self, JobRuntimeInfo):
+        self._JobRuntimeInfo = JobRuntimeInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("JobRuntimeInfo") is not None:
+            self._JobRuntimeInfo = []
+            for item in params.get("JobRuntimeInfo"):
+                obj = JobRuntimeInfo()
+                obj._deserialize(item)
+                self._JobRuntimeInfo.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeJobSavepointRequest(AbstractModel):
     """DescribeJobSavepoint请求参数结构体
 
@@ -7280,6 +7379,53 @@ class JobInstanceForSubmissionLog(AbstractModel):
         self._RunningOrderId = params.get("RunningOrderId")
         self._JobInstanceStartTime = params.get("JobInstanceStartTime")
         self._StartingMillis = params.get("StartingMillis")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class JobRuntimeInfo(AbstractModel):
+    """作业运行时信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 运行信息的key，目前支持：TaskManagers：taskmanager pod 列表； StreamGraph：作业对应的 StreamGraph；SubTasks：作业的 subtask 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: 运行信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

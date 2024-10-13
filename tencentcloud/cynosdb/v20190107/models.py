@@ -2617,10 +2617,14 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def ModifyParamsData(self):
+        warnings.warn("parameter `ModifyParamsData` is deprecated", DeprecationWarning) 
+
         return self._ModifyParamsData
 
     @ModifyParamsData.setter
     def ModifyParamsData(self, ModifyParamsData):
+        warnings.warn("parameter `ModifyParamsData` is deprecated", DeprecationWarning) 
+
         self._ModifyParamsData = ModifyParamsData
 
     @property
@@ -6121,6 +6125,66 @@ class CreateResourcePackageResponse(AbstractModel):
         self._BigDealIds = params.get("BigDealIds")
         self._DealNames = params.get("DealNames")
         self._RequestId = params.get("RequestId")
+
+
+class CrossRegionBackupItem(AbstractModel):
+    """跨地域备份各地域备份信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CrossRegion: 备份的目标地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CrossRegion: str
+        :param _BackupId: 目标地域的备份任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupId: str
+        :param _BackupStatus: 目标地域的备份状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupStatus: str
+        """
+        self._CrossRegion = None
+        self._BackupId = None
+        self._BackupStatus = None
+
+    @property
+    def CrossRegion(self):
+        return self._CrossRegion
+
+    @CrossRegion.setter
+    def CrossRegion(self, CrossRegion):
+        self._CrossRegion = CrossRegion
+
+    @property
+    def BackupId(self):
+        return self._BackupId
+
+    @BackupId.setter
+    def BackupId(self, BackupId):
+        self._BackupId = BackupId
+
+    @property
+    def BackupStatus(self):
+        return self._BackupStatus
+
+    @BackupStatus.setter
+    def BackupStatus(self, BackupStatus):
+        self._BackupStatus = BackupStatus
+
+
+    def _deserialize(self, params):
+        self._CrossRegion = params.get("CrossRegion")
+        self._BackupId = params.get("BackupId")
+        self._BackupStatus = params.get("BackupStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CynosdbCluster(AbstractModel):
@@ -16285,11 +16349,14 @@ class DescribeSupportProxyVersionResponse(AbstractModel):
         :param _CurrentProxyVersion: 当前proxy版本号
 注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentProxyVersion: str
+        :param _SupportProxyVersionDetail: 代理版本详情
+        :type SupportProxyVersionDetail: list of ProxyVersionInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SupportProxyVersions = None
         self._CurrentProxyVersion = None
+        self._SupportProxyVersionDetail = None
         self._RequestId = None
 
     @property
@@ -16309,6 +16376,14 @@ class DescribeSupportProxyVersionResponse(AbstractModel):
         self._CurrentProxyVersion = CurrentProxyVersion
 
     @property
+    def SupportProxyVersionDetail(self):
+        return self._SupportProxyVersionDetail
+
+    @SupportProxyVersionDetail.setter
+    def SupportProxyVersionDetail(self, SupportProxyVersionDetail):
+        self._SupportProxyVersionDetail = SupportProxyVersionDetail
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -16320,6 +16395,12 @@ class DescribeSupportProxyVersionResponse(AbstractModel):
     def _deserialize(self, params):
         self._SupportProxyVersions = params.get("SupportProxyVersions")
         self._CurrentProxyVersion = params.get("CurrentProxyVersion")
+        if params.get("SupportProxyVersionDetail") is not None:
+            self._SupportProxyVersionDetail = []
+            for item in params.get("SupportProxyVersionDetail"):
+                obj = ProxyVersionInfo()
+                obj._deserialize(item)
+                self._SupportProxyVersionDetail.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -19470,10 +19551,14 @@ class ManualBackupData(AbstractModel):
         :type BackupMethod: str
         :param _SnapshotTime: 备份时间
         :type SnapshotTime: str
+        :param _CrossRegionBackupInfos: 跨地域备份项详细信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CrossRegionBackupInfos: list of CrossRegionBackupItem
         """
         self._BackupType = None
         self._BackupMethod = None
         self._SnapshotTime = None
+        self._CrossRegionBackupInfos = None
 
     @property
     def BackupType(self):
@@ -19499,11 +19584,25 @@ class ManualBackupData(AbstractModel):
     def SnapshotTime(self, SnapshotTime):
         self._SnapshotTime = SnapshotTime
 
+    @property
+    def CrossRegionBackupInfos(self):
+        return self._CrossRegionBackupInfos
+
+    @CrossRegionBackupInfos.setter
+    def CrossRegionBackupInfos(self, CrossRegionBackupInfos):
+        self._CrossRegionBackupInfos = CrossRegionBackupInfos
+
 
     def _deserialize(self, params):
         self._BackupType = params.get("BackupType")
         self._BackupMethod = params.get("BackupMethod")
         self._SnapshotTime = params.get("SnapshotTime")
+        if params.get("CrossRegionBackupInfos") is not None:
+            self._CrossRegionBackupInfos = []
+            for item in params.get("CrossRegionBackupInfos"):
+                obj = CrossRegionBackupItem()
+                obj._deserialize(item)
+                self._CrossRegionBackupInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26327,6 +26426,53 @@ class ProxySpec(AbstractModel):
     def _deserialize(self, params):
         self._Cpu = params.get("Cpu")
         self._Mem = params.get("Mem")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProxyVersionInfo(AbstractModel):
+    """TDSQL-C MySQL支持的proxy版本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProxyVersion: proxy版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyVersion: str
+        :param _ProxyVersionType: 版本描述：GA:稳定版  BETA:尝鲜版，DEPRECATED:过旧，
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyVersionType: str
+        """
+        self._ProxyVersion = None
+        self._ProxyVersionType = None
+
+    @property
+    def ProxyVersion(self):
+        return self._ProxyVersion
+
+    @ProxyVersion.setter
+    def ProxyVersion(self, ProxyVersion):
+        self._ProxyVersion = ProxyVersion
+
+    @property
+    def ProxyVersionType(self):
+        return self._ProxyVersionType
+
+    @ProxyVersionType.setter
+    def ProxyVersionType(self, ProxyVersionType):
+        self._ProxyVersionType = ProxyVersionType
+
+
+    def _deserialize(self, params):
+        self._ProxyVersion = params.get("ProxyVersion")
+        self._ProxyVersionType = params.get("ProxyVersionType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

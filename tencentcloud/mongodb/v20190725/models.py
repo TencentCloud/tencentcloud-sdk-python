@@ -1583,11 +1583,10 @@ class CreateDBInstanceRequest(AbstractModel):
         :type RestoreTime: str
         :param _InstanceName: 实例名称。仅支持长度为60个字符的中文、英文、数字、下划线_、分隔符- 。
         :type InstanceName: str
-        :param _AvailabilityZoneList: 多可用区部署的节点列表。具体信息，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567)获取。
+        :param _AvailabilityZoneList: 若多可用区部署云数据库实例，指定多可用区列表。
+- 多可用区部署实例，参数 **Zone** 指定实例主可用区信息；**AvailabilityZoneList** 指定所有可用区信息，包含主可用区。输入格式如：[ap-guangzhou-2,ap-guangzhou-3,ap-guangzhou-4]。
+- 通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 可获取云数据库不同地域规划的可用区信息，以便指定有效的可用区。
 - 多可用区部署节点只能部署在3个不同可用区。不支持将集群的大多数节点部署在同一个可用区。例如：3节点集群不支持2个节点部署在同一个区。
-- 不支持4.2及以上版本。
-- 不支持只读灾备实例。
-- 不能选择基础网络。
         :type AvailabilityZoneList: list of str
         :param _MongosCpu: Mongos CPU 核数，支持1、2、4、8、16。购买分片集群时，必须填写。
         :type MongosCpu: int

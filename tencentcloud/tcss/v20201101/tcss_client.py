@@ -1826,7 +1826,9 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAbnormalProcessEventsExport(self, request):
-        """查询运行时异常进程事件列表信息导出
+        """接口已废弃
+
+        查询运行时异常进程事件列表信息导出
 
         :param request: Request instance for DescribeAbnormalProcessEventsExport.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAbnormalProcessEventsExportRequest`
@@ -1918,7 +1920,9 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAbnormalProcessRulesExport(self, request):
-        """查询运行时异常进程策略列表信息导出
+        """接口已废弃
+
+        查询运行时异常进程策略列表信息导出
 
         :param request: Request instance for DescribeAbnormalProcessRulesExport.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAbnormalProcessRulesExportRequest`
@@ -2056,7 +2060,9 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAccessControlRulesExport(self, request):
-        """查询运行时访问控制策略列表导出
+        """接口已废弃
+
+        查询运行时访问控制策略列表导出
 
         :param request: Request instance for DescribeAccessControlRulesExport.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAccessControlRulesExportRequest`
@@ -2470,7 +2476,9 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageListExport(self, request):
-        """容器安全搜索查询镜像列表导出
+        """接口已废弃
+
+        容器安全搜索查询镜像列表导出
 
         :param request: Request instance for DescribeAssetImageListExport.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageListExportRequest`
@@ -3735,7 +3743,9 @@ class TcssClient(AbstractClient):
 
 
     def DescribeEscapeEventsExport(self, request):
-        """DescribeEscapeEventsExport  查询容器逃逸事件列表导出
+        """接口已废弃
+
+        DescribeEscapeEventsExport  查询容器逃逸事件列表导出
 
         :param request: Request instance for DescribeEscapeEventsExport.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeEscapeEventsExportRequest`

@@ -2410,6 +2410,485 @@ class AddSpartaProtectionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ApiAsset(AbstractModel):
+    """api列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _Method: 请求方法
+        :type Method: str
+        :param _ApiName: api名称
+        :type ApiName: str
+        :param _Scene: 场景
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Scene: str
+        :param _Label: 数据标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Label: list of str
+        :param _Active: 过去7天是否活跃
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Active: bool
+        :param _Timestamp: 最近更新时间
+        :type Timestamp: int
+        :param _InsertTime: api发现时间
+        :type InsertTime: int
+        :param _Mode: 资产状态，1:新发现，2，确认中，3，已确认，4，已下线，5，已忽略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mode: str
+        :param _Level: 风险等级，100,200,300对应低中高
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Level: str
+        :param _Count: 近30天调用量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        :param _Remark: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param _IsAuth: 是否鉴权，1标识是，0表示否
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsAuth: int
+        :param _ApiRequestRuleId: 如果添加了api入参检测规则，则此id返回值不为0
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiRequestRuleId: int
+        :param _ApiLimitRuleId: 如果添加了api限流规则，则此id返回值不为0
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiLimitRuleId: int
+        :param _HostList: 对象接入和泛域名接入时，展示host列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostList: list of str
+        """
+        self._Domain = None
+        self._Method = None
+        self._ApiName = None
+        self._Scene = None
+        self._Label = None
+        self._Active = None
+        self._Timestamp = None
+        self._InsertTime = None
+        self._Mode = None
+        self._Level = None
+        self._Count = None
+        self._Remark = None
+        self._IsAuth = None
+        self._ApiRequestRuleId = None
+        self._ApiLimitRuleId = None
+        self._HostList = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Method(self):
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def ApiName(self):
+        return self._ApiName
+
+    @ApiName.setter
+    def ApiName(self, ApiName):
+        self._ApiName = ApiName
+
+    @property
+    def Scene(self):
+        return self._Scene
+
+    @Scene.setter
+    def Scene(self, Scene):
+        self._Scene = Scene
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Active(self):
+        return self._Active
+
+    @Active.setter
+    def Active(self, Active):
+        self._Active = Active
+
+    @property
+    def Timestamp(self):
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def InsertTime(self):
+        return self._InsertTime
+
+    @InsertTime.setter
+    def InsertTime(self, InsertTime):
+        self._InsertTime = InsertTime
+
+    @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Level(self):
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def IsAuth(self):
+        return self._IsAuth
+
+    @IsAuth.setter
+    def IsAuth(self, IsAuth):
+        self._IsAuth = IsAuth
+
+    @property
+    def ApiRequestRuleId(self):
+        return self._ApiRequestRuleId
+
+    @ApiRequestRuleId.setter
+    def ApiRequestRuleId(self, ApiRequestRuleId):
+        self._ApiRequestRuleId = ApiRequestRuleId
+
+    @property
+    def ApiLimitRuleId(self):
+        return self._ApiLimitRuleId
+
+    @ApiLimitRuleId.setter
+    def ApiLimitRuleId(self, ApiLimitRuleId):
+        self._ApiLimitRuleId = ApiLimitRuleId
+
+    @property
+    def HostList(self):
+        return self._HostList
+
+    @HostList.setter
+    def HostList(self, HostList):
+        self._HostList = HostList
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Method = params.get("Method")
+        self._ApiName = params.get("ApiName")
+        self._Scene = params.get("Scene")
+        self._Label = params.get("Label")
+        self._Active = params.get("Active")
+        self._Timestamp = params.get("Timestamp")
+        self._InsertTime = params.get("InsertTime")
+        self._Mode = params.get("Mode")
+        self._Level = params.get("Level")
+        self._Count = params.get("Count")
+        self._Remark = params.get("Remark")
+        self._IsAuth = params.get("IsAuth")
+        self._ApiRequestRuleId = params.get("ApiRequestRuleId")
+        self._ApiLimitRuleId = params.get("ApiLimitRuleId")
+        self._HostList = params.get("HostList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApiDataFilter(AbstractModel):
+    """api资产列表过滤器
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Entity: 数据标签，是否活跃，功能场景
+        :type Entity: str
+        :param _Operator: 等于
+        :type Operator: str
+        :param _Value: 日期，手机号，邮箱等
+        :type Value: str
+        """
+        self._Entity = None
+        self._Operator = None
+        self._Value = None
+
+    @property
+    def Entity(self):
+        return self._Entity
+
+    @Entity.setter
+    def Entity(self, Entity):
+        self._Entity = Entity
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Entity = params.get("Entity")
+        self._Operator = params.get("Operator")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApiDetailSampleHistory(AbstractModel):
+    """api历史样例返回结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SampleNme: 样例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SampleNme: str
+        :param _RepLog: 请求样例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RepLog: str
+        :param _RspLog: 响应样例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RspLog: str
+        """
+        self._SampleNme = None
+        self._RepLog = None
+        self._RspLog = None
+
+    @property
+    def SampleNme(self):
+        return self._SampleNme
+
+    @SampleNme.setter
+    def SampleNme(self, SampleNme):
+        self._SampleNme = SampleNme
+
+    @property
+    def RepLog(self):
+        return self._RepLog
+
+    @RepLog.setter
+    def RepLog(self, RepLog):
+        self._RepLog = RepLog
+
+    @property
+    def RspLog(self):
+        return self._RspLog
+
+    @RspLog.setter
+    def RspLog(self, RspLog):
+        self._RspLog = RspLog
+
+
+    def _deserialize(self, params):
+        self._SampleNme = params.get("SampleNme")
+        self._RepLog = params.get("RepLog")
+        self._RspLog = params.get("RspLog")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApiParameterType(AbstractModel):
+    """api请求参数类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ParameterName: 参数名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParameterName: str
+        :param _Type: 参数类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Location: 参数位置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Location: str
+        :param _Label: 数据标签(敏感字段)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Label: list of str
+        :param _Timestamp: 时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timestamp: int
+        :param _Remark: 备注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param _Source: 来源是请求或者响应
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Source: str
+        :param _IsPan: 是否需要泛化 ，0表示不需要，1表示需要
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsPan: int
+        :param _IsAuth: 是否鉴权，1表示是，0表示否
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsAuth: int
+        """
+        self._ParameterName = None
+        self._Type = None
+        self._Location = None
+        self._Label = None
+        self._Timestamp = None
+        self._Remark = None
+        self._Source = None
+        self._IsPan = None
+        self._IsAuth = None
+
+    @property
+    def ParameterName(self):
+        return self._ParameterName
+
+    @ParameterName.setter
+    def ParameterName(self, ParameterName):
+        self._ParameterName = ParameterName
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Location(self):
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Timestamp(self):
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def IsPan(self):
+        return self._IsPan
+
+    @IsPan.setter
+    def IsPan(self, IsPan):
+        self._IsPan = IsPan
+
+    @property
+    def IsAuth(self):
+        return self._IsAuth
+
+    @IsAuth.setter
+    def IsAuth(self, IsAuth):
+        self._IsAuth = IsAuth
+
+
+    def _deserialize(self, params):
+        self._ParameterName = params.get("ParameterName")
+        self._Type = params.get("Type")
+        self._Location = params.get("Location")
+        self._Label = params.get("Label")
+        self._Timestamp = params.get("Timestamp")
+        self._Remark = params.get("Remark")
+        self._Source = params.get("Source")
+        self._IsPan = params.get("IsPan")
+        self._IsAuth = params.get("IsAuth")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApiPkg(AbstractModel):
     """API安全资源信息
 
@@ -8369,6 +8848,468 @@ class DescribeAntiLeakageItem(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DescribeApiDetailRequest(AbstractModel):
+    """DescribeApiDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _ApiName: Api名称
+        :type ApiName: str
+        :param _Method: 请求方法
+        :type Method: str
+        :param _IsSensitive: 是否仅查询敏感的，1表示查询，0表示不查询
+        :type IsSensitive: int
+        :param _IsPan: 是否仅查询泛化的，1表示查询，0表示不查询
+        :type IsPan: int
+        """
+        self._Domain = None
+        self._ApiName = None
+        self._Method = None
+        self._IsSensitive = None
+        self._IsPan = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def ApiName(self):
+        return self._ApiName
+
+    @ApiName.setter
+    def ApiName(self, ApiName):
+        self._ApiName = ApiName
+
+    @property
+    def Method(self):
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def IsSensitive(self):
+        return self._IsSensitive
+
+    @IsSensitive.setter
+    def IsSensitive(self, IsSensitive):
+        self._IsSensitive = IsSensitive
+
+    @property
+    def IsPan(self):
+        return self._IsPan
+
+    @IsPan.setter
+    def IsPan(self, IsPan):
+        self._IsPan = IsPan
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._ApiName = params.get("ApiName")
+        self._Method = params.get("Method")
+        self._IsSensitive = params.get("IsSensitive")
+        self._IsPan = params.get("IsPan")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApiDetailResponse(AbstractModel):
+    """DescribeApiDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Log: 请求样例，json字符串格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Log: str
+        :param _ParameterList: 请求参数样例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParameterList: list of ApiParameterType
+        :param _Scene: 当前场景标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Scene: str
+        :param _SensitiveFields: 敏感字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SensitiveFields: list of str
+        :param _IsActive: 7天内是否活跃
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsActive: bool
+        :param _IpCount: 访问ip数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpCount: int
+        :param _RegionCount: 访问地域数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionCount: int
+        :param _EventCount: 关联事件数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventCount: int
+        :param _SensitiveCount: 涉敏数据条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SensitiveCount: int
+        :param _Level: 风险等级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Level: int
+        :param _RspLog: 响应体
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RspLog: str
+        :param _MaxQPS: 昨日访问峰值QPS
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxQPS: int
+        :param _ApiDetailSampleHistory: 历史样例
+        :type ApiDetailSampleHistory: list of ApiDetailSampleHistory
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Log = None
+        self._ParameterList = None
+        self._Scene = None
+        self._SensitiveFields = None
+        self._IsActive = None
+        self._IpCount = None
+        self._RegionCount = None
+        self._EventCount = None
+        self._SensitiveCount = None
+        self._Level = None
+        self._RspLog = None
+        self._MaxQPS = None
+        self._ApiDetailSampleHistory = None
+        self._RequestId = None
+
+    @property
+    def Log(self):
+        return self._Log
+
+    @Log.setter
+    def Log(self, Log):
+        self._Log = Log
+
+    @property
+    def ParameterList(self):
+        return self._ParameterList
+
+    @ParameterList.setter
+    def ParameterList(self, ParameterList):
+        self._ParameterList = ParameterList
+
+    @property
+    def Scene(self):
+        return self._Scene
+
+    @Scene.setter
+    def Scene(self, Scene):
+        self._Scene = Scene
+
+    @property
+    def SensitiveFields(self):
+        return self._SensitiveFields
+
+    @SensitiveFields.setter
+    def SensitiveFields(self, SensitiveFields):
+        self._SensitiveFields = SensitiveFields
+
+    @property
+    def IsActive(self):
+        return self._IsActive
+
+    @IsActive.setter
+    def IsActive(self, IsActive):
+        self._IsActive = IsActive
+
+    @property
+    def IpCount(self):
+        return self._IpCount
+
+    @IpCount.setter
+    def IpCount(self, IpCount):
+        self._IpCount = IpCount
+
+    @property
+    def RegionCount(self):
+        return self._RegionCount
+
+    @RegionCount.setter
+    def RegionCount(self, RegionCount):
+        self._RegionCount = RegionCount
+
+    @property
+    def EventCount(self):
+        return self._EventCount
+
+    @EventCount.setter
+    def EventCount(self, EventCount):
+        self._EventCount = EventCount
+
+    @property
+    def SensitiveCount(self):
+        return self._SensitiveCount
+
+    @SensitiveCount.setter
+    def SensitiveCount(self, SensitiveCount):
+        self._SensitiveCount = SensitiveCount
+
+    @property
+    def Level(self):
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def RspLog(self):
+        return self._RspLog
+
+    @RspLog.setter
+    def RspLog(self, RspLog):
+        self._RspLog = RspLog
+
+    @property
+    def MaxQPS(self):
+        return self._MaxQPS
+
+    @MaxQPS.setter
+    def MaxQPS(self, MaxQPS):
+        self._MaxQPS = MaxQPS
+
+    @property
+    def ApiDetailSampleHistory(self):
+        return self._ApiDetailSampleHistory
+
+    @ApiDetailSampleHistory.setter
+    def ApiDetailSampleHistory(self, ApiDetailSampleHistory):
+        self._ApiDetailSampleHistory = ApiDetailSampleHistory
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Log = params.get("Log")
+        if params.get("ParameterList") is not None:
+            self._ParameterList = []
+            for item in params.get("ParameterList"):
+                obj = ApiParameterType()
+                obj._deserialize(item)
+                self._ParameterList.append(obj)
+        self._Scene = params.get("Scene")
+        self._SensitiveFields = params.get("SensitiveFields")
+        self._IsActive = params.get("IsActive")
+        self._IpCount = params.get("IpCount")
+        self._RegionCount = params.get("RegionCount")
+        self._EventCount = params.get("EventCount")
+        self._SensitiveCount = params.get("SensitiveCount")
+        self._Level = params.get("Level")
+        self._RspLog = params.get("RspLog")
+        self._MaxQPS = params.get("MaxQPS")
+        if params.get("ApiDetailSampleHistory") is not None:
+            self._ApiDetailSampleHistory = []
+            for item in params.get("ApiDetailSampleHistory"):
+                obj = ApiDetailSampleHistory()
+                obj._deserialize(item)
+                self._ApiDetailSampleHistory.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeApiListVersionTwoRequest(AbstractModel):
+    """DescribeApiListVersionTwo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _PageIndex: 页面索引，第几页
+        :type PageIndex: int
+        :param _PageSize: 页面大小
+        :type PageSize: int
+        :param _Filters: 过滤条件
+        :type Filters: list of ApiDataFilter
+        :param _Sort: 排序方法，1 升序，-1 降序
+        :type Sort: list of str
+        :param _NeedTotalCount: 是否进行总数查询
+        :type NeedTotalCount: bool
+        :param _StartTs: 查询开始时间
+        :type StartTs: int
+        :param _EndTs: 查询结束时间
+        :type EndTs: int
+        """
+        self._Domain = None
+        self._PageIndex = None
+        self._PageSize = None
+        self._Filters = None
+        self._Sort = None
+        self._NeedTotalCount = None
+        self._StartTs = None
+        self._EndTs = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def PageIndex(self):
+        return self._PageIndex
+
+    @PageIndex.setter
+    def PageIndex(self, PageIndex):
+        self._PageIndex = PageIndex
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Sort(self):
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def NeedTotalCount(self):
+        return self._NeedTotalCount
+
+    @NeedTotalCount.setter
+    def NeedTotalCount(self, NeedTotalCount):
+        self._NeedTotalCount = NeedTotalCount
+
+    @property
+    def StartTs(self):
+        return self._StartTs
+
+    @StartTs.setter
+    def StartTs(self, StartTs):
+        self._StartTs = StartTs
+
+    @property
+    def EndTs(self):
+        return self._EndTs
+
+    @EndTs.setter
+    def EndTs(self, EndTs):
+        self._EndTs = EndTs
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._PageIndex = params.get("PageIndex")
+        self._PageSize = params.get("PageSize")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = ApiDataFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Sort = params.get("Sort")
+        self._NeedTotalCount = params.get("NeedTotalCount")
+        self._StartTs = params.get("StartTs")
+        self._EndTs = params.get("EndTs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApiListVersionTwoResponse(AbstractModel):
+    """DescribeApiListVersionTwo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: api资产列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of ApiAsset
+        :param _Total: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = ApiAsset()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAreaBanAreasRequest(AbstractModel):

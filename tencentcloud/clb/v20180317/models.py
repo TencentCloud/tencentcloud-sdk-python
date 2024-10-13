@@ -16163,15 +16163,20 @@ class SetCustomizedConfigForLoadBalancerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OperationType: 操作类型：'ADD', 'DELETE', 'UPDATE', 'BIND', 'UNBIND'
+        :param _OperationType: 操作类型。
+- ADD：添加
+- DELETE：删除
+- UPDATE：修改
+- BIND：绑定
+- UNBIND：解绑
         :type OperationType: str
-        :param _UconfigId: 除了创建个性化配置外，必传此字段，如：pz-1234abcd
+        :param _UconfigId: 个性化配置ID。除了创建个性化配置外，必传此字段，如：pz-1234abcd
         :type UconfigId: str
-        :param _ConfigContent: 创建个性化配置或修改个性化配置的内容时，必传此字段
+        :param _ConfigContent: 个性化配置内容。创建个性化配置或修改个性化配置的内容时，必传此字段
         :type ConfigContent: str
-        :param _ConfigName: 创建个性化配置或修改个性化配置的名字时，必传此字段
+        :param _ConfigName: 个性化配置名称。创建个性化配置或修改个性化配置的名字时，必传此字段
         :type ConfigName: str
-        :param _LoadBalancerIds: 绑定解绑时，必传此字段
+        :param _LoadBalancerIds: 负载均衡实例ID。绑定解绑时，必传此字段
         :type LoadBalancerIds: list of str
         """
         self._OperationType = None

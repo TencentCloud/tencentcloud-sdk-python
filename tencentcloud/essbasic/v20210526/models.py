@@ -4208,6 +4208,8 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
         :type ApproverRestrictions: :class:`tencentcloud.essbasic.v20210526.models.ApproverRestriction`
         :param _Operator: 暂未开放
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param _ForbidPersonalMultipleSign: 禁止个人用户重复签署，默认不禁止，即同一用户可多次扫码签署多份合同。若要求同一用户仅能扫码签署一份合同，请传入true。
+        :type ForbidPersonalMultipleSign: bool
         """
         self._Agent = None
         self._TemplateId = None
@@ -4220,6 +4222,7 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
         self._CallbackUrl = None
         self._ApproverRestrictions = None
         self._Operator = None
+        self._ForbidPersonalMultipleSign = None
 
     @property
     def Agent(self):
@@ -4321,6 +4324,14 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
 
         self._Operator = Operator
 
+    @property
+    def ForbidPersonalMultipleSign(self):
+        return self._ForbidPersonalMultipleSign
+
+    @ForbidPersonalMultipleSign.setter
+    def ForbidPersonalMultipleSign(self, ForbidPersonalMultipleSign):
+        self._ForbidPersonalMultipleSign = ForbidPersonalMultipleSign
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -4350,6 +4361,7 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
         if params.get("Operator") is not None:
             self._Operator = UserInfo()
             self._Operator._deserialize(params.get("Operator"))
+        self._ForbidPersonalMultipleSign = params.get("ForbidPersonalMultipleSign")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6570,6 +6582,132 @@ class ChannelDeleteSealPoliciesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ChannelDescribeAccountBillDetailRequest(AbstractModel):
+    """ChannelDescribeAccountBillDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+
+此接口下面信息必填。
+<ul>
+<li>渠道应用标识:  Agent.AppId</li>
+</ul>
+第三方平台子客企业必须已经经过实名认证
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        """
+        self._Agent = None
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelDescribeAccountBillDetailResponse(AbstractModel):
+    """ChannelDescribeAccountBillDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BoundAccountsNumber: 当前绑定中账号数量
+        :type BoundAccountsNumber: int
+        :param _RemainAvailableAccountsNumber: 剩余可绑定账号数量
+        :type RemainAvailableAccountsNumber: int
+        :param _InvalidAccountsNumber: 已失效账号数量
+        :type InvalidAccountsNumber: int
+        :param _TotalBuyAccountsNumber: 购买数量
+        :type TotalBuyAccountsNumber: int
+        :param _TotalGiftAccountsNumber: 赠送数量
+        :type TotalGiftAccountsNumber: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BoundAccountsNumber = None
+        self._RemainAvailableAccountsNumber = None
+        self._InvalidAccountsNumber = None
+        self._TotalBuyAccountsNumber = None
+        self._TotalGiftAccountsNumber = None
+        self._RequestId = None
+
+    @property
+    def BoundAccountsNumber(self):
+        return self._BoundAccountsNumber
+
+    @BoundAccountsNumber.setter
+    def BoundAccountsNumber(self, BoundAccountsNumber):
+        self._BoundAccountsNumber = BoundAccountsNumber
+
+    @property
+    def RemainAvailableAccountsNumber(self):
+        return self._RemainAvailableAccountsNumber
+
+    @RemainAvailableAccountsNumber.setter
+    def RemainAvailableAccountsNumber(self, RemainAvailableAccountsNumber):
+        self._RemainAvailableAccountsNumber = RemainAvailableAccountsNumber
+
+    @property
+    def InvalidAccountsNumber(self):
+        return self._InvalidAccountsNumber
+
+    @InvalidAccountsNumber.setter
+    def InvalidAccountsNumber(self, InvalidAccountsNumber):
+        self._InvalidAccountsNumber = InvalidAccountsNumber
+
+    @property
+    def TotalBuyAccountsNumber(self):
+        return self._TotalBuyAccountsNumber
+
+    @TotalBuyAccountsNumber.setter
+    def TotalBuyAccountsNumber(self, TotalBuyAccountsNumber):
+        self._TotalBuyAccountsNumber = TotalBuyAccountsNumber
+
+    @property
+    def TotalGiftAccountsNumber(self):
+        return self._TotalGiftAccountsNumber
+
+    @TotalGiftAccountsNumber.setter
+    def TotalGiftAccountsNumber(self, TotalGiftAccountsNumber):
+        self._TotalGiftAccountsNumber = TotalGiftAccountsNumber
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._BoundAccountsNumber = params.get("BoundAccountsNumber")
+        self._RemainAvailableAccountsNumber = params.get("RemainAvailableAccountsNumber")
+        self._InvalidAccountsNumber = params.get("InvalidAccountsNumber")
+        self._TotalBuyAccountsNumber = params.get("TotalBuyAccountsNumber")
+        self._TotalGiftAccountsNumber = params.get("TotalGiftAccountsNumber")
         self._RequestId = params.get("RequestId")
 
 
@@ -17483,11 +17621,13 @@ class ModifyExtendedServiceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OperateUrl: 操作跳转链接，有效期24小时
-若操作时没有返回跳转链接，表示无需跳转操作，此时会直接开通/关闭服务。
+        :param _OperateUrl: 操作跳转链接
+<ul><li><strong>链接有效期：</strong> 跳转链接的有效期为24小时。</li>
+<li><strong>没有返回链接的情形：</strong> 如果在操作时没有返回跳转链接，说明此次操作无需进行跳转，服务将会直接被开通或关闭。</li>
+<li><strong>返回链接的情形：</strong> 当操作类型为“OPEN”（开通服务），并且扩展服务类型为“AUTO_SIGN”（自动签名）、“DOWNLOAD_FLOW”（下载流程）或“OVERSEA_SIGN”（海外签名）时，系统将返回一个操作链接。收到操作链接后，贵方需主动联系超级管理员（超管）或法人。由超管或法人点击链接，以完成服务的开通操作。</li>
+</ul>
 
-当操作类型是 OPEN 且 扩展服务类型是 AUTO_SIGN 或 DOWNLOAD_FLOW 或者 OVERSEA_SIGN 时返回操作链接，
-返回的链接需要平台方自行触达超管或法人，超管或法人点击链接完成服务开通操作
+
         :type OperateUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

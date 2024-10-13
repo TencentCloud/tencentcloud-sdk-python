@@ -1430,12 +1430,18 @@ class AuthorizeDSPAMetaResourcesRequest(AbstractModel):
         :type ResourceRegion: str
         :param _ResourcesAccount: 用户授权的账户信息，如果是一键自动授权模式，则不需要填写账户名与密码。
         :type ResourcesAccount: list of DspaResourceAccount
+        :param _CreateDefaultTask: 创建默认主模板扫描任务
+        :type CreateDefaultTask: bool
+        :param _AuthRange: 授权范围（all:授权整个数据源 manual:手动指定数据库）
+        :type AuthRange: str
         """
         self._DspaId = None
         self._AuthType = None
         self._MetaType = None
         self._ResourceRegion = None
         self._ResourcesAccount = None
+        self._CreateDefaultTask = None
+        self._AuthRange = None
 
     @property
     def DspaId(self):
@@ -1477,6 +1483,22 @@ class AuthorizeDSPAMetaResourcesRequest(AbstractModel):
     def ResourcesAccount(self, ResourcesAccount):
         self._ResourcesAccount = ResourcesAccount
 
+    @property
+    def CreateDefaultTask(self):
+        return self._CreateDefaultTask
+
+    @CreateDefaultTask.setter
+    def CreateDefaultTask(self, CreateDefaultTask):
+        self._CreateDefaultTask = CreateDefaultTask
+
+    @property
+    def AuthRange(self):
+        return self._AuthRange
+
+    @AuthRange.setter
+    def AuthRange(self, AuthRange):
+        self._AuthRange = AuthRange
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
@@ -1489,6 +1511,8 @@ class AuthorizeDSPAMetaResourcesRequest(AbstractModel):
                 obj = DspaResourceAccount()
                 obj._deserialize(item)
                 self._ResourcesAccount.append(obj)
+        self._CreateDefaultTask = params.get("CreateDefaultTask")
+        self._AuthRange = params.get("AuthRange")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5025,10 +5049,6 @@ postgre_like_proto -- Postgre协议类关系型数据库。
         :type ResourceRegion: str
         :param _ResourceId: 自建云资源ID。
         :type ResourceId: str
-        :param _ResourceVip: 可用于访问自建云资源的IP。
-        :type ResourceVip: str
-        :param _ResourceVPort: 可用于访问自建云资源的端口。
-        :type ResourceVPort: int
         :param _ResourceUniqueVpcId: 自建云资源的VPC ID。
         :type ResourceUniqueVpcId: str
         :param _ResourceUniqueSubnetId: 自建云资源的Subnet ID。
@@ -5037,9 +5057,15 @@ postgre_like_proto -- Postgre协议类关系型数据库。
 cvm - 通过云服务器直接访问。
 clb - 通过LB的方式进行访问。
         :type ResourceAccessType: str
-        :param _UserName: 账户名。
+        :param _ResourceVip: 可用于访问自建云资源的IP。
+emr的连接不需要使用该字段
+        :type ResourceVip: str
+        :param _ResourceVPort: 可用于访问自建云资源的端口。
+emr的连接不需要使用该字段
+        :type ResourceVPort: int
+        :param _UserName: 账户名。如果emr_hive的连接方式为“LDAP”，则复用该字段
         :type UserName: str
-        :param _Password: 账户密码。
+        :param _Password: 账户密码。如果emr_hive的连接方式为“LDAP”，则复用该字段
         :type Password: str
         :param _ResourceName: 资源名称，1-60个字符。
         :type ResourceName: str
@@ -5050,21 +5076,24 @@ serviceName
         :type InstanceType: str
         :param _InstanceValue: 实例值
         :type InstanceValue: str
+        :param _AuthRange: 授权范围（all:授权整个数据源 manual:手动指定数据库）
+        :type AuthRange: str
         """
         self._DspaId = None
         self._MetaType = None
         self._ResourceRegion = None
         self._ResourceId = None
-        self._ResourceVip = None
-        self._ResourceVPort = None
         self._ResourceUniqueVpcId = None
         self._ResourceUniqueSubnetId = None
         self._ResourceAccessType = None
+        self._ResourceVip = None
+        self._ResourceVPort = None
         self._UserName = None
         self._Password = None
         self._ResourceName = None
         self._InstanceType = None
         self._InstanceValue = None
+        self._AuthRange = None
 
     @property
     def DspaId(self):
@@ -5099,22 +5128,6 @@ serviceName
         self._ResourceId = ResourceId
 
     @property
-    def ResourceVip(self):
-        return self._ResourceVip
-
-    @ResourceVip.setter
-    def ResourceVip(self, ResourceVip):
-        self._ResourceVip = ResourceVip
-
-    @property
-    def ResourceVPort(self):
-        return self._ResourceVPort
-
-    @ResourceVPort.setter
-    def ResourceVPort(self, ResourceVPort):
-        self._ResourceVPort = ResourceVPort
-
-    @property
     def ResourceUniqueVpcId(self):
         return self._ResourceUniqueVpcId
 
@@ -5137,6 +5150,22 @@ serviceName
     @ResourceAccessType.setter
     def ResourceAccessType(self, ResourceAccessType):
         self._ResourceAccessType = ResourceAccessType
+
+    @property
+    def ResourceVip(self):
+        return self._ResourceVip
+
+    @ResourceVip.setter
+    def ResourceVip(self, ResourceVip):
+        self._ResourceVip = ResourceVip
+
+    @property
+    def ResourceVPort(self):
+        return self._ResourceVPort
+
+    @ResourceVPort.setter
+    def ResourceVPort(self, ResourceVPort):
+        self._ResourceVPort = ResourceVPort
 
     @property
     def UserName(self):
@@ -5178,22 +5207,31 @@ serviceName
     def InstanceValue(self, InstanceValue):
         self._InstanceValue = InstanceValue
 
+    @property
+    def AuthRange(self):
+        return self._AuthRange
+
+    @AuthRange.setter
+    def AuthRange(self, AuthRange):
+        self._AuthRange = AuthRange
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
         self._MetaType = params.get("MetaType")
         self._ResourceRegion = params.get("ResourceRegion")
         self._ResourceId = params.get("ResourceId")
-        self._ResourceVip = params.get("ResourceVip")
-        self._ResourceVPort = params.get("ResourceVPort")
         self._ResourceUniqueVpcId = params.get("ResourceUniqueVpcId")
         self._ResourceUniqueSubnetId = params.get("ResourceUniqueSubnetId")
         self._ResourceAccessType = params.get("ResourceAccessType")
+        self._ResourceVip = params.get("ResourceVip")
+        self._ResourceVPort = params.get("ResourceVPort")
         self._UserName = params.get("UserName")
         self._Password = params.get("Password")
         self._ResourceName = params.get("ResourceName")
         self._InstanceType = params.get("InstanceType")
         self._InstanceValue = params.get("InstanceValue")
+        self._AuthRange = params.get("AuthRange")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5601,6 +5639,8 @@ class DSPACosMetaDataInfo(AbstractModel):
         :type BindStatus: str
         :param _Storage: COS桶存储量
         :type Storage: float
+        :param _GovernAuthStatus: 治理授权状态，0:关闭 1：开启
+        :type GovernAuthStatus: int
         """
         self._Bucket = None
         self._CreateTime = None
@@ -5609,6 +5649,7 @@ class DSPACosMetaDataInfo(AbstractModel):
         self._ResourceRegion = None
         self._BindStatus = None
         self._Storage = None
+        self._GovernAuthStatus = None
 
     @property
     def Bucket(self):
@@ -5666,6 +5707,14 @@ class DSPACosMetaDataInfo(AbstractModel):
     def Storage(self, Storage):
         self._Storage = Storage
 
+    @property
+    def GovernAuthStatus(self):
+        return self._GovernAuthStatus
+
+    @GovernAuthStatus.setter
+    def GovernAuthStatus(self, GovernAuthStatus):
+        self._GovernAuthStatus = GovernAuthStatus
+
 
     def _deserialize(self, params):
         self._Bucket = params.get("Bucket")
@@ -5675,6 +5724,7 @@ class DSPACosMetaDataInfo(AbstractModel):
         self._ResourceRegion = params.get("ResourceRegion")
         self._BindStatus = params.get("BindStatus")
         self._Storage = params.get("Storage")
+        self._GovernAuthStatus = params.get("GovernAuthStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19606,6 +19656,12 @@ class DspaInstance(AbstractModel):
         :param _Channel: 实例渠道
 注意：此字段可能返回 null，表示取不到有效值。
         :type Channel: str
+        :param _InsAuthCount: 已授权的实例数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InsAuthCount: int
+        :param _InsTotalQuota: 已购买的实例数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InsTotalQuota: int
         """
         self._DspaId = None
         self._DspaName = None
@@ -19623,6 +19679,8 @@ class DspaInstance(AbstractModel):
         self._CosQuotaUnit = None
         self._RenewFlag = None
         self._Channel = None
+        self._InsAuthCount = None
+        self._InsTotalQuota = None
 
     @property
     def DspaId(self):
@@ -19752,6 +19810,22 @@ class DspaInstance(AbstractModel):
     def Channel(self, Channel):
         self._Channel = Channel
 
+    @property
+    def InsAuthCount(self):
+        return self._InsAuthCount
+
+    @InsAuthCount.setter
+    def InsAuthCount(self, InsAuthCount):
+        self._InsAuthCount = InsAuthCount
+
+    @property
+    def InsTotalQuota(self):
+        return self._InsTotalQuota
+
+    @InsTotalQuota.setter
+    def InsTotalQuota(self, InsTotalQuota):
+        self._InsTotalQuota = InsTotalQuota
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
@@ -19770,6 +19844,8 @@ class DspaInstance(AbstractModel):
         self._CosQuotaUnit = params.get("CosQuotaUnit")
         self._RenewFlag = params.get("RenewFlag")
         self._Channel = params.get("Channel")
+        self._InsAuthCount = params.get("InsAuthCount")
+        self._InsTotalQuota = params.get("InsTotalQuota")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20459,6 +20535,11 @@ class DspaUserResourceMeta(AbstractModel):
         :param _InstanceValue: 实例值
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceValue: str
+        :param _GovernAuthStatus: //治理授权状态（0：关闭 1：开启）
+        :type GovernAuthStatus: int
+        :param _AuthRange: 授权范围：all - 授权整个数据源 manual:手动指定数据源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthRange: str
         """
         self._ResourceId = None
         self._ResourceName = None
@@ -20481,6 +20562,8 @@ class DspaUserResourceMeta(AbstractModel):
         self._ResourceAuthAccount = None
         self._InstanceType = None
         self._InstanceValue = None
+        self._GovernAuthStatus = None
+        self._AuthRange = None
 
     @property
     def ResourceId(self):
@@ -20650,6 +20733,22 @@ class DspaUserResourceMeta(AbstractModel):
     def InstanceValue(self, InstanceValue):
         self._InstanceValue = InstanceValue
 
+    @property
+    def GovernAuthStatus(self):
+        return self._GovernAuthStatus
+
+    @GovernAuthStatus.setter
+    def GovernAuthStatus(self, GovernAuthStatus):
+        self._GovernAuthStatus = GovernAuthStatus
+
+    @property
+    def AuthRange(self):
+        return self._AuthRange
+
+    @AuthRange.setter
+    def AuthRange(self, AuthRange):
+        self._AuthRange = AuthRange
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
@@ -20673,6 +20772,8 @@ class DspaUserResourceMeta(AbstractModel):
         self._ResourceAuthAccount = params.get("ResourceAuthAccount")
         self._InstanceType = params.get("InstanceType")
         self._InstanceValue = params.get("InstanceValue")
+        self._GovernAuthStatus = params.get("GovernAuthStatus")
+        self._AuthRange = params.get("AuthRange")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22126,6 +22227,12 @@ class GetUserQuotaInfoResponse(AbstractModel):
         :type DBUnbindNum: int
         :param _COSUnbindNum: cos月解绑次数
         :type COSUnbindNum: int
+        :param _InsTotalQuota: 用户购买的实例配额。
+        :type InsTotalQuota: int
+        :param _InsRemainQuota: 用户可用的实例配额。
+        :type InsRemainQuota: int
+        :param _Version: 用户购买的版本
+        :type Version: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -22137,6 +22244,9 @@ class GetUserQuotaInfoResponse(AbstractModel):
         self._CosQuotaUnit = None
         self._DBUnbindNum = None
         self._COSUnbindNum = None
+        self._InsTotalQuota = None
+        self._InsRemainQuota = None
+        self._Version = None
         self._RequestId = None
 
     @property
@@ -22204,6 +22314,30 @@ class GetUserQuotaInfoResponse(AbstractModel):
         self._COSUnbindNum = COSUnbindNum
 
     @property
+    def InsTotalQuota(self):
+        return self._InsTotalQuota
+
+    @InsTotalQuota.setter
+    def InsTotalQuota(self, InsTotalQuota):
+        self._InsTotalQuota = InsTotalQuota
+
+    @property
+    def InsRemainQuota(self):
+        return self._InsRemainQuota
+
+    @InsRemainQuota.setter
+    def InsRemainQuota(self, InsRemainQuota):
+        self._InsRemainQuota = InsRemainQuota
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -22221,6 +22355,9 @@ class GetUserQuotaInfoResponse(AbstractModel):
         self._CosQuotaUnit = params.get("CosQuotaUnit")
         self._DBUnbindNum = params.get("DBUnbindNum")
         self._COSUnbindNum = params.get("COSUnbindNum")
+        self._InsTotalQuota = params.get("InsTotalQuota")
+        self._InsRemainQuota = params.get("InsRemainQuota")
+        self._Version = params.get("Version")
         self._RequestId = params.get("RequestId")
 
 
@@ -22799,6 +22936,8 @@ BuildType - cloud（云原生资源）、build（用户自建资源），不支�
 MetaType - cdb（云数据Mysql）、dcdb（TDSQL MySQL版）、mariadb（云数据库 MariaDB）、postgres（云数据库 PostgreSQL）、cynosdbmysql（TDSQL-C MySQL版）、cos（对象存储）、mysql_like_proto（自建型Mysql协议类关系型数据库）、postgre_like_proto（自建型Postgre协议类关系型数据库）。
 
 ResourceId - 资源ID，支持模糊搜索。
+
+CvmID - 自建资源对应CvmId，如：ins-xxxxxxxx。该字段用于casb调用dsgc接口时，根据cvmId和vport确定具体的自建实例
         :type Filters: list of DspaDataSourceMngFilter
         :param _Limit: 分页步长，默认为100。
         :type Limit: int
@@ -26014,6 +26153,9 @@ class ReportInfo(AbstractModel):
         :param _ProgressPercent: 进度百分比
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProgressPercent: int
+        :param _ReportTemplateName: 报告模版名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReportTemplateName: str
         """
         self._Id = None
         self._ReportName = None
@@ -26029,6 +26171,7 @@ class ReportInfo(AbstractModel):
         self._Enable = None
         self._ComplianceName = None
         self._ProgressPercent = None
+        self._ReportTemplateName = None
 
     @property
     def Id(self):
@@ -26142,6 +26285,14 @@ class ReportInfo(AbstractModel):
     def ProgressPercent(self, ProgressPercent):
         self._ProgressPercent = ProgressPercent
 
+    @property
+    def ReportTemplateName(self):
+        return self._ReportTemplateName
+
+    @ReportTemplateName.setter
+    def ReportTemplateName(self, ReportTemplateName):
+        self._ReportTemplateName = ReportTemplateName
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -26158,6 +26309,7 @@ class ReportInfo(AbstractModel):
         self._Enable = params.get("Enable")
         self._ComplianceName = params.get("ComplianceName")
         self._ProgressPercent = params.get("ProgressPercent")
+        self._ReportTemplateName = params.get("ReportTemplateName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28049,12 +28201,15 @@ UserName和Password必须同时填写或同时为空。
         :param _Password: 账户密码，为空则表示不更新。
 UserName和Password必须同时填写或同时为空。
         :type Password: str
+        :param _AuthRange: 授权范围：all 授权全部  manual：手动指定
+        :type AuthRange: str
         """
         self._DspaId = None
         self._ResourceId = None
         self._ResourceVPort = None
         self._UserName = None
         self._Password = None
+        self._AuthRange = None
 
     @property
     def DspaId(self):
@@ -28096,6 +28251,14 @@ UserName和Password必须同时填写或同时为空。
     def Password(self, Password):
         self._Password = Password
 
+    @property
+    def AuthRange(self):
+        return self._AuthRange
+
+    @AuthRange.setter
+    def AuthRange(self, AuthRange):
+        self._AuthRange = AuthRange
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
@@ -28103,6 +28266,7 @@ UserName和Password必须同时填写或同时为空。
         self._ResourceVPort = params.get("ResourceVPort")
         self._UserName = params.get("UserName")
         self._Password = params.get("Password")
+        self._AuthRange = params.get("AuthRange")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

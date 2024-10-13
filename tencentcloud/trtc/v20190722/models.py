@@ -530,26 +530,21 @@ class CloudStorage(AbstractModel):
 0：腾讯云对象存储 COS
 1：AWS
 【注意】目前第三方云存储仅支持AWS，更多第三方云存储陆续支持中
-示例值：0
         :type Vendor: int
         :param _Region: 腾讯云对象存储的[地域信息]（https://cloud.tencent.com/document/product/436/6224#.E5.9C.B0.E5.9F.9F）。
 示例值：cn-shanghai-1
 
 AWS S3[地域信息]（https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions）
-示例值：ap-southeast-3	
         :type Region: str
         :param _Bucket: 云存储桶名称。
         :type Bucket: str
         :param _AccessKey: 云存储的access_key账号信息。
 若存储至腾讯云对象存储COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretId值。
-示例值：test-accesskey
         :type AccessKey: str
         :param _SecretKey: 云存储的secret_key账号信息。
 若存储至腾讯云对象存储COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretKey值。
-示例值：test-secretkey
         :type SecretKey: str
         :param _FileNamePrefix: 云存储bucket 的指定位置，由字符串数组组成。合法的字符串范围az,AZ,0~9,'_'和'-'，举个例子，录制文件xxx.m3u8在 ["prefix1", "prefix2"]作用下，会变成prefix1/prefix2/TaskId/xxx.m3u8。
-示例值：["prefix1", "prefix2"]
         :type FileNamePrefix: list of str
         """
         self._Vendor = None
@@ -9823,6 +9818,8 @@ class StartWebRecordRequest(AbstractModel):
         :type RecordId: str
         :param _PublishCdnParams: 若您想要推流到CDN，可以使用PublishCdnParams.N参数设置，支持最多同时推流到10个CDN地址。若转推地址是腾讯云CDN时，请将IsTencentCdn明确设置为1
         :type PublishCdnParams: list of McuPublishCdnParam
+        :param _ReadyTimeout: 录制页面资源加载的超时时间，单位：秒。默认值为 0 秒，该值需大于等于 0秒，且小于等于 60秒。录制页面未启用页面加载超时检测时，请勿设置此参数。
+        :type ReadyTimeout: int
         """
         self._RecordUrl = None
         self._MaxDurationLimit = None
@@ -9831,6 +9828,7 @@ class StartWebRecordRequest(AbstractModel):
         self._SdkAppId = None
         self._RecordId = None
         self._PublishCdnParams = None
+        self._ReadyTimeout = None
 
     @property
     def RecordUrl(self):
@@ -9888,6 +9886,14 @@ class StartWebRecordRequest(AbstractModel):
     def PublishCdnParams(self, PublishCdnParams):
         self._PublishCdnParams = PublishCdnParams
 
+    @property
+    def ReadyTimeout(self):
+        return self._ReadyTimeout
+
+    @ReadyTimeout.setter
+    def ReadyTimeout(self, ReadyTimeout):
+        self._ReadyTimeout = ReadyTimeout
+
 
     def _deserialize(self, params):
         self._RecordUrl = params.get("RecordUrl")
@@ -9906,6 +9912,7 @@ class StartWebRecordRequest(AbstractModel):
                 obj = McuPublishCdnParam()
                 obj._deserialize(item)
                 self._PublishCdnParams.append(obj)
+        self._ReadyTimeout = params.get("ReadyTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10970,6 +10977,8 @@ https://cloud.tencent.com/document/product/269/31999#app-.E7.AE.A1.E7.90.86.E5.9
         :type TranscriptionMode: int
         :param _TargetUserId: TranscriptionMode为1时必填，机器人只会拉该userid的流，忽略房间里其他用户。
         :type TargetUserId: str
+        :param _TargetUserIdList: 机器人订阅的用户列表
+        :type TargetUserIdList: list of str
         """
         self._UserId = None
         self._UserSig = None
@@ -10978,6 +10987,7 @@ https://cloud.tencent.com/document/product/269/31999#app-.E7.AE.A1.E7.90.86.E5.9
         self._MaxIdleTime = None
         self._TranscriptionMode = None
         self._TargetUserId = None
+        self._TargetUserIdList = None
 
     @property
     def UserId(self):
@@ -11043,6 +11053,14 @@ https://cloud.tencent.com/document/product/269/31999#app-.E7.AE.A1.E7.90.86.E5.9
     def TargetUserId(self, TargetUserId):
         self._TargetUserId = TargetUserId
 
+    @property
+    def TargetUserIdList(self):
+        return self._TargetUserIdList
+
+    @TargetUserIdList.setter
+    def TargetUserIdList(self, TargetUserIdList):
+        self._TargetUserIdList = TargetUserIdList
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
@@ -11052,6 +11070,7 @@ https://cloud.tencent.com/document/product/269/31999#app-.E7.AE.A1.E7.90.86.E5.9
         self._MaxIdleTime = params.get("MaxIdleTime")
         self._TranscriptionMode = params.get("TranscriptionMode")
         self._TargetUserId = params.get("TargetUserId")
+        self._TargetUserIdList = params.get("TargetUserIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -13286,7 +13286,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
         r"""
         :param _Product: 数据库引擎名称，本接口取值：redis。
         :type Product: str
-        :param _SecurityGroupIds: 要修改的安全组 ID 列表，一个或者多个安全组 ID 组成的数组。
+        :param _SecurityGroupIds: 更换为新的安全组 ID 列表，即一个或者多个安全组 ID 组成的数组。若实例第一次配置安全组，请使用接口[AssociateSecurityGroups](https://cloud.tencent.com/document/product/239/41260)先绑定安全组。
         :type SecurityGroupIds: list of str
         :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
         :type InstanceId: str
@@ -13998,6 +13998,103 @@ class ModifyInstanceParamsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Changed = params.get("Changed")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyInstancePasswordRequest(AbstractModel):
+    """ModifyInstancePassword请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
+        :type InstanceId: str
+        :param _OldPassword: 实例旧密码。
+        :type OldPassword: str
+        :param _Password: 实例新密码。密码复杂度要求如下：
+- 长度8 - 30位, 推荐使用12位以上的密码。
+- 不能以"/"开头。
+- 至少包含小写字母a - z、大写字母A - Z、数字0 - 9、特殊字符 ()~!@#$%^&*-+=_|{}[]:;<>,.?/中的两项。
+        :type Password: str
+        """
+        self._InstanceId = None
+        self._OldPassword = None
+        self._Password = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def OldPassword(self):
+        return self._OldPassword
+
+    @OldPassword.setter
+    def OldPassword(self, OldPassword):
+        self._OldPassword = OldPassword
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._OldPassword = params.get("OldPassword")
+        self._Password = params.get("Password")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstancePasswordResponse(AbstractModel):
+    """ModifyInstancePassword返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务 ID。
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 

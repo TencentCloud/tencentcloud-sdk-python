@@ -15506,6 +15506,192 @@ class CreateTranscodeTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateVideoDatabaseEntryTaskRequest(AbstractModel):
+    """CreateVideoDatabaseEntryTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputInfo: 待入库视频信息
+        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        :param _TaskNotifyConfig: 可选，入库任务完成后向指定的回调地址传递任务结果，目前仅支持URL
+        :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        """
+        self._InputInfo = None
+        self._TaskNotifyConfig = None
+
+    @property
+    def InputInfo(self):
+        return self._InputInfo
+
+    @InputInfo.setter
+    def InputInfo(self, InputInfo):
+        self._InputInfo = InputInfo
+
+    @property
+    def TaskNotifyConfig(self):
+        return self._TaskNotifyConfig
+
+    @TaskNotifyConfig.setter
+    def TaskNotifyConfig(self, TaskNotifyConfig):
+        self._TaskNotifyConfig = TaskNotifyConfig
+
+
+    def _deserialize(self, params):
+        if params.get("InputInfo") is not None:
+            self._InputInfo = MediaInputInfo()
+            self._InputInfo._deserialize(params.get("InputInfo"))
+        if params.get("TaskNotifyConfig") is not None:
+            self._TaskNotifyConfig = TaskNotifyConfig()
+            self._TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVideoDatabaseEntryTaskResponse(AbstractModel):
+    """CreateVideoDatabaseEntryTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateVideoSearchTaskRequest(AbstractModel):
+    """CreateVideoSearchTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SearchValueInput: 用于检索任务的输入
+        :type SearchValueInput: :class:`tencentcloud.mps.v20190612.models.SearchValueInput`
+        :param _Limit: 返回视频的最大数量，取值范围[1,20]，将返回最相近的前Limit条视频,默认为5
+        :type Limit: int
+        :param _TaskNotifyConfig: 可选，用于检索任务完成后向回调方发送检索结果，目前仅支持URL方式
+        :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        """
+        self._SearchValueInput = None
+        self._Limit = None
+        self._TaskNotifyConfig = None
+
+    @property
+    def SearchValueInput(self):
+        return self._SearchValueInput
+
+    @SearchValueInput.setter
+    def SearchValueInput(self, SearchValueInput):
+        self._SearchValueInput = SearchValueInput
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def TaskNotifyConfig(self):
+        return self._TaskNotifyConfig
+
+    @TaskNotifyConfig.setter
+    def TaskNotifyConfig(self, TaskNotifyConfig):
+        self._TaskNotifyConfig = TaskNotifyConfig
+
+
+    def _deserialize(self, params):
+        if params.get("SearchValueInput") is not None:
+            self._SearchValueInput = SearchValueInput()
+            self._SearchValueInput._deserialize(params.get("SearchValueInput"))
+        self._Limit = params.get("Limit")
+        if params.get("TaskNotifyConfig") is not None:
+            self._TaskNotifyConfig = TaskNotifyConfig()
+            self._TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVideoSearchTaskResponse(AbstractModel):
+    """CreateVideoSearchTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 检索任务的Id，用于后续查询任务状态和返回任务结果时标识任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateWatermarkTemplateRequest(AbstractModel):
     """CreateWatermarkTemplate请求参数结构体
 
@@ -22348,6 +22534,210 @@ class DescribeTranscodeTemplatesResponse(AbstractModel):
                 obj = TranscodeTemplate()
                 obj._deserialize(item)
                 self._TranscodeTemplateSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVideoDatabaseEntryTaskDetailRequest(AbstractModel):
+    """DescribeVideoDatabaseEntryTaskDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 待查询的任务Id
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVideoDatabaseEntryTaskDetailResponse(AbstractModel):
+    """DescribeVideoDatabaseEntryTaskDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 查询的任务Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _Status: 查询的任务的状态，可能为WAITING、PROCESSING、FAIL、SUCCESS。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _VideoDBEntryTaskResults: 查询的任务的结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoDBEntryTaskResults: list of VideoDBEntryTaskResult
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._Status = None
+        self._VideoDBEntryTaskResults = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def VideoDBEntryTaskResults(self):
+        return self._VideoDBEntryTaskResults
+
+    @VideoDBEntryTaskResults.setter
+    def VideoDBEntryTaskResults(self, VideoDBEntryTaskResults):
+        self._VideoDBEntryTaskResults = VideoDBEntryTaskResults
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        if params.get("VideoDBEntryTaskResults") is not None:
+            self._VideoDBEntryTaskResults = []
+            for item in params.get("VideoDBEntryTaskResults"):
+                obj = VideoDBEntryTaskResult()
+                obj._deserialize(item)
+                self._VideoDBEntryTaskResults.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVideoSearchTaskDetailRequest(AbstractModel):
+    """DescribeVideoSearchTaskDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 待查询的任务Id
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVideoSearchTaskDetailResponse(AbstractModel):
+    """DescribeVideoSearchTaskDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 查询的任务Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _Status: 查询的任务的状态，可能为WAITING、PROCESSING、FAIL、SUCCESS。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _SearchTaskResults: 查询的任务的结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SearchTaskResults: list of SearchTaskResult
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._Status = None
+        self._SearchTaskResults = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SearchTaskResults(self):
+        return self._SearchTaskResults
+
+    @SearchTaskResults.setter
+    def SearchTaskResults(self, SearchTaskResults):
+        self._SearchTaskResults = SearchTaskResults
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        if params.get("SearchTaskResults") is not None:
+            self._SearchTaskResults = []
+            for item in params.get("SearchTaskResults"):
+                obj = SearchTaskResult()
+                obj._deserialize(item)
+                self._SearchTaskResults.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -40468,6 +40858,100 @@ class ScratchRepairConfig(AbstractModel):
         
 
 
+class SearchTaskResult(AbstractModel):
+    """视频检索的检索结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Score: 视频在本次检索中的得分，得分越高和检索值越相似，取值范围[0,1]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Score: float
+        :param _VideoId: 检索获得的视频ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoId: str
+        """
+        self._Score = None
+        self._VideoId = None
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def VideoId(self):
+        return self._VideoId
+
+    @VideoId.setter
+    def VideoId(self, VideoId):
+        self._VideoId = VideoId
+
+
+    def _deserialize(self, params):
+        self._Score = params.get("Score")
+        self._VideoId = params.get("VideoId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchValueInput(AbstractModel):
+    """视频检索的检索输入
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SearchValueType: 检索输入的类型，目前支持：
+Text：文本检索
+        :type SearchValueType: str
+        :param _TextInput: 当SearchValueType为Text时有效且必填，用于检索视频的文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TextInput: str
+        """
+        self._SearchValueType = None
+        self._TextInput = None
+
+    @property
+    def SearchValueType(self):
+        return self._SearchValueType
+
+    @SearchValueType.setter
+    def SearchValueType(self, SearchValueType):
+        self._SearchValueType = SearchValueType
+
+    @property
+    def TextInput(self):
+        return self._TextInput
+
+    @TextInput.setter
+    def TextInput(self, TextInput):
+        self._TextInput = TextInput
+
+
+    def _deserialize(self, params):
+        self._SearchValueType = params.get("SearchValueType")
+        self._TextInput = params.get("TextInput")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SegmentRecognitionItem(AbstractModel):
     """智能拆条片段。
 
@@ -40554,6 +41038,69 @@ class SegmentRecognitionItem(AbstractModel):
         self._SegmentUrl = params.get("SegmentUrl")
         self._Title = params.get("Title")
         self._Summary = params.get("Summary")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SegmentSpecificInfo(AbstractModel):
+    """切片特殊配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 启动分片时长开关，可选值：
+on：打开
+off：关闭
+默认off
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        :param _FragmentTime: 启动时分片时长，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FragmentTime: int
+        :param _FragmentEndNum: 生效分片数，表示前FragmentEndNum个分片以FragmentTime时长切片，取值>=1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FragmentEndNum: int
+        """
+        self._Switch = None
+        self._FragmentTime = None
+        self._FragmentEndNum = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def FragmentTime(self):
+        return self._FragmentTime
+
+    @FragmentTime.setter
+    def FragmentTime(self, FragmentTime):
+        self._FragmentTime = FragmentTime
+
+    @property
+    def FragmentEndNum(self):
+        return self._FragmentEndNum
+
+    @FragmentEndNum.setter
+    def FragmentEndNum(self, FragmentEndNum):
+        self._FragmentEndNum = FragmentEndNum
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._FragmentTime = params.get("FragmentTime")
+        self._FragmentEndNum = params.get("FragmentEndNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43589,6 +44136,40 @@ class UserDefineOcrTextReviewTemplateInfoForUpdate(AbstractModel):
         
 
 
+class VideoDBEntryTaskResult(AbstractModel):
+    """视频检索入库任务的结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VideoId: 入库的视频ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoId: str
+        """
+        self._VideoId = None
+
+    @property
+    def VideoId(self):
+        return self._VideoId
+
+    @VideoId.setter
+    def VideoId(self, VideoId):
+        self._VideoId = VideoId
+
+
+    def _deserialize(self, params):
+        self._VideoId = params.get("VideoId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class VideoDenoiseConfig(AbstractModel):
     """视频降噪配置
 
@@ -43844,7 +44425,6 @@ class VideoTemplateInfo(AbstractModel):
 <li>mpeg2：MPEG2 编码</li>
 <li>dnxhd：DNxHD 编码</li>
 <li>mv-hevc：MV-HEVC 编码</li>
-注意：目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。
 
 注意：av1 编码容器目前只支持 mp4 ，webm，mkv。
 注意：H.266 编码容器目前只支持 mp4 ，hls，ts，mov。
@@ -43880,20 +44460,37 @@ class VideoTemplateInfo(AbstractModel):
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
 默认值：0。
         :type Height: int
-        :param _Gop: 关键帧 I 帧之间的间隔，取值范围：0 和 [1, 100000]，单位：帧数。 当填 0 或不填时，系统将自动设置 gop 长度。
+        :param _Gop: 关键帧 I 帧之间的间隔，允许按帧或秒自定义GOP长度，取值范围：0 和 [1, 100000]，
+当填 0 或不填时，系统将自动设置 gop 长度。
         :type Gop: int
+        :param _GopUnit: Gop数值单位，可选值：
+frame：表示帧
+second：表示秒
+默认值：frame
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GopUnit: str
         :param _FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
 <li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
 <li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊填充。</li>
+<li>smarttailor：智能剪裁：智能选取视频画面，来保证画面比例裁剪。</li>
 默认值：black 。
 注意：自适应码流只支持 stretch、black。
         :type FillType: str
-        :param _Vcrf: 视频恒定码率控制因子，取值范围为[1, 51]。
+        :param _Vcrf: 视频恒定码率控制因子，取值范围为[0, 51]。
 如果指定该参数，将使用 CRF 的码率控制方式做转码（视频码率将不再生效）。
 如果没有特殊需求，不建议指定该参数。
+注意：
+若Mode选择ABR，无需配置Vcrf值
+若Mode选择CBR，无需配置Vcrf值
+注意：此字段可能返回 null，表示取不到有效值。
         :type Vcrf: int
+        :param _HlsTime: 分片平均时长，范围：（0-10]，单位：秒
+默认值：10
+注意：只能在封装格式hls的情况下使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HlsTime: int
         :param _SegmentType: hls 分片类型，可选值 ：
 <li>0：HLS+TS 切片</li>
 <li>2：HLS+TS byte range</li>
@@ -43912,6 +44509,58 @@ class VideoTemplateInfo(AbstractModel):
 默认值:side_by_side
 注意：此字段可能返回 null，表示取不到有效值。
         :type Stereo3dType: str
+        :param _VideoProfile: Profile，适用于不同场景。
+baseline: 只支持I/P帧，并只支持无交错的场景，适用于视频通话、手机视频等场景。
+main: 主流Profile，提供I帧、P帧、B帧，并支持无交错模式和交错模式。主要用在主流的音视频消费产品如视频播放器、流媒体传输设备上。
+high: 最高编码等级，在Main Profile上添加了8X8的预测，并支持自定义量化。广泛应用在蓝光存储、高清电视等场景。
+default：随原视频自动填充。    
+
+仅编码标准选择h264时出现该配置， 支持 baseline/main/high，默认为：default
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoProfile: str
+        :param _VideoLevel: 编码器级别，默认为自动（""）
+若编码标准选择H264: 支持以下选项：""，1 , 1.1 , 1.2 , 1.3 , 2 , 2.1 , 2.2 , 3 , 3.1 , 3.2 , 4 , 4.1 , 4.2 , 5 , 5.1
+若编码标准选择H265: 支持以下选项：""，1 , 2 , 2.1 , 3 , 3.1 , 4 , 4.1 , 5 , 5.1 , 5.2 , 6 , 6.1 , 6.2 , 8.5
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoLevel: str
+        :param _Bframes: 参考帧之间的B帧数，默认选自动，支持 0 - 16
+注意：不填表示使用自动
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Bframes: int
+        :param _Mode: 码率控制模式：可选值：
+VBR（Variable Bit Rate）：动态比特率，根据视频画面的复杂度动态调整输出的码率，使得画面质量更高，适用于存储场景和对画面质量要求较高的应用。
+ABR（Average Bit Rate）：平均比特率，尽量保持输出视频的平均码率稳定，但允许短期内的码率波动，适用于需要在保持一定画质的情况下尽量减少整体码率的场景。
+CBR（Constant Bit Rate）：恒定比特率，指视频编码时输出的码率保持恒定不变，不考虑画面复杂度的变化，适用于对网络带宽要求较为严格的场景，如直播等。
+VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量因子来控制视频质量，实现视频的恒定质量编码，码率会根据内容的复杂度自动调整，适用于希望保持一定画质的场景。
+默认选择 VBR
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mode: str
+        :param _Sar: 显示高宽比，可选值：[1:1，2:1，default]
+默认值：default
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sar: str
+        :param _NoScenecut: 自适应I帧决策，开启后，媒体处理将自动识别视频中不同场景之间的过渡点（通常是视觉上显著不同的帧，比如从一个镜头切换到另一个镜头），在这些点自适应插入关键帧（I帧），从而提高视频的随机访问性和编码效率。可选值：
+0：关闭自适应I帧决策 
+1：使用自适应I帧决策
+默认值：0
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoScenecut: int
+        :param _BitDepth: 比特位：支持8/10，默认为8
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BitDepth: int
+        :param _RawPts: 保持原始时间戳：可选值：
+0：表示关闭
+1：表示打开
+默认是关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RawPts: int
+        :param _Compress: 按比例压缩码率，开启后，将根据比例来调整输出视频的码率。填写压缩率后，系统会根据视频源码率自动计算目标输出码率。压缩率范围0-100
+不填此值表示不开启，默认不开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Compress: int
+        :param _SegmentSpecificInfo: 切片特殊配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SegmentSpecificInfo: :class:`tencentcloud.mps.v20190612.models.SegmentSpecificInfo`
         """
         self._Codec = None
         self._Fps = None
@@ -43920,11 +44569,23 @@ class VideoTemplateInfo(AbstractModel):
         self._Width = None
         self._Height = None
         self._Gop = None
+        self._GopUnit = None
         self._FillType = None
         self._Vcrf = None
+        self._HlsTime = None
         self._SegmentType = None
         self._FpsDenominator = None
         self._Stereo3dType = None
+        self._VideoProfile = None
+        self._VideoLevel = None
+        self._Bframes = None
+        self._Mode = None
+        self._Sar = None
+        self._NoScenecut = None
+        self._BitDepth = None
+        self._RawPts = None
+        self._Compress = None
+        self._SegmentSpecificInfo = None
 
     @property
     def Codec(self):
@@ -43983,6 +44644,14 @@ class VideoTemplateInfo(AbstractModel):
         self._Gop = Gop
 
     @property
+    def GopUnit(self):
+        return self._GopUnit
+
+    @GopUnit.setter
+    def GopUnit(self, GopUnit):
+        self._GopUnit = GopUnit
+
+    @property
     def FillType(self):
         return self._FillType
 
@@ -43997,6 +44666,14 @@ class VideoTemplateInfo(AbstractModel):
     @Vcrf.setter
     def Vcrf(self, Vcrf):
         self._Vcrf = Vcrf
+
+    @property
+    def HlsTime(self):
+        return self._HlsTime
+
+    @HlsTime.setter
+    def HlsTime(self, HlsTime):
+        self._HlsTime = HlsTime
 
     @property
     def SegmentType(self):
@@ -44022,6 +44699,86 @@ class VideoTemplateInfo(AbstractModel):
     def Stereo3dType(self, Stereo3dType):
         self._Stereo3dType = Stereo3dType
 
+    @property
+    def VideoProfile(self):
+        return self._VideoProfile
+
+    @VideoProfile.setter
+    def VideoProfile(self, VideoProfile):
+        self._VideoProfile = VideoProfile
+
+    @property
+    def VideoLevel(self):
+        return self._VideoLevel
+
+    @VideoLevel.setter
+    def VideoLevel(self, VideoLevel):
+        self._VideoLevel = VideoLevel
+
+    @property
+    def Bframes(self):
+        return self._Bframes
+
+    @Bframes.setter
+    def Bframes(self, Bframes):
+        self._Bframes = Bframes
+
+    @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Sar(self):
+        return self._Sar
+
+    @Sar.setter
+    def Sar(self, Sar):
+        self._Sar = Sar
+
+    @property
+    def NoScenecut(self):
+        return self._NoScenecut
+
+    @NoScenecut.setter
+    def NoScenecut(self, NoScenecut):
+        self._NoScenecut = NoScenecut
+
+    @property
+    def BitDepth(self):
+        return self._BitDepth
+
+    @BitDepth.setter
+    def BitDepth(self, BitDepth):
+        self._BitDepth = BitDepth
+
+    @property
+    def RawPts(self):
+        return self._RawPts
+
+    @RawPts.setter
+    def RawPts(self, RawPts):
+        self._RawPts = RawPts
+
+    @property
+    def Compress(self):
+        return self._Compress
+
+    @Compress.setter
+    def Compress(self, Compress):
+        self._Compress = Compress
+
+    @property
+    def SegmentSpecificInfo(self):
+        return self._SegmentSpecificInfo
+
+    @SegmentSpecificInfo.setter
+    def SegmentSpecificInfo(self, SegmentSpecificInfo):
+        self._SegmentSpecificInfo = SegmentSpecificInfo
+
 
     def _deserialize(self, params):
         self._Codec = params.get("Codec")
@@ -44031,11 +44788,25 @@ class VideoTemplateInfo(AbstractModel):
         self._Width = params.get("Width")
         self._Height = params.get("Height")
         self._Gop = params.get("Gop")
+        self._GopUnit = params.get("GopUnit")
         self._FillType = params.get("FillType")
         self._Vcrf = params.get("Vcrf")
+        self._HlsTime = params.get("HlsTime")
         self._SegmentType = params.get("SegmentType")
         self._FpsDenominator = params.get("FpsDenominator")
         self._Stereo3dType = params.get("Stereo3dType")
+        self._VideoProfile = params.get("VideoProfile")
+        self._VideoLevel = params.get("VideoLevel")
+        self._Bframes = params.get("Bframes")
+        self._Mode = params.get("Mode")
+        self._Sar = params.get("Sar")
+        self._NoScenecut = params.get("NoScenecut")
+        self._BitDepth = params.get("BitDepth")
+        self._RawPts = params.get("RawPts")
+        self._Compress = params.get("Compress")
+        if params.get("SegmentSpecificInfo") is not None:
+            self._SegmentSpecificInfo = SegmentSpecificInfo()
+            self._SegmentSpecificInfo._deserialize(params.get("SegmentSpecificInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -44063,7 +44834,6 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 <li>mpeg2：MPEG2 编码</li>
 <li>dnxhd：DNxHD 编码</li>
 <li>mv-hevc：MV-HEVC 编码</li>
-注意：目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。
 
 注意：av1 编码容器目前只支持 mp4 ，webm，mkv。
 注意：H.266 编码容器目前只支持 mp4 ，hls，ts，mov。
@@ -44098,18 +44868,32 @@ class VideoTemplateInfoForUpdate(AbstractModel):
         :param _Height: 视频流高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Height: int
-        :param _Gop: 关键帧 I 帧之间的间隔，取值范围：0 和 [1, 100000]，单位：帧数。当填 0 时，系统将自动设置 gop 长度。
+        :param _Gop: 关键帧 I 帧之间的间隔，允许按帧或秒自定义GOP长度，取值范围：0 和 [1, 100000]。
+当填 0 时，系统将自动设置 gop 长度。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Gop: int
+        :param _GopUnit: Gop数值单位，可选值： 
+frame：表示帧 
+second：表示秒
+默认值：frame
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GopUnit: str
         :param _FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
  <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
 <li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
 <li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊填充。</li>
+<li>smarttailor：智能剪裁：智能选取视频画面，来保证画面比例裁剪。</li>
+默认值：black 。
+注意：自适应码流只支持 stretch、black。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FillType: str
-        :param _Vcrf: 视频恒定码率控制因子。取值范围为[0, 51]，填0表示禁用该参数。 
+        :param _Vcrf: 视频恒定码率控制因子。取值范围为[0, 51]和100。
 如果没有特殊需求，不建议指定该参数。
+注意：
+需要修改为自动时，填100
+若Mode选择ABR，无需配置Vcrf值
+若Mode选择CBR，无需配置Vcrf值
 注意：此字段可能返回 null，表示取不到有效值。
         :type Vcrf: int
         :param _ContentAdaptStream: 内容自适应编码。可选值：
@@ -44118,6 +44902,11 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 默认值: 0.   当开启该参数时，将会自适应生成多个不同分辨率，不同码率的码流， 其中VideoTemplate的宽和高为多个码流中的最大分辨率，VideoTemplate中的码率为多个码流中的最高码率， VideoTemplate中的vcrf为多个码流中的最高质量。 当不设置分辨率、码率和vcrf时， ContentAdaptStream 参数生成的最高分辨率为视频源的分辨率，视频质量为接近vmaf95分。 若要开启该参数或了解计费细节, 请联系您的腾讯云商务。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ContentAdaptStream: int
+        :param _HlsTime: 分片平均时长，取值范围：（0-10]，单位：秒
+默认值：10
+注意：只在封装格式HLS时使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HlsTime: int
         :param _SegmentType: hls 分片类型，可选值：
 <li>0：HLS+TS 切片</li>
 <li>2：HLS+TS byte range</li>
@@ -44136,6 +44925,59 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 默认值:side_by_side
 注意：此字段可能返回 null，表示取不到有效值。
         :type Stereo3dType: str
+        :param _VideoProfile: Profile，适用于不同场景。 
+baseline: 只支持I/P帧，并只支持无交错的场景，适用于视频通话、手机视频等场景。 
+main: 主流Profile，提供I帧、P帧、B帧，并支持无交错模式和交错模式。主要用在主流的音视频消费产品如视频播放器、流媒体传输设备上。 
+high: 最高编码等级，在Main Profile上添加了8X8的预测，并支持自定义量化。广泛应用在蓝光存储、高清电视等场景。
+default：随原视频自动填充
+
+仅编码标准选择h264时出现该配置，默认为：default
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoProfile: str
+        :param _VideoLevel: 编码器级别，默认为自动（""）
+若编码标准选择H264: 支持以下选项：""，1 , 1.1 , 1.2 , 1.3 , 2 , 2.1 , 2.2 , 3 , 3.1 , 3.2 , 4 , 4.1 , 4.2 , 5 , 5.1 
+若编码标准选择H265: 支持以下选项：""，1 , 2 , 2.1 , 3 , 3.1 , 4 , 4.1 , 5 , 5.1 , 5.2 , 6 , 6.1 , 6.2 , 8.5
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoLevel: str
+        :param _Bframes: 最大连续B帧数，默认选自动，支持 0 - 16和-1
+注意：
+-1表示修改为自动值	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Bframes: int
+        :param _Mode: 码率控制模式：可选值： 
+VBR（Variable Bit Rate）：动态比特率，根据视频画面的复杂度动态调整输出的码率，使得画面质量更高，适用于存储场景和对画面质量要求较高的应用。 
+ABR（Average Bit Rate）：平均比特率，尽量保持输出视频的平均码率稳定，但允许短期内的码率波动，适用于需要在保持一定画质的情况下尽量减少整体码率的场景。 
+CBR（Constant Bit Rate）：恒定比特率，指视频编码时输出的码率保持恒定不变，不考虑画面复杂度的变化，适用于对网络带宽要求较为严格的场景，如直播等。 
+VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量因子来控制视频质量，实现视频的恒定质量编码，码率会根据内容的复杂度自动调整，适用于希望保持一定画质的场景。 
+默认选择 VBR
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mode: str
+        :param _Sar: 显示高宽比，可选值：[1:1，2:1，default]
+默认值：default
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sar: str
+        :param _NoScenecut: 自适应I帧决策，开启后，媒体处理将自动识别视频中不同场景之间的过渡点（通常是视觉上显著不同的帧，比如从一个镜头切换到另一个镜头），在这些点自适应插入关键帧（I帧），从而提高视频的随机访问性和编码效率。可选值： 
+0：关闭自适应I帧决策 
+1：使用自适应I帧决策 
+默认值：0	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoScenecut: int
+        :param _BitDepth: 比特位：支持8/10，默认为8	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BitDepth: int
+        :param _RawPts: 保持原始时间戳：可选值： 
+0：表示关闭 
+1：表示打开 
+默认是关闭	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RawPts: int
+        :param _Compress: 按比例压缩码率，开启后，将根据比例来调整输出视频的码率。填写压缩率后，系统会根据视频源码率自动计算目标输出码率。压缩率范围0-100，可选值：[0-100]和-1 
+注意：-1表示修改为自动	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Compress: int
+        :param _SegmentSpecificInfo: 切片特殊配置	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SegmentSpecificInfo: :class:`tencentcloud.mps.v20190612.models.SegmentSpecificInfo`
         """
         self._Codec = None
         self._Fps = None
@@ -44144,12 +44986,24 @@ class VideoTemplateInfoForUpdate(AbstractModel):
         self._Width = None
         self._Height = None
         self._Gop = None
+        self._GopUnit = None
         self._FillType = None
         self._Vcrf = None
         self._ContentAdaptStream = None
+        self._HlsTime = None
         self._SegmentType = None
         self._FpsDenominator = None
         self._Stereo3dType = None
+        self._VideoProfile = None
+        self._VideoLevel = None
+        self._Bframes = None
+        self._Mode = None
+        self._Sar = None
+        self._NoScenecut = None
+        self._BitDepth = None
+        self._RawPts = None
+        self._Compress = None
+        self._SegmentSpecificInfo = None
 
     @property
     def Codec(self):
@@ -44208,6 +45062,14 @@ class VideoTemplateInfoForUpdate(AbstractModel):
         self._Gop = Gop
 
     @property
+    def GopUnit(self):
+        return self._GopUnit
+
+    @GopUnit.setter
+    def GopUnit(self, GopUnit):
+        self._GopUnit = GopUnit
+
+    @property
     def FillType(self):
         return self._FillType
 
@@ -44230,6 +45092,14 @@ class VideoTemplateInfoForUpdate(AbstractModel):
     @ContentAdaptStream.setter
     def ContentAdaptStream(self, ContentAdaptStream):
         self._ContentAdaptStream = ContentAdaptStream
+
+    @property
+    def HlsTime(self):
+        return self._HlsTime
+
+    @HlsTime.setter
+    def HlsTime(self, HlsTime):
+        self._HlsTime = HlsTime
 
     @property
     def SegmentType(self):
@@ -44255,6 +45125,86 @@ class VideoTemplateInfoForUpdate(AbstractModel):
     def Stereo3dType(self, Stereo3dType):
         self._Stereo3dType = Stereo3dType
 
+    @property
+    def VideoProfile(self):
+        return self._VideoProfile
+
+    @VideoProfile.setter
+    def VideoProfile(self, VideoProfile):
+        self._VideoProfile = VideoProfile
+
+    @property
+    def VideoLevel(self):
+        return self._VideoLevel
+
+    @VideoLevel.setter
+    def VideoLevel(self, VideoLevel):
+        self._VideoLevel = VideoLevel
+
+    @property
+    def Bframes(self):
+        return self._Bframes
+
+    @Bframes.setter
+    def Bframes(self, Bframes):
+        self._Bframes = Bframes
+
+    @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Sar(self):
+        return self._Sar
+
+    @Sar.setter
+    def Sar(self, Sar):
+        self._Sar = Sar
+
+    @property
+    def NoScenecut(self):
+        return self._NoScenecut
+
+    @NoScenecut.setter
+    def NoScenecut(self, NoScenecut):
+        self._NoScenecut = NoScenecut
+
+    @property
+    def BitDepth(self):
+        return self._BitDepth
+
+    @BitDepth.setter
+    def BitDepth(self, BitDepth):
+        self._BitDepth = BitDepth
+
+    @property
+    def RawPts(self):
+        return self._RawPts
+
+    @RawPts.setter
+    def RawPts(self, RawPts):
+        self._RawPts = RawPts
+
+    @property
+    def Compress(self):
+        return self._Compress
+
+    @Compress.setter
+    def Compress(self, Compress):
+        self._Compress = Compress
+
+    @property
+    def SegmentSpecificInfo(self):
+        return self._SegmentSpecificInfo
+
+    @SegmentSpecificInfo.setter
+    def SegmentSpecificInfo(self, SegmentSpecificInfo):
+        self._SegmentSpecificInfo = SegmentSpecificInfo
+
 
     def _deserialize(self, params):
         self._Codec = params.get("Codec")
@@ -44264,12 +45214,26 @@ class VideoTemplateInfoForUpdate(AbstractModel):
         self._Width = params.get("Width")
         self._Height = params.get("Height")
         self._Gop = params.get("Gop")
+        self._GopUnit = params.get("GopUnit")
         self._FillType = params.get("FillType")
         self._Vcrf = params.get("Vcrf")
         self._ContentAdaptStream = params.get("ContentAdaptStream")
+        self._HlsTime = params.get("HlsTime")
         self._SegmentType = params.get("SegmentType")
         self._FpsDenominator = params.get("FpsDenominator")
         self._Stereo3dType = params.get("Stereo3dType")
+        self._VideoProfile = params.get("VideoProfile")
+        self._VideoLevel = params.get("VideoLevel")
+        self._Bframes = params.get("Bframes")
+        self._Mode = params.get("Mode")
+        self._Sar = params.get("Sar")
+        self._NoScenecut = params.get("NoScenecut")
+        self._BitDepth = params.get("BitDepth")
+        self._RawPts = params.get("RawPts")
+        self._Compress = params.get("Compress")
+        if params.get("SegmentSpecificInfo") is not None:
+            self._SegmentSpecificInfo = SegmentSpecificInfo()
+            self._SegmentSpecificInfo._deserialize(params.get("SegmentSpecificInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

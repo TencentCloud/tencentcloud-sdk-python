@@ -837,6 +837,52 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeApiDetail(self, request):
+        """获取Api请求详情信息
+
+        :param request: Request instance for DescribeApiDetail.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeApiDetailRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeApiDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApiDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApiDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeApiListVersionTwo(self, request):
+        """api资产列表
+
+        :param request: Request instance for DescribeApiListVersionTwo.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeApiListVersionTwoRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeApiListVersionTwoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApiListVersionTwo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApiListVersionTwoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAreaBanAreas(self, request):
         """获取地域封禁配置包括地域封禁开关，设置封禁的地区信息
 

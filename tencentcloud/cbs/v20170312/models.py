@@ -4290,15 +4290,15 @@ class DiskConfig(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """描述键值对过滤器，用于条件过滤查询。
+    """过滤条件
 
     """
 
     def __init__(self):
         r"""
-        :param _Name: 过滤键的名称。
+        :param _Name: 过滤键的名称
         :type Name: str
-        :param _Values: 一个或者多个过滤值。
+        :param _Values: 一个或者多个过滤值
         :type Values: list of str
         """
         self._Name = None

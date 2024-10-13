@@ -325,6 +325,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateExternalSourceAIServiceTask(self, request):
+        """创建外部视频 AI 分析任务
+
+        :param request: Request instance for CreateExternalSourceAIServiceTask.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateExternalSourceAIServiceTaskRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.CreateExternalSourceAIServiceTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateExternalSourceAIServiceTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateExternalSourceAIServiceTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateFenceBind(self, request):
         """创建围栏绑定信息
 
@@ -2478,6 +2501,29 @@ class IotexplorerClient(AbstractClient):
             body = self.call("InheritCloudStorageUser", params, headers=headers)
             response = json.loads(body)
             model = models.InheritCloudStorageUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def InvokeExternalSourceAIServiceTask(self, request):
+        """创建外部视频 AI 分析任务
+
+        :param request: Request instance for InvokeExternalSourceAIServiceTask.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.InvokeExternalSourceAIServiceTaskRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.InvokeExternalSourceAIServiceTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InvokeExternalSourceAIServiceTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.InvokeExternalSourceAIServiceTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

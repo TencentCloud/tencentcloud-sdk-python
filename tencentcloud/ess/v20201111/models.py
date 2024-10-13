@@ -8100,6 +8100,8 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
         :type ApproverRestrictions: :class:`tencentcloud.ess.v20201111.models.ApproverRestriction`
         :param _ApproverComponentLimitTypes: 指定签署方在使用个人印章签署控件（SIGN_SIGNATURE） 时可使用的签署方式：自由书写、正楷临摹、系统签名、个人印章。
         :type ApproverComponentLimitTypes: list of ApproverComponentLimitType
+        :param _ForbidPersonalMultipleSign: 禁止个人用户重复签署，默认不禁止，即同一用户可多次扫码签署多份合同。若要求同一用户仅能扫码签署一份合同，请传入true。
+        :type ForbidPersonalMultipleSign: bool
         """
         self._Operator = None
         self._TemplateId = None
@@ -8113,6 +8115,7 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
         self._Agent = None
         self._ApproverRestrictions = None
         self._ApproverComponentLimitTypes = None
+        self._ForbidPersonalMultipleSign = None
 
     @property
     def Operator(self):
@@ -8218,6 +8221,14 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
     def ApproverComponentLimitTypes(self, ApproverComponentLimitTypes):
         self._ApproverComponentLimitTypes = ApproverComponentLimitTypes
 
+    @property
+    def ForbidPersonalMultipleSign(self):
+        return self._ForbidPersonalMultipleSign
+
+    @ForbidPersonalMultipleSign.setter
+    def ForbidPersonalMultipleSign(self, ForbidPersonalMultipleSign):
+        self._ForbidPersonalMultipleSign = ForbidPersonalMultipleSign
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -8248,6 +8259,7 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
                 obj = ApproverComponentLimitType()
                 obj._deserialize(item)
                 self._ApproverComponentLimitTypes.append(obj)
+        self._ForbidPersonalMultipleSign = params.get("ForbidPersonalMultipleSign")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10332,12 +10344,7 @@ class CreateSchemeUrlRequest(AbstractModel):
         :type FlowId: str
         :param _FlowGroupId: 合同流程组的组ID, 在合同流程组场景下，生成合同流程组的签署链接时需要赋值
         :type FlowGroupId: str
-        :param _PathType: 要跳转到的页面类型 
-
-<ul><li> **0** : 腾讯电子签小程序个人首页 (默认) <a href="https://qcloudimg.tencent-cloud.cn/raw/a2667ea84ec993cc060321afe3191d65.jpg" target="_blank" >点击查看示例页面</a></li>
-<li> **1** : 腾讯电子签小程序流程合同的详情页 (即合同签署页面)<a href="https://qcloudimg.tencent-cloud.cn/raw/446a679f09b1b7f40eb84e67face8acc.jpg" target="_blank" >点击查看示例页面</a></li>
-<li> **2** : 腾讯电子签小程序合同列表页 <a href="https://qcloudimg.tencent-cloud.cn/raw/c7b80e44c1d68ae3270a6fc4939c7214.jpg" target="_blank" >点击查看示例页面</a> </li>
-<li> **3** : 腾讯电子签小程序合同封面页  （注：`生成动态签署人补充链接时，必须指定为封面页`）<a href="https://qcloudimg.tencent-cloud.cn/raw/0d22cc587be4bf084877c151350c3bf7.jpg" target="_blank" >点击查看示例页面</a></li></ul>
+        :param _PathType: 要跳转到的页面类型 <ul><li> **0** : 腾讯电子签小程序个人首页 (默认) <a href="https://qcloudimg.tencent-cloud.cn/raw/a2667ea84ec993cc060321afe3191d65.jpg" target="_blank" >点击查看示例页面</a></li><li> **1** : 腾讯电子签小程序流程合同的详情页,即合同签署页面(注:`仅生成短链或者小程序Path时支持跳转合同详情页,即EndPoint传HTTP_SHORT_URL或者APP`)<a href="https://qcloudimg.tencent-cloud.cn/raw/446a679f09b1b7f40eb84e67face8acc.jpg" target="_blank" >点击查看示例页面</a></li><li> **2** : 腾讯电子签小程序合同列表页 <a href="https://qcloudimg.tencent-cloud.cn/raw/c7b80e44c1d68ae3270a6fc4939c7214.jpg" target="_blank" >点击查看示例页面</a> </li><li> **3** : 腾讯电子签小程序合同封面页  （注：`生成动态签署人补充链接时，必须指定为封面页`）<a href="https://qcloudimg.tencent-cloud.cn/raw/0d22cc587be4bf084877c151350c3bf7.jpg" target="_blank" >点击查看示例页面</a></li></ul>
         :type PathType: int
         :param _AutoJumpBack: 签署完成后是否自动回跳
 <ul><li>**false**：否, 签署完成不会自动跳转回来(默认)</li><li>**true**：是, 签署完成会自动跳转回来</li></ul>
@@ -16604,6 +16611,66 @@ class ExtendAuthInfo(AbstractModel):
         
 
 
+class ExtendScene(AbstractModel):
+    """印章扩展信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GenerateType: 印章来源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GenerateType: str
+        :param _GenerateTypeDesc: 印章来源类型描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GenerateTypeDesc: str
+        :param _GenerateTypeLogo: 印章来源logo
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GenerateTypeLogo: str
+        """
+        self._GenerateType = None
+        self._GenerateTypeDesc = None
+        self._GenerateTypeLogo = None
+
+    @property
+    def GenerateType(self):
+        return self._GenerateType
+
+    @GenerateType.setter
+    def GenerateType(self, GenerateType):
+        self._GenerateType = GenerateType
+
+    @property
+    def GenerateTypeDesc(self):
+        return self._GenerateTypeDesc
+
+    @GenerateTypeDesc.setter
+    def GenerateTypeDesc(self, GenerateTypeDesc):
+        self._GenerateTypeDesc = GenerateTypeDesc
+
+    @property
+    def GenerateTypeLogo(self):
+        return self._GenerateTypeLogo
+
+    @GenerateTypeLogo.setter
+    def GenerateTypeLogo(self, GenerateTypeLogo):
+        self._GenerateTypeLogo = GenerateTypeLogo
+
+
+    def _deserialize(self, params):
+        self._GenerateType = params.get("GenerateType")
+        self._GenerateTypeDesc = params.get("GenerateTypeDesc")
+        self._GenerateTypeLogo = params.get("GenerateTypeLogo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FailedCreateRoleData(AbstractModel):
     """绑定角色失败信息
 
@@ -20501,11 +20568,17 @@ class ModifyExtendedServiceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OperateUrl: 操作跳转链接，有效期24小时
-若操作时没有返回跳转链接，表示无需跳转操作，此时会直接开通/关闭服务。
+        :param _OperateUrl: 操作跳转链接
+<ul>
+<li><strong>有效期：</strong> 跳转链接的有效期为24小时。</li>
+<li><strong>无跳转链接返回的情况：</strong> 如果在操作过程中没有返回跳转链接，这意味着无需进行跳转操作。在这种情况下，服务将会直接被开通或关闭。
+<li><strong>有跳转链接返回的情况：</strong> 当操作类型为“OPEN”（开通服务），并且扩展服务类型为以下之一时，  系统将返回一个操作链接。当前操作人（超级管理员或法人）需要点击此链接，以完成服务的开通操作。
 
-当操作类型是 OPEN 且 扩展服务类型是  OPEN_SERVER_SIGN 或者 OVERSEA_SIGN 时返回操作链接，
-返回的链接当前操作人（超管或法人）点击链接完成服务开通操作。
+<ul>
+<li><strong>OPEN_SERVER_SIGN</strong>（开放服务器签名）</li>
+<li><strong>OVERSEA_SIGN</strong>（海外签名）</li>
+</ul></li></li>
+</ul>
         :type OperateUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -21081,6 +21154,9 @@ class OccupiedSeal(AbstractModel):
         :param _AuthorizedUsers: 授权人列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type AuthorizedUsers: list of AuthorizedUser
+        :param _ExtendScene: 印章扩展数据信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtendScene: :class:`tencentcloud.ess.v20201111.models.ExtendScene`
         """
         self._SealId = None
         self._SealName = None
@@ -21093,6 +21169,7 @@ class OccupiedSeal(AbstractModel):
         self._SealType = None
         self._IsAllTime = None
         self._AuthorizedUsers = None
+        self._ExtendScene = None
 
     @property
     def SealId(self):
@@ -21182,6 +21259,14 @@ class OccupiedSeal(AbstractModel):
     def AuthorizedUsers(self, AuthorizedUsers):
         self._AuthorizedUsers = AuthorizedUsers
 
+    @property
+    def ExtendScene(self):
+        return self._ExtendScene
+
+    @ExtendScene.setter
+    def ExtendScene(self, ExtendScene):
+        self._ExtendScene = ExtendScene
+
 
     def _deserialize(self, params):
         self._SealId = params.get("SealId")
@@ -21200,6 +21285,9 @@ class OccupiedSeal(AbstractModel):
                 obj = AuthorizedUser()
                 obj._deserialize(item)
                 self._AuthorizedUsers.append(obj)
+        if params.get("ExtendScene") is not None:
+            self._ExtendScene = ExtendScene()
+            self._ExtendScene._deserialize(params.get("ExtendScene"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

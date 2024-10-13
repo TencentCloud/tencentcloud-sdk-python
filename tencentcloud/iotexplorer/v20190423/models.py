@@ -2441,6 +2441,139 @@ class CreateDeviceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateExternalSourceAIServiceTaskRequest(AbstractModel):
+    """CreateExternalSourceAIServiceTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品 ID
+        :type ProductId: str
+        :param _ServiceType: 云存 AI 服务类型。可选值：
+- `RealtimeObjectDetect`：目标检测
+- `Highlight`：视频浓缩
+- `VideoToText`：视频语义理解
+        :type ServiceType: str
+        :param _VideoURLs: 分析外部传入的视频 URL 列表，支持 HLS 点播（m3u8）及常见视频格式（mp4 等）
+        :type VideoURLs: list of str
+        :param _CustomId: 自定义任务 ID
+        :type CustomId: str
+        :param _Config: 视频分析配置参数
+        :type Config: str
+        :param _ROI: 视频分析识别区域
+        :type ROI: str
+        """
+        self._ProductId = None
+        self._ServiceType = None
+        self._VideoURLs = None
+        self._CustomId = None
+        self._Config = None
+        self._ROI = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def ServiceType(self):
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def VideoURLs(self):
+        return self._VideoURLs
+
+    @VideoURLs.setter
+    def VideoURLs(self, VideoURLs):
+        self._VideoURLs = VideoURLs
+
+    @property
+    def CustomId(self):
+        return self._CustomId
+
+    @CustomId.setter
+    def CustomId(self, CustomId):
+        self._CustomId = CustomId
+
+    @property
+    def Config(self):
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def ROI(self):
+        return self._ROI
+
+    @ROI.setter
+    def ROI(self, ROI):
+        self._ROI = ROI
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._ServiceType = params.get("ServiceType")
+        self._VideoURLs = params.get("VideoURLs")
+        self._CustomId = params.get("CustomId")
+        self._Config = params.get("Config")
+        self._ROI = params.get("ROI")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateExternalSourceAIServiceTaskResponse(AbstractModel):
+    """CreateExternalSourceAIServiceTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务 ID
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateFenceBindRequest(AbstractModel):
     """CreateFenceBind请求参数结构体
 
@@ -14694,6 +14827,166 @@ class InstanceDetail(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class InvokeExternalSourceAIServiceTaskRequest(AbstractModel):
+    """InvokeExternalSourceAIServiceTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品 ID
+        :type ProductId: str
+        :param _ServiceType: 云存 AI 服务类型。可选值：
+- `RealtimeObjectDetect`：目标检测
+- `Highlight`：视频浓缩
+- `VideoToText`：视频语义理解
+        :type ServiceType: str
+        :param _VideoURLs: 分析外部传入的视频 URL 列表，支持 HLS 点播（m3u8）及常见视频格式（mp4 等）
+        :type VideoURLs: list of str
+        :param _CustomId: 自定义任务 ID
+        :type CustomId: str
+        :param _Config: 视频分析配置参数
+        :type Config: str
+        :param _ROI: 视频分析识别区域
+        :type ROI: str
+        """
+        self._ProductId = None
+        self._ServiceType = None
+        self._VideoURLs = None
+        self._CustomId = None
+        self._Config = None
+        self._ROI = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def ServiceType(self):
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def VideoURLs(self):
+        return self._VideoURLs
+
+    @VideoURLs.setter
+    def VideoURLs(self, VideoURLs):
+        self._VideoURLs = VideoURLs
+
+    @property
+    def CustomId(self):
+        return self._CustomId
+
+    @CustomId.setter
+    def CustomId(self, CustomId):
+        self._CustomId = CustomId
+
+    @property
+    def Config(self):
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def ROI(self):
+        return self._ROI
+
+    @ROI.setter
+    def ROI(self, ROI):
+        self._ROI = ROI
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._ServiceType = params.get("ServiceType")
+        self._VideoURLs = params.get("VideoURLs")
+        self._CustomId = params.get("CustomId")
+        self._Config = params.get("Config")
+        self._ROI = params.get("ROI")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InvokeExternalSourceAIServiceTaskResponse(AbstractModel):
+    """InvokeExternalSourceAIServiceTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Completed: 任务是否执行完成
+        :type Completed: bool
+        :param _TaskId: 任务 ID
+        :type TaskId: str
+        :param _TaskInfo: 任务信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskInfo: :class:`tencentcloud.iotexplorer.v20190423.models.CloudStorageAIServiceTask`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Completed = None
+        self._TaskId = None
+        self._TaskInfo = None
+        self._RequestId = None
+
+    @property
+    def Completed(self):
+        return self._Completed
+
+    @Completed.setter
+    def Completed(self, Completed):
+        self._Completed = Completed
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskInfo(self):
+        return self._TaskInfo
+
+    @TaskInfo.setter
+    def TaskInfo(self, TaskInfo):
+        self._TaskInfo = TaskInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Completed = params.get("Completed")
+        self._TaskId = params.get("TaskId")
+        if params.get("TaskInfo") is not None:
+            self._TaskInfo = CloudStorageAIServiceTask()
+            self._TaskInfo._deserialize(params.get("TaskInfo"))
+        self._RequestId = params.get("RequestId")
 
 
 class ListEventHistoryRequest(AbstractModel):
