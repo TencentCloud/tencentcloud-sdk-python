@@ -91,6 +91,66 @@ class AddMachineGroupInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AdvanceFilterRuleInfo(AbstractModel):
+    """高级过滤规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 过滤字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Rule: 过滤规则，0:等于，1:字段存在，2:字段不存在
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rule: int
+        :param _Value: 过滤值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Key = None
+        self._Rule = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Rule(self):
+        return self._Rule
+
+    @Rule.setter
+    def Rule(self, Rule):
+        self._Rule = Rule
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Rule = params.get("Rule")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AlarmAnalysisConfig(AbstractModel):
     """告警多维分析一些配置信息
 
@@ -13048,6 +13108,12 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
         :type MetaTags: list of MetaTagInfo
         :param _EventLogRules: Windows事件日志采集规则，只有在LogType为windows_event_log时生效，其余类型无需填写。
         :type EventLogRules: list of EventLog
+        :param _AdvanceFilterRules: 日志过滤规则列表（新版）。
+注意：
+- 2.9.3以下版本LogListener不支持， 请使用FilterKeyRegex配置日志过滤规则。
+- 自建k8s采集配置（CreateConfigExtra、ModifyConfigExtra）不支持此字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdvanceFilterRules: list of AdvanceFilterRuleInfo
         """
         self._TimeKey = None
         self._TimeFormat = None
@@ -13068,6 +13134,7 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
         self._PathRegex = None
         self._MetaTags = None
         self._EventLogRules = None
+        self._AdvanceFilterRules = None
 
     @property
     def TimeKey(self):
@@ -13221,6 +13288,14 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
     def EventLogRules(self, EventLogRules):
         self._EventLogRules = EventLogRules
 
+    @property
+    def AdvanceFilterRules(self):
+        return self._AdvanceFilterRules
+
+    @AdvanceFilterRules.setter
+    def AdvanceFilterRules(self, AdvanceFilterRules):
+        self._AdvanceFilterRules = AdvanceFilterRules
+
 
     def _deserialize(self, params):
         self._TimeKey = params.get("TimeKey")
@@ -13257,6 +13332,12 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
                 obj = EventLog()
                 obj._deserialize(item)
                 self._EventLogRules.append(obj)
+        if params.get("AdvanceFilterRules") is not None:
+            self._AdvanceFilterRules = []
+            for item in params.get("AdvanceFilterRules"):
+                obj = AdvanceFilterRuleInfo()
+                obj._deserialize(item)
+                self._AdvanceFilterRules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

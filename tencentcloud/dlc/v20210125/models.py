@@ -721,6 +721,218 @@ class AlterDMSTableResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AnalysisTaskResults(AbstractModel):
+    """洞察分析结果返回体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 任务Id
+        :type Id: str
+        :param _InstanceStartTime: 任务创建时间，毫秒时间戳
+        :type InstanceStartTime: int
+        :param _InstanceCompleteTime: 任务结束时间，毫秒时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceCompleteTime: int
+        :param _State: 任务状态：0 初始化， 1 执行中， 2 执行成功，3 数据写入中，4 排队中。-1 执行失败，-3 已取消。
+        :type State: int
+        :param _SQL: 任务SQL语句
+        :type SQL: str
+        :param _DataEngineName: 计算资源名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataEngineName: str
+        :param _JobTimeSum: 单位毫秒，引擎内执行耗时
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobTimeSum: int
+        :param _TaskTimeSum: 单位秒，CU资源消耗
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskTimeSum: int
+        :param _InputRecordsSum: 数据扫描总行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputRecordsSum: int
+        :param _InputBytesSum: 数据扫描总 bytes
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputBytesSum: int
+        :param _OutputRecordsSum: 输出总行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputRecordsSum: int
+        :param _OutputBytesSum: 输出总 bytes
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputBytesSum: int
+        :param _ShuffleReadBytesSum: shuffle read 总 bytes
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShuffleReadBytesSum: int
+        :param _ShuffleReadRecordsSum: shuffle read 总行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShuffleReadRecordsSum: int
+        :param _AnalysisStatus: 洞察结果类型分类，一个 json 数组，有如下几种类型：SPARK-StageScheduleDelay（资源抢占）, SPARK-ShuffleFailure（Shuffle异常）, SPARK-SlowTask（慢task）, SPARK-DataSkew（数据倾斜）, SPARK-InsufficientResource（磁盘或内存不足）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnalysisStatus: str
+        """
+        self._Id = None
+        self._InstanceStartTime = None
+        self._InstanceCompleteTime = None
+        self._State = None
+        self._SQL = None
+        self._DataEngineName = None
+        self._JobTimeSum = None
+        self._TaskTimeSum = None
+        self._InputRecordsSum = None
+        self._InputBytesSum = None
+        self._OutputRecordsSum = None
+        self._OutputBytesSum = None
+        self._ShuffleReadBytesSum = None
+        self._ShuffleReadRecordsSum = None
+        self._AnalysisStatus = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def InstanceStartTime(self):
+        return self._InstanceStartTime
+
+    @InstanceStartTime.setter
+    def InstanceStartTime(self, InstanceStartTime):
+        self._InstanceStartTime = InstanceStartTime
+
+    @property
+    def InstanceCompleteTime(self):
+        return self._InstanceCompleteTime
+
+    @InstanceCompleteTime.setter
+    def InstanceCompleteTime(self, InstanceCompleteTime):
+        self._InstanceCompleteTime = InstanceCompleteTime
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def SQL(self):
+        return self._SQL
+
+    @SQL.setter
+    def SQL(self, SQL):
+        self._SQL = SQL
+
+    @property
+    def DataEngineName(self):
+        return self._DataEngineName
+
+    @DataEngineName.setter
+    def DataEngineName(self, DataEngineName):
+        self._DataEngineName = DataEngineName
+
+    @property
+    def JobTimeSum(self):
+        return self._JobTimeSum
+
+    @JobTimeSum.setter
+    def JobTimeSum(self, JobTimeSum):
+        self._JobTimeSum = JobTimeSum
+
+    @property
+    def TaskTimeSum(self):
+        return self._TaskTimeSum
+
+    @TaskTimeSum.setter
+    def TaskTimeSum(self, TaskTimeSum):
+        self._TaskTimeSum = TaskTimeSum
+
+    @property
+    def InputRecordsSum(self):
+        return self._InputRecordsSum
+
+    @InputRecordsSum.setter
+    def InputRecordsSum(self, InputRecordsSum):
+        self._InputRecordsSum = InputRecordsSum
+
+    @property
+    def InputBytesSum(self):
+        return self._InputBytesSum
+
+    @InputBytesSum.setter
+    def InputBytesSum(self, InputBytesSum):
+        self._InputBytesSum = InputBytesSum
+
+    @property
+    def OutputRecordsSum(self):
+        return self._OutputRecordsSum
+
+    @OutputRecordsSum.setter
+    def OutputRecordsSum(self, OutputRecordsSum):
+        self._OutputRecordsSum = OutputRecordsSum
+
+    @property
+    def OutputBytesSum(self):
+        return self._OutputBytesSum
+
+    @OutputBytesSum.setter
+    def OutputBytesSum(self, OutputBytesSum):
+        self._OutputBytesSum = OutputBytesSum
+
+    @property
+    def ShuffleReadBytesSum(self):
+        return self._ShuffleReadBytesSum
+
+    @ShuffleReadBytesSum.setter
+    def ShuffleReadBytesSum(self, ShuffleReadBytesSum):
+        self._ShuffleReadBytesSum = ShuffleReadBytesSum
+
+    @property
+    def ShuffleReadRecordsSum(self):
+        return self._ShuffleReadRecordsSum
+
+    @ShuffleReadRecordsSum.setter
+    def ShuffleReadRecordsSum(self, ShuffleReadRecordsSum):
+        self._ShuffleReadRecordsSum = ShuffleReadRecordsSum
+
+    @property
+    def AnalysisStatus(self):
+        return self._AnalysisStatus
+
+    @AnalysisStatus.setter
+    def AnalysisStatus(self, AnalysisStatus):
+        self._AnalysisStatus = AnalysisStatus
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._InstanceStartTime = params.get("InstanceStartTime")
+        self._InstanceCompleteTime = params.get("InstanceCompleteTime")
+        self._State = params.get("State")
+        self._SQL = params.get("SQL")
+        self._DataEngineName = params.get("DataEngineName")
+        self._JobTimeSum = params.get("JobTimeSum")
+        self._TaskTimeSum = params.get("TaskTimeSum")
+        self._InputRecordsSum = params.get("InputRecordsSum")
+        self._InputBytesSum = params.get("InputBytesSum")
+        self._OutputRecordsSum = params.get("OutputRecordsSum")
+        self._OutputBytesSum = params.get("OutputBytesSum")
+        self._ShuffleReadBytesSum = params.get("ShuffleReadBytesSum")
+        self._ShuffleReadRecordsSum = params.get("ShuffleReadRecordsSum")
+        self._AnalysisStatus = params.get("AnalysisStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Asset(AbstractModel):
     """元数据基本对象
 
@@ -15513,6 +15725,182 @@ class DescribeTaskResultResponse(AbstractModel):
         if params.get("TaskInfo") is not None:
             self._TaskInfo = TaskResultInfo()
             self._TaskInfo._deserialize(params.get("TaskInfo"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTasksAnalysisRequest(AbstractModel):
+    """DescribeTasksAnalysis请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataEngineName: 数据引擎名称，用于筛选
+        :type DataEngineName: str
+        :param _Limit: 返回数量，默认为10，最大值为100。
+        :type Limit: int
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _Filters: 过滤条件，如下支持的过滤类型，传参Name应为以下其中一个: task-id - String - （任务ID准确过滤）task-id 取值形如：e386471f-139a-4e59-877f-50ece8135b99。task-state - String - （任务状态过滤）取值范围 0(初始化)， 1(运行中)， 2(成功)， -1(失败)，rule-id - String - （洞察类型）取值范围 SPARK-StageScheduleDelay（资源抢占）, SPARK-ShuffleFailure（Shuffle异常）, SPARK-SlowTask（慢task）, SPARK-DataSkew（数据倾斜）, SPARK-InsufficientResource（磁盘或内存不足）
+        :type Filters: list of Filter
+        :param _SortBy: 排序字段，支持如下字段类型，instance-start-time (任务开始时间）, instance-complete-time (任务结束时间）,job-time-sum （单位毫秒，引擎内执行耗时）,task-time-sum （CU资源消耗，单位秒）,input-bytes-sum（数据扫描总大小，单位bytes）,shuffle-read-bytes-sum（数据shuffle总大小，单位bytes）
+        :type SortBy: str
+        :param _Sorting: 排序方式，desc表示正序，asc表示反序， 默认为asc。
+        :type Sorting: str
+        :param _StartTime: 起始时间点，格式为yyyy-mm-dd HH:MM:SS
+        :type StartTime: str
+        :param _EndTime: 结束时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近45天数据查询。默认为当前时刻
+        :type EndTime: str
+        """
+        self._DataEngineName = None
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+        self._SortBy = None
+        self._Sorting = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def DataEngineName(self):
+        return self._DataEngineName
+
+    @DataEngineName.setter
+    def DataEngineName(self, DataEngineName):
+        self._DataEngineName = DataEngineName
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def SortBy(self):
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def Sorting(self):
+        return self._Sorting
+
+    @Sorting.setter
+    def Sorting(self, Sorting):
+        self._Sorting = Sorting
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._DataEngineName = params.get("DataEngineName")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._SortBy = params.get("SortBy")
+        self._Sorting = params.get("Sorting")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTasksAnalysisResponse(AbstractModel):
+    """DescribeTasksAnalysis返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskList: 洞察结果分页列表
+        :type TaskList: list of AnalysisTaskResults
+        :param _TotalCount: 洞察结果总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def TaskList(self):
+        return self._TaskList
+
+    @TaskList.setter
+    def TaskList(self, TaskList):
+        self._TaskList = TaskList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TaskList") is not None:
+            self._TaskList = []
+            for item in params.get("TaskList"):
+                obj = AnalysisTaskResults()
+                obj._deserialize(item)
+                self._TaskList.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 

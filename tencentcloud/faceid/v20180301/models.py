@@ -31,7 +31,7 @@ SuspectedSynthesisImage：疑似合成图片
 SuspectedSynthesisVideo：疑似合成视频
 SuspectedeAnomalyAttack：人脸特征疑似非真人
 SuspectedAdversarialAttack：疑似对抗样本攻击
-SuspectedBlackIndustry：疑似黑产攻击
+SuspectedBlackIndustry：疑似黑产批量模版攻击
 SuspectedWatermark：疑似存在水印
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str

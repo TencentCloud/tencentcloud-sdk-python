@@ -746,6 +746,9 @@ UNSUPPORTEDOPERATION_BANDWIDTHPACKAGEIDNOTSUPPORTED = 'UnsupportedOperation.Band
 # 已绑定EIP。
 UNSUPPORTEDOPERATION_BINDEIP = 'UnsupportedOperation.BindEIP'
 
+# 添加 community 时，传播条件只支持 vpg 类型或 vpg 实例
+UNSUPPORTEDOPERATION_BROADCASTCONDITIONMUSTBEVPGTYPEORVPGINSTANCE = 'UnsupportedOperation.BroadcastConditionMustBeVpgTypeOrVpgInstance'
+
 # 指定VPC CIDR范围不支持私有网络和基础网络设备互通。
 UNSUPPORTEDOPERATION_CIDRUNSUPPORTEDCLASSICLINK = 'UnsupportedOperation.CIDRUnSupportedClassicLink'
 
@@ -769,6 +772,9 @@ UNSUPPORTEDOPERATION_CCNNOTATTACHED = 'UnsupportedOperation.CcnNotAttached'
 
 # 当前云联网未开启路由传播策略。
 UNSUPPORTEDOPERATION_CCNNOTENABLEBROADCASTPOLICY = 'UnsupportedOperation.CcnNotEnableBroadcastPolicy'
+
+# 添加 community 时，vpg 需要开通传播 community 白名单
+UNSUPPORTEDOPERATION_CCNNOTENABLECOMMUNITY = 'UnsupportedOperation.CcnNotEnableCommunity'
 
 # 跨账号场景下不支持自驾云账号实例 关联普通账号云联网。
 UNSUPPORTEDOPERATION_CCNORDINARYACCOUNTREFUSEATTACH = 'UnsupportedOperation.CcnOrdinaryAccountRefuseAttach'

@@ -2694,31 +2694,6 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeExternalClusterSpec(self, request):
-        """tdcc接口已迁移至tdcc产品下，tke下的接口下线
-
-        获取导入第三方集群YAML定义
-
-        :param request: Request instance for DescribeExternalClusterSpec.
-        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeExternalClusterSpecRequest`
-        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeExternalClusterSpecResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeExternalClusterSpec", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeExternalClusterSpecResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeExternalNodeSupportConfig(self, request):
         """查看开启第三方节点池配置信息
 
