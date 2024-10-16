@@ -44,6 +44,9 @@ class Ability(AbstractModel):
         :param _NoSupportTransparentDataEncryptionReason: 不支持透明数据加密原因
 注意：此字段可能返回 null，表示取不到有效值。
         :type NoSupportTransparentDataEncryptionReason: str
+        :param _IsSupportManualLogic: 是否支持手动发起逻辑备份
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsSupportManualLogic: str
         """
         self._IsSupportSlaveZone = None
         self._NonsupportSlaveZoneReason = None
@@ -52,6 +55,7 @@ class Ability(AbstractModel):
         self._IsSupportManualSnapshot = None
         self._IsSupportTransparentDataEncryption = None
         self._NoSupportTransparentDataEncryptionReason = None
+        self._IsSupportManualLogic = None
 
     @property
     def IsSupportSlaveZone(self):
@@ -109,6 +113,14 @@ class Ability(AbstractModel):
     def NoSupportTransparentDataEncryptionReason(self, NoSupportTransparentDataEncryptionReason):
         self._NoSupportTransparentDataEncryptionReason = NoSupportTransparentDataEncryptionReason
 
+    @property
+    def IsSupportManualLogic(self):
+        return self._IsSupportManualLogic
+
+    @IsSupportManualLogic.setter
+    def IsSupportManualLogic(self, IsSupportManualLogic):
+        self._IsSupportManualLogic = IsSupportManualLogic
+
 
     def _deserialize(self, params):
         self._IsSupportSlaveZone = params.get("IsSupportSlaveZone")
@@ -118,6 +130,7 @@ class Ability(AbstractModel):
         self._IsSupportManualSnapshot = params.get("IsSupportManualSnapshot")
         self._IsSupportTransparentDataEncryption = params.get("IsSupportTransparentDataEncryption")
         self._NoSupportTransparentDataEncryptionReason = params.get("NoSupportTransparentDataEncryptionReason")
+        self._IsSupportManualLogic = params.get("IsSupportManualLogic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

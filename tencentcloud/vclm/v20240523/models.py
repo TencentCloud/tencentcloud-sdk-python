@@ -1138,6 +1138,8 @@ zh(简体中文)、en(英语)、ar(阿拉伯语)、de(德语)、es(西班牙语)
 时长要求：【10~300】秒
 大小要求：不超过 100M。
         :type AudioUrl: str
+        :param _RemoveVocal: 是否需要去除VideoUrl或AudioUrl中背景音，取值范围：0-不需要，1-需要，默认0 。
+        :type RemoveVocal: int
         :param _Confirm: 是否需要确认翻译结果0：不需要，1：需要
         :type Confirm: int
         :param _LipSync: 是否开启口型驱动，0：不开启，1：开启。默认开启。
@@ -1153,6 +1155,7 @@ zh(简体中文)、en(英语)、ar(阿拉伯语)、de(德语)、es(西班牙语)
         self._SrcLang = None
         self._DstLang = None
         self._AudioUrl = None
+        self._RemoveVocal = None
         self._Confirm = None
         self._LipSync = None
         self._VoiceType = None
@@ -1190,6 +1193,14 @@ zh(简体中文)、en(英语)、ar(阿拉伯语)、de(德语)、es(西班牙语)
         self._AudioUrl = AudioUrl
 
     @property
+    def RemoveVocal(self):
+        return self._RemoveVocal
+
+    @RemoveVocal.setter
+    def RemoveVocal(self, RemoveVocal):
+        self._RemoveVocal = RemoveVocal
+
+    @property
     def Confirm(self):
         return self._Confirm
 
@@ -1219,6 +1230,7 @@ zh(简体中文)、en(英语)、ar(阿拉伯语)、de(德语)、es(西班牙语)
         self._SrcLang = params.get("SrcLang")
         self._DstLang = params.get("DstLang")
         self._AudioUrl = params.get("AudioUrl")
+        self._RemoveVocal = params.get("RemoveVocal")
         self._Confirm = params.get("Confirm")
         self._LipSync = params.get("LipSync")
         self._VoiceType = params.get("VoiceType")

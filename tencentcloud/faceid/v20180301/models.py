@@ -2290,6 +2290,23 @@ class DetectInfoText(AbstractModel):
         :param _LivenessDetail: 本次流程进行的活体一比一流水。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LivenessDetail: list of DetectDetail
+        :param _LivenessInfoTag: 描述当前请求活体阶段被拒绝的详细原因，详情如下：
+01-用户全程闭眼
+02-用户未完成指定动作
+03-疑似翻拍攻击
+04-疑似合成攻击
+05-疑似黑产模版
+06-疑似存在水印
+07-反光校验未通过
+08-疑似中途换人
+09-人脸质量过差
+10-距离校验不通过
+11-疑似对抗样本攻击
+12-嘴巴区域疑似存在攻击痕迹
+13-眼睛区域疑似存在攻击痕迹
+14-眼睛或嘴巴被遮挡
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LivenessInfoTag: list of str
         :param _Mobile: 手机号码。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Mobile: str
@@ -2343,6 +2360,7 @@ class DetectInfoText(AbstractModel):
         self._Location = None
         self._Extra = None
         self._LivenessDetail = None
+        self._LivenessInfoTag = None
         self._Mobile = None
         self._CompareLibType = None
         self._LivenessMode = None
@@ -2528,6 +2546,14 @@ class DetectInfoText(AbstractModel):
         self._LivenessDetail = LivenessDetail
 
     @property
+    def LivenessInfoTag(self):
+        return self._LivenessInfoTag
+
+    @LivenessInfoTag.setter
+    def LivenessInfoTag(self, LivenessInfoTag):
+        self._LivenessInfoTag = LivenessInfoTag
+
+    @property
     def Mobile(self):
         return self._Mobile
 
@@ -2612,6 +2638,7 @@ class DetectInfoText(AbstractModel):
                 obj = DetectDetail()
                 obj._deserialize(item)
                 self._LivenessDetail.append(obj)
+        self._LivenessInfoTag = params.get("LivenessInfoTag")
         self._Mobile = params.get("Mobile")
         self._CompareLibType = params.get("CompareLibType")
         self._LivenessMode = params.get("LivenessMode")

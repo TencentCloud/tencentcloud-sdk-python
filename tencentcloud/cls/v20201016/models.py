@@ -6472,6 +6472,105 @@ class CreateMachineGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateNoticeContentRequest(AbstractModel):
+    """CreateNoticeContent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 模版名称。
+        :type Name: str
+        :param _Type: 模版内容语言。0：中文1：英文
+        :type Type: int
+        :param _NoticeContents: 模版详细配置。
+        :type NoticeContents: list of NoticeContent
+        """
+        self._Name = None
+        self._Type = None
+        self._NoticeContents = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def NoticeContents(self):
+        return self._NoticeContents
+
+    @NoticeContents.setter
+    def NoticeContents(self, NoticeContents):
+        self._NoticeContents = NoticeContents
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        if params.get("NoticeContents") is not None:
+            self._NoticeContents = []
+            for item in params.get("NoticeContents"):
+                obj = NoticeContent()
+                obj._deserialize(item)
+                self._NoticeContents.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateNoticeContentResponse(AbstractModel):
+    """CreateNoticeContent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NoticeContentId: 通知内容配置ID
+        :type NoticeContentId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._NoticeContentId = None
+        self._RequestId = None
+
+    @property
+    def NoticeContentId(self):
+        return self._NoticeContentId
+
+    @NoticeContentId.setter
+    def NoticeContentId(self, NoticeContentId):
+        self._NoticeContentId = NoticeContentId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._NoticeContentId = params.get("NoticeContentId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateScheduledSqlRequest(AbstractModel):
     """CreateScheduledSql请求参数结构体
 
@@ -8888,6 +8987,64 @@ class DeleteMachineGroupRequest(AbstractModel):
 
 class DeleteMachineGroupResponse(AbstractModel):
     """DeleteMachineGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteNoticeContentRequest(AbstractModel):
+    """DeleteNoticeContent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NoticeContentId: 通知内容模版ID
+        :type NoticeContentId: str
+        """
+        self._NoticeContentId = None
+
+    @property
+    def NoticeContentId(self):
+        return self._NoticeContentId
+
+    @NoticeContentId.setter
+    def NoticeContentId(self, NoticeContentId):
+        self._NoticeContentId = NoticeContentId
+
+
+    def _deserialize(self, params):
+        self._NoticeContentId = params.get("NoticeContentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteNoticeContentResponse(AbstractModel):
+    """DeleteNoticeContent返回参数结构体
 
     """
 
@@ -12052,6 +12209,133 @@ class DescribeMachinesResponse(AbstractModel):
         self._UpdateEndTime = params.get("UpdateEndTime")
         self._LatestAgentVersion = params.get("LatestAgentVersion")
         self._ServiceLogging = params.get("ServiceLogging")
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeNoticeContentsRequest(AbstractModel):
+    """DescribeNoticeContents请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: <li> name
+按照【通知内容模版名称】进行过滤。
+类型：String
+必选：否
+</li>
+<li> noticeContentId
+按照【通知内容模版ID】进行过滤。
+类型：String
+必选：否
+</li>
+每次请求的Filters的上限为10，Filter.Values的上限为100。
+        :type Filters: list of Filter
+        :param _Offset: 分页的偏移量，默认值为0。
+        :type Offset: int
+        :param _Limit: 分页单页限制数目，默认值为20，最大值100。
+        :type Limit: int
+        """
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNoticeContentsResponse(AbstractModel):
+    """DescribeNoticeContents返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NoticeContents: 通知内容模版列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoticeContents: list of NoticeContentTemplate
+        :param _TotalCount: 符合条件的通知内容模版总数。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._NoticeContents = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def NoticeContents(self):
+        return self._NoticeContents
+
+    @NoticeContents.setter
+    def NoticeContents(self, NoticeContents):
+        self._NoticeContents = NoticeContents
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("NoticeContents") is not None:
+            self._NoticeContents = []
+            for item in params.get("NoticeContents"):
+                obj = NoticeContentTemplate()
+                obj._deserialize(item)
+                self._NoticeContents.append(obj)
         self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
@@ -18174,6 +18458,107 @@ class ModifyMachineGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyNoticeContentRequest(AbstractModel):
+    """ModifyNoticeContent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NoticeContentId: 通知内容模版ID。
+        :type NoticeContentId: str
+        :param _Name: 通知内容模版名称。
+        :type Name: str
+        :param _Type: 通知内容语言。
+
+0：中文 1：英文
+        :type Type: int
+        :param _NoticeContents: 通知内容模版详细信息。
+        :type NoticeContents: list of NoticeContent
+        """
+        self._NoticeContentId = None
+        self._Name = None
+        self._Type = None
+        self._NoticeContents = None
+
+    @property
+    def NoticeContentId(self):
+        return self._NoticeContentId
+
+    @NoticeContentId.setter
+    def NoticeContentId(self, NoticeContentId):
+        self._NoticeContentId = NoticeContentId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def NoticeContents(self):
+        return self._NoticeContents
+
+    @NoticeContents.setter
+    def NoticeContents(self, NoticeContents):
+        self._NoticeContents = NoticeContents
+
+
+    def _deserialize(self, params):
+        self._NoticeContentId = params.get("NoticeContentId")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        if params.get("NoticeContents") is not None:
+            self._NoticeContents = []
+            for item in params.get("NoticeContents"):
+                obj = NoticeContent()
+                obj._deserialize(item)
+                self._NoticeContents.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNoticeContentResponse(AbstractModel):
+    """ModifyNoticeContent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyScheduledSqlRequest(AbstractModel):
     """ModifyScheduledSql请求参数结构体
 
@@ -18791,9 +19176,14 @@ class MonitorTime(AbstractModel):
         :param _Time: 执行的周期，或者定制执行的时间节点。单位为分钟，取值范围为1~1440。
 当type为`Period`,`Fixed`时，time字段生效。
         :type Time: int
+        :param _CronExpression: 执行的周期cron表达式。示例：`"*/1 * * * *"` 从左到右每个field的含义 Minutes field, Hours field,Day of month field,Month field,Day of week field， 不支持秒级别。
+当type为`Cron`时，CronExpression字段生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CronExpression: str
         """
         self._Type = None
         self._Time = None
+        self._CronExpression = None
 
     @property
     def Type(self):
@@ -18811,10 +19201,19 @@ class MonitorTime(AbstractModel):
     def Time(self, Time):
         self._Time = Time
 
+    @property
+    def CronExpression(self):
+        return self._CronExpression
+
+    @CronExpression.setter
+    def CronExpression(self, CronExpression):
+        self._CronExpression = CronExpression
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
         self._Time = params.get("Time")
+        self._CronExpression = params.get("CronExpression")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18918,6 +19317,282 @@ class MultiTopicSearchInformation(AbstractModel):
         
 
 
+class NoticeContent(AbstractModel):
+    """通知内容模版详细配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 渠道类型
+
+Email:邮件;Sms:短信;WeChat:微信;Phone:电话;WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调;
+        :type Type: str
+        :param _TriggerContent: 告警触发通知内容模版。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerContent: :class:`tencentcloud.cls.v20201016.models.NoticeContentInfo`
+        :param _RecoveryContent: 告警恢复通知内容模版。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecoveryContent: :class:`tencentcloud.cls.v20201016.models.NoticeContentInfo`
+        """
+        self._Type = None
+        self._TriggerContent = None
+        self._RecoveryContent = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def TriggerContent(self):
+        return self._TriggerContent
+
+    @TriggerContent.setter
+    def TriggerContent(self, TriggerContent):
+        self._TriggerContent = TriggerContent
+
+    @property
+    def RecoveryContent(self):
+        return self._RecoveryContent
+
+    @RecoveryContent.setter
+    def RecoveryContent(self, RecoveryContent):
+        self._RecoveryContent = RecoveryContent
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("TriggerContent") is not None:
+            self._TriggerContent = NoticeContentInfo()
+            self._TriggerContent._deserialize(params.get("TriggerContent"))
+        if params.get("RecoveryContent") is not None:
+            self._RecoveryContent = NoticeContentInfo()
+            self._RecoveryContent._deserialize(params.get("RecoveryContent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NoticeContentInfo(AbstractModel):
+    """通知模板内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Title: 通知内容模板标题信息。
+部分通知渠道类型不支持“标题”，请参照腾讯云控制台页面。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Title: str
+        :param _Content: 通知内容模板正文信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        :param _Headers: 请求头（Request Headers）：在HTTP请求中，请求头包含了客户端向服务器发送的附加信息，如用户代理、授权凭证、期望的响应格式等。
+仅“自定义回调”支持该配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Headers: list of str
+        """
+        self._Title = None
+        self._Content = None
+        self._Headers = None
+
+    @property
+    def Title(self):
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Headers(self):
+        return self._Headers
+
+    @Headers.setter
+    def Headers(self, Headers):
+        self._Headers = Headers
+
+
+    def _deserialize(self, params):
+        self._Title = params.get("Title")
+        self._Content = params.get("Content")
+        self._Headers = params.get("Headers")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NoticeContentTemplate(AbstractModel):
+    """通知内容模板信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NoticeContentId: 通知内容模板ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoticeContentId: str
+        :param _Name: 通知内容模板名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Type: 语言类型。
+
+0： 中文
+1： 英文
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        :param _NoticeContents: 通知内容模板信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoticeContents: list of NoticeContent
+        :param _Flag: 通知内容模板标记。
+
+0： 用户自定义
+1： 系统内置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Flag: int
+        :param _Uin: 创建者主账号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: int
+        :param _SubUin: 创建/修改者子账号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubUin: int
+        :param _CreateTime: 创建时间 秒级时间戳。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param _UpdateTime: 更新时间 秒级时间戳。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: int
+        """
+        self._NoticeContentId = None
+        self._Name = None
+        self._Type = None
+        self._NoticeContents = None
+        self._Flag = None
+        self._Uin = None
+        self._SubUin = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def NoticeContentId(self):
+        return self._NoticeContentId
+
+    @NoticeContentId.setter
+    def NoticeContentId(self, NoticeContentId):
+        self._NoticeContentId = NoticeContentId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def NoticeContents(self):
+        return self._NoticeContents
+
+    @NoticeContents.setter
+    def NoticeContents(self, NoticeContents):
+        self._NoticeContents = NoticeContents
+
+    @property
+    def Flag(self):
+        return self._Flag
+
+    @Flag.setter
+    def Flag(self, Flag):
+        self._Flag = Flag
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubUin(self):
+        return self._SubUin
+
+    @SubUin.setter
+    def SubUin(self, SubUin):
+        self._SubUin = SubUin
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._NoticeContentId = params.get("NoticeContentId")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        if params.get("NoticeContents") is not None:
+            self._NoticeContents = []
+            for item in params.get("NoticeContents"):
+                obj = NoticeContent()
+                obj._deserialize(item)
+                self._NoticeContents.append(obj)
+        self._Flag = params.get("Flag")
+        self._Uin = params.get("Uin")
+        self._SubUin = params.get("SubUin")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NoticeReceiver(AbstractModel):
     """告警通知接收者信息
 
@@ -18949,6 +19624,9 @@ class NoticeReceiver(AbstractModel):
 - 入参时无效。
 - 出参时有效。
         :type Index: int
+        :param _NoticeContentId: 通知内容模板ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoticeContentId: str
         """
         self._ReceiverType = None
         self._ReceiverIds = None
@@ -18956,6 +19634,7 @@ class NoticeReceiver(AbstractModel):
         self._StartTime = None
         self._EndTime = None
         self._Index = None
+        self._NoticeContentId = None
 
     @property
     def ReceiverType(self):
@@ -19005,6 +19684,14 @@ class NoticeReceiver(AbstractModel):
     def Index(self, Index):
         self._Index = Index
 
+    @property
+    def NoticeContentId(self):
+        return self._NoticeContentId
+
+    @NoticeContentId.setter
+    def NoticeContentId(self, NoticeContentId):
+        self._NoticeContentId = NoticeContentId
+
 
     def _deserialize(self, params):
         self._ReceiverType = params.get("ReceiverType")
@@ -19013,6 +19700,7 @@ class NoticeReceiver(AbstractModel):
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._Index = params.get("Index")
+        self._NoticeContentId = params.get("NoticeContentId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

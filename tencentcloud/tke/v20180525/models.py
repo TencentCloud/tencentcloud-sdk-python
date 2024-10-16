@@ -31012,7 +31012,7 @@ class OpenPolicyInfo(AbstractModel):
         :param _Name: 策略英文名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _Kind: 策略模版类型
+        :param _Kind: 策略模板类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type Kind: str
         :param _EnabledStatus: 策略开关状态：open打开，close关闭
@@ -31154,7 +31154,7 @@ class OpenPolicySwitch(AbstractModel):
         :type EnforcementAction: str
         :param _Name: 策略英文名称
         :type Name: str
-        :param _Kind: 策略模版类型
+        :param _Kind: 策略模板类型
         :type Kind: str
         :param _EnabledStatus: 策略开关状态：open打开，close关闭
         :type EnabledStatus: str

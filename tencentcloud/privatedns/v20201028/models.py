@@ -510,6 +510,148 @@ class AuditLogInfo(AbstractModel):
         
 
 
+class CreateEndPointRequest(AbstractModel):
+    """CreateEndPoint请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EndPointName: 终端节点名称
+        :type EndPointName: str
+        :param _EndPointServiceId: 终端节点服务ID（vpc终端节点服务ID）
+        :type EndPointServiceId: str
+        :param _EndPointRegion: 终端节点地域，必须要和终端节点服务所属地域一致
+        :type EndPointRegion: str
+        :param _IpNum: 终端节点ip数量
+        :type IpNum: int
+        """
+        self._EndPointName = None
+        self._EndPointServiceId = None
+        self._EndPointRegion = None
+        self._IpNum = None
+
+    @property
+    def EndPointName(self):
+        return self._EndPointName
+
+    @EndPointName.setter
+    def EndPointName(self, EndPointName):
+        self._EndPointName = EndPointName
+
+    @property
+    def EndPointServiceId(self):
+        return self._EndPointServiceId
+
+    @EndPointServiceId.setter
+    def EndPointServiceId(self, EndPointServiceId):
+        self._EndPointServiceId = EndPointServiceId
+
+    @property
+    def EndPointRegion(self):
+        return self._EndPointRegion
+
+    @EndPointRegion.setter
+    def EndPointRegion(self, EndPointRegion):
+        self._EndPointRegion = EndPointRegion
+
+    @property
+    def IpNum(self):
+        return self._IpNum
+
+    @IpNum.setter
+    def IpNum(self, IpNum):
+        self._IpNum = IpNum
+
+
+    def _deserialize(self, params):
+        self._EndPointName = params.get("EndPointName")
+        self._EndPointServiceId = params.get("EndPointServiceId")
+        self._EndPointRegion = params.get("EndPointRegion")
+        self._IpNum = params.get("IpNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateEndPointResponse(AbstractModel):
+    """CreateEndPoint返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EndPointId: 终端节点id
+        :type EndPointId: str
+        :param _EndPointName: 终端节点名称
+        :type EndPointName: str
+        :param _EndPointServiceId: 终端节点服务ID
+        :type EndPointServiceId: str
+        :param _EndPointVipSet: 终端节点的IP列表
+        :type EndPointVipSet: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._EndPointId = None
+        self._EndPointName = None
+        self._EndPointServiceId = None
+        self._EndPointVipSet = None
+        self._RequestId = None
+
+    @property
+    def EndPointId(self):
+        return self._EndPointId
+
+    @EndPointId.setter
+    def EndPointId(self, EndPointId):
+        self._EndPointId = EndPointId
+
+    @property
+    def EndPointName(self):
+        return self._EndPointName
+
+    @EndPointName.setter
+    def EndPointName(self, EndPointName):
+        self._EndPointName = EndPointName
+
+    @property
+    def EndPointServiceId(self):
+        return self._EndPointServiceId
+
+    @EndPointServiceId.setter
+    def EndPointServiceId(self, EndPointServiceId):
+        self._EndPointServiceId = EndPointServiceId
+
+    @property
+    def EndPointVipSet(self):
+        return self._EndPointVipSet
+
+    @EndPointVipSet.setter
+    def EndPointVipSet(self, EndPointVipSet):
+        self._EndPointVipSet = EndPointVipSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._EndPointId = params.get("EndPointId")
+        self._EndPointName = params.get("EndPointName")
+        self._EndPointServiceId = params.get("EndPointServiceId")
+        self._EndPointVipSet = params.get("EndPointVipSet")
+        self._RequestId = params.get("RequestId")
+
+
 class CreatePrivateDNSAccountRequest(AbstractModel):
     """CreatePrivateDNSAccount请求参数结构体
 

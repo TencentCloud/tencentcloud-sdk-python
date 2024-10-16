@@ -624,6 +624,11 @@ def test_import_gse():
     from tencentcloud.gse.v20191112 import models
 
 
+def test_import_gwlb():
+    from tencentcloud.gwlb.v20240906 import gwlb_client
+    from tencentcloud.gwlb.v20240906 import models
+
+
 def test_import_habo():
     from tencentcloud.habo.v20181203 import habo_client
     from tencentcloud.habo.v20181203 import models

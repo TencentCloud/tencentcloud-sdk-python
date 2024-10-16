@@ -49,6 +49,29 @@ class PrivatednsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateEndPoint(self, request):
+        """创建终端节点
+
+        :param request: Request instance for CreateEndPoint.
+        :type request: :class:`tencentcloud.privatedns.v20201028.models.CreateEndPointRequest`
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.CreateEndPointResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateEndPoint", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateEndPointResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreatePrivateDNSAccount(self, request):
         """创建私有域解析账号
 

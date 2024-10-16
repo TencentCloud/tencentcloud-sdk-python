@@ -472,6 +472,265 @@ class BgpPeer(AbstractModel):
         
 
 
+class CloudAttachInfo(AbstractModel):
+    """敏捷上云服务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 敏捷上云实例id
+        :type InstanceId: str
+        :param _Name: 敏捷上云名称
+        :type Name: str
+        :param _IapId: 合作伙伴的AppId
+        :type IapId: str
+        :param _IdcAddress: 需要接入敏捷上云的IDC的地址
+        :type IdcAddress: str
+        :param _IdcType: 需要接入敏捷上云的IDC的互联网服务提供商类型
+        :type IdcType: str
+        :param _Bandwidth: 敏捷上云的带宽，单位为MB
+        :type Bandwidth: int
+        :param _Telephone: 联系电话
+        :type Telephone: str
+        :param _Status: 敏捷上云的状态
+available：就绪状态
+applying：申请，待审核状态
+pendingpay：代付款状态
+building：建设中状态
+confirming：待确认状态
+isolate: 隔离状态
+stoped：终止状态
+        :type Status: str
+        :param _ApplyTime: 敏捷上云申请的时间
+        :type ApplyTime: str
+        :param _ReadyTime: 敏捷上云建设完成的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReadyTime: str
+        :param _ExpireTime: 敏捷上云过期时间
+        :type ExpireTime: str
+        :param _Remarks: 备注信息
+        :type Remarks: str
+        :param _RegionStatus: 敏捷上云的地域状态。
+same-region：同地域
+cross-region：跨地域
+        :type RegionStatus: str
+        :param _AppId: 用户的AppId
+        :type AppId: str
+        :param _Uin: 用户的Uin
+        :type Uin: str
+        :param _CustomerAuthName: 用户注册名称
+        :type CustomerAuthName: str
+        :param _DirectConnectId: 物理专线实例ID
+        :type DirectConnectId: str
+        :param _CloudAttachServiceGatewaysSupport: 敏捷上云是否支持创建高速上云专线网关
+        :type CloudAttachServiceGatewaysSupport: bool
+        :param _BUpdateBandwidth: 敏捷上云服务是否处于升降配中
+        :type BUpdateBandwidth: bool
+        """
+        self._InstanceId = None
+        self._Name = None
+        self._IapId = None
+        self._IdcAddress = None
+        self._IdcType = None
+        self._Bandwidth = None
+        self._Telephone = None
+        self._Status = None
+        self._ApplyTime = None
+        self._ReadyTime = None
+        self._ExpireTime = None
+        self._Remarks = None
+        self._RegionStatus = None
+        self._AppId = None
+        self._Uin = None
+        self._CustomerAuthName = None
+        self._DirectConnectId = None
+        self._CloudAttachServiceGatewaysSupport = None
+        self._BUpdateBandwidth = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def IapId(self):
+        return self._IapId
+
+    @IapId.setter
+    def IapId(self, IapId):
+        self._IapId = IapId
+
+    @property
+    def IdcAddress(self):
+        return self._IdcAddress
+
+    @IdcAddress.setter
+    def IdcAddress(self, IdcAddress):
+        self._IdcAddress = IdcAddress
+
+    @property
+    def IdcType(self):
+        return self._IdcType
+
+    @IdcType.setter
+    def IdcType(self, IdcType):
+        self._IdcType = IdcType
+
+    @property
+    def Bandwidth(self):
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def Telephone(self):
+        return self._Telephone
+
+    @Telephone.setter
+    def Telephone(self, Telephone):
+        self._Telephone = Telephone
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ApplyTime(self):
+        return self._ApplyTime
+
+    @ApplyTime.setter
+    def ApplyTime(self, ApplyTime):
+        self._ApplyTime = ApplyTime
+
+    @property
+    def ReadyTime(self):
+        return self._ReadyTime
+
+    @ReadyTime.setter
+    def ReadyTime(self, ReadyTime):
+        self._ReadyTime = ReadyTime
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def Remarks(self):
+        return self._Remarks
+
+    @Remarks.setter
+    def Remarks(self, Remarks):
+        self._Remarks = Remarks
+
+    @property
+    def RegionStatus(self):
+        return self._RegionStatus
+
+    @RegionStatus.setter
+    def RegionStatus(self, RegionStatus):
+        self._RegionStatus = RegionStatus
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def CustomerAuthName(self):
+        return self._CustomerAuthName
+
+    @CustomerAuthName.setter
+    def CustomerAuthName(self, CustomerAuthName):
+        self._CustomerAuthName = CustomerAuthName
+
+    @property
+    def DirectConnectId(self):
+        return self._DirectConnectId
+
+    @DirectConnectId.setter
+    def DirectConnectId(self, DirectConnectId):
+        self._DirectConnectId = DirectConnectId
+
+    @property
+    def CloudAttachServiceGatewaysSupport(self):
+        return self._CloudAttachServiceGatewaysSupport
+
+    @CloudAttachServiceGatewaysSupport.setter
+    def CloudAttachServiceGatewaysSupport(self, CloudAttachServiceGatewaysSupport):
+        self._CloudAttachServiceGatewaysSupport = CloudAttachServiceGatewaysSupport
+
+    @property
+    def BUpdateBandwidth(self):
+        return self._BUpdateBandwidth
+
+    @BUpdateBandwidth.setter
+    def BUpdateBandwidth(self, BUpdateBandwidth):
+        self._BUpdateBandwidth = BUpdateBandwidth
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Name = params.get("Name")
+        self._IapId = params.get("IapId")
+        self._IdcAddress = params.get("IdcAddress")
+        self._IdcType = params.get("IdcType")
+        self._Bandwidth = params.get("Bandwidth")
+        self._Telephone = params.get("Telephone")
+        self._Status = params.get("Status")
+        self._ApplyTime = params.get("ApplyTime")
+        self._ReadyTime = params.get("ReadyTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._Remarks = params.get("Remarks")
+        self._RegionStatus = params.get("RegionStatus")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._CustomerAuthName = params.get("CustomerAuthName")
+        self._DirectConnectId = params.get("DirectConnectId")
+        self._CloudAttachServiceGatewaysSupport = params.get("CloudAttachServiceGatewaysSupport")
+        self._BUpdateBandwidth = params.get("BUpdateBandwidth")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Coordinate(AbstractModel):
     """坐标，经维度描述
 
@@ -515,6 +774,173 @@ class Coordinate(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateCasInput(AbstractModel):
+    """创建敏捷上云入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 敏捷上云名称
+        :type Name: str
+        :param _IdcAddress: 需要接入敏捷上云的IDC的地址
+        :type IdcAddress: str
+        :param _IdcType: 需要接入敏捷上云的IDC的互联网服务提供商类型
+        :type IdcType: str
+        :param _Bandwidth: 敏捷上云的带宽，单位为MB
+        :type Bandwidth: int
+        :param _Telephone: 联系电话
+        :type Telephone: str
+        :param _Remarks: 备注信息
+        :type Remarks: str
+        """
+        self._Name = None
+        self._IdcAddress = None
+        self._IdcType = None
+        self._Bandwidth = None
+        self._Telephone = None
+        self._Remarks = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def IdcAddress(self):
+        return self._IdcAddress
+
+    @IdcAddress.setter
+    def IdcAddress(self, IdcAddress):
+        self._IdcAddress = IdcAddress
+
+    @property
+    def IdcType(self):
+        return self._IdcType
+
+    @IdcType.setter
+    def IdcType(self, IdcType):
+        self._IdcType = IdcType
+
+    @property
+    def Bandwidth(self):
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def Telephone(self):
+        return self._Telephone
+
+    @Telephone.setter
+    def Telephone(self, Telephone):
+        self._Telephone = Telephone
+
+    @property
+    def Remarks(self):
+        return self._Remarks
+
+    @Remarks.setter
+    def Remarks(self, Remarks):
+        self._Remarks = Remarks
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._IdcAddress = params.get("IdcAddress")
+        self._IdcType = params.get("IdcType")
+        self._Bandwidth = params.get("Bandwidth")
+        self._Telephone = params.get("Telephone")
+        self._Remarks = params.get("Remarks")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCloudAttachServiceRequest(AbstractModel):
+    """CreateCloudAttachService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 创建敏捷上云入参
+        :type Data: :class:`tencentcloud.dc.v20180410.models.CreateCasInput`
+        """
+        self._Data = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = CreateCasInput()
+            self._Data._deserialize(params.get("Data"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCloudAttachServiceResponse(AbstractModel):
+    """CreateCloudAttachService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CloudAttach: 敏捷上云服务详情
+        :type CloudAttach: :class:`tencentcloud.dc.v20180410.models.CloudAttachInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CloudAttach = None
+        self._RequestId = None
+
+    @property
+    def CloudAttach(self):
+        return self._CloudAttach
+
+    @CloudAttach.setter
+    def CloudAttach(self, CloudAttach):
+        self._CloudAttach = CloudAttach
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CloudAttach") is not None:
+            self._CloudAttach = CloudAttachInfo()
+            self._CloudAttach._deserialize(params.get("CloudAttach"))
+        self._RequestId = params.get("RequestId")
 
 
 class CreateDirectConnectRequest(AbstractModel):

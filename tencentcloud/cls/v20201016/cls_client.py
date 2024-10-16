@@ -509,6 +509,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateNoticeContent(self, request):
+        """该接口用于创建通知内容。
+
+        :param request: Request instance for CreateNoticeContent.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateNoticeContentRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateNoticeContentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateNoticeContent", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateNoticeContentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateScheduledSql(self, request):
         """本接口用于创建定时SQL分析任务
 
@@ -937,6 +960,29 @@ class ClsClient(AbstractClient):
             body = self.call("DeleteMachineGroupInfo", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteMachineGroupInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteNoticeContent(self, request):
+        """该接口用于删除通知内容配置
+
+        :param request: Request instance for DeleteNoticeContent.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteNoticeContentRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteNoticeContentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteNoticeContent", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteNoticeContentResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1545,6 +1591,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeNoticeContents(self, request):
+        """获取通知内容列表
+
+        :param request: Request instance for DescribeNoticeContents.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeNoticeContentsRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeNoticeContentsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNoticeContents", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNoticeContentsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePartitions(self, request):
         """该接口已废弃，如需获取分区数量，请使用DescribeTopics接口。
 
@@ -2042,6 +2111,29 @@ class ClsClient(AbstractClient):
             body = self.call("ModifyMachineGroup", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyMachineGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyNoticeContent(self, request):
+        """该接口用于修改通知内容配置
+
+        :param request: Request instance for ModifyNoticeContent.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyNoticeContentRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyNoticeContentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyNoticeContent", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyNoticeContentResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
