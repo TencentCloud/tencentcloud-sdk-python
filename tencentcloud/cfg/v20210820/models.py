@@ -337,6 +337,9 @@ class ActionLibraryListResult(AbstractModel):
         :param _IsNewAction: 是否是新动作
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsNewAction: bool
+        :param _ObjectTypeId: 对象类型ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ObjectTypeId: int
         """
         self._ActionName = None
         self._Desc = None
@@ -358,6 +361,7 @@ class ActionLibraryListResult(AbstractModel):
         self._ObjectType = None
         self._MetricIdList = None
         self._IsNewAction = None
+        self._ObjectTypeId = None
 
     @property
     def ActionName(self):
@@ -519,6 +523,14 @@ class ActionLibraryListResult(AbstractModel):
     def IsNewAction(self, IsNewAction):
         self._IsNewAction = IsNewAction
 
+    @property
+    def ObjectTypeId(self):
+        return self._ObjectTypeId
+
+    @ObjectTypeId.setter
+    def ObjectTypeId(self, ObjectTypeId):
+        self._ObjectTypeId = ObjectTypeId
+
 
     def _deserialize(self, params):
         self._ActionName = params.get("ActionName")
@@ -541,6 +553,7 @@ class ActionLibraryListResult(AbstractModel):
         self._ObjectType = params.get("ObjectType")
         self._MetricIdList = params.get("MetricIdList")
         self._IsNewAction = params.get("IsNewAction")
+        self._ObjectTypeId = params.get("ObjectTypeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4771,6 +4784,9 @@ class TaskReportInfo(AbstractModel):
         :type ArchiveStage: int
         :param _ArchiveTime: 归档时间
         :type ArchiveTime: str
+        :param _ArchiveUuid: 归档ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ArchiveUuid: str
         """
         self._Stage = None
         self._CreateTime = None
@@ -4780,6 +4796,7 @@ class TaskReportInfo(AbstractModel):
         self._Log = None
         self._ArchiveStage = None
         self._ArchiveTime = None
+        self._ArchiveUuid = None
 
     @property
     def Stage(self):
@@ -4845,6 +4862,14 @@ class TaskReportInfo(AbstractModel):
     def ArchiveTime(self, ArchiveTime):
         self._ArchiveTime = ArchiveTime
 
+    @property
+    def ArchiveUuid(self):
+        return self._ArchiveUuid
+
+    @ArchiveUuid.setter
+    def ArchiveUuid(self, ArchiveUuid):
+        self._ArchiveUuid = ArchiveUuid
+
 
     def _deserialize(self, params):
         self._Stage = params.get("Stage")
@@ -4855,6 +4880,7 @@ class TaskReportInfo(AbstractModel):
         self._Log = params.get("Log")
         self._ArchiveStage = params.get("ArchiveStage")
         self._ArchiveTime = params.get("ArchiveTime")
+        self._ArchiveUuid = params.get("ArchiveUuid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -634,10 +634,21 @@ class CreateBPFakeAPPResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _FakeAPPId: FakeAPPId
+        :type FakeAPPId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._FakeAPPId = None
         self._RequestId = None
+
+    @property
+    def FakeAPPId(self):
+        return self._FakeAPPId
+
+    @FakeAPPId.setter
+    def FakeAPPId(self, FakeAPPId):
+        self._FakeAPPId = FakeAPPId
 
     @property
     def RequestId(self):
@@ -649,6 +660,7 @@ class CreateBPFakeAPPResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._FakeAPPId = params.get("FakeAPPId")
         self._RequestId = params.get("RequestId")
 
 
@@ -728,10 +740,21 @@ class CreateBPFakeURLResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _FakeURLId: FakeURLId
+        :type FakeURLId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._FakeURLId = None
         self._RequestId = None
+
+    @property
+    def FakeURLId(self):
+        return self._FakeURLId
+
+    @FakeURLId.setter
+    def FakeURLId(self, FakeURLId):
+        self._FakeURLId = FakeURLId
 
     @property
     def RequestId(self):
@@ -743,6 +766,7 @@ class CreateBPFakeURLResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._FakeURLId = params.get("FakeURLId")
         self._RequestId = params.get("RequestId")
 
 

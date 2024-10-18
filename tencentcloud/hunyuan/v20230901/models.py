@@ -92,8 +92,8 @@ class ChatCompletionsRequest(AbstractModel):
         :param _Messages: 聊天上下文信息。
 说明：
 1. 长度最多为 40，按对话时间从旧到新在数组中排列。
-2. Message.Role 可选值：system、user、assistant、 tool。
-其中，system 角色可选，如存在则必须位于列表的最开始。user（tool） 和 assistant 需交替出现（一问一答），以 user 提问开始，user（tool）提问结束，且 Content 不能为空。Role 的顺序示例：[system（可选） user assistant user assistant user ...]。
+2. Message.Role 可选值：system、user、assistant、 tool（functioncall场景）。
+其中，system 角色可选，如存在则必须位于列表的最开始。user（tool） 和 assistant 需交替出现（一问一答），以 user 提问开始，user（tool）提问结束，其中tool可以连续出现多次，且 Content 不能为空。Role 的顺序示例：[system（可选） user assistant user（tool tool ...） assistant user（tool tool ...） ...]。
 3. Messages 中 Content 总长度不能超过模型输入长度上限（可参考 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 文档），超过则会截断最前面的内容，只保留尾部内容。
         :type Messages: list of Message
         :param _Stream: 流式调用开关。
@@ -153,13 +153,14 @@ class ChatCompletionsRequest(AbstractModel):
         :type Citation: bool
         :param _EnableSpeedSearch: 是否开启极速版搜索，默认false，不开启；在开启且命中搜索时，会启用极速版搜索，流式输出首字返回更快。
         :type EnableSpeedSearch: bool
-        :param _EnableMultimedia: 图文并茂开关。
-详细介绍请阅读 [图文并茂](https://cloud.tencent.com/document/product/1729/111178) 中的说明。
+        :param _EnableMultimedia: 多媒体开关。
+详细介绍请阅读 [多媒体介绍](https://cloud.tencent.com/document/product/1729/111178) 中的说明。
 说明：
-1. 该参数仅在功能增强（如搜索）开关开启（EnableEnhancement=true）时生效。
-2. hunyuan-lite 无图文并茂能力，该参数对 hunyuan-lite 版本不生效。
-3. 未传值时默认关闭。
-4. 开启并搜索到对应的多媒体信息时，会输出对应的多媒体地址，可以定制个性化的图文消息。
+1. 该参数目前仅对白名单内用户生效，如您想体验该功能请 [联系我们](https://cloud.tencent.com/act/event/Online_service)。
+2. 该参数仅在功能增强（如搜索）开关开启（EnableEnhancement=true）并且极速版搜索开关关闭（EnableSpeedSearch=false）时生效。
+3. hunyuan-lite 无多媒体能力，该参数对 hunyuan-lite 版本不生效。
+4. 未传值时默认关闭。
+5. 开启并搜索到对应的多媒体信息时，会输出对应的多媒体地址，可以定制个性化的图文消息。
         :type EnableMultimedia: bool
         """
         self._Model = None
@@ -355,7 +356,7 @@ class ChatCompletionsResponse(AbstractModel):
         :type SearchInfo: :class:`tencentcloud.hunyuan.v20230901.models.SearchInfo`
         :param _Replaces: 多媒体信息。
 说明：
-1. 可以用多媒体信息替换回复内容里的占位符，得到完整的图文信息。
+1. 可以用多媒体信息替换回复内容里的占位符，得到完整的消息。
 2. 可能会出现回复内容里存在占位符，但是因为审核等原因没有返回多媒体信息。
         :type Replaces: list of Replace
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
@@ -1345,22 +1346,52 @@ class Message(AbstractModel):
 
 
 class Multimedia(AbstractModel):
-    """图文并茂详情
+    """多媒体详情
 
     """
 
     def __init__(self):
         r"""
-        :param _Type: 多媒体类型，image：图片。
+        :param _Type: 多媒体类型，可选值包括 image、music、album、playlist。
+说明：
+1. image：图片；music：单曲，类型为单曲时，会返回详细歌手和歌曲信息；album：专辑；playlist：歌单。
+2. 当 type 为 music、album、playlist 时，需要配合 [QQ音乐SDK](https://developer.y.qq.com/) 使用。
         :type Type: str
-        :param _Url: 多媒体预览地址。
+        :param _Url: 多媒体地址。
+说明：
+1. type 为 image 时，地址为图片的预览地址；其他类型时，地址为封面图地址。
         :type Url: str
         :param _JumpUrl: 多媒体详情地址。
+说明：
+1. 仅 type 为 image 时，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
         :type JumpUrl: str
+        :param _Title: 名称。
+说明：
+1. type 为 image 时，该字段为空。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Title: str
+        :param _Desc: 描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Desc: str
+        :param _Singer: 歌手名称。
+说明：
+1. 仅 type 为 music 时，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Singer: str
+        :param _Ext: 歌曲详情。
+说明：
+1. 仅 type 为 music 时，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ext: :class:`tencentcloud.hunyuan.v20230901.models.SongExt`
         """
         self._Type = None
         self._Url = None
         self._JumpUrl = None
+        self._Title = None
+        self._Desc = None
+        self._Singer = None
+        self._Ext = None
 
     @property
     def Type(self):
@@ -1386,11 +1417,49 @@ class Multimedia(AbstractModel):
     def JumpUrl(self, JumpUrl):
         self._JumpUrl = JumpUrl
 
+    @property
+    def Title(self):
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Desc(self):
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def Singer(self):
+        return self._Singer
+
+    @Singer.setter
+    def Singer(self, Singer):
+        self._Singer = Singer
+
+    @property
+    def Ext(self):
+        return self._Ext
+
+    @Ext.setter
+    def Ext(self, Ext):
+        self._Ext = Ext
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
         self._Url = params.get("Url")
         self._JumpUrl = params.get("JumpUrl")
+        self._Title = params.get("Title")
+        self._Desc = params.get("Desc")
+        self._Singer = params.get("Singer")
+        if params.get("Ext") is not None:
+            self._Ext = SongExt()
+            self._Ext._deserialize(params.get("Ext"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1716,7 +1785,7 @@ class QueryHunyuanImageJobResponse(AbstractModel):
 
 
 class Replace(AbstractModel):
-    """图文并茂占位符替换信息
+    """多媒体占位符替换信息
 
     """
 
@@ -1920,6 +1989,63 @@ class SetPayModeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class SongExt(AbstractModel):
+    """歌曲详情。具体含义参考  [QQ音乐SDK](https://developer.y.qq.com/)
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SongId: 歌曲id
+        :type SongId: int
+        :param _SongMid: 歌曲mid
+        :type SongMid: str
+        :param _Vip: 歌曲是否为vip。1：vip歌曲； 0：普通歌曲。
+        :type Vip: int
+        """
+        self._SongId = None
+        self._SongMid = None
+        self._Vip = None
+
+    @property
+    def SongId(self):
+        return self._SongId
+
+    @SongId.setter
+    def SongId(self, SongId):
+        self._SongId = SongId
+
+    @property
+    def SongMid(self):
+        return self._SongMid
+
+    @SongMid.setter
+    def SongMid(self, SongMid):
+        self._SongMid = SongMid
+
+    @property
+    def Vip(self):
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+
+    def _deserialize(self, params):
+        self._SongId = params.get("SongId")
+        self._SongMid = params.get("SongMid")
+        self._Vip = params.get("Vip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SubmitHunyuanImageChatJobRequest(AbstractModel):

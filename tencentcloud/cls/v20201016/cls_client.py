@@ -2259,7 +2259,8 @@ class ClsClient(AbstractClient):
 
 
     def QueryMetric(self, request):
-        """查询指定时刻指标的最新值
+        """查询指定时刻指标的最新值。
+        如果该时刻向前推5分钟内均无指标数据，则无相应的查询结果。
 
         :param request: Request instance for QueryMetric.
         :type request: :class:`tencentcloud.cls.v20201016.models.QueryMetricRequest`

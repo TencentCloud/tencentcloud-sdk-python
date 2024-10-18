@@ -1122,6 +1122,10 @@ class CreateInstanceRequest(AbstractModel):
         :type SubProductCode: str
         :param _ReadWriteMode: 读写分离模式：0-不开启，1-本地读写分离，2-远端读写分离
         :type ReadWriteMode: int
+        :param _EnableScheduleRecoverGroup: 置放群组是否开启异步任务
+        :type EnableScheduleRecoverGroup: bool
+        :param _EnableScheduleOperationDuration: 置放群组开启异步任务的可维护时间段
+        :type EnableScheduleOperationDuration: :class:`tencentcloud.es.v20180416.models.EnableScheduleOperationDuration`
         """
         self._Zone = None
         self._EsVersion = None
@@ -1161,6 +1165,8 @@ class CreateInstanceRequest(AbstractModel):
         self._DisasterRecoverGroupAffinity = None
         self._SubProductCode = None
         self._ReadWriteMode = None
+        self._EnableScheduleRecoverGroup = None
+        self._EnableScheduleOperationDuration = None
 
     @property
     def Zone(self):
@@ -1466,6 +1472,22 @@ class CreateInstanceRequest(AbstractModel):
     def ReadWriteMode(self, ReadWriteMode):
         self._ReadWriteMode = ReadWriteMode
 
+    @property
+    def EnableScheduleRecoverGroup(self):
+        return self._EnableScheduleRecoverGroup
+
+    @EnableScheduleRecoverGroup.setter
+    def EnableScheduleRecoverGroup(self, EnableScheduleRecoverGroup):
+        self._EnableScheduleRecoverGroup = EnableScheduleRecoverGroup
+
+    @property
+    def EnableScheduleOperationDuration(self):
+        return self._EnableScheduleOperationDuration
+
+    @EnableScheduleOperationDuration.setter
+    def EnableScheduleOperationDuration(self, EnableScheduleOperationDuration):
+        self._EnableScheduleOperationDuration = EnableScheduleOperationDuration
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -1525,6 +1547,10 @@ class CreateInstanceRequest(AbstractModel):
         self._DisasterRecoverGroupAffinity = params.get("DisasterRecoverGroupAffinity")
         self._SubProductCode = params.get("SubProductCode")
         self._ReadWriteMode = params.get("ReadWriteMode")
+        self._EnableScheduleRecoverGroup = params.get("EnableScheduleRecoverGroup")
+        if params.get("EnableScheduleOperationDuration") is not None:
+            self._EnableScheduleOperationDuration = EnableScheduleOperationDuration()
+            self._EnableScheduleOperationDuration._deserialize(params.get("EnableScheduleOperationDuration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6803,6 +6829,79 @@ class Dimension(AbstractModel):
         
 
 
+class EnableScheduleOperationDuration(AbstractModel):
+    """置放群组异步任务维护的时间段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Periods: 支持开启异步任务的日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Periods: list of str
+        :param _TimeStart: 支持开启异步的开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeStart: str
+        :param _TimeEnd: 支持开启异步的结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeEnd: str
+        :param _TimeZone: 支持开启异步的时区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeZone: str
+        """
+        self._Periods = None
+        self._TimeStart = None
+        self._TimeEnd = None
+        self._TimeZone = None
+
+    @property
+    def Periods(self):
+        return self._Periods
+
+    @Periods.setter
+    def Periods(self, Periods):
+        self._Periods = Periods
+
+    @property
+    def TimeStart(self):
+        return self._TimeStart
+
+    @TimeStart.setter
+    def TimeStart(self, TimeStart):
+        self._TimeStart = TimeStart
+
+    @property
+    def TimeEnd(self):
+        return self._TimeEnd
+
+    @TimeEnd.setter
+    def TimeEnd(self, TimeEnd):
+        self._TimeEnd = TimeEnd
+
+    @property
+    def TimeZone(self):
+        return self._TimeZone
+
+    @TimeZone.setter
+    def TimeZone(self, TimeZone):
+        self._TimeZone = TimeZone
+
+
+    def _deserialize(self, params):
+        self._Periods = params.get("Periods")
+        self._TimeStart = params.get("TimeStart")
+        self._TimeEnd = params.get("TimeEnd")
+        self._TimeZone = params.get("TimeZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EsAcl(AbstractModel):
     """ES集群配置项
 
@@ -7858,7 +7957,7 @@ class InstallInstanceModelRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例ID
         :type InstanceId: str
-        :param _UsrCosModelUrlList: 客户上传到自己cos的地址列表
+        :param _UsrCosModelUrlList: 客户上传到cos的模型地址，单次请求限制一个。cos文件为压缩文件，格式包括：zip、tgz和tar.gz
         :type UsrCosModelUrlList: list of str
         """
         self._InstanceId = None
@@ -11161,6 +11260,12 @@ class NodeView(AbstractModel):
         :type IsCoordinationNode: bool
         :param _CVMStatus: CVM运行状态
         :type CVMStatus: str
+        :param _CVMDisasterRecoverGroupId: cvm绑定的置放群组的id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CVMDisasterRecoverGroupId: str
+        :param _CVMDisasterRecoverGroupStatus: cvm绑定置放群组的状态。2: 已绑定；1: 绑定中；0: 未开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CVMDisasterRecoverGroupStatus: int
         """
         self._NodeId = None
         self._NodeIp = None
@@ -11181,6 +11286,8 @@ class NodeView(AbstractModel):
         self._Hidden = None
         self._IsCoordinationNode = None
         self._CVMStatus = None
+        self._CVMDisasterRecoverGroupId = None
+        self._CVMDisasterRecoverGroupStatus = None
 
     @property
     def NodeId(self):
@@ -11334,6 +11441,22 @@ class NodeView(AbstractModel):
     def CVMStatus(self, CVMStatus):
         self._CVMStatus = CVMStatus
 
+    @property
+    def CVMDisasterRecoverGroupId(self):
+        return self._CVMDisasterRecoverGroupId
+
+    @CVMDisasterRecoverGroupId.setter
+    def CVMDisasterRecoverGroupId(self, CVMDisasterRecoverGroupId):
+        self._CVMDisasterRecoverGroupId = CVMDisasterRecoverGroupId
+
+    @property
+    def CVMDisasterRecoverGroupStatus(self):
+        return self._CVMDisasterRecoverGroupStatus
+
+    @CVMDisasterRecoverGroupStatus.setter
+    def CVMDisasterRecoverGroupStatus(self, CVMDisasterRecoverGroupStatus):
+        self._CVMDisasterRecoverGroupStatus = CVMDisasterRecoverGroupStatus
+
 
     def _deserialize(self, params):
         self._NodeId = params.get("NodeId")
@@ -11355,6 +11478,8 @@ class NodeView(AbstractModel):
         self._Hidden = params.get("Hidden")
         self._IsCoordinationNode = params.get("IsCoordinationNode")
         self._CVMStatus = params.get("CVMStatus")
+        self._CVMDisasterRecoverGroupId = params.get("CVMDisasterRecoverGroupId")
+        self._CVMDisasterRecoverGroupStatus = params.get("CVMDisasterRecoverGroupStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12202,6 +12327,10 @@ class RestartNodesRequest(AbstractModel):
         :type ShardAllocationConcurrents: int
         :param _ShardAllocationBytes: 分片迁移并发速度
         :type ShardAllocationBytes: int
+        :param _EnableScheduleRecoverGroup: 是否开启置放群组异步任务
+        :type EnableScheduleRecoverGroup: bool
+        :param _EnableScheduleOperationDuration: 置放群组异步任务时间段
+        :type EnableScheduleOperationDuration: :class:`tencentcloud.es.v20180416.models.EnableScheduleOperationDuration`
         """
         self._InstanceId = None
         self._NodeNames = None
@@ -12211,6 +12340,8 @@ class RestartNodesRequest(AbstractModel):
         self._CvmDelayOnlineTime = None
         self._ShardAllocationConcurrents = None
         self._ShardAllocationBytes = None
+        self._EnableScheduleRecoverGroup = None
+        self._EnableScheduleOperationDuration = None
 
     @property
     def InstanceId(self):
@@ -12276,6 +12407,22 @@ class RestartNodesRequest(AbstractModel):
     def ShardAllocationBytes(self, ShardAllocationBytes):
         self._ShardAllocationBytes = ShardAllocationBytes
 
+    @property
+    def EnableScheduleRecoverGroup(self):
+        return self._EnableScheduleRecoverGroup
+
+    @EnableScheduleRecoverGroup.setter
+    def EnableScheduleRecoverGroup(self, EnableScheduleRecoverGroup):
+        self._EnableScheduleRecoverGroup = EnableScheduleRecoverGroup
+
+    @property
+    def EnableScheduleOperationDuration(self):
+        return self._EnableScheduleOperationDuration
+
+    @EnableScheduleOperationDuration.setter
+    def EnableScheduleOperationDuration(self, EnableScheduleOperationDuration):
+        self._EnableScheduleOperationDuration = EnableScheduleOperationDuration
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -12286,6 +12433,10 @@ class RestartNodesRequest(AbstractModel):
         self._CvmDelayOnlineTime = params.get("CvmDelayOnlineTime")
         self._ShardAllocationConcurrents = params.get("ShardAllocationConcurrents")
         self._ShardAllocationBytes = params.get("ShardAllocationBytes")
+        self._EnableScheduleRecoverGroup = params.get("EnableScheduleRecoverGroup")
+        if params.get("EnableScheduleOperationDuration") is not None:
+            self._EnableScheduleOperationDuration = EnableScheduleOperationDuration()
+            self._EnableScheduleOperationDuration._deserialize(params.get("EnableScheduleOperationDuration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14239,6 +14390,10 @@ CLOSE 关闭
         :type ShardAllocationBytes: int
         :param _ReadWriteMode: 读写分离模式：-1-不开启，1-本地读写分离，2-远端读写分离
         :type ReadWriteMode: int
+        :param _EnableScheduleRecoverGroup: 是否开启置放群组异步任务
+        :type EnableScheduleRecoverGroup: bool
+        :param _EnableScheduleOperationDuration: 置放群组异步任务可维护时间段
+        :type EnableScheduleOperationDuration: :class:`tencentcloud.es.v20180416.models.EnableScheduleOperationDuration`
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -14281,6 +14436,8 @@ CLOSE 关闭
         self._ShardAllocationConcurrents = None
         self._ShardAllocationBytes = None
         self._ReadWriteMode = None
+        self._EnableScheduleRecoverGroup = None
+        self._EnableScheduleOperationDuration = None
 
     @property
     def InstanceId(self):
@@ -14610,6 +14767,22 @@ CLOSE 关闭
     def ReadWriteMode(self, ReadWriteMode):
         self._ReadWriteMode = ReadWriteMode
 
+    @property
+    def EnableScheduleRecoverGroup(self):
+        return self._EnableScheduleRecoverGroup
+
+    @EnableScheduleRecoverGroup.setter
+    def EnableScheduleRecoverGroup(self, EnableScheduleRecoverGroup):
+        self._EnableScheduleRecoverGroup = EnableScheduleRecoverGroup
+
+    @property
+    def EnableScheduleOperationDuration(self):
+        return self._EnableScheduleOperationDuration
+
+    @EnableScheduleOperationDuration.setter
+    def EnableScheduleOperationDuration(self, EnableScheduleOperationDuration):
+        self._EnableScheduleOperationDuration = EnableScheduleOperationDuration
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -14680,6 +14853,10 @@ CLOSE 关闭
         self._ShardAllocationConcurrents = params.get("ShardAllocationConcurrents")
         self._ShardAllocationBytes = params.get("ShardAllocationBytes")
         self._ReadWriteMode = params.get("ReadWriteMode")
+        self._EnableScheduleRecoverGroup = params.get("EnableScheduleRecoverGroup")
+        if params.get("EnableScheduleOperationDuration") is not None:
+            self._EnableScheduleOperationDuration = EnableScheduleOperationDuration()
+            self._EnableScheduleOperationDuration._deserialize(params.get("EnableScheduleOperationDuration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15512,6 +15689,10 @@ class UpgradeInstanceRequest(AbstractModel):
         :type ShardAllocationConcurrents: int
         :param _ShardAllocationBytes: 分片迁移并发速度
         :type ShardAllocationBytes: int
+        :param _EnableScheduleRecoverGroup: 是否开启置放群组异步任务
+        :type EnableScheduleRecoverGroup: bool
+        :param _EnableScheduleOperationDuration: 置放群组异步任务时间段
+        :type EnableScheduleOperationDuration: :class:`tencentcloud.es.v20180416.models.EnableScheduleOperationDuration`
         """
         self._InstanceId = None
         self._EsVersion = None
@@ -15524,6 +15705,8 @@ class UpgradeInstanceRequest(AbstractModel):
         self._CvmDelayOnlineTime = None
         self._ShardAllocationConcurrents = None
         self._ShardAllocationBytes = None
+        self._EnableScheduleRecoverGroup = None
+        self._EnableScheduleOperationDuration = None
 
     @property
     def InstanceId(self):
@@ -15613,6 +15796,22 @@ class UpgradeInstanceRequest(AbstractModel):
     def ShardAllocationBytes(self, ShardAllocationBytes):
         self._ShardAllocationBytes = ShardAllocationBytes
 
+    @property
+    def EnableScheduleRecoverGroup(self):
+        return self._EnableScheduleRecoverGroup
+
+    @EnableScheduleRecoverGroup.setter
+    def EnableScheduleRecoverGroup(self, EnableScheduleRecoverGroup):
+        self._EnableScheduleRecoverGroup = EnableScheduleRecoverGroup
+
+    @property
+    def EnableScheduleOperationDuration(self):
+        return self._EnableScheduleOperationDuration
+
+    @EnableScheduleOperationDuration.setter
+    def EnableScheduleOperationDuration(self, EnableScheduleOperationDuration):
+        self._EnableScheduleOperationDuration = EnableScheduleOperationDuration
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -15626,6 +15825,10 @@ class UpgradeInstanceRequest(AbstractModel):
         self._CvmDelayOnlineTime = params.get("CvmDelayOnlineTime")
         self._ShardAllocationConcurrents = params.get("ShardAllocationConcurrents")
         self._ShardAllocationBytes = params.get("ShardAllocationBytes")
+        self._EnableScheduleRecoverGroup = params.get("EnableScheduleRecoverGroup")
+        if params.get("EnableScheduleOperationDuration") is not None:
+            self._EnableScheduleOperationDuration = EnableScheduleOperationDuration()
+            self._EnableScheduleOperationDuration._deserialize(params.get("EnableScheduleOperationDuration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

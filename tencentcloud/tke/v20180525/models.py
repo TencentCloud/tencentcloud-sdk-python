@@ -11370,6 +11370,100 @@ class DescribeBackupStorageLocationsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeBatchModifyTagsStatusRequest(AbstractModel):
+    """DescribeBatchModifyTagsStatus请求参数结构体
+
+    """
+
+
+class DescribeBatchModifyTagsStatusResponse(AbstractModel):
+    """DescribeBatchModifyTagsStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FailedResources: 失败资源列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedResources: list of FailedResource
+        :param _Status: 任务状态：
+- running 运行中
+- failed 失败
+- done 成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _SyncSubresource: 是否同步集群内子资源标签
+        :type SyncSubresource: bool
+        :param _Tags: 集群标签
+        :type Tags: list of Tag
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FailedResources = None
+        self._Status = None
+        self._SyncSubresource = None
+        self._Tags = None
+        self._RequestId = None
+
+    @property
+    def FailedResources(self):
+        return self._FailedResources
+
+    @FailedResources.setter
+    def FailedResources(self, FailedResources):
+        self._FailedResources = FailedResources
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SyncSubresource(self):
+        return self._SyncSubresource
+
+    @SyncSubresource.setter
+    def SyncSubresource(self, SyncSubresource):
+        self._SyncSubresource = SyncSubresource
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("FailedResources") is not None:
+            self._FailedResources = []
+            for item in params.get("FailedResources"):
+                obj = FailedResource()
+                obj._deserialize(item)
+                self._FailedResources.append(obj)
+        self._Status = params.get("Status")
+        self._SyncSubresource = params.get("SyncSubresource")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeClusterAsGroupOptionRequest(AbstractModel):
     """DescribeClusterAsGroupOption请求参数结构体
 
@@ -24520,6 +24614,53 @@ class ExtensionAddon(AbstractModel):
         
 
 
+class FailedResource(AbstractModel):
+    """修改标签失败的资源
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Resource: 资源六段式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: str
+        :param _Error: 执行失败的原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Error: str
+        """
+        self._Resource = None
+        self._Error = None
+
+    @property
+    def Resource(self):
+        return self._Resource
+
+    @Resource.setter
+    def Resource(self, Resource):
+        self._Resource = Resource
+
+    @property
+    def Error(self):
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
+
+    def _deserialize(self, params):
+        self._Resource = params.get("Resource")
+        self._Error = params.get("Error")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Filter(AbstractModel):
     """过滤器
 
@@ -29064,6 +29205,111 @@ class ModifyClusterRuntimeConfigResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyClusterTagsRequest(AbstractModel):
+    """ModifyClusterTags请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _Tags: 集群标签
+        :type Tags: list of Tag
+        :param _SyncSubresource: 是否同步集群内子资源标签
+        :type SyncSubresource: bool
+        """
+        self._ClusterId = None
+        self._Tags = None
+        self._SyncSubresource = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def SyncSubresource(self):
+        return self._SyncSubresource
+
+    @SyncSubresource.setter
+    def SyncSubresource(self, SyncSubresource):
+        self._SyncSubresource = SyncSubresource
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._SyncSubresource = params.get("SyncSubresource")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClusterTagsResponse(AbstractModel):
+    """ModifyClusterTags返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Tags: 集群标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Tags = None
+        self._RequestId = None
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         self._RequestId = params.get("RequestId")
 
 

@@ -29277,6 +29277,8 @@ class SaleZone(AbstractModel):
         :type HasPermission: bool
         :param _IsWholeRdmaZone: 是否为全链路RDMA可用区
         :type IsWholeRdmaZone: str
+        :param _IsSupportCreateCluster: 当前可用区是否允许新购集群，1:允许，0:不允许
+        :type IsSupportCreateCluster: int
         """
         self._Zone = None
         self._ZoneId = None
@@ -29286,6 +29288,7 @@ class SaleZone(AbstractModel):
         self._PhysicalZone = None
         self._HasPermission = None
         self._IsWholeRdmaZone = None
+        self._IsSupportCreateCluster = None
 
     @property
     def Zone(self):
@@ -29351,6 +29354,14 @@ class SaleZone(AbstractModel):
     def IsWholeRdmaZone(self, IsWholeRdmaZone):
         self._IsWholeRdmaZone = IsWholeRdmaZone
 
+    @property
+    def IsSupportCreateCluster(self):
+        return self._IsSupportCreateCluster
+
+    @IsSupportCreateCluster.setter
+    def IsSupportCreateCluster(self, IsSupportCreateCluster):
+        self._IsSupportCreateCluster = IsSupportCreateCluster
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -29361,6 +29372,7 @@ class SaleZone(AbstractModel):
         self._PhysicalZone = params.get("PhysicalZone")
         self._HasPermission = params.get("HasPermission")
         self._IsWholeRdmaZone = params.get("IsWholeRdmaZone")
+        self._IsSupportCreateCluster = params.get("IsSupportCreateCluster")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

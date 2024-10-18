@@ -88,9 +88,9 @@ class AssociationItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: 关联到的负载均衡ID
+        :param _LoadBalancerId: 关联到的网关负载均衡实例ID
         :type LoadBalancerId: str
-        :param _LoadBalancerName: 负载均衡名称
+        :param _LoadBalancerName: 网关负载均衡实例名称
         :type LoadBalancerName: str
         """
         self._LoadBalancerId = None
@@ -137,7 +137,7 @@ class CreateGatewayLoadBalancerRequest(AbstractModel):
         :type VpcId: str
         :param _SubnetId: 网关负载均衡后端目标设备所属的私有网络的子网ID。
         :type SubnetId: str
-        :param _LoadBalancerName: 网关负载均衡实例名称。可支持输入1-60个字符，允许英文字母、数字、中文字符、“-”、“_”、“.”。不填写时默认自动生成。
+        :param _LoadBalancerName: 网关负载均衡实例名称。可支持输入1-60个字符。不填写时默认自动生成。
         :type LoadBalancerName: str
         :param _Number: 创建网关负载均衡的个数，默认值为 1。批量创建数量最大支持10个。
         :type Number: int
@@ -283,22 +283,21 @@ class CreateTargetGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetGroupName: 目标组名称，限定50个字符
+        :param _TargetGroupName: 目标组名称，限定60个字符。
         :type TargetGroupName: str
         :param _VpcId: 目标组的vpcid属性，不填则使用默认vpc
         :type VpcId: str
         :param _Port: 目标组的默认端口， 后续添加服务器时可使用该默认端口。Port和TargetGroupInstances.N中的port二者必填其一。
-
         :type Port: int
         :param _TargetGroupInstances: 目标组绑定的后端服务器
         :type TargetGroupInstances: list of TargetGroupInstance
         :param _Protocol: 网关负载均衡目标组协议。
-- AWS_GENEVE：GENEVE 兼容协议 
 - TENCENT_GENEVE ：GENEVE 标准协议
+- AWS_GENEVE：GENEVE 兼容协议（需要提交工单申请开白）
         :type Protocol: str
-        :param _HealthCheck: 健康检查。
+        :param _HealthCheck: 健康检查设置。
         :type HealthCheck: :class:`tencentcloud.gwlb.v20240906.models.TargetGroupHealthCheck`
-        :param _ScheduleAlgorithm: RS调度算法。
+        :param _ScheduleAlgorithm: 均衡算法。
 - IP_HASH_3_ELASTIC：弹性哈希
         :type ScheduleAlgorithm: str
         :param _AllDeadToAlive: 是否支持全死全活。默认支持。
@@ -506,7 +505,7 @@ class DeleteTargetGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetGroupIds: 目标组列表。
+        :param _TargetGroupIds: 目标组ID列表。
         :type TargetGroupIds: list of str
         """
         self._TargetGroupIds = None
@@ -1821,7 +1820,7 @@ class ModifyGatewayLoadBalancerAttributeRequest(AbstractModel):
         r"""
         :param _LoadBalancerId: 网关负载均衡的唯一ID。
         :type LoadBalancerId: str
-        :param _LoadBalancerName: 网关负载均衡名称。
+        :param _LoadBalancerName: 网关负载均衡实例名称。可支持输入1-60个字符。
         :type LoadBalancerName: str
         """
         self._LoadBalancerId = None
@@ -1987,7 +1986,7 @@ class ModifyTargetGroupInstancesWeightRequest(AbstractModel):
         r"""
         :param _TargetGroupId: 目标组ID。
         :type TargetGroupId: str
-        :param _TargetGroupInstances: 待修改权重的服务器数组。
+        :param _TargetGroupInstances: 实例绑定配置数组。
         :type TargetGroupInstances: list of TargetGroupInstance
         """
         self._TargetGroupId = None
@@ -2063,7 +2062,7 @@ class Price(AbstractModel):
         :param _InstancePrice: 描述了实例价格。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstancePrice: :class:`tencentcloud.gwlb.v20240906.models.ItemPrice`
-        :param _LcuPrice: 描述了实例价格。
+        :param _LcuPrice: 描述了GLCU的价格。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LcuPrice: :class:`tencentcloud.gwlb.v20240906.models.ItemPrice`
         """
@@ -2231,7 +2230,7 @@ class TargetGroupAssociation(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: 负载均衡ID。
+        :param _LoadBalancerId: 网关负载均衡实例ID。
         :type LoadBalancerId: str
         :param _TargetGroupId: 目标组ID。
         :type TargetGroupId: str
@@ -2437,7 +2436,10 @@ class TargetGroupHealthCheck(AbstractModel):
         r"""
         :param _HealthSwitch: 是否开启健康检查。
         :type HealthSwitch: bool
-        :param _Protocol: 健康检查使用的协议。支持icmp和tcp，默认为icmp。
+        :param _Protocol: 健康检查使用的协议。支持ping和tcp，默认为ping。
+
+- PING: icmp
+- TCP: tcp
         :type Protocol: str
         :param _Port: 健康检查端口，探测协议未tcp时，该参数必填。
 
@@ -2561,8 +2563,7 @@ class TargetGroupInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Protocol: str
         :param _ScheduleAlgorithm: 调度算法。
-ip_hash_3：3元组对称弹性Hash
-ip_hash_3_consistent：3元组对称一致性Hash
+ip_hash_3：弹性哈希
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleAlgorithm: str
         :param _HealthCheck: 健康检查详情。

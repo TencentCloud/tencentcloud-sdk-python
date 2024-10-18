@@ -4982,10 +4982,12 @@ class DescribeDeviceGroupMembersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 资产组ID
-        :type Id: int
         :param _Bound: true - 查询已在该资产组的资产，false - 查询未在该资产组的资产
         :type Bound: bool
+        :param _Id: 资产组ID，Id和IdSet二选一
+        :type Id: int
+        :param _IdSet: 资产组ID集合，传Id，IdSet不生效。
+        :type IdSet: list of int non-negative
         :param _Name: 资产名或资产IP，模糊查询
         :type Name: str
         :param _Offset: 分页偏移位置，默认值为0
@@ -4999,14 +5001,23 @@ class DescribeDeviceGroupMembersRequest(AbstractModel):
         :param _TagFilters: 过滤条件，可按照标签键、标签进行过滤。如果同时指定标签键和标签过滤条件，它们之间为“AND”的关系
         :type TagFilters: list of TagFilter
         """
-        self._Id = None
         self._Bound = None
+        self._Id = None
+        self._IdSet = None
         self._Name = None
         self._Offset = None
         self._Limit = None
         self._Kind = None
         self._DepartmentId = None
         self._TagFilters = None
+
+    @property
+    def Bound(self):
+        return self._Bound
+
+    @Bound.setter
+    def Bound(self, Bound):
+        self._Bound = Bound
 
     @property
     def Id(self):
@@ -5017,12 +5028,12 @@ class DescribeDeviceGroupMembersRequest(AbstractModel):
         self._Id = Id
 
     @property
-    def Bound(self):
-        return self._Bound
+    def IdSet(self):
+        return self._IdSet
 
-    @Bound.setter
-    def Bound(self, Bound):
-        self._Bound = Bound
+    @IdSet.setter
+    def IdSet(self, IdSet):
+        self._IdSet = IdSet
 
     @property
     def Name(self):
@@ -5074,8 +5085,9 @@ class DescribeDeviceGroupMembersRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._Id = params.get("Id")
         self._Bound = params.get("Bound")
+        self._Id = params.get("Id")
+        self._IdSet = params.get("IdSet")
         self._Name = params.get("Name")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")

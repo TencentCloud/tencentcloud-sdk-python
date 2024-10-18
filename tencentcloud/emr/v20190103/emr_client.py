@@ -443,6 +443,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeHDFSStorageInfo(self, request):
+        """查询HDFS存储文件信息
+
+        :param request: Request instance for DescribeHDFSStorageInfo.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeHDFSStorageInfoRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeHDFSStorageInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHDFSStorageInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHDFSStorageInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeHiveQueries(self, request):
         """获取hive查询信息
 
@@ -604,6 +627,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeKyuubiQueryInfo(self, request):
+        """查询Kyuubi查询信息
+
+        :param request: Request instance for DescribeKyuubiQueryInfo.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeKyuubiQueryInfoRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeKyuubiQueryInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeKyuubiQueryInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeKyuubiQueryInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeResourceSchedule(self, request):
         """查询YARN资源调度数据信息。已废弃，请使用`DescribeYarnQueue`去查询队列信息。
 
@@ -710,6 +756,52 @@ class EmrClient(AbstractClient):
             body = self.call("DescribeServiceNodeInfos", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeServiceNodeInfosResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSparkQueries(self, request):
+        """查询Spark查询信息列表
+
+        :param request: Request instance for DescribeSparkQueries.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeSparkQueriesRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeSparkQueriesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSparkQueries", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSparkQueriesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStarRocksQueryInfo(self, request):
+        """查询StarRocks查询信息
+
+        :param request: Request instance for DescribeStarRocksQueryInfo.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeStarRocksQueryInfoRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeStarRocksQueryInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStarRocksQueryInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStarRocksQueryInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

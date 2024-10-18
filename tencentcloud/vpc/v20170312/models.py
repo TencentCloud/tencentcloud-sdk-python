@@ -8967,27 +8967,27 @@ class CreateNatGatewayRequest(AbstractModel):
         :type NatGatewayName: str
         :param _VpcId: VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
         :type VpcId: str
-        :param _InternetMaxBandwidthOut: NAT网关最大外网出带宽(单位:Mbps)，支持的参数值：`20, 50, 100, 200, 500, 1000, 2000, 5000`，默认: `100Mbps`。
+        :param _InternetMaxBandwidthOut: NAT网关最大外网出带宽(单位：Mbps)，支持的参数值：20, 50, 100, 200, 500, 1000, 2000, 5000，默认: 100Mbps。  当以下NatProductVersion参数值为2即标准型时，此参数无需填写，默认为5000Mbps。
         :type InternetMaxBandwidthOut: int
-        :param _MaxConcurrentConnection: NAT网关并发连接上限，支持参数值：`1000000、3000000、10000000`，默认值为`100000`。
+        :param _MaxConcurrentConnection: NAT网关并发连接数上限，支持参数值：1000000、3000000、10000000，默认值为100000。  当以下NatProductVersion参数值为2即标准型时，此参数无需填写，默认为2000000。
         :type MaxConcurrentConnection: int
-        :param _AddressCount: 需要申请的弹性IP个数，系统会按您的要求生产N个弹性IP，其中AddressCount和PublicAddresses至少传递一个。
+        :param _AddressCount: 新建弹性公网IP个数，系统会按您的要求创建对应数量的弹性公网IP，其中AddressCount和PublicAddresses两个参数至少填写一个。
         :type AddressCount: int
-        :param _PublicIpAddresses: 绑定NAT网关的弹性IP数组，其中AddressCount和PublicAddresses至少传递一个。
+        :param _PublicIpAddresses: 绑定NAT网关的已有弹性公网IP数组，其中AddressCount和PublicAddresses两个参数至少填写一个。 示例值：["139.199.232.119"]
         :type PublicIpAddresses: list of str
         :param _Zone: 可用区，形如：`ap-guangzhou-1`。
         :type Zone: str
         :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
         :type Tags: list of Tag
-        :param _SubnetId: NAT网关所属子网
+        :param _SubnetId: NAT网关所属子网，已废弃
         :type SubnetId: str
-        :param _StockPublicIpAddressesBandwidthOut: 绑定NAT网关的弹性IP带宽大小（单位Mbps），默认为当前用户类型所能使用的最大值。
+        :param _StockPublicIpAddressesBandwidthOut: 绑定NAT网关的弹性公网IP带宽值（单位：Mbps）。不填写此参数时：则该参数默认为弹性公网IP的带宽值，部分用户默认为该用户类型的弹性公网IP的带宽上限。
         :type StockPublicIpAddressesBandwidthOut: int
         :param _PublicIpAddressesBandwidthOut: 需要申请公网IP带宽大小（单位Mbps），默认为当前用户类型所能使用的最大值。
         :type PublicIpAddressesBandwidthOut: int
         :param _PublicIpFromSameZone: 公网IP是否强制与NAT网关来自同可用区，true表示需要与NAT网关同可用区；false表示可与NAT网关不是同一个可用区。此参数只有当参数Zone存在时才能生效。
         :type PublicIpFromSameZone: bool
-        :param _NatProductVersion: NAT网关大版本号，1是传统型，2是标准型，默认是1
+        :param _NatProductVersion: NAT网关类型，1表示传统型NAT网关，2表示标准型NAT网关，默认值是1。
         :type NatProductVersion: int
         """
         self._NatGatewayName = None
@@ -9070,10 +9070,14 @@ class CreateNatGatewayRequest(AbstractModel):
 
     @property
     def SubnetId(self):
+        warnings.warn("parameter `SubnetId` is deprecated", DeprecationWarning) 
+
         return self._SubnetId
 
     @SubnetId.setter
     def SubnetId(self, SubnetId):
+        warnings.warn("parameter `SubnetId` is deprecated", DeprecationWarning) 
+
         self._SubnetId = SubnetId
 
     @property
@@ -41895,7 +41899,7 @@ class NatGateway(AbstractModel):
         :param _RestrictState: NAT网关是否被封禁。“NORMAL”：未被封禁，“RESTRICTED”：已被封禁。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RestrictState: str
-        :param _NatProductVersion: NAT网关大版本号，传统型=1，标准型=2
+        :param _NatProductVersion: NAT网关类型，1表示传统型NAT网关，2表示标准型NAT网关
 注意：此字段可能返回 null，表示取不到有效值。
         :type NatProductVersion: int
         :param _SmartScheduleMode: 是否启用根据目的网段选择SNAT使用的EIP功能	
@@ -43568,27 +43572,19 @@ class NetworkInterfaceAttachment(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 云主机实例ID。
-        :type InstanceId: str
         :param _DeviceIndex: 网卡在云主机实例内的序号。
         :type DeviceIndex: int
         :param _InstanceAccountId: 云主机所有者账户信息。
         :type InstanceAccountId: str
         :param _AttachTime: 绑定时间。
         :type AttachTime: str
+        :param _InstanceId: 云主机实例ID。
+        :type InstanceId: str
         """
-        self._InstanceId = None
         self._DeviceIndex = None
         self._InstanceAccountId = None
         self._AttachTime = None
-
-    @property
-    def InstanceId(self):
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
+        self._InstanceId = None
 
     @property
     def DeviceIndex(self):
@@ -43614,12 +43610,20 @@ class NetworkInterfaceAttachment(AbstractModel):
     def AttachTime(self, AttachTime):
         self._AttachTime = AttachTime
 
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
 
     def _deserialize(self, params):
-        self._InstanceId = params.get("InstanceId")
         self._DeviceIndex = params.get("DeviceIndex")
         self._InstanceAccountId = params.get("InstanceAccountId")
         self._AttachTime = params.get("AttachTime")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

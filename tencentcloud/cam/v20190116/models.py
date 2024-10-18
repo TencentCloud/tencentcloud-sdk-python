@@ -4832,7 +4832,7 @@ class GetPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PolicyId: 策略Id
+        :param _PolicyId: 策略Id。
         :type PolicyId: int
         """
         self._PolicyId = None
@@ -4865,28 +4865,28 @@ class GetPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PolicyName: 策略名
+        :param _PolicyName: 策略名。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyName: str
-        :param _Description: 策略描述
+        :param _Description: 策略描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param _Type: 1 表示自定义策略，2 表示预设策略
+        :param _Type: 1 表示自定义策略，2 表示预设策略。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
-        :param _AddTime: 创建时间
+        :param _AddTime: 策略创建时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AddTime: str
-        :param _UpdateTime: 最近更新时间
+        :param _UpdateTime: 策略最近更新时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param _PolicyDocument: 策略文档
+        :param _PolicyDocument: 策略文档。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyDocument: str
-        :param _PresetAlias: 备注
+        :param _PresetAlias: 备注。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PresetAlias: str
-        :param _IsServiceLinkedRolePolicy: 是否服务相关策略
+        :param _IsServiceLinkedRolePolicy: 是否是服务相关策略，0代表不是服务相关策略，1代表是服务相关策略。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsServiceLinkedRolePolicy: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6583,15 +6583,15 @@ class ListAttachedUserAllPoliciesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetUin: 目标用户ID
+        :param _TargetUin: 目标用户Uin
         :type TargetUin: int
-        :param _Rp: 每页数量，必须大于 0 且小于或等于 200
+        :param _Rp: 每页数量，必须大于 0 且小于等于 200。
         :type Rp: int
-        :param _Page: 页码，从 1开始，不能大于 200
+        :param _Page: 页码，从 1开始，不能大于 200。
         :type Page: int
-        :param _AttachType: 0:返回直接关联和随组关联策略，1:只返回直接关联策略，2:只返回随组关联策略
+        :param _AttachType: 关联类型。0:返回直接关联和随组关联策略，1:只返回直接关联策略，2:只返回随组关联策略。
         :type AttachType: int
-        :param _StrategyType: 策略类型
+        :param _StrategyType: 策略类型。1表示自定义策略，2表示预设策略。
         :type StrategyType: int
         :param _Keyword: 搜索关键字
         :type Keyword: str
@@ -6676,9 +6676,9 @@ class ListAttachedUserAllPoliciesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PolicyList: 策略列表数据
+        :param _PolicyList: 策略列表数据。
         :type PolicyList: list of AttachedUserPolicy
-        :param _TotalNum: 策略总数
+        :param _TotalNum: 策略总数。
         :type TotalNum: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

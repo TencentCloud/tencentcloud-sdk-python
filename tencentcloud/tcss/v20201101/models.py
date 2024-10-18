@@ -27769,8 +27769,11 @@ class DescribeESAggregationsRequest(AbstractModel):
         r"""
         :param _Query: ES聚合条件JSON
         :type Query: str
+        :param _LogTypes: 日志类型列表
+        :type LogTypes: list of str
         """
         self._Query = None
+        self._LogTypes = None
 
     @property
     def Query(self):
@@ -27780,9 +27783,18 @@ class DescribeESAggregationsRequest(AbstractModel):
     def Query(self, Query):
         self._Query = Query
 
+    @property
+    def LogTypes(self):
+        return self._LogTypes
+
+    @LogTypes.setter
+    def LogTypes(self, LogTypes):
+        self._LogTypes = LogTypes
+
 
     def _deserialize(self, params):
         self._Query = params.get("Query")
+        self._LogTypes = params.get("LogTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27843,10 +27855,13 @@ class DescribeESHitsRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 返回数量，最大值为100。
         :type Limit: int
+        :param _LogTypes: 日志类型列表
+        :type LogTypes: list of str
         """
         self._Query = None
         self._Offset = None
         self._Limit = None
+        self._LogTypes = None
 
     @property
     def Query(self):
@@ -27872,11 +27887,20 @@ class DescribeESHitsRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def LogTypes(self):
+        return self._LogTypes
+
+    @LogTypes.setter
+    def LogTypes(self, LogTypes):
+        self._LogTypes = LogTypes
+
 
     def _deserialize(self, params):
         self._Query = params.get("Query")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._LogTypes = params.get("LogTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -36503,8 +36527,11 @@ class DescribeSearchExportListRequest(AbstractModel):
         r"""
         :param _Query: ES查询条件JSON
         :type Query: str
+        :param _LogTypes: 日志类型列表
+        :type LogTypes: list of str
         """
         self._Query = None
+        self._LogTypes = None
 
     @property
     def Query(self):
@@ -36514,9 +36541,18 @@ class DescribeSearchExportListRequest(AbstractModel):
     def Query(self, Query):
         self._Query = Query
 
+    @property
+    def LogTypes(self):
+        return self._LogTypes
+
+    @LogTypes.setter
+    def LogTypes(self, LogTypes):
+        self._LogTypes = LogTypes
+
 
     def _deserialize(self, params):
         self._Query = params.get("Query")
+        self._LogTypes = params.get("LogTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37402,11 +37438,20 @@ class DescribeSecLogJoinObjectListResponse(AbstractModel):
         :type TotalCount: int
         :param _List: 接入对象列表
         :type List: list of SecLogJoinObjectInfo
+        :param _RangeType: 日志节点范围类型,0自选 1全部
+        :type RangeType: int
+        :param _AutoJoin: 新增资产是否自动加入，节点范围为全部时生效
+        :type AutoJoin: bool
+        :param _ExcludedCount: 剔除节点数
+        :type ExcludedCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
         self._List = None
+        self._RangeType = None
+        self._AutoJoin = None
+        self._ExcludedCount = None
         self._RequestId = None
 
     @property
@@ -37426,6 +37471,30 @@ class DescribeSecLogJoinObjectListResponse(AbstractModel):
         self._List = List
 
     @property
+    def RangeType(self):
+        return self._RangeType
+
+    @RangeType.setter
+    def RangeType(self, RangeType):
+        self._RangeType = RangeType
+
+    @property
+    def AutoJoin(self):
+        return self._AutoJoin
+
+    @AutoJoin.setter
+    def AutoJoin(self, AutoJoin):
+        self._AutoJoin = AutoJoin
+
+    @property
+    def ExcludedCount(self):
+        return self._ExcludedCount
+
+    @ExcludedCount.setter
+    def ExcludedCount(self, ExcludedCount):
+        self._ExcludedCount = ExcludedCount
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -37442,6 +37511,9 @@ class DescribeSecLogJoinObjectListResponse(AbstractModel):
                 obj = SecLogJoinObjectInfo()
                 obj._deserialize(item)
                 self._List.append(obj)
+        self._RangeType = params.get("RangeType")
+        self._AutoJoin = params.get("AutoJoin")
+        self._ExcludedCount = params.get("ExcludedCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -52399,20 +52471,26 @@ bash日志: container_bash
 容器启动: container_launch
 k8sApi: k8s_api
         :type LogType: str
-        :param _BindList: 绑定主机quuid列表
+        :param _BindList: 绑定列表
         :type BindList: list of str
-        :param _UnBindList: 待解绑主机quuid列表
+        :param _UnBindList: 待解绑列表，节点范围为全部时，含义为需剔除资产列表
         :type UnBindList: list of str
         :param _NodeType: 节点类型:
 NORMAL: 普通节点(默认值)
 SUPER: 超级节点
 
         :type NodeType: str
+        :param _RangeType: 日志节点范围类型,0自选 1全部
+        :type RangeType: int
+        :param _AutoJoin: 新增资产是否自动加入，节点范围为全部时生效
+        :type AutoJoin: bool
         """
         self._LogType = None
         self._BindList = None
         self._UnBindList = None
         self._NodeType = None
+        self._RangeType = None
+        self._AutoJoin = None
 
     @property
     def LogType(self):
@@ -52446,12 +52524,30 @@ SUPER: 超级节点
     def NodeType(self, NodeType):
         self._NodeType = NodeType
 
+    @property
+    def RangeType(self):
+        return self._RangeType
+
+    @RangeType.setter
+    def RangeType(self, RangeType):
+        self._RangeType = RangeType
+
+    @property
+    def AutoJoin(self):
+        return self._AutoJoin
+
+    @AutoJoin.setter
+    def AutoJoin(self, AutoJoin):
+        self._AutoJoin = AutoJoin
+
 
     def _deserialize(self, params):
         self._LogType = params.get("LogType")
         self._BindList = params.get("BindList")
         self._UnBindList = params.get("UnBindList")
         self._NodeType = params.get("NodeType")
+        self._RangeType = params.get("RangeType")
+        self._AutoJoin = params.get("AutoJoin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -58865,11 +58961,14 @@ class SecLogJoinInfo(AbstractModel):
 k8sApi: "k8s_api"
 )
         :type LogType: str
+        :param _ClusterCount: 已接入集群数量
+        :type ClusterCount: int
         """
         self._Count = None
         self._SuperNodeCount = None
         self._IsJoined = None
         self._LogType = None
+        self._ClusterCount = None
 
     @property
     def Count(self):
@@ -58903,12 +59002,21 @@ k8sApi: "k8s_api"
     def LogType(self, LogType):
         self._LogType = LogType
 
+    @property
+    def ClusterCount(self):
+        return self._ClusterCount
+
+    @ClusterCount.setter
+    def ClusterCount(self, ClusterCount):
+        self._ClusterCount = ClusterCount
+
 
     def _deserialize(self, params):
         self._Count = params.get("Count")
         self._SuperNodeCount = params.get("SuperNodeCount")
         self._IsJoined = params.get("IsJoined")
         self._LogType = params.get("LogType")
+        self._ClusterCount = params.get("ClusterCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -58952,6 +59060,13 @@ class SecLogJoinObjectInfo(AbstractModel):
         :type ClusterVersion: str
         :param _ClusterMainAddress: 集群主节点地址
         :type ClusterMainAddress: str
+        :param _ContainerCnt: 容器数
+        :type ContainerCnt: int
+        :param _ClusterType: 集群类型
+        :type ClusterType: str
+        :param _ClusterStatus: 集群状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterStatus: str
         """
         self._HostID = None
         self._HostName = None
@@ -58963,6 +59078,9 @@ class SecLogJoinObjectInfo(AbstractModel):
         self._JoinState = None
         self._ClusterVersion = None
         self._ClusterMainAddress = None
+        self._ContainerCnt = None
+        self._ClusterType = None
+        self._ClusterStatus = None
 
     @property
     def HostID(self):
@@ -59044,6 +59162,30 @@ class SecLogJoinObjectInfo(AbstractModel):
     def ClusterMainAddress(self, ClusterMainAddress):
         self._ClusterMainAddress = ClusterMainAddress
 
+    @property
+    def ContainerCnt(self):
+        return self._ContainerCnt
+
+    @ContainerCnt.setter
+    def ContainerCnt(self, ContainerCnt):
+        self._ContainerCnt = ContainerCnt
+
+    @property
+    def ClusterType(self):
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
+    def ClusterStatus(self):
+        return self._ClusterStatus
+
+    @ClusterStatus.setter
+    def ClusterStatus(self, ClusterStatus):
+        self._ClusterStatus = ClusterStatus
+
 
     def _deserialize(self, params):
         self._HostID = params.get("HostID")
@@ -59056,6 +59198,9 @@ class SecLogJoinObjectInfo(AbstractModel):
         self._JoinState = params.get("JoinState")
         self._ClusterVersion = params.get("ClusterVersion")
         self._ClusterMainAddress = params.get("ClusterMainAddress")
+        self._ContainerCnt = params.get("ContainerCnt")
+        self._ClusterType = params.get("ClusterType")
+        self._ClusterStatus = params.get("ClusterStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

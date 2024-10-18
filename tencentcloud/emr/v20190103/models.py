@@ -5894,6 +5894,119 @@ class DescribeHBaseTableOverviewResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeHDFSStorageInfoRequest(AbstractModel):
+    """DescribeHDFSStorageInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _StartTime: 获取查询信息开始时间 (s)
+        :type StartTime: int
+        :param _EndTime: 获取查询信息结束时间 (s)
+        :type EndTime: int
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHDFSStorageInfoResponse(AbstractModel):
+    """DescribeHDFSStorageInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SampleTime: 采样时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SampleTime: int
+        :param _StorageSummaryDistribution: hdfs存储详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageSummaryDistribution: list of StorageSummaryDistribution
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SampleTime = None
+        self._StorageSummaryDistribution = None
+        self._RequestId = None
+
+    @property
+    def SampleTime(self):
+        return self._SampleTime
+
+    @SampleTime.setter
+    def SampleTime(self, SampleTime):
+        self._SampleTime = SampleTime
+
+    @property
+    def StorageSummaryDistribution(self):
+        return self._StorageSummaryDistribution
+
+    @StorageSummaryDistribution.setter
+    def StorageSummaryDistribution(self, StorageSummaryDistribution):
+        self._StorageSummaryDistribution = StorageSummaryDistribution
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SampleTime = params.get("SampleTime")
+        if params.get("StorageSummaryDistribution") is not None:
+            self._StorageSummaryDistribution = []
+            for item in params.get("StorageSummaryDistribution"):
+                obj = StorageSummaryDistribution()
+                obj._deserialize(item)
+                self._StorageSummaryDistribution.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeHiveQueriesRequest(AbstractModel):
     """DescribeHiveQueries请求参数结构体
 
@@ -6915,6 +7028,142 @@ JobFlowFinish，流程任务已完成。
         self._RequestId = params.get("RequestId")
 
 
+class DescribeKyuubiQueryInfoRequest(AbstractModel):
+    """DescribeKyuubiQueryInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群ID
+        :type InstanceId: str
+        :param _StartTime: 获取查询信息开始时间 (s)
+        :type StartTime: int
+        :param _EndTime: 获取查询信息结束时间 (s)
+        :type EndTime: int
+        :param _PageSize: 分页查询时的分页大小，最小1，最大100
+        :type PageSize: int
+        :param _Page: 分页查询时的页号，从1开始
+        :type Page: int
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._PageSize = None
+        self._Page = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._PageSize = params.get("PageSize")
+        self._Page = params.get("Page")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeKyuubiQueryInfoResponse(AbstractModel):
+    """DescribeKyuubiQueryInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数，分页查询时使用
+        :type TotalCount: int
+        :param _KyuubiQueryInfoList: Kyuubi查询信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KyuubiQueryInfoList: list of KyuubiQueryInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._KyuubiQueryInfoList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def KyuubiQueryInfoList(self):
+        return self._KyuubiQueryInfoList
+
+    @KyuubiQueryInfoList.setter
+    def KyuubiQueryInfoList(self, KyuubiQueryInfoList):
+        self._KyuubiQueryInfoList = KyuubiQueryInfoList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("KyuubiQueryInfoList") is not None:
+            self._KyuubiQueryInfoList = []
+            for item in params.get("KyuubiQueryInfoList"):
+                obj = KyuubiQueryInfo()
+                obj._deserialize(item)
+                self._KyuubiQueryInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeResourceScheduleDiffDetailRequest(AbstractModel):
     """DescribeResourceScheduleDiffDetail请求参数结构体
 
@@ -7684,6 +7933,290 @@ class DescribeServiceNodeInfosResponse(AbstractModel):
                 self._ServiceNodeList.append(obj)
         self._AliasInfo = params.get("AliasInfo")
         self._SupportNodeFlagFilterList = params.get("SupportNodeFlagFilterList")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSparkQueriesRequest(AbstractModel):
+    """DescribeSparkQueries请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群ID
+        :type InstanceId: str
+        :param _StartTime: 开始时间
+        :type StartTime: int
+        :param _EndTime: 结束时间
+        :type EndTime: int
+        :param _Offset: 分页起始偏移，从0开始
+        :type Offset: int
+        :param _Limit: 分页大小，合法范围[1,100]
+        :type Limit: int
+        :param _Status: 执行状态:RUNNING,COMPLETED,FAILED
+        :type Status: list of str
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Offset = None
+        self._Limit = None
+        self._Status = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSparkQueriesResponse(AbstractModel):
+    """DescribeSparkQueries返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数
+        :type Total: int
+        :param _Results: 结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Results: list of SparkQuery
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Results = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Results(self):
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Results") is not None:
+            self._Results = []
+            for item in params.get("Results"):
+                obj = SparkQuery()
+                obj._deserialize(item)
+                self._Results.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStarRocksQueryInfoRequest(AbstractModel):
+    """DescribeStarRocksQueryInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群ID
+        :type InstanceId: str
+        :param _StartTime: 获取查询信息开始时间 (s)
+        :type StartTime: int
+        :param _EndTime: 获取查询信息结束时间 (s)
+        :type EndTime: int
+        :param _PageSize: 分页查询时的分页大小，最小1，最大100
+        :type PageSize: int
+        :param _Page: 分页查询时的页号，从1开始
+        :type Page: int
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._PageSize = None
+        self._Page = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._PageSize = params.get("PageSize")
+        self._Page = params.get("Page")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStarRocksQueryInfoResponse(AbstractModel):
+    """DescribeStarRocksQueryInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数，分页查询时使用
+        :type TotalCount: int
+        :param _StarRocksQueryInfoList: Starrocks 查询信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StarRocksQueryInfoList: list of StarRocksQueryInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._StarRocksQueryInfoList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def StarRocksQueryInfoList(self):
+        return self._StarRocksQueryInfoList
+
+    @StarRocksQueryInfoList.setter
+    def StarRocksQueryInfoList(self, StarRocksQueryInfoList):
+        self._StarRocksQueryInfoList = StarRocksQueryInfoList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("StarRocksQueryInfoList") is not None:
+            self._StarRocksQueryInfoList = []
+            for item in params.get("StarRocksQueryInfoList"):
+                obj = StarRocksQueryInfo()
+                obj._deserialize(item)
+                self._StarRocksQueryInfoList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -8873,6 +9406,53 @@ class DiskSpecInfo(AbstractModel):
         self._DiskType = params.get("DiskType")
         self._DiskSize = params.get("DiskSize")
         self._ExtraPerformance = params.get("ExtraPerformance")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Dps(AbstractModel):
+    """采样序列
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Timestamp: 时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timestamp: str
+        :param _Value: 采样值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Timestamp = None
+        self._Value = None
+
+    @property
+    def Timestamp(self):
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Timestamp = params.get("Timestamp")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12927,6 +13507,183 @@ class KeyValue(AbstractModel):
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KyuubiQueryInfo(AbstractModel):
+    """Kyuubi查询信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClientIP: 提交IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientIP: str
+        :param _Duration: 执行时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Duration: int
+        :param _EndTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: int
+        :param _EngineID: Engine Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineID: str
+        :param _EngineType: 计算引擎
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineType: str
+        :param _Id: ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param _SessionID: Session Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionID: str
+        :param _BeginTime: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BeginTime: int
+        :param _ExecutionState: 执行状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionState: str
+        :param _ExecutionStatement: 执行语句
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionStatement: str
+        :param _StatementID: Statement Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatementID: str
+        :param _User: 提交用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :type User: str
+        """
+        self._ClientIP = None
+        self._Duration = None
+        self._EndTime = None
+        self._EngineID = None
+        self._EngineType = None
+        self._Id = None
+        self._SessionID = None
+        self._BeginTime = None
+        self._ExecutionState = None
+        self._ExecutionStatement = None
+        self._StatementID = None
+        self._User = None
+
+    @property
+    def ClientIP(self):
+        return self._ClientIP
+
+    @ClientIP.setter
+    def ClientIP(self, ClientIP):
+        self._ClientIP = ClientIP
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def EngineID(self):
+        return self._EngineID
+
+    @EngineID.setter
+    def EngineID(self, EngineID):
+        self._EngineID = EngineID
+
+    @property
+    def EngineType(self):
+        return self._EngineType
+
+    @EngineType.setter
+    def EngineType(self, EngineType):
+        self._EngineType = EngineType
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def SessionID(self):
+        return self._SessionID
+
+    @SessionID.setter
+    def SessionID(self, SessionID):
+        self._SessionID = SessionID
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def ExecutionState(self):
+        return self._ExecutionState
+
+    @ExecutionState.setter
+    def ExecutionState(self, ExecutionState):
+        self._ExecutionState = ExecutionState
+
+    @property
+    def ExecutionStatement(self):
+        return self._ExecutionStatement
+
+    @ExecutionStatement.setter
+    def ExecutionStatement(self, ExecutionStatement):
+        self._ExecutionStatement = ExecutionStatement
+
+    @property
+    def StatementID(self):
+        return self._StatementID
+
+    @StatementID.setter
+    def StatementID(self, StatementID):
+        self._StatementID = StatementID
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+
+    def _deserialize(self, params):
+        self._ClientIP = params.get("ClientIP")
+        self._Duration = params.get("Duration")
+        self._EndTime = params.get("EndTime")
+        self._EngineID = params.get("EngineID")
+        self._EngineType = params.get("EngineType")
+        self._Id = params.get("Id")
+        self._SessionID = params.get("SessionID")
+        self._BeginTime = params.get("BeginTime")
+        self._ExecutionState = params.get("ExecutionState")
+        self._ExecutionStatement = params.get("ExecutionStatement")
+        self._StatementID = params.get("StatementID")
+        self._User = params.get("User")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21148,6 +21905,218 @@ class SoftDependInfo(AbstractModel):
         
 
 
+class SparkQuery(AbstractModel):
+    """spark查询详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Statement: 执行语句
+        :type Statement: str
+        :param _Duration: 执行时长（单位毫秒）
+        :type Duration: int
+        :param _Status: 执行状态
+        :type Status: str
+        :param _Id: 查询ID
+        :type Id: str
+        :param _ScanPartitionNum: 扫描分区数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanPartitionNum: int
+        :param _ScanRowNum: 扫描总行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanRowNum: int
+        :param _ScanFileNum: 扫描总文件数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanFileNum: int
+        :param _ScanTotalData: 查询扫描总数据量(单位B)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanTotalData: int
+        :param _ApplicationId: 应用ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationId: list of str
+        :param _OutputRowNum: 输出总行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputRowNum: int
+        :param _OutputFileNum: 输出总文件数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputFileNum: int
+        :param _OutputPartitionNum: 输出分区数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputPartitionNum: int
+        :param _OutputTotalData: 输出总数据量（单位B）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputTotalData: int
+        :param _BeginTime: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BeginTime: int
+        :param _EndTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: int
+        """
+        self._Statement = None
+        self._Duration = None
+        self._Status = None
+        self._Id = None
+        self._ScanPartitionNum = None
+        self._ScanRowNum = None
+        self._ScanFileNum = None
+        self._ScanTotalData = None
+        self._ApplicationId = None
+        self._OutputRowNum = None
+        self._OutputFileNum = None
+        self._OutputPartitionNum = None
+        self._OutputTotalData = None
+        self._BeginTime = None
+        self._EndTime = None
+
+    @property
+    def Statement(self):
+        return self._Statement
+
+    @Statement.setter
+    def Statement(self, Statement):
+        self._Statement = Statement
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def ScanPartitionNum(self):
+        return self._ScanPartitionNum
+
+    @ScanPartitionNum.setter
+    def ScanPartitionNum(self, ScanPartitionNum):
+        self._ScanPartitionNum = ScanPartitionNum
+
+    @property
+    def ScanRowNum(self):
+        return self._ScanRowNum
+
+    @ScanRowNum.setter
+    def ScanRowNum(self, ScanRowNum):
+        self._ScanRowNum = ScanRowNum
+
+    @property
+    def ScanFileNum(self):
+        return self._ScanFileNum
+
+    @ScanFileNum.setter
+    def ScanFileNum(self, ScanFileNum):
+        self._ScanFileNum = ScanFileNum
+
+    @property
+    def ScanTotalData(self):
+        return self._ScanTotalData
+
+    @ScanTotalData.setter
+    def ScanTotalData(self, ScanTotalData):
+        self._ScanTotalData = ScanTotalData
+
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def OutputRowNum(self):
+        return self._OutputRowNum
+
+    @OutputRowNum.setter
+    def OutputRowNum(self, OutputRowNum):
+        self._OutputRowNum = OutputRowNum
+
+    @property
+    def OutputFileNum(self):
+        return self._OutputFileNum
+
+    @OutputFileNum.setter
+    def OutputFileNum(self, OutputFileNum):
+        self._OutputFileNum = OutputFileNum
+
+    @property
+    def OutputPartitionNum(self):
+        return self._OutputPartitionNum
+
+    @OutputPartitionNum.setter
+    def OutputPartitionNum(self, OutputPartitionNum):
+        self._OutputPartitionNum = OutputPartitionNum
+
+    @property
+    def OutputTotalData(self):
+        return self._OutputTotalData
+
+    @OutputTotalData.setter
+    def OutputTotalData(self, OutputTotalData):
+        self._OutputTotalData = OutputTotalData
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._Statement = params.get("Statement")
+        self._Duration = params.get("Duration")
+        self._Status = params.get("Status")
+        self._Id = params.get("Id")
+        self._ScanPartitionNum = params.get("ScanPartitionNum")
+        self._ScanRowNum = params.get("ScanRowNum")
+        self._ScanFileNum = params.get("ScanFileNum")
+        self._ScanTotalData = params.get("ScanTotalData")
+        self._ApplicationId = params.get("ApplicationId")
+        self._OutputRowNum = params.get("OutputRowNum")
+        self._OutputFileNum = params.get("OutputFileNum")
+        self._OutputPartitionNum = params.get("OutputPartitionNum")
+        self._OutputTotalData = params.get("OutputTotalData")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StageInfoDetail(AbstractModel):
     """任务步骤详情
 
@@ -21350,6 +22319,274 @@ class StageInfoDetail(AbstractModel):
         self._LanguageKey = params.get("LanguageKey")
         self._FailedReason = params.get("FailedReason")
         self._TimeConsuming = params.get("TimeConsuming")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StarRocksQueryInfo(AbstractModel):
+    """StarRocks 查询信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClientIP: 提交IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientIP: str
+        :param _CPUCost: CPU总时间(ns)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CPUCost: int
+        :param _DefaultDB: 默认DB
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultDB: str
+        :param _EndTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: int
+        :param _ExecutionIP: 执行IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionIP: str
+        :param _QueryID: 查询ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueryID: str
+        :param _QueryType: 查询类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueryType: str
+        :param _MemCost: 消耗总内存(bytes)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemCost: int
+        :param _PlanCpuCosts: plan阶段CPU占用(ns)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PlanCpuCosts: int
+        :param _PlanMemCosts: plan阶段内存占用(bytes)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PlanMemCosts: int
+        :param _QueryTime: 执行时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueryTime: int
+        :param _ResourceGroup: 资源组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceGroup: str
+        :param _ReturnRows: 获取行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReturnRows: int
+        :param _ScanBytes: 扫描数据量(bytes)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanBytes: int
+        :param _ScanRows: 扫描行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanRows: int
+        :param _BeginTime: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BeginTime: int
+        :param _ExecutionState: 执行状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionState: str
+        :param _ExecutionStatement: 执行语句
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionStatement: str
+        :param _User: 用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :type User: str
+        """
+        self._ClientIP = None
+        self._CPUCost = None
+        self._DefaultDB = None
+        self._EndTime = None
+        self._ExecutionIP = None
+        self._QueryID = None
+        self._QueryType = None
+        self._MemCost = None
+        self._PlanCpuCosts = None
+        self._PlanMemCosts = None
+        self._QueryTime = None
+        self._ResourceGroup = None
+        self._ReturnRows = None
+        self._ScanBytes = None
+        self._ScanRows = None
+        self._BeginTime = None
+        self._ExecutionState = None
+        self._ExecutionStatement = None
+        self._User = None
+
+    @property
+    def ClientIP(self):
+        return self._ClientIP
+
+    @ClientIP.setter
+    def ClientIP(self, ClientIP):
+        self._ClientIP = ClientIP
+
+    @property
+    def CPUCost(self):
+        return self._CPUCost
+
+    @CPUCost.setter
+    def CPUCost(self, CPUCost):
+        self._CPUCost = CPUCost
+
+    @property
+    def DefaultDB(self):
+        return self._DefaultDB
+
+    @DefaultDB.setter
+    def DefaultDB(self, DefaultDB):
+        self._DefaultDB = DefaultDB
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ExecutionIP(self):
+        return self._ExecutionIP
+
+    @ExecutionIP.setter
+    def ExecutionIP(self, ExecutionIP):
+        self._ExecutionIP = ExecutionIP
+
+    @property
+    def QueryID(self):
+        return self._QueryID
+
+    @QueryID.setter
+    def QueryID(self, QueryID):
+        self._QueryID = QueryID
+
+    @property
+    def QueryType(self):
+        return self._QueryType
+
+    @QueryType.setter
+    def QueryType(self, QueryType):
+        self._QueryType = QueryType
+
+    @property
+    def MemCost(self):
+        return self._MemCost
+
+    @MemCost.setter
+    def MemCost(self, MemCost):
+        self._MemCost = MemCost
+
+    @property
+    def PlanCpuCosts(self):
+        return self._PlanCpuCosts
+
+    @PlanCpuCosts.setter
+    def PlanCpuCosts(self, PlanCpuCosts):
+        self._PlanCpuCosts = PlanCpuCosts
+
+    @property
+    def PlanMemCosts(self):
+        return self._PlanMemCosts
+
+    @PlanMemCosts.setter
+    def PlanMemCosts(self, PlanMemCosts):
+        self._PlanMemCosts = PlanMemCosts
+
+    @property
+    def QueryTime(self):
+        return self._QueryTime
+
+    @QueryTime.setter
+    def QueryTime(self, QueryTime):
+        self._QueryTime = QueryTime
+
+    @property
+    def ResourceGroup(self):
+        return self._ResourceGroup
+
+    @ResourceGroup.setter
+    def ResourceGroup(self, ResourceGroup):
+        self._ResourceGroup = ResourceGroup
+
+    @property
+    def ReturnRows(self):
+        return self._ReturnRows
+
+    @ReturnRows.setter
+    def ReturnRows(self, ReturnRows):
+        self._ReturnRows = ReturnRows
+
+    @property
+    def ScanBytes(self):
+        return self._ScanBytes
+
+    @ScanBytes.setter
+    def ScanBytes(self, ScanBytes):
+        self._ScanBytes = ScanBytes
+
+    @property
+    def ScanRows(self):
+        return self._ScanRows
+
+    @ScanRows.setter
+    def ScanRows(self, ScanRows):
+        self._ScanRows = ScanRows
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def ExecutionState(self):
+        return self._ExecutionState
+
+    @ExecutionState.setter
+    def ExecutionState(self, ExecutionState):
+        self._ExecutionState = ExecutionState
+
+    @property
+    def ExecutionStatement(self):
+        return self._ExecutionStatement
+
+    @ExecutionStatement.setter
+    def ExecutionStatement(self, ExecutionStatement):
+        self._ExecutionStatement = ExecutionStatement
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+
+    def _deserialize(self, params):
+        self._ClientIP = params.get("ClientIP")
+        self._CPUCost = params.get("CPUCost")
+        self._DefaultDB = params.get("DefaultDB")
+        self._EndTime = params.get("EndTime")
+        self._ExecutionIP = params.get("ExecutionIP")
+        self._QueryID = params.get("QueryID")
+        self._QueryType = params.get("QueryType")
+        self._MemCost = params.get("MemCost")
+        self._PlanCpuCosts = params.get("PlanCpuCosts")
+        self._PlanMemCosts = params.get("PlanMemCosts")
+        self._QueryTime = params.get("QueryTime")
+        self._ResourceGroup = params.get("ResourceGroup")
+        self._ReturnRows = params.get("ReturnRows")
+        self._ScanBytes = params.get("ScanBytes")
+        self._ScanRows = params.get("ScanRows")
+        self._BeginTime = params.get("BeginTime")
+        self._ExecutionState = params.get("ExecutionState")
+        self._ExecutionStatement = params.get("ExecutionStatement")
+        self._User = params.get("User")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21598,6 +22835,71 @@ class StopParams(AbstractModel):
     def _deserialize(self, params):
         self._StopPolicy = params.get("StopPolicy")
         self._ThreadCount = params.get("ThreadCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StorageSummaryDistribution(AbstractModel):
+    """HDFS文件存储详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MetricItem: 数据项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricItem: str
+        :param _MetricName: 数据项描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricName: str
+        :param _Dps: 采样值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Dps: list of Dps
+        """
+        self._MetricItem = None
+        self._MetricName = None
+        self._Dps = None
+
+    @property
+    def MetricItem(self):
+        return self._MetricItem
+
+    @MetricItem.setter
+    def MetricItem(self, MetricItem):
+        self._MetricItem = MetricItem
+
+    @property
+    def MetricName(self):
+        return self._MetricName
+
+    @MetricName.setter
+    def MetricName(self, MetricName):
+        self._MetricName = MetricName
+
+    @property
+    def Dps(self):
+        return self._Dps
+
+    @Dps.setter
+    def Dps(self, Dps):
+        self._Dps = Dps
+
+
+    def _deserialize(self, params):
+        self._MetricItem = params.get("MetricItem")
+        self._MetricName = params.get("MetricName")
+        if params.get("Dps") is not None:
+            self._Dps = []
+            for item in params.get("Dps"):
+                obj = Dps()
+                obj._deserialize(item)
+                self._Dps.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

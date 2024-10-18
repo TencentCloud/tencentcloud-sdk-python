@@ -1026,7 +1026,7 @@ class AddOrganizationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 组织名称（仅支持中文、英文、数字、_、-的组合，长度不超过16个字符，且组织名称不能重复）
+        :param _Name: 组织名称（仅支持中文、英文、数字、空格、中英文括号、_、-, 长度不超过64位，且组织名称不能重复）
         :type Name: str
         :param _ParentId: 组织父节点 ID（从查询组织接口DescribeOrganization中获取，填0代表根组织）
         :type ParentId: str
@@ -1634,6 +1634,8 @@ class AddRecordPlanRequest(AbstractModel):
         :type Channels: list of ChannelInfo
         :param _OrganizationId: 添加组织目录下所有设备通道，Json数组，可以为空，通道总数量不超过5000个（包括Channel字段的数量）
         :type OrganizationId: list of str
+        :param _RepairMode: 录像补录模式（0:不启用，1:启用），无该字段，默认不启用
+        :type RepairMode: int
         """
         self._PlanName = None
         self._TemplateId = None
@@ -1642,6 +1644,7 @@ class AddRecordPlanRequest(AbstractModel):
         self._StreamType = None
         self._Channels = None
         self._OrganizationId = None
+        self._RepairMode = None
 
     @property
     def PlanName(self):
@@ -1699,6 +1702,14 @@ class AddRecordPlanRequest(AbstractModel):
     def OrganizationId(self, OrganizationId):
         self._OrganizationId = OrganizationId
 
+    @property
+    def RepairMode(self):
+        return self._RepairMode
+
+    @RepairMode.setter
+    def RepairMode(self, RepairMode):
+        self._RepairMode = RepairMode
+
 
     def _deserialize(self, params):
         self._PlanName = params.get("PlanName")
@@ -1715,6 +1726,7 @@ class AddRecordPlanRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Channels.append(obj)
         self._OrganizationId = params.get("OrganizationId")
+        self._RepairMode = params.get("RepairMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1901,7 +1913,7 @@ class AddRecordRetrieveTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskName: 任务名称，仅支持中文、英文、数字、_、-，长度不超过32个字符，模板名称全局唯一，不能为空，不能重复
+        :param _TaskName: 任务名称，仅支持中文、英文、数字、_、-，长度不超过32个字符，名称全局唯一，不能为空，不能重复
         :type TaskName: str
         :param _StartTime: 取回录像的开始时间，UTC秒数，例如：1662114146，开始和结束时间段最长为一天，且不能跨天
         :type StartTime: int
@@ -2408,7 +2420,7 @@ class AddUserDeviceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 设备名称，仅支持中文、英文、数字、_、-，长度不超过32个字符；（设备名称无需全局唯一，可以重复）
+        :param _Name: 设备名称，仅支持中文、英文、数字、空格、中英文括号、_、-, 长度不超过128位；（设备名称无需全局唯一，可以重复）
         :type Name: str
         :param _AccessProtocol: 设备接入协议（1:RTMP,2:GB,3:GW,4:IVCP）
         :type AccessProtocol: int
@@ -2420,9 +2432,9 @@ class AddUserDeviceRequest(AbstractModel):
         :type ClusterId: str
         :param _TransportProtocol: 设备流传输协议，1:UDP,2:TCP；(国标设备有效，不填写则默认UDP协议)
         :type TransportProtocol: int
-        :param _Password: 设备密码（国标，网关设备必填，仅支持数字组合，长度为1-64个字符）
+        :param _Password: 设备密码（国标，网关设备必填，长度为1-64个字符）
         :type Password: str
-        :param _Description: 设备描述，仅支持中文、英文、数字、_、-，长度不超过128个字符
+        :param _Description: 设备描述，长度不超过128个字符
         :type Description: str
         :param _GatewayId: 设备接入网关ID，从查询网关列表接口中ListGateways获取（仅网关接入需要）
         :type GatewayId: str
@@ -2436,9 +2448,9 @@ class AddUserDeviceRequest(AbstractModel):
         :type Username: str
         :param _SNCode: 设备 SN，仅IVCP 协议设备需要
         :type SNCode: str
-        :param _AppName: RTMP推流地址自定义AppName（仅RTMP需要，支持英文、数字组合限制32个字符内）
+        :param _AppName: RTMP推流地址自定义AppName（仅RTMP需要，支持英文、数字、_、-、.、长度不超过64位）
         :type AppName: str
-        :param _StreamName: RTMP推流地址自定义StreamName（仅RTMP需要，支持英文、数字组合限制32个字符内）
+        :param _StreamName: RTMP推流地址自定义StreamName（仅RTMP需要，支持英文、数字、_、-、.、长度不超过64位）
         :type StreamName: str
         """
         self._Name = None
@@ -2755,7 +2767,7 @@ class BatchOperateDeviceRequest(AbstractModel):
         r"""
         :param _DeviceIds: 设备 ID 数组（从获取设备列表接口ListDevices中获取）
         :type DeviceIds: list of str
-        :param _Cmd: 操作命令（enable：启用；disable：禁用；delete：删除；upgrade：固件升级；reset：恢复出厂设置；reboot：重启）
+        :param _Cmd: 操作命令（enable：启用；disable：禁用；delete：删除；sync：同步设备通道；upgrade：固件升级；reset：恢复出厂设置；reboot：重启）
         :type Cmd: str
         """
         self._DeviceIds = None
@@ -12577,6 +12589,8 @@ class RecordPlanBaseInfo(AbstractModel):
         :type Status: int
         :param _ChannelCount: 通道总数
         :type ChannelCount: int
+        :param _RepairMode: 录像补录模式（0:不启用，1:启用）
+        :type RepairMode: int
         """
         self._PlanId = None
         self._PlanName = None
@@ -12586,6 +12600,7 @@ class RecordPlanBaseInfo(AbstractModel):
         self._LifeCycle = None
         self._Status = None
         self._ChannelCount = None
+        self._RepairMode = None
 
     @property
     def PlanId(self):
@@ -12651,6 +12666,14 @@ class RecordPlanBaseInfo(AbstractModel):
     def ChannelCount(self, ChannelCount):
         self._ChannelCount = ChannelCount
 
+    @property
+    def RepairMode(self):
+        return self._RepairMode
+
+    @RepairMode.setter
+    def RepairMode(self, RepairMode):
+        self._RepairMode = RepairMode
+
 
     def _deserialize(self, params):
         self._PlanId = params.get("PlanId")
@@ -12663,6 +12686,7 @@ class RecordPlanBaseInfo(AbstractModel):
             self._LifeCycle._deserialize(params.get("LifeCycle"))
         self._Status = params.get("Status")
         self._ChannelCount = params.get("ChannelCount")
+        self._RepairMode = params.get("RepairMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12693,12 +12717,15 @@ class RecordPlanChannelInfo(AbstractModel):
         :param _OrganizationName: 所属组织名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrganizationName: str
+        :param _AccessProtocol: 通道所属设备的接入协议类型
+        :type AccessProtocol: int
         """
         self._DeviceId = None
         self._DeviceName = None
         self._ChannelId = None
         self._ChannelName = None
         self._OrganizationName = None
+        self._AccessProtocol = None
 
     @property
     def DeviceId(self):
@@ -12740,6 +12767,14 @@ class RecordPlanChannelInfo(AbstractModel):
     def OrganizationName(self, OrganizationName):
         self._OrganizationName = OrganizationName
 
+    @property
+    def AccessProtocol(self):
+        return self._AccessProtocol
+
+    @AccessProtocol.setter
+    def AccessProtocol(self, AccessProtocol):
+        self._AccessProtocol = AccessProtocol
+
 
     def _deserialize(self, params):
         self._DeviceId = params.get("DeviceId")
@@ -12747,6 +12782,7 @@ class RecordPlanChannelInfo(AbstractModel):
         self._ChannelId = params.get("ChannelId")
         self._ChannelName = params.get("ChannelName")
         self._OrganizationName = params.get("OrganizationName")
+        self._AccessProtocol = params.get("AccessProtocol")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12778,6 +12814,8 @@ class RecordPlanOptData(AbstractModel):
         :param _StreamType: 码流类型，default:设备默认码流类型，main:主码流，sub:子码流，其他根据设备能力集自定义
 注意：此字段可能返回 null，表示取不到有效值。
         :type StreamType: str
+        :param _RepairMode: 录像补录模式（0:不启用，1:启用）
+        :type RepairMode: int
         """
         self._PlanId = None
         self._PlanName = None
@@ -12785,6 +12823,7 @@ class RecordPlanOptData(AbstractModel):
         self._Describe = None
         self._LifeCycle = None
         self._StreamType = None
+        self._RepairMode = None
 
     @property
     def PlanId(self):
@@ -12834,6 +12873,14 @@ class RecordPlanOptData(AbstractModel):
     def StreamType(self, StreamType):
         self._StreamType = StreamType
 
+    @property
+    def RepairMode(self):
+        return self._RepairMode
+
+    @RepairMode.setter
+    def RepairMode(self, RepairMode):
+        self._RepairMode = RepairMode
+
 
     def _deserialize(self, params):
         self._PlanId = params.get("PlanId")
@@ -12844,6 +12891,7 @@ class RecordPlanOptData(AbstractModel):
             self._LifeCycle = LifeCycleData()
             self._LifeCycle._deserialize(params.get("LifeCycle"))
         self._StreamType = params.get("StreamType")
+        self._RepairMode = params.get("RepairMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15143,7 +15191,7 @@ class UpdateOrganizationRequest(AbstractModel):
         r"""
         :param _OrganizationId: 组织ID（从查询组织接口DescribeOrganization中获取）
         :type OrganizationId: str
-        :param _Name: 组织名称
+        :param _Name: 组织名称，支持中文、英文、数字、空格、中英文括号、_、-, 长度不超过64位，且组织名称不能重复
         :type Name: str
         """
         self._OrganizationId = None
@@ -15857,6 +15905,8 @@ class UpdateRecordPlanData(AbstractModel):
         :type Del: list of str
         :param _OrganizationId: 组织目录ID，添加组织目录下所有设备通道，Json数组，可以为空，并且通道总数量不超过5000个（包括Add字段通道数量）
         :type OrganizationId: list of str
+        :param _RepairMode: 录像补录模式（0:不启用，1:启用）
+        :type RepairMode: int
         """
         self._PlanName = None
         self._TemplateId = None
@@ -15866,6 +15916,7 @@ class UpdateRecordPlanData(AbstractModel):
         self._Add = None
         self._Del = None
         self._OrganizationId = None
+        self._RepairMode = None
 
     @property
     def PlanName(self):
@@ -15931,6 +15982,14 @@ class UpdateRecordPlanData(AbstractModel):
     def OrganizationId(self, OrganizationId):
         self._OrganizationId = OrganizationId
 
+    @property
+    def RepairMode(self):
+        return self._RepairMode
+
+    @RepairMode.setter
+    def RepairMode(self, RepairMode):
+        self._RepairMode = RepairMode
+
 
     def _deserialize(self, params):
         self._PlanName = params.get("PlanName")
@@ -15948,6 +16007,7 @@ class UpdateRecordPlanData(AbstractModel):
                 self._Add.append(obj)
         self._Del = params.get("Del")
         self._OrganizationId = params.get("OrganizationId")
+        self._RepairMode = params.get("RepairMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16189,13 +16249,13 @@ class UpdateUserDeviceRequest(AbstractModel):
         r"""
         :param _DeviceId: 设备ID（从获取设备列表接口ListDevices中获取）
         :type DeviceId: str
-        :param _Name: 设备名称（仅支持中文、英文、数字、_、-，长度不超过32个字符）
+        :param _Name: 设备名称（仅支持中文、英文、数字、空格、中英文括号、_、-, 长度不超过128位）
         :type Name: str
         :param _TransportProtocol: 设备流传输协议，仅国标设备有效，填0则不做更改（1:UDP,2:TCP）
         :type TransportProtocol: int
-        :param _Password: 设备密码（仅国标，网关设备支持）
+        :param _Password: 设备密码（仅国标，网关设备支持，长度不超过 64 位）
         :type Password: str
-        :param _Description: 设备描述（仅支持中文、英文、数字、_、-，长度不超过128位）
+        :param _Description: 设备描述（长度不超过128位）
         :type Description: str
         :param _Ip: 设备接入Ip（仅网关接入支持）
         :type Ip: str

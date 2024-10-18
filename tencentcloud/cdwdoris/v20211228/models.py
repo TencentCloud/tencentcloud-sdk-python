@@ -3001,6 +3001,11 @@ class DescribeBackUpJobRequest(AbstractModel):
         r"""
         :param _InstanceId: 集群id
         :type InstanceId: str
+        :param _ApplicationType: 任务类型：
+0-不限制，或使用TypeFilters过滤；
+1-备份恢复（包括周期备份和一次性备份）；
+2-数据迁移（包括跨集群迁移和cos迁移）	
+        :type ApplicationType: int
         :param _PageSize: 分页大小
         :type PageSize: int
         :param _PageNum: 页号
@@ -3013,6 +3018,7 @@ class DescribeBackUpJobRequest(AbstractModel):
         :type JobIdFiltersStr: str
         """
         self._InstanceId = None
+        self._ApplicationType = None
         self._PageSize = None
         self._PageNum = None
         self._BeginTime = None
@@ -3026,6 +3032,14 @@ class DescribeBackUpJobRequest(AbstractModel):
     @InstanceId.setter
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
+
+    @property
+    def ApplicationType(self):
+        return self._ApplicationType
+
+    @ApplicationType.setter
+    def ApplicationType(self, ApplicationType):
+        self._ApplicationType = ApplicationType
 
     @property
     def PageSize(self):
@@ -3070,6 +3084,7 @@ class DescribeBackUpJobRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
+        self._ApplicationType = params.get("ApplicationType")
         self._PageSize = params.get("PageSize")
         self._PageNum = params.get("PageNum")
         self._BeginTime = params.get("BeginTime")
@@ -3132,6 +3147,36 @@ class DescribeBackUpSchedulesRequest(AbstractModel):
     """DescribeBackUpSchedules请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _ApplicationType: 任务类型
+0-不限制，或使用TypeFilters过滤；
+1-备份恢复（包括周期备份和一次性备份）；
+2-数据迁移（包括跨集群迁移和cos迁移）
+        :type ApplicationType: int
+        """
+        self._ApplicationType = None
+
+    @property
+    def ApplicationType(self):
+        return self._ApplicationType
+
+    @ApplicationType.setter
+    def ApplicationType(self, ApplicationType):
+        self._ApplicationType = ApplicationType
+
+
+    def _deserialize(self, params):
+        self._ApplicationType = params.get("ApplicationType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeBackUpSchedulesResponse(AbstractModel):

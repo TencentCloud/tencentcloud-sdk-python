@@ -14766,6 +14766,8 @@ class DescribeRestoreTaskRequest(AbstractModel):
         :type OrderBy: str
         :param _OrderByType: 排序规则（desc-降序，asc-升序），默认desc
         :type OrderByType: str
+        :param _FlowId: 回档异步任务ID
+        :type FlowId: int
         """
         self._InstanceId = None
         self._StartTime = None
@@ -14778,6 +14780,7 @@ class DescribeRestoreTaskRequest(AbstractModel):
         self._Limit = None
         self._OrderBy = None
         self._OrderByType = None
+        self._FlowId = None
 
     @property
     def InstanceId(self):
@@ -14867,6 +14870,14 @@ class DescribeRestoreTaskRequest(AbstractModel):
     def OrderByType(self, OrderByType):
         self._OrderByType = OrderByType
 
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -14880,6 +14891,7 @@ class DescribeRestoreTaskRequest(AbstractModel):
         self._Limit = params.get("Limit")
         self._OrderBy = params.get("OrderBy")
         self._OrderByType = params.get("OrderByType")
+        self._FlowId = params.get("FlowId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23841,6 +23853,8 @@ class RestoreTask(AbstractModel):
         :type EndTime: str
         :param _Status: 回档状态，0-初始化，1-运行中，2-成功，3-失败
         :type Status: int
+        :param _FlowId: 回档异步任务ID
+        :type FlowId: int
         """
         self._TargetInstanceId = None
         self._TargetInstanceName = None
@@ -23853,6 +23867,7 @@ class RestoreTask(AbstractModel):
         self._StartTime = None
         self._EndTime = None
         self._Status = None
+        self._FlowId = None
 
     @property
     def TargetInstanceId(self):
@@ -23942,6 +23957,14 @@ class RestoreTask(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
 
     def _deserialize(self, params):
         self._TargetInstanceId = params.get("TargetInstanceId")
@@ -23955,6 +23978,7 @@ class RestoreTask(AbstractModel):
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._Status = params.get("Status")
+        self._FlowId = params.get("FlowId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

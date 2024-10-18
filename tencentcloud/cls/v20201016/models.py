@@ -18994,6 +18994,8 @@ class ModifyTopicRequest(AbstractModel):
         :type Extends: :class:`tencentcloud.cls.v20201016.models.TopicExtendInfo`
         :param _PartitionCount: 日志主题分区数量
         :type PartitionCount: int
+        :param _CancelTopicAsyncTaskID: 取消切换存储任务的id
+        :type CancelTopicAsyncTaskID: str
         """
         self._TopicId = None
         self._TopicName = None
@@ -19007,6 +19009,7 @@ class ModifyTopicRequest(AbstractModel):
         self._IsWebTracking = None
         self._Extends = None
         self._PartitionCount = None
+        self._CancelTopicAsyncTaskID = None
 
     @property
     def TopicId(self):
@@ -19104,6 +19107,14 @@ class ModifyTopicRequest(AbstractModel):
     def PartitionCount(self, PartitionCount):
         self._PartitionCount = PartitionCount
 
+    @property
+    def CancelTopicAsyncTaskID(self):
+        return self._CancelTopicAsyncTaskID
+
+    @CancelTopicAsyncTaskID.setter
+    def CancelTopicAsyncTaskID(self, CancelTopicAsyncTaskID):
+        self._CancelTopicAsyncTaskID = CancelTopicAsyncTaskID
+
 
     def _deserialize(self, params):
         self._TopicId = params.get("TopicId")
@@ -19125,6 +19136,7 @@ class ModifyTopicRequest(AbstractModel):
             self._Extends = TopicExtendInfo()
             self._Extends._deserialize(params.get("Extends"))
         self._PartitionCount = params.get("PartitionCount")
+        self._CancelTopicAsyncTaskID = params.get("CancelTopicAsyncTaskID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20435,7 +20447,8 @@ class QueryMetricRequest(AbstractModel):
         :type Query: str
         :param _TopicId: 指标主题ID
         :type TopicId: str
-        :param _Time: 查询时间，秒级Unix时间戳	
+        :param _Time: 查询时间，秒级Unix时间戳。为空时代表当前时间戳。
+
         :type Time: int
         """
         self._Query = None
@@ -22872,6 +22885,15 @@ HotPeriod=0为没有开启日志沉降。
         :param _Extends: 日志主题扩展信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extends: :class:`tencentcloud.cls.v20201016.models.TopicExtendInfo`
+        :param _TopicAsyncTaskID: 异步迁移任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicAsyncTaskID: str
+        :param _MigrationStatus: 异步迁移状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MigrationStatus: int
+        :param _EffectiveDate: 异步迁移完成后，预计生效日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EffectiveDate: str
         """
         self._LogsetId = None
         self._TopicId = None
@@ -22892,6 +22914,9 @@ HotPeriod=0为没有开启日志沉降。
         self._BizType = None
         self._IsWebTracking = None
         self._Extends = None
+        self._TopicAsyncTaskID = None
+        self._MigrationStatus = None
+        self._EffectiveDate = None
 
     @property
     def LogsetId(self):
@@ -23045,6 +23070,30 @@ HotPeriod=0为没有开启日志沉降。
     def Extends(self, Extends):
         self._Extends = Extends
 
+    @property
+    def TopicAsyncTaskID(self):
+        return self._TopicAsyncTaskID
+
+    @TopicAsyncTaskID.setter
+    def TopicAsyncTaskID(self, TopicAsyncTaskID):
+        self._TopicAsyncTaskID = TopicAsyncTaskID
+
+    @property
+    def MigrationStatus(self):
+        return self._MigrationStatus
+
+    @MigrationStatus.setter
+    def MigrationStatus(self, MigrationStatus):
+        self._MigrationStatus = MigrationStatus
+
+    @property
+    def EffectiveDate(self):
+        return self._EffectiveDate
+
+    @EffectiveDate.setter
+    def EffectiveDate(self, EffectiveDate):
+        self._EffectiveDate = EffectiveDate
+
 
     def _deserialize(self, params):
         self._LogsetId = params.get("LogsetId")
@@ -23073,6 +23122,9 @@ HotPeriod=0为没有开启日志沉降。
         if params.get("Extends") is not None:
             self._Extends = TopicExtendInfo()
             self._Extends._deserialize(params.get("Extends"))
+        self._TopicAsyncTaskID = params.get("TopicAsyncTaskID")
+        self._MigrationStatus = params.get("MigrationStatus")
+        self._EffectiveDate = params.get("EffectiveDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23266,17 +23318,23 @@ class WebCallback(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Method: str
         :param _Headers: 请求头。
-注意：该参数已废弃，请在<a href="https://cloud.tencent.com/document/product/614/56466">创建告警策略</a>接口CallBack参数中指定请求头。
+注意：该参数已废弃，请使用NoticeContentId。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Headers: list of str
         :param _Body: 请求内容。
-注意：该参数已废弃，请在<a href="https://cloud.tencent.com/document/product/614/56466">创建告警策略</a>接口CallBack参数中指定请求内容。
+注意：该参数已废弃，请使用NoticeContentId。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Body: str
         :param _Index: 序号。
 - 入参无效。
 - 出参有效。
         :type Index: int
+        :param _NoticeContentId: 通知内容模板ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoticeContentId: str
+        :param _WebCallbackId: 集成配置ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WebCallbackId: str
         """
         self._Url = None
         self._CallbackType = None
@@ -23284,6 +23342,8 @@ class WebCallback(AbstractModel):
         self._Headers = None
         self._Body = None
         self._Index = None
+        self._NoticeContentId = None
+        self._WebCallbackId = None
 
     @property
     def Url(self):
@@ -23333,6 +23393,22 @@ class WebCallback(AbstractModel):
     def Index(self, Index):
         self._Index = Index
 
+    @property
+    def NoticeContentId(self):
+        return self._NoticeContentId
+
+    @NoticeContentId.setter
+    def NoticeContentId(self, NoticeContentId):
+        self._NoticeContentId = NoticeContentId
+
+    @property
+    def WebCallbackId(self):
+        return self._WebCallbackId
+
+    @WebCallbackId.setter
+    def WebCallbackId(self, WebCallbackId):
+        self._WebCallbackId = WebCallbackId
+
 
     def _deserialize(self, params):
         self._Url = params.get("Url")
@@ -23341,6 +23417,8 @@ class WebCallback(AbstractModel):
         self._Headers = params.get("Headers")
         self._Body = params.get("Body")
         self._Index = params.get("Index")
+        self._NoticeContentId = params.get("NoticeContentId")
+        self._WebCallbackId = params.get("WebCallbackId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
