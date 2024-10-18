@@ -381,6 +381,10 @@ class DescribePortraitSingJobResponse(AbstractModel):
         :type StatusCode: str
         :param _StatusMsg: 任务状态信息
         :type StatusMsg: str
+        :param _ErrorCode: 错误码
+        :type ErrorCode: str
+        :param _ErrorMessage: 错误信息
+        :type ErrorMessage: str
         :param _ResultVideoUrl: 生成视频的URL地址
 有效期24小时
         :type ResultVideoUrl: str
@@ -390,6 +394,8 @@ class DescribePortraitSingJobResponse(AbstractModel):
         self._JobId = None
         self._StatusCode = None
         self._StatusMsg = None
+        self._ErrorCode = None
+        self._ErrorMessage = None
         self._ResultVideoUrl = None
         self._RequestId = None
 
@@ -418,6 +424,22 @@ class DescribePortraitSingJobResponse(AbstractModel):
         self._StatusMsg = StatusMsg
 
     @property
+    def ErrorCode(self):
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorMessage(self):
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
     def ResultVideoUrl(self):
         return self._ResultVideoUrl
 
@@ -438,6 +460,8 @@ class DescribePortraitSingJobResponse(AbstractModel):
         self._JobId = params.get("JobId")
         self._StatusCode = params.get("StatusCode")
         self._StatusMsg = params.get("StatusMsg")
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorMessage = params.get("ErrorMessage")
         self._ResultVideoUrl = params.get("ResultVideoUrl")
         self._RequestId = params.get("RequestId")
 
@@ -919,23 +943,29 @@ class SubmitPortraitSingJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AudioUrl: 传入音频URL地址。音频要求：
-—音频时长：不超过60秒
-—音频格式：mp3、wav、m4a
+        :param _AudioUrl: 传入音频URL地址，音频要求：
+- 音频时长：2秒 - 60秒
+- 音频格式：mp3、wav、m4a
         :type AudioUrl: str
         :param _ImageUrl: 传入图片URL地址，图片要求：
-—图片格式：jpg、jpeg、png
-—图片分辨率：长边不超过2560
-—图片大小：不超过6M
-—图片宽高比：图片【宽：高】在1:2到2:1范围内
+- 图片格式：jpg、jpeg、png、bmp、webp
+- 图片分辨率：192～4096
+- 图片大小：不超过10M
+- 图片宽高比：图片【宽：高】在1:2到2:1范围内
+- 图片内容：避免上传无人脸/宠物脸或脸部过小、不完整、不清晰、偏转角度过大的图片。
         :type ImageUrl: str
-        :param _ImageBase64: 传入图片Base64编码。
-—图片Base64编码与URL地址必传其一
+        :param _ImageBase64: 传入图片Base64编码，编码后请求体大小不超过10M。
+图片Base64编码与URL地址必传其一，如果都传以ImageBase64为准。
         :type ImageBase64: str
+        :param _Mode: 唱演模式，默认使用人像模式。
+Person：人像模式，仅支持上传人像图片，人像生成效果更好，如果图中未检测到有效人脸将被拦截，生成时会将视频短边分辨率放缩至512。
+Pet：宠物模式，支持宠物等非人像图片，固定生成512:512分辨率视频。
+        :type Mode: str
         """
         self._AudioUrl = None
         self._ImageUrl = None
         self._ImageBase64 = None
+        self._Mode = None
 
     @property
     def AudioUrl(self):
@@ -961,11 +991,20 @@ class SubmitPortraitSingJobRequest(AbstractModel):
     def ImageBase64(self, ImageBase64):
         self._ImageBase64 = ImageBase64
 
+    @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
 
     def _deserialize(self, params):
         self._AudioUrl = params.get("AudioUrl")
         self._ImageUrl = params.get("ImageUrl")
         self._ImageBase64 = params.get("ImageBase64")
+        self._Mode = params.get("Mode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
