@@ -1050,7 +1050,7 @@ class BatchModifyTopicAttributesRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例id
         :type InstanceId: str
-        :param _Topic: 主题属性列表
+        :param _Topic: 主题属性列表 (同一个批次最多支持10个)
         :type Topic: list of BatchModifyTopicInfo
         """
         self._InstanceId = None

@@ -717,6 +717,8 @@ class CheckBankCardInformationResponse(AbstractModel):
 不收费结果码：
 -2：验证中心服务繁忙
 -3：银行卡不存在
+-4：认证次数超过当日限制，请次日重试
+
         :type Result: str
         :param _Description: 业务结果描述
         :type Description: str
@@ -6771,6 +6773,7 @@ class MobileNetworkTimeVerificationResponse(AbstractModel):
 不收费结果码：
 -1: 手机号格式不正确
 -4: 验证中心服务繁忙
+-5：认证次数超过当日限制，请次日重试
         :type Result: str
         :param _Description: 业务结果描述。
         :type Description: str
@@ -6886,6 +6889,7 @@ class MobileStatusResponse(AbstractModel):
 -1：未查询到结果
 -2：手机号格式不正确
 -3：验证中心服务繁忙
+-4：认证次数超过当日限制，请次日重试
         :type Result: str
         :param _Description: 业务结果描述。
         :type Description: str

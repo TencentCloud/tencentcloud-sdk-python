@@ -12542,7 +12542,7 @@ class CreateSignUrlsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SignUrlInfos: 签署参与者签署H5链接信息数组
+        :param _SignUrlInfos: 生成的签署参与者的签署链接信息数组。
         :type SignUrlInfos: list of SignUrlInfo
         :param _ErrorMessages: 生成失败时的错误信息，成功返回”“，顺序和出参SignUrlInfos保持一致
         :type ErrorMessages: list of str

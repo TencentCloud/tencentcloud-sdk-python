@@ -6695,7 +6695,7 @@ class GetRoomsRequest(AbstractModel):
         :type EndTime: int
         :param _Page: 分页查询当前页数，从1开始递增
         :type Page: int
-        :param _Limit: 默认是10条
+        :param _Limit: 默认10条，最大上限为100条
         :type Limit: int
         :param _Status: 课堂状态。默认展示所有课堂，0为未开始，1为正在上课，2为已结束，3为已过期
         :type Status: list of int non-negative
@@ -9149,10 +9149,14 @@ class RoomInfo(AbstractModel):
 
     @property
     def RTCAudienceNumber(self):
+        warnings.warn("parameter `RTCAudienceNumber` is deprecated", DeprecationWarning) 
+
         return self._RTCAudienceNumber
 
     @RTCAudienceNumber.setter
     def RTCAudienceNumber(self, RTCAudienceNumber):
+        warnings.warn("parameter `RTCAudienceNumber` is deprecated", DeprecationWarning) 
+
         self._RTCAudienceNumber = RTCAudienceNumber
 
     @property
@@ -9361,7 +9365,7 @@ class RoomItem(AbstractModel):
 3 全高清
 注意：此字段可能返回 null，表示取不到有效值。
         :type Resolution: int
-        :param _MaxRTCMember: 最大允许连麦人数
+        :param _MaxRTCMember: 最大允许连麦人数。已废弃，使用字段 MaxMicNumber
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxRTCMember: int
         :param _ReplayUrl: 房间录制地址。已废弃，使用新字段 RecordUrl
@@ -9370,7 +9374,7 @@ class RoomItem(AbstractModel):
         :param _RecordUrl: 录制地址（协议为https)。仅在房间结束后存在。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordUrl: str
-        :param _MaxMicNumber: 最高房间内人数（不包括老师），0表示不限制，默认为0
+        :param _MaxMicNumber: 课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxMicNumber: int
         :param _EnableDirectControl: 打开学生麦克风/摄像头的授权开关 

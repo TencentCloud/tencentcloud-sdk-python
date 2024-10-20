@@ -30920,6 +30920,8 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :type ZoneId: str
         :param _RoTransType: 针对跨集群搬迁场景，选择同可用区RO的处理逻辑。together-同可用区RO跟随主实例迁移至目标可用区（默认选项），severally-同可用区RO保持原部署模式、不迁移至目标可用区。
         :type RoTransType: str
+        :param _CheckFastUpgradeReboot: 检查原地升级是否需要重启，1 检查， 0 不检查。如果值为1，检查为原地升级需要重启，则会停止升级并进行返回提示，如果为原地升级不重启，则正常执行升级流程。
+        :type CheckFastUpgradeReboot: int
         """
         self._InstanceId = None
         self._Memory = None
@@ -30938,6 +30940,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self._CrossCluster = None
         self._ZoneId = None
         self._RoTransType = None
+        self._CheckFastUpgradeReboot = None
 
     @property
     def InstanceId(self):
@@ -31075,6 +31078,14 @@ class UpgradeDBInstanceRequest(AbstractModel):
     def RoTransType(self, RoTransType):
         self._RoTransType = RoTransType
 
+    @property
+    def CheckFastUpgradeReboot(self):
+        return self._CheckFastUpgradeReboot
+
+    @CheckFastUpgradeReboot.setter
+    def CheckFastUpgradeReboot(self, CheckFastUpgradeReboot):
+        self._CheckFastUpgradeReboot = CheckFastUpgradeReboot
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -31094,6 +31105,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self._CrossCluster = params.get("CrossCluster")
         self._ZoneId = params.get("ZoneId")
         self._RoTransType = params.get("RoTransType")
+        self._CheckFastUpgradeReboot = params.get("CheckFastUpgradeReboot")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -158,25 +158,18 @@ class AgentConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _UserId: 机器人的UserId，用于进房发起任务。【注意】这个UserId不能与当前房间内的主播观众[UserId](https://cloud.tencent.com/document/product/647/46351#userid)重复。如果一个房间发起多个任务时，机器人的UserId也不能相互重复，否则会中断前一个任务。需要保证机器人UserId在房间内唯一。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserId: str
         :param _UserSig: 机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserSig: str
         :param _TargetUserId: 机器人拉流的UserId, 填写后，机器人会拉取该UserId的流进行实时处理
-注意：此字段可能返回 null，表示取不到有效值。
         :type TargetUserId: str
         :param _MaxIdleTime: 房间内超过MaxIdleTime 没有推流，后台自动关闭任务，默认值是60s。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxIdleTime: int
         :param _WelcomeMessage: 机器人的欢迎语
-注意：此字段可能返回 null，表示取不到有效值。
         :type WelcomeMessage: str
         :param _InterruptMode: 智能打断模式，默认为0，0表示服务端自动打断，1表示服务端不打断，由端上发送打断信令进行打断
-注意：此字段可能返回 null，表示取不到有效值。
         :type InterruptMode: int
         :param _InterruptSpeechDuration: InterruptMode为0时使用，单位为毫秒，默认为500ms。表示服务端检测到持续InterruptSpeechDuration毫秒的人声则进行打断。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InterruptSpeechDuration: int
         """
         self._UserId = None
@@ -8227,18 +8220,18 @@ class STTConfig(AbstractModel):
 18.     German = "de" # 德语
 19.     Italian = "it" # 意大利语
 20.     Russian = "ru" # 俄语
+21.     Swedish = "sv" # 瑞典语
+22.     Danish = "da" # 丹麦语
+23.     Norwegian = "no" # 挪威语
 
 注意：
 如果缺少满足您需求的语言，请联系我们技术人员。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Language: str
         :param _AlternativeLanguage: 发起模糊识别额外可能替代语言类型,最多填写3种语言类型, 
 注：Language指定为"zh-dialect" # 中国方言 时，不支持模糊识别，该字段无效
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type AlternativeLanguage: list of str
         :param _VadSilenceTime: 语音识别vad的时间，范围为240-2000，默认为1000，单位为ms。更小的值会让语音识别分句更快。
-注意：此字段可能返回 null，表示取不到有效值。
         :type VadSilenceTime: int
         """
         self._Language = None

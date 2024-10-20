@@ -3408,7 +3408,7 @@ class CynosdbClient(AbstractClient):
 
 
     def UpgradeProxy(self, request):
-        """升级数据库代理配置
+        """本接口（UpgradeProxy）用于升级数据库代理配置。
 
         :param request: Request instance for UpgradeProxy.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.UpgradeProxyRequest`

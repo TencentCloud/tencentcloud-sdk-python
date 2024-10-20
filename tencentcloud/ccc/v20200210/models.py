@@ -1509,12 +1509,16 @@ class CreateAICallRequest(AbstractModel):
         :param _SystemPrompt: 用于设定AI座席人设、说话规则、任务等的全局提示词。
         :type SystemPrompt: str
         :param _LLMType: LLM类型
+目前有两种
+openai(兼容openai协议的模型)
+azure
         :type LLMType: str
         :param _Model: 模型（当前仅支持openai协议的模型）
         :type Model: str
         :param _APIKey: API密钥
         :type APIKey: str
-        :param _APIUrl: API URL，仅支持兼容openai协议的模型，填写url时后缀不要带/chat/completions
+        :param _APIUrl: API URL，仅支持兼容openai协议的模型，填写url时后缀不要带/chat/completions；
+llmType为azure时,URL填写格式需为：https://{your-resource-name}.openai.azure.com?api-version={api-version},填写url时后缀不要带/openai/deployments/{deployment-id}/chat/completions，系统会自动帮你填充后缀
         :type APIUrl: str
         :param _VoiceType: 音色，目前仅支持以下音色:
 汉语：
