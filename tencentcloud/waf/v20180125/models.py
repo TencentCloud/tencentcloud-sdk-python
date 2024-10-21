@@ -14449,6 +14449,93 @@ class DescribePortsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeProtectionModesRequest(AbstractModel):
+    """DescribeProtectionModes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Edition: sparta-waf或clb
+        :type Edition: str
+        :param _Domain: 域名
+        :type Domain: str
+        """
+        self._Edition = None
+        self._Domain = None
+
+    @property
+    def Edition(self):
+        return self._Edition
+
+    @Edition.setter
+    def Edition(self, Edition):
+        self._Edition = Edition
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+
+    def _deserialize(self, params):
+        self._Edition = params.get("Edition")
+        self._Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProtectionModesResponse(AbstractModel):
+    """DescribeProtectionModes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Modes: 规则大类ID及防护模式
+        :type Modes: list of TigaMainClassMode
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Modes = None
+        self._RequestId = None
+
+    @property
+    def Modes(self):
+        return self._Modes
+
+    @Modes.setter
+    def Modes(self, Modes):
+        self._Modes = Modes
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Modes") is not None:
+            self._Modes = []
+            for item in params.get("Modes"):
+                obj = TigaMainClassMode()
+                obj._deserialize(item)
+                self._Modes.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRuleLimitRequest(AbstractModel):
     """DescribeRuleLimit请求参数结构体
 
@@ -29154,6 +29241,53 @@ class TargetEntity(AbstractModel):
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TigaMainClassMode(AbstractModel):
+    """Tiga引擎中Mainclass的TypeID和防护模式
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TypeID: MainclassID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TypeID: str
+        :param _Mode: 防护模式，0表示观察，1表示拦截
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mode: int
+        """
+        self._TypeID = None
+        self._Mode = None
+
+    @property
+    def TypeID(self):
+        return self._TypeID
+
+    @TypeID.setter
+    def TypeID(self, TypeID):
+        self._TypeID = TypeID
+
+    @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+
+    def _deserialize(self, params):
+        self._TypeID = params.get("TypeID")
+        self._Mode = params.get("Mode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

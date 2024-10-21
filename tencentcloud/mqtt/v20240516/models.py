@@ -59,7 +59,9 @@ class AuthorizationPolicyItem(AbstractModel):
         :param _Qos: 0，1，2
 注意：此字段可能返回 null，表示取不到有效值。
         :type Qos: str
-        :param _Retain: 1、2、3
+        :param _Retain: 1：表示匹配retain消息
+2：表示匹配非retain消息
+3：表示匹配retain和非retain消息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Retain: int
         :param _Remark: 描述
@@ -2003,7 +2005,7 @@ class MQTTAuthenticatorItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 认证器类型
+        :param _Type: 认证器类型: JWT：JWT认证器 JWKS：JWKS认证器 BYOC：一端一证认证器
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Config: 认证器配置

@@ -1476,7 +1476,9 @@ class CfwClient(AbstractClient):
 
 
     def DescribeSwitchLists(self, request):
-        """防火墙开关列表，已废弃，请使用DescribeFwEdgeIps
+        """历史接口，已经废弃，产品有新的替代接口
+
+        防火墙开关列表，已废弃，请使用DescribeFwEdgeIps
 
         :param request: Request instance for DescribeSwitchLists.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeSwitchListsRequest`

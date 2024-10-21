@@ -3736,6 +3736,163 @@ class CreateProClusterResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateRabbitMQBindingRequest(AbstractModel):
+    """CreateRabbitMQBinding请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例Id
+        :type InstanceId: str
+        :param _VirtualHost: Vhost参数
+        :type VirtualHost: str
+        :param _Source: 源exchange
+        :type Source: str
+        :param _DestinationType: 目标类型,取值queue或exchange
+        :type DestinationType: str
+        :param _Destination: 目标
+        :type Destination: str
+        :param _RoutingKey: 绑定key
+        :type RoutingKey: str
+        """
+        self._InstanceId = None
+        self._VirtualHost = None
+        self._Source = None
+        self._DestinationType = None
+        self._Destination = None
+        self._RoutingKey = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def VirtualHost(self):
+        return self._VirtualHost
+
+    @VirtualHost.setter
+    def VirtualHost(self, VirtualHost):
+        self._VirtualHost = VirtualHost
+
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def DestinationType(self):
+        return self._DestinationType
+
+    @DestinationType.setter
+    def DestinationType(self, DestinationType):
+        self._DestinationType = DestinationType
+
+    @property
+    def Destination(self):
+        return self._Destination
+
+    @Destination.setter
+    def Destination(self, Destination):
+        self._Destination = Destination
+
+    @property
+    def RoutingKey(self):
+        return self._RoutingKey
+
+    @RoutingKey.setter
+    def RoutingKey(self, RoutingKey):
+        self._RoutingKey = RoutingKey
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._VirtualHost = params.get("VirtualHost")
+        self._Source = params.get("Source")
+        self._DestinationType = params.get("DestinationType")
+        self._Destination = params.get("Destination")
+        self._RoutingKey = params.get("RoutingKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRabbitMQBindingResponse(AbstractModel):
+    """CreateRabbitMQBinding返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 队列名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _VirtualHost: vhost参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirtualHost: str
+        :param _BindingId: 路由关系Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BindingId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._VirtualHost = None
+        self._BindingId = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def VirtualHost(self):
+        return self._VirtualHost
+
+    @VirtualHost.setter
+    def VirtualHost(self, VirtualHost):
+        self._VirtualHost = VirtualHost
+
+    @property
+    def BindingId(self):
+        return self._BindingId
+
+    @BindingId.setter
+    def BindingId(self, BindingId):
+        self._BindingId = BindingId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._VirtualHost = params.get("VirtualHost")
+        self._BindingId = params.get("BindingId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateRabbitMQUserRequest(AbstractModel):
     """CreateRabbitMQUser请求参数结构体
 
@@ -15939,6 +16096,7 @@ class DescribeRocketMQVipInstancesRequest(AbstractModel):
         :param _Filters: 查询条件过滤器，支持的查询条件如下：
 instanceIds - 实例ID
 instanceName - 实例名称
+status - 实例状态
         :type Filters: list of Filter
         :param _Limit: 查询数目上限，默认20
         :type Limit: int

@@ -68,6 +68,69 @@ class InputBusinessEncryptData(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _EncryptMethod: 加密方式；0：AES;1:DES
+        :type EncryptMethod: int
+        :param _EncryptData: 业务数据加密字符串
+        :type EncryptData: str
+        :param _EncryptMode: 加密模式；0：ECB,1:CBC;2:CTR;3:CFB;4:OFB
+        :type EncryptMode: int
+        :param _PaddingType: 填充模式;0:ZERO ;1:PKCS5;3:PKCS7
+        :type PaddingType: int
+        """
+        self._EncryptMethod = None
+        self._EncryptData = None
+        self._EncryptMode = None
+        self._PaddingType = None
+
+    @property
+    def EncryptMethod(self):
+        return self._EncryptMethod
+
+    @EncryptMethod.setter
+    def EncryptMethod(self, EncryptMethod):
+        self._EncryptMethod = EncryptMethod
+
+    @property
+    def EncryptData(self):
+        return self._EncryptData
+
+    @EncryptData.setter
+    def EncryptData(self, EncryptData):
+        self._EncryptData = EncryptData
+
+    @property
+    def EncryptMode(self):
+        return self._EncryptMode
+
+    @EncryptMode.setter
+    def EncryptMode(self, EncryptMode):
+        self._EncryptMode = EncryptMode
+
+    @property
+    def PaddingType(self):
+        return self._PaddingType
+
+    @PaddingType.setter
+    def PaddingType(self, PaddingType):
+        self._PaddingType = PaddingType
+
+
+    def _deserialize(self, params):
+        self._EncryptMethod = params.get("EncryptMethod")
+        self._EncryptData = params.get("EncryptData")
+        self._EncryptMode = params.get("EncryptMode")
+        self._PaddingType = params.get("PaddingType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class InputRecognizeTargetAudience(AbstractModel):
     """流量反欺诈-验准入参

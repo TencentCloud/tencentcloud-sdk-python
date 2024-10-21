@@ -1711,6 +1711,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeProtectionModes(self, request):
+        """查询Tiga引擎大类规则及其防护模式
+
+        :param request: Request instance for DescribeProtectionModes.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeProtectionModesRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeProtectionModesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeProtectionModes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeProtectionModesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRuleLimit(self, request):
         """获取各个模块具体的规格限制
 

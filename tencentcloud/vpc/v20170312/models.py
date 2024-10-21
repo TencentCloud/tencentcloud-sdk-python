@@ -12936,10 +12936,10 @@ class CreateVpnGatewaySslServerRequest(AbstractModel):
         :type VpnGatewayId: str
         :param _SslVpnServerName: SSL-VPN-SERVER 实例名称，长度不超过60个字节。
         :type SslVpnServerName: str
-        :param _LocalAddress: 云端地址（CIDR）列表。
-        :type LocalAddress: list of str
         :param _RemoteAddress: 客户端地址网段。
         :type RemoteAddress: str
+        :param _LocalAddress: 云端地址（CIDR）列表。
+        :type LocalAddress: list of str
         :param _SslVpnProtocol: SSL VPN服务端监听协议。当前仅支持 UDP，默认UDP。
         :type SslVpnProtocol: str
         :param _SslVpnPort: SSL VPN服务端监听协议端口，默认1194。
@@ -12961,8 +12961,8 @@ class CreateVpnGatewaySslServerRequest(AbstractModel):
         """
         self._VpnGatewayId = None
         self._SslVpnServerName = None
-        self._LocalAddress = None
         self._RemoteAddress = None
+        self._LocalAddress = None
         self._SslVpnProtocol = None
         self._SslVpnPort = None
         self._IntegrityAlgorithm = None
@@ -12990,20 +12990,20 @@ class CreateVpnGatewaySslServerRequest(AbstractModel):
         self._SslVpnServerName = SslVpnServerName
 
     @property
-    def LocalAddress(self):
-        return self._LocalAddress
-
-    @LocalAddress.setter
-    def LocalAddress(self, LocalAddress):
-        self._LocalAddress = LocalAddress
-
-    @property
     def RemoteAddress(self):
         return self._RemoteAddress
 
     @RemoteAddress.setter
     def RemoteAddress(self, RemoteAddress):
         self._RemoteAddress = RemoteAddress
+
+    @property
+    def LocalAddress(self):
+        return self._LocalAddress
+
+    @LocalAddress.setter
+    def LocalAddress(self, LocalAddress):
+        self._LocalAddress = LocalAddress
 
     @property
     def SslVpnProtocol(self):
@@ -13081,8 +13081,8 @@ class CreateVpnGatewaySslServerRequest(AbstractModel):
     def _deserialize(self, params):
         self._VpnGatewayId = params.get("VpnGatewayId")
         self._SslVpnServerName = params.get("SslVpnServerName")
-        self._LocalAddress = params.get("LocalAddress")
         self._RemoteAddress = params.get("RemoteAddress")
+        self._LocalAddress = params.get("LocalAddress")
         self._SslVpnProtocol = params.get("SslVpnProtocol")
         self._SslVpnPort = params.get("SslVpnPort")
         self._IntegrityAlgorithm = params.get("IntegrityAlgorithm")

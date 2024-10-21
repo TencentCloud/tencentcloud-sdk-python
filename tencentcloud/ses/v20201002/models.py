@@ -290,19 +290,14 @@ class BlackAddressDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 黑名单地址id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param _Email: 邮箱地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type Email: str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _ExpireDate: 过期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireDate: str
         :param _Status: 黑名单状态，0:已过期，1:生效中
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         """
         self._Id = None
@@ -479,19 +474,14 @@ class CreateCustomBlacklistResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 收件人总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _ValidCount: 实际上传数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type ValidCount: int
         :param _TooLongCount: 数据过长数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TooLongCount: int
         :param _RepeatCount: 重复数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type RepeatCount: int
         :param _InvalidCount: 格式不正确数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type InvalidCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

@@ -3518,6 +3518,10 @@ class CreateBatchQuickSignUrlRequest(AbstractModel):
         :type SignTypeSelector: int
         :param _FlowBatchUrlInfo: 批量签署合同相关信息，指定合同和签署方的信息，用于补充动态签署人。	
         :type FlowBatchUrlInfo: :class:`tencentcloud.ess.v20201111.models.FlowBatchUrlInfo`
+        :param _Intention: <b>只有在生成H5签署链接的情形下</b>（ 如调用<a href="https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelCreateFlowSignUrl" target="_blank">获取H5签署链接</a>、<a href="https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelCreateBatchQuickSignUrl" target="_blank">获取H5批量签署链接</a>等接口），该配置才会生效。  您可以指定H5签署视频核身的意图配置，选择问答模式或点头模式的语音文本。  注意： 1. 视频认证为<b>白名单功能，使用前请联系对接的客户经理沟通</b>。 2. 使用视频认证时，<b>生成H5签署链接的时候必须将签署认证方式指定为人脸</b>（即ApproverSignTypes设置成人脸签署）。 3. 签署完成后，可以通过<a href="https://qian.tencent.com/developers/partnerApis/flows/ChannelDescribeSignFaceVideo" target="_blank">查询签署认证人脸视频</a>获取到当时的视频。
+        :type Intention: :class:`tencentcloud.ess.v20201111.models.Intention`
+        :param _CacheApproverInfo: 是否开启缓存签署人信息
+        :type CacheApproverInfo: bool
         """
         self._FlowApproverInfo = None
         self._Agent = None
@@ -3529,6 +3533,8 @@ class CreateBatchQuickSignUrlRequest(AbstractModel):
         self._ApproverSignTypes = None
         self._SignTypeSelector = None
         self._FlowBatchUrlInfo = None
+        self._Intention = None
+        self._CacheApproverInfo = None
 
     @property
     def FlowApproverInfo(self):
@@ -3610,6 +3616,22 @@ class CreateBatchQuickSignUrlRequest(AbstractModel):
     def FlowBatchUrlInfo(self, FlowBatchUrlInfo):
         self._FlowBatchUrlInfo = FlowBatchUrlInfo
 
+    @property
+    def Intention(self):
+        return self._Intention
+
+    @Intention.setter
+    def Intention(self, Intention):
+        self._Intention = Intention
+
+    @property
+    def CacheApproverInfo(self):
+        return self._CacheApproverInfo
+
+    @CacheApproverInfo.setter
+    def CacheApproverInfo(self, CacheApproverInfo):
+        self._CacheApproverInfo = CacheApproverInfo
+
 
     def _deserialize(self, params):
         if params.get("FlowApproverInfo") is not None:
@@ -3630,6 +3652,10 @@ class CreateBatchQuickSignUrlRequest(AbstractModel):
         if params.get("FlowBatchUrlInfo") is not None:
             self._FlowBatchUrlInfo = FlowBatchUrlInfo()
             self._FlowBatchUrlInfo._deserialize(params.get("FlowBatchUrlInfo"))
+        if params.get("Intention") is not None:
+            self._Intention = Intention()
+            self._Intention._deserialize(params.get("Intention"))
+        self._CacheApproverInfo = params.get("CacheApproverInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

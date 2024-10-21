@@ -812,7 +812,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeTrinoQueryInfo(self, request):
-        """获取trino查询结果
+        """查询Trino(PrestoSQL)查询信息
 
         :param request: Request instance for DescribeTrinoQueryInfo.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeTrinoQueryInfoRequest`

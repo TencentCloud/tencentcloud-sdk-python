@@ -22686,6 +22686,136 @@ class DescribeProjectResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeProjectUsersRequest(AbstractModel):
+    """DescribeProjectUsers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: 分页号
+        :type PageNumber: int
+        :param _PageSize: 分页大小
+        :type PageSize: int
+        :param _Filters: 【过滤参数】自定义条件查询
+        :type Filters: list of FilterOptional
+        :param _OrderFields: 【排序参数】排序字段
+        :type OrderFields: list of OrderFieldOptional
+        :param _IsProjectAdmin: 是否项目管理员
+        :type IsProjectAdmin: bool
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._Filters = None
+        self._OrderFields = None
+        self._IsProjectAdmin = None
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def OrderFields(self):
+        return self._OrderFields
+
+    @OrderFields.setter
+    def OrderFields(self, OrderFields):
+        self._OrderFields = OrderFields
+
+    @property
+    def IsProjectAdmin(self):
+        return self._IsProjectAdmin
+
+    @IsProjectAdmin.setter
+    def IsProjectAdmin(self, IsProjectAdmin):
+        self._IsProjectAdmin = IsProjectAdmin
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = FilterOptional()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("OrderFields") is not None:
+            self._OrderFields = []
+            for item in params.get("OrderFields"):
+                obj = OrderFieldOptional()
+                obj._deserialize(item)
+                self._OrderFields.append(obj)
+        self._IsProjectAdmin = params.get("IsProjectAdmin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProjectUsersResponse(AbstractModel):
+    """DescribeProjectUsers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 项目列表
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.ProjectUsersPage`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ProjectUsersPage()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeQualityScoreRequest(AbstractModel):
     """DescribeQualityScore请求参数结构体
 
@@ -46478,6 +46608,214 @@ class ProjectBaseInfoOpsRequest(AbstractModel):
         
 
 
+class ProjectUserRole(AbstractModel):
+    """项目的用户对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Roles: 用户角色对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Roles: list of SystemRole
+        :param _UserName: mc
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param _UserId: 用户id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _Creator: 是否创建者
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Creator: bool
+        :param _DisplayName: 显示名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisplayName: str
+        :param _IsProjectAdmin: 是否项目管理员
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsProjectAdmin: bool
+        """
+        self._Roles = None
+        self._UserName = None
+        self._UserId = None
+        self._CreateTime = None
+        self._Creator = None
+        self._DisplayName = None
+        self._IsProjectAdmin = None
+
+    @property
+    def Roles(self):
+        return self._Roles
+
+    @Roles.setter
+    def Roles(self, Roles):
+        self._Roles = Roles
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Creator(self):
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def DisplayName(self):
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def IsProjectAdmin(self):
+        return self._IsProjectAdmin
+
+    @IsProjectAdmin.setter
+    def IsProjectAdmin(self, IsProjectAdmin):
+        self._IsProjectAdmin = IsProjectAdmin
+
+
+    def _deserialize(self, params):
+        if params.get("Roles") is not None:
+            self._Roles = []
+            for item in params.get("Roles"):
+                obj = SystemRole()
+                obj._deserialize(item)
+                self._Roles.append(obj)
+        self._UserName = params.get("UserName")
+        self._UserId = params.get("UserId")
+        self._CreateTime = params.get("CreateTime")
+        self._Creator = params.get("Creator")
+        self._DisplayName = params.get("DisplayName")
+        self._IsProjectAdmin = params.get("IsProjectAdmin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProjectUsersPage(AbstractModel):
+    """项目下的用户集合
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Rows: 用户集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rows: list of ProjectUserRole
+        :param _PageSize: 分页大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageSize: int
+        :param _PageNumber: 分页页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageNumber: int
+        :param _TotalCount: 总数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _TotalPageNumber: 总分页页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalPageNumber: int
+        """
+        self._Rows = None
+        self._PageSize = None
+        self._PageNumber = None
+        self._TotalCount = None
+        self._TotalPageNumber = None
+
+    @property
+    def Rows(self):
+        return self._Rows
+
+    @Rows.setter
+    def Rows(self, Rows):
+        self._Rows = Rows
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TotalPageNumber(self):
+        return self._TotalPageNumber
+
+    @TotalPageNumber.setter
+    def TotalPageNumber(self, TotalPageNumber):
+        self._TotalPageNumber = TotalPageNumber
+
+
+    def _deserialize(self, params):
+        if params.get("Rows") is not None:
+            self._Rows = []
+            for item in params.get("Rows"):
+                obj = ProjectUserRole()
+                obj._deserialize(item)
+                self._Rows.append(obj)
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        self._TotalCount = params.get("TotalCount")
+        self._TotalPageNumber = params.get("TotalPageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Property(AbstractModel):
     """dlc建表属性
 
@@ -48074,6 +48412,118 @@ class RobLockState(AbstractModel):
     def _deserialize(self, params):
         self._IsRob = params.get("IsRob")
         self._Locker = params.get("Locker")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RolePrivilege(AbstractModel):
+    """角色权限对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PrivilegeId: id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivilegeId: str
+        :param _PrivilegeName: 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivilegeName: str
+        :param _RestPath: 路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RestPath: str
+        :param _RestMethod: 方法
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RestMethod: str
+        :param _Description: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _ModuleId: 模块id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModuleId: str
+        :param _Type: 权限类型 N、R、RW、RWD
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        """
+        self._PrivilegeId = None
+        self._PrivilegeName = None
+        self._RestPath = None
+        self._RestMethod = None
+        self._Description = None
+        self._ModuleId = None
+        self._Type = None
+
+    @property
+    def PrivilegeId(self):
+        return self._PrivilegeId
+
+    @PrivilegeId.setter
+    def PrivilegeId(self, PrivilegeId):
+        self._PrivilegeId = PrivilegeId
+
+    @property
+    def PrivilegeName(self):
+        return self._PrivilegeName
+
+    @PrivilegeName.setter
+    def PrivilegeName(self, PrivilegeName):
+        self._PrivilegeName = PrivilegeName
+
+    @property
+    def RestPath(self):
+        return self._RestPath
+
+    @RestPath.setter
+    def RestPath(self, RestPath):
+        self._RestPath = RestPath
+
+    @property
+    def RestMethod(self):
+        return self._RestMethod
+
+    @RestMethod.setter
+    def RestMethod(self, RestMethod):
+        self._RestMethod = RestMethod
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ModuleId(self):
+        return self._ModuleId
+
+    @ModuleId.setter
+    def ModuleId(self, ModuleId):
+        self._ModuleId = ModuleId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._PrivilegeId = params.get("PrivilegeId")
+        self._PrivilegeName = params.get("PrivilegeName")
+        self._RestPath = params.get("RestPath")
+        self._RestMethod = params.get("RestMethod")
+        self._Description = params.get("Description")
+        self._ModuleId = params.get("ModuleId")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -56122,6 +56572,148 @@ class SuspendIntegrationTaskResponse(AbstractModel):
     def _deserialize(self, params):
         self._Data = params.get("Data")
         self._RequestId = params.get("RequestId")
+
+
+class SystemRole(AbstractModel):
+    """角色对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleId: 角色id
+        :type RoleId: str
+        :param _Name: 角色名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _NameCn: 角色昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NameCn: str
+        :param _Description: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _Privileges: 角色权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Privileges: list of RolePrivilege
+        :param _MethodPaths: 方法路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MethodPaths: list of str
+        :param _RoleType: 角色类型, 分为System,Tenant,Project,Commercial
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoleType: str
+        :param _SystemInit: 是否系统默认
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SystemInit: bool
+        :param _Params: 自定义参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Params: str
+        """
+        self._RoleId = None
+        self._Name = None
+        self._NameCn = None
+        self._Description = None
+        self._Privileges = None
+        self._MethodPaths = None
+        self._RoleType = None
+        self._SystemInit = None
+        self._Params = None
+
+    @property
+    def RoleId(self):
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def NameCn(self):
+        return self._NameCn
+
+    @NameCn.setter
+    def NameCn(self, NameCn):
+        self._NameCn = NameCn
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Privileges(self):
+        return self._Privileges
+
+    @Privileges.setter
+    def Privileges(self, Privileges):
+        self._Privileges = Privileges
+
+    @property
+    def MethodPaths(self):
+        return self._MethodPaths
+
+    @MethodPaths.setter
+    def MethodPaths(self, MethodPaths):
+        self._MethodPaths = MethodPaths
+
+    @property
+    def RoleType(self):
+        return self._RoleType
+
+    @RoleType.setter
+    def RoleType(self, RoleType):
+        self._RoleType = RoleType
+
+    @property
+    def SystemInit(self):
+        return self._SystemInit
+
+    @SystemInit.setter
+    def SystemInit(self, SystemInit):
+        self._SystemInit = SystemInit
+
+    @property
+    def Params(self):
+        return self._Params
+
+    @Params.setter
+    def Params(self, Params):
+        self._Params = Params
+
+
+    def _deserialize(self, params):
+        self._RoleId = params.get("RoleId")
+        self._Name = params.get("Name")
+        self._NameCn = params.get("NameCn")
+        self._Description = params.get("Description")
+        if params.get("Privileges") is not None:
+            self._Privileges = []
+            for item in params.get("Privileges"):
+                obj = RolePrivilege()
+                obj._deserialize(item)
+                self._Privileges.append(obj)
+        self._MethodPaths = params.get("MethodPaths")
+        self._RoleType = params.get("RoleType")
+        self._SystemInit = params.get("SystemInit")
+        self._Params = params.get("Params")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Table(AbstractModel):

@@ -81546,7 +81546,7 @@ class ScanTaskDetails(AbstractModel):
         :type Description: str
         :param _Id: id唯一
         :type Id: int
-        :param _FailType: 失败详情
+        :param _FailType: 失败类型  3离线、4超时、5失败、8agent版本过低
         :type FailType: int
         :param _MachineWanIp: 外网ip
         :type MachineWanIp: str
@@ -89069,6 +89069,9 @@ class VulInfoList(AbstractModel):
         :param _Method: 检测方式0 - 版本比对, 1 - POC验证
 注意：此字段可能返回 null，表示取不到有效值。
         :type Method: int
+        :param _VulFixSwitch: 漏洞是否支持修复 0不支持，1支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VulFixSwitch: int
         """
         self._Ids = None
         self._Name = None
@@ -89096,6 +89099,7 @@ class VulInfoList(AbstractModel):
         self._AttackLevel = None
         self._FixNoNeedRestart = None
         self._Method = None
+        self._VulFixSwitch = None
 
     @property
     def Ids(self):
@@ -89305,6 +89309,14 @@ class VulInfoList(AbstractModel):
     def Method(self, Method):
         self._Method = Method
 
+    @property
+    def VulFixSwitch(self):
+        return self._VulFixSwitch
+
+    @VulFixSwitch.setter
+    def VulFixSwitch(self, VulFixSwitch):
+        self._VulFixSwitch = VulFixSwitch
+
 
     def _deserialize(self, params):
         self._Ids = params.get("Ids")
@@ -89333,6 +89345,7 @@ class VulInfoList(AbstractModel):
         self._AttackLevel = params.get("AttackLevel")
         self._FixNoNeedRestart = params.get("FixNoNeedRestart")
         self._Method = params.get("Method")
+        self._VulFixSwitch = params.get("VulFixSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -89502,7 +89515,7 @@ class VulStoreListInfo(AbstractModel):
         :param _AttackLevel: 漏洞攻击热度
         :type AttackLevel: int
         :param _FixSwitch: 漏洞是否支持自动修复
-0-windows/linux均关闭; 1-windows/linux均打开; 2-仅linux; 3-仅windows
+0-Windows/Linux均关闭; 1-Windows/Linux均打开; 2-仅Linux; 3-仅Windows
         :type FixSwitch: int
         :param _SupportDefense: 漏洞是否支持防御
 0:不支持 1:支持

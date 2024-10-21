@@ -659,10 +659,8 @@ class DeleteSignStatus(AbstractModel):
     def __init__(self):
         r"""
         :param _DeleteStatus: 删除状态信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeleteStatus: str
         :param _DeleteTime: 删除时间，UNIX 时间戳（单位：秒）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeleteTime: int
         """
         self._DeleteStatus = None
@@ -1671,7 +1669,7 @@ class PullSmsReplyStatus(AbstractModel):
         :type ExtendCode: str
         :param _NationCode: 国家（或地区）码。
         :type NationCode: str
-        :param _PhoneNumber: 手机号码,e.164标准，+[国家或地区码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
+        :param _PhoneNumber: 手机号码，E.164标准，+[国家或地区码][手机号] ，示例如：+8618501234444， 其中前面有一个+号 ，86为国家码，18501234444为手机号。
         :type PhoneNumber: str
         :param _Sign: 短信签名。
         :type Sign: str
@@ -1780,7 +1778,7 @@ class PullSmsReplyStatusByPhoneNumberRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 拉取最大条数，最多 100。
         :type Limit: int
-        :param _PhoneNumber: 下发目的手机号码，依据 e.164 标准为：+[国家（或地区）码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
+        :param _PhoneNumber: 下发目的手机号码，依据 E.164 标准为：+[国家（或地区）码][手机号] ，示例如：+8618501234444， 其中前面有一个+号 ，86为国家码，18501234444为手机号。
         :type PhoneNumber: str
         :param _SmsSdkAppid: 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，例如1400006666。
         :type SmsSdkAppid: str
@@ -2002,9 +2000,9 @@ class PullSmsSendStatus(AbstractModel):
         :type UserReceiveUnixTime: int
         :param _NationCode: 国家（或地区）码。
         :type NationCode: str
-        :param _PurePhoneNumber: 手机号码,e.164标准，+[国家或地区码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
+        :param _PurePhoneNumber: 手机号码,e.164标准，+[国家或地区码][手机号] ，示例如：+8618501234444， 其中前面有一个+号 ，86为国家码，18501234444为手机号。
         :type PurePhoneNumber: str
-        :param _PhoneNumber: 手机号码，普通格式，示例如：13711112222。
+        :param _PhoneNumber: 手机号码，普通格式，示例如：18501234444。
         :type PhoneNumber: str
         :param _SerialNo: 本次发送标识 ID。
         :type SerialNo: str
@@ -2121,7 +2119,7 @@ class PullSmsSendStatusByPhoneNumberRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 拉取最大条数，最多 100。
         :type Limit: int
-        :param _PhoneNumber: 下发目的手机号码，依据 e.164 标准为：+[国家（或地区）码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
+        :param _PhoneNumber: 下发目的手机号码，依据 E.164 标准为：+[国家（或地区）码][手机号] ，示例如：+8618501234444， 其中前面有一个+号 ，86为国家码，18501234444为手机号。
         :type PhoneNumber: str
         :param _SmsSdkAppid: 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，例如1400006666。
         :type SmsSdkAppid: str
@@ -2337,8 +2335,8 @@ class SendSmsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PhoneNumberSet: 下发手机号码，采用 e.164 标准，格式为+[国家或地区码][手机号]，单次请求最多支持200个手机号且要求全为境内手机号或全为境外手机号。
-例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
+        :param _PhoneNumberSet: 下发手机号码，采用 E.164 标准，格式为+[国家或地区码][手机号]，单次请求最多支持200个手机号且要求全为境内手机号或全为境外手机号。
+例如：+8618501234444， 其中前面有一个+号 ，86为国家码，18501234444为手机号。
         :type PhoneNumberSet: list of str
         :param _TemplateID: 模板 ID，必须填写已审核通过的模板 ID。模板ID可登录 [短信控制台](https://console.cloud.tencent.com/smsv2) 查看，若向境外手机号发送短信，仅支持使用国际/港澳台短信模板。
         :type TemplateID: str
@@ -2499,7 +2497,7 @@ class SendStatus(AbstractModel):
         r"""
         :param _SerialNo: 发送流水号。
         :type SerialNo: str
-        :param _PhoneNumber: 手机号码,e.164标准，+[国家或地区码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
+        :param _PhoneNumber: 手机号码，E.164标准，+[国家或地区码][手机号] ，示例如：+8618501234444， 其中前面有一个+号 ，86为国家码，18501234444为手机号。
         :type PhoneNumber: str
         :param _Fee: 计费条数，计费规则请查询 [计费策略](https://cloud.tencent.com/document/product/382/36135)。
         :type Fee: int

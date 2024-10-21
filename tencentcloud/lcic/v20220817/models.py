@@ -2051,10 +2051,14 @@ video 纯视频
 
     @property
     def RTCAudienceNumber(self):
+        warnings.warn("parameter `RTCAudienceNumber` is deprecated", DeprecationWarning) 
+
         return self._RTCAudienceNumber
 
     @RTCAudienceNumber.setter
     def RTCAudienceNumber(self, RTCAudienceNumber):
+        warnings.warn("parameter `RTCAudienceNumber` is deprecated", DeprecationWarning) 
+
         self._RTCAudienceNumber = RTCAudienceNumber
 
     @property

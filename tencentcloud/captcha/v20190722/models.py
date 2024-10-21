@@ -1729,7 +1729,7 @@ class DescribeCaptchaMiniResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CaptchaType: 固定填值：9（滑块验证码）
+        :param _CaptchaType: 固定填值：9
         :type CaptchaType: int
         :param _Ticket: 验证码返回给用户的票据
         :type Ticket: str
@@ -2281,7 +2281,7 @@ class DescribeCaptchaRceResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CaptchaType: 固定填值：9。可在控制台配置不同验证码类型。
+        :param _CaptchaType: 固定填值：9。
         :type CaptchaType: int
         :param _Ticket: 前端回调函数返回的用户验证票据
         :type Ticket: str
@@ -2559,7 +2559,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CaptchaType: 固定填值：9。可在控制台配置不同验证码类型。
+        :param _CaptchaType: 固定填值：9。
         :type CaptchaType: int
         :param _Ticket: 前端回调函数返回的用户验证票据
         :type Ticket: str
@@ -2737,6 +2737,9 @@ EvilLevel=100 请求有恶意
         :type EvilBitmap: int
         :param _SubmitCaptchaTime: 提交验证码时间
         :type SubmitCaptchaTime: int
+        :param _DeviceRiskCategory: 设备风险大类
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceRiskCategory: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2746,6 +2749,7 @@ EvilLevel=100 请求有恶意
         self._GetCaptchaTime = None
         self._EvilBitmap = None
         self._SubmitCaptchaTime = None
+        self._DeviceRiskCategory = None
         self._RequestId = None
 
     @property
@@ -2797,6 +2801,14 @@ EvilLevel=100 请求有恶意
         self._SubmitCaptchaTime = SubmitCaptchaTime
 
     @property
+    def DeviceRiskCategory(self):
+        return self._DeviceRiskCategory
+
+    @DeviceRiskCategory.setter
+    def DeviceRiskCategory(self, DeviceRiskCategory):
+        self._DeviceRiskCategory = DeviceRiskCategory
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -2812,6 +2824,7 @@ EvilLevel=100 请求有恶意
         self._GetCaptchaTime = params.get("GetCaptchaTime")
         self._EvilBitmap = params.get("EvilBitmap")
         self._SubmitCaptchaTime = params.get("SubmitCaptchaTime")
+        self._DeviceRiskCategory = params.get("DeviceRiskCategory")
         self._RequestId = params.get("RequestId")
 
 

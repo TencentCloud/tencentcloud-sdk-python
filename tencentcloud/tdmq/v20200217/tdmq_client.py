@@ -256,6 +256,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateRabbitMQBinding(self, request):
+        """创建RabbitMQ路由关系
+
+        :param request: Request instance for CreateRabbitMQBinding.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRabbitMQBindingRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.CreateRabbitMQBindingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRabbitMQBinding", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRabbitMQBindingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateRabbitMQUser(self, request):
         """创建RabbitMQ的用户
 

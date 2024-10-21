@@ -1280,7 +1280,7 @@ class BlockIgnoreRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleType: 1 封禁 2外部IP 3域名 4情报 5assets 6udf  7入侵防御规则id （2-7属于白名单类型）
+        :param _RuleType: 规则类型，取值：1 封禁，2外部IP，3域名，4情报，5assets，6自定义策略，7入侵防御规则id （2-7属于白名单类型）
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleType: int
         :param _Ioc: 规则ip或白名单内容
@@ -6345,15 +6345,15 @@ class DescribeAddressTemplateListRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 条数，分页用
         :type Limit: int
-        :param _By: 排序字段，取值 'UpdateTime' | 'RulesNum'
+        :param _By: 排序字段，取值：UpdateTime最近更新时间，RulesNum关联规则数
         :type By: str
-        :param _Order: 排序，取值 'asc'|'desc'
+        :param _Order: 排序，取值 ：asc正序，desc逆序
         :type Order: str
         :param _SearchValue: 搜索值
         :type SearchValue: str
         :param _Uuid: 检索地址模板唯一id
         :type Uuid: str
-        :param _TemplateType: 1：ip模板，5：域名模板，6：协议端口模板
+        :param _TemplateType: 模板类型，取值：1：ip模板，5：域名模板，6：协议端口模板
         :type TemplateType: str
         :param _TemplateId: 模板Id
         :type TemplateId: str
@@ -7705,7 +7705,11 @@ class DescribeEnterpriseSecurityGroupRuleListResponse(AbstractModel):
         :type AllTotal: int
         :param _Data: 规则列表
         :type Data: list of EnterpriseSecurityGroupRuleRuleInfo
-        :param _Enable: 规则整体启用状态
+        :param _Enable: 规则列表整体启用状态 
+取值范围 0/1/2
+0.表示没有启用的(可以批量启用)  
+1.表示没有禁用的(可以批量禁用)    
+2 表示混合情况（不可批量操作）
         :type Enable: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12157,25 +12161,58 @@ class EnterpriseSecurityGroupRuleRuleInfo(AbstractModel):
         :param _SourceId: 源规则内容
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceId: str
-        :param _SourceType: 源规则类型
+        :param _SourceType: 源规则类型 
+取值范围 0/1/2/3/4/5/6/7/8/9/100
+0表示ip(net),
+1表示VPC实例(intance)
+2表示子网实例(intance)
+3表示CVM实例(intance)
+4表示CLB实例(intance)
+5表示ENI实例(intance)
+6表示数据库实例(intance)
+7表示模版(template)
+8表示标签(tag)
+9表示地域(region)
+100表示资产分组(resourcegroup)
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceType: int
         :param _TargetId: 目的规则内容
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetId: str
-        :param _TargetType: 目的规则类型
+        :param _TargetType: 目的规则类型 
+取值范围 0/1/2/3/4/5/6/7/8/9/100
+0表示ip(net),
+1表示VPC实例(intance)
+2表示子网实例(intance)
+3表示CVM实例(intance)
+4表示CLB实例(intance)
+5表示ENI实例(intance)
+6表示数据库实例(intance)
+7表示模版(template)
+8表示标签(tag)
+9表示地域(region)
+100表示资产分组(resourcegroup)
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetType: int
         :param _Protocol: 协议名称
+取值范围:TCP/ANY/ICMP/UDP
+ANY:表示所有
+
 注意：此字段可能返回 null，表示取不到有效值。
         :type Protocol: str
         :param _Port: 端口
 注意：此字段可能返回 null，表示取不到有效值。
         :type Port: str
-        :param _Strategy: 策略，1阻断，2放行
+        :param _Strategy: 规则策略
+取值范围:1/2
+1:阻断
+2:放行
 注意：此字段可能返回 null，表示取不到有效值。
         :type Strategy: int
-        :param _Status: 启用状态 ，0未开启，1开启
+        :param _Status: 规则启用状态 
+取值范围： 0/1
+0:未开启
+1:开启
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _Detail: 描述
@@ -12184,13 +12221,18 @@ class EnterpriseSecurityGroupRuleRuleInfo(AbstractModel):
         :param _AclTags: 标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type AclTags: str
-        :param _IsNew: 是否最新一次改动的规则,0否，1是
+        :param _IsNew: 规则最新一次是否有改动
+取值范围：0/1
+0:否
+1:是
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsNew: int
         :param _Region: 地域
 注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
-        :param _IsDelay: 是否延迟下发
+        :param _IsDelay: 是否延迟下发规则 
+取值范围：0/1
+0:立即下发 1:延迟下发
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsDelay: int
         :param _ServiceTemplateId: 服务模板id
@@ -12229,10 +12271,10 @@ class EnterpriseSecurityGroupRuleRuleInfo(AbstractModel):
         :param _ProtocolPortName: 端口模板名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProtocolPortName: str
-        :param _BetaList: 自动化任务任务信息
+        :param _BetaList: 自动化任务信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type BetaList: list of EnterpriseSecurityGroupRuleBetaInfo
-        :param _Id: 规则id
+        :param _Id: 规则id  等同RuleUuid
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         """
@@ -13649,17 +13691,17 @@ class IntrusionDefenseRule(AbstractModel):
         :type IP: str
         :param _Domain: 规则域名，IP与Domain必填其中之一
         :type Domain: str
-        :param _Comment: 备注信息，长度不能超过50
-        :type Comment: str
         :param _StartTime: 规则开始时间
         :type StartTime: str
+        :param _Comment: 备注信息，长度不能超过50
+        :type Comment: str
         """
         self._Direction = None
         self._EndTime = None
         self._IP = None
         self._Domain = None
-        self._Comment = None
         self._StartTime = None
+        self._Comment = None
 
     @property
     def Direction(self):
@@ -13694,14 +13736,6 @@ class IntrusionDefenseRule(AbstractModel):
         self._Domain = Domain
 
     @property
-    def Comment(self):
-        return self._Comment
-
-    @Comment.setter
-    def Comment(self, Comment):
-        self._Comment = Comment
-
-    @property
     def StartTime(self):
         return self._StartTime
 
@@ -13709,14 +13743,22 @@ class IntrusionDefenseRule(AbstractModel):
     def StartTime(self, StartTime):
         self._StartTime = StartTime
 
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
 
     def _deserialize(self, params):
         self._Direction = params.get("Direction")
         self._EndTime = params.get("EndTime")
         self._IP = params.get("IP")
         self._Domain = params.get("Domain")
-        self._Comment = params.get("Comment")
         self._StartTime = params.get("StartTime")
+        self._Comment = params.get("Comment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14890,7 +14932,7 @@ class ModifyBlockIgnoreRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Rule: 规则
+        :param _Rule: 规则列表
         :type Rule: :class:`tencentcloud.cfw.v20190904.models.IntrusionDefenseRule`
         :param _RuleType: 规则类型，1封禁，2放通
         :type RuleType: int
@@ -20899,6 +20941,9 @@ class TemplateListInfo(AbstractModel):
         :param _IPNum: 模板包含地址数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type IPNum: int
+        :param _IpVersion: IP版本,0,IPv4;1,IPv6
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpVersion: int
         """
         self._Uuid = None
         self._Name = None
@@ -20911,6 +20956,7 @@ class TemplateListInfo(AbstractModel):
         self._TemplateId = None
         self._ProtocolType = None
         self._IPNum = None
+        self._IpVersion = None
 
     @property
     def Uuid(self):
@@ -21000,6 +21046,14 @@ class TemplateListInfo(AbstractModel):
     def IPNum(self, IPNum):
         self._IPNum = IPNum
 
+    @property
+    def IpVersion(self):
+        return self._IpVersion
+
+    @IpVersion.setter
+    def IpVersion(self, IpVersion):
+        self._IpVersion = IpVersion
+
 
     def _deserialize(self, params):
         self._Uuid = params.get("Uuid")
@@ -21013,6 +21067,7 @@ class TemplateListInfo(AbstractModel):
         self._TemplateId = params.get("TemplateId")
         self._ProtocolType = params.get("ProtocolType")
         self._IPNum = params.get("IPNum")
+        self._IpVersion = params.get("IpVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

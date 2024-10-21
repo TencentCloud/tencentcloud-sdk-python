@@ -171,10 +171,8 @@ class CreateConsumerGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
-        :param _ConsumerGroup: 消费组名称
-        :type ConsumerGroup: str
         :param _MaxRetryTimes: 最大重试次数
         :type MaxRetryTimes: int
         :param _ConsumeEnable: 是否开启消费
@@ -182,14 +180,16 @@ class CreateConsumerGroupRequest(AbstractModel):
         :param _ConsumeMessageOrderly: 顺序投递：true
 并发投递：false
         :type ConsumeMessageOrderly: bool
+        :param _ConsumerGroup: 消费组名称
+        :type ConsumerGroup: str
         :param _Remark: 备注
         :type Remark: str
         """
         self._InstanceId = None
-        self._ConsumerGroup = None
         self._MaxRetryTimes = None
         self._ConsumeEnable = None
         self._ConsumeMessageOrderly = None
+        self._ConsumerGroup = None
         self._Remark = None
 
     @property
@@ -199,14 +199,6 @@ class CreateConsumerGroupRequest(AbstractModel):
     @InstanceId.setter
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
-
-    @property
-    def ConsumerGroup(self):
-        return self._ConsumerGroup
-
-    @ConsumerGroup.setter
-    def ConsumerGroup(self, ConsumerGroup):
-        self._ConsumerGroup = ConsumerGroup
 
     @property
     def MaxRetryTimes(self):
@@ -233,6 +225,14 @@ class CreateConsumerGroupRequest(AbstractModel):
         self._ConsumeMessageOrderly = ConsumeMessageOrderly
 
     @property
+    def ConsumerGroup(self):
+        return self._ConsumerGroup
+
+    @ConsumerGroup.setter
+    def ConsumerGroup(self, ConsumerGroup):
+        self._ConsumerGroup = ConsumerGroup
+
+    @property
     def Remark(self):
         return self._Remark
 
@@ -243,10 +243,10 @@ class CreateConsumerGroupRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
-        self._ConsumerGroup = params.get("ConsumerGroup")
         self._MaxRetryTimes = params.get("MaxRetryTimes")
         self._ConsumeEnable = params.get("ConsumeEnable")
         self._ConsumeMessageOrderly = params.get("ConsumeMessageOrderly")
+        self._ConsumerGroup = params.get("ConsumerGroup")
         self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -265,9 +265,9 @@ class CreateConsumerGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
-        :param _ConsumerGroup: 消费组
+        :param _ConsumerGroup: 消费组名称
         :type ConsumerGroup: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -534,7 +534,7 @@ class CreateInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -667,28 +667,7 @@ PLATINUM 铂金版
         :param _Name: 实例名称
         :type Name: str
         :param _SkuCode: 商品规格，可用规格如下：
-experiment_500,
 basic_1k,
-basic_2k,
-basic_4k,
-basic_6k,
-pro_4k,
-pro_6k,
-pro_1w,
-pro_2w,
-pro_3w,
-pro_4w,
-pro_5w,
-platinum_6k,
-platinum_1w,
-platinum_2w,
-platinum_4w,
-platinum_10w,
-platinum_15w,
-platinum_20w,
-platinum_40w,
-platinum_60w,
-platinum_100w
         :type SkuCode: str
         :param _Remark: 备注信息
         :type Remark: str
@@ -889,9 +868,9 @@ class CreateMQTTTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
-        :param _Topic: 主题
+        :param _Topic: 主题名称
         :type Topic: str
         :param _Remark: 备注
         :type Remark: str
@@ -995,7 +974,7 @@ class CreateMQTTUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
         :param _Remark: 备注
         :type Remark: str
@@ -1113,7 +1092,7 @@ class CreateRoleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
         :param _Role: 角色名称
         :type Role: str
@@ -1231,9 +1210,9 @@ class CreateTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
-        :param _Topic: 主题
+        :param _Topic: 主题名称
         :type Topic: str
         :param _TopicType: 主题类型
 UNSPECIFIED:未指定,
@@ -1329,9 +1308,9 @@ class CreateTopicResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
-        :param _Topic: 主题
+        :param _Topic: 主题名
         :type Topic: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1425,7 +1404,7 @@ class DeleteConsumerGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
         :param _ConsumerGroup: 消费组名称
         :type ConsumerGroup: str
@@ -1495,7 +1474,7 @@ class DeleteInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
         """
         self._InstanceId = None
@@ -1739,7 +1718,7 @@ class DeleteMQTTUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
         :param _Username: 用户名
         :type Username: str
@@ -1809,7 +1788,7 @@ class DeleteRoleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
         :param _Role: 角色名称
         :type Role: str
@@ -1879,9 +1858,9 @@ class DeleteTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
-        :param _Topic: 主题
+        :param _Topic: 主题名称
         :type Topic: str
         """
         self._InstanceId = None
@@ -1949,21 +1928,21 @@ class DescribeConsumerGroupListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
+        :param _Filters: 查询条件列表
+        :type Filters: list of Filter
         :param _Offset: 查询起始位置
         :type Offset: int
         :param _Limit: 查询结果限制数量
         :type Limit: int
-        :param _Filters: 查询条件列表
-        :type Filters: list of Filter
         :param _FromTopic: 查询指定主题下的消费组
         :type FromTopic: str
         """
         self._InstanceId = None
+        self._Filters = None
         self._Offset = None
         self._Limit = None
-        self._Filters = None
         self._FromTopic = None
 
     @property
@@ -1973,6 +1952,14 @@ class DescribeConsumerGroupListRequest(AbstractModel):
     @InstanceId.setter
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
     @property
     def Offset(self):
@@ -1991,14 +1978,6 @@ class DescribeConsumerGroupListRequest(AbstractModel):
         self._Limit = Limit
 
     @property
-    def Filters(self):
-        return self._Filters
-
-    @Filters.setter
-    def Filters(self, Filters):
-        self._Filters = Filters
-
-    @property
     def FromTopic(self):
         return self._FromTopic
 
@@ -2009,14 +1988,14 @@ class DescribeConsumerGroupListRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
-        self._Offset = params.get("Offset")
-        self._Limit = params.get("Limit")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         self._FromTopic = params.get("FromTopic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -2090,7 +2069,7 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
         :param _ConsumerGroup: 消费组名称
         :type ConsumerGroup: str
@@ -2154,6 +2133,10 @@ class DescribeConsumerGroupResponse(AbstractModel):
         :type MaxRetryTimes: int
         :param _Remark: 备注
         :type Remark: str
+        :param _MessageModel: 消费模式：
+BROADCASTING 广播模式
+CLUSTERING 集群模式
+        :type MessageModel: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2166,6 +2149,7 @@ class DescribeConsumerGroupResponse(AbstractModel):
         self._ConsumeEnable = None
         self._MaxRetryTimes = None
         self._Remark = None
+        self._MessageModel = None
         self._RequestId = None
 
     @property
@@ -2241,6 +2225,14 @@ class DescribeConsumerGroupResponse(AbstractModel):
         self._Remark = Remark
 
     @property
+    def MessageModel(self):
+        return self._MessageModel
+
+    @MessageModel.setter
+    def MessageModel(self, MessageModel):
+        self._MessageModel = MessageModel
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -2259,6 +2251,7 @@ class DescribeConsumerGroupResponse(AbstractModel):
         self._ConsumeEnable = params.get("ConsumeEnable")
         self._MaxRetryTimes = params.get("MaxRetryTimes")
         self._Remark = params.get("Remark")
+        self._MessageModel = params.get("MessageModel")
         self._RequestId = params.get("RequestId")
 
 
@@ -2269,7 +2262,7 @@ class DescribeConsumerLagRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
         :param _ConsumerGroup: 消费组名称
         :type ConsumerGroup: str
@@ -2643,7 +2636,7 @@ class DescribeInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
         """
         self._InstanceId = None
@@ -3303,7 +3296,7 @@ class DescribeMQTTInsPublicEndpointsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
         """
         self._InstanceId = None
@@ -3511,7 +3504,7 @@ class DescribeMQTTInstanceCertRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
         """
         self._InstanceId = None
@@ -3614,7 +3607,7 @@ class DescribeMQTTInstanceListRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 查询结果限制数量
         :type Limit: int
-        :param _IncludeNew: 是否包含新控制台集群
+        :param _IncludeNew: 是否包含新控制台集群：默认为包含
         :type IncludeNew: bool
         """
         self._Filters = None
@@ -3737,7 +3730,7 @@ class DescribeMQTTInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
         """
         self._InstanceId = None
@@ -4116,9 +4109,9 @@ class DescribeMQTTMessageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
-        :param _Topic: 主题
+        :param _Topic: 主题名称
         :type Topic: str
         :param _MsgId: 消息ID
         :type MsgId: str
@@ -4763,7 +4756,7 @@ class DescribeRoleListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
         :param _Offset: 查询起始位置
         :type Offset: int
@@ -4892,7 +4885,7 @@ class DescribeTopicListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
         :param _Filters: 查询条件列表
         :type Filters: list of Filter
@@ -5021,9 +5014,9 @@ class DescribeTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
-        :param _Topic: 主题
+        :param _Topic: 主题名称
         :type Topic: str
         :param _Filters: 查询条件列表
         :type Filters: list of Filter
@@ -5280,6 +5273,9 @@ POSTPAID 按量付费
         :param _IpRules: 公网放通规则
 注意：此字段可能返回 null，表示取不到有效值。
         :type IpRules: list of IpRule
+        :param _BillingFlow: 公网是否按流量计费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillingFlow: bool
         """
         self._Type = None
         self._Status = None
@@ -5289,6 +5285,7 @@ POSTPAID 按量付费
         self._SubnetId = None
         self._Bandwidth = None
         self._IpRules = None
+        self._BillingFlow = None
 
     @property
     def Type(self):
@@ -5354,6 +5351,14 @@ POSTPAID 按量付费
     def IpRules(self, IpRules):
         self._IpRules = IpRules
 
+    @property
+    def BillingFlow(self):
+        return self._BillingFlow
+
+    @BillingFlow.setter
+    def BillingFlow(self, BillingFlow):
+        self._BillingFlow = BillingFlow
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -5369,6 +5374,7 @@ POSTPAID 按量付费
                 obj = IpRule()
                 obj._deserialize(item)
                 self._IpRules.append(obj)
+        self._BillingFlow = params.get("BillingFlow")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6525,10 +6531,8 @@ class MQTTInstanceItem(AbstractModel):
         :param _Version: 实例版本
         :type Version: str
         :param _InstanceType: 实例类型，
-EXPERIMENT，体验版
 BASIC，基础版
 PRO，专业版
-PLATINUM，铂金版
         :type InstanceType: str
         :param _InstanceStatus: 实例状态，
 RUNNING, 运行中
@@ -7166,7 +7170,7 @@ class ModifyConsumerGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
         :param _ConsumerGroup: 消费组名称
         :type ConsumerGroup: str
@@ -7427,7 +7431,7 @@ class ModifyMQTTInsPublicEndpointRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
         :param _Bandwidth: 带宽
         :type Bandwidth: int
@@ -7596,7 +7600,7 @@ class ModifyMQTTInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
         :param _Name: 实例名称
         :type Name: str
@@ -7678,9 +7682,9 @@ class ModifyMQTTTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
-        :param _Topic: 主题
+        :param _Topic: 主题名称
         :type Topic: str
         :param _Remark: 备注信息
         :type Remark: str
@@ -7760,7 +7764,7 @@ class ModifyMQTTUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
         :param _Username: 用户名
         :type Username: str
@@ -7866,7 +7870,7 @@ class ModifyRoleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
         :param _Role: 角色名称
         :type Role: str
@@ -7972,9 +7976,9 @@ class ModifyTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
-        :param _Topic: 主题
+        :param _Topic: 主题名称
         :type Topic: str
         :param _QueueNum: 队列数量
         :type QueueNum: int
@@ -8441,14 +8445,14 @@ class RoleItem(AbstractModel):
         r"""
         :param _RoleName: 角色名称
         :type RoleName: str
-        :param _AccessKey: Access Key
-        :type AccessKey: str
-        :param _SecretKey: Secret Key
-        :type SecretKey: str
         :param _PermRead: 是否开启消费
         :type PermRead: bool
         :param _PermWrite: 是否开启生产
         :type PermWrite: bool
+        :param _AccessKey: Access Key
+        :type AccessKey: str
+        :param _SecretKey: Secret Key
+        :type SecretKey: str
         :param _Remark: 备注信息
         :type Remark: str
         :param _CreatedTime: 创建时间，秒为单位
@@ -8457,10 +8461,10 @@ class RoleItem(AbstractModel):
         :type ModifiedTime: int
         """
         self._RoleName = None
-        self._AccessKey = None
-        self._SecretKey = None
         self._PermRead = None
         self._PermWrite = None
+        self._AccessKey = None
+        self._SecretKey = None
         self._Remark = None
         self._CreatedTime = None
         self._ModifiedTime = None
@@ -8472,22 +8476,6 @@ class RoleItem(AbstractModel):
     @RoleName.setter
     def RoleName(self, RoleName):
         self._RoleName = RoleName
-
-    @property
-    def AccessKey(self):
-        return self._AccessKey
-
-    @AccessKey.setter
-    def AccessKey(self, AccessKey):
-        self._AccessKey = AccessKey
-
-    @property
-    def SecretKey(self):
-        return self._SecretKey
-
-    @SecretKey.setter
-    def SecretKey(self, SecretKey):
-        self._SecretKey = SecretKey
 
     @property
     def PermRead(self):
@@ -8504,6 +8492,22 @@ class RoleItem(AbstractModel):
     @PermWrite.setter
     def PermWrite(self, PermWrite):
         self._PermWrite = PermWrite
+
+    @property
+    def AccessKey(self):
+        return self._AccessKey
+
+    @AccessKey.setter
+    def AccessKey(self, AccessKey):
+        self._AccessKey = AccessKey
+
+    @property
+    def SecretKey(self):
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
 
     @property
     def Remark(self):
@@ -8532,10 +8536,10 @@ class RoleItem(AbstractModel):
 
     def _deserialize(self, params):
         self._RoleName = params.get("RoleName")
-        self._AccessKey = params.get("AccessKey")
-        self._SecretKey = params.get("SecretKey")
         self._PermRead = params.get("PermRead")
         self._PermWrite = params.get("PermWrite")
+        self._AccessKey = params.get("AccessKey")
+        self._SecretKey = params.get("SecretKey")
         self._Remark = params.get("Remark")
         self._CreatedTime = params.get("CreatedTime")
         self._ModifiedTime = params.get("ModifiedTime")
@@ -8736,6 +8740,15 @@ Success 成功，
 Failure 失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImportStatus: str
+        :param _NamespaceV4: 4.x的命名空间，出参使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceV4: str
+        :param _TopicNameV4: 4.x的主题名，出参使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicNameV4: str
+        :param _FullNamespaceV4: 4.x的完整命名空间，出参使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FullNamespaceV4: str
         """
         self._TopicName = None
         self._TopicType = None
@@ -8744,6 +8757,9 @@ Failure 失败
         self._Imported = None
         self._Namespace = None
         self._ImportStatus = None
+        self._NamespaceV4 = None
+        self._TopicNameV4 = None
+        self._FullNamespaceV4 = None
 
     @property
     def TopicName(self):
@@ -8801,6 +8817,30 @@ Failure 失败
     def ImportStatus(self, ImportStatus):
         self._ImportStatus = ImportStatus
 
+    @property
+    def NamespaceV4(self):
+        return self._NamespaceV4
+
+    @NamespaceV4.setter
+    def NamespaceV4(self, NamespaceV4):
+        self._NamespaceV4 = NamespaceV4
+
+    @property
+    def TopicNameV4(self):
+        return self._TopicNameV4
+
+    @TopicNameV4.setter
+    def TopicNameV4(self, TopicNameV4):
+        self._TopicNameV4 = TopicNameV4
+
+    @property
+    def FullNamespaceV4(self):
+        return self._FullNamespaceV4
+
+    @FullNamespaceV4.setter
+    def FullNamespaceV4(self, FullNamespaceV4):
+        self._FullNamespaceV4 = FullNamespaceV4
+
 
     def _deserialize(self, params):
         self._TopicName = params.get("TopicName")
@@ -8810,6 +8850,9 @@ Failure 失败
         self._Imported = params.get("Imported")
         self._Namespace = params.get("Namespace")
         self._ImportStatus = params.get("ImportStatus")
+        self._NamespaceV4 = params.get("NamespaceV4")
+        self._TopicNameV4 = params.get("TopicNameV4")
+        self._FullNamespaceV4 = params.get("FullNamespaceV4")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9194,11 +9237,14 @@ class TopicItem(AbstractModel):
         :param _Topic: 主题名称
         :type Topic: str
         :param _TopicType: 主题类型
+NORMAL:普通消息,
+FIFO:顺序消息,
+DELAY:延时消息,
+TRANSACTION:事务消息
         :type TopicType: str
         :param _QueueNum: 队列数量
         :type QueueNum: int
         :param _Remark: 描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _ClusterIdV4: 4.x的集群id
 注意：此字段可能返回 null，表示取不到有效值。

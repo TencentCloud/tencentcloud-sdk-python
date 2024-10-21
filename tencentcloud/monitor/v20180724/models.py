@@ -386,6 +386,9 @@ class AlarmHistory(AbstractModel):
         :param _MetricName: 指标名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type MetricName: str
+        :param _PolicyPermissions: 策略是否有权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyPermissions: int
         """
         self._AlarmId = None
         self._MonitorType = None
@@ -420,6 +423,7 @@ class AlarmHistory(AbstractModel):
         self._AlarmShieldReason = None
         self._InternalDimensions = None
         self._MetricName = None
+        self._PolicyPermissions = None
 
     @property
     def AlarmId(self):
@@ -685,6 +689,14 @@ class AlarmHistory(AbstractModel):
     def MetricName(self, MetricName):
         self._MetricName = MetricName
 
+    @property
+    def PolicyPermissions(self):
+        return self._PolicyPermissions
+
+    @PolicyPermissions.setter
+    def PolicyPermissions(self, PolicyPermissions):
+        self._PolicyPermissions = PolicyPermissions
+
 
     def _deserialize(self, params):
         self._AlarmId = params.get("AlarmId")
@@ -730,6 +742,7 @@ class AlarmHistory(AbstractModel):
         self._AlarmShieldReason = params.get("AlarmShieldReason")
         self._InternalDimensions = params.get("InternalDimensions")
         self._MetricName = params.get("MetricName")
+        self._PolicyPermissions = params.get("PolicyPermissions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8110,6 +8123,8 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
         :type AlarmLevels: list of str
         :param _ConvergenceHistoryIDs: 收敛历史的唯一id
         :type ConvergenceHistoryIDs: list of str
+        :param _AlarmTypes: 告警类型
+        :type AlarmTypes: list of str
         """
         self._Module = None
         self._PageNumber = None
@@ -8131,6 +8146,7 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
         self._PolicyIds = None
         self._AlarmLevels = None
         self._ConvergenceHistoryIDs = None
+        self._AlarmTypes = None
 
     @property
     def Module(self):
@@ -8292,6 +8308,14 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
     def ConvergenceHistoryIDs(self, ConvergenceHistoryIDs):
         self._ConvergenceHistoryIDs = ConvergenceHistoryIDs
 
+    @property
+    def AlarmTypes(self):
+        return self._AlarmTypes
+
+    @AlarmTypes.setter
+    def AlarmTypes(self, AlarmTypes):
+        self._AlarmTypes = AlarmTypes
+
 
     def _deserialize(self, params):
         self._Module = params.get("Module")
@@ -8319,6 +8343,7 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
         self._PolicyIds = params.get("PolicyIds")
         self._AlarmLevels = params.get("AlarmLevels")
         self._ConvergenceHistoryIDs = params.get("ConvergenceHistoryIDs")
+        self._AlarmTypes = params.get("AlarmTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

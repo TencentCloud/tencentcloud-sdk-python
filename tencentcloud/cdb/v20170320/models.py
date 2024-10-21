@@ -30920,6 +30920,8 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :type ZoneId: str
         :param _RoTransType: 针对跨集群搬迁场景，选择同可用区RO的处理逻辑。together-同可用区RO跟随主实例迁移至目标可用区（默认选项），severally-同可用区RO保持原部署模式、不迁移至目标可用区。
         :type RoTransType: str
+        :param _ClusterTopology: 集群版节点拓扑配置。
+        :type ClusterTopology: :class:`tencentcloud.cdb.v20170320.models.ClusterTopology`
         :param _CheckFastUpgradeReboot: 检查原地升级是否需要重启，1 检查， 0 不检查。如果值为1，检查为原地升级需要重启，则会停止升级并进行返回提示，如果为原地升级不重启，则正常执行升级流程。
         :type CheckFastUpgradeReboot: int
         """
@@ -30940,6 +30942,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self._CrossCluster = None
         self._ZoneId = None
         self._RoTransType = None
+        self._ClusterTopology = None
         self._CheckFastUpgradeReboot = None
 
     @property
@@ -31079,6 +31082,14 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self._RoTransType = RoTransType
 
     @property
+    def ClusterTopology(self):
+        return self._ClusterTopology
+
+    @ClusterTopology.setter
+    def ClusterTopology(self, ClusterTopology):
+        self._ClusterTopology = ClusterTopology
+
+    @property
     def CheckFastUpgradeReboot(self):
         return self._CheckFastUpgradeReboot
 
@@ -31105,6 +31116,9 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self._CrossCluster = params.get("CrossCluster")
         self._ZoneId = params.get("ZoneId")
         self._RoTransType = params.get("RoTransType")
+        if params.get("ClusterTopology") is not None:
+            self._ClusterTopology = ClusterTopology()
+            self._ClusterTopology._deserialize(params.get("ClusterTopology"))
         self._CheckFastUpgradeReboot = params.get("CheckFastUpgradeReboot")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

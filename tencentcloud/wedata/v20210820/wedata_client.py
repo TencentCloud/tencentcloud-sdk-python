@@ -2671,6 +2671,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeProjectUsers(self, request):
+        """获取项目下的用户，分页返回
+
+        :param request: Request instance for DescribeProjectUsers.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeProjectUsersRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeProjectUsersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeProjectUsers", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeProjectUsersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeQualityScore(self, request):
         """质量报告-质量评分
 
