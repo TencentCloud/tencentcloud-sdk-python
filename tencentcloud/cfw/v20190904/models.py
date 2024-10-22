@@ -7822,7 +7822,7 @@ true为启用，false为不启用
         :type Port: str
         :param _Protocol: 协议；TCP/UDP/ICMP/ANY
         :type Protocol: str
-        :param _ServiceTemplateId: 端口协议类型参数模板id；协议端口模板id；与Protocol,Port互斥
+        :param _ServiceTemplateId: 端口协议类型参数模板id；协议端口模板id
         :type ServiceTemplateId: str
         :param _RuleUuid: 规则的uuid
         :type RuleUuid: int
@@ -11689,7 +11689,7 @@ class EdgeIpInfo(AbstractModel):
         r"""
         :param _PublicIp: 公网IP
         :type PublicIp: str
-        :param _PublicIpType: 公网 IP 类型
+        :param _PublicIpType: 公网 IP 类型 1 公网,2 弹性,3 弹性ipv6,4 anycastIP, 6 HighQualityEIP
 注意：此字段可能返回 null，表示取不到有效值。
         :type PublicIpType: int
         :param _InstanceId: 实例ID

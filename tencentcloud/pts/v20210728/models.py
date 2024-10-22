@@ -7172,6 +7172,9 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
         :param _ScenarioName: test-scenario
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScenarioName: str
+        :param _PayMode: 付费类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayMode: int
         """
         self._JobId = None
         self._ScenarioId = None
@@ -7216,6 +7219,7 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
         self._Message = None
         self._ProjectName = None
         self._ScenarioName = None
+        self._PayMode = None
 
     @property
     def JobId(self):
@@ -7561,6 +7565,14 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
     def ScenarioName(self, ScenarioName):
         self._ScenarioName = ScenarioName
 
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -7647,6 +7659,7 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
         self._Message = params.get("Message")
         self._ProjectName = params.get("ProjectName")
         self._ScenarioName = params.get("ScenarioName")
+        self._PayMode = params.get("PayMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

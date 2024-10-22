@@ -518,7 +518,7 @@ class TrocketClient(AbstractClient):
 
 
     def DescribeInstanceList(self, request):
-        """获取集群列表，仅支持 5.x 集群，Filters参数使用说明如下：
+        """查询集群列表，仅支持 5.x 集群。Filters参数使用说明如下：
         1. InstanceName, 名称模糊查询
         2. InstanceId，集群ID查询
         3. InstanceType, 集群类型查询，支持多选
@@ -1002,7 +1002,7 @@ class TrocketClient(AbstractClient):
 
 
     def ModifyInstance(self, request):
-        """修改实例属性
+        """修改 RocketMQ 5.x 集群属性。
 
         :param request: Request instance for ModifyInstance.
         :type request: :class:`tencentcloud.trocket.v20230308.models.ModifyInstanceRequest`

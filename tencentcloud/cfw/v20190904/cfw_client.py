@@ -1338,7 +1338,9 @@ class CfwClient(AbstractClient):
 
 
     def DescribeNatSwitchList(self, request):
-        """查询NAT边界防火墙开关列表
+        """旧接口，不再维护
+
+        查询NAT边界防火墙开关列表
 
         :param request: Request instance for DescribeNatSwitchList.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeNatSwitchListRequest`

@@ -4924,9 +4924,9 @@ class AssetUserBaseInfo(AbstractModel):
         :type Name: str
         :param _ProjectId: 主机业务组ID
         :type ProjectId: int
-        :param _UserType: 账号类型：0访客用户，1标准用户，2管理员用户 ,999为空,仅windows
+        :param _UserType: 账号类型：0访客用户，1标准用户，2管理员用户 ,999为空,仅Windows
         :type UserType: int
-        :param _IsDomain: 是否域账号：0否， 1是，2否, 999为空  仅windows
+        :param _IsDomain: 是否域账号：0否， 1是，2否, 999为空  仅Windows
         :type IsDomain: int
         :param _IsSudo: 是否有sudo权限，1是，0否, 999为空, 仅linux
         :type IsSudo: int
@@ -5290,9 +5290,9 @@ class AssetUserDetail(AbstractModel):
         :type LastLoginTime: str
         :param _Name: 账号名称
         :type Name: str
-        :param _UserType: 账号类型：0访客用户，1标准用户，2管理员用户 ,999为空,仅windows
+        :param _UserType: 账号类型：0访客用户，1标准用户，2管理员用户 ,999为空,仅Windows
         :type UserType: int
-        :param _IsDomain: 是否域账号：0否， 1是, 999为空  仅windows
+        :param _IsDomain: 是否域账号：0否， 1是, 999为空  仅Windows
         :type IsDomain: int
         :param _IsSshLogin: 是否允许ssh登录，1是，0否, 999为空, 仅linux
         :type IsSshLogin: int
@@ -40688,7 +40688,7 @@ class DescribeMalwareWhiteListRequest(AbstractModel):
         :type Filters: list of Filter
         :param _Order: 排序方式: [ASC:升序|DESC:降序]
         :type Order: str
-        :param _By: 可选排序列: [EventsCount]
+        :param _By: 可选排序列: [EventsCount|CreateTime|ModifyTime]
         :type By: str
         """
         self._Offset = None
@@ -46946,7 +46946,7 @@ class DescribeSecurityBroadcastsRequest(AbstractModel):
         :type BeginDate: str
         :param _EndDate: 筛选发布日期：结束时间
         :type EndDate: str
-        :param _BroadcastType: 过滤安全播报类型：0-紧急通知，1-功能更新，2-行业荣誉，3-版本发布
+        :param _BroadcastType: 过滤安全播报类型：0-紧急通知，1-功能更新，2-行业荣誉，3-版本发布，4-最佳实践
         :type BroadcastType: str
         """
         self._Offset = None
@@ -54669,22 +54669,7 @@ class ExportAssetAppListRequest(AbstractModel):
         r"""
         :param _Quuid: 查询指定Quuid主机的信息
         :type Quuid: str
-        :param _Filters: 过滤条件。
-<li>AppName- string - 是否必填：否 - 应用名搜索</li>
-<li>IP - String - 是否必填：否 - 主机ip</li>
-<li>MachineName - String - 是否必填：否 - 主机名称</li>
-<li>InstanceID - string - 是否必填：否 - 实例ID</li>
-<li>Type - int - 是否必填：否 - 类型	: 仅linux
-0: 全部
-1: 运维
-2 : 数据库
-3 : 安全
-4 : 可疑应用
-5 : 系统架构
-6 : 系统应用
-7 : WEB服务
-99:其他</li>
-<li>OsType - uint64 - 是否必填：否 - windows/linux</li>
+        :param _Filters: 过滤条件。<li>AppName- string - 是否必填：否 - 应用名搜索</li><li>IP - String - 是否必填：否 - 主机ip</li><li>MachineName - String - 是否必填：否 - 主机名称</li><li>InstanceID - string - 是否必填：否 - 实例ID</li><li>Type - int - 是否必填：否 - 类型	: 仅linux0: 全部1: 运维2 : 数据库3 : 安全4 : 可疑应用5 : 系统架构6 : 系统应用7 : WEB服务99:其他</li><li>OsType - uint64 - 是否必填：否 - Windows/Linux</li>
         :type Filters: list of AssetFilters
         :param _Order: 排序方式，asc升序 或 desc降序
         :type Order: str
@@ -67825,6 +67810,9 @@ class MalwareInfo(AbstractModel):
         :param _MachineExtraInfo: 附加信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type MachineExtraInfo: :class:`tencentcloud.cwp.v20180228.models.MachineExtraInfo`
+        :param _References: 参考链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type References: list of str
         """
         self._VirusName = None
         self._FileSize = None
@@ -67856,6 +67844,7 @@ class MalwareInfo(AbstractModel):
         self._ModifyTime = None
         self._StrFileAccessTime = None
         self._MachineExtraInfo = None
+        self._References = None
 
     @property
     def VirusName(self):
@@ -68097,6 +68086,14 @@ class MalwareInfo(AbstractModel):
     def MachineExtraInfo(self, MachineExtraInfo):
         self._MachineExtraInfo = MachineExtraInfo
 
+    @property
+    def References(self):
+        return self._References
+
+    @References.setter
+    def References(self, References):
+        self._References = References
+
 
     def _deserialize(self, params):
         self._VirusName = params.get("VirusName")
@@ -68131,6 +68128,7 @@ class MalwareInfo(AbstractModel):
         if params.get("MachineExtraInfo") is not None:
             self._MachineExtraInfo = MachineExtraInfo()
             self._MachineExtraInfo._deserialize(params.get("MachineExtraInfo"))
+        self._References = params.get("References")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -68401,6 +68399,8 @@ class MalwareWhiteListInfo(AbstractModel):
         :type CreateTime: str
         :param _EventsCount: 受影响记录
         :type EventsCount: int
+        :param _ModifyTime: 规则修改时间
+        :type ModifyTime: str
         """
         self._Id = None
         self._QuuidList = None
@@ -68413,6 +68413,7 @@ class MalwareWhiteListInfo(AbstractModel):
         self._FileExtension = None
         self._CreateTime = None
         self._EventsCount = None
+        self._ModifyTime = None
 
     @property
     def Id(self):
@@ -68502,6 +68503,14 @@ class MalwareWhiteListInfo(AbstractModel):
     def EventsCount(self, EventsCount):
         self._EventsCount = EventsCount
 
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -68515,6 +68524,7 @@ class MalwareWhiteListInfo(AbstractModel):
         self._FileExtension = params.get("FileExtension")
         self._CreateTime = params.get("CreateTime")
         self._EventsCount = params.get("EventsCount")
+        self._ModifyTime = params.get("ModifyTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -77533,6 +77543,9 @@ class RansomDefenseRollbackTask(AbstractModel):
         :type ModifyTime: str
         :param _RegionInfo: 可用区信息
         :type RegionInfo: :class:`tencentcloud.cwp.v20180228.models.RegionInfo`
+        :param _InstanceId: 主机示例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
         """
         self._Id = None
         self._Uuid = None
@@ -77544,6 +77557,7 @@ class RansomDefenseRollbackTask(AbstractModel):
         self._BackupTime = None
         self._ModifyTime = None
         self._RegionInfo = None
+        self._InstanceId = None
 
     @property
     def Id(self):
@@ -77625,6 +77639,14 @@ class RansomDefenseRollbackTask(AbstractModel):
     def RegionInfo(self, RegionInfo):
         self._RegionInfo = RegionInfo
 
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -77639,6 +77661,7 @@ class RansomDefenseRollbackTask(AbstractModel):
         if params.get("RegionInfo") is not None:
             self._RegionInfo = RegionInfo()
             self._RegionInfo._deserialize(params.get("RegionInfo"))
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -78145,6 +78168,9 @@ class RansomDefenseStrategyMachineBackupInfo(AbstractModel):
         :param _BackupSuccessCount: 备份成功次数
 注意：此字段可能返回 null，表示取不到有效值。
         :type BackupSuccessCount: int
+        :param _HostVersion: 版本信息：0-基础版 1-专业版 2-旗舰版 3-普惠版
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostVersion: int
         """
         self._Uuid = None
         self._Quuid = None
@@ -78166,6 +78192,7 @@ class RansomDefenseStrategyMachineBackupInfo(AbstractModel):
         self._RollBackPercent = None
         self._RollBackStatus = None
         self._BackupSuccessCount = None
+        self._HostVersion = None
 
     @property
     def Uuid(self):
@@ -78327,6 +78354,14 @@ class RansomDefenseStrategyMachineBackupInfo(AbstractModel):
     def BackupSuccessCount(self, BackupSuccessCount):
         self._BackupSuccessCount = BackupSuccessCount
 
+    @property
+    def HostVersion(self):
+        return self._HostVersion
+
+    @HostVersion.setter
+    def HostVersion(self, HostVersion):
+        self._HostVersion = HostVersion
+
 
     def _deserialize(self, params):
         self._Uuid = params.get("Uuid")
@@ -78361,6 +78396,7 @@ class RansomDefenseStrategyMachineBackupInfo(AbstractModel):
         self._RollBackPercent = params.get("RollBackPercent")
         self._RollBackStatus = params.get("RollBackStatus")
         self._BackupSuccessCount = params.get("BackupSuccessCount")
+        self._HostVersion = params.get("HostVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -84207,9 +84243,9 @@ class SeparateMalwaresResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SuccessIds: 隔离成功的id数组，若无则返回空数组
+        :param _SuccessIds: 隔离成功的ID数组，若无则返回空数组
         :type SuccessIds: list of int non-negative
-        :param _FailedIds: 隔离失败的id数组，若无则返回空数组
+        :param _FailedIds: 隔离失败的ID数组，若无则返回空数组
         :type FailedIds: list of int non-negative
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

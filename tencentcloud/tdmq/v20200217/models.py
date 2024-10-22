@@ -4512,7 +4512,7 @@ class CreateRocketMQEnvironmentRoleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvironmentId: 环境（命名空间）名称。
+        :param _EnvironmentId: 命名空间
         :type EnvironmentId: str
         :param _RoleName: 角色名称。
         :type RoleName: str
@@ -6296,6 +6296,127 @@ class DeleteProClusterResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteRabbitMQBindingRequest(AbstractModel):
+    """DeleteRabbitMQBinding请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例Id
+        :type InstanceId: str
+        :param _VirtualHost: Vhost参数
+        :type VirtualHost: str
+        :param _BindingId: 路由关系Id
+        :type BindingId: int
+        """
+        self._InstanceId = None
+        self._VirtualHost = None
+        self._BindingId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def VirtualHost(self):
+        return self._VirtualHost
+
+    @VirtualHost.setter
+    def VirtualHost(self, VirtualHost):
+        self._VirtualHost = VirtualHost
+
+    @property
+    def BindingId(self):
+        return self._BindingId
+
+    @BindingId.setter
+    def BindingId(self, BindingId):
+        self._BindingId = BindingId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._VirtualHost = params.get("VirtualHost")
+        self._BindingId = params.get("BindingId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRabbitMQBindingResponse(AbstractModel):
+    """DeleteRabbitMQBinding返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 队列名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _VirtualHost: vhost参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirtualHost: str
+        :param _BindingId: 路由关系Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BindingId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._VirtualHost = None
+        self._BindingId = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def VirtualHost(self):
+        return self._VirtualHost
+
+    @VirtualHost.setter
+    def VirtualHost(self, VirtualHost):
+        self._VirtualHost = VirtualHost
+
+    @property
+    def BindingId(self):
+        return self._BindingId
+
+    @BindingId.setter
+    def BindingId(self, BindingId):
+        self._BindingId = BindingId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._VirtualHost = params.get("VirtualHost")
+        self._BindingId = params.get("BindingId")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteRabbitMQUserRequest(AbstractModel):
     """DeleteRabbitMQUser请求参数结构体
 
@@ -6601,7 +6722,7 @@ class DeleteRocketMQEnvironmentRolesRequest(AbstractModel):
         :type EnvironmentId: str
         :param _RoleNames: 角色名称数组。
         :type RoleNames: list of str
-        :param _ClusterId: 必填字段，集群的ID
+        :param _ClusterId: 集群的ID
         :type ClusterId: str
         """
         self._EnvironmentId = None
@@ -10576,6 +10697,179 @@ class DescribePulsarProInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRabbitMQBindingsRequest(AbstractModel):
+    """DescribeRabbitMQBindings请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例Id
+        :type InstanceId: str
+        :param _VirtualHost: Vhost参数
+        :type VirtualHost: str
+        :param _Offset: 分页offset
+        :type Offset: int
+        :param _Limit: 分页limit
+        :type Limit: int
+        :param _SearchWord: 搜索关键词，根据源exchange名称/目标资源名称/绑定key进行模糊搜索
+        :type SearchWord: str
+        :param _SourceExchange: 根据源Exchange精准搜索过滤
+        :type SourceExchange: str
+        :param _QueueName: 根据目标QueueName精准搜索过滤，和DestinationExchange过滤不可同时设置
+        :type QueueName: str
+        :param _DestinationExchange: 根据目标Exchange精准搜索过滤，和QueueName过滤不可同时设置
+        :type DestinationExchange: str
+        """
+        self._InstanceId = None
+        self._VirtualHost = None
+        self._Offset = None
+        self._Limit = None
+        self._SearchWord = None
+        self._SourceExchange = None
+        self._QueueName = None
+        self._DestinationExchange = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def VirtualHost(self):
+        return self._VirtualHost
+
+    @VirtualHost.setter
+    def VirtualHost(self, VirtualHost):
+        self._VirtualHost = VirtualHost
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SearchWord(self):
+        return self._SearchWord
+
+    @SearchWord.setter
+    def SearchWord(self, SearchWord):
+        self._SearchWord = SearchWord
+
+    @property
+    def SourceExchange(self):
+        return self._SourceExchange
+
+    @SourceExchange.setter
+    def SourceExchange(self, SourceExchange):
+        self._SourceExchange = SourceExchange
+
+    @property
+    def QueueName(self):
+        return self._QueueName
+
+    @QueueName.setter
+    def QueueName(self, QueueName):
+        self._QueueName = QueueName
+
+    @property
+    def DestinationExchange(self):
+        return self._DestinationExchange
+
+    @DestinationExchange.setter
+    def DestinationExchange(self, DestinationExchange):
+        self._DestinationExchange = DestinationExchange
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._VirtualHost = params.get("VirtualHost")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SearchWord = params.get("SearchWord")
+        self._SourceExchange = params.get("SourceExchange")
+        self._QueueName = params.get("QueueName")
+        self._DestinationExchange = params.get("DestinationExchange")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRabbitMQBindingsResponse(AbstractModel):
+    """DescribeRabbitMQBindings返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BindingInfoList: 路由关系列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BindingInfoList: list of RabbitMQBindingListInfo
+        :param _TotalCount: 数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BindingInfoList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def BindingInfoList(self):
+        return self._BindingInfoList
+
+    @BindingInfoList.setter
+    def BindingInfoList(self, BindingInfoList):
+        self._BindingInfoList = BindingInfoList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("BindingInfoList") is not None:
+            self._BindingInfoList = []
+            for item in params.get("BindingInfoList"):
+                obj = RabbitMQBindingListInfo()
+                obj._deserialize(item)
+                self._BindingInfoList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRabbitMQExchangesRequest(AbstractModel):
     """DescribeRabbitMQExchanges请求参数结构体
 
@@ -13002,7 +13296,7 @@ class DescribeRocketMQEnvironmentRolesRequest(AbstractModel):
         r"""
         :param _ClusterId: 必填字段，RocketMQ集群的ID
         :type ClusterId: str
-        :param _EnvironmentId: 环境（命名空间）名称。
+        :param _EnvironmentId: 命名空间
         :type EnvironmentId: str
         :param _Offset: 起始下标，不填默认为0。
         :type Offset: int
@@ -13010,10 +13304,7 @@ class DescribeRocketMQEnvironmentRolesRequest(AbstractModel):
         :type Limit: int
         :param _RoleName: 角色名称
         :type RoleName: str
-        :param _Filters: * RoleName
-按照角色名进行过滤，精确查询。
-类型：String
-必选：否
+        :param _Filters: RoleName按照角色名进行过滤，精确查询。类型：String必选：否
         :type Filters: list of Filter
         """
         self._ClusterId = None
@@ -13860,48 +14151,7 @@ class DescribeRocketMQMsgTraceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: [
-    {
-        "Stage": "produce",
-        "Data": {
-            "ProducerName": "生产者名",
-            "ProduceTime": "消息生产时间",
-            "ProducerAddr": "客户端地址",
-            "Duration": "耗时ms",
-            "Status": "状态（0：成功，1：失败）"
-        }
-    },
-    {
-        "Stage": "persist",
-        "Data": {
-            "PersistTime": "存储时间",
-            "Duration": "耗时ms",
-            "Status": "状态（0：成功，1：失败）"
-        }
-    },
-    {
-        "Stage": "consume",
-        "Data": {
-            "TotalCount": 2,
-            "RocketMqConsumeLogs": [
-                {
-                    "ConsumerGroup": "消费组",
-                    "ConsumeModel": "消费模式",
-                    "ConsumerAddr": "消费者地址",
-                    "ConsumeTime": "推送时间",
-                    "Status": "状态（0:已推送未确认, 2:已确认, 3:转入重试, 4:已重试未确认, 5:已转入死信队列）"
-                },
-                {
-                    "ConsumerGroup": "消费组",
-                    "ConsumeModel": "消费模式",
-                    "ConsumerAddr": "消费者地址",
-                    "ConsumeTime": "推送时间",
-                    "Status": "状态（0:已推送未确认, 2:已确认, 3:转入重试, 4:已重试未确认, 5:已转入死信队列）"
-                }
-            ]    
-        }
-    }
-]
+        :param _Result: 轨迹详情列表
         :type Result: list of TraceResult
         :param _ShowTopicName: 消息轨迹页展示的topic名称
         :type ShowTopicName: str
@@ -14435,10 +14685,7 @@ class DescribeRocketMQRolesRequest(AbstractModel):
         :type ClusterId: str
         :param _RoleName: 角色名称，模糊查询
         :type RoleName: str
-        :param _Filters: * RoleName
-按照角色名进行过滤，精确查询。
-类型：String
-必选：否
+        :param _Filters: RoleName按照角色名进行过滤，精确查询。类型：String必选：否
         :type Filters: list of Filter
         """
         self._Offset = None
@@ -22081,6 +22328,144 @@ class QueueQuota(AbstractModel):
         
 
 
+class RabbitMQBindingListInfo(AbstractModel):
+    """Rabbitmq路由关系列表成员
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BindingId: 路由关系id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BindingId: int
+        :param _VirtualHost: Vhost参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirtualHost: str
+        :param _Source: 源exchange名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Source: str
+        :param _DestinationType: 目标类型,queue或exchange
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DestinationType: str
+        :param _Destination: 目标资源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Destination: str
+        :param _RoutingKey: 绑定key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoutingKey: str
+        :param _SourceExchangeType: 源exchange类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceExchangeType: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _ModifyTime: 修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        """
+        self._BindingId = None
+        self._VirtualHost = None
+        self._Source = None
+        self._DestinationType = None
+        self._Destination = None
+        self._RoutingKey = None
+        self._SourceExchangeType = None
+        self._CreateTime = None
+        self._ModifyTime = None
+
+    @property
+    def BindingId(self):
+        return self._BindingId
+
+    @BindingId.setter
+    def BindingId(self, BindingId):
+        self._BindingId = BindingId
+
+    @property
+    def VirtualHost(self):
+        return self._VirtualHost
+
+    @VirtualHost.setter
+    def VirtualHost(self, VirtualHost):
+        self._VirtualHost = VirtualHost
+
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def DestinationType(self):
+        return self._DestinationType
+
+    @DestinationType.setter
+    def DestinationType(self, DestinationType):
+        self._DestinationType = DestinationType
+
+    @property
+    def Destination(self):
+        return self._Destination
+
+    @Destination.setter
+    def Destination(self, Destination):
+        self._Destination = Destination
+
+    @property
+    def RoutingKey(self):
+        return self._RoutingKey
+
+    @RoutingKey.setter
+    def RoutingKey(self, RoutingKey):
+        self._RoutingKey = RoutingKey
+
+    @property
+    def SourceExchangeType(self):
+        return self._SourceExchangeType
+
+    @SourceExchangeType.setter
+    def SourceExchangeType(self, SourceExchangeType):
+        self._SourceExchangeType = SourceExchangeType
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+
+    def _deserialize(self, params):
+        self._BindingId = params.get("BindingId")
+        self._VirtualHost = params.get("VirtualHost")
+        self._Source = params.get("Source")
+        self._DestinationType = params.get("DestinationType")
+        self._Destination = params.get("Destination")
+        self._RoutingKey = params.get("RoutingKey")
+        self._SourceExchangeType = params.get("SourceExchangeType")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RabbitMQClusterAccessInfo(AbstractModel):
     """RabbitMQ集群访问信息
 
@@ -25380,7 +25765,7 @@ class RocketMQConsumerTopic(AbstractModel):
         r"""
         :param _Topic: 主题名称
         :type Topic: str
-        :param _Type: 主题类型，Default表示普通，GlobalOrder表示全局顺序，PartitionedOrder表示局部顺序，Transaction表示事务，Retry表示重试，DeadLetter表示死信
+        :param _Type: 主题类型，Normal表示普通，GlobalOrder表示全局顺序，PartitionedOrder表示局部顺序，Transaction表示事务，Retry表示重试，DeadLetter表示死信
         :type Type: str
         :param _PartitionNum: 分区数
         :type PartitionNum: int
@@ -26649,6 +27034,8 @@ DeadLetter 死信
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsOnline: bool
         :param _ConsumeType: 消费类型
+0: 广播消费
+1: 集群消费
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConsumeType: int
         :param _Consistency: 订阅一致性
@@ -29439,7 +29826,7 @@ class VerifyRocketMQConsumeRequest(AbstractModel):
         :type MsgId: str
         :param _ClientId: 客户端ID
         :type ClientId: str
-        :param _TopicName: topic名称
+        :param _TopicName: 主题名称
         :type TopicName: str
         """
         self._ClusterId = None

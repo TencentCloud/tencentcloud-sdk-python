@@ -39,6 +39,8 @@ class DisplayInfo(AbstractModel):
         :type EndTime: int
         :param _IsEnd:  当前句子是否已结束
         :type IsEnd: bool
+        :param _Audio: base64编码的wav/mp3音频数据
+        :type Audio: str
         """
         self._SeId = None
         self._SeVer = None
@@ -47,6 +49,7 @@ class DisplayInfo(AbstractModel):
         self._StartTime = None
         self._EndTime = None
         self._IsEnd = None
+        self._Audio = None
 
     @property
     def SeId(self):
@@ -104,6 +107,14 @@ class DisplayInfo(AbstractModel):
     def IsEnd(self, IsEnd):
         self._IsEnd = IsEnd
 
+    @property
+    def Audio(self):
+        return self._Audio
+
+    @Audio.setter
+    def Audio(self, Audio):
+        self._Audio = Audio
+
 
     def _deserialize(self, params):
         self._SeId = params.get("SeId")
@@ -113,6 +124,102 @@ class DisplayInfo(AbstractModel):
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._IsEnd = params.get("IsEnd")
+        self._Audio = params.get("Audio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TTS(AbstractModel):
+    """同传TTS请求参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Codec: 返回音频格式，可取值：wav，mp3，pcm
+        :type Codec: str
+        :param _VoiceType: 音色 ID，只包括标准音色（注，日文只有一个固定音色）。
+完整的音色 ID 列表请参见[音色列表](https://cloud.tencent.com/document/product/1073/92668)。
+        :type VoiceType: int
+        :param _Volume: 音量大小，范围[-10，10]，对应音量大小。默认为0，代表正常音量，值越大音量越高。
+        :type Volume: float
+        :param _Speed: 语速，范围：[-2，6]，分别对应不同语速：
+
+- -2代表0.6倍
+- -1代表0.8倍
+- 0代表1.0倍（默认）
+- 1代表1.2倍
+- 2代表1.5倍
+- 6代表2.5倍
+
+如果需要更细化的语速，可以保留小数点后 2 位，例如0.5/1.25/2.81等。
+参数值与实际语速转换，可参考[代码示例](https://sdk-1300466766.cos.ap-shanghai.myqcloud.com/sample/speed_sample.tar.gz)
+        :type Speed: float
+        :param _SampleRate: 音频采样率：
+
+- 16000：16k（默认）
+- 8000：8k
+        :type SampleRate: int
+        """
+        self._Codec = None
+        self._VoiceType = None
+        self._Volume = None
+        self._Speed = None
+        self._SampleRate = None
+
+    @property
+    def Codec(self):
+        return self._Codec
+
+    @Codec.setter
+    def Codec(self, Codec):
+        self._Codec = Codec
+
+    @property
+    def VoiceType(self):
+        return self._VoiceType
+
+    @VoiceType.setter
+    def VoiceType(self, VoiceType):
+        self._VoiceType = VoiceType
+
+    @property
+    def Volume(self):
+        return self._Volume
+
+    @Volume.setter
+    def Volume(self, Volume):
+        self._Volume = Volume
+
+    @property
+    def Speed(self):
+        return self._Speed
+
+    @Speed.setter
+    def Speed(self, Speed):
+        self._Speed = Speed
+
+    @property
+    def SampleRate(self):
+        return self._SampleRate
+
+    @SampleRate.setter
+    def SampleRate(self, SampleRate):
+        self._SampleRate = SampleRate
+
+
+    def _deserialize(self, params):
+        self._Codec = params.get("Codec")
+        self._VoiceType = params.get("VoiceType")
+        self._Volume = params.get("Volume")
+        self._Speed = params.get("Speed")
+        self._SampleRate = params.get("SampleRate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -257,6 +364,8 @@ yue：粤语
         :type TranslateTime: int
         :param _Data: 语音分片内容进行 Base64 编码后的字符串。音频内容需包含有效并可识别的文本信息。
         :type Data: str
+        :param _TTS: TTS播报控制参数	
+        :type TTS: :class:`tencentcloud.tsi.v20210325.models.TTS`
         """
         self._SessionUuid = None
         self._Source = None
@@ -267,6 +376,7 @@ yue：粤语
         self._IsEnd = None
         self._TranslateTime = None
         self._Data = None
+        self._TTS = None
 
     @property
     def SessionUuid(self):
@@ -340,6 +450,14 @@ yue：粤语
     def Data(self, Data):
         self._Data = Data
 
+    @property
+    def TTS(self):
+        return self._TTS
+
+    @TTS.setter
+    def TTS(self, TTS):
+        self._TTS = TTS
+
 
     def _deserialize(self, params):
         self._SessionUuid = params.get("SessionUuid")
@@ -351,6 +469,9 @@ yue：粤语
         self._IsEnd = params.get("IsEnd")
         self._TranslateTime = params.get("TranslateTime")
         self._Data = params.get("Data")
+        if params.get("TTS") is not None:
+            self._TTS = TTS()
+            self._TTS._deserialize(params.get("TTS"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -421,6 +542,8 @@ yue：粤语
         :type TranslateTime: int
         :param _Data: 语音分片内容进行 Base64 编码后的字符串。音频内容需包含有效并可识别的文本信息。
         :type Data: str
+        :param _TTS: TTS播报控制参数
+        :type TTS: :class:`tencentcloud.tsi.v20210325.models.TTS`
         """
         self._SessionUuid = None
         self._Source = None
@@ -431,6 +554,7 @@ yue：粤语
         self._IsEnd = None
         self._TranslateTime = None
         self._Data = None
+        self._TTS = None
 
     @property
     def SessionUuid(self):
@@ -504,6 +628,14 @@ yue：粤语
     def Data(self, Data):
         self._Data = Data
 
+    @property
+    def TTS(self):
+        return self._TTS
+
+    @TTS.setter
+    def TTS(self, TTS):
+        self._TTS = TTS
+
 
     def _deserialize(self, params):
         self._SessionUuid = params.get("SessionUuid")
@@ -515,6 +647,9 @@ yue：粤语
         self._IsEnd = params.get("IsEnd")
         self._TranslateTime = params.get("TranslateTime")
         self._Data = params.get("Data")
+        if params.get("TTS") is not None:
+            self._TTS = TTS()
+            self._TTS._deserialize(params.get("TTS"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

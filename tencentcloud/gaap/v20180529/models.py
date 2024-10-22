@@ -1548,9 +1548,9 @@ class CloseSecurityPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProxyId: 通道ID
+        :param _ProxyId: 通道ID。操作通道组时无需填此参数。
         :type ProxyId: str
-        :param _PolicyId: 安全组策略ID
+        :param _PolicyId: 安全组策略ID。操作通道组时须填此参数。
         :type PolicyId: str
         """
         self._ProxyId = None
@@ -2904,7 +2904,7 @@ class CreateProxyGroupRequest(AbstractModel):
         :type ProjectId: int
         :param _GroupName: 通道组别名
         :type GroupName: str
-        :param _RealServerRegion: 源站地域，参考接口DescribeDestRegions 返回参数RegionDetail中的RegionId
+        :param _RealServerRegion: 源站地域，参考接口 [https://cloud.tencent.com/document/api/608/36964] 返回参数RegionDetail中的RegionId
         :type RealServerRegion: str
         :param _TagSet: 标签列表
         :type TagSet: list of TagPair
@@ -4572,7 +4572,7 @@ class DeleteListenersRequest(AbstractModel):
         :type ListenerIds: list of str
         :param _Force: 已绑定源站的监听器是否允许强制删除，1：允许， 0：不允许
         :type Force: int
-        :param _GroupId: 通道组ID，该参数和GroupId必须设置一个，但不能同时设置。
+        :param _GroupId: 通道组ID，该参数和ProxyId必须设置一个，但不能同时设置。
         :type GroupId: str
         :param _ProxyId: 通道ID，该参数和GroupId必须设置一个，但不能同时设置。
         :type ProxyId: str
@@ -5583,6 +5583,33 @@ class DescribeDestRegionsRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _QualityType: 通道质量:0表示金牌，1表示银牌。默认不传该参数，表示金牌。本参数确定查询指定通道质量的源站区域
+        :type QualityType: int
+        """
+        self._QualityType = None
+
+    @property
+    def QualityType(self):
+        return self._QualityType
+
+    @QualityType.setter
+    def QualityType(self, QualityType):
+        self._QualityType = QualityType
+
+
+    def _deserialize(self, params):
+        self._QualityType = params.get("QualityType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeDestRegionsResponse(AbstractModel):
     """DescribeDestRegions返回参数结构体
@@ -6357,9 +6384,11 @@ class DescribeHTTPListenersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProxyId: 通道ID
+        :param _ProxyId: 通道ID。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。
         :type ProxyId: str
-        :param _ListenerId: 过滤条件，按照监听器ID进行精确查询
+        :param _GroupId: 通道组ID。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。
+        :type GroupId: str
+        :param _ListenerId: 过滤条件，按照监听器ID进行精确查询。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。
         :type ListenerId: str
         :param _ListenerName: 过滤条件，按照监听器名称进行精确查询
         :type ListenerName: str
@@ -6371,17 +6400,15 @@ class DescribeHTTPListenersRequest(AbstractModel):
         :type Limit: int
         :param _SearchValue: 过滤条件，支持按照端口或监听器名称进行模糊查询，该参数不能与ListenerName和Port同时使用
         :type SearchValue: str
-        :param _GroupId: 通道组ID
-        :type GroupId: str
         """
         self._ProxyId = None
+        self._GroupId = None
         self._ListenerId = None
         self._ListenerName = None
         self._Port = None
         self._Offset = None
         self._Limit = None
         self._SearchValue = None
-        self._GroupId = None
 
     @property
     def ProxyId(self):
@@ -6390,6 +6417,14 @@ class DescribeHTTPListenersRequest(AbstractModel):
     @ProxyId.setter
     def ProxyId(self, ProxyId):
         self._ProxyId = ProxyId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
 
     @property
     def ListenerId(self):
@@ -6439,24 +6474,16 @@ class DescribeHTTPListenersRequest(AbstractModel):
     def SearchValue(self, SearchValue):
         self._SearchValue = SearchValue
 
-    @property
-    def GroupId(self):
-        return self._GroupId
-
-    @GroupId.setter
-    def GroupId(self, GroupId):
-        self._GroupId = GroupId
-
 
     def _deserialize(self, params):
         self._ProxyId = params.get("ProxyId")
+        self._GroupId = params.get("GroupId")
         self._ListenerId = params.get("ListenerId")
         self._ListenerName = params.get("ListenerName")
         self._Port = params.get("Port")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._SearchValue = params.get("SearchValue")
-        self._GroupId = params.get("GroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6528,9 +6555,11 @@ class DescribeHTTPSListenersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProxyId: 过滤条件，通道ID
+        :param _ProxyId: 通道ID。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。
         :type ProxyId: str
-        :param _ListenerId: 过滤条件，根据监听器ID进行精确查询。
+        :param _GroupId: 通道组ID。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。
+        :type GroupId: str
+        :param _ListenerId: 过滤条件，根据监听器ID进行精确查询。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。
         :type ListenerId: str
         :param _ListenerName: 过滤条件，根据监听器名称进行精确查询。
         :type ListenerName: str
@@ -6542,8 +6571,6 @@ class DescribeHTTPSListenersRequest(AbstractModel):
         :type Limit: int
         :param _SearchValue: 过滤条件，支持按照端口或监听器名称进行模糊查询
         :type SearchValue: str
-        :param _GroupId: 过滤条件，通道组ID
-        :type GroupId: str
         :param _Http3Supported: 支持Http3的开关，其中：
 0，表示不需要支持Http3接入；
 1，表示需要支持Http3接入。
@@ -6552,13 +6579,13 @@ class DescribeHTTPSListenersRequest(AbstractModel):
         :type Http3Supported: int
         """
         self._ProxyId = None
+        self._GroupId = None
         self._ListenerId = None
         self._ListenerName = None
         self._Port = None
         self._Offset = None
         self._Limit = None
         self._SearchValue = None
-        self._GroupId = None
         self._Http3Supported = None
 
     @property
@@ -6568,6 +6595,14 @@ class DescribeHTTPSListenersRequest(AbstractModel):
     @ProxyId.setter
     def ProxyId(self, ProxyId):
         self._ProxyId = ProxyId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
 
     @property
     def ListenerId(self):
@@ -6618,14 +6653,6 @@ class DescribeHTTPSListenersRequest(AbstractModel):
         self._SearchValue = SearchValue
 
     @property
-    def GroupId(self):
-        return self._GroupId
-
-    @GroupId.setter
-    def GroupId(self, GroupId):
-        self._GroupId = GroupId
-
-    @property
     def Http3Supported(self):
         return self._Http3Supported
 
@@ -6636,13 +6663,13 @@ class DescribeHTTPSListenersRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._ProxyId = params.get("ProxyId")
+        self._GroupId = params.get("GroupId")
         self._ListenerId = params.get("ListenerId")
         self._ListenerName = params.get("ListenerName")
         self._Port = params.get("Port")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._SearchValue = params.get("SearchValue")
-        self._GroupId = params.get("GroupId")
         self._Http3Supported = params.get("Http3Supported")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -11351,7 +11378,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         :type Bandwidth: int
         :param _DestRegion: （旧参数，请切换到RealServerRegion）源站区域名称。
         :type DestRegion: str
-        :param _Concurrency: （旧参数，请切换到Concurrent）通道并发量上限，表示同时在线的连接数，单位：万。
+        :param _Concurrency: （此参数为旧参数，请填写新参数Concurrent，二者必须填写一个）通道并发量上限，表示同时在线的连接数，单位：万。
         :type Concurrency: int
         :param _RealServerRegion: （新参数）源站区域名称。
         :type RealServerRegion: str
@@ -12556,7 +12583,7 @@ class ModifyProxiesAttributeRequest(AbstractModel):
         r"""
         :param _InstanceIds: （旧参数，请切换到ProxyIds）一个或多个待操作的通道ID。
         :type InstanceIds: list of str
-        :param _ProxyName: 通道名称。可任意命名，但不得超过30个字符。
+        :param _ProxyName: 通道名称。可任意命名，但不得超过32个字符。
         :type ProxyName: str
         :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
 更多详细信息请参阅：如何保证幂等性。
@@ -12867,7 +12894,7 @@ class ModifyProxyGroupAttributeRequest(AbstractModel):
         r"""
         :param _GroupId: 需要修改的通道组ID。
         :type GroupId: str
-        :param _GroupName: 修改后的通道组名称：不超过30个字符，超过部分会被截断。
+        :param _GroupName: 修改后的通道组名称：不超过30个字符，否则修改失败。
         :type GroupName: str
         :param _ProjectId: 项目ID
         :type ProjectId: int
@@ -13343,7 +13370,7 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
         :type ProxyId: str
         :param _ListenerName: 监听器名称
         :type ListenerName: str
-        :param _Scheduler: 监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数；lrtt表示最小时延。
+        :param _Scheduler: 监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数；lrtt表示最小时延。注意：lrtt需要开通白名单；RealServerType 为 DOMAIN 不支持wrr 和 lrtt。
         :type Scheduler: str
         :param _DelayLoop: 源站健康检查时间间隔，单位：秒。时间间隔取值在[5，300]之间。
         :type DelayLoop: int
@@ -14283,7 +14310,7 @@ class ProxyGroupDetail(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FeatureBitmap: int
-        :param _IsSupportTLSChoice: 是否支持设置TSL设置
+        :param _IsSupportTLSChoice: 是否支持设置TLS设置
 0表示不支持；
 1表示支持。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -14544,6 +14571,7 @@ RUNNING表示运行中；
 CREATING表示创建中；
 DESTROYING表示销毁中；
 MOVING表示通道迁移中；
+CLOSED表示已关闭；
 CHANGING表示部分部署中。
         :type Status: str
         :param _TagSet: 标签列表。
@@ -16533,9 +16561,9 @@ class SetTlsVersionRequest(AbstractModel):
         r"""
         :param _ListenerId: 监听器ID
         :type ListenerId: str
-        :param _TLSSupportVersion: TLS版本
+        :param _TLSSupportVersion: TLS版本,可选TLSv1.0、TLSv1.1、TLSv1.2、TLSv1.3
         :type TLSSupportVersion: list of str
-        :param _TLSCiphers: 密码套件包
+        :param _TLSCiphers: 密码套件包,可选 GAAP_TLS_CIPHERS_STRICT，GAAP_TLS_CIPHERS_GENERAL，GAAP_TLS_CIPHERS_WIDE(默认)
         :type TLSCiphers: str
         """
         self._ListenerId = None

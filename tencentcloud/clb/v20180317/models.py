@@ -3364,7 +3364,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         :type LoadBalancerName: str
         :param _VpcId: 负载均衡后端目标设备所属的网络 ID，如vpc-12345678，可以通过 [DescribeVpcEx](https://cloud.tencent.com/document/product/215/1372) 接口获取。 不填此参数则默认为DefaultVPC。创建内网负载均衡实例时，此参数必填。
         :type VpcId: str
-        :param _SubnetId: 在私有网络内购买内网负载均衡实例的情况下，必须指定子网 ID，内网负载均衡实例的 VIP 将从这个子网中产生。创建内网负载均衡实例时，此参数必填。
+        :param _SubnetId: 在私有网络内购买内网负载均衡实例的情况下，必须指定子网 ID，内网负载均衡实例的 VIP 将从这个子网中产生。创建内网负载均衡实例时，此参数必填，创建公网IPv4负载均衡实例时，不支持指定该参数。
         :type SubnetId: str
         :param _ProjectId: 负载均衡实例所属的项目 ID，可以通过 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 接口获取。不填此参数则视为默认项目。
         :type ProjectId: int
@@ -3416,6 +3416,10 @@ OPEN：公网属性， INTERNAL：内网属性。
         :type Egress: str
         :param _LBChargePrepaid: 负载均衡实例的预付费相关属性
         :type LBChargePrepaid: :class:`tencentcloud.clb.v20180317.models.LBChargePrepaid`
+        :param _LBChargeType: 负载均衡实例计费类型，取值：POSTPAID_BY_HOUR，PREPAID，默认是POSTPAID_BY_HOUR。
+        :type LBChargeType: str
+        :param _AccessLogTopicId: 七层访问日志主题ID
+        :type AccessLogTopicId: str
         """
         self._LoadBalancerType = None
         self._Forward = None
@@ -3445,6 +3449,8 @@ OPEN：公网属性， INTERNAL：内网属性。
         self._DynamicVip = None
         self._Egress = None
         self._LBChargePrepaid = None
+        self._LBChargeType = None
+        self._AccessLogTopicId = None
 
     @property
     def LoadBalancerType(self):
@@ -3670,6 +3676,22 @@ OPEN：公网属性， INTERNAL：内网属性。
     def LBChargePrepaid(self, LBChargePrepaid):
         self._LBChargePrepaid = LBChargePrepaid
 
+    @property
+    def LBChargeType(self):
+        return self._LBChargeType
+
+    @LBChargeType.setter
+    def LBChargeType(self, LBChargeType):
+        self._LBChargeType = LBChargeType
+
+    @property
+    def AccessLogTopicId(self):
+        return self._AccessLogTopicId
+
+    @AccessLogTopicId.setter
+    def AccessLogTopicId(self, AccessLogTopicId):
+        self._AccessLogTopicId = AccessLogTopicId
+
 
     def _deserialize(self, params):
         self._LoadBalancerType = params.get("LoadBalancerType")
@@ -3716,6 +3738,8 @@ OPEN：公网属性， INTERNAL：内网属性。
         if params.get("LBChargePrepaid") is not None:
             self._LBChargePrepaid = LBChargePrepaid()
             self._LBChargePrepaid._deserialize(params.get("LBChargePrepaid"))
+        self._LBChargeType = params.get("LBChargeType")
+        self._AccessLogTopicId = params.get("AccessLogTopicId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

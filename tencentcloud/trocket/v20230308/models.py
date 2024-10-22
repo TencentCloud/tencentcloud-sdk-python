@@ -7289,7 +7289,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 集群ID
         :type InstanceId: str
         :param _Name: 实例名称
         :type Name: str
@@ -7303,8 +7303,12 @@ class ModifyInstanceRequest(AbstractModel):
         :type MessageRetention: int
         :param _ScaledTpsEnabled: 是否开启弹性TPS
         :type ScaledTpsEnabled: bool
+        :param _AclEnabled: 是否开启ACL
+        :type AclEnabled: bool
         :param _MaxTopicNum: 最大可创建主题数
         :type MaxTopicNum: int
+        :param _ExtraTopicNum: 免费额度之外的主题个数
+        :type ExtraTopicNum: str
         """
         self._InstanceId = None
         self._Name = None
@@ -7313,7 +7317,9 @@ class ModifyInstanceRequest(AbstractModel):
         self._SkuCode = None
         self._MessageRetention = None
         self._ScaledTpsEnabled = None
+        self._AclEnabled = None
         self._MaxTopicNum = None
+        self._ExtraTopicNum = None
 
     @property
     def InstanceId(self):
@@ -7372,12 +7378,28 @@ class ModifyInstanceRequest(AbstractModel):
         self._ScaledTpsEnabled = ScaledTpsEnabled
 
     @property
+    def AclEnabled(self):
+        return self._AclEnabled
+
+    @AclEnabled.setter
+    def AclEnabled(self, AclEnabled):
+        self._AclEnabled = AclEnabled
+
+    @property
     def MaxTopicNum(self):
         return self._MaxTopicNum
 
     @MaxTopicNum.setter
     def MaxTopicNum(self, MaxTopicNum):
         self._MaxTopicNum = MaxTopicNum
+
+    @property
+    def ExtraTopicNum(self):
+        return self._ExtraTopicNum
+
+    @ExtraTopicNum.setter
+    def ExtraTopicNum(self, ExtraTopicNum):
+        self._ExtraTopicNum = ExtraTopicNum
 
 
     def _deserialize(self, params):
@@ -7388,7 +7410,9 @@ class ModifyInstanceRequest(AbstractModel):
         self._SkuCode = params.get("SkuCode")
         self._MessageRetention = params.get("MessageRetention")
         self._ScaledTpsEnabled = params.get("ScaledTpsEnabled")
+        self._AclEnabled = params.get("AclEnabled")
         self._MaxTopicNum = params.get("MaxTopicNum")
+        self._ExtraTopicNum = params.get("ExtraTopicNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

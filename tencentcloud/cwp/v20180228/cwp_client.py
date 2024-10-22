@@ -2838,7 +2838,9 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAttackSource(self, request):
-        """查询攻击溯源
+        """已废弃
+
+        查询攻击溯源
 
         :param request: Request instance for DescribeAttackSource.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackSourceRequest`
@@ -2861,7 +2863,9 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAttackSourceEvents(self, request):
-        """查询攻击溯源事件
+        """已废弃
+
+        查询攻击溯源事件
 
         :param request: Request instance for DescribeAttackSourceEvents.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackSourceEventsRequest`

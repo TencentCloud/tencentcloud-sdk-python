@@ -186,6 +186,10 @@ class AIRecognitionTemplateItem(AbstractModel):
         :type Name: str
         :param _Comment: 视频内容识别模板描述信息。
         :type Comment: str
+        :param _Type: 模板类型，取值：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :type Type: str
         :param _HeadTailConfigure: 头尾识别控制参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HeadTailConfigure: :class:`tencentcloud.vod.v20180717.models.HeadTailConfigureInfo`
@@ -207,6 +211,9 @@ class AIRecognitionTemplateItem(AbstractModel):
         :param _AsrWordsConfigure: 语音关键词识别控制参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.AsrWordsConfigureInfo`
+        :param _AsrTranslateConfigure: 语音翻译控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsrTranslateConfigure: :class:`tencentcloud.vod.v20180717.models.AsrTranslateConfigureInfo`
         :param _ObjectConfigure: 物体识别控制参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectConfigure: :class:`tencentcloud.vod.v20180717.models.ObjectConfigureInfo`
@@ -220,6 +227,7 @@ class AIRecognitionTemplateItem(AbstractModel):
         self._Definition = None
         self._Name = None
         self._Comment = None
+        self._Type = None
         self._HeadTailConfigure = None
         self._SegmentConfigure = None
         self._FaceConfigure = None
@@ -227,6 +235,7 @@ class AIRecognitionTemplateItem(AbstractModel):
         self._OcrWordsConfigure = None
         self._AsrFullTextConfigure = None
         self._AsrWordsConfigure = None
+        self._AsrTranslateConfigure = None
         self._ObjectConfigure = None
         self._ScreenshotInterval = None
         self._CreateTime = None
@@ -255,6 +264,14 @@ class AIRecognitionTemplateItem(AbstractModel):
     @Comment.setter
     def Comment(self, Comment):
         self._Comment = Comment
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
     @property
     def HeadTailConfigure(self):
@@ -313,6 +330,14 @@ class AIRecognitionTemplateItem(AbstractModel):
         self._AsrWordsConfigure = AsrWordsConfigure
 
     @property
+    def AsrTranslateConfigure(self):
+        return self._AsrTranslateConfigure
+
+    @AsrTranslateConfigure.setter
+    def AsrTranslateConfigure(self, AsrTranslateConfigure):
+        self._AsrTranslateConfigure = AsrTranslateConfigure
+
+    @property
     def ObjectConfigure(self):
         return self._ObjectConfigure
 
@@ -349,6 +374,7 @@ class AIRecognitionTemplateItem(AbstractModel):
         self._Definition = params.get("Definition")
         self._Name = params.get("Name")
         self._Comment = params.get("Comment")
+        self._Type = params.get("Type")
         if params.get("HeadTailConfigure") is not None:
             self._HeadTailConfigure = HeadTailConfigureInfo()
             self._HeadTailConfigure._deserialize(params.get("HeadTailConfigure"))
@@ -370,6 +396,9 @@ class AIRecognitionTemplateItem(AbstractModel):
         if params.get("AsrWordsConfigure") is not None:
             self._AsrWordsConfigure = AsrWordsConfigureInfo()
             self._AsrWordsConfigure._deserialize(params.get("AsrWordsConfigure"))
+        if params.get("AsrTranslateConfigure") is not None:
+            self._AsrTranslateConfigure = AsrTranslateConfigureInfo()
+            self._AsrTranslateConfigure._deserialize(params.get("AsrTranslateConfigure"))
         if params.get("ObjectConfigure") is not None:
             self._ObjectConfigure = ObjectConfigureInfo()
             self._ObjectConfigure._deserialize(params.get("ObjectConfigure"))
@@ -2588,6 +2617,7 @@ class AiRecognitionResult(AbstractModel):
 <li>AsrWordsRecognition：语音关键词识别，</li>
 <li>OcrWordsRecognition：文本关键词识别，</li>
 <li>AsrFullTextRecognition：语音全文识别，</li>
+<li>AsrTranslateRecognition：语音翻译识别，</li>
 <li>OcrFullTextRecognition：文本全文识别，</li>
 <li>HeadTailRecognition：视频片头片尾识别，</li>
 <li>ObjectRecognition：物体识别。</li>
@@ -2612,6 +2642,9 @@ class AiRecognitionResult(AbstractModel):
  AsrFullTextRecognition 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsrFullTextTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrFullTextResult`
+        :param _AsrTranslateTask: 语音翻译结果，当 Type 为 AsrTranslateRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsrTranslateTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrTranslateResult`
         :param _OcrWordsTask: 文本关键词识别结果，当 Type 为
  OcrWordsRecognition 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2631,6 +2664,7 @@ class AiRecognitionResult(AbstractModel):
         self._FaceTask = None
         self._AsrWordsTask = None
         self._AsrFullTextTask = None
+        self._AsrTranslateTask = None
         self._OcrWordsTask = None
         self._OcrFullTextTask = None
         self._ObjectTask = None
@@ -2684,6 +2718,14 @@ class AiRecognitionResult(AbstractModel):
         self._AsrFullTextTask = AsrFullTextTask
 
     @property
+    def AsrTranslateTask(self):
+        return self._AsrTranslateTask
+
+    @AsrTranslateTask.setter
+    def AsrTranslateTask(self, AsrTranslateTask):
+        self._AsrTranslateTask = AsrTranslateTask
+
+    @property
     def OcrWordsTask(self):
         return self._OcrWordsTask
 
@@ -2725,6 +2767,9 @@ class AiRecognitionResult(AbstractModel):
         if params.get("AsrFullTextTask") is not None:
             self._AsrFullTextTask = AiRecognitionTaskAsrFullTextResult()
             self._AsrFullTextTask._deserialize(params.get("AsrFullTextTask"))
+        if params.get("AsrTranslateTask") is not None:
+            self._AsrTranslateTask = AiRecognitionTaskAsrTranslateResult()
+            self._AsrTranslateTask._deserialize(params.get("AsrTranslateTask"))
         if params.get("OcrWordsTask") is not None:
             self._OcrWordsTask = AiRecognitionTaskOcrWordsResult()
             self._OcrWordsTask._deserialize(params.get("OcrWordsTask"))
@@ -3010,6 +3055,14 @@ class AiRecognitionTaskAsrFullTextResultOutputSubtitleItem(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Id: 媒资字幕 ID，用于媒资字幕管理，仅当 Format 为 vtt 时有效。
+<font color=red>注意：</font>2024-11-01T10:00:00Z 之前的任务返回此字段无效。
+        :type Id: str
+        :param _Name: 媒资字幕名字，用于播放器展示，仅当 Format 为 vtt 时有效。
+<font color=red>注意：</font>2024-11-01T10:00:00Z 之前的任务返回此字段无效。
+        :type Name: str
+        :param _Language: 字幕语言。
+        :type Language: str
         :param _Format: 字幕文件格式，取值范围：
 <li>vtt：WebVTT 字幕文件；</li>
 <li>srt：SRT 字幕文件。</li>
@@ -3017,8 +3070,35 @@ class AiRecognitionTaskAsrFullTextResultOutputSubtitleItem(AbstractModel):
         :param _Url: 字幕文件 Url。
         :type Url: str
         """
+        self._Id = None
+        self._Name = None
+        self._Language = None
         self._Format = None
         self._Url = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Language(self):
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
 
     @property
     def Format(self):
@@ -3038,6 +3118,9 @@ class AiRecognitionTaskAsrFullTextResultOutputSubtitleItem(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Language = params.get("Language")
         self._Format = params.get("Format")
         self._Url = params.get("Url")
         memeber_set = set(params.keys())
@@ -3109,6 +3192,334 @@ class AiRecognitionTaskAsrFullTextSegmentItem(AbstractModel):
         self._StartTimeOffset = params.get("StartTimeOffset")
         self._EndTimeOffset = params.get("EndTimeOffset")
         self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiRecognitionTaskAsrTranslateResult(AbstractModel):
+    """语音翻译结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param _ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param _ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :type ErrCode: int
+        :param _Message: 错误信息。
+        :type Message: str
+        :param _Input: 语音翻译任务输入信息。
+        :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrTranslateResultInput`
+        :param _Output: 语音翻译任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrTranslateResultOutput`
+        :param _Progress: 语音翻译任务进度，取值范围 [0-100] 。
+        :type Progress: int
+        :param _BeginProcessTime: 语音翻译任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type BeginProcessTime: str
+        :param _FinishTime: 语音翻译任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type FinishTime: str
+        """
+        self._Status = None
+        self._ErrCodeExt = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+        self._Progress = None
+        self._BeginProcessTime = None
+        self._FinishTime = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCodeExt(self):
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def ErrCode(self):
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def BeginProcessTime(self):
+        return self._BeginProcessTime
+
+    @BeginProcessTime.setter
+    def BeginProcessTime(self, BeginProcessTime):
+        self._BeginProcessTime = BeginProcessTime
+
+    @property
+    def FinishTime(self):
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = AiRecognitionTaskAsrTranslateResultInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = AiRecognitionTaskAsrTranslateResultOutput()
+            self._Output._deserialize(params.get("Output"))
+        self._Progress = params.get("Progress")
+        self._BeginProcessTime = params.get("BeginProcessTime")
+        self._FinishTime = params.get("FinishTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiRecognitionTaskAsrTranslateResultInput(AbstractModel):
+    """语音翻译的输入。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 语音翻译模板 ID。
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiRecognitionTaskAsrTranslateResultOutput(AbstractModel):
+    """语音翻译结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SegmentSet: 语音翻译片段列表。
+<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。
+        :type SegmentSet: list of AiRecognitionTaskAsrTranslateSegmentItem
+        :param _SegmentSetFileUrl: 语音翻译片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
+        :type SegmentSetFileUrl: str
+        :param _SegmentSetFileUrlExpireTime: 语音翻译片段列表文件 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type SegmentSetFileUrlExpireTime: str
+        :param _SubtitleSet: 生成的字幕列表。
+        :type SubtitleSet: list of AiRecognitionTaskAsrFullTextResultOutputSubtitleItem
+        """
+        self._SegmentSet = None
+        self._SegmentSetFileUrl = None
+        self._SegmentSetFileUrlExpireTime = None
+        self._SubtitleSet = None
+
+    @property
+    def SegmentSet(self):
+        return self._SegmentSet
+
+    @SegmentSet.setter
+    def SegmentSet(self, SegmentSet):
+        self._SegmentSet = SegmentSet
+
+    @property
+    def SegmentSetFileUrl(self):
+        return self._SegmentSetFileUrl
+
+    @SegmentSetFileUrl.setter
+    def SegmentSetFileUrl(self, SegmentSetFileUrl):
+        self._SegmentSetFileUrl = SegmentSetFileUrl
+
+    @property
+    def SegmentSetFileUrlExpireTime(self):
+        return self._SegmentSetFileUrlExpireTime
+
+    @SegmentSetFileUrlExpireTime.setter
+    def SegmentSetFileUrlExpireTime(self, SegmentSetFileUrlExpireTime):
+        self._SegmentSetFileUrlExpireTime = SegmentSetFileUrlExpireTime
+
+    @property
+    def SubtitleSet(self):
+        return self._SubtitleSet
+
+    @SubtitleSet.setter
+    def SubtitleSet(self, SubtitleSet):
+        self._SubtitleSet = SubtitleSet
+
+
+    def _deserialize(self, params):
+        if params.get("SegmentSet") is not None:
+            self._SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = AiRecognitionTaskAsrTranslateSegmentItem()
+                obj._deserialize(item)
+                self._SegmentSet.append(obj)
+        self._SegmentSetFileUrl = params.get("SegmentSetFileUrl")
+        self._SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
+        if params.get("SubtitleSet") is not None:
+            self._SubtitleSet = []
+            for item in params.get("SubtitleSet"):
+                obj = AiRecognitionTaskAsrFullTextResultOutputSubtitleItem()
+                obj._deserialize(item)
+                self._SubtitleSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiRecognitionTaskAsrTranslateSegmentItem(AbstractModel):
+    """语音翻译片段。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Confidence: 语音翻译片段置信度。取值：0~100。
+        :type Confidence: float
+        :param _StartTimeOffset: 语音翻译片段起始的偏移时间，单位：秒。
+        :type StartTimeOffset: float
+        :param _EndTimeOffset: 语音翻译片段终止的偏移时间，单位：秒。
+        :type EndTimeOffset: float
+        :param _Text: 识别文本。
+        :type Text: str
+        :param _Translation: 翻译文本。
+        :type Translation: str
+        """
+        self._Confidence = None
+        self._StartTimeOffset = None
+        self._EndTimeOffset = None
+        self._Text = None
+        self._Translation = None
+
+    @property
+    def Confidence(self):
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def StartTimeOffset(self):
+        return self._StartTimeOffset
+
+    @StartTimeOffset.setter
+    def StartTimeOffset(self, StartTimeOffset):
+        self._StartTimeOffset = StartTimeOffset
+
+    @property
+    def EndTimeOffset(self):
+        return self._EndTimeOffset
+
+    @EndTimeOffset.setter
+    def EndTimeOffset(self, EndTimeOffset):
+        self._EndTimeOffset = EndTimeOffset
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Translation(self):
+        return self._Translation
+
+    @Translation.setter
+    def Translation(self, Translation):
+        self._Translation = Translation
+
+
+    def _deserialize(self, params):
+        self._Confidence = params.get("Confidence")
+        self._StartTimeOffset = params.get("StartTimeOffset")
+        self._EndTimeOffset = params.get("EndTimeOffset")
+        self._Text = params.get("Text")
+        self._Translation = params.get("Translation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9051,7 +9462,7 @@ class AsrFullTextConfigureInfo(AbstractModel):
         :type Switch: str
         :param _SubtitleFormats: 生成的字幕文件格式列表，不填或者填空数组表示不生成字幕文件，可选值：
 <li>vtt：生成 WebVTT 字幕文件；</li>
-<li>srt：生成 SRT 字幕文件。</li>
+<li>srt：生成 SRT 字幕文件。</li><font color=red>注意：</font>云点播媒资信息仅支持添加 vtt 字幕，因此当且仅当 SubtitleFormats 包含 vtt 时，云点播将生成的字幕添加到媒资。
         :type SubtitleFormats: list of str
         :param _SubtitleFormat: 生成的字幕文件格式，不填或者填空字符串表示不生成字幕文件，可选值：
 <li>vtt：生成 WebVTT 字幕文件；</li>
@@ -9065,11 +9476,15 @@ class AsrFullTextConfigureInfo(AbstractModel):
 <li>zh-ca：粤语。</li>
 <font color=red>注意：</font> 填空字符串，或者不填该参数，则自动识别（效果较难保证，推荐填写原始媒体对应的语言，以提高识别的准确率）。
         :type SrcLanguage: str
+        :param _SubtitleName: 指定字幕名称，长度限制：64 个字符。该值将用于播放器展示，若不填则云点播自动生成。
+<font color=red>注意：</font>仅当 SubtitleFormats 包含 vtt 时，该字段有效。
+        :type SubtitleName: str
         """
         self._Switch = None
         self._SubtitleFormats = None
         self._SubtitleFormat = None
         self._SrcLanguage = None
+        self._SubtitleName = None
 
     @property
     def Switch(self):
@@ -9103,12 +9518,21 @@ class AsrFullTextConfigureInfo(AbstractModel):
     def SrcLanguage(self, SrcLanguage):
         self._SrcLanguage = SrcLanguage
 
+    @property
+    def SubtitleName(self):
+        return self._SubtitleName
+
+    @SubtitleName.setter
+    def SubtitleName(self, SubtitleName):
+        self._SubtitleName = SubtitleName
+
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         self._SubtitleFormats = params.get("SubtitleFormats")
         self._SubtitleFormat = params.get("SubtitleFormat")
         self._SrcLanguage = params.get("SrcLanguage")
+        self._SubtitleName = params.get("SubtitleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9143,11 +9567,14 @@ class AsrFullTextConfigureInfoForUpdate(AbstractModel):
 <li>ja：日语；</li>
 <li>zh-ca：粤语。</li>
         :type SrcLanguage: str
+        :param _SubtitleName: 指定字幕名称，长度限制：64 个字符。该值将用于播放器展示。
+        :type SubtitleName: str
         """
         self._Switch = None
         self._SubtitleFormatsOperation = None
         self._SubtitleFormat = None
         self._SrcLanguage = None
+        self._SubtitleName = None
 
     @property
     def Switch(self):
@@ -9181,6 +9608,14 @@ class AsrFullTextConfigureInfoForUpdate(AbstractModel):
     def SrcLanguage(self, SrcLanguage):
         self._SrcLanguage = SrcLanguage
 
+    @property
+    def SubtitleName(self):
+        return self._SubtitleName
+
+    @SubtitleName.setter
+    def SubtitleName(self, SubtitleName):
+        self._SubtitleName = SubtitleName
+
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
@@ -9189,6 +9624,368 @@ class AsrFullTextConfigureInfoForUpdate(AbstractModel):
             self._SubtitleFormatsOperation._deserialize(params.get("SubtitleFormatsOperation"))
         self._SubtitleFormat = params.get("SubtitleFormat")
         self._SrcLanguage = params.get("SrcLanguage")
+        self._SubtitleName = params.get("SubtitleName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AsrTranslateConfigureInfo(AbstractModel):
+    """语音翻译任务控制参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 语音翻译任务开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li><font color=red>注意：</font>语音翻译任务本身会返回 ASR 全文识别结果，为避免重复收费，因此禁止同时开启语音翻译和 ASR 全文识别功能项。
+
+        :type Switch: str
+        :param _SrcLanguage: 媒体源语言，当 Switch 为 ON 时，此参数必填。取值范围：
+<li>zh：中文；</li>
+<li>en：英文；</li>
+<li>ja：日文；</li>
+<li>ko：韩文；</li>
+<li>vi：越南语；</li>
+<li>ms：马来语；</li>
+<li>th：泰语；</li>
+<li>pt：葡萄牙语；</li>
+<li>tr：土耳其语；</li>
+<li>ar：阿拉伯语；</li>
+<li>es：西班牙语；</li>
+<li>hi：印地语；</li>
+<li>fr：法语。</li>
+        :type SrcLanguage: str
+        :param _DstLanguage: 翻译目标语言，当 Switch 为 ON 时，此参数必填。
+当 SrcLanguage 为 zh（中文）时，取值范围：
+<li>en：英文；</li>
+<li>ja：日文；</li>
+<li>ko：韩文；</li>
+<li>fr：法语；</li>
+<li>es：西班牙语；</li>
+<li>it：意大利语；</li>
+<li>de：德语；</li>
+<li>tr：土耳其语；</li>
+<li>ru：俄语；</li>
+<li>pt：葡萄牙语；</li>
+<li>vi：越南语；</li>
+<li>id：印尼语；</li>
+<li>th：泰语；</li>
+<li>ms：马来语。</li>
+当 SrcLanguage 为 en（英文）时，取值范围：
+<li>zh：中文；</li>
+<li>ja：日文；</li>
+<li>ko：韩文；</li>
+<li>fr：法语；</li>
+<li>es：西班牙语；</li>
+<li>it：意大利语；</li>
+<li>de：德语；</li>
+<li>tr：土耳其语；</li>
+<li>ru：俄语；</li>
+<li>pt：葡萄牙语；</li>
+<li>vi：越南语；</li>
+<li>id：印尼语；</li>
+<li>th：泰语；</li>
+<li>ms：马来语；</li>
+<li>ar：阿拉伯语；</li>
+<li>hi：印地语。</li>
+当 SrcLanguage 为 ja（日文）时，取值范围：
+<li>zh：中文；</li>
+<li>en：英文；</li>
+<li>ko：韩文。</li>
+当 SrcLanguage 为 ko（韩文）时，取值范围：
+<li>zh：中文；</li>
+<li>en：英文；</li>
+<li>ja：日文。</li>
+当 SrcLanguage 为 vi（越南语）或 ms（马来语）或 th（泰语）时，取值范围：
+<li>zh：中文；</li>
+<li>en：英文。</li>
+当 SrcLanguage 为 pt（葡萄牙语）时，取值范围：
+<li>zh：中文；</li>
+<li>en：英文；</li>
+<li>fr：法语；</li>
+<li>es：西班牙语；</li>
+<li>it：意大利语；</li>
+<li>de：德语；</li>
+<li>tr：土耳其语；</li>
+<li>ru：俄语。</li>
+当 SrcLanguage 为 tr（土耳其语）时，取值范围：
+<li>zh：中文；</li>
+<li>en：英文；</li>
+<li>fr：法语；</li>
+<li>es：西班牙语；</li>
+<li>it：意大利语；</li>
+<li>de：德语；</li>
+<li>ru：俄语；</li>
+<li>pt：葡萄牙语。</li>
+当 SrcLanguage 为 es（西班牙语）时，取值范围：
+<li>zh：中文；</li>
+<li>en：英文；</li>
+<li>fr：法语；</li>
+<li>it：意大利语；</li>
+<li>de：德语；</li>
+<li>tr：土耳其语；</li>
+<li>ru：俄语；</li>
+<li>pt：葡萄牙语。</li>
+当 SrcLanguage 为 ar（阿拉伯语）或 hi（印地语）时，取值范围：
+<li>en：英文。</li>
+当 SrcLanguage 为 fr（法语）时，取值范围：
+<li>zh：中文；</li>
+<li>en：英文；</li>
+<li>es：西班牙语；</li>
+<li>it：意大利语；</li>
+<li>de：德语；</li>
+<li>tr：土耳其语；</li>
+<li>ru：俄语；</li>
+<li>pt：葡萄牙语。</li>
+        :type DstLanguage: str
+        :param _SubtitleFormats: 生成的字幕文件格式列表，不填或者填空数组表示不生成字幕文件，可选值：
+<li>vtt：生成 WebVTT 字幕文件；</li>
+<li>srt：生成 SRT 字幕文件。</li><font color=red>注意：</font> 云点播媒资信息仅支持添加 vtt 字幕，因此当且仅当 SubtitleFormats 包含 vtt 时，云点播将生成的字幕添加到媒资。
+        :type SubtitleFormats: list of str
+        :param _SubtitleName: 指定字幕名称，长度限制：64 个字符。该值将用于播放器展示，若不填则云点播自动生成。
+<font color=red>注意：</font>仅当 SubtitleFormats 包含 vtt 时，该字段有效。
+
+        :type SubtitleName: str
+        """
+        self._Switch = None
+        self._SrcLanguage = None
+        self._DstLanguage = None
+        self._SubtitleFormats = None
+        self._SubtitleName = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def SrcLanguage(self):
+        return self._SrcLanguage
+
+    @SrcLanguage.setter
+    def SrcLanguage(self, SrcLanguage):
+        self._SrcLanguage = SrcLanguage
+
+    @property
+    def DstLanguage(self):
+        return self._DstLanguage
+
+    @DstLanguage.setter
+    def DstLanguage(self, DstLanguage):
+        self._DstLanguage = DstLanguage
+
+    @property
+    def SubtitleFormats(self):
+        return self._SubtitleFormats
+
+    @SubtitleFormats.setter
+    def SubtitleFormats(self, SubtitleFormats):
+        self._SubtitleFormats = SubtitleFormats
+
+    @property
+    def SubtitleName(self):
+        return self._SubtitleName
+
+    @SubtitleName.setter
+    def SubtitleName(self, SubtitleName):
+        self._SubtitleName = SubtitleName
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._SrcLanguage = params.get("SrcLanguage")
+        self._DstLanguage = params.get("DstLanguage")
+        self._SubtitleFormats = params.get("SubtitleFormats")
+        self._SubtitleName = params.get("SubtitleName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AsrTranslateConfigureInfoForUpdate(AbstractModel):
+    """语音翻译控制参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 语音翻译任务开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+        :type Switch: str
+        :param _SrcLanguage: 媒体源语言，取值范围：
+<li>zh：中文；</li>
+<li>en：英文；</li>
+<li>ja：日文；</li>
+<li>ko：韩文；</li>
+<li>vi：越南语；</li>
+<li>ms：马来语；</li>
+<li>th：泰语；</li>
+<li>pt：葡萄牙语；</li>
+<li>tr：土耳其语；</li>
+<li>ar：阿拉伯语；</li>
+<li>es：西班牙语；</li>
+<li>hi：印地语；</li>
+<li>fr：法语。</li>
+        :type SrcLanguage: str
+        :param _DstLanguage: 翻译目标语言。
+当 SrcLanguage 为 zh（中文）时，取值范围：
+<li>en：英文；</li>
+<li>ja：日文；</li>
+<li>ko：韩文；</li>
+<li>fr：法语；</li>
+<li>es：西班牙语；</li>
+<li>it：意大利语；</li>
+<li>de：德语；</li>
+<li>tr：土耳其语；</li>
+<li>ru：俄语；</li>
+<li>pt：葡萄牙语；</li>
+<li>vi：越南语；</li>
+<li>id：印尼语；</li>
+<li>th：泰语；</li>
+<li>ms：马来语。</li>
+当 SrcLanguage 为 en（英文）时，取值范围：
+<li>zh：中文；</li>
+<li>ja：日文；</li>
+<li>ko：韩文；</li>
+<li>fr：法语；</li>
+<li>es：西班牙语；</li>
+<li>it：意大利语；</li>
+<li>de：德语；</li>
+<li>tr：土耳其语；</li>
+<li>ru：俄语；</li>
+<li>pt：葡萄牙语；</li>
+<li>vi：越南语；</li>
+<li>id：印尼语；</li>
+<li>th：泰语；</li>
+<li>ms：马来语；</li>
+<li>ar：阿拉伯语；</li>
+<li>hi：印地语。</li>
+当 SrcLanguage 为 ja（日文）时，取值范围：
+<li>zh：中文；</li>
+<li>en：英文；</li>
+<li>ko：韩文。</li>
+当 SrcLanguage 为 ko（韩文）时，取值范围：
+<li>zh：中文；</li>
+<li>en：英文；</li>
+<li>ja：日文。</li>
+当 SrcLanguage 为 vi（越南语）或 ms（马来语）或 th（泰语）时，取值范围：
+<li>zh：中文；</li>
+<li>en：英文。</li>
+当 SrcLanguage 为 pt（葡萄牙语）时，取值范围：
+<li>zh：中文；</li>
+<li>en：英文；</li>
+<li>fr：法语；</li>
+<li>es：西班牙语；</li>
+<li>it：意大利语；</li>
+<li>de：德语；</li>
+<li>tr：土耳其语；</li>
+<li>ru：俄语。</li>
+当 SrcLanguage 为 tr（土耳其语）时，取值范围：
+<li>zh：中文；</li>
+<li>en：英文；</li>
+<li>fr：法语；</li>
+<li>es：西班牙语；</li>
+<li>it：意大利语；</li>
+<li>de：德语；</li>
+<li>ru：俄语；</li>
+<li>pt：葡萄牙语。</li>
+当 SrcLanguage 为 es（西班牙语）时，取值范围：
+<li>zh：中文；</li>
+<li>en：英文；</li>
+<li>fr：法语；</li>
+<li>it：意大利语；</li>
+<li>de：德语；</li>
+<li>tr：土耳其语；</li>
+<li>ru：俄语；</li>
+<li>pt：葡萄牙语。</li>
+当 SrcLanguage 为 ar（阿拉伯语）或 hi（印地语）时，取值范围：
+<li>en：英文。</li>
+当 SrcLanguage 为 fr（法语）时，取值范围：
+<li>zh：中文；</li>
+<li>en：英文；</li>
+<li>es：西班牙语；</li>
+<li>it：意大利语；</li>
+<li>de：德语；</li>
+<li>tr：土耳其语；</li>
+<li>ru：俄语；</li>
+<li>pt：葡萄牙语。</li>
+        :type DstLanguage: str
+        :param _SubtitleFormatsOperation: 字幕格式列表操作信息。
+        :type SubtitleFormatsOperation: :class:`tencentcloud.vod.v20180717.models.SubtitleFormatsOperation`
+        :param _SubtitleName: 指定字幕名称，长度限制：64 个字符。该值将用于播放器展示。
+        :type SubtitleName: str
+        """
+        self._Switch = None
+        self._SrcLanguage = None
+        self._DstLanguage = None
+        self._SubtitleFormatsOperation = None
+        self._SubtitleName = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def SrcLanguage(self):
+        return self._SrcLanguage
+
+    @SrcLanguage.setter
+    def SrcLanguage(self, SrcLanguage):
+        self._SrcLanguage = SrcLanguage
+
+    @property
+    def DstLanguage(self):
+        return self._DstLanguage
+
+    @DstLanguage.setter
+    def DstLanguage(self, DstLanguage):
+        self._DstLanguage = DstLanguage
+
+    @property
+    def SubtitleFormatsOperation(self):
+        return self._SubtitleFormatsOperation
+
+    @SubtitleFormatsOperation.setter
+    def SubtitleFormatsOperation(self, SubtitleFormatsOperation):
+        self._SubtitleFormatsOperation = SubtitleFormatsOperation
+
+    @property
+    def SubtitleName(self):
+        return self._SubtitleName
+
+    @SubtitleName.setter
+    def SubtitleName(self, SubtitleName):
+        self._SubtitleName = SubtitleName
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._SrcLanguage = params.get("SrcLanguage")
+        self._DstLanguage = params.get("DstLanguage")
+        if params.get("SubtitleFormatsOperation") is not None:
+            self._SubtitleFormatsOperation = SubtitleFormatsOperation()
+            self._SubtitleFormatsOperation._deserialize(params.get("SubtitleFormatsOperation"))
+        self._SubtitleName = params.get("SubtitleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12284,6 +13081,8 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
         :type AsrFullTextConfigure: :class:`tencentcloud.vod.v20180717.models.AsrFullTextConfigureInfo`
         :param _AsrWordsConfigure: 语音关键词识别控制参数。
         :type AsrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.AsrWordsConfigureInfo`
+        :param _AsrTranslateConfigure: 语音翻译控制参数。
+        :type AsrTranslateConfigure: :class:`tencentcloud.vod.v20180717.models.AsrTranslateConfigureInfo`
         :param _ObjectConfigure: 物体识别控制参数。
         :type ObjectConfigure: :class:`tencentcloud.vod.v20180717.models.ObjectConfigureInfo`
         :param _ScreenshotInterval: 截帧间隔，单位为秒。当不填时，默认截帧间隔为 1 秒，最小值为 0.5 秒。
@@ -12299,6 +13098,7 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
         self._OcrWordsConfigure = None
         self._AsrFullTextConfigure = None
         self._AsrWordsConfigure = None
+        self._AsrTranslateConfigure = None
         self._ObjectConfigure = None
         self._ScreenshotInterval = None
 
@@ -12383,6 +13183,14 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
         self._AsrWordsConfigure = AsrWordsConfigure
 
     @property
+    def AsrTranslateConfigure(self):
+        return self._AsrTranslateConfigure
+
+    @AsrTranslateConfigure.setter
+    def AsrTranslateConfigure(self, AsrTranslateConfigure):
+        self._AsrTranslateConfigure = AsrTranslateConfigure
+
+    @property
     def ObjectConfigure(self):
         return self._ObjectConfigure
 
@@ -12424,6 +13232,9 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
         if params.get("AsrWordsConfigure") is not None:
             self._AsrWordsConfigure = AsrWordsConfigureInfo()
             self._AsrWordsConfigure._deserialize(params.get("AsrWordsConfigure"))
+        if params.get("AsrTranslateConfigure") is not None:
+            self._AsrTranslateConfigure = AsrTranslateConfigureInfo()
+            self._AsrTranslateConfigure._deserialize(params.get("AsrTranslateConfigure"))
         if params.get("ObjectConfigure") is not None:
             self._ObjectConfigure = ObjectConfigureInfo()
             self._ObjectConfigure._deserialize(params.get("ObjectConfigure"))
@@ -18725,6 +19536,8 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
         :type SubAppId: int
         :param _Definitions: 音视频内容识别模板唯一标识过滤条件，数组长度限制：100。
         :type Definitions: list of int
+        :param _Type: 模板类型过滤条件，可选值：<li>Preset：系统预置模板；</li><li>Custom：用户自定义模板。</li>不填默认为空，即不对模板类型过滤。
+        :type Type: str
         :param _Offset: 分页偏移量，默认值：0。
         :type Offset: int
         :param _Limit: 返回记录条数，默认值：10，最大值：100。
@@ -18732,6 +19545,7 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
         """
         self._SubAppId = None
         self._Definitions = None
+        self._Type = None
         self._Offset = None
         self._Limit = None
 
@@ -18750,6 +19564,14 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
     @Definitions.setter
     def Definitions(self, Definitions):
         self._Definitions = Definitions
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
     @property
     def Offset(self):
@@ -18771,6 +19593,7 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
     def _deserialize(self, params):
         self._SubAppId = params.get("SubAppId")
         self._Definitions = params.get("Definitions")
+        self._Type = params.get("Type")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
@@ -36649,9 +37472,19 @@ class MediaSubtitleInput(AbstractModel):
         :param _Name: 字幕名字，长度限制：64 个字符。
         :type Name: str
         :param _Language: 字幕语言。常见的取值如下：
-<li>cn：中文</li>
-<li>ja：日文</li>
-<li>en-US：英文</li>
+<li>zh：中文；</li>
+<li>en：英文；</li>
+<li>ja：日文；</li>
+<li>ko：韩文；</li>
+<li>vi：越南语；</li>
+<li>ms：马来语；</li>
+<li>th：泰语；</li>
+<li>pt：葡萄牙语；</li>
+<li>tr：土耳其语；</li>
+<li>ar：阿拉伯语；</li>
+<li>es：西班牙语；</li>
+<li>hi：印地语；</li>
+<li>fr：法语。</li>
 其他取值参考 [RFC5646](https://tools.ietf.org/html/rfc5646)
         :type Language: str
         :param _Format: 字幕格式。取值范围如下：
@@ -36737,9 +37570,19 @@ class MediaSubtitleItem(AbstractModel):
         :param _Name: 字幕名字。
         :type Name: str
         :param _Language: 字幕语言。常见的取值如下：
-<li>cn：中文</li>
-<li>ja：日文</li>
-<li>en-US：英文</li>
+<li>zh：中文；</li>
+<li>en：英文；</li>
+<li>ja：日文；</li>
+<li>ko：韩文；</li>
+<li>vi：越南语；</li>
+<li>ms：马来语；</li>
+<li>th：泰语；</li>
+<li>pt：葡萄牙语；</li>
+<li>tr：土耳其语；</li>
+<li>ar：阿拉伯语；</li>
+<li>es：西班牙语；</li>
+<li>hi：印地语；</li>
+<li>fr：法语。</li>
 其他取值参考 [RFC5646](https://tools.ietf.org/html/rfc5646)
         :type Language: str
         :param _Format: 字幕格式。取值范围如下：
@@ -36747,12 +37590,17 @@ class MediaSubtitleItem(AbstractModel):
         :type Format: str
         :param _Url: 字幕 URL。
         :type Url: str
+        :param _Source: 字幕来源，取值范围：
+<li>UserUploaded：用户上传；</li>
+<li>AIRecognition：AI 识别，通过语音识别或语音翻译生成。</li>
+        :type Source: str
         """
         self._Id = None
         self._Name = None
         self._Language = None
         self._Format = None
         self._Url = None
+        self._Source = None
 
     @property
     def Id(self):
@@ -36794,6 +37642,14 @@ class MediaSubtitleItem(AbstractModel):
     def Url(self, Url):
         self._Url = Url
 
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -36801,6 +37657,7 @@ class MediaSubtitleItem(AbstractModel):
         self._Language = params.get("Language")
         self._Format = params.get("Format")
         self._Url = params.get("Url")
+        self._Source = params.get("Source")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37582,6 +38439,8 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
         :type AsrFullTextConfigure: :class:`tencentcloud.vod.v20180717.models.AsrFullTextConfigureInfoForUpdate`
         :param _AsrWordsConfigure: 语音关键词识别控制参数。
         :type AsrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.AsrWordsConfigureInfoForUpdate`
+        :param _AsrTranslateConfigure: 语音翻译控制参数。
+        :type AsrTranslateConfigure: :class:`tencentcloud.vod.v20180717.models.AsrTranslateConfigureInfoForUpdate`
         :param _ObjectConfigure: 物体识别控制参数。
         :type ObjectConfigure: :class:`tencentcloud.vod.v20180717.models.ObjectConfigureInfoForUpdate`
         :param _ScreenshotInterval: 截帧间隔，单位为秒，最小值为 0.5 秒。
@@ -37598,6 +38457,7 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
         self._OcrWordsConfigure = None
         self._AsrFullTextConfigure = None
         self._AsrWordsConfigure = None
+        self._AsrTranslateConfigure = None
         self._ObjectConfigure = None
         self._ScreenshotInterval = None
 
@@ -37690,6 +38550,14 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
         self._AsrWordsConfigure = AsrWordsConfigure
 
     @property
+    def AsrTranslateConfigure(self):
+        return self._AsrTranslateConfigure
+
+    @AsrTranslateConfigure.setter
+    def AsrTranslateConfigure(self, AsrTranslateConfigure):
+        self._AsrTranslateConfigure = AsrTranslateConfigure
+
+    @property
     def ObjectConfigure(self):
         return self._ObjectConfigure
 
@@ -37732,6 +38600,9 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
         if params.get("AsrWordsConfigure") is not None:
             self._AsrWordsConfigure = AsrWordsConfigureInfoForUpdate()
             self._AsrWordsConfigure._deserialize(params.get("AsrWordsConfigure"))
+        if params.get("AsrTranslateConfigure") is not None:
+            self._AsrTranslateConfigure = AsrTranslateConfigureInfoForUpdate()
+            self._AsrTranslateConfigure._deserialize(params.get("AsrTranslateConfigure"))
         if params.get("ObjectConfigure") is not None:
             self._ObjectConfigure = ObjectConfigureInfoForUpdate()
             self._ObjectConfigure._deserialize(params.get("ObjectConfigure"))
