@@ -6177,7 +6177,7 @@ class CreateTopicRequest(AbstractModel):
         :type RetentionMs: int
         :param _SegmentMs: Segment分片滚动的时长，单位ms，当前最小为3600000ms
         :type SegmentMs: int
-        :param _MaxMessageBytes: 主题消息最大值，单位为 Byte，最小值1024Byte(即1KB)，最大值为8388608Byte（即8MB）。
+        :param _MaxMessageBytes: 主题消息最大值，单位为 Byte，最小值1024Byte(即1KB)，最大值为12582912Byte（即12MB）
         :type MaxMessageBytes: int
         :param _EnableAclRule: 预设ACL规则, 1:打开  0:关闭，默认不打开
         :type EnableAclRule: int

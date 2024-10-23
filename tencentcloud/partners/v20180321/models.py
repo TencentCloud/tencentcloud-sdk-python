@@ -2635,6 +2635,77 @@ class DescribeAgentPayDealsV2Response(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAgentRelateBigDealIdsRequest(AbstractModel):
+    """DescribeAgentRelateBigDealIds请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BigDealId: 大订单号
+        :type BigDealId: str
+        """
+        self._BigDealId = None
+
+    @property
+    def BigDealId(self):
+        return self._BigDealId
+
+    @BigDealId.setter
+    def BigDealId(self, BigDealId):
+        self._BigDealId = BigDealId
+
+
+    def _deserialize(self, params):
+        self._BigDealId = params.get("BigDealId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAgentRelateBigDealIdsResponse(AbstractModel):
+    """DescribeAgentRelateBigDealIds返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BigDealIdList: 申请合并支付的关联大订单号列表（不包含请求的订单号）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BigDealIdList: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BigDealIdList = None
+        self._RequestId = None
+
+    @property
+    def BigDealIdList(self):
+        return self._BigDealIdList
+
+    @BigDealIdList.setter
+    def BigDealIdList(self, BigDealIdList):
+        self._BigDealIdList = BigDealIdList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._BigDealIdList = params.get("BigDealIdList")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAgentSelfPayDealsV2Request(AbstractModel):
     """DescribeAgentSelfPayDealsV2请求参数结构体
 

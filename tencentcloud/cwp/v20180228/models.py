@@ -4321,7 +4321,7 @@ class AssetProcessBaseInfo(AbstractModel):
         :type ParentProcessName: str
         :param _Status: 进程状态
         :type Status: str
-        :param _HasSign: 数字签名:0无，1有， 999 空，仅windows
+        :param _HasSign: 数字签名:0无，1有， 999 空，仅Windows
         :type HasSign: int
         :param _InstallByPackage: 是否通过安装包安装：:0否，1是， 999 空，仅linux
         :type InstallByPackage: int
@@ -6070,7 +6070,7 @@ class AssetWebFrameBaseInfo(AbstractModel):
         :param _Tag: 主机标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tag: list of MachineTag
-        :param _Name: 数据库名
+        :param _Name: Web应用名
         :type Name: str
         :param _Version: 版本
         :type Version: str
@@ -6822,7 +6822,7 @@ class AssetWebServiceBaseInfo(AbstractModel):
         :param _Tag: 主机标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tag: list of MachineTag
-        :param _Name: 数据库名
+        :param _Name: 服务名
         :type Name: str
         :param _Version: 版本
         :type Version: str
@@ -66981,7 +66981,8 @@ class MachineSimple(AbstractModel):
         :type Tag: list of MachineTag
         :param _RegionInfo: 地域信息
         :type RegionInfo: :class:`tencentcloud.cwp.v20180228.models.RegionInfo`
-        :param _InstanceState: 实例状态 TERMINATED_PRO_VERSION 已销毁
+        :param _InstanceState: 实例状态请参考CVM实例列表InstanceState值
+https://cloud.tencent.com/document/api/213/15753#Instance
         :type InstanceState: str
         :param _ProjectId: 项目ID
         :type ProjectId: int

@@ -321,7 +321,7 @@ class CreateAuthorizationPolicyRequest(AbstractModel):
         :type Username: str
         :param _ClientId: 客户端
         :type ClientId: str
-        :param _Ip: ip
+        :param _Ip: IP地址
         :type Ip: str
         :param _Remark: 备注信息
         :type Remark: str
@@ -2458,7 +2458,7 @@ class ModifyAuthorizationPolicyRequest(AbstractModel):
         :type Retain: int
         :param _ClientId: 客户端
         :type ClientId: str
-        :param _Ip: ip
+        :param _Ip: IP
         :type Ip: str
         :param _Qos: 0、1、2
         :type Qos: str

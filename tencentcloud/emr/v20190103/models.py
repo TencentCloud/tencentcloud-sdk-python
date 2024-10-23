@@ -4136,12 +4136,15 @@ class DeleteUserManagerUserListRequest(AbstractModel):
         :type DisplayStrategy: str
         :param _UserGroupList: 用户组
         :type UserGroupList: list of UserAndGroup
+        :param _DeleteHomeDir: 是否删除家目录，只针对cvm集群
+        :type DeleteHomeDir: bool
         """
         self._InstanceId = None
         self._UserNameList = None
         self._TkeClusterId = None
         self._DisplayStrategy = None
         self._UserGroupList = None
+        self._DeleteHomeDir = None
 
     @property
     def InstanceId(self):
@@ -4183,6 +4186,14 @@ class DeleteUserManagerUserListRequest(AbstractModel):
     def UserGroupList(self, UserGroupList):
         self._UserGroupList = UserGroupList
 
+    @property
+    def DeleteHomeDir(self):
+        return self._DeleteHomeDir
+
+    @DeleteHomeDir.setter
+    def DeleteHomeDir(self, DeleteHomeDir):
+        self._DeleteHomeDir = DeleteHomeDir
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -4195,6 +4206,7 @@ class DeleteUserManagerUserListRequest(AbstractModel):
                 obj = UserAndGroup()
                 obj._deserialize(item)
                 self._UserGroupList.append(obj)
+        self._DeleteHomeDir = params.get("DeleteHomeDir")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

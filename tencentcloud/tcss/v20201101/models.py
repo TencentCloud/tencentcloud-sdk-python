@@ -21690,6 +21690,87 @@ class DescribeAssetImageRegistryRegistryListRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param _Offset: 偏移量，默认为0
+        :type Offset: int
+        :param _Filters: 过滤字段
+IsAuthorized是否授权，取值全部all，未授权0，已授权1
+        :type Filters: list of AssetFilters
+        :param _By: 排序字段
+        :type By: str
+        :param _Order: 排序方式，asc，desc
+        :type Order: str
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+        self._By = None
+        self._Order = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def By(self):
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = AssetFilters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._By = params.get("By")
+        self._Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeAssetImageRegistryRegistryListResponse(AbstractModel):
     """DescribeAssetImageRegistryRegistryList返回参数结构体
@@ -21698,10 +21779,34 @@ class DescribeAssetImageRegistryRegistryListResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _List: 镜像仓库列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of ImageRepoRegistryInfo
+        :param _TotalCount: 总数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._List = None
+        self._TotalCount = None
         self._RequestId = None
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
     @property
     def RequestId(self):
@@ -21713,6 +21818,13 @@ class DescribeAssetImageRegistryRegistryListResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = ImageRepoRegistryInfo()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -47543,6 +47655,237 @@ class ImageRepoInfo(AbstractModel):
         self._HasNeedFixVul = params.get("HasNeedFixVul")
         self._SensitiveInfoCnt = params.get("SensitiveInfoCnt")
         self._RecommendedFix = params.get("RecommendedFix")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageRepoRegistryInfo(AbstractModel):
+    """容器安全镜像仓库列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegistryId: 仓库id
+        :type RegistryId: int
+        :param _Name: 仓库名
+        :type Name: str
+        :param _RegistryType: 仓库类型，列表：harbor、tcr
+        :type RegistryType: str
+        :param _Url: 仓库url
+        :type Url: str
+        :param _NetType: 网络类型，列表：public
+        :type NetType: str
+        :param _RegistryRegion: 区域，列表：default
+        :type RegistryRegion: str
+        :param _RegistryVersion: 仓库版本
+        :type RegistryVersion: str
+        :param _ConnectMsg: 仓库连接错误信息，待废弃，请使用ConnDetectException
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConnectMsg: str
+        :param _ConnDetectType: 联通性检测方式
+        :type ConnDetectType: str
+        :param _ConnDetectHostCount: 联通性检测主机数
+        :type ConnDetectHostCount: int
+        :param _ConnDetectDetail: 联通性检测详情
+        :type ConnDetectDetail: list of RegistryConnDetectResult
+        :param _InstanceID: tcr情况下的instance_id
+        :type InstanceID: str
+        :param _LatestSyncTime: 最近同步成功时间
+        :type LatestSyncTime: str
+        :param _SyncStatus: 同步状态
+        :type SyncStatus: str
+        :param _SyncFailReason: 同步失败原因
+        :type SyncFailReason: str
+        :param _SyncSolution: 同步失败解决方案
+        :type SyncSolution: str
+        :param _SyncMessage: 同步失败信息
+        :type SyncMessage: str
+        """
+        self._RegistryId = None
+        self._Name = None
+        self._RegistryType = None
+        self._Url = None
+        self._NetType = None
+        self._RegistryRegion = None
+        self._RegistryVersion = None
+        self._ConnectMsg = None
+        self._ConnDetectType = None
+        self._ConnDetectHostCount = None
+        self._ConnDetectDetail = None
+        self._InstanceID = None
+        self._LatestSyncTime = None
+        self._SyncStatus = None
+        self._SyncFailReason = None
+        self._SyncSolution = None
+        self._SyncMessage = None
+
+    @property
+    def RegistryId(self):
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def RegistryType(self):
+        return self._RegistryType
+
+    @RegistryType.setter
+    def RegistryType(self, RegistryType):
+        self._RegistryType = RegistryType
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def NetType(self):
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def RegistryRegion(self):
+        return self._RegistryRegion
+
+    @RegistryRegion.setter
+    def RegistryRegion(self, RegistryRegion):
+        self._RegistryRegion = RegistryRegion
+
+    @property
+    def RegistryVersion(self):
+        return self._RegistryVersion
+
+    @RegistryVersion.setter
+    def RegistryVersion(self, RegistryVersion):
+        self._RegistryVersion = RegistryVersion
+
+    @property
+    def ConnectMsg(self):
+        return self._ConnectMsg
+
+    @ConnectMsg.setter
+    def ConnectMsg(self, ConnectMsg):
+        self._ConnectMsg = ConnectMsg
+
+    @property
+    def ConnDetectType(self):
+        return self._ConnDetectType
+
+    @ConnDetectType.setter
+    def ConnDetectType(self, ConnDetectType):
+        self._ConnDetectType = ConnDetectType
+
+    @property
+    def ConnDetectHostCount(self):
+        return self._ConnDetectHostCount
+
+    @ConnDetectHostCount.setter
+    def ConnDetectHostCount(self, ConnDetectHostCount):
+        self._ConnDetectHostCount = ConnDetectHostCount
+
+    @property
+    def ConnDetectDetail(self):
+        return self._ConnDetectDetail
+
+    @ConnDetectDetail.setter
+    def ConnDetectDetail(self, ConnDetectDetail):
+        self._ConnDetectDetail = ConnDetectDetail
+
+    @property
+    def InstanceID(self):
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def LatestSyncTime(self):
+        return self._LatestSyncTime
+
+    @LatestSyncTime.setter
+    def LatestSyncTime(self, LatestSyncTime):
+        self._LatestSyncTime = LatestSyncTime
+
+    @property
+    def SyncStatus(self):
+        return self._SyncStatus
+
+    @SyncStatus.setter
+    def SyncStatus(self, SyncStatus):
+        self._SyncStatus = SyncStatus
+
+    @property
+    def SyncFailReason(self):
+        return self._SyncFailReason
+
+    @SyncFailReason.setter
+    def SyncFailReason(self, SyncFailReason):
+        self._SyncFailReason = SyncFailReason
+
+    @property
+    def SyncSolution(self):
+        return self._SyncSolution
+
+    @SyncSolution.setter
+    def SyncSolution(self, SyncSolution):
+        self._SyncSolution = SyncSolution
+
+    @property
+    def SyncMessage(self):
+        return self._SyncMessage
+
+    @SyncMessage.setter
+    def SyncMessage(self, SyncMessage):
+        self._SyncMessage = SyncMessage
+
+
+    def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        self._Name = params.get("Name")
+        self._RegistryType = params.get("RegistryType")
+        self._Url = params.get("Url")
+        self._NetType = params.get("NetType")
+        self._RegistryRegion = params.get("RegistryRegion")
+        self._RegistryVersion = params.get("RegistryVersion")
+        self._ConnectMsg = params.get("ConnectMsg")
+        self._ConnDetectType = params.get("ConnDetectType")
+        self._ConnDetectHostCount = params.get("ConnDetectHostCount")
+        if params.get("ConnDetectDetail") is not None:
+            self._ConnDetectDetail = []
+            for item in params.get("ConnDetectDetail"):
+                obj = RegistryConnDetectResult()
+                obj._deserialize(item)
+                self._ConnDetectDetail.append(obj)
+        self._InstanceID = params.get("InstanceID")
+        self._LatestSyncTime = params.get("LatestSyncTime")
+        self._SyncStatus = params.get("SyncStatus")
+        self._SyncFailReason = params.get("SyncFailReason")
+        self._SyncSolution = params.get("SyncSolution")
+        self._SyncMessage = params.get("SyncMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

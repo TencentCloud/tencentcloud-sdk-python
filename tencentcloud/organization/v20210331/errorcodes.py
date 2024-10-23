@@ -602,7 +602,7 @@ INVALIDPARAMETERVALUE_IDENTITYCENTERZONENAMEALREADYEXIST = 'InvalidParameterValu
 # 策略内容不合法。
 INVALIDPARAMETERVALUE_POLICYCONTENTINVALID = 'InvalidParameterValue.PolicyContentInvalid'
 
-# sso登陆启用状态值非法
+# sso登录启用状态值非法
 INVALIDPARAMETERVALUE_SSOSTATUSINVALID = 'InvalidParameterValue.SSoStatusInvalid'
 
 # X509证书格式错误。

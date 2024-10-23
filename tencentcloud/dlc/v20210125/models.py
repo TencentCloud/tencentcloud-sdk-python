@@ -8005,6 +8005,9 @@ class DataEngineInfo(AbstractModel):
         :param _EngineNetworkName: 引擎所在网络名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineNetworkName: str
+        :param _IsPoolMode: 是否使用预留池
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsPoolMode: str
         """
         self._DataEngineName = None
         self._EngineType = None
@@ -8059,6 +8062,7 @@ class DataEngineInfo(AbstractModel):
         self._EngineResourceUsedCU = None
         self._AccessInfos = None
         self._EngineNetworkName = None
+        self._IsPoolMode = None
 
     @property
     def DataEngineName(self):
@@ -8484,6 +8488,14 @@ class DataEngineInfo(AbstractModel):
     def EngineNetworkName(self, EngineNetworkName):
         self._EngineNetworkName = EngineNetworkName
 
+    @property
+    def IsPoolMode(self):
+        return self._IsPoolMode
+
+    @IsPoolMode.setter
+    def IsPoolMode(self, IsPoolMode):
+        self._IsPoolMode = IsPoolMode
+
 
     def _deserialize(self, params):
         self._DataEngineName = params.get("DataEngineName")
@@ -8558,6 +8570,7 @@ class DataEngineInfo(AbstractModel):
                 obj._deserialize(item)
                 self._AccessInfos.append(obj)
         self._EngineNetworkName = params.get("EngineNetworkName")
+        self._IsPoolMode = params.get("IsPoolMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

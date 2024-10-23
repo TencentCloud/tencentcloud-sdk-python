@@ -282,6 +282,29 @@ class PartnersClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAgentRelateBigDealIds(self, request):
+        """根据大订单号查询关联申请合并支付的其他订单号
+
+        :param request: Request instance for DescribeAgentRelateBigDealIds.
+        :type request: :class:`tencentcloud.partners.v20180321.models.DescribeAgentRelateBigDealIdsRequest`
+        :rtype: :class:`tencentcloud.partners.v20180321.models.DescribeAgentRelateBigDealIdsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAgentRelateBigDealIds", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAgentRelateBigDealIdsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAgentSelfPayDealsV2(self, request):
         """查询代理商名下指定代客的自付订单（预付费）
 

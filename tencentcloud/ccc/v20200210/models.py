@@ -8874,11 +8874,14 @@ class OwnNumberApplyDetailItem(AbstractModel):
         :type MaxCallCount: int
         :param _MaxCallPSec: 每秒最大并发数
         :type MaxCallPSec: int
+        :param _OutboundCalleeFormat: 呼出被叫格式，使用 {+E.164} 或 {E.164}, 
+        :type OutboundCalleeFormat: str
         """
         self._CallType = None
         self._PhoneNumber = None
         self._MaxCallCount = None
         self._MaxCallPSec = None
+        self._OutboundCalleeFormat = None
 
     @property
     def CallType(self):
@@ -8912,12 +8915,21 @@ class OwnNumberApplyDetailItem(AbstractModel):
     def MaxCallPSec(self, MaxCallPSec):
         self._MaxCallPSec = MaxCallPSec
 
+    @property
+    def OutboundCalleeFormat(self):
+        return self._OutboundCalleeFormat
+
+    @OutboundCalleeFormat.setter
+    def OutboundCalleeFormat(self, OutboundCalleeFormat):
+        self._OutboundCalleeFormat = OutboundCalleeFormat
+
 
     def _deserialize(self, params):
         self._CallType = params.get("CallType")
         self._PhoneNumber = params.get("PhoneNumber")
         self._MaxCallCount = params.get("MaxCallCount")
         self._MaxCallPSec = params.get("MaxCallPSec")
+        self._OutboundCalleeFormat = params.get("OutboundCalleeFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

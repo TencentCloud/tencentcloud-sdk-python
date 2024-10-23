@@ -26459,9 +26459,12 @@ class ReadonlyNode(AbstractModel):
         :type IsRandomZone: str
         :param _Zone: 指定该节点分布在哪个可用区。
         :type Zone: str
+        :param _NodeId: 升级集群版实例时，如果要调整只读节点可用区，需要指定节点id。
+        :type NodeId: str
         """
         self._IsRandomZone = None
         self._Zone = None
+        self._NodeId = None
 
     @property
     def IsRandomZone(self):
@@ -26479,10 +26482,19 @@ class ReadonlyNode(AbstractModel):
     def Zone(self, Zone):
         self._Zone = Zone
 
+    @property
+    def NodeId(self):
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
 
     def _deserialize(self, params):
         self._IsRandomZone = params.get("IsRandomZone")
         self._Zone = params.get("Zone")
+        self._NodeId = params.get("NodeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -221,6 +221,9 @@ class BackUpJobDisplay(AbstractModel):
         :param _BackupCosInfo: 备份实例中关于cos的信息	
 注意：此字段可能返回 null，表示取不到有效值。
         :type BackupCosInfo: :class:`tencentcloud.cdwdoris.v20211228.models.BackupCosInfo`
+        :param _IsUserDefineBucket: 是否使用的自定义桶
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsUserDefineBucket: bool
         """
         self._JobId = None
         self._Snapshot = None
@@ -234,6 +237,7 @@ class BackUpJobDisplay(AbstractModel):
         self._DorisSourceInfo = None
         self._JobStatusNum = None
         self._BackupCosInfo = None
+        self._IsUserDefineBucket = None
 
     @property
     def JobId(self):
@@ -331,6 +335,14 @@ class BackUpJobDisplay(AbstractModel):
     def BackupCosInfo(self, BackupCosInfo):
         self._BackupCosInfo = BackupCosInfo
 
+    @property
+    def IsUserDefineBucket(self):
+        return self._IsUserDefineBucket
+
+    @IsUserDefineBucket.setter
+    def IsUserDefineBucket(self, IsUserDefineBucket):
+        self._IsUserDefineBucket = IsUserDefineBucket
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -349,6 +361,7 @@ class BackUpJobDisplay(AbstractModel):
         if params.get("BackupCosInfo") is not None:
             self._BackupCosInfo = BackupCosInfo()
             self._BackupCosInfo._deserialize(params.get("BackupCosInfo"))
+        self._IsUserDefineBucket = params.get("IsUserDefineBucket")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

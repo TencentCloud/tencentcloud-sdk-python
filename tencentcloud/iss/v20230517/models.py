@@ -5269,6 +5269,9 @@ class DescribeDeviceData(AbstractModel):
         :param _StreamName: RTMP推流地址自定义streamName
 注意：此字段可能返回 null，表示取不到有效值。
         :type StreamName: str
+        :param _SilentFrameSwitch: 是否开启静音帧（0：关闭；1 开启）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SilentFrameSwitch: int
         """
         self._DeviceId = None
         self._Code = None
@@ -5300,6 +5303,7 @@ class DescribeDeviceData(AbstractModel):
         self._SubscribeSwitch = None
         self._AppName = None
         self._StreamName = None
+        self._SilentFrameSwitch = None
 
     @property
     def DeviceId(self):
@@ -5541,6 +5545,14 @@ class DescribeDeviceData(AbstractModel):
     def StreamName(self, StreamName):
         self._StreamName = StreamName
 
+    @property
+    def SilentFrameSwitch(self):
+        return self._SilentFrameSwitch
+
+    @SilentFrameSwitch.setter
+    def SilentFrameSwitch(self, SilentFrameSwitch):
+        self._SilentFrameSwitch = SilentFrameSwitch
+
 
     def _deserialize(self, params):
         self._DeviceId = params.get("DeviceId")
@@ -5573,6 +5585,7 @@ class DescribeDeviceData(AbstractModel):
         self._SubscribeSwitch = params.get("SubscribeSwitch")
         self._AppName = params.get("AppName")
         self._StreamName = params.get("StreamName")
+        self._SilentFrameSwitch = params.get("SilentFrameSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16269,6 +16282,8 @@ class UpdateUserDeviceRequest(AbstractModel):
         :type AudioSwitch: int
         :param _SubscribeSwitch: 订阅开关（0：关闭；1：开启）默认开启，开启状态下会订阅设备通道变化，仅国标NVR设备有效
         :type SubscribeSwitch: int
+        :param _SilentFrameSwitch: 是否开启静音帧（0：关闭；1 开启）
+        :type SilentFrameSwitch: int
         """
         self._DeviceId = None
         self._Name = None
@@ -16281,6 +16296,7 @@ class UpdateUserDeviceRequest(AbstractModel):
         self._ProtocolType = None
         self._AudioSwitch = None
         self._SubscribeSwitch = None
+        self._SilentFrameSwitch = None
 
     @property
     def DeviceId(self):
@@ -16370,6 +16386,14 @@ class UpdateUserDeviceRequest(AbstractModel):
     def SubscribeSwitch(self, SubscribeSwitch):
         self._SubscribeSwitch = SubscribeSwitch
 
+    @property
+    def SilentFrameSwitch(self):
+        return self._SilentFrameSwitch
+
+    @SilentFrameSwitch.setter
+    def SilentFrameSwitch(self, SilentFrameSwitch):
+        self._SilentFrameSwitch = SilentFrameSwitch
+
 
     def _deserialize(self, params):
         self._DeviceId = params.get("DeviceId")
@@ -16383,6 +16407,7 @@ class UpdateUserDeviceRequest(AbstractModel):
         self._ProtocolType = params.get("ProtocolType")
         self._AudioSwitch = params.get("AudioSwitch")
         self._SubscribeSwitch = params.get("SubscribeSwitch")
+        self._SilentFrameSwitch = params.get("SilentFrameSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
