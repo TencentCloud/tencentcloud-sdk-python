@@ -8,7 +8,6 @@ from tencentcloud.common import credential
 from tencentcloud.common.profile.client_profile import ClientProfile
 from tencentcloud.common.profile.http_profile import HttpProfile
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
-from tencentcloud.cr.v20180321 import cr_client, models
 from tencentcloud.cvm.v20170312 import cvm_client
 from tencentcloud.cvm.v20170312 import models as cvm_models
 
@@ -35,31 +34,6 @@ class CvmTest(cvm_client.CvmClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
-
-
-def test_multipart_action():
-    pytest.skip("ActionOffline")
-    try:
-        cred = credential.Credential(
-            os.environ.get("TENCENTCLOUD_SECRET_ID"),
-            os.environ.get("TENCENTCLOUD_SECRET_KEY"))
-        httpProfile = HttpProfile()
-        httpProfile.endpoint = "cr.tencentcloudapi.com"
-
-        clientProfile = ClientProfile()
-        clientProfile.httpProfile = httpProfile
-        client = cr_client.CrClient(cred, "", clientProfile)
-
-        req = models.UploadDataFileRequest()
-        params = {
-            "Module": "Data",
-            "Operation": "Upload",
-            "FileName": "data.xlsx"
-        }
-        req.from_json_string(json.dumps(params))
-        resp = client.UploadDataFile(req)
-    except TencentCloudSDKException as err:
-        assert err.code == 'FailedOperation.UploadDataError'
 
 
 def test_json_action_with_multipart():
