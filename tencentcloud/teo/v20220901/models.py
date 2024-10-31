@@ -3558,6 +3558,71 @@ class CheckCnameStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CheckRegionHealthStatus(AbstractModel):
+    """各个健康检查区域下源站的健康状态。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: 健康检查区域，ISO-3166-1 两位字母代码。
+        :type Region: str
+        :param _Healthy: 单健康检查区域下探测源站的健康状态，取值有：
+<li>Healthy：健康；</li>
+<li>Unhealthy：不健康；</li>
+<li> Undetected：未探测到数据。</li>说明：单健康检查区域下所有源站为健康，则状态为健康，否则为不健康。
+        :type Healthy: str
+        :param _OriginHealthStatus: 源站健康状态。
+        :type OriginHealthStatus: list of OriginHealthStatus
+        """
+        self._Region = None
+        self._Healthy = None
+        self._OriginHealthStatus = None
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Healthy(self):
+        return self._Healthy
+
+    @Healthy.setter
+    def Healthy(self, Healthy):
+        self._Healthy = Healthy
+
+    @property
+    def OriginHealthStatus(self):
+        return self._OriginHealthStatus
+
+    @OriginHealthStatus.setter
+    def OriginHealthStatus(self, OriginHealthStatus):
+        self._OriginHealthStatus = OriginHealthStatus
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._Healthy = params.get("Healthy")
+        if params.get("OriginHealthStatus") is not None:
+            self._OriginHealthStatus = []
+            for item in params.get("OriginHealthStatus"):
+                obj = OriginHealthStatus()
+                obj._deserialize(item)
+                self._OriginHealthStatus.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClientIpCountry(AbstractModel):
     """回源时携带客户端IP所属地域信息，值的格式为ISO-3166-1两位字母代码。
 
@@ -3617,8 +3682,7 @@ class ClientIpHeader(AbstractModel):
 <li>on：开启；</li>
 <li>off：关闭。</li>
         :type Switch: str
-        :param _HeaderName: 回源时，存放客户端 IP 的请求头名称。
-为空则使用默认值：X-Forwarded-IP。
+        :param _HeaderName: 回源时，存放客户端 IP 的请求头名称。当 Switch 为 on 时，该参数必填。该参数不允许填写 X-Forwarded-For。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HeaderName: str
         """
@@ -5363,6 +5427,160 @@ class CreateL4ProxyRulesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateLoadBalancerRequest(AbstractModel):
+    """CreateLoadBalancer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _Name: 实例名称，可输入 1-200 个字符，允许字符为 a-z，A-Z，0-9，_，-。
+        :type Name: str
+        :param _Type: 实例类型，取值有：
+<li>HTTP：HTTP 专用型，支持添加 HTTP 专用型和通用型源站组，仅支持被站点加速相关服务引用（如域名服务和规则引擎）；</li>
+<li>GENERAL：通用型，仅支持添加通用型源站组，能被站点加速服务（如域名服务和规则引擎）和四层代理引用。</li>
+        :type Type: str
+        :param _OriginGroups: 源站组列表及其对应的容灾调度优先级。详情请参考 [快速创建负载均衡实例](https://cloud.tencent.com/document/product/1552/104223) 中的示例场景。
+        :type OriginGroups: list of OriginGroupInLoadBalancer
+        :param _HealthChecker: 健康检查策略。详情请参考 [健康检查策略介绍](https://cloud.tencent.com/document/product/1552/104228)。不填写时，默认为不启用健康检查。
+        :type HealthChecker: :class:`tencentcloud.teo.v20220901.models.HealthChecker`
+        :param _SteeringPolicy: 源站组间的流量调度策略，取值有：
+<li>Pritory：按优先级顺序进行故障转移。</li>默认值为 Pritory。
+        :type SteeringPolicy: str
+        :param _FailoverPolicy: 实际访问某源站失败时的请求重试策略，详情请参考 [请求重试策略介绍](https://cloud.tencent.com/document/product/1552/104227)，取值有：
+<li>OtherOriginGroup：单次请求失败后，请求优先重试下一优先级源站组；</li>
+<li>OtherRecordInOriginGroup：单次请求失败后，请求优先重试同源站组内的其他源站。</li>默认值为 OtherRecordInOriginGroup。
+        :type FailoverPolicy: str
+        """
+        self._ZoneId = None
+        self._Name = None
+        self._Type = None
+        self._OriginGroups = None
+        self._HealthChecker = None
+        self._SteeringPolicy = None
+        self._FailoverPolicy = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def OriginGroups(self):
+        return self._OriginGroups
+
+    @OriginGroups.setter
+    def OriginGroups(self, OriginGroups):
+        self._OriginGroups = OriginGroups
+
+    @property
+    def HealthChecker(self):
+        return self._HealthChecker
+
+    @HealthChecker.setter
+    def HealthChecker(self, HealthChecker):
+        self._HealthChecker = HealthChecker
+
+    @property
+    def SteeringPolicy(self):
+        return self._SteeringPolicy
+
+    @SteeringPolicy.setter
+    def SteeringPolicy(self, SteeringPolicy):
+        self._SteeringPolicy = SteeringPolicy
+
+    @property
+    def FailoverPolicy(self):
+        return self._FailoverPolicy
+
+    @FailoverPolicy.setter
+    def FailoverPolicy(self, FailoverPolicy):
+        self._FailoverPolicy = FailoverPolicy
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        if params.get("OriginGroups") is not None:
+            self._OriginGroups = []
+            for item in params.get("OriginGroups"):
+                obj = OriginGroupInLoadBalancer()
+                obj._deserialize(item)
+                self._OriginGroups.append(obj)
+        if params.get("HealthChecker") is not None:
+            self._HealthChecker = HealthChecker()
+            self._HealthChecker._deserialize(params.get("HealthChecker"))
+        self._SteeringPolicy = params.get("SteeringPolicy")
+        self._FailoverPolicy = params.get("FailoverPolicy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLoadBalancerResponse(AbstractModel):
+    """CreateLoadBalancer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 负载均衡实例 ID。
+        :type InstanceId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateOriginGroupRequest(AbstractModel):
     """CreateOriginGroup请求参数结构体
 
@@ -7036,6 +7254,53 @@ class CustomField(AbstractModel):
         
 
 
+class CustomizedHeader(AbstractModel):
+    """负载均衡实例 HTTP/HTTPS 健康检查策略下可配置的自定义头部。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 自定义头部 Key。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: 自定义头部 Value。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DDoS(AbstractModel):
     """DDoS配置
 
@@ -8161,6 +8426,76 @@ class DeleteL4ProxyRulesRequest(AbstractModel):
 
 class DeleteL4ProxyRulesResponse(AbstractModel):
     """DeleteL4ProxyRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteLoadBalancerRequest(AbstractModel):
+    """DeleteLoadBalancer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _InstanceId: 负载均衡实例 ID。
+        :type InstanceId: str
+        """
+        self._ZoneId = None
+        self._InstanceId = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLoadBalancerResponse(AbstractModel):
+    """DeleteLoadBalancer返回参数结构体
 
     """
 
@@ -11789,6 +12124,236 @@ class DescribeL4ProxyRulesResponse(AbstractModel):
                 obj = L4ProxyRule()
                 obj._deserialize(item)
                 self._L4ProxyRules.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLoadBalancerListRequest(AbstractModel):
+    """DescribeLoadBalancerList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _Offset: 分页查询偏移量，默认为 0。	
+        :type Offset: int
+        :param _Limit: 分页查询限制数目，默认值：20，最大值：100。	
+        :type Limit: int
+        :param _Filters: 过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回当前 zone-id 下所有负载均衡实例信息。详细的过滤条件如下：
+<li>InstanceName：按照负载均衡实例名称进行过滤；</li>
+<li>InstanceId：按照负载均衡实例 ID 进行过滤。</li>  
+
+        :type Filters: list of Filter
+        """
+        self._ZoneId = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLoadBalancerListResponse(AbstractModel):
+    """DescribeLoadBalancerList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 负载均衡实例总数。
+        :type TotalCount: int
+        :param _LoadBalancerList: 负载均衡实例列表。
+        :type LoadBalancerList: list of LoadBalancer
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._LoadBalancerList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def LoadBalancerList(self):
+        return self._LoadBalancerList
+
+    @LoadBalancerList.setter
+    def LoadBalancerList(self, LoadBalancerList):
+        self._LoadBalancerList = LoadBalancerList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("LoadBalancerList") is not None:
+            self._LoadBalancerList = []
+            for item in params.get("LoadBalancerList"):
+                obj = LoadBalancer()
+                obj._deserialize(item)
+                self._LoadBalancerList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeOriginGroupHealthStatusRequest(AbstractModel):
+    """DescribeOriginGroupHealthStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _LBInstanceId: 负载均衡实例 ID。
+        :type LBInstanceId: str
+        :param _OriginGroupIds: 源站组 ID。不填写时默认获取负载均衡下所有源站组的健康状态。
+        :type OriginGroupIds: list of str
+        """
+        self._ZoneId = None
+        self._LBInstanceId = None
+        self._OriginGroupIds = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def LBInstanceId(self):
+        return self._LBInstanceId
+
+    @LBInstanceId.setter
+    def LBInstanceId(self, LBInstanceId):
+        self._LBInstanceId = LBInstanceId
+
+    @property
+    def OriginGroupIds(self):
+        return self._OriginGroupIds
+
+    @OriginGroupIds.setter
+    def OriginGroupIds(self, OriginGroupIds):
+        self._OriginGroupIds = OriginGroupIds
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._LBInstanceId = params.get("LBInstanceId")
+        self._OriginGroupIds = params.get("OriginGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOriginGroupHealthStatusResponse(AbstractModel):
+    """DescribeOriginGroupHealthStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OriginGroupHealthStatusList: 源站组下源站的健康状态。
+        :type OriginGroupHealthStatusList: list of OriginGroupHealthStatusDetail
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._OriginGroupHealthStatusList = None
+        self._RequestId = None
+
+    @property
+    def OriginGroupHealthStatusList(self):
+        return self._OriginGroupHealthStatusList
+
+    @OriginGroupHealthStatusList.setter
+    def OriginGroupHealthStatusList(self, OriginGroupHealthStatusList):
+        self._OriginGroupHealthStatusList = OriginGroupHealthStatusList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("OriginGroupHealthStatusList") is not None:
+            self._OriginGroupHealthStatusList = []
+            for item in params.get("OriginGroupHealthStatusList"):
+                obj = OriginGroupHealthStatusDetail()
+                obj._deserialize(item)
+                self._OriginGroupHealthStatusList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -16134,7 +16699,7 @@ class FirstPartConfig(AbstractModel):
 
 
 class FollowOrigin(AbstractModel):
-    """缓存遵循源站配置
+    """缓存遵循源站配置。
 
     """
 
@@ -16144,20 +16709,24 @@ class FollowOrigin(AbstractModel):
 <li>on：开启；</li>
 <li>off：关闭。</li>
         :type Switch: str
-        :param _DefaultCacheTime: 源站未返回 Cache-Control 头时, 设置默认的缓存时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DefaultCacheTime: int
-        :param _DefaultCache: 源站未返回 Cache-Control 头时, 设置缓存/不缓存
+        :param _DefaultCache: 源站未返回 Cache-Control 头时，缓存/不缓存开关。当 Switch 为 on 时，此字段必填，否则此字段不生效。取值有：
+<li>on：缓存；</li>
+<li>off：不缓存。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultCache: str
-        :param _DefaultCacheStrategy: 源站未返回 Cache-Control 头时, 使用/不使用默认缓存策略
+        :param _DefaultCacheStrategy: 源站未返回 Cache-Control 头时，使用/不使用默认缓存策略开关。当 DefaultCache 为 on 时，此字段必填，否则此字段不生效；当 DefaultCacheTime 不为 0 时，此字段必须为 off。取值有：
+<li>on：使用默认缓存策略；</li>
+<li>off：不使用默认缓存策略。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultCacheStrategy: str
+        :param _DefaultCacheTime: 源站未返回 Cache-Control 头时，表示默认的缓存时间，单位为秒，取值：0～315360000。当 DefaultCache 为 on 时，此字段必填，否则此字段不生效；当 DefaultCacheStrategy 为 on 时， 此字段必须为 0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultCacheTime: int
         """
         self._Switch = None
-        self._DefaultCacheTime = None
         self._DefaultCache = None
         self._DefaultCacheStrategy = None
+        self._DefaultCacheTime = None
 
     @property
     def Switch(self):
@@ -16166,14 +16735,6 @@ class FollowOrigin(AbstractModel):
     @Switch.setter
     def Switch(self, Switch):
         self._Switch = Switch
-
-    @property
-    def DefaultCacheTime(self):
-        return self._DefaultCacheTime
-
-    @DefaultCacheTime.setter
-    def DefaultCacheTime(self, DefaultCacheTime):
-        self._DefaultCacheTime = DefaultCacheTime
 
     @property
     def DefaultCache(self):
@@ -16191,12 +16752,20 @@ class FollowOrigin(AbstractModel):
     def DefaultCacheStrategy(self, DefaultCacheStrategy):
         self._DefaultCacheStrategy = DefaultCacheStrategy
 
+    @property
+    def DefaultCacheTime(self):
+        return self._DefaultCacheTime
+
+    @DefaultCacheTime.setter
+    def DefaultCacheTime(self, DefaultCacheTime):
+        self._DefaultCacheTime = DefaultCacheTime
+
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
-        self._DefaultCacheTime = params.get("DefaultCacheTime")
         self._DefaultCache = params.get("DefaultCache")
         self._DefaultCacheStrategy = params.get("DefaultCacheStrategy")
+        self._DefaultCacheTime = params.get("DefaultCacheTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16208,7 +16777,7 @@ class FollowOrigin(AbstractModel):
 
 
 class ForceRedirect(AbstractModel):
-    """访问协议强制https跳转配置
+    """访问协议强制 HTTPS 跳转配置。
 
     """
 
@@ -16766,6 +17335,198 @@ class Header(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HealthChecker(AbstractModel):
+    """负载均衡实例健康检查策略。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 健康检查策略，取值有：
+<li>HTTP；</li>
+<li>HTTPS；</li>
+<li>TCP；</li>
+<li>UDP；</li>
+<li>ICMP Ping；</li>
+<li>NoCheck。</li>
+注意：NoCheck 表示不启用健康检查策略。
+        :type Type: str
+        :param _Port: 检查端口。当 Type=HTTP 或 Type=HTTPS 或 Type=TCP 或 Type=UDP 时为必填。
+        :type Port: int
+        :param _Interval: 检查频率，表示多久发起一次健康检查任务，单位为秒。可取值有：30，60，180，300 或 600。
+        :type Interval: int
+        :param _Timeout: 每一次健康检查的超时时间，若健康检查消耗时间大于此值，则检查结果判定为”不健康“， 单位为秒，默认值为 5s，取值必须小于 Interval。
+        :type Timeout: int
+        :param _HealthThreshold: 健康阈值，表示连续几次健康检查结果为"健康"，则判断源站为"健康"，单位为次，默认 3 次，最小取值 1 次。
+        :type HealthThreshold: int
+        :param _CriticalThreshold: 不健康阈值，表示连续几次健康检查结果为"不健康"，则判断源站为"不健康"，单位为次，默认 2 次。
+        :type CriticalThreshold: int
+        :param _Path: 该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示探测路径，需要填写完整的 host/path，不包含协议部分，例如：www.example.com/test。
+
+        :type Path: str
+        :param _Method: 该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示请求方法，取值有：
+<li>GET；</li>
+<li>HEAD。</li>
+        :type Method: str
+        :param _ExpectedCodes: 该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示探测节点向源站发起健康检查时，响应哪些状态码可用于认定探测结果为健康。
+        :type ExpectedCodes: list of str
+        :param _Headers: 该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示探测请求携带的自定义  HTTP 请求头，至多可配置 10 个。
+        :type Headers: list of CustomizedHeader
+        :param _FollowRedirect: 该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示是否启用遵循 301/302 重定向。启用后，301/302 默认为"健康"的状态码，默认跳转 3 次。
+        :type FollowRedirect: str
+        :param _SendContext: 该参数仅当 Type=UDP 时有效，表示健康检查发送的内容。只允许 ASCII 可见字符，最大长度限制 500 个字符。
+        :type SendContext: str
+        :param _RecvContext: 该参数仅当 Type=UDP 时有效，表示健康检查期望源站返回结果。只允许 ASCII 可见字符，最大长度限制 500 个字符。
+        :type RecvContext: str
+        """
+        self._Type = None
+        self._Port = None
+        self._Interval = None
+        self._Timeout = None
+        self._HealthThreshold = None
+        self._CriticalThreshold = None
+        self._Path = None
+        self._Method = None
+        self._ExpectedCodes = None
+        self._Headers = None
+        self._FollowRedirect = None
+        self._SendContext = None
+        self._RecvContext = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def Interval(self):
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+    @property
+    def Timeout(self):
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def HealthThreshold(self):
+        return self._HealthThreshold
+
+    @HealthThreshold.setter
+    def HealthThreshold(self, HealthThreshold):
+        self._HealthThreshold = HealthThreshold
+
+    @property
+    def CriticalThreshold(self):
+        return self._CriticalThreshold
+
+    @CriticalThreshold.setter
+    def CriticalThreshold(self, CriticalThreshold):
+        self._CriticalThreshold = CriticalThreshold
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Method(self):
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def ExpectedCodes(self):
+        return self._ExpectedCodes
+
+    @ExpectedCodes.setter
+    def ExpectedCodes(self, ExpectedCodes):
+        self._ExpectedCodes = ExpectedCodes
+
+    @property
+    def Headers(self):
+        return self._Headers
+
+    @Headers.setter
+    def Headers(self, Headers):
+        self._Headers = Headers
+
+    @property
+    def FollowRedirect(self):
+        return self._FollowRedirect
+
+    @FollowRedirect.setter
+    def FollowRedirect(self, FollowRedirect):
+        self._FollowRedirect = FollowRedirect
+
+    @property
+    def SendContext(self):
+        return self._SendContext
+
+    @SendContext.setter
+    def SendContext(self, SendContext):
+        self._SendContext = SendContext
+
+    @property
+    def RecvContext(self):
+        return self._RecvContext
+
+    @RecvContext.setter
+    def RecvContext(self, RecvContext):
+        self._RecvContext = RecvContext
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Port = params.get("Port")
+        self._Interval = params.get("Interval")
+        self._Timeout = params.get("Timeout")
+        self._HealthThreshold = params.get("HealthThreshold")
+        self._CriticalThreshold = params.get("CriticalThreshold")
+        self._Path = params.get("Path")
+        self._Method = params.get("Method")
+        self._ExpectedCodes = params.get("ExpectedCodes")
+        if params.get("Headers") is not None:
+            self._Headers = []
+            for item in params.get("Headers"):
+                obj = CustomizedHeader()
+                obj._deserialize(item)
+                self._Headers.append(obj)
+        self._FollowRedirect = params.get("FollowRedirect")
+        self._SendContext = params.get("SendContext")
+        self._RecvContext = params.get("RecvContext")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17806,6 +18567,41 @@ class Ipv6(AbstractModel):
         
 
 
+class JITVideoProcess(AbstractModel):
+    """视频即时处理配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 视频即时处理配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class L4OfflineLog(AbstractModel):
     """离线日志详细信息
 
@@ -18506,6 +19302,162 @@ class L7OfflineLog(AbstractModel):
         self._LogStartTime = params.get("LogStartTime")
         self._LogEndTime = params.get("LogEndTime")
         self._Size = params.get("Size")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LoadBalancer(AbstractModel):
+    """负载均衡实例信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID。
+        :type InstanceId: str
+        :param _Name: 实例名称，可输入 1-200 个字符，允许字符为 a-z，A-Z，0-9，_，-。	
+        :type Name: str
+        :param _Type: 实例类型，取值有：
+<li>HTTP：HTTP 专用型，支持添加 HTTP 专用型和通用型源站组，仅支持被站点加速相关服务引用（如域名服务和规则引擎）；</li>
+<li>GENERAL：通用型，仅支持添加通用型源站组，能被站点加速服务（如域名服务和规则引擎）和四层代理引用。</li>
+        :type Type: str
+        :param _HealthChecker: 健康检查策略。详情请参考 [健康检查策略介绍](https://cloud.tencent.com/document/product/1552/104228)。
+        :type HealthChecker: :class:`tencentcloud.teo.v20220901.models.HealthChecker`
+        :param _SteeringPolicy: 源站组间的流量调度策略，取值有：
+<li>Pritory：按优先级顺序进行故障转移 。</li>
+        :type SteeringPolicy: str
+        :param _FailoverPolicy: 实际访问某源站失败时的请求重试策略，详情请参考 [请求重试策略介绍](https://cloud.tencent.com/document/product/1552/104227)，取值有：
+<li>OtherOriginGroup：单次请求失败后，请求优先重试下一优先级源站组；</li>
+<li>OtherRecordInOriginGroup：单次请求失败后，请求优先重试同源站组内的其他源站。</li>
+        :type FailoverPolicy: str
+        :param _OriginGroupHealthStatus: 源站组健康状态。
+        :type OriginGroupHealthStatus: list of OriginGroupHealthStatus
+        :param _Status: 负载均衡状态，取值有：
+<li>Pending：部署中；</li>
+<li>Deleting：删除中；</li>
+<li>Running：已生效。</li>
+        :type Status: str
+        :param _L4UsedList: 该负载均衡实例绑的定四层层代理实例的列表。
+        :type L4UsedList: list of str
+        :param _L7UsedList: 该负载均衡实例绑定的七层域名列表。
+        :type L7UsedList: list of str
+        """
+        self._InstanceId = None
+        self._Name = None
+        self._Type = None
+        self._HealthChecker = None
+        self._SteeringPolicy = None
+        self._FailoverPolicy = None
+        self._OriginGroupHealthStatus = None
+        self._Status = None
+        self._L4UsedList = None
+        self._L7UsedList = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def HealthChecker(self):
+        return self._HealthChecker
+
+    @HealthChecker.setter
+    def HealthChecker(self, HealthChecker):
+        self._HealthChecker = HealthChecker
+
+    @property
+    def SteeringPolicy(self):
+        return self._SteeringPolicy
+
+    @SteeringPolicy.setter
+    def SteeringPolicy(self, SteeringPolicy):
+        self._SteeringPolicy = SteeringPolicy
+
+    @property
+    def FailoverPolicy(self):
+        return self._FailoverPolicy
+
+    @FailoverPolicy.setter
+    def FailoverPolicy(self, FailoverPolicy):
+        self._FailoverPolicy = FailoverPolicy
+
+    @property
+    def OriginGroupHealthStatus(self):
+        return self._OriginGroupHealthStatus
+
+    @OriginGroupHealthStatus.setter
+    def OriginGroupHealthStatus(self, OriginGroupHealthStatus):
+        self._OriginGroupHealthStatus = OriginGroupHealthStatus
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def L4UsedList(self):
+        return self._L4UsedList
+
+    @L4UsedList.setter
+    def L4UsedList(self, L4UsedList):
+        self._L4UsedList = L4UsedList
+
+    @property
+    def L7UsedList(self):
+        return self._L7UsedList
+
+    @L7UsedList.setter
+    def L7UsedList(self, L7UsedList):
+        self._L7UsedList = L7UsedList
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        if params.get("HealthChecker") is not None:
+            self._HealthChecker = HealthChecker()
+            self._HealthChecker._deserialize(params.get("HealthChecker"))
+        self._SteeringPolicy = params.get("SteeringPolicy")
+        self._FailoverPolicy = params.get("FailoverPolicy")
+        if params.get("OriginGroupHealthStatus") is not None:
+            self._OriginGroupHealthStatus = []
+            for item in params.get("OriginGroupHealthStatus"):
+                obj = OriginGroupHealthStatus()
+                obj._deserialize(item)
+                self._OriginGroupHealthStatus.append(obj)
+        self._Status = params.get("Status")
+        self._L4UsedList = params.get("L4UsedList")
+        self._L7UsedList = params.get("L7UsedList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20529,6 +21481,146 @@ class ModifyL4ProxyStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyLoadBalancerRequest(AbstractModel):
+    """ModifyLoadBalancer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _InstanceId: 负载均衡实例 ID。
+        :type InstanceId: str
+        :param _Name: 实例名称，可输入 1-200 个字符，允许字符为 a-z，A-Z，0-9，_，-。不填写表示维持原有配置。
+        :type Name: str
+        :param _OriginGroups: 源站组列表及其对应的容灾调度优先级。详情请参考 [快速创建负载均衡实例](https://cloud.tencent.com/document/product/1552/104223) 中的示例场景。不填写表示维持原有配置。
+        :type OriginGroups: list of OriginGroupInLoadBalancer
+        :param _HealthChecker: 健康检查策略。详情请参考 [健康检查策略介绍](https://cloud.tencent.com/document/product/1552/104228)。不填写表示维持原有配置。
+        :type HealthChecker: :class:`tencentcloud.teo.v20220901.models.HealthChecker`
+        :param _SteeringPolicy: 源站组间的流量调度策略，取值有：
+<li>Pritory：按优先级顺序进行故障转移 。</li>不填写表示维持原有配置。
+        :type SteeringPolicy: str
+        :param _FailoverPolicy: 实际访问某源站失败时的请求重试策略，详情请参考 [请求重试策略介绍](https://cloud.tencent.com/document/product/1552/104227)，取值有：
+<li>OtherOriginGroup：单次请求失败后，请求优先重试下一优先级源站组；</li>
+<li>OtherRecordInOriginGroup：单次请求失败后，请求优先重试同源站组内的其他源站。</li>不填写表示维持原有配置。
+        :type FailoverPolicy: str
+        """
+        self._ZoneId = None
+        self._InstanceId = None
+        self._Name = None
+        self._OriginGroups = None
+        self._HealthChecker = None
+        self._SteeringPolicy = None
+        self._FailoverPolicy = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def OriginGroups(self):
+        return self._OriginGroups
+
+    @OriginGroups.setter
+    def OriginGroups(self, OriginGroups):
+        self._OriginGroups = OriginGroups
+
+    @property
+    def HealthChecker(self):
+        return self._HealthChecker
+
+    @HealthChecker.setter
+    def HealthChecker(self, HealthChecker):
+        self._HealthChecker = HealthChecker
+
+    @property
+    def SteeringPolicy(self):
+        return self._SteeringPolicy
+
+    @SteeringPolicy.setter
+    def SteeringPolicy(self, SteeringPolicy):
+        self._SteeringPolicy = SteeringPolicy
+
+    @property
+    def FailoverPolicy(self):
+        return self._FailoverPolicy
+
+    @FailoverPolicy.setter
+    def FailoverPolicy(self, FailoverPolicy):
+        self._FailoverPolicy = FailoverPolicy
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._InstanceId = params.get("InstanceId")
+        self._Name = params.get("Name")
+        if params.get("OriginGroups") is not None:
+            self._OriginGroups = []
+            for item in params.get("OriginGroups"):
+                obj = OriginGroupInLoadBalancer()
+                obj._deserialize(item)
+                self._OriginGroups.append(obj)
+        if params.get("HealthChecker") is not None:
+            self._HealthChecker = HealthChecker()
+            self._HealthChecker._deserialize(params.get("HealthChecker"))
+        self._SteeringPolicy = params.get("SteeringPolicy")
+        self._FailoverPolicy = params.get("FailoverPolicy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLoadBalancerResponse(AbstractModel):
+    """ModifyLoadBalancer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyOriginGroupRequest(AbstractModel):
     """ModifyOriginGroup请求参数结构体
 
@@ -21457,6 +22549,8 @@ class ModifyZoneSettingRequest(AbstractModel):
         :type ImageOptimize: :class:`tencentcloud.teo.v20220901.models.ImageOptimize`
         :param _StandardDebug: 标准 Debug 配置。
         :type StandardDebug: :class:`tencentcloud.teo.v20220901.models.StandardDebug`
+        :param _JITVideoProcess: 视频即时处理配置。不填写表示保持原有配置。
+        :type JITVideoProcess: :class:`tencentcloud.teo.v20220901.models.JITVideoProcess`
         """
         self._ZoneId = None
         self._CacheConfig = None
@@ -21479,6 +22573,7 @@ class ModifyZoneSettingRequest(AbstractModel):
         self._Grpc = None
         self._ImageOptimize = None
         self._StandardDebug = None
+        self._JITVideoProcess = None
 
     @property
     def ZoneId(self):
@@ -21648,6 +22743,14 @@ class ModifyZoneSettingRequest(AbstractModel):
     def StandardDebug(self, StandardDebug):
         self._StandardDebug = StandardDebug
 
+    @property
+    def JITVideoProcess(self):
+        return self._JITVideoProcess
+
+    @JITVideoProcess.setter
+    def JITVideoProcess(self, JITVideoProcess):
+        self._JITVideoProcess = JITVideoProcess
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -21711,6 +22814,9 @@ class ModifyZoneSettingRequest(AbstractModel):
         if params.get("StandardDebug") is not None:
             self._StandardDebug = StandardDebug()
             self._StandardDebug._deserialize(params.get("StandardDebug"))
+        if params.get("JITVideoProcess") is not None:
+            self._JITVideoProcess = JITVideoProcess()
+            self._JITVideoProcess._deserialize(params.get("JITVideoProcess"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22406,6 +23512,209 @@ class OriginGroup(AbstractModel):
         
 
 
+class OriginGroupHealthStatus(AbstractModel):
+    """源站组健康状态。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OriginGroupID: 源站组 ID。
+        :type OriginGroupID: str
+        :param _OriginGroupName: 源站组名。
+        :type OriginGroupName: str
+        :param _OriginType: 源站组类型，取值有：
+<li>HTTP：HTTP 专用型；</li>
+<li>GENERAL：通用型。</li>
+        :type OriginType: str
+        :param _Priority: 优先级。
+        :type Priority: str
+        :param _OriginHealthStatus: 源站组里各源站的健康状态。
+        :type OriginHealthStatus: list of OriginHealthStatus
+        """
+        self._OriginGroupID = None
+        self._OriginGroupName = None
+        self._OriginType = None
+        self._Priority = None
+        self._OriginHealthStatus = None
+
+    @property
+    def OriginGroupID(self):
+        return self._OriginGroupID
+
+    @OriginGroupID.setter
+    def OriginGroupID(self, OriginGroupID):
+        self._OriginGroupID = OriginGroupID
+
+    @property
+    def OriginGroupName(self):
+        return self._OriginGroupName
+
+    @OriginGroupName.setter
+    def OriginGroupName(self, OriginGroupName):
+        self._OriginGroupName = OriginGroupName
+
+    @property
+    def OriginType(self):
+        return self._OriginType
+
+    @OriginType.setter
+    def OriginType(self, OriginType):
+        self._OriginType = OriginType
+
+    @property
+    def Priority(self):
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def OriginHealthStatus(self):
+        return self._OriginHealthStatus
+
+    @OriginHealthStatus.setter
+    def OriginHealthStatus(self, OriginHealthStatus):
+        self._OriginHealthStatus = OriginHealthStatus
+
+
+    def _deserialize(self, params):
+        self._OriginGroupID = params.get("OriginGroupID")
+        self._OriginGroupName = params.get("OriginGroupName")
+        self._OriginType = params.get("OriginType")
+        self._Priority = params.get("Priority")
+        if params.get("OriginHealthStatus") is not None:
+            self._OriginHealthStatus = []
+            for item in params.get("OriginHealthStatus"):
+                obj = OriginHealthStatus()
+                obj._deserialize(item)
+                self._OriginHealthStatus.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OriginGroupHealthStatusDetail(AbstractModel):
+    """源站组健康状态详情。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OriginGroupId: 源站组 ID。
+        :type OriginGroupId: str
+        :param _OriginHealthStatus: 根据所有探测区域的结果综合决策出来的源站组下各个源站的健康状态。超过一半的地域判定该源站不健康，则对应状态为不健康，否则为健康。
+        :type OriginHealthStatus: list of OriginHealthStatus
+        :param _CheckRegionHealthStatus: 各个健康检查区域下源站的健康状态。
+        :type CheckRegionHealthStatus: list of CheckRegionHealthStatus
+        """
+        self._OriginGroupId = None
+        self._OriginHealthStatus = None
+        self._CheckRegionHealthStatus = None
+
+    @property
+    def OriginGroupId(self):
+        return self._OriginGroupId
+
+    @OriginGroupId.setter
+    def OriginGroupId(self, OriginGroupId):
+        self._OriginGroupId = OriginGroupId
+
+    @property
+    def OriginHealthStatus(self):
+        return self._OriginHealthStatus
+
+    @OriginHealthStatus.setter
+    def OriginHealthStatus(self, OriginHealthStatus):
+        self._OriginHealthStatus = OriginHealthStatus
+
+    @property
+    def CheckRegionHealthStatus(self):
+        return self._CheckRegionHealthStatus
+
+    @CheckRegionHealthStatus.setter
+    def CheckRegionHealthStatus(self, CheckRegionHealthStatus):
+        self._CheckRegionHealthStatus = CheckRegionHealthStatus
+
+
+    def _deserialize(self, params):
+        self._OriginGroupId = params.get("OriginGroupId")
+        if params.get("OriginHealthStatus") is not None:
+            self._OriginHealthStatus = []
+            for item in params.get("OriginHealthStatus"):
+                obj = OriginHealthStatus()
+                obj._deserialize(item)
+                self._OriginHealthStatus.append(obj)
+        if params.get("CheckRegionHealthStatus") is not None:
+            self._CheckRegionHealthStatus = []
+            for item in params.get("CheckRegionHealthStatus"):
+                obj = CheckRegionHealthStatus()
+                obj._deserialize(item)
+                self._CheckRegionHealthStatus.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OriginGroupInLoadBalancer(AbstractModel):
+    """负载均衡实例中需要绑定的源站组和优先级关系。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Priority: 优先级，填写格式为 "priority_" + "数字"，最高优先级为 "priority_1"。参考取值有：
+<li>priority_1：第一优先级；</li>
+<li>priority_2：第二优先级；</li>
+<li>priority_3：第三优先级。</li>其他优先级可以将数字递增，最多可以递增至 "priority_10"。
+        :type Priority: str
+        :param _OriginGroupId: 源站组 ID。
+        :type OriginGroupId: str
+        """
+        self._Priority = None
+        self._OriginGroupId = None
+
+    @property
+    def Priority(self):
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def OriginGroupId(self):
+        return self._OriginGroupId
+
+    @OriginGroupId.setter
+    def OriginGroupId(self, OriginGroupId):
+        self._OriginGroupId = OriginGroupId
+
+
+    def _deserialize(self, params):
+        self._Priority = params.get("Priority")
+        self._OriginGroupId = params.get("OriginGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OriginGroupReference(AbstractModel):
     """源站组引用服务。
 
@@ -22457,6 +23766,55 @@ class OriginGroupReference(AbstractModel):
         self._InstanceType = params.get("InstanceType")
         self._InstanceId = params.get("InstanceId")
         self._InstanceName = params.get("InstanceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OriginHealthStatus(AbstractModel):
+    """源站组里的源站健康状态。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Origin: 源站。
+        :type Origin: str
+        :param _Healthy: 源站健康状态，取值有：
+<li>Healthy：健康；</li>
+<li>Unhealthy：不健康；</li>
+<li>Undetected：未探测到数据。</li>
+
+        :type Healthy: str
+        """
+        self._Origin = None
+        self._Healthy = None
+
+    @property
+    def Origin(self):
+        return self._Origin
+
+    @Origin.setter
+    def Origin(self, Origin):
+        self._Origin = Origin
+
+    @property
+    def Healthy(self):
+        return self._Healthy
+
+    @Healthy.setter
+    def Healthy(self, Healthy):
+        self._Healthy = Healthy
+
+
+    def _deserialize(self, params):
+        self._Origin = params.get("Origin")
+        self._Healthy = params.get("Healthy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28352,6 +29710,9 @@ class ZoneSetting(AbstractModel):
         :param _StandardDebug: 标准 Debug 配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type StandardDebug: :class:`tencentcloud.teo.v20220901.models.StandardDebug`
+        :param _JITVideoProcess: 视频即时处理配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JITVideoProcess: :class:`tencentcloud.teo.v20220901.models.JITVideoProcess`
         """
         self._ZoneName = None
         self._Area = None
@@ -28376,6 +29737,7 @@ class ZoneSetting(AbstractModel):
         self._ImageOptimize = None
         self._AccelerateMainland = None
         self._StandardDebug = None
+        self._JITVideoProcess = None
 
     @property
     def ZoneName(self):
@@ -28561,6 +29923,14 @@ class ZoneSetting(AbstractModel):
     def StandardDebug(self, StandardDebug):
         self._StandardDebug = StandardDebug
 
+    @property
+    def JITVideoProcess(self):
+        return self._JITVideoProcess
+
+    @JITVideoProcess.setter
+    def JITVideoProcess(self, JITVideoProcess):
+        self._JITVideoProcess = JITVideoProcess
+
 
     def _deserialize(self, params):
         self._ZoneName = params.get("ZoneName")
@@ -28628,6 +29998,9 @@ class ZoneSetting(AbstractModel):
         if params.get("StandardDebug") is not None:
             self._StandardDebug = StandardDebug()
             self._StandardDebug._deserialize(params.get("StandardDebug"))
+        if params.get("JITVideoProcess") is not None:
+            self._JITVideoProcess = JITVideoProcess()
+            self._JITVideoProcess._deserialize(params.get("JITVideoProcess"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

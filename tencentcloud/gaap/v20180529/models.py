@@ -7815,7 +7815,18 @@ class DescribeProxyStatisticsRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: 结束时间(2019-03-25 12:00:00)
         :type EndTime: str
-        :param _MetricNames: 统计指标名称列表，支持: 入带宽:InBandwidth, 出带宽:OutBandwidth, 并发:Concurrent, 入包量:InPackets, 出包量:OutPackets, 丢包率:PacketLoss, 延迟:Latency，http请求量：HttpQPS, Https请求量：HttpsQPS
+        :param _MetricNames: 统计指标名称列表，支持: 
+入带宽:InBandwidth, 
+出带宽:OutBandwidth, 
+并发:Concurrent, 
+入包量:InPackets, 
+出包量:OutPackets, 
+丢包率:PacketLoss, 
+延迟:Latency，
+HTTP请求量：HttpQPS, 
+HTTP请求量利用率：HttpQPSPercent,
+HTTPS请求量：HttpsQPS,
+HTTPS请求量利用率：HttpsQPSPercent
         :type MetricNames: list of str
         :param _Granularity: 监控粒度，目前支持60，300，3600，86400，单位：秒。
 当时间范围不超过3天，支持最小粒度60秒；
@@ -9303,7 +9314,7 @@ class DescribeTaskStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID，值为异步接口返回的RequestId
+        :param _TaskId: 任务ID，值为异步接口返回的RequestId，此参数不能传空值。
         :type TaskId: str
         """
         self._TaskId = None
@@ -16413,6 +16424,12 @@ class SetAuthenticationRequest(AbstractModel):
         :type RealServerCertificateDomain: str
         :param _PolyRealServerCertificateIds: 多源站CA证书ID，从证书管理页获取。源站认证时，填写该参数或RealServerCertificateId参数
         :type PolyRealServerCertificateIds: list of str
+        :param _TLSSupportVersion: TLS支持的版本
+支持TLSv1，TLSv1.1,TLSv1.2,TLSv1.3
+        :type TLSSupportVersion: list of str
+        :param _TLSCiphers: 支持的TLS密码套件，可选值为：
+[GAAP_TLS_CIPHERS_WIDE,GAAPTLS_CIPHERS_GENERAL,GAAPTLS_CIPHERS_STRICT]
+        :type TLSCiphers: str
         """
         self._ListenerId = None
         self._Domain = None
@@ -16424,6 +16441,8 @@ class SetAuthenticationRequest(AbstractModel):
         self._RealServerCertificateId = None
         self._RealServerCertificateDomain = None
         self._PolyRealServerCertificateIds = None
+        self._TLSSupportVersion = None
+        self._TLSCiphers = None
 
     @property
     def ListenerId(self):
@@ -16505,6 +16524,22 @@ class SetAuthenticationRequest(AbstractModel):
     def PolyRealServerCertificateIds(self, PolyRealServerCertificateIds):
         self._PolyRealServerCertificateIds = PolyRealServerCertificateIds
 
+    @property
+    def TLSSupportVersion(self):
+        return self._TLSSupportVersion
+
+    @TLSSupportVersion.setter
+    def TLSSupportVersion(self, TLSSupportVersion):
+        self._TLSSupportVersion = TLSSupportVersion
+
+    @property
+    def TLSCiphers(self):
+        return self._TLSCiphers
+
+    @TLSCiphers.setter
+    def TLSCiphers(self, TLSCiphers):
+        self._TLSCiphers = TLSCiphers
+
 
     def _deserialize(self, params):
         self._ListenerId = params.get("ListenerId")
@@ -16517,6 +16552,8 @@ class SetAuthenticationRequest(AbstractModel):
         self._RealServerCertificateId = params.get("RealServerCertificateId")
         self._RealServerCertificateDomain = params.get("RealServerCertificateDomain")
         self._PolyRealServerCertificateIds = params.get("PolyRealServerCertificateIds")
+        self._TLSSupportVersion = params.get("TLSSupportVersion")
+        self._TLSCiphers = params.get("TLSCiphers")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16561,7 +16598,7 @@ class SetTlsVersionRequest(AbstractModel):
         r"""
         :param _ListenerId: 监听器ID
         :type ListenerId: str
-        :param _TLSSupportVersion: TLS版本,可选TLSv1.0、TLSv1.1、TLSv1.2、TLSv1.3
+        :param _TLSSupportVersion: TLS版本,可选TLSv1、TLSv1.1、TLSv1.2、TLSv1.3
         :type TLSSupportVersion: list of str
         :param _TLSCiphers: 密码套件包,可选 GAAP_TLS_CIPHERS_STRICT，GAAP_TLS_CIPHERS_GENERAL，GAAP_TLS_CIPHERS_WIDE(默认)
         :type TLSCiphers: str

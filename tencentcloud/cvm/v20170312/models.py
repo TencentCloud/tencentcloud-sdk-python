@@ -8569,6 +8569,39 @@ class ImageQuota(AbstractModel):
         
 
 
+class ImportImageDataDisk(AbstractModel):
+    """导入镜像的数据盘信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageUrl: 数据盘镜像 COS 链接
+        :type ImageUrl: str
+        """
+        self._ImageUrl = None
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+
+    def _deserialize(self, params):
+        self._ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImportImageRequest(AbstractModel):
     """ImportImage请求参数结构体
 
@@ -8603,6 +8636,8 @@ BYOL: 自带许可（Bring Your Own License）
         :type BootMode: str
         :param _ImageFamily:  镜像族
         :type ImageFamily: str
+        :param _ImportImageDataDiskList: 导入的数据盘列表
+        :type ImportImageDataDiskList: list of ImportImageDataDisk
         """
         self._Architecture = None
         self._OsType = None
@@ -8616,6 +8651,7 @@ BYOL: 自带许可（Bring Your Own License）
         self._LicenseType = None
         self._BootMode = None
         self._ImageFamily = None
+        self._ImportImageDataDiskList = None
 
     @property
     def Architecture(self):
@@ -8713,6 +8749,14 @@ BYOL: 自带许可（Bring Your Own License）
     def ImageFamily(self, ImageFamily):
         self._ImageFamily = ImageFamily
 
+    @property
+    def ImportImageDataDiskList(self):
+        return self._ImportImageDataDiskList
+
+    @ImportImageDataDiskList.setter
+    def ImportImageDataDiskList(self, ImportImageDataDiskList):
+        self._ImportImageDataDiskList = ImportImageDataDiskList
+
 
     def _deserialize(self, params):
         self._Architecture = params.get("Architecture")
@@ -8732,6 +8776,12 @@ BYOL: 自带许可（Bring Your Own License）
         self._LicenseType = params.get("LicenseType")
         self._BootMode = params.get("BootMode")
         self._ImageFamily = params.get("ImageFamily")
+        if params.get("ImportImageDataDiskList") is not None:
+            self._ImportImageDataDiskList = []
+            for item in params.get("ImportImageDataDiskList"):
+                obj = ImportImageDataDisk()
+                obj._deserialize(item)
+                self._ImportImageDataDiskList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18152,12 +18202,22 @@ class SyncImagesRequest(AbstractModel):
         :param _ImageSetRequired: 是否需要返回目的地域的镜像ID。
 默认值: false
         :type ImageSetRequired: bool
+        :param _Encrypt: 是否复制为加密自定义镜像。
+默认值为 false。
+复制加密自定义镜像仅支持同地域。
+        :type Encrypt: bool
+        :param _KmsKeyId: 加密自定义镜像使用的 KMS 密钥 ID。
+仅当复制加密镜像时，即 Encrypt 为 true 时，此参数有效；
+不指定 KmsKeyId，默认使用 CBS 云产品 KMS 密钥。
+        :type KmsKeyId: str
         """
         self._ImageIds = None
         self._DestinationRegions = None
         self._DryRun = None
         self._ImageName = None
         self._ImageSetRequired = None
+        self._Encrypt = None
+        self._KmsKeyId = None
 
     @property
     def ImageIds(self):
@@ -18199,6 +18259,22 @@ class SyncImagesRequest(AbstractModel):
     def ImageSetRequired(self, ImageSetRequired):
         self._ImageSetRequired = ImageSetRequired
 
+    @property
+    def Encrypt(self):
+        return self._Encrypt
+
+    @Encrypt.setter
+    def Encrypt(self, Encrypt):
+        self._Encrypt = Encrypt
+
+    @property
+    def KmsKeyId(self):
+        return self._KmsKeyId
+
+    @KmsKeyId.setter
+    def KmsKeyId(self, KmsKeyId):
+        self._KmsKeyId = KmsKeyId
+
 
     def _deserialize(self, params):
         self._ImageIds = params.get("ImageIds")
@@ -18206,6 +18282,8 @@ class SyncImagesRequest(AbstractModel):
         self._DryRun = params.get("DryRun")
         self._ImageName = params.get("ImageName")
         self._ImageSetRequired = params.get("ImageSetRequired")
+        self._Encrypt = params.get("Encrypt")
+        self._KmsKeyId = params.get("KmsKeyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

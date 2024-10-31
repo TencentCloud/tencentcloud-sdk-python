@@ -258,220 +258,6 @@ class CosRegionInfo(AbstractModel):
         
 
 
-class CreateAuditRequest(AbstractModel):
-    """CreateAudit请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _IsEnableCmqNotify: 是否开启cmq消息通知。1：是，0：否。目前仅支持cmq的队列服务。如果开启cmq消息通知服务，云审计会将您的日志内容实时投递到您指定地域的指定队列中。
-        :type IsEnableCmqNotify: int
-        :param _ReadWriteAttribute: 管理事件的读写属性。1：只读，2：只写，3：全部。
-        :type ReadWriteAttribute: int
-        :param _AuditName: 跟踪集名称。3-128字符，只能包含 ASCII 编码字母 a-z，A-Z，数字 0-9，下划线 _。
-        :type AuditName: str
-        :param _CosRegion: cos地域。目前支持的地域可以使用ListCosEnableRegion来获取。
-        :type CosRegion: str
-        :param _IsCreateNewBucket: 是否创建新的cos存储桶。1：是，0：否。
-        :type IsCreateNewBucket: int
-        :param _CosBucketName: cos的存储桶名称。仅支持小写英文字母和数字即[a-z，0-9]、中划线“-”及其组合。用户自定义的字符串支持1 - 40个字符。存储桶命名不能以“-”开头或结尾。如果不是新创建的存储桶，云审计不会去校验该存储桶是否真的存在，请谨慎填写，避免日志投递不成功，导致您的数据丢失。
-        :type CosBucketName: str
-        :param _KeyId: CMK的全局唯一标识符，如果不是新创建的kms，该值是必填值。可以通过ListKeyAliasByRegion来获取。云审计不会校验KeyId的合法性，请您谨慎填写，避免给您的数据造成损失。
-        :type KeyId: str
-        :param _CmqQueueName: 队列名称。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。如果IsEnableCmqNotify值是1的话，此值属于必填字段。如果不是新创建的队列，云审计不会去校验该队列是否真的存在，请谨慎填写，避免日志通知不成功，导致您的数据丢失。
-        :type CmqQueueName: str
-        :param _KmsRegion: kms地域。目前支持的地域可以使用ListKmsEnableRegion来获取。必须要和cos的地域保持一致。
-        :type KmsRegion: str
-        :param _IsEnableKmsEncry: 是否开启kms加密。1：是，0：否。如果开启KMS加密，数据在投递到cos时，会将数据加密。
-        :type IsEnableKmsEncry: int
-        :param _CmqRegion: 队列所在的地域。可以通过ListCmqEnableRegion获取支持的cmq地域。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
-        :type CmqRegion: str
-        :param _LogFilePrefix: 日志文件前缀。3-40个字符，只能包含 ASCII 编码字母 a-z，A-Z，数字 0-9。可以不填，默认以账号ID作为日志前缀。
-        :type LogFilePrefix: str
-        :param _IsCreateNewQueue: 是否创建新的队列。1：是，0：否。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
-        :type IsCreateNewQueue: int
-        """
-        self._IsEnableCmqNotify = None
-        self._ReadWriteAttribute = None
-        self._AuditName = None
-        self._CosRegion = None
-        self._IsCreateNewBucket = None
-        self._CosBucketName = None
-        self._KeyId = None
-        self._CmqQueueName = None
-        self._KmsRegion = None
-        self._IsEnableKmsEncry = None
-        self._CmqRegion = None
-        self._LogFilePrefix = None
-        self._IsCreateNewQueue = None
-
-    @property
-    def IsEnableCmqNotify(self):
-        return self._IsEnableCmqNotify
-
-    @IsEnableCmqNotify.setter
-    def IsEnableCmqNotify(self, IsEnableCmqNotify):
-        self._IsEnableCmqNotify = IsEnableCmqNotify
-
-    @property
-    def ReadWriteAttribute(self):
-        return self._ReadWriteAttribute
-
-    @ReadWriteAttribute.setter
-    def ReadWriteAttribute(self, ReadWriteAttribute):
-        self._ReadWriteAttribute = ReadWriteAttribute
-
-    @property
-    def AuditName(self):
-        return self._AuditName
-
-    @AuditName.setter
-    def AuditName(self, AuditName):
-        self._AuditName = AuditName
-
-    @property
-    def CosRegion(self):
-        return self._CosRegion
-
-    @CosRegion.setter
-    def CosRegion(self, CosRegion):
-        self._CosRegion = CosRegion
-
-    @property
-    def IsCreateNewBucket(self):
-        return self._IsCreateNewBucket
-
-    @IsCreateNewBucket.setter
-    def IsCreateNewBucket(self, IsCreateNewBucket):
-        self._IsCreateNewBucket = IsCreateNewBucket
-
-    @property
-    def CosBucketName(self):
-        return self._CosBucketName
-
-    @CosBucketName.setter
-    def CosBucketName(self, CosBucketName):
-        self._CosBucketName = CosBucketName
-
-    @property
-    def KeyId(self):
-        return self._KeyId
-
-    @KeyId.setter
-    def KeyId(self, KeyId):
-        self._KeyId = KeyId
-
-    @property
-    def CmqQueueName(self):
-        return self._CmqQueueName
-
-    @CmqQueueName.setter
-    def CmqQueueName(self, CmqQueueName):
-        self._CmqQueueName = CmqQueueName
-
-    @property
-    def KmsRegion(self):
-        return self._KmsRegion
-
-    @KmsRegion.setter
-    def KmsRegion(self, KmsRegion):
-        self._KmsRegion = KmsRegion
-
-    @property
-    def IsEnableKmsEncry(self):
-        return self._IsEnableKmsEncry
-
-    @IsEnableKmsEncry.setter
-    def IsEnableKmsEncry(self, IsEnableKmsEncry):
-        self._IsEnableKmsEncry = IsEnableKmsEncry
-
-    @property
-    def CmqRegion(self):
-        return self._CmqRegion
-
-    @CmqRegion.setter
-    def CmqRegion(self, CmqRegion):
-        self._CmqRegion = CmqRegion
-
-    @property
-    def LogFilePrefix(self):
-        return self._LogFilePrefix
-
-    @LogFilePrefix.setter
-    def LogFilePrefix(self, LogFilePrefix):
-        self._LogFilePrefix = LogFilePrefix
-
-    @property
-    def IsCreateNewQueue(self):
-        return self._IsCreateNewQueue
-
-    @IsCreateNewQueue.setter
-    def IsCreateNewQueue(self, IsCreateNewQueue):
-        self._IsCreateNewQueue = IsCreateNewQueue
-
-
-    def _deserialize(self, params):
-        self._IsEnableCmqNotify = params.get("IsEnableCmqNotify")
-        self._ReadWriteAttribute = params.get("ReadWriteAttribute")
-        self._AuditName = params.get("AuditName")
-        self._CosRegion = params.get("CosRegion")
-        self._IsCreateNewBucket = params.get("IsCreateNewBucket")
-        self._CosBucketName = params.get("CosBucketName")
-        self._KeyId = params.get("KeyId")
-        self._CmqQueueName = params.get("CmqQueueName")
-        self._KmsRegion = params.get("KmsRegion")
-        self._IsEnableKmsEncry = params.get("IsEnableKmsEncry")
-        self._CmqRegion = params.get("CmqRegion")
-        self._LogFilePrefix = params.get("LogFilePrefix")
-        self._IsCreateNewQueue = params.get("IsCreateNewQueue")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateAuditResponse(AbstractModel):
-    """CreateAudit返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _IsSuccess: 是否创建成功。
-        :type IsSuccess: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._IsSuccess = None
-        self._RequestId = None
-
-    @property
-    def IsSuccess(self):
-        return self._IsSuccess
-
-    @IsSuccess.setter
-    def IsSuccess(self, IsSuccess):
-        self._IsSuccess = IsSuccess
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._IsSuccess = params.get("IsSuccess")
-        self._RequestId = params.get("RequestId")
-
-
 class CreateAuditTrackRequest(AbstractModel):
     """CreateAuditTrack请求参数结构体
 
@@ -588,7 +374,7 @@ class CreateAuditTrackResponse(AbstractModel):
         r"""
         :param _TrackId: 跟踪集 ID
         :type TrackId: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TrackId = None
@@ -616,29 +402,81 @@ class CreateAuditTrackResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class DeleteAuditRequest(AbstractModel):
-    """DeleteAudit请求参数结构体
+class CreateEventsAuditTrackRequest(AbstractModel):
+    """CreateEventsAuditTrack请求参数结构体
 
     """
 
     def __init__(self):
         r"""
-        :param _AuditName: 跟踪集名称
-        :type AuditName: str
+        :param _Name: 跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符
+        :type Name: str
+        :param _Status: 跟踪集状态（未开启：0；开启：1）
+        :type Status: int
+        :param _Storage: 数据投递存储（目前支持 cos、cls）
+        :type Storage: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
+        :param _Filters: 数据过滤条件
+        :type Filters: :class:`tencentcloud.cloudaudit.v20190319.models.Filter`
+        :param _TrackForAllMembers: 是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能) 
+        :type TrackForAllMembers: int
         """
-        self._AuditName = None
+        self._Name = None
+        self._Status = None
+        self._Storage = None
+        self._Filters = None
+        self._TrackForAllMembers = None
 
     @property
-    def AuditName(self):
-        return self._AuditName
+    def Name(self):
+        return self._Name
 
-    @AuditName.setter
-    def AuditName(self, AuditName):
-        self._AuditName = AuditName
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Storage(self):
+        return self._Storage
+
+    @Storage.setter
+    def Storage(self, Storage):
+        self._Storage = Storage
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def TrackForAllMembers(self):
+        return self._TrackForAllMembers
+
+    @TrackForAllMembers.setter
+    def TrackForAllMembers(self, TrackForAllMembers):
+        self._TrackForAllMembers = TrackForAllMembers
 
 
     def _deserialize(self, params):
-        self._AuditName = params.get("AuditName")
+        self._Name = params.get("Name")
+        self._Status = params.get("Status")
+        if params.get("Storage") is not None:
+            self._Storage = Storage()
+            self._Storage._deserialize(params.get("Storage"))
+        if params.get("Filters") is not None:
+            self._Filters = Filter()
+            self._Filters._deserialize(params.get("Filters"))
+        self._TrackForAllMembers = params.get("TrackForAllMembers")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -649,28 +487,28 @@ class DeleteAuditRequest(AbstractModel):
         
 
 
-class DeleteAuditResponse(AbstractModel):
-    """DeleteAudit返回参数结构体
+class CreateEventsAuditTrackResponse(AbstractModel):
+    """CreateEventsAuditTrack返回参数结构体
 
     """
 
     def __init__(self):
         r"""
-        :param _IsSuccess: 是否删除成功
-        :type IsSuccess: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _TrackId: 跟踪集 ID
+        :type TrackId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self._IsSuccess = None
+        self._TrackId = None
         self._RequestId = None
 
     @property
-    def IsSuccess(self):
-        return self._IsSuccess
+    def TrackId(self):
+        return self._TrackId
 
-    @IsSuccess.setter
-    def IsSuccess(self, IsSuccess):
-        self._IsSuccess = IsSuccess
+    @TrackId.setter
+    def TrackId(self, TrackId):
+        self._TrackId = TrackId
 
     @property
     def RequestId(self):
@@ -682,7 +520,7 @@ class DeleteAuditResponse(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._IsSuccess = params.get("IsSuccess")
+        self._TrackId = params.get("TrackId")
         self._RequestId = params.get("RequestId")
 
 
@@ -726,7 +564,7 @@ class DeleteAuditTrackResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -810,7 +648,7 @@ class DescribeAuditResponse(AbstractModel):
         :type CmqRegion: str
         :param _LogFilePrefix: 日志前缀。
         :type LogFilePrefix: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._IsEnableCmqNotify = None
@@ -1015,7 +853,10 @@ class DescribeAuditTrackResponse(AbstractModel):
         :param _TrackForAllMembers: 是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号
 注意：此字段可能返回 null，表示取不到有效值。
         :type TrackForAllMembers: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _Filters: 数据投递过滤条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Filters: :class:`tencentcloud.cloudaudit.v20190319.models.Filter`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Name = None
@@ -1026,6 +867,7 @@ class DescribeAuditTrackResponse(AbstractModel):
         self._Storage = None
         self._CreateTime = None
         self._TrackForAllMembers = None
+        self._Filters = None
         self._RequestId = None
 
     @property
@@ -1093,6 +935,14 @@ class DescribeAuditTrackResponse(AbstractModel):
         self._TrackForAllMembers = TrackForAllMembers
 
     @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -1112,6 +962,9 @@ class DescribeAuditTrackResponse(AbstractModel):
             self._Storage._deserialize(params.get("Storage"))
         self._CreateTime = params.get("CreateTime")
         self._TrackForAllMembers = params.get("TrackForAllMembers")
+        if params.get("Filters") is not None:
+            self._Filters = Filter()
+            self._Filters._deserialize(params.get("Filters"))
         self._RequestId = params.get("RequestId")
 
 
@@ -1171,7 +1024,7 @@ class DescribeAuditTracksResponse(AbstractModel):
         :type Tracks: list of Tracks
         :param _TotalCount: 总数目
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Tracks = None
@@ -1329,7 +1182,7 @@ class DescribeEventsResponse(AbstractModel):
         :param _TotalCount: 此字段已经废弃。翻页请使用ListOver配合NextToken，在ListOver为false进行下一页数据读取。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ListOver = None
@@ -1621,6 +1474,45 @@ class Event(AbstractModel):
         
 
 
+class Filter(AbstractModel):
+    """跟踪集数据投递筛选条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceFields: 资源筛选条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceFields: list of ResourceField
+        """
+        self._ResourceFields = None
+
+    @property
+    def ResourceFields(self):
+        return self._ResourceFields
+
+    @ResourceFields.setter
+    def ResourceFields(self, ResourceFields):
+        self._ResourceFields = ResourceFields
+
+
+    def _deserialize(self, params):
+        if params.get("ResourceFields") is not None:
+            self._ResourceFields = []
+            for item in params.get("ResourceFields"):
+                obj = ResourceField()
+                obj._deserialize(item)
+                self._ResourceFields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GetAttributeKeyRequest(AbstractModel):
     """GetAttributeKey请求参数结构体
 
@@ -1663,7 +1555,7 @@ class GetAttributeKeyResponse(AbstractModel):
         r"""
         :param _AttributeKeyDetails: AttributeKey的有效取值范围
         :type AttributeKeyDetails: list of AttributeKeyDetail
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AttributeKeyDetails = None
@@ -1711,7 +1603,7 @@ class InquireAuditCreditResponse(AbstractModel):
         r"""
         :param _AuditAmount: 可创建跟踪集的数量
         :type AuditAmount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AuditAmount = None
@@ -1800,7 +1692,7 @@ class ListAuditsResponse(AbstractModel):
         :param _AuditSummarys: 查询跟踪集概要集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type AuditSummarys: list of AuditSummary
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AuditSummarys = None
@@ -1875,7 +1767,7 @@ class ListCmqEnableRegionResponse(AbstractModel):
         r"""
         :param _EnableRegions: 云审计支持的cmq的可用区
         :type EnableRegions: list of CmqRegionInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._EnableRegions = None
@@ -1950,7 +1842,7 @@ class ListCosEnableRegionResponse(AbstractModel):
         r"""
         :param _EnableRegions: 云审计支持的cos可用区
         :type EnableRegions: list of CosRegionInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._EnableRegions = None
@@ -2051,7 +1943,7 @@ class ListKeyAliasByRegionResponse(AbstractModel):
         :type TotalCount: int
         :param _KeyMetadatas: 密钥别名
         :type KeyMetadatas: list of KeyMetadata
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -2208,7 +2100,7 @@ class LookUpEventsResponse(AbstractModel):
         :param _ListOver: 日志集合是否结束
 注意：此字段可能返回 null，表示取不到有效值。
         :type ListOver: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._NextToken = None
@@ -2432,7 +2324,129 @@ class ModifyAuditTrackResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyEventsAuditTrackRequest(AbstractModel):
+    """ModifyEventsAuditTrack请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TrackId: 跟踪集 ID
+        :type TrackId: int
+        :param _Name: 跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符
+        :type Name: str
+        :param _Status: 跟踪集状态（未开启：0；开启：1）
+        :type Status: int
+        :param _Storage: 数据投递存储（目前支持 cos、cls）
+        :type Storage: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
+        :param _TrackForAllMembers: 是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能)
+        :type TrackForAllMembers: int
+        :param _Filters: 多产品筛选过滤条件
+        :type Filters: :class:`tencentcloud.cloudaudit.v20190319.models.Filter`
+        """
+        self._TrackId = None
+        self._Name = None
+        self._Status = None
+        self._Storage = None
+        self._TrackForAllMembers = None
+        self._Filters = None
+
+    @property
+    def TrackId(self):
+        return self._TrackId
+
+    @TrackId.setter
+    def TrackId(self, TrackId):
+        self._TrackId = TrackId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Storage(self):
+        return self._Storage
+
+    @Storage.setter
+    def Storage(self, Storage):
+        self._Storage = Storage
+
+    @property
+    def TrackForAllMembers(self):
+        return self._TrackForAllMembers
+
+    @TrackForAllMembers.setter
+    def TrackForAllMembers(self, TrackForAllMembers):
+        self._TrackForAllMembers = TrackForAllMembers
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._TrackId = params.get("TrackId")
+        self._Name = params.get("Name")
+        self._Status = params.get("Status")
+        if params.get("Storage") is not None:
+            self._Storage = Storage()
+            self._Storage._deserialize(params.get("Storage"))
+        self._TrackForAllMembers = params.get("TrackForAllMembers")
+        if params.get("Filters") is not None:
+            self._Filters = Filter()
+            self._Filters._deserialize(params.get("Filters"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyEventsAuditTrackResponse(AbstractModel):
+    """ModifyEventsAuditTrack返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -2497,6 +2511,66 @@ class Resource(AbstractModel):
         
 
 
+class ResourceField(AbstractModel):
+    """资源筛选条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceType: 跟踪事件所属产品（支持全部产品或单个产品，如：cam，全部：*）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceType: str
+        :param _ActionType: 跟踪事件类型（读：Read；写：Write；全部：*）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActionType: str
+        :param _EventNames: 跟踪事件接口名列表（ResourceType为 * 时，EventNames必须为全部：[""]；指定ResourceType时，支持全部接口：[""]；支持部分接口：["cos", "cls"]，接口列表上限10个）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventNames: list of str
+        """
+        self._ResourceType = None
+        self._ActionType = None
+        self._EventNames = None
+
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def EventNames(self):
+        return self._EventNames
+
+    @EventNames.setter
+    def EventNames(self, EventNames):
+        self._EventNames = EventNames
+
+
+    def _deserialize(self, params):
+        self._ResourceType = params.get("ResourceType")
+        self._ActionType = params.get("ActionType")
+        self._EventNames = params.get("EventNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StartLoggingRequest(AbstractModel):
     """StartLogging请求参数结构体
 
@@ -2539,7 +2613,7 @@ class StartLoggingResponse(AbstractModel):
         r"""
         :param _IsSuccess: 是否开启成功
         :type IsSuccess: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._IsSuccess = None
@@ -2609,7 +2683,7 @@ class StopLoggingResponse(AbstractModel):
         r"""
         :param _IsSuccess: 是否关闭成功
         :type IsSuccess: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._IsSuccess = None
@@ -3037,7 +3111,7 @@ class UpdateAuditResponse(AbstractModel):
         r"""
         :param _IsSuccess: 是否更新成功
         :type IsSuccess: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._IsSuccess = None

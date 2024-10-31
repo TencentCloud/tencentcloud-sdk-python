@@ -73,7 +73,7 @@ class CdbClient(AbstractClient):
 
 
     def AdjustCdbProxyAddress(self, request):
-        """调整数据库代理地址配置
+        """本接口（AdjustCdbProxyAddress）用于调整数据库代理地址配置。
 
         :param request: Request instance for AdjustCdbProxyAddress.
         :type request: :class:`tencentcloud.cdb.v20170320.models.AdjustCdbProxyAddressRequest`

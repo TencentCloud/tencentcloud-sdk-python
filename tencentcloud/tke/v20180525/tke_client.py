@@ -4350,6 +4350,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyClusterImage(self, request):
+        """修改集群镜像
+
+        :param request: Request instance for ModifyClusterImage.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterImageRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ModifyClusterImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyClusterImage", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyClusterImageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyClusterNodePool(self, request):
         """编辑节点池
 

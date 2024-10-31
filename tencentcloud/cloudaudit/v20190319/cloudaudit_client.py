@@ -26,33 +26,6 @@ class CloudauditClient(AbstractClient):
     _service = 'cloudaudit'
 
 
-    def CreateAudit(self, request):
-        """参数要求：
-        1、如果IsCreateNewBucket的值存在的话，cosRegion和cosBucketName都是必填参数。
-        2、如果IsEnableCmqNotify的值是1的话，IsCreateNewQueue、CmqRegion和CmqQueueName都是必填参数。
-        3、如果IsEnableCmqNotify的值是0的话，IsCreateNewQueue、CmqRegion和CmqQueueName都不能传。
-        4、如果IsEnableKmsEncry的值是1的话，KmsRegion和KeyId属于必填项
-
-        :param request: Request instance for CreateAudit.
-        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.CreateAuditRequest`
-        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.CreateAuditResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateAudit", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateAuditResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreateAuditTrack(self, request):
         """创建操作审计跟踪集
 
@@ -76,20 +49,20 @@ class CloudauditClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DeleteAudit(self, request):
-        """删除跟踪集
+    def CreateEventsAuditTrack(self, request):
+        """创建操作审计跟踪集
 
-        :param request: Request instance for DeleteAudit.
-        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.DeleteAuditRequest`
-        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.DeleteAuditResponse`
+        :param request: Request instance for CreateEventsAuditTrack.
+        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.CreateEventsAuditTrackRequest`
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.CreateEventsAuditTrackResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DeleteAudit", params, headers=headers)
+            body = self.call("CreateEventsAuditTrack", params, headers=headers)
             response = json.loads(body)
-            model = models.DeleteAuditResponse()
+            model = models.CreateEventsAuditTrackResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -389,6 +362,29 @@ class CloudauditClient(AbstractClient):
             body = self.call("ModifyAuditTrack", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAuditTrackResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyEventsAuditTrack(self, request):
+        """修改操作审计跟踪集
+
+        :param request: Request instance for ModifyEventsAuditTrack.
+        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.ModifyEventsAuditTrackRequest`
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.ModifyEventsAuditTrackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyEventsAuditTrack", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyEventsAuditTrackResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

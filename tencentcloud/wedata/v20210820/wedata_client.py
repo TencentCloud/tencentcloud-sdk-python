@@ -1590,6 +1590,52 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDataServicePublishedApiDetail(self, request):
+        """查询数据服务API的发布态信息
+
+        :param request: Request instance for DescribeDataServicePublishedApiDetail.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDataServicePublishedApiDetailRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeDataServicePublishedApiDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataServicePublishedApiDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataServicePublishedApiDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDataServicePublishedApiList(self, request):
+        """获取数据服务API的发布态信息列表
+
+        :param request: Request instance for DescribeDataServicePublishedApiList.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDataServicePublishedApiListRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeDataServicePublishedApiListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataServicePublishedApiList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataServicePublishedApiListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDataSourceInfoList(self, request):
         """获取数据源信息-数据源分页列表
 

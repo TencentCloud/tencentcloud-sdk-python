@@ -157,6 +157,91 @@ class ActiveCarrierPrivilegeNumber(AbstractModel):
         
 
 
+class AsrData(AbstractModel):
+    """语音转文本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _User: 用户方
+        :type User: str
+        :param _Message: 消息内容
+        :type Message: str
+        :param _Timestamp: 时间戳
+        :type Timestamp: int
+        :param _Start: 句子开始时间，Unix 毫秒时间戳
+        :type Start: int
+        :param _End: 句子结束时间，Unix 毫秒时间戳
+        :type End: int
+        """
+        self._User = None
+        self._Message = None
+        self._Timestamp = None
+        self._Start = None
+        self._End = None
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Timestamp(self):
+        warnings.warn("parameter `Timestamp` is deprecated", DeprecationWarning) 
+
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        warnings.warn("parameter `Timestamp` is deprecated", DeprecationWarning) 
+
+        self._Timestamp = Timestamp
+
+    @property
+    def Start(self):
+        return self._Start
+
+    @Start.setter
+    def Start(self, Start):
+        self._Start = Start
+
+    @property
+    def End(self):
+        return self._End
+
+    @End.setter
+    def End(self, End):
+        self._End = End
+
+
+    def _deserialize(self, params):
+        self._User = params.get("User")
+        self._Message = params.get("Message")
+        self._Timestamp = params.get("Timestamp")
+        self._Start = params.get("Start")
+        self._End = params.get("End")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AudioFileInfo(AbstractModel):
     """音频文件审核信息
 
@@ -165,16 +250,12 @@ class AudioFileInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _FileId: 文件ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileId: int
         :param _CustomFileName: 文件别名
-注意：此字段可能返回 null，表示取不到有效值。
         :type CustomFileName: str
         :param _AudioFileName: 文件名
-注意：此字段可能返回 null，表示取不到有效值。
         :type AudioFileName: str
         :param _Status: 审核状态，0-未审核，1-审核通过，2-审核拒绝
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         """
         self._FileId = None
@@ -949,7 +1030,6 @@ class CarrierPrivilegeNumberApplicant(AbstractModel):
         :param _Callees: 被叫号码列表
         :type Callees: list of str
         :param _Description: 描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _State: 审批状态:1 待审核、2 通过、3 拒绝
         :type State: int
@@ -1059,73 +1139,50 @@ class CompanyApplyInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _ApplicantType: 申请人身份，0-公司法定代表人，1-经办人（受法定代表人委托）
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicantType: int
         :param _CompanyName: 企业名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type CompanyName: str
         :param _BusinessId: 统一社会信用代码
-注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessId: str
         :param _BusinessIdPicUrl: 营业执照扫描件(加盖公章)。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
-注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessIdPicUrl: str
         :param _CorporationName: 法定代表人名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type CorporationName: str
         :param _CorporationId: 法定代表人身份证号码
-注意：此字段可能返回 null，表示取不到有效值。
         :type CorporationId: str
         :param _CorporationIdPicUrl: 法定代表人身份证正反面扫描件。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
-注意：此字段可能返回 null，表示取不到有效值。
         :type CorporationIdPicUrl: str
         :param _NetworkCommitmentPicUrl: 安全合规使用承诺书。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
-注意：此字段可能返回 null，表示取不到有效值。
         :type NetworkCommitmentPicUrl: str
         :param _IsEqualTencentCloud: 是否与腾讯云账号的资质一致,0-不一致,1-一致
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsEqualTencentCloud: int
         :param _CorporationMobile: 法定代表人手机号
-注意：此字段可能返回 null，表示取不到有效值。
         :type CorporationMobile: str
         :param _CorporationMobilePicUrl: 法定代表人手机号码实名认证。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
-注意：此字段可能返回 null，表示取不到有效值。
         :type CorporationMobilePicUrl: str
         :param _UseDescribeFileUrl: 通话话术。(支持doc、docx格式的文档不超过50MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
-注意：此字段可能返回 null，表示取不到有效值。
         :type UseDescribeFileUrl: str
         :param _CompanyAuthLetterPicUrl: 公司授权函。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
-注意：此字段可能返回 null，表示取不到有效值。
         :type CompanyAuthLetterPicUrl: str
         :param _AcceptPicUrl: 电话受理单。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
-注意：此字段可能返回 null，表示取不到有效值。
         :type AcceptPicUrl: str
         :param _CorporationHoldingOnIdPicUrl: 法定代表人手持身份证照，申请人类型为法定代表人时必填。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
-注意：此字段可能返回 null，表示取不到有效值。
         :type CorporationHoldingOnIdPicUrl: str
         :param _OperatorName: 经办人名称，申请人类型为经办人时必填。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OperatorName: str
         :param _OperatorId: 经办人证件号码，申请人类型为经办人时必填。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OperatorId: str
         :param _OperatorIdPicUrl: 经办人身份证正反面扫描件，申请人类型为经办人时必填。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
-注意：此字段可能返回 null，表示取不到有效值。
         :type OperatorIdPicUrl: str
         :param _OperatorHoldingOnIdPicUrl: 经办人手持身份证照，申请人类型为经办人时必填。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
-注意：此字段可能返回 null，表示取不到有效值。
         :type OperatorHoldingOnIdPicUrl: str
         :param _CommissionPicUrl: 委托授权书，申请人类型为经办人时必填。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
-注意：此字段可能返回 null，表示取不到有效值。
         :type CommissionPicUrl: str
         :param _OperatorMobile: 经办人手机号，申请人类型为经办人时必填。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OperatorMobile: str
         :param _OperatorEmail: 经办人邮箱，申请人类型为经办人时必填。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OperatorEmail: str
         :param _OperatorMobilePicUrl: 经办人手机号码实名认证，申请人类型为经办人时必填。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
-注意：此字段可能返回 null，表示取不到有效值。
         :type OperatorMobilePicUrl: str
         """
         self._ApplicantType = None
@@ -1381,25 +1438,18 @@ class CompanyStateInfo(AbstractModel):
         :param _Id: 申请单ID
         :type Id: int
         :param _CompanyName: 公司名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type CompanyName: str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
         :param _CheckTime: 审核时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckTime: int
         :param _CheckMsg: 审核备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckMsg: str
         :param _State: 审核状态，1-待审核，2-审核通过，3-驳回
-注意：此字段可能返回 null，表示取不到有效值。
         :type State: int
         :param _BusinessId: 公司统一社会信用代码
-注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessId: str
         :param _ModifyTime: 修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyTime: int
         """
         self._Id = None
@@ -1518,7 +1568,7 @@ azure
         :param _APIKey: API密钥
         :type APIKey: str
         :param _APIUrl: API URL，仅支持兼容openai协议的模型，填写url时后缀不要带/chat/completions；
-llmType为azure时,URL填写格式需为：https://{your-resource-name}.openai.azure.com?api-version={api-version},填写url时后缀不要带/openai/deployments/{deployment-id}/chat/completions，系统会自动帮你填充后缀
+llmType为azure时,URL填写格式需为：https://{your-resource-name}.openai.azure.com?api-version={api-version},填写url时后缀不要带/openai/deployments/{deployment-id}/chat/completions，系统会自动帮您填充后缀
         :type APIUrl: str
         :param _VoiceType: 音色，目前仅支持以下音色:
 汉语：
@@ -2236,7 +2286,7 @@ class CreateCCCSkillGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: 应用 ID（必填）
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
         :param _SkillGroupName: 技能组名称
         :type SkillGroupName: str
@@ -2501,7 +2551,7 @@ class CreateCarrierPrivilegeNumberApplicantRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: SdkAppId
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
         :param _Callers: 主叫号码，必须为实例中存在的号码，格式为0086xxxx（暂时只支持国内号码）
         :type Callers: list of str
@@ -2679,7 +2729,7 @@ class CreateExtensionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: TCCC 实例应用 ID
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
         :param _ExtensionId: 分机号
         :type ExtensionId: str
@@ -3426,7 +3476,6 @@ class CreateStaffResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ErrorStaffList: 错误坐席列表及错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorStaffList: list of ErrStaffItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3574,7 +3623,7 @@ class DeleteExtensionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: TCCC 实例应用 ID
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
         :param _ExtensionId: 分机号
         :type ExtensionId: str
@@ -3760,7 +3809,6 @@ class DeleteStaffResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _OnlineStaffList: 无法删除的状态为在线的客服列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type OnlineStaffList: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3797,7 +3845,7 @@ class DescribeActiveCarrierPrivilegeNumberRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: 实例Id
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
         :param _PageNumber: 默认0
         :type PageNumber: int
@@ -4480,7 +4528,7 @@ class DescribeCarrierPrivilegeNumberApplicantsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: 实例Id
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
         :param _PageNumber: 默认0，从0开始
         :type PageNumber: int
@@ -4724,7 +4772,6 @@ class DescribeChatMessagesResponse(AbstractModel):
         :param _TotalCount: 总记录数
         :type TotalCount: int
         :param _Messages: 消息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Messages: list of MessageBody
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4858,7 +4905,6 @@ class DescribeCompanyListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _CompanyInfo: 企业资质审核信息
         :type CompanyInfo: list of CompanyStateInfo
@@ -4912,7 +4958,7 @@ class DescribeExtensionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: TCCC 实例应用 ID
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
         :param _ExtensionId: 分机号
         :type ExtensionId: str
@@ -5042,7 +5088,7 @@ class DescribeExtensionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: TCCC 实例应用 ID
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
         :param _PageNumber: 分页页号（从0开始）
         :type PageNumber: int
@@ -5285,7 +5331,6 @@ class DescribeIMCdrListResponse(AbstractModel):
         :param _TotalCount: 总记录数
         :type TotalCount: int
         :param _IMCdrList: 服务记录列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type IMCdrList: list of IMCdrInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6094,28 +6139,20 @@ class DescribePredictiveDialingCampaignsElement(AbstractModel):
     def __init__(self):
         r"""
         :param _CampaignId: 任务 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CampaignId: int
         :param _Name: 任务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Status: 任务状态 0 待开始 1 进行中 2 已暂停 3 已终止 4 已完成
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _StatusReason: 任务状态原因 0 正常 1 手动结束 2 超时结束
-注意：此字段可能返回 null，表示取不到有效值。
         :type StatusReason: int
         :param _CalleeCount: 被叫号码个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type CalleeCount: int
         :param _FinishedCalleeCount: 已完成的被叫个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type FinishedCalleeCount: int
         :param _Priority: 相同应用内多个任务运行优先级，从高到底 1 - 5
-注意：此字段可能返回 null，表示取不到有效值。
         :type Priority: int
         :param _SkillGroupId: 使用的座席技能组 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type SkillGroupId: int
         """
         self._CampaignId = None
@@ -6300,10 +6337,8 @@ class DescribePredictiveDialingCampaignsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 数据总量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _CampaignList: 数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type CampaignList: list of DescribePredictiveDialingCampaignsElement
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7417,6 +7452,94 @@ class DescribeTelCdrResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTelRecordAsrRequest(AbstractModel):
+    """DescribeTelRecordAsr请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param _SessionId: 会话 ID
+        :type SessionId: str
+        """
+        self._SdkAppId = None
+        self._SessionId = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTelRecordAsrResponse(AbstractModel):
+    """DescribeTelRecordAsr返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AsrDataList: 录音转文本信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsrDataList: list of AsrData
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AsrDataList = None
+        self._RequestId = None
+
+    @property
+    def AsrDataList(self):
+        return self._AsrDataList
+
+    @AsrDataList.setter
+    def AsrDataList(self, AsrDataList):
+        self._AsrDataList = AsrDataList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AsrDataList") is not None:
+            self._AsrDataList = []
+            for item in params.get("AsrDataList"):
+                obj = AsrData()
+                obj._deserialize(item)
+                self._AsrDataList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTelSessionRequest(AbstractModel):
     """DescribeTelSession请求参数结构体
 
@@ -7845,7 +7968,7 @@ class HangUpCallRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: TCCC 实例应用 ID
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
         :param _SessionId: 会话ID
         :type SessionId: str
@@ -7939,13 +8062,10 @@ class IMCdrInfo(AbstractModel):
         :param _Timestamp: 服务时间戳
         :type Timestamp: int
         :param _SessionId: 会话ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type SessionId: str
         :param _SkillGroupId: 技能组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type SkillGroupId: str
         :param _SkillGroupName: 技能组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type SkillGroupName: str
         :param _Satisfaction: 满意度
 注意：此字段可能返回 null，表示取不到有效值。
@@ -8096,10 +8216,8 @@ class IMSatisfaction(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 满意度值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param _Label: 满意度标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         """
         self._Id = None
@@ -8142,15 +8260,25 @@ class IVRKeyPressedElement(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Key: 按键
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Key: 命中的关键字或者按键
         :type Key: str
         :param _Label: 按键关联的标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
+        :param _Timestamp: Unix 毫秒时间戳
+        :type Timestamp: int
+        :param _NodeLabel: 节点标签
+        :type NodeLabel: str
+        :param _OriginalContent: 用户原始输入
+        :type OriginalContent: str
+        :param _TTSPrompt: TTS 提示音内容
+        :type TTSPrompt: str
         """
         self._Key = None
         self._Label = None
+        self._Timestamp = None
+        self._NodeLabel = None
+        self._OriginalContent = None
+        self._TTSPrompt = None
 
     @property
     def Key(self):
@@ -8168,10 +8296,46 @@ class IVRKeyPressedElement(AbstractModel):
     def Label(self, Label):
         self._Label = Label
 
+    @property
+    def Timestamp(self):
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def NodeLabel(self):
+        return self._NodeLabel
+
+    @NodeLabel.setter
+    def NodeLabel(self, NodeLabel):
+        self._NodeLabel = NodeLabel
+
+    @property
+    def OriginalContent(self):
+        return self._OriginalContent
+
+    @OriginalContent.setter
+    def OriginalContent(self, OriginalContent):
+        self._OriginalContent = OriginalContent
+
+    @property
+    def TTSPrompt(self):
+        return self._TTSPrompt
+
+    @TTSPrompt.setter
+    def TTSPrompt(self, TTSPrompt):
+        self._TTSPrompt = TTSPrompt
+
 
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Label = params.get("Label")
+        self._Timestamp = params.get("Timestamp")
+        self._NodeLabel = params.get("NodeLabel")
+        self._OriginalContent = params.get("OriginalContent")
+        self._TTSPrompt = params.get("TTSPrompt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8368,7 +8532,7 @@ class ModifyExtensionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: TCCC 实例应用 ID
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
         :param _ExtensionId: 分机号
         :type ExtensionId: str
@@ -8655,7 +8819,7 @@ class ModifyStaffRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: 应用ID
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
         :param _Email: 座席账户
         :type Email: str
@@ -9585,7 +9749,7 @@ class ResetExtensionPasswordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: TCCC 实例应用 ID
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
         :param _ExtensionId: 分机号
         :type ExtensionId: str
@@ -9748,7 +9912,6 @@ class SdkAppIdBuyInfo(AbstractModel):
         :param _PhoneNumBuyList: 号码购买列表
         :type PhoneNumBuyList: list of PhoneNumBuyInfo
         :param _SipBuyNum: 办公电话购买数（还在有效期内）
-注意：此字段可能返回 null，表示取不到有效值。
         :type SipBuyNum: int
         """
         self._SdkAppId = None
@@ -9846,7 +10009,6 @@ class SeatUserInfo(AbstractModel):
         :param _Mail: 座席邮箱
         :type Mail: str
         :param _StaffNumber: 工号
-注意：此字段可能返回 null，表示取不到有效值。
         :type StaffNumber: str
         :param _Phone: 座席电话号码（带0086前缀）
         :type Phone: str
@@ -9855,13 +10017,11 @@ class SeatUserInfo(AbstractModel):
         :param _UserId: 用户ID
         :type UserId: str
         :param _SkillGroupNameList: 座席关联的技能组列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type SkillGroupNameList: list of str
         :param _Role: 1:管理员
 2:质检员
 3:普通座席
 else:自定义角色ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Role: int
         """
         self._Name = None
@@ -9965,58 +10125,40 @@ class ServeParticipant(AbstractModel):
     def __init__(self):
         r"""
         :param _Mail: 座席邮箱
-注意：此字段可能返回 null，表示取不到有效值。
         :type Mail: str
         :param _Phone: 座席电话
-注意：此字段可能返回 null，表示取不到有效值。
         :type Phone: str
         :param _RingTimestamp: 振铃时间戳，Unix 秒级时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type RingTimestamp: int
         :param _AcceptTimestamp: 接听时间戳，Unix 秒级时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type AcceptTimestamp: int
         :param _EndedTimestamp: 结束时间戳，Unix 秒级时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndedTimestamp: int
         :param _RecordId: 录音 ID，能够索引到座席侧的录音
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordId: str
         :param _Type: 参与者类型，"staffSeat", "outboundSeat", "staffPhoneSeat"
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _TransferFrom: 转接来源座席信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type TransferFrom: str
         :param _TransferFromType: 转接来源参与者类型，取值与 Type 一致
-注意：此字段可能返回 null，表示取不到有效值。
         :type TransferFromType: str
         :param _TransferTo: 转接去向座席信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type TransferTo: str
         :param _TransferToType: 转接去向参与者类型，取值与 Type 一致
-注意：此字段可能返回 null，表示取不到有效值。
         :type TransferToType: str
         :param _SkillGroupId: 技能组 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type SkillGroupId: int
         :param _EndStatusString: 结束状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndStatusString: str
         :param _RecordURL: 录音 URL
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordURL: str
         :param _Sequence: 参与者序号，从 0 开始
-注意：此字段可能返回 null，表示取不到有效值。
         :type Sequence: int
         :param _StartTimestamp: 开始时间戳，Unix 秒级时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTimestamp: int
         :param _SkillGroupName: 技能组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type SkillGroupName: str
         :param _CustomRecordURL: 录音转存第三方COS地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type CustomRecordURL: str
         """
         self._Mail = None
@@ -10226,22 +10368,16 @@ class SkillGroupInfoItem(AbstractModel):
         :param _Type: （废弃）类型：IM、TEL、ALL（全媒体）
         :type Type: str
         :param _RoutePolicy: 会话分配策略
-注意：此字段可能返回 null，表示取不到有效值。
         :type RoutePolicy: str
         :param _UsingLastSeat: 会话分配是否优先上次服务座席
-注意：此字段可能返回 null，表示取不到有效值。
         :type UsingLastSeat: int
         :param _MaxConcurrency: 单客服最大并发数（电话类型默认1）
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxConcurrency: int
         :param _LastModifyTimestamp: 最后修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastModifyTimestamp: int
         :param _SkillGroupType: 技能组类型0-电话，1-在线，3-音频，4-视频	
-注意：此字段可能返回 null，表示取不到有效值。
         :type SkillGroupType: int
         :param _Alias: 技能组内线号码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Alias: str
         """
         self._SkillGroupId = None
@@ -10430,7 +10566,6 @@ class StaffBuyInfo(AbstractModel):
         :param _EndTime: 截止时间戳
         :type EndTime: int
         :param _SipNum: 购买办公电话数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type SipNum: int
         """
         self._Num = None
@@ -10494,26 +10629,20 @@ class StaffInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 座席名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Mail: 座席邮箱
         :type Mail: str
         :param _Phone: 座席电话号码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Phone: str
         :param _Nick: 座席昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Nick: str
         :param _StaffNumber: 座席工号
-注意：此字段可能返回 null，表示取不到有效值。
         :type StaffNumber: str
         :param _RoleId: 用户角色id
         :type RoleId: int
         :param _SkillGroupList: 所属技能组列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type SkillGroupList: list of SkillGroupItem
         :param _LastModifyTimestamp: 最后修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastModifyTimestamp: int
         """
         self._Name = None
@@ -10928,7 +11057,7 @@ class StopAutoCalloutTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: 呼叫中心实例Id
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
         :param _TaskId: 任务Id
         :type TaskId: int
@@ -11011,7 +11140,6 @@ class TelCdrInfo(AbstractModel):
         :param _RecordURL: 录音信息
         :type RecordURL: str
         :param _RecordId: 录音 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordId: str
         :param _SeatUser: 座席信息
         :type SeatUser: :class:`tencentcloud.ccc.v20200210.models.SeatUserInfo`
@@ -11075,28 +11203,20 @@ class TelCdrInfo(AbstractModel):
         :param _CallerLocation: 主叫归属地
         :type CallerLocation: str
         :param _IVRDuration: IVR 阶段耗时
-注意：此字段可能返回 null，表示取不到有效值。
         :type IVRDuration: int
         :param _RingTimestamp: 振铃时间戳，UNIX 秒级时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type RingTimestamp: int
         :param _AcceptTimestamp: 接听时间戳，UNIX 秒级时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type AcceptTimestamp: int
         :param _EndedTimestamp: 结束时间戳，UNIX 秒级时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndedTimestamp: int
         :param _IVRKeyPressed: IVR 按键信息 ，e.g. ["1","2","3"]
-注意：此字段可能返回 null，表示取不到有效值。
         :type IVRKeyPressed: list of str
         :param _HungUpSide: 挂机方 seat 座席 user 用户 system 系统
-注意：此字段可能返回 null，表示取不到有效值。
         :type HungUpSide: str
         :param _ServeParticipants: 服务参与者列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServeParticipants: list of ServeParticipant
         :param _SkillGroupId: 技能组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type SkillGroupId: int
         :param _EndStatusString: EndStatus与EndStatusString一一对应，具体枚举如下：
 
@@ -11152,40 +11272,29 @@ class TelCdrInfo(AbstractModel):
 
 电话呼入&呼出	211    clientError    客户端错误
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndStatusString: str
         :param _StartTimestamp: 会话开始时间戳，UNIX 秒级时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTimestamp: int
         :param _QueuedTimestamp: 进入排队时间，Unix 秒级时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type QueuedTimestamp: int
         :param _PostIVRKeyPressed: 后置IVR按键信息（e.g. [{"Key":"1","Label":"非常满意"}]）
-注意：此字段可能返回 null，表示取不到有效值。
         :type PostIVRKeyPressed: list of IVRKeyPressedElement
         :param _QueuedSkillGroupId: 排队技能组Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type QueuedSkillGroupId: int
         :param _SessionId: 会话 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type SessionId: str
         :param _ProtectedCaller: 主叫号码保护ID，开启号码保护映射功能时有效，且Caller字段置空
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProtectedCaller: str
         :param _ProtectedCallee: 被叫号码保护ID，开启号码保护映射功能时有效，且Callee字段置空
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProtectedCallee: str
         :param _Uui: 客户自定义数据（User-to-User Interface）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Uui: str
         :param _UUI: 客户自定义数据（User-to-User Interface）
-注意：此字段可能返回 null，表示取不到有效值。
         :type UUI: str
         :param _IVRKeyPressedEx: IVR按键信息（e.g. [{"Key":"1","Label":"非常满意"}]）
-注意：此字段可能返回 null，表示取不到有效值。
         :type IVRKeyPressedEx: list of IVRKeyPressedElement
         :param _AsrUrl: 获取录音ASR文本信息地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsrUrl: str
         :param _AsrStatus: AsrUrl的状态：Complete
 已完成;
@@ -11193,22 +11302,16 @@ Processing
 正在生成中;
 NotExists
 无记录(未开启生成离线asr或者无套餐包)
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsrStatus: str
         :param _CustomRecordURL: 录音转存第三方COS地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type CustomRecordURL: str
         :param _Remark: 备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _QueuedSkillGroupName: 排队技能组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type QueuedSkillGroupName: str
         :param _VoicemailRecordURL: 通话中语音留言录音URL
-注意：此字段可能返回 null，表示取不到有效值。
         :type VoicemailRecordURL: list of str
         :param _VoicemailAsrURL: 通话中语音留言ASR文本信息地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type VoicemailAsrURL: list of str
         """
         self._Caller = None
@@ -11786,7 +11889,7 @@ class UpdateCCCSkillGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: 应用 ID（必填）
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
         :param _SkillGroupID: 技能组ID
         :type SkillGroupID: int
@@ -12249,10 +12352,8 @@ class UploadIvrAudioResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _FailedFileList: 上传失败的文件列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailedFileList: list of UploadIvrAudioFailedInfo
         :param _SuccessFileList: 上传成功文件列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type SuccessFileList: list of AudioFileInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

@@ -362,6 +362,40 @@ class AsyncTriggerConfig(AbstractModel):
         
 
 
+class CertConf(AbstractModel):
+    """证书配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertificateId: ssl证书ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertificateId: str
+        """
+        self._CertificateId = None
+
+    @property
+    def CertificateId(self):
+        return self._CertificateId
+
+    @CertificateId.setter
+    def CertificateId(self, CertificateId):
+        self._CertificateId = CertificateId
+
+
+    def _deserialize(self, params):
+        self._CertificateId = params.get("CertificateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CfsConfig(AbstractModel):
     """文件系统(cfs)配置描述
 
@@ -982,6 +1016,121 @@ class CreateAliasRequest(AbstractModel):
 
 class CreateAliasResponse(AbstractModel):
     """CreateAlias返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCustomDomainRequest(AbstractModel):
+    """CreateCustomDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名，不支持泛域名
+        :type Domain: str
+        :param _Protocol: 协议，取值范围：HTTP, HTTPS, HTTP&HTTPS
+        :type Protocol: str
+        :param _EndpointsConfig: 路由配置
+        :type EndpointsConfig: list of EndpointsConf
+        :param _CertConfig: 证书配置信息，HTTPS协议必穿
+        :type CertConfig: :class:`tencentcloud.scf.v20180416.models.CertConf`
+        :param _WafConfig: web 应用防火墙配置
+        :type WafConfig: :class:`tencentcloud.scf.v20180416.models.WafConf`
+        """
+        self._Domain = None
+        self._Protocol = None
+        self._EndpointsConfig = None
+        self._CertConfig = None
+        self._WafConfig = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def EndpointsConfig(self):
+        return self._EndpointsConfig
+
+    @EndpointsConfig.setter
+    def EndpointsConfig(self, EndpointsConfig):
+        self._EndpointsConfig = EndpointsConfig
+
+    @property
+    def CertConfig(self):
+        return self._CertConfig
+
+    @CertConfig.setter
+    def CertConfig(self, CertConfig):
+        self._CertConfig = CertConfig
+
+    @property
+    def WafConfig(self):
+        return self._WafConfig
+
+    @WafConfig.setter
+    def WafConfig(self, WafConfig):
+        self._WafConfig = WafConfig
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Protocol = params.get("Protocol")
+        if params.get("EndpointsConfig") is not None:
+            self._EndpointsConfig = []
+            for item in params.get("EndpointsConfig"):
+                obj = EndpointsConf()
+                obj._deserialize(item)
+                self._EndpointsConfig.append(obj)
+        if params.get("CertConfig") is not None:
+            self._CertConfig = CertConf()
+            self._CertConfig._deserialize(params.get("CertConfig"))
+        if params.get("WafConfig") is not None:
+            self._WafConfig = WafConf()
+            self._WafConfig._deserialize(params.get("WafConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCustomDomainResponse(AbstractModel):
+    """CreateCustomDomain返回参数结构体
 
     """
 
@@ -1842,6 +1991,64 @@ class DeleteAliasResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteCustomDomainRequest(AbstractModel):
+    """DeleteCustomDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        """
+        self._Domain = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCustomDomainResponse(AbstractModel):
+    """DeleteCustomDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteFunctionRequest(AbstractModel):
     """DeleteFunction请求参数结构体
 
@@ -2322,6 +2529,99 @@ class DeleteTriggerResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DomainInfo(AbstractModel):
+    """云函数自定义域名详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名，不支持泛域名
+        :type Domain: str
+        :param _Protocol: 协议，取值范围：HTTP, HTTPS, HTTP&HTTPS
+        :type Protocol: str
+        :param _EndpointsConfig: 路由配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndpointsConfig: list of EndpointsConf
+        :param _CertConfig: 证书配置信息，HTTPS协议必传路由配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertConfig: :class:`tencentcloud.scf.v20180416.models.CertConf`
+        :param _WafConfig: web 应用防火墙配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WafConfig: :class:`tencentcloud.scf.v20180416.models.WafConf`
+        """
+        self._Domain = None
+        self._Protocol = None
+        self._EndpointsConfig = None
+        self._CertConfig = None
+        self._WafConfig = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def EndpointsConfig(self):
+        return self._EndpointsConfig
+
+    @EndpointsConfig.setter
+    def EndpointsConfig(self, EndpointsConfig):
+        self._EndpointsConfig = EndpointsConfig
+
+    @property
+    def CertConfig(self):
+        return self._CertConfig
+
+    @CertConfig.setter
+    def CertConfig(self, CertConfig):
+        self._CertConfig = CertConfig
+
+    @property
+    def WafConfig(self):
+        return self._WafConfig
+
+    @WafConfig.setter
+    def WafConfig(self, WafConfig):
+        self._WafConfig = WafConfig
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Protocol = params.get("Protocol")
+        if params.get("EndpointsConfig") is not None:
+            self._EndpointsConfig = []
+            for item in params.get("EndpointsConfig"):
+                obj = EndpointsConf()
+                obj._deserialize(item)
+                self._EndpointsConfig.append(obj)
+        if params.get("CertConfig") is not None:
+            self._CertConfig = CertConf()
+            self._CertConfig._deserialize(params.get("CertConfig"))
+        if params.get("WafConfig") is not None:
+            self._WafConfig = WafConf()
+            self._WafConfig._deserialize(params.get("WafConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EipConfigIn(AbstractModel):
     """公网访问固定ip配置
 
@@ -2436,6 +2736,97 @@ class EipOutConfig(AbstractModel):
     def _deserialize(self, params):
         self._EipFixed = params.get("EipFixed")
         self._Eips = params.get("Eips")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EndpointsConf(AbstractModel):
+    """后端路由配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Namespace: 函数命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param _FunctionName: 函数名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FunctionName: str
+        :param _Qualifier: 函数别名或版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Qualifier: str
+        :param _PathMatch: 路径,取值规范：/，/*，/xxx，/xxx/a，/xxx/*"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PathMatch: str
+        :param _PathRewrite: 路径重写策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PathRewrite: list of PathRewriteRule
+        """
+        self._Namespace = None
+        self._FunctionName = None
+        self._Qualifier = None
+        self._PathMatch = None
+        self._PathRewrite = None
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def Qualifier(self):
+        return self._Qualifier
+
+    @Qualifier.setter
+    def Qualifier(self, Qualifier):
+        self._Qualifier = Qualifier
+
+    @property
+    def PathMatch(self):
+        return self._PathMatch
+
+    @PathMatch.setter
+    def PathMatch(self, PathMatch):
+        self._PathMatch = PathMatch
+
+    @property
+    def PathRewrite(self):
+        return self._PathRewrite
+
+    @PathRewrite.setter
+    def PathRewrite(self, PathRewrite):
+        self._PathRewrite = PathRewrite
+
+
+    def _deserialize(self, params):
+        self._Namespace = params.get("Namespace")
+        self._FunctionName = params.get("FunctionName")
+        self._Qualifier = params.get("Qualifier")
+        self._PathMatch = params.get("PathMatch")
+        if params.get("PathRewrite") is not None:
+            self._PathRewrite = []
+            for item in params.get("PathRewrite"):
+                obj = PathRewriteRule()
+                obj._deserialize(item)
+                self._PathRewrite.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3309,6 +3700,133 @@ class GetAsyncEventStatusResponse(AbstractModel):
         if params.get("Result") is not None:
             self._Result = AsyncEventStatus()
             self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class GetCustomDomainRequest(AbstractModel):
+    """GetCustomDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        """
+        self._Domain = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetCustomDomainResponse(AbstractModel):
+    """GetCustomDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _Protocol: 协议
+        :type Protocol: str
+        :param _EndpointsConfig: 路由配置
+        :type EndpointsConfig: list of EndpointsConf
+        :param _CertConfig: 证书配置信息
+        :type CertConfig: :class:`tencentcloud.scf.v20180416.models.CertConf`
+        :param _WafConfig: web 应用防火墙配置
+        :type WafConfig: :class:`tencentcloud.scf.v20180416.models.WafConf`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Domain = None
+        self._Protocol = None
+        self._EndpointsConfig = None
+        self._CertConfig = None
+        self._WafConfig = None
+        self._RequestId = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def EndpointsConfig(self):
+        return self._EndpointsConfig
+
+    @EndpointsConfig.setter
+    def EndpointsConfig(self, EndpointsConfig):
+        self._EndpointsConfig = EndpointsConfig
+
+    @property
+    def CertConfig(self):
+        return self._CertConfig
+
+    @CertConfig.setter
+    def CertConfig(self, CertConfig):
+        self._CertConfig = CertConfig
+
+    @property
+    def WafConfig(self):
+        return self._WafConfig
+
+    @WafConfig.setter
+    def WafConfig(self, WafConfig):
+        self._WafConfig = WafConfig
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Protocol = params.get("Protocol")
+        if params.get("EndpointsConfig") is not None:
+            self._EndpointsConfig = []
+            for item in params.get("EndpointsConfig"):
+                obj = EndpointsConf()
+                obj._deserialize(item)
+                self._EndpointsConfig.append(obj)
+        if params.get("CertConfig") is not None:
+            self._CertConfig = CertConf()
+            self._CertConfig._deserialize(params.get("CertConfig"))
+        if params.get("WafConfig") is not None:
+            self._WafConfig = WafConf()
+            self._WafConfig._deserialize(params.get("WafConfig"))
         self._RequestId = params.get("RequestId")
 
 
@@ -6235,6 +6753,147 @@ class ListAsyncEventsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ListCustomDomainsRequest(AbstractModel):
+    """ListCustomDomains请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 偏移量，默认0
+        :type Offset: int
+        :param _Limit: 容量，默认20
+        :type Limit: int
+        :param _OrderBy: 取值范围：AddTime，ModTime， 默认AddTime
+        :type OrderBy: str
+        :param _Order: 取值范围：DESC, ASC 默认DESC
+        :type Order: str
+        :param _Filters: 过滤条件
+        :type Filters: list of Filter
+        """
+        self._Offset = None
+        self._Limit = None
+        self._OrderBy = None
+        self._Order = None
+        self._Filters = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OrderBy(self):
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._OrderBy = params.get("OrderBy")
+        self._Order = params.get("Order")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListCustomDomainsResponse(AbstractModel):
+    """ListCustomDomains返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数
+        :type Total: int
+        :param _Domains: 域名列表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domains: list of DomainInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Domains = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Domains(self):
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Domains") is not None:
+            self._Domains = []
+            for item in params.get("Domains"):
+                obj = DomainInfo()
+                obj._deserialize(item)
+                self._Domains.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class ListFunctionsRequest(AbstractModel):
     """ListFunctions请求参数结构体
 
@@ -7681,6 +8340,66 @@ class NamespaceUsage(AbstractModel):
         self._TotalConcurrencyMem = params.get("TotalConcurrencyMem")
         self._TotalAllocatedConcurrencyMem = params.get("TotalAllocatedConcurrencyMem")
         self._TotalAllocatedProvisionedMem = params.get("TotalAllocatedProvisionedMem")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PathRewriteRule(AbstractModel):
+    """路径路由重写规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Path: 需要重路由的路径，取值规范：/，/*，/xxx，/xxx/a，/xxx/*
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param _Type: 匹配规，取值范围： WildcardRules 通配符匹配， ExactRules 精确匹配
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Rewrite: 替换值：比如/, /$
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rewrite: str
+        """
+        self._Path = None
+        self._Type = None
+        self._Rewrite = None
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Rewrite(self):
+        return self._Rewrite
+
+    @Rewrite.setter
+    def Rewrite(self, Rewrite):
+        self._Rewrite = Rewrite
+
+
+    def _deserialize(self, params):
+        self._Path = params.get("Path")
+        self._Type = params.get("Type")
+        self._Rewrite = params.get("Rewrite")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9789,6 +10508,121 @@ class UpdateAliasResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class UpdateCustomDomainRequest(AbstractModel):
+    """UpdateCustomDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 自定义域名
+        :type Domain: str
+        :param _Protocol: 协议，取值范围：HTTP, HTTPS, HTTP&HTTPS
+        :type Protocol: str
+        :param _CertConfig: 证书配置信息，HTTPS协议必穿
+        :type CertConfig: :class:`tencentcloud.scf.v20180416.models.CertConf`
+        :param _WafConfig: web 应用防火墙配置
+        :type WafConfig: :class:`tencentcloud.scf.v20180416.models.WafConf`
+        :param _EndpointsConfig: 	路由配置
+        :type EndpointsConfig: list of EndpointsConf
+        """
+        self._Domain = None
+        self._Protocol = None
+        self._CertConfig = None
+        self._WafConfig = None
+        self._EndpointsConfig = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def CertConfig(self):
+        return self._CertConfig
+
+    @CertConfig.setter
+    def CertConfig(self, CertConfig):
+        self._CertConfig = CertConfig
+
+    @property
+    def WafConfig(self):
+        return self._WafConfig
+
+    @WafConfig.setter
+    def WafConfig(self, WafConfig):
+        self._WafConfig = WafConfig
+
+    @property
+    def EndpointsConfig(self):
+        return self._EndpointsConfig
+
+    @EndpointsConfig.setter
+    def EndpointsConfig(self, EndpointsConfig):
+        self._EndpointsConfig = EndpointsConfig
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Protocol = params.get("Protocol")
+        if params.get("CertConfig") is not None:
+            self._CertConfig = CertConf()
+            self._CertConfig._deserialize(params.get("CertConfig"))
+        if params.get("WafConfig") is not None:
+            self._WafConfig = WafConf()
+            self._WafConfig._deserialize(params.get("WafConfig"))
+        if params.get("EndpointsConfig") is not None:
+            self._EndpointsConfig = []
+            for item in params.get("EndpointsConfig"):
+                obj = EndpointsConf()
+                obj._deserialize(item)
+                self._EndpointsConfig.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateCustomDomainResponse(AbstractModel):
+    """UpdateCustomDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class UpdateFunctionCodeRequest(AbstractModel):
     """UpdateFunctionCode请求参数结构体
 
@@ -11195,6 +12029,53 @@ class WSParams(AbstractModel):
 
     def _deserialize(self, params):
         self._IdleTimeOut = params.get("IdleTimeOut")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WafConf(AbstractModel):
+    """web应用防火墙配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WafOpen: web应用防火墙是否打开， 取值范围:OPEN, CLOSE
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WafOpen: str
+        :param _WafInstanceId: web应用防火墙实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WafInstanceId: str
+        """
+        self._WafOpen = None
+        self._WafInstanceId = None
+
+    @property
+    def WafOpen(self):
+        return self._WafOpen
+
+    @WafOpen.setter
+    def WafOpen(self, WafOpen):
+        self._WafOpen = WafOpen
+
+    @property
+    def WafInstanceId(self):
+        return self._WafInstanceId
+
+    @WafInstanceId.setter
+    def WafInstanceId(self, WafInstanceId):
+        self._WafInstanceId = WafInstanceId
+
+
+    def _deserialize(self, params):
+        self._WafOpen = params.get("WafOpen")
+        self._WafInstanceId = params.get("WafInstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

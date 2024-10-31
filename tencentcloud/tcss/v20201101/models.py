@@ -5370,6 +5370,8 @@ class ClusterInfoItem(AbstractModel):
         :type DefenderStatus: str
         :param _ClusterStatus: 集群状态
         :type ClusterStatus: str
+        :param _ClusterSubStatus: 集群运行子状态
+        :type ClusterSubStatus: str
         :param _ClusterCheckMode: 集群的检测模式，为Cluster_Normal或者Cluster_Actived.
         :type ClusterCheckMode: str
         :param _ClusterAutoCheck: 是否自动定期检测
@@ -5422,6 +5424,11 @@ class ClusterInfoItem(AbstractModel):
         :type MasterAddresses: list of str
         :param _CoresCnt: 核数
         :type CoresCnt: int
+        :param _ClusterAuditStatus: 集群审计开关状态：
+已关闭Closed/关闭中Closing/关闭失败CloseFailed/已开启Opened/开启中Opening/开启失败OpenFailed
+        :type ClusterAuditStatus: str
+        :param _ClusterAuditFailedInfo: 集群审计开关失败信息
+        :type ClusterAuditFailedInfo: str
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -5432,6 +5439,7 @@ class ClusterInfoItem(AbstractModel):
         self._Region = None
         self._DefenderStatus = None
         self._ClusterStatus = None
+        self._ClusterSubStatus = None
         self._ClusterCheckMode = None
         self._ClusterAutoCheck = None
         self._DefenderErrorReason = None
@@ -5451,6 +5459,8 @@ class ClusterInfoItem(AbstractModel):
         self._ChargeCoresCnt = None
         self._MasterAddresses = None
         self._CoresCnt = None
+        self._ClusterAuditStatus = None
+        self._ClusterAuditFailedInfo = None
 
     @property
     def ClusterId(self):
@@ -5523,6 +5533,14 @@ class ClusterInfoItem(AbstractModel):
     @ClusterStatus.setter
     def ClusterStatus(self, ClusterStatus):
         self._ClusterStatus = ClusterStatus
+
+    @property
+    def ClusterSubStatus(self):
+        return self._ClusterSubStatus
+
+    @ClusterSubStatus.setter
+    def ClusterSubStatus(self, ClusterSubStatus):
+        self._ClusterSubStatus = ClusterSubStatus
 
     @property
     def ClusterCheckMode(self):
@@ -5676,6 +5694,22 @@ class ClusterInfoItem(AbstractModel):
     def CoresCnt(self, CoresCnt):
         self._CoresCnt = CoresCnt
 
+    @property
+    def ClusterAuditStatus(self):
+        return self._ClusterAuditStatus
+
+    @ClusterAuditStatus.setter
+    def ClusterAuditStatus(self, ClusterAuditStatus):
+        self._ClusterAuditStatus = ClusterAuditStatus
+
+    @property
+    def ClusterAuditFailedInfo(self):
+        return self._ClusterAuditFailedInfo
+
+    @ClusterAuditFailedInfo.setter
+    def ClusterAuditFailedInfo(self, ClusterAuditFailedInfo):
+        self._ClusterAuditFailedInfo = ClusterAuditFailedInfo
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -5687,6 +5721,7 @@ class ClusterInfoItem(AbstractModel):
         self._Region = params.get("Region")
         self._DefenderStatus = params.get("DefenderStatus")
         self._ClusterStatus = params.get("ClusterStatus")
+        self._ClusterSubStatus = params.get("ClusterSubStatus")
         self._ClusterCheckMode = params.get("ClusterCheckMode")
         self._ClusterAutoCheck = params.get("ClusterAutoCheck")
         self._DefenderErrorReason = params.get("DefenderErrorReason")
@@ -5706,6 +5741,8 @@ class ClusterInfoItem(AbstractModel):
         self._ChargeCoresCnt = params.get("ChargeCoresCnt")
         self._MasterAddresses = params.get("MasterAddresses")
         self._CoresCnt = params.get("CoresCnt")
+        self._ClusterAuditStatus = params.get("ClusterAuditStatus")
+        self._ClusterAuditFailedInfo = params.get("ClusterAuditFailedInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5965,7 +6002,7 @@ class ClusterPodInfo(AbstractModel):
         :type HostId: str
         :param _ClusterType: 集群类型
         :type ClusterType: str
-        :param _NodeName: abc
+        :param _NodeName: 节点名称
         :type NodeName: str
         :param _NodeType: NORMAL：普通节点 SUPER：超级节点
         :type NodeType: str
@@ -6405,6 +6442,12 @@ RESULT_PASSED: 通过
         :param _InstanceId: 主机实例id
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
+        :param _ImageRegistryInfo: 镜像仓库信息
+        :type ImageRegistryInfo: :class:`tencentcloud.tcss.v20201101.models.ImageRegistryInfo`
+        :param _ClusterID: 集群id
+        :type ClusterID: str
+        :param _ClusterName: 集群名称
+        :type ClusterName: str
         """
         self._CustomerAssetId = None
         self._AssetName = None
@@ -6417,6 +6460,9 @@ RESULT_PASSED: 通过
         self._ImageTag = None
         self._VerifyInfo = None
         self._InstanceId = None
+        self._ImageRegistryInfo = None
+        self._ClusterID = None
+        self._ClusterName = None
 
     @property
     def CustomerAssetId(self):
@@ -6506,6 +6552,30 @@ RESULT_PASSED: 通过
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def ImageRegistryInfo(self):
+        return self._ImageRegistryInfo
+
+    @ImageRegistryInfo.setter
+    def ImageRegistryInfo(self, ImageRegistryInfo):
+        self._ImageRegistryInfo = ImageRegistryInfo
+
+    @property
+    def ClusterID(self):
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
 
     def _deserialize(self, params):
         self._CustomerAssetId = params.get("CustomerAssetId")
@@ -6519,6 +6589,11 @@ RESULT_PASSED: 通过
         self._ImageTag = params.get("ImageTag")
         self._VerifyInfo = params.get("VerifyInfo")
         self._InstanceId = params.get("InstanceId")
+        if params.get("ImageRegistryInfo") is not None:
+            self._ImageRegistryInfo = ImageRegistryInfo()
+            self._ImageRegistryInfo._deserialize(params.get("ImageRegistryInfo"))
+        self._ClusterID = params.get("ClusterID")
+        self._ClusterName = params.get("ClusterName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6765,6 +6840,12 @@ RESULT_PASSED: 通过。
         :param _InstanceId: 主机节点的实例id
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
+        :param _ImageRegistryInfo: 镜像仓库信息
+        :type ImageRegistryInfo: :class:`tencentcloud.tcss.v20201101.models.ImageRegistryInfo`
+        :param _ClusterID: 集群id
+        :type ClusterID: str
+        :param _ClusterName: 集群名称
+        :type ClusterName: str
         """
         self._CustomerAssetId = None
         self._AssetType = None
@@ -6778,6 +6859,9 @@ RESULT_PASSED: 通过。
         self._LastCheckTime = None
         self._CheckResult = None
         self._InstanceId = None
+        self._ImageRegistryInfo = None
+        self._ClusterID = None
+        self._ClusterName = None
 
     @property
     def CustomerAssetId(self):
@@ -6875,6 +6959,30 @@ RESULT_PASSED: 通过。
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def ImageRegistryInfo(self):
+        return self._ImageRegistryInfo
+
+    @ImageRegistryInfo.setter
+    def ImageRegistryInfo(self, ImageRegistryInfo):
+        self._ImageRegistryInfo = ImageRegistryInfo
+
+    @property
+    def ClusterID(self):
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
 
     def _deserialize(self, params):
         self._CustomerAssetId = params.get("CustomerAssetId")
@@ -6889,6 +6997,11 @@ RESULT_PASSED: 通过。
         self._LastCheckTime = params.get("LastCheckTime")
         self._CheckResult = params.get("CheckResult")
         self._InstanceId = params.get("InstanceId")
+        if params.get("ImageRegistryInfo") is not None:
+            self._ImageRegistryInfo = ImageRegistryInfo()
+            self._ImageRegistryInfo._deserialize(params.get("ImageRegistryInfo"))
+        self._ClusterID = params.get("ClusterID")
+        self._ClusterName = params.get("ClusterName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10847,8 +10960,6 @@ class CreateComponentExportJobRequest(AbstractModel):
         r"""
         :param _ImageID: 镜像ID
         :type ImageID: str
-        :param _ExportField: 导出字段
-        :type ExportField: list of str
         :param _Limit: 需要返回的数量，默认为10000，最大值为10000
         :type Limit: int
         :param _Offset: 偏移量，默认为0。
@@ -10860,14 +10971,16 @@ class CreateComponentExportJobRequest(AbstractModel):
         :type By: str
         :param _Order: 排序方式desc ，asc
         :type Order: str
+        :param _ExportField: 导出字段
+        :type ExportField: list of str
         """
         self._ImageID = None
-        self._ExportField = None
         self._Limit = None
         self._Offset = None
         self._Filters = None
         self._By = None
         self._Order = None
+        self._ExportField = None
 
     @property
     def ImageID(self):
@@ -10876,14 +10989,6 @@ class CreateComponentExportJobRequest(AbstractModel):
     @ImageID.setter
     def ImageID(self, ImageID):
         self._ImageID = ImageID
-
-    @property
-    def ExportField(self):
-        return self._ExportField
-
-    @ExportField.setter
-    def ExportField(self, ExportField):
-        self._ExportField = ExportField
 
     @property
     def Limit(self):
@@ -10925,10 +11030,17 @@ class CreateComponentExportJobRequest(AbstractModel):
     def Order(self, Order):
         self._Order = Order
 
+    @property
+    def ExportField(self):
+        return self._ExportField
+
+    @ExportField.setter
+    def ExportField(self, ExportField):
+        self._ExportField = ExportField
+
 
     def _deserialize(self, params):
         self._ImageID = params.get("ImageID")
-        self._ExportField = params.get("ExportField")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
         if params.get("Filters") is not None:
@@ -10939,6 +11051,7 @@ class CreateComponentExportJobRequest(AbstractModel):
                 self._Filters.append(obj)
         self._By = params.get("By")
         self._Order = params.get("Order")
+        self._ExportField = params.get("ExportField")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11621,17 +11734,7 @@ class CreateHostExportJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 过滤条件。
-<li>Status - String - 是否必填：否 - agent状态筛选，"ALL":"全部"(或不传该字段),"UNINSTALL"："未安装","OFFLINE"："离线", "ONLINE"："防护中"</li>
-<li>HostName - String - 是否必填：否 - 主机名筛选</li>
-<li>Group- String - 是否必填：否 - 主机群组搜索</li>
-<li>HostIP- string - 是否必填：否 - 主机ip搜索</li>
-<li>HostID- string - 是否必填：否 - 主机id搜索</li>
-<li>DockerVersion- string - 是否必填：否 - docker版本搜索</li>
-<li>MachineType- string - 是否必填：否 - 主机来源MachineType搜索，"ALL":"全部"(或不传该字段),主机来源：["CVM", "ECM", "LH", "BM"]  中的之一为腾讯云服务器；["Other"]之一非腾讯云服务器；</li>
-<li>DockerStatus- string - 是否必填：否 - docker安装状态，"ALL":"全部"(或不传该字段),"INSTALL":"已安装","UNINSTALL":"未安装"</li>
-<li>ProjectID- string - 是否必填：否 - 所属项目id搜索</li>
-<li>Tag:xxx(tag:key)- string- 是否必填：否 - 标签键值搜索 示例Filters":[{"Name":"tag:tke-kind","Values":["service"]}]</li>
+        :param _Filters: 过滤条件。<li>Status-String-是否必填：否-agent状态筛选，"ALL": "全部"(或不传该字段), "UNINSTALL"："未安装", "OFFLINE"："离线", "ONLINE"："防护中"</li><li>HostName-String-是否必填：否-主机名筛选</li><li>Group-String-是否必填：否-主机群组搜索</li><li>HostIP-string-是否必填：否-主机ip搜索</li><li>HostID-string-是否必填：否-主机id搜索</li><li>DockerVersion-string-是否必填：否-docker版本搜索</li><li>MachineType-string-是否必填：否-主机来源MachineType搜索，"ALL": "全部"(或不传该字段), 主机来源：[     "CVM",     "ECM",     "LH",     "BM" ]中的之一为腾讯云服务器；[     "Other" ]之一非腾讯云服务器；</li><li>DockerStatus-string-是否必填：否-docker安装状态，"ALL": "全部"(或不传该字段), "INSTALL": "已安装", "UNINSTALL": "未安装"</li><li>ProjectID-string-是否必填：否-所属项目id搜索</li><li>Tag:(tag: key)-string-是否必填：否-标签键值搜索示例Filters":[{"Name":"tag: tke-kind","Values":["service"]}]</li>
         :type Filters: list of AssetFilters
         :param _Limit: 偏移量，默认为0。
         :type Limit: int
@@ -17662,10 +17765,16 @@ class DescribeAgentDaemonSetCmdResponse(AbstractModel):
         r"""
         :param _Command: 安装命令
         :type Command: str
+        :param _URL: 文件url
+        :type URL: str
+        :param _FileContent: 文件内容(base64编码)
+        :type FileContent: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Command = None
+        self._URL = None
+        self._FileContent = None
         self._RequestId = None
 
     @property
@@ -17675,6 +17784,22 @@ class DescribeAgentDaemonSetCmdResponse(AbstractModel):
     @Command.setter
     def Command(self, Command):
         self._Command = Command
+
+    @property
+    def URL(self):
+        return self._URL
+
+    @URL.setter
+    def URL(self, URL):
+        self._URL = URL
+
+    @property
+    def FileContent(self):
+        return self._FileContent
+
+    @FileContent.setter
+    def FileContent(self, FileContent):
+        self._FileContent = FileContent
 
     @property
     def RequestId(self):
@@ -17687,6 +17812,8 @@ class DescribeAgentDaemonSetCmdResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Command = params.get("Command")
+        self._URL = params.get("URL")
+        self._FileContent = params.get("FileContent")
         self._RequestId = params.get("RequestId")
 
 
@@ -17709,6 +17836,8 @@ class DescribeAgentInstallCommandRequest(AbstractModel):
         :type ExpireDate: str
         :param _TagIds: 标签ID列表，IsCloud=false时才会生效
         :type TagIds: list of int non-negative
+        :param _Vip: 虚拟ip
+        :type Vip: str
         """
         self._IsCloud = None
         self._NetType = None
@@ -17716,6 +17845,7 @@ class DescribeAgentInstallCommandRequest(AbstractModel):
         self._VpcId = None
         self._ExpireDate = None
         self._TagIds = None
+        self._Vip = None
 
     @property
     def IsCloud(self):
@@ -17765,6 +17895,14 @@ class DescribeAgentInstallCommandRequest(AbstractModel):
     def TagIds(self, TagIds):
         self._TagIds = TagIds
 
+    @property
+    def Vip(self):
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
 
     def _deserialize(self, params):
         self._IsCloud = params.get("IsCloud")
@@ -17773,6 +17911,7 @@ class DescribeAgentInstallCommandRequest(AbstractModel):
         self._VpcId = params.get("VpcId")
         self._ExpireDate = params.get("ExpireDate")
         self._TagIds = params.get("TagIds")
+        self._Vip = params.get("Vip")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17800,6 +17939,8 @@ class DescribeAgentInstallCommandResponse(AbstractModel):
         :type WindowsStepTwo: str
         :param _WindowsDownloadUrl: windows版agent下载链接
         :type WindowsDownloadUrl: str
+        :param _ARMCommand: arm架构系统安装命令
+        :type ARMCommand: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -17808,6 +17949,7 @@ class DescribeAgentInstallCommandResponse(AbstractModel):
         self._WindowsStepOne = None
         self._WindowsStepTwo = None
         self._WindowsDownloadUrl = None
+        self._ARMCommand = None
         self._RequestId = None
 
     @property
@@ -17851,6 +17993,14 @@ class DescribeAgentInstallCommandResponse(AbstractModel):
         self._WindowsDownloadUrl = WindowsDownloadUrl
 
     @property
+    def ARMCommand(self):
+        return self._ARMCommand
+
+    @ARMCommand.setter
+    def ARMCommand(self, ARMCommand):
+        self._ARMCommand = ARMCommand
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -17865,6 +18015,7 @@ class DescribeAgentInstallCommandResponse(AbstractModel):
         self._WindowsStepOne = params.get("WindowsStepOne")
         self._WindowsStepTwo = params.get("WindowsStepTwo")
         self._WindowsDownloadUrl = params.get("WindowsDownloadUrl")
+        self._ARMCommand = params.get("ARMCommand")
         self._RequestId = params.get("RequestId")
 
 
@@ -19502,7 +19653,7 @@ class DescribeAssetHostListRequest(AbstractModel):
         :type Limit: int
         :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param _Filters: 过滤条件。 <li>Status - String - 是否必填：否 - agent状态筛选，"ALL":"全部"(或不传该字段),"UNINSTALL"："未安装","OFFLINE"："离线", "ONLINE"："防护中"</li> <li>HostName - String - 是否必填：否 - 主机名筛选</li> <li>Group- String - 是否必填：否 - 主机群组搜索</li> <li>HostIP- string - 是否必填：否 - 主机ip搜索</li> <li>HostID- string - 是否必填：否 - 主机id搜索</li> <li>DockerVersion- string - 是否必填：否 - docker版本搜索</li> <li>MachineType- string - 是否必填：否 - 主机来源MachineType搜索，"ALL":"全部"(或不传该字段),主机来源：["CVM", "ECM", "LH", "BM"]  中的之一为腾讯云服务器；["Other"]之一非腾讯云服务器；</li> <li>DockerStatus- string - 是否必填：否 - docker安装状态，"ALL":"全部"(或不传该字段),"INSTALL":"已安装","UNINSTALL":"未安装"</li> <li>ProjectID- string - 是否必填：否 - 所属项目id搜索</li> <li>Tag:xxx(tag:key)- string- 是否必填：否 - 标签键值搜索 示例Filters":[{"Name":"tag:tke-kind","Values":["service"]}]</li> <li>NonClusterNode: 是否查询非集群节点(true: 是,false: 否)</li>
+        :param _Filters: 过滤条件。<li>Status-String-是否必填：否-agent状态筛选，"ALL": "全部"(或不传该字段), "UNINSTALL"："未安装", "OFFLINE"："离线", "ONLINE"："防护中"</li><li>HostName-String-是否必填：否-主机名筛选</li><li>Group-String-是否必填：否-主机群组搜索</li><li>HostIP-string-是否必填：否-主机ip搜索</li><li>HostID-string-是否必填：否-主机id搜索</li><li>DockerVersion-string-是否必填：否-docker版本搜索</li><li>MachineType-string-是否必填：否-主机来源MachineType搜索，"ALL": "全部"(或不传该字段), 主机来源：[     "CVM",     "ECM",     "LH",     "BM" ]中的之一为腾讯云服务器；[     "Other" ]之一非腾讯云服务器；</li><li>DockerStatus-string-是否必填：否-docker安装状态，"ALL": "全部"(或不传该字段), "INSTALL": "已安装", "UNINSTALL": "未安装"</li><li>ProjectID-string-是否必填：否-所属项目id搜索</li><li>Tag:(tag: key)-string-是否必填：否-标签键值搜索示例Filters":[{"Name":"tag: tke-kind","Values":["service"]}]</li> <li>NonClusterNode: 是否查询非集群节点(true: 是,false: 否)</li>
         :type Filters: list of AssetFilters
         :param _By: 排序字段
         :type By: str
@@ -25621,6 +25772,8 @@ class DescribeClusterDetailResponse(AbstractModel):
         :type ClusterNodeNum: int
         :param _ClusterStatus: 集群状态 (Running 运行中 Creating 创建中 Abnormal 异常 )
         :type ClusterStatus: str
+        :param _ClusterSubStatus: 集群运行子状态
+        :type ClusterSubStatus: str
         :param _ClusterType: 集群类型：为托管集群MANAGED_CLUSTER、独立集群INDEPENDENT_CLUSTER
         :type ClusterType: str
         :param _Region: 集群区域
@@ -25667,6 +25820,7 @@ class DescribeClusterDetailResponse(AbstractModel):
         self._ContainerRuntime = None
         self._ClusterNodeNum = None
         self._ClusterStatus = None
+        self._ClusterSubStatus = None
         self._ClusterType = None
         self._Region = None
         self._SeriousRiskCount = None
@@ -25742,6 +25896,14 @@ class DescribeClusterDetailResponse(AbstractModel):
     @ClusterStatus.setter
     def ClusterStatus(self, ClusterStatus):
         self._ClusterStatus = ClusterStatus
+
+    @property
+    def ClusterSubStatus(self):
+        return self._ClusterSubStatus
+
+    @ClusterSubStatus.setter
+    def ClusterSubStatus(self, ClusterSubStatus):
+        self._ClusterSubStatus = ClusterSubStatus
 
     @property
     def ClusterType(self):
@@ -25904,6 +26066,7 @@ class DescribeClusterDetailResponse(AbstractModel):
         self._ContainerRuntime = params.get("ContainerRuntime")
         self._ClusterNodeNum = params.get("ClusterNodeNum")
         self._ClusterStatus = params.get("ClusterStatus")
+        self._ClusterSubStatus = params.get("ClusterSubStatus")
         self._ClusterType = params.get("ClusterType")
         self._Region = params.get("Region")
         self._SeriousRiskCount = params.get("SeriousRiskCount")
@@ -26461,6 +26624,10 @@ class DescribeComplianceAssetListRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _AssetTypeSet: 资产类型列表。
+ASSET_CONTAINER, 容器
+ASSET_IMAGE, 镜像
+ASSET_HOST, 主机
+ASSET_K8S, K8S资产
         :type AssetTypeSet: list of str
         :param _Offset: 起始偏移量，默认为0。
         :type Offset: int
@@ -45523,12 +45690,13 @@ class EscapeRuleEnabled(AbstractModel):
     def __init__(self):
         r"""
         :param _Type: 规则类型
-   ESCAPE_HOST_ACESS_FILE:宿主机文件访问逃逸
-   ESCAPE_MOUNT_NAMESPACE:MountNamespace逃逸
-   ESCAPE_PRIVILEDGE:程序提权逃逸
-   ESCAPE_PRIVILEDGE_CONTAINER_START:特权容器启动逃逸
-   ESCAPE_MOUNT_SENSITIVE_PTAH:敏感路径挂载
-   ESCAPE_SYSCALL:Syscall逃逸
+   ESCAPE_CGROUPS：利用cgroup机制逃逸
+   ESCAPE_TAMPER_SENSITIVE_FILE：篡改敏感文件逃逸
+   ESCAPE_DOCKER_API：访问Docker API接口逃逸
+   ESCAPE_VUL_OCCURRED：逃逸漏洞利用
+   MOUNT_SENSITIVE_PTAH：敏感路径挂载
+   PRIVILEGE_CONTAINER_START：特权容器
+   PRIVILEGE：程序提权逃逸
         :type Type: str
         :param _IsEnable: 是否打开：false否 ，true是
         :type IsEnable: bool
@@ -47097,6 +47265,70 @@ class ImageProgress(AbstractModel):
         
 
 
+class ImageRegistryInfo(AbstractModel):
+    """镜像仓库详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 仓库名称
+        :type Name: str
+        :param _Type: 仓库类型
+aws
+ccr
+harbor
+jfrog
+other-tcr
+quay
+tcr
+        :type Type: str
+        :param _Address: 仓库地址
+        :type Address: str
+        """
+        self._Name = None
+        self._Type = None
+        self._Address = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Address(self):
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Address = params.get("Address")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImageRepoInfo(AbstractModel):
     """容器安全镜像仓库列表
 
@@ -48241,12 +48473,15 @@ class ImageSimpleInfo(AbstractModel):
         :type ImageType: str
         :param _ContainerCnt: 关联容器数
         :type ContainerCnt: int
+        :param _HostCnt: 关联主机数
+        :type HostCnt: int
         """
         self._ImageID = None
         self._ImageName = None
         self._Size = None
         self._ImageType = None
         self._ContainerCnt = None
+        self._HostCnt = None
 
     @property
     def ImageID(self):
@@ -48288,6 +48523,14 @@ class ImageSimpleInfo(AbstractModel):
     def ContainerCnt(self, ContainerCnt):
         self._ContainerCnt = ContainerCnt
 
+    @property
+    def HostCnt(self):
+        return self._HostCnt
+
+    @HostCnt.setter
+    def HostCnt(self, HostCnt):
+        self._HostCnt = HostCnt
+
 
     def _deserialize(self, params):
         self._ImageID = params.get("ImageID")
@@ -48295,6 +48538,7 @@ class ImageSimpleInfo(AbstractModel):
         self._Size = params.get("Size")
         self._ImageType = params.get("ImageType")
         self._ContainerCnt = params.get("ContainerCnt")
+        self._HostCnt = params.get("HostCnt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -49770,7 +50014,7 @@ class K8sApiAbnormalEventInfo(AbstractModel):
         :type ClusterID: str
         :param _ClusterName: 集群名称
         :type ClusterName: str
-        :param _ClusterRunningStatus: 集群运行状态
+        :param _ClusterRunningStatus: 集群运行状态，CSR_RUNNING-运行中，CSR_EXCEPTION-异常，CSR_CREATING-创建中
         :type ClusterRunningStatus: str
         :param _FirstCreateTime: 初次生成时间
         :type FirstCreateTime: str
@@ -53064,7 +53308,7 @@ class ModifyVirusAutoIsolateExampleSwitchRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MD5: 文件Md5值
+        :param _MD5: 文件MD5值
         :type MD5: str
         :param _Status: 开关(开:true 关: false)
         :type Status: bool
@@ -56300,6 +56544,28 @@ class ReverseShellEventInfo(AbstractModel):
 正在重启中: RESTARTING
 迁移中: REMOVING
         :type ContainerStatus: str
+        :param _ClusterID: 集群id
+        :type ClusterID: str
+        :param _NodeType: 节点类型：NORMAL普通节点、SUPER超级节点
+        :type NodeType: str
+        :param _PodName: pod name
+        :type PodName: str
+        :param _PodIP: pod ip
+        :type PodIP: str
+        :param _NodeUniqueID: 节点唯一id
+        :type NodeUniqueID: str
+        :param _PublicIP: 节点公网ip
+        :type PublicIP: str
+        :param _NodeName: 节点名称
+        :type NodeName: str
+        :param _HostID: uuid
+        :type HostID: str
+        :param _HostIP: 节点内网ip
+        :type HostIP: str
+        :param _NodeID: 节点 id
+        :type NodeID: str
+        :param _ClusterName: 集群名称
+        :type ClusterName: str
         """
         self._ProcessName = None
         self._ProcessPath = None
@@ -56321,6 +56587,17 @@ class ReverseShellEventInfo(AbstractModel):
         self._ContainerNetSubStatus = None
         self._ContainerIsolateOperationSrc = None
         self._ContainerStatus = None
+        self._ClusterID = None
+        self._NodeType = None
+        self._PodName = None
+        self._PodIP = None
+        self._NodeUniqueID = None
+        self._PublicIP = None
+        self._NodeName = None
+        self._HostID = None
+        self._HostIP = None
+        self._NodeID = None
+        self._ClusterName = None
 
     @property
     def ProcessName(self):
@@ -56482,6 +56759,94 @@ class ReverseShellEventInfo(AbstractModel):
     def ContainerStatus(self, ContainerStatus):
         self._ContainerStatus = ContainerStatus
 
+    @property
+    def ClusterID(self):
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+    @property
+    def NodeType(self):
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def PodName(self):
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
+
+    @property
+    def PodIP(self):
+        return self._PodIP
+
+    @PodIP.setter
+    def PodIP(self, PodIP):
+        self._PodIP = PodIP
+
+    @property
+    def NodeUniqueID(self):
+        return self._NodeUniqueID
+
+    @NodeUniqueID.setter
+    def NodeUniqueID(self, NodeUniqueID):
+        self._NodeUniqueID = NodeUniqueID
+
+    @property
+    def PublicIP(self):
+        return self._PublicIP
+
+    @PublicIP.setter
+    def PublicIP(self, PublicIP):
+        self._PublicIP = PublicIP
+
+    @property
+    def NodeName(self):
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def HostID(self):
+        return self._HostID
+
+    @HostID.setter
+    def HostID(self, HostID):
+        self._HostID = HostID
+
+    @property
+    def HostIP(self):
+        return self._HostIP
+
+    @HostIP.setter
+    def HostIP(self, HostIP):
+        self._HostIP = HostIP
+
+    @property
+    def NodeID(self):
+        return self._NodeID
+
+    @NodeID.setter
+    def NodeID(self, NodeID):
+        self._NodeID = NodeID
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
 
     def _deserialize(self, params):
         self._ProcessName = params.get("ProcessName")
@@ -56504,6 +56869,17 @@ class ReverseShellEventInfo(AbstractModel):
         self._ContainerNetSubStatus = params.get("ContainerNetSubStatus")
         self._ContainerIsolateOperationSrc = params.get("ContainerIsolateOperationSrc")
         self._ContainerStatus = params.get("ContainerStatus")
+        self._ClusterID = params.get("ClusterID")
+        self._NodeType = params.get("NodeType")
+        self._PodName = params.get("PodName")
+        self._PodIP = params.get("PodIP")
+        self._NodeUniqueID = params.get("NodeUniqueID")
+        self._PublicIP = params.get("PublicIP")
+        self._NodeName = params.get("NodeName")
+        self._HostID = params.get("HostID")
+        self._HostIP = params.get("HostIP")
+        self._NodeID = params.get("NodeID")
+        self._ClusterName = params.get("ClusterName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -60744,6 +61120,12 @@ class SupportDefenceVul(AbstractModel):
         :type CVEID: str
         :param _SubmitTime: 漏洞披露时间
         :type SubmitTime: str
+        :param _VulId: 漏洞id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VulId: int
+        :param _Status: 状态，0:防御中，1：已加白，指的是在白名单列表中有这个漏洞的，不一定是全局型白名单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
         """
         self._PocID = None
         self._Name = None
@@ -60752,6 +61134,8 @@ class SupportDefenceVul(AbstractModel):
         self._Level = None
         self._CVEID = None
         self._SubmitTime = None
+        self._VulId = None
+        self._Status = None
 
     @property
     def PocID(self):
@@ -60809,6 +61193,22 @@ class SupportDefenceVul(AbstractModel):
     def SubmitTime(self, SubmitTime):
         self._SubmitTime = SubmitTime
 
+    @property
+    def VulId(self):
+        return self._VulId
+
+    @VulId.setter
+    def VulId(self, VulId):
+        self._VulId = VulId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
 
     def _deserialize(self, params):
         self._PocID = params.get("PocID")
@@ -60818,6 +61218,8 @@ class SupportDefenceVul(AbstractModel):
         self._Level = params.get("Level")
         self._CVEID = params.get("CVEID")
         self._SubmitTime = params.get("SubmitTime")
+        self._VulId = params.get("VulId")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -63035,6 +63437,9 @@ class VulAffectedContainerInfo(AbstractModel):
         :type NodeID: str
         :param _NodeName: 超级节点名称
         :type NodeName: str
+        :param _ContainerStatus: 容器状态 "RUNNING":运行,"PAUSED":暂停,"STOPPED":停止,"CREATED":已经创建,"DESTROYED":已销毁,"RESTARTING":重启中,"REMOVING":迁移中,"DEAD":DEAD,"UNKNOWN":未知
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerStatus: str
         """
         self._HostIP = None
         self._ContainerID = None
@@ -63050,6 +63455,7 @@ class VulAffectedContainerInfo(AbstractModel):
         self._NodeUniqueID = None
         self._NodeID = None
         self._NodeName = None
+        self._ContainerStatus = None
 
     @property
     def HostIP(self):
@@ -63163,6 +63569,14 @@ class VulAffectedContainerInfo(AbstractModel):
     def NodeName(self, NodeName):
         self._NodeName = NodeName
 
+    @property
+    def ContainerStatus(self):
+        return self._ContainerStatus
+
+    @ContainerStatus.setter
+    def ContainerStatus(self, ContainerStatus):
+        self._ContainerStatus = ContainerStatus
+
 
     def _deserialize(self, params):
         self._HostIP = params.get("HostIP")
@@ -63179,6 +63593,7 @@ class VulAffectedContainerInfo(AbstractModel):
         self._NodeUniqueID = params.get("NodeUniqueID")
         self._NodeID = params.get("NodeID")
         self._NodeName = params.get("NodeName")
+        self._ContainerStatus = params.get("ContainerStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -63561,6 +63976,10 @@ class VulDefenceEvent(AbstractModel):
         :type ClusterID: str
         :param _ClusterName: 集群名称
         :type ClusterName: str
+        :param _PodName: pod名称
+        :type PodName: str
+        :param _PodIP: pod ip
+        :type PodIP: str
         """
         self._CVEID = None
         self._VulName = None
@@ -63590,6 +64009,8 @@ class VulDefenceEvent(AbstractModel):
         self._NodeID = None
         self._ClusterID = None
         self._ClusterName = None
+        self._PodName = None
+        self._PodIP = None
 
     @property
     def CVEID(self):
@@ -63815,6 +64236,22 @@ class VulDefenceEvent(AbstractModel):
     def ClusterName(self, ClusterName):
         self._ClusterName = ClusterName
 
+    @property
+    def PodName(self):
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
+
+    @property
+    def PodIP(self):
+        return self._PodIP
+
+    @PodIP.setter
+    def PodIP(self, PodIP):
+        self._PodIP = PodIP
+
 
     def _deserialize(self, params):
         self._CVEID = params.get("CVEID")
@@ -63845,6 +64282,8 @@ class VulDefenceEvent(AbstractModel):
         self._NodeID = params.get("NodeID")
         self._ClusterID = params.get("ClusterID")
         self._ClusterName = params.get("ClusterName")
+        self._PodName = params.get("PodName")
+        self._PodIP = params.get("PodIP")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

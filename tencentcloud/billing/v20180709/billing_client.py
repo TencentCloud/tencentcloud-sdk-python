@@ -325,6 +325,29 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBillAdjustInfo(self, request):
+        """可以通过API获取当前UIN是否有调账，客户可以更快地主动地获取调账情况。
+
+        :param request: Request instance for DescribeBillAdjustInfo.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillAdjustInfoRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeBillAdjustInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBillAdjustInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBillAdjustInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBillDetail(self, request):
         """获取账单明细数据。
         注意事项：

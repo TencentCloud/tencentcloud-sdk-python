@@ -14596,7 +14596,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
         :type OldCertificateId: str
         :param _ResourceTypes: 需要部署的资源类型，参数值可选（小写）：clb、cdn、waf、live、ddos、teo、apigateway、vod、tke、tcb、tse、cos
         :type ResourceTypes: list of str
-        :param _CertificateId: 一键更新新证书ID，不传该则证书公钥和私钥必传
+        :param _CertificateId: 一键更新新证书ID，不传则证书公钥和私钥必传
         :type CertificateId: str
         :param _Regions: 需要部署的地域列表（废弃）
         :type Regions: list of str

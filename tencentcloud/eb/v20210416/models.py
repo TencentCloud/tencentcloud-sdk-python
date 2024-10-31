@@ -779,9 +779,9 @@ class CreateEventBusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EventBusName: 事件集名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符
+        :param _EventBusName: 事件集名称，只能包含字母、中文、数字、下划线、连字符，以字母/中文开头，以数字、字母或中文结尾，2~60个字符
         :type EventBusName: str
-        :param _Description: 事件集描述，不限字符类型，200字符描述以内
+        :param _Description: 事件集描述，只能包含数字、中英文及常用标点符号，不超过200个字符
         :type Description: str
         :param _SaveDays: EB存储时长
         :type SaveDays: int
@@ -887,13 +887,13 @@ class CreateRuleRequest(AbstractModel):
         r"""
         :param _EventPattern: 参考：[事件模式](https://cloud.tencent.com/document/product/1359/56084)
         :type EventPattern: str
-        :param _EventBusId: 事件集ID。
+        :param _EventBusId: 事件集ID
         :type EventBusId: str
-        :param _RuleName: 事件集名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符
+        :param _RuleName: 事件集名称，只能包含字母、中文、数字、下划线、连字符，以字母/中文开头，以数字、字母或中文结尾，2~60个字符
         :type RuleName: str
         :param _Enable: 使能开关。
         :type Enable: bool
-        :param _Description: 事件集描述，不限字符类型，200字符描述以内
+        :param _Description: 事件集描述，只能包含数字、中英文及常用标点符号，不超过200个字符
         :type Description: str
         """
         self._EventPattern = None
@@ -3526,10 +3526,10 @@ class ListTargetsRequest(AbstractModel):
         r"""
         :param _EventBusId: 事件集ID
         :type EventBusId: str
-        :param _OrderBy: 根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）
-        :type OrderBy: str
         :param _RuleId: 事件规则ID
         :type RuleId: str
+        :param _OrderBy: 根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）
+        :type OrderBy: str
         :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
         :param _Offset: 分页偏移量，默认为0。
@@ -3538,8 +3538,8 @@ class ListTargetsRequest(AbstractModel):
         :type Order: str
         """
         self._EventBusId = None
-        self._OrderBy = None
         self._RuleId = None
+        self._OrderBy = None
         self._Limit = None
         self._Offset = None
         self._Order = None
@@ -3553,20 +3553,20 @@ class ListTargetsRequest(AbstractModel):
         self._EventBusId = EventBusId
 
     @property
-    def OrderBy(self):
-        return self._OrderBy
-
-    @OrderBy.setter
-    def OrderBy(self, OrderBy):
-        self._OrderBy = OrderBy
-
-    @property
     def RuleId(self):
         return self._RuleId
 
     @RuleId.setter
     def RuleId(self, RuleId):
         self._RuleId = RuleId
+
+    @property
+    def OrderBy(self):
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
 
     @property
     def Limit(self):
@@ -3595,8 +3595,8 @@ class ListTargetsRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._EventBusId = params.get("EventBusId")
-        self._OrderBy = params.get("OrderBy")
         self._RuleId = params.get("RuleId")
+        self._OrderBy = params.get("OrderBy")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
         self._Order = params.get("Order")
@@ -5461,11 +5461,11 @@ class UpdateRuleRequest(AbstractModel):
         :type EventBusId: str
         :param _Enable: 使能开关。
         :type Enable: bool
-        :param _Description: 规则描述，不限字符类型，200字符描述以内。
+        :param _Description: 规则描述，只能包含数字、中英文及常用标点符号，不超过200个字符
         :type Description: str
         :param _EventPattern: 参考：[事件模式](https://cloud.tencent.com/document/product/1359/56084)
         :type EventPattern: str
-        :param _RuleName: 事件规则名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符
+        :param _RuleName: 事件规则名称，只能包含字母、中文、数字、下划线、连字符，以字母/中文开头，以数字、字母或中文结尾，2~60个字符
         :type RuleName: str
         """
         self._RuleId = None

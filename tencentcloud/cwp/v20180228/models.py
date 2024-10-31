@@ -3170,7 +3170,7 @@ class AssetMachineDetail(AbstractModel):
         :type EndTime: str
         :param _CoreVersion: 内核版本
         :type CoreVersion: str
-        :param _OsType: linux/windows
+        :param _OsType: Linux/Windows
         :type OsType: str
         :param _AgentVersion: agent版本
         :type AgentVersion: str
@@ -12504,6 +12504,8 @@ class BruteAttackInfo(AbstractModel):
 83-不阻断(已加白名单)
 86-不阻断(系统白名单)
 87-不阻断(客户端离线)
+88-不阻断(来源Ip归属相同客户)
+89-不阻断(ipv6不支持阻断)
 注意：此字段可能返回 null，表示取不到有效值。
         :type BanStatus: int
         :param _EventType: 事件类型：200-暴力破解事件，300-暴力破解成功事件（页面展示），400-暴力破解不存在的帐号事件
@@ -31358,7 +31360,13 @@ class DescribeBashRulesRequest(AbstractModel):
         :param _Offset: 偏移量，默认为0。
         :type Offset: int
         :param _Filters: 过滤条件。
-<li>Keywords - String - 是否必填：否 - 关键字(规则名称)</li>
+<li>Name - String - 是否必填：否 - 规则名称</li>
+<li>Rule - String - 是否必填：否 - 规则内容</li>
+<li>Level - Int - 是否必填：否 - 威胁等级</li>
+<li>White - Int - 是否必填：否 - 白名单类型</li>
+<li>RuleCategory - Int - 是否必填：否 - 策略类型</li>
+<li>BashAction - Int - 是否必填：否 - 操作动作</li>
+<li>Status - Int - 是否必填：否 - 生效状态</li>
         :type Filters: list of Filter
         """
         self._Type = None
@@ -31495,7 +31503,9 @@ class DescribeBruteAttackListRequest(AbstractModel):
 <li>CreateEndTime - String - 是否必填：否 - 首次攻击时间筛选，结束时间</li>
 <li>ModifyBeginTime - String - 是否必填：否 - 最近攻击时间筛选，开始时间</li>
 <li>ModifyEndTime - String - 是否必填：否 - 最近攻击时间筛选，结束时间</li>
-<li>Banned - String - 是否必填：否 - 阻断状态筛选，多个用","分割：0-未阻断（全局ZK开关关闭），82-未阻断(非专业版)，83-未阻断(已加白名单)，1-已阻断，2-未阻断-程序异常，3-未阻断-内网攻击暂不支持阻断，4-未阻断-安平暂不支持阻断</li>
+<li>Banned - String - 是否必填：否 - 阻断状态筛选，多个用","分割：0-未阻断（全局ZK开关关闭），82-未阻断(非专业版)，83-未阻断(已加白名单)，1-阻断成功(已完成)，2-未阻断-程序异常，3-未阻断-内网攻击暂不支持阻断，4-未阻断-安平暂不支持阻断，10-阻断成功(生效中)</li>
+<li>DataFrom - Int - 命中规则：0-登录规则，1-情报规则</li>
+<li>EventType - String - 是否必填：否 - 破解状态筛选：200-破解失败(密码错误),300-破解成功,400-破解失败(账号不存在)</li>
         :type Filters: list of Filter
         :param _Order: 排序方式：根据请求次数排序：asc-升序/desc-降序
         :type Order: str
@@ -36939,7 +36949,7 @@ class DescribeLogKafkaDeliverInfoResponse(AbstractModel):
         :type DiskSize: int
         :param _Username: 用户名
         :type Username: str
-        :param _DeliverTypeDetails: xx
+        :param _DeliverTypeDetails: 投递类型细节
         :type DeliverTypeDetails: list of DeliverTypeDetails
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -37332,11 +37342,7 @@ class DescribeLoginWhiteCombinedListRequest(AbstractModel):
         :type Limit: int
         :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param _Filters: 过滤条件。
-<li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
-<li>UserName - String - 是否必填：否 - 用户名筛选</li>
-<li>ModifyBeginTime - String - 是否必填：否 - 按照修改时间段筛选，开始时间</li>
-<li>ModifyEndTime - String - 是否必填：否 - 按照修改时间段筛选，结束时间</li>
+        :param _Filters: 过滤条件。<li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li><li>UserName - String - 是否必填：否 - 用户名筛选</li><li>SrcIP - String - 是否必填：否 - 来源IP筛选</li><li>Location - String - 是否必填：否 - 登录地筛选</li><li>ModifyBeginTime - String - 是否必填：否 - 按照修改时间段筛选，开始时间</li><li>ModifyEndTime - String - 是否必填：否 - 按照修改时间段筛选，结束时间</li>
         :type Filters: list of Filter
         """
         self._Limit = None
@@ -46946,7 +46952,7 @@ class DescribeSecurityBroadcastsRequest(AbstractModel):
         :type BeginDate: str
         :param _EndDate: 筛选发布日期：结束时间
         :type EndDate: str
-        :param _BroadcastType: 过滤安全播报类型：0-紧急通知，1-功能更新，2-行业荣誉，3-版本发布，4-最佳实践
+        :param _BroadcastType: 过滤安全播报类型：0-紧急通知，1-功能更新，2-行业荣誉，3-版本发布，4-实践教程
         :type BroadcastType: str
         """
         self._Offset = None
@@ -50632,7 +50638,7 @@ class DescribeVulFixStatusResponse(AbstractModel):
         :type FixSuccessCnt: int
         :param _FixFailCnt: 修复失败的主机数
         :type FixFailCnt: int
-        :param _HostCnt: 主机总是
+        :param _HostCnt: 主机总数
         :type HostCnt: int
         :param _FixId: 修复的任务id
         :type FixId: int
@@ -50644,7 +50650,7 @@ class DescribeVulFixStatusResponse(AbstractModel):
         :type VulFixList: list of VulFixStatusInfo
         :param _SnapshotProgress: 快照创建进度0-100
         :type SnapshotProgress: int
-        :param _FixProgress: 修复精度 0-100
+        :param _FixProgress: 修复进度 0-100
         :type FixProgress: int
         :param _RemainingTime: 预计剩余时间（单位秒）
         :type RemainingTime: int
@@ -53501,6 +53507,16 @@ class EditBashRulesRequest(AbstractModel):
         :type EventId: int
         :param _DealOldEvents: 是否处理旧事件为白名单 0=不处理 1=处理
         :type DealOldEvents: int
+        :param _Descript: 策略描述
+        :type Descript: str
+        :param _Status: 生效与否  0:不生效 1:生效
+        :type Status: int
+        :param _BashAction: 0:告警  1:白名单  2:拦截
+        :type BashAction: int
+        :param _Scope: 生效范围（0:一组quuid 1:所有专业版 2:所有专业版+旗舰版 3:所有主机）
+        :type Scope: int
+        :param _Quuids: 生效主机的QUUID集合
+        :type Quuids: list of str
         """
         self._Id = None
         self._Uuids = None
@@ -53512,6 +53528,11 @@ class EditBashRulesRequest(AbstractModel):
         self._White = None
         self._EventId = None
         self._DealOldEvents = None
+        self._Descript = None
+        self._Status = None
+        self._BashAction = None
+        self._Scope = None
+        self._Quuids = None
 
     @property
     def Id(self):
@@ -53593,6 +53614,46 @@ class EditBashRulesRequest(AbstractModel):
     def DealOldEvents(self, DealOldEvents):
         self._DealOldEvents = DealOldEvents
 
+    @property
+    def Descript(self):
+        return self._Descript
+
+    @Descript.setter
+    def Descript(self, Descript):
+        self._Descript = Descript
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def BashAction(self):
+        return self._BashAction
+
+    @BashAction.setter
+    def BashAction(self, BashAction):
+        self._BashAction = BashAction
+
+    @property
+    def Scope(self):
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def Quuids(self):
+        return self._Quuids
+
+    @Quuids.setter
+    def Quuids(self, Quuids):
+        self._Quuids = Quuids
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -53605,6 +53666,11 @@ class EditBashRulesRequest(AbstractModel):
         self._White = params.get("White")
         self._EventId = params.get("EventId")
         self._DealOldEvents = params.get("DealOldEvents")
+        self._Descript = params.get("Descript")
+        self._Status = params.get("Status")
+        self._BashAction = params.get("BashAction")
+        self._Scope = params.get("Scope")
+        self._Quuids = params.get("Quuids")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -56211,22 +56277,7 @@ class ExportAssetUserListRequest(AbstractModel):
         r"""
         :param _Quuid: 查询指定Quuid主机的信息
         :type Quuid: str
-        :param _Filters: 过滤条件。
-<li>Name - String - 是否必填：否 - 账户名</li>
-<li>Uid - uint64 - 是否必填：否 - Uid</li>
-<li>Guid - uint64 - 是否必填：否 - Guid</li>
-<li>LoginTimeStart - String - 是否必填：否 - 开始时间，如：2021-01-11</li>
-<li>LoginTimeEnd - String - 是否必填：否 - 结束时间，如：2021-01-11</li>
-<li>LoginType - uint64 - 是否必填：否 - 0-不可登录；1-只允许key登录；2只允许密码登录；3-允许key和密码 仅linux</li>
-<li>OsType - String - 是否必填：否 - windows或linux</li>
-<li>Status - uint64 - 是否必填：否 - 账号状态：0-禁用；1-启用</li>
-<li>Type - uint64 - 是否必填：否 - 账号类型：0访客用户，1标准用户，2管理员用户 仅windows</li>
-<li>IsDomain - uint64 - 是否必填：否 - 是否域账号：0 不是，1是 仅windows
-<li>IsRoot - uint64 - 是否必填：否 - 是否Root权限：0 不是，1是 仅linux
-<li>IsSudo - uint64 - 是否必填：否 - 是否Sudo权限：0 不是，1是 仅linux</li>
-<li>IsSshLogin - uint64 - 是否必填：否 - 是否ssh登录：0 不是，1是 仅linux</li>
-<li>ShellLoginStatus - uint64 - 是否必填：否 - 是否shell登录性，0不是；1是 仅linux</li>
-<li>PasswordStatus - uint64 - 是否必填：否 - 密码状态：1正常 2即将过期 3已过期 4已锁定 仅linux</li>
+        :param _Filters:   过滤条件。<li>Name - String - 是否必填：否 - 账户名</li> <li>Uid - uint64 - 是否必填：否 - Uid</li><li>Guid - uint64 - 是否必填：否 - Guid</li> <li>LoginTimeStart - String - 是否必填：否 - 开始时间，如：2021-01-11</li><li>LoginTimeEnd - String - 是否必填：否 - 结束时间，如：2021-01-11</li> <li>LoginType - uint64 - 是否必填：否 - 0-不可登录；1-只允许key登录；2只允许密码登录；3-允许key和密码 仅linux</li> <li>OsType - String - 是否必填：否 - windows或linux</li><li>Status - uint64 - 是否必填：否 - 账号状态：0-禁用；1-启用</li> <li>Type - uint64 - 是否必填：否 - 账号类型：0访客用户，1标准用户，2管理员用户 仅windows</li> <li>IsDomain - uint64 - 是否必填：否 - 是否域账号：0 不是，1是 仅windows</li> <li>IsRoot - uint64 - 是否必填：否 - 是否Root权限：0 不是，1是 仅linux</li> <li>IsSudo - uint64 - 是否必填：否 - 是否Sudo权限：0 不是，1是 仅linux</li> <li>IsSshLogin - uint64 - 是否必填：否 - 是否ssh登录：0 不是，1是 仅linux</li> <li>ShellLoginStatus - uint64 - 是否必填：否 - 是否shell登录性，0不是；1是 仅linux</li> <li>PasswordStatus - uint64 - 是否必填：否 - 密码状态：1正常 2即将过期 3已过期 4已锁定 仅linux</li>
         :type Filters: list of Filter
         :param _Order: 排序方式，asc升序 或 desc降序
         :type Order: str
@@ -64214,7 +64265,7 @@ class JavaMemShellDetail(AbstractModel):
         :param _MachineExtraInfo:  主机额外信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type MachineExtraInfo: :class:`tencentcloud.cwp.v20180228.models.MachineExtraInfo`
-        :param _MachineState: 实例状态：RUNNING,STOPPED,SHUTDOWN...
+        :param _MachineState: agent状态：OFFLINE,ONLINE
         :type MachineState: str
         """
         self._InstanceName = None
@@ -66878,20 +66929,35 @@ class MachineLicenseDetail(AbstractModel):
         r"""
         :param _Quuid: 主机quuid
         :type Quuid: str
-        :param _PayMode: xx
+        :param _PayMode: 计费模式, 0 按量计费 , 1 预付费
         :type PayMode: int
-        :param _ResourceId: xxx
+        :param _ResourceId: 资源ID
         :type ResourceId: str
-        :param _InquireKey: xxx
-        :type InquireKey: str
-        :param _SourceType: xxx
+        :param _LicenseType: 授权类型
+        :type LicenseType: int
+        :param _SourceType: 订单类型,0 默认计费订单 1 试用订单, 2 赠送 3 体验
         :type SourceType: int
+        :param _InquireKey: 废弃字段,
+        :type InquireKey: str
+        :param _AutoRenewFlag: 自动续费标识 0 默认不自动付费, 1 自动付费 2 手动设置不续费
+        :type AutoRenewFlag: int
+        :param _Deadline: 到期时间,按量付费该值为空
+        :type Deadline: str
+        :param _BuyTime: 购买时间
+        :type BuyTime: str
+        :param _LicenseCnt: 授权数量
+        :type LicenseCnt: int
         """
         self._Quuid = None
         self._PayMode = None
         self._ResourceId = None
-        self._InquireKey = None
+        self._LicenseType = None
         self._SourceType = None
+        self._InquireKey = None
+        self._AutoRenewFlag = None
+        self._Deadline = None
+        self._BuyTime = None
+        self._LicenseCnt = None
 
     @property
     def Quuid(self):
@@ -66918,12 +66984,12 @@ class MachineLicenseDetail(AbstractModel):
         self._ResourceId = ResourceId
 
     @property
-    def InquireKey(self):
-        return self._InquireKey
+    def LicenseType(self):
+        return self._LicenseType
 
-    @InquireKey.setter
-    def InquireKey(self, InquireKey):
-        self._InquireKey = InquireKey
+    @LicenseType.setter
+    def LicenseType(self, LicenseType):
+        self._LicenseType = LicenseType
 
     @property
     def SourceType(self):
@@ -66933,13 +66999,58 @@ class MachineLicenseDetail(AbstractModel):
     def SourceType(self, SourceType):
         self._SourceType = SourceType
 
+    @property
+    def InquireKey(self):
+        return self._InquireKey
+
+    @InquireKey.setter
+    def InquireKey(self, InquireKey):
+        self._InquireKey = InquireKey
+
+    @property
+    def AutoRenewFlag(self):
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def Deadline(self):
+        return self._Deadline
+
+    @Deadline.setter
+    def Deadline(self, Deadline):
+        self._Deadline = Deadline
+
+    @property
+    def BuyTime(self):
+        return self._BuyTime
+
+    @BuyTime.setter
+    def BuyTime(self, BuyTime):
+        self._BuyTime = BuyTime
+
+    @property
+    def LicenseCnt(self):
+        return self._LicenseCnt
+
+    @LicenseCnt.setter
+    def LicenseCnt(self, LicenseCnt):
+        self._LicenseCnt = LicenseCnt
+
 
     def _deserialize(self, params):
         self._Quuid = params.get("Quuid")
         self._PayMode = params.get("PayMode")
         self._ResourceId = params.get("ResourceId")
-        self._InquireKey = params.get("InquireKey")
+        self._LicenseType = params.get("LicenseType")
         self._SourceType = params.get("SourceType")
+        self._InquireKey = params.get("InquireKey")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._Deadline = params.get("Deadline")
+        self._BuyTime = params.get("BuyTime")
+        self._LicenseCnt = params.get("LicenseCnt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -67408,9 +67519,9 @@ class MalWareList(AbstractModel):
         :type Uuid: str
         :param _FilePath: 路径
         :type FilePath: str
-        :param _VirusName: 描述
+        :param _VirusName: 病毒名称
         :type VirusName: str
-        :param _Status: 状态；4-:待处理，5-已信任，6-已隔离，8-文件已删除, 14:已处理
+        :param _Status: 状态；4-:待处理，5-已信任，6-已隔离，8-文件已删除, 14:已处理，13-已加白
         :type Status: int
         :param _Id: 唯一ID
 注意：此字段可能返回 null，表示取不到有效值。
@@ -70992,12 +71103,15 @@ class ModifyLogStorageConfigRequest(AbstractModel):
         :type IsModifyPeriod: bool
         :param _Type: 存储类型，string数组
         :type Type: list of str
-        :param _Period: 日志存储天数，3640表示不限
+        :param _Period: 日志存储时长，3640表示不限
         :type Period: int
+        :param _Granularity: 日志存储时长单位，年year/月month/天day
+        :type Granularity: str
         """
         self._IsModifyPeriod = None
         self._Type = None
         self._Period = None
+        self._Granularity = None
 
     @property
     def IsModifyPeriod(self):
@@ -71023,11 +71137,20 @@ class ModifyLogStorageConfigRequest(AbstractModel):
     def Period(self, Period):
         self._Period = Period
 
+    @property
+    def Granularity(self):
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
+
 
     def _deserialize(self, params):
         self._IsModifyPeriod = params.get("IsModifyPeriod")
         self._Type = params.get("Type")
         self._Period = params.get("Period")
+        self._Granularity = params.get("Granularity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -72723,7 +72846,7 @@ class ModifyRiskEventsStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operate: 操作-0:标记已处理,1:忽略,2:删除记录,3:木马隔离,4:木马恢复隔离,5:木马信任,6:木马取消信任,7:查杀异常进程
+        :param _Operate: 操作-0:标记已处理,1:忽略,2:删除记录,3:木马隔离,4:木马恢复隔离,5:木马信任,6:木马取消信任,7:查杀异常进程,8:加入白名单
         :type Operate: int
         :param _RiskType: 操作事件类型，文件查杀：MALWARE，异常登录：HOST_LOGIN，密码破解：BRUTE_ATTACK，恶意请求：MALICIOUS_REQUEST，高危命令：BASH_EVENT，本地提权：PRIVILEGE_EVENT，反弹shell：REVERSE_SHELL. 异常进程:PROCESS
         :type RiskType: str
@@ -72753,6 +72876,9 @@ RiskType 为PROCESS时:
 <li>EndTime - String - 是否必填：否 - 进程启动时间-结束</li>
 <li>Status - String - 是否必填：否 - 状态筛选 0待处理；1查杀中;2已查杀3已退出;4已信任</li>
         :type Filters: list of Filters
+        :param _DoClean: 当Operate 是木马隔离时
+<li> 本操作会修复被篡改的系统命令，计划任务等系统文件，操作中请确保yum/apt 可用。</li>
+        :type DoClean: bool
         """
         self._Operate = None
         self._RiskType = None
@@ -72762,6 +72888,7 @@ RiskType 为PROCESS时:
         self._KillProcess = None
         self._Ip = None
         self._Filters = None
+        self._DoClean = None
 
     @property
     def Operate(self):
@@ -72827,6 +72954,14 @@ RiskType 为PROCESS时:
     def Filters(self, Filters):
         self._Filters = Filters
 
+    @property
+    def DoClean(self):
+        return self._DoClean
+
+    @DoClean.setter
+    def DoClean(self, DoClean):
+        self._DoClean = DoClean
+
 
     def _deserialize(self, params):
         self._Operate = params.get("Operate")
@@ -72842,6 +72977,7 @@ RiskType 为PROCESS时:
                 obj = Filters()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._DoClean = params.get("DoClean")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -75190,12 +75326,16 @@ class Place(AbstractModel):
     def __init__(self):
         r"""
         :param _CityId: 城市 ID。
+注意：此字段可能返回 null，表示取不到有效值。
         :type CityId: int
         :param _ProvinceId: 省份 ID。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ProvinceId: int
         :param _CountryId: 国家ID，暂只支持国内：1。
+注意：此字段可能返回 null，表示取不到有效值。
         :type CountryId: int
         :param _Location: 位置名称
+注意：此字段可能返回 null，表示取不到有效值。
         :type Location: str
         """
         self._CityId = None
@@ -79378,7 +79518,7 @@ class ReverseShell(AbstractModel):
         :type ParentProcGroup: str
         :param _ParentProcPath: 父进程路径
         :type ParentProcPath: str
-        :param _Status: 处理状态：0-待处理 2-白名单 3-已处理 4-已忽略
+        :param _Status: 处理状态：0-待处理 2-白名单 3-已处理 4-已忽略 6-已拦截
         :type Status: int
         :param _CreateTime: 产生时间
         :type CreateTime: str
@@ -81577,7 +81717,7 @@ class ScanTaskDetails(AbstractModel):
         :type Uuid: str
         :param _Quuid: 唯一Quuid
         :type Quuid: str
-        :param _Status: 状态码
+        :param _Status: 状态码Scanning、Ok、Fail
         :type Status: str
         :param _Description: 描述
         :type Description: str
@@ -87788,6 +87928,9 @@ class VulDefenceRangeDetail(AbstractModel):
         :type PublishTime: str
         :param _VulId: 漏洞id
         :type VulId: int
+        :param _Status: 状态，0:防御中，1：已加白，指的是在白名单列表中有这个漏洞的，不一定是全局型白名单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
         """
         self._VulName = None
         self._Label = None
@@ -87796,6 +87939,7 @@ class VulDefenceRangeDetail(AbstractModel):
         self._CveId = None
         self._PublishTime = None
         self._VulId = None
+        self._Status = None
 
     @property
     def VulName(self):
@@ -87853,6 +87997,14 @@ class VulDefenceRangeDetail(AbstractModel):
     def VulId(self, VulId):
         self._VulId = VulId
 
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
 
     def _deserialize(self, params):
         self._VulName = params.get("VulName")
@@ -87862,6 +88014,7 @@ class VulDefenceRangeDetail(AbstractModel):
         self._CveId = params.get("CveId")
         self._PublishTime = params.get("PublishTime")
         self._VulId = params.get("VulId")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -88881,7 +89034,7 @@ class VulInfoByCveId(AbstractModel):
         r"""
         :param _VulId: 漏洞id
         :type VulId: int
-        :param _FixSwitch: 修复支持情况：0-windows/linux均不支持修复 ;1-windows/linux 均支持修复 ;2-仅linux支持修复;3-仅windows支持修复
+        :param _FixSwitch: 修复支持情况：0-Windows/Linux均不支持修复 ;1-Windows/Linux 均支持修复 ;2-仅Linux支持修复;3-仅Windows支持修复
         :type FixSwitch: int
         """
         self._VulId = None

@@ -162,6 +162,8 @@ class ChatCompletionsRequest(AbstractModel):
 4. 未传值时默认关闭。
 5. 开启并搜索到对应的多媒体信息时，会输出对应的多媒体地址，可以定制个性化的图文消息。
         :type EnableMultimedia: bool
+        :param _Seed: 说明：1. 确保模型的输出是可复现的。2. 取值区间为非0正整数，最大值10000。3. 非必要不建议使用，不合理的取值会影响效果。
+        :type Seed: int
         """
         self._Model = None
         self._Messages = None
@@ -177,6 +179,7 @@ class ChatCompletionsRequest(AbstractModel):
         self._Citation = None
         self._EnableSpeedSearch = None
         self._EnableMultimedia = None
+        self._Seed = None
 
     @property
     def Model(self):
@@ -290,6 +293,14 @@ class ChatCompletionsRequest(AbstractModel):
     def EnableMultimedia(self, EnableMultimedia):
         self._EnableMultimedia = EnableMultimedia
 
+    @property
+    def Seed(self):
+        return self._Seed
+
+    @Seed.setter
+    def Seed(self, Seed):
+        self._Seed = Seed
+
 
     def _deserialize(self, params):
         self._Model = params.get("Model")
@@ -318,6 +329,7 @@ class ChatCompletionsRequest(AbstractModel):
         self._Citation = params.get("Citation")
         self._EnableSpeedSearch = params.get("EnableSpeedSearch")
         self._EnableMultimedia = params.get("EnableMultimedia")
+        self._Seed = params.get("Seed")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

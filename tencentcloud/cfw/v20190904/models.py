@@ -52,6 +52,50 @@ class AcListsData(AbstractModel):
         :param _LogId: 告警规则id
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogId: str
+        :param _Status: 规则开关状态 1打开 0关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _SrcType: 规则源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SrcType: int
+        :param _DstType: 规则目的类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DstType: int
+        :param _Uuid: 规则唯一ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uuid: str
+        :param _Invalid: 规则有效性
+1 有效
+0 无效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Invalid: int
+        :param _IsRegion: 是否地域规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsRegion: int
+        :param _CloudCode: 云厂商代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CloudCode: str
+        :param _AutoTask: 自动化助手信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoTask: str
+        :param _InstanceName: 实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param _RegionCode: 地域码信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionCode: str
+        :param _Country: 国家代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Country: int
+        :param _City: 城市代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type City: int
+        :param _RegName1: 国家名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegName1: str
+        :param _RegName2: 城市名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegName2: str
         """
         self._Id = None
         self._SourceIp = None
@@ -63,6 +107,20 @@ class AcListsData(AbstractModel):
         self._Count = None
         self._OrderIndex = None
         self._LogId = None
+        self._Status = None
+        self._SrcType = None
+        self._DstType = None
+        self._Uuid = None
+        self._Invalid = None
+        self._IsRegion = None
+        self._CloudCode = None
+        self._AutoTask = None
+        self._InstanceName = None
+        self._RegionCode = None
+        self._Country = None
+        self._City = None
+        self._RegName1 = None
+        self._RegName2 = None
 
     @property
     def Id(self):
@@ -144,6 +202,118 @@ class AcListsData(AbstractModel):
     def LogId(self, LogId):
         self._LogId = LogId
 
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SrcType(self):
+        return self._SrcType
+
+    @SrcType.setter
+    def SrcType(self, SrcType):
+        self._SrcType = SrcType
+
+    @property
+    def DstType(self):
+        return self._DstType
+
+    @DstType.setter
+    def DstType(self, DstType):
+        self._DstType = DstType
+
+    @property
+    def Uuid(self):
+        return self._Uuid
+
+    @Uuid.setter
+    def Uuid(self, Uuid):
+        self._Uuid = Uuid
+
+    @property
+    def Invalid(self):
+        return self._Invalid
+
+    @Invalid.setter
+    def Invalid(self, Invalid):
+        self._Invalid = Invalid
+
+    @property
+    def IsRegion(self):
+        return self._IsRegion
+
+    @IsRegion.setter
+    def IsRegion(self, IsRegion):
+        self._IsRegion = IsRegion
+
+    @property
+    def CloudCode(self):
+        return self._CloudCode
+
+    @CloudCode.setter
+    def CloudCode(self, CloudCode):
+        self._CloudCode = CloudCode
+
+    @property
+    def AutoTask(self):
+        return self._AutoTask
+
+    @AutoTask.setter
+    def AutoTask(self, AutoTask):
+        self._AutoTask = AutoTask
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def RegionCode(self):
+        return self._RegionCode
+
+    @RegionCode.setter
+    def RegionCode(self, RegionCode):
+        self._RegionCode = RegionCode
+
+    @property
+    def Country(self):
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def City(self):
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def RegName1(self):
+        return self._RegName1
+
+    @RegName1.setter
+    def RegName1(self, RegName1):
+        self._RegName1 = RegName1
+
+    @property
+    def RegName2(self):
+        return self._RegName2
+
+    @RegName2.setter
+    def RegName2(self, RegName2):
+        self._RegName2 = RegName2
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -156,6 +326,20 @@ class AcListsData(AbstractModel):
         self._Count = params.get("Count")
         self._OrderIndex = params.get("OrderIndex")
         self._LogId = params.get("LogId")
+        self._Status = params.get("Status")
+        self._SrcType = params.get("SrcType")
+        self._DstType = params.get("DstType")
+        self._Uuid = params.get("Uuid")
+        self._Invalid = params.get("Invalid")
+        self._IsRegion = params.get("IsRegion")
+        self._CloudCode = params.get("CloudCode")
+        self._AutoTask = params.get("AutoTask")
+        self._InstanceName = params.get("InstanceName")
+        self._RegionCode = params.get("RegionCode")
+        self._Country = params.get("Country")
+        self._City = params.get("City")
+        self._RegName1 = params.get("RegName1")
+        self._RegName2 = params.get("RegName2")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1968,12 +2152,15 @@ Type为5，域名模板eg：www.qq.com,www.tencent.com
         :type Type: int
         :param _ProtocolType: 协议端口模板，协议类型，4:4层协议，7:7层协议，Type=6时必填
         :type ProtocolType: str
+        :param _IpVersion: IP版本,0 IPV4;1 IPV6
+        :type IpVersion: int
         """
         self._Name = None
         self._Detail = None
         self._IpString = None
         self._Type = None
         self._ProtocolType = None
+        self._IpVersion = None
 
     @property
     def Name(self):
@@ -2015,6 +2202,14 @@ Type为5，域名模板eg：www.qq.com,www.tencent.com
     def ProtocolType(self, ProtocolType):
         self._ProtocolType = ProtocolType
 
+    @property
+    def IpVersion(self):
+        return self._IpVersion
+
+    @IpVersion.setter
+    def IpVersion(self, IpVersion):
+        self._IpVersion = IpVersion
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -2022,6 +2217,7 @@ Type为5，域名模板eg：www.qq.com,www.tencent.com
         self._IpString = params.get("IpString")
         self._Type = params.get("Type")
         self._ProtocolType = params.get("ProtocolType")
+        self._IpVersion = params.get("IpVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7298,10 +7494,13 @@ class DescribeBlockStaticListResponse(AbstractModel):
         r"""
         :param _Data: 无
         :type Data: list of StaticInfo
+        :param _Status: 异步查询状态，1查询执行中，0查询已结束
+        :type Status: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
+        self._Status = None
         self._RequestId = None
 
     @property
@@ -7311,6 +7510,14 @@ class DescribeBlockStaticListResponse(AbstractModel):
     @Data.setter
     def Data(self, Data):
         self._Data = Data
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
     @property
     def RequestId(self):
@@ -7328,6 +7535,7 @@ class DescribeBlockStaticListResponse(AbstractModel):
                 obj = StaticInfo()
                 obj._deserialize(item)
                 self._Data.append(obj)
+        self._Status = params.get("Status")
         self._RequestId = params.get("RequestId")
 
 
@@ -9757,177 +9965,6 @@ class DescribeNatFwVpcDnsLstResponse(AbstractModel):
                 self._VpcDnsSwitchLst.append(obj)
         self._ReturnMsg = params.get("ReturnMsg")
         self._Total = params.get("Total")
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeNatSwitchListRequest(AbstractModel):
-    """DescribeNatSwitchList请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Offset: 偏移量，分页用
-        :type Offset: int
-        :param _Limit: 条数，分页用
-        :type Limit: int
-        :param _SearchValue: 搜索值
-        :type SearchValue: str
-        :param _Status: 开关，1打开，0关闭
-        :type Status: int
-        :param _VpcId: 筛选NAT防火墙子网开关所属VPC
-        :type VpcId: str
-        :param _NatId: 筛选NAT防火墙子网开关所属NAT网关
-        :type NatId: str
-        :param _NatInsId: 筛选NAT防火墙子网开关所属NAT防火墙实例
-        :type NatInsId: str
-        :param _Area: 筛选NAT防火墙子网开关所属地域
-        :type Area: str
-        """
-        self._Offset = None
-        self._Limit = None
-        self._SearchValue = None
-        self._Status = None
-        self._VpcId = None
-        self._NatId = None
-        self._NatInsId = None
-        self._Area = None
-
-    @property
-    def Offset(self):
-        return self._Offset
-
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
-
-    @property
-    def Limit(self):
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
-
-    @property
-    def SearchValue(self):
-        return self._SearchValue
-
-    @SearchValue.setter
-    def SearchValue(self, SearchValue):
-        self._SearchValue = SearchValue
-
-    @property
-    def Status(self):
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def VpcId(self):
-        return self._VpcId
-
-    @VpcId.setter
-    def VpcId(self, VpcId):
-        self._VpcId = VpcId
-
-    @property
-    def NatId(self):
-        return self._NatId
-
-    @NatId.setter
-    def NatId(self, NatId):
-        self._NatId = NatId
-
-    @property
-    def NatInsId(self):
-        return self._NatInsId
-
-    @NatInsId.setter
-    def NatInsId(self, NatInsId):
-        self._NatInsId = NatInsId
-
-    @property
-    def Area(self):
-        return self._Area
-
-    @Area.setter
-    def Area(self, Area):
-        self._Area = Area
-
-
-    def _deserialize(self, params):
-        self._Offset = params.get("Offset")
-        self._Limit = params.get("Limit")
-        self._SearchValue = params.get("SearchValue")
-        self._Status = params.get("Status")
-        self._VpcId = params.get("VpcId")
-        self._NatId = params.get("NatId")
-        self._NatInsId = params.get("NatInsId")
-        self._Area = params.get("Area")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeNatSwitchListResponse(AbstractModel):
-    """DescribeNatSwitchList返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Total: 总数
-        :type Total: int
-        :param _Data: NAT边界防火墙开关列表数据
-        :type Data: list of NatSwitchListData
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._Total = None
-        self._Data = None
-        self._RequestId = None
-
-    @property
-    def Total(self):
-        return self._Total
-
-    @Total.setter
-    def Total(self, Total):
-        self._Total = Total
-
-    @property
-    def Data(self):
-        return self._Data
-
-    @Data.setter
-    def Data(self, Data):
-        self._Data = Data
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._Total = params.get("Total")
-        if params.get("Data") is not None:
-            self._Data = []
-            for item in params.get("Data"):
-                obj = NatSwitchListData()
-                obj._deserialize(item)
-                self._Data.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -14011,7 +14048,7 @@ class ModifyAclRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Rules: 需要编辑的规则数组
+        :param _Rules: 需要编辑的规则数组，基于Uuid唯一id修改该规则
         :type Rules: list of CreateRuleItem
         """
         self._Rules = None
@@ -15598,7 +15635,7 @@ class ModifyNatAcRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Rules: 需要编辑的规则数组
+        :param _Rules: 需要编辑的规则数组,基于Uuid唯一id来修改该规则
         :type Rules: list of CreateNatRuleItem
         """
         self._Rules = None
@@ -16133,11 +16170,11 @@ class ModifyResourceGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 组id
+        :param _GroupId: 资产组id
         :type GroupId: str
         :param _GroupName: 组名称
         :type GroupName: str
-        :param _ParentId: 上级组id
+        :param _ParentId: 上级组资产组id
         :type ParentId: str
         """
         self._GroupId = None
@@ -17741,286 +17778,6 @@ class NatInstanceInfo(AbstractModel):
         
 
 
-class NatSwitchListData(AbstractModel):
-    """NAT防火墙开关列表数据
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Id: 列表ID
-        :type Id: int
-        :param _SubnetId: 子网ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SubnetId: str
-        :param _SubnetName: 子网名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SubnetName: str
-        :param _SubnetCidr: IPv4 CIDR
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SubnetCidr: str
-        :param _RouteId: 关联路由ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RouteId: str
-        :param _RouteName: 关联路由名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RouteName: str
-        :param _CvmNum: 云服务器个数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CvmNum: int
-        :param _VpcId: 所属VPC ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type VpcId: str
-        :param _VpcName: 所属VPC名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type VpcName: str
-        :param _Enable: 是否生效
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Enable: int
-        :param _Status: 开关状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Status: int
-        :param _NatId: NAT网关ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type NatId: str
-        :param _NatName: NAT网关名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type NatName: str
-        :param _NatInsId: NAT防火墙实例ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type NatInsId: str
-        :param _NatInsName: NAT防火墙实例名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type NatInsName: str
-        :param _Region: 地域
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Region: str
-        :param _Abnormal: 开关是否异常,0:正常,1:异常
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Abnormal: int
-        :param _ORTableId: nat防火墙出口路由表id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ORTableId: str
-        :param _ORTableName: nat防火墙出口路由表名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ORTableName: str
-        :param _Ohavips: 出口Snat Ip列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Ohavips: list of str
-        """
-        self._Id = None
-        self._SubnetId = None
-        self._SubnetName = None
-        self._SubnetCidr = None
-        self._RouteId = None
-        self._RouteName = None
-        self._CvmNum = None
-        self._VpcId = None
-        self._VpcName = None
-        self._Enable = None
-        self._Status = None
-        self._NatId = None
-        self._NatName = None
-        self._NatInsId = None
-        self._NatInsName = None
-        self._Region = None
-        self._Abnormal = None
-        self._ORTableId = None
-        self._ORTableName = None
-        self._Ohavips = None
-
-    @property
-    def Id(self):
-        return self._Id
-
-    @Id.setter
-    def Id(self, Id):
-        self._Id = Id
-
-    @property
-    def SubnetId(self):
-        return self._SubnetId
-
-    @SubnetId.setter
-    def SubnetId(self, SubnetId):
-        self._SubnetId = SubnetId
-
-    @property
-    def SubnetName(self):
-        return self._SubnetName
-
-    @SubnetName.setter
-    def SubnetName(self, SubnetName):
-        self._SubnetName = SubnetName
-
-    @property
-    def SubnetCidr(self):
-        return self._SubnetCidr
-
-    @SubnetCidr.setter
-    def SubnetCidr(self, SubnetCidr):
-        self._SubnetCidr = SubnetCidr
-
-    @property
-    def RouteId(self):
-        return self._RouteId
-
-    @RouteId.setter
-    def RouteId(self, RouteId):
-        self._RouteId = RouteId
-
-    @property
-    def RouteName(self):
-        return self._RouteName
-
-    @RouteName.setter
-    def RouteName(self, RouteName):
-        self._RouteName = RouteName
-
-    @property
-    def CvmNum(self):
-        return self._CvmNum
-
-    @CvmNum.setter
-    def CvmNum(self, CvmNum):
-        self._CvmNum = CvmNum
-
-    @property
-    def VpcId(self):
-        return self._VpcId
-
-    @VpcId.setter
-    def VpcId(self, VpcId):
-        self._VpcId = VpcId
-
-    @property
-    def VpcName(self):
-        return self._VpcName
-
-    @VpcName.setter
-    def VpcName(self, VpcName):
-        self._VpcName = VpcName
-
-    @property
-    def Enable(self):
-        return self._Enable
-
-    @Enable.setter
-    def Enable(self, Enable):
-        self._Enable = Enable
-
-    @property
-    def Status(self):
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def NatId(self):
-        return self._NatId
-
-    @NatId.setter
-    def NatId(self, NatId):
-        self._NatId = NatId
-
-    @property
-    def NatName(self):
-        return self._NatName
-
-    @NatName.setter
-    def NatName(self, NatName):
-        self._NatName = NatName
-
-    @property
-    def NatInsId(self):
-        return self._NatInsId
-
-    @NatInsId.setter
-    def NatInsId(self, NatInsId):
-        self._NatInsId = NatInsId
-
-    @property
-    def NatInsName(self):
-        return self._NatInsName
-
-    @NatInsName.setter
-    def NatInsName(self, NatInsName):
-        self._NatInsName = NatInsName
-
-    @property
-    def Region(self):
-        return self._Region
-
-    @Region.setter
-    def Region(self, Region):
-        self._Region = Region
-
-    @property
-    def Abnormal(self):
-        return self._Abnormal
-
-    @Abnormal.setter
-    def Abnormal(self, Abnormal):
-        self._Abnormal = Abnormal
-
-    @property
-    def ORTableId(self):
-        return self._ORTableId
-
-    @ORTableId.setter
-    def ORTableId(self, ORTableId):
-        self._ORTableId = ORTableId
-
-    @property
-    def ORTableName(self):
-        return self._ORTableName
-
-    @ORTableName.setter
-    def ORTableName(self, ORTableName):
-        self._ORTableName = ORTableName
-
-    @property
-    def Ohavips(self):
-        return self._Ohavips
-
-    @Ohavips.setter
-    def Ohavips(self, Ohavips):
-        self._Ohavips = Ohavips
-
-
-    def _deserialize(self, params):
-        self._Id = params.get("Id")
-        self._SubnetId = params.get("SubnetId")
-        self._SubnetName = params.get("SubnetName")
-        self._SubnetCidr = params.get("SubnetCidr")
-        self._RouteId = params.get("RouteId")
-        self._RouteName = params.get("RouteName")
-        self._CvmNum = params.get("CvmNum")
-        self._VpcId = params.get("VpcId")
-        self._VpcName = params.get("VpcName")
-        self._Enable = params.get("Enable")
-        self._Status = params.get("Status")
-        self._NatId = params.get("NatId")
-        self._NatName = params.get("NatName")
-        self._NatInsId = params.get("NatInsId")
-        self._NatInsName = params.get("NatInsName")
-        self._Region = params.get("Region")
-        self._Abnormal = params.get("Abnormal")
-        self._ORTableId = params.get("ORTableId")
-        self._ORTableName = params.get("ORTableName")
-        self._Ohavips = params.get("Ohavips")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class NetInstancesInfo(AbstractModel):
     """网络实例信息
 
@@ -18584,9 +18341,12 @@ class RuleChangeItem(AbstractModel):
         :type OrderIndex: int
         :param _NewOrderIndex: 新的sequence 值
         :type NewOrderIndex: int
+        :param _IpVersion: Ip版本，0：IPv4，1：IPv6，默认为IPv4
+        :type IpVersion: int
         """
         self._OrderIndex = None
         self._NewOrderIndex = None
+        self._IpVersion = None
 
     @property
     def OrderIndex(self):
@@ -18604,10 +18364,19 @@ class RuleChangeItem(AbstractModel):
     def NewOrderIndex(self, NewOrderIndex):
         self._NewOrderIndex = NewOrderIndex
 
+    @property
+    def IpVersion(self):
+        return self._IpVersion
+
+    @IpVersion.setter
+    def IpVersion(self, IpVersion):
+        self._IpVersion = IpVersion
+
 
     def _deserialize(self, params):
         self._OrderIndex = params.get("OrderIndex")
         self._NewOrderIndex = params.get("NewOrderIndex")
+        self._IpVersion = params.get("IpVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22359,12 +22128,12 @@ log：观察
         :type Description: str
         :param _OrderIndex: 规则顺序，-1表示最低，1表示最高
         :type OrderIndex: int
-        :param _Uuid: 规则对应的唯一id
-        :type Uuid: int
         :param _Enable: 规则状态，true表示启用，false表示禁用
         :type Enable: str
         :param _EdgeId: 规则生效的范围，是在哪对vpc之间还是针对所有vpc间生效
         :type EdgeId: str
+        :param _Uuid: 规则对应的唯一id，添加规则时忽略该字段，修改该规则时需要填写Uuid;查询返回时会返回该参数
+        :type Uuid: int
         :param _DetectedTimes: 规则的命中次数，增删改查规则时无需传入此参数，主要用于返回查询结果数据
         :type DetectedTimes: int
         :param _EdgeName: EdgeId对应的这对VPC间防火墙的描述
@@ -22394,6 +22163,9 @@ log：观察
         :param _SourceName: 访问源名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceName: str
+        :param _IpVersion: Ip版本，0：IPv4，1：IPv6，默认为IPv4
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpVersion: int
         """
         self._SourceContent = None
         self._SourceType = None
@@ -22404,9 +22176,9 @@ log：观察
         self._Port = None
         self._Description = None
         self._OrderIndex = None
-        self._Uuid = None
         self._Enable = None
         self._EdgeId = None
+        self._Uuid = None
         self._DetectedTimes = None
         self._EdgeName = None
         self._InternalUuid = None
@@ -22418,6 +22190,7 @@ log：观察
         self._ParamTemplateName = None
         self._TargetName = None
         self._SourceName = None
+        self._IpVersion = None
 
     @property
     def SourceContent(self):
@@ -22492,14 +22265,6 @@ log：观察
         self._OrderIndex = OrderIndex
 
     @property
-    def Uuid(self):
-        return self._Uuid
-
-    @Uuid.setter
-    def Uuid(self, Uuid):
-        self._Uuid = Uuid
-
-    @property
     def Enable(self):
         return self._Enable
 
@@ -22514,6 +22279,14 @@ log：观察
     @EdgeId.setter
     def EdgeId(self, EdgeId):
         self._EdgeId = EdgeId
+
+    @property
+    def Uuid(self):
+        return self._Uuid
+
+    @Uuid.setter
+    def Uuid(self, Uuid):
+        self._Uuid = Uuid
 
     @property
     def DetectedTimes(self):
@@ -22603,6 +22376,14 @@ log：观察
     def SourceName(self, SourceName):
         self._SourceName = SourceName
 
+    @property
+    def IpVersion(self):
+        return self._IpVersion
+
+    @IpVersion.setter
+    def IpVersion(self, IpVersion):
+        self._IpVersion = IpVersion
+
 
     def _deserialize(self, params):
         self._SourceContent = params.get("SourceContent")
@@ -22614,9 +22395,9 @@ log：观察
         self._Port = params.get("Port")
         self._Description = params.get("Description")
         self._OrderIndex = params.get("OrderIndex")
-        self._Uuid = params.get("Uuid")
         self._Enable = params.get("Enable")
         self._EdgeId = params.get("EdgeId")
+        self._Uuid = params.get("Uuid")
         self._DetectedTimes = params.get("DetectedTimes")
         self._EdgeName = params.get("EdgeName")
         self._InternalUuid = params.get("InternalUuid")
@@ -22633,6 +22414,7 @@ log：观察
         self._ParamTemplateName = params.get("ParamTemplateName")
         self._TargetName = params.get("TargetName")
         self._SourceName = params.get("SourceName")
+        self._IpVersion = params.get("IpVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

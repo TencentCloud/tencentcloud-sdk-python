@@ -399,7 +399,7 @@ class AcknowledgeMessageResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ErrorMsg: 如果为“”，则说明没有错误返回
+        :param _ErrorMsg: 如果为""，则说明没有错误返回，否则返回具体的错误信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1079,13 +1079,13 @@ class CmqDeadLetterPolicy(AbstractModel):
         :param _DeadLetterQueue: 死信队列。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeadLetterQueue: str
-        :param _Policy: 死信队列策略。
+        :param _Policy: 死信队列策略。0:最大接收次数;1:最大未消费时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type Policy: int
         :param _MaxTimeToLive: 最大未消费过期时间。Policy为1时必选。范围300-43200，单位秒，需要小于消息最大保留时间MsgRetentionSeconds。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxTimeToLive: int
-        :param _MaxReceiveCount: 最大接收次数。
+        :param _MaxReceiveCount: 最大接收次数。Policy为0时必选，范围在1到1000。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxReceiveCount: int
         """
@@ -1206,7 +1206,7 @@ class CmqQueue(AbstractModel):
         :param _Bps: 带宽限制。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Bps: int
-        :param _MaxDelaySeconds: 飞行消息最大保留时间。
+        :param _MaxDelaySeconds: 飞行消息最大保留时间，需要小于消息保留周期。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxDelaySeconds: int
         :param _MaxMsgHeapNum: 最大堆积消息数。取值范围在公测期间为 1,000,000 - 10,000,000，正式上线后范围可达到 1000,000-1000,000,000。默认取值在公测期间为 10,000,000，正式上线后为 100,000,000。
@@ -1834,7 +1834,7 @@ class CmqTopic(AbstractModel):
         :param _MsgRetentionSeconds: 消息在主题中最长存活时间，从发送到该主题开始经过此参数指定的时间后，不论消息是否被成功推送给用户都将被删除，单位为秒。固定为一天（86400秒），该属性不能修改。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MsgRetentionSeconds: int
-        :param _MaxMsgSize: 消息最大长度。取值范围1024 - 1048576Byte（即1 - 1024K），默认值为65536。
+        :param _MaxMsgSize: 消息最大长度。取值范围1024 - 1048576Byte（即1 - 1024K），默认值为1048576。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxMsgSize: int
         :param _Qps: 每秒钟发布消息的条数。
@@ -18515,7 +18515,7 @@ class ModifyClusterRequest(AbstractModel):
         :type ClusterId: str
         :param _ClusterName: 更新后的集群名称。
         :type ClusterName: str
-        :param _Remark: 说明信息。
+        :param _Remark: 说明信息。长度限制为 128 字节
         :type Remark: str
         :param _PublicAccessEnabled: 开启公网访问，只能为true
         :type PublicAccessEnabled: bool
@@ -18637,7 +18637,7 @@ class ModifyCmqQueueAttributeRequest(AbstractModel):
         :type MaxQueryCount: int
         :param _DeadLetterQueueName: 死信队列名称
         :type DeadLetterQueueName: str
-        :param _MaxTimeToLive: MaxTimeToLivepolicy为1时必选。最大未消费过期时间。范围300-43200，单位秒，需要小于消息最大保留时间MsgRetentionSeconds
+        :param _MaxTimeToLive: policy为1时必选。最大未消费过期时间。范围300-43200，单位秒，需要小于消息最大保留时间MsgRetentionSeconds
         :type MaxTimeToLive: int
         :param _MaxReceiveCount: 最大接收次数
         :type MaxReceiveCount: int

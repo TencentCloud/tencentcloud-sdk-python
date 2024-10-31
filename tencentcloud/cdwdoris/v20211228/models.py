@@ -7842,6 +7842,9 @@ class InstanceNode(AbstractModel):
         :param _UUID: UUID
 注意：此字段可能返回 null，表示取不到有效值。
         :type UUID: str
+        :param _Zone: 可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
         """
         self._Ip = None
         self._Spec = None
@@ -7854,6 +7857,7 @@ class InstanceNode(AbstractModel):
         self._Rip = None
         self._FeRole = None
         self._UUID = None
+        self._Zone = None
 
     @property
     def Ip(self):
@@ -7943,6 +7947,14 @@ class InstanceNode(AbstractModel):
     def UUID(self, UUID):
         self._UUID = UUID
 
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
 
     def _deserialize(self, params):
         self._Ip = params.get("Ip")
@@ -7956,6 +7968,7 @@ class InstanceNode(AbstractModel):
         self._Rip = params.get("Rip")
         self._FeRole = params.get("FeRole")
         self._UUID = params.get("UUID")
+        self._Zone = params.get("Zone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11507,14 +11520,15 @@ class ScheduleInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EffectivePeriod: 生效时间
+        :param _EffectivePeriod: 生效周期
 注意：此字段可能返回 null，表示取不到有效值。
         :type EffectivePeriod: str
-        :param _ScheduleType: 调度类型：
+        :param _ScheduleType: 调度类型，不传该参数时为立即执行：
 Day-天
 Week-周
 Month-月
 Once-单次
+
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleType: str
         :param _ScheduleData: 执行调度的日期。调度类型为周和月时以英文逗号分隔；

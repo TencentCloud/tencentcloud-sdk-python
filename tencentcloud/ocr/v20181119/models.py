@@ -1582,11 +1582,11 @@ WARN_RESHOOT_CARD翻拍件告警
 
 
         :type Angle: float
-        :param _NationalEmblem: 是否有国徽。0为没有，1为有。
+        :param _NationalEmblem: 是否有国徽。false为没有，true为有。
         :type NationalEmblem: bool
-        :param _QRCode: 是否有二维码。0为没有，1为有。
+        :param _QRCode: 是否有二维码。false为没有，true为有。
         :type QRCode: bool
-        :param _Seal: 是否有印章。0为没有，1为有。
+        :param _Seal: 是否有印章。false为没有，true为有。
         :type Seal: bool
         :param _Title: 标题
         :type Title: str
@@ -1594,7 +1594,7 @@ WARN_RESHOOT_CARD翻拍件告警
         :type SerialNumber: str
         :param _RegistrationAuthority: 登记机关
         :type RegistrationAuthority: str
-        :param _Electronic: 是否是电子营业执照。0为不是，1为是。
+        :param _Electronic: 是否是电子营业执照。false为没有，true为有。
         :type Electronic: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16585,7 +16585,7 @@ class RecognizeEncryptedIDCardOCRRequest(AbstractModel):
         :param _ImageBase64: 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type ImageBase64: str
-        :param _ImageUrl: 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
+        :param _ImageUrl: 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。
 建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
         :type ImageUrl: str
         :param _CardSide: FRONT：身份证有照片的一面（人像面），
@@ -22456,18 +22456,9 @@ class SmartStructuralOCRV2Request(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageUrl: 图片的 Url 地址。
-支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
-支持的图片像素：需介于20-10000px之间。
-图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
-非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :param _ImageUrl: 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type ImageUrl: str
-        :param _ImageBase64: 图片的 Base64 值。
-支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
-支持的图片像素：需介于20-10000px之间。
-图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :param _ImageBase64: 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type ImageBase64: str
         :param _IsPdf: 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
         :type IsPdf: bool

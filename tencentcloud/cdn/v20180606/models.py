@@ -15334,7 +15334,7 @@ https：强制 https 跳转
 注意：此字段可能返回 null，表示取不到有效值。
         :type RedirectType: str
         :param _RedirectStatusCode: 强制跳转时返回状态码 
-支持 301、302
+支持 301、302、307、308
 注意：此字段可能返回 null，表示取不到有效值。
         :type RedirectStatusCode: int
         :param _CarryHeaders: 强制跳转时是否返回增加的头部。

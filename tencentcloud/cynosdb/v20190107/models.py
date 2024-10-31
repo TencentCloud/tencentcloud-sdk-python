@@ -10122,6 +10122,53 @@ class DeleteParamTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeliverSummary(AbstractModel):
+    """日志投递信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeliverType: 投递类型，store（存储类），mq（消息通道）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeliverType: str
+        :param _DeliverSubType: 投递子类型：cls，ckafka。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeliverSubType: str
+        """
+        self._DeliverType = None
+        self._DeliverSubType = None
+
+    @property
+    def DeliverType(self):
+        return self._DeliverType
+
+    @DeliverType.setter
+    def DeliverType(self, DeliverType):
+        self._DeliverType = DeliverType
+
+    @property
+    def DeliverSubType(self):
+        return self._DeliverSubType
+
+    @DeliverSubType.setter
+    def DeliverSubType(self, DeliverSubType):
+        self._DeliverSubType = DeliverSubType
+
+
+    def _deserialize(self, params):
+        self._DeliverType = params.get("DeliverType")
+        self._DeliverSubType = params.get("DeliverSubType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeAccountAllGrantPrivilegesRequest(AbstractModel):
     """DescribeAccountAllGrantPrivileges请求参数结构体
 
@@ -18374,6 +18421,12 @@ class InstanceAuditStatus(AbstractModel):
         :param _RuleTemplateIds: 实例所应用的规则模板。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleTemplateIds: list of str
+        :param _Deliver: 是否开启日志投递：ON，OFF
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Deliver: str
+        :param _DeliverSummary: 日志投递类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeliverSummary: list of DeliverSummary
         """
         self._InstanceId = None
         self._AuditStatus = None
@@ -18388,6 +18441,8 @@ class InstanceAuditStatus(AbstractModel):
         self._InstanceInfo = None
         self._RealStorage = None
         self._RuleTemplateIds = None
+        self._Deliver = None
+        self._DeliverSummary = None
 
     @property
     def InstanceId(self):
@@ -18493,6 +18548,22 @@ class InstanceAuditStatus(AbstractModel):
     def RuleTemplateIds(self, RuleTemplateIds):
         self._RuleTemplateIds = RuleTemplateIds
 
+    @property
+    def Deliver(self):
+        return self._Deliver
+
+    @Deliver.setter
+    def Deliver(self, Deliver):
+        self._Deliver = Deliver
+
+    @property
+    def DeliverSummary(self):
+        return self._DeliverSummary
+
+    @DeliverSummary.setter
+    def DeliverSummary(self, DeliverSummary):
+        self._DeliverSummary = DeliverSummary
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -18510,6 +18581,13 @@ class InstanceAuditStatus(AbstractModel):
             self._InstanceInfo._deserialize(params.get("InstanceInfo"))
         self._RealStorage = params.get("RealStorage")
         self._RuleTemplateIds = params.get("RuleTemplateIds")
+        self._Deliver = params.get("Deliver")
+        if params.get("DeliverSummary") is not None:
+            self._DeliverSummary = []
+            for item in params.get("DeliverSummary"):
+                obj = DeliverSummary()
+                obj._deserialize(item)
+                self._DeliverSummary.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

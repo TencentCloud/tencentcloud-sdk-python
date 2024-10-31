@@ -771,6 +771,101 @@ class CosSnapShotInfo(AbstractModel):
         
 
 
+class CreateClusterSnapshotRequest(AbstractModel):
+    """CreateClusterSnapshot请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例名称
+        :type InstanceId: str
+        :param _SnapshotName: 快照名称
+        :type SnapshotName: str
+        :param _Indices: 索引名称
+        :type Indices: str
+        """
+        self._InstanceId = None
+        self._SnapshotName = None
+        self._Indices = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def SnapshotName(self):
+        return self._SnapshotName
+
+    @SnapshotName.setter
+    def SnapshotName(self, SnapshotName):
+        self._SnapshotName = SnapshotName
+
+    @property
+    def Indices(self):
+        return self._Indices
+
+    @Indices.setter
+    def Indices(self, Indices):
+        self._Indices = Indices
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._SnapshotName = params.get("SnapshotName")
+        self._Indices = params.get("Indices")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateClusterSnapshotResponse(AbstractModel):
+    """CreateClusterSnapshot返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateCosMigrateToServerlessInstanceRequest(AbstractModel):
     """CreateCosMigrateToServerlessInstance请求参数结构体
 
@@ -2301,6 +2396,100 @@ class DataStreamInfo(AbstractModel):
         
 
 
+class DeleteClusterSnapshotRequest(AbstractModel):
+    """DeleteClusterSnapshot请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群实例Id，格式：es-xxxx
+        :type InstanceId: str
+        :param _RepositoryName: 快照仓库名称
+        :type RepositoryName: str
+        :param _SnapshotName: 集群快照名称
+        :type SnapshotName: str
+        """
+        self._InstanceId = None
+        self._RepositoryName = None
+        self._SnapshotName = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RepositoryName(self):
+        return self._RepositoryName
+
+    @RepositoryName.setter
+    def RepositoryName(self, RepositoryName):
+        self._RepositoryName = RepositoryName
+
+    @property
+    def SnapshotName(self):
+        return self._SnapshotName
+
+    @SnapshotName.setter
+    def SnapshotName(self, SnapshotName):
+        self._SnapshotName = SnapshotName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RepositoryName = params.get("RepositoryName")
+        self._SnapshotName = params.get("SnapshotName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteClusterSnapshotResponse(AbstractModel):
+    """DeleteClusterSnapshot返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteIndexRequest(AbstractModel):
     """DeleteIndex请求参数结构体
 
@@ -2730,6 +2919,129 @@ class DeleteServerlessSpaceUserResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeClusterSnapshotRequest(AbstractModel):
+    """DescribeClusterSnapshot请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群实例Id，格式：es-xxxx
+        :type InstanceId: str
+        :param _RepositoryName: 快照仓库名称
+        :type RepositoryName: str
+        :param _SnapshotName: 集群快照名称
+        :type SnapshotName: str
+        """
+        self._InstanceId = None
+        self._RepositoryName = None
+        self._SnapshotName = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RepositoryName(self):
+        return self._RepositoryName
+
+    @RepositoryName.setter
+    def RepositoryName(self, RepositoryName):
+        self._RepositoryName = RepositoryName
+
+    @property
+    def SnapshotName(self):
+        return self._SnapshotName
+
+    @SnapshotName.setter
+    def SnapshotName(self, SnapshotName):
+        self._SnapshotName = SnapshotName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RepositoryName = params.get("RepositoryName")
+        self._SnapshotName = params.get("SnapshotName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterSnapshotResponse(AbstractModel):
+    """DescribeClusterSnapshot返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群实例Id，格式：es-xxxx
+        :type InstanceId: str
+        :param _Snapshots: 快照备份详情列表
+        :type Snapshots: list of Snapshots
+        :param _RepositoryName: 快照仓库名称
+        :type RepositoryName: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._Snapshots = None
+        self._RepositoryName = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Snapshots(self):
+        return self._Snapshots
+
+    @Snapshots.setter
+    def Snapshots(self, Snapshots):
+        self._Snapshots = Snapshots
+
+    @property
+    def RepositoryName(self):
+        return self._RepositoryName
+
+    @RepositoryName.setter
+    def RepositoryName(self, RepositoryName):
+        self._RepositoryName = RepositoryName
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("Snapshots") is not None:
+            self._Snapshots = []
+            for item in params.get("Snapshots"):
+                obj = Snapshots()
+                obj._deserialize(item)
+                self._Snapshots.append(obj)
+        self._RepositoryName = params.get("RepositoryName")
         self._RequestId = params.get("RequestId")
 
 
@@ -7128,6 +7440,79 @@ class EsPublicAcl(AbstractModel):
     def _deserialize(self, params):
         self._BlackIpList = params.get("BlackIpList")
         self._WhiteIpList = params.get("WhiteIpList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Failures(AbstractModel):
+    """索引备份失败的数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Index: 备份失败的索引名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Index: str
+        :param _ShardId: 快照失败的分片号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShardId: int
+        :param _Reason: 快照失败的原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reason: str
+        :param _Status: 快照失败的状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        """
+        self._Index = None
+        self._ShardId = None
+        self._Reason = None
+        self._Status = None
+
+    @property
+    def Index(self):
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def ShardId(self):
+        return self._ShardId
+
+    @ShardId.setter
+    def ShardId(self, ShardId):
+        self._ShardId = ShardId
+
+    @property
+    def Reason(self):
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Index = params.get("Index")
+        self._ShardId = params.get("ShardId")
+        self._Reason = params.get("Reason")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12472,6 +12857,176 @@ class RestartNodesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RestoreClusterSnapshotRequest(AbstractModel):
+    """RestoreClusterSnapshot请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群实例Id，格式：es-xxxx
+        :type InstanceId: str
+        :param _RepositoryName: 仓库名称
+        :type RepositoryName: str
+        :param _SnapshotName: 集群快照名称
+        :type SnapshotName: str
+        :param _TargetInstanceId: 目标集群实例Id，格式：es-xxxx，如果是恢复到本地，则和InstanceId一致
+        :type TargetInstanceId: str
+        :param _Password: elastic用户名对应的密码信息
+        :type Password: str
+        :param _IndexSettings: 要在所有恢复的索引中添加或更改的设置的逗号分隔列表。使用此参数可以在恢复快照时覆盖索引设置。
+        :type IndexSettings: str
+        :param _IncludeGlobalState: 不应从快照还原的以逗号分隔的索引设置列表。
+        :type IncludeGlobalState: list of str
+        :param _Indices: 需要恢复的索引名称，非必填，为空则表示恢复所有
+
+支持传多个索引名称
+        :type Indices: str
+        :param _Partial: 如果为 false，则如果快照中包含的一个或多个索引没有所有主分片可用，则整个恢复操作将失败。默认为 false,
+
+如果为 true，则允许恢复具有不可用分片的索引的部分快照。只有成功包含在快照中的分片才会被恢复。所有丢失的碎片将被重新创建为空
+        :type Partial: str
+        """
+        self._InstanceId = None
+        self._RepositoryName = None
+        self._SnapshotName = None
+        self._TargetInstanceId = None
+        self._Password = None
+        self._IndexSettings = None
+        self._IncludeGlobalState = None
+        self._Indices = None
+        self._Partial = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RepositoryName(self):
+        return self._RepositoryName
+
+    @RepositoryName.setter
+    def RepositoryName(self, RepositoryName):
+        self._RepositoryName = RepositoryName
+
+    @property
+    def SnapshotName(self):
+        return self._SnapshotName
+
+    @SnapshotName.setter
+    def SnapshotName(self, SnapshotName):
+        self._SnapshotName = SnapshotName
+
+    @property
+    def TargetInstanceId(self):
+        return self._TargetInstanceId
+
+    @TargetInstanceId.setter
+    def TargetInstanceId(self, TargetInstanceId):
+        self._TargetInstanceId = TargetInstanceId
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def IndexSettings(self):
+        return self._IndexSettings
+
+    @IndexSettings.setter
+    def IndexSettings(self, IndexSettings):
+        self._IndexSettings = IndexSettings
+
+    @property
+    def IncludeGlobalState(self):
+        return self._IncludeGlobalState
+
+    @IncludeGlobalState.setter
+    def IncludeGlobalState(self, IncludeGlobalState):
+        self._IncludeGlobalState = IncludeGlobalState
+
+    @property
+    def Indices(self):
+        return self._Indices
+
+    @Indices.setter
+    def Indices(self, Indices):
+        self._Indices = Indices
+
+    @property
+    def Partial(self):
+        return self._Partial
+
+    @Partial.setter
+    def Partial(self, Partial):
+        self._Partial = Partial
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RepositoryName = params.get("RepositoryName")
+        self._SnapshotName = params.get("SnapshotName")
+        self._TargetInstanceId = params.get("TargetInstanceId")
+        self._Password = params.get("Password")
+        self._IndexSettings = params.get("IndexSettings")
+        self._IncludeGlobalState = params.get("IncludeGlobalState")
+        self._Indices = params.get("Indices")
+        self._Partial = params.get("Partial")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RestoreClusterSnapshotResponse(AbstractModel):
+    """RestoreClusterSnapshot返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群实例id
+        :type InstanceId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RequestId = params.get("RequestId")
+
+
 class SaveAndDeployLogstashPipelineRequest(AbstractModel):
     """SaveAndDeployLogstashPipeline请求参数结构体
 
@@ -13524,6 +14079,209 @@ class SettingDetail(AbstractModel):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
         self._Advise = params.get("Advise")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Snapshots(AbstractModel):
+    """集群快照数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SnapshotName: 快照名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SnapshotName: str
+        :param _Uuid: 快照Uuid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uuid: str
+        :param _Version: 该快照所属集群的版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        :param _Indices: 备份的索引列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Indices: list of str
+        :param _DataStreams: 备份的datastream列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataStreams: list of str
+        :param _State: 备份的状态
+
+FAILED            备份失败
+
+IN_PROGRESS 备份执行中
+
+PARTIAL          备份部分成功，部分失败，备份失败的索引和原因会在Failures字段中展示
+
+SUCCESS     备份成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: str
+        :param _StartTime: 快照备份的开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _EndTime: 快照备份的结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _DurationInMillis: 快照备份的耗时时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DurationInMillis: int
+        :param _TotalShards: 备份的总分片数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalShards: int
+        :param _FailedShards: 备份失败的分片数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedShards: int
+        :param _SuccessfulShards: 备份成功的分片数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuccessfulShards: int
+        :param _Failures: 备份失败的索引分片和失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Failures: list of Failures
+        """
+        self._SnapshotName = None
+        self._Uuid = None
+        self._Version = None
+        self._Indices = None
+        self._DataStreams = None
+        self._State = None
+        self._StartTime = None
+        self._EndTime = None
+        self._DurationInMillis = None
+        self._TotalShards = None
+        self._FailedShards = None
+        self._SuccessfulShards = None
+        self._Failures = None
+
+    @property
+    def SnapshotName(self):
+        return self._SnapshotName
+
+    @SnapshotName.setter
+    def SnapshotName(self, SnapshotName):
+        self._SnapshotName = SnapshotName
+
+    @property
+    def Uuid(self):
+        return self._Uuid
+
+    @Uuid.setter
+    def Uuid(self, Uuid):
+        self._Uuid = Uuid
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def Indices(self):
+        return self._Indices
+
+    @Indices.setter
+    def Indices(self, Indices):
+        self._Indices = Indices
+
+    @property
+    def DataStreams(self):
+        return self._DataStreams
+
+    @DataStreams.setter
+    def DataStreams(self, DataStreams):
+        self._DataStreams = DataStreams
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def DurationInMillis(self):
+        return self._DurationInMillis
+
+    @DurationInMillis.setter
+    def DurationInMillis(self, DurationInMillis):
+        self._DurationInMillis = DurationInMillis
+
+    @property
+    def TotalShards(self):
+        return self._TotalShards
+
+    @TotalShards.setter
+    def TotalShards(self, TotalShards):
+        self._TotalShards = TotalShards
+
+    @property
+    def FailedShards(self):
+        return self._FailedShards
+
+    @FailedShards.setter
+    def FailedShards(self, FailedShards):
+        self._FailedShards = FailedShards
+
+    @property
+    def SuccessfulShards(self):
+        return self._SuccessfulShards
+
+    @SuccessfulShards.setter
+    def SuccessfulShards(self, SuccessfulShards):
+        self._SuccessfulShards = SuccessfulShards
+
+    @property
+    def Failures(self):
+        return self._Failures
+
+    @Failures.setter
+    def Failures(self, Failures):
+        self._Failures = Failures
+
+
+    def _deserialize(self, params):
+        self._SnapshotName = params.get("SnapshotName")
+        self._Uuid = params.get("Uuid")
+        self._Version = params.get("Version")
+        self._Indices = params.get("Indices")
+        self._DataStreams = params.get("DataStreams")
+        self._State = params.get("State")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._DurationInMillis = params.get("DurationInMillis")
+        self._TotalShards = params.get("TotalShards")
+        self._FailedShards = params.get("FailedShards")
+        self._SuccessfulShards = params.get("SuccessfulShards")
+        if params.get("Failures") is not None:
+            self._Failures = []
+            for item in params.get("Failures"):
+                obj = Failures()
+                obj._deserialize(item)
+                self._Failures.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

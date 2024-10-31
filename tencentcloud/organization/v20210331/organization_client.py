@@ -601,6 +601,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateSCIMCredential(self, request):
+        """创建SCIM密钥
+
+        :param request: Request instance for CreateSCIMCredential.
+        :type request: :class:`tencentcloud.organization.v20210331.models.CreateSCIMCredentialRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.CreateSCIMCredentialResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSCIMCredential", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSCIMCredentialResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateUser(self, request):
         """创建用户
 
@@ -914,6 +937,29 @@ class OrganizationClient(AbstractClient):
             body = self.call("DeleteRoleConfiguration", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteRoleConfigurationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteSCIMCredential(self, request):
+        """删除SCIM密钥
+
+        :param request: Request instance for DeleteSCIMCredential.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DeleteSCIMCredentialRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DeleteSCIMCredentialResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSCIMCredential", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSCIMCredentialResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1659,6 +1705,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetSCIMSynchronizationStatus(self, request):
+        """获取SCIM同步状态
+
+        :param request: Request instance for GetSCIMSynchronizationStatus.
+        :type request: :class:`tencentcloud.organization.v20210331.models.GetSCIMSynchronizationStatusRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.GetSCIMSynchronizationStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetSCIMSynchronizationStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetSCIMSynchronizationStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetTaskStatus(self, request):
         """查询异步任务的状态
 
@@ -2110,6 +2179,29 @@ class OrganizationClient(AbstractClient):
             body = self.call("ListRoleConfigurations", params, headers=headers)
             response = json.loads(body)
             model = models.ListRoleConfigurationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListSCIMCredentials(self, request):
+        """查询用户SCIM密钥列表
+
+        :param request: Request instance for ListSCIMCredentials.
+        :type request: :class:`tencentcloud.organization.v20210331.models.ListSCIMCredentialsRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.ListSCIMCredentialsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListSCIMCredentials", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListSCIMCredentialsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2616,6 +2708,52 @@ class OrganizationClient(AbstractClient):
             body = self.call("UpdateRoleConfiguration", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateRoleConfigurationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateSCIMCredentialStatus(self, request):
+        """启用/禁用SCIM密钥
+
+        :param request: Request instance for UpdateSCIMCredentialStatus.
+        :type request: :class:`tencentcloud.organization.v20210331.models.UpdateSCIMCredentialStatusRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.UpdateSCIMCredentialStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateSCIMCredentialStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateSCIMCredentialStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateSCIMSynchronizationStatus(self, request):
+        """启用/禁用用户SCIM同步
+
+        :param request: Request instance for UpdateSCIMSynchronizationStatus.
+        :type request: :class:`tencentcloud.organization.v20210331.models.UpdateSCIMSynchronizationStatusRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.UpdateSCIMSynchronizationStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateSCIMSynchronizationStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateSCIMSynchronizationStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

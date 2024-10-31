@@ -26382,6 +26382,105 @@ class ModifyUserSignatureRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyUserSignatureRuleV2Request(AbstractModel):
+    """ModifyUserSignatureRuleV2请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _MainClassID: 主类id
+        :type MainClassID: str
+        :param _Status: 主类开关0=关闭，1=开启，2=只告警
+        :type Status: int
+        :param _RuleID: 下发修改的规则列表
+        :type RuleID: list of ReqUserRule
+        """
+        self._Domain = None
+        self._MainClassID = None
+        self._Status = None
+        self._RuleID = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def MainClassID(self):
+        return self._MainClassID
+
+    @MainClassID.setter
+    def MainClassID(self, MainClassID):
+        self._MainClassID = MainClassID
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RuleID(self):
+        return self._RuleID
+
+    @RuleID.setter
+    def RuleID(self, RuleID):
+        self._RuleID = RuleID
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._MainClassID = params.get("MainClassID")
+        self._Status = params.get("Status")
+        if params.get("RuleID") is not None:
+            self._RuleID = []
+            for item in params.get("RuleID"):
+                obj = ReqUserRule()
+                obj._deserialize(item)
+                self._RuleID.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyUserSignatureRuleV2Response(AbstractModel):
+    """ModifyUserSignatureRuleV2返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyWafAutoDenyRulesRequest(AbstractModel):
     """ModifyWafAutoDenyRules请求参数结构体
 

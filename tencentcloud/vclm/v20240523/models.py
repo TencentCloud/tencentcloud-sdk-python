@@ -801,6 +801,141 @@ class DescribeVideoTranslateJobResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class LogoParam(AbstractModel):
+    """logo参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogoUrl: 水印 Url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogoUrl: str
+        :param _LogoImage: 水印 Base64，Url 和 Base64 二选一传入，如果都提供以 Url 为准
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogoImage: str
+        :param _LogoRect: 水印图片位于生成结果图中的坐标，将按照坐标对标识图片进行位置和大小的拉伸匹配
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogoRect: :class:`tencentcloud.vclm.v20240523.models.LogoRect`
+        """
+        self._LogoUrl = None
+        self._LogoImage = None
+        self._LogoRect = None
+
+    @property
+    def LogoUrl(self):
+        return self._LogoUrl
+
+    @LogoUrl.setter
+    def LogoUrl(self, LogoUrl):
+        self._LogoUrl = LogoUrl
+
+    @property
+    def LogoImage(self):
+        return self._LogoImage
+
+    @LogoImage.setter
+    def LogoImage(self, LogoImage):
+        self._LogoImage = LogoImage
+
+    @property
+    def LogoRect(self):
+        return self._LogoRect
+
+    @LogoRect.setter
+    def LogoRect(self, LogoRect):
+        self._LogoRect = LogoRect
+
+
+    def _deserialize(self, params):
+        self._LogoUrl = params.get("LogoUrl")
+        self._LogoImage = params.get("LogoImage")
+        if params.get("LogoRect") is not None:
+            self._LogoRect = LogoRect()
+            self._LogoRect._deserialize(params.get("LogoRect"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogoRect(AbstractModel):
+    """输入框
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _X: 左上角X坐标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type X: int
+        :param _Y: 左上角Y坐标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Y: int
+        :param _Width: 方框宽度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Width: int
+        :param _Height: 方框高度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Height: int
+        """
+        self._X = None
+        self._Y = None
+        self._Width = None
+        self._Height = None
+
+    @property
+    def X(self):
+        return self._X
+
+    @X.setter
+    def X(self, X):
+        self._X = X
+
+    @property
+    def Y(self):
+        return self._Y
+
+    @Y.setter
+    def Y(self, Y):
+        self._Y = Y
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+
+    def _deserialize(self, params):
+        self._X = params.get("X")
+        self._Y = params.get("Y")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SubmitImageAnimateJobRequest(AbstractModel):
     """SubmitImageAnimateJob请求参数结构体
 
@@ -825,6 +960,15 @@ class SubmitImageAnimateJobRequest(AbstractModel):
         :param _EnableSegment: 最终视频是否保留原图的背景（该模式对于tuziwu、huajiangwu不生效）
 
         :type EnableSegment: bool
+        :param _LogoAdd: 为生成视频添加标识的开关，默认为0。
+1：添加标识。
+0：不添加标识。
+其他数值：默认按1处理。
+建议您使用显著标识来提示，该视频是 AI 生成的视频。
+        :type LogoAdd: int
+        :param _LogoParam: 标识内容设置。
+默认在生成视频的右下角添加“视频由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        :type LogoParam: :class:`tencentcloud.vclm.v20240523.models.LogoParam`
         """
         self._ImageUrl = None
         self._ImageBase64 = None
@@ -832,6 +976,8 @@ class SubmitImageAnimateJobRequest(AbstractModel):
         self._EnableAudio = None
         self._EnableBodyJoins = None
         self._EnableSegment = None
+        self._LogoAdd = None
+        self._LogoParam = None
 
     @property
     def ImageUrl(self):
@@ -881,6 +1027,22 @@ class SubmitImageAnimateJobRequest(AbstractModel):
     def EnableSegment(self, EnableSegment):
         self._EnableSegment = EnableSegment
 
+    @property
+    def LogoAdd(self):
+        return self._LogoAdd
+
+    @LogoAdd.setter
+    def LogoAdd(self, LogoAdd):
+        self._LogoAdd = LogoAdd
+
+    @property
+    def LogoParam(self):
+        return self._LogoParam
+
+    @LogoParam.setter
+    def LogoParam(self, LogoParam):
+        self._LogoParam = LogoParam
+
 
     def _deserialize(self, params):
         self._ImageUrl = params.get("ImageUrl")
@@ -889,6 +1051,10 @@ class SubmitImageAnimateJobRequest(AbstractModel):
         self._EnableAudio = params.get("EnableAudio")
         self._EnableBodyJoins = params.get("EnableBodyJoins")
         self._EnableSegment = params.get("EnableSegment")
+        self._LogoAdd = params.get("LogoAdd")
+        if params.get("LogoParam") is not None:
+            self._LogoParam = LogoParam()
+            self._LogoParam._deserialize(params.get("LogoParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

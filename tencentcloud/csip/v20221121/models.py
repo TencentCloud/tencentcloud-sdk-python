@@ -1295,7 +1295,7 @@ CSIP:云安全中心
         :param _Victim: 受害者
 注意：此字段可能返回 null，表示取不到有效值。
         :type Victim: :class:`tencentcloud.csip.v20221121.models.RoleInfo`
-        :param _EvidenceData: 证据数据(例如攻击内容等)
+        :param _EvidenceData: 证据数据(例如攻击内容等，base64编码)
 注意：此字段可能返回 null，表示取不到有效值。
         :type EvidenceData: str
         :param _EvidenceLocation: 证据位置(例如协议端口)
@@ -2666,6 +2666,9 @@ class AssetViewCFGRisk(AbstractModel):
         :param _Uin: 用户uin
 注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: str
+        :param _ClbId: 当资产类型为LBL的时候，展示该字段，方便定位具体的LB
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClbId: str
         """
         self._Id = None
         self._CFGName = None
@@ -2687,6 +2690,7 @@ class AssetViewCFGRisk(AbstractModel):
         self._AppId = None
         self._Nick = None
         self._Uin = None
+        self._ClbId = None
 
     @property
     def Id(self):
@@ -2848,6 +2852,14 @@ class AssetViewCFGRisk(AbstractModel):
     def Uin(self, Uin):
         self._Uin = Uin
 
+    @property
+    def ClbId(self):
+        return self._ClbId
+
+    @ClbId.setter
+    def ClbId(self, ClbId):
+        self._ClbId = ClbId
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -2870,6 +2882,7 @@ class AssetViewCFGRisk(AbstractModel):
         self._AppId = params.get("AppId")
         self._Nick = params.get("Nick")
         self._Uin = params.get("Uin")
+        self._ClbId = params.get("ClbId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6440,6 +6453,12 @@ class DataSearchBug(AbstractModel):
         :param _CWPFix: 0不支持，1支持
 注意：此字段可能返回 null，表示取不到有效值。
         :type CWPFix: int
+        :param _DataSupport: 产品支持状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataSupport: list of ProductSupport
+        :param _CveId: cveId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CveId: str
         """
         self._StateCode = None
         self._DataBug = None
@@ -6449,6 +6468,8 @@ class DataSearchBug(AbstractModel):
         self._CFWPatch = None
         self._WafPatch = None
         self._CWPFix = None
+        self._DataSupport = None
+        self._CveId = None
 
     @property
     def StateCode(self):
@@ -6514,6 +6535,22 @@ class DataSearchBug(AbstractModel):
     def CWPFix(self, CWPFix):
         self._CWPFix = CWPFix
 
+    @property
+    def DataSupport(self):
+        return self._DataSupport
+
+    @DataSupport.setter
+    def DataSupport(self, DataSupport):
+        self._DataSupport = DataSupport
+
+    @property
+    def CveId(self):
+        return self._CveId
+
+    @CveId.setter
+    def CveId(self, CveId):
+        self._CveId = CveId
+
 
     def _deserialize(self, params):
         self._StateCode = params.get("StateCode")
@@ -6534,6 +6571,13 @@ class DataSearchBug(AbstractModel):
         self._CFWPatch = params.get("CFWPatch")
         self._WafPatch = params.get("WafPatch")
         self._CWPFix = params.get("CWPFix")
+        if params.get("DataSupport") is not None:
+            self._DataSupport = []
+            for item in params.get("DataSupport"):
+                obj = ProductSupport()
+                obj._deserialize(item)
+                self._DataSupport.append(obj)
+        self._CveId = params.get("CveId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7561,7 +7605,7 @@ class DescribeCVMAssetsRequest(AbstractModel):
         r"""
         :param _MemberId: 集团账号的成员id
         :type MemberId: list of str
-        :param _Filter: -
+        :param _Filter: 过滤器参数
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         self._MemberId = None
@@ -7606,10 +7650,10 @@ class DescribeCVMAssetsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: -
+        :param _Total: 总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
-        :param _Data: -
+        :param _Data: 机器列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of CVMAssetVO
         :param _RegionList: 地域列表
@@ -7878,10 +7922,21 @@ class DescribeClusterPodAssetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
         :param _Filter: 过滤
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
+        self._MemberId = None
         self._Filter = None
+
+    @property
+    def MemberId(self):
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
 
     @property
     def Filter(self):
@@ -7893,6 +7948,7 @@ class DescribeClusterPodAssetsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
@@ -8110,7 +8166,7 @@ class DescribeDbAssetsRequest(AbstractModel):
         r"""
         :param _MemberId: 集团账号的成员id
         :type MemberId: list of str
-        :param _Filter: -
+        :param _Filter: 过滤器参数
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
         :param _AssetTypes: 资产类型:MYSQL/MARIADB/REDIS/MONGODB/POSTGRES/CTS/ES/KAFKA/COS/CBS/CFS
         :type AssetTypes: list of str
@@ -8315,7 +8371,7 @@ class DescribeDomainAssetsRequest(AbstractModel):
         r"""
         :param _MemberId: 集团账号的成员id
         :type MemberId: list of str
-        :param _Filter: -
+        :param _Filter: 过滤器参数
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
         :param _Tags: 安全中心自定义标签
         :type Tags: list of AssetTag
@@ -8377,10 +8433,10 @@ class DescribeDomainAssetsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: -
+        :param _Total: 总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
-        :param _Data: -
+        :param _Data: 域名列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of DomainAssetVO
         :param _DefenseStatusList: 防护状态列表
@@ -8676,7 +8732,7 @@ class DescribeListenerListRequest(AbstractModel):
         r"""
         :param _MemberId: 集团账号的成员id
         :type MemberId: list of str
-        :param _Filter: -
+        :param _Filter: 过滤器参数
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         self._MemberId = None
@@ -9012,10 +9068,8 @@ class DescribeOrganizationUserInfoResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of OrganizationUserInfo
         :param _JoinTypeLst: 加入方式枚举
-注意：此字段可能返回 null，表示取不到有效值。
         :type JoinTypeLst: list of FilterDataObject
         :param _CloudTypeLst: 云厂商枚举
-注意：此字段可能返回 null，表示取不到有效值。
         :type CloudTypeLst: list of FilterDataObject
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9099,7 +9153,7 @@ class DescribePublicIpAssetsRequest(AbstractModel):
         r"""
         :param _MemberId: 集团账号的成员id
         :type MemberId: list of str
-        :param _Filter: filte过滤条件
+        :param _Filter: 过滤器参数
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
         :param _Tags: 安全中心自定义标签
         :type Tags: list of AssetTag
@@ -11187,10 +11241,21 @@ class DescribeSubnetAssetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
         :param _Filter: 过滤参数
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
+        self._MemberId = None
         self._Filter = None
+
+    @property
+    def MemberId(self):
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
 
     @property
     def Filter(self):
@@ -11202,6 +11267,7 @@ class DescribeSubnetAssetsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
@@ -11594,10 +11660,21 @@ class DescribeTopAttackInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
         :param _OperatedMemberId: 被调用的集团账号的成员id
         :type OperatedMemberId: list of str
         """
+        self._MemberId = None
         self._OperatedMemberId = None
+
+    @property
+    def MemberId(self):
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
 
     @property
     def OperatedMemberId(self):
@@ -11609,6 +11686,7 @@ class DescribeTopAttackInfoRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
         self._OperatedMemberId = params.get("OperatedMemberId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -12009,10 +12087,21 @@ class DescribeVpcAssetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
         :param _Filter: 过滤参数
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
+        self._MemberId = None
         self._Filter = None
+
+    @property
+    def MemberId(self):
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
 
     @property
     def Filter(self):
@@ -12024,6 +12113,7 @@ class DescribeVpcAssetsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
@@ -13983,8 +14073,11 @@ class ModifyOrganizationAccountStatusRequest(AbstractModel):
         r"""
         :param _Status: 修改集团账号状态，1 开启， 2关闭
         :type Status: int
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
         """
         self._Status = None
+        self._MemberId = None
 
     @property
     def Status(self):
@@ -13994,9 +14087,18 @@ class ModifyOrganizationAccountStatusRequest(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def MemberId(self):
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
+        self._MemberId = params.get("MemberId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15431,6 +15533,105 @@ class PortViewPortRisk(AbstractModel):
         self._Nick = params.get("Nick")
         self._Uin = params.get("Uin")
         self._Service = params.get("Service")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProductSupport(AbstractModel):
+    """漏洞信息产品支持状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VSSScan: true支持扫描。false不支持扫描
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VSSScan: bool
+        :param _CWPScan: 0不支持，1支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CWPScan: str
+        :param _CFWPatch: 1支持虚拟补丁，0或空不支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CFWPatch: str
+        :param _WafPatch: 0不支持，1支持	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WafPatch: int
+        :param _CWPFix: 0不支持，1支持	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CWPFix: int
+        :param _CveId: cveid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CveId: str
+        """
+        self._VSSScan = None
+        self._CWPScan = None
+        self._CFWPatch = None
+        self._WafPatch = None
+        self._CWPFix = None
+        self._CveId = None
+
+    @property
+    def VSSScan(self):
+        return self._VSSScan
+
+    @VSSScan.setter
+    def VSSScan(self, VSSScan):
+        self._VSSScan = VSSScan
+
+    @property
+    def CWPScan(self):
+        return self._CWPScan
+
+    @CWPScan.setter
+    def CWPScan(self, CWPScan):
+        self._CWPScan = CWPScan
+
+    @property
+    def CFWPatch(self):
+        return self._CFWPatch
+
+    @CFWPatch.setter
+    def CFWPatch(self, CFWPatch):
+        self._CFWPatch = CFWPatch
+
+    @property
+    def WafPatch(self):
+        return self._WafPatch
+
+    @WafPatch.setter
+    def WafPatch(self, WafPatch):
+        self._WafPatch = WafPatch
+
+    @property
+    def CWPFix(self):
+        return self._CWPFix
+
+    @CWPFix.setter
+    def CWPFix(self, CWPFix):
+        self._CWPFix = CWPFix
+
+    @property
+    def CveId(self):
+        return self._CveId
+
+    @CveId.setter
+    def CveId(self, CveId):
+        self._CveId = CveId
+
+
+    def _deserialize(self, params):
+        self._VSSScan = params.get("VSSScan")
+        self._CWPScan = params.get("CWPScan")
+        self._CFWPatch = params.get("CFWPatch")
+        self._WafPatch = params.get("WafPatch")
+        self._CWPFix = params.get("CWPFix")
+        self._CveId = params.get("CveId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18332,11 +18533,14 @@ class UpdateAlertStatusListRequest(AbstractModel):
 4:取消标记处置
 5:取消标记忽略
         :type OperateType: int
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
         :param _OperatedMemberId: 被调用的集团账号的成员id
         :type OperatedMemberId: list of str
         """
         self._ID = None
         self._OperateType = None
+        self._MemberId = None
         self._OperatedMemberId = None
 
     @property
@@ -18356,6 +18560,14 @@ class UpdateAlertStatusListRequest(AbstractModel):
         self._OperateType = OperateType
 
     @property
+    def MemberId(self):
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
     def OperatedMemberId(self):
         return self._OperatedMemberId
 
@@ -18372,6 +18584,7 @@ class UpdateAlertStatusListRequest(AbstractModel):
                 obj._deserialize(item)
                 self._ID.append(obj)
         self._OperateType = params.get("OperateType")
+        self._MemberId = params.get("MemberId")
         self._OperatedMemberId = params.get("OperatedMemberId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

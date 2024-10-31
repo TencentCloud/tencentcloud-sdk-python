@@ -79,6 +79,29 @@ class ScfClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCustomDomain(self, request):
+        """创建自定义域名
+
+        :param request: Request instance for CreateCustomDomain.
+        :type request: :class:`tencentcloud.scf.v20180416.models.CreateCustomDomainRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.CreateCustomDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCustomDomain", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCustomDomainResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateFunction(self, request):
         """该接口根据传入参数创建新的函数。
 
@@ -162,6 +185,29 @@ class ScfClient(AbstractClient):
             body = self.call("DeleteAlias", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteAliasResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCustomDomain(self, request):
+        """删除自定义域名
+
+        :param request: Request instance for DeleteCustomDomain.
+        :type request: :class:`tencentcloud.scf.v20180416.models.DeleteCustomDomainRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.DeleteCustomDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCustomDomain", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCustomDomainResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -369,6 +415,29 @@ class ScfClient(AbstractClient):
             body = self.call("GetAsyncEventStatus", params, headers=headers)
             response = json.loads(body)
             model = models.GetAsyncEventStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetCustomDomain(self, request):
+        """查看云函数自定义域名详情
+
+        :param request: Request instance for GetCustomDomain.
+        :type request: :class:`tencentcloud.scf.v20180416.models.GetCustomDomainRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.GetCustomDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetCustomDomain", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetCustomDomainResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -645,6 +714,29 @@ class ScfClient(AbstractClient):
             body = self.call("ListAsyncEvents", params, headers=headers)
             response = json.loads(body)
             model = models.ListAsyncEventsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListCustomDomains(self, request):
+        """遍历域名列表信息
+
+        :param request: Request instance for ListCustomDomains.
+        :type request: :class:`tencentcloud.scf.v20180416.models.ListCustomDomainsRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.ListCustomDomainsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListCustomDomains", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListCustomDomainsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -944,6 +1036,29 @@ class ScfClient(AbstractClient):
             body = self.call("UpdateAlias", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateAliasResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateCustomDomain(self, request):
+        """更新自定义域名相关配置
+
+        :param request: Request instance for UpdateCustomDomain.
+        :type request: :class:`tencentcloud.scf.v20180416.models.UpdateCustomDomainRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.UpdateCustomDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateCustomDomain", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateCustomDomainResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

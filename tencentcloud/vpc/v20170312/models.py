@@ -14469,9 +14469,12 @@ class DeleteDirectConnectGatewayCcnRoutesRequest(AbstractModel):
         :type DirectConnectGatewayId: str
         :param _RouteIds: 路由ID。形如：ccnr-f49l6u0z。
         :type RouteIds: list of str
+        :param _AddressType: 地址类型，支持：IPv4、IPv6。默认IPv4。
+        :type AddressType: str
         """
         self._DirectConnectGatewayId = None
         self._RouteIds = None
+        self._AddressType = None
 
     @property
     def DirectConnectGatewayId(self):
@@ -14489,10 +14492,19 @@ class DeleteDirectConnectGatewayCcnRoutesRequest(AbstractModel):
     def RouteIds(self, RouteIds):
         self._RouteIds = RouteIds
 
+    @property
+    def AddressType(self):
+        return self._AddressType
+
+    @AddressType.setter
+    def AddressType(self, AddressType):
+        self._AddressType = AddressType
+
 
     def _deserialize(self, params):
         self._DirectConnectGatewayId = params.get("DirectConnectGatewayId")
         self._RouteIds = params.get("RouteIds")
+        self._AddressType = params.get("AddressType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20156,6 +20168,8 @@ class DescribeDirectConnectGatewayCcnRoutesRequest(AbstractModel):
 <li>`BGP` - 自动学习。</li>
 <li>`STATIC` - 静态，即用户配置，默认值。</li>
         :type CcnRouteType: str
+        :param _AddressType: 地址类型，支持：IPv4、IPv6。默认IPv4。
+        :type AddressType: str
         :param _Offset: 偏移量。
         :type Offset: int
         :param _Limit: 返回数量。
@@ -20163,6 +20177,7 @@ class DescribeDirectConnectGatewayCcnRoutesRequest(AbstractModel):
         """
         self._DirectConnectGatewayId = None
         self._CcnRouteType = None
+        self._AddressType = None
         self._Offset = None
         self._Limit = None
 
@@ -20181,6 +20196,14 @@ class DescribeDirectConnectGatewayCcnRoutesRequest(AbstractModel):
     @CcnRouteType.setter
     def CcnRouteType(self, CcnRouteType):
         self._CcnRouteType = CcnRouteType
+
+    @property
+    def AddressType(self):
+        return self._AddressType
+
+    @AddressType.setter
+    def AddressType(self, AddressType):
+        self._AddressType = AddressType
 
     @property
     def Offset(self):
@@ -20202,6 +20225,7 @@ class DescribeDirectConnectGatewayCcnRoutesRequest(AbstractModel):
     def _deserialize(self, params):
         self._DirectConnectGatewayId = params.get("DirectConnectGatewayId")
         self._CcnRouteType = params.get("CcnRouteType")
+        self._AddressType = params.get("AddressType")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
@@ -35572,6 +35596,12 @@ class Ipv6Address(AbstractModel):
 <li>`DELETING`：删除中</li>
 <li>`AVAILABLE`：可用的</li>
         :type State: str
+        :param _PublicIpAddress: 如果 IPv6地址是 ULA 类型，绑定的公网IP地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicIpAddress: str
+        :param _AddressType: `IPv6`地址的类型: `GUA`, `OTHER`, `ULA`
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AddressType: str
         """
         self._Address = None
         self._Primary = None
@@ -35579,6 +35609,8 @@ class Ipv6Address(AbstractModel):
         self._Description = None
         self._IsWanIpBlocked = None
         self._State = None
+        self._PublicIpAddress = None
+        self._AddressType = None
 
     @property
     def Address(self):
@@ -35628,6 +35660,22 @@ class Ipv6Address(AbstractModel):
     def State(self, State):
         self._State = State
 
+    @property
+    def PublicIpAddress(self):
+        return self._PublicIpAddress
+
+    @PublicIpAddress.setter
+    def PublicIpAddress(self, PublicIpAddress):
+        self._PublicIpAddress = PublicIpAddress
+
+    @property
+    def AddressType(self):
+        return self._AddressType
+
+    @AddressType.setter
+    def AddressType(self, AddressType):
+        self._AddressType = AddressType
+
 
     def _deserialize(self, params):
         self._Address = params.get("Address")
@@ -35636,6 +35684,8 @@ class Ipv6Address(AbstractModel):
         self._Description = params.get("Description")
         self._IsWanIpBlocked = params.get("IsWanIpBlocked")
         self._State = params.get("State")
+        self._PublicIpAddress = params.get("PublicIpAddress")
+        self._AddressType = params.get("AddressType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -36753,6 +36803,76 @@ class ModifyAddressesBandwidthResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyAddressesRenewFlagRequest(AbstractModel):
+    """ModifyAddressesRenewFlag请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AddressIds: EIP唯一标识ID列表，形如'eip-xxxx'
+        :type AddressIds: list of str
+        :param _RenewFlag: 自动续费标识。取值范围： NOTIFY_AND_AUTO_RENEW：通知过期且自动续费 NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费 DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费  若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。 示例值：NOTIFY_AND_AUTO_RENEW
+        :type RenewFlag: str
+        """
+        self._AddressIds = None
+        self._RenewFlag = None
+
+    @property
+    def AddressIds(self):
+        return self._AddressIds
+
+    @AddressIds.setter
+    def AddressIds(self, AddressIds):
+        self._AddressIds = AddressIds
+
+    @property
+    def RenewFlag(self):
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+
+    def _deserialize(self, params):
+        self._AddressIds = params.get("AddressIds")
+        self._RenewFlag = params.get("RenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAddressesRenewFlagResponse(AbstractModel):
+    """ModifyAddressesRenewFlag返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -42239,7 +42359,7 @@ class NatGatewayDestinationIpPortTranslationNatRule(AbstractModel):
         r"""
         :param _IpProtocol: 网络协议，可选值：`TCP`、`UDP`。
         :type IpProtocol: str
-        :param _PublicIpAddress: 弹性IP。
+        :param _PublicIpAddress: 弹性公网IP。
         :type PublicIpAddress: str
         :param _PublicPort: 公网端口。
         :type PublicPort: int
@@ -45670,9 +45790,12 @@ class ReplaceDirectConnectGatewayCcnRoutesRequest(AbstractModel):
         :type DirectConnectGatewayId: str
         :param _Routes: 需要连通的IDC网段列表
         :type Routes: list of DirectConnectGatewayCcnRoute
+        :param _AddressType: 地址类型，支持：IPv4、IPv6。默认IPv4。
+        :type AddressType: str
         """
         self._DirectConnectGatewayId = None
         self._Routes = None
+        self._AddressType = None
 
     @property
     def DirectConnectGatewayId(self):
@@ -45690,6 +45813,14 @@ class ReplaceDirectConnectGatewayCcnRoutesRequest(AbstractModel):
     def Routes(self, Routes):
         self._Routes = Routes
 
+    @property
+    def AddressType(self):
+        return self._AddressType
+
+    @AddressType.setter
+    def AddressType(self, AddressType):
+        self._AddressType = AddressType
+
 
     def _deserialize(self, params):
         self._DirectConnectGatewayId = params.get("DirectConnectGatewayId")
@@ -45699,6 +45830,7 @@ class ReplaceDirectConnectGatewayCcnRoutesRequest(AbstractModel):
                 obj = DirectConnectGatewayCcnRoute()
                 obj._deserialize(item)
                 self._Routes.append(obj)
+        self._AddressType = params.get("AddressType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -48619,7 +48751,7 @@ class SecurityGroupPolicy(AbstractModel):
         :param _Action: ACCEPT 或 DROP。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Action: str
-        :param _PolicyDescription: 安全组规则描述。
+        :param _PolicyDescription: 安全组规则描述。作为入参时，当未传递该参数或值为空，且参数CidrBlock或Ipv6CidrBlock值为MY_PUBLIC_IP时，该参数的值将会被自动填充为Replaced-From-MY_PUBLIC_IP。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyDescription: str
         :param _ModifyTime: 安全组最近修改时间。

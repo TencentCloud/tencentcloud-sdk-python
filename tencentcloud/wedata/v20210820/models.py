@@ -11123,6 +11123,359 @@ class DataCheckStat(AbstractModel):
         
 
 
+class DataServicePublishedApiListFilter(AbstractModel):
+    """获取数据服务API的发布态信息列表过滤条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PathUrl: 请求路径关键词筛选
+        :type PathUrl: str
+        :param _Keyword: Api名称关键词筛选
+        :type Keyword: str
+        :param _AuthTypes: Api认证方式筛选 0:免认证 1:应用认证
+        :type AuthTypes: list of int non-negative
+        :param _ApiStatus: 服务Api状态 1:已上线  3:已下线
+        :type ApiStatus: list of int non-negative
+        :param _ConfigTypes: API配置方式 0:向导、1、脚本、2、注册Api
+        :type ConfigTypes: list of int non-negative
+        """
+        self._PathUrl = None
+        self._Keyword = None
+        self._AuthTypes = None
+        self._ApiStatus = None
+        self._ConfigTypes = None
+
+    @property
+    def PathUrl(self):
+        return self._PathUrl
+
+    @PathUrl.setter
+    def PathUrl(self, PathUrl):
+        self._PathUrl = PathUrl
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def AuthTypes(self):
+        return self._AuthTypes
+
+    @AuthTypes.setter
+    def AuthTypes(self, AuthTypes):
+        self._AuthTypes = AuthTypes
+
+    @property
+    def ApiStatus(self):
+        return self._ApiStatus
+
+    @ApiStatus.setter
+    def ApiStatus(self, ApiStatus):
+        self._ApiStatus = ApiStatus
+
+    @property
+    def ConfigTypes(self):
+        return self._ConfigTypes
+
+    @ConfigTypes.setter
+    def ConfigTypes(self, ConfigTypes):
+        self._ConfigTypes = ConfigTypes
+
+
+    def _deserialize(self, params):
+        self._PathUrl = params.get("PathUrl")
+        self._Keyword = params.get("Keyword")
+        self._AuthTypes = params.get("AuthTypes")
+        self._ApiStatus = params.get("ApiStatus")
+        self._ConfigTypes = params.get("ConfigTypes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DataServiceRequestListOrder(AbstractModel):
+    """数据服务通用排序参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 排序参数名称
+取值： 
+  CreateTime 表示按照创建时间排序
+  ModifyTime 表示按照更新时间排序
+        :type Name: str
+        :param _Direction: 排序参数顺序
+        :type Direction: str
+        """
+        self._Name = None
+        self._Direction = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Direction(self):
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Direction = params.get("Direction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DataServiceRequestParam(AbstractModel):
+    """数据服务入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ParamName: 参数名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamName: str
+        :param _BindField: 绑定字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BindField: str
+        :param _ParamType: 参数类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamType: str
+        :param _ParamPosition: 参数位置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamPosition: str
+        :param _Operator: 操作符
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operator: str
+        :param _NonEmpty: 是否为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NonEmpty: int
+        :param _DefaultValue: 默认值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultValue: str
+        :param _ExampleValue: 示例值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExampleValue: str
+        :param _Description: 参数描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        """
+        self._ParamName = None
+        self._BindField = None
+        self._ParamType = None
+        self._ParamPosition = None
+        self._Operator = None
+        self._NonEmpty = None
+        self._DefaultValue = None
+        self._ExampleValue = None
+        self._Description = None
+
+    @property
+    def ParamName(self):
+        return self._ParamName
+
+    @ParamName.setter
+    def ParamName(self, ParamName):
+        self._ParamName = ParamName
+
+    @property
+    def BindField(self):
+        return self._BindField
+
+    @BindField.setter
+    def BindField(self, BindField):
+        self._BindField = BindField
+
+    @property
+    def ParamType(self):
+        return self._ParamType
+
+    @ParamType.setter
+    def ParamType(self, ParamType):
+        self._ParamType = ParamType
+
+    @property
+    def ParamPosition(self):
+        return self._ParamPosition
+
+    @ParamPosition.setter
+    def ParamPosition(self, ParamPosition):
+        self._ParamPosition = ParamPosition
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def NonEmpty(self):
+        return self._NonEmpty
+
+    @NonEmpty.setter
+    def NonEmpty(self, NonEmpty):
+        self._NonEmpty = NonEmpty
+
+    @property
+    def DefaultValue(self):
+        return self._DefaultValue
+
+    @DefaultValue.setter
+    def DefaultValue(self, DefaultValue):
+        self._DefaultValue = DefaultValue
+
+    @property
+    def ExampleValue(self):
+        return self._ExampleValue
+
+    @ExampleValue.setter
+    def ExampleValue(self, ExampleValue):
+        self._ExampleValue = ExampleValue
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._ParamName = params.get("ParamName")
+        self._BindField = params.get("BindField")
+        self._ParamType = params.get("ParamType")
+        self._ParamPosition = params.get("ParamPosition")
+        self._Operator = params.get("Operator")
+        self._NonEmpty = params.get("NonEmpty")
+        self._DefaultValue = params.get("DefaultValue")
+        self._ExampleValue = params.get("ExampleValue")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DataServiceResponseParam(AbstractModel):
+    """数据服务入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ParamName: 参数名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamName: str
+        :param _BindField: 绑定字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BindField: str
+        :param _ParamType: 参数类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamType: str
+        :param _ExampleValue: 示例值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExampleValue: str
+        :param _Description: 参数描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        """
+        self._ParamName = None
+        self._BindField = None
+        self._ParamType = None
+        self._ExampleValue = None
+        self._Description = None
+
+    @property
+    def ParamName(self):
+        return self._ParamName
+
+    @ParamName.setter
+    def ParamName(self, ParamName):
+        self._ParamName = ParamName
+
+    @property
+    def BindField(self):
+        return self._BindField
+
+    @BindField.setter
+    def BindField(self, BindField):
+        self._BindField = BindField
+
+    @property
+    def ParamType(self):
+        return self._ParamType
+
+    @ParamType.setter
+    def ParamType(self, ParamType):
+        self._ParamType = ParamType
+
+    @property
+    def ExampleValue(self):
+        return self._ExampleValue
+
+    @ExampleValue.setter
+    def ExampleValue(self, ExampleValue):
+        self._ExampleValue = ExampleValue
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._ParamName = params.get("ParamName")
+        self._BindField = params.get("BindField")
+        self._ParamType = params.get("ParamType")
+        self._ExampleValue = params.get("ExampleValue")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DataSourceInfo(AbstractModel):
     """数据源对象
 
@@ -16191,6 +16544,644 @@ class DescribeDataCheckStatResponse(AbstractModel):
         if params.get("Data") is not None:
             self._Data = DataCheckStat()
             self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDataServicePublishedApiDetailRequest(AbstractModel):
+    """DescribeDataServicePublishedApiDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 服务Id
+        :type Id: str
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        """
+        self._Id = None
+        self._ProjectId = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataServicePublishedApiDetailResp(AbstractModel):
+    """查询数据服务API的发布态信息详情出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApiName: 服务Api名称
+        :type ApiName: str
+        :param _PathUrl: 服务请求Path
+        :type PathUrl: str
+        :param _OwnerName: 服务责任人名称
+        :type OwnerName: str
+        :param _RequestType: 服务请求方式
+        :type RequestType: str
+        :param _ApiTagNames: 服务标签名称集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiTagNames: str
+        :param _ApiDescription: 服务描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiDescription: str
+        :param _RequestExample: 服务请求返回示例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestExample: str
+        :param _RequestSuccess: 服务请求成功返回示例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestSuccess: str
+        :param _RequestError: 服务请求失败返回示例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestError: str
+        :param _RequestParam: 服务请求参数列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestParam: list of DataServiceRequestParam
+        :param _ResponseParam: 服务响应参数列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResponseParam: list of DataServiceResponseParam
+        :param _MaxAllowQps: 最大qps
+        :type MaxAllowQps: int
+        :param _MaxAllowPageSize: 最大记录数
+        :type MaxAllowPageSize: int
+        :param _TimeoutPeriod: 超时时间，单位ms
+        :type TimeoutPeriod: int
+        :param _ApiId: ApiId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiId: str
+        :param _AuthType: 0:免认证 1:应用认证
+        :type AuthType: int
+        :param _GatewayApiUrl: 请求地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayApiUrl: str
+        :param _ApiStatus: 服务Api状态 1:已上线  3:已下线
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiStatus: int
+        """
+        self._ApiName = None
+        self._PathUrl = None
+        self._OwnerName = None
+        self._RequestType = None
+        self._ApiTagNames = None
+        self._ApiDescription = None
+        self._RequestExample = None
+        self._RequestSuccess = None
+        self._RequestError = None
+        self._RequestParam = None
+        self._ResponseParam = None
+        self._MaxAllowQps = None
+        self._MaxAllowPageSize = None
+        self._TimeoutPeriod = None
+        self._ApiId = None
+        self._AuthType = None
+        self._GatewayApiUrl = None
+        self._ApiStatus = None
+
+    @property
+    def ApiName(self):
+        return self._ApiName
+
+    @ApiName.setter
+    def ApiName(self, ApiName):
+        self._ApiName = ApiName
+
+    @property
+    def PathUrl(self):
+        return self._PathUrl
+
+    @PathUrl.setter
+    def PathUrl(self, PathUrl):
+        self._PathUrl = PathUrl
+
+    @property
+    def OwnerName(self):
+        return self._OwnerName
+
+    @OwnerName.setter
+    def OwnerName(self, OwnerName):
+        self._OwnerName = OwnerName
+
+    @property
+    def RequestType(self):
+        return self._RequestType
+
+    @RequestType.setter
+    def RequestType(self, RequestType):
+        self._RequestType = RequestType
+
+    @property
+    def ApiTagNames(self):
+        return self._ApiTagNames
+
+    @ApiTagNames.setter
+    def ApiTagNames(self, ApiTagNames):
+        self._ApiTagNames = ApiTagNames
+
+    @property
+    def ApiDescription(self):
+        return self._ApiDescription
+
+    @ApiDescription.setter
+    def ApiDescription(self, ApiDescription):
+        self._ApiDescription = ApiDescription
+
+    @property
+    def RequestExample(self):
+        return self._RequestExample
+
+    @RequestExample.setter
+    def RequestExample(self, RequestExample):
+        self._RequestExample = RequestExample
+
+    @property
+    def RequestSuccess(self):
+        return self._RequestSuccess
+
+    @RequestSuccess.setter
+    def RequestSuccess(self, RequestSuccess):
+        self._RequestSuccess = RequestSuccess
+
+    @property
+    def RequestError(self):
+        return self._RequestError
+
+    @RequestError.setter
+    def RequestError(self, RequestError):
+        self._RequestError = RequestError
+
+    @property
+    def RequestParam(self):
+        return self._RequestParam
+
+    @RequestParam.setter
+    def RequestParam(self, RequestParam):
+        self._RequestParam = RequestParam
+
+    @property
+    def ResponseParam(self):
+        return self._ResponseParam
+
+    @ResponseParam.setter
+    def ResponseParam(self, ResponseParam):
+        self._ResponseParam = ResponseParam
+
+    @property
+    def MaxAllowQps(self):
+        return self._MaxAllowQps
+
+    @MaxAllowQps.setter
+    def MaxAllowQps(self, MaxAllowQps):
+        self._MaxAllowQps = MaxAllowQps
+
+    @property
+    def MaxAllowPageSize(self):
+        return self._MaxAllowPageSize
+
+    @MaxAllowPageSize.setter
+    def MaxAllowPageSize(self, MaxAllowPageSize):
+        self._MaxAllowPageSize = MaxAllowPageSize
+
+    @property
+    def TimeoutPeriod(self):
+        return self._TimeoutPeriod
+
+    @TimeoutPeriod.setter
+    def TimeoutPeriod(self, TimeoutPeriod):
+        self._TimeoutPeriod = TimeoutPeriod
+
+    @property
+    def ApiId(self):
+        return self._ApiId
+
+    @ApiId.setter
+    def ApiId(self, ApiId):
+        self._ApiId = ApiId
+
+    @property
+    def AuthType(self):
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        self._AuthType = AuthType
+
+    @property
+    def GatewayApiUrl(self):
+        return self._GatewayApiUrl
+
+    @GatewayApiUrl.setter
+    def GatewayApiUrl(self, GatewayApiUrl):
+        self._GatewayApiUrl = GatewayApiUrl
+
+    @property
+    def ApiStatus(self):
+        return self._ApiStatus
+
+    @ApiStatus.setter
+    def ApiStatus(self, ApiStatus):
+        self._ApiStatus = ApiStatus
+
+
+    def _deserialize(self, params):
+        self._ApiName = params.get("ApiName")
+        self._PathUrl = params.get("PathUrl")
+        self._OwnerName = params.get("OwnerName")
+        self._RequestType = params.get("RequestType")
+        self._ApiTagNames = params.get("ApiTagNames")
+        self._ApiDescription = params.get("ApiDescription")
+        self._RequestExample = params.get("RequestExample")
+        self._RequestSuccess = params.get("RequestSuccess")
+        self._RequestError = params.get("RequestError")
+        if params.get("RequestParam") is not None:
+            self._RequestParam = []
+            for item in params.get("RequestParam"):
+                obj = DataServiceRequestParam()
+                obj._deserialize(item)
+                self._RequestParam.append(obj)
+        if params.get("ResponseParam") is not None:
+            self._ResponseParam = []
+            for item in params.get("ResponseParam"):
+                obj = DataServiceResponseParam()
+                obj._deserialize(item)
+                self._ResponseParam.append(obj)
+        self._MaxAllowQps = params.get("MaxAllowQps")
+        self._MaxAllowPageSize = params.get("MaxAllowPageSize")
+        self._TimeoutPeriod = params.get("TimeoutPeriod")
+        self._ApiId = params.get("ApiId")
+        self._AuthType = params.get("AuthType")
+        self._GatewayApiUrl = params.get("GatewayApiUrl")
+        self._ApiStatus = params.get("ApiStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataServicePublishedApiDetailResponse(AbstractModel):
+    """DescribeDataServicePublishedApiDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 服务详情
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.DescribeDataServicePublishedApiDetailResp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DescribeDataServicePublishedApiDetailResp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDataServicePublishedApiListRequest(AbstractModel):
+    """DescribeDataServicePublishedApiList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: 页码
+        :type PageNumber: int
+        :param _PageSize: 每页大小
+        :type PageSize: int
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _Filters: 查询参数
+        :type Filters: :class:`tencentcloud.wedata.v20210820.models.DataServicePublishedApiListFilter`
+        :param _OrderFields: 排序配置
+        :type OrderFields: list of DataServiceRequestListOrder
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._ProjectId = None
+        self._Filters = None
+        self._OrderFields = None
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def OrderFields(self):
+        return self._OrderFields
+
+    @OrderFields.setter
+    def OrderFields(self, OrderFields):
+        self._OrderFields = OrderFields
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._ProjectId = params.get("ProjectId")
+        if params.get("Filters") is not None:
+            self._Filters = DataServicePublishedApiListFilter()
+            self._Filters._deserialize(params.get("Filters"))
+        if params.get("OrderFields") is not None:
+            self._OrderFields = []
+            for item in params.get("OrderFields"):
+                obj = DataServiceRequestListOrder()
+                obj._deserialize(item)
+                self._OrderFields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataServicePublishedApiListResp(AbstractModel):
+    """获取数据服务API的发布态信息列表响应内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 服务id
+        :type Id: str
+        :param _ApiName: 服务Api名称
+        :type ApiName: str
+        :param _ApiFolderName: 所属目录名称
+        :type ApiFolderName: str
+        :param _ApiTagNames: 服务Api标签名称集合
+        :type ApiTagNames: str
+        :param _OwnerName: 服务负责人
+        :type OwnerName: str
+        :param _CreateTime: 服务创建时间
+        :type CreateTime: str
+        :param _ApiId: Api的id
+        :type ApiId: str
+        :param _AuthType: 服务Api认证方式 0:免认证 1:应用认证
+        :type AuthType: int
+        :param _ApiStatus: 服务Api状态 0:创建 1:已上线 2:已删除 3:已下线
+        :type ApiStatus: int
+        :param _ConfigType: 配置方式 0:向导、1、脚本、2、注册Api
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigType: int
+        :param _ModifyTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        """
+        self._Id = None
+        self._ApiName = None
+        self._ApiFolderName = None
+        self._ApiTagNames = None
+        self._OwnerName = None
+        self._CreateTime = None
+        self._ApiId = None
+        self._AuthType = None
+        self._ApiStatus = None
+        self._ConfigType = None
+        self._ModifyTime = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def ApiName(self):
+        return self._ApiName
+
+    @ApiName.setter
+    def ApiName(self, ApiName):
+        self._ApiName = ApiName
+
+    @property
+    def ApiFolderName(self):
+        return self._ApiFolderName
+
+    @ApiFolderName.setter
+    def ApiFolderName(self, ApiFolderName):
+        self._ApiFolderName = ApiFolderName
+
+    @property
+    def ApiTagNames(self):
+        return self._ApiTagNames
+
+    @ApiTagNames.setter
+    def ApiTagNames(self, ApiTagNames):
+        self._ApiTagNames = ApiTagNames
+
+    @property
+    def OwnerName(self):
+        return self._OwnerName
+
+    @OwnerName.setter
+    def OwnerName(self, OwnerName):
+        self._OwnerName = OwnerName
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ApiId(self):
+        return self._ApiId
+
+    @ApiId.setter
+    def ApiId(self, ApiId):
+        self._ApiId = ApiId
+
+    @property
+    def AuthType(self):
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        self._AuthType = AuthType
+
+    @property
+    def ApiStatus(self):
+        return self._ApiStatus
+
+    @ApiStatus.setter
+    def ApiStatus(self, ApiStatus):
+        self._ApiStatus = ApiStatus
+
+    @property
+    def ConfigType(self):
+        return self._ConfigType
+
+    @ConfigType.setter
+    def ConfigType(self, ConfigType):
+        self._ConfigType = ConfigType
+
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._ApiName = params.get("ApiName")
+        self._ApiFolderName = params.get("ApiFolderName")
+        self._ApiTagNames = params.get("ApiTagNames")
+        self._OwnerName = params.get("OwnerName")
+        self._CreateTime = params.get("CreateTime")
+        self._ApiId = params.get("ApiId")
+        self._AuthType = params.get("AuthType")
+        self._ApiStatus = params.get("ApiStatus")
+        self._ConfigType = params.get("ConfigType")
+        self._ModifyTime = params.get("ModifyTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataServicePublishedApiListResponse(AbstractModel):
+    """DescribeDataServicePublishedApiList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总条数
+        :type TotalCount: int
+        :param _DataSet: 服务列表
+        :type DataSet: list of DescribeDataServicePublishedApiListResp
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._DataSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DataSet(self):
+        return self._DataSet
+
+    @DataSet.setter
+    def DataSet(self, DataSet):
+        self._DataSet = DataSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DataSet") is not None:
+            self._DataSet = []
+            for item in params.get("DataSet"):
+                obj = DescribeDataServicePublishedApiListResp()
+                obj._deserialize(item)
+                self._DataSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 

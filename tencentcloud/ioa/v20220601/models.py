@@ -18,6 +18,58 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ComplexRule(AbstractModel):
+    """自动划分规则数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SimpleRules: 简单规则表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SimpleRules: list of SimpleRule
+        :param _Relation: 表达式间逻辑关系
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Relation: str
+        """
+        self._SimpleRules = None
+        self._Relation = None
+
+    @property
+    def SimpleRules(self):
+        return self._SimpleRules
+
+    @SimpleRules.setter
+    def SimpleRules(self, SimpleRules):
+        self._SimpleRules = SimpleRules
+
+    @property
+    def Relation(self):
+        return self._Relation
+
+    @Relation.setter
+    def Relation(self, Relation):
+        self._Relation = Relation
+
+
+    def _deserialize(self, params):
+        if params.get("SimpleRules") is not None:
+            self._SimpleRules = []
+            for item in params.get("SimpleRules"):
+                obj = SimpleRule()
+                obj._deserialize(item)
+                self._SimpleRules.append(obj)
+        self._Relation = params.get("Relation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Condition(AbstractModel):
     """- [ ] 过滤条件<br>
 
@@ -121,17 +173,186 @@ class Condition(AbstractModel):
         
 
 
-class DescribeAccountGroupsData(AbstractModel):
-    """分组名称
+class CreateDeviceVirtualGroupRequest(AbstractModel):
+    """CreateDeviceVirtualGroup请求参数结构体
 
     """
 
     def __init__(self):
         r"""
-        :param _NamePath: 名称path
+        :param _DeviceVirtualGroupName: 终端自定义分组名
+        :type DeviceVirtualGroupName: str
+        :param _Description: 详情
+        :type Description: str
+        :param _OsType: 系统类型（0: win，1：linux，2: mac，3: win_srv，4：android，5：ios   默认值0）(只支持32位)
+        :type OsType: int
+        :param _TimeType: 时间设置类型（1:自动小时、2:自动每天、3:自定义、0:手动分组）(只支持32位)
+        :type TimeType: int
+        :param _AutoMinute: 自动划分时间（单位min）(只支持32位)
+        :type AutoMinute: int
+        :param _AutoRules: 自动划分规则数据
+        :type AutoRules: :class:`tencentcloud.ioa.v20220601.models.ComplexRule`
+        """
+        self._DeviceVirtualGroupName = None
+        self._Description = None
+        self._OsType = None
+        self._TimeType = None
+        self._AutoMinute = None
+        self._AutoRules = None
+
+    @property
+    def DeviceVirtualGroupName(self):
+        return self._DeviceVirtualGroupName
+
+    @DeviceVirtualGroupName.setter
+    def DeviceVirtualGroupName(self, DeviceVirtualGroupName):
+        self._DeviceVirtualGroupName = DeviceVirtualGroupName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def OsType(self):
+        return self._OsType
+
+    @OsType.setter
+    def OsType(self, OsType):
+        self._OsType = OsType
+
+    @property
+    def TimeType(self):
+        return self._TimeType
+
+    @TimeType.setter
+    def TimeType(self, TimeType):
+        self._TimeType = TimeType
+
+    @property
+    def AutoMinute(self):
+        return self._AutoMinute
+
+    @AutoMinute.setter
+    def AutoMinute(self, AutoMinute):
+        self._AutoMinute = AutoMinute
+
+    @property
+    def AutoRules(self):
+        return self._AutoRules
+
+    @AutoRules.setter
+    def AutoRules(self, AutoRules):
+        self._AutoRules = AutoRules
+
+
+    def _deserialize(self, params):
+        self._DeviceVirtualGroupName = params.get("DeviceVirtualGroupName")
+        self._Description = params.get("Description")
+        self._OsType = params.get("OsType")
+        self._TimeType = params.get("TimeType")
+        self._AutoMinute = params.get("AutoMinute")
+        if params.get("AutoRules") is not None:
+            self._AutoRules = ComplexRule()
+            self._AutoRules._deserialize(params.get("AutoRules"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDeviceVirtualGroupResponse(AbstractModel):
+    """CreateDeviceVirtualGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 响应返回的data
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.ioa.v20220601.models.CreateDeviceVirtualGroupRspData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = CreateDeviceVirtualGroupRspData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateDeviceVirtualGroupRspData(AbstractModel):
+    """响应返回的data
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 返回的自定义分组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAccountGroupsData(AbstractModel):
+    """账号分组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NamePath: 账号分组名全路径，点分格式
 注意：此字段可能返回 null，表示取不到有效值。
         :type NamePath: str
-        :param _IdPathArr: id patch数组(只支持32位)
+        :param _IdPathArr: 账号分组ID全路径，数组格式
 注意：此字段可能返回 null，表示取不到有效值。
         :type IdPathArr: list of int
         :param _ExtraInfo: 扩展信息
@@ -140,31 +361,31 @@ class DescribeAccountGroupsData(AbstractModel):
         :param _Utime: 最后更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type Utime: str
-        :param _ParentId: 父id
+        :param _ParentId: 父分组ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParentId: int
-        :param _OrgId: 组织id
+        :param _OrgId: 源账号组织ID。使用第三方导入用户源时，记录该分组在源组织架构下的分组ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrgId: str
-        :param _Name: 账户组名称
+        :param _Name: 分组名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _Id: id
+        :param _Id: 分组ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
-        :param _Description: 描述
+        :param _Description: 分组描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _Source: 同步数据源
 注意：此字段可能返回 null，表示取不到有效值。
         :type Source: int
-        :param _IdPath: id path
+        :param _IdPath: 账号分组ID全路径，点分格式
 注意：此字段可能返回 null，表示取不到有效值。
         :type IdPath: str
         :param _Itime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type Itime: str
-        :param _ParentOrgId: 父组织id
+        :param _ParentOrgId: 父源账号组织ID。使用第三方导入用户源时，记录该分组在源组织架构下的分组ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParentOrgId: str
         :param _ImportType: 导入类型
@@ -173,7 +394,7 @@ class DescribeAccountGroupsData(AbstractModel):
         :param _MiniIamId: miniIAM id
 注意：此字段可能返回 null，表示取不到有效值。
         :type MiniIamId: str
-        :param _UserTotal: 该分组下用户总数
+        :param _UserTotal: 该分组下含子组的所有用户总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserTotal: int
         :param _IsLeaf: 是否叶子节点
@@ -463,15 +684,22 @@ class DescribeAccountGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Deepin: 搜索范围,0-仅搜直接子组,1-深层搜索(只支持32位)
+        :param _Deepin: 搜索范围：0-仅当前分组的直接子组，1-当前分组的所有子组。默认为0。
         :type Deepin: int
-        :param _Condition: 滤条件、分页参数
-<li>Name - String - 是否必填：否 - 操作符: like  - 排序支持：否- 按账号分组过滤。</li>
+        :param _Condition: 查询条件
+
+过滤参数
+1、Name，string类型，按分组名过滤
+是否必填：否
+操作符: like
+
 排序条件
-<li>Itime - string - 是否必填：否 - 排序支持：是 - 按账号分组创建时间排序。</li>
-<li>Utime - string - 是否必填：否 - 排序支持：是 - 按账号分组更新时间排序。</li>
+1、Itime，string类型，按分组创建时间排序
+是否必填：否
+2、Utime，string类型，按分组更新时间排序
+是否必填：否
         :type Condition: :class:`tencentcloud.ioa.v20220601.models.Condition`
-        :param _ParentId: 父分组id
+        :param _ParentId: 父分组ID，获取该分组下的子组信息。默认查询全网根分组下子组信息。
         :type ParentId: int
         """
         self._Deepin = None
@@ -526,7 +754,7 @@ class DescribeAccountGroupsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 账户分组详情响应数据
+        :param _Data: 账号分组详情响应数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.ioa.v20220601.models.DescribeAccountGroupsPageResp`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -620,15 +848,55 @@ class DescribeDevicesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Condition: 过滤条件<br>
-<li>Ip - String - 是否必填：否 - 操作符: eq  - 排序支持：否- 按照Ip进行过滤。</li>
-<li>MacAddr - String - 是否必填：否 - 操作符: eq  - 排序支持：否- 按照mac地址进行过滤。</li>
-<li>IoaUserName - String - 是否必填：否 - 操作符: eq  - 排序支持：否- 按照ioa用户名进行过滤。</li>
-分页参数<br>
-<li>PageNum 从1开始，小于等于0时使用默认参数。</li>
-<li>PageSize 最大值5000，最好不超过100。</li>
+        :param _Condition: 过滤条件参数（字段含义请参考接口返回值）
+
+- Mid, 类型String，支持操作：【eq，like，ilike】，支持排序
+- Name, 类型String，支持操作：【eq，like，ilike】，支持排序
+- Itime, 类型String，支持操作：【eq，like，ilike】，支持排序
+- UserName, 类型String，支持操作：【eq，like，ilike】，支持排序
+- MacAddr, 类型String，支持操作：【eq，like，ilike】，支持排序
+- UserId, 类型String，支持操作：【eq，like，ilike】，支持排序
+- Ip, 类型String，支持操作：【eq，like，ilike】，支持排序
+- Tags，类型String，支持操作：【eq，like，ilike】，支持排序
+- LocalIpList，类型String，支持操作：【eq，like，ilike】，支持排序
+- SerialNum，类型String，支持操作：【eq，like，ilike】，支持排序
+- Version，类型String，支持操作：【eq，like，ilike】，支持排序
+- StrVersion，类型String，支持操作：【eq，like，ilike】，支持排序
+- RtpStatus，类型String，支持操作：【eq，like，ilike】，**不支持排序**
+- HostName，类型String，支持操作：【eq，like，ilike】，支持排序
+- IoaUserName，类型String，支持操作：【eq，like，ilike】，支持排序
+- GroupName，类型String，支持操作：【eq，like，ilike】，支持排序
+- CriticalVulListCount，**类型Int**，支持操作：【eq】，**不支持排序**
+- RiskCount，**类型Int**，支持操作：【eq】，**不支持排序**
+- VulVersion，类型String，支持操作：【eq，like，ilike】，**不支持排序**
+- Virusver，类型String，支持操作：【eq，like，ilike】，**不支持排序**
+- SysRepver，类型String，支持操作：【eq，like，ilike】，**不支持排序**
+- BaseBoardSn，类型String，支持操作：【eq，like，ilike】，支持排序
+- Os，类型String，支持操作：【eq，like，ilike】，支持排序
+- ConnActiveTime，类型String，支持操作：【eq，like，ilike】，**不支持排序**
+- FirewallStatus，**类型Int**，支持操作：【eq】，**不支持排序**
+- ProfileName，类型String，支持操作：【eq，like，ilike】，支持排序
+- DomainName，类型String，支持操作：【eq，like，ilike】，支持排序
+- SysRepVersion，类型String，支持操作：【eq，like，ilike】，支持排序
+- VirusVer，类型String，支持操作：【eq，like，ilike】，支持排序
+- Cpu，类型String，支持操作：【eq，like，ilike】，支持排序
+- Memory，类型String，支持操作：【eq，like，ilike】，支持排序
+- HardDiskSize，类型String，支持操作：【eq，like，ilike】，支持排序
+- HardwareChangeCount，**类型Int**，支持操作：【eq】，支持排序
+- AccountName，类型String，支持操作：【like.ilike】，支持排序
+- AccountGroupName，类型String，支持操作：【like.ilike】，支持排序
+- ScreenRecordingPermission，**类型Int**，支持操作：【eq】，支持排序
+- DiskAccessPermission，**类型Int**，支持操作：【eq】，支持排序
+
+
+
+
+
+分页参数
+- PageNum 从1开始，小于等于0时使用默认参数
+- PageSize 最大值5000，最好不超过100
         :type Condition: :class:`tencentcloud.ioa.v20220601.models.Condition`
-        :param _GroupId: 【和GroupIds必须有一个填写】设备分组id（需要和OsType匹配）
+        :param _GroupId: 【和GroupIds必须有一个填写】设备分组id（需要和OsType匹配），下面是私有化场景下默认id：
 id-名称-操作系统
 1	全网终端	Win
 2	未分组终端	Win
@@ -643,8 +911,11 @@ id-名称-操作系统
 40000402	未分组终端	Android
 40000501	全网终端	iOS
 40000502	未分组终端	iOS
+
+
+SaaS需要调用分组接口DescribeDeviceChildGroups获取对应分组id
         :type GroupId: int
-        :param _OsType: 【必填】操作系统类型（0: win，1：linux，2: mac，3: win_srv，4：android，5：ios   默认值0），需要和GroupId或者GroupIds匹配
+        :param _OsType: 【必填】操作系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0），需要和GroupId或者GroupIds匹配
         :type OsType: int
         :param _OnlineStatus: 在线状态 （2表示在线，0或者1表示离线）
         :type OnlineStatus: int
@@ -656,8 +927,11 @@ id-名称-操作系统
         :type PageNum: int
         :param _PageSize: 每页获取数--兼容旧接口,参数同Condition
         :type PageSize: int
-        :param _Status: 授权状态 4未授权 5已授权
+        :param _Status: 授权状态： 4基础授权 5高级授权
         :type Status: int
+        :param _GroupIds: 【和GroupId必须有一个填写】设备分组id列表（需要和OsType匹配）
+
+        :type GroupIds: list of int
         """
         self._Condition = None
         self._GroupId = None
@@ -668,6 +942,7 @@ id-名称-操作系统
         self._PageNum = None
         self._PageSize = None
         self._Status = None
+        self._GroupIds = None
 
     @property
     def Condition(self):
@@ -741,6 +1016,14 @@ id-名称-操作系统
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def GroupIds(self):
+        return self._GroupIds
+
+    @GroupIds.setter
+    def GroupIds(self, GroupIds):
+        self._GroupIds = GroupIds
+
 
     def _deserialize(self, params):
         if params.get("Condition") is not None:
@@ -761,6 +1044,7 @@ id-名称-操作系统
         self._PageNum = params.get("PageNum")
         self._PageSize = params.get("PageSize")
         self._Status = params.get("Status")
+        self._GroupIds = params.get("GroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1192,12 +1476,21 @@ class DescribeLocalAccountsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Condition: 滤条件、分页参数
-<li>UserName - String - 是否必填：否 - 操作符: eq,like  - 排序支持：否- 按账号UserName过滤。</li>
-<li>UserId - string - 是否必填：否 - 操作符: eq,like  - 排序支持：否 - 按账号UserNd过滤。</li>
-<li>Phone - string - 是否必填：否 - 操作符: eq,like - 排序支持：否 - 按手机号过滤。</li>
+        :param _Condition: 查询条件：过滤或排序
+1、UserName，string类型，姓名
+是否必填：否
+过滤支持：是，支持eq、like、ilike
+排序支持：否
+2、UserId，string类型，账户
+是否必填：否
+过滤支持：是，支持eq、like、ilike
+排序支持：否
+3、Phone，string类型，手机号
+是否必填：否
+过滤支持：是，支持eq、like、ilike
+排序支持：否
         :type Condition: :class:`tencentcloud.ioa.v20220601.models.Condition`
-        :param _AccountGroupId: 获取账号的分组Id，不传默认获取全部(只支持32位)
+        :param _AccountGroupId: 获取账号的分组ID，不传默认获取全网根账号组
         :type AccountGroupId: int
         :param _ShowFlag: 是否仅展示当前目录下用户 1： 递归显示 2：仅显示当前目录下用户(只支持32位)
         :type ShowFlag: int
@@ -1300,7 +1593,7 @@ class DescribeRootAccountGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 账户分组详情响应数据
+        :param _Data: 账号根分组响应详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.ioa.v20220601.models.GetAccountGroupData`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1379,7 +1672,7 @@ class DeviceDetail(AbstractModel):
         :param _LocalIpList: 设备本地IP列表, 包括IP
 注意：此字段可能返回 null，表示取不到有效值。
         :type LocalIpList: str
-        :param _HostId: 主机ID(只支持32位)
+        :param _HostId: 宿主机id（需要宿主机也安装iOA才能显示）
 注意：此字段可能返回 null，表示取不到有效值。
         :type HostId: int
         :param _GroupName: 设备所属分组名
@@ -1445,13 +1738,13 @@ class DeviceDetail(AbstractModel):
         :param _NGNNewStrategyVer: NGN策略新版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type NGNNewStrategyVer: str
-        :param _HostName: 主机名称
+        :param _HostName: 宿主机名称（需要宿主机也安装iOA才能显示）
 注意：此字段可能返回 null，表示取不到有效值。
         :type HostName: str
         :param _BaseBoardSn: 主板序列号
 注意：此字段可能返回 null，表示取不到有效值。
         :type BaseBoardSn: str
-        :param _AccountUsers: 绑定账户只有名字
+        :param _AccountUsers: 绑定账户名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountUsers: str
         :param _IdentityStrategyVer: 身份策略版本
@@ -2013,16 +2306,16 @@ class FilterGroup(AbstractModel):
 
 
 class GetAccountGroupData(AbstractModel):
-    """账户分组详情响应数据
+    """账号分组详情响应数据
 
     """
 
     def __init__(self):
         r"""
-        :param _NamePath: 分组Namepath
+        :param _NamePath: 分组名称全路径，点分格式
 注意：此字段可能返回 null，表示取不到有效值。
         :type NamePath: str
-        :param _IdPathArr: 分组Id path arr(只支持32位)
+        :param _IdPathArr: 分组ID全路径，数组格式
 注意：此字段可能返回 null，表示取不到有效值。
         :type IdPathArr: list of int
         :param _ExtraInfo: 分组扩展信息
@@ -2031,31 +2324,31 @@ class GetAccountGroupData(AbstractModel):
         :param _Utime: 最后更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type Utime: str
-        :param _ParentId: 父分组id(只支持32位)
+        :param _ParentId: 当前分组的父分组ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParentId: int
-        :param _OrgId: 组织id
+        :param _OrgId: 源账号组ID，该字段仅适用于第三方同步的组织架构，通过OrgId-Id构成源组织架构分组ID-现组织架构分组ID映射关系
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrgId: str
         :param _Name: 分组名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _Id: 分组id(只支持32位)
+        :param _Id: 分组ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
-        :param _Description: 描述
+        :param _Description: 分组描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _Source: 分组导入源(只支持32位)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Source: int
-        :param _IdPath: Id Path
+        :param _IdPath: 分组ID全路径，点分格式
 注意：此字段可能返回 null，表示取不到有效值。
         :type IdPath: str
         :param _Itime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type Itime: str
-        :param _ParentOrgId: 父组织id
+        :param _ParentOrgId: 父源账号组ID，该字段仅适用于第三方同步的组织架构
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParentOrgId: str
         :param _Import: 导入信息,json格式
@@ -2317,6 +2610,183 @@ class Paging(AbstractModel):
         self._PageNum = params.get("PageNum")
         self._PageCount = params.get("PageCount")
         self._Total = params.get("Total")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleExpression(AbstractModel):
+    """规则表达式
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 规则元数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of RuleItem
+        :param _Relation: 关系
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Relation: str
+        """
+        self._Items = None
+        self._Relation = None
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def Relation(self):
+        return self._Relation
+
+    @Relation.setter
+    def Relation(self, Relation):
+        self._Relation = Relation
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = RuleItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._Relation = params.get("Relation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleItem(AbstractModel):
+    """规则元数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 字段名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Operate: 操作关系（等于、不等于、包含、不包含）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operate: str
+        :param _Value: 内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param _Values: 内容，v2多值版本使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Values: list of str
+        """
+        self._Key = None
+        self._Operate = None
+        self._Value = None
+        self._Values = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Operate(self):
+        return self._Operate
+
+    @Operate.setter
+    def Operate(self, Operate):
+        self._Operate = Operate
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Operate = params.get("Operate")
+        self._Value = params.get("Value")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SimpleRule(AbstractModel):
+    """简单规则表达式
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Expressions: 规则表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Expressions: list of RuleExpression
+        :param _Relation: 表达式间逻辑关系
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Relation: str
+        """
+        self._Expressions = None
+        self._Relation = None
+
+    @property
+    def Expressions(self):
+        return self._Expressions
+
+    @Expressions.setter
+    def Expressions(self, Expressions):
+        self._Expressions = Expressions
+
+    @property
+    def Relation(self):
+        return self._Relation
+
+    @Relation.setter
+    def Relation(self, Relation):
+        self._Relation = Relation
+
+
+    def _deserialize(self, params):
+        if params.get("Expressions") is not None:
+            self._Expressions = []
+            for item in params.get("Expressions"):
+                obj = RuleExpression()
+                obj._deserialize(item)
+                self._Expressions.append(obj)
+        self._Relation = params.get("Relation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

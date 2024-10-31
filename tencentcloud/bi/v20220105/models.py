@@ -27,19 +27,25 @@ class ApplyEmbedIntervalRequest(AbstractModel):
         r"""
         :param _ProjectId: 分享项目id，必选
         :type ProjectId: int
-        :param _PageId: 分享页面id，嵌出看板时此为空值0
+        :param _PageId: 分享页面id，嵌出看板时此为空值0，ChatBI嵌出时不传
+
         :type PageId: int
         :param _BIToken: 需要申请延期的Token
         :type BIToken: str
         :param _ExtraParam: 备用字段
         :type ExtraParam: str
-        :param _Scope: panel,看板；page，页面
+        :param _Intention: embed：页面/看板嵌出
+chatBIEmbed：ChatBI嵌出
+        :type Intention: str
+        :param _Scope: panel, 看板；page，页面
+project，ChatBI嵌出时
         :type Scope: str
         """
         self._ProjectId = None
         self._PageId = None
         self._BIToken = None
         self._ExtraParam = None
+        self._Intention = None
         self._Scope = None
 
     @property
@@ -75,6 +81,14 @@ class ApplyEmbedIntervalRequest(AbstractModel):
         self._ExtraParam = ExtraParam
 
     @property
+    def Intention(self):
+        return self._Intention
+
+    @Intention.setter
+    def Intention(self, Intention):
+        self._Intention = Intention
+
+    @property
     def Scope(self):
         return self._Scope
 
@@ -88,6 +102,7 @@ class ApplyEmbedIntervalRequest(AbstractModel):
         self._PageId = params.get("PageId")
         self._BIToken = params.get("BIToken")
         self._ExtraParam = params.get("ExtraParam")
+        self._Intention = params.get("Intention")
         self._Scope = params.get("Scope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -1134,9 +1149,11 @@ class CreateEmbedTokenRequest(AbstractModel):
         r"""
         :param _ProjectId: 分享项目id
         :type ProjectId: int
-        :param _PageId: 分享页面id，嵌出看板时此为空值0
+        :param _PageId: 分享页面id，嵌出看板时此为空值0，ChatBI嵌出时不传
         :type PageId: int
-        :param _Scope: page表示嵌出页面，panel表示嵌出整个看板
+        :param _Intention: embed表示页面看板嵌出，chatBIEmbed表示ChatBI嵌出
+        :type Intention: str
+        :param _Scope: page表示嵌出页面，panel表示嵌出整个看板，ChatBI嵌出时使用project
         :type Scope: str
         :param _ExpireTime: 过期时间。 单位：分钟 最大值：240。即，4小时 默认值：240
         :type ExpireTime: str
@@ -1192,6 +1209,7 @@ Operator 目前支持
         """
         self._ProjectId = None
         self._PageId = None
+        self._Intention = None
         self._Scope = None
         self._ExpireTime = None
         self._ExtraParam = None
@@ -1215,6 +1233,14 @@ Operator 目前支持
     @PageId.setter
     def PageId(self, PageId):
         self._PageId = PageId
+
+    @property
+    def Intention(self):
+        return self._Intention
+
+    @Intention.setter
+    def Intention(self, Intention):
+        self._Intention = Intention
 
     @property
     def Scope(self):
@@ -1276,6 +1302,7 @@ Operator 目前支持
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
         self._PageId = params.get("PageId")
+        self._Intention = params.get("Intention")
         self._Scope = params.get("Scope")
         self._ExpireTime = params.get("ExpireTime")
         self._ExtraParam = params.get("ExtraParam")
@@ -3986,6 +4013,9 @@ class EmbedTokenInfo(AbstractModel):
         :param _GlobalParam: 全局参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type GlobalParam: str
+        :param _Intention: embed表示页面看板嵌出，chatBIEmbed表示ChatBI嵌出
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Intention: str
         """
         self._Id = None
         self._BIToken = None
@@ -4002,6 +4032,7 @@ class EmbedTokenInfo(AbstractModel):
         self._UserId = None
         self._TicketNum = None
         self._GlobalParam = None
+        self._Intention = None
 
     @property
     def Id(self):
@@ -4123,6 +4154,14 @@ class EmbedTokenInfo(AbstractModel):
     def GlobalParam(self, GlobalParam):
         self._GlobalParam = GlobalParam
 
+    @property
+    def Intention(self):
+        return self._Intention
+
+    @Intention.setter
+    def Intention(self, Intention):
+        self._Intention = Intention
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -4140,6 +4179,7 @@ class EmbedTokenInfo(AbstractModel):
         self._UserId = params.get("UserId")
         self._TicketNum = params.get("TicketNum")
         self._GlobalParam = params.get("GlobalParam")
+        self._Intention = params.get("Intention")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

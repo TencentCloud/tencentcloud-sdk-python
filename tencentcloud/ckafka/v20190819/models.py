@@ -11762,11 +11762,11 @@ class DescribeInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: （过滤条件）按照实例ID过滤
+        :param _InstanceId: （查询条件）按照ckafka集群实例Id过滤
         :type InstanceId: str
-        :param _SearchWord: （过滤条件）按照实例名称过滤，支持模糊查询
+        :param _SearchWord: 搜索词   ex:（查询条件）按照实例名称过滤，支持模糊查询
         :type SearchWord: str
-        :param _Status: （过滤条件）实例的状态。0：创建中，1：运行中，2：删除中，不填默认返回全部
+        :param _Status: （查询条件）实例的状态  0：创建中，1：运行中，2：删除中，5: 隔离中,  7:升级中 不填默认返回全部
         :type Status: list of int
         :param _Offset: 偏移量，不填默认为0
         :type Offset: int
@@ -11774,7 +11774,7 @@ class DescribeInstancesRequest(AbstractModel):
         :type Limit: int
         :param _TagKey: 已废弃。匹配标签key值。
         :type TagKey: str
-        :param _VpcId: 私有网络Id
+        :param _VpcId: （查询条件）私有网络Id
         :type VpcId: str
         """
         self._InstanceId = None

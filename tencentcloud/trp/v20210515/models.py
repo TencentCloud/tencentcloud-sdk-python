@@ -2297,7 +2297,7 @@ class CreateMerchantRequest(AbstractModel):
         :type Remark: str
         :param _CorpId: 企业ID
         :type CorpId: int
-        :param _CodeType: 码包来源 0:自建, 1:第三发
+        :param _CodeType: 码包来源 0:自建, 1:第三方
         :type CodeType: int
         :param _CodeUrl: 码包前缀地址 第三方码包时必填
         :type CodeUrl: str
@@ -3752,7 +3752,7 @@ class DescribeCodeBatchesRequest(AbstractModel):
         :type BatchType: str
         :param _CorpId: 企业ID
         :type CorpId: int
-        :param _Status: 批次状态
+        :param _Status: 批次状态 0: 未激活 1: 已激活 -1: 已冻结
         :type Status: int
         """
         self._MerchantId = None
@@ -6563,7 +6563,7 @@ class DescribeTraceDataListRequest(AbstractModel):
         :type TaskId: str
         :param _PageNumber: 页数
         :type PageNumber: int
-        :param _Code: 二维码
+        :param _Code: 溯源码
         :type Code: str
         :param _Phase: 溯源阶段 0:商品 1:通用 2:内部溯源 3:外部溯源
         :type Phase: int
@@ -6660,9 +6660,9 @@ class DescribeTraceDataListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 数量
+        :param _TotalCount: 溯源阶段数量
         :type TotalCount: int
-        :param _TraceDataList: 无
+        :param _TraceDataList: 溯源明细
         :type TraceDataList: list of TraceData
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7504,7 +7504,7 @@ class ModifyMerchantRequest(AbstractModel):
         :type Remark: str
         :param _CorpId: 企业ID
         :type CorpId: int
-        :param _CodeType: 码包来源 0:自建, 1:第三码包，暂不支持修改
+        :param _CodeType: 码包来源 0:自建, 1:第三方码包，暂不支持修改
         :type CodeType: int
         :param _CodeUrl: 码包前缀地址 第三方码包时必填
         :type CodeUrl: str

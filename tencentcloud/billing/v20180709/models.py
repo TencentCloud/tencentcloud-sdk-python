@@ -160,6 +160,108 @@ class ActionSummaryOverviewItem(AbstractModel):
         
 
 
+class AdjustInfoDetail(AbstractModel):
+    """UIN异常调整明细
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PayerUin: 支付者UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayerUin: str
+        :param _Month: 账单月份，格式：yyyy-MM
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Month: str
+        :param _AdjustType: 调整类型
+调账：manualAdjustment
+补结算：supplementarySettlement
+重结算：reSettlement
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdjustType: str
+        :param _AdjustNum: 调整单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdjustNum: str
+        :param _AdjustCompletionTime: 异常调整完成时间，格式：yyyy-MM-dd HH:mm:ss
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdjustCompletionTime: str
+        :param _AdjustAmount: 调整金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdjustAmount: float
+        """
+        self._PayerUin = None
+        self._Month = None
+        self._AdjustType = None
+        self._AdjustNum = None
+        self._AdjustCompletionTime = None
+        self._AdjustAmount = None
+
+    @property
+    def PayerUin(self):
+        return self._PayerUin
+
+    @PayerUin.setter
+    def PayerUin(self, PayerUin):
+        self._PayerUin = PayerUin
+
+    @property
+    def Month(self):
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def AdjustType(self):
+        return self._AdjustType
+
+    @AdjustType.setter
+    def AdjustType(self, AdjustType):
+        self._AdjustType = AdjustType
+
+    @property
+    def AdjustNum(self):
+        return self._AdjustNum
+
+    @AdjustNum.setter
+    def AdjustNum(self, AdjustNum):
+        self._AdjustNum = AdjustNum
+
+    @property
+    def AdjustCompletionTime(self):
+        return self._AdjustCompletionTime
+
+    @AdjustCompletionTime.setter
+    def AdjustCompletionTime(self, AdjustCompletionTime):
+        self._AdjustCompletionTime = AdjustCompletionTime
+
+    @property
+    def AdjustAmount(self):
+        return self._AdjustAmount
+
+    @AdjustAmount.setter
+    def AdjustAmount(self, AdjustAmount):
+        self._AdjustAmount = AdjustAmount
+
+
+    def _deserialize(self, params):
+        self._PayerUin = params.get("PayerUin")
+        self._Month = params.get("Month")
+        self._AdjustType = params.get("AdjustType")
+        self._AdjustNum = params.get("AdjustNum")
+        self._AdjustCompletionTime = params.get("AdjustCompletionTime")
+        self._AdjustAmount = params.get("AdjustAmount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AllocationAverageData(AbstractModel):
     """分账账单趋势图平均值
 
@@ -490,6 +592,24 @@ class AllocationDetail(AbstractModel):
 2 - 未分配
 注意：此字段可能返回 null，表示取不到有效值。
         :type AllocationType: int
+        :param _DiscountObject: 当前消费项的优惠对象，例如：官网折扣、用户折扣、活动折扣。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountObject: str
+        :param _DiscountType: 当前消费项的优惠类型，例如：折扣、合同价。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountType: str
+        :param _DiscountContent: 对优惠类型的补充描述，例如：商务折扣8折，则优惠类型为“折扣”，优惠内容为“0.8”。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountContent: str
+        :param _SPDeduction: SPDeduction
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SPDeduction: str
+        :param _SPDeductionRate: SPDeduction
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SPDeductionRate: str
+        :param _BillMonth: 账单月
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillMonth: str
         """
         self._TreeNodeUniqKey = None
         self._TreeNodeUniqKeyName = None
@@ -557,6 +677,12 @@ class AllocationDetail(AbstractModel):
         self._DeductedMeasure = None
         self._ComponentConfig = None
         self._AllocationType = None
+        self._DiscountObject = None
+        self._DiscountType = None
+        self._DiscountContent = None
+        self._SPDeduction = None
+        self._SPDeductionRate = None
+        self._BillMonth = None
 
     @property
     def TreeNodeUniqKey(self):
@@ -1094,6 +1220,54 @@ class AllocationDetail(AbstractModel):
     def AllocationType(self, AllocationType):
         self._AllocationType = AllocationType
 
+    @property
+    def DiscountObject(self):
+        return self._DiscountObject
+
+    @DiscountObject.setter
+    def DiscountObject(self, DiscountObject):
+        self._DiscountObject = DiscountObject
+
+    @property
+    def DiscountType(self):
+        return self._DiscountType
+
+    @DiscountType.setter
+    def DiscountType(self, DiscountType):
+        self._DiscountType = DiscountType
+
+    @property
+    def DiscountContent(self):
+        return self._DiscountContent
+
+    @DiscountContent.setter
+    def DiscountContent(self, DiscountContent):
+        self._DiscountContent = DiscountContent
+
+    @property
+    def SPDeduction(self):
+        return self._SPDeduction
+
+    @SPDeduction.setter
+    def SPDeduction(self, SPDeduction):
+        self._SPDeduction = SPDeduction
+
+    @property
+    def SPDeductionRate(self):
+        return self._SPDeductionRate
+
+    @SPDeductionRate.setter
+    def SPDeductionRate(self, SPDeductionRate):
+        self._SPDeductionRate = SPDeductionRate
+
+    @property
+    def BillMonth(self):
+        return self._BillMonth
+
+    @BillMonth.setter
+    def BillMonth(self, BillMonth):
+        self._BillMonth = BillMonth
+
 
     def _deserialize(self, params):
         self._TreeNodeUniqKey = params.get("TreeNodeUniqKey")
@@ -1167,6 +1341,12 @@ class AllocationDetail(AbstractModel):
         self._DeductedMeasure = params.get("DeductedMeasure")
         self._ComponentConfig = params.get("ComponentConfig")
         self._AllocationType = params.get("AllocationType")
+        self._DiscountObject = params.get("DiscountObject")
+        self._DiscountType = params.get("DiscountType")
+        self._DiscountContent = params.get("DiscountContent")
+        self._SPDeduction = params.get("SPDeduction")
+        self._SPDeductionRate = params.get("SPDeductionRate")
+        self._BillMonth = params.get("BillMonth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2578,6 +2758,27 @@ class AllocationSummaryByItem(AbstractModel):
         :param _ComponentConfig: 配置描述：资源配置规格信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ComponentConfig: str
+        :param _SPDeduction: SPDeduction
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SPDeduction: str
+        :param _SPDeductionRate: 节省计划抵扣率：节省计划可用余额额度范围内，节省计划对于此组件打的折扣率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SPDeductionRate: str
+        :param _AssociatedOrder: AssociatedOrder
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssociatedOrder: str
+        :param _DiscountObject: 当前消费项的优惠对象，例如：官网折扣、用户折扣、活动折扣。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountObject: str
+        :param _DiscountType: 当前消费项的优惠类型，例如：折扣、合同价。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountType: str
+        :param _DiscountContent: 对优惠类型的补充描述，例如：商务折扣8折，则优惠类型为“折扣”，优惠内容为“0.8”。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountContent: str
+        :param _BillMonth: 账单月
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillMonth: str
         """
         self._TreeNodeUniqKey = None
         self._TreeNodeUniqKeyName = None
@@ -2640,6 +2841,13 @@ class AllocationSummaryByItem(AbstractModel):
         self._Formula = None
         self._FormulaUrl = None
         self._ComponentConfig = None
+        self._SPDeduction = None
+        self._SPDeductionRate = None
+        self._AssociatedOrder = None
+        self._DiscountObject = None
+        self._DiscountType = None
+        self._DiscountContent = None
+        self._BillMonth = None
 
     @property
     def TreeNodeUniqKey(self):
@@ -3137,6 +3345,62 @@ class AllocationSummaryByItem(AbstractModel):
     def ComponentConfig(self, ComponentConfig):
         self._ComponentConfig = ComponentConfig
 
+    @property
+    def SPDeduction(self):
+        return self._SPDeduction
+
+    @SPDeduction.setter
+    def SPDeduction(self, SPDeduction):
+        self._SPDeduction = SPDeduction
+
+    @property
+    def SPDeductionRate(self):
+        return self._SPDeductionRate
+
+    @SPDeductionRate.setter
+    def SPDeductionRate(self, SPDeductionRate):
+        self._SPDeductionRate = SPDeductionRate
+
+    @property
+    def AssociatedOrder(self):
+        return self._AssociatedOrder
+
+    @AssociatedOrder.setter
+    def AssociatedOrder(self, AssociatedOrder):
+        self._AssociatedOrder = AssociatedOrder
+
+    @property
+    def DiscountObject(self):
+        return self._DiscountObject
+
+    @DiscountObject.setter
+    def DiscountObject(self, DiscountObject):
+        self._DiscountObject = DiscountObject
+
+    @property
+    def DiscountType(self):
+        return self._DiscountType
+
+    @DiscountType.setter
+    def DiscountType(self, DiscountType):
+        self._DiscountType = DiscountType
+
+    @property
+    def DiscountContent(self):
+        return self._DiscountContent
+
+    @DiscountContent.setter
+    def DiscountContent(self, DiscountContent):
+        self._DiscountContent = DiscountContent
+
+    @property
+    def BillMonth(self):
+        return self._BillMonth
+
+    @BillMonth.setter
+    def BillMonth(self, BillMonth):
+        self._BillMonth = BillMonth
+
 
     def _deserialize(self, params):
         self._TreeNodeUniqKey = params.get("TreeNodeUniqKey")
@@ -3205,6 +3469,13 @@ class AllocationSummaryByItem(AbstractModel):
         self._Formula = params.get("Formula")
         self._FormulaUrl = params.get("FormulaUrl")
         self._ComponentConfig = params.get("ComponentConfig")
+        self._SPDeduction = params.get("SPDeduction")
+        self._SPDeductionRate = params.get("SPDeductionRate")
+        self._AssociatedOrder = params.get("AssociatedOrder")
+        self._DiscountObject = params.get("DiscountObject")
+        self._DiscountType = params.get("DiscountType")
+        self._DiscountContent = params.get("DiscountContent")
+        self._BillMonth = params.get("BillMonth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3351,6 +3622,12 @@ class AllocationSummaryByResource(AbstractModel):
         :param _ComponentConfig: 配置描述：对应资源下各组件名称及用量（如组件为用量累加型计费则为合计用量）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ComponentConfig: str
+        :param _SPDeduction: SPDeduction
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SPDeduction: str
+        :param _BillMonth: 账单月
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillMonth: str
         """
         self._TreeNodeUniqKey = None
         self._TreeNodeUniqKeyName = None
@@ -3394,6 +3671,8 @@ class AllocationSummaryByResource(AbstractModel):
         self._RegionType = None
         self._RegionTypeName = None
         self._ComponentConfig = None
+        self._SPDeduction = None
+        self._BillMonth = None
 
     @property
     def TreeNodeUniqKey(self):
@@ -3739,6 +4018,22 @@ class AllocationSummaryByResource(AbstractModel):
     def ComponentConfig(self, ComponentConfig):
         self._ComponentConfig = ComponentConfig
 
+    @property
+    def SPDeduction(self):
+        return self._SPDeduction
+
+    @SPDeduction.setter
+    def SPDeduction(self, SPDeduction):
+        self._SPDeduction = SPDeduction
+
+    @property
+    def BillMonth(self):
+        return self._BillMonth
+
+    @BillMonth.setter
+    def BillMonth(self, BillMonth):
+        self._BillMonth = BillMonth
+
 
     def _deserialize(self, params):
         self._TreeNodeUniqKey = params.get("TreeNodeUniqKey")
@@ -3788,6 +4083,8 @@ class AllocationSummaryByResource(AbstractModel):
         self._RegionType = params.get("RegionType")
         self._RegionTypeName = params.get("RegionTypeName")
         self._ComponentConfig = params.get("ComponentConfig")
+        self._SPDeduction = params.get("SPDeduction")
+        self._BillMonth = params.get("BillMonth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11424,6 +11721,9 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
         :param _AllocationTreeNode: 分账单元筛选列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type AllocationTreeNode: list of AllocationTreeNode
+        :param _TagKey: 分账标签键
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagKey: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -11442,6 +11742,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
         self._Component = None
         self._Zone = None
         self._AllocationTreeNode = None
+        self._TagKey = None
         self._RequestId = None
 
     @property
@@ -11565,6 +11866,14 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
         self._AllocationTreeNode = AllocationTreeNode
 
     @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -11664,6 +11973,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
                 obj = AllocationTreeNode()
                 obj._deserialize(item)
                 self._AllocationTreeNode.append(obj)
+        self._TagKey = params.get("TagKey")
         self._RequestId = params.get("RequestId")
 
 
@@ -13440,6 +13750,120 @@ class DescribeAllocationTrendByMonthResponse(AbstractModel):
         if params.get("Stat") is not None:
             self._Stat = AllocationStat()
             self._Stat._deserialize(params.get("Stat"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBillAdjustInfoRequest(AbstractModel):
+    """DescribeBillAdjustInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Month: 格式：yyyy-MM
+账单月份，month和timeFrom&timeTo必传一个，如果有传timeFrom&timeTo则month字段无效
+        :type Month: str
+        :param _TimeFrom: 格式：yyyy-MM-dd
+开始时间，month和timeFrom&timeTo必传一个，如果有该字段则month字段无效。timeFrom和timeTo必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据
+        :type TimeFrom: str
+        :param _TimeTo: 格式：yyyy-MM-dd
+截止时间，month和timeFrom&timeTo必传一个，如果有该字段则month字段无效。timeFrom和timeTo必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据
+        :type TimeTo: str
+        """
+        self._Month = None
+        self._TimeFrom = None
+        self._TimeTo = None
+
+    @property
+    def Month(self):
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def TimeFrom(self):
+        return self._TimeFrom
+
+    @TimeFrom.setter
+    def TimeFrom(self, TimeFrom):
+        self._TimeFrom = TimeFrom
+
+    @property
+    def TimeTo(self):
+        return self._TimeTo
+
+    @TimeTo.setter
+    def TimeTo(self, TimeTo):
+        self._TimeTo = TimeTo
+
+
+    def _deserialize(self, params):
+        self._Month = params.get("Month")
+        self._TimeFrom = params.get("TimeFrom")
+        self._TimeTo = params.get("TimeTo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBillAdjustInfoResponse(AbstractModel):
+    """DescribeBillAdjustInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 数据总量
+        :type Total: int
+        :param _Data: 明细数据
+        :type Data: list of AdjustInfoDetail
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = AdjustInfoDetail()
+                obj._deserialize(item)
+                self._Data.append(obj)
         self._RequestId = params.get("RequestId")
 
 

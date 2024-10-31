@@ -534,14 +534,17 @@ Condition互斥。
 
 
 class AlarmNotice(AbstractModel):
-    """告警通知模板类型
+    """告警通知渠道组详细配置
 
     """
 
     def __init__(self):
         r"""
-        :param _Name: 告警通知模板名称。
+        :param _Name: 告警通知渠道组名称。
         :type Name: str
+        :param _Tags: 告警通知渠道组绑定的标签信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         :param _Type: 告警模板的类型。可选值：
 <br><li> Trigger - 告警触发</li>
 <br><li> Recovery - 告警恢复</li>
@@ -556,24 +559,38 @@ class AlarmNotice(AbstractModel):
         :param _AlarmNoticeId: 告警通知模板ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmNoticeId: str
+        :param _NoticeRules: 通知规则。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoticeRules: list of NoticeRule
+        :param _AlarmShieldStatus: 免登录操作告警开关。
+参数值： 1：关闭 2：开启（默认开启）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmShieldStatus: int
+        :param _JumpDomain: 调用链接域名。http:// 或者 https:// 开头，不能/结尾
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JumpDomain: str
+        :param _AlarmNoticeDeliverConfig: 投递相关信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmNoticeDeliverConfig: :class:`tencentcloud.cls.v20201016.models.AlarmNoticeDeliverConfig`
         :param _CreateTime: 创建时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _UpdateTime: 最近更新时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param _NoticeRules: 通知规则。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type NoticeRules: list of NoticeRule
         """
         self._Name = None
+        self._Tags = None
         self._Type = None
         self._NoticeReceivers = None
         self._WebCallbacks = None
         self._AlarmNoticeId = None
+        self._NoticeRules = None
+        self._AlarmShieldStatus = None
+        self._JumpDomain = None
+        self._AlarmNoticeDeliverConfig = None
         self._CreateTime = None
         self._UpdateTime = None
-        self._NoticeRules = None
 
     @property
     def Name(self):
@@ -582,6 +599,14 @@ class AlarmNotice(AbstractModel):
     @Name.setter
     def Name(self, Name):
         self._Name = Name
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
     @property
     def Type(self):
@@ -616,6 +641,38 @@ class AlarmNotice(AbstractModel):
         self._AlarmNoticeId = AlarmNoticeId
 
     @property
+    def NoticeRules(self):
+        return self._NoticeRules
+
+    @NoticeRules.setter
+    def NoticeRules(self, NoticeRules):
+        self._NoticeRules = NoticeRules
+
+    @property
+    def AlarmShieldStatus(self):
+        return self._AlarmShieldStatus
+
+    @AlarmShieldStatus.setter
+    def AlarmShieldStatus(self, AlarmShieldStatus):
+        self._AlarmShieldStatus = AlarmShieldStatus
+
+    @property
+    def JumpDomain(self):
+        return self._JumpDomain
+
+    @JumpDomain.setter
+    def JumpDomain(self, JumpDomain):
+        self._JumpDomain = JumpDomain
+
+    @property
+    def AlarmNoticeDeliverConfig(self):
+        return self._AlarmNoticeDeliverConfig
+
+    @AlarmNoticeDeliverConfig.setter
+    def AlarmNoticeDeliverConfig(self, AlarmNoticeDeliverConfig):
+        self._AlarmNoticeDeliverConfig = AlarmNoticeDeliverConfig
+
+    @property
     def CreateTime(self):
         return self._CreateTime
 
@@ -631,17 +688,15 @@ class AlarmNotice(AbstractModel):
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
-    @property
-    def NoticeRules(self):
-        return self._NoticeRules
-
-    @NoticeRules.setter
-    def NoticeRules(self, NoticeRules):
-        self._NoticeRules = NoticeRules
-
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         self._Type = params.get("Type")
         if params.get("NoticeReceivers") is not None:
             self._NoticeReceivers = []
@@ -656,14 +711,67 @@ class AlarmNotice(AbstractModel):
                 obj._deserialize(item)
                 self._WebCallbacks.append(obj)
         self._AlarmNoticeId = params.get("AlarmNoticeId")
-        self._CreateTime = params.get("CreateTime")
-        self._UpdateTime = params.get("UpdateTime")
         if params.get("NoticeRules") is not None:
             self._NoticeRules = []
             for item in params.get("NoticeRules"):
                 obj = NoticeRule()
                 obj._deserialize(item)
                 self._NoticeRules.append(obj)
+        self._AlarmShieldStatus = params.get("AlarmShieldStatus")
+        self._JumpDomain = params.get("JumpDomain")
+        if params.get("AlarmNoticeDeliverConfig") is not None:
+            self._AlarmNoticeDeliverConfig = AlarmNoticeDeliverConfig()
+            self._AlarmNoticeDeliverConfig._deserialize(params.get("AlarmNoticeDeliverConfig"))
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AlarmNoticeDeliverConfig(AbstractModel):
+    """通知渠道投递日志配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeliverConfig: 通知渠道投递日志配置信息。
+        :type DeliverConfig: :class:`tencentcloud.cls.v20201016.models.DeliverConfig`
+        :param _ErrMsg: 投递失败原因。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrMsg: str
+        """
+        self._DeliverConfig = None
+        self._ErrMsg = None
+
+    @property
+    def DeliverConfig(self):
+        return self._DeliverConfig
+
+    @DeliverConfig.setter
+    def DeliverConfig(self, DeliverConfig):
+        self._DeliverConfig = DeliverConfig
+
+    @property
+    def ErrMsg(self):
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
+
+
+    def _deserialize(self, params):
+        if params.get("DeliverConfig") is not None:
+            self._DeliverConfig = DeliverConfig()
+            self._DeliverConfig._deserialize(params.get("DeliverConfig"))
+        self._ErrMsg = params.get("ErrMsg")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3817,43 +3925,47 @@ class CreateAlarmNoticeRequest(AbstractModel):
         r"""
         :param _Name: 通知渠道组名称。
         :type Name: str
-        :param _Type: 通知类型。可选值：
+        :param _Tags: 标签描述列表，通过指定该参数可以同时绑定标签到相应的通知渠道组。最大支持50个标签键值对，并且不能有重复的键值对。
+        :type Tags: list of Tag
+        :param _Type: 【简易模式】（简易模式/告警模式二选一，分别配置相应参数）
+需要发送通知的告警类型。可选值：
 - Trigger - 告警触发
 - Recovery - 告警恢复
 - All - 告警触发和告警恢复
-
-
- 注意:  
-- Type、NoticeReceivers和WebCallbacks是一组rule配置，其中Type必填，NoticeReceivers和WebCallbacks至少一个不为空；NoticeRules是另一组rule配置，其中rule不许为空
-- 2组rule配置互斥
-- rule配置 与 deliver配置（DeliverStatus与DeliverConfig）至少填写一组配置
         :type Type: str
-        :param _NoticeReceivers: 通知接收对象。
- 注意:  
-- Type、NoticeReceivers和WebCallbacks是一组rule配置，其中Type必填，NoticeReceivers和WebCallbacks至少一个不为空；NoticeRules是另一组rule配置，其中rule不许为空
-- 2组rule配置互斥
-- rule配置 与 deliver配置（DeliverStatus与DeliverConfig）至少填写一组配置
+        :param _NoticeReceivers: 【简易模式】（简易模式/告警模式二选一，分别配置相应参数）
+通知接收对象。
         :type NoticeReceivers: list of NoticeReceiver
-        :param _WebCallbacks: 接口回调信息（包括企业微信）。
- 注意:  
-- Type、NoticeReceivers和WebCallbacks是一组rule配置，其中Type必填，NoticeReceivers和WebCallbacks至少一个不为空；NoticeRules是另一组rule配置，其中rule不许为空
-- 2组rule配置互斥
-- rule配置 与 deliver配置（DeliverStatus与DeliverConfig）至少填写一组配置
+        :param _WebCallbacks: 【简易模式】（简易模式/告警模式二选一，分别配置相应参数）
+接口回调信息（包括企业微信、钉钉、飞书）。
         :type WebCallbacks: list of WebCallback
-        :param _NoticeRules: 通知规则。
- 注意:  
-- Type、NoticeReceivers和WebCallbacks是一组rule配置，其中Type必填，NoticeReceivers和WebCallbacks至少一个不为空；NoticeRules是另一组rule配置，其中rule不许为空
-- 2组rule配置互斥
-- rule配置 与 deliver配置（DeliverStatus与DeliverConfig）至少填写一组配置
-
-
+        :param _NoticeRules: 【高级模式】（简易模式/告警模式二选一，分别配置相应参数）
+通知规则。
         :type NoticeRules: list of NoticeRule
+        :param _JumpDomain: 查询数据链接。http:// 或者 https:// 开头，不能/结尾
+        :type JumpDomain: str
+        :param _DeliverStatus: 投递日志开关。可取值如下：
+1：关闭（默认值）；
+2：开启 
+投递日志开关开启时， DeliverConfig参数必填。
+        :type DeliverStatus: int
+        :param _DeliverConfig: 投递日志配置参数。当DeliverStatus开启时，必填。
+        :type DeliverConfig: :class:`tencentcloud.cls.v20201016.models.DeliverConfig`
+        :param _AlarmShieldStatus: 免登录操作告警开关。可取值如下：
+-      1：关闭
+-      2：开启（默认值）
+        :type AlarmShieldStatus: int
         """
         self._Name = None
+        self._Tags = None
         self._Type = None
         self._NoticeReceivers = None
         self._WebCallbacks = None
         self._NoticeRules = None
+        self._JumpDomain = None
+        self._DeliverStatus = None
+        self._DeliverConfig = None
+        self._AlarmShieldStatus = None
 
     @property
     def Name(self):
@@ -3862,6 +3974,14 @@ class CreateAlarmNoticeRequest(AbstractModel):
     @Name.setter
     def Name(self, Name):
         self._Name = Name
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
     @property
     def Type(self):
@@ -3895,9 +4015,47 @@ class CreateAlarmNoticeRequest(AbstractModel):
     def NoticeRules(self, NoticeRules):
         self._NoticeRules = NoticeRules
 
+    @property
+    def JumpDomain(self):
+        return self._JumpDomain
+
+    @JumpDomain.setter
+    def JumpDomain(self, JumpDomain):
+        self._JumpDomain = JumpDomain
+
+    @property
+    def DeliverStatus(self):
+        return self._DeliverStatus
+
+    @DeliverStatus.setter
+    def DeliverStatus(self, DeliverStatus):
+        self._DeliverStatus = DeliverStatus
+
+    @property
+    def DeliverConfig(self):
+        return self._DeliverConfig
+
+    @DeliverConfig.setter
+    def DeliverConfig(self, DeliverConfig):
+        self._DeliverConfig = DeliverConfig
+
+    @property
+    def AlarmShieldStatus(self):
+        return self._AlarmShieldStatus
+
+    @AlarmShieldStatus.setter
+    def AlarmShieldStatus(self, AlarmShieldStatus):
+        self._AlarmShieldStatus = AlarmShieldStatus
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         self._Type = params.get("Type")
         if params.get("NoticeReceivers") is not None:
             self._NoticeReceivers = []
@@ -3917,6 +4075,12 @@ class CreateAlarmNoticeRequest(AbstractModel):
                 obj = NoticeRule()
                 obj._deserialize(item)
                 self._NoticeRules.append(obj)
+        self._JumpDomain = params.get("JumpDomain")
+        self._DeliverStatus = params.get("DeliverStatus")
+        if params.get("DeliverConfig") is not None:
+            self._DeliverConfig = DeliverConfig()
+            self._DeliverConfig._deserialize(params.get("DeliverConfig"))
+        self._AlarmShieldStatus = params.get("AlarmShieldStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9254,6 +9418,75 @@ class DeleteTopicResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeliverConfig(AbstractModel):
+    """投递配置入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: 地域信息。
+
+示例：
+ ap-guangzhou  广州地域；
+ap-nanjing 南京地域。
+
+详细信息请查看官网：
+
+https://cloud.tencent.com/document/product/614/18940
+        :type Region: str
+        :param _TopicId: 日志主题ID。
+        :type TopicId: str
+        :param _Scope: 投递数据范围。
+
+0: 全部日志, 包括告警策略日常周期执行的所有日志，也包括告警策略变更产生的日志，默认值
+
+1:仅告警触发及恢复日志
+        :type Scope: int
+        """
+        self._Region = None
+        self._TopicId = None
+        self._Scope = None
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def TopicId(self):
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Scope(self):
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._TopicId = params.get("TopicId")
+        self._Scope = params.get("Scope")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeAlarmNoticesRequest(AbstractModel):
     """DescribeAlarmNotices请求参数结构体
 
@@ -12975,6 +13208,118 @@ class DynamicIndex(AbstractModel):
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EscalateNoticeInfo(AbstractModel):
+    """升级通知
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NoticeReceivers: 告警通知模板接收者信息。
+        :type NoticeReceivers: list of NoticeReceiver
+        :param _WebCallbacks: 告警通知模板回调信息。
+        :type WebCallbacks: list of WebCallback
+        :param _Escalate: 告警升级开关。`true`：开启告警升级、`false`：关闭告警升级，默认：false
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Escalate: bool
+        :param _Interval: 告警升级间隔。单位：分钟，范围`[1，14400]`
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Interval: int
+        :param _Type: 升级条件。`1`：无人认领且未恢复、`2`：未恢复，默认为1
+- 无人认领且未恢复：告警没有恢复并且没有人认领则升级
+- 未恢复：当前告警持续未恢复则升级
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        :param _EscalateNotice: 告警升级后下一个环节的通知渠道配置，最多可配置5个环节。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EscalateNotice: :class:`tencentcloud.cls.v20201016.models.EscalateNoticeInfo`
+        """
+        self._NoticeReceivers = None
+        self._WebCallbacks = None
+        self._Escalate = None
+        self._Interval = None
+        self._Type = None
+        self._EscalateNotice = None
+
+    @property
+    def NoticeReceivers(self):
+        return self._NoticeReceivers
+
+    @NoticeReceivers.setter
+    def NoticeReceivers(self, NoticeReceivers):
+        self._NoticeReceivers = NoticeReceivers
+
+    @property
+    def WebCallbacks(self):
+        return self._WebCallbacks
+
+    @WebCallbacks.setter
+    def WebCallbacks(self, WebCallbacks):
+        self._WebCallbacks = WebCallbacks
+
+    @property
+    def Escalate(self):
+        return self._Escalate
+
+    @Escalate.setter
+    def Escalate(self, Escalate):
+        self._Escalate = Escalate
+
+    @property
+    def Interval(self):
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def EscalateNotice(self):
+        return self._EscalateNotice
+
+    @EscalateNotice.setter
+    def EscalateNotice(self, EscalateNotice):
+        self._EscalateNotice = EscalateNotice
+
+
+    def _deserialize(self, params):
+        if params.get("NoticeReceivers") is not None:
+            self._NoticeReceivers = []
+            for item in params.get("NoticeReceivers"):
+                obj = NoticeReceiver()
+                obj._deserialize(item)
+                self._NoticeReceivers.append(obj)
+        if params.get("WebCallbacks") is not None:
+            self._WebCallbacks = []
+            for item in params.get("WebCallbacks"):
+                obj = WebCallback()
+                obj._deserialize(item)
+                self._WebCallbacks.append(obj)
+        self._Escalate = params.get("Escalate")
+        self._Interval = params.get("Interval")
+        self._Type = params.get("Type")
+        if params.get("EscalateNotice") is not None:
+            self._EscalateNotice = EscalateNoticeInfo()
+            self._EscalateNotice._deserialize(params.get("EscalateNotice"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19627,26 +19972,26 @@ class NoticeReceiver(AbstractModel):
 - WeChat - 微信
 - Phone - 电话
         :type ReceiverChannels: list of str
-        :param _StartTime: 允许接收信息的开始时间。格式：`15:04:05`，必填。
+        :param _NoticeContentId: 通知内容模板ID，使用Default-zh引用默认模板（中文），使用Default-en引用DefaultTemplate(English)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoticeContentId: str
+        :param _StartTime: 允许接收信息的开始时间。格式：`15:04:05`。必填
         :type StartTime: str
-        :param _EndTime: 允许接收信息的结束时间。格式：`15:04:05`，必填。
+        :param _EndTime: 允许接收信息的结束时间。格式：`15:04:05`。必填
         :type EndTime: str
         :param _Index: 位序。
 
 - 入参时无效。
 - 出参时有效。
         :type Index: int
-        :param _NoticeContentId: 通知内容模板ID。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type NoticeContentId: str
         """
         self._ReceiverType = None
         self._ReceiverIds = None
         self._ReceiverChannels = None
+        self._NoticeContentId = None
         self._StartTime = None
         self._EndTime = None
         self._Index = None
-        self._NoticeContentId = None
 
     @property
     def ReceiverType(self):
@@ -19673,6 +20018,14 @@ class NoticeReceiver(AbstractModel):
         self._ReceiverChannels = ReceiverChannels
 
     @property
+    def NoticeContentId(self):
+        return self._NoticeContentId
+
+    @NoticeContentId.setter
+    def NoticeContentId(self, NoticeContentId):
+        self._NoticeContentId = NoticeContentId
+
+    @property
     def StartTime(self):
         return self._StartTime
 
@@ -19696,23 +20049,15 @@ class NoticeReceiver(AbstractModel):
     def Index(self, Index):
         self._Index = Index
 
-    @property
-    def NoticeContentId(self):
-        return self._NoticeContentId
-
-    @NoticeContentId.setter
-    def NoticeContentId(self, NoticeContentId):
-        self._NoticeContentId = NoticeContentId
-
 
     def _deserialize(self, params):
         self._ReceiverType = params.get("ReceiverType")
         self._ReceiverIds = params.get("ReceiverIds")
         self._ReceiverChannels = params.get("ReceiverChannels")
+        self._NoticeContentId = params.get("NoticeContentId")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._Index = params.get("Index")
-        self._NoticeContentId = params.get("NoticeContentId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19730,12 +20075,6 @@ class NoticeRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NoticeReceivers: 告警通知模板接收者信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type NoticeReceivers: list of NoticeReceiver
-        :param _WebCallbacks: 告警通知模板回调信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type WebCallbacks: list of WebCallback
         :param _Rule: 匹配规则 JSON串。
 **rule规则树格式为嵌套结构体JSON字符串**
 `{"Value":"AND","Type":"Operation","Children":[{"Value":"OR","Type":"Operation","Children":[{"Type":"Condition","Value":"Level","Children":[{"Value":"In","Type":"Compare"},{"Value":"[1,0]","Type":"Value"}]},{"Type":"Condition","Value":"Level","Children":[{"Value":"NotIn","Type":"Compare"},{"Value":"[2]","Type":"Value"}]}]}]}`
@@ -19796,10 +20135,43 @@ class NoticeRule(AbstractModel):
 `{\"Value\":\"AND\",\"Type\":\"Operation\",\"Children\":[{\"Value\":\"OR\",\"Type\":\"Operation\",\"Children\":[{\"Type\":\"Condition\",\"Value\":\"Duration\",\"Children\":[{\"Value\":\">\",\"Type\":\"Compare\"},{\"Value\":1,\"Type\":\"Value\"}]},{\"Type\":\"Condition\",\"Value\":\"Duration\",\"Children\":[{\"Value\":\">=\",\"Type\":\"Compare\"},{\"Value\":2,\"Type\":\"Value\"}]},{\"Type\":\"Condition\",\"Value\":\"Duration\",\"Children\":[{\"Value\":\"<\",\"Type\":\"Compare\"},{\"Value\":3,\"Type\":\"Value\"}]},{\"Type\":\"Condition\",\"Value\":\"Duration\",\"Children\":[{\"Value\":\"<=\",\"Type\":\"Compare\"},{\"Value\":4,\"Type\":\"Value\"}]}]}]}`
 注意：此字段可能返回 null，表示取不到有效值。
         :type Rule: str
+        :param _NoticeReceivers: 告警通知接收者信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoticeReceivers: list of NoticeReceiver
+        :param _WebCallbacks: 告警通知模板回调信息，包括企业微信、钉钉、飞书。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WebCallbacks: list of WebCallback
+        :param _Escalate: 告警升级开关。`true`：开启告警升级、`false`：关闭告警升级，默认：false
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Escalate: bool
+        :param _Type: 告警升级条件。`1`：无人认领且未恢复、`2`：未恢复，默认为1
+- 无人认领且未恢复：告警没有恢复并且没有人认领则升级
+- 未恢复：当前告警持续未恢复则升级
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        :param _Interval: 告警升级间隔。单位：分钟，范围`[1，14400]`
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Interval: int
+        :param _EscalateNotice: 告警升级后下一个环节的通知渠道配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EscalateNotice: :class:`tencentcloud.cls.v20201016.models.EscalateNoticeInfo`
         """
+        self._Rule = None
         self._NoticeReceivers = None
         self._WebCallbacks = None
-        self._Rule = None
+        self._Escalate = None
+        self._Type = None
+        self._Interval = None
+        self._EscalateNotice = None
+
+    @property
+    def Rule(self):
+        return self._Rule
+
+    @Rule.setter
+    def Rule(self, Rule):
+        self._Rule = Rule
 
     @property
     def NoticeReceivers(self):
@@ -19818,15 +20190,40 @@ class NoticeRule(AbstractModel):
         self._WebCallbacks = WebCallbacks
 
     @property
-    def Rule(self):
-        return self._Rule
+    def Escalate(self):
+        return self._Escalate
 
-    @Rule.setter
-    def Rule(self, Rule):
-        self._Rule = Rule
+    @Escalate.setter
+    def Escalate(self, Escalate):
+        self._Escalate = Escalate
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Interval(self):
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+    @property
+    def EscalateNotice(self):
+        return self._EscalateNotice
+
+    @EscalateNotice.setter
+    def EscalateNotice(self, EscalateNotice):
+        self._EscalateNotice = EscalateNotice
 
 
     def _deserialize(self, params):
+        self._Rule = params.get("Rule")
         if params.get("NoticeReceivers") is not None:
             self._NoticeReceivers = []
             for item in params.get("NoticeReceivers"):
@@ -19839,7 +20236,12 @@ class NoticeRule(AbstractModel):
                 obj = WebCallback()
                 obj._deserialize(item)
                 self._WebCallbacks.append(obj)
-        self._Rule = params.get("Rule")
+        self._Escalate = params.get("Escalate")
+        self._Type = params.get("Type")
+        self._Interval = params.get("Interval")
+        if params.get("EscalateNotice") is not None:
+            self._EscalateNotice = EscalateNoticeInfo()
+            self._EscalateNotice._deserialize(params.get("EscalateNotice"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23301,57 +23703,62 @@ class WebCallback(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Url: 回调地址。最大支持1024个字节数。
-        :type Url: str
         :param _CallbackType: 回调的类型。可选值：
-- WeCom
 - Http
+- WeCom
 - DingTalk
 - Lark
         :type CallbackType: str
+        :param _Url: 回调地址，最大支持1024个字节。
+也可使用WebCallbackId引用集成配置中的URL，此时该字段请填写为空字符串。
+        :type Url: str
+        :param _WebCallbackId: 集成配置ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WebCallbackId: str
         :param _Method: 回调方法。可选值：
 - POST（默认值）
 - PUT
 
 注意：
-- 参数CallbackType为Http时为必选。
+- 参数CallbackType为Http时为必选，其它回调方式无需填写。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Method: str
-        :param _Headers: 请求头。
-注意：该参数已废弃，请使用NoticeContentId。
+        :param _NoticeContentId: 通知内容模板ID，使用Default-zh引用默认模板（中文），使用Default-en引用DefaultTemplate(English)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoticeContentId: str
+        :param _RemindType: 提醒类型。
+
+0：不提醒；1：指定人；2：所有人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemindType: int
+        :param _Mobiles: 电话列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mobiles: list of str
+        :param _UserIds: 用户ID列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserIds: list of str
+        :param _Headers: 该参数已废弃，请使用NoticeContentId。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Headers: list of str
-        :param _Body: 请求内容。
-注意：该参数已废弃，请使用NoticeContentId。
+        :param _Body: 该参数已废弃，请使用NoticeContentId。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Body: str
         :param _Index: 序号。
 - 入参无效。
 - 出参有效。
         :type Index: int
-        :param _NoticeContentId: 通知内容模板ID。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type NoticeContentId: str
-        :param _WebCallbackId: 集成配置ID。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type WebCallbackId: str
         """
-        self._Url = None
         self._CallbackType = None
+        self._Url = None
+        self._WebCallbackId = None
         self._Method = None
+        self._NoticeContentId = None
+        self._RemindType = None
+        self._Mobiles = None
+        self._UserIds = None
         self._Headers = None
         self._Body = None
         self._Index = None
-        self._NoticeContentId = None
-        self._WebCallbackId = None
-
-    @property
-    def Url(self):
-        return self._Url
-
-    @Url.setter
-    def Url(self, Url):
-        self._Url = Url
 
     @property
     def CallbackType(self):
@@ -23362,12 +23769,60 @@ class WebCallback(AbstractModel):
         self._CallbackType = CallbackType
 
     @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def WebCallbackId(self):
+        return self._WebCallbackId
+
+    @WebCallbackId.setter
+    def WebCallbackId(self, WebCallbackId):
+        self._WebCallbackId = WebCallbackId
+
+    @property
     def Method(self):
         return self._Method
 
     @Method.setter
     def Method(self, Method):
         self._Method = Method
+
+    @property
+    def NoticeContentId(self):
+        return self._NoticeContentId
+
+    @NoticeContentId.setter
+    def NoticeContentId(self, NoticeContentId):
+        self._NoticeContentId = NoticeContentId
+
+    @property
+    def RemindType(self):
+        return self._RemindType
+
+    @RemindType.setter
+    def RemindType(self, RemindType):
+        self._RemindType = RemindType
+
+    @property
+    def Mobiles(self):
+        return self._Mobiles
+
+    @Mobiles.setter
+    def Mobiles(self, Mobiles):
+        self._Mobiles = Mobiles
+
+    @property
+    def UserIds(self):
+        return self._UserIds
+
+    @UserIds.setter
+    def UserIds(self, UserIds):
+        self._UserIds = UserIds
 
     @property
     def Headers(self):
@@ -23393,32 +23848,19 @@ class WebCallback(AbstractModel):
     def Index(self, Index):
         self._Index = Index
 
-    @property
-    def NoticeContentId(self):
-        return self._NoticeContentId
-
-    @NoticeContentId.setter
-    def NoticeContentId(self, NoticeContentId):
-        self._NoticeContentId = NoticeContentId
-
-    @property
-    def WebCallbackId(self):
-        return self._WebCallbackId
-
-    @WebCallbackId.setter
-    def WebCallbackId(self, WebCallbackId):
-        self._WebCallbackId = WebCallbackId
-
 
     def _deserialize(self, params):
-        self._Url = params.get("Url")
         self._CallbackType = params.get("CallbackType")
+        self._Url = params.get("Url")
+        self._WebCallbackId = params.get("WebCallbackId")
         self._Method = params.get("Method")
+        self._NoticeContentId = params.get("NoticeContentId")
+        self._RemindType = params.get("RemindType")
+        self._Mobiles = params.get("Mobiles")
+        self._UserIds = params.get("UserIds")
         self._Headers = params.get("Headers")
         self._Body = params.get("Body")
         self._Index = params.get("Index")
-        self._NoticeContentId = params.get("NoticeContentId")
-        self._WebCallbackId = params.get("WebCallbackId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

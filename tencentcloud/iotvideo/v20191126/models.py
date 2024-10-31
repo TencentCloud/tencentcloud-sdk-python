@@ -133,6 +133,79 @@ class BindUsrInfo(AbstractModel):
         
 
 
+class CertificateInfo(AbstractModel):
+    """证书信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SecretId: SecretId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretId: str
+        :param _SecretKey: SecretKey
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretKey: str
+        :param _Token: Token
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Token: str
+        :param _ExpiredTime: 过期时间，UNIX时间戳，单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpiredTime: int
+        """
+        self._SecretId = None
+        self._SecretKey = None
+        self._Token = None
+        self._ExpiredTime = None
+
+    @property
+    def SecretId(self):
+        return self._SecretId
+
+    @SecretId.setter
+    def SecretId(self, SecretId):
+        self._SecretId = SecretId
+
+    @property
+    def SecretKey(self):
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def Token(self):
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def ExpiredTime(self):
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
+
+    def _deserialize(self, params):
+        self._SecretId = params.get("SecretId")
+        self._SecretKey = params.get("SecretKey")
+        self._Token = params.get("Token")
+        self._ExpiredTime = params.get("ExpiredTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClearDeviceActiveCodeRequest(AbstractModel):
     """ClearDeviceActiveCode请求参数结构体
 
@@ -254,6 +327,94 @@ class Contents(AbstractModel):
         self._Cn = params.get("Cn")
         self._Tc = params.get("Tc")
         self._Default = params.get("Default")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosCertificate(AbstractModel):
+    """申请上传证书回包
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StorageBucket: cos存储桶
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageBucket: str
+        :param _StorageRegion: cos存储园区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageRegion: str
+        :param _StoragePath: 存储路径，录制场景下该值为存储目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StoragePath: str
+        :param _TempCertificate: 证书信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TempCertificate: :class:`tencentcloud.iotvideo.v20191126.models.CertificateInfo`
+        :param _SessionKey: SessionKey
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionKey: str
+        """
+        self._StorageBucket = None
+        self._StorageRegion = None
+        self._StoragePath = None
+        self._TempCertificate = None
+        self._SessionKey = None
+
+    @property
+    def StorageBucket(self):
+        return self._StorageBucket
+
+    @StorageBucket.setter
+    def StorageBucket(self, StorageBucket):
+        self._StorageBucket = StorageBucket
+
+    @property
+    def StorageRegion(self):
+        return self._StorageRegion
+
+    @StorageRegion.setter
+    def StorageRegion(self, StorageRegion):
+        self._StorageRegion = StorageRegion
+
+    @property
+    def StoragePath(self):
+        return self._StoragePath
+
+    @StoragePath.setter
+    def StoragePath(self, StoragePath):
+        self._StoragePath = StoragePath
+
+    @property
+    def TempCertificate(self):
+        return self._TempCertificate
+
+    @TempCertificate.setter
+    def TempCertificate(self, TempCertificate):
+        self._TempCertificate = TempCertificate
+
+    @property
+    def SessionKey(self):
+        return self._SessionKey
+
+    @SessionKey.setter
+    def SessionKey(self, SessionKey):
+        self._SessionKey = SessionKey
+
+
+    def _deserialize(self, params):
+        self._StorageBucket = params.get("StorageBucket")
+        self._StorageRegion = params.get("StorageRegion")
+        self._StoragePath = params.get("StoragePath")
+        if params.get("TempCertificate") is not None:
+            self._TempCertificate = CertificateInfo()
+            self._TempCertificate._deserialize(params.get("TempCertificate"))
+        self._SessionKey = params.get("SessionKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1733,6 +1894,91 @@ class CreateUploadPathResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateUploadTestRequest(AbstractModel):
+    """CreateUploadTest请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PkgId: package ID
+        :type PkgId: str
+        :param _Tid: 设备TID
+        :type Tid: str
+        """
+        self._PkgId = None
+        self._Tid = None
+
+    @property
+    def PkgId(self):
+        return self._PkgId
+
+    @PkgId.setter
+    def PkgId(self, PkgId):
+        self._PkgId = PkgId
+
+    @property
+    def Tid(self):
+        return self._Tid
+
+    @Tid.setter
+    def Tid(self, Tid):
+        self._Tid = Tid
+
+
+    def _deserialize(self, params):
+        self._PkgId = params.get("PkgId")
+        self._Tid = params.get("Tid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateUploadTestResponse(AbstractModel):
+    """CreateUploadTest返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 申请设备证书返回的信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.iotvideo.v20191126.models.CosCertificate`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = CosCertificate()
+            self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
 
@@ -7174,6 +7420,139 @@ class RegisteredStatus(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RenewCertificate(AbstractModel):
+    """刷新证书信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TempCertificate: 刷新证书信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TempCertificate: :class:`tencentcloud.iotvideo.v20191126.models.CertificateInfo`
+        """
+        self._TempCertificate = None
+
+    @property
+    def TempCertificate(self):
+        return self._TempCertificate
+
+    @TempCertificate.setter
+    def TempCertificate(self, TempCertificate):
+        self._TempCertificate = TempCertificate
+
+
+    def _deserialize(self, params):
+        if params.get("TempCertificate") is not None:
+            self._TempCertificate = CertificateInfo()
+            self._TempCertificate._deserialize(params.get("TempCertificate"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenewUploadTestRequest(AbstractModel):
+    """RenewUploadTest请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PkgId: package ID
+        :type PkgId: str
+        :param _Tid: 设备TID
+        :type Tid: str
+        :param _SessionKey: SessionKeys
+        :type SessionKey: str
+        """
+        self._PkgId = None
+        self._Tid = None
+        self._SessionKey = None
+
+    @property
+    def PkgId(self):
+        return self._PkgId
+
+    @PkgId.setter
+    def PkgId(self, PkgId):
+        self._PkgId = PkgId
+
+    @property
+    def Tid(self):
+        return self._Tid
+
+    @Tid.setter
+    def Tid(self, Tid):
+        self._Tid = Tid
+
+    @property
+    def SessionKey(self):
+        return self._SessionKey
+
+    @SessionKey.setter
+    def SessionKey(self, SessionKey):
+        self._SessionKey = SessionKey
+
+
+    def _deserialize(self, params):
+        self._PkgId = params.get("PkgId")
+        self._Tid = params.get("Tid")
+        self._SessionKey = params.get("SessionKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenewUploadTestResponse(AbstractModel):
+    """RenewUploadTest返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 刷新证书返回的信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.iotvideo.v20191126.models.RenewCertificate`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = RenewCertificate()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class RunDeviceRequest(AbstractModel):

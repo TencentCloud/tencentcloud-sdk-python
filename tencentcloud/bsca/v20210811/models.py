@@ -387,6 +387,15 @@ class Component(AbstractModel):
         :type CodeLocationList: list of str
         :param _LicenseExpression: 第三方组件的许可证表达式
         :type LicenseExpression: str
+        :param _VersionInfo: 第三方组件的版本信息(如果匹配到版本)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionInfo: :class:`tencentcloud.bsca.v20210811.models.ComponentVersionInfo`
+        :param _LastUpdateTime: 第三方组件的最后更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastUpdateTime: str
+        :param _TagList: 第三方组件的类型标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagList: list of str
         """
         self._PURL = None
         self._Homepage = None
@@ -394,6 +403,9 @@ class Component(AbstractModel):
         self._NicknameList = None
         self._CodeLocationList = None
         self._LicenseExpression = None
+        self._VersionInfo = None
+        self._LastUpdateTime = None
+        self._TagList = None
 
     @property
     def PURL(self):
@@ -443,6 +455,30 @@ class Component(AbstractModel):
     def LicenseExpression(self, LicenseExpression):
         self._LicenseExpression = LicenseExpression
 
+    @property
+    def VersionInfo(self):
+        return self._VersionInfo
+
+    @VersionInfo.setter
+    def VersionInfo(self, VersionInfo):
+        self._VersionInfo = VersionInfo
+
+    @property
+    def LastUpdateTime(self):
+        return self._LastUpdateTime
+
+    @LastUpdateTime.setter
+    def LastUpdateTime(self, LastUpdateTime):
+        self._LastUpdateTime = LastUpdateTime
+
+    @property
+    def TagList(self):
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
 
     def _deserialize(self, params):
         if params.get("PURL") is not None:
@@ -453,6 +489,57 @@ class Component(AbstractModel):
         self._NicknameList = params.get("NicknameList")
         self._CodeLocationList = params.get("CodeLocationList")
         self._LicenseExpression = params.get("LicenseExpression")
+        if params.get("VersionInfo") is not None:
+            self._VersionInfo = ComponentVersionInfo()
+            self._VersionInfo._deserialize(params.get("VersionInfo"))
+        self._LastUpdateTime = params.get("LastUpdateTime")
+        self._TagList = params.get("TagList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComponentTagFilter(AbstractModel):
+    """筛选条件，同一个Tag不能同时出现在IncludeTags和ExcludeTags，可能的Tag包括："CopyrightUpdated", "LicenseUpdated", "ContainsVulnerability"
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IncludeTags: 包括的Tag
+
+        :type IncludeTags: list of str
+        :param _ExcludeTags: 排除的Tag
+        :type ExcludeTags: list of str
+        """
+        self._IncludeTags = None
+        self._ExcludeTags = None
+
+    @property
+    def IncludeTags(self):
+        return self._IncludeTags
+
+    @IncludeTags.setter
+    def IncludeTags(self, IncludeTags):
+        self._IncludeTags = IncludeTags
+
+    @property
+    def ExcludeTags(self):
+        return self._ExcludeTags
+
+    @ExcludeTags.setter
+    def ExcludeTags(self, ExcludeTags):
+        self._ExcludeTags = ExcludeTags
+
+
+    def _deserialize(self, params):
+        self._IncludeTags = params.get("IncludeTags")
+        self._ExcludeTags = params.get("ExcludeTags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -464,7 +551,7 @@ class Component(AbstractModel):
 
 
 class ComponentVersion(AbstractModel):
-    """描述组件的一条版本信息。
+    """描述一个组件版本。
 
     """
 
@@ -476,9 +563,13 @@ class ComponentVersion(AbstractModel):
         :param _LicenseExpression: 该组件版本的许可证表达式
 注意：此字段可能返回 null，表示取不到有效值。
         :type LicenseExpression: str
+        :param _VersionInfo: 组件的版本信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionInfo: :class:`tencentcloud.bsca.v20210811.models.ComponentVersionInfo`
         """
         self._PURL = None
         self._LicenseExpression = None
+        self._VersionInfo = None
 
     @property
     def PURL(self):
@@ -496,12 +587,83 @@ class ComponentVersion(AbstractModel):
     def LicenseExpression(self, LicenseExpression):
         self._LicenseExpression = LicenseExpression
 
+    @property
+    def VersionInfo(self):
+        return self._VersionInfo
+
+    @VersionInfo.setter
+    def VersionInfo(self, VersionInfo):
+        self._VersionInfo = VersionInfo
+
 
     def _deserialize(self, params):
         if params.get("PURL") is not None:
             self._PURL = PURL()
             self._PURL._deserialize(params.get("PURL"))
         self._LicenseExpression = params.get("LicenseExpression")
+        if params.get("VersionInfo") is not None:
+            self._VersionInfo = ComponentVersionInfo()
+            self._VersionInfo._deserialize(params.get("VersionInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComponentVersionInfo(AbstractModel):
+    """描述组件版本的详情，包含组件发布时间、Copyright列表、组件描述Tag。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PublishTime: 版本发布时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublishTime: str
+        :param _CopyrightList: 当前版本的所有copyright
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CopyrightList: list of str
+        :param _TagList: 版本标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagList: list of str
+        """
+        self._PublishTime = None
+        self._CopyrightList = None
+        self._TagList = None
+
+    @property
+    def PublishTime(self):
+        return self._PublishTime
+
+    @PublishTime.setter
+    def PublishTime(self, PublishTime):
+        self._PublishTime = PublishTime
+
+    @property
+    def CopyrightList(self):
+        return self._CopyrightList
+
+    @CopyrightList.setter
+    def CopyrightList(self, CopyrightList):
+        self._CopyrightList = CopyrightList
+
+    @property
+    def TagList(self):
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
+
+    def _deserialize(self, params):
+        self._PublishTime = params.get("PublishTime")
+        self._CopyrightList = params.get("CopyrightList")
+        self._TagList = params.get("TagList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -744,8 +906,23 @@ class DescribeKBComponentVersionListRequest(AbstractModel):
         r"""
         :param _PURL: 要查询的组件 PURL
         :type PURL: :class:`tencentcloud.bsca.v20210811.models.PURL`
+        :param _PageNumber: 页号
+        :type PageNumber: int
+        :param _PageSize: 页大小
+        :type PageSize: int
+        :param _Order: 排序方式，可以是"ASC"或"DESC"，默认"DESC"
+        :type Order: str
+        :param _OrderBy: 排序字段，可能的字段包括“Version”、"PublishTime"
+        :type OrderBy: list of str
+        :param _Filter: Tag筛选
+        :type Filter: :class:`tencentcloud.bsca.v20210811.models.ComponentTagFilter`
         """
         self._PURL = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Order = None
+        self._OrderBy = None
+        self._Filter = None
 
     @property
     def PURL(self):
@@ -755,11 +932,58 @@ class DescribeKBComponentVersionListRequest(AbstractModel):
     def PURL(self, PURL):
         self._PURL = PURL
 
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def OrderBy(self):
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def Filter(self):
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
 
     def _deserialize(self, params):
         if params.get("PURL") is not None:
             self._PURL = PURL()
             self._PURL._deserialize(params.get("PURL"))
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._Order = params.get("Order")
+        self._OrderBy = params.get("OrderBy")
+        if params.get("Filter") is not None:
+            self._Filter = ComponentTagFilter()
+            self._Filter._deserialize(params.get("Filter"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -869,10 +1093,16 @@ class DescribeKBComponentVulnerabilityResponse(AbstractModel):
         :param _VulnerabilityList: 漏洞信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type VulnerabilityList: list of ComponentVulnerabilityUnion
+        :param _PURL: 组件purl
+        :type PURL: :class:`tencentcloud.bsca.v20210811.models.PURL`
+        :param _RecommendedVersion: 推荐版本，当前版本中的所有漏洞都修复了的版本
+        :type RecommendedVersion: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._VulnerabilityList = None
+        self._PURL = None
+        self._RecommendedVersion = None
         self._RequestId = None
 
     @property
@@ -882,6 +1112,22 @@ class DescribeKBComponentVulnerabilityResponse(AbstractModel):
     @VulnerabilityList.setter
     def VulnerabilityList(self, VulnerabilityList):
         self._VulnerabilityList = VulnerabilityList
+
+    @property
+    def PURL(self):
+        return self._PURL
+
+    @PURL.setter
+    def PURL(self, PURL):
+        self._PURL = PURL
+
+    @property
+    def RecommendedVersion(self):
+        return self._RecommendedVersion
+
+    @RecommendedVersion.setter
+    def RecommendedVersion(self, RecommendedVersion):
+        self._RecommendedVersion = RecommendedVersion
 
     @property
     def RequestId(self):
@@ -899,6 +1145,10 @@ class DescribeKBComponentVulnerabilityResponse(AbstractModel):
                 obj = ComponentVulnerabilityUnion()
                 obj._deserialize(item)
                 self._VulnerabilityList.append(obj)
+        if params.get("PURL") is not None:
+            self._PURL = PURL()
+            self._PURL._deserialize(params.get("PURL"))
+        self._RecommendedVersion = params.get("RecommendedVersion")
         self._RequestId = params.get("RequestId")
 
 
@@ -1770,6 +2020,8 @@ class VulnerabilityDetail(AbstractModel):
         :type CVSSv3Info: :class:`tencentcloud.bsca.v20210811.models.CVSSV3Info`
         :param _SubmitTime: 漏洞提交时间
         :type SubmitTime: str
+        :param _UpdateTime: 漏洞更新时间
+        :type UpdateTime: str
         :param _CWEID: CWE编号
         :type CWEID: str
         :param _CVSSv2Vector: 漏洞CVSSv2向量
@@ -1788,6 +2040,7 @@ class VulnerabilityDetail(AbstractModel):
         self._CVSSv2Info = None
         self._CVSSv3Info = None
         self._SubmitTime = None
+        self._UpdateTime = None
         self._CWEID = None
         self._CVSSv2Vector = None
         self._CVSSv3Vector = None
@@ -1866,6 +2119,14 @@ class VulnerabilityDetail(AbstractModel):
         self._SubmitTime = SubmitTime
 
     @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
     def CWEID(self):
         return self._CWEID
 
@@ -1912,6 +2173,7 @@ class VulnerabilityDetail(AbstractModel):
             self._CVSSv3Info = CVSSV3Info()
             self._CVSSv3Info._deserialize(params.get("CVSSv3Info"))
         self._SubmitTime = params.get("SubmitTime")
+        self._UpdateTime = params.get("UpdateTime")
         self._CWEID = params.get("CWEID")
         self._CVSSv2Vector = params.get("CVSSv2Vector")
         self._CVSSv3Vector = params.get("CVSSv3Vector")
@@ -1956,6 +2218,15 @@ class VulnerabilitySummary(AbstractModel):
 <li>Medium</li>
 <li>Low</li>
         :type Severity: str
+        :param _Architecture: 架构信息，如x86、ARM等，废弃，请使用ArchitectureList
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Architecture: list of str
+        :param _ArchitectureList: 架构信息，如x86、ARM等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ArchitectureList: list of str
+        :param _PatchUrlList: patch链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PatchUrlList: list of str
         """
         self._VulID = None
         self._CVEID = None
@@ -1964,6 +2235,9 @@ class VulnerabilitySummary(AbstractModel):
         self._Name = None
         self._IsSuggest = None
         self._Severity = None
+        self._Architecture = None
+        self._ArchitectureList = None
+        self._PatchUrlList = None
 
     @property
     def VulID(self):
@@ -2021,6 +2295,34 @@ class VulnerabilitySummary(AbstractModel):
     def Severity(self, Severity):
         self._Severity = Severity
 
+    @property
+    def Architecture(self):
+        warnings.warn("parameter `Architecture` is deprecated", DeprecationWarning) 
+
+        return self._Architecture
+
+    @Architecture.setter
+    def Architecture(self, Architecture):
+        warnings.warn("parameter `Architecture` is deprecated", DeprecationWarning) 
+
+        self._Architecture = Architecture
+
+    @property
+    def ArchitectureList(self):
+        return self._ArchitectureList
+
+    @ArchitectureList.setter
+    def ArchitectureList(self, ArchitectureList):
+        self._ArchitectureList = ArchitectureList
+
+    @property
+    def PatchUrlList(self):
+        return self._PatchUrlList
+
+    @PatchUrlList.setter
+    def PatchUrlList(self, PatchUrlList):
+        self._PatchUrlList = PatchUrlList
+
 
     def _deserialize(self, params):
         self._VulID = params.get("VulID")
@@ -2030,6 +2332,9 @@ class VulnerabilitySummary(AbstractModel):
         self._Name = params.get("Name")
         self._IsSuggest = params.get("IsSuggest")
         self._Severity = params.get("Severity")
+        self._Architecture = params.get("Architecture")
+        self._ArchitectureList = params.get("ArchitectureList")
+        self._PatchUrlList = params.get("PatchUrlList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

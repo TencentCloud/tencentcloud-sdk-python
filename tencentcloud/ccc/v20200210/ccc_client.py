@@ -1040,6 +1040,29 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTelRecordAsr(self, request):
+        """拉取会话录音转文本信息
+
+        :param request: Request instance for DescribeTelRecordAsr.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeTelRecordAsrRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeTelRecordAsrResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTelRecordAsr", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTelRecordAsrResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTelSession(self, request):
         """获取 PSTN 会话信息
 

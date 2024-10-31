@@ -26271,6 +26271,9 @@ class TimeShiftStreamInfo(AbstractModel):
         :param _Duration: 时移数据存储时长，单位秒。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: int
+        :param _TimeShiftSubStreams: 时移自适应码率子流列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeShiftSubStreams: list of TimeShiftSubStream
         """
         self._DomainGroup = None
         self._Domain = None
@@ -26281,6 +26284,7 @@ class TimeShiftStreamInfo(AbstractModel):
         self._TransCodeId = None
         self._StreamType = None
         self._Duration = None
+        self._TimeShiftSubStreams = None
 
     @property
     def DomainGroup(self):
@@ -26354,6 +26358,14 @@ class TimeShiftStreamInfo(AbstractModel):
     def Duration(self, Duration):
         self._Duration = Duration
 
+    @property
+    def TimeShiftSubStreams(self):
+        return self._TimeShiftSubStreams
+
+    @TimeShiftSubStreams.setter
+    def TimeShiftSubStreams(self, TimeShiftSubStreams):
+        self._TimeShiftSubStreams = TimeShiftSubStreams
+
 
     def _deserialize(self, params):
         self._DomainGroup = params.get("DomainGroup")
@@ -26365,6 +26377,45 @@ class TimeShiftStreamInfo(AbstractModel):
         self._TransCodeId = params.get("TransCodeId")
         self._StreamType = params.get("StreamType")
         self._Duration = params.get("Duration")
+        if params.get("TimeShiftSubStreams") is not None:
+            self._TimeShiftSubStreams = []
+            for item in params.get("TimeShiftSubStreams"):
+                obj = TimeShiftSubStream()
+                obj._deserialize(item)
+                self._TimeShiftSubStreams.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TimeShiftSubStream(AbstractModel):
+    """时移自适应码率子流信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TransCodeId: 时移自适应码率子流转码模板ID。
+        :type TransCodeId: int
+        """
+        self._TransCodeId = None
+
+    @property
+    def TransCodeId(self):
+        return self._TransCodeId
+
+    @TransCodeId.setter
+    def TransCodeId(self, TransCodeId):
+        self._TransCodeId = TransCodeId
+
+
+    def _deserialize(self, params):
+        self._TransCodeId = params.get("TransCodeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

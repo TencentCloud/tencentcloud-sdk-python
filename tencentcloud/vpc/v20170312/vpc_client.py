@@ -6632,6 +6632,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyAddressesRenewFlag(self, request):
+        """调整EIP续费标识
+
+        :param request: Request instance for ModifyAddressesRenewFlag.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyAddressesRenewFlagRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyAddressesRenewFlagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAddressesRenewFlag", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAddressesRenewFlagResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyAssistantCidr(self, request):
         """本接口（ModifyAssistantCidr）用于批量修改辅助CIDR，支持新增和删除。
 

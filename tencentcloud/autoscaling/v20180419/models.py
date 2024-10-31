@@ -9881,7 +9881,7 @@ class ResumeInstanceRefreshRequest(AbstractModel):
         :type AutoScalingGroupId: str
         :param _RefreshActivityId: 刷新活动ID。
         :type RefreshActivityId: str
-        :param _ResumeMode: 当前批次刷新失败实例的恢复方式，如不存在失败实例，该参数无效。默认值为RETRY，取值范围如下：<br><li>RETRY: 重试当前批次刷新失败实例</li><li>CONTINUE: 跳过当前批次刷新失败实例
+        :param _ResumeMode: 当前批次刷新失败实例的恢复方式，如不存在失败实例，该参数无效。默认值为RETRY，取值范围如下：<li>RETRY: 重试当前批次刷新失败实例</li><li>CONTINUE: 跳过当前批次刷新失败实例</li>
         :type ResumeMode: str
         """
         self._AutoScalingGroupId = None
@@ -10069,11 +10069,18 @@ class RollingUpdateSettings(AbstractModel):
         r"""
         :param _BatchNumber: 批次数量。批次数量为大于 0 的正整数，但不能大于待刷新实例数量。
         :type BatchNumber: int
-        :param _BatchPause: 批次间暂停策略。默认值为 Automatic，取值范围如下：<br><li>FIRST_BATCH_PAUSE：第一批次更新完成后暂停</li><li>BATCH_INTERVAL_PAUSE：批次间暂停</li><li>AUTOMATIC：不暂停
+        :param _BatchPause: 批次间暂停策略。默认值为 Automatic，取值范围如下：
+<li>FIRST_BATCH_PAUSE：第一批次更新完成后暂停</li>
+<li>BATCH_INTERVAL_PAUSE：批次间暂停</li>
+<li>AUTOMATIC：不暂停</li>
         :type BatchPause: str
+        :param _MaxSurge: 最大额外数量。设置该参数后，在滚动更新开始前根据启动配置创建一批按量计费的额外实例，滚动更新完成后销毁额外实例。
+该参数用于保证滚动更新过程中可用实例的数量，最大额外数量不能超过滚动更新单个批次的刷新实例数。回滚流程暂不支持该参数。
+        :type MaxSurge: int
         """
         self._BatchNumber = None
         self._BatchPause = None
+        self._MaxSurge = None
 
     @property
     def BatchNumber(self):
@@ -10091,10 +10098,19 @@ class RollingUpdateSettings(AbstractModel):
     def BatchPause(self, BatchPause):
         self._BatchPause = BatchPause
 
+    @property
+    def MaxSurge(self):
+        return self._MaxSurge
+
+    @MaxSurge.setter
+    def MaxSurge(self, MaxSurge):
+        self._MaxSurge = MaxSurge
+
 
     def _deserialize(self, params):
         self._BatchNumber = params.get("BatchNumber")
         self._BatchPause = params.get("BatchPause")
+        self._MaxSurge = params.get("MaxSurge")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

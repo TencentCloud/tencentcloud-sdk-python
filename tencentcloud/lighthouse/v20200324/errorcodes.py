@@ -296,7 +296,7 @@ INVALIDPARAMETERVALUE_FIELDSCOMPARE = 'InvalidParameterValue.FieldsCompare'
 # 防火墙规则描述长度超出限制。
 INVALIDPARAMETERVALUE_FIREWALLRULEDESCRIPTIONTOOLONG = 'InvalidParameterValue.FirewallRuleDescriptionTooLong'
 
-# 防火墙模版ID格式非法。
+# 防火墙模板ID格式非法。
 INVALIDPARAMETERVALUE_FIREWALLTEMPLATEIDMALFORMED = 'InvalidParameterValue.FirewallTemplateIdMalformed'
 
 # 参数值非法，实例 ID 格式非法。

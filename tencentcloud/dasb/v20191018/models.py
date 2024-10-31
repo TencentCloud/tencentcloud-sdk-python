@@ -1503,10 +1503,14 @@ class CmdTemplate(AbstractModel):
         :type Name: str
         :param _CmdList: 命令列表，命令之间用换行符（"\n"）分隔
         :type CmdList: str
+        :param _Type: 命令模板类型 1-内置 2-自定义	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
         """
         self._Id = None
         self._Name = None
         self._CmdList = None
+        self._Type = None
 
     @property
     def Id(self):
@@ -1532,11 +1536,20 @@ class CmdTemplate(AbstractModel):
     def CmdList(self, CmdList):
         self._CmdList = CmdList
 
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
         self._Name = params.get("Name")
         self._CmdList = params.get("CmdList")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4161,6 +4174,8 @@ class DescribeAclsRequest(AbstractModel):
         :type Status: int
         :param _DepartmentId: 部门ID，用于过滤属于某个部门的访问权限
         :type DepartmentId: str
+        :param _Filters: 过滤数组
+        :type Filters: list of Filter
         """
         self._IdSet = None
         self._Name = None
@@ -4171,6 +4186,7 @@ class DescribeAclsRequest(AbstractModel):
         self._AuthorizedDeviceIdSet = None
         self._Status = None
         self._DepartmentId = None
+        self._Filters = None
 
     @property
     def IdSet(self):
@@ -4244,6 +4260,14 @@ class DescribeAclsRequest(AbstractModel):
     def DepartmentId(self, DepartmentId):
         self._DepartmentId = DepartmentId
 
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
 
     def _deserialize(self, params):
         self._IdSet = params.get("IdSet")
@@ -4255,6 +4279,12 @@ class DescribeAclsRequest(AbstractModel):
         self._AuthorizedDeviceIdSet = params.get("AuthorizedDeviceIdSet")
         self._Status = params.get("Status")
         self._DepartmentId = params.get("DepartmentId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4673,6 +4703,8 @@ class DescribeCmdTemplatesRequest(AbstractModel):
         :type IdSet: list of int non-negative
         :param _Name: 命令模板名，模糊查询，最大长度64字符
         :type Name: str
+        :param _Type: 命令模板类型 1-内置模板  2-自定义模板
+        :type Type: int
         :param _Offset: 分页偏移位置，默认值为0
         :type Offset: int
         :param _Limit: 每页条目数量，默认20
@@ -4680,6 +4712,7 @@ class DescribeCmdTemplatesRequest(AbstractModel):
         """
         self._IdSet = None
         self._Name = None
+        self._Type = None
         self._Offset = None
         self._Limit = None
 
@@ -4698,6 +4731,14 @@ class DescribeCmdTemplatesRequest(AbstractModel):
     @Name.setter
     def Name(self, Name):
         self._Name = Name
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
     @property
     def Offset(self):
@@ -4719,6 +4760,7 @@ class DescribeCmdTemplatesRequest(AbstractModel):
     def _deserialize(self, params):
         self._IdSet = params.get("IdSet")
         self._Name = params.get("Name")
+        self._Type = params.get("Type")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
@@ -6714,6 +6756,12 @@ class Device(AbstractModel):
         :param _DomainName: 网络域名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type DomainName: str
+        :param _EnableSSL: 是否启用SSL，仅支持Redis资产。0：禁用 1：启用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableSSL: int
+        :param _SSLCertName: 已上传的SSL证书名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SSLCertName: str
         """
         self._Id = None
         self._InstanceId = None
@@ -6733,6 +6781,8 @@ class Device(AbstractModel):
         self._IpPortSet = None
         self._DomainId = None
         self._DomainName = None
+        self._EnableSSL = None
+        self._SSLCertName = None
 
     @property
     def Id(self):
@@ -6878,6 +6928,22 @@ class Device(AbstractModel):
     def DomainName(self, DomainName):
         self._DomainName = DomainName
 
+    @property
+    def EnableSSL(self):
+        return self._EnableSSL
+
+    @EnableSSL.setter
+    def EnableSSL(self, EnableSSL):
+        self._EnableSSL = EnableSSL
+
+    @property
+    def SSLCertName(self):
+        return self._SSLCertName
+
+    @SSLCertName.setter
+    def SSLCertName(self, SSLCertName):
+        self._SSLCertName = SSLCertName
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -6907,6 +6973,8 @@ class Device(AbstractModel):
         self._IpPortSet = params.get("IpPortSet")
         self._DomainId = params.get("DomainId")
         self._DomainName = params.get("DomainName")
+        self._EnableSSL = params.get("EnableSSL")
+        self._SSLCertName = params.get("SSLCertName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7153,6 +7221,12 @@ class ExternalDevice(AbstractModel):
         :type DepartmentId: str
         :param _IpPortSet: 资产多节点：字段ip和端口
         :type IpPortSet: list of str
+        :param _EnableSSL: 是否启用SSL,1:启用 0：禁用，仅支持Redis资产
+        :type EnableSSL: int
+        :param _SSLCert: SSL证书，EnableSSL时必填
+        :type SSLCert: str
+        :param _SSLCertName: SSL证书名称，EnableSSL时必填
+        :type SSLCertName: str
         """
         self._OsName = None
         self._Ip = None
@@ -7160,6 +7234,9 @@ class ExternalDevice(AbstractModel):
         self._Name = None
         self._DepartmentId = None
         self._IpPortSet = None
+        self._EnableSSL = None
+        self._SSLCert = None
+        self._SSLCertName = None
 
     @property
     def OsName(self):
@@ -7209,6 +7286,30 @@ class ExternalDevice(AbstractModel):
     def IpPortSet(self, IpPortSet):
         self._IpPortSet = IpPortSet
 
+    @property
+    def EnableSSL(self):
+        return self._EnableSSL
+
+    @EnableSSL.setter
+    def EnableSSL(self, EnableSSL):
+        self._EnableSSL = EnableSSL
+
+    @property
+    def SSLCert(self):
+        return self._SSLCert
+
+    @SSLCert.setter
+    def SSLCert(self, SSLCert):
+        self._SSLCert = SSLCert
+
+    @property
+    def SSLCertName(self):
+        return self._SSLCertName
+
+    @SSLCertName.setter
+    def SSLCertName(self, SSLCertName):
+        self._SSLCertName = SSLCertName
+
 
     def _deserialize(self, params):
         self._OsName = params.get("OsName")
@@ -7217,6 +7318,9 @@ class ExternalDevice(AbstractModel):
         self._Name = params.get("Name")
         self._DepartmentId = params.get("DepartmentId")
         self._IpPortSet = params.get("IpPortSet")
+        self._EnableSSL = params.get("EnableSSL")
+        self._SSLCert = params.get("SSLCert")
+        self._SSLCertName = params.get("SSLCertName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8226,11 +8330,14 @@ class ModifyCmdTemplateRequest(AbstractModel):
         :param _Encoding: CmdList字段前端是否base64传值。
 0：否，1：是
         :type Encoding: int
+        :param _Type: 命令模板类型 1-内置模板 2-自定义模板
+        :type Type: int
         """
         self._Name = None
         self._CmdList = None
         self._Id = None
         self._Encoding = None
+        self._Type = None
 
     @property
     def Name(self):
@@ -8264,12 +8371,21 @@ class ModifyCmdTemplateRequest(AbstractModel):
     def Encoding(self, Encoding):
         self._Encoding = Encoding
 
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._CmdList = params.get("CmdList")
         self._Id = params.get("Id")
         self._Encoding = params.get("Encoding")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9396,6 +9512,15 @@ class Resource(AbstractModel):
         :param _Trial: 0 非试用版，1 试用版
 注意：此字段可能返回 null，表示取不到有效值。
         :type Trial: int
+        :param _CdcClusterId: cdc集群id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CdcClusterId: str
+        :param _LogDelivery: 日志投递规格信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogDelivery: str
+        :param _DeployModel: 部署模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeployModel: int
         """
         self._ResourceId = None
         self._ApCode = None
@@ -9430,6 +9555,9 @@ class Resource(AbstractModel):
         self._DomainCount = None
         self._UsedDomainCount = None
         self._Trial = None
+        self._CdcClusterId = None
+        self._LogDelivery = None
+        self._DeployModel = None
 
     @property
     def ResourceId(self):
@@ -9695,6 +9823,30 @@ class Resource(AbstractModel):
     def Trial(self, Trial):
         self._Trial = Trial
 
+    @property
+    def CdcClusterId(self):
+        return self._CdcClusterId
+
+    @CdcClusterId.setter
+    def CdcClusterId(self, CdcClusterId):
+        self._CdcClusterId = CdcClusterId
+
+    @property
+    def LogDelivery(self):
+        return self._LogDelivery
+
+    @LogDelivery.setter
+    def LogDelivery(self, LogDelivery):
+        self._LogDelivery = LogDelivery
+
+    @property
+    def DeployModel(self):
+        return self._DeployModel
+
+    @DeployModel.setter
+    def DeployModel(self, DeployModel):
+        self._DeployModel = DeployModel
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
@@ -9735,6 +9887,9 @@ class Resource(AbstractModel):
         self._DomainCount = params.get("DomainCount")
         self._UsedDomainCount = params.get("UsedDomainCount")
         self._Trial = params.get("Trial")
+        self._CdcClusterId = params.get("CdcClusterId")
+        self._LogDelivery = params.get("LogDelivery")
+        self._DeployModel = params.get("DeployModel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

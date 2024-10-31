@@ -3906,7 +3906,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeExportJobResult(self, request):
-        """查询导出任务的结果
+        """查询导出接口进度
 
         :param request: Request instance for DescribeExportJobResult.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeExportJobResultRequest`

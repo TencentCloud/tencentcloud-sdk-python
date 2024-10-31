@@ -1420,7 +1420,7 @@ class DescribeAutomationAgentStatusRequest(AbstractModel):
         r"""
         :param _InstanceIds: 待查询的实例ID列表。
         :type InstanceIds: list of str
-        :param _Filters: 过滤条件。<br> <li> agent-status - String - 是否必填：否 -（过滤条件）按照agent状态过滤，取值：Online 在线，Offline 离线。<br> <li> environment - String - 是否必填：否 -（过滤条件）按照agent运行环境查询，取值：Linux, Windows。<br> <li> instance-id - String - 是否必填：否 -（过滤条件）按照实例ID过滤。 <br>每次请求的 `Filters` 的上限为10， `Filter.Values` 的上限为5。参数不支持同时指定 `InstanceIds` 和 `Filters` 。
+        :param _Filters: <li>agent-status - String - 是否必填：否 -（过滤条件）按照agent状态过滤，取值：Online 在线，Offline 离线。</li><br><li>environment - String - 是否必填：否 -（过滤条件）按照agent运行环境查询，取值：Linux, Windows。</li><br><li>instance-id - String - 是否必填：否 -（过滤条件）按照实例ID过滤。</li>
         :type Filters: list of Filter
         :param _Limit: 返回数量，默认为20，最大值为100。关于 `Limit` 的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :type Limit: int
@@ -2971,13 +2971,10 @@ class GeneralResourceQuotaSet(AbstractModel):
     def __init__(self):
         r"""
         :param _ResourceName: 资源名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceName: str
         :param _ResourceQuotaUsed: 已使用额度
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceQuotaUsed: int
         :param _ResourceQuotaTotal: 总额度
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceQuotaTotal: int
         """
         self._ResourceName = None
@@ -4531,39 +4528,29 @@ class RegisterCodeInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _RegisterCodeId: 注册码ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegisterCodeId: str
         :param _Description: 注册码描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _InstanceNamePrefix: 注册实例名称前缀。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceNamePrefix: str
         :param _RegisterLimit: 该注册码允许注册的实例数目。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegisterLimit: int
         :param _ExpiredTime: 该注册码的过期时间，按照 ISO8601 标准表示，并且使用 UTC 时间。 
 格式为： YYYY-MM-DDThh:mm:ssZ。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExpiredTime: str
         :param _IpAddressRange: 该注册码限制tat_agent只能从IpAddressRange所描述公网出口进行注册。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IpAddressRange: str
         :param _Enabled: 该注册码是否可用。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Enabled: bool
         :param _RegisteredCount: 该注册码已注册数目。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegisteredCount: int
         :param _CreatedTime: 注册码创建时间，按照 ISO8601 标准表示，并且使用 UTC 时间。 
 格式为： YYYY-MM-DDThh:mm:ssZ。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTime: str
         :param _UpdatedTime: 注册码最近一次更新时间，按照 ISO8601 标准表示，并且使用 UTC 时间。 
 格式为： YYYY-MM-DDThh:mm:ssZ。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedTime: str
         """
@@ -4688,37 +4675,27 @@ class RegisterInstanceInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _RegisterCodeId: 注册码ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegisterCodeId: str
         :param _InstanceId: 实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _InstanceName: 实例名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
         :param _MachineId: 机器ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MachineId: str
         :param _SystemName: 系统名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SystemName: str
         :param _HostName: 主机名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostName: str
         :param _LocalIp: 内网IP。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LocalIp: str
         :param _PublicKey: 公钥。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PublicKey: str
         :param _Status: 托管状态。
 返回Online表示实例正在托管，返回Offline表示实例未托管。
         :type Status: str
         :param _CreatedTime: 创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTime: str
         :param _UpdatedTime: 上次更新时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedTime: str
         """
         self._RegisterCodeId = None
@@ -5146,19 +5123,14 @@ class Scene(AbstractModel):
     def __init__(self):
         r"""
         :param _SceneId: 场景 ID 。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SceneId: str
         :param _SceneName: 场景名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SceneName: str
         :param _CreatedBy: 场景创建者。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedBy: str
         :param _CreatedTime: 创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTime: str
         :param _UpdatedTime: 更新时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedTime: str
         """
         self._SceneId = None

@@ -673,6 +673,12 @@ class ApmInstanceDetail(AbstractModel):
         :param _ResponseDurationWarningThreshold: 响应时间满意阈值
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResponseDurationWarningThreshold: int
+        :param _Free: 是否免费（0=否，1=限额免费，2=完全免费），默认0
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Free: int
+        :param _DefaultTSF: 是否tsf默认业务系统（0=否，1-是）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultTSF: int
         """
         self._AmountOfUsedStorage = None
         self._Name = None
@@ -704,6 +710,8 @@ class ApmInstanceDetail(AbstractModel):
         self._PayMode = None
         self._PayModeEffective = None
         self._ResponseDurationWarningThreshold = None
+        self._Free = None
+        self._DefaultTSF = None
 
     @property
     def AmountOfUsedStorage(self):
@@ -945,6 +953,22 @@ class ApmInstanceDetail(AbstractModel):
     def ResponseDurationWarningThreshold(self, ResponseDurationWarningThreshold):
         self._ResponseDurationWarningThreshold = ResponseDurationWarningThreshold
 
+    @property
+    def Free(self):
+        return self._Free
+
+    @Free.setter
+    def Free(self, Free):
+        self._Free = Free
+
+    @property
+    def DefaultTSF(self):
+        return self._DefaultTSF
+
+    @DefaultTSF.setter
+    def DefaultTSF(self, DefaultTSF):
+        self._DefaultTSF = DefaultTSF
+
 
     def _deserialize(self, params):
         self._AmountOfUsedStorage = params.get("AmountOfUsedStorage")
@@ -982,6 +1006,8 @@ class ApmInstanceDetail(AbstractModel):
         self._PayMode = params.get("PayMode")
         self._PayModeEffective = params.get("PayModeEffective")
         self._ResponseDurationWarningThreshold = params.get("ResponseDurationWarningThreshold")
+        self._Free = params.get("Free")
+        self._DefaultTSF = params.get("DefaultTSF")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

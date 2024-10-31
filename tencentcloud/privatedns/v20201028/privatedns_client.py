@@ -72,6 +72,52 @@ class PrivatednsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateEndPointAndEndPointService(self, request):
+        """同时创建终端节点和终端节点服务
+
+        :param request: Request instance for CreateEndPointAndEndPointService.
+        :type request: :class:`tencentcloud.privatedns.v20201028.models.CreateEndPointAndEndPointServiceRequest`
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.CreateEndPointAndEndPointServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateEndPointAndEndPointService", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateEndPointAndEndPointServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateForwardRule(self, request):
+        """创建自定义转发规则
+
+        :param request: Request instance for CreateForwardRule.
+        :type request: :class:`tencentcloud.privatedns.v20201028.models.CreateForwardRuleRequest`
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.CreateForwardRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateForwardRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateForwardRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreatePrivateDNSAccount(self, request):
         """创建私有域解析账号
 
@@ -316,6 +362,52 @@ class PrivatednsClient(AbstractClient):
             body = self.call("DescribeDashboard", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDashboardResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeEndPointList(self, request):
+        """获取终端节点列表
+
+        :param request: Request instance for DescribeEndPointList.
+        :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribeEndPointListRequest`
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.DescribeEndPointListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEndPointList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEndPointListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeForwardRuleList(self, request):
+        """查询转发规则列表
+
+        :param request: Request instance for DescribeForwardRuleList.
+        :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribeForwardRuleListRequest`
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.DescribeForwardRuleListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeForwardRuleList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeForwardRuleListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

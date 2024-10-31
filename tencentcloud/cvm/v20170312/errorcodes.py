@@ -281,6 +281,9 @@ INVALIDPARAMETER_INVALIDINSTANCENOTSUPPORTED = 'InvalidParameter.InvalidInstance
 # 指定的私有网络ip格式不正确。
 INVALIDPARAMETER_INVALIDIPFORMAT = 'InvalidParameter.InvalidIpFormat'
 
+# 指定的 KMS 密钥 ID 非法。
+INVALIDPARAMETER_INVALIDKMSKEYID = 'InvalidParameter.InvalidKmsKeyId'
+
 # 不能同时指定ImageIds和Filters。
 INVALIDPARAMETER_INVALIDPARAMETERCOEXISTIMAGEIDSFILTERS = 'InvalidParameter.InvalidParameterCoexistImageIdsFilters'
 
@@ -1114,6 +1117,9 @@ UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGING = 'UnsupportedOperation.StoppedMode
 
 # 不支持关机不收费机器做同类型变配操作。
 UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGINGSAMEFAMILY = 'UnsupportedOperation.StoppedModeStopChargingSameFamily'
+
+# 指定的镜像不支持转为加密自定义镜像。
+UNSUPPORTEDOPERATION_SYNCENCRYPTIMAGENOTSUPPORT = 'UnsupportedOperation.SyncEncryptImageNotSupport'
 
 # 请求不支持该类型系统盘。
 UNSUPPORTEDOPERATION_SYSTEMDISKTYPE = 'UnsupportedOperation.SystemDiskType'

@@ -5252,6 +5252,41 @@ class McuBackgroundCustomRender(AbstractModel):
         
 
 
+class McuCloudVod(AbstractModel):
+    """Mcu转推录制，点播相关参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _McuTencentVod: 腾讯云点播相关参数。	
+        :type McuTencentVod: :class:`tencentcloud.trtc.v20190722.models.McuTencentVod`
+        """
+        self._McuTencentVod = None
+
+    @property
+    def McuTencentVod(self):
+        return self._McuTencentVod
+
+    @McuTencentVod.setter
+    def McuTencentVod(self, McuTencentVod):
+        self._McuTencentVod = McuTencentVod
+
+
+    def _deserialize(self, params):
+        if params.get("McuTencentVod") is not None:
+            self._McuTencentVod = McuTencentVod()
+            self._McuTencentVod._deserialize(params.get("McuTencentVod"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class McuCustomCrop(AbstractModel):
     """混流自定义裁剪参数
 
@@ -5609,11 +5644,11 @@ class McuLayoutParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MixLayoutMode: 布局模式：动态布局（1：悬浮布局（默认），2：屏幕分享布局，3：九宫格布局），静态布局（4：自定义布局）。
+        :param _MixLayoutMode: 布局模式：动态布局（1：悬浮布局（默认），2：屏幕分享布局，3：九宫格布局），静态布局（4：自定义布局）。最多支持混入16路音视频流，如果用户只上行音频，也会被算作一路；自定义布局中，如果子画面只设置占位图，也被算作一路。
         :type MixLayoutMode: int
         :param _PureAudioHoldPlaceMode: 纯音频上行是否占布局位置，只在动态布局中有效。0表示纯音频不占布局位置，1表示纯音频占布局位置，不填默认为0。
         :type PureAudioHoldPlaceMode: int
-        :param _MixLayoutList: 自定义模板中有效，指定用户视频在混合画面中的位置。
+        :param _MixLayoutList: 自定义模板中有效，指定用户视频在混合画面中的位置，最多支持设置16个输入流。
         :type MixLayoutList: list of McuLayout
         :param _MaxVideoUser: 指定动态布局中悬浮布局和屏幕分享布局的大画面信息，只在悬浮布局和屏幕分享布局有效。
         :type MaxVideoUser: :class:`tencentcloud.trtc.v20190722.models.MaxVideoUser`
@@ -5887,6 +5922,137 @@ class McuPublishCdnParam(AbstractModel):
         
 
 
+class McuRecordParams(AbstractModel):
+    """转推录制参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UniRecord: 转推录制模式， 
+0/不填: 暂不支持，行为未定义；
+1: 不开启录制；
+2: 开启录制（使用控制台自动录制模板参数，参考：[跳转文档](https://cloud.tencent.com/document/product/647/111748#.E5.BD.95.E5.88.B6.E6.8E.A7.E5.88.B6.E6.96.B9.E6.A1.88)）；
+3: 开启录制（使用API指定参数）。
+        :type UniRecord: int
+        :param _RecordKey: 录制任务 key，标识一个录制任务；您可以通过该参数，将多个转推任务录制成一个文件。不指定该参数时，只录制当前转推任务。
+【限制长度为128字节，只允许包含大小写英文字母（a-zA-Z）、数字（0-9）及下划线(_)和连词符(-)】
+        :type RecordKey: str
+        :param _RecordWaitTime: 【仅当UniRecord=3时此参数有效】
+续录等待时间，对应录制模板“续录等待时长”，单位：秒。该值需大于等于 5，且小于等于 86400(24小时)，默认值为 30。启用续录时，录制任务空闲超过RecordWaitTime的时长，自动结束。
+        :type RecordWaitTime: int
+        :param _RecordFormat: 【仅当UniRecord=3时此参数有效】
+录制输出文件格式列表，对应录制模板“文件格式”，支持“hls”、"mp4"、"aac"三种格式，默认值为"mp4"。其中"mp4"和"aac"格式，不能同时指定。
+只录制 mp4格式，示例值：["mp4"]。同时录制mp4 和 HLS 格式，示例值：["mp4","hls"]。
+        :type RecordFormat: list of str
+        :param _MaxMediaFileDuration: 【仅当UniRecord=3时此参数有效】
+单个文件录制时长，对应录制模板“单个录制文件时长”，单位：分钟。该值需大于等于 1，且小于等于 1440(24小时)，默认值为 1440。只对"mp4"或"aac"格式生效。实际单文件录制时长还受单文件大小不超过 2G 限制，超过2G则强制拆分。
+        :type MaxMediaFileDuration: int
+        :param _StreamType: 【仅当UniRecord=3时此参数有效】
+录制的音视频类型，对应录制模板“录制格式”，0:音视频，1：纯音频，2：纯视频。最终录制文件内容是录制指定类型和转推内容的交集。
+        :type StreamType: int
+        :param _UserDefineRecordPrefix: 录制文件名前缀，不超过64字符。只有存储为vod时生效。
+【限制长度为64字节，只允许包含大小写英文字母（a-zA-Z）、数字（0-9）及下划线(_)和连词符(-)】
+        :type UserDefineRecordPrefix: str
+        :param _McuStorageParams: 【仅当UniRecord=3时此参数有效】
+录制文件存储参数，对应控制台“存储位置”及相关参数。目前支持云点播VOD和对象存储COS两种存储方式，只能填写一种。
+        :type McuStorageParams: :class:`tencentcloud.trtc.v20190722.models.McuStorageParams`
+        """
+        self._UniRecord = None
+        self._RecordKey = None
+        self._RecordWaitTime = None
+        self._RecordFormat = None
+        self._MaxMediaFileDuration = None
+        self._StreamType = None
+        self._UserDefineRecordPrefix = None
+        self._McuStorageParams = None
+
+    @property
+    def UniRecord(self):
+        return self._UniRecord
+
+    @UniRecord.setter
+    def UniRecord(self, UniRecord):
+        self._UniRecord = UniRecord
+
+    @property
+    def RecordKey(self):
+        return self._RecordKey
+
+    @RecordKey.setter
+    def RecordKey(self, RecordKey):
+        self._RecordKey = RecordKey
+
+    @property
+    def RecordWaitTime(self):
+        return self._RecordWaitTime
+
+    @RecordWaitTime.setter
+    def RecordWaitTime(self, RecordWaitTime):
+        self._RecordWaitTime = RecordWaitTime
+
+    @property
+    def RecordFormat(self):
+        return self._RecordFormat
+
+    @RecordFormat.setter
+    def RecordFormat(self, RecordFormat):
+        self._RecordFormat = RecordFormat
+
+    @property
+    def MaxMediaFileDuration(self):
+        return self._MaxMediaFileDuration
+
+    @MaxMediaFileDuration.setter
+    def MaxMediaFileDuration(self, MaxMediaFileDuration):
+        self._MaxMediaFileDuration = MaxMediaFileDuration
+
+    @property
+    def StreamType(self):
+        return self._StreamType
+
+    @StreamType.setter
+    def StreamType(self, StreamType):
+        self._StreamType = StreamType
+
+    @property
+    def UserDefineRecordPrefix(self):
+        return self._UserDefineRecordPrefix
+
+    @UserDefineRecordPrefix.setter
+    def UserDefineRecordPrefix(self, UserDefineRecordPrefix):
+        self._UserDefineRecordPrefix = UserDefineRecordPrefix
+
+    @property
+    def McuStorageParams(self):
+        return self._McuStorageParams
+
+    @McuStorageParams.setter
+    def McuStorageParams(self, McuStorageParams):
+        self._McuStorageParams = McuStorageParams
+
+
+    def _deserialize(self, params):
+        self._UniRecord = params.get("UniRecord")
+        self._RecordKey = params.get("RecordKey")
+        self._RecordWaitTime = params.get("RecordWaitTime")
+        self._RecordFormat = params.get("RecordFormat")
+        self._MaxMediaFileDuration = params.get("MaxMediaFileDuration")
+        self._StreamType = params.get("StreamType")
+        self._UserDefineRecordPrefix = params.get("UserDefineRecordPrefix")
+        if params.get("McuStorageParams") is not None:
+            self._McuStorageParams = McuStorageParams()
+            self._McuStorageParams._deserialize(params.get("McuStorageParams"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class McuSeiParams(AbstractModel):
     """混流SEI参数
 
@@ -5926,6 +6092,161 @@ class McuSeiParams(AbstractModel):
         if params.get("PassThrough") is not None:
             self._PassThrough = McuPassThrough()
             self._PassThrough._deserialize(params.get("PassThrough"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class McuStorageParams(AbstractModel):
+    """Mcu转推录制，第三方存储参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CloudStorage: 第三方云存储的账号信息（特别说明：若您选择存储至对象存储COS将会收取录制文件投递至COS的费用，详见云端录制收费说明，存储至VOD将不收取此项费用。）。
+        :type CloudStorage: :class:`tencentcloud.trtc.v20190722.models.CloudStorage`
+        :param _McuCloudVod: 腾讯云云点播的账号信息。
+        :type McuCloudVod: :class:`tencentcloud.trtc.v20190722.models.McuCloudVod`
+        """
+        self._CloudStorage = None
+        self._McuCloudVod = None
+
+    @property
+    def CloudStorage(self):
+        return self._CloudStorage
+
+    @CloudStorage.setter
+    def CloudStorage(self, CloudStorage):
+        self._CloudStorage = CloudStorage
+
+    @property
+    def McuCloudVod(self):
+        return self._McuCloudVod
+
+    @McuCloudVod.setter
+    def McuCloudVod(self, McuCloudVod):
+        self._McuCloudVod = McuCloudVod
+
+
+    def _deserialize(self, params):
+        if params.get("CloudStorage") is not None:
+            self._CloudStorage = CloudStorage()
+            self._CloudStorage._deserialize(params.get("CloudStorage"))
+        if params.get("McuCloudVod") is not None:
+            self._McuCloudVod = McuCloudVod()
+            self._McuCloudVod._deserialize(params.get("McuCloudVod"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class McuTencentVod(AbstractModel):
+    """Mcu转推录制，腾讯云点播相关参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Procedure: 媒体后续任务处理操作，即完成媒体上传后，可自动发起任务流操作。参数值为任务流模板名，云点播支持 创建任务流模板 并为模板命名。
+        :type Procedure: str
+        :param _ExpireTime: 媒体文件过期时间，为当前时间的绝对过期时间；保存一天，就填"86400"，永久保存就填"0"，默认永久保存。
+        :type ExpireTime: int
+        :param _StorageRegion: 指定上传园区，仅适用于对上传地域有特殊需求的用户。
+        :type StorageRegion: str
+        :param _ClassId: 分类ID，用于对媒体进行分类管理，可通过 创建分类 接口，创建分类，获得分类 ID。
+默认值：0，表示其他分类。
+        :type ClassId: int
+        :param _SubAppId: 点播 子应用 ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        :param _SessionContext: 任务流上下文，任务完成回调时透传。
+        :type SessionContext: str
+        :param _SourceContext: 上传上下文，上传完成回调时透传。
+        :type SourceContext: str
+        """
+        self._Procedure = None
+        self._ExpireTime = None
+        self._StorageRegion = None
+        self._ClassId = None
+        self._SubAppId = None
+        self._SessionContext = None
+        self._SourceContext = None
+
+    @property
+    def Procedure(self):
+        return self._Procedure
+
+    @Procedure.setter
+    def Procedure(self, Procedure):
+        self._Procedure = Procedure
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def StorageRegion(self):
+        return self._StorageRegion
+
+    @StorageRegion.setter
+    def StorageRegion(self, StorageRegion):
+        self._StorageRegion = StorageRegion
+
+    @property
+    def ClassId(self):
+        return self._ClassId
+
+    @ClassId.setter
+    def ClassId(self, ClassId):
+        self._ClassId = ClassId
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def SessionContext(self):
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def SourceContext(self):
+        return self._SourceContext
+
+    @SourceContext.setter
+    def SourceContext(self, SourceContext):
+        self._SourceContext = SourceContext
+
+
+    def _deserialize(self, params):
+        self._Procedure = params.get("Procedure")
+        self._ExpireTime = params.get("ExpireTime")
+        self._StorageRegion = params.get("StorageRegion")
+        self._ClassId = params.get("ClassId")
+        self._SubAppId = params.get("SubAppId")
+        self._SessionContext = params.get("SessionContext")
+        self._SourceContext = params.get("SourceContext")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9352,12 +9673,14 @@ class StartPublishCdnStreamRequest(AbstractModel):
         :type VideoParams: :class:`tencentcloud.trtc.v20190722.models.McuVideoParams`
         :param _SingleSubscribeParams: 需要单流旁路转推的用户上行参数，单流旁路转推时，WithTranscoding需要设置为0。
         :type SingleSubscribeParams: :class:`tencentcloud.trtc.v20190722.models.SingleSubscribeParams`
-        :param _PublishCdnParams: 转推的CDN参数。和回推房间参数必须要有一个。
+        :param _PublishCdnParams: 转推的CDN参数，一个任务最多支持10个推流URL。和回推房间参数必须要有一个。
         :type PublishCdnParams: list of McuPublishCdnParam
         :param _SeiParams: 混流SEI参数
         :type SeiParams: :class:`tencentcloud.trtc.v20190722.models.McuSeiParams`
-        :param _FeedBackRoomParams: 回推房间信息，和转推CDN参数必须要有一个。注：回推房间需使用10.4及以上SDK版本，如您有需求，请联系腾讯云技术支持。
+        :param _FeedBackRoomParams: 回推房间信息，一个任务最多支持回推10个房间，和转推CDN参数必须要有一个。注：回推房间需使用10.4及以上SDK版本，如您有需求，请联系腾讯云技术支持。
         :type FeedBackRoomParams: list of McuFeedBackRoomParams
+        :param _RecordParams: 转推录制参数，[参考文档](https://cloud.tencent.com/document/product/647/111748)。
+        :type RecordParams: :class:`tencentcloud.trtc.v20190722.models.McuRecordParams`
         """
         self._SdkAppId = None
         self._RoomId = None
@@ -9370,6 +9693,7 @@ class StartPublishCdnStreamRequest(AbstractModel):
         self._PublishCdnParams = None
         self._SeiParams = None
         self._FeedBackRoomParams = None
+        self._RecordParams = None
 
     @property
     def SdkAppId(self):
@@ -9459,6 +9783,14 @@ class StartPublishCdnStreamRequest(AbstractModel):
     def FeedBackRoomParams(self, FeedBackRoomParams):
         self._FeedBackRoomParams = FeedBackRoomParams
 
+    @property
+    def RecordParams(self):
+        return self._RecordParams
+
+    @RecordParams.setter
+    def RecordParams(self, RecordParams):
+        self._RecordParams = RecordParams
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -9492,6 +9824,9 @@ class StartPublishCdnStreamRequest(AbstractModel):
                 obj = McuFeedBackRoomParams()
                 obj._deserialize(item)
                 self._FeedBackRoomParams.append(obj)
+        if params.get("RecordParams") is not None:
+            self._RecordParams = McuRecordParams()
+            self._RecordParams._deserialize(params.get("RecordParams"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10220,9 +10555,14 @@ class StopPublishCdnStreamRequest(AbstractModel):
         :type SdkAppId: int
         :param _TaskId: 唯一标识转推任务。
         :type TaskId: str
+        :param _RecordKey: 录制任务 key，标识一个录制任务，对应转推任务发起时指定 RecordKey；
+如果填写该参数，表示调用者希望立即结束该录制任务。当RecordKey 指定的录制任务正在录制当前转推任务时，录制任务立即结束，否则录制任务不受影响。
+如果没有填写该参数，但是转推任务发起时填写了 RecordKey，则表示在续录等待时间结束后才结束录制任务，续录等待期间可以使用相同的 RecordKey 发起新的转推任务，和当前转推任务录制到同一文件。
+        :type RecordKey: str
         """
         self._SdkAppId = None
         self._TaskId = None
+        self._RecordKey = None
 
     @property
     def SdkAppId(self):
@@ -10240,10 +10580,19 @@ class StopPublishCdnStreamRequest(AbstractModel):
     def TaskId(self, TaskId):
         self._TaskId = TaskId
 
+    @property
+    def RecordKey(self):
+        return self._RecordKey
+
+    @RecordKey.setter
+    def RecordKey(self, RecordKey):
+        self._RecordKey = RecordKey
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
         self._TaskId = params.get("TaskId")
+        self._RecordKey = params.get("RecordKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

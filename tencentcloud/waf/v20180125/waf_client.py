@@ -3046,6 +3046,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyUserSignatureRuleV2(self, request):
+        """修改用户防护规则，开启关闭具体的某条规则
+
+        :param request: Request instance for ModifyUserSignatureRuleV2.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyUserSignatureRuleV2Request`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyUserSignatureRuleV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyUserSignatureRuleV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyUserSignatureRuleV2Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyWafAutoDenyRules(self, request):
         """修改ip惩罚规则
 

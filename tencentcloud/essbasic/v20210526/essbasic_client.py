@@ -351,10 +351,25 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateFlowApprovers(self, request):
-        """适用场景：
+        """**适用场景**：
         当通过模板或文件发起合同时，若未指定企业签署人信息，则可调用此接口动态补充签署人。同一签署人只允许补充一人，最终实际签署人取决于谁先领取合同完成签署。
 
-        限制条件：
+        **接口使用说明**：
+
+        1.本接口现已支持批量补充签署人
+
+        2.当<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>中指定需要补充的FlowId时，可以对指定合同补充签署人；可以指定多个相同发起方的不同合同在完成批量补充
+
+        3.当<a href="https://qian.tencent.com/developers/partnerApis/flows/ChannelCreateFlowApprovers/" target="_blank">补充签署人接口入参</a>中指定需要补充的FlowId时，是对指定的合同补充多个指定的签署人
+
+        4.如果同时指定了<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>中的FlowId和<a href="https://qian.tencent.com/developers/partnerApis/flows/ChannelCreateFlowApprovers/" target="_blank">补充签署人接口入参</a>中的FlowId，仅使用<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>中的FlowId作为补充的合同
+
+        5.如果部分指定了<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>中的FlowId，又指定了<a href="https://qian.tencent.com/developers/partnerApis/flows/ChannelCreateFlowApprovers/" target="_blank">补充签署人接口入参</a>中的FlowId；那么<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>存在指定的FlowId，则使用<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>中的FlowId，不存在则使用<a href="https://qian.tencent.com/developers/partnerApis/flows/ChannelCreateFlowApprovers/" target="_blank">补充签署人接口入参</a>中的FlowId作为补充的合同
+
+
+        6.如果同时未指定了<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>中的FlowId和<a href="https://qian.tencent.com/developers/partnerApis/flows/ChannelCreateFlowApprovers/" target="_blank">补充签署人接口入参</a>中的FlowId，则传参错误
+
+        **限制条件**：
         1. 本企业（发起方企业）企业签署人仅支持通过企业名称+姓名+手机号进行补充。
         2. 个人签署人支持通过姓名+手机号进行补充，补充动态签署人时：若个人用户已完成实名，则可通过姓名+证件号码进行补充。
 
@@ -431,20 +446,23 @@ class EssbasicClient(AbstractClient):
     def ChannelCreateFlowGroupByFiles(self, request):
         """接口（ChannelCreateFlowGroupByFiles）用于使用 PDF 文件创建合同组签署流程。
 
-        合同组是将多个合同签署流程组织在一起，多个合同同时创建，每个签署方得到一个签署链接，`一次完成合同组中多个合同的签署`。合同组的合同`不能拆分一个一个签署`，只能作为一个整体签署。
+        - 该接口允许通过选择多个模板一次性创建多个合同，这些合同被组织在一个合同组中。
+        - 每个签署方将收到一个签署链接，通过这个链接可以访问并签署合同组中的所有合同。
+        - 合同组中的合同必须作为一个整体进行签署，不能将合同组拆分成单独的合同进行逐一签署。
 
-        适用场景：该接口适用于需要一次性完成多份合同签署的情况，多份合同一般具有关联性，用户以目录的形式查看合同。
+        <img src="https://qcloudimg.tencent-cloud.cn/raw/a63074a0293c9ff5bf6c0bb74c0d3b20.png"   width="400" />
 
 
+        ### 1. 适用场景
 
-        **注**:
-        <ul>
-        <li>此接口静默签(企业自动签)能力为白名单功能，使用前请联系对接的客户经理沟通。</li>
-        <li>合同组暂不支持抄送功能</li>
-        <li>此接口需要依赖<a href="https://qian.tencent.com/developers/partnerApis/files/UploadFiles" target="_blank">文件上传接口</a>生成pdf资源编号（FileIds）进行使用。</li>
-        </ul>
+        该接口适用于需要一次性完成多份合同签署的情况，多份合同一般具有关联性，用户以目录的形式查看合同。
+
+        ### 2. 发起方要求和签署方实名要求
+        - **发起方要求**：作为合同发起方的第三方子企业A的员工必须进行实名认证。
+        - **签署方要求**：签署方可以是多种身份（如第三方子企业的员工、个人、SaaS平台企业员工），其中企业和员工可以不进行实名认证。
 
         **可以作为发起方和签署方的角色列表**
+
         <table>
         <thead>
         <tr>
@@ -464,37 +482,35 @@ class EssbasicClient(AbstractClient):
         <tr>
         <td>场景二</td>
         <td>第三方子企业A员工</td>
-        <td>第三方子企业B(不指定经办人)</td>
+        <td>第三方子企业B员工</td>
         </tr>
 
         <tr>
         <td>场景三</td>
         <td>第三方子企业A员工</td>
-        <td>第三方子企业B员工</td>
-        </tr>
-
-        <tr>
-        <td>场景四</td>
-        <td>第三方子企业A员工</td>
         <td>个人/自然人</td>
         </tr>
 
         <tr>
-        <td>场景五</td>
+        <td>场景四</td>
         <td>第三方子企业A员工</td>
         <td>SaaS平台企业员工</td>
         </tr>
         </tbody>
         </table>
 
-        **注**:
-        `1. 发起合同时候,  作为发起方的第三方子企业A员工的企业和员工必须经过实名, 而作为签署方的第三方子企业A员工/个人/自然人/SaaS平台企业员工/第三方子企业B员工企业中的企业和个人/员工可以未实名`
+        ### 3. 签署方参数差异
+        - 根据签署方的不同类型（第三方子企业的员工、个人、SaaS平台企业员工），传递的参数也不同。具体参数的结构和要求可以参考开发者中心提供的 `FlowApproverInfo` 结构体说明。
 
-        `2. 不同类型的签署方传参不同, 可以参考开发者中心的FlowApproverInfo结构体说明`
+        ### 4. 合同额度的扣减与返还
+        - **扣减时机**：合同一旦发起，相关的合同额度就会被扣减，合同组下面的每个合同都要扣减一个合同额度。
+        - **返还条件**：只有在合同被撤销且没有任何签署方签署过，或者只有自动签署的情况下，合同额度才会被返还。
+        - **不返还的情况**：如果合同已过期、被拒签、签署完成或已解除，合同额度将不会被返还。
 
-        `3. 合同发起后就会扣减合同的额度, 只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。（过期，拒签，签署完成，解除完成等状态不会返还额度），合同组中每个合同会扣减一个合同额度`
+        ### 5. 静默（自动）签署的限制
+        - 在使用静默（自动）签署功能时，合同签署方不能有填写控件。<font color="red">此接口静默签(企业自动签)能力为白名单功能</font>，使用前请联系对接的客户经理沟通。
 
-        `4. 静默（自动）签署不支持合同签署方存在填写功能`
+        ### 6.合同组暂不支持抄送功能
 
         :param request: Request instance for ChannelCreateFlowGroupByFiles.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateFlowGroupByFilesRequest`
@@ -519,17 +535,22 @@ class EssbasicClient(AbstractClient):
     def ChannelCreateFlowGroupByTemplates(self, request):
         """接口（ChannelCreateFlowGroupByTemplates）用于通过多模板创建合同组签署流程。
 
-        合同组是将多个合同签署流程组织在一起，多个合同同时创建，每个签署方得到一个签署链接，`一次完成合同组中多个合同的签署`。合同组的合同`不能拆分一个一个签署`，只能作为一个整体签署。
+        - 该接口允许通过选择多个模板一次性创建多个合同，这些合同被组织在一个合同组中。
+        - 每个签署方将收到一个签署链接，通过这个链接可以访问并签署合同组中的所有合同。
+        - 合同组中的合同必须作为一个整体进行签署，不能将合同组拆分成单独的合同进行逐一签署。
 
-        适用场景：该接口适用于需要一次性完成多份合同签署的情况，多份合同一般具有关联性，用户以目录的形式查看合同。
+        <img src="https://qcloudimg.tencent-cloud.cn/raw/a63074a0293c9ff5bf6c0bb74c0d3b20.png"   width="400" />
 
-        **注**:
-        <ul>
-        <li>此接口静默签(企业自动签)能力为白名单功能，使用前请联系对接的客户经理沟通。</li>
-        <li>合同组暂不支持抄送功能</li>
-        </ul>
+        ### 1. 适用场景
+
+        该接口适用于需要一次性完成多份合同签署的情况，多份合同一般具有关联性，用户以目录的形式查看合同。
+
+        ### 2. 发起方要求和签署方实名要求
+        - **发起方要求**：作为合同发起方的第三方子企业A的员工必须进行实名认证。
+        - **签署方要求**：签署方可以是多种身份（如第三方子企业的员工、个人、SaaS平台企业员工），其中企业和员工可以不进行实名认证。
 
         **可以作为发起方和签署方的角色列表**
+
         <table>
         <thead>
         <tr>
@@ -545,41 +566,38 @@ class EssbasicClient(AbstractClient):
         <td>第三方子企业A员工</td>
         <td>第三方子企业A员工</td>
         </tr>
-
         <tr>
         <td>场景二</td>
-        <td>第三方子企业A员工</td>
-        <td>第三方子企业B(不指定经办人)</td>
-        </tr>
-
-        <tr>
-        <td>场景三</td>
         <td>第三方子企业A员工</td>
         <td>第三方子企业B员工</td>
         </tr>
 
         <tr>
-        <td>场景四</td>
+        <td>场景三</td>
         <td>第三方子企业A员工</td>
         <td>个人/自然人</td>
         </tr>
 
         <tr>
-        <td>场景五</td>
+        <td>场景四</td>
         <td>第三方子企业A员工</td>
         <td>SaaS平台企业员工</td>
         </tr>
         </tbody>
         </table>
 
-        **注**:
-        `1. 发起合同时候,  作为发起方的第三方子企业A员工的企业和员工必须经过实名, 而作为签署方的第三方子企业A员工/个人/自然人/SaaS平台企业员工/第三方子企业B员工企业中的企业和个人/员工可以未实名`
+        ### 3. 签署方参数差异
+        - 根据签署方的不同类型（第三方子企业的员工、个人、SaaS平台企业员工），传递的参数也不同。具体参数的结构和要求可以参考开发者中心提供的 `FlowApproverInfo` 结构体说明。
 
-        `2. 不同类型的签署方传参不同, 可以参考开发者中心的FlowApproverInfo结构体说明`
+        ### 4. 合同额度的扣减与返还
+        - **扣减时机**：合同一旦发起，相关的合同额度就会被扣减，合同组下面的每个合同都要扣减一个合同额度。
+        - **返还条件**：只有在合同被撤销且没有任何签署方签署过，或者只有自动签署的情况下，合同额度才会被返还。
+        - **不返还的情况**：如果合同已过期、被拒签、签署完成或已解除，合同额度将不会被返还。
 
-        `3. 合同发起后就会扣减合同的额度, 只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。（过期，拒签，签署完成，解除完成等状态不会返还额度），合同组中每个合同会扣减一个合同额度`
+        ### 5. 静默（自动）签署的限制
+        - 在使用静默（自动）签署功能时，合同签署方不能有填写控件。<font color="red">此接口静默签(企业自动签)能力为白名单功能</font>，使用前请联系对接的客户经理沟通。
 
-        `4. 静默（自动）签署不支持合同签署方存在填写功能`
+        ### 6.合同组暂不支持抄送功能
 
         :param request: Request instance for ChannelCreateFlowGroupByTemplates.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateFlowGroupByTemplatesRequest`
@@ -877,7 +895,7 @@ class EssbasicClient(AbstractClient):
 
     def ChannelCreateReleaseFlow(self, request):
         """发起解除协议的主要应用场景为：基于一份已经签署的合同(签署流程)，进行解除操作。
-        解除协议的模板是官方提供，经过提供法务审核，暂不支持自定义。
+        解除协议的模板是官方提供，经过提供法务审核，暂不支持自定义。具体用法可以参考文档[合同解除](https://qian.tencent.com/developers/partner/flow_release)。
 
         注意：
         <ul><li><code>原合同必须签署完</code>成后才能发起解除协议。</li>
@@ -1402,9 +1420,10 @@ class EssbasicClient(AbstractClient):
         """此接口（ChannelGetTaskResultApi）用来查询转换任务的状态。如需发起转换任务，请使用<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelCreateConvertTaskApi" target="_blank">创建文件转换任务接口</a>进行资源文件的转换操作<br />
         前提条件：已调用 <a href="https://qian.tencent.com/developers/partnerApis/files/ChannelCreateConvertTaskApi" target="_blank">创建文件转换任务接口</a>进行文件转换，并得到了返回的转换任务Id。<br />
 
-        适用场景：已创建一个文件转换任务，想查询该文件转换任务的状态，或获取转换后的文件资源Id。<br />
+        适用场景：已创建一个文件转换任务，想查询该文件转换任务的状态，或获取转换后的文件资源ID。<br />
         注：
-        1. `大文件转换所需的时间可能会比较长`
+        1. `大文件转换所需的时间可能会比较长。`
+        2. `本接口返回的文件资源ID就是PDF资源ID，可以直接用于【用PDF文件创建签署流程】接口发起合同。`
 
         :param request: Request instance for ChannelGetTaskResultApi.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelGetTaskResultApiRequest`
@@ -1730,6 +1749,33 @@ class EssbasicClient(AbstractClient):
             body = self.call("CreateChannelSubOrganizationActive", params, headers=headers)
             response = json.loads(body)
             model = models.CreateChannelSubOrganizationActiveResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateCloseOrganizationUrl(self, request):
+        """创建企业注销链接
+
+        系统将返回操作链接。贵方需要主动联系并通知企业的超级管理员（超管）或法人。由他们点击该链接，完成企业的注销操作。
+
+        注意： `在调用此接口以管理企业扩展服务时，操作者（ Agent.ProxyOperator.OpenId）必须是企业的超级管理员（超管）或法人。`
+
+        :param request: Request instance for CreateCloseOrganizationUrl.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.CreateCloseOrganizationUrlRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.CreateCloseOrganizationUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCloseOrganizationUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCloseOrganizationUrlResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2144,6 +2190,35 @@ class EssbasicClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteOrganizationAuthorizations(self, request):
+        """批量清理未认证的企业认证流程。
+
+        此接口用来清除企业方认证信息填写错误，批量清理认证中的认证流信息。
+        为接口[提交子企业批量认证链接创建任务](https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks) 和[查询子企业批量认证链接](https://qian.tencent.com/developers/partnerApis/accounts/DescribeBatchOrganizationRegistrationUrls) 接口的扩展接口。即在批量认证过程中，当发起认证企业发现超管信息错误的时候，可以将当前超管下的所有认证流企业清除。
+
+        注意：
+        **这个接口的操作人必须跟生成批量认证链接接口的应用号一致，才可以调用，否则会返回当前操作人没有认证中的企业认证流**
+
+        :param request: Request instance for DeleteOrganizationAuthorizations.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.DeleteOrganizationAuthorizationsRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.DeleteOrganizationAuthorizationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteOrganizationAuthorizations", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteOrganizationAuthorizationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBatchOrganizationRegistrationUrls(self, request):
         """此接口用于获取企业批量认证异步任务的状态及结果。需要先调用接口<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks" target="_blank">提交子企业批量认证链接创建任务</a>获取到任务ID，然后再调用此接口获取到各个子企业的注册认证链接。整体流程如下图。
         ![image](https://qcloudimg.tencent-cloud.cn/raw/654aa2a72ab7d42f06464ea33c50c3bb.png)
@@ -2369,10 +2444,19 @@ class EssbasicClient(AbstractClient):
 
 
     def DescribeResourceUrlsByFlows(self, request):
-        """获取合同流程PDF的下载链接，可以下载签署中、签署完的此子企业创建的合同
+        """获取合同流程PDF的下载链接，可以下载签署中、签署完的此子企业创建的合同。
 
-        **注意**:
-        有两种开通权限的途径
+
+
+
+        ### 1. 确保合同的PDF已经合成后，再调用本接口。
+         用户创建合同或者提交签署动作后，后台需要1~3秒的时间就进行合同PDF合成或者签名，为了确保您下载的是签署完成的完整合同文件，我们建议采取下面两种方式的一种来<font color="red"><b>确保PDF已经合成完成，然后在调用本接口</b></font>。
+
+        **第一种**：请确保您的系统配置了[接收合同完成通知的回调](https://qian.tencent.com/developers/partner/callback_types_contracts_sign)功能。一旦所有参与方签署完毕，我们的系统将自动向您提供的回调地址发送完成通知。
+
+        **第二种**：通过调用我们的[获取合同信息](https://qian.tencent.com/developers/partnerApis/flows/DescribeFlowDetailInfo)接口来主动检查合同的签署状态。请仅在确认合同状态为“全部签署完成”后，进行文件的下载操作。
+
+        ### 2. 有两种开通下载权限的途径。
 
         **第一种**:   需第三方应用的子企业登录控制台进行授权,  授权在**企业中心**的**授权管理**区域,  界面如下图。
         授权过程需要**子企业超管**扫描跳转到电子签小程序签署<<渠道端下载渠道子客合同功能授权委托书>>
@@ -2382,6 +2466,7 @@ class EssbasicClient(AbstractClient):
         **第二种**: 渠道方企业在**企业应用管理**的配置界面打开需要配置的应用，点击**应用扩展服务**开通此功能，需要**渠道方企业的超管**扫描二维码跳转到电子签小程序签署 <<渠道端下载渠道子客合同功能开通知情同意书>>
         注:
         1. `请注意如果第三方应用的子客主动关闭了渠道端下载渠道子客合同功能开关，那么渠道方开通了此功能也无法下载子客的合同文件`
+
         ![image](https://qcloudimg.tencent-cloud.cn/raw/238979ef51dd381ccbdbc755a593debc/channel_DescribeResourceUrlsByFlows_appilications2.png)
 
         :param request: Request instance for DescribeResourceUrlsByFlows.
@@ -2521,7 +2606,6 @@ class EssbasicClient(AbstractClient):
         - **需要法人或者超管签署开通协议的情形：** 当需要开通以下企业拓展服务时， 系统将返回一个操作链接。贵方需要主动联系并通知企业的超级管理员（超管）或法人。由他们点击该链接，完成服务的开通操作。
           - **AUTO_SIGN（企业自动签）**
           - **DOWNLOAD_FLOW（授权渠道下载合同）**
-          - **OVERSEA_SIGN（企业与港澳台居民签署合同）**
 
         注意： `在调用此接口以管理企业扩展服务时，操作者（ Agent.ProxyOperator.OpenId）必须是企业的超级管理员（超管）或法人`
 

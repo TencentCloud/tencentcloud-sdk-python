@@ -25,19 +25,19 @@ class SubmitTaskEventRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AccountId: 用户ID
+        :param _AccountId: 用户唯一标识，最大长度为64
         :type AccountId: str
-        :param _DeviceId: 设备ID
+        :param _DeviceId: 用户设备ID，最大长度为64
         :type DeviceId: str
-        :param _OrderId: 订单ID
+        :param _OrderId: 任务的唯一订单号，只能是数字、大小写字母，且在同一个产品ID下唯一，最大长度为64
         :type OrderId: str
-        :param _Code: 任务事件Code
+        :param _Code: 任务事件Code，在腾讯安心用户运营平台下的任务事件列表中设置并获取
         :type Code: str
-        :param _Async: 同步异步方式：0为同步、1位异步
+        :param _Async: 任务结果是否异步通知。0表示任务结果在返回信息中同步返回；1表示任务结果通过回调结果异步通知。
         :type Async: int
-        :param _ProductId: 产品ID
+        :param _ProductId: 产品ID，可在腾讯安心用户运营平台的企业管理中获取
         :type ProductId: int
-        :param _NotifyURL: 回调地址
+        :param _NotifyURL: 异步接收任务结果通知的回调地址。在Async为1的时候，会将任务结果通过该回调地址进行通知。
         :type NotifyURL: str
         """
         self._AccountId = None
@@ -130,13 +130,13 @@ class SubmitTaskEventResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OrderId: 订单ID
+        :param _OrderId: 任务的唯一订单号
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrderId: str
-        :param _Code: 信息码
+        :param _Code: 信息码。0表示成功，-1标识失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type Code: int
-        :param _Message: success
+        :param _Message: 提示信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param _Data: 任务处理结果列表
@@ -212,7 +212,7 @@ class TaskEventData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Code: 状态码
+        :param _Code: 状态码，0为成功，-1为失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type Code: int
         :param _Message: 提示信息
@@ -221,22 +221,22 @@ class TaskEventData(AbstractModel):
         :param _TaskId: 任务ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: int
-        :param _TaskOrderId: 当前完成或正在完成的任务订单ID
+        :param _TaskOrderId: 当前完成或正在完成的安心用户运营平台的任务订单ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskOrderId: str
-        :param _TaskCode: 当前任务订单状态码
+        :param _TaskCode: 当前任务订单状态码。1代表未完成；2代表已完成但未提交任务；3表示已完成，且已提交获得积分任务；4表示过期任务，提交后不获得积分。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskCode: int
-        :param _TaskCoinNumber: 获得积分数/成长值
+        :param _TaskCoinNumber: 获得积分数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskCoinNumber: int
         :param _TaskType: 任务类型后台代码
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskType: int
-        :param _TotalCoin: 当前积分
+        :param _TotalCoin: 用户的当前积分
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCoin: int
-        :param _Attach: 用户透传的代码块
+        :param _Attach: 用户透传的附加数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type Attach: str
         :param _DoneTimes: 计次任务当前完成次数
@@ -248,7 +248,7 @@ class TaskEventData(AbstractModel):
         :param _TaskName: 任务名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskName: str
-        :param _GrowScore: 当前成长值
+        :param _GrowScore: 用户当前成长值
 注意：此字段可能返回 null，表示取不到有效值。
         :type GrowScore: int
         """

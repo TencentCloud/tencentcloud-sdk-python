@@ -1953,12 +1953,33 @@ class GetServiceStatusResponse(AbstractModel):
         :param _AccessKeyEscrowEnabled: true表示用户已经可以使用密钥安全托管功能，
 false表示用户暂时不能使用密钥安全托管功能。
         :type AccessKeyEscrowEnabled: bool
+        :param _ExpireTime: 过期时间
+        :type ExpireTime: str
+        :param _QPSLimit: 计算性能限制
+        :type QPSLimit: int
+        :param _SecretLimit: 凭据个数限制
+        :type SecretLimit: int
+        :param _PayModel: 付费模式
+        :type PayModel: str
+        :param _RenewFlag: 自动续费标识，0:手动续费 1:自动续费 2:到期不续
+        :type RenewFlag: int
+        :param _ResourceId: 资源id
+        :type ResourceId: str
+        :param _TotalCount: 已托管凭据个数
+        :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ServiceEnabled = None
         self._InvalidType = None
         self._AccessKeyEscrowEnabled = None
+        self._ExpireTime = None
+        self._QPSLimit = None
+        self._SecretLimit = None
+        self._PayModel = None
+        self._RenewFlag = None
+        self._ResourceId = None
+        self._TotalCount = None
         self._RequestId = None
 
     @property
@@ -1986,6 +2007,62 @@ false表示用户暂时不能使用密钥安全托管功能。
         self._AccessKeyEscrowEnabled = AccessKeyEscrowEnabled
 
     @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def QPSLimit(self):
+        return self._QPSLimit
+
+    @QPSLimit.setter
+    def QPSLimit(self, QPSLimit):
+        self._QPSLimit = QPSLimit
+
+    @property
+    def SecretLimit(self):
+        return self._SecretLimit
+
+    @SecretLimit.setter
+    def SecretLimit(self, SecretLimit):
+        self._SecretLimit = SecretLimit
+
+    @property
+    def PayModel(self):
+        return self._PayModel
+
+    @PayModel.setter
+    def PayModel(self, PayModel):
+        self._PayModel = PayModel
+
+    @property
+    def RenewFlag(self):
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -1998,6 +2075,13 @@ false表示用户暂时不能使用密钥安全托管功能。
         self._ServiceEnabled = params.get("ServiceEnabled")
         self._InvalidType = params.get("InvalidType")
         self._AccessKeyEscrowEnabled = params.get("AccessKeyEscrowEnabled")
+        self._ExpireTime = params.get("ExpireTime")
+        self._QPSLimit = params.get("QPSLimit")
+        self._SecretLimit = params.get("SecretLimit")
+        self._PayModel = params.get("PayModel")
+        self._RenewFlag = params.get("RenewFlag")
+        self._ResourceId = params.get("ResourceId")
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 

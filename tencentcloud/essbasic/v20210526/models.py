@@ -242,7 +242,7 @@ class ApproverOption(AbstractModel):
         :type HideOneKeySign: bool
         :param _FillType: 签署人信息补充类型，默认无需补充。
 
-<ul><li> **1** : ( 动态签署人（可发起合同后再补充签署人信息）注：`企业自动签不支持动态补充`</li></ul>
+<ul><li> **1** :  动态签署人（可发起合同后再补充签署人信息）注：`企业自动签不支持动态补充`</li></ul>
 
 注：
 `使用动态签署人能力前，需登陆腾讯电子签控制台打开服务开关`
@@ -2883,7 +2883,10 @@ class ChannelCreateFlowApproversRequest(AbstractModel):
 
 - 如果不指定，则使用姓名和手机号进行补充。
         :type Approvers: list of FillApproverInfo
-        :param _FlowId: 合同流程ID，为32位字符串。 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
+        :param _FlowId: 合同流程ID，为32位字符串。 
+- 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
+- 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
+- <font color="red">不建议继续使用</font>，请使用<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#fillapproverinfo/" target="_blank">补充签署人结构体</a>中的FlowId指定合同
         :type FlowId: str
         :param _FillApproverType: 签署人信息补充方式
 
@@ -10509,6 +10512,138 @@ class CreateChannelSubOrganizationActiveResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateCloseOrganizationUrlRequest(AbstractModel):
+    """CreateCloseOrganizationUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        """
+        self._Agent = None
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCloseOrganizationUrlResponse(AbstractModel):
+    """CreateCloseOrganizationUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExpiredOn: 链接有效期，unix时间戳，精确到秒
+        :type ExpiredOn: int
+        :param _LongUrl: H5跳转到电子签小程序链接, 一般用于发送短信中带的链接, 打开后进入腾讯电子签小程序
+        :type LongUrl: str
+        :param _ShortUrl: H5跳转到电子签小程序链接的短链形式, 一般用于发送短信中带的链接, 打开后进入腾讯电子签小程序
+        :type ShortUrl: str
+        :param _MiniAppPath: APP或小程序跳转电子签小程序链接, 一般用于客户小程序或者APP跳转过来, 打开后进入腾讯电子签小程序
+        :type MiniAppPath: str
+        :param _QrcodeUrl: 二维码链接
+        :type QrcodeUrl: str
+        :param _WeixinQrcodeUrl: 直接跳转至电子签小程序的二维码链接，无需通过中转页。您需要自行将其转换为二维码，使用微信扫码后可直接进入。请注意，直接点击链接是无效的。
+        :type WeixinQrcodeUrl: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ExpiredOn = None
+        self._LongUrl = None
+        self._ShortUrl = None
+        self._MiniAppPath = None
+        self._QrcodeUrl = None
+        self._WeixinQrcodeUrl = None
+        self._RequestId = None
+
+    @property
+    def ExpiredOn(self):
+        return self._ExpiredOn
+
+    @ExpiredOn.setter
+    def ExpiredOn(self, ExpiredOn):
+        self._ExpiredOn = ExpiredOn
+
+    @property
+    def LongUrl(self):
+        return self._LongUrl
+
+    @LongUrl.setter
+    def LongUrl(self, LongUrl):
+        self._LongUrl = LongUrl
+
+    @property
+    def ShortUrl(self):
+        return self._ShortUrl
+
+    @ShortUrl.setter
+    def ShortUrl(self, ShortUrl):
+        self._ShortUrl = ShortUrl
+
+    @property
+    def MiniAppPath(self):
+        return self._MiniAppPath
+
+    @MiniAppPath.setter
+    def MiniAppPath(self, MiniAppPath):
+        self._MiniAppPath = MiniAppPath
+
+    @property
+    def QrcodeUrl(self):
+        return self._QrcodeUrl
+
+    @QrcodeUrl.setter
+    def QrcodeUrl(self, QrcodeUrl):
+        self._QrcodeUrl = QrcodeUrl
+
+    @property
+    def WeixinQrcodeUrl(self):
+        return self._WeixinQrcodeUrl
+
+    @WeixinQrcodeUrl.setter
+    def WeixinQrcodeUrl(self, WeixinQrcodeUrl):
+        self._WeixinQrcodeUrl = WeixinQrcodeUrl
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ExpiredOn = params.get("ExpiredOn")
+        self._LongUrl = params.get("LongUrl")
+        self._ShortUrl = params.get("ShortUrl")
+        self._MiniAppPath = params.get("MiniAppPath")
+        self._QrcodeUrl = params.get("QrcodeUrl")
+        self._WeixinQrcodeUrl = params.get("WeixinQrcodeUrl")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateConsoleLoginUrlRequest(AbstractModel):
     """CreateConsoleLoginUrl请求参数结构体
 
@@ -10603,7 +10738,14 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
 
 <a href="https://qcloudimg.tencent-cloud.cn/raw/dd54f333140c711cf6a88e3801bcd178.png" target="_blank">点击查看头顶导航栏位置</a>
         :type TopNavigationStatus: str
-        :param _AutoActive: 是否自动激活子客
+        :param _AutoActive: 是否自动激活子客企业，有下面两种选项：
+
+**false（默认设置）**：不自动激活子客户。您需要通过控制台或调用[激活或者续期子企业](https://qian.tencent.com/developers/partnerApis/accounts/CreateChannelSubOrganizationActive)接口手动完成激活过程。
+
+**true**：若持有的许可证充足，子客户企业注册完成后将自动激活，无需手动操作或访问控制台。
+
+<b>注</b>：如果<b>应用扩展服务</b>中的<b>自动激活子客企业</b>为打开态， 则忽略本接口的AutoActive这个参数（若持有的许可证充足，子客户企业注册完成后将自动激活），具体位置参考下图：
+![image](https://qcloudimg.tencent-cloud.cn/raw/c3639b05503d3735bac483d17aa6b0a3.png)
         :type AutoActive: bool
         """
         self._Agent = None
@@ -12282,7 +12424,10 @@ class CreateSignUrlsRequest(AbstractModel):
 第三方平台子客企业和员工必须已经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param _FlowIds: 合同流程ID数组，最多支持100个。
-注: `该参数和合同组编号必须二选一`
+
+注: 
+1. 必须选择提供此参数或合同组编号中的一个。
+2. 当生成类型（GenerateType）设为“ALL”时，不可提供多个流程ID。
         :type FlowIds: list of str
         :param _FlowGroupId: 合同组编号
 注：`该参数和合同流程ID数组必须二选一`
@@ -12300,17 +12445,14 @@ class CreateSignUrlsRequest(AbstractModel):
         :type Endpoint: str
         :param _GenerateType: 签署链接生成类型，可以选择的类型如下
 
-<ul><li>**ALL**：(默认)全部签署方签署链接，此时不会给自动签署(静默签署)的签署方创建签署链接</li>
-<li>**CHANNEL**：第三方子企业员工签署方</li>
-<li>**NOT_CHANNEL**：SaaS平台企业员工签署方</li>
-<li>**PERSON**：个人/自然人签署方</li>
-<li>**FOLLOWER**：关注方，目前是合同抄送方</li>
-<li>**RECIPIENT**：获取RecipientId对应的签署链接，可用于生成动态签署人补充链接</li></ul>
+<ul><li><strong>ALL</strong>：（默认）为所有签署方生成签署链接，但不包括自动签署（静默签署）的签署方。注意：<strong>此中类型不支持多个合同ID（FlowIds）</strong>。</li>
+<li><strong>CHANNEL</strong>：适用于第三方子企业的员工签署方。</li>
+<li><strong>NOT_CHANNEL</strong>：适用于SaaS平台企业的员工签署方。</li>
+<li><strong>PERSON</strong>：适用于个人或自然人签署方。</li>
+<li><strong>FOLLOWER</strong>：适用于关注方，目前指合同的抄送方。</li>
+<li><strong>RECIPIENT</strong>：根据RecipientId生成对应的签署链接，适用于动态添加签署人的情况。</li></ul>
         :type GenerateType: str
-        :param _OrganizationName: SaaS平台企业员工签署方的企业名称
-如果名称中包含英文括号()，请使用中文括号（）代替。
-
-注: `GenerateType为"NOT_CHANNEL"时必填`
+        :param _OrganizationName: SaaS平台企业员工签署方的企业名称如果名称中包含英文括号()，请使用中文括号（）代替。  注:  `1.GenerateType为"NOT_CHANNEL"时必填` `2.获取B端动态签署人领取链接时,可指定此字段来预先设定签署人的企业,预设后只能以该企业身份去领取合同并完成签署`
         :type OrganizationName: str
         :param _Name: 合同流程里边参与方的姓名。
 注: `GenerateType为"PERSON"(即个人签署方)时必填`
@@ -12328,8 +12470,7 @@ class CreateSignUrlsRequest(AbstractModel):
 <li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给香港居民，“M”字头签发给澳门居民；第2位至第11位为数字。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :type IdCardNumber: str
-        :param _OrganizationOpenId: 第三方平台子客企业的企业的标识, 即OrganizationOpenId
-注: `GenerateType为"CHANNEL"时必填`
+        :param _OrganizationOpenId: 第三方平台子客企业的企业的标识, 即OrganizationOpenId。 注:  `1.GenerateType为"CHANNEL"时必填` `2.获取B端动态签署人领取链接时,可指定此字段来预先设定签署人的平台子客企业,预设后只能以该平台子客企业身份去领取合同并完成签署`
         :type OrganizationOpenId: str
         :param _OpenId: 第三方平台子客企业员工的标识OpenId，GenerateType为"CHANNEL"时可用，指定到具体参与人, 仅展示已经实名的经办人信息
 
@@ -12618,6 +12759,194 @@ class CreateSignUrlsResponse(AbstractModel):
                 obj._deserialize(item)
                 self._SignUrlInfos.append(obj)
         self._ErrorMessages = params.get("ErrorMessages")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteOrganizationAuthorizationInfo(AbstractModel):
+    """清理的企业认证流信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuthorizationId: 认证流 Id 是指在企业认证过程中，当前操作人的认证流程的唯一标识。每个企业在认证过程中只能有一条认证流认证成功。这意味着在同一认证过程内，一个企业只能有一个认证流程处于成功状态，以确保认证的唯一性和有效性。	
+        :type AuthorizationId: str
+        :param _OrganizationName: 认证的企业名称	
+        :type OrganizationName: str
+        :param _OrganizationOpenId: 第三方平台子客企业的唯一标识，定义Agent中的ProxyOrganizationOpenId一样, 可以参考<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#agent" target="_blank">Agent结构体</a>
+        :type OrganizationOpenId: str
+        :param _Errormessage: 清除认证流产生的错误信息
+        :type Errormessage: str
+        """
+        self._AuthorizationId = None
+        self._OrganizationName = None
+        self._OrganizationOpenId = None
+        self._Errormessage = None
+
+    @property
+    def AuthorizationId(self):
+        return self._AuthorizationId
+
+    @AuthorizationId.setter
+    def AuthorizationId(self, AuthorizationId):
+        self._AuthorizationId = AuthorizationId
+
+    @property
+    def OrganizationName(self):
+        return self._OrganizationName
+
+    @OrganizationName.setter
+    def OrganizationName(self, OrganizationName):
+        self._OrganizationName = OrganizationName
+
+    @property
+    def OrganizationOpenId(self):
+        return self._OrganizationOpenId
+
+    @OrganizationOpenId.setter
+    def OrganizationOpenId(self, OrganizationOpenId):
+        self._OrganizationOpenId = OrganizationOpenId
+
+    @property
+    def Errormessage(self):
+        return self._Errormessage
+
+    @Errormessage.setter
+    def Errormessage(self, Errormessage):
+        self._Errormessage = Errormessage
+
+
+    def _deserialize(self, params):
+        self._AuthorizationId = params.get("AuthorizationId")
+        self._OrganizationName = params.get("OrganizationName")
+        self._OrganizationOpenId = params.get("OrganizationOpenId")
+        self._Errormessage = params.get("Errormessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteOrganizationAuthorizationsRequest(AbstractModel):
+    """DeleteOrganizationAuthorizations请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+
+此接口下面信息必填。
+<ul>
+<li>渠道应用标识:  Agent.AppId</li>
+</ul>
+
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _AdminName: 认证人姓名，组织机构超管姓名。 在注册流程中，必须是超管本人进行操作。 
+        :type AdminName: str
+        :param _AdminMobile: 认证人手机号，组织机构超管手机号。 在注册流程中，必须是超管本人进行操作。 
+        :type AdminMobile: str
+        """
+        self._Agent = None
+        self._AdminName = None
+        self._AdminMobile = None
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def AdminName(self):
+        return self._AdminName
+
+    @AdminName.setter
+    def AdminName(self, AdminName):
+        self._AdminName = AdminName
+
+    @property
+    def AdminMobile(self):
+        return self._AdminMobile
+
+    @AdminMobile.setter
+    def AdminMobile(self, AdminMobile):
+        self._AdminMobile = AdminMobile
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._AdminName = params.get("AdminName")
+        self._AdminMobile = params.get("AdminMobile")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteOrganizationAuthorizationsResponse(AbstractModel):
+    """DeleteOrganizationAuthorizations返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeleteOrganizationAuthorizationInfos: 清理认证流的详细信息，包括企业名称、认证流唯一 ID 以及清理认证流过程中产生的错误信息。
+        :type DeleteOrganizationAuthorizationInfos: list of DeleteOrganizationAuthorizationInfo
+        :param _Status: 批量清理认证流返回的状态值其中包括- 1 全部成功- 2 部分成功- 3 全部失败
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DeleteOrganizationAuthorizationInfos = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def DeleteOrganizationAuthorizationInfos(self):
+        return self._DeleteOrganizationAuthorizationInfos
+
+    @DeleteOrganizationAuthorizationInfos.setter
+    def DeleteOrganizationAuthorizationInfos(self, DeleteOrganizationAuthorizationInfos):
+        self._DeleteOrganizationAuthorizationInfos = DeleteOrganizationAuthorizationInfos
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DeleteOrganizationAuthorizationInfos") is not None:
+            self._DeleteOrganizationAuthorizationInfos = []
+            for item in params.get("DeleteOrganizationAuthorizationInfos"):
+                obj = DeleteOrganizationAuthorizationInfo()
+                obj._deserialize(item)
+                self._DeleteOrganizationAuthorizationInfos.append(obj)
+        self._Status = params.get("Status")
         self._RequestId = params.get("RequestId")
 
 
@@ -14649,7 +14978,9 @@ class FillApproverInfo(AbstractModel):
 
 注：`补充个人签署方时，若该用户已在电子签完成实名则可通过指定姓名和证件类型、证件号码完成补充。`
         :type ApproverIdCardNumber: str
-        :param _FlowId: 合同流程ID，补充合同组子合同动态签署人时必传。
+        :param _FlowId: 合同流程ID
+- 补充合同组子合同动态签署人时必传。
+- 补充正常合同，请阅读：<a href="https://qian.tencent.com/developers/partnerApis/flows/ChannelCreateFlowApprovers/" target="_blank">补充签署人接口</a>接口使用说明
         :type FlowId: str
         """
         self._RecipientId = None
@@ -14778,9 +15109,13 @@ class FillError(AbstractModel):
         :param _ErrMessage: 补充失败错误说明
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrMessage: str
+        :param _FlowId: 合同流程ID，为32位字符串。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowId: str
         """
         self._RecipientId = None
         self._ErrMessage = None
+        self._FlowId = None
 
     @property
     def RecipientId(self):
@@ -14798,10 +15133,19 @@ class FillError(AbstractModel):
     def ErrMessage(self, ErrMessage):
         self._ErrMessage = ErrMessage
 
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
 
     def _deserialize(self, params):
         self._RecipientId = params.get("RecipientId")
         self._ErrMessage = params.get("ErrMessage")
+        self._FlowId = params.get("FlowId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17674,7 +18018,7 @@ class ModifyExtendedServiceResponse(AbstractModel):
         :param _OperateUrl: 操作跳转链接
 <ul><li><strong>链接有效期：</strong> 跳转链接的有效期为24小时。</li>
 <li><strong>没有返回链接的情形：</strong> 如果在操作时没有返回跳转链接，说明此次操作无需进行跳转，服务将会直接被开通或关闭。</li>
-<li><strong>返回链接的情形：</strong> 当操作类型为<b>OPEN（开通服务）</b>，并且扩展服务类型为<b>AUTO_SIGN（ 企业自动签署）</b>、<b>DOWNLOAD_FLOW（授权渠道下载合同）</b>或<b>OVERSEA_SIGN（企业与港澳台居民签署合同）</b>时，系统将返回一个操作链接。收到操作链接后，贵方需主动联系超级管理员（超管）或法人。<font color="red"><b>由超管或法人点击链接</b></font>，以完成服务的开通操作。</li>
+<li><strong>返回链接的情形：</strong> 当操作类型为<b>OPEN（开通服务）</b>，并且扩展服务类型为<b>AUTO_SIGN（ 企业自动签署）</b>、<b>DOWNLOAD_FLOW（授权渠道下载合同）</b>时，系统将返回一个操作链接。收到操作链接后，贵方需主动联系超级管理员（超管）或法人。<font color="red"><b>由超管或法人点击链接</b></font>，以完成服务的开通操作。</li>
 </ul>
 
 
@@ -19690,6 +20034,8 @@ class ReleasedApprover(AbstractModel):
         :type ApproverSignComponentType: str
         :param _ApproverSignRole: 参与方在合同中的角色是按照创建合同的时候来排序的，解除协议默认会将第一个参与人叫`甲方`,第二个叫`乙方`,  第三个叫`丙方`，以此类推。
 如果需改动此参与人的角色名字，可用此字段指定，由汉字,英文字符,数字组成，最大20个字。
+
+![image](https://qcloudimg.tencent-cloud.cn/raw/973a820ab66d1ce57082c160c2b2d44a.png)
         :type ApproverSignRole: str
         :param _ApproverSignSealId: 印章Id，签署控件类型为印章时，用于指定本企业签署方在解除协议中使用那个印章进行签署
         :type ApproverSignSealId: str

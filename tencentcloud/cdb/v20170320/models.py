@@ -8908,7 +8908,7 @@ class DeleteBackupRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
         :type InstanceId: str
-        :param _BackupId: 备份任务 ID。该任务 ID 为 [创建云数据库备份](https://cloud.tencent.com/document/api/236/15844) 接口返回的任务 ID。
+        :param _BackupId: 备份任务 ID。您可通过 [查询数据备份文件列表](https://cloud.tencent.com/document/api/236/15842)  来获取目标备份任务 ID。
         :type BackupId: int
         """
         self._InstanceId = None
@@ -9170,11 +9170,14 @@ class DeleteRotationPasswordRequest(AbstractModel):
         :type Host: str
         :param _Password: 关闭密码轮转后实例账户的最新密码
         :type Password: str
+        :param _EncryptMethod: 传入不为空则对密码进行了加密处理
+        :type EncryptMethod: str
         """
         self._InstanceId = None
         self._User = None
         self._Host = None
         self._Password = None
+        self._EncryptMethod = None
 
     @property
     def InstanceId(self):
@@ -9208,12 +9211,21 @@ class DeleteRotationPasswordRequest(AbstractModel):
     def Password(self, Password):
         self._Password = Password
 
+    @property
+    def EncryptMethod(self):
+        return self._EncryptMethod
+
+    @EncryptMethod.setter
+    def EncryptMethod(self, EncryptMethod):
+        self._EncryptMethod = EncryptMethod
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._User = params.get("User")
         self._Host = params.get("Host")
         self._Password = params.get("Password")
+        self._EncryptMethod = params.get("EncryptMethod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

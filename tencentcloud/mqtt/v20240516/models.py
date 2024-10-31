@@ -25,9 +25,9 @@ class AuthorizationPolicyItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 规则id
+        :param _Id: 规则ID
         :type Id: int
-        :param _InstanceId: 集群id
+        :param _InstanceId: 集群ID
         :type InstanceId: str
         :param _PolicyName: 规则名
 注意：此字段可能返回 null，表示取不到有效值。

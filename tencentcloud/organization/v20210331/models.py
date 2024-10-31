@@ -1395,10 +1395,13 @@ class CreateGroupRequest(AbstractModel):
         :type GroupName: str
         :param _Description: 用户组的描述。  长度：最大 1024 个字符。
         :type Description: str
+        :param _GroupType: 用户组类型  Manual：手动创建，Synchronized：外部导入
+        :type GroupType: str
         """
         self._ZoneId = None
         self._GroupName = None
         self._Description = None
+        self._GroupType = None
 
     @property
     def ZoneId(self):
@@ -1424,11 +1427,20 @@ class CreateGroupRequest(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def GroupType(self):
+        return self._GroupType
+
+    @GroupType.setter
+    def GroupType(self, GroupType):
+        self._GroupType = GroupType
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
         self._GroupName = params.get("GroupName")
         self._Description = params.get("Description")
+        self._GroupType = params.get("GroupType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2538,6 +2550,148 @@ class CreateRoleConfigurationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateSCIMCredentialRequest(AbstractModel):
+    """CreateSCIMCredential请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 空间ID。z-前缀开头，后面是12位随机数字/小写字母
+        :type ZoneId: str
+        """
+        self._ZoneId = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSCIMCredentialResponse(AbstractModel):
+    """CreateSCIMCredential返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 空间ID。z-前缀开头，后面是12位随机数字/小写字母。
+        :type ZoneId: str
+        :param _CredentialId: SCIM密钥ID。scimcred-前缀开头，后面是12位随机数字/小写字母。
+        :type CredentialId: str
+        :param _CredentialType: SCIM密钥类型。
+        :type CredentialType: str
+        :param _CreateTime: SCIM 密钥的创建时间。
+        :type CreateTime: str
+        :param _ExpireTime: SCIM 密钥的过期时间。
+        :type ExpireTime: str
+        :param _CredentialStatus: SCIM密钥状态，Enabled已开启，Disabled已关闭。
+        :type CredentialStatus: str
+        :param _CredentialSecret: SCIM密钥。
+        :type CredentialSecret: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ZoneId = None
+        self._CredentialId = None
+        self._CredentialType = None
+        self._CreateTime = None
+        self._ExpireTime = None
+        self._CredentialStatus = None
+        self._CredentialSecret = None
+        self._RequestId = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def CredentialId(self):
+        return self._CredentialId
+
+    @CredentialId.setter
+    def CredentialId(self, CredentialId):
+        self._CredentialId = CredentialId
+
+    @property
+    def CredentialType(self):
+        return self._CredentialType
+
+    @CredentialType.setter
+    def CredentialType(self, CredentialType):
+        self._CredentialType = CredentialType
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def CredentialStatus(self):
+        return self._CredentialStatus
+
+    @CredentialStatus.setter
+    def CredentialStatus(self, CredentialStatus):
+        self._CredentialStatus = CredentialStatus
+
+    @property
+    def CredentialSecret(self):
+        return self._CredentialSecret
+
+    @CredentialSecret.setter
+    def CredentialSecret(self, CredentialSecret):
+        self._CredentialSecret = CredentialSecret
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._CredentialId = params.get("CredentialId")
+        self._CredentialType = params.get("CredentialType")
+        self._CreateTime = params.get("CreateTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._CredentialStatus = params.get("CredentialStatus")
+        self._CredentialSecret = params.get("CredentialSecret")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateUserRequest(AbstractModel):
     """CreateUser请求参数结构体
 
@@ -2561,6 +2715,8 @@ class CreateUserRequest(AbstractModel):
         :type Email: str
         :param _UserStatus: 用户的状态。取值：  Enabled（默认值）：启用。 Disabled：禁用。
         :type UserStatus: str
+        :param _UserType: 用户类型  Manual：手动创建，Synchronized：外部导入
+        :type UserType: str
         """
         self._ZoneId = None
         self._UserName = None
@@ -2570,6 +2726,7 @@ class CreateUserRequest(AbstractModel):
         self._Description = None
         self._Email = None
         self._UserStatus = None
+        self._UserType = None
 
     @property
     def ZoneId(self):
@@ -2635,6 +2792,14 @@ class CreateUserRequest(AbstractModel):
     def UserStatus(self, UserStatus):
         self._UserStatus = UserStatus
 
+    @property
+    def UserType(self):
+        return self._UserType
+
+    @UserType.setter
+    def UserType(self, UserType):
+        self._UserType = UserType
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -2645,6 +2810,7 @@ class CreateUserRequest(AbstractModel):
         self._Description = params.get("Description")
         self._Email = params.get("Email")
         self._UserStatus = params.get("UserStatus")
+        self._UserType = params.get("UserType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3579,6 +3745,76 @@ class DeleteRoleConfigurationRequest(AbstractModel):
 
 class DeleteRoleConfigurationResponse(AbstractModel):
     """DeleteRoleConfiguration返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteSCIMCredentialRequest(AbstractModel):
+    """DeleteSCIMCredential请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 空间ID。z-前缀开头，后面是12位随机数字/小写字母
+        :type ZoneId: str
+        :param _CredentialId: SCIM密钥ID。scimcred-前缀开头，后面是12位随机数字/小写字母。
+        :type CredentialId: str
+        """
+        self._ZoneId = None
+        self._CredentialId = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def CredentialId(self):
+        return self._CredentialId
+
+    @CredentialId.setter
+    def CredentialId(self, CredentialId):
+        self._CredentialId = CredentialId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._CredentialId = params.get("CredentialId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSCIMCredentialResponse(AbstractModel):
+    """DeleteSCIMCredential返回参数结构体
 
     """
 
@@ -7303,6 +7539,76 @@ class GetRoleConfigurationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetSCIMSynchronizationStatusRequest(AbstractModel):
+    """GetSCIMSynchronizationStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 空间ID。z-前缀开头，后面是12位随机数字/小写字母
+        :type ZoneId: str
+        """
+        self._ZoneId = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetSCIMSynchronizationStatusResponse(AbstractModel):
+    """GetSCIMSynchronizationStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SCIMSynchronizationStatus: SCIM 同步状态。Enabled：启用。 Disabled：禁用。
+        :type SCIMSynchronizationStatus: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SCIMSynchronizationStatus = None
+        self._RequestId = None
+
+    @property
+    def SCIMSynchronizationStatus(self):
+        return self._SCIMSynchronizationStatus
+
+    @SCIMSynchronizationStatus.setter
+    def SCIMSynchronizationStatus(self, SCIMSynchronizationStatus):
+        self._SCIMSynchronizationStatus = SCIMSynchronizationStatus
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SCIMSynchronizationStatus = params.get("SCIMSynchronizationStatus")
+        self._RequestId = params.get("RequestId")
+
+
 class GetTaskStatusRequest(AbstractModel):
     """GetTaskStatus请求参数结构体
 
@@ -8557,6 +8863,8 @@ class ListGroupsRequest(AbstractModel):
         :type SortField: str
         :param _SortType: 排序类型：Desc 倒序 Asc  正序，需要你和SortField一起设置
         :type SortType: str
+        :param _Offset: 翻页offset. 不要与NextToken同时使用，优先使用NextToken
+        :type Offset: int
         """
         self._ZoneId = None
         self._NextToken = None
@@ -8566,6 +8874,7 @@ class ListGroupsRequest(AbstractModel):
         self._FilterUsers = None
         self._SortField = None
         self._SortType = None
+        self._Offset = None
 
     @property
     def ZoneId(self):
@@ -8631,6 +8940,14 @@ class ListGroupsRequest(AbstractModel):
     def SortType(self, SortType):
         self._SortType = SortType
 
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -8641,6 +8958,7 @@ class ListGroupsRequest(AbstractModel):
         self._FilterUsers = params.get("FilterUsers")
         self._SortField = params.get("SortField")
         self._SortType = params.get("SortType")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10636,6 +10954,105 @@ class ListRoleConfigurationsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ListSCIMCredentialsRequest(AbstractModel):
+    """ListSCIMCredentials请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 空间ID。z-前缀开头，后面是12位随机数字/小写字母
+        :type ZoneId: str
+        :param _CredentialId: SCIM密钥ID
+        :type CredentialId: str
+        """
+        self._ZoneId = None
+        self._CredentialId = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def CredentialId(self):
+        return self._CredentialId
+
+    @CredentialId.setter
+    def CredentialId(self, CredentialId):
+        self._CredentialId = CredentialId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._CredentialId = params.get("CredentialId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListSCIMCredentialsResponse(AbstractModel):
+    """ListSCIMCredentials返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCounts: SCIM密钥数量。
+        :type TotalCounts: int
+        :param _SCIMCredentials: SCIM 密钥信息。
+        :type SCIMCredentials: list of SCIMCredential
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCounts = None
+        self._SCIMCredentials = None
+        self._RequestId = None
+
+    @property
+    def TotalCounts(self):
+        return self._TotalCounts
+
+    @TotalCounts.setter
+    def TotalCounts(self, TotalCounts):
+        self._TotalCounts = TotalCounts
+
+    @property
+    def SCIMCredentials(self):
+        return self._SCIMCredentials
+
+    @SCIMCredentials.setter
+    def SCIMCredentials(self, SCIMCredentials):
+        self._SCIMCredentials = SCIMCredentials
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCounts = params.get("TotalCounts")
+        if params.get("SCIMCredentials") is not None:
+            self._SCIMCredentials = []
+            for item in params.get("SCIMCredentials"):
+                obj = SCIMCredential()
+                obj._deserialize(item)
+                self._SCIMCredentials.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class ListTargetsForPolicyNode(AbstractModel):
     """查询某个指定SCP策略关联的目标列表
 
@@ -11317,6 +11734,8 @@ class ListUsersRequest(AbstractModel):
         :type SortField: str
         :param _SortType: 排序类型：Desc 倒序 Asc  正序，需要你和SortField一起设置
         :type SortType: str
+        :param _Offset: 翻页offset. 不要与NextToken同时使用，优先使用NextToken
+        :type Offset: int
         """
         self._ZoneId = None
         self._UserStatus = None
@@ -11327,6 +11746,7 @@ class ListUsersRequest(AbstractModel):
         self._FilterGroups = None
         self._SortField = None
         self._SortType = None
+        self._Offset = None
 
     @property
     def ZoneId(self):
@@ -11400,6 +11820,14 @@ class ListUsersRequest(AbstractModel):
     def SortType(self, SortType):
         self._SortType = SortType
 
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -11411,6 +11839,7 @@ class ListUsersRequest(AbstractModel):
         self._FilterGroups = params.get("FilterGroups")
         self._SortField = params.get("SortField")
         self._SortType = params.get("SortType")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15196,6 +15625,99 @@ class SAMLServiceProvider(AbstractModel):
         
 
 
+class SCIMCredential(AbstractModel):
+    """SCIM密钥
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 空间ID。z-前缀开头，后面是12位随机数字/小写字母
+        :type ZoneId: str
+        :param _Status: SCIM密钥状态，Enabled已开启，Disabled已关闭。
+        :type Status: str
+        :param _CredentialId: SCIM密钥ID。scimcred-前缀开头，后面是12位随机数字/小写字母。
+        :type CredentialId: str
+        :param _CredentialType: SCIM密钥类型。
+        :type CredentialType: str
+        :param _CreateTime: SCIM 密钥的创建时间。
+        :type CreateTime: str
+        :param _ExpireTime: SCIM 密钥的过期时间。
+        :type ExpireTime: str
+        """
+        self._ZoneId = None
+        self._Status = None
+        self._CredentialId = None
+        self._CredentialType = None
+        self._CreateTime = None
+        self._ExpireTime = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CredentialId(self):
+        return self._CredentialId
+
+    @CredentialId.setter
+    def CredentialId(self, CredentialId):
+        self._CredentialId = CredentialId
+
+    @property
+    def CredentialType(self):
+        return self._CredentialType
+
+    @CredentialType.setter
+    def CredentialType(self, CredentialType):
+        self._CredentialType = CredentialType
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Status = params.get("Status")
+        self._CredentialId = params.get("CredentialId")
+        self._CredentialType = params.get("CredentialType")
+        self._CreateTime = params.get("CreateTime")
+        self._ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SendOrgMemberAccountBindEmailRequest(AbstractModel):
     """SendOrgMemberAccountBindEmail请求参数结构体
 
@@ -16881,6 +17403,158 @@ class UpdateRoleConfigurationResponse(AbstractModel):
         if params.get("RoleConfigurationInfo") is not None:
             self._RoleConfigurationInfo = RoleConfiguration()
             self._RoleConfigurationInfo._deserialize(params.get("RoleConfigurationInfo"))
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateSCIMCredentialStatusRequest(AbstractModel):
+    """UpdateSCIMCredentialStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 空间ID。z-前缀开头，后面是12位随机数字/小写字母
+        :type ZoneId: str
+        :param _CredentialId: SCIM密钥ID。scimcred-前缀开头，后面是12位随机数字/小写字母。
+        :type CredentialId: str
+        :param _NewStatus: SCIM密钥状态。Enabled：启用。 Disabled：禁用。
+        :type NewStatus: str
+        """
+        self._ZoneId = None
+        self._CredentialId = None
+        self._NewStatus = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def CredentialId(self):
+        return self._CredentialId
+
+    @CredentialId.setter
+    def CredentialId(self, CredentialId):
+        self._CredentialId = CredentialId
+
+    @property
+    def NewStatus(self):
+        return self._NewStatus
+
+    @NewStatus.setter
+    def NewStatus(self, NewStatus):
+        self._NewStatus = NewStatus
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._CredentialId = params.get("CredentialId")
+        self._NewStatus = params.get("NewStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateSCIMCredentialStatusResponse(AbstractModel):
+    """UpdateSCIMCredentialStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateSCIMSynchronizationStatusRequest(AbstractModel):
+    """UpdateSCIMSynchronizationStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 空间ID。z-前缀开头，后面是12位随机数字/小写字母
+        :type ZoneId: str
+        :param _SCIMSynchronizationStatus: SCIM 同步状态。Enabled：启用。Disabled：禁用。
+        :type SCIMSynchronizationStatus: str
+        """
+        self._ZoneId = None
+        self._SCIMSynchronizationStatus = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def SCIMSynchronizationStatus(self):
+        return self._SCIMSynchronizationStatus
+
+    @SCIMSynchronizationStatus.setter
+    def SCIMSynchronizationStatus(self, SCIMSynchronizationStatus):
+        self._SCIMSynchronizationStatus = SCIMSynchronizationStatus
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._SCIMSynchronizationStatus = params.get("SCIMSynchronizationStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateSCIMSynchronizationStatusResponse(AbstractModel):
+    """UpdateSCIMSynchronizationStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

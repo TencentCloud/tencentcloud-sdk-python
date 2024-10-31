@@ -2797,6 +2797,9 @@ class LogMessage(AbstractModel):
         :param _Detail: 详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type Detail: str
+        :param _ActionResult: 日志结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActionResult: str
         """
         self._LogId = None
         self._TenantId = None
@@ -2815,6 +2818,7 @@ class LogMessage(AbstractModel):
         self._UserAgent = None
         self._UserId = None
         self._Detail = None
+        self._ActionResult = None
 
     @property
     def LogId(self):
@@ -2952,6 +2956,14 @@ class LogMessage(AbstractModel):
     def Detail(self, Detail):
         self._Detail = Detail
 
+    @property
+    def ActionResult(self):
+        return self._ActionResult
+
+    @ActionResult.setter
+    def ActionResult(self, ActionResult):
+        self._ActionResult = ActionResult
+
 
     def _deserialize(self, params):
         self._LogId = params.get("LogId")
@@ -2971,6 +2983,7 @@ class LogMessage(AbstractModel):
         self._UserAgent = params.get("UserAgent")
         self._UserId = params.get("UserId")
         self._Detail = params.get("Detail")
+        self._ActionResult = params.get("ActionResult")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

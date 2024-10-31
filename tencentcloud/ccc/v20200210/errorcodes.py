@@ -152,11 +152,17 @@ LIMITEXCEEDED_BASEPACKAGEEXPIRED = 'LimitExceeded.BasePackageExpired'
 # 超出数量限制。
 LIMITEXCEEDED_OUTOFCOUNTLIMIT = 'LimitExceeded.OutOfCountLimit'
 
+# 缺少参数错误。
+MISSINGPARAMETER = 'MissingParameter'
+
 # 不在白名单中。
 OPERATIONDENIED_NOTINWHITELIST = 'OperationDenied.NotInWhiteList'
 
 # 账号已被禁用。
 OPERATIONDENIED_UINDISABLED = 'OperationDenied.UinDisabled'
+
+# 资源不存在。
+RESOURCENOTFOUND = 'ResourceNotFound'
 
 # 未知参数错误。
 UNKNOWNPARAMETER = 'UnknownParameter'

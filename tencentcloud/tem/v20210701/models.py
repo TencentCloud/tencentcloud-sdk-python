@@ -29,10 +29,10 @@ class Autoscaler(AbstractModel):
         :type MinReplicas: int
         :param _MaxReplicas: 弹性伸缩最大实例数
         :type MaxReplicas: int
-        :param _HorizontalAutoscaler: 指标弹性伸缩策略
+        :param _HorizontalAutoscaler: 指标弹性伸缩策略(指标策略和定时策略必须填写一个)
 注意：此字段可能返回 null，表示取不到有效值。
         :type HorizontalAutoscaler: list of HorizontalAutoscaler
-        :param _CronHorizontalAutoscaler: 定时弹性伸缩策略
+        :param _CronHorizontalAutoscaler: 定时弹性伸缩策略(指标策略和定时策略必须填写一个)
 注意：此字段可能返回 null，表示取不到有效值。
         :type CronHorizontalAutoscaler: list of CronHorizontalAutoscaler
         :param _AutoscalerId: 弹性伸缩ID
@@ -409,15 +409,15 @@ class CreateApplicationAutoscalerRequest(AbstractModel):
         :type ApplicationId: str
         :param _EnvironmentId: 环境ID
         :type EnvironmentId: str
-        :param _SourceChannel: 来源渠道
-        :type SourceChannel: int
         :param _Autoscaler: 弹性伸缩策略
         :type Autoscaler: :class:`tencentcloud.tem.v20210701.models.Autoscaler`
+        :param _SourceChannel: 来源渠道
+        :type SourceChannel: int
         """
         self._ApplicationId = None
         self._EnvironmentId = None
-        self._SourceChannel = None
         self._Autoscaler = None
+        self._SourceChannel = None
 
     @property
     def ApplicationId(self):
@@ -436,14 +436,6 @@ class CreateApplicationAutoscalerRequest(AbstractModel):
         self._EnvironmentId = EnvironmentId
 
     @property
-    def SourceChannel(self):
-        return self._SourceChannel
-
-    @SourceChannel.setter
-    def SourceChannel(self, SourceChannel):
-        self._SourceChannel = SourceChannel
-
-    @property
     def Autoscaler(self):
         return self._Autoscaler
 
@@ -451,14 +443,22 @@ class CreateApplicationAutoscalerRequest(AbstractModel):
     def Autoscaler(self, Autoscaler):
         self._Autoscaler = Autoscaler
 
+    @property
+    def SourceChannel(self):
+        return self._SourceChannel
+
+    @SourceChannel.setter
+    def SourceChannel(self, SourceChannel):
+        self._SourceChannel = SourceChannel
+
 
     def _deserialize(self, params):
         self._ApplicationId = params.get("ApplicationId")
         self._EnvironmentId = params.get("EnvironmentId")
-        self._SourceChannel = params.get("SourceChannel")
         if params.get("Autoscaler") is not None:
             self._Autoscaler = Autoscaler()
             self._Autoscaler._deserialize(params.get("Autoscaler"))
+        self._SourceChannel = params.get("SourceChannel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -756,15 +756,15 @@ class CreateApplicationServiceRequest(AbstractModel):
         :type ApplicationId: str
         :param _EnvironmentId: 环境ID
         :type EnvironmentId: str
-        :param _SourceChannel: 来源渠道
-        :type SourceChannel: int
         :param _Service: 访问方式详情
         :type Service: :class:`tencentcloud.tem.v20210701.models.ServicePortMapping`
+        :param _SourceChannel: 来源渠道
+        :type SourceChannel: int
         """
         self._ApplicationId = None
         self._EnvironmentId = None
-        self._SourceChannel = None
         self._Service = None
+        self._SourceChannel = None
 
     @property
     def ApplicationId(self):
@@ -783,14 +783,6 @@ class CreateApplicationServiceRequest(AbstractModel):
         self._EnvironmentId = EnvironmentId
 
     @property
-    def SourceChannel(self):
-        return self._SourceChannel
-
-    @SourceChannel.setter
-    def SourceChannel(self, SourceChannel):
-        self._SourceChannel = SourceChannel
-
-    @property
     def Service(self):
         return self._Service
 
@@ -798,14 +790,22 @@ class CreateApplicationServiceRequest(AbstractModel):
     def Service(self, Service):
         self._Service = Service
 
+    @property
+    def SourceChannel(self):
+        return self._SourceChannel
+
+    @SourceChannel.setter
+    def SourceChannel(self, SourceChannel):
+        self._SourceChannel = SourceChannel
+
 
     def _deserialize(self, params):
         self._ApplicationId = params.get("ApplicationId")
         self._EnvironmentId = params.get("EnvironmentId")
-        self._SourceChannel = params.get("SourceChannel")
         if params.get("Service") is not None:
             self._Service = ServicePortMapping()
             self._Service._deserialize(params.get("Service"))
+        self._SourceChannel = params.get("SourceChannel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -865,15 +865,15 @@ class CreateConfigDataRequest(AbstractModel):
         :type EnvironmentId: str
         :param _Name: 配置名
         :type Name: str
-        :param _SourceChannel: 来源渠道
-        :type SourceChannel: int
         :param _Data: 配置信息
         :type Data: list of Pair
+        :param _SourceChannel: 来源渠道
+        :type SourceChannel: int
         """
         self._EnvironmentId = None
         self._Name = None
-        self._SourceChannel = None
         self._Data = None
+        self._SourceChannel = None
 
     @property
     def EnvironmentId(self):
@@ -892,14 +892,6 @@ class CreateConfigDataRequest(AbstractModel):
         self._Name = Name
 
     @property
-    def SourceChannel(self):
-        return self._SourceChannel
-
-    @SourceChannel.setter
-    def SourceChannel(self, SourceChannel):
-        self._SourceChannel = SourceChannel
-
-    @property
     def Data(self):
         return self._Data
 
@@ -907,17 +899,25 @@ class CreateConfigDataRequest(AbstractModel):
     def Data(self, Data):
         self._Data = Data
 
+    @property
+    def SourceChannel(self):
+        return self._SourceChannel
+
+    @SourceChannel.setter
+    def SourceChannel(self, SourceChannel):
+        self._SourceChannel = SourceChannel
+
 
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
         self._Name = params.get("Name")
-        self._SourceChannel = params.get("SourceChannel")
         if params.get("Data") is not None:
             self._Data = []
             for item in params.get("Data"):
                 obj = Pair()
                 obj._deserialize(item)
                 self._Data.append(obj)
+        self._SourceChannel = params.get("SourceChannel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1105,17 +1105,17 @@ class CreateEnvironmentRequest(AbstractModel):
         :type K8sVersion: str
         :param _SourceChannel: 来源渠道
         :type SourceChannel: int
-        :param _EnableTswTraceService: 是否开启tsw服务
+        :param _EnableTswTraceService: 是否开启tsw服务。默认值：false
         :type EnableTswTraceService: bool
         :param _Tags: 标签
         :type Tags: list of Tag
-        :param _EnvType: 环境类型：test、pre、prod
+        :param _EnvType: 环境类型：test、pre、prod。默认值：prod
         :type EnvType: str
         :param _CreateRegion: 创建环境的region
         :type CreateRegion: str
-        :param _SetupVpc: 是否创建私有网络
+        :param _SetupVpc: 是否创建私有网络.默认值:true
         :type SetupVpc: bool
-        :param _SetupPrometheus: 是否创建 Prometheus 实例
+        :param _SetupPrometheus: 是否创建 Prometheus 实例。默认值：false
         :type SetupPrometheus: bool
         :param _PrometheusId: prometheus 实例 id
         :type PrometheusId: str
@@ -1519,7 +1519,7 @@ class CreateResourceRequest(AbstractModel):
         r"""
         :param _EnvironmentId: 环境 Id
         :type EnvironmentId: str
-        :param _ResourceType: 资源类型，目前支持文件系统：CFS；日志服务：CLS；注册中心：TSE_SRE
+        :param _ResourceType: 资源类型，目前支持文件系统：CFS；注册中心：TSE_SRE
         :type ResourceType: str
         :param _ResourceId: 资源 Id
         :type ResourceId: str
@@ -1791,15 +1791,15 @@ class DeleteApplicationAutoscalerRequest(AbstractModel):
         :type ApplicationId: str
         :param _EnvironmentId: 环境ID
         :type EnvironmentId: str
-        :param _SourceChannel: 来源渠道
-        :type SourceChannel: int
         :param _AutoscalerId: 弹性伸缩策略ID
         :type AutoscalerId: str
+        :param _SourceChannel: 来源渠道
+        :type SourceChannel: int
         """
         self._ApplicationId = None
         self._EnvironmentId = None
-        self._SourceChannel = None
         self._AutoscalerId = None
+        self._SourceChannel = None
 
     @property
     def ApplicationId(self):
@@ -1818,14 +1818,6 @@ class DeleteApplicationAutoscalerRequest(AbstractModel):
         self._EnvironmentId = EnvironmentId
 
     @property
-    def SourceChannel(self):
-        return self._SourceChannel
-
-    @SourceChannel.setter
-    def SourceChannel(self, SourceChannel):
-        self._SourceChannel = SourceChannel
-
-    @property
     def AutoscalerId(self):
         return self._AutoscalerId
 
@@ -1833,12 +1825,20 @@ class DeleteApplicationAutoscalerRequest(AbstractModel):
     def AutoscalerId(self, AutoscalerId):
         self._AutoscalerId = AutoscalerId
 
+    @property
+    def SourceChannel(self):
+        return self._SourceChannel
+
+    @SourceChannel.setter
+    def SourceChannel(self, SourceChannel):
+        self._SourceChannel = SourceChannel
+
 
     def _deserialize(self, params):
         self._ApplicationId = params.get("ApplicationId")
         self._EnvironmentId = params.get("EnvironmentId")
-        self._SourceChannel = params.get("SourceChannel")
         self._AutoscalerId = params.get("AutoscalerId")
+        self._SourceChannel = params.get("SourceChannel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2002,17 +2002,17 @@ class DeleteApplicationServiceRequest(AbstractModel):
         r"""
         :param _ApplicationId: 服务id
         :type ApplicationId: str
-        :param _SourceChannel: 来源渠道
-        :type SourceChannel: int
         :param _EnvironmentId: 环境ID
         :type EnvironmentId: str
         :param _ServiceName: 访问方式服务名
         :type ServiceName: str
+        :param _SourceChannel: 来源渠道
+        :type SourceChannel: int
         """
         self._ApplicationId = None
-        self._SourceChannel = None
         self._EnvironmentId = None
         self._ServiceName = None
+        self._SourceChannel = None
 
     @property
     def ApplicationId(self):
@@ -2021,14 +2021,6 @@ class DeleteApplicationServiceRequest(AbstractModel):
     @ApplicationId.setter
     def ApplicationId(self, ApplicationId):
         self._ApplicationId = ApplicationId
-
-    @property
-    def SourceChannel(self):
-        return self._SourceChannel
-
-    @SourceChannel.setter
-    def SourceChannel(self, SourceChannel):
-        self._SourceChannel = SourceChannel
 
     @property
     def EnvironmentId(self):
@@ -2046,12 +2038,20 @@ class DeleteApplicationServiceRequest(AbstractModel):
     def ServiceName(self, ServiceName):
         self._ServiceName = ServiceName
 
+    @property
+    def SourceChannel(self):
+        return self._SourceChannel
+
+    @SourceChannel.setter
+    def SourceChannel(self, SourceChannel):
+        self._SourceChannel = SourceChannel
+
 
     def _deserialize(self, params):
         self._ApplicationId = params.get("ApplicationId")
-        self._SourceChannel = params.get("SourceChannel")
         self._EnvironmentId = params.get("EnvironmentId")
         self._ServiceName = params.get("ServiceName")
+        self._SourceChannel = params.get("SourceChannel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2217,12 +2217,15 @@ class DeployApplicationRequest(AbstractModel):
         :type ApplicationId: str
         :param _InitPodNum: 初始化 pod 数
         :type InitPodNum: int
-        :param _CpuSpec: cpu规格
+        :param _CpuSpec: cpu规格 单位：核
         :type CpuSpec: float
-        :param _MemorySpec: 内存规格
+        :param _MemorySpec: 内存规格 单位：G
         :type MemorySpec: float
         :param _EnvironmentId: 环境ID
         :type EnvironmentId: str
+        :param _DeployVersion: 部署类型为 IMAGE 时，该参数表示镜像 tag。
+部署类型为 JAR/WAR 时，该参数表示包版本号。
+        :type DeployVersion: str
         :param _ImgRepo: 镜像仓库
         :type ImgRepo: str
         :param _VersionDesc: 版本描述信息
@@ -2244,9 +2247,6 @@ class DeployApplicationRequest(AbstractModel):
 - WAR：通过 war 包部署
 - IMAGE：通过镜像部署
         :type DeployMode: str
-        :param _DeployVersion: 部署类型为 IMAGE 时，该参数表示镜像 tag。
-部署类型为 JAR/WAR 时，该参数表示包版本号。
-        :type DeployVersion: str
         :param _PkgName: 传入内容为 /jar包名字 的形式。也就是在 jar包名字前增加一个/。
 
 如上传的 jar 包名字为 demo-1.0.0.jar，那么这里传入内容为：/demo-1.0.0.jar
@@ -2333,6 +2333,7 @@ class DeployApplicationRequest(AbstractModel):
         self._CpuSpec = None
         self._MemorySpec = None
         self._EnvironmentId = None
+        self._DeployVersion = None
         self._ImgRepo = None
         self._VersionDesc = None
         self._JvmOpts = None
@@ -2342,7 +2343,6 @@ class DeployApplicationRequest(AbstractModel):
         self._StorageConfs = None
         self._StorageMountConfs = None
         self._DeployMode = None
-        self._DeployVersion = None
         self._PkgName = None
         self._JdkVersion = None
         self._SecurityGroupIds = None
@@ -2417,6 +2417,14 @@ class DeployApplicationRequest(AbstractModel):
         self._EnvironmentId = EnvironmentId
 
     @property
+    def DeployVersion(self):
+        return self._DeployVersion
+
+    @DeployVersion.setter
+    def DeployVersion(self, DeployVersion):
+        self._DeployVersion = DeployVersion
+
+    @property
     def ImgRepo(self):
         return self._ImgRepo
 
@@ -2487,14 +2495,6 @@ class DeployApplicationRequest(AbstractModel):
     @DeployMode.setter
     def DeployMode(self, DeployMode):
         self._DeployMode = DeployMode
-
-    @property
-    def DeployVersion(self):
-        return self._DeployVersion
-
-    @DeployVersion.setter
-    def DeployVersion(self, DeployVersion):
-        self._DeployVersion = DeployVersion
 
     @property
     def PkgName(self):
@@ -2759,6 +2759,7 @@ class DeployApplicationRequest(AbstractModel):
         self._CpuSpec = params.get("CpuSpec")
         self._MemorySpec = params.get("MemorySpec")
         self._EnvironmentId = params.get("EnvironmentId")
+        self._DeployVersion = params.get("DeployVersion")
         self._ImgRepo = params.get("ImgRepo")
         self._VersionDesc = params.get("VersionDesc")
         self._JvmOpts = params.get("JvmOpts")
@@ -2785,7 +2786,6 @@ class DeployApplicationRequest(AbstractModel):
                 obj._deserialize(item)
                 self._StorageMountConfs.append(obj)
         self._DeployMode = params.get("DeployMode")
-        self._DeployVersion = params.get("DeployVersion")
         self._PkgName = params.get("PkgName")
         self._JdkVersion = params.get("JdkVersion")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
@@ -3592,7 +3592,7 @@ class DescribeApplicationServiceListRequest(AbstractModel):
         :type EnvironmentId: str
         :param _ApplicationId: 服务ID
         :type ApplicationId: str
-        :param _SourceChannel: xx
+        :param _SourceChannel: 来源渠道
         :type SourceChannel: int
         """
         self._EnvironmentId = None
@@ -3686,9 +3686,9 @@ class DescribeApplicationsRequest(AbstractModel):
         r"""
         :param _EnvironmentId: 命名空间ID
         :type EnvironmentId: str
-        :param _Limit: 分页Limit
+        :param _Limit: 分页Limit，默认值：20
         :type Limit: int
-        :param _Offset: 分页offset
+        :param _Offset: 分页offset,默认值：0
         :type Offset: int
         :param _SourceChannel: 来源渠道
         :type SourceChannel: int
@@ -3847,21 +3847,13 @@ class DescribeApplicationsStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SourceChannel: 来源渠道
-        :type SourceChannel: int
         :param _EnvironmentId: 环境ID
         :type EnvironmentId: str
+        :param _SourceChannel: 来源渠道
+        :type SourceChannel: int
         """
-        self._SourceChannel = None
         self._EnvironmentId = None
-
-    @property
-    def SourceChannel(self):
-        return self._SourceChannel
-
-    @SourceChannel.setter
-    def SourceChannel(self, SourceChannel):
-        self._SourceChannel = SourceChannel
+        self._SourceChannel = None
 
     @property
     def EnvironmentId(self):
@@ -3871,10 +3863,18 @@ class DescribeApplicationsStatusRequest(AbstractModel):
     def EnvironmentId(self, EnvironmentId):
         self._EnvironmentId = EnvironmentId
 
+    @property
+    def SourceChannel(self):
+        return self._SourceChannel
+
+    @SourceChannel.setter
+    def SourceChannel(self, SourceChannel):
+        self._SourceChannel = SourceChannel
+
 
     def _deserialize(self, params):
-        self._SourceChannel = params.get("SourceChannel")
         self._EnvironmentId = params.get("EnvironmentId")
+        self._SourceChannel = params.get("SourceChannel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4469,9 +4469,9 @@ class DescribeEnvironmentsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 分页limit
+        :param _Limit: 分页limit，默认：20
         :type Limit: int
-        :param _Offset: 分页下标
+        :param _Offset: 分页下标，默认：0
         :type Offset: int
         :param _SourceChannel: 来源source
         :type SourceChannel: int
@@ -5060,15 +5060,15 @@ class DescribeRelatedIngressesRequest(AbstractModel):
         :type EnvironmentId: str
         :param _ClusterNamespace: 环境 namespace
         :type ClusterNamespace: str
-        :param _SourceChannel: 来源渠道
-        :type SourceChannel: int
         :param _ApplicationId: 应用 ID
         :type ApplicationId: str
+        :param _SourceChannel: 来源渠道
+        :type SourceChannel: int
         """
         self._EnvironmentId = None
         self._ClusterNamespace = None
-        self._SourceChannel = None
         self._ApplicationId = None
+        self._SourceChannel = None
 
     @property
     def EnvironmentId(self):
@@ -5087,14 +5087,6 @@ class DescribeRelatedIngressesRequest(AbstractModel):
         self._ClusterNamespace = ClusterNamespace
 
     @property
-    def SourceChannel(self):
-        return self._SourceChannel
-
-    @SourceChannel.setter
-    def SourceChannel(self, SourceChannel):
-        self._SourceChannel = SourceChannel
-
-    @property
     def ApplicationId(self):
         return self._ApplicationId
 
@@ -5102,12 +5094,20 @@ class DescribeRelatedIngressesRequest(AbstractModel):
     def ApplicationId(self, ApplicationId):
         self._ApplicationId = ApplicationId
 
+    @property
+    def SourceChannel(self):
+        return self._SourceChannel
+
+    @SourceChannel.setter
+    def SourceChannel(self, SourceChannel):
+        self._SourceChannel = SourceChannel
+
 
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
         self._ClusterNamespace = params.get("ClusterNamespace")
-        self._SourceChannel = params.get("SourceChannel")
         self._ApplicationId = params.get("ApplicationId")
+        self._SourceChannel = params.get("SourceChannel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5350,7 +5350,7 @@ class DestroyEnvironmentRequest(AbstractModel):
         r"""
         :param _EnvironmentId: 命名空间ID
         :type EnvironmentId: str
-        :param _SourceChannel: Namespace
+        :param _SourceChannel: 来源渠道 示例值：0
         :type SourceChannel: int
         """
         self._EnvironmentId = None
@@ -5528,15 +5528,15 @@ class DisableApplicationAutoscalerRequest(AbstractModel):
         :type ApplicationId: str
         :param _EnvironmentId: 环境ID
         :type EnvironmentId: str
-        :param _SourceChannel: 来源渠道
-        :type SourceChannel: int
         :param _AutoscalerId: 弹性伸缩策略ID
         :type AutoscalerId: str
+        :param _SourceChannel: 来源渠道
+        :type SourceChannel: int
         """
         self._ApplicationId = None
         self._EnvironmentId = None
-        self._SourceChannel = None
         self._AutoscalerId = None
+        self._SourceChannel = None
 
     @property
     def ApplicationId(self):
@@ -5555,14 +5555,6 @@ class DisableApplicationAutoscalerRequest(AbstractModel):
         self._EnvironmentId = EnvironmentId
 
     @property
-    def SourceChannel(self):
-        return self._SourceChannel
-
-    @SourceChannel.setter
-    def SourceChannel(self, SourceChannel):
-        self._SourceChannel = SourceChannel
-
-    @property
     def AutoscalerId(self):
         return self._AutoscalerId
 
@@ -5570,12 +5562,20 @@ class DisableApplicationAutoscalerRequest(AbstractModel):
     def AutoscalerId(self, AutoscalerId):
         self._AutoscalerId = AutoscalerId
 
+    @property
+    def SourceChannel(self):
+        return self._SourceChannel
+
+    @SourceChannel.setter
+    def SourceChannel(self, SourceChannel):
+        self._SourceChannel = SourceChannel
+
 
     def _deserialize(self, params):
         self._ApplicationId = params.get("ApplicationId")
         self._EnvironmentId = params.get("EnvironmentId")
-        self._SourceChannel = params.get("SourceChannel")
         self._AutoscalerId = params.get("AutoscalerId")
+        self._SourceChannel = params.get("SourceChannel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5887,15 +5887,15 @@ class EnableApplicationAutoscalerRequest(AbstractModel):
         :type ApplicationId: str
         :param _EnvironmentId: 环境ID
         :type EnvironmentId: str
-        :param _SourceChannel: 来源渠道
-        :type SourceChannel: int
         :param _AutoscalerId: 弹性伸缩策略ID
         :type AutoscalerId: str
+        :param _SourceChannel: 来源渠道
+        :type SourceChannel: int
         """
         self._ApplicationId = None
         self._EnvironmentId = None
-        self._SourceChannel = None
         self._AutoscalerId = None
+        self._SourceChannel = None
 
     @property
     def ApplicationId(self):
@@ -5914,14 +5914,6 @@ class EnableApplicationAutoscalerRequest(AbstractModel):
         self._EnvironmentId = EnvironmentId
 
     @property
-    def SourceChannel(self):
-        return self._SourceChannel
-
-    @SourceChannel.setter
-    def SourceChannel(self, SourceChannel):
-        self._SourceChannel = SourceChannel
-
-    @property
     def AutoscalerId(self):
         return self._AutoscalerId
 
@@ -5929,12 +5921,20 @@ class EnableApplicationAutoscalerRequest(AbstractModel):
     def AutoscalerId(self, AutoscalerId):
         self._AutoscalerId = AutoscalerId
 
+    @property
+    def SourceChannel(self):
+        return self._SourceChannel
+
+    @SourceChannel.setter
+    def SourceChannel(self, SourceChannel):
+        self._SourceChannel = SourceChannel
+
 
     def _deserialize(self, params):
         self._ApplicationId = params.get("ApplicationId")
         self._EnvironmentId = params.get("EnvironmentId")
-        self._SourceChannel = params.get("SourceChannel")
         self._AutoscalerId = params.get("AutoscalerId")
+        self._SourceChannel = params.get("SourceChannel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6451,8 +6451,6 @@ class IngressInfo(AbstractModel):
         :param _EnvironmentId: 环境ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnvironmentId: str
-        :param _ClusterNamespace: 环境namespace
-        :type ClusterNamespace: str
         :param _AddressIPVersion: ip version
         :type AddressIPVersion: str
         :param _IngressName: ingress name
@@ -6462,6 +6460,8 @@ class IngressInfo(AbstractModel):
         :param _ClbId: clb ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClbId: str
+        :param _ClusterNamespace: 环境namespace
+        :type ClusterNamespace: str
         :param _Tls: tls 配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tls: list of IngressTls
@@ -6486,11 +6486,11 @@ class IngressInfo(AbstractModel):
         :type Domain: str
         """
         self._EnvironmentId = None
-        self._ClusterNamespace = None
         self._AddressIPVersion = None
         self._IngressName = None
         self._Rules = None
         self._ClbId = None
+        self._ClusterNamespace = None
         self._Tls = None
         self._ClusterId = None
         self._Vip = None
@@ -6506,14 +6506,6 @@ class IngressInfo(AbstractModel):
     @EnvironmentId.setter
     def EnvironmentId(self, EnvironmentId):
         self._EnvironmentId = EnvironmentId
-
-    @property
-    def ClusterNamespace(self):
-        return self._ClusterNamespace
-
-    @ClusterNamespace.setter
-    def ClusterNamespace(self, ClusterNamespace):
-        self._ClusterNamespace = ClusterNamespace
 
     @property
     def AddressIPVersion(self):
@@ -6546,6 +6538,14 @@ class IngressInfo(AbstractModel):
     @ClbId.setter
     def ClbId(self, ClbId):
         self._ClbId = ClbId
+
+    @property
+    def ClusterNamespace(self):
+        return self._ClusterNamespace
+
+    @ClusterNamespace.setter
+    def ClusterNamespace(self, ClusterNamespace):
+        self._ClusterNamespace = ClusterNamespace
 
     @property
     def Tls(self):
@@ -6606,7 +6606,6 @@ class IngressInfo(AbstractModel):
 
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
-        self._ClusterNamespace = params.get("ClusterNamespace")
         self._AddressIPVersion = params.get("AddressIPVersion")
         self._IngressName = params.get("IngressName")
         if params.get("Rules") is not None:
@@ -6616,6 +6615,7 @@ class IngressInfo(AbstractModel):
                 obj._deserialize(item)
                 self._Rules.append(obj)
         self._ClbId = params.get("ClbId")
+        self._ClusterNamespace = params.get("ClusterNamespace")
         if params.get("Tls") is not None:
             self._Tls = []
             for item in params.get("Tls"):
@@ -7382,18 +7382,18 @@ class ModifyApplicationAutoscalerRequest(AbstractModel):
         :type ApplicationId: str
         :param _EnvironmentId: 环境ID
         :type EnvironmentId: str
-        :param _SourceChannel: 来源渠道
-        :type SourceChannel: int
         :param _AutoscalerId: 弹性伸缩策略ID
         :type AutoscalerId: str
         :param _Autoscaler: 弹性伸缩策略
         :type Autoscaler: :class:`tencentcloud.tem.v20210701.models.Autoscaler`
+        :param _SourceChannel: 来源渠道
+        :type SourceChannel: int
         """
         self._ApplicationId = None
         self._EnvironmentId = None
-        self._SourceChannel = None
         self._AutoscalerId = None
         self._Autoscaler = None
+        self._SourceChannel = None
 
     @property
     def ApplicationId(self):
@@ -7412,14 +7412,6 @@ class ModifyApplicationAutoscalerRequest(AbstractModel):
         self._EnvironmentId = EnvironmentId
 
     @property
-    def SourceChannel(self):
-        return self._SourceChannel
-
-    @SourceChannel.setter
-    def SourceChannel(self, SourceChannel):
-        self._SourceChannel = SourceChannel
-
-    @property
     def AutoscalerId(self):
         return self._AutoscalerId
 
@@ -7435,15 +7427,23 @@ class ModifyApplicationAutoscalerRequest(AbstractModel):
     def Autoscaler(self, Autoscaler):
         self._Autoscaler = Autoscaler
 
+    @property
+    def SourceChannel(self):
+        return self._SourceChannel
+
+    @SourceChannel.setter
+    def SourceChannel(self, SourceChannel):
+        self._SourceChannel = SourceChannel
+
 
     def _deserialize(self, params):
         self._ApplicationId = params.get("ApplicationId")
         self._EnvironmentId = params.get("EnvironmentId")
-        self._SourceChannel = params.get("SourceChannel")
         self._AutoscalerId = params.get("AutoscalerId")
         if params.get("Autoscaler") is not None:
             self._Autoscaler = Autoscaler()
             self._Autoscaler._deserialize(params.get("Autoscaler"))
+        self._SourceChannel = params.get("SourceChannel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7840,15 +7840,15 @@ class ModifyConfigDataRequest(AbstractModel):
         :type EnvironmentId: str
         :param _Name: 配置名
         :type Name: str
-        :param _SourceChannel: 来源渠道
-        :type SourceChannel: int
         :param _Data: 配置信息
         :type Data: list of Pair
+        :param _SourceChannel: 来源渠道
+        :type SourceChannel: int
         """
         self._EnvironmentId = None
         self._Name = None
-        self._SourceChannel = None
         self._Data = None
+        self._SourceChannel = None
 
     @property
     def EnvironmentId(self):
@@ -7867,14 +7867,6 @@ class ModifyConfigDataRequest(AbstractModel):
         self._Name = Name
 
     @property
-    def SourceChannel(self):
-        return self._SourceChannel
-
-    @SourceChannel.setter
-    def SourceChannel(self, SourceChannel):
-        self._SourceChannel = SourceChannel
-
-    @property
     def Data(self):
         return self._Data
 
@@ -7882,17 +7874,25 @@ class ModifyConfigDataRequest(AbstractModel):
     def Data(self, Data):
         self._Data = Data
 
+    @property
+    def SourceChannel(self):
+        return self._SourceChannel
+
+    @SourceChannel.setter
+    def SourceChannel(self, SourceChannel):
+        self._SourceChannel = SourceChannel
+
 
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
         self._Name = params.get("Name")
-        self._SourceChannel = params.get("SourceChannel")
         if params.get("Data") is not None:
             self._Data = []
             for item in params.get("Data"):
                 obj = Pair()
                 obj._deserialize(item)
                 self._Data.append(obj)
+        self._SourceChannel = params.get("SourceChannel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7949,7 +7949,7 @@ class ModifyEnvironmentRequest(AbstractModel):
         r"""
         :param _EnvironmentId: 环境id
         :type EnvironmentId: str
-        :param _EnvironmentName: 环境名称
+        :param _EnvironmentName: 环境名称。环境名称不可修改
         :type EnvironmentName: str
         :param _Description: 环境描述
         :type Description: str
@@ -8284,12 +8284,16 @@ class MountedSettingConf(AbstractModel):
     def __init__(self):
         r"""
         :param _ConfigDataName: 配置名称
+注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigDataName: str
         :param _MountedPath: 挂载路径
+注意：此字段可能返回 null，表示取不到有效值。
         :type MountedPath: str
         :param _Data: 配置内容
+注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of Pair
         :param _SecretDataName: 加密配置名称
+注意：此字段可能返回 null，表示取不到有效值。
         :type SecretDataName: str
         """
         self._ConfigDataName = None
@@ -9146,14 +9150,14 @@ class RestartApplicationRequest(AbstractModel):
         r"""
         :param _ApplicationId: 服务id
         :type ApplicationId: str
-        :param _SourceChannel: 来源渠道
-        :type SourceChannel: int
         :param _EnvironmentId: 环境ID/命名空间ID
         :type EnvironmentId: str
+        :param _SourceChannel: 来源渠道
+        :type SourceChannel: int
         """
         self._ApplicationId = None
-        self._SourceChannel = None
         self._EnvironmentId = None
+        self._SourceChannel = None
 
     @property
     def ApplicationId(self):
@@ -9164,14 +9168,6 @@ class RestartApplicationRequest(AbstractModel):
         self._ApplicationId = ApplicationId
 
     @property
-    def SourceChannel(self):
-        return self._SourceChannel
-
-    @SourceChannel.setter
-    def SourceChannel(self, SourceChannel):
-        self._SourceChannel = SourceChannel
-
-    @property
     def EnvironmentId(self):
         return self._EnvironmentId
 
@@ -9179,11 +9175,19 @@ class RestartApplicationRequest(AbstractModel):
     def EnvironmentId(self, EnvironmentId):
         self._EnvironmentId = EnvironmentId
 
+    @property
+    def SourceChannel(self):
+        return self._SourceChannel
+
+    @SourceChannel.setter
+    def SourceChannel(self, SourceChannel):
+        self._SourceChannel = SourceChannel
+
 
     def _deserialize(self, params):
         self._ApplicationId = params.get("ApplicationId")
-        self._SourceChannel = params.get("SourceChannel")
         self._EnvironmentId = params.get("EnvironmentId")
+        self._SourceChannel = params.get("SourceChannel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9905,7 +9909,7 @@ class ServicePortMapping(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 服务类型
+        :param _Type: 服务类型：如：EXTERNAL，VPC，CLUSTER
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _ServiceName: 服务名称
@@ -10481,14 +10485,14 @@ class StopApplicationRequest(AbstractModel):
         r"""
         :param _ApplicationId: 服务id
         :type ApplicationId: str
-        :param _SourceChannel: 来源渠道
-        :type SourceChannel: int
         :param _EnvironmentId: 环境ID/命名空间ID
         :type EnvironmentId: str
+        :param _SourceChannel: 来源渠道
+        :type SourceChannel: int
         """
         self._ApplicationId = None
-        self._SourceChannel = None
         self._EnvironmentId = None
+        self._SourceChannel = None
 
     @property
     def ApplicationId(self):
@@ -10499,14 +10503,6 @@ class StopApplicationRequest(AbstractModel):
         self._ApplicationId = ApplicationId
 
     @property
-    def SourceChannel(self):
-        return self._SourceChannel
-
-    @SourceChannel.setter
-    def SourceChannel(self, SourceChannel):
-        self._SourceChannel = SourceChannel
-
-    @property
     def EnvironmentId(self):
         return self._EnvironmentId
 
@@ -10514,11 +10510,19 @@ class StopApplicationRequest(AbstractModel):
     def EnvironmentId(self, EnvironmentId):
         self._EnvironmentId = EnvironmentId
 
+    @property
+    def SourceChannel(self):
+        return self._SourceChannel
+
+    @SourceChannel.setter
+    def SourceChannel(self, SourceChannel):
+        self._SourceChannel = SourceChannel
+
 
     def _deserialize(self, params):
         self._ApplicationId = params.get("ApplicationId")
-        self._SourceChannel = params.get("SourceChannel")
         self._EnvironmentId = params.get("EnvironmentId")
+        self._SourceChannel = params.get("SourceChannel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
