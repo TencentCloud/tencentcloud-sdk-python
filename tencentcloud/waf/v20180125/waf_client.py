@@ -509,31 +509,6 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DeleteDownloadRecord(self, request):
-        """废弃接口，无有效调用
-
-        删除访问日志下载记录
-
-        :param request: Request instance for DeleteDownloadRecord.
-        :type request: :class:`tencentcloud.waf.v20180125.models.DeleteDownloadRecordRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.DeleteDownloadRecordResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteDownloadRecord", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteDownloadRecordResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DeleteHost(self, request):
         """删除负载均衡型域名，支持批量操作。
 

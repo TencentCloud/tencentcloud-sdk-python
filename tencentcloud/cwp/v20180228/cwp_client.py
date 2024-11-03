@@ -4065,7 +4065,9 @@ class CwpClient(AbstractClient):
 
 
     def DescribeComponentStatistics(self, request):
-        """本接口 (DescribeComponentStatistics) 用于获取组件统计列表数据。
+        """接口已无效
+
+        本接口 (DescribeComponentStatistics) 用于获取组件统计列表数据。
 
         :param request: Request instance for DescribeComponentStatistics.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeComponentStatisticsRequest`

@@ -15373,6 +15373,9 @@ class NormPart(AbstractModel):
         :param _PartDetail: 部位详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type PartDetail: :class:`tencentcloud.mrs.v20200910.models.PartDesc`
+        :param _PartDetailList: 部位详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PartDetailList: list of PartDesc
         """
         self._Part = None
         self._PartDirection = None
@@ -15380,6 +15383,7 @@ class NormPart(AbstractModel):
         self._TissueDirection = None
         self._Upper = None
         self._PartDetail = None
+        self._PartDetailList = None
 
     @property
     def Part(self):
@@ -15423,11 +15427,23 @@ class NormPart(AbstractModel):
 
     @property
     def PartDetail(self):
+        warnings.warn("parameter `PartDetail` is deprecated", DeprecationWarning) 
+
         return self._PartDetail
 
     @PartDetail.setter
     def PartDetail(self, PartDetail):
+        warnings.warn("parameter `PartDetail` is deprecated", DeprecationWarning) 
+
         self._PartDetail = PartDetail
+
+    @property
+    def PartDetailList(self):
+        return self._PartDetailList
+
+    @PartDetailList.setter
+    def PartDetailList(self, PartDetailList):
+        self._PartDetailList = PartDetailList
 
 
     def _deserialize(self, params):
@@ -15439,6 +15455,12 @@ class NormPart(AbstractModel):
         if params.get("PartDetail") is not None:
             self._PartDetail = PartDesc()
             self._PartDetail._deserialize(params.get("PartDetail"))
+        if params.get("PartDetailList") is not None:
+            self._PartDetailList = []
+            for item in params.get("PartDetailList"):
+                obj = PartDesc()
+                obj._deserialize(item)
+                self._PartDetailList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

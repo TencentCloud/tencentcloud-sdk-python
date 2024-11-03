@@ -83,13 +83,10 @@ class AccessFullTextInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _CaseSensitive: 是否大小写敏感
-注意：此字段可能返回 null，表示取不到有效值。
         :type CaseSensitive: bool
         :param _Tokenizer: 全文索引的分词符，字符串中每个字符代表一个分词符
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tokenizer: str
         :param _ContainZH: 是否包含中文
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ContainZH: bool
         """
@@ -205,10 +202,8 @@ class AccessKeyValueInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Key: 需要配置键值或者元字段索引的字段
-注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param _Value: 字段的索引描述信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: :class:`tencentcloud.waf.v20180125.models.AccessValueInfo`
         """
         self._Key = None
@@ -254,7 +249,6 @@ class AccessLogInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Time: 日志时间，单位ms
-注意：此字段可能返回 null，表示取不到有效值。
         :type Time: int
         :param _TopicId: 日志主题ID
 注意：此字段可能返回 null，表示取不到有效值。
@@ -380,10 +374,8 @@ class AccessLogItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Key: 日记Key
-注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param _Value: 日志Value
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Key = None
@@ -427,7 +419,6 @@ class AccessLogItems(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 分析结果返回的KV数据对
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of AccessLogItem
         """
         self._Data = None
@@ -535,10 +526,8 @@ class AccessRuleKeyValueInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _CaseSensitive: 是否大小写敏感
-注意：此字段可能返回 null，表示取不到有效值。
         :type CaseSensitive: bool
         :param _KeyValues: 需要建立索引的键值对信息；最大只能配置100个键值对
-注意：此字段可能返回 null，表示取不到有效值。
         :type KeyValues: list of AccessKeyValueInfo
         """
         self._CaseSensitive = None
@@ -587,10 +576,8 @@ class AccessRuleTagInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _CaseSensitive: 是否大小写敏感
-注意：此字段可能返回 null，表示取不到有效值。
         :type CaseSensitive: bool
         :param _KeyValues: 标签索引配置中的字段信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type KeyValues: list of AccessKeyValueInfo
         """
         self._CaseSensitive = None
@@ -639,16 +626,12 @@ class AccessValueInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Type: 字段类型，目前支持的类型有：long、text、double
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Tokenizer: 字段的分词符，只有当字段类型为text时才有意义；输入字符串中的每个字符代表一个分词符
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tokenizer: str
         :param _SqlFlag: 字段是否开启分析功能
-注意：此字段可能返回 null，表示取不到有效值。
         :type SqlFlag: bool
         :param _ContainZH: 是否包含中文
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ContainZH: bool
         """
@@ -947,7 +930,7 @@ class AddAreaBanAreasRequest(AbstractModel):
         :type Areas: list of str
         :param _Edition: waf版本信息，spart-waf或者clb-waf，其他无效，请一定填写
         :type Edition: str
-        :param _JobType: 定时任务类型
+        :param _JobType: 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
         :type JobType: str
         :param _JobDateTime: 定时任务配置
         :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
@@ -1228,7 +1211,7 @@ class AddCustomRuleRequest(AbstractModel):
         :type Strategies: list of Strategy
         :param _Domain: 需要添加策略的域名
         :type Domain: str
-        :param _ActionType: 动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向
+        :param _ActionType: 动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向，5代表JS校验
         :type ActionType: str
         :param _Redirect: 如果动作是重定向，则表示重定向的地址；其他情况可以为空
         :type Redirect: str
@@ -1236,7 +1219,7 @@ class AddCustomRuleRequest(AbstractModel):
         :type ExpireTime: str
         :param _Edition: WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
         :type Edition: str
-        :param _Bypass: 放行的详情
+        :param _Bypass: 放行时是否继续执行其它检查逻辑，继续执行地域封禁防护：geoip、继续执行CC策略防护：cc、继续执行WEB应用防护：owasp、继续执行AI引擎防护：ai、继续执行信息防泄漏防护：antileakage。如果多个勾选那么以,串接。默认是"geoip,cc,owasp,ai,antileakage"
         :type Bypass: str
         :param _EventId: 添加规则的来源，默认为空
         :type EventId: str
@@ -1443,7 +1426,6 @@ class AddCustomRuleResponse(AbstractModel):
         :param _Success: 操作的状态码，如果所有的资源操作成功则返回的是成功的状态码，如果有资源操作失败则需要解析Message的内容来查看哪个资源失败
         :type Success: :class:`tencentcloud.waf.v20180125.models.ResponseCode`
         :param _RuleId: 添加成功的规则ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1504,7 +1486,7 @@ class AddCustomWhiteRuleRequest(AbstractModel):
         :type Domain: str
         :param _Bypass: 放行的详情
         :type Bypass: str
-        :param _JobType: 定时任务类型
+        :param _JobType: 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
         :type JobType: str
         :param _JobDateTime: 定时任务配置
         :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
@@ -1619,7 +1601,6 @@ class AddCustomWhiteRuleResponse(AbstractModel):
         :param _Success: 操作的状态码，如果所有的资源操作成功则返回的是成功的状态码，如果有资源操作失败则需要解析Message的内容来查看哪个资源失败
         :type Success: :class:`tencentcloud.waf.v20180125.models.ResponseCode`
         :param _RuleId: 添加成功的规则ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2424,41 +2405,30 @@ class ApiAsset(AbstractModel):
         :param _ApiName: api名称
         :type ApiName: str
         :param _Scene: 场景
-注意：此字段可能返回 null，表示取不到有效值。
         :type Scene: str
         :param _Label: 数据标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Label: list of str
         :param _Active: 过去7天是否活跃
-注意：此字段可能返回 null，表示取不到有效值。
         :type Active: bool
         :param _Timestamp: 最近更新时间
         :type Timestamp: int
         :param _InsertTime: api发现时间
         :type InsertTime: int
         :param _Mode: 资产状态，1:新发现，2，确认中，3，已确认，4，已下线，5，已忽略
-注意：此字段可能返回 null，表示取不到有效值。
         :type Mode: str
         :param _Level: 风险等级，100,200,300对应低中高
-注意：此字段可能返回 null，表示取不到有效值。
         :type Level: str
         :param _Count: 近30天调用量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Count: int
         :param _Remark: 备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _IsAuth: 是否鉴权，1标识是，0表示否
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsAuth: int
         :param _ApiRequestRuleId: 如果添加了api入参检测规则，则此id返回值不为0
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApiRequestRuleId: int
         :param _ApiLimitRuleId: 如果添加了api限流规则，则此id返回值不为0
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApiLimitRuleId: int
         :param _HostList: 对象接入和泛域名接入时，展示host列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostList: list of str
         """
         self._Domain = None
@@ -2699,13 +2669,10 @@ class ApiDetailSampleHistory(AbstractModel):
     def __init__(self):
         r"""
         :param _SampleNme: 样例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type SampleNme: str
         :param _RepLog: 请求样例
-注意：此字段可能返回 null，表示取不到有效值。
         :type RepLog: str
         :param _RspLog: 响应样例
-注意：此字段可能返回 null，表示取不到有效值。
         :type RspLog: str
         """
         self._SampleNme = None
@@ -2759,31 +2726,22 @@ class ApiParameterType(AbstractModel):
     def __init__(self):
         r"""
         :param _ParameterName: 参数名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParameterName: str
         :param _Type: 参数类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Location: 参数位置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Location: str
         :param _Label: 数据标签(敏感字段)
-注意：此字段可能返回 null，表示取不到有效值。
         :type Label: list of str
         :param _Timestamp: 时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type Timestamp: int
         :param _Remark: 备注信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _Source: 来源是请求或者响应
-注意：此字段可能返回 null，表示取不到有效值。
         :type Source: str
         :param _IsPan: 是否需要泛化 ，0表示不需要，1表示需要
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsPan: int
         :param _IsAuth: 是否鉴权，1表示是，0表示否
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsAuth: int
         """
         self._ParameterName = None
@@ -2897,34 +2855,24 @@ class ApiPkg(AbstractModel):
     def __init__(self):
         r"""
         :param _ResourceIds: 资源id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceIds: str
         :param _Status: 状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _Region: 地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: int
         :param _BeginTime: 开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type BeginTime: str
         :param _EndTime: 结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _InquireNum: 申请数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type InquireNum: int
         :param _UsedNum: 使用数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type UsedNum: int
         :param _RenewFlag: 续费标志
-注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: int
         :param _BillingItem: 计费项
-注意：此字段可能返回 null，表示取不到有效值。
         :type BillingItem: str
         :param _IsAPISecurityTrial: api安全7天试用标识。1试用。0没试用
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsAPISecurityTrial: int
         """
         self._ResourceIds = None
@@ -3317,7 +3265,6 @@ class BatchIpAccessControlItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: mongo表自增Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
         :param _ActionType: 黑名单42或白名单40
         :type ActionType: int
@@ -3334,25 +3281,18 @@ class BatchIpAccessControlItem(AbstractModel):
         :param _Hosts: 域名列表
         :type Hosts: list of str
         :param _RuleId: 55101145
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: int
         :param _IpList: IP列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type IpList: list of str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
         :param _JobType: 定时任务类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type JobType: str
         :param _CronType: 周期任务类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type CronType: str
         :param _JobDateTime: 定时任务配置详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
         :param _ValidStatus: 生效状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type ValidStatus: int
         """
         self._Id = None
@@ -3528,40 +3468,28 @@ class BotPkg(AbstractModel):
     def __init__(self):
         r"""
         :param _ResourceIds: 资源id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceIds: str
         :param _Status: 状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _Region: 地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: int
         :param _BeginTime: 开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type BeginTime: str
         :param _EndTime: 结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _InquireNum: 申请数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type InquireNum: int
         :param _UsedNum: 使用数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type UsedNum: int
         :param _Type: 子产品code
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _RenewFlag: 续费标志	
-注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: int
         :param _BotCPWaf: 购买页bot6折
-注意：此字段可能返回 null，表示取不到有效值。
         :type BotCPWaf: int
         :param _BotNPWaf: 控制台买bot5折
-注意：此字段可能返回 null，表示取不到有效值。
         :type BotNPWaf: int
         :param _IsBotTrial: 7天bot试用标识 1 试用 0 没有试用
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsBotTrial: int
         """
         self._ResourceIds = None
@@ -3715,7 +3643,6 @@ class BotQPS(AbstractModel):
         :param _MaxBotQPS: 使用qps的最大值
         :type MaxBotQPS: int
         :param _RenewFlag: 续费标志
-注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: int
         """
         self._ResourceIds = None
@@ -3917,7 +3844,7 @@ class CCRuleItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ActionType: 动作
+        :param _ActionType: 动作，20表示观察，21表示人机识别，22表示拦截，23表示精准拦截，24表示JS校验
         :type ActionType: int
         :param _Advance: 高级模式
         :type Advance: int
@@ -3943,19 +3870,14 @@ class CCRuleItem(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type OptionsArr: str
         :param _Length: url长度
-注意：此字段可能返回 null，表示取不到有效值。
         :type Length: int
         :param _RuleId: 规则ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: int
         :param _EventId: 事件id
-注意：此字段可能返回 null，表示取不到有效值。
         :type EventId: str
         :param _SessionApplied: 关联的Session规则
-注意：此字段可能返回 null，表示取不到有效值。
         :type SessionApplied: list of int
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
         """
         self._ActionType = None
@@ -4162,7 +4084,7 @@ class CCRuleItems(AbstractModel):
         :type Url: str
         :param _MatchFunc: 匹配类型
         :type MatchFunc: int
-        :param _ActionType: 动作
+        :param _ActionType: 动作，20表示观察，21表示人机识别，22表示拦截，23表示精准拦截，24表示JS校验
         :type ActionType: int
         :param _Priority: 优先级
         :type Priority: int
@@ -4178,7 +4100,6 @@ class CCRuleItems(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type EventId: str
         :param _SessionApplied: 关联的Session规则
-注意：此字段可能返回 null，表示取不到有效值。
         :type SessionApplied: list of int
         :param _CreateTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4521,10 +4442,8 @@ class CacheUrlItems(AbstractModel):
         :param _Status: 状态
         :type Status: int
         :param _ModifyTime: 修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyTime: str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         """
         self._Id = None
@@ -4630,7 +4549,6 @@ class CdcCluster(AbstractModel):
         :param _Id: cdc的集群id
         :type Id: str
         :param _Name: cdc的集群名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         """
         self._Id = None
@@ -4741,25 +4659,18 @@ class ClbDomainsInfo(AbstractModel):
         :param _FlowMode: 负载均衡型WAF的流量模式，1：清洗模式，0：镜像模式
         :type FlowMode: int
         :param _State: 域名绑定负载均衡器状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type State: int
         :param _AlbType: 负载均衡类型，clb或者apisix
-注意：此字段可能返回 null，表示取不到有效值。
         :type AlbType: str
         :param _IpHeaders: IsCdn=3时，表示自定义header
-注意：此字段可能返回 null，表示取不到有效值。
         :type IpHeaders: list of str
         :param _CdcClusters: cdc-clb-waf类型WAF的CDC集群信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type CdcClusters: str
         :param _CloudType: 云类型:public:公有云；private:私有云;hybrid:混合云
-注意：此字段可能返回 null，表示取不到有效值。
         :type CloudType: str
         :param _Note: 域名备注信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Note: str
         :param _Labels: 域名标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of str
         """
         self._Domain = None
@@ -4968,28 +4879,20 @@ class ClbObject(AbstractModel):
         :param _PostCKafkaStatus: kafka投递开关
         :type PostCKafkaStatus: int
         :param _Type: 对象类型：CLB:负载均衡器，TSE:云原生网关
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Region: 对象地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _Proxy: 代理状态: 0:不开启,1:以XFF的第一个IP地址作为客户端IP,2:以remote_addr作为客户端IP,3:从指定的头部字段获取客户端IP，字段通过IpHeaders字段给出
-注意：此字段可能返回 null，表示取不到有效值。
         :type Proxy: int
         :param _IpHeaders: 指定获取客户端IP的头部字段列表。IsCdn为3时有效
-注意：此字段可能返回 null，表示取不到有效值。
         :type IpHeaders: list of str
         :param _BotStatus: bot防护开关
-注意：此字段可能返回 null，表示取不到有效值。
         :type BotStatus: int
         :param _ApiStatus: api防护开关
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApiStatus: int
         :param _ObjectFlowMode: 对象接入模式，0表示镜像模式，1表示清洗模式，2表示体检模式，默认为清洗模式
-注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectFlowMode: int
         :param _NumericalVpcId: 数值形式的私有网络 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type NumericalVpcId: int
         """
         self._ObjectId = None
@@ -5243,16 +5146,12 @@ class ClbWafRegionItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 地域ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
         :param _Text: 地域中文说明
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         :param _Value: 地域英文全拼
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _Code: 地域编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
         """
         self._Id = None
@@ -5474,12 +5373,10 @@ class CreateDealsGoods(AbstractModel):
 域名包-CLB: 101207(新购),101208(续费),101209(变配)
 业务扩展包-CLB: 101210(新购),101211(续费),101212(变配)
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type GoodsCategoryId: int
         :param _RegionId: 购买waf实例区域ID
 1 表示购买大陆资源;
 9表示购买非中国大陆资源
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionId: int
         """
         self._GoodsNum = None
@@ -5545,10 +5442,8 @@ class CreateDealsGoodsDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _TimeSpan: 时间间隔
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeSpan: int
         :param _TimeUnit: 单位，支持购买d、m、y 即（日、月、年）
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeUnit: str
         :param _SubProductCode: 子产品标签,。新购，续费必传，变配时放在oldConfig newConfig里面
 
@@ -5564,7 +5459,6 @@ Saas 域名扩展包：sp_wsm_waf_domain
  业务扩展包-CLB：sp_wsm_waf_qpsep_clb
 域名扩展包-CLB：sp_wsm_waf_domain_clb
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubProductCode: str
         :param _Pid: 业务产品申请的pid（对应一个定价公式），通过pid计费查询到定价模型
 高级版 ：1000827
@@ -5578,16 +5472,12 @@ Saas 域名扩展包：sp_wsm_waf_domain
 域名包-CLB: 1001156
 业务扩展包-CLB : 1001160
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type Pid: int
         :param _InstanceName: waf实例名
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
         :param _AutoRenewFlag: 1:自动续费，0:不自动续费
-注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRenewFlag: int
         :param _RealRegion: waf购买的实际地域信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type RealRegion: int
         :param _LabelTypes: 计费细项标签数组
 Saas 高级版  sv_wsm_waf_package_premium 
@@ -5608,19 +5498,14 @@ Saas 域名扩展包  sv_wsm_waf_domain
 业务扩展包CLB sv_wsm_waf_qps_ep_clb
 域名扩展包CLB  sv_wsm_waf_domain_clb
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type LabelTypes: list of str
         :param _LabelCounts: 计费细项标签数量，一般和SvLabelType一一对应
-注意：此字段可能返回 null，表示取不到有效值。
         :type LabelCounts: list of int
         :param _CurDeadline: 变配使用，实例到期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CurDeadline: str
         :param _InstanceId: 对存在的实例购买bot 或api 安全
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _ResourceId: 资源id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
         """
         self._TimeSpan = None
@@ -5802,12 +5687,10 @@ class CreateDealsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 计费下单响应结构体
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.waf.v20180125.models.DealData`
         :param _Status: 1:成功，0:失败
         :type Status: int
         :param _ReturnMessage: 返回message
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReturnMessage: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5967,7 +5850,7 @@ class CreateIpAccessControlRequest(AbstractModel):
         :type SourceType: str
         :param _Note: 备注
         :type Note: str
-        :param _JobType: 定时配置类型
+        :param _JobType: 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
         :type JobType: str
         :param _JobDateTime: 定时配置详情
         :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
@@ -6009,10 +5892,14 @@ class CreateIpAccessControlRequest(AbstractModel):
 
     @property
     def ValidTS(self):
+        warnings.warn("parameter `ValidTS` is deprecated", DeprecationWarning) 
+
         return self._ValidTS
 
     @ValidTS.setter
     def ValidTS(self, ValidTS):
+        warnings.warn("parameter `ValidTS` is deprecated", DeprecationWarning) 
+
         self._ValidTS = ValidTS
 
     @property
@@ -6095,7 +5982,6 @@ class CreateIpAccessControlResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _RuleId: 新增的规则对应的ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6133,16 +6019,12 @@ class CronJob(AbstractModel):
     def __init__(self):
         r"""
         :param _Days: 每个月的几号执行
-注意：此字段可能返回 null，表示取不到有效值。
         :type Days: list of int non-negative
         :param _WDays: 每个星期的星期几执行
-注意：此字段可能返回 null，表示取不到有效值。
         :type WDays: list of int non-negative
         :param _StartTime: 开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param _EndTime: 结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         """
         self._Days = None
@@ -6993,64 +6875,6 @@ class DeleteDomainWhiteRulesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class DeleteDownloadRecordRequest(AbstractModel):
-    """DeleteDownloadRecord请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Flow: 记录id
-        :type Flow: str
-        """
-        self._Flow = None
-
-    @property
-    def Flow(self):
-        return self._Flow
-
-    @Flow.setter
-    def Flow(self, Flow):
-        self._Flow = Flow
-
-
-    def _deserialize(self, params):
-        self._Flow = params.get("Flow")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DeleteDownloadRecordResponse(AbstractModel):
-    """DeleteDownloadRecord返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
 class DeleteHostRequest(AbstractModel):
     """DeleteHost请求参数结构体
 
@@ -7229,10 +7053,8 @@ class DeleteIpAccessControlResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _FailedItems: 删除失败的条目
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailedItems: str
         :param _FailedCount: 删除失败的条目数
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailedCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7634,7 +7456,6 @@ class DescribeAccessExportsResponse(AbstractModel):
         :param _TotalCount: 日志导出ID。
         :type TotalCount: int
         :param _Exports: 日志导出列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Exports: list of ExportAccessInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8170,7 +7991,6 @@ class DescribeAntiFakeRulesResponse(AbstractModel):
         :param _Total: 总数
         :type Total: int
         :param _Data: 返回值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of CacheUrlItems
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8749,7 +8569,6 @@ class DescribeAntiLeakageItem(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Uri: str
         :param _ModifyTime: 修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyTime: str
         """
         self._RuleId = None
@@ -8939,40 +8758,28 @@ class DescribeApiDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Log: 请求样例，json字符串格式
-注意：此字段可能返回 null，表示取不到有效值。
         :type Log: str
         :param _ParameterList: 请求参数样例列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParameterList: list of ApiParameterType
         :param _Scene: 当前场景标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Scene: str
         :param _SensitiveFields: 敏感字段
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveFields: list of str
         :param _IsActive: 7天内是否活跃
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsActive: bool
         :param _IpCount: 访问ip数
-注意：此字段可能返回 null，表示取不到有效值。
         :type IpCount: int
         :param _RegionCount: 访问地域数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionCount: int
         :param _EventCount: 关联事件数
-注意：此字段可能返回 null，表示取不到有效值。
         :type EventCount: int
         :param _SensitiveCount: 涉敏数据条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveCount: int
         :param _Level: 风险等级
-注意：此字段可能返回 null，表示取不到有效值。
         :type Level: int
         :param _RspLog: 响应体
-注意：此字段可能返回 null，表示取不到有效值。
         :type RspLog: str
         :param _MaxQPS: 昨日访问峰值QPS
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxQPS: int
         :param _ApiDetailSampleHistory: 历史样例
         :type ApiDetailSampleHistory: list of ApiDetailSampleHistory
@@ -9264,10 +9071,8 @@ class DescribeApiListVersionTwoResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: api资产列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of ApiAsset
         :param _Total: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9353,7 +9158,6 @@ class DescribeAreaBanAreasResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 回包内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.waf.v20180125.models.DescribeAreaBanAreasRsp`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9395,18 +9199,15 @@ class DescribeAreaBanAreasRsp(AbstractModel):
         :param _Status: 状态 "0"：未开启地域封禁 "1"：开启地域封禁
         :type Status: str
         :param _Source: 数据来源 custom-自定义(默认)、batch-批量防护
-注意：此字段可能返回 null，表示取不到有效值。
         :type Source: str
         :param _Areas: 字符串数据，配置的地域列表
         :type Areas: list of str
         :param _JobType: 定时任务类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type JobType: str
         :param _JobDateTime: 定时任务详细配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
         :param _CronType: 周期任务配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type CronType: str
         """
         self._Status = None
@@ -9640,19 +9441,14 @@ class DescribeAttackOverviewResponse(AbstractModel):
         :param _ApiAssetsCount: api资产总数
         :type ApiAssetsCount: int
         :param _ApiRiskEventCount: api风险事件数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApiRiskEventCount: int
         :param _IPBlackCount: 黑名单总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type IPBlackCount: int
         :param _TamperCount: 防篡改总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TamperCount: int
         :param _LeakCount: 信息泄露总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type LeakCount: int
         :param _ApiRiskEventCircleCount: API风险事件周环比
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApiRiskEventCircleCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10281,7 +10077,7 @@ class DescribeBatchIpAccessControlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 筛选条件，支持 ActionType 40/42，Ip：ip地址，Domain：域名三类
+        :param _Filters: 筛选条件，支持 ActionType，可选的值为40（白名单）42（黑名单），ValidStatus，可选的值为1（生效）0（过期）
         :type Filters: list of FiltersItemNew
         :param _OffSet: 偏移
         :type OffSet: int
@@ -10356,7 +10152,6 @@ class DescribeBatchIpAccessControlResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 输出
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.waf.v20180125.models.BatchIpAccessControlData`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10902,7 +10697,6 @@ class DescribeCertificateVerifyResultResponse(AbstractModel):
         :param _Changed: 证书是否改变。
 0：未变化
 1：有变化
-注意：此字段可能返回 null，表示取不到有效值。
         :type Changed: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10976,7 +10770,6 @@ class DescribeCiphersDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Ciphers: 加密套件信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ciphers: list of TLSCiphers
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11182,7 +10975,7 @@ class DescribeCustomRulesRspRuleListItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ActionType: 动作类型
+        :param _ActionType: 动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向，5代表JS校验
         :type ActionType: str
         :param _Bypass: 跳过的策略
         :type Bypass: str
@@ -11203,34 +10996,24 @@ class DescribeCustomRulesRspRuleListItem(AbstractModel):
         :param _Strategies: 策略详情
         :type Strategies: list of Strategy
         :param _EventId: 事件id
-注意：此字段可能返回 null，表示取不到有效值。
         :type EventId: str
         :param _ModifyTime: 修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyTime: str
         :param _ValidStatus: 生效状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type ValidStatus: int
         :param _Source: 来源
-注意：此字段可能返回 null，表示取不到有效值。
         :type Source: str
         :param _JobType: 定时任务类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type JobType: str
         :param _JobDateTime: 定时任务配置信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
         :param _CronType: 周期任务粒度
-注意：此字段可能返回 null，表示取不到有效值。
         :type CronType: str
         :param _Label: 自定义标签，风控规则用，用来表示是内置规则还是用户自定义的
-注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         :param _PageId: 拦截页面id
-注意：此字段可能返回 null，表示取不到有效值。
         :type PageId: str
         :param _Domain: 域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
         """
         self._ActionType = None
@@ -12276,7 +12059,6 @@ class DescribeDomainsResponse(AbstractModel):
         :param _Total: 总数
         :type Total: int
         :param _Domains: domain列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Domains: list of DomainInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12786,7 +12568,6 @@ class DescribeHostLimitResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Success: 成功返回的状态码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Success: :class:`tencentcloud.waf.v20180125.models.ResponseCode`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13007,7 +12788,6 @@ class DescribeHostsResponse(AbstractModel):
         :param _TotalCount: 防护域名列表的长度
         :type TotalCount: int
         :param _HostList: 防护域名的列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostList: list of HostRecord
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13421,10 +13201,8 @@ class DescribeIpAccessControlResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 输出
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.waf.v20180125.models.IpAccessControlData`
         :param _UsedTotal: 已经使用的IP黑白名单的IP总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type UsedTotal: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13671,7 +13449,6 @@ class DescribeIpHitItemsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.waf.v20180125.models.IpHitItemsData`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13852,13 +13629,7 @@ class DescribeObjectsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 支持的过滤器:
-	ObjectId: clb实例ID
-	VIP: clb实例的公网IP
-	InstanceId: waf实例ID
-	Domain: 精准域名
-	Status: waf防护开关状态: 0关闭，1开启
-	ClsStatus: waf日志开关: 0关闭，1开启
+        :param _Filters: 支持的过滤器:	ObjectId: clb实例ID	VIP: clb实例的公网IP	InstanceId: waf实例ID	Domain: 精准域名	Status: waf防护开关状态: 0关闭，1开启	ClsStatus: waf日志开关: 0关闭，1开启   
         :type Filters: list of FiltersItemNew
         """
         self._Filters = None
@@ -15118,7 +14889,7 @@ class DescribeTlsVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TLS: TLS key value
+        :param _TLS: TLS信息
         :type TLS: list of TLSVersion
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15307,7 +15078,6 @@ class DescribeUserCdcClbWafRegionsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: CdcRegion的类型描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of CdcRegion
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15383,10 +15153,8 @@ class DescribeUserClbWafRegionsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 地域（标准的ap-格式）列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of str
         :param _RichDatas: 包含详细属性的地域信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type RichDatas: list of ClbWafRegionItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15657,7 +15425,6 @@ class DescribeUserSignatureRuleResponse(AbstractModel):
         :param _Total: 规则总数
         :type Total: int
         :param _Rules: 规则列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Rules: list of UserSignatureRule
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16217,49 +15984,37 @@ cdc-clb-waf：CDC环境下负载均衡型WAF实例
 1：开启
         :type PostCKafkaStatus: int
         :param _CdcClusters: cdc实例域名接入的集群信息,非cdc实例忽略。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CdcClusters: str
         :param _ApiStatus: api安全开关状态。
 0：关闭 
 1：开启
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApiStatus: int
         :param _AlbType: 应用型负载均衡类型，默认clb。
 clb：七层负载均衡器类型
 apisix：apisix网关型
-注意：此字段可能返回 null，表示取不到有效值。
         :type AlbType: str
         :param _SgState: 安全组状态。
 0：不展示
 1：非腾讯云源站
 2：安全组绑定失败
 3：安全组发生变更
-注意：此字段可能返回 null，表示取不到有效值。
         :type SgState: int
         :param _SgDetail: 安全组状态的详细解释
-注意：此字段可能返回 null，表示取不到有效值。
         :type SgDetail: str
         :param _CloudType: 域名云环境。hybrid：混合云域名
 public：公有云域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type CloudType: str
         :param _Note: 域名备注信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Note: str
         :param _SrcList: SAASWAF源站IP列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type SrcList: list of str
         :param _UpstreamDomainList: SAASWAF源站域名列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpstreamDomainList: list of str
         :param _SgID: 安全组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type SgID: str
         :param _AccessStatus: clbwaf接入状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccessStatus: int
         :param _Labels: 域名标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of str
         """
         self._Domain = None
@@ -16646,26 +16401,21 @@ public：公有云域名
 
 
 class DomainPackageNew(AbstractModel):
-    """clb-waf 域名扩展套餐
+    """waf 域名扩展套餐
 
     """
 
     def __init__(self):
         r"""
         :param _ResourceIds: 资源ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceIds: str
         :param _ValidTime: 过期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ValidTime: str
         :param _RenewFlag: 是否自动续费，1：自动续费，0：不自动续费
-注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: int
         :param _Count: 套餐购买个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Count: int
         :param _Region: 套餐购买地域，clb-waf暂时没有用到
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         """
         self._ResourceIds = None
@@ -16739,10 +16489,8 @@ class DomainRuleId(AbstractModel):
     def __init__(self):
         r"""
         :param _Domain: 域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
         :param _RuleId: 规则id
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: str
         """
         self._Domain = None
@@ -16790,7 +16538,6 @@ class DomainURI(AbstractModel):
         :param _Edition: 版本
         :type Edition: str
         :param _InstanceID: 实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceID: str
         """
         self._Domain = None
@@ -16933,83 +16680,60 @@ https：使用https协议回源
         :param _ActiveCheck: 是否开启主动健康检测。
 0：不开启
 1：开启
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActiveCheck: int
         :param _TLSVersion: TLS版本信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type TLSVersion: int
         :param _Ciphers: 自定义的加密套件列表。CipherTemplate为3时需要填此字段，表示自定义的加密套件，值通过DescribeCiphersDetail接口获取。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ciphers: list of int
         :param _CipherTemplate: 加密套件模板。
 0：不支持选择，使用默认模板  
 1：通用型模板 
 2：安全型模板
 3：自定义模板
-注意：此字段可能返回 null，表示取不到有效值。
         :type CipherTemplate: int
         :param _ProxyReadTimeout: WAF与源站的读超时时间，默认300s。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyReadTimeout: int
         :param _ProxySendTimeout: WAF与源站的写超时时间，默认300s。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProxySendTimeout: int
         :param _SniType: WAF回源时的SNI类型。
 0：关闭SNI，不配置client_hello中的server_name
 1：开启SNI，client_hello中的server_name为防护域名
 2：开启SNI，SNI为域名回源时的源站域名
 3：开启SNI，SNI为自定义域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type SniType: int
         :param _SniHost: SniType为3时，需要填此参数，表示自定义的SNI；
-注意：此字段可能返回 null，表示取不到有效值。
         :type SniHost: str
         :param _Weights: 回源IP权重
-注意：此字段可能返回 null，表示取不到有效值。
         :type Weights: list of str
         :param _IpHeaders: IsCdn=3时，表示自定义header
-注意：此字段可能返回 null，表示取不到有效值。
         :type IpHeaders: list of str
         :param _XFFReset: 是否开启XFF重置。
 0：关闭
 1：开启
-注意：此字段可能返回 null，表示取不到有效值。
         :type XFFReset: int
         :param _Note: 域名备注信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Note: str
         :param _UpstreamHost: 自定义回源Host。默认为空字符串，表示使用防护域名作为回源Host。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpstreamHost: str
         :param _Level: 防护规则
-注意：此字段可能返回 null，表示取不到有效值。
         :type Level: str
         :param _ProxyBuffer: 是否开启缓存 0-关闭 1-开启
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyBuffer: int
         :param _GmType: 国密选项。0：不开启国密 1：在原有TLS选项的基础上追加支持国密 2：开启国密并仅支持国密客户端访问
-注意：此字段可能返回 null，表示取不到有效值。
         :type GmType: int
         :param _GmCertType: 国密证书类型。0：无国密证书 1：证书来源为自有国密证书 2：证书来源为托管国密证书
-注意：此字段可能返回 null，表示取不到有效值。
         :type GmCertType: int
         :param _GmCert: GmCertType为1时，需要填充此参数，表示自有国密证书的证书链
-注意：此字段可能返回 null，表示取不到有效值。
         :type GmCert: str
         :param _GmPrivateKey: GmCertType为1时，需要填充此参数，表示自有国密证书的私钥
-注意：此字段可能返回 null，表示取不到有效值。
         :type GmPrivateKey: str
         :param _GmEncCert: GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书
-注意：此字段可能返回 null，表示取不到有效值。
         :type GmEncCert: str
         :param _GmEncPrivateKey: GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书的私钥
-注意：此字段可能返回 null，表示取不到有效值。
         :type GmEncPrivateKey: str
         :param _GmSSLId: GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
-注意：此字段可能返回 null，表示取不到有效值。
         :type GmSSLId: str
         :param _Labels: 域名标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of str
         """
         self._Domain = None
@@ -17691,24 +17415,18 @@ class ExportAccessInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _ExportId: 日志导出任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExportId: str
         :param _Query: 日志导出查询语句
-注意：此字段可能返回 null，表示取不到有效值。
         :type Query: str
         :param _FileName: 日志导出文件名
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileName: str
         :param _FileSize: 日志文件大小
         :type FileSize: int
         :param _Order: 日志导出时间排序
-注意：此字段可能返回 null，表示取不到有效值。
         :type Order: str
         :param _Format: 日志导出格式
-注意：此字段可能返回 null，表示取不到有效值。
         :type Format: str
         :param _Count: 日志导出数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Count: int
         :param _Status: 日志下载状态。Processing:导出正在进行中，Complete:导出完成，Failed:导出失败，Expired:日志导出已过期（三天有效期）
         :type Status: str
@@ -18037,28 +17755,20 @@ class FraudPkg(AbstractModel):
     def __init__(self):
         r"""
         :param _ResourceIds: 资源id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceIds: str
         :param _Status: 状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _Region: 地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: int
         :param _BeginTime: 开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type BeginTime: str
         :param _EndTime: 结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _InquireNum: 申请数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type InquireNum: int
         :param _UsedNum: 使用数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type UsedNum: int
         :param _RenewFlag: 续费标志
-注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: int
         """
         self._ResourceIds = None
@@ -18282,15 +17992,12 @@ class GenerateDealsAndPayNewResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 计费下单响应结构体
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.waf.v20180125.models.DealData`
         :param _Status: 1:成功，0:失败
         :type Status: int
         :param _ReturnMessage: 返回message
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReturnMessage: str
         :param _InstanceId: 购买的实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18749,12 +18456,10 @@ class GoodNews(AbstractModel):
 域名包-CLB: 101207(新购),101208(续费),101209(变配)
 业务扩展包-CLB: 101210(新购),101211(续费),101212(变配)
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type GoodsCategoryId: int
         :param _RegionId: 购买waf实例区域ID
 1 表示购买大陆资源;
 9表示购买非中国大陆资源
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionId: int
         """
         self._GoodsNum = None
@@ -18826,16 +18531,12 @@ class Goods(AbstractModel):
         :param _GoodsDetail: 商品明细
         :type GoodsDetail: :class:`tencentcloud.waf.v20180125.models.GoodsDetail`
         :param _ProjectId: 默认为0
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: int
         :param _GoodsCategoryId: 计费类目ID，对应cid
-注意：此字段可能返回 null，表示取不到有效值。
         :type GoodsCategoryId: int
         :param _Platform: 平台类型，默认1
-注意：此字段可能返回 null，表示取不到有效值。
         :type Platform: int
         :param _RegionId: 购买waf实例区域ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionId: int
         """
         self._PayMode = None
@@ -18941,37 +18642,26 @@ class GoodsDetail(AbstractModel):
         :param _Pid: 计费策略id
         :type Pid: int
         :param _ProductInfo: waf产品码
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductInfo: list of ProductInfo
         :param _InstanceName: waf实例名
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
         :param _ElasticQps: QPS数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type ElasticQps: int
         :param _FlexBill: 弹性账单
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlexBill: int
         :param _AutoRenewFlag: 1:自动续费，0:不自动续费
-注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRenewFlag: int
         :param _RealRegion: waf购买的实际地域信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type RealRegion: int
         :param _Type: Waf实例对应的二级产品码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _LabelTypes: 计费细项标签数组
-注意：此字段可能返回 null，表示取不到有效值。
         :type LabelTypes: list of str
         :param _LabelCounts: 计费细项标签数量，一般和SvLabelType一一对应
-注意：此字段可能返回 null，表示取不到有效值。
         :type LabelCounts: list of int
         :param _CurDeadline: 变配使用，实例到期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CurDeadline: str
         :param _InstanceId: 对存在的实例购买bot 或api 安全
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         """
         self._TimeSpan = None
@@ -19160,10 +18850,8 @@ class GoodsDetailNew(AbstractModel):
     def __init__(self):
         r"""
         :param _TimeSpan: 时间间隔
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeSpan: int
         :param _TimeUnit: 单位，支持购买d、m、y 即（日、月、年）
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeUnit: str
         :param _SubProductCode: 子产品标签,。新购，续费必传，变配时放在oldConfig newConfig里面
 
@@ -19179,7 +18867,6 @@ Saas 域名扩展包：sp_wsm_waf_domain
  业务扩展包-CLB：sp_wsm_waf_qpsep_clb
 域名扩展包-CLB：sp_wsm_waf_domain_clb
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubProductCode: str
         :param _Pid: 业务产品申请的pid（对应一个定价公式），通过pid计费查询到定价模型
 高级版 ：1000827
@@ -19193,16 +18880,12 @@ Saas 域名扩展包：sp_wsm_waf_domain
 域名包-CLB: 1001156
 业务扩展包-CLB : 1001160
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type Pid: int
         :param _InstanceName: waf实例名
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
         :param _AutoRenewFlag: 1:自动续费，0:不自动续费
-注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRenewFlag: int
         :param _RealRegion: waf购买的实际地域信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type RealRegion: int
         :param _LabelTypes: 计费细项标签数组
 Saas 高级版  sv_wsm_waf_package_premium 
@@ -19223,22 +18906,16 @@ Saas 域名扩展包  sv_wsm_waf_domain
 业务扩展包CLB sv_wsm_waf_qps_ep_clb
 域名扩展包CLB  sv_wsm_waf_domain_clb
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type LabelTypes: list of str
         :param _LabelCounts: 计费细项标签数量，一般和SvLabelType一一对应
-注意：此字段可能返回 null，表示取不到有效值。
         :type LabelCounts: list of int
         :param _CurDeadline: 变配使用，实例到期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CurDeadline: str
         :param _InstanceId: 对存在的实例购买bot 或api 安全
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _ResourceId: 资源id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
         :param _MicroVersion: 模式clb-waf或者saas-waf
-注意：此字段可能返回 null，表示取不到有效值。
         :type MicroVersion: str
         """
         self._TimeSpan = None
@@ -19496,32 +19173,27 @@ class HostRecord(AbstractModel):
 0：关闭
         :type ClsStatus: int
         :param _Level: 防护等级，可选值100,200,300
-注意：此字段可能返回 null，表示取不到有效值。
         :type Level: int
         :param _CdcClusters: 域名需要下发到的cdc集群列表。仅CDC场景下填充
-注意：此字段可能返回 null，表示取不到有效值。
         :type CdcClusters: list of str
         :param _AlbType: 应用型负载均衡类型，默认clb。 
 clb：七层负载均衡器类型 
 apisix：apisix网关型
-注意：此字段可能返回 null，表示取不到有效值。
+tsegw：云原生API网关
+scf：云函数
         :type AlbType: str
         :param _IpHeaders: IsCdn=3时，需要填此参数，表示自定义header
-注意：此字段可能返回 null，表示取不到有效值。
         :type IpHeaders: list of str
         :param _EngineType: 规则引擎类型。
 1: menshen
 2: tiga
-注意：此字段可能返回 null，表示取不到有效值。
         :type EngineType: int
         :param _CloudType: 云类型。
 public:公有云
 private:私有云
 hybrid:混合云
-注意：此字段可能返回 null，表示取不到有效值。
         :type CloudType: str
         :param _Note: 域名备注信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Note: str
         """
         self._Domain = None
@@ -19819,28 +19491,20 @@ class HybridPkg(AbstractModel):
     def __init__(self):
         r"""
         :param _ResourceIds: 资源id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceIds: str
         :param _Status: 状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _Region: 地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: int
         :param _BeginTime: 开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type BeginTime: str
         :param _EndTime: 结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _InquireNum: 申请数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type InquireNum: int
         :param _UsedNum: 使用数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type UsedNum: int
         :param _RenewFlag: 续费标志
-注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: int
         """
         self._ResourceIds = None
@@ -20092,69 +19756,48 @@ class InstanceInfo(AbstractModel):
         :param _Edition: clb或saas
         :type Edition: str
         :param _FraudPkg: 业务安全包
-注意：此字段可能返回 null，表示取不到有效值。
         :type FraudPkg: :class:`tencentcloud.waf.v20180125.models.FraudPkg`
         :param _BotPkg: Bot资源包
-注意：此字段可能返回 null，表示取不到有效值。
         :type BotPkg: :class:`tencentcloud.waf.v20180125.models.BotPkg`
         :param _BotQPS: bot的qps详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type BotQPS: :class:`tencentcloud.waf.v20180125.models.BotQPS`
         :param _ElasticBilling: qps弹性计费上限
-注意：此字段可能返回 null，表示取不到有效值。
         :type ElasticBilling: int
         :param _AttackLogPost: 攻击日志投递开关
-注意：此字段可能返回 null，表示取不到有效值。
         :type AttackLogPost: int
         :param _MaxBandwidth: 带宽峰值，单位为B/s(字节每秒)
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxBandwidth: int
         :param _APISecurity: api安全是否购买
         :type APISecurity: int
         :param _QpsStandard: 购买的qps规格
-注意：此字段可能返回 null，表示取不到有效值。
         :type QpsStandard: int
         :param _BandwidthStandard: 购买的带宽规格
-注意：此字段可能返回 null，表示取不到有效值。
         :type BandwidthStandard: int
         :param _Status: 实例状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _SandboxQps: 实例沙箱qps值
-注意：此字段可能返回 null，表示取不到有效值。
         :type SandboxQps: int
         :param _IsAPISecurityTrial: 是否api 安全试用
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsAPISecurityTrial: int
         :param _MajorEventsPkg: 重保包
-注意：此字段可能返回 null，表示取不到有效值。
         :type MajorEventsPkg: :class:`tencentcloud.waf.v20180125.models.MajorEventsPkg`
         :param _HybridPkg: 混合云子节点包
-注意：此字段可能返回 null，表示取不到有效值。
         :type HybridPkg: :class:`tencentcloud.waf.v20180125.models.HybridPkg`
         :param _ApiPkg: API安全资源包
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApiPkg: :class:`tencentcloud.waf.v20180125.models.ApiPkg`
         :param _MiniPkg: 小程序安全加速包
-注意：此字段可能返回 null，表示取不到有效值。
         :type MiniPkg: :class:`tencentcloud.waf.v20180125.models.MiniPkg`
         :param _MiniQpsStandard: 小程序qps规格
-注意：此字段可能返回 null，表示取不到有效值。
         :type MiniQpsStandard: int
         :param _MiniMaxQPS: 小程序qps峰值
-注意：此字段可能返回 null，表示取不到有效值。
         :type MiniMaxQPS: int
         :param _LastQpsExceedTime: 最近一次超量时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastQpsExceedTime: str
         :param _MiniExtendPkg: 小程序安全接入ID数量扩张包
-注意：此字段可能返回 null，表示取不到有效值。
         :type MiniExtendPkg: :class:`tencentcloud.waf.v20180125.models.MiniExtendPkg`
         :param _BillingItem: 计费项
-注意：此字段可能返回 null，表示取不到有效值。
         :type BillingItem: str
         :param _FreeDelayFlag: 实例延期释放标识
-注意：此字段可能返回 null，表示取不到有效值。
         :type FreeDelayFlag: int
         """
         self._InstanceId = None
@@ -20608,7 +20251,6 @@ class IpAccessControlData(AbstractModel):
     def __init__(self):
         r"""
         :param _Res: ip黑白名单
-注意：此字段可能返回 null，表示取不到有效值。
         :type Res: list of IpAccessControlItem
         :param _TotalCount: 计数
         :type TotalCount: int
@@ -20659,7 +20301,6 @@ class IpAccessControlItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: mongo表自增Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
         :param _ActionType: 动作
         :type ActionType: int
@@ -20670,30 +20311,22 @@ class IpAccessControlItem(AbstractModel):
         :param _Source: 来源
         :type Source: str
         :param _TsVersion: 更新时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type TsVersion: int
         :param _ValidTs: 有效截止时间戳
         :type ValidTs: int
         :param _ValidStatus: 生效状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type ValidStatus: int
         :param _RuleId: 55000001
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: int
         :param _IpList: IP列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type IpList: list of str
         :param _CreateTime: 规则创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
         :param _JobType: 定时任务类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type JobType: str
         :param _CronType: 周期任务类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type CronType: str
         :param _JobDateTime: 定时任务配置详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
         """
         self._Id = None
@@ -21077,7 +20710,6 @@ class JobDateTime(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cron: list of CronJob
         :param _TimeTZone: 时区
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeTZone: str
         """
         self._Timed = None
@@ -21204,13 +20836,10 @@ class LoadBalancer(AbstractModel):
         :param _Zone: 负载均衡监听器所在的zone
         :type Zone: str
         :param _NumericalVpcId: 负载均衡的VPCID，公网为-1，内网按实际填写
-注意：此字段可能返回 null，表示取不到有效值。
         :type NumericalVpcId: int
-        :param _LoadBalancerType: 负载均衡的网络类型
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _LoadBalancerType: 负载均衡的网络类型。OPEN： 公网 INTERNAL ：内网
         :type LoadBalancerType: str
         :param _LoadBalancerDomain: 负载均衡的域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancerDomain: str
         """
         self._LoadBalancerId = None
@@ -21354,19 +20983,14 @@ class LoadBalancerPackageNew(AbstractModel):
     def __init__(self):
         r"""
         :param _ListenerId: 监听id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ListenerId: str
         :param _ListenerName: 监听名
-注意：此字段可能返回 null，表示取不到有效值。
         :type ListenerName: str
         :param _LoadBalancerId: 负载均衡id
-注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancerId: str
         :param _LoadBalancerName: 负载均衡名
-注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancerName: str
         :param _Protocol: 协议
-注意：此字段可能返回 null，表示取不到有效值。
         :type Protocol: str
         :param _Region: 地区
 "多伦多": "ca",
@@ -21397,25 +21021,18 @@ class LoadBalancerPackageNew(AbstractModel):
     "上海": "sh",
     "新加坡": "sg",
     "清远": "qy"
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _Vip: 接入IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type Vip: str
         :param _Vport: 接入端口
-注意：此字段可能返回 null，表示取不到有效值。
         :type Vport: int
         :param _Zone: 地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: str
         :param _NumericalVpcId: VPCID
-注意：此字段可能返回 null，表示取不到有效值。
         :type NumericalVpcId: int
         :param _LoadBalancerType: CLB类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancerType: str
         :param _LoadBalancerDomain: 负载均衡器的域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancerDomain: str
         """
         self._ListenerId = None
@@ -21604,34 +21221,24 @@ class MajorEventsPkg(AbstractModel):
     def __init__(self):
         r"""
         :param _ResourceIds: 资源id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceIds: str
         :param _Status: 状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _Region: 地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: int
         :param _BeginTime: 开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type BeginTime: str
         :param _EndTime: 结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _InquireNum: 申请数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type InquireNum: int
         :param _UsedNum: 使用数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type UsedNum: int
         :param _RenewFlag: 续费标志
-注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: int
         :param _BillingItem: 计费项
-注意：此字段可能返回 null，表示取不到有效值。
         :type BillingItem: str
         :param _HWState: 护网包状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type HWState: int
         """
         self._ResourceIds = None
@@ -21755,28 +21362,20 @@ class MiniExtendPkg(AbstractModel):
     def __init__(self):
         r"""
         :param _ResourceIds: 资源id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceIds: str
         :param _Status: 状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _Region: 地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: int
         :param _BeginTime: 开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type BeginTime: str
         :param _EndTime: 结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _Count: 购买数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Count: int
         :param _RenewFlag: 续费标志
-注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: int
         :param _BillingItem: 计费项
-注意：此字段可能返回 null，表示取不到有效值。
         :type BillingItem: str
         """
         self._ResourceIds = None
@@ -21873,35 +21472,27 @@ class MiniExtendPkg(AbstractModel):
 
 
 class MiniPkg(AbstractModel):
-    """API安全资源信息
+    """小程序安全资源信息
 
     """
 
     def __init__(self):
         r"""
         :param _ResourceIds: 资源id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceIds: str
         :param _Status: 状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _Region: 地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: int
         :param _BeginTime: 开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type BeginTime: str
         :param _EndTime: 结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _Count: 购买数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Count: int
         :param _RenewFlag: 续费标志
-注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: int
         :param _BillingItem: 计费项
-注意：此字段可能返回 null，表示取不到有效值。
         :type BillingItem: str
         """
         self._ResourceIds = None
@@ -22460,13 +22051,10 @@ class ModifyApiAnalyzeStatusResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Count: 已经开启的数量,如果返回值为3（大于支持的域名开启数量），则表示开启失败
-注意：此字段可能返回 null，表示取不到有效值。
         :type Count: int
         :param _UnSupportedList: 不支持开启的域名列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type UnSupportedList: list of str
         :param _FailDomainList: 开启/关闭失败的域名列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailDomainList: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -22662,7 +22250,7 @@ class ModifyAreaBanAreasRequest(AbstractModel):
         :type Domain: str
         :param _Areas: 需要调整的地域信息，一个字符串数组
         :type Areas: list of str
-        :param _JobType: 定时任务类型
+        :param _JobType: 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
         :type JobType: str
         :param _JobDateTime: 定时任务配置
         :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
@@ -23182,7 +22770,7 @@ class ModifyCustomRuleRequest(AbstractModel):
         :type RuleId: int
         :param _RuleName: 编辑的规则名称
         :type RuleName: str
-        :param _RuleAction: 执行动作，0：放行、1：阻断、2：人机识别、3：观察、4：重定向
+        :param _RuleAction: 动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向，5代表JS校验
         :type RuleAction: str
         :param _Strategies: 匹配条件数组
         :type Strategies: list of Strategy
@@ -23199,7 +22787,7 @@ class ModifyCustomRuleRequest(AbstractModel):
         :param _ExpireTime: 规则生效截止时间，0：永久生效，其它值为对应时间的时间戳。
 默认是0
         :type ExpireTime: int
-        :param _JobType: 定时任务类型
+        :param _JobType: 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
         :type JobType: str
         :param _JobDateTime: 定时任务配置
         :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
@@ -23565,7 +23153,7 @@ class ModifyCustomWhiteRuleRequest(AbstractModel):
         :type ExpireTime: int
         :param _Strategies: 匹配条件数组
         :type Strategies: list of Strategy
-        :param _JobType: 定时任务类型
+        :param _JobType: 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
         :type JobType: str
         :param _JobDateTime: 定时任务配置
         :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
@@ -23928,7 +23516,7 @@ class ModifyDomainPostActionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: www.tx.com
+        :param _Domain: 域名
         :type Domain: str
         :param _PostCLSAction: 0-关闭投递，1-开启投递
         :type PostCLSAction: int
@@ -24242,12 +23830,10 @@ class ModifyGenerateDealsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 计费下单响应结构体
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.waf.v20180125.models.DealData`
         :param _Status: 1:成功，0:失败
         :type Status: int
         :param _ReturnMessage: 返回message
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReturnMessage: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -24512,7 +24098,6 @@ class ModifyHostModeResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Success: 操作的状态码，如果所有的资源操作成功则返回的是成功的状态码，如果有资源操作失败则需要解析Message的内容来查看哪个资源失败
-注意：此字段可能返回 null，表示取不到有效值。
         :type Success: :class:`tencentcloud.waf.v20180125.models.ResponseCode`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -24786,7 +24371,7 @@ class ModifyInstanceNameRequest(AbstractModel):
         :type InstanceName: str
         :param _InstanceID: 实例id
         :type InstanceID: str
-        :param _Edition: 版本
+        :param _Edition: 实例版本，支持clb-waf、sparta-waf
         :type Edition: str
         """
         self._InstanceName = None
@@ -25023,10 +24608,10 @@ class ModifyIpAccessControlRequest(AbstractModel):
         :type IpList: list of str
         :param _ActionType: 42为黑名单，40为白名单
         :type ActionType: int
-        :param _ValidTS: valid_ts为有效日期，值为秒级时间戳（（如1680570420代表2023-04-04 09:07:00））
-        :type ValidTS: int
         :param _RuleId: 规则ID
         :type RuleId: int
+        :param _ValidTS: valid_ts为有效日期，值为秒级时间戳（（如1680570420代表2023-04-04 09:07:00））
+        :type ValidTS: int
         :param _InstanceId: 实例Id
         :type InstanceId: str
         :param _Edition: WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
@@ -25035,7 +24620,7 @@ class ModifyIpAccessControlRequest(AbstractModel):
         :type SourceType: str
         :param _Note: 备注
         :type Note: str
-        :param _JobType: 定时配置类型
+        :param _JobType: 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
         :type JobType: str
         :param _JobDateTime: 定时配置详情
         :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
@@ -25043,8 +24628,8 @@ class ModifyIpAccessControlRequest(AbstractModel):
         self._Domain = None
         self._IpList = None
         self._ActionType = None
-        self._ValidTS = None
         self._RuleId = None
+        self._ValidTS = None
         self._InstanceId = None
         self._Edition = None
         self._SourceType = None
@@ -25077,20 +24662,24 @@ class ModifyIpAccessControlRequest(AbstractModel):
         self._ActionType = ActionType
 
     @property
-    def ValidTS(self):
-        return self._ValidTS
-
-    @ValidTS.setter
-    def ValidTS(self, ValidTS):
-        self._ValidTS = ValidTS
-
-    @property
     def RuleId(self):
         return self._RuleId
 
     @RuleId.setter
     def RuleId(self, RuleId):
         self._RuleId = RuleId
+
+    @property
+    def ValidTS(self):
+        warnings.warn("parameter `ValidTS` is deprecated", DeprecationWarning) 
+
+        return self._ValidTS
+
+    @ValidTS.setter
+    def ValidTS(self, ValidTS):
+        warnings.warn("parameter `ValidTS` is deprecated", DeprecationWarning) 
+
+        self._ValidTS = ValidTS
 
     @property
     def InstanceId(self):
@@ -25145,8 +24734,8 @@ class ModifyIpAccessControlRequest(AbstractModel):
         self._Domain = params.get("Domain")
         self._IpList = params.get("IpList")
         self._ActionType = params.get("ActionType")
-        self._ValidTS = params.get("ValidTS")
         self._RuleId = params.get("RuleId")
+        self._ValidTS = params.get("ValidTS")
         self._InstanceId = params.get("InstanceId")
         self._Edition = params.get("Edition")
         self._SourceType = params.get("SourceType")
@@ -25549,11 +25138,14 @@ class ModifySpartaProtectionModeRequest(AbstractModel):
         :type Edition: str
         :param _Type: 0是修改规则引擎状态，1是修改AI的状态
         :type Type: int
+        :param _InstanceID: 实例id
+        :type InstanceID: str
         """
         self._Domain = None
         self._Mode = None
         self._Edition = None
         self._Type = None
+        self._InstanceID = None
 
     @property
     def Domain(self):
@@ -25587,12 +25179,21 @@ class ModifySpartaProtectionModeRequest(AbstractModel):
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def InstanceID(self):
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
         self._Mode = params.get("Mode")
         self._Edition = params.get("Edition")
         self._Type = params.get("Type")
+        self._InstanceID = params.get("InstanceID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26816,49 +26417,34 @@ class PeakPointsItem(AbstractModel):
         :param _BotAccess: Bot qps
         :type BotAccess: int
         :param _StatusServerError: WAF返回给客户端状态码5xx次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type StatusServerError: int
         :param _StatusClientError: WAF返回给客户端状态码4xx次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type StatusClientError: int
         :param _StatusRedirect: WAF返回给客户端状态码302次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type StatusRedirect: int
         :param _StatusOk: WAF返回给客户端状态码202次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type StatusOk: int
         :param _UpstreamServerError: 源站返回给WAF状态码5xx次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpstreamServerError: int
         :param _UpstreamClientError: 源站返回给WAF状态码4xx次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpstreamClientError: int
         :param _UpstreamRedirect: 源站返回给WAF状态码302次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpstreamRedirect: int
         :param _BlackIP: 黑名单次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type BlackIP: int
         :param _Tamper: 防篡改次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tamper: int
         :param _Leak: 信息防泄露次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Leak: int
         :param _ACL: 访问控制 
-注意：此字段可能返回 null，表示取不到有效值。
         :type ACL: int
         :param _WxAccess: 小程序 qps
-注意：此字段可能返回 null，表示取不到有效值。
         :type WxAccess: int
         :param _WxCount: 小程序请求数
-注意：此字段可能返回 null，表示取不到有效值。
         :type WxCount: int
         :param _WxUp: 小程序上行带宽峰值，单位B
-注意：此字段可能返回 null，表示取不到有效值。
         :type WxUp: int
         :param _WxDown: 小程序下行带宽峰值，单位B
-注意：此字段可能返回 null，表示取不到有效值。
         :type WxDown: int
         """
         self._Time = None
@@ -27235,7 +26821,7 @@ class PortItem(AbstractModel):
         :type UpstreamPort: str
         :param _UpstreamProtocol: 与Port一一对应,  表示回源协议
         :type UpstreamProtocol: str
-        :param _NginxServerId: Nginx的服务器ID
+        :param _NginxServerId: Nginx的服务器ID,新增域名时填"0"
         :type NginxServerId: str
         """
         self._Port = None
@@ -27451,10 +27037,8 @@ class ProductInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Value: 版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Name = None
@@ -27498,22 +27082,16 @@ class QPSPackageNew(AbstractModel):
     def __init__(self):
         r"""
         :param _ResourceIds: 资源ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceIds: str
         :param _ValidTime: 过期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ValidTime: str
         :param _RenewFlag: 是否自动续费，1：自动续费，0：不自动续费
-注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: int
         :param _Count: 套餐购买个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Count: int
         :param _Region: 套餐购买地域，clb-waf暂时没有用到
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _BillingItem: 计费项
-注意：此字段可能返回 null，表示取不到有效值。
         :type BillingItem: str
         """
         self._ResourceIds = None
@@ -27597,19 +27175,14 @@ class QpsData(AbstractModel):
     def __init__(self):
         r"""
         :param _ElasticBillingDefault: 弹性qps默认值
-注意：此字段可能返回 null，表示取不到有效值。
         :type ElasticBillingDefault: int
         :param _ElasticBillingMin: 弹性qps最小值
-注意：此字段可能返回 null，表示取不到有效值。
         :type ElasticBillingMin: int
         :param _ElasticBillingMax: 弹性qps最大值
-注意：此字段可能返回 null，表示取不到有效值。
         :type ElasticBillingMax: int
         :param _QPSExtendMax: 业务扩展包最大qps
-注意：此字段可能返回 null，表示取不到有效值。
         :type QPSExtendMax: int
-        :param _QPSExtendIntlMax: 海外业务扩展包最大qps
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _QPSExtendIntlMax: 境外业务扩展包最大qps
         :type QPSExtendIntlMax: int
         """
         self._ElasticBillingDefault = None
@@ -27984,7 +27557,6 @@ class RuleList(AbstractModel):
         :param _Status: 开关状态
         :type Status: int
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         """
         self._Id = None
@@ -28206,7 +27778,6 @@ class SearchAccessLogResponse(AbstractModel):
         :type ColNames: list of str
         :param _Results: 日志查询结果；当Analysis为True时，可能返回为null
 注意：此字段可能返回 null，表示取不到有效值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Results: list of AccessLogInfo
         :param _AnalysisResults: 日志分析结果；当Analysis为False时，可能返回为null
 注意：此字段可能返回 null，表示取不到有效值
@@ -28249,10 +27820,14 @@ class SearchAccessLogResponse(AbstractModel):
 
     @property
     def ColNames(self):
+        warnings.warn("parameter `ColNames` is deprecated", DeprecationWarning) 
+
         return self._ColNames
 
     @ColNames.setter
     def ColNames(self, ColNames):
+        warnings.warn("parameter `ColNames` is deprecated", DeprecationWarning) 
+
         self._ColNames = ColNames
 
     @property
@@ -28265,10 +27840,14 @@ class SearchAccessLogResponse(AbstractModel):
 
     @property
     def AnalysisResults(self):
+        warnings.warn("parameter `AnalysisResults` is deprecated", DeprecationWarning) 
+
         return self._AnalysisResults
 
     @AnalysisResults.setter
     def AnalysisResults(self, AnalysisResults):
+        warnings.warn("parameter `AnalysisResults` is deprecated", DeprecationWarning) 
+
         self._AnalysisResults = AnalysisResults
 
     @property
@@ -28624,16 +28203,12 @@ class SessionItem(AbstractModel):
         :param _TsVersion: 更新时间戳
         :type TsVersion: str
         :param _SessionId: SessionID
-注意：此字段可能返回 null，表示取不到有效值。
         :type SessionId: int
         :param _SessionName: Session名
-注意：此字段可能返回 null，表示取不到有效值。
         :type SessionName: str
         :param _SessionInUsed: Session是否正在被启用
-注意：此字段可能返回 null，表示取不到有效值。
         :type SessionInUsed: bool
         :param _RelatedRuleID: Session关联的CC规则ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RelatedRuleID: list of int
         """
         self._Category = None
@@ -28766,7 +28341,7 @@ class SpartaProtectionPort(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NginxServerId: nginx Id
+        :param _NginxServerId: 分配的服务器id
         :type NginxServerId: int
         :param _Port: 端口
         :type Port: str
@@ -28851,7 +28426,6 @@ class Strategy(AbstractModel):
 
     匹配字段不同，相应的匹配参数、逻辑符号、匹配内容有所不同具体如下所示：
 <table><thead><tr><th>匹配字段</th><th>匹配参数</th><th>逻辑符号</th><th>匹配内容</th></tr></thead><tbody><tr><td>IP（来源IP）</td><td>不支持参数</td><td>ipmatch（匹配）<br/>ipnmatch（不匹配）</td><td>多个IP以英文逗号隔开,最多20个</td></tr><tr><td>IPV6（来源IPv6）</td><td>不支持参数</td><td>ipmatch（匹配）<br/>ipnmatch（不匹配）</td><td>支持单个IPV6地址</td></tr><tr><td>Referer（Referer）</td><td>不支持参数</td><td>empty（内容为空）<br/>null（不存在）<br/>eq（等于）<br/>neq（不等于）<br/>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>URL（请求路径）</td><td>不支持参数</td><td>eq（等于）<br/>neq（不等于）<br/>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）<br/></td><td>请以/开头,512个字符以内</td></tr><tr><td>UserAgent（UserAgent）</td><td>不支持参数</td><td>同匹配字段<font color="Red">Referer</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>HTTP_METHOD（HTTP请求方法）</td><td>不支持参数</td><td>eq（等于）<br/>neq（不等于）</td><td>请输入方法名称,建议大写</td></tr><tr><td>QUERY_STRING（请求字符串）</td><td>不支持参数</td><td>同匹配字段<font color="Red">请求路径</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET（GET参数值）</td><td>支持参数录入</td><td>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_PARAMS_NAMES（GET参数名）</td><td>不支持参数</td><td>exsit（存在参数）<br/>nexsit（不存在参数）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>POST（POST参数值）</td><td>支持参数录入</td><td>同匹配字段<font color="Red">GET参数值</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_POST_NAMES（POST参数名）</td><td>不支持参数</td><td>同匹配字段<font color="Red">GET参数名</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>POST_BODY（完整BODY）</td><td>不支持参数</td><td>同匹配字段<font color="Red">请求路径</font>逻辑符号</td><td>请输入BODY内容,512个字符以内</td></tr><tr><td>COOKIE（Cookie）</td><td>不支持参数</td><td>empty（内容为空）<br/>null（不存在）<br/>rematch（正则匹配）</td><td><font color="Red">暂不支持</font></td></tr><tr><td>GET_COOKIES_NAMES（Cookie参数名）</td><td>不支持参数</td><td>同匹配字段<font color="Red">GET参数名</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>ARGS_COOKIE（Cookie参数值）</td><td>支持参数录入</td><td>同匹配字段<font color="Red">GET参数值</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_HEADERS_NAMES（Header参数名）</td><td>不支持参数</td><td>exsit（存在参数）<br/>nexsit（不存在参数）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,建议小写,512个字符以内</td></tr><tr><td>ARGS_HEADER（Header参数值）</td><td>支持参数录入</td><td>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,512个字符以内</td></tr></tbody></table>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Field: str
         :param _CompareFunc: 逻辑符号 
 
@@ -28871,13 +28445,11 @@ class Strategy(AbstractModel):
         ipnmatch （ 不属于）
     各匹配字段对应的逻辑符号不同，详见上述匹配字段表格
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type CompareFunc: str
         :param _Content: 匹配内容
 
     目前 当匹配字段为COOKIE（Cookie）时，不需要输入 匹配内容其他都需要
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type Content: str
         :param _Arg: 匹配参数
 
@@ -28888,11 +28460,9 @@ class Strategy(AbstractModel):
         ARGS_COOKIE（Cookie参数值）		
         ARGS_HEADER（Header参数值）
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type Arg: str
         :param _CaseNotSensitive: 0：大小写敏感
 1：大小写不敏感
-注意：此字段可能返回 null，表示取不到有效值。
         :type CaseNotSensitive: int
         """
         self._Field = None
@@ -29206,13 +28776,10 @@ class TLSCiphers(AbstractModel):
     def __init__(self):
         r"""
         :param _VersionId: TLS版本ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type VersionId: int
         :param _CipherId: 加密套件ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CipherId: int
         :param _CipherName: 加密套件
-注意：此字段可能返回 null，表示取不到有效值。
         :type CipherName: str
         """
         self._VersionId = None
@@ -29266,10 +28833,8 @@ class TLSVersion(AbstractModel):
     def __init__(self):
         r"""
         :param _VersionId: TLSVERSION的ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type VersionId: int
         :param _VersionName: TLSVERSION的NAME
-注意：此字段可能返回 null，表示取不到有效值。
         :type VersionName: str
         """
         self._VersionId = None
@@ -29358,10 +28923,8 @@ class TigaMainClassMode(AbstractModel):
     def __init__(self):
         r"""
         :param _TypeID: MainclassID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TypeID: str
         :param _Mode: 防护模式，0表示观察，1表示拦截
-注意：此字段可能返回 null，表示取不到有效值。
         :type Mode: int
         """
         self._TypeID = None
@@ -29405,10 +28968,8 @@ class TimedJob(AbstractModel):
     def __init__(self):
         r"""
         :param _StartDateTime: 开始时间戳，单位为秒
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartDateTime: int
         :param _EndDateTime: 结束时间戳，单位为秒
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndDateTime: int
         """
         self._StartDateTime = None
@@ -29509,7 +29070,6 @@ class UpsertCCAutoStatusResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 正常情况为null
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -29562,7 +29122,7 @@ class UpsertCCRuleRequest(AbstractModel):
         :type Url: str
         :param _MatchFunc: 匹配方法，0表示等于，1表示前缀匹配，2表示包含
         :type MatchFunc: int
-        :param _ActionType: 动作，20表示观察，21表示人机识别，22表示拦截，23表示精准拦截
+        :param _ActionType: 动作，20表示观察，21表示人机识别，22表示拦截，23表示精准拦截，26表示精准人机识别，27表示JS校验
         :type ActionType: str
         :param _Priority: 优先级
         :type Priority: int
@@ -29928,13 +29488,10 @@ class UpsertIpAccessControlResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _FailedItems: 添加或修改失败的条目
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailedItems: str
         :param _FailedCount: 添加或修改失败的数目
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailedCount: int
         :param _Ids: 添加或修改的IP数据Id列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ids: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -30136,7 +29693,6 @@ class UpsertSessionResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
         :param _SessionID: SessionID
-注意：此字段可能返回 null，表示取不到有效值。
         :type SessionID: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -30196,25 +29752,18 @@ class UserDomainInfo(AbstractModel):
         :param _Edition: waf类型
         :type Edition: str
         :param _Level: 版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Level: str
         :param _WriteConfig: 指定域名访问日志字段的开关
-注意：此字段可能返回 null，表示取不到有效值。
         :type WriteConfig: str
         :param _Cls: 指定域名是否写cls的开关 1:写 0:不写
-注意：此字段可能返回 null，表示取不到有效值。
         :type Cls: int
         :param _CloudType: 标记是否是混合云接入。hybrid表示混合云接入域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type CloudType: str
         :param _AlbType: 标记clbwaf类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type AlbType: str
         :param _BotStatus: BOT开关状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type BotStatus: int
         :param _ApiStatus: API开关状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApiStatus: int
         """
         self._Appid = None
@@ -30390,7 +29939,6 @@ class UserSignatureRule(AbstractModel):
         :param _Reason: 0/1
         :type Reason: int
         :param _RiskLevel: 1: 高危 2:中危 3:低危
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskLevel: int
         """
         self._ID = None
@@ -30542,7 +30090,6 @@ class UserWhiteRule(AbstractModel):
         :param _MatchField: 匹配域
         :type MatchField: str
         :param _MatchParams: 匹配参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type MatchParams: str
         :param _MatchMethod: 匹配方法
         :type MatchMethod: str
@@ -30553,25 +30100,18 @@ class UserWhiteRule(AbstractModel):
         :param _ModifyTime: 修改时间
         :type ModifyTime: str
         :param _SignatureIds: 规则ID列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type SignatureIds: list of str
         :param _TypeIds: 大类规则ID列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type TypeIds: list of str
         :param _TypeId: 大类规则ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TypeId: str
         :param _Mode: 0:按照特定规则ID加白, 1:按照规则类型加白
-注意：此字段可能返回 null，表示取不到有效值。
         :type Mode: int
         :param _Name: 规则名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _MatchInfo: 匹配规则列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type MatchInfo: list of UserWhiteRuleItem
         :param _MatchInfoStr: MatchInfo字符串
-注意：此字段可能返回 null，表示取不到有效值。
         :type MatchInfoStr: str
         """
         self._WhiteRuleId = None
@@ -30766,7 +30306,6 @@ class UserWhiteRuleItem(AbstractModel):
         :param _MatchContent: 匹配内容
         :type MatchContent: str
         :param _MatchParams: 匹配参数名
-注意：此字段可能返回 null，表示取不到有效值。
         :type MatchParams: str
         """
         self._MatchField = None
@@ -30829,15 +30368,31 @@ class VipInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Vip: Virtual IP
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Vip: VIP地址
         :type Vip: str
         :param _InstanceId: waf实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
+        :param _InstanceCreateTime: 创建时间
+        :type InstanceCreateTime: str
+        :param _Region: 地域
+        :type Region: str
+        :param _RegionId: 地域ID
+        :type RegionId: int
+        :param _ISP: ip运营商类型
+        :type ISP: str
+        :param _VipType: ip类型
+        :type VipType: str
+        :param _AddressName: 域名信息
+        :type AddressName: str
         """
         self._Vip = None
         self._InstanceId = None
+        self._InstanceCreateTime = None
+        self._Region = None
+        self._RegionId = None
+        self._ISP = None
+        self._VipType = None
+        self._AddressName = None
 
     @property
     def Vip(self):
@@ -30855,10 +30410,64 @@ class VipInfo(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def InstanceCreateTime(self):
+        return self._InstanceCreateTime
+
+    @InstanceCreateTime.setter
+    def InstanceCreateTime(self, InstanceCreateTime):
+        self._InstanceCreateTime = InstanceCreateTime
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def ISP(self):
+        return self._ISP
+
+    @ISP.setter
+    def ISP(self, ISP):
+        self._ISP = ISP
+
+    @property
+    def VipType(self):
+        return self._VipType
+
+    @VipType.setter
+    def VipType(self, VipType):
+        self._VipType = VipType
+
+    @property
+    def AddressName(self):
+        return self._AddressName
+
+    @AddressName.setter
+    def AddressName(self, AddressName):
+        self._AddressName = AddressName
+
 
     def _deserialize(self, params):
         self._Vip = params.get("Vip")
         self._InstanceId = params.get("InstanceId")
+        self._InstanceCreateTime = params.get("InstanceCreateTime")
+        self._Region = params.get("Region")
+        self._RegionId = params.get("RegionId")
+        self._ISP = params.get("ISP")
+        self._VipType = params.get("VipType")
+        self._AddressName = params.get("AddressName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

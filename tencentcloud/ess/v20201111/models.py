@@ -3518,9 +3518,14 @@ class CreateBatchQuickSignUrlRequest(AbstractModel):
         :type SignTypeSelector: int
         :param _FlowBatchUrlInfo: 批量签署合同相关信息，指定合同和签署方的信息，用于补充动态签署人。	
         :type FlowBatchUrlInfo: :class:`tencentcloud.ess.v20201111.models.FlowBatchUrlInfo`
-        :param _Intention: <b>只有在生成H5签署链接的情形下</b>（ 如调用<a href="https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelCreateFlowSignUrl" target="_blank">获取H5签署链接</a>、<a href="https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelCreateBatchQuickSignUrl" target="_blank">获取H5批量签署链接</a>等接口），该配置才会生效。  您可以指定H5签署视频核身的意图配置，选择问答模式或点头模式的语音文本。  注意： 1. 视频认证为<b>白名单功能，使用前请联系对接的客户经理沟通</b>。 2. 使用视频认证时，<b>生成H5签署链接的时候必须将签署认证方式指定为人脸</b>（即ApproverSignTypes设置成人脸签署）。 3. 签署完成后，可以通过<a href="https://qian.tencent.com/developers/partnerApis/flows/ChannelDescribeSignFaceVideo" target="_blank">查询签署认证人脸视频</a>获取到当时的视频。
+        :param _Intention: <b>只有在生成H5签署链接的情形下</b>（ 如调用<a href="https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelCreateFlowSignUrl" target="_blank">获取H5签署链接</a>、<a href="https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelCreateBatchQuickSignUrl" target="_blank">获取H5批量签署链接</a>等接口），该配置才会生效。  您可以指定H5签署视频核身的意图配置，选择问答模式或点头模式的语音文本。 
+
+ 注意： 
+1. 视频认证为<b>白名单功能，使用前请联系对接的客户经理沟通</b>。
+2. 使用视频认证时，<b>生成H5签署链接的时候必须将签署认证方式指定为人脸</b>（即ApproverSignTypes设置成人脸签署）。 
+3. 签署完成后，可以通过<a href="https://qian.tencent.com/developers/partnerApis/flows/ChannelDescribeSignFaceVideo" target="_blank">查询签署认证人脸视频</a>获取到当时的视频。
         :type Intention: :class:`tencentcloud.ess.v20201111.models.Intention`
-        :param _CacheApproverInfo: 是否开启缓存签署人信息
+        :param _CacheApproverInfo: 缓存签署人信息。在H5签署链接动态领取场景，首次填写后，选择缓存签署人信息，在下次签署人点击领取链接时，会自动将个人信息（姓名、身份证号、手机号）填入，否则需要每次手动填写。
         :type CacheApproverInfo: bool
         """
         self._FlowApproverInfo = None
@@ -5897,10 +5902,8 @@ class CreateFlowGroupByFilesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _FlowGroupId: 合同(流程)组的合同组Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowGroupId: str
         :param _FlowIds: 合同(流程)组中子合同列表.
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowIds: list of str
         :param _Approvers: 合同组签署方信息。
         :type Approvers: list of FlowGroupApprovers

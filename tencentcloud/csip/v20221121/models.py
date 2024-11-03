@@ -2092,53 +2092,38 @@ class AssetClusterPod(AbstractModel):
         :param _Nick: 租户昵称
         :type Nick: str
         :param _Region: 地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _AssetId: pod id
         :type AssetId: str
         :param _AssetName: pod名称
         :type AssetName: str
         :param _InstanceCreateTime: pod创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceCreateTime: str
         :param _Namespace: 命名空间
-注意：此字段可能返回 null，表示取不到有效值。
         :type Namespace: str
         :param _Status: 状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _ClusterId: 集群id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
         :param _ClusterName: 集群名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterName: str
         :param _MachineId: 主机id
-注意：此字段可能返回 null，表示取不到有效值。
         :type MachineId: str
         :param _MachineName: 主机名
-注意：此字段可能返回 null，表示取不到有效值。
         :type MachineName: str
         :param _PodIp: pod ip
-注意：此字段可能返回 null，表示取不到有效值。
         :type PodIp: str
         :param _ServiceCount: 关联service数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceCount: int
         :param _ContainerCount: 关联容器数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerCount: int
         :param _PublicIp: 公网ip
-注意：此字段可能返回 null，表示取不到有效值。
         :type PublicIp: str
         :param _PrivateIp: 内网ip
-注意：此字段可能返回 null，表示取不到有效值。
         :type PrivateIp: str
         :param _IsCore: 是否核心：1:核心，2:非核心
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsCore: int
         :param _IsNewAsset: 是否新资产 1新
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsNewAsset: int
         """
         self._AppId = None
@@ -2362,34 +2347,24 @@ class AssetInfoDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _AppID: 用户appid
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppID: str
         :param _CVEId: CVE编号
-注意：此字段可能返回 null，表示取不到有效值。
         :type CVEId: str
         :param _IsScan: 是扫描，0默认未扫描，1正在扫描，2扫描完成，3扫描出错
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsScan: int
         :param _InfluenceAsset: 影响资产数目
-注意：此字段可能返回 null，表示取不到有效值。
         :type InfluenceAsset: int
         :param _NotRepairAsset: 未修复资产数目
-注意：此字段可能返回 null，表示取不到有效值。
         :type NotRepairAsset: int
         :param _NotProtectAsset: 未防护资产数目
-注意：此字段可能返回 null，表示取不到有效值。
         :type NotProtectAsset: int
         :param _TaskId: 任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
         :param _TaskPercent: 任务百分比
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskPercent: int
         :param _TaskTime: 任务时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskTime: int
         :param _ScanTime: 扫描时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanTime: str
         """
         self._AppID = None
@@ -2578,10 +2553,8 @@ class AssetTag(AbstractModel):
     def __init__(self):
         r"""
         :param _TagKey: 标签的key值,可以是字母、数字、下划线
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagKey: str
         :param _TagValue: 标签的vale值,可以是字母、数字、下划线
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagValue: str
         """
         self._TagKey = None
@@ -2661,13 +2634,10 @@ class AssetViewCFGRisk(AbstractModel):
         :param _AppId: 用户appid
         :type AppId: str
         :param _Nick: 用户昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Nick: str
         :param _Uin: 用户uin
-注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: str
         :param _ClbId: 当资产类型为LBL的时候，展示该字段，方便定位具体的LB
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClbId: str
         """
         self._Id = None
@@ -2933,10 +2903,8 @@ class AssetViewPortRisk(AbstractModel):
         :param _AppId: 用户appid
         :type AppId: str
         :param _Nick: 用户昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Nick: str
         :param _Uin: 用户uin
-注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: str
         :param _From: 识别来源，详细看枚举返回。
         :type From: str
@@ -3179,10 +3147,8 @@ class AssetViewVULRisk(AbstractModel):
         :param _AppId: 用户appid
         :type AppId: str
         :param _Nick: 用户昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Nick: str
         :param _Uin: 用户uin
-注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: str
         :param _VULType: 漏洞类型
         :type VULType: str
@@ -3219,7 +3185,6 @@ class AssetViewVULRisk(AbstractModel):
         :param _Payload: 攻击载荷
         :type Payload: str
         :param _EMGCVulType: 应急漏洞类型，1-应急漏洞，0-非应急漏洞
-注意：此字段可能返回 null，表示取不到有效值。
         :type EMGCVulType: int
         """
         self._AffectAsset = None
@@ -4117,10 +4082,8 @@ class AssetViewWeakPassRisk(AbstractModel):
         :param _AppId: 用户appid
         :type AppId: str
         :param _Nick: 用户昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Nick: str
         :param _Uin: 用户uin
-注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: str
         :param _PasswordType: 弱口令类型
         :type PasswordType: str
@@ -8778,10 +8741,8 @@ class DescribeListenerListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Total: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _Data: 监听器列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of ClbListenerListInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9062,10 +9023,8 @@ class DescribeOrganizationUserInfoResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Data: 集团用户列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of OrganizationUserInfo
         :param _JoinTypeLst: 加入方式枚举
         :type JoinTypeLst: list of FilterDataObject
@@ -10914,10 +10873,8 @@ class DescribeScanReportListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Data: 任务日志列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of ScanTaskInfo
         :param _UINList: 主账户ID列表
         :type UINList: list of str
@@ -11046,16 +11003,12 @@ class DescribeScanTaskListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Data: 任务日志列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of ScanTaskInfoList
         :param _UINList: 主账户ID列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type UINList: list of str
         :param _TaskModeList: 体检模式过滤列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskModeList: list of FilterDataObject
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11458,16 +11411,12 @@ class DescribeTaskLogListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Data: 报告列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of TaskLogInfo
         :param _NotViewNumber: 待查看数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type NotViewNumber: int
         :param _ReportTemplateNumber: 报告模板数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportTemplateNumber: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11807,21 +11756,16 @@ class DescribeVULRiskAdvanceCFGListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 配置项列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of VULRiskAdvanceCFGList
         :param _TotalCount: 总数
         :type TotalCount: int
         :param _RiskLevelLists: 风险等级过滤列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskLevelLists: list of FilterDataObject
         :param _VULTypeLists: 漏洞类型过滤列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type VULTypeLists: list of FilterDataObject
         :param _CheckFromLists: 识别来源过滤列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckFromLists: list of FilterDataObject
         :param _VulTagList: 漏洞标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type VulTagList: list of FilterDataObject
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15362,10 +15306,8 @@ class PortViewPortRisk(AbstractModel):
         :param _AppId: 用户appid
         :type AppId: str
         :param _Nick: 用户昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Nick: str
         :param _Uin: 用户uin
-注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: str
         :param _Service: 服务
         :type Service: str
@@ -16215,40 +16157,28 @@ class ScanTaskInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskId: 任务Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
         :param _TaskName: 任务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskName: str
         :param _Status: 任务状态码：1等待开始  2正在扫描  3扫描出错 4扫描完成
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _Progress: 任务进度
-注意：此字段可能返回 null，表示取不到有效值。
         :type Progress: int
         :param _TaskTime: 任务完成时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskTime: str
         :param _ReportId: 报告ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportId: str
         :param _ReportName: 报告名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportName: str
         :param _ScanPlan: 扫描计划，0-周期任务,1-立即扫描,2-定时扫描,3-自定义
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanPlan: int
         :param _AssetCount: 关联的资产数
-注意：此字段可能返回 null，表示取不到有效值。
         :type AssetCount: int
         :param _AppId: APP ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: str
         :param _UIN: 用户主账户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type UIN: str
         :param _UserName: 用户名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserName: str
         """
         self._TaskId = None
@@ -17327,16 +17257,12 @@ class ServiceSupport(AbstractModel):
         r"""
         :param _ServiceName: 产品名称:
 "cfw_waf_virtual", "cwp_detect", "cwp_defense", "cwp_fix"
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceName: str
         :param _SupportHandledCount: 已处理的资产总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SupportHandledCount: int
         :param _SupportTotalCount: 支持的资产总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SupportTotalCount: int
         :param _IsSupport: 是否支持该产品1支持；0不支持
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsSupport: bool
         """
         self._ServiceName = None
@@ -17835,11 +17761,9 @@ class Tags(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TagKey: 无
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _TagKey: 主机标签key
         :type TagKey: str
-        :param _TagValue: 无
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _TagValue: 主机标签value
         :type TagValue: str
         """
         self._TagKey = None
@@ -17972,21 +17896,16 @@ class TaskAssetObject(AbstractModel):
     def __init__(self):
         r"""
         :param _AssetName: 资产名
-注意：此字段可能返回 null，表示取不到有效值。
         :type AssetName: str
         :param _InstanceType: 资产类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: str
         :param _AssetType: 资产分类
-注意：此字段可能返回 null，表示取不到有效值。
         :type AssetType: str
         :param _Asset: ip/域名/资产id，数据库id等
         :type Asset: str
         :param _Region: 地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _Arn: 多云资产唯一id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Arn: str
         """
         self._AssetName = None
@@ -18250,45 +18169,32 @@ class TaskLogInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskLogName: 报告名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskLogName: str
         :param _TaskLogId: 报告ID
         :type TaskLogId: str
         :param _AssetsNumber: 关联资产个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type AssetsNumber: int
         :param _RiskNumber: 安全风险数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskNumber: int
         :param _Time: 报告生成时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type Time: str
         :param _Status: 任务状态码：0 初始值  1正在扫描  2扫描完成  3扫描出错，4停止，5暂停，6该任务已被重启过
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _TaskName: 关联任务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskName: str
         :param _StartTime: 扫描开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param _TaskCenterTaskId: 任务中心扫描任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskCenterTaskId: str
         :param _AppId: 租户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: str
         :param _UIN: 主账户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type UIN: str
         :param _UserName: 用户名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserName: str
         :param _ReportType: 报告类型： 1安全体检 2日报 3周报 4月报
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportType: int
         :param _TemplateId: 报告模板id
-注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateId: int
         """
         self._TaskLogName = None
@@ -18452,16 +18358,12 @@ class TaskLogURL(AbstractModel):
     def __init__(self):
         r"""
         :param _URL: 报告下载临时链接
-注意：此字段可能返回 null，表示取不到有效值。
         :type URL: str
         :param _LogId: 任务报告id
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogId: str
         :param _TaskLogName: 任务报告名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskLogName: str
         :param _AppId: APP ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: str
         """
         self._URL = None
@@ -18662,49 +18564,36 @@ class VULRiskAdvanceCFGList(AbstractModel):
         :param _CheckFrom: 识别来源
         :type CheckFrom: str
         :param _Enable: 是否启用，1-启用，0-禁用
-注意：此字段可能返回 null，表示取不到有效值。
         :type Enable: int
         :param _VULType: 风险类型
         :type VULType: str
         :param _ImpactVersion: 影响版本
         :type ImpactVersion: str
         :param _CVE: CVE
-注意：此字段可能返回 null，表示取不到有效值。
         :type CVE: str
         :param _VULTag: 漏洞标签
         :type VULTag: list of str
         :param _FixMethod: 修复方式
-注意：此字段可能返回 null，表示取不到有效值。
         :type FixMethod: list of str
         :param _ReleaseTime: 披露时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReleaseTime: str
         :param _EMGCVulType: 应急漏洞类型，1-应急漏洞，0-非应急漏洞
-注意：此字段可能返回 null，表示取不到有效值。
         :type EMGCVulType: int
         :param _VULDescribe: 漏洞描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type VULDescribe: str
         :param _ImpactComponent: 影响组件
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImpactComponent: str
         :param _Payload: 漏洞Payload
-注意：此字段可能返回 null，表示取不到有效值。
         :type Payload: str
         :param _References: 技术参考
-注意：此字段可能返回 null，表示取不到有效值。
         :type References: str
         :param _CVSS: cvss评分
-注意：此字段可能返回 null，表示取不到有效值。
         :type CVSS: str
         :param _AttackHeat: 攻击热度
-注意：此字段可能返回 null，表示取不到有效值。
         :type AttackHeat: str
         :param _ServiceSupport: 安全产品支持情况
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceSupport: list of ServiceSupport
         :param _RecentScanTime: 最新检测时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecentScanTime: str
         """
         self._RiskId = None
@@ -19049,18 +18938,14 @@ class VULViewVULRisk(AbstractModel):
         :param _VULURL: 风险点
         :type VULURL: str
         :param _Nick: 用户昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Nick: str
         :param _AppId: 用户appid
         :type AppId: str
         :param _Uin: 用户uin
-注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: str
         :param _Fix: 修复建议
-注意：此字段可能返回 null，表示取不到有效值。
         :type Fix: str
         :param _EMGCVulType: 应急漏洞类型，1-应急漏洞，0-非应急漏洞
-注意：此字段可能返回 null，表示取不到有效值。
         :type EMGCVulType: int
         """
         self._Port = None
@@ -19953,10 +19838,8 @@ class VulImpactComponentInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Component: 组件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Component: str
         :param _Version: 版本名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         """
         self._Component = None
@@ -20000,16 +19883,12 @@ class VulTrend(AbstractModel):
     def __init__(self):
         r"""
         :param _AffectAssetCount: 影响的资产数
-注意：此字段可能返回 null，表示取不到有效值。
         :type AffectAssetCount: int
         :param _AffectUserCount: 影响的用户数
-注意：此字段可能返回 null，表示取不到有效值。
         :type AffectUserCount: int
         :param _AttackCount: 攻击数
-注意：此字段可能返回 null，表示取不到有效值。
         :type AttackCount: int
         :param _Date: 时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type Date: str
         """
         self._AffectAssetCount = None
@@ -20093,10 +19972,8 @@ class WebsiteRisk(AbstractModel):
         :param _AppId: 用户appid
         :type AppId: str
         :param _Nick: 用户昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Nick: str
         :param _Uin: 用户uin
-注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: str
         :param _URL: 风险链接
         :type URL: str

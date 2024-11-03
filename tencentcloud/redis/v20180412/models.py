@@ -4214,9 +4214,9 @@ class DescribeInstanceBackupsRequest(AbstractModel):
         :type Offset: int
         :param _InstanceId: 待操作的实例ID，可通过 DescribeInstance 接口返回值中的 InstanceId 获取。
         :type InstanceId: str
-        :param _BeginTime: 开始时间，格式如：2017-02-08 16:46:34。查询实例在 [beginTime, endTime] 时间段内开始备份的备份列表。
+        :param _BeginTime: 开始时间，格式如：2017-02-08 16:46:34。查询实例在 [beginTime, endTime] 时间段内开始备份的备份列表，查询时间最大跨度30天。
         :type BeginTime: str
-        :param _EndTime: 结束时间，格式如：2017-02-08 19:09:26。查询实例在 [beginTime, endTime] 时间段内开始备份的备份列表。
+        :param _EndTime: 结束时间，格式如：2017-02-08 19:09:26。查询实例在 [beginTime, endTime] 时间段内开始备份的备份列表，查询时间最大跨度30天。
         :type EndTime: str
         :param _Status: 备份任务的状态：
 1：备份在流程中。
@@ -4739,13 +4739,13 @@ class DescribeInstanceEventsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ExecutionStartDate: 配置查询事件执行计划的起始日期。
+        :param _ExecutionStartDate: 配置查询事件执行计划的起始日期，查询日期最大跨度30天。
         :type ExecutionStartDate: str
-        :param _ExecutionEndDate: 配置查询事件执行计划的结束日期。
+        :param _ExecutionEndDate: 配置查询事件执行计划的结束日期，查询日期最大跨度30天。
         :type ExecutionEndDate: str
         :param _InstanceId: 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _PageSize: 输出每页显示事件的数量，默认：10。
+        :param _PageSize: 输出每页显示事件的数量，默认：10，最大100。
         :type PageSize: int
         :param _PageNo: 配置查询事件的输出页码，即支持根据PageNo（页码）与 PageSize （每页输出数量）查询某一页的事件。默认：1。
         :type PageNo: int
@@ -7586,15 +7586,15 @@ class DescribeProxySlowLogRequest(AbstractModel):
         :param _InstanceId: 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 
         :type InstanceId: str
-        :param _BeginTime: 慢查询的开始时间。
+        :param _BeginTime: 慢查询的开始时间，查询时间最大跨度30天。
         :type BeginTime: str
-        :param _EndTime: 慢查询的结束时间。
+        :param _EndTime: 慢查询的结束时间，查询时间最大跨度30天。
         :type EndTime: str
         :param _MinQueryTime: 慢查询阈值，单位：毫秒。
         :type MinQueryTime: int
-        :param _Limit: 分页大小。默认为 20，取值范围[20,1000]。
+        :param _Limit: 每页输出的任务列表大小，默认为 20，最多输出100条。
         :type Limit: int
-        :param _Offset: 偏移量，取Limit整数倍。
+        :param _Offset: 分页偏移量，取Limit整数倍，计算公式：offset=limit*(页码-1)。
         :type Offset: int
         """
         self._InstanceId = None
@@ -8366,13 +8366,13 @@ class DescribeSlowLogRequest(AbstractModel):
         :param _InstanceId: 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 
         :type InstanceId: str
-        :param _BeginTime: 预查询慢日志的起始时间。
+        :param _BeginTime: 预查询慢日志的起始时间，查询时间最大跨度30天。
         :type BeginTime: str
-        :param _EndTime: 预查询慢日志的结束时间。
+        :param _EndTime: 预查询慢日志的结束时间，查询时间最大跨度30天
         :type EndTime: str
         :param _MinQueryTime: 慢查询平均执行时间阈值，单位：毫秒。
         :type MinQueryTime: int
-        :param _Limit: 每个页面展示的慢查询条数，默认值为20。取值范围：[20,1000]。
+        :param _Limit: 每个页面展示的慢查询条数，默认值为20，最大100。
         :type Limit: int
         :param _Offset: 慢查询条数的偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。
         :type Offset: int
@@ -8733,9 +8733,9 @@ class DescribeTaskListRequest(AbstractModel):
 - FLOW_MODIFY_PROXY_NUM："069"，加（减）Proxy 节点。
 - FLOW_MODIFYBACKUPMOD："070"，变更实例备份模式。
         :type TaskTypes: list of str
-        :param _BeginTime: 任务执行的起始时间。格式如：2021-12-30 00:00:00。
+        :param _BeginTime: 任务执行的起始时间，格式如：2021-12-30 00:00:00，支持查询近30天内数据。
         :type BeginTime: str
-        :param _EndTime: 任务运行的终止时间。格式如：2021-12-30 20:59:35
+        :param _EndTime: 任务运行的终止时间。格式如：2021-12-30 20:59:35，支持查询近30天内数据。
         :type EndTime: str
         :param _TaskStatus: 该参数为内部使用，请忽略。
         :type TaskStatus: list of int

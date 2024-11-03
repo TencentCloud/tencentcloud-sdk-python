@@ -48557,43 +48557,30 @@ class ImageVirus(AbstractModel):
     def __init__(self):
         r"""
         :param _Path: 路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type Path: str
         :param _RiskLevel: 风险等级
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskLevel: str
         :param _Category: 分类
-注意：此字段可能返回 null，表示取不到有效值。
         :type Category: str
         :param _VirusName: 病毒名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type VirusName: str
         :param _Tags: 标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of str
         :param _Desc: 描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Desc: str
         :param _Solution: 解决方案
-注意：此字段可能返回 null，表示取不到有效值。
         :type Solution: str
         :param _FileType: 文件类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileType: str
         :param _FileName: 文件路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileName: str
         :param _FileMd5: 文件md5
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileMd5: str
         :param _FileSize: 大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileSize: int
         :param _FirstScanTime: 首次发现时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type FirstScanTime: str
         :param _LatestScanTime: 最近扫描时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type LatestScanTime: str
         """
         self._Path = None

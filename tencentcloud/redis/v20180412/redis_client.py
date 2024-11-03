@@ -1478,6 +1478,8 @@ class RedisClient(AbstractClient):
     def DescribeTaskList(self, request):
         """本接口（DescribeTaskList）用于查询指定实例的任务列表信息。
 
+        - 可查询近30天内任务列表数据。
+
         :param request: Request instance for DescribeTaskList.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeTaskListRequest`
         :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeTaskListResponse`

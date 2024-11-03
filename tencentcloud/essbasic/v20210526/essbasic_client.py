@@ -453,11 +453,11 @@ class EssbasicClient(AbstractClient):
         <img src="https://qcloudimg.tencent-cloud.cn/raw/a63074a0293c9ff5bf6c0bb74c0d3b20.png"   width="400" />
 
 
-        ### 1. 适用场景
+        ### 2. 适用场景
 
         该接口适用于需要一次性完成多份合同签署的情况，多份合同一般具有关联性，用户以目录的形式查看合同。
 
-        ### 2. 发起方要求和签署方实名要求
+        ### 3. 发起方要求和签署方实名要求
         - **发起方要求**：作为合同发起方的第三方子企业A的员工必须进行实名认证。
         - **签署方要求**：签署方可以是多种身份（如第三方子企业的员工、个人、SaaS平台企业员工），其中企业和员工可以不进行实名认证。
 
@@ -499,18 +499,18 @@ class EssbasicClient(AbstractClient):
         </tbody>
         </table>
 
-        ### 3. 签署方参数差异
+        ### 4. 签署方参数差异
         - 根据签署方的不同类型（第三方子企业的员工、个人、SaaS平台企业员工），传递的参数也不同。具体参数的结构和要求可以参考开发者中心提供的 `FlowApproverInfo` 结构体说明。
 
-        ### 4. 合同额度的扣减与返还
+        ### 5. 合同额度的扣减与返还
         - **扣减时机**：合同一旦发起，相关的合同额度就会被扣减，合同组下面的每个合同都要扣减一个合同额度。
         - **返还条件**：只有在合同被撤销且没有任何签署方签署过，或者只有自动签署的情况下，合同额度才会被返还。
         - **不返还的情况**：如果合同已过期、被拒签、签署完成或已解除，合同额度将不会被返还。
 
-        ### 5. 静默（自动）签署的限制
+        ### 6. 静默（自动）签署的限制
         - 在使用静默（自动）签署功能时，合同签署方不能有填写控件。<font color="red">此接口静默签(企业自动签)能力为白名单功能</font>，使用前请联系对接的客户经理沟通。
 
-        ### 6.合同组暂不支持抄送功能
+        ### 7.合同组暂不支持抄送功能
 
         :param request: Request instance for ChannelCreateFlowGroupByFiles.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateFlowGroupByFilesRequest`
@@ -541,11 +541,11 @@ class EssbasicClient(AbstractClient):
 
         <img src="https://qcloudimg.tencent-cloud.cn/raw/a63074a0293c9ff5bf6c0bb74c0d3b20.png"   width="400" />
 
-        ### 1. 适用场景
+        ### 2. 适用场景
 
         该接口适用于需要一次性完成多份合同签署的情况，多份合同一般具有关联性，用户以目录的形式查看合同。
 
-        ### 2. 发起方要求和签署方实名要求
+        ### 3. 发起方要求和签署方实名要求
         - **发起方要求**：作为合同发起方的第三方子企业A的员工必须进行实名认证。
         - **签署方要求**：签署方可以是多种身份（如第三方子企业的员工、个人、SaaS平台企业员工），其中企业和员工可以不进行实名认证。
 
@@ -586,18 +586,18 @@ class EssbasicClient(AbstractClient):
         </tbody>
         </table>
 
-        ### 3. 签署方参数差异
+        ### 4. 签署方参数差异
         - 根据签署方的不同类型（第三方子企业的员工、个人、SaaS平台企业员工），传递的参数也不同。具体参数的结构和要求可以参考开发者中心提供的 `FlowApproverInfo` 结构体说明。
 
-        ### 4. 合同额度的扣减与返还
+        ### 5. 合同额度的扣减与返还
         - **扣减时机**：合同一旦发起，相关的合同额度就会被扣减，合同组下面的每个合同都要扣减一个合同额度。
         - **返还条件**：只有在合同被撤销且没有任何签署方签署过，或者只有自动签署的情况下，合同额度才会被返还。
         - **不返还的情况**：如果合同已过期、被拒签、签署完成或已解除，合同额度将不会被返还。
 
-        ### 5. 静默（自动）签署的限制
+        ### 6. 静默（自动）签署的限制
         - 在使用静默（自动）签署功能时，合同签署方不能有填写控件。<font color="red">此接口静默签(企业自动签)能力为白名单功能</font>，使用前请联系对接的客户经理沟通。
 
-        ### 6.合同组暂不支持抄送功能
+        ### 7.合同组暂不支持抄送功能
 
         :param request: Request instance for ChannelCreateFlowGroupByTemplates.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateFlowGroupByTemplatesRequest`

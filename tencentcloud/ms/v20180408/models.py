@@ -4633,7 +4633,7 @@ class IOSResult(AbstractModel):
         :param _ResourceId: 资源id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
-        :param _EncryptState: 加固状态
+        :param _EncryptState: 加固状态：0等待，1成功，2任务中，3失败，4重试中
 注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptState: int
         :param _EncryptErrno: 业务错误码
@@ -5188,6 +5188,9 @@ class PlanInfo(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _SetFile: Dex分离，0关闭，1开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SetFile: str
         :param _ApkSizeOpt: apk大小优化，0关闭，1开启
         :type ApkSizeOpt: int
         :param _Dex: Dex加固，0关闭，1开启
@@ -5198,12 +5201,8 @@ class PlanInfo(AbstractModel):
         :type Bugly: int
         :param _AntiRepack: 防止重打包，0关闭，1开启
         :type AntiRepack: int
-        :param _SeperateDex: Dex分离，0关闭，1开启
-        :type SeperateDex: int
         :param _Db: 内存保护，0关闭，1开启
         :type Db: int
-        :param _DexSig: Dex签名校验，0关闭，1开启
-        :type DexSig: int
         :param _SoInfo: So文件信息
         :type SoInfo: :class:`tencentcloud.ms.v20180408.models.SoInfo`
         :param _AntiVMP: vmp，0关闭，1开启
@@ -5212,43 +5211,52 @@ class PlanInfo(AbstractModel):
         :type SoType: list of str
         :param _AntiLogLeak: 防日志泄漏，0关闭，1开启
         :type AntiLogLeak: int
-        :param _AntiQemuRoot: root检测，0关闭，1开启
-        :type AntiQemuRoot: int
         :param _AntiAssets: 资源防篡改，0关闭，1开启
         :type AntiAssets: int
         :param _AntiScreenshot: 防止截屏，0关闭，1开启
         :type AntiScreenshot: int
         :param _AntiSSL: SSL证书防窃取，0关闭，1开启
         :type AntiSSL: int
-        :param _SetFile: Dex分离，0关闭，1开启
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SetFile: str
         :param _FileSign: Dex签名校验，0关闭，1开启
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileSign: str
         :param _AntiRoot: root检测，0关闭，1开启
 注意：此字段可能返回 null，表示取不到有效值。
         :type AntiRoot: str
+        :param _SeperateDex: Dex分离，0关闭，1开启
+        :type SeperateDex: int
+        :param _DexSig: Dex签名校验，0关闭，1开启
+        :type DexSig: int
+        :param _AntiQemuRoot: root检测，0关闭，1开启
+        :type AntiQemuRoot: int
         """
+        self._SetFile = None
         self._ApkSizeOpt = None
         self._Dex = None
         self._So = None
         self._Bugly = None
         self._AntiRepack = None
-        self._SeperateDex = None
         self._Db = None
-        self._DexSig = None
         self._SoInfo = None
         self._AntiVMP = None
         self._SoType = None
         self._AntiLogLeak = None
-        self._AntiQemuRoot = None
         self._AntiAssets = None
         self._AntiScreenshot = None
         self._AntiSSL = None
-        self._SetFile = None
         self._FileSign = None
         self._AntiRoot = None
+        self._SeperateDex = None
+        self._DexSig = None
+        self._AntiQemuRoot = None
+
+    @property
+    def SetFile(self):
+        return self._SetFile
+
+    @SetFile.setter
+    def SetFile(self, SetFile):
+        self._SetFile = SetFile
 
     @property
     def ApkSizeOpt(self):
@@ -5291,36 +5299,12 @@ class PlanInfo(AbstractModel):
         self._AntiRepack = AntiRepack
 
     @property
-    def SeperateDex(self):
-        warnings.warn("parameter `SeperateDex` is deprecated", DeprecationWarning) 
-
-        return self._SeperateDex
-
-    @SeperateDex.setter
-    def SeperateDex(self, SeperateDex):
-        warnings.warn("parameter `SeperateDex` is deprecated", DeprecationWarning) 
-
-        self._SeperateDex = SeperateDex
-
-    @property
     def Db(self):
         return self._Db
 
     @Db.setter
     def Db(self, Db):
         self._Db = Db
-
-    @property
-    def DexSig(self):
-        warnings.warn("parameter `DexSig` is deprecated", DeprecationWarning) 
-
-        return self._DexSig
-
-    @DexSig.setter
-    def DexSig(self, DexSig):
-        warnings.warn("parameter `DexSig` is deprecated", DeprecationWarning) 
-
-        self._DexSig = DexSig
 
     @property
     def SoInfo(self):
@@ -5355,18 +5339,6 @@ class PlanInfo(AbstractModel):
         self._AntiLogLeak = AntiLogLeak
 
     @property
-    def AntiQemuRoot(self):
-        warnings.warn("parameter `AntiQemuRoot` is deprecated", DeprecationWarning) 
-
-        return self._AntiQemuRoot
-
-    @AntiQemuRoot.setter
-    def AntiQemuRoot(self, AntiQemuRoot):
-        warnings.warn("parameter `AntiQemuRoot` is deprecated", DeprecationWarning) 
-
-        self._AntiQemuRoot = AntiQemuRoot
-
-    @property
     def AntiAssets(self):
         return self._AntiAssets
 
@@ -5391,14 +5363,6 @@ class PlanInfo(AbstractModel):
         self._AntiSSL = AntiSSL
 
     @property
-    def SetFile(self):
-        return self._SetFile
-
-    @SetFile.setter
-    def SetFile(self, SetFile):
-        self._SetFile = SetFile
-
-    @property
     def FileSign(self):
         return self._FileSign
 
@@ -5414,29 +5378,65 @@ class PlanInfo(AbstractModel):
     def AntiRoot(self, AntiRoot):
         self._AntiRoot = AntiRoot
 
+    @property
+    def SeperateDex(self):
+        warnings.warn("parameter `SeperateDex` is deprecated", DeprecationWarning) 
+
+        return self._SeperateDex
+
+    @SeperateDex.setter
+    def SeperateDex(self, SeperateDex):
+        warnings.warn("parameter `SeperateDex` is deprecated", DeprecationWarning) 
+
+        self._SeperateDex = SeperateDex
+
+    @property
+    def DexSig(self):
+        warnings.warn("parameter `DexSig` is deprecated", DeprecationWarning) 
+
+        return self._DexSig
+
+    @DexSig.setter
+    def DexSig(self, DexSig):
+        warnings.warn("parameter `DexSig` is deprecated", DeprecationWarning) 
+
+        self._DexSig = DexSig
+
+    @property
+    def AntiQemuRoot(self):
+        warnings.warn("parameter `AntiQemuRoot` is deprecated", DeprecationWarning) 
+
+        return self._AntiQemuRoot
+
+    @AntiQemuRoot.setter
+    def AntiQemuRoot(self, AntiQemuRoot):
+        warnings.warn("parameter `AntiQemuRoot` is deprecated", DeprecationWarning) 
+
+        self._AntiQemuRoot = AntiQemuRoot
+
 
     def _deserialize(self, params):
+        self._SetFile = params.get("SetFile")
         self._ApkSizeOpt = params.get("ApkSizeOpt")
         self._Dex = params.get("Dex")
         self._So = params.get("So")
         self._Bugly = params.get("Bugly")
         self._AntiRepack = params.get("AntiRepack")
-        self._SeperateDex = params.get("SeperateDex")
         self._Db = params.get("Db")
-        self._DexSig = params.get("DexSig")
         if params.get("SoInfo") is not None:
             self._SoInfo = SoInfo()
             self._SoInfo._deserialize(params.get("SoInfo"))
         self._AntiVMP = params.get("AntiVMP")
         self._SoType = params.get("SoType")
         self._AntiLogLeak = params.get("AntiLogLeak")
-        self._AntiQemuRoot = params.get("AntiQemuRoot")
         self._AntiAssets = params.get("AntiAssets")
         self._AntiScreenshot = params.get("AntiScreenshot")
         self._AntiSSL = params.get("AntiSSL")
-        self._SetFile = params.get("SetFile")
         self._FileSign = params.get("FileSign")
         self._AntiRoot = params.get("AntiRoot")
+        self._SeperateDex = params.get("SeperateDex")
+        self._DexSig = params.get("DexSig")
+        self._AntiQemuRoot = params.get("AntiQemuRoot")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5888,6 +5888,31 @@ class ResultListItem(AbstractModel):
         :type Errno: str
         :param _ErrMsg: 对应errno的错误信息描述
         :type ErrMsg: str
+        :param _ErrNo: 应用错误码：0、1-表示正常；                  
+
+2表示System Error(engine analysis error).
+
+3表示App analysis error, please confirm it.
+
+4表示App have not cert, please confirm it.
+
+5表示App size is zero, please confirm it.
+
+6表示App have not package name, please confirm it.
+
+7表示App build time is empty, please confirm it.
+
+8表示App have not valid cert, please confirm it.
+
+99表示Other error.
+
+1000表示App downloadlink download fail, please confirm it.
+
+1001表示APP md5 different between real md5, please confirm it.
+
+1002表示App md5 uncollect, please offer downloadlink.
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrNo: str
         """
         self._Banner = None
         self._BoutiqueRecommand = None
@@ -5907,6 +5932,7 @@ class ResultListItem(AbstractModel):
         self._RepackageStatus = None
         self._Errno = None
         self._ErrMsg = None
+        self._ErrNo = None
 
     @property
     def Banner(self):
@@ -6038,10 +6064,14 @@ class ResultListItem(AbstractModel):
 
     @property
     def Errno(self):
+        warnings.warn("parameter `Errno` is deprecated", DeprecationWarning) 
+
         return self._Errno
 
     @Errno.setter
     def Errno(self, Errno):
+        warnings.warn("parameter `Errno` is deprecated", DeprecationWarning) 
+
         self._Errno = Errno
 
     @property
@@ -6051,6 +6081,14 @@ class ResultListItem(AbstractModel):
     @ErrMsg.setter
     def ErrMsg(self, ErrMsg):
         self._ErrMsg = ErrMsg
+
+    @property
+    def ErrNo(self):
+        return self._ErrNo
+
+    @ErrNo.setter
+    def ErrNo(self, ErrNo):
+        self._ErrNo = ErrNo
 
 
     def _deserialize(self, params):
@@ -6082,6 +6120,7 @@ class ResultListItem(AbstractModel):
         self._RepackageStatus = params.get("RepackageStatus")
         self._Errno = params.get("Errno")
         self._ErrMsg = params.get("ErrMsg")
+        self._ErrNo = params.get("ErrNo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
