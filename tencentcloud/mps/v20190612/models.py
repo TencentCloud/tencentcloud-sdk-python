@@ -23560,7 +23560,10 @@ class EditMediaOutputConfig(AbstractModel):
         :param _Container: 封装格式，可选值：mp4、hls、mov、flv、avi。默认是 mp4。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Container: str
-        :param _Type: 剪辑模式，可选值 normal、fast。默认是精确剪辑 normal
+        :param _Type: 剪辑模式，可选值：
+normal（默认）：精准编辑
+fast：快速编辑，处理速度更快但精准度一定程度降低
+注意：fast只支持单文件，normal默认输出转码格式是h264
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         """
@@ -40974,6 +40977,12 @@ class SegmentRecognitionItem(AbstractModel):
         :param _Summary: 分段概要。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Summary: str
+        :param _BeginTime: 直播切片对应直播起始时间点，采用 ISO 日期格式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BeginTime: str
+        :param _EndTime: 直播切片对应直播结束时间点，采用 ISO 日期格式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
         """
         self._Confidence = None
         self._StartTimeOffset = None
@@ -40981,6 +40990,8 @@ class SegmentRecognitionItem(AbstractModel):
         self._SegmentUrl = None
         self._Title = None
         self._Summary = None
+        self._BeginTime = None
+        self._EndTime = None
 
     @property
     def Confidence(self):
@@ -41030,6 +41041,22 @@ class SegmentRecognitionItem(AbstractModel):
     def Summary(self, Summary):
         self._Summary = Summary
 
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
 
     def _deserialize(self, params):
         self._Confidence = params.get("Confidence")
@@ -41038,6 +41065,8 @@ class SegmentRecognitionItem(AbstractModel):
         self._SegmentUrl = params.get("SegmentUrl")
         self._Title = params.get("Title")
         self._Summary = params.get("Summary")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

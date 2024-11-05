@@ -251,25 +251,18 @@ class AccessLogInfo(AbstractModel):
         :param _Time: 日志时间，单位ms
         :type Time: int
         :param _TopicId: 日志主题ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicId: str
         :param _TopicName: 日志主题名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicName: str
         :param _Source: 日志来源IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type Source: str
         :param _FileName: 日志文件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileName: str
         :param _PkgId: 日志上报请求包的ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type PkgId: str
         :param _PkgLogId: 请求包内日志的ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type PkgLogId: str
         :param _LogJson: 日志内容的Json序列化字符串
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogJson: str
         """
@@ -458,14 +451,11 @@ class AccessRuleInfo(AbstractModel):
         r"""
         :param _FullText: 全文索引配置
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FullText: :class:`tencentcloud.waf.v20180125.models.AccessFullTextInfo`
         :param _KeyValue: 键值索引配置
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type KeyValue: :class:`tencentcloud.waf.v20180125.models.AccessRuleKeyValueInfo`
         :param _Tag: 元字段索引配置
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tag: :class:`tencentcloud.waf.v20180125.models.AccessRuleTagInfo`
         """
@@ -3867,7 +3857,6 @@ class CCRuleItem(AbstractModel):
         :param _ValidTime: 策略动作有效时间
         :type ValidTime: int
         :param _OptionsArr: 高级参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type OptionsArr: str
         :param _Length: url长度
         :type Length: int
@@ -4097,12 +4086,10 @@ class CCRuleItems(AbstractModel):
         :param _RuleId: 规则ID
         :type RuleId: int
         :param _EventId: 事件id
-注意：此字段可能返回 null，表示取不到有效值。
         :type EventId: str
         :param _SessionApplied: 关联的Session规则
         :type SessionApplied: list of int
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
         """
         self._Name = None
@@ -4288,7 +4275,6 @@ class CCRuleLists(AbstractModel):
         :param _TotalCount: 总数
         :type TotalCount: int
         :param _Res: 规则
-注意：此字段可能返回 null，表示取不到有效值。
         :type Res: list of CCRuleItems
         """
         self._TotalCount = None
@@ -4319,99 +4305,6 @@ class CCRuleLists(AbstractModel):
                 obj = CCRuleItems()
                 obj._deserialize(item)
                 self._Res.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CacheUrlItem(AbstractModel):
-    """防篡改url元素
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Id: Id
-        :type Id: str
-        :param _Name: 名称
-        :type Name: str
-        :param _Domain: 域名
-        :type Domain: str
-        :param _Uri: uri
-        :type Uri: str
-        :param _Protocol: 协议
-        :type Protocol: str
-        :param _Status: 状态
-        :type Status: str
-        """
-        self._Id = None
-        self._Name = None
-        self._Domain = None
-        self._Uri = None
-        self._Protocol = None
-        self._Status = None
-
-    @property
-    def Id(self):
-        return self._Id
-
-    @Id.setter
-    def Id(self, Id):
-        self._Id = Id
-
-    @property
-    def Name(self):
-        return self._Name
-
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
-
-    @property
-    def Domain(self):
-        return self._Domain
-
-    @Domain.setter
-    def Domain(self, Domain):
-        self._Domain = Domain
-
-    @property
-    def Uri(self):
-        return self._Uri
-
-    @Uri.setter
-    def Uri(self, Uri):
-        self._Uri = Uri
-
-    @property
-    def Protocol(self):
-        return self._Protocol
-
-    @Protocol.setter
-    def Protocol(self, Protocol):
-        self._Protocol = Protocol
-
-    @property
-    def Status(self):
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-
-    def _deserialize(self, params):
-        self._Id = params.get("Id")
-        self._Name = params.get("Name")
-        self._Domain = params.get("Domain")
-        self._Uri = params.get("Uri")
-        self._Protocol = params.get("Protocol")
-        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4594,7 +4487,6 @@ class CdcRegion(AbstractModel):
         :param _Region: 地域
         :type Region: str
         :param _Clusters: 该地域对应的集群信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Clusters: list of CdcCluster
         """
         self._Region = None
@@ -6446,7 +6338,6 @@ class DeleteAttackWhiteRuleResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _FailIds: 删除失败的规则序号组
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailIds: list of int non-negative
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6553,7 +6444,6 @@ class DeleteCCRuleResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 一般为null
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
         :param _RuleId: 操作的规则Id
         :type RuleId: int
@@ -6845,7 +6735,6 @@ class DeleteDomainWhiteRulesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 出参
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7277,7 +7166,6 @@ class DeleteSessionResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7617,7 +7505,6 @@ class DescribeAccessFastAnalysisResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _FieldValueRatioInfos: 注意：此字段可能返回 null，表示取不到有效值
-注意：此字段可能返回 null，表示取不到有效值。
         :type FieldValueRatioInfos: list of AccessFieldValueRatioInfo
         :param _TotalCount: 日志条数
         :type TotalCount: int
@@ -7757,7 +7644,6 @@ class DescribeAccessHistogramResponse(AbstractModel):
         :param _TotalCount: 满足条件的日志条数
         :type TotalCount: int
         :param _HistogramInfos: 注意：此字段可能返回 null，表示取不到有效值
-注意：此字段可能返回 null，表示取不到有效值。
         :type HistogramInfos: list of AccessHistogramItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7828,7 +7714,6 @@ class DescribeAccessIndexResponse(AbstractModel):
         :param _Status: 是否生效，true表示生效，false表示未生效
         :type Status: bool
         :param _Rule: 索引配置信息
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Rule: :class:`tencentcloud.waf.v20180125.models.AccessRuleInfo`
         :param _ModifyTime: 索引修改时间，初始值为索引创建时间。
@@ -8033,318 +7918,6 @@ class DescribeAntiFakeRulesResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Data.append(obj)
         self._RequestId = params.get("RequestId")
-
-
-class DescribeAntiFakeUrlRequest(AbstractModel):
-    """DescribeAntiFakeUrl请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Domain: 域名
-        :type Domain: str
-        :param _PageInfo: 翻页参数
-        :type PageInfo: :class:`tencentcloud.waf.v20180125.models.PageInfo`
-        """
-        self._Domain = None
-        self._PageInfo = None
-
-    @property
-    def Domain(self):
-        return self._Domain
-
-    @Domain.setter
-    def Domain(self, Domain):
-        self._Domain = Domain
-
-    @property
-    def PageInfo(self):
-        return self._PageInfo
-
-    @PageInfo.setter
-    def PageInfo(self, PageInfo):
-        self._PageInfo = PageInfo
-
-
-    def _deserialize(self, params):
-        self._Domain = params.get("Domain")
-        if params.get("PageInfo") is not None:
-            self._PageInfo = PageInfo()
-            self._PageInfo._deserialize(params.get("PageInfo"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeAntiFakeUrlResponse(AbstractModel):
-    """DescribeAntiFakeUrl返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Total: 总数
-        :type Total: str
-        :param _List: 信息
-        :type List: list of CacheUrlItem
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._Total = None
-        self._List = None
-        self._RequestId = None
-
-    @property
-    def Total(self):
-        return self._Total
-
-    @Total.setter
-    def Total(self, Total):
-        self._Total = Total
-
-    @property
-    def List(self):
-        return self._List
-
-    @List.setter
-    def List(self, List):
-        self._List = List
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._Total = params.get("Total")
-        if params.get("List") is not None:
-            self._List = []
-            for item in params.get("List"):
-                obj = CacheUrlItem()
-                obj._deserialize(item)
-                self._List.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeAntiInfoLeakRulesRequest(AbstractModel):
-    """DescribeAntiInfoLeakRules请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Domain: 域名
-        :type Domain: str
-        :param _ActionType: 动作类型
-        :type ActionType: int
-        :param _PageInfo: 翻页
-        :type PageInfo: :class:`tencentcloud.waf.v20180125.models.PageInfo`
-        """
-        self._Domain = None
-        self._ActionType = None
-        self._PageInfo = None
-
-    @property
-    def Domain(self):
-        return self._Domain
-
-    @Domain.setter
-    def Domain(self, Domain):
-        self._Domain = Domain
-
-    @property
-    def ActionType(self):
-        return self._ActionType
-
-    @ActionType.setter
-    def ActionType(self, ActionType):
-        self._ActionType = ActionType
-
-    @property
-    def PageInfo(self):
-        return self._PageInfo
-
-    @PageInfo.setter
-    def PageInfo(self, PageInfo):
-        self._PageInfo = PageInfo
-
-
-    def _deserialize(self, params):
-        self._Domain = params.get("Domain")
-        self._ActionType = params.get("ActionType")
-        if params.get("PageInfo") is not None:
-            self._PageInfo = PageInfo()
-            self._PageInfo._deserialize(params.get("PageInfo"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeAntiInfoLeakRulesResponse(AbstractModel):
-    """DescribeAntiInfoLeakRules返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _TotalCount: 记录条数
-        :type TotalCount: str
-        :param _RuleList: 规则列表
-        :type RuleList: list of DescribeAntiInfoLeakRulesRuleItem
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._TotalCount = None
-        self._RuleList = None
-        self._RequestId = None
-
-    @property
-    def TotalCount(self):
-        return self._TotalCount
-
-    @TotalCount.setter
-    def TotalCount(self, TotalCount):
-        self._TotalCount = TotalCount
-
-    @property
-    def RuleList(self):
-        return self._RuleList
-
-    @RuleList.setter
-    def RuleList(self, RuleList):
-        self._RuleList = RuleList
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._TotalCount = params.get("TotalCount")
-        if params.get("RuleList") is not None:
-            self._RuleList = []
-            for item in params.get("RuleList"):
-                obj = DescribeAntiInfoLeakRulesRuleItem()
-                obj._deserialize(item)
-                self._RuleList.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeAntiInfoLeakRulesRuleItem(AbstractModel):
-    """DescribeAntiInfoLeakRules返回的规则列表元素
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RuleId: 规则ID
-        :type RuleId: str
-        :param _Name: 规则名称
-        :type Name: str
-        :param _Status: 规则状态
-        :type Status: str
-        :param _ActionType: 规则动作类型
-        :type ActionType: str
-        :param _CreateTime: 规则创建时间
-        :type CreateTime: str
-        :param _Strategies: 详细的规则
-        :type Strategies: list of DescribeAntiInfoLeakRulesStrategyItem
-        """
-        self._RuleId = None
-        self._Name = None
-        self._Status = None
-        self._ActionType = None
-        self._CreateTime = None
-        self._Strategies = None
-
-    @property
-    def RuleId(self):
-        return self._RuleId
-
-    @RuleId.setter
-    def RuleId(self, RuleId):
-        self._RuleId = RuleId
-
-    @property
-    def Name(self):
-        return self._Name
-
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
-
-    @property
-    def Status(self):
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def ActionType(self):
-        return self._ActionType
-
-    @ActionType.setter
-    def ActionType(self, ActionType):
-        self._ActionType = ActionType
-
-    @property
-    def CreateTime(self):
-        return self._CreateTime
-
-    @CreateTime.setter
-    def CreateTime(self, CreateTime):
-        self._CreateTime = CreateTime
-
-    @property
-    def Strategies(self):
-        return self._Strategies
-
-    @Strategies.setter
-    def Strategies(self, Strategies):
-        self._Strategies = Strategies
-
-
-    def _deserialize(self, params):
-        self._RuleId = params.get("RuleId")
-        self._Name = params.get("Name")
-        self._Status = params.get("Status")
-        self._ActionType = params.get("ActionType")
-        self._CreateTime = params.get("CreateTime")
-        if params.get("Strategies") is not None:
-            self._Strategies = []
-            for item in params.get("Strategies"):
-                obj = DescribeAntiInfoLeakRulesStrategyItem()
-                obj._deserialize(item)
-                self._Strategies.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
 
 
 class DescribeAntiInfoLeakRulesStrategyItem(AbstractModel):
@@ -8563,10 +8136,8 @@ class DescribeAntiLeakageItem(AbstractModel):
         :param _CreateTime: 创建时间
         :type CreateTime: str
         :param _Strategies: 匹配条件
-注意：此字段可能返回 null，表示取不到有效值。
         :type Strategies: list of DescribeAntiInfoLeakRulesStrategyItem
         :param _Uri: 匹配的URL
-注意：此字段可能返回 null，表示取不到有效值。
         :type Uri: str
         :param _ModifyTime: 修改时间
         :type ModifyTime: str
@@ -9205,7 +8776,6 @@ class DescribeAreaBanAreasRsp(AbstractModel):
         :param _JobType: 定时任务类型
         :type JobType: str
         :param _JobDateTime: 定时任务详细配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
         :param _CronType: 周期任务配置
         :type CronType: str
@@ -9821,7 +9391,6 @@ class DescribeAttackWhiteRuleResponse(AbstractModel):
         :param _Total: 规则总数
         :type Total: int
         :param _List: 规则白名单列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of UserWhiteRule
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10359,7 +9928,6 @@ class DescribeCCRuleListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 查询到的CC规则的列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.waf.v20180125.models.CCRuleLists`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10492,7 +10060,6 @@ class DescribeCCRuleResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.waf.v20180125.models.CCRuleData`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12116,7 +11683,7 @@ class DescribeFindDomainListRequest(AbstractModel):
         :type Limit: int
         :param _Key: 过滤条件
         :type Key: str
-        :param _IsWafDomain: 是否接入waf
+        :param _IsWafDomain: 是否接入waf；传"1"返回接入域名的详情，传"0"返回未接入域名的详情，传""返回接入和未接入域名的详情
         :type IsWafDomain: str
         :param _By: 排序参数
         :type By: str
@@ -14391,6 +13958,201 @@ class DescribeRuleLimitResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeScanIpRequest(AbstractModel):
+    """DescribeScanIp请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ip: 要查询的ip地址
+        :type Ip: str
+        """
+        self._Ip = None
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+
+    def _deserialize(self, params):
+        self._Ip = params.get("Ip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeScanIpResponse(AbstractModel):
+    """DescribeScanIp返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IpList: ip列表,当入参Ip为all时，返回该值
+        :type IpList: list of ScanIpInfo
+        :param _Bussiness: 所属业务
+        :type Bussiness: str
+        :param _Characteristic: 业务特征
+        :type Characteristic: str
+        :param _Descibe: 扫描说明
+        :type Descibe: str
+        :param _Referer: 官方公告
+        :type Referer: str
+        :param _Demo: 扫描示例
+        :type Demo: str
+        :param _Target: 扫描对象
+        :type Target: str
+        :param _Purpose: 扫描目的
+        :type Purpose: str
+        :param _Announcement: 产品文案
+        :type Announcement: str
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: int
+        :param _IpOwner: ipowner
+        :type IpOwner: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._IpList = None
+        self._Bussiness = None
+        self._Characteristic = None
+        self._Descibe = None
+        self._Referer = None
+        self._Demo = None
+        self._Target = None
+        self._Purpose = None
+        self._Announcement = None
+        self._UpdateTime = None
+        self._IpOwner = None
+        self._RequestId = None
+
+    @property
+    def IpList(self):
+        return self._IpList
+
+    @IpList.setter
+    def IpList(self, IpList):
+        self._IpList = IpList
+
+    @property
+    def Bussiness(self):
+        return self._Bussiness
+
+    @Bussiness.setter
+    def Bussiness(self, Bussiness):
+        self._Bussiness = Bussiness
+
+    @property
+    def Characteristic(self):
+        return self._Characteristic
+
+    @Characteristic.setter
+    def Characteristic(self, Characteristic):
+        self._Characteristic = Characteristic
+
+    @property
+    def Descibe(self):
+        return self._Descibe
+
+    @Descibe.setter
+    def Descibe(self, Descibe):
+        self._Descibe = Descibe
+
+    @property
+    def Referer(self):
+        return self._Referer
+
+    @Referer.setter
+    def Referer(self, Referer):
+        self._Referer = Referer
+
+    @property
+    def Demo(self):
+        return self._Demo
+
+    @Demo.setter
+    def Demo(self, Demo):
+        self._Demo = Demo
+
+    @property
+    def Target(self):
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+    @property
+    def Purpose(self):
+        return self._Purpose
+
+    @Purpose.setter
+    def Purpose(self, Purpose):
+        self._Purpose = Purpose
+
+    @property
+    def Announcement(self):
+        return self._Announcement
+
+    @Announcement.setter
+    def Announcement(self, Announcement):
+        self._Announcement = Announcement
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def IpOwner(self):
+        return self._IpOwner
+
+    @IpOwner.setter
+    def IpOwner(self, IpOwner):
+        self._IpOwner = IpOwner
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("IpList") is not None:
+            self._IpList = []
+            for item in params.get("IpList"):
+                obj = ScanIpInfo()
+                obj._deserialize(item)
+                self._IpList.append(obj)
+        self._Bussiness = params.get("Bussiness")
+        self._Characteristic = params.get("Characteristic")
+        self._Descibe = params.get("Descibe")
+        self._Referer = params.get("Referer")
+        self._Demo = params.get("Demo")
+        self._Target = params.get("Target")
+        self._Purpose = params.get("Purpose")
+        self._Announcement = params.get("Announcement")
+        self._UpdateTime = params.get("UpdateTime")
+        self._IpOwner = params.get("IpOwner")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSessionRequest(AbstractModel):
     """DescribeSession请求参数结构体
 
@@ -14444,7 +14206,6 @@ class DescribeSessionResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 返回结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.waf.v20180125.models.SessionData`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14591,7 +14352,6 @@ class DescribeSpartaProtectionInfoResponse(AbstractModel):
         :param _IsKeepAlive: 与源站是否保持长连接
         :type IsKeepAlive: str
         :param _Anycast: 0：BGP 1：Anycast
-注意：此字段可能返回 null，表示取不到有效值。
         :type Anycast: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15606,7 +15366,6 @@ class DescribeWafAutoDenyRulesResponse(AbstractModel):
         :type DefenseStatus: int
         :param _Source: 数据来源Source字段 custom-自定义(默认)、batch-domain-批量域名
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type Source: str
         :param _HWState: 重保护网域名状态
         :type HWState: int
@@ -20704,10 +20463,8 @@ class JobDateTime(AbstractModel):
     def __init__(self):
         r"""
         :param _Timed: 定时执行的时间参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Timed: list of TimedJob
         :param _Cron: 周期执行的时间参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Cron: list of CronJob
         :param _TimeTZone: 时区
         :type TimeTZone: str
@@ -22689,13 +22446,10 @@ class ModifyBotStatusResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 正常情况为null
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
         :param _UnSupportedList: 未购买BOT的域名列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type UnSupportedList: list of str
         :param _FailDomainList: 已购买但操作失败的域名列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailDomainList: list of str
         :param _Count: 成功数目
         :type Count: int
@@ -26350,51 +26104,6 @@ class ModifyWebshellStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class PageInfo(AbstractModel):
-    """公共翻页参数
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _PageNumber: 页码
-        :type PageNumber: str
-        :param _PageSize: 页条目数量
-        :type PageSize: str
-        """
-        self._PageNumber = None
-        self._PageSize = None
-
-    @property
-    def PageNumber(self):
-        return self._PageNumber
-
-    @PageNumber.setter
-    def PageNumber(self, PageNumber):
-        self._PageNumber = PageNumber
-
-    @property
-    def PageSize(self):
-        return self._PageSize
-
-    @PageSize.setter
-    def PageSize(self, PageSize):
-        self._PageSize = PageSize
-
-
-    def _deserialize(self, params):
-        self._PageNumber = params.get("PageNumber")
-        self._PageSize = params.get("PageSize")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class PeakPointsItem(AbstractModel):
     """PeakPoints数组项
 
@@ -27426,22 +27135,18 @@ class Rule(AbstractModel):
         :param _Id: 规则id
         :type Id: int
         :param _Type: 规则类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Level: 规则等级
         :type Level: str
         :param _Description: 规则描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _CVE: 规则防护的CVE编号
-注意：此字段可能返回 null，表示取不到有效值。
         :type CVE: str
         :param _Status: 规则的状态
         :type Status: int
         :param _ModifyTime: 规则修改的时间
         :type ModifyTime: str
         :param _AddTime: 门神规则新增/更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type AddTime: str
         """
         self._Id = None
@@ -27642,6 +27347,101 @@ class RuleList(AbstractModel):
         
 
 
+class ScanIpInfo(AbstractModel):
+    """扫描ip信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Bussiness: 所属业务
+
+        :type Bussiness: str
+        :param _Target: 扫描对象
+        :type Target: str
+        :param _IpList: ip列表
+        :type IpList: list of str
+        :param _Descibe: 扫描说明
+        :type Descibe: str
+        :param _Referer: 官方公告
+
+        :type Referer: str
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: int
+        """
+        self._Bussiness = None
+        self._Target = None
+        self._IpList = None
+        self._Descibe = None
+        self._Referer = None
+        self._UpdateTime = None
+
+    @property
+    def Bussiness(self):
+        return self._Bussiness
+
+    @Bussiness.setter
+    def Bussiness(self, Bussiness):
+        self._Bussiness = Bussiness
+
+    @property
+    def Target(self):
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+    @property
+    def IpList(self):
+        return self._IpList
+
+    @IpList.setter
+    def IpList(self, IpList):
+        self._IpList = IpList
+
+    @property
+    def Descibe(self):
+        return self._Descibe
+
+    @Descibe.setter
+    def Descibe(self, Descibe):
+        self._Descibe = Descibe
+
+    @property
+    def Referer(self):
+        return self._Referer
+
+    @Referer.setter
+    def Referer(self, Referer):
+        self._Referer = Referer
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._Bussiness = params.get("Bussiness")
+        self._Target = params.get("Target")
+        self._IpList = params.get("IpList")
+        self._Descibe = params.get("Descibe")
+        self._Referer = params.get("Referer")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SearchAccessLogRequest(AbstractModel):
     """SearchAccessLog请求参数结构体
 
@@ -27774,14 +27574,12 @@ class SearchAccessLogResponse(AbstractModel):
         :type Analysis: bool
         :param _ColNames: 如果Analysis为True，则返回分析结果的列名，否则为空
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ColNames: list of str
         :param _Results: 日志查询结果；当Analysis为True时，可能返回为null
 注意：此字段可能返回 null，表示取不到有效值
         :type Results: list of AccessLogInfo
         :param _AnalysisResults: 日志分析结果；当Analysis为False时，可能返回为null
 注意：此字段可能返回 null，表示取不到有效值
-注意：此字段可能返回 null，表示取不到有效值。
         :type AnalysisResults: list of AccessLogItems
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -29356,7 +29154,6 @@ class UpsertCCRuleResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 一般为null
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
         :param _RuleId: 操作的RuleId
         :type RuleId: int
@@ -29690,7 +29487,6 @@ class UpsertSessionResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
         :param _SessionID: SessionID
         :type SessionID: int
@@ -30663,7 +30459,6 @@ class WafThreatenIntelligenceDetails(AbstractModel):
     def __init__(self):
         r"""
         :param _Tags: 封禁属性标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of str
         :param _DefenseStatus: 封禁模组启用状态
         :type DefenseStatus: int

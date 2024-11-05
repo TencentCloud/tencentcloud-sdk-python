@@ -180,17 +180,17 @@ class CreateDeviceVirtualGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeviceVirtualGroupName: 终端自定义分组名
+        :param _DeviceVirtualGroupName: 必填，终端自定义分组名
         :type DeviceVirtualGroupName: str
         :param _Description: 详情
         :type Description: str
-        :param _OsType: 系统类型（0: win，1：linux，2: mac，3: win_srv，4：android，5：ios   默认值0）(只支持32位)
+        :param _OsType: 必填，系统类型（0: win，1：linux，2: mac，3: win_srv，4：android，5：ios ）(只支持32位)
         :type OsType: int
-        :param _TimeType: 时间设置类型（1:自动小时、2:自动每天、3:自定义、0:手动分组）(只支持32位)
+        :param _TimeType: 必填，分组类型（0:手动分组；非0为自动划分分组；具体枚举值为：1:自动每小时划分分组、2:自动每天划分分组、3:自定义时间划分分组）(只支持32位)
         :type TimeType: int
-        :param _AutoMinute: 自动划分时间（单位min）(只支持32位)
+        :param _AutoMinute: 选填，TimeType=3时的自动划分时间，其他情况为0（单位min）(只支持32位)
         :type AutoMinute: int
-        :param _AutoRules: 自动划分规则数据
+        :param _AutoRules: 选填，手动分组不填，自动划分分组的划分规则数据
         :type AutoRules: :class:`tencentcloud.ioa.v20220601.models.ComplexRule`
         """
         self._DeviceVirtualGroupName = None
@@ -276,7 +276,6 @@ class CreateDeviceVirtualGroupResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 响应返回的data
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.ioa.v20220601.models.CreateDeviceVirtualGroupRspData`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -316,7 +315,6 @@ class CreateDeviceVirtualGroupRspData(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 返回的自定义分组id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         """
         self._Id = None
@@ -350,64 +348,44 @@ class DescribeAccountGroupsData(AbstractModel):
     def __init__(self):
         r"""
         :param _NamePath: 账号分组名全路径，点分格式
-注意：此字段可能返回 null，表示取不到有效值。
         :type NamePath: str
         :param _IdPathArr: 账号分组ID全路径，数组格式
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdPathArr: list of int
         :param _ExtraInfo: 扩展信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraInfo: str
         :param _Utime: 最后更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type Utime: str
         :param _ParentId: 父分组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParentId: int
         :param _OrgId: 源账号组织ID。使用第三方导入用户源时，记录该分组在源组织架构下的分组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrgId: str
         :param _Name: 分组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Id: 分组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param _Description: 分组描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _Source: 同步数据源
-注意：此字段可能返回 null，表示取不到有效值。
         :type Source: int
         :param _IdPath: 账号分组ID全路径，点分格式
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdPath: str
         :param _Itime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type Itime: str
         :param _ParentOrgId: 父源账号组织ID。使用第三方导入用户源时，记录该分组在源组织架构下的分组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParentOrgId: str
         :param _ImportType: 导入类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImportType: str
         :param _MiniIamId: miniIAM id
-注意：此字段可能返回 null，表示取不到有效值。
         :type MiniIamId: str
         :param _UserTotal: 该分组下含子组的所有用户总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserTotal: int
         :param _IsLeaf: 是否叶子节点
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsLeaf: bool
         :param _ReadOnly: 是否该账户的直接权限
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReadOnly: bool
         :param _LatestSyncResult: 最新一次同步任务的结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type LatestSyncResult: str
         :param _LatestSyncTime: 最新一次同步任务的结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type LatestSyncTime: str
         """
         self._NamePath = None
@@ -631,10 +609,8 @@ class DescribeAccountGroupsPageResp(AbstractModel):
     def __init__(self):
         r"""
         :param _Items: 账户分响应对象集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of DescribeAccountGroupsData
         :param _Page: 分页公共对象
-注意：此字段可能返回 null，表示取不到有效值。
         :type Page: :class:`tencentcloud.ioa.v20220601.models.Paging`
         """
         self._Items = None
@@ -755,7 +731,6 @@ class DescribeAccountGroupsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 账号分组详情响应数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.ioa.v20220601.models.DescribeAccountGroupsPageResp`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -795,10 +770,8 @@ class DescribeDevicesPageRsp(AbstractModel):
     def __init__(self):
         r"""
         :param _Paging: 数据分页信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Paging: :class:`tencentcloud.ioa.v20220601.models.Paging`
         :param _Items: 业务响应数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of DeviceDetail
         """
         self._Paging = None
@@ -1063,7 +1036,6 @@ class DescribeDevicesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 分页的data数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.ioa.v20220601.models.DescribeDevicesPageRsp`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1103,7 +1075,6 @@ class DescribeLocalAccountAccountGroupsData(AbstractModel):
     def __init__(self):
         r"""
         :param _AccountGroupId: 组Id(只支持32位)
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccountGroupId: int
         """
         self._AccountGroupId = None
@@ -1137,64 +1108,44 @@ class DescribeLocalAccountsData(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: uid，数据库中唯一
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param _UserId: 账号，登录账号
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserId: str
         :param _UserName: 用户名
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserName: str
         :param _AccountId: 账号id，同Id字段
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccountId: int
         :param _GroupId: 账号所在的分组id
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupId: int
         :param _GroupName: 账号所在的分组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
         :param _NamePath: 账号所在的分组名称路径，用英文.分割
-注意：此字段可能返回 null，表示取不到有效值。
         :type NamePath: str
         :param _Source: 账号来源,0表示本地账号(只支持32位)
-注意：此字段可能返回 null，表示取不到有效值。
         :type Source: int
         :param _Status: 账号状态,0禁用，1启用(只支持32位)
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _Itime: 账号的创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type Itime: str
         :param _Utime: 账号的最后更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type Utime: str
         :param _ExtraInfo: 账号的扩展信息，包含邮箱、手机号、身份证、职位等信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraInfo: str
         :param _RiskLevel: 用户风险等级，枚举：none, low, middle, high
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskLevel: str
         :param _AccountGroups: 所属组
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccountGroups: list of DescribeLocalAccountAccountGroupsData
         :param _MobileBindNum: 绑定手机端设备数
-注意：此字段可能返回 null，表示取不到有效值。
         :type MobileBindNum: int
         :param _PcBindNum: 绑定Pc端设备数
-注意：此字段可能返回 null，表示取不到有效值。
         :type PcBindNum: int
         :param _OnlineStatus: 账号在线状态 1：在线 2：离线
-注意：此字段可能返回 null，表示取不到有效值。
         :type OnlineStatus: int
         :param _ActiveStatus: 账号活跃状态 1：活跃 2：非活跃
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActiveStatus: int
         :param _LoginTime: 账号登录时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type LoginTime: str
         :param _LogoutTime: 账号登出时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogoutTime: str
         """
         self._Id = None
@@ -1423,10 +1374,8 @@ class DescribeLocalAccountsPage(AbstractModel):
     def __init__(self):
         r"""
         :param _Page: 公共分页对象
-注意：此字段可能返回 null，表示取不到有效值。
         :type Page: :class:`tencentcloud.ioa.v20220601.models.Paging`
         :param _Items: 获取账号列表响应的单个对象
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of DescribeLocalAccountsData
         """
         self._Page = None
@@ -1548,7 +1497,6 @@ class DescribeLocalAccountsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 获取账号列表响应的分页对象
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.ioa.v20220601.models.DescribeLocalAccountsPage`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1594,7 +1542,6 @@ class DescribeRootAccountGroupResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 账号根分组响应详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.ioa.v20220601.models.GetAccountGroupData`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1634,133 +1581,90 @@ class DeviceDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 设备ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param _Mid: 设备唯一标识码，在ioa中每个设备有唯一标识码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Mid: str
         :param _Name: 终端名（设备名）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _GroupId: 设备所在分组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupId: int
         :param _OsType: OS平台，0：Windows 、1： Linux、 2：macOS 、4： Android、 5: iOS。默认是0
-注意：此字段可能返回 null，表示取不到有效值。
         :type OsType: int
         :param _Ip: 设备IP地址（出口IP）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ip: str
         :param _OnlineStatus: 在线状态，2：在线、0或者1:离线
-注意：此字段可能返回 null，表示取不到有效值。
         :type OnlineStatus: int
         :param _Version: 客户端版本号-大整数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         :param _StrVersion: 客户端版本号-点分字符串
-注意：此字段可能返回 null，表示取不到有效值。
         :type StrVersion: str
         :param _Itime: 首次在线时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type Itime: str
         :param _ConnActiveTime: 最后一次在线时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConnActiveTime: str
         :param _Locked: 设备是否加锁 ，1：锁定 0或者2：未锁定。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Locked: int
         :param _LocalIpList: 设备本地IP列表, 包括IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type LocalIpList: str
         :param _HostId: 宿主机id（需要宿主机也安装iOA才能显示）
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostId: int
         :param _GroupName: 设备所属分组名
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
         :param _GroupNamePath: 设备所属分组路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupNamePath: str
         :param _CriticalVulListCount: 未修复高危漏洞数(只支持32位)
-注意：此字段可能返回 null，表示取不到有效值。
         :type CriticalVulListCount: int
         :param _ComputerName: 设备名，和Name相同
-注意：此字段可能返回 null，表示取不到有效值。
         :type ComputerName: str
         :param _DomainName: 登录域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type DomainName: str
         :param _MacAddr: MAC地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type MacAddr: str
         :param _VulCount: 漏洞数
-注意：此字段可能返回 null，表示取不到有效值。
         :type VulCount: int
         :param _RiskCount: 病毒风险数
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskCount: int
         :param _VirusVer: 病毒库版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type VirusVer: str
         :param _VulVersion: 漏洞库版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type VulVersion: str
         :param _SysRepVersion: 系统修复引擎版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type SysRepVersion: str
         :param _VulCriticalList: 高危补丁列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type VulCriticalList: list of str
         :param _Tags: 标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: str
         :param _UserName: 终端用户名
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserName: str
         :param _FirewallStatus: 防火墙状态，不等于0表示开启
-注意：此字段可能返回 null，表示取不到有效值。
         :type FirewallStatus: int
         :param _SerialNum: SN序列号
-注意：此字段可能返回 null，表示取不到有效值。
         :type SerialNum: str
         :param _DeviceStrategyVer: 设备管控策略版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceStrategyVer: str
         :param _NGNStrategyVer: NGN策略版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type NGNStrategyVer: str
         :param _IOAUserName: 最近登录账户的账号
-注意：此字段可能返回 null，表示取不到有效值。
         :type IOAUserName: str
         :param _DeviceNewStrategyVer: 设备管控新策略
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceNewStrategyVer: str
         :param _NGNNewStrategyVer: NGN策略新版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type NGNNewStrategyVer: str
         :param _HostName: 宿主机名称（需要宿主机也安装iOA才能显示）
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostName: str
         :param _BaseBoardSn: 主板序列号
-注意：此字段可能返回 null，表示取不到有效值。
         :type BaseBoardSn: str
         :param _AccountUsers: 绑定账户名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccountUsers: str
         :param _IdentityStrategyVer: 身份策略版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdentityStrategyVer: str
         :param _IdentityNewStrategyVer: 身份策略新版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdentityNewStrategyVer: str
         :param _AccountGroupName: 最近登录账号部门
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccountGroupName: str
         :param _AccountName: 最近登录账户的姓名
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccountName: str
         :param _AccountGroupId: 账号组id
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccountGroupId: int
         """
         self._Id = None
@@ -2313,55 +2217,38 @@ class GetAccountGroupData(AbstractModel):
     def __init__(self):
         r"""
         :param _NamePath: 分组名称全路径，点分格式
-注意：此字段可能返回 null，表示取不到有效值。
         :type NamePath: str
         :param _IdPathArr: 分组ID全路径，数组格式
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdPathArr: list of int
         :param _ExtraInfo: 分组扩展信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraInfo: str
         :param _Utime: 最后更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type Utime: str
         :param _ParentId: 当前分组的父分组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParentId: int
         :param _OrgId: 源账号组ID，该字段仅适用于第三方同步的组织架构，通过OrgId-Id构成源组织架构分组ID-现组织架构分组ID映射关系
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrgId: str
         :param _Name: 分组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Id: 分组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param _Description: 分组描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _Source: 分组导入源(只支持32位)
-注意：此字段可能返回 null，表示取不到有效值。
         :type Source: int
         :param _IdPath: 分组ID全路径，点分格式
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdPath: str
         :param _Itime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type Itime: str
         :param _ParentOrgId: 父源账号组ID，该字段仅适用于第三方同步的组织架构
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParentOrgId: str
         :param _Import: 导入信息,json格式
-注意：此字段可能返回 null，表示取不到有效值。
         :type Import: str
         :param _ImportEnable: 是否开启导入架构
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImportEnable: bool
         :param _ImportType: 导入类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImportType: str
         :param _MiniIamId: miniIAMId，MiniIAM源才有
-注意：此字段可能返回 null，表示取不到有效值。
         :type MiniIamId: str
         """
         self._NamePath = None
@@ -2554,17 +2441,13 @@ class Paging(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PageSize: 每页条数(只支持32位)
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _PageSize: 每页条数
         :type PageSize: int
-        :param _PageNum: 页码(只支持32位)
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _PageNum: 页码
         :type PageNum: int
-        :param _PageCount: 总页数(只支持32位)
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _PageCount: 总页数
         :type PageCount: int
         :param _Total: 记录总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         """
         self._PageSize = None

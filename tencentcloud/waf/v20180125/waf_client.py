@@ -739,56 +739,6 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeAntiFakeUrl(self, request):
-        """废弃接口
-
-        获取防篡改url
-
-        :param request: Request instance for DescribeAntiFakeUrl.
-        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAntiFakeUrlRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeAntiFakeUrlResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeAntiFakeUrl", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeAntiFakeUrlResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeAntiInfoLeakRules(self, request):
-        """老接口已经不再使用。
-
-        获取信息防泄漏规则列表
-
-        :param request: Request instance for DescribeAntiInfoLeakRules.
-        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAntiInfoLeakRulesRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeAntiInfoLeakRulesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeAntiInfoLeakRules", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeAntiInfoLeakRulesResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeAntiInfoLeakageRules(self, request):
         """取得信息防泄漏规则列表
 
@@ -1723,6 +1673,29 @@ class WafClient(AbstractClient):
             body = self.call("DescribeRuleLimit", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRuleLimitResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeScanIp(self, request):
+        """查询扫描ip
+
+        :param request: Request instance for DescribeScanIp.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeScanIpRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeScanIpResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeScanIp", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeScanIpResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

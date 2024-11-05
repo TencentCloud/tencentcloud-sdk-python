@@ -2556,31 +2556,6 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def InitDBInstances(self, request):
-        """该接口不再维护，参考CreateDBInstance+API文档，在发货时即可完成初始化。
-
-        本接口(InitDBInstances)用于初始化云数据库实例，包括初始化密码、默认字符集、实例端口号等。该接口已经废弃，在发货接口CreateDBInstance、CreateDBInstanceHour可以直接使用参数Password设置密码，使用参数ParamList设置字符集，使用参数Port设置端口号。
-
-        :param request: Request instance for InitDBInstances.
-        :type request: :class:`tencentcloud.cdb.v20170320.models.InitDBInstancesRequest`
-        :rtype: :class:`tencentcloud.cdb.v20170320.models.InitDBInstancesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("InitDBInstances", params, headers=headers)
-            response = json.loads(body)
-            model = models.InitDBInstancesResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def InquiryPriceUpgradeInstances(self, request):
         """本接口(InquiryPriceUpgradeInstances)用于查询云数据库实例升级的价格，支持查询按量计费或者包年包月实例的升级价格，实例类型支持主实例、灾备实例和只读实例。
 

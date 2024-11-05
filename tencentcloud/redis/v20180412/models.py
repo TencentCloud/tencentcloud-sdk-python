@@ -8946,15 +8946,15 @@ class DescribeTendisSlowLogRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例Id：crs-ngvou0i1
         :type InstanceId: str
-        :param _BeginTime: 开始时间：2019-09-08 12:12:41
+        :param _BeginTime: 开始时间：2019-09-08 12:12:41，查询时间最大跨度30天。
         :type BeginTime: str
-        :param _EndTime: 结束时间：2019-09-09 12:12:41
+        :param _EndTime: 结束时间：2019-09-09 12:12:41，查询时间最大跨度30天。
         :type EndTime: str
         :param _MinQueryTime: 慢查询阈值（毫秒）
         :type MinQueryTime: int
-        :param _Limit: 页面大小：默认20
+        :param _Limit: 页面大小：默认20，最大100。
         :type Limit: int
-        :param _Offset: 偏移量，取Limit整数倍
+        :param _Offset: 分页偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。
         :type Offset: int
         """
         self._InstanceId = None

@@ -2211,7 +2211,7 @@ class ConsumerLog(AbstractModel):
         :type MsgId: str
         :param _ConsumerGroup: 消费组。
         :type ConsumerGroup: str
-        :param _ConsumerName: 消费组名称。
+        :param _ConsumerName: 消费者名称。
         :type ConsumerName: str
         :param _ConsumeTime: 消费时间。
         :type ConsumeTime: str

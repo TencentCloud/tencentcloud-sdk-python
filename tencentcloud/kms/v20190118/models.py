@@ -643,20 +643,16 @@ class CreateKeyResponse(AbstractModel):
         :param _CreateTime: 密钥创建时间，unix时间戳
         :type CreateTime: int
         :param _Description: CMK的描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _KeyState: CMK的状态
         :type KeyState: str
         :param _KeyUsage: CMK的用途
         :type KeyUsage: str
         :param _TagCode: 标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagCode: int
         :param _TagMsg: 标签操作的返回信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagMsg: str
         :param _HsmClusterId: HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）
-注意：此字段可能返回 null，表示取不到有效值。
         :type HsmClusterId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -854,10 +850,8 @@ class CreateWhiteBoxKeyResponse(AbstractModel):
         :param _KeyId: 白盒密钥的全局唯一标识符
         :type KeyId: str
         :param _TagCode: 标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagCode: int
         :param _TagMsg: 标签操作的返回信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1203,7 +1197,6 @@ class DescribeKeyResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _KeyMetadata: 密钥属性信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type KeyMetadata: :class:`tencentcloud.kms.v20190118.models.KeyMetadata`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1276,7 +1269,6 @@ class DescribeKeysResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _KeyMetadatas: 返回的属性信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type KeyMetadatas: list of KeyMetadata
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1540,7 +1532,6 @@ class DescribeWhiteBoxKeyDetailsResponse(AbstractModel):
         :param _KeyInfos: 白盒密钥信息列表。
         :type KeyInfos: list of WhiteboxKeyInfo
         :param _TotalCount: 白盒密钥总数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1710,7 +1701,6 @@ class DeviceFingerprint(AbstractModel):
         :param _Identity: 指纹信息，由设备指纹采集工具采集获得，格式满足正则表达式：^[0-9a-f]{8}[\-][0-9a-f]{14}[\-][0-9a-f]{14}[\-][0-9a-f]{14}[\-][0-9a-f]{16}$
         :type Identity: str
         :param _Description: 描述信息，如：IP，设备名称等，最大1024字节
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         """
         self._Identity = None
@@ -3083,7 +3073,6 @@ class GetRegionsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Regions: 可用region列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Regions: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3129,27 +3118,20 @@ class GetServiceStatusResponse(AbstractModel):
         :param _ServiceEnabled: KMS服务是否开通， true 表示已开通
         :type ServiceEnabled: bool
         :param _InvalidType: 服务不可用类型： 0-未购买，1-正常， 2-欠费停服， 3-资源释放
-注意：此字段可能返回 null，表示取不到有效值。
         :type InvalidType: int
         :param _UserLevel: 0-普通版，1-旗舰版
         :type UserLevel: int
         :param _ProExpireTime: 旗舰版到期时间（Epoch Unix Timestamp）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProExpireTime: int
         :param _ProRenewFlag: 旗舰版是否自动续费：0-不自动续费，1-自动续费
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProRenewFlag: int
         :param _ProResourceId: 旗舰版购买记录的唯一性标识。如果为开通旗舰版，则返回值为空
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProResourceId: str
         :param _ExclusiveVSMEnabled: 是否开通 KMS 托管版
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExclusiveVSMEnabled: bool
         :param _ExclusiveHSMEnabled: 是否开通 KMS 独享版
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExclusiveHSMEnabled: bool
         :param _SubscriptionInfo: KMS 订阅信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubscriptionInfo: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3416,18 +3398,14 @@ class KeyMetadata(AbstractModel):
         :param _NextRotateTime: 在密钥轮换开启状态下，下次轮换的时间
         :type NextRotateTime: int
         :param _DeletionDate: 计划删除的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeletionDate: int
         :param _Origin: CMK 密钥材料类型，由KMS创建的为： TENCENT_KMS， 由用户导入的类型为：EXTERNAL
-注意：此字段可能返回 null，表示取不到有效值。
         :type Origin: str
         :param _ValidTo: 在Origin为  EXTERNAL 时有效，表示密钥材料的有效日期， 0 表示不过期
-注意：此字段可能返回 null，表示取不到有效值。
         :type ValidTo: int
         :param _ResourceId: 资源ID，格式：creatorUin/$creatorUin/$keyId
         :type ResourceId: str
         :param _HsmClusterId: HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）
-注意：此字段可能返回 null，表示取不到有效值。
         :type HsmClusterId: str
         """
         self._KeyId = None
@@ -3841,7 +3819,6 @@ class ListKeyDetailResponse(AbstractModel):
         :param _TotalCount: CMK的总数量
         :type TotalCount: int
         :param _KeyMetadatas: 返回的属性信息列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type KeyMetadatas: list of KeyMetadata
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3963,7 +3940,6 @@ class ListKeysResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Keys: CMK列表数组
-注意：此字段可能返回 null，表示取不到有效值。
         :type Keys: list of Key
         :param _TotalCount: CMK的总数量
         :type TotalCount: int
@@ -5264,7 +5240,6 @@ class WhiteboxKeyInfo(AbstractModel):
         :param _ResourceId: 资源ID，格式：creatorUin/$creatorUin/$keyId
         :type ResourceId: str
         :param _DeviceFingerprintBind: 是否有设备指纹与当前密钥绑定
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceFingerprintBind: bool
         """
         self._KeyId = None

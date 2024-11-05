@@ -2979,16 +2979,12 @@ class DescribeEncryptPlanResponse(AbstractModel):
         :param _ResourceId: 资源id
         :type ResourceId: str
         :param _AndroidPlan: 上次加固策略
-注意：此字段可能返回 null，表示取不到有效值。
         :type AndroidPlan: :class:`tencentcloud.ms.v20180408.models.AndroidPlan`
         :param _AppletPlan: 上次小程序加固策略
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppletPlan: :class:`tencentcloud.ms.v20180408.models.AppletPlan`
         :param _IOSPlan: 上次ios源码混淆加固配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type IOSPlan: :class:`tencentcloud.ms.v20180408.models.IOSPlan`
         :param _SDKPlan: 上次sdk加固配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type SDKPlan: :class:`tencentcloud.ms.v20180408.models.SDKPlan`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4309,16 +4305,12 @@ class EncryptResults(AbstractModel):
         :param _OrderId: 与当前任务关联的订单Id
         :type OrderId: str
         :param _AndroidResult: 对应PlatformType平台类型值   1-android加固结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type AndroidResult: :class:`tencentcloud.ms.v20180408.models.AndroidResult`
         :param _IOSResult: 对应PlatformType平台类型值   2-ios源码混淆加固结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type IOSResult: :class:`tencentcloud.ms.v20180408.models.IOSResult`
         :param _SDKResult: 对应PlatformType平台类型值   3-sdk加固结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type SDKResult: :class:`tencentcloud.ms.v20180408.models.SDKResult`
         :param _AppletResult: 对应PlatformType平台类型值   4-applet小程序加固结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppletResult: :class:`tencentcloud.ms.v20180408.models.AppletResult`
         """
         self._PlatformType = None
@@ -4622,40 +4614,28 @@ class IOSResult(AbstractModel):
     def __init__(self):
         r"""
         :param _ResultId: 加固任务结果Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResultId: str
         :param _OpUin: 用户uid
-注意：此字段可能返回 null，表示取不到有效值。
         :type OpUin: int
         :param _EncryptType: 加固类型，这里为ios
-注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptType: str
         :param _ResourceId: 资源id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
         :param _EncryptState: 加固状态：0等待，1成功，2任务中，3失败，4重试中
-注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptState: int
         :param _EncryptErrno: 业务错误码
-注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptErrno: int
         :param _EncryptErrDesc: 业务错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptErrDesc: str
         :param _CreatTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatTime: str
         :param _StartTime: 开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param _EndTime: 结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _CostTime: 消耗时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CostTime: int
         :param _EncryptPkgUrl: 加固（混淆）包结果url
-注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptPkgUrl: str
         """
         self._ResultId = None
@@ -5189,7 +5169,6 @@ class PlanInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _SetFile: Dex分离，0关闭，1开启
-注意：此字段可能返回 null，表示取不到有效值。
         :type SetFile: str
         :param _ApkSizeOpt: apk大小优化，0关闭，1开启
         :type ApkSizeOpt: int
@@ -5218,10 +5197,8 @@ class PlanInfo(AbstractModel):
         :param _AntiSSL: SSL证书防窃取，0关闭，1开启
         :type AntiSSL: int
         :param _FileSign: Dex签名校验，0关闭，1开启
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileSign: str
         :param _AntiRoot: root检测，0关闭，1开启
-注意：此字段可能返回 null，表示取不到有效值。
         :type AntiRoot: str
         :param _SeperateDex: Dex分离，0关闭，1开启
         :type SeperateDex: int
@@ -5911,7 +5888,6 @@ class ResultListItem(AbstractModel):
 1001表示APP md5 different between real md5, please confirm it.
 
 1002表示App md5 uncollect, please offer downloadlink.
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrNo: str
         """
         self._Banner = None

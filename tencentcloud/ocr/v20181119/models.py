@@ -22654,6 +22654,170 @@ class SmartStructuralOCRV2Response(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class SmartStructuralProRequest(AbstractModel):
+    """SmartStructuralPro请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageUrl: 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        :param _ImageBase64: 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param _PdfPageNumber: 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        :type PdfPageNumber: int
+        :param _ItemNames: 自定义结构化功能需返回的字段名称，例：若客户只想返回姓名、性别两个字段的识别结果，则输入ItemNames=["姓名","性别"]
+        :type ItemNames: list of str
+        :param _ReturnFullText: 是否开启全文字段识别
+        :type ReturnFullText: bool
+        :param _ConfigId: 配置id支持：General -- 通用场景 InvoiceEng -- 海运提单、国际invoice模版 WayBillEng --海运订单模板
+        :type ConfigId: str
+        """
+        self._ImageUrl = None
+        self._ImageBase64 = None
+        self._PdfPageNumber = None
+        self._ItemNames = None
+        self._ReturnFullText = None
+        self._ConfigId = None
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageBase64(self):
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def PdfPageNumber(self):
+        return self._PdfPageNumber
+
+    @PdfPageNumber.setter
+    def PdfPageNumber(self, PdfPageNumber):
+        self._PdfPageNumber = PdfPageNumber
+
+    @property
+    def ItemNames(self):
+        return self._ItemNames
+
+    @ItemNames.setter
+    def ItemNames(self, ItemNames):
+        self._ItemNames = ItemNames
+
+    @property
+    def ReturnFullText(self):
+        return self._ReturnFullText
+
+    @ReturnFullText.setter
+    def ReturnFullText(self, ReturnFullText):
+        self._ReturnFullText = ReturnFullText
+
+    @property
+    def ConfigId(self):
+        return self._ConfigId
+
+    @ConfigId.setter
+    def ConfigId(self, ConfigId):
+        self._ConfigId = ConfigId
+
+
+    def _deserialize(self, params):
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageBase64 = params.get("ImageBase64")
+        self._PdfPageNumber = params.get("PdfPageNumber")
+        self._ItemNames = params.get("ItemNames")
+        self._ReturnFullText = params.get("ReturnFullText")
+        self._ConfigId = params.get("ConfigId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartStructuralProResponse(AbstractModel):
+    """SmartStructuralPro返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Angle: 图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负
+        :type Angle: float
+        :param _StructuralList: 配置结构化文本信息
+        :type StructuralList: list of GroupInfo
+        :param _WordList: 还原文本信息
+        :type WordList: list of WordItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Angle = None
+        self._StructuralList = None
+        self._WordList = None
+        self._RequestId = None
+
+    @property
+    def Angle(self):
+        return self._Angle
+
+    @Angle.setter
+    def Angle(self, Angle):
+        self._Angle = Angle
+
+    @property
+    def StructuralList(self):
+        return self._StructuralList
+
+    @StructuralList.setter
+    def StructuralList(self, StructuralList):
+        self._StructuralList = StructuralList
+
+    @property
+    def WordList(self):
+        return self._WordList
+
+    @WordList.setter
+    def WordList(self, WordList):
+        self._WordList = WordList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Angle = params.get("Angle")
+        if params.get("StructuralList") is not None:
+            self._StructuralList = []
+            for item in params.get("StructuralList"):
+                obj = GroupInfo()
+                obj._deserialize(item)
+                self._StructuralList.append(obj)
+        if params.get("WordList") is not None:
+            self._WordList = []
+            for item in params.get("WordList"):
+                obj = WordItem()
+                obj._deserialize(item)
+                self._WordList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class StoreInfo(AbstractModel):
     """门头照识别结果
 
@@ -23891,7 +24055,7 @@ class TextArithmetic(AbstractModel):
 ‘10’: 脱式计算
 ‘11’: 解方程
         :type ExpressionType: str
-        :param _Answer: 错题推荐答案，算式运算结果正确返回为""，算式运算结果错误返回推荐答案 (注：暂不支持多个关系运算符（如1<10<7）、无关系运算符（如frac(1,2)+frac(2,3)）、单位换算（如1元=100角）错题的推荐答案返回)
+        :param _Answer: 错题推荐答案，算式运算结果正确返回为""，算式运算结果错误返回推荐答案 (注：暂不支持多个关系运算符（如`1<10<7`）、无关系运算符（如frac(1,2)+frac(2,3)）、单位换算（如1元=100角）错题的推荐答案返回)
         :type Answer: str
         """
         self._DetectedText = None

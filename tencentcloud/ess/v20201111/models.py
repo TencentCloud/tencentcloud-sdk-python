@@ -5229,6 +5229,10 @@ class CreateFlowByFilesRequest(AbstractModel):
         :type Components: list of Component
         :param _CcInfos: 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
 
+<b>注</b>
+1. 抄送人名单中可以包括自然人以及本企业的员工。
+2. 请确保抄送人列表中的成员不与任何签署人重复。
+
         :type CcInfos: list of CcInfo
         :param _CcNotifyType: 可以设置以下时间节点来给抄送人发送短信通知来查看合同内容：
 <ul><li> **0**：合同发起时通知（默认值）</li>
@@ -6721,6 +6725,10 @@ class CreateFlowRequest(AbstractModel):
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         :param _CcInfos: 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
+
+<b>注</b>
+1. 抄送人名单中可以包括自然人以及本企业的员工。
+2. 请确保抄送人列表中的成员不与任何签署人重复。
         :type CcInfos: list of CcInfo
         :param _AutoSignScene: 个人自动签名的使用场景包括以下, 个人自动签署(即ApproverType设置成个人自动签署时)业务此值必传：
 <ul><li> **E_PRESCRIPTION_AUTO_SIGN**：电子处方单（医疗自动签）  </li><li> **OTHER** :  通用场景</li></ul>

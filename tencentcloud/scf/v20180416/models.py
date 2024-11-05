@@ -5045,7 +5045,7 @@ class GetLayerVersionResponse(AbstractModel):
         :type Location: str
         :param _AddTime: 版本的创建时间
         :type AddTime: str
-        :param _Description: 版本的描述
+        :param _Description: 版本的描述信息
         :type Description: str
         :param _LicenseInfo: 许可证信息
         :type LicenseInfo: str

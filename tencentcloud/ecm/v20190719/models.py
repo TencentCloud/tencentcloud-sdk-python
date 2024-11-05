@@ -2973,7 +2973,7 @@ class CreateLoadBalancerRequest(AbstractModel):
         :type SecurityGroups: list of str
         :param _AddressIPVersion: 仅适用于公网负载均衡。IP版本，可取值：IPV4、IPv6FullChain，默认值 IPV4。说明：取值为IPv6FullChain，表示为IPv6版本。
         :type AddressIPVersion: str
-        :param _SubnetId: 在购买IPV6负载均衡实例的情况下，必须指定子网 ID, 此参数必填。
+        :param _SubnetId: 在购买IPV6负载均衡实例的情况下，必须指定子网 ID, 此参数必填；IPv4实例不支持该参数。
         :type SubnetId: str
         """
         self._EcmRegion = None

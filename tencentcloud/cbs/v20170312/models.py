@@ -5798,7 +5798,7 @@ class Placement(AbstractModel):
         :param _CageId: 围笼Id。作为入参时，表示对指定的CageId的资源进行操作，可为空。 作为出参时，表示资源所属围笼ID，可为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CageId: str
-        :param _ProjectId: 实例所属项目ID。该参数可以通过调用 [DescribeProject](/document/api/378/4400) 的返回值中的 projectId 字段来获取。不填为默认项目。
+        :param _ProjectId: 实例所属项目ID。不填为默认项目。
         :type ProjectId: int
         :param _ProjectName: 实例所属项目名称。
 注意：此字段可能返回 null，表示取不到有效值。

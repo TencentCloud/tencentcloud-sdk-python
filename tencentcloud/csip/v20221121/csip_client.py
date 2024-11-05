@@ -234,7 +234,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeCVMAssets(self, request):
-        """cvm列表
+        """获取cvm列表
 
         :param request: Request instance for DescribeCVMAssets.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCVMAssetsRequest`

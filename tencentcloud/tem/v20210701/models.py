@@ -5350,7 +5350,7 @@ class DestroyEnvironmentRequest(AbstractModel):
         r"""
         :param _EnvironmentId: 命名空间ID
         :type EnvironmentId: str
-        :param _SourceChannel: 来源渠道 示例值：0
+        :param _SourceChannel: 来源渠道
         :type SourceChannel: int
         """
         self._EnvironmentId = None

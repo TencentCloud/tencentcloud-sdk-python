@@ -2350,6 +2350,184 @@ class CreateSnapshotResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateTXTRecordRequest(AbstractModel):
+    """CreateTXTRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _RecordLine: 记录线路，通过 API 记录线路获得，中文，比如：默认。
+        :type RecordLine: str
+        :param _Value: 记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。
+        :type Value: str
+        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+        :type DomainId: int
+        :param _SubDomain: 主机记录，如 www，如果不传，默认为 @。
+        :type SubDomain: str
+        :param _RecordLineId: 线路的 ID，通过 API 记录线路获得，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
+        :type RecordLineId: str
+        :param _TTL: TTL，范围1-604800，不同套餐域名最小值不同。
+        :type TTL: int
+        :param _Status: 记录初始状态，取值范围为 ENABLE 和 DISABLE 。默认为 ENABLE ，如果传入 DISABLE，解析不会生效，也不会验证负载均衡的限制。
+        :type Status: str
+        :param _Remark: 备注
+        :type Remark: str
+        :param _GroupId: 记录分组 Id。可以通过接口 DescribeRecordGroupList 接口 GroupId 字段获取。
+        :type GroupId: int
+        """
+        self._Domain = None
+        self._RecordLine = None
+        self._Value = None
+        self._DomainId = None
+        self._SubDomain = None
+        self._RecordLineId = None
+        self._TTL = None
+        self._Status = None
+        self._Remark = None
+        self._GroupId = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def RecordLine(self):
+        return self._RecordLine
+
+    @RecordLine.setter
+    def RecordLine(self, RecordLine):
+        self._RecordLine = RecordLine
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+    @property
+    def SubDomain(self):
+        return self._SubDomain
+
+    @SubDomain.setter
+    def SubDomain(self, SubDomain):
+        self._SubDomain = SubDomain
+
+    @property
+    def RecordLineId(self):
+        return self._RecordLineId
+
+    @RecordLineId.setter
+    def RecordLineId(self, RecordLineId):
+        self._RecordLineId = RecordLineId
+
+    @property
+    def TTL(self):
+        return self._TTL
+
+    @TTL.setter
+    def TTL(self, TTL):
+        self._TTL = TTL
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._RecordLine = params.get("RecordLine")
+        self._Value = params.get("Value")
+        self._DomainId = params.get("DomainId")
+        self._SubDomain = params.get("SubDomain")
+        self._RecordLineId = params.get("RecordLineId")
+        self._TTL = params.get("TTL")
+        self._Status = params.get("Status")
+        self._Remark = params.get("Remark")
+        self._GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTXTRecordResponse(AbstractModel):
+    """CreateTXTRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordId: 记录ID
+        :type RecordId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RecordId = None
+        self._RequestId = None
+
+    @property
+    def RecordId(self):
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RecordId = params.get("RecordId")
+        self._RequestId = params.get("RequestId")
+
+
 class CustomLineInfo(AbstractModel):
     """自定义线路详情
 
@@ -11275,6 +11453,184 @@ class ModifySubdomainStatusResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyTXTRecordRequest(AbstractModel):
+    """ModifyTXTRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _RecordLine: 记录线路，通过 API 记录线路获得，中文，比如：默认。
+        :type RecordLine: str
+        :param _Value: 记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。
+        :type Value: str
+        :param _RecordId: 记录 ID 。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId
+        :type RecordId: int
+        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+        :type DomainId: int
+        :param _SubDomain: 主机记录，如 www，如果不传，默认为 @。
+        :type SubDomain: str
+        :param _RecordLineId: 线路的 ID，通过 API 记录线路获得，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
+        :type RecordLineId: str
+        :param _TTL: TTL，范围1-604800，不同等级域名最小值不同。
+        :type TTL: int
+        :param _Status: 记录初始状态，取值范围为 ENABLE 和 DISABLE 。默认为 ENABLE ，如果传入 DISABLE，解析不会生效，也不会验证负载均衡的限制。
+        :type Status: str
+        :param _Remark: 记录的备注信息。传空删除备注。
+        :type Remark: str
+        """
+        self._Domain = None
+        self._RecordLine = None
+        self._Value = None
+        self._RecordId = None
+        self._DomainId = None
+        self._SubDomain = None
+        self._RecordLineId = None
+        self._TTL = None
+        self._Status = None
+        self._Remark = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def RecordLine(self):
+        return self._RecordLine
+
+    @RecordLine.setter
+    def RecordLine(self, RecordLine):
+        self._RecordLine = RecordLine
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def RecordId(self):
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+    @property
+    def SubDomain(self):
+        return self._SubDomain
+
+    @SubDomain.setter
+    def SubDomain(self, SubDomain):
+        self._SubDomain = SubDomain
+
+    @property
+    def RecordLineId(self):
+        return self._RecordLineId
+
+    @RecordLineId.setter
+    def RecordLineId(self, RecordLineId):
+        self._RecordLineId = RecordLineId
+
+    @property
+    def TTL(self):
+        return self._TTL
+
+    @TTL.setter
+    def TTL(self, TTL):
+        self._TTL = TTL
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._RecordLine = params.get("RecordLine")
+        self._Value = params.get("Value")
+        self._RecordId = params.get("RecordId")
+        self._DomainId = params.get("DomainId")
+        self._SubDomain = params.get("SubDomain")
+        self._RecordLineId = params.get("RecordLineId")
+        self._TTL = params.get("TTL")
+        self._Status = params.get("Status")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyTXTRecordResponse(AbstractModel):
+    """ModifyTXTRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordId: 记录ID
+        :type RecordId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RecordId = None
+        self._RequestId = None
+
+    @property
+    def RecordId(self):
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RecordId = params.get("RecordId")
         self._RequestId = params.get("RequestId")
 
 

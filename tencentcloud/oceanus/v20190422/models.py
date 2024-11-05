@@ -1211,6 +1211,9 @@ class ClusterSession(AbstractModel):
         :param _Properties: session集群高级参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Properties: list of Property
+        :param _ResourceRefs: 引用资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceRefs: list of SessionClusterRefItem
         :param _JobManagerCuSpec: JobManager的规格
         :type JobManagerCuSpec: float
         :param _TaskManagerCuSpec: TaskManager的规格
@@ -1221,6 +1224,14 @@ class ClusterSession(AbstractModel):
         :type CreateTime: str
         :param _UpdateTime: 更新时间
         :type UpdateTime: str
+        :param _JobManagerCpu: JobManagerCpu
+        :type JobManagerCpu: float
+        :param _JobManagerMem: JobManagerMem
+        :type JobManagerMem: float
+        :param _TaskManagerCpu: TaskManagerCpu
+        :type TaskManagerCpu: float
+        :param _TaskManagerMem: TaskManagerMem
+        :type TaskManagerMem: float
         """
         self._ClusterGroupSerialId = None
         self._AppId = None
@@ -1233,11 +1244,16 @@ class ClusterSession(AbstractModel):
         self._FlinkVersion = None
         self._WebUIUrl = None
         self._Properties = None
+        self._ResourceRefs = None
         self._JobManagerCuSpec = None
         self._TaskManagerCuSpec = None
         self._TaskManagerNum = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._JobManagerCpu = None
+        self._JobManagerMem = None
+        self._TaskManagerCpu = None
+        self._TaskManagerMem = None
 
     @property
     def ClusterGroupSerialId(self):
@@ -1328,6 +1344,14 @@ class ClusterSession(AbstractModel):
         self._Properties = Properties
 
     @property
+    def ResourceRefs(self):
+        return self._ResourceRefs
+
+    @ResourceRefs.setter
+    def ResourceRefs(self, ResourceRefs):
+        self._ResourceRefs = ResourceRefs
+
+    @property
     def JobManagerCuSpec(self):
         return self._JobManagerCuSpec
 
@@ -1367,6 +1391,38 @@ class ClusterSession(AbstractModel):
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def JobManagerCpu(self):
+        return self._JobManagerCpu
+
+    @JobManagerCpu.setter
+    def JobManagerCpu(self, JobManagerCpu):
+        self._JobManagerCpu = JobManagerCpu
+
+    @property
+    def JobManagerMem(self):
+        return self._JobManagerMem
+
+    @JobManagerMem.setter
+    def JobManagerMem(self, JobManagerMem):
+        self._JobManagerMem = JobManagerMem
+
+    @property
+    def TaskManagerCpu(self):
+        return self._TaskManagerCpu
+
+    @TaskManagerCpu.setter
+    def TaskManagerCpu(self, TaskManagerCpu):
+        self._TaskManagerCpu = TaskManagerCpu
+
+    @property
+    def TaskManagerMem(self):
+        return self._TaskManagerMem
+
+    @TaskManagerMem.setter
+    def TaskManagerMem(self, TaskManagerMem):
+        self._TaskManagerMem = TaskManagerMem
+
 
     def _deserialize(self, params):
         self._ClusterGroupSerialId = params.get("ClusterGroupSerialId")
@@ -1385,11 +1441,21 @@ class ClusterSession(AbstractModel):
                 obj = Property()
                 obj._deserialize(item)
                 self._Properties.append(obj)
+        if params.get("ResourceRefs") is not None:
+            self._ResourceRefs = []
+            for item in params.get("ResourceRefs"):
+                obj = SessionClusterRefItem()
+                obj._deserialize(item)
+                self._ResourceRefs.append(obj)
         self._JobManagerCuSpec = params.get("JobManagerCuSpec")
         self._TaskManagerCuSpec = params.get("TaskManagerCuSpec")
         self._TaskManagerNum = params.get("TaskManagerNum")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._JobManagerCpu = params.get("JobManagerCpu")
+        self._JobManagerMem = params.get("JobManagerMem")
+        self._TaskManagerCpu = params.get("TaskManagerCpu")
+        self._TaskManagerMem = params.get("TaskManagerMem")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7545,6 +7611,16 @@ class JobV1(AbstractModel):
         :param _Description: 描述信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
+        :param _ScalingType: 0:代表没开启调优任务，1:开启智能调优，2:代表定时调优
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScalingType: int
+        :param _RunningCpu: 使用CPU数目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunningCpu: float
+        :param _RunningMem: 使用内存数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunningMem: float
         """
         self._JobId = None
         self._Region = None
@@ -7580,6 +7656,9 @@ class JobV1(AbstractModel):
         self._Tags = None
         self._EventInfo = None
         self._Description = None
+        self._ScalingType = None
+        self._RunningCpu = None
+        self._RunningMem = None
 
     @property
     def JobId(self):
@@ -7853,6 +7932,30 @@ class JobV1(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def ScalingType(self):
+        return self._ScalingType
+
+    @ScalingType.setter
+    def ScalingType(self, ScalingType):
+        self._ScalingType = ScalingType
+
+    @property
+    def RunningCpu(self):
+        return self._RunningCpu
+
+    @RunningCpu.setter
+    def RunningCpu(self, RunningCpu):
+        self._RunningCpu = RunningCpu
+
+    @property
+    def RunningMem(self):
+        return self._RunningMem
+
+    @RunningMem.setter
+    def RunningMem(self, RunningMem):
+        self._RunningMem = RunningMem
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -7896,6 +7999,9 @@ class JobV1(AbstractModel):
             self._EventInfo = JobEventInfo()
             self._EventInfo._deserialize(params.get("EventInfo"))
         self._Description = params.get("Description")
+        self._ScalingType = params.get("ScalingType")
+        self._RunningCpu = params.get("RunningCpu")
+        self._RunningMem = params.get("RunningMem")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10171,6 +10277,79 @@ class Savepoint(AbstractModel):
         self._SerialId = params.get("SerialId")
         self._TimeConsuming = params.get("TimeConsuming")
         self._PathStatus = params.get("PathStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SessionClusterRefItem(AbstractModel):
+    """session集群引用资源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkspaceId: 空间唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkspaceId: str
+        :param _ResourceId: 资源唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: str
+        :param _Version: 版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: int
+        :param _Type: 引用类型，0:用户资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        """
+        self._WorkspaceId = None
+        self._ResourceId = None
+        self._Version = None
+        self._Type = None
+
+    @property
+    def WorkspaceId(self):
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._ResourceId = params.get("ResourceId")
+        self._Version = params.get("Version")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
