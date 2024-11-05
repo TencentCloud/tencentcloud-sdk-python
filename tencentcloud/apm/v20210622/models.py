@@ -2857,6 +2857,10 @@ class ModifyApmInstanceRequest(AbstractModel):
         :type PayMode: int
         :param _ResponseDurationWarningThreshold: 响应时间满意阈值
         :type ResponseDurationWarningThreshold: int
+        :param _IsRelatedDashboard: 是否关联dashboard： 0 关 1 开
+        :type IsRelatedDashboard: int
+        :param _DashboardTopicID: dashboard ID
+        :type DashboardTopicID: str
         """
         self._InstanceId = None
         self._Name = None
@@ -2877,6 +2881,8 @@ class ModifyApmInstanceRequest(AbstractModel):
         self._CustomShowTags = None
         self._PayMode = None
         self._ResponseDurationWarningThreshold = None
+        self._IsRelatedDashboard = None
+        self._DashboardTopicID = None
 
     @property
     def InstanceId(self):
@@ -3030,6 +3036,22 @@ class ModifyApmInstanceRequest(AbstractModel):
     def ResponseDurationWarningThreshold(self, ResponseDurationWarningThreshold):
         self._ResponseDurationWarningThreshold = ResponseDurationWarningThreshold
 
+    @property
+    def IsRelatedDashboard(self):
+        return self._IsRelatedDashboard
+
+    @IsRelatedDashboard.setter
+    def IsRelatedDashboard(self, IsRelatedDashboard):
+        self._IsRelatedDashboard = IsRelatedDashboard
+
+    @property
+    def DashboardTopicID(self):
+        return self._DashboardTopicID
+
+    @DashboardTopicID.setter
+    def DashboardTopicID(self, DashboardTopicID):
+        self._DashboardTopicID = DashboardTopicID
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -3056,6 +3078,8 @@ class ModifyApmInstanceRequest(AbstractModel):
         self._CustomShowTags = params.get("CustomShowTags")
         self._PayMode = params.get("PayMode")
         self._ResponseDurationWarningThreshold = params.get("ResponseDurationWarningThreshold")
+        self._IsRelatedDashboard = params.get("IsRelatedDashboard")
+        self._DashboardTopicID = params.get("DashboardTopicID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

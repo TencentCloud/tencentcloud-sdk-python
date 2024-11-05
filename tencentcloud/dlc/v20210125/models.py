@@ -29330,6 +29330,9 @@ class WorkGroupDetailInfo(AbstractModel):
         :param _RowFilterInfo: 行过滤信息集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type RowFilterInfo: :class:`tencentcloud.dlc.v20210125.models.Policys`
+        :param _CatalogPolicyInfo: 数据目录权限集
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CatalogPolicyInfo: :class:`tencentcloud.dlc.v20210125.models.Policy`
         """
         self._WorkGroupId = None
         self._WorkGroupName = None
@@ -29339,6 +29342,7 @@ class WorkGroupDetailInfo(AbstractModel):
         self._EnginePolicyInfo = None
         self._WorkGroupDescription = None
         self._RowFilterInfo = None
+        self._CatalogPolicyInfo = None
 
     @property
     def WorkGroupId(self):
@@ -29404,6 +29408,14 @@ class WorkGroupDetailInfo(AbstractModel):
     def RowFilterInfo(self, RowFilterInfo):
         self._RowFilterInfo = RowFilterInfo
 
+    @property
+    def CatalogPolicyInfo(self):
+        return self._CatalogPolicyInfo
+
+    @CatalogPolicyInfo.setter
+    def CatalogPolicyInfo(self, CatalogPolicyInfo):
+        self._CatalogPolicyInfo = CatalogPolicyInfo
+
 
     def _deserialize(self, params):
         self._WorkGroupId = params.get("WorkGroupId")
@@ -29422,6 +29434,9 @@ class WorkGroupDetailInfo(AbstractModel):
         if params.get("RowFilterInfo") is not None:
             self._RowFilterInfo = Policys()
             self._RowFilterInfo._deserialize(params.get("RowFilterInfo"))
+        if params.get("CatalogPolicyInfo") is not None:
+            self._CatalogPolicyInfo = Policy()
+            self._CatalogPolicyInfo._deserialize(params.get("CatalogPolicyInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

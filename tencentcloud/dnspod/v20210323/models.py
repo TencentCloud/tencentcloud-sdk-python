@@ -1564,6 +1564,196 @@ class CreateDomainResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateLineGroupCopyRequest(AbstractModel):
+    """CreateLineGroupCopy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _DomainIds: 要复制的域名ID。要从多个域名复制线路分组时，用英文逗号分隔，例如1002,1005
+        :type DomainIds: str
+        :param _DomainId: 域名ID，如果传了DomainId，系统将会忽略Domain参数，优先使用DomainId
+        :type DomainId: int
+        """
+        self._Domain = None
+        self._DomainIds = None
+        self._DomainId = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def DomainIds(self):
+        return self._DomainIds
+
+    @DomainIds.setter
+    def DomainIds(self, DomainIds):
+        self._DomainIds = DomainIds
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._DomainIds = params.get("DomainIds")
+        self._DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLineGroupCopyResponse(AbstractModel):
+    """CreateLineGroupCopy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateLineGroupRequest(AbstractModel):
+    """CreateLineGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 自定义线路分组的名称。
+        :type Name: str
+        :param _Lines: 自定义线路分组包含的线路列表，包含多个线路时用英文逗号分隔。例如，铁通,奇虎
+        :type Lines: str
+        :param _Domain: 域名
+        :type Domain: str
+        :param _DomainId: 域名ID，如果传了DomainId，系统将会忽略Domain参数，优先使用DomainId
+        :type DomainId: int
+        """
+        self._Name = None
+        self._Lines = None
+        self._Domain = None
+        self._DomainId = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Lines(self):
+        return self._Lines
+
+    @Lines.setter
+    def Lines(self, Lines):
+        self._Lines = Lines
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Lines = params.get("Lines")
+        self._Domain = params.get("Domain")
+        self._DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLineGroupResponse(AbstractModel):
+    """CreateLineGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 自定义线路分组详情
+        :type Data: :class:`tencentcloud.dnspod.v20210323.models.LineGroupDetail`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = LineGroupDetail()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class CreateRecordBatchDetail(AbstractModel):
     """批量添加记录返回结构
 
@@ -3034,6 +3224,88 @@ class DeleteDomainRequest(AbstractModel):
 
 class DeleteDomainResponse(AbstractModel):
     """DeleteDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteLineGroupRequest(AbstractModel):
+    """DeleteLineGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _LineGroupId: 自定义线路分组ID
+        :type LineGroupId: int
+        :param _DomainId: 域名ID，如果传了DomainId，系统将会忽略Domain参数，优先使用DomainId
+        :type DomainId: int
+        """
+        self._Domain = None
+        self._LineGroupId = None
+        self._DomainId = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def LineGroupId(self):
+        return self._LineGroupId
+
+    @LineGroupId.setter
+    def LineGroupId(self, LineGroupId):
+        self._LineGroupId = LineGroupId
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._LineGroupId = params.get("LineGroupId")
+        self._DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLineGroupResponse(AbstractModel):
+    """DeleteLineGroup返回参数结构体
 
     """
 
@@ -5299,6 +5571,143 @@ class DescribeDomainWhoisResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Info") is not None:
             self._Info = WhoisInfo()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLineGroupListRequest(AbstractModel):
+    """DescribeLineGroupList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _Offset: 偏移量，默认值为0。
+        :type Offset: int
+        :param _Length: 限制数量，传0或不传会返回所有。
+        :type Length: int
+        :param _SortType: 按自定义线路分组名称排序的方向。升序传asc，降序传desc。
+        :type SortType: str
+        :param _DomainId: 域名ID，如果传了DomainId，系统将会忽略Domain参数，优先使用DomainId
+        :type DomainId: int
+        """
+        self._Domain = None
+        self._Offset = None
+        self._Length = None
+        self._SortType = None
+        self._DomainId = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Length(self):
+        return self._Length
+
+    @Length.setter
+    def Length(self, Length):
+        self._Length = Length
+
+    @property
+    def SortType(self):
+        return self._SortType
+
+    @SortType.setter
+    def SortType(self, SortType):
+        self._SortType = SortType
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Offset = params.get("Offset")
+        self._Length = params.get("Length")
+        self._SortType = params.get("SortType")
+        self._DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLineGroupListResponse(AbstractModel):
+    """DescribeLineGroupList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LineGroups: 自定义线路分组列表
+        :type LineGroups: list of LineGroupItem
+        :param _Info: 自定义线路分组数量信息
+        :type Info: :class:`tencentcloud.dnspod.v20210323.models.LineGroupSum`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LineGroups = None
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def LineGroups(self):
+        return self._LineGroups
+
+    @LineGroups.setter
+    def LineGroups(self, LineGroups):
+        self._LineGroups = LineGroups
+
+    @property
+    def Info(self):
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("LineGroups") is not None:
+            self._LineGroups = []
+            for item in params.get("LineGroups"):
+                obj = LineGroupItem()
+                obj._deserialize(item)
+                self._LineGroups.append(obj)
+        if params.get("Info") is not None:
+            self._Info = LineGroupSum()
             self._Info._deserialize(params.get("Info"))
         self._RequestId = params.get("RequestId")
 
@@ -9158,6 +9567,63 @@ class KeyValue(AbstractModel):
         
 
 
+class LineGroupDetail(AbstractModel):
+    """自定义线路分组详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 自定义线路分组ID
+        :type Id: int
+        :param _Name: 自定线路分组名称
+        :type Name: str
+        :param _Lines: 自定义线路分组包含的线路列表
+        :type Lines: list of str
+        """
+        self._Id = None
+        self._Name = None
+        self._Lines = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Lines(self):
+        return self._Lines
+
+    @Lines.setter
+    def Lines(self, Lines):
+        self._Lines = Lines
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Lines = params.get("Lines")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LineGroupInfo(AbstractModel):
     """线路分组信息
 
@@ -9217,6 +9683,156 @@ class LineGroupInfo(AbstractModel):
         self._Name = params.get("Name")
         self._Type = params.get("Type")
         self._LineList = params.get("LineList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LineGroupItem(AbstractModel):
+    """自定义线路分组元素
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DomainId: 域名ID
+        :type DomainId: int
+        :param _Id: 自定义线路分组ID
+        :type Id: int
+        :param _Name: 自定义线路分组名称
+        :type Name: str
+        :param _Lines: 自定义线路分组包含的线路
+        :type Lines: list of str
+        :param _CreatedOn: 创建时间
+        :type CreatedOn: str
+        :param _UpdatedOn: 更新时间
+        :type UpdatedOn: str
+        """
+        self._DomainId = None
+        self._Id = None
+        self._Name = None
+        self._Lines = None
+        self._CreatedOn = None
+        self._UpdatedOn = None
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Lines(self):
+        return self._Lines
+
+    @Lines.setter
+    def Lines(self, Lines):
+        self._Lines = Lines
+
+    @property
+    def CreatedOn(self):
+        return self._CreatedOn
+
+    @CreatedOn.setter
+    def CreatedOn(self, CreatedOn):
+        self._CreatedOn = CreatedOn
+
+    @property
+    def UpdatedOn(self):
+        return self._UpdatedOn
+
+    @UpdatedOn.setter
+    def UpdatedOn(self, UpdatedOn):
+        self._UpdatedOn = UpdatedOn
+
+
+    def _deserialize(self, params):
+        self._DomainId = params.get("DomainId")
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Lines = params.get("Lines")
+        self._CreatedOn = params.get("CreatedOn")
+        self._UpdatedOn = params.get("UpdatedOn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LineGroupSum(AbstractModel):
+    """自定义线路数量信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NowTotal: 本次请求返回自定义线路分组个数
+        :type NowTotal: int
+        :param _Total: 自定义线路分组总数
+        :type Total: int
+        :param _AvailableCount: 还可允许添加的自定义线路分组个数
+        :type AvailableCount: int
+        """
+        self._NowTotal = None
+        self._Total = None
+        self._AvailableCount = None
+
+    @property
+    def NowTotal(self):
+        return self._NowTotal
+
+    @NowTotal.setter
+    def NowTotal(self, NowTotal):
+        self._NowTotal = NowTotal
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def AvailableCount(self):
+        return self._AvailableCount
+
+    @AvailableCount.setter
+    def AvailableCount(self, AvailableCount):
+        self._AvailableCount = AvailableCount
+
+
+    def _deserialize(self, params):
+        self._NowTotal = params.get("NowTotal")
+        self._Total = params.get("Total")
+        self._AvailableCount = params.get("AvailableCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10194,6 +10810,112 @@ class ModifyDynamicDNSResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RecordId = params.get("RecordId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyLineGroupRequest(AbstractModel):
+    """ModifyLineGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 自定义线路分组的名称。
+        :type Name: str
+        :param _Lines: 自定义线路分组包含的线路列表，包含多个线路时用英文逗号分隔。例如，铁通,奇虎
+        :type Lines: str
+        :param _Domain: 域名
+        :type Domain: str
+        :param _LineGroupId: 自定义线路分组ID
+        :type LineGroupId: int
+        :param _DomainId: 域名ID，如果传了DomainId，系统将会忽略Domain参数，优先使用DomainId
+        :type DomainId: int
+        """
+        self._Name = None
+        self._Lines = None
+        self._Domain = None
+        self._LineGroupId = None
+        self._DomainId = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Lines(self):
+        return self._Lines
+
+    @Lines.setter
+    def Lines(self, Lines):
+        self._Lines = Lines
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def LineGroupId(self):
+        return self._LineGroupId
+
+    @LineGroupId.setter
+    def LineGroupId(self, LineGroupId):
+        self._LineGroupId = LineGroupId
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Lines = params.get("Lines")
+        self._Domain = params.get("Domain")
+        self._LineGroupId = params.get("LineGroupId")
+        self._DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLineGroupResponse(AbstractModel):
+    """ModifyLineGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

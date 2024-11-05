@@ -215,11 +215,8 @@ class CreateProductSecretResponse(AbstractModel):
         :param _SecretName: 创建的凭据名称。
         :type SecretName: str
         :param _TagCode: 标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误。
-注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagCode: int
         :param _TagMsg: 标签操作的返回信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagMsg: str
         :param _FlowID: 创建云产品凭据异步任务ID号。
         :type FlowID: int
@@ -394,11 +391,9 @@ class CreateSSHKeyPairSecretResponse(AbstractModel):
         :type SSHKeyID: str
         :param _SSHKeyName: 创建的SSH密钥名称。
         :type SSHKeyName: str
-        :param _TagCode: 标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误。
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _TagCode: 标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误
         :type TagCode: int
         :param _TagMsg: 标签操作的返回信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -483,7 +478,7 @@ class CreateSecretRequest(AbstractModel):
         :type Description: str
         :param _KmsKeyId: 指定对凭据进行加密的KMS CMK。如果为空则表示使用Secrets Manager为您默认创建的CMK进行加密。您也可以指定在同region 下自行创建的KMS CMK进行加密。
         :type KmsKeyId: str
-        :param _SecretType: 凭据类型，默认为自定义凭据。
+        :param _SecretType: 凭据类型，默认为0自定义凭据。
         :type SecretType: int
         :param _SecretBinary: 二进制凭据信息base64编码后的明文。SecretBinary 和 SecretString 必须且只能设置一个，最大支持32KB字节。
         :type SecretBinary: str
@@ -614,10 +609,8 @@ class CreateSecretResponse(AbstractModel):
         :param _VersionId: 新创建的凭据版本。
         :type VersionId: str
         :param _TagCode: 标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagCode: int
         :param _TagMsg: 标签操作的返回信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -887,7 +880,7 @@ class DescribeAsyncRequestInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowID: 异步任务ID号。
+        :param _FlowID: 异步任务ID号
         :type FlowID: int
         """
         self._FlowID = None
@@ -1005,13 +998,10 @@ class DescribeRotationDetailResponse(AbstractModel):
         :param _EnableRotation: 否允许轮转，true表示开启轮转，false表示禁止轮转。
         :type EnableRotation: bool
         :param _Frequency: 轮转的频率，以天为单位，默认为1天。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Frequency: int
         :param _LatestRotateTime: 最近一次轮转的时间，显式可见的时间字符串，格式 2006-01-02 15:04:05。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LatestRotateTime: str
         :param _NextRotateBeginTime: 下一次开始轮转的时间，显式可见的时间字符串，格式 2006-01-02 15:04:05。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NextRotateBeginTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1111,7 +1101,7 @@ class DescribeRotationHistoryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VersionIDs: 版本号列表。
+        :param _VersionIDs: 版本号列表
         :type VersionIDs: list of str
         :param _TotalCount: 版本号个数，可以给用户展示的版本号个数上限为10个。
         :type TotalCount: int
@@ -1208,34 +1198,25 @@ class DescribeSecretResponse(AbstractModel):
         :param _CreateTime: 创建日期。
         :type CreateTime: int
         :param _SecretType: 0 --  用户自定义凭据类型；1 -- 数据库凭据类型；2 -- SSH密钥对凭据类型；3 -- 云API密钥（AKSK）凭据类型（使用此功能需要联系云助手单独开启白名单）；4 -- Redis类型凭据。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SecretType: int
         :param _ProductName: 云产品名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductName: str
         :param _ResourceID: 云产品实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceID: str
         :param _RotationStatus: 是否开启轮转：True -- 开启轮转；False -- 关闭轮转。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RotationStatus: bool
         :param _RotationFrequency: 轮转周期，默认以天为单位。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RotationFrequency: int
         :param _ResourceName: 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对凭据的名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceName: str
         :param _ProjectID: 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所属的项目ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectID: int
         :param _AssociatedInstanceIDs: 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所关联的CVM实例ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AssociatedInstanceIDs: list of str
         :param _TargetUin: 当凭据类型为云API密钥对凭据时，此字段有效，用于表示此云API密钥对所属的用户UIN。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TargetUin: int
         :param _AdditionalConfig: 凭据额外配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdditionalConfig: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2092,7 +2073,7 @@ class ListSecretVersionIdsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecretName: 凭据名称。
+        :param _SecretName: 凭据名称
         :type SecretName: str
         """
         self._SecretName = None
@@ -2128,7 +2109,6 @@ class ListSecretVersionIdsResponse(AbstractModel):
         :param _SecretName: 凭据名称。
         :type SecretName: str
         :param _Versions: VersionId列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Versions: list of VersionInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2753,41 +2733,31 @@ class SecretMetadata(AbstractModel):
         :param _KmsKeyType: 用于加密凭据的KMS CMK类型，DEFAULT 表示SecretsManager 创建的默认密钥， CUSTOMER 表示用户指定的密钥
         :type KmsKeyType: str
         :param _RotationStatus: 1:--开启轮转；0--禁止轮转
-注意：此字段可能返回 null，表示取不到有效值。
         :type RotationStatus: int
         :param _NextRotationTime: 下一次轮转开始时间，uinx 时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type NextRotationTime: int
         :param _SecretType: 0 -- 用户自定义凭据；
 1 -- 云产品凭据；
 2 -- SSH密钥对凭据；
 3 -- 云API密钥对凭据；
 4 -- Redis类型凭据；
-注意：此字段可能返回 null，表示取不到有效值。
         :type SecretType: int
         :param _ProductName: 云产品名称，仅在SecretType为1，即凭据类型为云产品凭据时生效
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductName: str
         :param _ResourceName: 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对凭据的名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceName: str
         :param _ProjectID: 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所属的项目ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectID: int
         :param _AssociatedInstanceIDs: 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所关联的CVM实例ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AssociatedInstanceIDs: list of str
         :param _TargetUin: 当凭据类型为云API密钥对凭据时，此字段有效，用于表示云API密钥对所属的用户UIN。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TargetUin: int
         :param _RotationFrequency: 轮转的频率，以天作为单位，在轮转开启状态下生效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RotationFrequency: int
         :param _ResourceID: 云产品凭据对应的云产品实例 ID 号。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceID: str
         :param _RotationBeginTime: 用户指定的轮转开始时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RotationBeginTime: str
         """
         self._SecretName = None
@@ -3388,7 +3358,7 @@ class VersionInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VersionId: 版本号。
+        :param _VersionId: 版本号
         :type VersionId: str
         :param _CreateTime: 创建时间，unix时间戳。
         :type CreateTime: int

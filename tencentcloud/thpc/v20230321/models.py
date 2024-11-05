@@ -491,7 +491,7 @@ class AttachNodesRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群id
         :type ClusterId: str
-        :param _ResourceSet: 节点的资源类型。<li>CVM：CVM实例类型资源</li><li>WORKSPACE：工作空间类型实例资源</li>默认值：CVM。
+        :param _ResourceSet: 节点的实例id列表
         :type ResourceSet: list of str
         :param _QueueName: 队列名称。不指定则为默认队列：
 SLURM默认队列为：compute。 
@@ -959,7 +959,7 @@ class ClusterOverview(AbstractModel):
         :type LoginNodeSet: list of LoginNodeOverview
         :param _LoginNodeCount: 登录节点数量。
         :type LoginNodeCount: int
-        :param _AutoScalingType: 弹性伸缩类型。取值范围：<li>THPC_AS：集群自动扩缩容由THPC产品内部实现。</li><li>AS：集群自动扩缩容由[弹性伸缩](https://cloud.tencent.com/document/product/377/3154)产品实现。</li>
+        :param _AutoScalingType: 弹性伸缩类型。
         :type AutoScalingType: str
         :param _VpcId: 集群所属私有网络ID。
         :type VpcId: str
@@ -1372,7 +1372,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         :type LoginNodeCount: int
         :param _Tags: 创建集群时同时绑定的标签对说明。
         :type Tags: list of Tag
-        :param _AutoScalingType: 弹性伸缩类型。默认值：THPC_AS<li>THPC_AS：集群自动扩缩容由THPC产品内部实现。</li><li>AS：集群自动扩缩容由[弹性伸缩](https://cloud.tencent.com/document/product/377/3154)产品实现。</li>
+        :param _AutoScalingType: 弹性伸缩类型。默认值：THPC_AS
         :type AutoScalingType: str
         :param _InitNodeScripts: 节点初始化脚本信息列表。
         :type InitNodeScripts: list of NodeScript

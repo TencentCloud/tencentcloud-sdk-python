@@ -3836,7 +3836,7 @@ class CreateRabbitMQBindingResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 队列名称
+        :param _InstanceId: 实例名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _VirtualHost: vhost参数
@@ -11305,7 +11305,7 @@ class DescribeRabbitMQQueueDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 队列名称
+        :param _InstanceId: 实例名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _VirtualHost: Vhost参数
@@ -22503,8 +22503,7 @@ OFF/ON/CREATING/DELETING
         :param _PrometheusEndpointInfo: Prometheus信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type PrometheusEndpointInfo: :class:`tencentcloud.tdmq.v20200217.models.PrometheusEndpointInfo`
-        :param _WebConsoleDomainEndpoint: http://amqp-k3eb47gm.dashboard.rabbitmq.cq.public.tencenttdmq.com:15672/
-公网域名接入点
+        :param _WebConsoleDomainEndpoint: 公网域名接入点
 注意：此字段可能返回 null，表示取不到有效值。
         :type WebConsoleDomainEndpoint: str
         """

@@ -3407,6 +3407,10 @@ class KeyMetadata(AbstractModel):
         :type ResourceId: str
         :param _HsmClusterId: HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）
         :type HsmClusterId: str
+        :param _RotateDays: 密钥轮转周期（天）
+        :type RotateDays: int
+        :param _LastRotateTime: 上次乱转时间（Unix timestamp）
+        :type LastRotateTime: int
         """
         self._KeyId = None
         self._Alias = None
@@ -3424,6 +3428,8 @@ class KeyMetadata(AbstractModel):
         self._ValidTo = None
         self._ResourceId = None
         self._HsmClusterId = None
+        self._RotateDays = None
+        self._LastRotateTime = None
 
     @property
     def KeyId(self):
@@ -3553,6 +3559,22 @@ class KeyMetadata(AbstractModel):
     def HsmClusterId(self, HsmClusterId):
         self._HsmClusterId = HsmClusterId
 
+    @property
+    def RotateDays(self):
+        return self._RotateDays
+
+    @RotateDays.setter
+    def RotateDays(self, RotateDays):
+        self._RotateDays = RotateDays
+
+    @property
+    def LastRotateTime(self):
+        return self._LastRotateTime
+
+    @LastRotateTime.setter
+    def LastRotateTime(self, LastRotateTime):
+        self._LastRotateTime = LastRotateTime
+
 
     def _deserialize(self, params):
         self._KeyId = params.get("KeyId")
@@ -3571,6 +3593,8 @@ class KeyMetadata(AbstractModel):
         self._ValidTo = params.get("ValidTo")
         self._ResourceId = params.get("ResourceId")
         self._HsmClusterId = params.get("HsmClusterId")
+        self._RotateDays = params.get("RotateDays")
+        self._LastRotateTime = params.get("LastRotateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

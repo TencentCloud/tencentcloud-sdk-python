@@ -2503,6 +2503,9 @@ class DataBaseAuditRecord(AbstractModel):
         :param _Catalog: catalog名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Catalog: str
+        :param _State: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: str
         """
         self._OsUser = None
         self._InitialQueryId = None
@@ -2517,6 +2520,7 @@ class DataBaseAuditRecord(AbstractModel):
         self._DbName = None
         self._SqlType = None
         self._Catalog = None
+        self._State = None
 
     @property
     def OsUser(self):
@@ -2622,6 +2626,14 @@ class DataBaseAuditRecord(AbstractModel):
     def Catalog(self, Catalog):
         self._Catalog = Catalog
 
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
 
     def _deserialize(self, params):
         self._OsUser = params.get("OsUser")
@@ -2637,6 +2649,7 @@ class DataBaseAuditRecord(AbstractModel):
         self._DbName = params.get("DbName")
         self._SqlType = params.get("SqlType")
         self._Catalog = params.get("Catalog")
+        self._State = params.get("State")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3123,10 +3136,18 @@ class DescribeBackUpJobResponse(AbstractModel):
         :param _BackUpJobs: 任务列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type BackUpJobs: list of BackUpJobDisplay
+        :param _ErrorMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param _TotalCount: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BackUpJobs = None
+        self._ErrorMsg = None
+        self._TotalCount = None
         self._RequestId = None
 
     @property
@@ -3136,6 +3157,22 @@ class DescribeBackUpJobResponse(AbstractModel):
     @BackUpJobs.setter
     def BackUpJobs(self, BackUpJobs):
         self._BackUpJobs = BackUpJobs
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
     @property
     def RequestId(self):
@@ -3153,6 +3190,8 @@ class DescribeBackUpJobResponse(AbstractModel):
                 obj = BackUpJobDisplay()
                 obj._deserialize(item)
                 self._BackUpJobs.append(obj)
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 

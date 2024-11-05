@@ -18,6 +18,63 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AutoScaleUpRule(AbstractModel):
+    """自动扩容规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 自动扩容策略开启，关闭
+        :type Status: str
+        :param _ScaleThreshold: 集群用量占比，到达这个值后开始扩容,范围[10-90]
+        :type ScaleThreshold: int
+        :param _TargetThreshold: 扩容后使用量跟集群总量比例,范围[1-90]
+        :type TargetThreshold: int
+        """
+        self._Status = None
+        self._ScaleThreshold = None
+        self._TargetThreshold = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ScaleThreshold(self):
+        return self._ScaleThreshold
+
+    @ScaleThreshold.setter
+    def ScaleThreshold(self, ScaleThreshold):
+        self._ScaleThreshold = ScaleThreshold
+
+    @property
+    def TargetThreshold(self):
+        return self._TargetThreshold
+
+    @TargetThreshold.setter
+    def TargetThreshold(self, TargetThreshold):
+        self._TargetThreshold = TargetThreshold
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ScaleThreshold = params.get("ScaleThreshold")
+        self._TargetThreshold = params.get("TargetThreshold")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AutoSnapshotPolicyInfo(AbstractModel):
     """快照策略信息
 
@@ -4057,6 +4114,10 @@ class FileSystemInfo(AbstractModel):
         :type AppId: int
         :param _BandwidthLimit: 文件系统吞吐上限，吞吐上限是根据文件系统当前已使用存储量、绑定的存储资源包以及吞吐资源包一同确定. 单位MiB/s
         :type BandwidthLimit: float
+        :param _AutoSnapshotPolicyId: 文件系统关联的快照策略
+        :type AutoSnapshotPolicyId: str
+        :param _SnapStatus: 文件系统处理快照状态
+        :type SnapStatus: str
         :param _Capacity: 文件系统容量规格上限
 单位:GiB
         :type Capacity: int
@@ -4069,6 +4130,12 @@ Available:可用
         :param _TieringDetail: 分层存储详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type TieringDetail: :class:`tencentcloud.cfs.v20190719.models.TieringDetailInfo`
+        :param _AutoScaleUpRule: 文件系统自动扩容策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoScaleUpRule: :class:`tencentcloud.cfs.v20190719.models.AutoScaleUpRule`
+        :param _Version: 文件系统版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
         """
         self._CreationTime = None
         self._CreationToken = None
@@ -4088,10 +4155,14 @@ Available:可用
         self._KmsKeyId = None
         self._AppId = None
         self._BandwidthLimit = None
+        self._AutoSnapshotPolicyId = None
+        self._SnapStatus = None
         self._Capacity = None
         self._Tags = None
         self._TieringState = None
         self._TieringDetail = None
+        self._AutoScaleUpRule = None
+        self._Version = None
 
     @property
     def CreationTime(self):
@@ -4238,6 +4309,22 @@ Available:可用
         self._BandwidthLimit = BandwidthLimit
 
     @property
+    def AutoSnapshotPolicyId(self):
+        return self._AutoSnapshotPolicyId
+
+    @AutoSnapshotPolicyId.setter
+    def AutoSnapshotPolicyId(self, AutoSnapshotPolicyId):
+        self._AutoSnapshotPolicyId = AutoSnapshotPolicyId
+
+    @property
+    def SnapStatus(self):
+        return self._SnapStatus
+
+    @SnapStatus.setter
+    def SnapStatus(self, SnapStatus):
+        self._SnapStatus = SnapStatus
+
+    @property
     def Capacity(self):
         return self._Capacity
 
@@ -4269,6 +4356,22 @@ Available:可用
     def TieringDetail(self, TieringDetail):
         self._TieringDetail = TieringDetail
 
+    @property
+    def AutoScaleUpRule(self):
+        return self._AutoScaleUpRule
+
+    @AutoScaleUpRule.setter
+    def AutoScaleUpRule(self, AutoScaleUpRule):
+        self._AutoScaleUpRule = AutoScaleUpRule
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
 
     def _deserialize(self, params):
         self._CreationTime = params.get("CreationTime")
@@ -4291,6 +4394,8 @@ Available:可用
         self._KmsKeyId = params.get("KmsKeyId")
         self._AppId = params.get("AppId")
         self._BandwidthLimit = params.get("BandwidthLimit")
+        self._AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
+        self._SnapStatus = params.get("SnapStatus")
         self._Capacity = params.get("Capacity")
         if params.get("Tags") is not None:
             self._Tags = []
@@ -4302,6 +4407,10 @@ Available:可用
         if params.get("TieringDetail") is not None:
             self._TieringDetail = TieringDetailInfo()
             self._TieringDetail._deserialize(params.get("TieringDetail"))
+        if params.get("AutoScaleUpRule") is not None:
+            self._AutoScaleUpRule = AutoScaleUpRule()
+            self._AutoScaleUpRule._deserialize(params.get("AutoScaleUpRule"))
+        self._Version = params.get("Version")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

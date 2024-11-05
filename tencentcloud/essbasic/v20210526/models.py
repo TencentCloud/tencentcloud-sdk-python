@@ -984,16 +984,19 @@ class CcInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Mobile: 被抄送人手机号，大陆11位手机号
+        :param _Mobile: 被抄送方手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
+请确认手机号所有方为此业务通知方。
         :type Mobile: str
-        :param _Name: 被抄送人姓名
+        :param _Name: 被抄送方姓名。
+抄送方的姓名将用于身份认证，请确保填写的姓名为抄送方的真实姓名，而非昵称等代名。
         :type Name: str
-        :param _CcType: 被抄送人类型
-0--个人. 1--员工
+        :param _CcType: 被抄送方类型, 可设置以下类型:
+<ul><li> **0** :个人抄送方</li>
+<li> **1** :企业员工抄送方</li></ul>
         :type CcType: int
-        :param _CcPermission: 被抄送人权限
-0--可查看
-1--可查看也可下载
+        :param _CcPermission: 被抄送方权限, 可设置如下权限:
+<ul><li> **0** :可查看合同内容</li>
+<li> **1** :可查看合同内容也可下载原文</li></ul>
         :type CcPermission: int
         """
         self._Mobile = None
@@ -12098,7 +12101,7 @@ class CreatePersonAuthCertificateImageResponse(AbstractModel):
         :param _ImageCertId: 个人用户认证证书的编号, 为20位数字组成的字符串,  由腾讯电子签下发此编号 。该编号会合成到个人用户证书证明图片。注: `个人用户认证证书的编号和证明图片绑定, 获取新的证明图片编号会变动`
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageCertId: str
-        :param _SerialNumber: CA供应商下发给用户的证书编号，在证书到期后自动续期后此证书编号会发生变动，且不会合成到个人用户证书证明图片中。注意：`腾讯电子签接入多家CA供应商以提供容灾能力，不同CA下发的证书编号区别较大，但基本都是由数字和字母组成，长度在200以下。`
+        :param _SerialNumber: 在数字证书申请过程中，系统会自动生成一个独一无二的序列号。请注意，当证书到期并自动续期时，该序列号将会发生变化。值得注意的是，此序列号不会被合成至个人用户证书的证明图片中。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SerialNumber: str
         :param _ValidFrom: CA证书颁发时间，格式为Unix标准时间戳（秒）   该时间格式化后会合成到个人用户证书证明图片
@@ -18857,9 +18860,7 @@ class PdfVerifyResult(AbstractModel):
         :type SignTime: int
         :param _SignAlgorithm: 证书签名算法,  如SHA1withRSA等算法
         :type SignAlgorithm: str
-        :param _CertSn: CA供应商下发给用户的证书编号
-
-注意：`腾讯电子签接入多家CA供应商以提供容灾能力，不同CA下发的证书编号区别较大，但基本都是由数字和字母组成，长度在200以下`。
+        :param _CertSn: 在数字证书申请过程中，系统会自动生成一个独一无二的序列号。
         :type CertSn: str
         :param _CertNotBefore: 证书起始时间的Unix时间戳，单位毫秒
         :type CertNotBefore: int

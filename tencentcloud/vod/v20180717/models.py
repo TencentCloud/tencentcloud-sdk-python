@@ -11409,6 +11409,316 @@ class CommitUploadResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ComplexAdaptiveDynamicStreamingTask(AbstractModel):
+    """自适应码流任务信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务 ID。
+        :type TaskId: str
+        :param _Status: 任务状态，取值：
+<li>PROCESSING：处理中；</li>
+<li>FINISH：已完成。</li>
+
+        :type Status: str
+        :param _ComplexAdaptiveDynamicStreamingTaskResultSet: 自适应码流任务的执行状态与结果，每个元素对应一个自适应码流模版。
+        :type ComplexAdaptiveDynamicStreamingTaskResultSet: list of ComplexAdaptiveDynamicStreamingTaskResult
+        """
+        self._TaskId = None
+        self._Status = None
+        self._ComplexAdaptiveDynamicStreamingTaskResultSet = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ComplexAdaptiveDynamicStreamingTaskResultSet(self):
+        return self._ComplexAdaptiveDynamicStreamingTaskResultSet
+
+    @ComplexAdaptiveDynamicStreamingTaskResultSet.setter
+    def ComplexAdaptiveDynamicStreamingTaskResultSet(self, ComplexAdaptiveDynamicStreamingTaskResultSet):
+        self._ComplexAdaptiveDynamicStreamingTaskResultSet = ComplexAdaptiveDynamicStreamingTaskResultSet
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        if params.get("ComplexAdaptiveDynamicStreamingTaskResultSet") is not None:
+            self._ComplexAdaptiveDynamicStreamingTaskResultSet = []
+            for item in params.get("ComplexAdaptiveDynamicStreamingTaskResultSet"):
+                obj = ComplexAdaptiveDynamicStreamingTaskResult()
+                obj._deserialize(item)
+                self._ComplexAdaptiveDynamicStreamingTaskResultSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComplexAdaptiveDynamicStreamingTaskInput(AbstractModel):
+    """自适应码流任务的输入参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StreamPara: 自适应码流参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StreamPara: :class:`tencentcloud.vod.v20180717.models.ComplexAdaptiveDynamicStreamingTaskStreamPara`
+        """
+        self._StreamPara = None
+
+    @property
+    def StreamPara(self):
+        return self._StreamPara
+
+    @StreamPara.setter
+    def StreamPara(self, StreamPara):
+        self._StreamPara = StreamPara
+
+
+    def _deserialize(self, params):
+        if params.get("StreamPara") is not None:
+            self._StreamPara = ComplexAdaptiveDynamicStreamingTaskStreamPara()
+            self._StreamPara._deserialize(params.get("StreamPara"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComplexAdaptiveDynamicStreamingTaskOutput(AbstractModel):
+    """自适应码流任务的输出结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 自适应码流模版 ID。
+        :type Definition: int
+        :param _Format: 自适应码流打包格式。可选值：
+<li>HLS；</li>
+<li>MPEG-DASH。</li>
+        :type Format: str
+        :param _DrmType: DRM 方案类型。可选值：
+<li>空字符串：无加密；</li>
+<li>SimpleAES；</li>
+<li>Widevine；</li>
+<li>FairPlay。</li>
+        :type DrmType: str
+        :param _Url: 自适应码流的播放地址。
+        :type Url: str
+        """
+        self._Definition = None
+        self._Format = None
+        self._DrmType = None
+        self._Url = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def Format(self):
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def DrmType(self):
+        return self._DrmType
+
+    @DrmType.setter
+    def DrmType(self, DrmType):
+        self._DrmType = DrmType
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._Format = params.get("Format")
+        self._DrmType = params.get("DrmType")
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComplexAdaptiveDynamicStreamingTaskResult(AbstractModel):
+    """自适应码流任务信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务状态，取值：
+<li>PROCESSING：处理中；</li>
+<li>SUCCESS：已完成；</li>
+<li>FAIL：失败。</li>
+        :type Status: str
+        :param _ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param _Message: 错误信息。
+        :type Message: str
+        :param _Progress: 转码进度，取值范围 [0-100] 。
+        :type Progress: int
+        :param _Input: 自适应码流任务的输入。
+        :type Input: :class:`tencentcloud.vod.v20180717.models.ComplexAdaptiveDynamicStreamingTaskInput`
+        :param _Output: 自适应码流任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.vod.v20180717.models.ComplexAdaptiveDynamicStreamingTaskOutput`
+        """
+        self._Status = None
+        self._ErrCodeExt = None
+        self._Message = None
+        self._Progress = None
+        self._Input = None
+        self._Output = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCodeExt(self):
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def Input(self):
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._Message = params.get("Message")
+        self._Progress = params.get("Progress")
+        if params.get("Input") is not None:
+            self._Input = ComplexAdaptiveDynamicStreamingTaskInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = ComplexAdaptiveDynamicStreamingTaskOutput()
+            self._Output._deserialize(params.get("Output"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComplexAdaptiveDynamicStreamingTaskStreamPara(AbstractModel):
+    """自适应码流任务的流参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 自适应码流模版 ID。
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ComposeMediaOutput(AbstractModel):
     """输出的媒体文件信息。
 
@@ -25623,23 +25933,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskType: 任务类型，取值：
-<li>Procedure：视频处理任务；</li>
-<li>EditMedia：视频编辑任务；</li>
-<li>SplitMedia：视频拆条任务；</li>
-<li>ComposeMedia：制作媒体文件任务；</li>
-<li>WechatPublish：微信发布任务；</li>
-<li>WechatMiniProgramPublish：微信小程序视频发布任务；</li>
-<li>PullUpload：拉取上传媒体文件任务；</li>
-<li>FastClipMedia：快速剪辑任务；</li>
-<li>RemoveWatermarkTask：智能去除水印任务；</li>
-<li>DescribeFileAttributesTask：获取文件属性任务；</li>
-<li>RebuildMedia：音画质重生任务（不推荐使用）；</li>
-<li>ReviewAudioVideo：音视频审核任务；</li>
-<li>ExtractTraceWatermark：提取溯源水印任务；</li>
-<li>ExtractCopyRightWatermark：提取版权水印任务；</li>
-<li>QualityInspect：音画质检测任务；</li>
-<li>QualityEnhance：音画质重生任务。</li>
+        :param _TaskType: 任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务。</li>
         :type TaskType: str
         :param _Status: 任务状态，取值：
 <li>WAITING：等待中；</li>
@@ -25716,6 +26010,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param _QualityEnhanceTask: 音画质重生任务信息，仅当 TaskType 为 QualityEnhance，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type QualityEnhanceTask: :class:`tencentcloud.vod.v20180717.models.QualityEnhanceTask`
+        :param _ComplexAdaptiveDynamicStreamingTask: 复杂自适应码流任务信息，仅当 TaskType 为 ComplexAdaptiveDynamicStreaming，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComplexAdaptiveDynamicStreamingTask: :class:`tencentcloud.vod.v20180717.models.ComplexAdaptiveDynamicStreamingTask`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -25745,6 +26042,7 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._DescribeFileAttributesTask = None
         self._QualityInspectTask = None
         self._QualityEnhanceTask = None
+        self._ComplexAdaptiveDynamicStreamingTask = None
         self._RequestId = None
 
     @property
@@ -25956,6 +26254,14 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._QualityEnhanceTask = QualityEnhanceTask
 
     @property
+    def ComplexAdaptiveDynamicStreamingTask(self):
+        return self._ComplexAdaptiveDynamicStreamingTask
+
+    @ComplexAdaptiveDynamicStreamingTask.setter
+    def ComplexAdaptiveDynamicStreamingTask(self, ComplexAdaptiveDynamicStreamingTask):
+        self._ComplexAdaptiveDynamicStreamingTask = ComplexAdaptiveDynamicStreamingTask
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -26033,6 +26339,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         if params.get("QualityEnhanceTask") is not None:
             self._QualityEnhanceTask = QualityEnhanceTask()
             self._QualityEnhanceTask._deserialize(params.get("QualityEnhanceTask"))
+        if params.get("ComplexAdaptiveDynamicStreamingTask") is not None:
+            self._ComplexAdaptiveDynamicStreamingTask = ComplexAdaptiveDynamicStreamingTask()
+            self._ComplexAdaptiveDynamicStreamingTask._deserialize(params.get("ComplexAdaptiveDynamicStreamingTask"))
         self._RequestId = params.get("RequestId")
 
 
@@ -28614,7 +28923,8 @@ class EventContent(AbstractModel):
 <li>DescribeFileAttributesComplete：获取文件属性完成；</li>
 <li>QualityInspectComplete：音画质检测完成；</li>
 <li>QualityEnhanceComplete：音画质重生任务完成；</li>
-<li>PersistenceComplete：剪辑固化完成。</li>
+<li>PersistenceComplete：剪辑固化完成；</li>
+<li>ComplexAdaptiveDynamicStreamingComplete：复杂自适应码流任务完成。</li>
 <b>兼容 2017 版的事件类型：</b>
 <li>TranscodeComplete：视频转码完成；</li>
 <li>ConcatComplete：视频拼接完成；</li>
@@ -28700,6 +29010,9 @@ class EventContent(AbstractModel):
         :param _PersistenceCompleteEvent: 剪辑固化完成事件，当事件类型为 PersistenceComplete 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PersistenceCompleteEvent: :class:`tencentcloud.vod.v20180717.models.PersistenceCompleteTask`
+        :param _ComplexAdaptiveDynamicStreamingCompleteEvent: 自适应码流任务信息，仅当 EventType 为ComplexAdaptiveDynamicStreamingComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComplexAdaptiveDynamicStreamingCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ComplexAdaptiveDynamicStreamingTask`
         """
         self._EventHandle = None
         self._EventType = None
@@ -28729,6 +29042,7 @@ class EventContent(AbstractModel):
         self._QualityEnhanceCompleteEvent = None
         self._MediaCastStatusChangedEvent = None
         self._PersistenceCompleteEvent = None
+        self._ComplexAdaptiveDynamicStreamingCompleteEvent = None
 
     @property
     def EventHandle(self):
@@ -28954,6 +29268,14 @@ class EventContent(AbstractModel):
     def PersistenceCompleteEvent(self, PersistenceCompleteEvent):
         self._PersistenceCompleteEvent = PersistenceCompleteEvent
 
+    @property
+    def ComplexAdaptiveDynamicStreamingCompleteEvent(self):
+        return self._ComplexAdaptiveDynamicStreamingCompleteEvent
+
+    @ComplexAdaptiveDynamicStreamingCompleteEvent.setter
+    def ComplexAdaptiveDynamicStreamingCompleteEvent(self, ComplexAdaptiveDynamicStreamingCompleteEvent):
+        self._ComplexAdaptiveDynamicStreamingCompleteEvent = ComplexAdaptiveDynamicStreamingCompleteEvent
+
 
     def _deserialize(self, params):
         self._EventHandle = params.get("EventHandle")
@@ -29036,6 +29358,9 @@ class EventContent(AbstractModel):
         if params.get("PersistenceCompleteEvent") is not None:
             self._PersistenceCompleteEvent = PersistenceCompleteTask()
             self._PersistenceCompleteEvent._deserialize(params.get("PersistenceCompleteEvent"))
+        if params.get("ComplexAdaptiveDynamicStreamingCompleteEvent") is not None:
+            self._ComplexAdaptiveDynamicStreamingCompleteEvent = ComplexAdaptiveDynamicStreamingTask()
+            self._ComplexAdaptiveDynamicStreamingCompleteEvent._deserialize(params.get("ComplexAdaptiveDynamicStreamingCompleteEvent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

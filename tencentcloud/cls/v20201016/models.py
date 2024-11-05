@@ -6643,11 +6643,11 @@ class CreateNoticeContentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 模版名称。
+        :param _Name: 模板名称。
         :type Name: str
-        :param _Type: 模版内容语言。0：中文1：英文
+        :param _Type: 模板内容语言。0：中文1：英文
         :type Type: int
-        :param _NoticeContents: 模版详细配置。
+        :param _NoticeContents: 模板详细配置。
         :type NoticeContents: list of NoticeContent
         """
         self._Name = None
@@ -9181,7 +9181,7 @@ class DeleteNoticeContentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NoticeContentId: 通知内容模版ID
+        :param _NoticeContentId: 通知内容模板ID
         :type NoticeContentId: str
         """
         self._NoticeContentId = None
@@ -12454,12 +12454,12 @@ class DescribeNoticeContentsRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _Filters: <li> name
-按照【通知内容模版名称】进行过滤。
+按照【通知内容模板名称】进行过滤。
 类型：String
 必选：否
 </li>
 <li> noticeContentId
-按照【通知内容模版ID】进行过滤。
+按照【通知内容模板ID】进行过滤。
 类型：String
 必选：否
 </li>
@@ -12525,10 +12525,10 @@ class DescribeNoticeContentsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NoticeContents: 通知内容模版列表。
+        :param _NoticeContents: 通知内容模板列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type NoticeContents: list of NoticeContentTemplate
-        :param _TotalCount: 符合条件的通知内容模版总数。
+        :param _TotalCount: 符合条件的通知内容模板总数。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18810,15 +18810,15 @@ class ModifyNoticeContentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NoticeContentId: 通知内容模版ID。
+        :param _NoticeContentId: 通知内容模板ID。
         :type NoticeContentId: str
-        :param _Name: 通知内容模版名称。
+        :param _Name: 通知内容模板名称。
         :type Name: str
         :param _Type: 通知内容语言。
 
 0：中文 1：英文
         :type Type: int
-        :param _NoticeContents: 通知内容模版详细信息。
+        :param _NoticeContents: 通知内容模板详细信息。
         :type NoticeContents: list of NoticeContent
         """
         self._NoticeContentId = None
@@ -19675,7 +19675,7 @@ class MultiTopicSearchInformation(AbstractModel):
 
 
 class NoticeContent(AbstractModel):
-    """通知内容模版详细配置
+    """通知内容模板详细配置
 
     """
 
@@ -19685,10 +19685,10 @@ class NoticeContent(AbstractModel):
 
 Email:邮件;Sms:短信;WeChat:微信;Phone:电话;WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调;
         :type Type: str
-        :param _TriggerContent: 告警触发通知内容模版。
+        :param _TriggerContent: 告警触发通知内容模板。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerContent: :class:`tencentcloud.cls.v20201016.models.NoticeContentInfo`
-        :param _RecoveryContent: 告警恢复通知内容模版。
+        :param _RecoveryContent: 告警恢复通知内容模板。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecoveryContent: :class:`tencentcloud.cls.v20201016.models.NoticeContentInfo`
         """

@@ -9449,9 +9449,9 @@ class DeleteClusterVirtualNodePoolRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群ID
         :type ClusterId: str
-        :param _NodePoolIds: 虚拟节点池ID列表
+        :param _NodePoolIds: 超级节点池ID列表
         :type NodePoolIds: list of str
-        :param _Force: 是否强制删除，在虚拟节点上有pod的情况下，如果选择非强制删除，则删除会失败
+        :param _Force: 是否强制删除，在超级节点上有pod的情况下，如果选择非强制删除，则删除会失败
         :type Force: bool
         """
         self._ClusterId = None

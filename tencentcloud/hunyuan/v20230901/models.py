@@ -638,6 +638,88 @@ class Content(AbstractModel):
         
 
 
+class CreateThreadRequest(AbstractModel):
+    """CreateThread请求参数结构体
+
+    """
+
+
+class CreateThreadResponse(AbstractModel):
+    """CreateThread返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 会话 ID
+        :type ID: str
+        :param _Object: 对象类型
+        :type Object: str
+        :param _CreatedAt: 创建时间，Unix 时间戳，单位为秒。
+        :type CreatedAt: int
+        :param _ToolResources: 提供给工具的资源列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ToolResources: :class:`tencentcloud.hunyuan.v20230901.models.ThreadToolResources`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :type RequestId: str
+        """
+        self._ID = None
+        self._Object = None
+        self._CreatedAt = None
+        self._ToolResources = None
+        self._RequestId = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Object(self):
+        return self._Object
+
+    @Object.setter
+    def Object(self, Object):
+        self._Object = Object
+
+    @property
+    def CreatedAt(self):
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def ToolResources(self):
+        return self._ToolResources
+
+    @ToolResources.setter
+    def ToolResources(self, ToolResources):
+        self._ToolResources = ToolResources
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Object = params.get("Object")
+        self._CreatedAt = params.get("CreatedAt")
+        if params.get("ToolResources") is not None:
+            self._ToolResources = ThreadToolResources()
+            self._ToolResources._deserialize(params.get("ToolResources"))
+        self._RequestId = params.get("RequestId")
+
+
 class Delta(AbstractModel):
     """返回的内容（流式返回）
 
@@ -857,6 +939,446 @@ class ErrorMsg(AbstractModel):
         
 
 
+class FileObject(AbstractModel):
+    """已上传的文件对象。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 文件标识符，可在各个API中引用。
+        :type ID: str
+        :param _Object: 对象类型，始终为 file。
+        :type Object: str
+        :param _Bytes: 文件大小，单位为字节。
+        :type Bytes: int
+        :param _CreatedAt: 文件创建时的 Unix 时间戳（秒）。
+        :type CreatedAt: int
+        :param _Filename: 文件名。
+        :type Filename: str
+        :param _Purpose: 上传文件的用途。
+        :type Purpose: str
+        """
+        self._ID = None
+        self._Object = None
+        self._Bytes = None
+        self._CreatedAt = None
+        self._Filename = None
+        self._Purpose = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Object(self):
+        return self._Object
+
+    @Object.setter
+    def Object(self, Object):
+        self._Object = Object
+
+    @property
+    def Bytes(self):
+        return self._Bytes
+
+    @Bytes.setter
+    def Bytes(self, Bytes):
+        self._Bytes = Bytes
+
+    @property
+    def CreatedAt(self):
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def Filename(self):
+        return self._Filename
+
+    @Filename.setter
+    def Filename(self, Filename):
+        self._Filename = Filename
+
+    @property
+    def Purpose(self):
+        return self._Purpose
+
+    @Purpose.setter
+    def Purpose(self, Purpose):
+        self._Purpose = Purpose
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Object = params.get("Object")
+        self._Bytes = params.get("Bytes")
+        self._CreatedAt = params.get("CreatedAt")
+        self._Filename = params.get("Filename")
+        self._Purpose = params.get("Purpose")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FilesDeletionsRequest(AbstractModel):
+    """FilesDeletions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 文件标识符。
+        :type ID: str
+        """
+        self._ID = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FilesDeletionsResponse(AbstractModel):
+    """FilesDeletions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 文件标识符。
+        :type ID: str
+        :param _Object: 对象类型，始终为 file。
+        :type Object: str
+        :param _Deleted: 是否删除成功。
+        :type Deleted: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :type RequestId: str
+        """
+        self._ID = None
+        self._Object = None
+        self._Deleted = None
+        self._RequestId = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Object(self):
+        return self._Object
+
+    @Object.setter
+    def Object(self, Object):
+        self._Object = Object
+
+    @property
+    def Deleted(self):
+        return self._Deleted
+
+    @Deleted.setter
+    def Deleted(self, Deleted):
+        self._Deleted = Deleted
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Object = params.get("Object")
+        self._Deleted = params.get("Deleted")
+        self._RequestId = params.get("RequestId")
+
+
+class FilesListRequest(AbstractModel):
+    """FilesList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 分页偏移量。
+        :type Offset: int
+        :param _Limit: 每页数量，最大 100。
+        :type Limit: int
+        """
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FilesListResponse(AbstractModel):
+    """FilesList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 文件数量。
+        :type Total: int
+        :param _Object: 对象类型，始终为 list。
+        :type Object: str
+        :param _Data: FileObject 列表。
+        :type Data: list of FileObject
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Object = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Object(self):
+        return self._Object
+
+    @Object.setter
+    def Object(self, Object):
+        self._Object = Object
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._Object = params.get("Object")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = FileObject()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class FilesUploadsRequest(AbstractModel):
+    """FilesUploads请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 文件名。
+        :type Name: str
+        :param _URL: 文件链接。目前仅支持 pdf 格式，单文件大小限制为100M。
+        :type URL: str
+        """
+        self._Name = None
+        self._URL = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def URL(self):
+        return self._URL
+
+    @URL.setter
+    def URL(self, URL):
+        self._URL = URL
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._URL = params.get("URL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FilesUploadsResponse(AbstractModel):
+    """FilesUploads返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 文件标识符，可在各个API中引用。
+        :type ID: str
+        :param _Object: 对象类型，始终为 file。
+        :type Object: str
+        :param _Bytes: 文件大小，单位为字节。
+        :type Bytes: int
+        :param _CreatedAt: 文件创建时的 Unix 时间戳（秒）。
+        :type CreatedAt: int
+        :param _Filename: 文件名。
+        :type Filename: str
+        :param _Purpose: 上传文件的用途。
+        :type Purpose: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :type RequestId: str
+        """
+        self._ID = None
+        self._Object = None
+        self._Bytes = None
+        self._CreatedAt = None
+        self._Filename = None
+        self._Purpose = None
+        self._RequestId = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Object(self):
+        return self._Object
+
+    @Object.setter
+    def Object(self, Object):
+        self._Object = Object
+
+    @property
+    def Bytes(self):
+        return self._Bytes
+
+    @Bytes.setter
+    def Bytes(self, Bytes):
+        self._Bytes = Bytes
+
+    @property
+    def CreatedAt(self):
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def Filename(self):
+        return self._Filename
+
+    @Filename.setter
+    def Filename(self, Filename):
+        self._Filename = Filename
+
+    @property
+    def Purpose(self):
+        return self._Purpose
+
+    @Purpose.setter
+    def Purpose(self, Purpose):
+        self._Purpose = Purpose
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Object = params.get("Object")
+        self._Bytes = params.get("Bytes")
+        self._CreatedAt = params.get("CreatedAt")
+        self._Filename = params.get("Filename")
+        self._Purpose = params.get("Purpose")
+        self._RequestId = params.get("RequestId")
+
+
 class GetEmbeddingRequest(AbstractModel):
     """GetEmbedding请求参数结构体
 
@@ -943,6 +1465,503 @@ class GetEmbeddingResponse(AbstractModel):
         if params.get("Usage") is not None:
             self._Usage = EmbeddingUsage()
             self._Usage._deserialize(params.get("Usage"))
+        self._RequestId = params.get("RequestId")
+
+
+class GetThreadMessageListRequest(AbstractModel):
+    """GetThreadMessageList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ThreadID: 会话 ID
+        :type ThreadID: str
+        :param _Limit: 返回的消息条数，1 - 100 条
+        :type Limit: int
+        :param _Order: 排序方式，按创建时间升序（asc）或降序（desc），默认为 desc
+        :type Order: str
+        """
+        self._ThreadID = None
+        self._Limit = None
+        self._Order = None
+
+    @property
+    def ThreadID(self):
+        return self._ThreadID
+
+    @ThreadID.setter
+    def ThreadID(self, ThreadID):
+        self._ThreadID = ThreadID
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+
+    def _deserialize(self, params):
+        self._ThreadID = params.get("ThreadID")
+        self._Limit = params.get("Limit")
+        self._Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetThreadMessageListResponse(AbstractModel):
+    """GetThreadMessageList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 消息列表
+        :type Data: list of ThreadMessage
+        :param _FirstID: 第一条消息 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FirstID: str
+        :param _LastID: 最后一条消息 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastID: int
+        :param _HasMore: 是否还有更多消息
+        :type HasMore: bool
+        :param _Object: 对象类型
+        :type Object: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._FirstID = None
+        self._LastID = None
+        self._HasMore = None
+        self._Object = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def FirstID(self):
+        return self._FirstID
+
+    @FirstID.setter
+    def FirstID(self, FirstID):
+        self._FirstID = FirstID
+
+    @property
+    def LastID(self):
+        return self._LastID
+
+    @LastID.setter
+    def LastID(self, LastID):
+        self._LastID = LastID
+
+    @property
+    def HasMore(self):
+        return self._HasMore
+
+    @HasMore.setter
+    def HasMore(self, HasMore):
+        self._HasMore = HasMore
+
+    @property
+    def Object(self):
+        return self._Object
+
+    @Object.setter
+    def Object(self, Object):
+        self._Object = Object
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = ThreadMessage()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._FirstID = params.get("FirstID")
+        self._LastID = params.get("LastID")
+        self._HasMore = params.get("HasMore")
+        self._Object = params.get("Object")
+        self._RequestId = params.get("RequestId")
+
+
+class GetThreadMessageRequest(AbstractModel):
+    """GetThreadMessage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ThreadID: 会话 ID
+        :type ThreadID: str
+        :param _MessageID: 消息 ID
+        :type MessageID: str
+        """
+        self._ThreadID = None
+        self._MessageID = None
+
+    @property
+    def ThreadID(self):
+        return self._ThreadID
+
+    @ThreadID.setter
+    def ThreadID(self, ThreadID):
+        self._ThreadID = ThreadID
+
+    @property
+    def MessageID(self):
+        return self._MessageID
+
+    @MessageID.setter
+    def MessageID(self, MessageID):
+        self._MessageID = MessageID
+
+
+    def _deserialize(self, params):
+        self._ThreadID = params.get("ThreadID")
+        self._MessageID = params.get("MessageID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetThreadMessageResponse(AbstractModel):
+    """GetThreadMessage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 消息 ID
+        :type ID: str
+        :param _Object: 对象类型
+        :type Object: str
+        :param _CreatedAt: 创建时间
+        :type CreatedAt: int
+        :param _ThreadID: 会话 ID
+        :type ThreadID: str
+        :param _Status: 状态，处理中 in_progress，已完成 completed，未完成 incomplete。 
+        :type Status: str
+        :param _InCompleteDetails: 未完成原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InCompleteDetails: :class:`tencentcloud.hunyuan.v20230901.models.ThreadMessageInCompleteDetailsObject`
+        :param _CompletedAt: 完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompletedAt: int
+        :param _InCompleteAt: 未完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InCompleteAt: int
+        :param _Role: 角色
+        :type Role: str
+        :param _Content: 内容
+        :type Content: str
+        :param _AssistantID: 助手 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssistantID: str
+        :param _RunID: 运行 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunID: str
+        :param _Attachments: 附件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Attachments: list of ThreadMessageAttachmentObject
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :type RequestId: str
+        """
+        self._ID = None
+        self._Object = None
+        self._CreatedAt = None
+        self._ThreadID = None
+        self._Status = None
+        self._InCompleteDetails = None
+        self._CompletedAt = None
+        self._InCompleteAt = None
+        self._Role = None
+        self._Content = None
+        self._AssistantID = None
+        self._RunID = None
+        self._Attachments = None
+        self._RequestId = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Object(self):
+        return self._Object
+
+    @Object.setter
+    def Object(self, Object):
+        self._Object = Object
+
+    @property
+    def CreatedAt(self):
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def ThreadID(self):
+        return self._ThreadID
+
+    @ThreadID.setter
+    def ThreadID(self, ThreadID):
+        self._ThreadID = ThreadID
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def InCompleteDetails(self):
+        return self._InCompleteDetails
+
+    @InCompleteDetails.setter
+    def InCompleteDetails(self, InCompleteDetails):
+        self._InCompleteDetails = InCompleteDetails
+
+    @property
+    def CompletedAt(self):
+        return self._CompletedAt
+
+    @CompletedAt.setter
+    def CompletedAt(self, CompletedAt):
+        self._CompletedAt = CompletedAt
+
+    @property
+    def InCompleteAt(self):
+        return self._InCompleteAt
+
+    @InCompleteAt.setter
+    def InCompleteAt(self, InCompleteAt):
+        self._InCompleteAt = InCompleteAt
+
+    @property
+    def Role(self):
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def AssistantID(self):
+        return self._AssistantID
+
+    @AssistantID.setter
+    def AssistantID(self, AssistantID):
+        self._AssistantID = AssistantID
+
+    @property
+    def RunID(self):
+        return self._RunID
+
+    @RunID.setter
+    def RunID(self, RunID):
+        self._RunID = RunID
+
+    @property
+    def Attachments(self):
+        return self._Attachments
+
+    @Attachments.setter
+    def Attachments(self, Attachments):
+        self._Attachments = Attachments
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Object = params.get("Object")
+        self._CreatedAt = params.get("CreatedAt")
+        self._ThreadID = params.get("ThreadID")
+        self._Status = params.get("Status")
+        if params.get("InCompleteDetails") is not None:
+            self._InCompleteDetails = ThreadMessageInCompleteDetailsObject()
+            self._InCompleteDetails._deserialize(params.get("InCompleteDetails"))
+        self._CompletedAt = params.get("CompletedAt")
+        self._InCompleteAt = params.get("InCompleteAt")
+        self._Role = params.get("Role")
+        self._Content = params.get("Content")
+        self._AssistantID = params.get("AssistantID")
+        self._RunID = params.get("RunID")
+        if params.get("Attachments") is not None:
+            self._Attachments = []
+            for item in params.get("Attachments"):
+                obj = ThreadMessageAttachmentObject()
+                obj._deserialize(item)
+                self._Attachments.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class GetThreadRequest(AbstractModel):
+    """GetThread请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ThreadID: 会话 ID
+        :type ThreadID: str
+        """
+        self._ThreadID = None
+
+    @property
+    def ThreadID(self):
+        return self._ThreadID
+
+    @ThreadID.setter
+    def ThreadID(self, ThreadID):
+        self._ThreadID = ThreadID
+
+
+    def _deserialize(self, params):
+        self._ThreadID = params.get("ThreadID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetThreadResponse(AbstractModel):
+    """GetThread返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 会话 ID
+        :type ID: str
+        :param _Object: 对象类型
+        :type Object: str
+        :param _CreatedAt: 创建时间，Unix 时间戳，单位为秒。
+        :type CreatedAt: int
+        :param _ToolResources: 提供给工具的资源列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ToolResources: :class:`tencentcloud.hunyuan.v20230901.models.ThreadToolResources`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :type RequestId: str
+        """
+        self._ID = None
+        self._Object = None
+        self._CreatedAt = None
+        self._ToolResources = None
+        self._RequestId = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Object(self):
+        return self._Object
+
+    @Object.setter
+    def Object(self, Object):
+        self._Object = Object
+
+    @property
+    def CreatedAt(self):
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def ToolResources(self):
+        return self._ToolResources
+
+    @ToolResources.setter
+    def ToolResources(self, ToolResources):
+        self._ToolResources = ToolResources
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Object = params.get("Object")
+        self._CreatedAt = params.get("CreatedAt")
+        if params.get("ToolResources") is not None:
+            self._ToolResources = ThreadToolResources()
+            self._ToolResources._deserialize(params.get("ToolResources"))
         self._RequestId = params.get("RequestId")
 
 
@@ -1359,6 +2378,53 @@ class Message(AbstractModel):
                 obj = ToolCall()
                 obj._deserialize(item)
                 self._ToolCalls.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Mindmap(AbstractModel):
+    """脑图
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ThumbUrl: 脑图缩略图链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ThumbUrl: str
+        :param _Url: 脑图图片链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        """
+        self._ThumbUrl = None
+        self._Url = None
+
+    @property
+    def ThumbUrl(self):
+        return self._ThumbUrl
+
+    @ThumbUrl.setter
+    def ThumbUrl(self, ThumbUrl):
+        self._ThumbUrl = ThumbUrl
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._ThumbUrl = params.get("ThumbUrl")
+        self._Url = params.get("Url")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1808,6 +2874,139 @@ class QueryHunyuanImageJobResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RelevantEntity(AbstractModel):
+    """相关组织及人物
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 相关组织及人物名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Content: 相关组织及人物内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        :param _Reference: 相关事件引用文章标号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reference: list of int
+        """
+        self._Name = None
+        self._Content = None
+        self._Reference = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Reference(self):
+        return self._Reference
+
+    @Reference.setter
+    def Reference(self, Reference):
+        self._Reference = Reference
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Content = params.get("Content")
+        self._Reference = params.get("Reference")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RelevantEvent(AbstractModel):
+    """相关事件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Title: 相关事件标题
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Title: str
+        :param _Content: 相关事件内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        :param _Datetime: 相关事件时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Datetime: str
+        :param _Reference: 相关事件引用文章标号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reference: list of int
+        """
+        self._Title = None
+        self._Content = None
+        self._Datetime = None
+        self._Reference = None
+
+    @property
+    def Title(self):
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Datetime(self):
+        return self._Datetime
+
+    @Datetime.setter
+    def Datetime(self, Datetime):
+        self._Datetime = Datetime
+
+    @property
+    def Reference(self):
+        return self._Reference
+
+    @Reference.setter
+    def Reference(self, Reference):
+        self._Reference = Reference
+
+
+    def _deserialize(self, params):
+        self._Title = params.get("Title")
+        self._Content = params.get("Content")
+        self._Datetime = params.get("Datetime")
+        self._Reference = params.get("Reference")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Replace(AbstractModel):
     """多媒体占位符替换信息
 
@@ -1858,6 +3057,194 @@ class Replace(AbstractModel):
         
 
 
+class RunThreadRequest(AbstractModel):
+    """RunThread请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ThreadID: 会话 ID
+        :type ThreadID: str
+        :param _AssistantID: 助手 ID
+        :type AssistantID: str
+        :param _Model: 模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-pro、 hunyuan-code、 hunyuan-role、 hunyuan-functioncall、 hunyuan-vision、 hunyuan-turbo。各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。注意：不同的模型计费不同，请根据 [购买指南](https://cloud.tencent.com/document/product/1729/97731) 按需调用。
+        :type Model: str
+        :param _AdditionalMessages: 附加消息
+        :type AdditionalMessages: list of ThreadAdditionalMessage
+        :param _Temperature: 说明：1. 影响模型输出多样性，模型已有默认参数，不传值时使用各模型推荐值，不推荐用户修改。2. 取值区间为 [0.0, 2.0]。较高的数值会使输出更加多样化和不可预测，而较低的数值会使其更加集中和确定。
+        :type Temperature: float
+        :param _TopP: 说明：1. 影响输出文本的多样性。模型已有默认参数，不传值时使用各模型推荐值，不推荐用户修改。2. 取值区间为 [0.0, 1.0]。取值越大，生成文本的多样性越强。
+        :type TopP: float
+        :param _Stream: 是否流式输出，当前只允许 true
+        :type Stream: bool
+        :param _MaxPromptTokens: 运行过程中可使用的 token 最大数量。
+        :type MaxPromptTokens: int
+        :param _MaxCompletionTokens: 运行过程中可使用的完成 token 的最大数量。
+        :type MaxCompletionTokens: int
+        :param _Tools: 可调用的工具列表，仅对 hunyuan-pro、hunyuan-turbo、hunyuan-functioncall 模型生效。
+        :type Tools: list of Tool
+        :param _ToolChoice: 工具使用选项，可选值包括 none、auto、custom。说明：1. 仅对 hunyuan-pro、hunyuan-turbo、hunyuan-functioncall 模型生效。2. none：不调用工具；auto：模型自行选择生成回复或调用工具；custom：强制模型调用指定的工具。3. 未设置时，默认值为auto
+        :type ToolChoice: str
+        """
+        self._ThreadID = None
+        self._AssistantID = None
+        self._Model = None
+        self._AdditionalMessages = None
+        self._Temperature = None
+        self._TopP = None
+        self._Stream = None
+        self._MaxPromptTokens = None
+        self._MaxCompletionTokens = None
+        self._Tools = None
+        self._ToolChoice = None
+
+    @property
+    def ThreadID(self):
+        return self._ThreadID
+
+    @ThreadID.setter
+    def ThreadID(self, ThreadID):
+        self._ThreadID = ThreadID
+
+    @property
+    def AssistantID(self):
+        return self._AssistantID
+
+    @AssistantID.setter
+    def AssistantID(self, AssistantID):
+        self._AssistantID = AssistantID
+
+    @property
+    def Model(self):
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def AdditionalMessages(self):
+        return self._AdditionalMessages
+
+    @AdditionalMessages.setter
+    def AdditionalMessages(self, AdditionalMessages):
+        self._AdditionalMessages = AdditionalMessages
+
+    @property
+    def Temperature(self):
+        return self._Temperature
+
+    @Temperature.setter
+    def Temperature(self, Temperature):
+        self._Temperature = Temperature
+
+    @property
+    def TopP(self):
+        return self._TopP
+
+    @TopP.setter
+    def TopP(self, TopP):
+        self._TopP = TopP
+
+    @property
+    def Stream(self):
+        return self._Stream
+
+    @Stream.setter
+    def Stream(self, Stream):
+        self._Stream = Stream
+
+    @property
+    def MaxPromptTokens(self):
+        return self._MaxPromptTokens
+
+    @MaxPromptTokens.setter
+    def MaxPromptTokens(self, MaxPromptTokens):
+        self._MaxPromptTokens = MaxPromptTokens
+
+    @property
+    def MaxCompletionTokens(self):
+        return self._MaxCompletionTokens
+
+    @MaxCompletionTokens.setter
+    def MaxCompletionTokens(self, MaxCompletionTokens):
+        self._MaxCompletionTokens = MaxCompletionTokens
+
+    @property
+    def Tools(self):
+        return self._Tools
+
+    @Tools.setter
+    def Tools(self, Tools):
+        self._Tools = Tools
+
+    @property
+    def ToolChoice(self):
+        return self._ToolChoice
+
+    @ToolChoice.setter
+    def ToolChoice(self, ToolChoice):
+        self._ToolChoice = ToolChoice
+
+
+    def _deserialize(self, params):
+        self._ThreadID = params.get("ThreadID")
+        self._AssistantID = params.get("AssistantID")
+        self._Model = params.get("Model")
+        if params.get("AdditionalMessages") is not None:
+            self._AdditionalMessages = []
+            for item in params.get("AdditionalMessages"):
+                obj = ThreadAdditionalMessage()
+                obj._deserialize(item)
+                self._AdditionalMessages.append(obj)
+        self._Temperature = params.get("Temperature")
+        self._TopP = params.get("TopP")
+        self._Stream = params.get("Stream")
+        self._MaxPromptTokens = params.get("MaxPromptTokens")
+        self._MaxCompletionTokens = params.get("MaxCompletionTokens")
+        if params.get("Tools") is not None:
+            self._Tools = []
+            for item in params.get("Tools"):
+                obj = Tool()
+                obj._deserialize(item)
+                self._Tools.append(obj)
+        self._ToolChoice = params.get("ToolChoice")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RunThreadResponse(AbstractModel):
+    """RunThread返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class SearchInfo(AbstractModel):
     """搜索结果信息
 
@@ -1868,8 +3255,32 @@ class SearchInfo(AbstractModel):
         :param _SearchResults: 搜索引文信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type SearchResults: list of SearchResult
+        :param _Mindmap: 脑图（回复中不一定存在，流式协议中，仅在最后一条流式数据中返回）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mindmap: :class:`tencentcloud.hunyuan.v20230901.models.Mindmap`
+        :param _RelevantEvents: 相关事件（回复中不一定存在，流式协议中，仅在最后一条流式数据中返回，深度模式下返回）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelevantEvents: list of RelevantEvent
+        :param _RelevantEntities: 相关组织及人物（回复中不一定存在，流式协议中，仅在最后一条流式数据中返回，深度模式下返回）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelevantEntities: list of RelevantEntity
+        :param _Timeline: 时间线（回复中不一定存在，流式协议中，仅在最后一条流式数据中返回，深度模式下返回）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timeline: list of Timeline
+        :param _SupportDeepSearch: 是否命中搜索深度模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportDeepSearch: bool
+        :param _Outline: 搜索回复大纲（深度模式下返回）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Outline: list of str
         """
         self._SearchResults = None
+        self._Mindmap = None
+        self._RelevantEvents = None
+        self._RelevantEntities = None
+        self._Timeline = None
+        self._SupportDeepSearch = None
+        self._Outline = None
 
     @property
     def SearchResults(self):
@@ -1879,6 +3290,54 @@ class SearchInfo(AbstractModel):
     def SearchResults(self, SearchResults):
         self._SearchResults = SearchResults
 
+    @property
+    def Mindmap(self):
+        return self._Mindmap
+
+    @Mindmap.setter
+    def Mindmap(self, Mindmap):
+        self._Mindmap = Mindmap
+
+    @property
+    def RelevantEvents(self):
+        return self._RelevantEvents
+
+    @RelevantEvents.setter
+    def RelevantEvents(self, RelevantEvents):
+        self._RelevantEvents = RelevantEvents
+
+    @property
+    def RelevantEntities(self):
+        return self._RelevantEntities
+
+    @RelevantEntities.setter
+    def RelevantEntities(self, RelevantEntities):
+        self._RelevantEntities = RelevantEntities
+
+    @property
+    def Timeline(self):
+        return self._Timeline
+
+    @Timeline.setter
+    def Timeline(self, Timeline):
+        self._Timeline = Timeline
+
+    @property
+    def SupportDeepSearch(self):
+        return self._SupportDeepSearch
+
+    @SupportDeepSearch.setter
+    def SupportDeepSearch(self, SupportDeepSearch):
+        self._SupportDeepSearch = SupportDeepSearch
+
+    @property
+    def Outline(self):
+        return self._Outline
+
+    @Outline.setter
+    def Outline(self, Outline):
+        self._Outline = Outline
+
 
     def _deserialize(self, params):
         if params.get("SearchResults") is not None:
@@ -1887,6 +3346,29 @@ class SearchInfo(AbstractModel):
                 obj = SearchResult()
                 obj._deserialize(item)
                 self._SearchResults.append(obj)
+        if params.get("Mindmap") is not None:
+            self._Mindmap = Mindmap()
+            self._Mindmap._deserialize(params.get("Mindmap"))
+        if params.get("RelevantEvents") is not None:
+            self._RelevantEvents = []
+            for item in params.get("RelevantEvents"):
+                obj = RelevantEvent()
+                obj._deserialize(item)
+                self._RelevantEvents.append(obj)
+        if params.get("RelevantEntities") is not None:
+            self._RelevantEntities = []
+            for item in params.get("RelevantEntities"):
+                obj = RelevantEntity()
+                obj._deserialize(item)
+                self._RelevantEntities.append(obj)
+        if params.get("Timeline") is not None:
+            self._Timeline = []
+            for item in params.get("Timeline"):
+                obj = Timeline()
+                obj._deserialize(item)
+                self._Timeline.append(obj)
+        self._SupportDeepSearch = params.get("SupportDeepSearch")
+        self._Outline = params.get("Outline")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2520,6 +4002,431 @@ class TextToImageLiteResponse(AbstractModel):
     def _deserialize(self, params):
         self._ResultImage = params.get("ResultImage")
         self._RequestId = params.get("RequestId")
+
+
+class ThreadAdditionalMessage(AbstractModel):
+    """会话额外消息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Role: 角色
+        :type Role: str
+        :param _Content: 内容
+        :type Content: str
+        :param _Attachments: 附件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Attachments: list of ThreadMessageAttachmentObject
+        """
+        self._Role = None
+        self._Content = None
+        self._Attachments = None
+
+    @property
+    def Role(self):
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Attachments(self):
+        return self._Attachments
+
+    @Attachments.setter
+    def Attachments(self, Attachments):
+        self._Attachments = Attachments
+
+
+    def _deserialize(self, params):
+        self._Role = params.get("Role")
+        self._Content = params.get("Content")
+        if params.get("Attachments") is not None:
+            self._Attachments = []
+            for item in params.get("Attachments"):
+                obj = ThreadMessageAttachmentObject()
+                obj._deserialize(item)
+                self._Attachments.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ThreadMessage(AbstractModel):
+    """会话消息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 消息 ID
+        :type ID: str
+        :param _Object: 对象类型
+        :type Object: str
+        :param _CreatedAt: 创建时间
+        :type CreatedAt: int
+        :param _ThreadID: 会话 ID
+        :type ThreadID: str
+        :param _Status: 状态，处理中 in_progress，已完成 completed，未完成 incomplete。 
+        :type Status: str
+        :param _InCompleteDetails: 未完成原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InCompleteDetails: :class:`tencentcloud.hunyuan.v20230901.models.ThreadMessageInCompleteDetailsObject`
+        :param _CompletedAt: 完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompletedAt: int
+        :param _InCompleteAt: 未完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InCompleteAt: int
+        :param _Role: 角色
+        :type Role: str
+        :param _Content: 内容
+        :type Content: str
+        :param _AssistantID: 助手 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssistantID: str
+        :param _RunID: 运行 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunID: str
+        :param _Attachments: 附件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Attachments: list of ThreadMessageAttachmentObject
+        """
+        self._ID = None
+        self._Object = None
+        self._CreatedAt = None
+        self._ThreadID = None
+        self._Status = None
+        self._InCompleteDetails = None
+        self._CompletedAt = None
+        self._InCompleteAt = None
+        self._Role = None
+        self._Content = None
+        self._AssistantID = None
+        self._RunID = None
+        self._Attachments = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Object(self):
+        return self._Object
+
+    @Object.setter
+    def Object(self, Object):
+        self._Object = Object
+
+    @property
+    def CreatedAt(self):
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def ThreadID(self):
+        return self._ThreadID
+
+    @ThreadID.setter
+    def ThreadID(self, ThreadID):
+        self._ThreadID = ThreadID
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def InCompleteDetails(self):
+        return self._InCompleteDetails
+
+    @InCompleteDetails.setter
+    def InCompleteDetails(self, InCompleteDetails):
+        self._InCompleteDetails = InCompleteDetails
+
+    @property
+    def CompletedAt(self):
+        return self._CompletedAt
+
+    @CompletedAt.setter
+    def CompletedAt(self, CompletedAt):
+        self._CompletedAt = CompletedAt
+
+    @property
+    def InCompleteAt(self):
+        return self._InCompleteAt
+
+    @InCompleteAt.setter
+    def InCompleteAt(self, InCompleteAt):
+        self._InCompleteAt = InCompleteAt
+
+    @property
+    def Role(self):
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def AssistantID(self):
+        return self._AssistantID
+
+    @AssistantID.setter
+    def AssistantID(self, AssistantID):
+        self._AssistantID = AssistantID
+
+    @property
+    def RunID(self):
+        return self._RunID
+
+    @RunID.setter
+    def RunID(self, RunID):
+        self._RunID = RunID
+
+    @property
+    def Attachments(self):
+        return self._Attachments
+
+    @Attachments.setter
+    def Attachments(self, Attachments):
+        self._Attachments = Attachments
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Object = params.get("Object")
+        self._CreatedAt = params.get("CreatedAt")
+        self._ThreadID = params.get("ThreadID")
+        self._Status = params.get("Status")
+        if params.get("InCompleteDetails") is not None:
+            self._InCompleteDetails = ThreadMessageInCompleteDetailsObject()
+            self._InCompleteDetails._deserialize(params.get("InCompleteDetails"))
+        self._CompletedAt = params.get("CompletedAt")
+        self._InCompleteAt = params.get("InCompleteAt")
+        self._Role = params.get("Role")
+        self._Content = params.get("Content")
+        self._AssistantID = params.get("AssistantID")
+        self._RunID = params.get("RunID")
+        if params.get("Attachments") is not None:
+            self._Attachments = []
+            for item in params.get("Attachments"):
+                obj = ThreadMessageAttachmentObject()
+                obj._deserialize(item)
+                self._Attachments.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ThreadMessageAttachmentObject(AbstractModel):
+    """会话消息附件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileID: 文件 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileID: str
+        """
+        self._FileID = None
+
+    @property
+    def FileID(self):
+        return self._FileID
+
+    @FileID.setter
+    def FileID(self, FileID):
+        self._FileID = FileID
+
+
+    def _deserialize(self, params):
+        self._FileID = params.get("FileID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ThreadMessageInCompleteDetailsObject(AbstractModel):
+    """会话消息未完成原因
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Reason: 会话消息未完成原因
+        :type Reason: str
+        """
+        self._Reason = None
+
+    @property
+    def Reason(self):
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+
+    def _deserialize(self, params):
+        self._Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ThreadToolResources(AbstractModel):
+    """在会话中提供给助手工具的一系列资源。不同类型的工具会有各自对应的资源。比如代码解释器需要一个文件 ID 的列表，而文件搜索工具则需要一个向量存储 ID 的列表。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CodeInterpreter: 文件 ID 列表
+        :type CodeInterpreter: list of str
+        :param _VectorStoreIDs: 向量存储 ID 列表
+        :type VectorStoreIDs: list of str
+        """
+        self._CodeInterpreter = None
+        self._VectorStoreIDs = None
+
+    @property
+    def CodeInterpreter(self):
+        return self._CodeInterpreter
+
+    @CodeInterpreter.setter
+    def CodeInterpreter(self, CodeInterpreter):
+        self._CodeInterpreter = CodeInterpreter
+
+    @property
+    def VectorStoreIDs(self):
+        return self._VectorStoreIDs
+
+    @VectorStoreIDs.setter
+    def VectorStoreIDs(self, VectorStoreIDs):
+        self._VectorStoreIDs = VectorStoreIDs
+
+
+    def _deserialize(self, params):
+        self._CodeInterpreter = params.get("CodeInterpreter")
+        self._VectorStoreIDs = params.get("VectorStoreIDs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Timeline(AbstractModel):
+    """时间线
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Title: 标题
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Title: str
+        :param _Datetime: 时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Datetime: str
+        :param _Url: 相关网页链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        """
+        self._Title = None
+        self._Datetime = None
+        self._Url = None
+
+    @property
+    def Title(self):
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Datetime(self):
+        return self._Datetime
+
+    @Datetime.setter
+    def Datetime(self, Datetime):
+        self._Datetime = Datetime
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Title = params.get("Title")
+        self._Datetime = params.get("Datetime")
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Tool(AbstractModel):

@@ -13998,7 +13998,7 @@ class DescribeScanIpResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IpList: ip列表,当入参Ip为all时，返回该值
+        :param _IpList: ip列表,当入参Ip为all时，返回所有已知ip列表
         :type IpList: list of ScanIpInfo
         :param _Bussiness: 所属业务
         :type Bussiness: str

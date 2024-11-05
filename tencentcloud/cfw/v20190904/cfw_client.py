@@ -27,7 +27,9 @@ class CfwClient(AbstractClient):
 
 
     def AddAcRule(self, request):
-        """添加互联网边界规则
+        """接口不再使用，已有新接口AddAclRule
+
+        添加互联网边界规则
 
         :param request: Request instance for AddAcRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.AddAcRuleRequest`
