@@ -11474,6 +11474,78 @@ class ComplexAdaptiveDynamicStreamingTask(AbstractModel):
         
 
 
+class ComplexAdaptiveDynamicStreamingTaskAudioInput(AbstractModel):
+    """自适应码流任务多语言音频流输入参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileId: 音频源的媒体 ID。固定取该媒体中的首个音频流，视频流和其它音频流（如有）将被忽略。
+        :type FileId: str
+        :param _Name: 输出的自适应码流中的音频流名称，长度限制为16个字符。
+        :type Name: str
+        :param _Language: 输出的自适应码流中的音频流语言，长度限制为16个字符。要求符合 RFC5646 规范。
+        :type Language: str
+        :param _Default: 是否设置为自适应码流的默认音频。取值：
+<li>YES：设置为默认音频；</li>
+<li>NO：不设置为默认音频（默认值）。</li>
+
+        :type Default: str
+        """
+        self._FileId = None
+        self._Name = None
+        self._Language = None
+        self._Default = None
+
+    @property
+    def FileId(self):
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Language(self):
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
+    @property
+    def Default(self):
+        return self._Default
+
+    @Default.setter
+    def Default(self, Default):
+        self._Default = Default
+
+
+    def _deserialize(self, params):
+        self._FileId = params.get("FileId")
+        self._Name = params.get("Name")
+        self._Language = params.get("Language")
+        self._Default = params.get("Default")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ComplexAdaptiveDynamicStreamingTaskInput(AbstractModel):
     """自适应码流任务的输入参数。
 
@@ -11709,6 +11781,53 @@ class ComplexAdaptiveDynamicStreamingTaskStreamPara(AbstractModel):
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComplexAdaptiveDynamicStreamingTaskSubtitleInput(AbstractModel):
+    """自适应码流任务多语言字幕的输入参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 字幕 ID。该字幕必须归属于自适应码流任务的输入主媒体。
+        :type Id: str
+        :param _Default: 是否设置为自适应码流的默认字幕。取值：
+<li>YES：设置为默认字幕；</li>
+<li>NO：不设置为默认字幕（默认值）。</li>
+        :type Default: str
+        """
+        self._Id = None
+        self._Default = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Default(self):
+        return self._Default
+
+    @Default.setter
+    def Default(self, Default):
+        self._Default = Default
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Default = params.get("Default")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14232,6 +14351,156 @@ class CreateClassResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._ClassId = params.get("ClassId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateComplexAdaptiveDynamicStreamingTaskRequest(AbstractModel):
+    """CreateComplexAdaptiveDynamicStreamingTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。</b>
+        :type SubAppId: int
+        :param _FileId: 主媒体文件的媒体 ID。
+        :type FileId: str
+        :param _StreamParaSet: 自适应码流参数，最大支持8个。
+        :type StreamParaSet: list of ComplexAdaptiveDynamicStreamingTaskStreamPara
+        :param _HeadTailSet: 片头片尾列表，支持多片头片尾，最大可支持 4 个。如果填写了该字段，AudioSet 和 SubtitleSet 中指定的媒体的起始时间将会自动调整，和主媒体保持同步。
+        :type HeadTailSet: list of HeadTailTaskInput
+        :param _AudioSet: 多语言音频流参数，最大支持16个。每个数组元素对应自适应码流中的一条音频流。如果要将主媒体文件中的音频流添加到输出的自适应码流中，那么也需要在此处指定。数组中元素的顺序将决定自适应码流中的音频流顺序。如果输入的媒体文件同时带有视频流和音频流，那么视频流将被忽略。
+        :type AudioSet: list of ComplexAdaptiveDynamicStreamingTaskAudioInput
+        :param _SubtitleSet: 多语言字幕参数，最大可支持16个。每个数组元素对应自适应码流中的一条字幕流。数组中元素的顺序将决定自适应码流中的字幕流顺序。
+        :type SubtitleSet: list of ComplexAdaptiveDynamicStreamingTaskSubtitleInput
+        """
+        self._SubAppId = None
+        self._FileId = None
+        self._StreamParaSet = None
+        self._HeadTailSet = None
+        self._AudioSet = None
+        self._SubtitleSet = None
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def FileId(self):
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def StreamParaSet(self):
+        return self._StreamParaSet
+
+    @StreamParaSet.setter
+    def StreamParaSet(self, StreamParaSet):
+        self._StreamParaSet = StreamParaSet
+
+    @property
+    def HeadTailSet(self):
+        return self._HeadTailSet
+
+    @HeadTailSet.setter
+    def HeadTailSet(self, HeadTailSet):
+        self._HeadTailSet = HeadTailSet
+
+    @property
+    def AudioSet(self):
+        return self._AudioSet
+
+    @AudioSet.setter
+    def AudioSet(self, AudioSet):
+        self._AudioSet = AudioSet
+
+    @property
+    def SubtitleSet(self):
+        return self._SubtitleSet
+
+    @SubtitleSet.setter
+    def SubtitleSet(self, SubtitleSet):
+        self._SubtitleSet = SubtitleSet
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._FileId = params.get("FileId")
+        if params.get("StreamParaSet") is not None:
+            self._StreamParaSet = []
+            for item in params.get("StreamParaSet"):
+                obj = ComplexAdaptiveDynamicStreamingTaskStreamPara()
+                obj._deserialize(item)
+                self._StreamParaSet.append(obj)
+        if params.get("HeadTailSet") is not None:
+            self._HeadTailSet = []
+            for item in params.get("HeadTailSet"):
+                obj = HeadTailTaskInput()
+                obj._deserialize(item)
+                self._HeadTailSet.append(obj)
+        if params.get("AudioSet") is not None:
+            self._AudioSet = []
+            for item in params.get("AudioSet"):
+                obj = ComplexAdaptiveDynamicStreamingTaskAudioInput()
+                obj._deserialize(item)
+                self._AudioSet.append(obj)
+        if params.get("SubtitleSet") is not None:
+            self._SubtitleSet = []
+            for item in params.get("SubtitleSet"):
+                obj = ComplexAdaptiveDynamicStreamingTaskSubtitleInput()
+                obj._deserialize(item)
+                self._SubtitleSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateComplexAdaptiveDynamicStreamingTaskResponse(AbstractModel):
+    """CreateComplexAdaptiveDynamicStreamingTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务 ID。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 

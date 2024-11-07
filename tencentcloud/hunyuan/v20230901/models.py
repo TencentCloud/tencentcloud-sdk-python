@@ -83,7 +83,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Model: 模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-pro、 hunyuan-code、 hunyuan-role、 hunyuan-functioncall、 hunyuan-vision、 hunyuan-turbo、 hunyuan-turbo-latest。
+        :param _Model: 模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-pro、 hunyuan-code、 hunyuan-role、 hunyuan-functioncall、 hunyuan-vision、 hunyuan-turbo、 hunyuan-turbo-latest、 hunyuan-large。
 各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。
 
 注意：
@@ -3446,7 +3446,7 @@ class SetPayModeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PayMode: 设置后付费状态，0：后付费；1：预付费
+        :param _PayMode: 设置后付费状态，0：后付费打开；1：后付费关闭
         :type PayMode: int
         """
         self._PayMode = None
@@ -4489,10 +4489,13 @@ class ToolCall(AbstractModel):
         :type Type: str
         :param _Function: 具体的function调用
         :type Function: :class:`tencentcloud.hunyuan.v20230901.models.ToolCallFunction`
+        :param _Index: 索引值
+        :type Index: int
         """
         self._Id = None
         self._Type = None
         self._Function = None
+        self._Index = None
 
     @property
     def Id(self):
@@ -4518,6 +4521,14 @@ class ToolCall(AbstractModel):
     def Function(self, Function):
         self._Function = Function
 
+    @property
+    def Index(self):
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -4525,6 +4536,7 @@ class ToolCall(AbstractModel):
         if params.get("Function") is not None:
             self._Function = ToolCallFunction()
             self._Function._deserialize(params.get("Function"))
+        self._Index = params.get("Index")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

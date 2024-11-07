@@ -9691,7 +9691,7 @@ class ListDevicesRequest(AbstractModel):
         :type CurrentUin: int
         :param _PageNumber: 页码，默认为1。
         :type PageNumber: int
-        :param _PageSize: 每页数量，默认为20。
+        :param _PageSize: 每页数量，默认为20，单页最大10000条
         :type PageSize: int
         """
         self._OrganizationId = None

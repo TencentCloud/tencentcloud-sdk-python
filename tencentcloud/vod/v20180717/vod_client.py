@@ -320,6 +320,40 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateComplexAdaptiveDynamicStreamingTask(self, request):
+        """发起复杂自适应码流处理任务，功能包括：
+        1. 按指定的自适应码流模版输出 HLS、DASH 自适应码流；
+        2. 自适应码流的内容保护方案可选择无加密、Widevine 或 FairPlay；
+        3. 支持添加片头片尾；
+        4. 输出的自适应码流可包含多语言音频流，每种语言分别来自不同的媒体文件；
+        5. 输出的自适应码流可包含多语言字幕流。
+
+        注意事项：
+        1. 当使用片头时，片头媒体中的视频流需要和音频流对齐，否则将导致输出的内容音画不同步；
+        2. 如果输出的自适应码流需要包含主媒体的音频，那么需要在 AudioSet 参数中指定主媒体的 FileId；
+        3. 使用字幕时，需要先将字幕添加到主媒体，可通过 ModifyMediaInfo 接口或控制台的音视频详情页进行添加；
+        4. 暂不支持极速高清、水印。
+
+        :param request: Request instance for CreateComplexAdaptiveDynamicStreamingTask.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateComplexAdaptiveDynamicStreamingTaskRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateComplexAdaptiveDynamicStreamingTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateComplexAdaptiveDynamicStreamingTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateComplexAdaptiveDynamicStreamingTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateContentReviewTemplate(self, request):
         """该 API 已经<font color=red>不再维护</font>，新版审核模板支持音视频审核和图片审核，详细请参考 [创建审核模板](https://cloud.tencent.com/document/api/266/84391)。
         创建用户自定义音视频内容审核模板，数量上限：50。

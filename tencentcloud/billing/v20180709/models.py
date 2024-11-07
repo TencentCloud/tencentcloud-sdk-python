@@ -11022,11 +11022,11 @@ class DescribeAccountBalanceResponse(AbstractModel):
         :type IsAllowArrears: bool
         :param _IsCreditLimited: 是否限制信用额度
         :type IsCreditLimited: bool
-        :param _CreditAmount: 信用额度
+        :param _CreditAmount: 信用额度,单位 分
         :type CreditAmount: float
-        :param _CreditBalance: 可用信用额度
+        :param _CreditBalance: 可用信用额度,单位 分
         :type CreditBalance: float
-        :param _RealCreditBalance: 真实可用信用额度
+        :param _RealCreditBalance: 真实可用信用额度,单位 分
         :type RealCreditBalance: float
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

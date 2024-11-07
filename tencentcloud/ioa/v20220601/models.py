@@ -26,10 +26,8 @@ class ComplexRule(AbstractModel):
     def __init__(self):
         r"""
         :param _SimpleRules: 简单规则表达式
-注意：此字段可能返回 null，表示取不到有效值。
         :type SimpleRules: list of SimpleRule
         :param _Relation: 表达式间逻辑关系
-注意：此字段可能返回 null，表示取不到有效值。
         :type Relation: str
         """
         self._SimpleRules = None
@@ -71,31 +69,21 @@ class ComplexRule(AbstractModel):
 
 
 class Condition(AbstractModel):
-    """- [ ] 过滤条件<br>
-
-    <li>Name - String - 是否必填：否 - 操作符: ilike  - 排序支持：否- 根据分组名称进行查询。</li>
-    分页参数<br>
-    <li>PageNum 从1开始，小于等于0时使用默认参数。</li>
-    <li>PageSize 最大值5000，最好不超过100。</li>
+    """这是一个多接口的公共数据结构，用于接口根据条件进行过滤和分页。具体支持哪些过滤条件，参考具体使用该结构的接口字段描述
 
     """
 
     def __init__(self):
         r"""
         :param _Filters: Filters 条件过滤
-注意：此字段可能返回 null，表示取不到有效值。
         :type Filters: list of Filter
         :param _FilterGroups: FilterGroups 条件过滤组
-注意：此字段可能返回 null，表示取不到有效值。
         :type FilterGroups: list of FilterGroup
         :param _Sort: Sort 排序字段
-注意：此字段可能返回 null，表示取不到有效值。
         :type Sort: :class:`tencentcloud.ioa.v20220601.models.Sort`
         :param _PageSize: PageSize 每页获取数(只支持32位)
-注意：此字段可能返回 null，表示取不到有效值。
         :type PageSize: int
         :param _PageNum: PageNum 获取第几页(只支持32位)
-注意：此字段可能返回 null，表示取不到有效值。
         :type PageNum: int
         """
         self._Filters = None
@@ -1441,7 +1429,7 @@ class DescribeLocalAccountsRequest(AbstractModel):
         :type Condition: :class:`tencentcloud.ioa.v20220601.models.Condition`
         :param _AccountGroupId: 获取账号的分组ID，不传默认获取全网根账号组
         :type AccountGroupId: int
-        :param _ShowFlag: 是否仅展示当前目录下用户 1： 递归显示 2：仅显示当前目录下用户(只支持32位)
+        :param _ShowFlag: 是否仅展示当前目录下用户 1： 递归显示 2：仅显示当前目录下用户
         :type ShowFlag: int
         """
         self._Condition = None
@@ -2118,13 +2106,10 @@ class Filter(AbstractModel):
     def __init__(self):
         r"""
         :param _Field: 过滤字段
-注意：此字段可能返回 null，表示取不到有效值。
         :type Field: str
-        :param _Operator: 过滤方式 eq:等于,net:不等于,like,nlike,gt:大于,lt:小于,egt:大于等于,elt:小于等于
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Operator: 过滤方式： eq:等于,net:不等于,like,nlike,gt:大于,lt:小于,egt:大于等于,elt:小于等于。具体支持哪些过滤方式，结合具体接口字段描述来定
         :type Operator: str
         :param _Values: 过滤条件
-注意：此字段可能返回 null，表示取不到有效值。
         :type Values: list of str
         """
         self._Field = None
@@ -2178,7 +2163,6 @@ class FilterGroup(AbstractModel):
     def __init__(self):
         r"""
         :param _Filters: Filters 条件过滤
-注意：此字段可能返回 null，表示取不到有效值。
         :type Filters: list of Filter
         """
         self._Filters = None
@@ -2688,10 +2672,8 @@ class Sort(AbstractModel):
     def __init__(self):
         r"""
         :param _Field: 排序字段
-注意：此字段可能返回 null，表示取不到有效值。
         :type Field: str
         :param _Order: 排序方式
-注意：此字段可能返回 null，表示取不到有效值。
         :type Order: str
         """
         self._Field = None

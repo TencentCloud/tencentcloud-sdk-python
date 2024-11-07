@@ -10447,6 +10447,9 @@ FAILED：表示操作失败
         :type InstanceRestrictState: str
         :param _InitInvocationId: 创建实例后自动执行TAT命令的调用ID。
         :type InitInvocationId: str
+        :param _InstanceViolationDetail: 实例违规详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceViolationDetail: :class:`tencentcloud.lighthouse.v20200324.models.InstanceViolationDetail`
         """
         self._InstanceId = None
         self._BundleId = None
@@ -10477,6 +10480,7 @@ FAILED：表示操作失败
         self._Tags = None
         self._InstanceRestrictState = None
         self._InitInvocationId = None
+        self._InstanceViolationDetail = None
 
     @property
     def InstanceId(self):
@@ -10710,6 +10714,14 @@ FAILED：表示操作失败
     def InitInvocationId(self, InitInvocationId):
         self._InitInvocationId = InitInvocationId
 
+    @property
+    def InstanceViolationDetail(self):
+        return self._InstanceViolationDetail
+
+    @InstanceViolationDetail.setter
+    def InstanceViolationDetail(self, InstanceViolationDetail):
+        self._InstanceViolationDetail = InstanceViolationDetail
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -10752,6 +10764,9 @@ FAILED：表示操作失败
                 self._Tags.append(obj)
         self._InstanceRestrictState = params.get("InstanceRestrictState")
         self._InitInvocationId = params.get("InitInvocationId")
+        if params.get("InstanceViolationDetail") is not None:
+            self._InstanceViolationDetail = InstanceViolationDetail()
+            self._InstanceViolationDetail._deserialize(params.get("InstanceViolationDetail"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11161,6 +11176,79 @@ class InstanceTrafficPackage(AbstractModel):
                 obj = TrafficPackage()
                 obj._deserialize(item)
                 self._TrafficPackageSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceViolationDetail(AbstractModel):
+    """实例违规详情。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Source:  来源：RESTRICT：封禁、FREEZW：冻结
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Source: str
+        :param _State: 是否允许自助解封：1是，2否
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: str
+        :param _Reason: 违规类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reason: str
+        :param _Content: 违规内容（URL、关联域名）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        """
+        self._Source = None
+        self._State = None
+        self._Reason = None
+        self._Content = None
+
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def Reason(self):
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._Source = params.get("Source")
+        self._State = params.get("State")
+        self._Reason = params.get("Reason")
+        self._Content = params.get("Content")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

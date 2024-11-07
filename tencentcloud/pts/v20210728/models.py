@@ -7175,6 +7175,9 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
         :param _PayMode: 付费类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type PayMode: int
+        :param _Usage: job VUM用量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Usage: int
         """
         self._JobId = None
         self._ScenarioId = None
@@ -7220,6 +7223,7 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
         self._ProjectName = None
         self._ScenarioName = None
         self._PayMode = None
+        self._Usage = None
 
     @property
     def JobId(self):
@@ -7573,6 +7577,14 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
     def PayMode(self, PayMode):
         self._PayMode = PayMode
 
+    @property
+    def Usage(self):
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -7660,6 +7672,7 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
         self._ProjectName = params.get("ProjectName")
         self._ScenarioName = params.get("ScenarioName")
         self._PayMode = params.get("PayMode")
+        self._Usage = params.get("Usage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

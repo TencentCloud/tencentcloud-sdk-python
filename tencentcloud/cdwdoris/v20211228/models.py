@@ -1765,18 +1765,26 @@ class CreateBackUpScheduleRequest(AbstractModel):
 
     @property
     def WeekDays(self):
+        warnings.warn("parameter `WeekDays` is deprecated", DeprecationWarning) 
+
         return self._WeekDays
 
     @WeekDays.setter
     def WeekDays(self, WeekDays):
+        warnings.warn("parameter `WeekDays` is deprecated", DeprecationWarning) 
+
         self._WeekDays = WeekDays
 
     @property
     def ExecuteHour(self):
+        warnings.warn("parameter `ExecuteHour` is deprecated", DeprecationWarning) 
+
         return self._ExecuteHour
 
     @ExecuteHour.setter
     def ExecuteHour(self, ExecuteHour):
+        warnings.warn("parameter `ExecuteHour` is deprecated", DeprecationWarning) 
+
         self._ExecuteHour = ExecuteHour
 
     @property
@@ -1913,10 +1921,22 @@ class CreateBackUpScheduleResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ErrorMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ErrorMsg = None
         self._RequestId = None
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
 
     @property
     def RequestId(self):
@@ -1928,6 +1948,7 @@ class CreateBackUpScheduleResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ErrorMsg = params.get("ErrorMsg")
         self._RequestId = params.get("RequestId")
 
 
